@@ -62,7 +62,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.specialDefense = this.actor.getDefense("special");
     context.painPenalty = this.actor.getPainPenalty();
     context.actionTrack = this._buildTrack(this.actor.system.combat?.actionNumber, 5, 1);
-    context.badgesTrack = this._buildTrack(this.actor.system.badges, 10, 0);
+    context.badgesTrack = this._buildTrack(this.actor.system.badges, 8, 0);
     context.trainerRankOptions = TRAINER_CARD_RANK_LABEL_BY_KEY;
     const extraSkills = Array.isArray(this.actor.system.extraSkills)
       ? this.actor.system.extraSkills

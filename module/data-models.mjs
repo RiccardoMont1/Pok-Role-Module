@@ -74,7 +74,7 @@ export class TrainerDataModel extends BaseCharacterDataModel {
       nature: trimmedStringField(""),
       role: trimmedStringField(""),
       money: integerField(0, { min: 0 }),
-      badges: integerField(0, { min: 0, max: 10 }),
+      badges: integerField(0, { min: 0, max: 8 }),
       pokedex: new SchemaField({
         seen: integerField(0, { min: 0 }),
         caught: integerField(0, { min: 0 })
