@@ -1,14 +1,18 @@
 .pok-role-sheet {
   color: var(--color-text-dark-primary);
   font-family: var(--font-primary);
+  background: #1f2a3a;
+  min-height: 100%;
 }
 
 .pok-role.sheet.actor {
-  background: transparent;
+  background: #1f2a3a;
 }
 
+.pok-role .window-content,
+.pok-role.sheet .window-content,
 .pok-role.sheet.actor .window-content {
-  background: transparent !important;
+  background: #1f2a3a !important;
   background-image: none !important;
   padding: 0;
   overflow-y: auto;
@@ -18,10 +22,12 @@
   align-items: center;
 }
 
+.pok-role.sheet.actor .window-content > form.pok-role-sheet,
 .pok-role.sheet.actor .window-content > form.trainer-sheet {
   margin: 0;
   width: min(100%, 1000px);
   min-height: 100%;
+  background: #1f2a3a !important;
 }
 
 .pok-role-sheet .sheet-header {
@@ -230,7 +236,7 @@
 }
 
 .trainer-sheet {
-  background-color: #7e8797;
+  background-color: #1f2a3a;
   border: 1px solid #5f6778;
   border-radius: 14px;
   padding: 10px;
