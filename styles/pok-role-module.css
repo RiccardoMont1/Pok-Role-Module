@@ -221,10 +221,6 @@
 
 .trainer-sheet {
   background-color: #7e8797;
-  background-image: url("../assets/pokeball-pattern.svg");
-  background-repeat: repeat;
-  background-size: 42px 42px;
-  background-position: 0 0;
   border: 1px solid #5f6778;
   border-radius: 14px;
   padding: 10px;
@@ -248,10 +244,14 @@
   gap: 10px;
   margin-bottom: 10px;
   align-items: stretch;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 0;
+  background-color: #8f98aa;
+  background-image: url("../assets/pokeball-pattern.svg");
+  background-repeat: repeat;
+  background-size: 42px 42px;
+  background-position: 0 0;
+  border: 1px solid #656f84;
+  border-radius: 12px;
+  padding: 8px;
 }
 
 .trainer-sheet .trainer-portrait-card {
