@@ -207,3 +207,238 @@
   font-weight: 600;
   padding: 0 4px;
 }
+
+.trainer-sheet {
+  background: #d9d9d9;
+  border: 1px solid #8a8a8a;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.trainer-sheet .trainer-card-layout {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.trainer-sheet .trainer-card-left {
+  background: #3d4047;
+  border: 1px solid #26292f;
+  border-radius: 12px;
+  padding: 8px;
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  gap: 8px;
+}
+
+.trainer-sheet .trainer-photo-frame {
+  border: 2px solid #585c66;
+  border-radius: 10px;
+  padding: 6px;
+  background:
+    radial-gradient(circle at 2px 2px, #5f636b 1px, #434750 1px) 0 0 / 8px 8px,
+    #464a53;
+  min-height: 160px;
+}
+
+.trainer-sheet .trainer-photo-frame .profile-img {
+  width: 100%;
+  height: 100%;
+  min-height: 140px;
+  border-radius: 6px;
+  border: 1px solid #666b75;
+}
+
+.trainer-sheet .trainer-nameplate {
+  display: grid;
+  gap: 4px;
+}
+
+.trainer-sheet .trainer-nameplate span {
+  color: #e8e9ed;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.trainer-sheet .trainer-nameplate input {
+  border-radius: 8px;
+  border: 2px solid #8f95a0;
+  background: #f0f1f4;
+}
+
+.trainer-sheet .trainer-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.trainer-sheet .trainer-quick-actions button {
+  background: #21242b;
+  border: 1px solid #474c57;
+  color: #f4f6ff;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  padding: 4px 6px;
+}
+
+.trainer-sheet .trainer-card-right {
+  background: #eceff3;
+  border: 1px solid #a4a8b2;
+  border-radius: 12px;
+  padding: 6px;
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  gap: 6px;
+}
+
+.trainer-sheet .league-header {
+  background: #e75434;
+  border-radius: 10px;
+  padding: 6px 8px;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 140px;
+  gap: 8px;
+  align-items: center;
+}
+
+.trainer-sheet .league-header h1 {
+  margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+}
+
+.trainer-sheet .league-header label {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+}
+
+.trainer-sheet .league-header label span {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: #ffe7df;
+}
+
+.trainer-sheet .league-header input {
+  border-radius: 999px;
+  border: 2px solid #ffd4c7;
+  background: #ffffff;
+  height: 24px;
+}
+
+.trainer-sheet .trainer-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.trainer-sheet .trainer-meta-grid label {
+  margin: 0;
+}
+
+.trainer-sheet .trainer-meta-grid label span,
+.trainer-sheet .trainer-bars label span {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: #40434b;
+}
+
+.trainer-sheet .trainer-meta-grid input,
+.trainer-sheet .trainer-bars input {
+  border-radius: 999px;
+  border: 2px solid #8d92a0;
+  background: #f8f8fb;
+  height: 24px;
+}
+
+.trainer-sheet .trainer-bars {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.trainer-sheet .trainer-bars .pair-input {
+  gap: 4px;
+}
+
+.trainer-sheet .trainer-bars .pair-input span {
+  font-weight: 700;
+  color: #545967;
+}
+
+.trainer-sheet .trainer-bottom-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 8px;
+}
+
+.trainer-sheet .trainer-attributes-panel .attribute-row,
+.trainer-sheet .trainer-skills-panel .attribute-row {
+  grid-template-columns: 1fr 52px 28px;
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.trainer-sheet .trainer-attributes-panel .attribute-row {
+  background: #b4d5ff;
+  border: 2px solid #4474aa;
+}
+
+.trainer-sheet .trainer-attributes-panel .attribute-row:nth-child(2n) {
+  background: #a7f0e9;
+  border-color: #2d8c84;
+}
+
+.trainer-sheet .trainer-attributes-panel .attribute-row:nth-child(3n) {
+  background: #f2d1a6;
+  border-color: #a56a2f;
+}
+
+.trainer-sheet .trainer-attributes-panel .attribute-row label,
+.trainer-sheet .trainer-skills-panel .attribute-row label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.trainer-sheet .trainer-attributes-panel .attribute-row input,
+.trainer-sheet .trainer-skills-panel .attribute-row input {
+  border-radius: 8px;
+  height: 24px;
+  border: 1px solid #4d5567;
+  background: #f7f8fb;
+}
+
+.trainer-sheet .trainer-skills-panel .attribute-row {
+  background: #f0f2f6;
+  border: 1px solid #a2a8b5;
+}
+
+.trainer-sheet .trainer-bio-panel textarea {
+  background:
+    linear-gradient(#f5f6fa, #f5f6fa) padding-box,
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 23px,
+      #9fa7b8 23px,
+      #9fa7b8 24px
+    );
+  border: 1px solid #9aa1af;
+  border-radius: 8px;
+  line-height: 24px;
+  min-height: 290px;
+}
+
+@media (max-width: 900px) {
+  .trainer-sheet .trainer-card-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .trainer-sheet .trainer-bottom-layout {
+    grid-template-columns: 1fr;
+  }
+}

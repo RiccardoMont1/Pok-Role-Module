@@ -37,25 +37,6 @@ function getCurrentCombatRoundKey() {
   return `${combat.id}:${combat.round ?? 0}`;
 }
 
-function normalizeRoundUsage(data, roundKey) {
-  if (!data || typeof data !== "object") {
-    return { roundKey, moveIds: [] };
-  }
-
-  const resolvedRoundKey =
-    typeof data.roundKey === "string" && data.roundKey.length > 0
-      ? data.roundKey
-      : roundKey;
-  const moveIds = Array.isArray(data.moveIds)
-    ? data.moveIds.filter((moveId) => typeof moveId === "string")
-    : [];
-
-  if (resolvedRoundKey !== roundKey) {
-    return { roundKey, moveIds: [] };
-  }
-  return { roundKey: resolvedRoundKey, moveIds };
-}
-
 export class PokRoleActor extends Actor {
   getRollData() {
     const rollData = super.getRollData();
@@ -299,14 +280,14 @@ export class PokRoleActor extends Actor {
     return roll;
   }
 
-  async rollEvasion(actionNumber = this.system.combat?.actionNumber ?? 1, options = {}) {
+  async rollEvasion(actionNumber = null, options = {}) {
     const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
     if (!options.ignoreRoundLimit && !this._canUseReactionThisRound("evasion", roundKey)) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.EvasionAlreadyUsedThisRound"));
       return null;
     }
 
-    const normalizedAction = clamp(toNumber(actionNumber, 1), 1, 5);
+    const normalizedAction = await this._resolveActionRequirement(actionNumber, roundKey);
     const result = await this._rollSuccessPool({
       dicePool: this.getTraitValue("dexterity") + this.getSkillValue("evasion"),
       removedSuccesses: this.getPainPenalty(),
@@ -320,19 +301,18 @@ export class PokRoleActor extends Actor {
     if (!options.ignoreRoundLimit) {
       await this._markReactionUsedThisRound("evasion", roundKey);
     }
+    if (options.advanceAction !== false) {
+      await this._advanceActionCounter(normalizedAction, roundKey);
+    }
     return result;
   }
 
-  async rollClash(moveId, actionNumber = this.system.combat?.actionNumber ?? 1, options = {}) {
+  async rollClash(moveId, actionNumber = null, options = {}) {
     if (this.type !== "pokemon") return null;
 
     const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
     if (!options.ignoreRoundLimit && !this._canUseReactionThisRound("clash", roundKey)) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.ClashAlreadyUsedThisRound"));
-      return null;
-    }
-    if (this._isMoveUsedThisRound(moveId, roundKey)) {
-      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.MoveAlreadyUsedThisRound"));
       return null;
     }
 
@@ -347,7 +327,7 @@ export class PokRoleActor extends Actor {
     }
 
     const damageAttributeKey = this._resolveDamageAttributeKey(move);
-    const normalizedAction = clamp(toNumber(actionNumber, 1), 1, 5);
+    const normalizedAction = await this._resolveActionRequirement(actionNumber, roundKey);
     const removedSuccesses = hasPainPenaltyException(damageAttributeKey, "clash")
       ? 0
       : this.getPainPenalty();
@@ -363,9 +343,11 @@ export class PokRoleActor extends Actor {
       })
     });
 
-    await this._markMoveUsedThisRound(moveId, roundKey);
     if (!options.ignoreRoundLimit) {
       await this._markReactionUsedThisRound("clash", roundKey);
+    }
+    if (options.advanceAction !== false) {
+      await this._advanceActionCounter(normalizedAction, roundKey);
     }
 
     return {
@@ -383,16 +365,7 @@ export class PokRoleActor extends Actor {
       return null;
     }
     const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
-    if (this._isMoveUsedThisRound(move.id, roundKey)) {
-      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.MoveAlreadyUsedThisRound"));
-      return null;
-    }
-
-    const actionNumber = clamp(
-      toNumber(options.actionNumber, this.system.combat?.actionNumber ?? 1),
-      1,
-      5
-    );
+    const actionNumber = await this._resolveActionRequirement(options.actionNumber, roundKey);
     const painPenalty = this.getPainPenalty();
     const accuracyAttributeKey = move.system.accuracyAttribute || "dexterity";
     const accuracySkillKey = move.system.accuracySkill || "brawl";
@@ -403,8 +376,6 @@ export class PokRoleActor extends Actor {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownMoveTraits"));
       return null;
     }
-
-    await this._markMoveUsedThisRound(move.id, roundKey);
 
     const reducedAccuracy = Math.max(toNumber(move.system.reducedAccuracy, 0), 0);
     const accuracyRoll = await new Roll(successPoolFormula(accuracyDicePool)).evaluate({
@@ -449,11 +420,6 @@ export class PokRoleActor extends Actor {
         targetActor,
         move,
         roundKey,
-        reactionActionNumber: clamp(
-          toNumber(targetActor.system.combat?.actionNumber, 1),
-          1,
-          5
-        ),
         netAccuracySuccesses
       });
 
@@ -575,7 +541,7 @@ export class PokRoleActor extends Actor {
       content: summaryHtml
     });
 
-    return {
+    const result = {
       accuracyRoll,
       damageRoll,
       hit,
@@ -583,6 +549,12 @@ export class PokRoleActor extends Actor {
       reaction,
       finalDamage
     };
+
+    if (options.advanceAction !== false) {
+      await this._advanceActionCounter(actionNumber, roundKey);
+    }
+
+    return result;
   }
 
   hasType(typeKey) {
@@ -600,7 +572,6 @@ export class PokRoleActor extends Actor {
     targetActor,
     move,
     roundKey,
-    reactionActionNumber,
     netAccuracySuccesses
   }) {
     const socialAccuracyMove = this._isSocialAccuracyMove(move);
@@ -631,7 +602,7 @@ export class PokRoleActor extends Actor {
     }
 
     if (choice.type === "evasion") {
-      const evasionResult = await targetActor.rollEvasion(reactionActionNumber, { roundKey });
+      const evasionResult = await targetActor.rollEvasion(null, { roundKey });
       if (!evasionResult) {
         return {
           attempted: true,
@@ -665,7 +636,7 @@ export class PokRoleActor extends Actor {
     }
 
     if (choice.type === "clash") {
-      const clashResult = await targetActor.rollClash(choice.clashMoveId, reactionActionNumber, {
+      const clashResult = await targetActor.rollClash(choice.clashMoveId, null, {
         roundKey
       });
       if (!clashResult) {
@@ -745,8 +716,7 @@ export class PokRoleActor extends Actor {
     const canUseEvasion =
       moveCanBeEvaded && targetActor._canUseReactionThisRound("evasion", roundKey);
     const clashMoves = targetActor.items
-      .filter((item) => item.type === "move" && item.system.category !== "support")
-      .filter((item) => !targetActor._isMoveUsedThisRound(item.id, roundKey));
+      .filter((item) => item.type === "move" && item.system.category !== "support");
     const canUseClash =
       moveCanBeClashed &&
       targetActor._canUseReactionThisRound("clash", roundKey) &&
@@ -839,24 +809,46 @@ export class PokRoleActor extends Actor {
     return SOCIAL_ATTRIBUTE_KEYS.includes(move.system.accuracyAttribute);
   }
 
-  _getRoundUsage(roundKey) {
-    if (!roundKey) return { roundKey: "", moveIds: [] };
-    const current = this.getFlag(POKROLE.ID, COMBAT_FLAG_KEYS.ROUND_USAGE);
-    return normalizeRoundUsage(current, roundKey);
+  async resetActionCounter(options = {}) {
+    const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
+    const currentActionNumber = clamp(toNumber(this.system.combat?.actionNumber, 1), 1, 5);
+    if (currentActionNumber !== 1) {
+      await this.update({ "system.combat.actionNumber": 1 });
+    }
+    if (roundKey) {
+      await this.setFlag(POKROLE.ID, COMBAT_FLAG_KEYS.LAST_ACTION_ROUND, roundKey);
+    }
   }
 
-  _isMoveUsedThisRound(moveId, roundKey) {
-    if (!roundKey) return false;
-    const usage = this._getRoundUsage(roundKey);
-    return usage.moveIds.includes(moveId);
+  async _resolveActionRequirement(actionNumber, roundKey) {
+    await this._resetActionCounterForRound(roundKey);
+    if (actionNumber !== null && actionNumber !== undefined) {
+      return clamp(toNumber(actionNumber, 1), 1, 5);
+    }
+    return clamp(toNumber(this.system.combat?.actionNumber, 1), 1, 5);
   }
 
-  async _markMoveUsedThisRound(moveId, roundKey) {
+  async _resetActionCounterForRound(roundKey) {
     if (!roundKey) return;
-    const usage = this._getRoundUsage(roundKey);
-    if (usage.moveIds.includes(moveId)) return;
-    usage.moveIds.push(moveId);
-    await this.setFlag(POKROLE.ID, COMBAT_FLAG_KEYS.ROUND_USAGE, usage);
+    const lastActionRound = this.getFlag(POKROLE.ID, COMBAT_FLAG_KEYS.LAST_ACTION_ROUND);
+    if (lastActionRound === roundKey) return;
+
+    const currentActionNumber = clamp(toNumber(this.system.combat?.actionNumber, 1), 1, 5);
+    if (currentActionNumber !== 1) {
+      await this.update({ "system.combat.actionNumber": 1 });
+    }
+    await this.setFlag(POKROLE.ID, COMBAT_FLAG_KEYS.LAST_ACTION_ROUND, roundKey);
+  }
+
+  async _advanceActionCounter(actionNumber, roundKey) {
+    const nextActionNumber = clamp(toNumber(actionNumber, 1) + 1, 1, 5);
+    const currentActionNumber = clamp(toNumber(this.system.combat?.actionNumber, 1), 1, 5);
+    if (nextActionNumber !== currentActionNumber) {
+      await this.update({ "system.combat.actionNumber": nextActionNumber });
+    }
+    if (roundKey) {
+      await this.setFlag(POKROLE.ID, COMBAT_FLAG_KEYS.LAST_ACTION_ROUND, roundKey);
+    }
   }
 
   _canUseReactionThisRound(reactionType, roundKey) {

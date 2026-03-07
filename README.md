@@ -19,13 +19,14 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
   - Evasion roll (`Dexterity + Evasion`)
   - Clash roll (`Strength/Special + Clash`, using move damage trait)
   - Combined Roll button (multi-select attributes/skills on Trainer and Pokemon sheet)
-  - Move usage tracking per round:
-    - each move can be used once per round
-    - clash counts as using that move
+  - Successive action tracking per round:
+    - each new action by the same actor in the same round requires `+1` success (Action Number `1..5`)
+    - the same move can be used multiple times in the same round
+    - manual reset button available on sheets (`Reset Actions`)
   - Move accuracy resolution:
     - Accuracy pool = `Accuracy Attribute + Accuracy Skill`
     - Reduced Accuracy + Pain penalization remove successes
-    - Multiple Actions support via `Action Number` (`1..5`) as required successes
+    - Required successes are automatically taken from current `Action Number`
   - Defensive reaction flow (Step 2.5):
     - prompts optional target reaction on hit
     - Evasion/Clash once per round each
@@ -89,4 +90,4 @@ Important: do not use the GitHub `.../blob/...` URL, because Foundry expects raw
 - Status condition application and durations are not fully automated yet.
 - Priority/Low Priority does not reorder combat turns automatically yet.
 - Shield-chain penalty (`-2` each consecutive round) is not auto-tracked yet.
-- Successive Actions / Rampage specialized move logic is not fully automated yet.
+- Rampage specialized move logic is not fully automated yet.

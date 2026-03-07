@@ -75,9 +75,10 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     html.find("[data-action='roll-combined']").on("click", () =>
       this.actor.rollCombinedDialog()
     );
-    html.find("[data-action='roll-evasion']").on("click", () =>
-      this.actor.rollEvasion(this.actor.system.combat?.actionNumber ?? 1)
+    html.find("[data-action='reset-action-counter']").on("click", () =>
+      this.actor.resetActionCounter()
     );
+    html.find("[data-action='roll-evasion']").on("click", () => this.actor.rollEvasion());
 
     html.find("[data-action='create-move']").on("click", (event) =>
       this._onCreateMove(event)
@@ -149,16 +150,14 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     event.preventDefault();
     const { itemId } = event.currentTarget.dataset;
     if (!itemId) return;
-    await this.actor.rollMove(itemId, {
-      actionNumber: this.actor.system.combat?.actionNumber ?? 1
-    });
+    await this.actor.rollMove(itemId);
   }
 
   async _onRollClash(event) {
     event.preventDefault();
     const { itemId } = event.currentTarget.dataset;
     if (!itemId) return;
-    await this.actor.rollClash(itemId, this.actor.system.combat?.actionNumber ?? 1);
+    await this.actor.rollClash(itemId);
   }
 
   async _onDeleteMove(event) {

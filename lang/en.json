@@ -23,7 +23,8 @@
       "Role": "Role",
       "RolePlaceholder": "Researcher, Ranger, Ace Trainer...",
       "Badges": "Badges",
-      "Money": "Money"
+      "Money": "Money",
+      "CardRank": "Trainer's Card Rank"
     },
     "Pokemon": {
       "Species": "Species",
@@ -118,6 +119,7 @@
       "RollClash": "Roll Clash",
       "RollInitiative": "Roll Initiative",
       "RollEvasion": "Roll Evasion",
+      "ResetActionCounter": "Reset Actions",
       "NewMove": "Add Move",
       "Edit": "Edit",
       "Delete": "Delete"
@@ -220,7 +222,6 @@
       "UnknownMove": "Move not found.",
       "UnknownMoveTraits": "Move traits are invalid or missing.",
       "NoTraitsSelected": "Select at least one trait for Combined Roll.",
-      "MoveAlreadyUsedThisRound": "This move was already used this round.",
       "EvasionAlreadyUsedThisRound": "Evasion was already used this round.",
       "ClashAlreadyUsedThisRound": "Clash was already used this round.",
       "ClashNeedsDamagingMove": "Clash requires a damaging move.",

@@ -23,7 +23,8 @@
       "Role": "Ruolo",
       "RolePlaceholder": "Ricercatore, Ranger, Allenatore...",
       "Badges": "Medaglie",
-      "Money": "Denaro"
+      "Money": "Denaro",
+      "CardRank": "Grado Tessera Allenatore"
     },
     "Pokemon": {
       "Species": "Specie",
@@ -118,6 +119,7 @@
       "RollClash": "Tira Clash",
       "RollInitiative": "Tira Iniziativa",
       "RollEvasion": "Tira Schivata",
+      "ResetActionCounter": "Reset Azioni",
       "NewMove": "Aggiungi Mossa",
       "Edit": "Modifica",
       "Delete": "Elimina"
@@ -220,7 +222,6 @@
       "UnknownMove": "Mossa non trovata.",
       "UnknownMoveTraits": "I trait della mossa non sono validi o mancano.",
       "NoTraitsSelected": "Seleziona almeno un trait per il Tiro Combinato.",
-      "MoveAlreadyUsedThisRound": "Questa mossa e gia stata usata in questo round.",
       "EvasionAlreadyUsedThisRound": "La Schivata e gia stata usata in questo round.",
       "ClashAlreadyUsedThisRound": "Il Clash e gia stato usato in questo round.",
       "ClashNeedsDamagingMove": "Il Clash richiede una mossa che infligge danno.",

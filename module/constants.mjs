@@ -6,9 +6,9 @@ export const POKROLE = Object.freeze({
 });
 
 export const COMBAT_FLAG_KEYS = Object.freeze({
-  ROUND_USAGE: "combat.roundUsage",
   LAST_EVASION_ROUND: "combat.lastEvasionRound",
-  LAST_CLASH_ROUND: "combat.lastClashRound"
+  LAST_CLASH_ROUND: "combat.lastClashRound",
+  LAST_ACTION_ROUND: "combat.lastActionRound"
 });
 
 export const CORE_ATTRIBUTE_DEFINITIONS = Object.freeze([
