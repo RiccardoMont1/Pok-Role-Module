@@ -3,6 +3,15 @@
   font-family: var(--font-primary);
 }
 
+.pok-role.sheet.actor .window-content {
+  background: #2a303b;
+  padding: 4px;
+}
+
+.pok-role.sheet.actor .window-content > form.trainer-sheet {
+  margin: 0;
+}
+
 .pok-role-sheet .sheet-header {
   display: grid;
   grid-template-columns: 112px 1fr;
@@ -234,7 +243,7 @@
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 10px;
   margin-bottom: 10px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .trainer-sheet .trainer-portrait-card {
@@ -309,6 +318,7 @@
   padding: 8px;
   display: grid;
   gap: 8px;
+  height: 100%;
 }
 
 .trainer-sheet .trainer-banner {
