@@ -2,6 +2,7 @@ import {
   ATTRIBUTE_DEFINITIONS,
   MOVE_CATEGORY_LABEL_BY_KEY,
   MOVE_TYPE_LABEL_BY_KEY,
+  POKEMON_TIER_LABEL_BY_KEY,
   SKILL_DEFINITIONS,
   TRAIT_LABEL_BY_KEY,
   TYPE_OPTIONS
@@ -51,6 +52,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           : MOVE_TYPE_LABEL_BY_KEY[typeKey] ?? "POKROLE.Common.Unknown"
       ])
     );
+    context.pokemonTierOptions = POKEMON_TIER_LABEL_BY_KEY;
     context.moves = this.actor.items
       .filter((item) => item.type === "move")
       .sort((a, b) => a.sort - b.sort)
@@ -69,6 +71,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     );
     html.find("[data-action='roll-initiative']").on("click", () =>
       this.actor.rollInitiative()
+    );
+    html.find("[data-action='roll-combined']").on("click", () =>
+      this.actor.rollCombinedDialog()
     );
     html.find("[data-action='roll-evasion']").on("click", () =>
       this.actor.rollEvasion(this.actor.system.combat?.actionNumber ?? 1)

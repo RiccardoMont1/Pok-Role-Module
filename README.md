@@ -11,15 +11,28 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
   - Trainer sheet
   - Pokemon sheet
   - Move item sheet
+- Pokemon progression:
+  - Uses `Tier` (Starter, Beginner, Amateur, Ace, Pro, Master, Champion)
 - Automation:
   - Success-pool rolls (`Xd6`, success on `4+`)
   - Initiative roll (`1d6 + Dexterity + Alert`)
   - Evasion roll (`Dexterity + Evasion`)
   - Clash roll (`Strength/Special + Clash`, using move damage trait)
+  - Combined Roll button (multi-select attributes/skills on Trainer and Pokemon sheet)
+  - Move usage tracking per round:
+    - each move can be used once per round
+    - clash counts as using that move
   - Move accuracy resolution:
     - Accuracy pool = `Accuracy Attribute + Accuracy Skill`
     - Reduced Accuracy + Pain penalization remove successes
     - Multiple Actions support via `Action Number` (`1..5`) as required successes
+  - Defensive reaction flow (Step 2.5):
+    - prompts optional target reaction on hit
+    - Evasion/Clash once per round each
+    - social-attribute accuracy moves cannot be evaded/clashed
+    - never-fail moves cannot be evaded (but can be clashed)
+    - clash can only use damaging moves
+    - clash success replaces normal damage with clash damage rules
   - Move damage resolution:
     - Damage pool = `Damage Attribute + Power + STAB + Critical - Pain - DEF/S.DEF`
     - Physical moves use target `DEF` (`Vitality`)
@@ -75,4 +88,5 @@ Important: do not use the GitHub `.../blob/...` URL, because Foundry expects raw
 - Chance Dice effects are not auto-resolved yet.
 - Status condition application and durations are not fully automated yet.
 - Priority/Low Priority does not reorder combat turns automatically yet.
-- Move legality constraints (once per round, shield stack penalties, etc.) are currently manual.
+- Shield-chain penalty (`-2` each consecutive round) is not auto-tracked yet.
+- Successive Actions / Rampage specialized move logic is not fully automated yet.

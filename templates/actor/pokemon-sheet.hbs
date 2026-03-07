@@ -35,14 +35,10 @@
           />
         </label>
         <label>
-          <span>{{localize "POKROLE.Common.Level"}}</span>
-          <input
-            type="number"
-            name="system.level"
-            value="{{system.level}}"
-            min="1"
-            data-dtype="Number"
-          />
+          <span>{{localize "POKROLE.Pokemon.Tier"}}</span>
+          <select name="system.tier">
+            {{selectOptions pokemonTierOptions selected=system.tier localize=true}}
+          </select>
         </label>
         <label>
           <span>{{localize "POKROLE.Pokemon.TypePrimary"}}</span>
@@ -140,6 +136,10 @@
         <button type="button" data-action="roll-initiative">
           <i class="fas fa-bolt"></i>
           {{localize "POKROLE.Actions.RollInitiative"}}
+        </button>
+        <button type="button" data-action="roll-combined">
+          <i class="fas fa-dice"></i>
+          {{localize "POKROLE.Actions.RollCombined"}}
         </button>
         <button type="button" data-action="roll-evasion">
           <i class="fas fa-person-running"></i>

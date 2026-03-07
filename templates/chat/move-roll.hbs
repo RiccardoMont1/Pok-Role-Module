@@ -36,6 +36,43 @@
       ({{localize "POKROLE.Chat.CriticalHit"}})
     {{/if}}
   </p>
+  {{#if reactionAttempted}}
+  <hr />
+  <p>
+    <strong>{{localize "POKROLE.Chat.Reaction.Label"}}:</strong>
+    {{reactionTypeLabel}}
+  </p>
+  <p>
+    {{localize "POKROLE.Chat.NetSuccesses"}}: {{reactionNetSuccesses}}
+    |
+    {{localize "POKROLE.Chat.Result"}}:
+    {{#if reactionSuccess}}
+      {{localize "POKROLE.Common.Hit"}}
+    {{else}}
+      {{localize "POKROLE.Common.Miss"}}
+    {{/if}}
+  </p>
+  {{#if reactionClashMoveName}}
+  <p>
+    <strong>{{localize "POKROLE.Combat.ClashMove"}}:</strong>
+    {{reactionClashMoveName}}
+  </p>
+  {{/if}}
+  {{#if reactionSuccess}}
+    {{#if reactionTargetDamage}}
+    <p>
+      <strong>{{localize "POKROLE.Chat.Reaction.ClashTargetDamage"}}:</strong>
+      {{reactionTargetDamage}}
+    </p>
+    {{/if}}
+    {{#if reactionAttackerDamage}}
+    <p>
+      <strong>{{localize "POKROLE.Chat.Reaction.ClashAttackerDamage"}}:</strong>
+      {{reactionAttackerDamage}}
+    </p>
+    {{/if}}
+  {{/if}}
+  {{/if}}
   {{#if showDamageSection}}
   <hr />
   <p>

@@ -9,6 +9,7 @@
       "BiographyPlaceholder": "Note, background e dettagli importanti...",
       "Description": "Descrizione",
       "Actions": "Azioni",
+      "Cancel": "Annulla",
       "Unknown": "Sconosciuto",
       "None": "Nessuno",
       "Hit": "Colpito",
@@ -29,10 +30,20 @@
       "SpeciesPlaceholder": "Pikachu, Charmander...",
       "Nature": "Natura",
       "NaturePlaceholder": "Audace, Calma, Timida...",
+      "Tier": "Tier",
       "TypePrimary": "Tipo Primario",
       "TypeSecondary": "Tipo Secondario",
       "Loyalty": "Lealta",
-      "Happiness": "Felicita"
+      "Happiness": "Felicita",
+      "TierValues": {
+        "Starter": "Starter",
+        "Beginner": "Beginner",
+        "Amateur": "Amatore",
+        "Ace": "Asso",
+        "Pro": "Pro",
+        "Master": "Master",
+        "Champion": "Campione"
+      }
     },
     "Attributes": {
       "Title": "Attributi",
@@ -102,6 +113,7 @@
     "Actions": {
       "RollAttribute": "Tira Attributo",
       "RollSkill": "Tira Abilita",
+      "RollCombined": "Tiro Combinato",
       "RollMove": "Tira Mossa",
       "RollClash": "Tira Clash",
       "RollInitiative": "Tira Iniziativa",
@@ -110,13 +122,27 @@
       "Edit": "Modifica",
       "Delete": "Elimina"
     },
+    "CombinedRoll": {
+      "Title": "Tiro Combinato",
+      "Roll": "Tira",
+      "CustomLabel": "Etichetta (opzionale)",
+      "RequiredSuccesses": "Successi Richiesti",
+      "RemovedSuccesses": "Successi Rimossi Extra",
+      "ApplyPainPenalty": "Applica penalita dolore",
+      "DefaultLabel": "Tiro Combinato"
+    },
     "Combat": {
       "QuickRolls": "Tiri Rapidi",
       "InitiativeScore": "Valore Iniziativa",
       "Defense": "Difesa",
       "SpecialDefense": "Difesa Sp.",
       "PainPenalty": "Penalita Dolore",
-      "ActionNumber": "Numero Azione"
+      "ActionNumber": "Numero Azione",
+      "ReactionTitle": "Reazione Difensiva",
+      "ReactionPrompt": "{target} puo reagire a {move}",
+      "ConfirmReaction": "Conferma",
+      "SkipReaction": "Salta",
+      "ClashMove": "Mossa per Clash"
     },
     "Chat": {
       "Actor": "Attore",
@@ -131,6 +157,7 @@
       "MoveAccuracyFlavor": "{actor} tira Precisione per {move} (successi richiesti: {required})",
       "MoveDamageFlavor": "{actor} tira Danno per {move}",
       "GenericRollFlavor": "{actor} tira un pool successi",
+      "CombinedFlavor": "{actor} tira {label}<br><small>{breakdown}</small>",
       "RollBreakdown": "Grezzi: {raw} | Rimossi: {removed} | Netti: {net} | Richiesti: {required}",
       "RawSuccesses": "Successi Grezzi",
       "RemovedSuccesses": "Successi Rimossi",
@@ -146,6 +173,18 @@
       "CriticalBonusDice": "Dadi bonus Critico",
       "FinalDamage": "Danno finale",
       "TargetHP": "PS Bersaglio",
+      "Reaction": {
+        "Label": "Reazione",
+        "None": "Nessuna reazione",
+        "UseEvasion": "Usa Schivata",
+        "UseClash": "Usa Clash",
+        "EvasionSuccess": "Schivata riuscita",
+        "EvasionFailed": "Schivata fallita",
+        "ClashSuccess": "Clash riuscito",
+        "ClashFailed": "Clash fallito",
+        "ClashTargetDamage": "Danno al difensore (clash)",
+        "ClashAttackerDamage": "Danno all'attaccante (clash)"
+      },
       "TypeEffect": {
         "Label": "Efficacia Tipo",
         "Neutral": "Neutro",
@@ -180,6 +219,11 @@
       "UnknownSkill": "Chiave abilita sconosciuta.",
       "UnknownMove": "Mossa non trovata.",
       "UnknownMoveTraits": "I trait della mossa non sono validi o mancano.",
+      "NoTraitsSelected": "Seleziona almeno un trait per il Tiro Combinato.",
+      "MoveAlreadyUsedThisRound": "Questa mossa e gia stata usata in questo round.",
+      "EvasionAlreadyUsedThisRound": "La Schivata e gia stata usata in questo round.",
+      "ClashAlreadyUsedThisRound": "Il Clash e gia stato usato in questo round.",
+      "ClashNeedsDamagingMove": "Il Clash richiede una mossa che infligge danno.",
       "HPUpdateFailed": "Impossibile aggiornare i PS del bersaglio. Controlla i permessi."
     },
     "Sheets": {

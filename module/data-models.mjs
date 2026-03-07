@@ -2,6 +2,7 @@ import {
   ATTRIBUTE_DEFINITIONS,
   CORE_ATTRIBUTE_DEFINITIONS,
   MOVE_TYPE_KEYS,
+  POKEMON_TIER_KEYS,
   SKILL_DEFINITIONS,
   TYPE_OPTIONS
 } from "./constants.mjs";
@@ -39,7 +40,6 @@ function trimmedStringField(initial = "") {
 class BaseCharacterDataModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     return {
-      level: integerField(1, { min: 1 }),
       biography: trimmedStringField(""),
       resources: new SchemaField({
         hp: resourceField(10),
@@ -59,6 +59,7 @@ export class TrainerDataModel extends BaseCharacterDataModel {
     const base = super.defineSchema();
     return {
       ...base,
+      level: integerField(1, { min: 1 }),
       role: trimmedStringField(""),
       money: integerField(0, { min: 0 }),
       badges: integerField(0, { min: 0 })
@@ -86,6 +87,12 @@ export class PokemonDataModel extends BaseCharacterDataModel {
           initial: "none",
           choices: TYPE_OPTIONS
         })
+      }),
+      tier: new StringField({
+        required: true,
+        blank: false,
+        initial: "starter",
+        choices: POKEMON_TIER_KEYS
       }),
       loyalty: integerField(2, { min: 0, max: 5 }),
       happiness: integerField(2, { min: 0, max: 5 })

@@ -9,6 +9,7 @@
       "BiographyPlaceholder": "Notes, background and important details...",
       "Description": "Description",
       "Actions": "Actions",
+      "Cancel": "Cancel",
       "Unknown": "Unknown",
       "None": "None",
       "Hit": "Hit",
@@ -29,10 +30,20 @@
       "SpeciesPlaceholder": "Pikachu, Charmander...",
       "Nature": "Nature",
       "NaturePlaceholder": "Brave, Calm, Timid...",
+      "Tier": "Tier",
       "TypePrimary": "Primary Type",
       "TypeSecondary": "Secondary Type",
       "Loyalty": "Loyalty",
-      "Happiness": "Happiness"
+      "Happiness": "Happiness",
+      "TierValues": {
+        "Starter": "Starter",
+        "Beginner": "Beginner",
+        "Amateur": "Amateur",
+        "Ace": "Ace",
+        "Pro": "Pro",
+        "Master": "Master",
+        "Champion": "Champion"
+      }
     },
     "Attributes": {
       "Title": "Attributes",
@@ -102,6 +113,7 @@
     "Actions": {
       "RollAttribute": "Roll Attribute",
       "RollSkill": "Roll Skill",
+      "RollCombined": "Combined Roll",
       "RollMove": "Roll Move",
       "RollClash": "Roll Clash",
       "RollInitiative": "Roll Initiative",
@@ -110,13 +122,27 @@
       "Edit": "Edit",
       "Delete": "Delete"
     },
+    "CombinedRoll": {
+      "Title": "Combined Roll",
+      "Roll": "Roll",
+      "CustomLabel": "Label (optional)",
+      "RequiredSuccesses": "Required Successes",
+      "RemovedSuccesses": "Extra Removed Successes",
+      "ApplyPainPenalty": "Apply pain penalty",
+      "DefaultLabel": "Combined Roll"
+    },
     "Combat": {
       "QuickRolls": "Quick Rolls",
       "InitiativeScore": "Initiative Score",
       "Defense": "Defense",
       "SpecialDefense": "Sp. Defense",
       "PainPenalty": "Pain Penalty",
-      "ActionNumber": "Action Number"
+      "ActionNumber": "Action Number",
+      "ReactionTitle": "Defensive Reaction",
+      "ReactionPrompt": "{target} can react to {move}",
+      "ConfirmReaction": "Confirm",
+      "SkipReaction": "Skip",
+      "ClashMove": "Clash Move"
     },
     "Chat": {
       "Actor": "Actor",
@@ -131,6 +157,7 @@
       "MoveAccuracyFlavor": "{actor} rolls Accuracy for {move} (required successes: {required})",
       "MoveDamageFlavor": "{actor} rolls Damage for {move}",
       "GenericRollFlavor": "{actor} rolls a success pool",
+      "CombinedFlavor": "{actor} rolls {label}<br><small>{breakdown}</small>",
       "RollBreakdown": "Raw: {raw} | Removed: {removed} | Net: {net} | Required: {required}",
       "RawSuccesses": "Raw Successes",
       "RemovedSuccesses": "Removed Successes",
@@ -146,6 +173,18 @@
       "CriticalBonusDice": "Critical bonus dice",
       "FinalDamage": "Final damage",
       "TargetHP": "Target HP",
+      "Reaction": {
+        "Label": "Reaction",
+        "None": "No reaction",
+        "UseEvasion": "Use Evasion",
+        "UseClash": "Use Clash",
+        "EvasionSuccess": "Evasion succeeded",
+        "EvasionFailed": "Evasion failed",
+        "ClashSuccess": "Clash succeeded",
+        "ClashFailed": "Clash failed",
+        "ClashTargetDamage": "Damage to defender (clash)",
+        "ClashAttackerDamage": "Damage to attacker (clash)"
+      },
       "TypeEffect": {
         "Label": "Type Effect",
         "Neutral": "Neutral",
@@ -180,6 +219,11 @@
       "UnknownSkill": "Unknown skill key.",
       "UnknownMove": "Move not found.",
       "UnknownMoveTraits": "Move traits are invalid or missing.",
+      "NoTraitsSelected": "Select at least one trait for Combined Roll.",
+      "MoveAlreadyUsedThisRound": "This move was already used this round.",
+      "EvasionAlreadyUsedThisRound": "Evasion was already used this round.",
+      "ClashAlreadyUsedThisRound": "Clash was already used this round.",
+      "ClashNeedsDamagingMove": "Clash requires a damaging move.",
       "HPUpdateFailed": "Unable to update target HP. Check permissions."
     },
     "Sheets": {

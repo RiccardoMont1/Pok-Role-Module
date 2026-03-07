@@ -27,8 +27,7 @@ Hooks.once("init", () => {
     move: MoveDataModel
   };
 
-  const trackableValues = [
-    "level",
+  const sharedTrackableValues = [
     "resources.will.value",
     "combat.actionNumber",
     ...ATTRIBUTE_DEFINITIONS.map((attribute) => `attributes.${attribute.key}`),
@@ -38,11 +37,11 @@ Hooks.once("init", () => {
   CONFIG.Actor.trackableAttributes = {
     trainer: {
       bar: ["resources.hp", "resources.will"],
-      value: trackableValues
+      value: ["level", ...sharedTrackableValues]
     },
     pokemon: {
       bar: ["resources.hp", "resources.will"],
-      value: trackableValues
+      value: sharedTrackableValues
     }
   };
 

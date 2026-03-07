@@ -1,5 +1,6 @@
 .pok-role-sheet {
   color: var(--color-text-dark-primary);
+  font-family: var(--font-primary);
 }
 
 .pok-role-sheet .sheet-header {
@@ -8,6 +9,14 @@
   gap: 12px;
   align-items: start;
   margin-bottom: 12px;
+  padding: 8px;
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 8px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-bg-option) 92%, white 8%),
+    color-mix(in srgb, var(--color-bg-option) 98%, black 2%)
+  );
 }
 
 .pok-role-sheet .profile-img {
@@ -21,7 +30,8 @@
 .pok-role-sheet .charname input {
   width: 100%;
   height: 42px;
-  font-size: 1.5rem;
+  font-size: 1.45rem;
+  font-weight: 600;
   margin: 0;
 }
 
@@ -49,6 +59,8 @@
   border-radius: 6px;
   padding: 10px;
   margin-bottom: 10px;
+  background: color-mix(in srgb, var(--color-bg-option) 96%, white 4%);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--color-shadow-primary) 20%, transparent);
 }
 
 .pok-role-sheet .sheet-section h2 {
@@ -67,11 +79,13 @@
 .pok-role-sheet .button-row {
   display: flex;
   gap: 6px;
+  flex-wrap: wrap;
 }
 
 .pok-role-sheet .inline-meta {
   margin: 0;
   font-size: 0.9rem;
+  color: var(--color-text-dark-secondary);
 }
 
 .pok-role-sheet .attribute-grid {
@@ -93,6 +107,7 @@
   padding: 0;
   display: inline-grid;
   place-items: center;
+  border-radius: 5px;
 }
 
 .pok-role-sheet .icon-button.danger {
@@ -117,6 +132,10 @@
   border-bottom: 1px solid var(--color-border-light-primary);
   text-align: left;
   vertical-align: top;
+}
+
+.pok-role-sheet .moves-table tbody tr:nth-child(odd) {
+  background: color-mix(in srgb, var(--color-bg-option) 98%, black 2%);
 }
 
 .pok-role-sheet .moves-table .move-name {
@@ -165,6 +184,7 @@
 
 .pok-role-chat-card h3 {
   margin: 0 0 6px;
+  font-size: 1.1rem;
 }
 
 .pok-role-chat-card p {
@@ -173,4 +193,17 @@
 
 .pok-role-chat-card hr {
   margin: 6px 0;
+}
+
+.pok-role-combined-roll fieldset,
+.pok-role-reaction-dialog fieldset {
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+
+.pok-role-combined-roll legend,
+.pok-role-reaction-dialog legend {
+  font-weight: 600;
+  padding: 0 4px;
 }

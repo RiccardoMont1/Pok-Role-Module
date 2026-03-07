@@ -5,6 +5,12 @@ export const POKROLE = Object.freeze({
   INITIATIVE_FORMULA: "1d6 + @dexterity + @alert"
 });
 
+export const COMBAT_FLAG_KEYS = Object.freeze({
+  ROUND_USAGE: "combat.roundUsage",
+  LAST_EVASION_ROUND: "combat.lastEvasionRound",
+  LAST_CLASH_ROUND: "combat.lastClashRound"
+});
+
 export const CORE_ATTRIBUTE_DEFINITIONS = Object.freeze([
   { key: "strength", label: "POKROLE.Attributes.Strength" },
   { key: "dexterity", label: "POKROLE.Attributes.Dexterity" },
@@ -21,6 +27,10 @@ export const SOCIAL_ATTRIBUTE_DEFINITIONS = Object.freeze([
   { key: "clever", label: "POKROLE.Attributes.Clever" },
   { key: "allure", label: "POKROLE.Attributes.Allure" }
 ]);
+
+export const SOCIAL_ATTRIBUTE_KEYS = Object.freeze(
+  SOCIAL_ATTRIBUTE_DEFINITIONS.map((attribute) => attribute.key)
+);
 
 export const SKILL_DEFINITIONS = Object.freeze([
   { key: "alert", label: "POKROLE.Skills.Alert" },
@@ -134,6 +144,25 @@ export const MOVE_TYPE_KEYS = Object.freeze([
   "steel",
   "water"
 ]);
+
+export const POKEMON_TIER_KEYS = Object.freeze([
+  "starter",
+  "beginner",
+  "amateur",
+  "ace",
+  "pro",
+  "master",
+  "champion"
+]);
+
+export const POKEMON_TIER_LABEL_BY_KEY = Object.freeze(
+  Object.fromEntries(
+    POKEMON_TIER_KEYS.map((tierKey) => [
+      tierKey,
+      `POKROLE.Pokemon.TierValues.${tierKey[0].toUpperCase()}${tierKey.slice(1)}`
+    ])
+  )
+);
 
 export const MOVE_TYPE_LABEL_BY_KEY = Object.freeze(Object.fromEntries(
   MOVE_TYPE_KEYS.map((typeKey) => [typeKey, `POKROLE.Types.${typeKey[0].toUpperCase()}${typeKey.slice(1)}`])

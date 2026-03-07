@@ -102,10 +102,16 @@
   <section class="sheet-section">
     <div class="section-title-row">
       <h2>{{localize "POKROLE.Combat.QuickRolls"}}</h2>
-      <button type="button" data-action="roll-initiative">
-        <i class="fas fa-bolt"></i>
-        {{localize "POKROLE.Actions.RollInitiative"}}
-      </button>
+      <div class="button-row">
+        <button type="button" data-action="roll-initiative">
+          <i class="fas fa-bolt"></i>
+          {{localize "POKROLE.Actions.RollInitiative"}}
+        </button>
+        <button type="button" data-action="roll-combined">
+          <i class="fas fa-dice"></i>
+          {{localize "POKROLE.Actions.RollCombined"}}
+        </button>
+      </div>
     </div>
     <p class="inline-meta">
       <strong>{{localize "POKROLE.Combat.InitiativeScore"}}:</strong>
