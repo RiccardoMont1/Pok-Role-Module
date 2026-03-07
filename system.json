@@ -7,6 +7,9 @@
     "minimum": "13",
     "verified": "13"
   },
+  "url": "https://github.com/RiccardoMont1/Pok-Role-Module",
+  "manifest": "https://raw.githubusercontent.com/RiccardoMont1/Pok-Role-Module/main/system.json",
+  "download": "https://github.com/RiccardoMont1/Pok-Role-Module/archive/refs/heads/main.zip",
   "authors": [
     {
       "name": "Pok-Role-Module Contributors"
