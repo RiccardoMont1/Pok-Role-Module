@@ -164,6 +164,25 @@ export const POKEMON_TIER_LABEL_BY_KEY = Object.freeze(
   )
 );
 
+export const TRAINER_CARD_RANK_KEYS = Object.freeze([
+  "starter",
+  "beginner",
+  "amateur",
+  "ace",
+  "pro",
+  "master",
+  "champion"
+]);
+
+export const TRAINER_CARD_RANK_LABEL_BY_KEY = Object.freeze(
+  Object.fromEntries(
+    TRAINER_CARD_RANK_KEYS.map((rankKey) => [
+      rankKey,
+      `POKROLE.Trainer.RankValues.${rankKey[0].toUpperCase()}${rankKey.slice(1)}`
+    ])
+  )
+);
+
 export const MOVE_TYPE_LABEL_BY_KEY = Object.freeze(Object.fromEntries(
   MOVE_TYPE_KEYS.map((typeKey) => [typeKey, `POKROLE.Types.${typeKey[0].toUpperCase()}${typeKey.slice(1)}`])
 ));

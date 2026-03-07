@@ -4,6 +4,7 @@ import {
   MOVE_TYPE_LABEL_BY_KEY,
   POKEMON_TIER_LABEL_BY_KEY,
   SKILL_DEFINITIONS,
+  TRAINER_CARD_RANK_LABEL_BY_KEY,
   TRAIT_LABEL_BY_KEY,
   TYPE_OPTIONS
 } from "../constants.mjs";
@@ -28,12 +29,12 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   setPosition(options = {}) {
     if (this.actor?.type === "trainer") {
       const currentPosition = this.position ?? {};
-      const baseWidth = Number(options.width ?? currentPosition.width ?? this.options.width ?? 960);
+      const baseWidth = Number(options.width ?? currentPosition.width ?? this.options.width ?? 1120);
       const baseHeight = Number(
-        options.height ?? currentPosition.height ?? this.options.height ?? 860
+        options.height ?? currentPosition.height ?? this.options.height ?? 900
       );
-      options.width = Math.max(baseWidth, 960);
-      options.height = Math.max(baseHeight, 860);
+      options.width = Math.max(baseWidth, 1120);
+      options.height = Math.max(baseHeight, 900);
     }
     return super.setPosition(options);
   }
@@ -61,9 +62,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.specialDefense = this.actor.getDefense("special");
     context.painPenalty = this.actor.getPainPenalty();
     context.actionTrack = this._buildTrack(this.actor.system.combat?.actionNumber, 5, 1);
-    context.levelTrack = this._buildTrack(this.actor.system.level, 5, 1);
-    context.moneyTrack = this._buildTrack(this.actor.system.money, 5, 0);
-    context.badgesTrack = this._buildTrack(this.actor.system.badges, 5, 0);
+    context.badgesTrack = this._buildTrack(this.actor.system.badges, 10, 0);
+    context.trainerRankOptions = TRAINER_CARD_RANK_LABEL_BY_KEY;
+    const extraSkills = Array.isArray(this.actor.system.extraSkills)
+      ? this.actor.system.extraSkills
+      : [];
+    context.extraSkills = extraSkills.map((extraSkill, index) => ({
+      index,
+      name: `${extraSkill?.name ?? ""}`,
+      value: Number(extraSkill?.value ?? 0),
+      track: this._buildTrack(extraSkill?.value, 5, 0)
+    }));
     context.typeOptions = Object.fromEntries(
       TYPE_OPTIONS.map((typeKey) => [
         typeKey,
@@ -84,7 +93,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       badge: 3,
       held: 4
     };
-    context.gearItems = this.actor.items
+    const gearItems = this.actor.items
       .filter((item) => item.type === "gear")
       .sort((a, b) => {
         const aPocketOrder = pocketOrder[a.system.pocket] ?? 99;
@@ -94,6 +103,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         return `${a.name}`.localeCompare(`${b.name}`);
       })
       .map((gear) => this._prepareGearData(gear));
+    context.gearItems = gearItems;
+    context.gearBattleItems = gearItems.filter((gear) => gear.usableInBattle);
+    context.gearFieldItems = gearItems.filter((gear) => !gear.usableInBattle);
     return context;
   }
 
@@ -117,6 +129,12 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     );
     html.find("[data-action='roll-evasion']").on("click", () => this.actor.rollEvasion());
     html.find("[data-action='set-track']").on("click", (event) => this._onSetTrack(event));
+    html.find("[data-action='add-extra-skill']").on("click", (event) =>
+      this._onAddExtraSkill(event)
+    );
+    html.find("[data-action='delete-extra-skill']").on("click", (event) =>
+      this._onDeleteExtraSkill(event)
+    );
 
     html.find("[data-action='create-move']").on("click", (event) =>
       this._onCreateMove(event)
@@ -283,6 +301,29 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     await this.actor.deleteEmbeddedDocuments("Item", [itemId]);
   }
 
+  async _onAddExtraSkill(event) {
+    event.preventDefault();
+    if (!this.isEditable || this.actor.type !== "trainer") return;
+    const current = Array.isArray(this.actor.system.extraSkills)
+      ? foundry.utils.deepClone(this.actor.system.extraSkills)
+      : [];
+    current.push({ name: "", value: 0 });
+    await this.actor.update({ "system.extraSkills": current });
+  }
+
+  async _onDeleteExtraSkill(event) {
+    event.preventDefault();
+    if (!this.isEditable || this.actor.type !== "trainer") return;
+    const extraIndex = Number(event.currentTarget.dataset.extraIndex);
+    if (!Number.isInteger(extraIndex) || extraIndex < 0) return;
+    const current = Array.isArray(this.actor.system.extraSkills)
+      ? foundry.utils.deepClone(this.actor.system.extraSkills)
+      : [];
+    if (extraIndex >= current.length) return;
+    current.splice(extraIndex, 1);
+    await this.actor.update({ "system.extraSkills": current });
+  }
+
   async _onSetTrack(event) {
     event.preventDefault();
     if (!this.isEditable) return;
@@ -372,12 +413,15 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   _prepareGearData(gear) {
+    const pocketKey = `${gear.system.pocket ?? "main"}`.toLowerCase();
     const categoryLabel = game.i18n.localize(
       `POKROLE.Gear.Category.${this._toTitleCaseKey(gear.system.category)}`
     );
     const pocketLabel = game.i18n.localize(
-      `POKROLE.Gear.Pocket.${this._toTitleCaseKey(gear.system.pocket)}`
+      `POKROLE.Gear.Pocket.${this._toTitleCaseKey(pocketKey)}`
     );
+    const pocketAllowsBattle = pocketKey === "potions" || pocketKey === "small";
+    const usableInBattle = pocketAllowsBattle && Boolean(gear.system.canUseInBattle);
 
     const quantity = Number(gear.system.quantity ?? 0);
     const unitsValue = Number(gear.system.units?.value ?? 0);
@@ -425,8 +469,10 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       img: gear.img,
       categoryLabel,
       pocketLabel,
+      pocketKey,
       stockLabel,
       canUseInBattle: gear.system.canUseInBattle,
+      usableInBattle,
       consumable: gear.system.consumable,
       effectsSummary:
         effects.length > 0 ? effects.join(" | ") : game.i18n.localize("POKROLE.Common.None")

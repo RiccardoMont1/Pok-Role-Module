@@ -209,12 +209,14 @@
 }
 
 .trainer-sheet {
-  background: #d9d9d9;
-  border: 1px solid #8a8a8a;
-  border-radius: 12px;
-  padding: 8px;
-  min-width: 960px;
-  min-height: 860px;
+  background:
+    radial-gradient(circle at 6px 6px, #dfe3eb 2px, transparent 2px) 0 0 / 14px 14px,
+    linear-gradient(180deg, #d4d7de 0%, #c8ccd5 100%);
+  border: 1px solid #7f8595;
+  border-radius: 14px;
+  padding: 10px;
+  min-width: 1120px;
+  min-height: 900px;
   box-sizing: border-box;
 }
 
@@ -223,29 +225,28 @@
   min-width: 0;
 }
 
-.trainer-sheet .trainer-card-layout {
+.trainer-sheet .trainer-top {
   display: grid;
-  grid-template-columns: minmax(360px, 1.05fr) minmax(360px, 1fr);
-  gap: 8px;
-  margin-bottom: 8px;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(520px, 1.8fr);
+  gap: 10px;
+  margin-bottom: 10px;
   align-items: start;
 }
 
-.trainer-sheet .trainer-card-left {
-  background: #3d4047;
-  border: 1px solid #26292f;
+.trainer-sheet .trainer-portrait-card {
+  background: linear-gradient(180deg, #3f434c 0%, #2f333b 100%);
+  border: 1px solid #21252e;
   border-radius: 12px;
-  padding: 8px;
+  padding: 10px;
   display: grid;
-  grid-template-rows: minmax(260px, 1fr) auto auto;
-  gap: 8px;
-  overflow: hidden;
+  gap: 10px;
+  align-self: stretch;
 }
 
 .trainer-sheet .trainer-photo-frame {
-  border: 2px solid #585c66;
+  border: 2px solid #5f6471;
   border-radius: 10px;
-  padding: 6px;
+  padding: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -253,7 +254,7 @@
   background:
     radial-gradient(circle at 2px 2px, #5f636b 1px, #434750 1px) 0 0 / 8px 8px,
     #464a53;
-  min-height: 260px;
+  min-height: 340px;
 }
 
 .trainer-sheet .trainer-photo-frame .profile-img {
@@ -288,90 +289,117 @@
 }
 
 .trainer-sheet .trainer-quick-actions button {
-  background: #21242b;
-  border: 1px solid #474c57;
-  color: #f4f6ff;
+  background: #262a33;
+  border: 1px solid #4f5563;
+  color: #f3f5ff;
   border-radius: 8px;
-  font-size: 0.72rem;
-  padding: 4px 6px;
-}
-
-.trainer-sheet .trainer-card-right {
-  background: #eceff3;
-  border: 1px solid #a4a8b2;
-  border-radius: 12px;
+  font-size: 0.73rem;
   padding: 6px;
-  display: grid;
-  grid-template-rows: auto auto auto auto;
-  gap: 6px;
-  overflow: hidden;
+  min-height: 34px;
 }
 
-.trainer-sheet .league-header {
-  background: #e75434;
+.trainer-sheet .trainer-identity-card {
+  background: linear-gradient(180deg, #eff1f6 0%, #e3e7ef 100%);
+  border: 1px solid #a0a7b6;
+  border-radius: 12px;
+  padding: 8px;
+  display: grid;
+  gap: 8px;
+}
+
+.trainer-sheet .trainer-banner {
+  background: linear-gradient(120deg, #e65235 0%, #f46b47 100%);
   border-radius: 10px;
-  padding: 6px 8px;
+  padding: 8px 10px;
   color: #fff;
   display: grid;
-  grid-template-columns: 1fr 140px;
-  gap: 8px;
+  grid-template-columns: 1fr minmax(180px, 230px);
+  gap: 10px;
   align-items: center;
 }
 
-.trainer-sheet .league-header h1 {
+.trainer-sheet .trainer-banner h1 {
   margin: 0;
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.trainer-sheet .league-header label {
-  display: grid;
-  gap: 2px;
+.trainer-sheet .trainer-banner label {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
-.trainer-sheet .league-header label span {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  color: #ffe7df;
-}
-
-.trainer-sheet .league-header input {
-  border-radius: 999px;
-  border: 2px solid #ffd4c7;
-  background: #ffffff;
-  height: 24px;
-}
-
-.trainer-sheet .trainer-meta-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px;
-}
-
-.trainer-sheet .trainer-meta-grid label {
-  margin: 0;
-}
-
-.trainer-sheet .trainer-meta-grid label span,
-.trainer-sheet .trainer-bars label span {
+.trainer-sheet .trainer-banner span {
   font-size: 0.68rem;
   text-transform: uppercase;
-  color: #40434b;
+  color: #ffe5df;
+  font-weight: 600;
 }
 
-.trainer-sheet .trainer-meta-grid input,
-.trainer-sheet .trainer-bars input {
+.trainer-sheet .trainer-banner select {
   border-radius: 999px;
-  border: 2px solid #8d92a0;
-  background: #f8f8fb;
-  height: 24px;
+  border: 2px solid #ffd8cd;
+  background: #fff;
+  height: 28px;
+  font-size: 0.78rem;
 }
 
-.trainer-sheet .trainer-meta-grid .track-bar {
-  margin-top: 2px;
+.trainer-sheet .trainer-identity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.trainer-sheet .trainer-identity-grid label,
+.trainer-sheet .trainer-status-grid label {
+  margin: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.trainer-sheet .trainer-identity-grid span,
+.trainer-sheet .trainer-status-grid span {
+  font-size: 0.69rem;
+  text-transform: uppercase;
+  color: #404552;
+  font-weight: 700;
+}
+
+.trainer-sheet .trainer-identity-grid input,
+.trainer-sheet .trainer-status-grid input {
+  border-radius: 999px;
+  border: 2px solid #8f96a8;
+  background: #f8f9fc;
+  height: 28px;
+  padding: 0 10px;
+}
+
+.trainer-sheet .trainer-status-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.trainer-sheet .trainer-status-grid .badges-field {
+  grid-column: 1 / -1;
+}
+
+.trainer-sheet .trainer-status-grid .trainer-pokedex-field .pair-input {
+  grid-template-columns: minmax(0, 1fr) 16px minmax(0, 1fr);
+}
+
+.trainer-sheet .trainer-status-grid .pair-input span {
+  font-weight: 700;
+  text-align: center;
+  color: #5a6070;
+}
+
+.trainer-sheet .badges-track {
+  grid-template-columns: repeat(10, minmax(0, 1fr));
 }
 
 .trainer-sheet .track-bar {
@@ -382,11 +410,11 @@
 }
 
 .trainer-sheet .track-box {
-  height: 18px;
+  height: 16px;
   min-width: 0;
-  border-radius: 4px;
-  border: 1px solid #8a91a3;
-  background: #eef1f8;
+  border-radius: 5px;
+  border: 1px solid #8790a5;
+  background: #edf0f7;
   padding: 0;
   margin: 0;
   line-height: 1;
@@ -395,167 +423,233 @@
 
 .trainer-sheet .track-box.is-active {
   border-color: #d2553d;
-  background: #ec6e52;
+  background: linear-gradient(180deg, #f58b6d 0%, #e26345 100%);
 }
 
 .trainer-sheet .track-bar.compact .track-box {
-  height: 16px;
+  height: 15px;
 }
 
-.trainer-sheet .trainer-bars {
+.trainer-sheet .action-inline-input {
+  width: 52px;
+  margin-left: 4px;
+  height: 24px;
+  border-radius: 999px;
+  border: 1px solid #8f96a8;
+  text-align: center;
+}
+
+.trainer-sheet .trainer-main-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(220px, 0.85fr) minmax(260px, 1fr) minmax(360px, 1.3fr);
+  gap: 10px;
+  align-items: start;
+  margin-bottom: 10px;
+}
+
+.trainer-sheet .trainer-stat-panel {
+  background: #eff2f8;
+}
+
+.trainer-sheet .trainer-stat-list {
+  display: grid;
   gap: 6px;
 }
 
-.trainer-sheet .trainer-bars .pair-input {
-  gap: 4px;
-}
-
-.trainer-sheet .trainer-bars .pair-input span {
-  font-weight: 700;
-  color: #545967;
-}
-
-.trainer-sheet .trainer-bottom-layout {
+.trainer-sheet .trainer-stat-row {
   display: grid;
-  grid-template-columns: minmax(220px, 0.8fr) minmax(250px, 1.2fr) minmax(280px, 1fr);
-  gap: 8px;
-  align-items: start;
-}
-
-.trainer-sheet .trainer-side-column {
-  display: grid;
-  grid-template-rows: auto auto auto;
-  gap: 8px;
-}
-
-.trainer-sheet .trainer-attributes-panel .attribute-row,
-.trainer-sheet .trainer-skills-panel .attribute-row {
-  grid-template-columns: 110px 1fr 28px;
+  grid-template-columns: 108px 1fr 30px;
+  gap: 6px;
+  align-items: center;
   border-radius: 10px;
   padding: 4px;
-  align-items: center;
 }
 
-.trainer-sheet .trainer-attributes-panel .attribute-row {
-  background: #b4d5ff;
-  border: 2px solid #4474aa;
-}
-
-.trainer-sheet .trainer-attributes-panel .attribute-row:nth-child(2n) {
-  background: #a7f0e9;
-  border-color: #2d8c84;
-}
-
-.trainer-sheet .trainer-attributes-panel .attribute-row:nth-child(3n) {
-  background: #f2d1a6;
-  border-color: #a56a2f;
-}
-
-.trainer-sheet .trainer-attributes-panel .attribute-row label,
-.trainer-sheet .trainer-skills-panel .attribute-row label {
+.trainer-sheet .trainer-stat-row label {
+  margin: 0;
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.trainer-sheet .trainer-attributes-panel .attribute-row input,
-.trainer-sheet .trainer-skills-panel .attribute-row input {
-  border-radius: 8px;
-  height: 24px;
-  border: 1px solid #4d5567;
-  background: #f7f8fb;
+.trainer-sheet .trainer-attributes-panel .trainer-stat-row {
+  border: 2px solid #3f6ea5;
+  background: #b6d7ff;
 }
 
-.trainer-sheet .trainer-attributes-panel .attribute-row .track-bar,
-.trainer-sheet .trainer-skills-panel .attribute-row .track-bar {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 3px;
+.trainer-sheet .trainer-attributes-panel .trainer-stat-row:nth-child(2n) {
+  border-color: #2f8a82;
+  background: #a8efe7;
 }
 
-.trainer-sheet .trainer-skills-panel .attribute-row {
-  background: #f0f2f6;
-  border: 1px solid #a2a8b5;
+.trainer-sheet .trainer-attributes-panel .trainer-stat-row:nth-child(3n) {
+  border-color: #ab7134;
+  background: #f2d6b2;
+}
+
+.trainer-sheet .trainer-skills-panel .trainer-stat-row {
+  border: 1px solid #a3abba;
+  background: #f3f5f9;
 }
 
 .trainer-sheet .trainer-inventory-panel {
   background:
-    radial-gradient(circle at 5px 5px, #c5c8ce 2px, #d8dbe0 2px) 0 0 / 14px 14px,
-    #d3d6dc;
+    radial-gradient(circle at 5px 5px, #c4c8d1 2px, #d9dce3 2px) 0 0 / 14px 14px,
+    #d5d9e0;
 }
 
-.trainer-sheet .trainer-inventory-panel h2,
-.trainer-sheet .trainer-achievements-panel h2 {
-  margin-bottom: 6px;
+.trainer-sheet .trainer-inventory-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.trainer-sheet .gear-pocket-panel {
+  border: 2px solid #8e95a6;
+  border-radius: 10px;
+  background: #edf0f6;
+  padding: 6px;
+  display: grid;
+  gap: 6px;
+}
+
+.trainer-sheet .gear-pocket-panel.is-battle {
+  border-color: #df785f;
+  background: linear-gradient(180deg, #fff2ee 0%, #f7e4de 100%);
+}
+
+.trainer-sheet .gear-pocket-panel.is-field {
+  border-color: #8b93a6;
+  background: linear-gradient(180deg, #f3f5fa 0%, #e8ecf4 100%);
+}
+
+.trainer-sheet .gear-pocket-panel header {
+  border-bottom: 1px solid #a7aebe;
+  padding-bottom: 4px;
+}
+
+.trainer-sheet .gear-pocket-panel h3 {
+  margin: 0;
+  font-size: 0.86rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.trainer-sheet .gear-pocket-panel small {
+  color: #5b6171;
+  font-size: 0.69rem;
+  text-transform: uppercase;
 }
 
 .trainer-sheet .gear-table {
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   table-layout: fixed;
 }
 
 .trainer-sheet .gear-table th:nth-child(1),
 .trainer-sheet .gear-table td:nth-child(1) {
-  width: 24%;
+  width: 28%;
 }
 
 .trainer-sheet .gear-table th:nth-child(2),
 .trainer-sheet .gear-table td:nth-child(2) {
-  width: 13%;
+  width: 18%;
 }
 
 .trainer-sheet .gear-table th:nth-child(3),
 .trainer-sheet .gear-table td:nth-child(3) {
-  width: 11%;
+  width: 12%;
 }
 
 .trainer-sheet .gear-table th:nth-child(4),
 .trainer-sheet .gear-table td:nth-child(4) {
-  width: 10%;
+  width: 26%;
 }
 
 .trainer-sheet .gear-table th:nth-child(5),
 .trainer-sheet .gear-table td:nth-child(5) {
-  width: 22%;
+  width: 16%;
 }
 
-.trainer-sheet .gear-table th:nth-child(6),
-.trainer-sheet .gear-table td:nth-child(6) {
-  width: 20%;
+.trainer-sheet .gear-table .move-actions {
+  justify-content: flex-start;
 }
 
-.trainer-sheet .gear-table td {
-  overflow-wrap: anywhere;
+.trainer-sheet .gear-table .move-actions .icon-button {
+  width: 26px;
+  height: 26px;
 }
 
-.trainer-sheet .gear-table .move-actions button {
-  min-width: 0;
-  font-size: 0.72rem;
-  padding: 2px 5px;
+.trainer-sheet .pocket-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid #8992a6;
+  background: #e9edf5;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.64rem;
+}
+
+.trainer-sheet .pocket-chip.pocket-potions {
+  border-color: #6b8ec8;
+  background: #d6e5ff;
+}
+
+.trainer-sheet .pocket-chip.pocket-small {
+  border-color: #3e9a88;
+  background: #cff3eb;
+}
+
+.trainer-sheet .pocket-chip.pocket-main {
+  border-color: #a58a57;
+  background: #f3e5cd;
+}
+
+.trainer-sheet .pocket-chip.pocket-badge {
+  border-color: #8f71a8;
+  background: #eadcf5;
+}
+
+.trainer-sheet .pocket-chip.pocket-held {
+  border-color: #9b7b7b;
+  background: #f1dfdf;
+}
+
+.trainer-sheet .trainer-extra-panel {
+  background: #eef1f8;
+}
+
+.trainer-sheet .trainer-extra-list {
+  display: grid;
+  gap: 6px;
+}
+
+.trainer-sheet .trainer-extra-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 1.1fr) minmax(140px, 1fr) 32px;
+  gap: 6px;
+  align-items: center;
+  padding: 4px;
+  border: 1px solid #a3abba;
+  border-radius: 8px;
+  background: #f4f6fa;
+}
+
+.trainer-sheet .trainer-extra-row input[type="text"] {
+  border-radius: 8px;
+  border: 1px solid #8f96a8;
+  background: #fff;
+  height: 28px;
+  padding: 0 8px;
 }
 
 .trainer-sheet .trainer-bio-panel textarea {
-  background:
-    linear-gradient(#f5f6fa, #f5f6fa) padding-box,
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 23px,
-      #9fa7b8 23px,
-      #9fa7b8 24px
-    );
+  min-height: 130px;
   border: 1px solid #9aa1af;
   border-radius: 8px;
-  line-height: 24px;
-  min-height: 140px;
-}
-
-.trainer-sheet .trainer-achievements-panel textarea {
-  min-height: 100px;
-  border: 1px solid #9aa1af;
-  border-radius: 8px;
-  background: #f5f6fa;
+  background: #f7f8fb;
+  line-height: 1.35;
 }
 
 @media (max-width: 1250px) {
@@ -564,30 +658,20 @@
     min-height: 0;
   }
 
-  .trainer-sheet .trainer-bottom-layout {
+  .trainer-sheet .trainer-main-grid {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .trainer-sheet .trainer-side-column {
-    grid-column: 1 / -1;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .trainer-sheet .trainer-achievements-panel {
-    grid-column: 1 / -1;
   }
 }
 
 @media (max-width: 900px) {
-  .trainer-sheet .trainer-card-layout {
+  .trainer-sheet .trainer-top {
     grid-template-columns: 1fr;
   }
 
-  .trainer-sheet .trainer-bottom-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .trainer-sheet .trainer-side-column {
+  .trainer-sheet .trainer-main-grid,
+  .trainer-sheet .trainer-inventory-columns,
+  .trainer-sheet .trainer-identity-grid,
+  .trainer-sheet .trainer-status-grid {
     grid-template-columns: 1fr;
   }
 }

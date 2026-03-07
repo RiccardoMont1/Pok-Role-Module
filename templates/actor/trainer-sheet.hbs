@@ -1,6 +1,6 @@
 <form class="{{cssClass}} pok-role-sheet trainer-sheet" autocomplete="off">
-  <section class="trainer-card-layout">
-    <div class="trainer-card-left">
+  <section class="trainer-top">
+    <aside class="trainer-portrait-card">
       <div class="trainer-photo-frame">
         <img
           class="profile-img"
@@ -9,15 +9,6 @@
           title="{{actor.name}}"
         />
       </div>
-      <label class="trainer-nameplate">
-        <span>{{localize "POKROLE.Fields.Name"}}</span>
-        <input
-          name="name"
-          type="text"
-          value="{{actor.name}}"
-          placeholder="{{localize 'POKROLE.Fields.Name'}}"
-        />
-      </label>
       <div class="trainer-quick-actions">
         <button type="button" data-action="roll-initiative">
           <i class="fas fa-bolt"></i>
@@ -32,118 +23,77 @@
           {{localize "POKROLE.Actions.ResetActionCounter"}}
         </button>
       </div>
-    </div>
+    </aside>
 
-    <div class="trainer-card-right">
-      <header class="league-header">
+    <section class="trainer-identity-card">
+      <header class="trainer-banner">
         <h1>POKEMON LEAGUE</h1>
         <label>
           <span>{{localize "POKROLE.Trainer.CardRank"}}</span>
-          <input
-            type="hidden"
-            name="system.level"
-            value="{{system.level}}"
-            data-dtype="Number"
-          />
-          <div class="track-bar">
-            {{#each levelTrack.slots as |slot|}}
-            <button
-              type="button"
-              class="track-box {{#if slot.active}}is-active{{/if}}"
-              data-action="set-track"
-              data-track-field="system.level"
-              data-track-value="{{slot.value}}"
-              data-track-min="{{../levelTrack.min}}"
-              data-track-max="{{../levelTrack.max}}"
-              title="{{localize 'POKROLE.Trainer.CardRank'}} {{slot.value}}"
-            ></button>
-            {{/each}}
-          </div>
+          <select name="system.cardRank">
+            {{selectOptions trainerRankOptions selected=system.cardRank localize=true}}
+          </select>
         </label>
       </header>
 
-      <div class="trainer-meta-grid">
+      <div class="trainer-identity-grid">
         <label>
-          <span>{{localize "POKROLE.Trainer.Role"}}</span>
+          <span>{{localize "POKROLE.Fields.Name"}}</span>
+          <input
+            name="name"
+            type="text"
+            value="{{actor.name}}"
+            placeholder="{{localize 'POKROLE.Fields.Name'}}"
+          />
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Trainer.Age"}}</span>
+          <input
+            type="number"
+            name="system.age"
+            value="{{system.age}}"
+            min="0"
+            max="120"
+            data-dtype="Number"
+          />
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Trainer.Player"}}</span>
           <input
             type="text"
-            name="system.role"
-            value="{{system.role}}"
-            placeholder="{{localize 'POKROLE.Trainer.RolePlaceholder'}}"
+            name="system.player"
+            value="{{system.player}}"
+          />
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Trainer.Concept"}}</span>
+          <input
+            type="text"
+            name="system.concept"
+            value="{{system.concept}}"
+          />
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Trainer.Nature"}}</span>
+          <input
+            type="text"
+            name="system.nature"
+            value="{{system.nature}}"
           />
         </label>
         <label>
           <span>{{localize "POKROLE.Trainer.Money"}}</span>
           <input
-            type="hidden"
+            type="number"
             name="system.money"
             value="{{system.money}}"
+            min="0"
             data-dtype="Number"
           />
-          <div class="track-bar">
-            {{#each moneyTrack.slots as |slot|}}
-            <button
-              type="button"
-              class="track-box {{#if slot.active}}is-active{{/if}}"
-              data-action="set-track"
-              data-track-field="system.money"
-              data-track-value="{{slot.value}}"
-              data-track-min="{{../moneyTrack.min}}"
-              data-track-max="{{../moneyTrack.max}}"
-              title="{{localize 'POKROLE.Trainer.Money'}} {{slot.value}}"
-            ></button>
-            {{/each}}
-          </div>
-        </label>
-        <label>
-          <span>{{localize "POKROLE.Trainer.Badges"}}</span>
-          <input
-            type="hidden"
-            name="system.badges"
-            value="{{system.badges}}"
-            data-dtype="Number"
-          />
-          <div class="track-bar">
-            {{#each badgesTrack.slots as |slot|}}
-            <button
-              type="button"
-              class="track-box {{#if slot.active}}is-active{{/if}}"
-              data-action="set-track"
-              data-track-field="system.badges"
-              data-track-value="{{slot.value}}"
-              data-track-min="{{../badgesTrack.min}}"
-              data-track-max="{{../badgesTrack.max}}"
-              title="{{localize 'POKROLE.Trainer.Badges'}} {{slot.value}}"
-            ></button>
-            {{/each}}
-          </div>
-        </label>
-        <label>
-          <span>{{localize "POKROLE.Combat.ActionNumber"}}</span>
-          <input
-            type="hidden"
-            name="system.combat.actionNumber"
-            value="{{system.combat.actionNumber}}"
-            data-dtype="Number"
-          />
-          <div class="track-bar">
-            {{#each actionTrack.slots as |slot|}}
-            <button
-              type="button"
-              class="track-box {{#if slot.active}}is-active{{/if}}"
-              data-action="set-track"
-              data-track-field="system.combat.actionNumber"
-              data-track-value="{{slot.value}}"
-              data-track-min="{{../actionTrack.min}}"
-              data-track-max="{{../actionTrack.max}}"
-              title="{{localize 'POKROLE.Combat.ActionNumber'}} {{slot.value}}"
-            ></button>
-            {{/each}}
-          </div>
         </label>
       </div>
 
-      <div class="trainer-bars">
+      <div class="trainer-status-grid">
         <label>
           <span>{{localize "POKROLE.Resources.HP"}}</span>
           <div class="pair-input">
@@ -184,28 +134,79 @@
             />
           </div>
         </label>
+        <label class="badges-field">
+          <span>{{localize "POKROLE.Trainer.Badges"}}</span>
+          <input
+            type="hidden"
+            name="system.badges"
+            value="{{system.badges}}"
+            data-dtype="Number"
+          />
+          <div class="track-bar compact badges-track">
+            {{#each badgesTrack.slots as |slot|}}
+            <button
+              type="button"
+              class="track-box {{#if slot.active}}is-active{{/if}}"
+              data-action="set-track"
+              data-track-field="system.badges"
+              data-track-value="{{slot.value}}"
+              data-track-min="{{../badgesTrack.min}}"
+              data-track-max="{{../badgesTrack.max}}"
+              title="{{localize 'POKROLE.Trainer.Badges'}} {{slot.value}}"
+            ></button>
+            {{/each}}
+          </div>
+        </label>
+        <label class="trainer-pokedex-field">
+          <span>{{localize "POKROLE.Trainer.SeenCaught"}}</span>
+          <div class="pair-input">
+            <input
+              type="number"
+              name="system.pokedex.seen"
+              value="{{system.pokedex.seen}}"
+              min="0"
+              data-dtype="Number"
+            />
+            <span>/</span>
+            <input
+              type="number"
+              name="system.pokedex.caught"
+              value="{{system.pokedex.caught}}"
+              min="0"
+              data-dtype="Number"
+            />
+          </div>
+        </label>
       </div>
 
       <p class="inline-meta">
-        <strong>{{localize "POKROLE.Combat.InitiativeScore"}}:</strong>
-        {{initiativeScore}}
-        ({{localize "POKROLE.Combat.BaseInitiativeScore"}}: {{baseInitiativeScore}})
+        <strong>{{localize "POKROLE.Combat.InitiativeScore"}}:</strong> {{initiativeScore}}
         |
-        <strong>{{localize "POKROLE.Combat.PainPenalty"}}:</strong>
-        -{{painPenalty}}
+        <strong>{{localize "POKROLE.Combat.BaseInitiativeScore"}}:</strong> {{baseInitiativeScore}}
+        |
+        <strong>{{localize "POKROLE.Combat.PainPenalty"}}:</strong> -{{painPenalty}}
+        |
+        <strong>{{localize "POKROLE.Combat.ActionNumber"}}:</strong>
+        <input
+          class="action-inline-input"
+          type="number"
+          name="system.combat.actionNumber"
+          value="{{system.combat.actionNumber}}"
+          min="1"
+          max="5"
+          data-dtype="Number"
+        />
       </p>
-    </div>
+    </section>
   </section>
 
-  <section class="trainer-bottom-layout">
-    <section class="sheet-section trainer-attributes-panel">
+  <section class="trainer-main-grid">
+    <section class="sheet-section trainer-stat-panel trainer-attributes-panel">
       <h2>{{localize "POKROLE.Attributes.Title"}}</h2>
-      <div class="attribute-grid">
+      <div class="trainer-stat-list">
         {{#each attributeDefinitions as |attribute|}}
-        <div class="attribute-row">
-          <label>
-            {{localize attribute.label}}
-          </label>
+        <div class="trainer-stat-row">
+          <label>{{localize attribute.label}}</label>
           <input
             type="hidden"
             name="system.attributes.{{attribute.key}}"
@@ -240,14 +241,12 @@
       </div>
     </section>
 
-    <section class="sheet-section trainer-skills-panel">
+    <section class="sheet-section trainer-stat-panel trainer-skills-panel">
       <h2>{{localize "POKROLE.Skills.Title"}}</h2>
-      <div class="attribute-grid">
+      <div class="trainer-stat-list">
         {{#each skillDefinitions as |skill|}}
-        <div class="attribute-row">
-          <label>
-            {{localize skill.label}}
-          </label>
+        <div class="trainer-stat-row">
+          <label>{{localize skill.label}}</label>
           <input
             type="hidden"
             name="system.skills.{{skill.key}}"
@@ -282,70 +281,176 @@
       </div>
     </section>
 
-    <section class="trainer-side-column">
-      <section class="sheet-section trainer-inventory-panel">
-        <div class="section-title-row">
-          <h2>{{localize "POKROLE.Trainer.InventoryTitle"}}</h2>
-          <button type="button" data-action="create-gear">
-            <i class="fas fa-plus"></i>
-            {{localize "POKROLE.Actions.NewGear"}}
-          </button>
-        </div>
-        {{#if gearItems.length}}
-        <table class="moves-table gear-table">
-          <thead>
-            <tr>
-              <th>{{localize "POKROLE.Gear.Name"}}</th>
-              <th>{{localize "POKROLE.Gear.Category.Label"}}</th>
-              <th>{{localize "POKROLE.Gear.Pocket.Label"}}</th>
-              <th>{{localize "POKROLE.Gear.Stock"}}</th>
-              <th>{{localize "POKROLE.Gear.Effects"}}</th>
-              <th>{{localize "POKROLE.Common.Actions"}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each gearItems as |gear|}}
-            <tr data-item-id="{{gear.id}}">
-              <td class="move-name">
-                <img src="{{gear.img}}" title="{{gear.name}}" />
-                <span>{{gear.name}}</span>
-              </td>
-              <td>{{gear.categoryLabel}}</td>
-              <td>{{gear.pocketLabel}}</td>
-              <td>{{gear.stockLabel}}</td>
-              <td>{{gear.effectsSummary}}</td>
-              <td class="move-actions">
-                <button type="button" data-action="use-gear" data-item-id="{{gear.id}}">
-                  <i class="fas fa-hand-sparkles"></i>
-                  {{localize "POKROLE.Actions.Use"}}
-                </button>
-                <button type="button" data-action="edit-gear" data-item-id="{{gear.id}}">
-                  <i class="fas fa-pen"></i>
-                  {{localize "POKROLE.Actions.Edit"}}
-                </button>
-                <button type="button" data-action="delete-gear" data-item-id="{{gear.id}}">
-                  <i class="fas fa-trash"></i>
-                  {{localize "POKROLE.Actions.Delete"}}
-                </button>
-              </td>
-            </tr>
-            {{/each}}
-          </tbody>
-        </table>
-        {{else}}
-        <p class="empty-state">{{localize "POKROLE.Gear.Empty"}}</p>
-        {{/if}}
-      </section>
+    <section class="sheet-section trainer-inventory-panel">
+      <div class="section-title-row">
+        <h2>{{localize "POKROLE.Trainer.InventoryTitle"}}</h2>
+        <button type="button" data-action="create-gear">
+          <i class="fas fa-plus"></i>
+          {{localize "POKROLE.Actions.NewGear"}}
+        </button>
+      </div>
 
-      <section class="sheet-section trainer-bio-panel">
-        <h2>{{localize "POKROLE.Common.Biography"}}</h2>
-        <textarea
-          name="system.biography"
-          rows="6"
-          placeholder="{{localize 'POKROLE.Common.BiographyPlaceholder'}}"
-        >{{system.biography}}</textarea>
-      </section>
+      <div class="trainer-inventory-columns">
+        <section class="gear-pocket-panel is-battle">
+          <header>
+            <h3>{{localize "POKROLE.Trainer.InventoryBattle"}}</h3>
+            <small>{{localize "POKROLE.Trainer.InventoryBattleHint"}}</small>
+          </header>
+          {{#if gearBattleItems.length}}
+          <table class="moves-table gear-table">
+            <thead>
+              <tr>
+                <th>{{localize "POKROLE.Gear.Name"}}</th>
+                <th>{{localize "POKROLE.Gear.Pocket.Label"}}</th>
+                <th>{{localize "POKROLE.Gear.Stock"}}</th>
+                <th>{{localize "POKROLE.Gear.Effects"}}</th>
+                <th>{{localize "POKROLE.Common.Actions"}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each gearBattleItems as |gear|}}
+              <tr data-item-id="{{gear.id}}">
+                <td class="move-name">
+                  <img src="{{gear.img}}" title="{{gear.name}}" />
+                  <span>{{gear.name}}</span>
+                </td>
+                <td>
+                  <span class="pocket-chip pocket-{{gear.pocketKey}}">{{gear.pocketLabel}}</span>
+                </td>
+                <td>{{gear.stockLabel}}</td>
+                <td>{{gear.effectsSummary}}</td>
+                <td class="move-actions">
+                  <button type="button" class="icon-button" data-action="use-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Use'}}">
+                    <i class="fas fa-hand-sparkles"></i>
+                  </button>
+                  <button type="button" class="icon-button" data-action="edit-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Edit'}}">
+                    <i class="fas fa-pen"></i>
+                  </button>
+                  <button type="button" class="icon-button danger" data-action="delete-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Delete'}}">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+          {{else}}
+          <p class="empty-state">{{localize "POKROLE.Gear.Empty"}}</p>
+          {{/if}}
+        </section>
 
+        <section class="gear-pocket-panel is-field">
+          <header>
+            <h3>{{localize "POKROLE.Trainer.InventoryField"}}</h3>
+            <small>{{localize "POKROLE.Trainer.InventoryFieldHint"}}</small>
+          </header>
+          {{#if gearFieldItems.length}}
+          <table class="moves-table gear-table">
+            <thead>
+              <tr>
+                <th>{{localize "POKROLE.Gear.Name"}}</th>
+                <th>{{localize "POKROLE.Gear.Pocket.Label"}}</th>
+                <th>{{localize "POKROLE.Gear.Stock"}}</th>
+                <th>{{localize "POKROLE.Gear.Effects"}}</th>
+                <th>{{localize "POKROLE.Common.Actions"}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each gearFieldItems as |gear|}}
+              <tr data-item-id="{{gear.id}}">
+                <td class="move-name">
+                  <img src="{{gear.img}}" title="{{gear.name}}" />
+                  <span>{{gear.name}}</span>
+                </td>
+                <td>
+                  <span class="pocket-chip pocket-{{gear.pocketKey}}">{{gear.pocketLabel}}</span>
+                </td>
+                <td>{{gear.stockLabel}}</td>
+                <td>{{gear.effectsSummary}}</td>
+                <td class="move-actions">
+                  <button type="button" class="icon-button" data-action="use-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Use'}}">
+                    <i class="fas fa-hand-sparkles"></i>
+                  </button>
+                  <button type="button" class="icon-button" data-action="edit-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Edit'}}">
+                    <i class="fas fa-pen"></i>
+                  </button>
+                  <button type="button" class="icon-button danger" data-action="delete-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Delete'}}">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+          {{else}}
+          <p class="empty-state">{{localize "POKROLE.Gear.Empty"}}</p>
+          {{/if}}
+        </section>
+      </div>
     </section>
+  </section>
+
+  <section class="sheet-section trainer-extra-panel">
+    <div class="section-title-row">
+      <h2>{{localize "POKROLE.Trainer.ExtraSkills"}}</h2>
+      <button type="button" data-action="add-extra-skill">
+        <i class="fas fa-plus"></i>
+        {{localize "POKROLE.Trainer.AddExtra"}}
+      </button>
+    </div>
+    {{#if extraSkills.length}}
+    <div class="trainer-extra-list">
+      {{#each extraSkills as |extra|}}
+      <div class="trainer-extra-row">
+        <input
+          type="text"
+          name="system.extraSkills.{{extra.index}}.name"
+          value="{{extra.name}}"
+          placeholder="{{localize 'POKROLE.Trainer.ExtraName'}}"
+        />
+        <input
+          type="hidden"
+          name="system.extraSkills.{{extra.index}}.value"
+          value="{{extra.value}}"
+          data-dtype="Number"
+        />
+        <div class="track-bar compact">
+          {{#each extra.track.slots as |slot|}}
+          <button
+            type="button"
+            class="track-box {{#if slot.active}}is-active{{/if}}"
+            data-action="set-track"
+            data-track-field="system.extraSkills.{{../index}}.value"
+            data-track-value="{{slot.value}}"
+            data-track-min="{{../track.min}}"
+            data-track-max="{{../track.max}}"
+            title="{{../name}} {{slot.value}}"
+          ></button>
+          {{/each}}
+        </div>
+        <button
+          type="button"
+          class="icon-button danger"
+          data-action="delete-extra-skill"
+          data-extra-index="{{extra.index}}"
+          title="{{localize 'POKROLE.Actions.Delete'}}"
+        >
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+      {{/each}}
+    </div>
+    {{else}}
+    <p class="empty-state">{{localize "POKROLE.Trainer.NoExtraSkills"}}</p>
+    {{/if}}
+  </section>
+
+  <section class="sheet-section trainer-bio-panel">
+    <h2>{{localize "POKROLE.Common.Biography"}}</h2>
+    <textarea
+      name="system.biography"
+      rows="6"
+      placeholder="{{localize 'POKROLE.Common.BiographyPlaceholder'}}"
+    >{{system.biography}}</textarea>
   </section>
 </form>

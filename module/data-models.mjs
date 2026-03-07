@@ -4,10 +4,11 @@ import {
   MOVE_TYPE_KEYS,
   POKEMON_TIER_KEYS,
   SKILL_DEFINITIONS,
+  TRAINER_CARD_RANK_KEYS,
   TYPE_OPTIONS
 } from "./constants.mjs";
 
-const { BooleanField, NumberField, SchemaField, StringField } = foundry.data.fields;
+const { ArrayField, BooleanField, NumberField, SchemaField, StringField } = foundry.data.fields;
 
 function integerField(initial, options = {}) {
   return new NumberField({
@@ -60,10 +61,34 @@ export class TrainerDataModel extends BaseCharacterDataModel {
     const base = super.defineSchema();
     return {
       ...base,
-      level: integerField(1, { min: 1, max: 5 }),
+      level: integerField(1, { min: 1 }),
+      cardRank: new StringField({
+        required: true,
+        blank: false,
+        initial: "starter",
+        choices: TRAINER_CARD_RANK_KEYS
+      }),
+      age: integerField(10, { min: 0, max: 120 }),
+      player: trimmedStringField(""),
+      concept: trimmedStringField(""),
+      nature: trimmedStringField(""),
       role: trimmedStringField(""),
-      money: integerField(0, { min: 0, max: 5 }),
-      badges: integerField(0, { min: 0, max: 5 })
+      money: integerField(0, { min: 0 }),
+      badges: integerField(0, { min: 0, max: 10 }),
+      pokedex: new SchemaField({
+        seen: integerField(0, { min: 0 }),
+        caught: integerField(0, { min: 0 })
+      }),
+      extraSkills: new ArrayField(
+        new SchemaField({
+          name: trimmedStringField(""),
+          value: integerField(0, { min: 0, max: 5 })
+        }),
+        {
+          required: true,
+          initial: () => []
+        }
+      )
     };
   }
 }
