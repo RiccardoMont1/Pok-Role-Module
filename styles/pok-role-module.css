@@ -215,8 +215,10 @@
   border: 1px solid #7f8595;
   border-radius: 14px;
   padding: 10px;
-  min-width: 1120px;
-  min-height: 900px;
+  width: 100%;
+  min-width: 980px;
+  min-height: 100%;
+  height: 100%;
   box-sizing: border-box;
 }
 
@@ -227,7 +229,7 @@
 
 .trainer-sheet .trainer-top {
   display: grid;
-  grid-template-columns: minmax(320px, 0.9fr) minmax(520px, 1.8fr);
+  grid-template-columns: minmax(250px, 0.7fr) minmax(520px, 1.9fr);
   gap: 10px;
   margin-bottom: 10px;
   align-items: start;
@@ -254,7 +256,7 @@
   background:
     radial-gradient(circle at 2px 2px, #5f636b 1px, #434750 1px) 0 0 / 8px 8px,
     #464a53;
-  min-height: 340px;
+  min-height: 245px;
 }
 
 .trainer-sheet .trainer-photo-frame .profile-img {
@@ -344,8 +346,15 @@
   border-radius: 999px;
   border: 2px solid #ffd8cd;
   background: #fff;
+  color: #262c38;
   height: 28px;
   font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.trainer-sheet .trainer-banner select option {
+  color: #262c38;
+  background: #ffffff;
 }
 
 .trainer-sheet .trainer-identity-grid {
@@ -511,6 +520,7 @@
   padding: 6px;
   display: grid;
   gap: 6px;
+  align-content: start;
 }
 
 .trainer-sheet .gear-pocket-panel.is-battle {
@@ -541,38 +551,51 @@
   text-transform: uppercase;
 }
 
+.trainer-sheet .gear-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .trainer-sheet .gear-table {
   font-size: 0.74rem;
-  table-layout: fixed;
+  table-layout: auto;
+  min-width: 480px;
 }
 
 .trainer-sheet .gear-table th:nth-child(1),
 .trainer-sheet .gear-table td:nth-child(1) {
-  width: 28%;
+  width: 30%;
 }
 
 .trainer-sheet .gear-table th:nth-child(2),
 .trainer-sheet .gear-table td:nth-child(2) {
-  width: 18%;
+  width: 20%;
 }
 
 .trainer-sheet .gear-table th:nth-child(3),
 .trainer-sheet .gear-table td:nth-child(3) {
-  width: 12%;
+  width: 14%;
 }
 
 .trainer-sheet .gear-table th:nth-child(4),
 .trainer-sheet .gear-table td:nth-child(4) {
-  width: 26%;
+  width: 24%;
 }
 
 .trainer-sheet .gear-table th:nth-child(5),
 .trainer-sheet .gear-table td:nth-child(5) {
-  width: 16%;
+  width: 12%;
+}
+
+.trainer-sheet .gear-table th {
+  white-space: nowrap;
+  font-size: 0.71rem;
+  letter-spacing: 0.01em;
 }
 
 .trainer-sheet .gear-table .move-actions {
   justify-content: flex-start;
+  flex-wrap: nowrap;
 }
 
 .trainer-sheet .gear-table .move-actions .icon-button {
@@ -616,8 +639,17 @@
   background: #f1dfdf;
 }
 
-.trainer-sheet .trainer-extra-panel {
-  background: #eef1f8;
+.trainer-sheet .trainer-extra-inline {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #aab1c2;
+}
+
+.trainer-sheet .trainer-extra-inline h3 {
+  margin: 0;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .trainer-sheet .trainer-extra-list {
@@ -653,13 +685,12 @@
 }
 
 @media (max-width: 1250px) {
-  .trainer-sheet {
-    min-width: 0;
-    min-height: 0;
-  }
-
   .trainer-sheet .trainer-main-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .trainer-sheet .trainer-inventory-columns {
+    grid-template-columns: 1fr;
   }
 }
 
