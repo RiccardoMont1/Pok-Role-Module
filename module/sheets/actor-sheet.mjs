@@ -64,11 +64,6 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.levelTrack = this._buildTrack(this.actor.system.level, 5, 1);
     context.moneyTrack = this._buildTrack(this.actor.system.money, 5, 0);
     context.badgesTrack = this._buildTrack(this.actor.system.badges, 5, 0);
-    context.inventoryTracks = {
-      potion: this._buildTrack(this.actor.system.inventory?.potion, 5, 0),
-      superPotion: this._buildTrack(this.actor.system.inventory?.superPotion, 5, 0),
-      hyperPotion: this._buildTrack(this.actor.system.inventory?.hyperPotion, 5, 0)
-    };
     context.typeOptions = Object.fromEntries(
       TYPE_OPTIONS.map((typeKey) => [
         typeKey,
@@ -82,6 +77,23 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       .filter((item) => item.type === "move")
       .sort((a, b) => a.sort - b.sort)
       .map((move) => this._prepareMoveData(move));
+    const pocketOrder = {
+      potions: 0,
+      small: 1,
+      main: 2,
+      badge: 3,
+      held: 4
+    };
+    context.gearItems = this.actor.items
+      .filter((item) => item.type === "gear")
+      .sort((a, b) => {
+        const aPocketOrder = pocketOrder[a.system.pocket] ?? 99;
+        const bPocketOrder = pocketOrder[b.system.pocket] ?? 99;
+        if (aPocketOrder !== bPocketOrder) return aPocketOrder - bPocketOrder;
+        if (a.sort !== b.sort) return a.sort - b.sort;
+        return `${a.name}`.localeCompare(`${b.name}`);
+      })
+      .map((gear) => this._prepareGearData(gear));
     return context;
   }
 
@@ -120,6 +132,18 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     );
     html.find("[data-action='delete-move']").on("click", (event) =>
       this._onDeleteMove(event)
+    );
+    html.find("[data-action='create-gear']").on("click", (event) =>
+      this._onCreateGear(event)
+    );
+    html.find("[data-action='edit-gear']").on("click", (event) =>
+      this._onEditGear(event)
+    );
+    html.find("[data-action='use-gear']").on("click", (event) =>
+      this._onUseGear(event)
+    );
+    html.find("[data-action='delete-gear']").on("click", (event) =>
+      this._onDeleteGear(event)
     );
   }
 
@@ -190,6 +214,70 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     event.preventDefault();
     if (!this.isEditable) return;
 
+    const { itemId } = event.currentTarget.dataset;
+    if (!itemId) return;
+    await this.actor.deleteEmbeddedDocuments("Item", [itemId]);
+  }
+
+  async _onCreateGear(event) {
+    event.preventDefault();
+    if (!this.isEditable || this.actor.type !== "trainer") return;
+
+    await this.actor.createEmbeddedDocuments("Item", [
+      {
+        name: game.i18n.localize("POKROLE.Gear.New"),
+        type: "gear",
+        img: "icons/svg/item-bag.svg",
+        system: {
+          category: "healing",
+          pocket: "potions",
+          consumable: true,
+          canUseInBattle: true,
+          target: "pokemon",
+          quantity: 1,
+          units: {
+            value: 2,
+            max: 2
+          },
+          heal: {
+            hp: 1,
+            lethal: 0,
+            fullHp: false,
+            restoreAwareness: false
+          },
+          status: {
+            all: false,
+            poison: false,
+            sleep: false,
+            burn: false,
+            frozen: false,
+            paralysis: false,
+            confusion: false
+          },
+          description: ""
+        }
+      }
+    ]);
+  }
+
+  async _onEditGear(event) {
+    event.preventDefault();
+    const { itemId } = event.currentTarget.dataset;
+    if (!itemId) return;
+    const gear = this.actor.items.get(itemId);
+    gear?.sheet.render(true);
+  }
+
+  async _onUseGear(event) {
+    event.preventDefault();
+    const { itemId } = event.currentTarget.dataset;
+    if (!itemId) return;
+    await this.actor.useGearItem(itemId);
+  }
+
+  async _onDeleteGear(event) {
+    event.preventDefault();
+    if (!this.isEditable) return;
     const { itemId } = event.currentTarget.dataset;
     if (!itemId) return;
     await this.actor.deleteEmbeddedDocuments("Item", [itemId]);
@@ -283,6 +371,68 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     return moveSystem.category === "special" ? "special" : "strength";
   }
 
+  _prepareGearData(gear) {
+    const categoryLabel = game.i18n.localize(
+      `POKROLE.Gear.Category.${this._toTitleCaseKey(gear.system.category)}`
+    );
+    const pocketLabel = game.i18n.localize(
+      `POKROLE.Gear.Pocket.${this._toTitleCaseKey(gear.system.pocket)}`
+    );
+
+    const quantity = Number(gear.system.quantity ?? 0);
+    const unitsValue = Number(gear.system.units?.value ?? 0);
+    const unitsMax = Number(gear.system.units?.max ?? 0);
+    const stockLabel =
+      unitsMax > 0 ? `${quantity} x (${unitsValue}/${unitsMax})` : `${quantity}`;
+
+    const effects = [];
+    if (gear.system.heal?.fullHp) {
+      effects.push(game.i18n.localize("POKROLE.Gear.FullHp"));
+    } else if (Number(gear.system.heal?.hp ?? 0) > 0) {
+      effects.push(
+        game.i18n.format("POKROLE.Gear.HealHpShort", {
+          value: Number(gear.system.heal.hp ?? 0)
+        })
+      );
+    }
+    if (Number(gear.system.heal?.lethal ?? 0) > 0) {
+      effects.push(
+        game.i18n.format("POKROLE.Gear.HealLethalShort", {
+          value: Number(gear.system.heal.lethal ?? 0)
+        })
+      );
+    }
+    if (gear.system.heal?.restoreAwareness) {
+      effects.push(game.i18n.localize("POKROLE.Gear.RestoreAwareness"));
+    }
+    if (gear.system.status?.all) {
+      effects.push(game.i18n.localize("POKROLE.Gear.Status.All"));
+    }
+
+    const statusKeys = ["poison", "sleep", "burn", "frozen", "paralysis", "confusion"];
+    const statusLabels = statusKeys
+      .filter((statusKey) => gear.system.status?.[statusKey])
+      .map((statusKey) =>
+        game.i18n.localize(`POKROLE.Gear.Status.${this._toTitleCaseKey(statusKey)}`)
+      );
+    if (statusLabels.length > 0) {
+      effects.push(statusLabels.join(", "));
+    }
+
+    return {
+      id: gear.id,
+      name: gear.name,
+      img: gear.img,
+      categoryLabel,
+      pocketLabel,
+      stockLabel,
+      canUseInBattle: gear.system.canUseInBattle,
+      consumable: gear.system.consumable,
+      effectsSummary:
+        effects.length > 0 ? effects.join(" | ") : game.i18n.localize("POKROLE.Common.None")
+    };
+  }
+
   _buildTrack(currentValue, maxValue, minValue = 1) {
     const numericCurrent = Number(currentValue);
     const normalizedCurrent = Number.isFinite(numericCurrent) ? numericCurrent : minValue;
@@ -300,5 +450,10 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       value: clampedCurrent,
       slots
     };
+  }
+
+  _toTitleCaseKey(value) {
+    if (!value || typeof value !== "string") return "Other";
+    return `${value[0].toUpperCase()}${value.slice(1)}`;
   }
 }

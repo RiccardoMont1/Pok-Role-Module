@@ -5,12 +5,13 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
 ## Current MVP
 
 - Actor types: `trainer`, `pokemon`
-- Item type: `move`
+- Item types: `move`, `gear`
 - Bilingual UI: English + Italian (`lang/en.json`, `lang/it.json`)
 - Custom sheets:
   - Trainer sheet
   - Pokemon sheet
   - Move item sheet
+  - Gear item sheet
 - Pokemon progression:
   - Uses `Tier` (Starter, Beginner, Amateur, Ace, Pro, Master, Champion)
 - Automation:
@@ -19,6 +20,12 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
   - Evasion roll (`Dexterity + Evasion`)
   - Clash roll (`Strength/Special + Clash`, using move damage trait)
   - Combined Roll button (multi-select attributes/skills on Trainer and Pokemon sheet)
+  - Inventory by embedded `gear` items:
+    - Backpack pocket model (`potions`, `small`, `main`, `badge`, `held`)
+    - Item categories for healing/status/revive/pokeball/travel/battle/etc.
+    - Battle usage restrictions (main pocket items blocked in combat)
+    - Consumable stock handling with optional per-item units (Potion Unit style)
+    - One-click use from trainer sheet with chat summary
   - Successive action tracking per round:
     - each new action by the same actor in the same round requires `+1` success (Action Number `1..5`)
     - the same move can be used multiple times in the same round
@@ -84,6 +91,8 @@ Important: do not use the GitHub `.../blob/...` URL, because Foundry expects raw
 - Critical hit threshold and bonus dice: p.52
 - Priority/Low Priority semantics: p.53
 - Move card structure and icons: p.346-348
+- Backpack layout and inventory pockets: p.20
+- Item inventory categories and item effects: p.76-85
 
 ## Current Limits
 

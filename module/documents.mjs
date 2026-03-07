@@ -559,6 +559,118 @@ export class PokRoleActor extends Actor {
     return result;
   }
 
+  async useGearItem(itemId, options = {}) {
+    const gearItem = this.items.get(itemId);
+    if (!gearItem || gearItem.type !== "gear") {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownGear"));
+      return null;
+    }
+
+    const quantity = Math.max(toNumber(gearItem.system.quantity, 0), 0);
+    if (quantity <= 0) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.GearOutOfStock"));
+      return null;
+    }
+
+    const pocket = `${gearItem.system.pocket ?? "main"}`.toLowerCase();
+    const pocketUsableInBattle = pocket === "potions" || pocket === "small";
+    if (game.combat && (!pocketUsableInBattle || !gearItem.system.canUseInBattle)) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.GearNotUsableInBattle"));
+      return null;
+    }
+
+    const targetActor = options.targetActor ?? getTargetActorFromUserSelection() ?? this;
+    if (gearItem.system.target === "trainer" && targetActor.type !== "trainer") {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.GearWrongTarget"));
+      return null;
+    }
+    if (gearItem.system.target === "pokemon" && targetActor.type !== "pokemon") {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.GearWrongTarget"));
+      return null;
+    }
+
+    const hpBefore = Math.max(toNumber(targetActor.system.resources?.hp?.value, 0), 0);
+    const hpMax = Math.max(toNumber(targetActor.system.resources?.hp?.max, 1), 1);
+    const healsFullHp = gearItem.system.heal?.fullHp ?? false;
+    const healHpValue = Math.max(toNumber(gearItem.system.heal?.hp, 0), 0);
+
+    let hpAfter = hpBefore;
+    if (healsFullHp) {
+      hpAfter = hpMax;
+    } else if (healHpValue > 0) {
+      hpAfter = Math.min(hpBefore + healHpValue, hpMax);
+    }
+    const healedAmount = Math.max(hpAfter - hpBefore, 0);
+
+    if (hpAfter !== hpBefore) {
+      await targetActor.update({ "system.resources.hp.value": hpAfter });
+    }
+
+    const consumeResult = gearItem.system.consumable ? await this._consumeGearItem(gearItem) : null;
+    const statusEffects = this._getGearStatusEffects(gearItem).map((statusKey) =>
+      game.i18n.localize(`POKROLE.Gear.Status.${statusKey}`)
+    );
+
+    const notes = [];
+    const healLethalValue = Math.max(toNumber(gearItem.system.heal?.lethal, 0), 0);
+    if (healLethalValue > 0) {
+      notes.push(
+        game.i18n.format("POKROLE.Chat.GearLethalHealNote", {
+          value: healLethalValue
+        })
+      );
+    }
+    if (gearItem.system.heal?.restoreAwareness) {
+      notes.push(game.i18n.localize("POKROLE.Chat.GearAwarenessNote"));
+    }
+    if (statusEffects.length > 0) {
+      notes.push(
+        game.i18n.format("POKROLE.Chat.GearStatusNote", {
+          value: statusEffects.join(", ")
+        })
+      );
+    }
+
+    const stockLabel = consumeResult
+      ? consumeResult.unitsMax > 0
+        ? `${consumeResult.quantity} x (${consumeResult.unitsValue}/${consumeResult.unitsMax})`
+        : `${consumeResult.quantity}`
+      : game.i18n.localize("POKROLE.Common.None");
+
+    const content = `
+      <div class="pok-role-chat-card">
+        <h3>${game.i18n.localize("POKROLE.Chat.GearUsed")}: ${gearItem.name}</h3>
+        <p><strong>${game.i18n.localize("POKROLE.Chat.Actor")}:</strong> ${this.name}</p>
+        <p><strong>${game.i18n.localize("POKROLE.Chat.Target")}:</strong> ${targetActor.name}</p>
+        <p><strong>${game.i18n.localize("POKROLE.Gear.HealHp")}:</strong> +${healedAmount}</p>
+        <p><strong>${game.i18n.localize("POKROLE.Chat.TargetHP")}:</strong> ${hpBefore} -> ${hpAfter}</p>
+        ${
+          consumeResult
+            ? `<p><strong>${game.i18n.localize("POKROLE.Gear.Stock")}:</strong> ${stockLabel}</p>`
+            : ""
+        }
+        ${
+          notes.length > 0
+            ? `<hr /><p>${notes.join("<br />")}</p>`
+            : ""
+        }
+      </div>
+    `;
+
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content
+    });
+
+    return {
+      targetActor,
+      hpBefore,
+      hpAfter,
+      healedAmount,
+      consumeResult
+    };
+  }
+
   hasType(typeKey) {
     const primary = this.system.types?.primary || "none";
     const secondary = this.system.types?.secondary || "none";
@@ -809,6 +921,65 @@ export class PokRoleActor extends Actor {
 
   _isSocialAccuracyMove(move) {
     return SOCIAL_ATTRIBUTE_KEYS.includes(move.system.accuracyAttribute);
+  }
+
+  _getGearStatusEffects(gearItem) {
+    if (gearItem.system.status?.all) {
+      return ["All"];
+    }
+
+    const statusKeys = [
+      ["poison", "Poison"],
+      ["sleep", "Sleep"],
+      ["burn", "Burn"],
+      ["frozen", "Frozen"],
+      ["paralysis", "Paralysis"],
+      ["confusion", "Confusion"]
+    ];
+    return statusKeys
+      .filter(([statusKey]) => gearItem.system.status?.[statusKey])
+      .map(([, labelKey]) => labelKey);
+  }
+
+  async _consumeGearItem(gearItem) {
+    const quantity = Math.max(toNumber(gearItem.system.quantity, 0), 0);
+    const unitsMax = Math.max(toNumber(gearItem.system.units?.max, 0), 0);
+    let unitsValue = Math.max(toNumber(gearItem.system.units?.value, 0), 0);
+
+    if (quantity <= 0) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.GearOutOfStock"));
+      return null;
+    }
+
+    const updates = {};
+    let nextQuantity = quantity;
+    let nextUnitsValue = unitsValue;
+
+    if (unitsMax > 0) {
+      if (nextUnitsValue <= 0 && nextQuantity > 0) {
+        nextUnitsValue = unitsMax;
+      }
+      nextUnitsValue = Math.max(nextUnitsValue - 1, 0);
+      if (nextUnitsValue === 0) {
+        nextQuantity = Math.max(nextQuantity - 1, 0);
+        if (nextQuantity > 0) {
+          nextUnitsValue = unitsMax;
+        }
+      }
+      updates["system.units.value"] = nextUnitsValue;
+      updates["system.quantity"] = nextQuantity;
+    } else {
+      nextQuantity = Math.max(nextQuantity - 1, 0);
+      updates["system.quantity"] = nextQuantity;
+    }
+
+    await gearItem.update(updates);
+
+    return {
+      quantity: nextQuantity,
+      unitsValue: nextUnitsValue,
+      unitsMax
+    };
   }
 
   async resetActionCounter(options = {}) {

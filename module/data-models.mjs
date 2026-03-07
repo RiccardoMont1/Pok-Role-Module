@@ -63,14 +63,7 @@ export class TrainerDataModel extends BaseCharacterDataModel {
       level: integerField(1, { min: 1, max: 5 }),
       role: trimmedStringField(""),
       money: integerField(0, { min: 0, max: 5 }),
-      badges: integerField(0, { min: 0, max: 5 }),
-      inventory: new SchemaField({
-        potion: integerField(0, { min: 0, max: 5 }),
-        superPotion: integerField(0, { min: 0, max: 5 }),
-        hyperPotion: integerField(0, { min: 0, max: 5 }),
-        items: trimmedStringField(""),
-        achievements: trimmedStringField("")
-      })
+      badges: integerField(0, { min: 0, max: 5 })
     };
   }
 }
@@ -155,6 +148,70 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
       highCritical: new BooleanField({ required: true, initial: false }),
       neverFail: new BooleanField({ required: true, initial: false }),
       lethal: new BooleanField({ required: true, initial: false }),
+      description: trimmedStringField("")
+    };
+  }
+}
+
+export class GearDataModel extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    return {
+      category: new StringField({
+        required: true,
+        blank: false,
+        initial: "healing",
+        choices: [
+          "healing",
+          "status",
+          "revive",
+          "drink",
+          "pokeball",
+          "battle",
+          "travel",
+          "protective",
+          "care",
+          "vitamin",
+          "grooming",
+          "evolution",
+          "held",
+          "key",
+          "other"
+        ]
+      }),
+      pocket: new StringField({
+        required: true,
+        blank: false,
+        initial: "main",
+        choices: ["potions", "small", "main", "badge", "held"]
+      }),
+      consumable: new BooleanField({ required: true, initial: true }),
+      canUseInBattle: new BooleanField({ required: true, initial: false }),
+      target: new StringField({
+        required: true,
+        blank: false,
+        initial: "pokemon",
+        choices: ["pokemon", "trainer", "any"]
+      }),
+      quantity: integerField(1, { min: 0, max: 999 }),
+      units: new SchemaField({
+        value: integerField(0, { min: 0, max: 99 }),
+        max: integerField(0, { min: 0, max: 99 })
+      }),
+      heal: new SchemaField({
+        hp: integerField(0, { min: 0, max: 50 }),
+        lethal: integerField(0, { min: 0, max: 50 }),
+        fullHp: new BooleanField({ required: true, initial: false }),
+        restoreAwareness: new BooleanField({ required: true, initial: false })
+      }),
+      status: new SchemaField({
+        all: new BooleanField({ required: true, initial: false }),
+        poison: new BooleanField({ required: true, initial: false }),
+        sleep: new BooleanField({ required: true, initial: false }),
+        burn: new BooleanField({ required: true, initial: false }),
+        frozen: new BooleanField({ required: true, initial: false }),
+        paralysis: new BooleanField({ required: true, initial: false }),
+        confusion: new BooleanField({ required: true, initial: false })
+      }),
       description: trimmedStringField("")
     };
   }

@@ -19,12 +19,49 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
   }
 
   get template() {
+    if (this.item.type === "gear") {
+      return "systems/pok-role-module/templates/item/gear-sheet.hbs";
+    }
     return "systems/pok-role-module/templates/item/move-sheet.hbs";
   }
 
   async getData(options = {}) {
     const context = await super.getData(options);
     context.system = this.item.system;
+
+    if (this.item.type === "gear") {
+      context.gearCategoryOptions = {
+        healing: "POKROLE.Gear.Category.Healing",
+        status: "POKROLE.Gear.Category.Status",
+        revive: "POKROLE.Gear.Category.Revive",
+        drink: "POKROLE.Gear.Category.Drink",
+        pokeball: "POKROLE.Gear.Category.Pokeball",
+        battle: "POKROLE.Gear.Category.Battle",
+        travel: "POKROLE.Gear.Category.Travel",
+        protective: "POKROLE.Gear.Category.Protective",
+        care: "POKROLE.Gear.Category.Care",
+        vitamin: "POKROLE.Gear.Category.Vitamin",
+        grooming: "POKROLE.Gear.Category.Grooming",
+        evolution: "POKROLE.Gear.Category.Evolution",
+        held: "POKROLE.Gear.Category.Held",
+        key: "POKROLE.Gear.Category.Key",
+        other: "POKROLE.Gear.Category.Other"
+      };
+      context.gearPocketOptions = {
+        potions: "POKROLE.Gear.Pocket.Potions",
+        small: "POKROLE.Gear.Pocket.Small",
+        main: "POKROLE.Gear.Pocket.Main",
+        badge: "POKROLE.Gear.Pocket.Badge",
+        held: "POKROLE.Gear.Pocket.Held"
+      };
+      context.gearTargetOptions = {
+        pokemon: "POKROLE.Gear.Target.Pokemon",
+        trainer: "POKROLE.Gear.Target.Trainer",
+        any: "POKROLE.Gear.Target.Any"
+      };
+      return context;
+    }
+
     context.categoryOptions = Object.fromEntries(
       Object.entries(MOVE_CATEGORY_LABEL_BY_KEY).map(([categoryKey, label]) => [
         categoryKey,

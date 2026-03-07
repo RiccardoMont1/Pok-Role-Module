@@ -4,6 +4,7 @@ import {
   SKILL_DEFINITIONS
 } from "./module/constants.mjs";
 import {
+  GearDataModel,
   MoveDataModel,
   PokemonDataModel,
   TrainerDataModel
@@ -33,7 +34,8 @@ Hooks.once("init", () => {
   };
 
   CONFIG.Item.dataModels = {
-    move: MoveDataModel
+    move: MoveDataModel,
+    gear: GearDataModel
   };
 
   const sharedTrackableValues = [
@@ -70,9 +72,9 @@ Hooks.once("init", () => {
   });
 
   sheetConfig.registerSheet(Item, POKROLE.ID, PokRoleMoveSheet, {
-    types: ["move"],
+    types: ["move", "gear"],
     makeDefault: true,
-    label: "POKROLE.Sheets.Move"
+    label: "POKROLE.Sheets.Item"
   });
 });
 

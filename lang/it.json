@@ -119,6 +119,68 @@
       "SupportNoDamage": "Supporto (nessun danno diretto)",
       "DescriptionPlaceholder": "Effetti, regole bersaglio e casi particolari."
     },
+    "Gear": {
+      "Name": "Nome Oggetto",
+      "New": "Nuovo Oggetto",
+      "Empty": "Nessun oggetto. Aggiungine uno per iniziare.",
+      "Effects": "Effetti",
+      "Stock": "Scorte",
+      "Quantity": "Quantita",
+      "UnitsCurrent": "Unita (Attuali)",
+      "UnitsMax": "Unita (Max)",
+      "HealHp": "Cura PS",
+      "HealLethal": "Cura Letale",
+      "HealHpShort": "PS +{value}",
+      "HealLethalShort": "Letale +{value}",
+      "Flags": "Tag",
+      "Consumable": "Consumabile",
+      "UseInBattle": "Usabile in Lotta",
+      "FullHp": "Ripristina PS Completi",
+      "RestoreAwareness": "Ripristina Coscienza",
+      "StatusHeals": "Cura Stati",
+      "DescriptionPlaceholder": "Testo regole, limiti e effetti collaterali.",
+      "Category": {
+        "Label": "Categoria",
+        "Healing": "Cura",
+        "Status": "Stato",
+        "Revive": "Rianimazione",
+        "Drink": "Bevanda",
+        "Pokeball": "Pokeball",
+        "Battle": "Lotta",
+        "Travel": "Viaggio",
+        "Protective": "Protettivo",
+        "Care": "Cura Base",
+        "Vitamin": "Vitamina",
+        "Grooming": "Toeletta",
+        "Evolution": "Evoluzione",
+        "Held": "Strumento Tenuto",
+        "Key": "Strumento Chiave",
+        "Other": "Altro"
+      },
+      "Pocket": {
+        "Label": "Tasca",
+        "Potions": "Pozioni",
+        "Small": "Piccola",
+        "Main": "Principale",
+        "Badge": "Porta Medaglie",
+        "Held": "Held"
+      },
+      "Target": {
+        "Label": "Bersaglio",
+        "Pokemon": "Pokemon",
+        "Trainer": "Allenatore",
+        "Any": "Qualsiasi"
+      },
+      "Status": {
+        "All": "Tutti",
+        "Poison": "Veleno",
+        "Sleep": "Sonno",
+        "Burn": "Scottatura",
+        "Frozen": "Congelato",
+        "Paralysis": "Paralisi",
+        "Confusion": "Confusione"
+      }
+    },
     "Actions": {
       "RollAttribute": "Tira Attributo",
       "RollSkill": "Tira Abilita",
@@ -129,6 +191,8 @@
       "RollEvasion": "Tira Schivata",
       "ResetActionCounter": "Reset Azioni",
       "NewMove": "Aggiungi Mossa",
+      "NewGear": "Aggiungi Oggetto",
+      "Use": "Usa",
       "Edit": "Modifica",
       "Delete": "Elimina"
     },
@@ -157,6 +221,7 @@
     },
     "Chat": {
       "Actor": "Attore",
+      "Target": "Bersaglio",
       "Attribute": "Attributo",
       "Accuracy": "Precisione",
       "NoTarget": "Nessun bersaglio selezionato",
@@ -184,6 +249,10 @@
       "CriticalBonusDice": "Dadi bonus Critico",
       "FinalDamage": "Danno finale",
       "TargetHP": "PS Bersaglio",
+      "GearUsed": "Oggetto Usato",
+      "GearLethalHealNote": "Danno letale ridotto di {value}.",
+      "GearAwarenessNote": "Coscienza ripristinata.",
+      "GearStatusNote": "Cura stati: {value}.",
       "Reaction": {
         "Label": "Reazione",
         "None": "Nessuna reazione",
@@ -229,16 +298,21 @@
       "UnknownAttribute": "Chiave attributo sconosciuta.",
       "UnknownSkill": "Chiave abilita sconosciuta.",
       "UnknownMove": "Mossa non trovata.",
+      "UnknownGear": "Oggetto non trovato.",
       "UnknownMoveTraits": "I trait della mossa non sono validi o mancano.",
       "NoTraitsSelected": "Seleziona almeno un trait per il Tiro Combinato.",
       "EvasionAlreadyUsedThisRound": "La Schivata e gia stata usata in questo round.",
       "ClashAlreadyUsedThisRound": "Il Clash e gia stato usato in questo round.",
       "ClashNeedsDamagingMove": "Il Clash richiede una mossa che infligge danno.",
+      "GearOutOfStock": "Oggetto senza scorte.",
+      "GearNotUsableInBattle": "Questo oggetto non puo essere usato in lotta.",
+      "GearWrongTarget": "Questo oggetto non puo bersagliare l'attore selezionato.",
       "HPUpdateFailed": "Impossibile aggiornare i PS del bersaglio. Controlla i permessi."
     },
     "Sheets": {
       "Actor": "Scheda Attore PokeRole",
-      "Move": "Scheda Mossa PokeRole"
+      "Move": "Scheda Mossa PokeRole",
+      "Item": "Scheda Oggetto PokeRole"
     }
   },
   "TYPES": {
@@ -247,7 +321,8 @@
       "pokemon": "Pokemon"
     },
     "Item": {
-      "move": "Mossa"
+      "move": "Mossa",
+      "gear": "Oggetto"
     }
   }
 }

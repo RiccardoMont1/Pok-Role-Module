@@ -254,13 +254,11 @@
     radial-gradient(circle at 2px 2px, #5f636b 1px, #434750 1px) 0 0 / 8px 8px,
     #464a53;
   min-height: 260px;
-  max-height: 430px;
 }
 
 .trainer-sheet .trainer-photo-frame .profile-img {
   width: 100%;
-  height: auto;
-  max-height: 390px;
+  height: 100%;
   border-radius: 6px;
   border: 1px solid #666b75;
   object-fit: contain;
@@ -492,22 +490,49 @@
   margin-bottom: 6px;
 }
 
-.trainer-sheet .inventory-track-row {
-  display: grid;
-  gap: 4px;
-  margin-bottom: 6px;
+.trainer-sheet .gear-table {
+  font-size: 0.78rem;
+  table-layout: fixed;
 }
 
-.trainer-sheet .inventory-track-row span,
-.trainer-sheet .inventory-notes-field span {
+.trainer-sheet .gear-table th:nth-child(1),
+.trainer-sheet .gear-table td:nth-child(1) {
+  width: 24%;
+}
+
+.trainer-sheet .gear-table th:nth-child(2),
+.trainer-sheet .gear-table td:nth-child(2) {
+  width: 13%;
+}
+
+.trainer-sheet .gear-table th:nth-child(3),
+.trainer-sheet .gear-table td:nth-child(3) {
+  width: 11%;
+}
+
+.trainer-sheet .gear-table th:nth-child(4),
+.trainer-sheet .gear-table td:nth-child(4) {
+  width: 10%;
+}
+
+.trainer-sheet .gear-table th:nth-child(5),
+.trainer-sheet .gear-table td:nth-child(5) {
+  width: 22%;
+}
+
+.trainer-sheet .gear-table th:nth-child(6),
+.trainer-sheet .gear-table td:nth-child(6) {
+  width: 20%;
+}
+
+.trainer-sheet .gear-table td {
+  overflow-wrap: anywhere;
+}
+
+.trainer-sheet .gear-table .move-actions button {
+  min-width: 0;
   font-size: 0.72rem;
-  text-transform: uppercase;
-  color: #2e3340;
-  font-weight: 700;
-}
-
-.trainer-sheet .inventory-notes-field textarea {
-  min-height: 96px;
+  padding: 2px 5px;
 }
 
 .trainer-sheet .trainer-bio-panel textarea {

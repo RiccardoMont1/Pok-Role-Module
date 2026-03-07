@@ -284,88 +284,57 @@
 
     <section class="trainer-side-column">
       <section class="sheet-section trainer-inventory-panel">
-        <h2>{{localize "POKROLE.Trainer.InventoryTitle"}}</h2>
-
-        <label class="inventory-track-row">
-          <span>{{localize "POKROLE.Trainer.Potion"}}</span>
-          <input
-            type="hidden"
-            name="system.inventory.potion"
-            value="{{system.inventory.potion}}"
-            data-dtype="Number"
-          />
-          <div class="track-bar compact">
-            {{#each inventoryTracks.potion.slots as |slot|}}
-            <button
-              type="button"
-              class="track-box {{#if slot.active}}is-active{{/if}}"
-              data-action="set-track"
-              data-track-field="system.inventory.potion"
-              data-track-value="{{slot.value}}"
-              data-track-min="{{../inventoryTracks.potion.min}}"
-              data-track-max="{{../inventoryTracks.potion.max}}"
-              title="{{localize 'POKROLE.Trainer.Potion'}} {{slot.value}}"
-            ></button>
+        <div class="section-title-row">
+          <h2>{{localize "POKROLE.Trainer.InventoryTitle"}}</h2>
+          <button type="button" data-action="create-gear">
+            <i class="fas fa-plus"></i>
+            {{localize "POKROLE.Actions.NewGear"}}
+          </button>
+        </div>
+        {{#if gearItems.length}}
+        <table class="moves-table gear-table">
+          <thead>
+            <tr>
+              <th>{{localize "POKROLE.Gear.Name"}}</th>
+              <th>{{localize "POKROLE.Gear.Category.Label"}}</th>
+              <th>{{localize "POKROLE.Gear.Pocket.Label"}}</th>
+              <th>{{localize "POKROLE.Gear.Stock"}}</th>
+              <th>{{localize "POKROLE.Gear.Effects"}}</th>
+              <th>{{localize "POKROLE.Common.Actions"}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each gearItems as |gear|}}
+            <tr data-item-id="{{gear.id}}">
+              <td class="move-name">
+                <img src="{{gear.img}}" title="{{gear.name}}" />
+                <span>{{gear.name}}</span>
+              </td>
+              <td>{{gear.categoryLabel}}</td>
+              <td>{{gear.pocketLabel}}</td>
+              <td>{{gear.stockLabel}}</td>
+              <td>{{gear.effectsSummary}}</td>
+              <td class="move-actions">
+                <button type="button" data-action="use-gear" data-item-id="{{gear.id}}">
+                  <i class="fas fa-hand-sparkles"></i>
+                  {{localize "POKROLE.Actions.Use"}}
+                </button>
+                <button type="button" data-action="edit-gear" data-item-id="{{gear.id}}">
+                  <i class="fas fa-pen"></i>
+                  {{localize "POKROLE.Actions.Edit"}}
+                </button>
+                <button type="button" data-action="delete-gear" data-item-id="{{gear.id}}">
+                  <i class="fas fa-trash"></i>
+                  {{localize "POKROLE.Actions.Delete"}}
+                </button>
+              </td>
+            </tr>
             {{/each}}
-          </div>
-        </label>
-
-        <label class="inventory-track-row">
-          <span>{{localize "POKROLE.Trainer.SuperPotion"}}</span>
-          <input
-            type="hidden"
-            name="system.inventory.superPotion"
-            value="{{system.inventory.superPotion}}"
-            data-dtype="Number"
-          />
-          <div class="track-bar compact">
-            {{#each inventoryTracks.superPotion.slots as |slot|}}
-            <button
-              type="button"
-              class="track-box {{#if slot.active}}is-active{{/if}}"
-              data-action="set-track"
-              data-track-field="system.inventory.superPotion"
-              data-track-value="{{slot.value}}"
-              data-track-min="{{../inventoryTracks.superPotion.min}}"
-              data-track-max="{{../inventoryTracks.superPotion.max}}"
-              title="{{localize 'POKROLE.Trainer.SuperPotion'}} {{slot.value}}"
-            ></button>
-            {{/each}}
-          </div>
-        </label>
-
-        <label class="inventory-track-row">
-          <span>{{localize "POKROLE.Trainer.HyperPotion"}}</span>
-          <input
-            type="hidden"
-            name="system.inventory.hyperPotion"
-            value="{{system.inventory.hyperPotion}}"
-            data-dtype="Number"
-          />
-          <div class="track-bar compact">
-            {{#each inventoryTracks.hyperPotion.slots as |slot|}}
-            <button
-              type="button"
-              class="track-box {{#if slot.active}}is-active{{/if}}"
-              data-action="set-track"
-              data-track-field="system.inventory.hyperPotion"
-              data-track-value="{{slot.value}}"
-              data-track-min="{{../inventoryTracks.hyperPotion.min}}"
-              data-track-max="{{../inventoryTracks.hyperPotion.max}}"
-              title="{{localize 'POKROLE.Trainer.HyperPotion'}} {{slot.value}}"
-            ></button>
-            {{/each}}
-          </div>
-        </label>
-
-        <label class="inventory-notes-field">
-          <span>{{localize "POKROLE.Trainer.InventoryItems"}}</span>
-          <textarea
-            name="system.inventory.items"
-            rows="5"
-            placeholder="{{localize 'POKROLE.Trainer.InventoryPlaceholder'}}"
-          >{{system.inventory.items}}</textarea>
-        </label>
+          </tbody>
+        </table>
+        {{else}}
+        <p class="empty-state">{{localize "POKROLE.Gear.Empty"}}</p>
+        {{/if}}
       </section>
 
       <section class="sheet-section trainer-bio-panel">
@@ -377,14 +346,6 @@
         >{{system.biography}}</textarea>
       </section>
 
-      <section class="sheet-section trainer-achievements-panel">
-        <h2>{{localize "POKROLE.Trainer.Achievements"}}</h2>
-        <textarea
-          name="system.inventory.achievements"
-          rows="4"
-          placeholder="{{localize 'POKROLE.Trainer.AchievementsPlaceholder'}}"
-        >{{system.inventory.achievements}}</textarea>
-      </section>
     </section>
   </section>
 </form>

@@ -1,0 +1,207 @@
+<form class="{{cssClass}} pok-role-sheet gear-sheet" autocomplete="off">
+  <header class="sheet-header">
+    <img
+      class="profile-img"
+      src="{{item.img}}"
+      data-edit="img"
+      title="{{item.name}}"
+    />
+    <div class="header-fields">
+      <h1 class="charname">
+        <input
+          name="name"
+          type="text"
+          value="{{item.name}}"
+          placeholder="{{localize 'POKROLE.Gear.Name'}}"
+        />
+      </h1>
+    </div>
+  </header>
+
+  <section class="sheet-section">
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Gear.Category.Label"}}</span>
+        <select name="system.category">
+          {{selectOptions gearCategoryOptions selected=system.category localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.Pocket.Label"}}</span>
+        <select name="system.pocket">
+          {{selectOptions gearPocketOptions selected=system.pocket localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.Target.Label"}}</span>
+        <select name="system.target">
+          {{selectOptions gearTargetOptions selected=system.target localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.Quantity"}}</span>
+        <input
+          type="number"
+          name="system.quantity"
+          value="{{system.quantity}}"
+          min="0"
+          max="999"
+          data-dtype="Number"
+        />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.UnitsCurrent"}}</span>
+        <input
+          type="number"
+          name="system.units.value"
+          value="{{system.units.value}}"
+          min="0"
+          max="99"
+          data-dtype="Number"
+        />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.UnitsMax"}}</span>
+        <input
+          type="number"
+          name="system.units.max"
+          value="{{system.units.max}}"
+          min="0"
+          max="99"
+          data-dtype="Number"
+        />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.HealHp"}}</span>
+        <input
+          type="number"
+          name="system.heal.hp"
+          value="{{system.heal.hp}}"
+          min="0"
+          max="50"
+          data-dtype="Number"
+        />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.HealLethal"}}</span>
+        <input
+          type="number"
+          name="system.heal.lethal"
+          value="{{system.heal.lethal}}"
+          min="0"
+          max="50"
+          data-dtype="Number"
+        />
+      </label>
+    </div>
+  </section>
+
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Gear.Flags"}}</h2>
+    <div class="checkbox-grid">
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.consumable"
+          {{checked system.consumable}}
+        />
+        <span>{{localize "POKROLE.Gear.Consumable"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.canUseInBattle"
+          {{checked system.canUseInBattle}}
+        />
+        <span>{{localize "POKROLE.Gear.UseInBattle"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.heal.fullHp"
+          {{checked system.heal.fullHp}}
+        />
+        <span>{{localize "POKROLE.Gear.FullHp"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.heal.restoreAwareness"
+          {{checked system.heal.restoreAwareness}}
+        />
+        <span>{{localize "POKROLE.Gear.RestoreAwareness"}}</span>
+      </label>
+    </div>
+  </section>
+
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Gear.StatusHeals"}}</h2>
+    <div class="checkbox-grid">
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.status.all"
+          {{checked system.status.all}}
+        />
+        <span>{{localize "POKROLE.Gear.Status.All"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.status.poison"
+          {{checked system.status.poison}}
+        />
+        <span>{{localize "POKROLE.Gear.Status.Poison"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.status.sleep"
+          {{checked system.status.sleep}}
+        />
+        <span>{{localize "POKROLE.Gear.Status.Sleep"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.status.burn"
+          {{checked system.status.burn}}
+        />
+        <span>{{localize "POKROLE.Gear.Status.Burn"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.status.frozen"
+          {{checked system.status.frozen}}
+        />
+        <span>{{localize "POKROLE.Gear.Status.Frozen"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.status.paralysis"
+          {{checked system.status.paralysis}}
+        />
+        <span>{{localize "POKROLE.Gear.Status.Paralysis"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.status.confusion"
+          {{checked system.status.confusion}}
+        />
+        <span>{{localize "POKROLE.Gear.Status.Confusion"}}</span>
+      </label>
+    </div>
+  </section>
+
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Common.Description"}}</h2>
+    <textarea
+      name="system.description"
+      rows="8"
+      placeholder="{{localize 'POKROLE.Gear.DescriptionPlaceholder'}}"
+    >{{system.description}}</textarea>
+  </section>
+</form>

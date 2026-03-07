@@ -119,6 +119,68 @@
       "SupportNoDamage": "Support (no direct damage)",
       "DescriptionPlaceholder": "Effects, target rules and edge cases."
     },
+    "Gear": {
+      "Name": "Item Name",
+      "New": "New Item",
+      "Empty": "No items yet. Add one to start.",
+      "Effects": "Effects",
+      "Stock": "Stock",
+      "Quantity": "Quantity",
+      "UnitsCurrent": "Units (Current)",
+      "UnitsMax": "Units (Max)",
+      "HealHp": "Heal HP",
+      "HealLethal": "Heal Lethal",
+      "HealHpShort": "HP +{value}",
+      "HealLethalShort": "Lethal +{value}",
+      "Flags": "Flags",
+      "Consumable": "Consumable",
+      "UseInBattle": "Usable in Battle",
+      "FullHp": "Restore Full HP",
+      "RestoreAwareness": "Restore Awareness",
+      "StatusHeals": "Status Recovery",
+      "DescriptionPlaceholder": "Rules text, limits, and side effects.",
+      "Category": {
+        "Label": "Category",
+        "Healing": "Healing",
+        "Status": "Status",
+        "Revive": "Revive",
+        "Drink": "Drink",
+        "Pokeball": "Pokeball",
+        "Battle": "Battle",
+        "Travel": "Travel",
+        "Protective": "Protective",
+        "Care": "Care",
+        "Vitamin": "Vitamin",
+        "Grooming": "Grooming",
+        "Evolution": "Evolution",
+        "Held": "Held Item",
+        "Key": "Key Item",
+        "Other": "Other"
+      },
+      "Pocket": {
+        "Label": "Pocket",
+        "Potions": "Potions",
+        "Small": "Small",
+        "Main": "Main",
+        "Badge": "Badge Case",
+        "Held": "Held"
+      },
+      "Target": {
+        "Label": "Target",
+        "Pokemon": "Pokemon",
+        "Trainer": "Trainer",
+        "Any": "Any"
+      },
+      "Status": {
+        "All": "All",
+        "Poison": "Poison",
+        "Sleep": "Sleep",
+        "Burn": "Burn",
+        "Frozen": "Frozen",
+        "Paralysis": "Paralysis",
+        "Confusion": "Confusion"
+      }
+    },
     "Actions": {
       "RollAttribute": "Roll Attribute",
       "RollSkill": "Roll Skill",
@@ -129,6 +191,8 @@
       "RollEvasion": "Roll Evasion",
       "ResetActionCounter": "Reset Actions",
       "NewMove": "Add Move",
+      "NewGear": "Add Item",
+      "Use": "Use",
       "Edit": "Edit",
       "Delete": "Delete"
     },
@@ -157,6 +221,7 @@
     },
     "Chat": {
       "Actor": "Actor",
+      "Target": "Target",
       "Attribute": "Attribute",
       "Accuracy": "Accuracy",
       "NoTarget": "No target selected",
@@ -184,6 +249,10 @@
       "CriticalBonusDice": "Critical bonus dice",
       "FinalDamage": "Final damage",
       "TargetHP": "Target HP",
+      "GearUsed": "Item Used",
+      "GearLethalHealNote": "Lethal damage reduced by {value}.",
+      "GearAwarenessNote": "Awareness restored.",
+      "GearStatusNote": "Status recovery: {value}.",
       "Reaction": {
         "Label": "Reaction",
         "None": "No reaction",
@@ -229,16 +298,21 @@
       "UnknownAttribute": "Unknown attribute key.",
       "UnknownSkill": "Unknown skill key.",
       "UnknownMove": "Move not found.",
+      "UnknownGear": "Item not found.",
       "UnknownMoveTraits": "Move traits are invalid or missing.",
       "NoTraitsSelected": "Select at least one trait for Combined Roll.",
       "EvasionAlreadyUsedThisRound": "Evasion was already used this round.",
       "ClashAlreadyUsedThisRound": "Clash was already used this round.",
       "ClashNeedsDamagingMove": "Clash requires a damaging move.",
+      "GearOutOfStock": "Item is out of stock.",
+      "GearNotUsableInBattle": "This item cannot be used in battle.",
+      "GearWrongTarget": "This item cannot target the selected actor.",
       "HPUpdateFailed": "Unable to update target HP. Check permissions."
     },
     "Sheets": {
       "Actor": "PokeRole Actor Sheet",
-      "Move": "PokeRole Move Sheet"
+      "Move": "PokeRole Move Sheet",
+      "Item": "PokeRole Item Sheet"
     }
   },
   "TYPES": {
@@ -247,7 +321,8 @@
       "pokemon": "Pokemon"
     },
     "Item": {
-      "move": "Move"
+      "move": "Move",
+      "gear": "Item"
     }
   }
 }
