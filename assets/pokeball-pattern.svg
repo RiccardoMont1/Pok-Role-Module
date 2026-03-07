@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Inspired by the Wikimedia Commons "Wikiball.svg", simplified for subtle UI background usage. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <g opacity="0.26">
+    <circle cx="32" cy="32" r="28" fill="#9ca5b6" />
+    <path d="M4 32h56" stroke="#4f5869" stroke-width="6" />
+    <path d="M32 4a28 28 0 0 1 28 28H4A28 28 0 0 1 32 4z" fill="#aeb6c4" />
+    <circle cx="32" cy="32" r="11" fill="#cdd3de" stroke="#4f5869" stroke-width="5" />
+    <circle cx="32" cy="32" r="4" fill="#8a93a4" />
+  </g>
+</svg>
