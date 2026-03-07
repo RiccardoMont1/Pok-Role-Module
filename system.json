@@ -2,7 +2,7 @@
   "id": "pok-role-module",
   "title": "Poke Role Module",
   "description": "MVP Foundry VTT v13 system scaffold for PokeRole 2.0 inspired campaigns.",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
