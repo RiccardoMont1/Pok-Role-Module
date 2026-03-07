@@ -1,0 +1,68 @@
+import {
+  ATTRIBUTE_DEFINITIONS,
+  POKROLE,
+  SKILL_DEFINITIONS
+} from "./module/constants.mjs";
+import {
+  MoveDataModel,
+  PokemonDataModel,
+  TrainerDataModel
+} from "./module/data-models.mjs";
+import { PokRoleActor, PokRoleItem } from "./module/documents.mjs";
+import { PokRoleActorSheet } from "./module/sheets/actor-sheet.mjs";
+import { PokRoleMoveSheet } from "./module/sheets/item-sheet.mjs";
+
+Hooks.once("init", () => {
+  console.log(`${POKROLE.ID} | Initializing ${POKROLE.TITLE}`);
+
+  CONFIG.Actor.documentClass = PokRoleActor;
+  CONFIG.Item.documentClass = PokRoleItem;
+
+  CONFIG.Actor.dataModels = {
+    trainer: TrainerDataModel,
+    pokemon: PokemonDataModel
+  };
+
+  CONFIG.Item.dataModels = {
+    move: MoveDataModel
+  };
+
+  const trackableValues = [
+    "level",
+    "resources.will.value",
+    "combat.actionNumber",
+    ...ATTRIBUTE_DEFINITIONS.map((attribute) => `attributes.${attribute.key}`),
+    ...SKILL_DEFINITIONS.map((skill) => `skills.${skill.key}`)
+  ];
+
+  CONFIG.Actor.trackableAttributes = {
+    trainer: {
+      bar: ["resources.hp", "resources.will"],
+      value: trackableValues
+    },
+    pokemon: {
+      bar: ["resources.hp", "resources.will"],
+      value: trackableValues
+    }
+  };
+
+  const sheetConfig = foundry.applications.apps.DocumentSheetConfig;
+  try {
+    sheetConfig.unregisterSheet(Actor, "core", foundry.appv1.sheets.ActorSheet);
+    sheetConfig.unregisterSheet(Item, "core", foundry.appv1.sheets.ItemSheet);
+  } catch (error) {
+    console.debug(`${POKROLE.ID} | Core sheets already unregistered`, error);
+  }
+
+  sheetConfig.registerSheet(Actor, POKROLE.ID, PokRoleActorSheet, {
+    types: ["trainer", "pokemon"],
+    makeDefault: true,
+    label: "POKROLE.Sheets.Actor"
+  });
+
+  sheetConfig.registerSheet(Item, POKROLE.ID, PokRoleMoveSheet, {
+    types: ["move"],
+    makeDefault: true,
+    label: "POKROLE.Sheets.Move"
+  });
+});

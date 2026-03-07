@@ -1,0 +1,199 @@
+{
+  "POKROLE": {
+    "Fields": {
+      "Name": "Nome"
+    },
+    "Common": {
+      "Level": "Livello",
+      "Biography": "Biografia",
+      "BiographyPlaceholder": "Note, background e dettagli importanti...",
+      "Description": "Descrizione",
+      "Actions": "Azioni",
+      "Unknown": "Sconosciuto",
+      "None": "Nessuno",
+      "Hit": "Colpito",
+      "Miss": "Mancato"
+    },
+    "Resources": {
+      "HP": "PS",
+      "Will": "Volonta"
+    },
+    "Trainer": {
+      "Role": "Ruolo",
+      "RolePlaceholder": "Ricercatore, Ranger, Allenatore...",
+      "Badges": "Medaglie",
+      "Money": "Denaro"
+    },
+    "Pokemon": {
+      "Species": "Specie",
+      "SpeciesPlaceholder": "Pikachu, Charmander...",
+      "Nature": "Natura",
+      "NaturePlaceholder": "Audace, Calma, Timida...",
+      "TypePrimary": "Tipo Primario",
+      "TypeSecondary": "Tipo Secondario",
+      "Loyalty": "Lealta",
+      "Happiness": "Felicita"
+    },
+    "Attributes": {
+      "Title": "Attributi",
+      "Strength": "Forza",
+      "Dexterity": "Destrezza",
+      "Vitality": "Vitalita",
+      "Special": "Speciale",
+      "Insight": "Intuito",
+      "Tough": "Tempra",
+      "Beauty": "Bellezza",
+      "Cool": "Grinta",
+      "Cute": "Carineria",
+      "Clever": "Astuzia",
+      "Allure": "Fascino"
+    },
+    "Skills": {
+      "Title": "Abilita",
+      "Alert": "Allerta",
+      "Athletic": "Atletica",
+      "Brawl": "Lotta",
+      "Channel": "Canalizzare",
+      "Clash": "Clash",
+      "Crafts": "Artigianato",
+      "Empathy": "Empatia",
+      "Etiquette": "Etichetta",
+      "Evasion": "Schivata",
+      "Intimidate": "Intimidire",
+      "Lore": "Conoscenze",
+      "Medicine": "Medicina",
+      "Nature": "Natura",
+      "Perform": "Esibizione",
+      "Science": "Scienza",
+      "Stealth": "Furtivita",
+      "Throw": "Lancio",
+      "Weapons": "Armi"
+    },
+    "Move": {
+      "TitlePlural": "Mosse",
+      "Name": "Nome Mossa",
+      "New": "Nuova Mossa",
+      "Empty": "Nessuna mossa. Aggiungine una per iniziare.",
+      "NoStat": "Nessuna Stat",
+      "Type": "Tipo",
+      "Category": {
+        "Label": "Categoria",
+        "Physical": "Fisica",
+        "Special": "Speciale",
+        "Support": "Supporto"
+      },
+      "Power": "Potenza",
+      "ReducedAccuracy": "Precisione Ridotta",
+      "AccuracyAttribute": "Attributo Precisione",
+      "AccuracySkill": "Abilita Precisione",
+      "AccuracySummary": "Precisione",
+      "DamageSummary": "Pool Danno",
+      "DamageAttribute": "Attributo Danno",
+      "DamageAttributeAuto": "Auto (da categoria)",
+      "Flags": "Tag",
+      "Priority": "Priorita",
+      "PriorityWithValue": "Priorita {value}",
+      "HighCritical": "Alto Critico",
+      "NeverFail": "Non Fallisce",
+      "Lethal": "Letale",
+      "SupportNoDamage": "Supporto (nessun danno diretto)",
+      "DescriptionPlaceholder": "Effetti, regole bersaglio e casi particolari."
+    },
+    "Actions": {
+      "RollAttribute": "Tira Attributo",
+      "RollSkill": "Tira Abilita",
+      "RollMove": "Tira Mossa",
+      "RollClash": "Tira Clash",
+      "RollInitiative": "Tira Iniziativa",
+      "RollEvasion": "Tira Schivata",
+      "NewMove": "Aggiungi Mossa",
+      "Edit": "Modifica",
+      "Delete": "Elimina"
+    },
+    "Combat": {
+      "QuickRolls": "Tiri Rapidi",
+      "InitiativeScore": "Valore Iniziativa",
+      "Defense": "Difesa",
+      "SpecialDefense": "Difesa Sp.",
+      "PainPenalty": "Penalita Dolore",
+      "ActionNumber": "Numero Azione"
+    },
+    "Chat": {
+      "Actor": "Attore",
+      "Attribute": "Attributo",
+      "Accuracy": "Precisione",
+      "NoTarget": "Nessun bersaglio selezionato",
+      "AttributeFlavor": "{actor} tira {trait}",
+      "SkillFlavor": "{actor} tira {trait}",
+      "InitiativeFlavor": "{actor} tira iniziativa (valore {score})",
+      "EvasionFlavor": "{actor} tira Schivata (successi richiesti: {required})",
+      "ClashFlavor": "{actor} tira Clash con {move} (successi richiesti: {required})",
+      "MoveAccuracyFlavor": "{actor} tira Precisione per {move} (successi richiesti: {required})",
+      "MoveDamageFlavor": "{actor} tira Danno per {move}",
+      "GenericRollFlavor": "{actor} tira un pool successi",
+      "RollBreakdown": "Grezzi: {raw} | Rimossi: {removed} | Netti: {net} | Richiesti: {required}",
+      "RawSuccesses": "Successi Grezzi",
+      "RemovedSuccesses": "Successi Rimossi",
+      "NetSuccesses": "Successi Netti",
+      "RequiredSuccesses": "Successi Richiesti",
+      "Result": "Risultato",
+      "CriticalHit": "Colpo Critico",
+      "DamageSetup": "Setup Danno",
+      "PoolBeforeDefense": "Pool prima DEF",
+      "TargetDefense": "DEF/SP.DEF Bersaglio",
+      "FinalPool": "Pool finale",
+      "DamageSuccesses": "Successi Danno",
+      "CriticalBonusDice": "Dadi bonus Critico",
+      "FinalDamage": "Danno finale",
+      "TargetHP": "PS Bersaglio",
+      "TypeEffect": {
+        "Label": "Efficacia Tipo",
+        "Neutral": "Neutro",
+        "Super": "Super Efficace",
+        "Resisted": "Non Molto Efficace",
+        "Immune": "Immune"
+      }
+    },
+    "Types": {
+      "None": "Nessuno",
+      "Normal": "Normale",
+      "Bug": "Coleottero",
+      "Dark": "Buio",
+      "Dragon": "Drago",
+      "Electric": "Elettro",
+      "Fairy": "Folletto",
+      "Fighting": "Lotta",
+      "Fire": "Fuoco",
+      "Flying": "Volante",
+      "Ghost": "Spettro",
+      "Grass": "Erba",
+      "Ground": "Terra",
+      "Ice": "Ghiaccio",
+      "Poison": "Veleno",
+      "Psychic": "Psico",
+      "Rock": "Roccia",
+      "Steel": "Acciaio",
+      "Water": "Acqua"
+    },
+    "Errors": {
+      "UnknownAttribute": "Chiave attributo sconosciuta.",
+      "UnknownSkill": "Chiave abilita sconosciuta.",
+      "UnknownMove": "Mossa non trovata.",
+      "UnknownMoveTraits": "I trait della mossa non sono validi o mancano.",
+      "HPUpdateFailed": "Impossibile aggiornare i PS del bersaglio. Controlla i permessi."
+    },
+    "Sheets": {
+      "Actor": "Scheda Attore PokeRole",
+      "Move": "Scheda Mossa PokeRole"
+    }
+  },
+  "TYPES": {
+    "Actor": {
+      "trainer": "Allenatore",
+      "pokemon": "Pokemon"
+    },
+    "Item": {
+      "move": "Mossa"
+    }
+  }
+}

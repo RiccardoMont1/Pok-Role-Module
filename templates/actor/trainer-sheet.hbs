@@ -1,0 +1,187 @@
+<form class="{{cssClass}} pok-role-sheet trainer-sheet" autocomplete="off">
+  <header class="sheet-header">
+    <img
+      class="profile-img"
+      src="{{actor.img}}"
+      data-edit="img"
+      title="{{actor.name}}"
+    />
+    <div class="header-fields">
+      <h1 class="charname">
+        <input
+          name="name"
+          type="text"
+          value="{{actor.name}}"
+          placeholder="{{localize 'POKROLE.Fields.Name'}}"
+        />
+      </h1>
+      <div class="resource-grid">
+        <label>
+          <span>{{localize "POKROLE.Trainer.Role"}}</span>
+          <input
+            type="text"
+            name="system.role"
+            value="{{system.role}}"
+            placeholder="{{localize 'POKROLE.Trainer.RolePlaceholder'}}"
+          />
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Common.Level"}}</span>
+          <input
+            type="number"
+            name="system.level"
+            value="{{system.level}}"
+            min="1"
+            data-dtype="Number"
+          />
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Resources.HP"}}</span>
+          <div class="pair-input">
+            <input
+              type="number"
+              name="system.resources.hp.value"
+              value="{{system.resources.hp.value}}"
+              min="0"
+              data-dtype="Number"
+            />
+            <span>/</span>
+            <input
+              type="number"
+              name="system.resources.hp.max"
+              value="{{system.resources.hp.max}}"
+              min="1"
+              data-dtype="Number"
+            />
+          </div>
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Resources.Will"}}</span>
+          <div class="pair-input">
+            <input
+              type="number"
+              name="system.resources.will.value"
+              value="{{system.resources.will.value}}"
+              min="0"
+              data-dtype="Number"
+            />
+            <span>/</span>
+            <input
+              type="number"
+              name="system.resources.will.max"
+              value="{{system.resources.will.max}}"
+              min="1"
+              data-dtype="Number"
+            />
+          </div>
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Trainer.Badges"}}</span>
+          <input
+            type="number"
+            name="system.badges"
+            value="{{system.badges}}"
+            min="0"
+            data-dtype="Number"
+          />
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Trainer.Money"}}</span>
+          <input
+            type="number"
+            name="system.money"
+            value="{{system.money}}"
+            min="0"
+            data-dtype="Number"
+          />
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <section class="sheet-section">
+    <div class="section-title-row">
+      <h2>{{localize "POKROLE.Combat.QuickRolls"}}</h2>
+      <button type="button" data-action="roll-initiative">
+        <i class="fas fa-bolt"></i>
+        {{localize "POKROLE.Actions.RollInitiative"}}
+      </button>
+    </div>
+    <p class="inline-meta">
+      <strong>{{localize "POKROLE.Combat.InitiativeScore"}}:</strong>
+      {{initiativeScore}}
+      |
+      <strong>{{localize "POKROLE.Combat.PainPenalty"}}:</strong>
+      -{{painPenalty}}
+    </p>
+  </section>
+
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Attributes.Title"}}</h2>
+    <div class="attribute-grid">
+      {{#each attributeDefinitions as |attribute|}}
+      <div class="attribute-row">
+        <label for="{{../actor.id}}-{{attribute.key}}">
+          {{localize attribute.label}}
+        </label>
+        <input
+          id="{{../actor.id}}-{{attribute.key}}"
+          type="number"
+          name="system.attributes.{{attribute.key}}"
+          value="{{attribute.value}}"
+          min="0"
+          data-dtype="Number"
+        />
+        <button
+          type="button"
+          class="icon-button"
+          data-action="roll-attribute"
+          data-attribute="{{attribute.key}}"
+          title="{{localize 'POKROLE.Actions.RollAttribute'}}"
+        >
+          <i class="fas fa-dice-d20"></i>
+        </button>
+      </div>
+      {{/each}}
+    </div>
+  </section>
+
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Skills.Title"}}</h2>
+    <div class="attribute-grid">
+      {{#each skillDefinitions as |skill|}}
+      <div class="attribute-row">
+        <label for="{{../actor.id}}-{{skill.key}}">
+          {{localize skill.label}}
+        </label>
+        <input
+          id="{{../actor.id}}-{{skill.key}}"
+          type="number"
+          name="system.skills.{{skill.key}}"
+          value="{{skill.value}}"
+          min="0"
+          data-dtype="Number"
+        />
+        <button
+          type="button"
+          class="icon-button"
+          data-action="roll-skill"
+          data-skill="{{skill.key}}"
+          title="{{localize 'POKROLE.Actions.RollSkill'}}"
+        >
+          <i class="fas fa-dice"></i>
+        </button>
+      </div>
+      {{/each}}
+    </div>
+  </section>
+
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Common.Biography"}}</h2>
+    <textarea
+      name="system.biography"
+      rows="8"
+      placeholder="{{localize 'POKROLE.Common.BiographyPlaceholder'}}"
+    >{{system.biography}}</textarea>
+  </section>
+</form>

@@ -1,0 +1,126 @@
+<form class="{{cssClass}} pok-role-sheet move-sheet" autocomplete="off">
+  <header class="sheet-header">
+    <img
+      class="profile-img"
+      src="{{item.img}}"
+      data-edit="img"
+      title="{{item.name}}"
+    />
+    <div class="header-fields">
+      <h1 class="charname">
+        <input
+          name="name"
+          type="text"
+          value="{{item.name}}"
+          placeholder="{{localize 'POKROLE.Move.Name'}}"
+        />
+      </h1>
+    </div>
+  </header>
+
+  <section class="sheet-section">
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Move.Type"}}</span>
+        <select name="system.type">
+          {{selectOptions typeOptions selected=system.type localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Move.Category.Label"}}</span>
+        <select name="system.category">
+          {{selectOptions categoryOptions selected=system.category localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Move.AccuracyAttribute"}}</span>
+        <select name="system.accuracyAttribute">
+          {{selectOptions accuracyAttributeOptions selected=system.accuracyAttribute localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Move.AccuracySkill"}}</span>
+        <select name="system.accuracySkill">
+          {{selectOptions accuracySkillOptions selected=system.accuracySkill localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Move.Power"}}</span>
+        <input
+          type="number"
+          name="system.power"
+          value="{{system.power}}"
+          min="0"
+          data-dtype="Number"
+        />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Move.ReducedAccuracy"}}</span>
+        <input
+          type="number"
+          name="system.reducedAccuracy"
+          value="{{system.reducedAccuracy}}"
+          min="0"
+          max="6"
+          data-dtype="Number"
+        />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Move.DamageAttribute"}}</span>
+        <select name="system.damageAttribute">
+          {{selectOptions damageAttributeOptions selected=system.damageAttribute localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Move.Priority"}}</span>
+        <input
+          type="number"
+          name="system.priority"
+          value="{{system.priority}}"
+          min="-3"
+          max="5"
+          data-dtype="Number"
+        />
+      </label>
+    </div>
+  </section>
+
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Move.Flags"}}</h2>
+    <div class="checkbox-grid">
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.highCritical"
+          {{checked system.highCritical}}
+        />
+        <span>{{localize "POKROLE.Move.HighCritical"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.neverFail"
+          {{checked system.neverFail}}
+        />
+        <span>{{localize "POKROLE.Move.NeverFail"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.lethal"
+          {{checked system.lethal}}
+        />
+        <span>{{localize "POKROLE.Move.Lethal"}}</span>
+      </label>
+    </div>
+  </section>
+
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Common.Description"}}</h2>
+    <textarea
+      name="system.description"
+      rows="10"
+      placeholder="{{localize 'POKROLE.Move.DescriptionPlaceholder'}}"
+    >{{system.description}}</textarea>
+  </section>
+</form>

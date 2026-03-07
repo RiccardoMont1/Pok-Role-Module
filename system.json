@@ -1,0 +1,49 @@
+{
+  "id": "pok-role-module",
+  "title": "Poke Role Module",
+  "description": "MVP Foundry VTT v13 system scaffold for PokeRole 2.0 inspired campaigns.",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "authors": [
+    {
+      "name": "Pok-Role-Module Contributors"
+    }
+  ],
+  "esmodules": [
+    "pok-role-module.mjs"
+  ],
+  "styles": [
+    "styles/pok-role-module.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "it",
+      "name": "Italiano",
+      "path": "lang/it.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "trainer": {},
+      "pokemon": {}
+    },
+    "Item": {
+      "move": {}
+    }
+  },
+  "grid": {
+    "distance": 1,
+    "units": "m"
+  },
+  "primaryTokenAttribute": "resources.hp",
+  "secondaryTokenAttribute": "resources.will",
+  "initiative": "1d6 + @attributes.dexterity + @skills.alert"
+}

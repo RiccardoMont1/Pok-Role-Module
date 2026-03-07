@@ -1,0 +1,176 @@
+.pok-role-sheet {
+  color: var(--color-text-dark-primary);
+}
+
+.pok-role-sheet .sheet-header {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 12px;
+  align-items: start;
+  margin-bottom: 12px;
+}
+
+.pok-role-sheet .profile-img {
+  width: 112px;
+  height: 112px;
+  object-fit: cover;
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 6px;
+}
+
+.pok-role-sheet .charname input {
+  width: 100%;
+  height: 42px;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.pok-role-sheet .resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.pok-role-sheet label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pok-role-sheet .pair-input {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 6px;
+  align-items: center;
+}
+
+.pok-role-sheet .sheet-section {
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.pok-role-sheet .sheet-section h2 {
+  margin: 0 0 8px;
+  border-bottom: 1px solid var(--color-border-light-primary);
+}
+
+.pok-role-sheet .section-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.pok-role-sheet .button-row {
+  display: flex;
+  gap: 6px;
+}
+
+.pok-role-sheet .inline-meta {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.pok-role-sheet .attribute-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px;
+}
+
+.pok-role-sheet .attribute-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 36px;
+  gap: 6px;
+  align-items: end;
+}
+
+.pok-role-sheet .icon-button {
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+}
+
+.pok-role-sheet .icon-button.danger {
+  color: var(--color-level-error);
+}
+
+.pok-role-sheet textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 96px;
+}
+
+.pok-role-sheet .moves-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.pok-role-sheet .moves-table th,
+.pok-role-sheet .moves-table td {
+  padding: 6px;
+  border-bottom: 1px solid var(--color-border-light-primary);
+  text-align: left;
+  vertical-align: top;
+}
+
+.pok-role-sheet .moves-table .move-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pok-role-sheet .moves-table .move-name img {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 4px;
+}
+
+.pok-role-sheet .moves-table .move-actions {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.pok-role-sheet .empty-state {
+  margin: 0;
+  font-style: italic;
+}
+
+.pok-role-sheet .form-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.pok-role-sheet .form-grid.two-col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pok-role-sheet .checkbox-grid {
+  display: grid;
+  gap: 6px;
+}
+
+.pok-role-sheet .checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pok-role-chat-card h3 {
+  margin: 0 0 6px;
+}
+
+.pok-role-chat-card p {
+  margin: 2px 0;
+}
+
+.pok-role-chat-card hr {
+  margin: 6px 0;
+}

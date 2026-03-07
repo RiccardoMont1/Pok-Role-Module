@@ -1,0 +1,72 @@
+<div class="pok-role-chat-card">
+  <h3>{{moveName}}</h3>
+  <p>
+    <strong>{{localize "POKROLE.Chat.Actor"}}:</strong>
+    {{actorName}}
+  </p>
+  <p>
+    <strong>{{localize "POKROLE.Move.Type"}}:</strong>
+    {{moveTypeLabel}}
+    |
+    <strong>{{localize "POKROLE.Move.Category.Label"}}:</strong>
+    {{categoryLabel}}
+  </p>
+  <hr />
+  <p>
+    <strong>{{localize "POKROLE.Chat.Accuracy"}}:</strong>
+    {{accuracyAttributeLabel}} + {{accuracySkillLabel}}
+  </p>
+  <p>
+    {{localize "POKROLE.Chat.RawSuccesses"}}: {{rawAccuracySuccesses}}
+    |
+    {{localize "POKROLE.Chat.RemovedSuccesses"}}: {{removedAccuracySuccesses}}
+    |
+    {{localize "POKROLE.Chat.NetSuccesses"}}: {{netAccuracySuccesses}}
+    |
+    {{localize "POKROLE.Chat.RequiredSuccesses"}}: {{requiredSuccesses}}
+  </p>
+  <p>
+    <strong>{{localize "POKROLE.Chat.Result"}}:</strong>
+    {{#if hit}}
+      {{localize "POKROLE.Common.Hit"}}
+    {{else}}
+      {{localize "POKROLE.Common.Miss"}}
+    {{/if}}
+    {{#if critical}}
+      ({{localize "POKROLE.Chat.CriticalHit"}})
+    {{/if}}
+  </p>
+  {{#if showDamageSection}}
+  <hr />
+  <p>
+    <strong>{{localize "POKROLE.Chat.DamageSetup"}}:</strong>
+    {{localize "POKROLE.Chat.PoolBeforeDefense"}} {{poolBeforeDefense}} ,
+    {{localize "POKROLE.Chat.TargetDefense"}} {{defense}} ,
+    {{localize "POKROLE.Chat.FinalPool"}} {{damagePool}}
+  </p>
+  <p>
+    {{localize "POKROLE.Chat.DamageSuccesses"}}: {{damageSuccesses}}
+    |
+    STAB: +{{stabDice}}
+    |
+    {{localize "POKROLE.Chat.CriticalBonusDice"}}: +{{criticalDice}}
+  </p>
+  <p>
+    <strong>{{localize "POKROLE.Chat.TypeEffect.Label"}}:</strong>
+    {{typeLabel}}
+  </p>
+  <p>
+    <strong>{{localize "POKROLE.Chat.FinalDamage"}}:</strong>
+    {{finalDamage}}
+    {{#if targetName}}
+      ({{targetName}})
+    {{/if}}
+  </p>
+  {{#if hasHpUpdate}}
+  <p>
+    <strong>{{localize "POKROLE.Chat.TargetHP"}}:</strong>
+    {{hpBefore}} -> {{hpAfter}}
+  </p>
+  {{/if}}
+  {{/if}}
+</div>

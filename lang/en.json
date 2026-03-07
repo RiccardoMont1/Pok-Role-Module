@@ -1,0 +1,199 @@
+{
+  "POKROLE": {
+    "Fields": {
+      "Name": "Name"
+    },
+    "Common": {
+      "Level": "Level",
+      "Biography": "Biography",
+      "BiographyPlaceholder": "Notes, background and important details...",
+      "Description": "Description",
+      "Actions": "Actions",
+      "Unknown": "Unknown",
+      "None": "None",
+      "Hit": "Hit",
+      "Miss": "Miss"
+    },
+    "Resources": {
+      "HP": "HP",
+      "Will": "Will"
+    },
+    "Trainer": {
+      "Role": "Role",
+      "RolePlaceholder": "Researcher, Ranger, Ace Trainer...",
+      "Badges": "Badges",
+      "Money": "Money"
+    },
+    "Pokemon": {
+      "Species": "Species",
+      "SpeciesPlaceholder": "Pikachu, Charmander...",
+      "Nature": "Nature",
+      "NaturePlaceholder": "Brave, Calm, Timid...",
+      "TypePrimary": "Primary Type",
+      "TypeSecondary": "Secondary Type",
+      "Loyalty": "Loyalty",
+      "Happiness": "Happiness"
+    },
+    "Attributes": {
+      "Title": "Attributes",
+      "Strength": "Strength",
+      "Dexterity": "Dexterity",
+      "Vitality": "Vitality",
+      "Special": "Special",
+      "Insight": "Insight",
+      "Tough": "Tough",
+      "Beauty": "Beauty",
+      "Cool": "Cool",
+      "Cute": "Cute",
+      "Clever": "Clever",
+      "Allure": "Allure"
+    },
+    "Skills": {
+      "Title": "Skills",
+      "Alert": "Alert",
+      "Athletic": "Athletic",
+      "Brawl": "Brawl",
+      "Channel": "Channel",
+      "Clash": "Clash",
+      "Crafts": "Crafts",
+      "Empathy": "Empathy",
+      "Etiquette": "Etiquette",
+      "Evasion": "Evasion",
+      "Intimidate": "Intimidate",
+      "Lore": "Lore",
+      "Medicine": "Medicine",
+      "Nature": "Nature",
+      "Perform": "Perform",
+      "Science": "Science",
+      "Stealth": "Stealth",
+      "Throw": "Throw",
+      "Weapons": "Weapons"
+    },
+    "Move": {
+      "TitlePlural": "Moves",
+      "Name": "Move Name",
+      "New": "New Move",
+      "Empty": "No moves yet. Add one to start rolling.",
+      "NoStat": "No Stat",
+      "Type": "Type",
+      "Category": {
+        "Label": "Category",
+        "Physical": "Physical",
+        "Special": "Special",
+        "Support": "Support"
+      },
+      "Power": "Power",
+      "ReducedAccuracy": "Reduced Accuracy",
+      "AccuracyAttribute": "Accuracy Attribute",
+      "AccuracySkill": "Accuracy Skill",
+      "AccuracySummary": "Accuracy",
+      "DamageSummary": "Damage Pool",
+      "DamageAttribute": "Damage Attribute",
+      "DamageAttributeAuto": "Auto (from category)",
+      "Flags": "Flags",
+      "Priority": "Priority",
+      "PriorityWithValue": "Priority {value}",
+      "HighCritical": "High Critical",
+      "NeverFail": "Never Fail",
+      "Lethal": "Lethal",
+      "SupportNoDamage": "Support (no direct damage)",
+      "DescriptionPlaceholder": "Effects, target rules and edge cases."
+    },
+    "Actions": {
+      "RollAttribute": "Roll Attribute",
+      "RollSkill": "Roll Skill",
+      "RollMove": "Roll Move",
+      "RollClash": "Roll Clash",
+      "RollInitiative": "Roll Initiative",
+      "RollEvasion": "Roll Evasion",
+      "NewMove": "Add Move",
+      "Edit": "Edit",
+      "Delete": "Delete"
+    },
+    "Combat": {
+      "QuickRolls": "Quick Rolls",
+      "InitiativeScore": "Initiative Score",
+      "Defense": "Defense",
+      "SpecialDefense": "Sp. Defense",
+      "PainPenalty": "Pain Penalty",
+      "ActionNumber": "Action Number"
+    },
+    "Chat": {
+      "Actor": "Actor",
+      "Attribute": "Attribute",
+      "Accuracy": "Accuracy",
+      "NoTarget": "No target selected",
+      "AttributeFlavor": "{actor} rolls {trait}",
+      "SkillFlavor": "{actor} rolls {trait}",
+      "InitiativeFlavor": "{actor} rolls initiative (score {score})",
+      "EvasionFlavor": "{actor} rolls Evasion (required successes: {required})",
+      "ClashFlavor": "{actor} rolls Clash with {move} (required successes: {required})",
+      "MoveAccuracyFlavor": "{actor} rolls Accuracy for {move} (required successes: {required})",
+      "MoveDamageFlavor": "{actor} rolls Damage for {move}",
+      "GenericRollFlavor": "{actor} rolls a success pool",
+      "RollBreakdown": "Raw: {raw} | Removed: {removed} | Net: {net} | Required: {required}",
+      "RawSuccesses": "Raw Successes",
+      "RemovedSuccesses": "Removed Successes",
+      "NetSuccesses": "Net Successes",
+      "RequiredSuccesses": "Required Successes",
+      "Result": "Result",
+      "CriticalHit": "Critical Hit",
+      "DamageSetup": "Damage Setup",
+      "PoolBeforeDefense": "Pool before DEF",
+      "TargetDefense": "Target DEF/S.DEF",
+      "FinalPool": "Final pool",
+      "DamageSuccesses": "Damage successes",
+      "CriticalBonusDice": "Critical bonus dice",
+      "FinalDamage": "Final damage",
+      "TargetHP": "Target HP",
+      "TypeEffect": {
+        "Label": "Type Effect",
+        "Neutral": "Neutral",
+        "Super": "Super Effective",
+        "Resisted": "Not Very Effective",
+        "Immune": "Immune"
+      }
+    },
+    "Types": {
+      "None": "None",
+      "Normal": "Normal",
+      "Bug": "Bug",
+      "Dark": "Dark",
+      "Dragon": "Dragon",
+      "Electric": "Electric",
+      "Fairy": "Fairy",
+      "Fighting": "Fighting",
+      "Fire": "Fire",
+      "Flying": "Flying",
+      "Ghost": "Ghost",
+      "Grass": "Grass",
+      "Ground": "Ground",
+      "Ice": "Ice",
+      "Poison": "Poison",
+      "Psychic": "Psychic",
+      "Rock": "Rock",
+      "Steel": "Steel",
+      "Water": "Water"
+    },
+    "Errors": {
+      "UnknownAttribute": "Unknown attribute key.",
+      "UnknownSkill": "Unknown skill key.",
+      "UnknownMove": "Move not found.",
+      "UnknownMoveTraits": "Move traits are invalid or missing.",
+      "HPUpdateFailed": "Unable to update target HP. Check permissions."
+    },
+    "Sheets": {
+      "Actor": "PokeRole Actor Sheet",
+      "Move": "PokeRole Move Sheet"
+    }
+  },
+  "TYPES": {
+    "Actor": {
+      "trainer": "Trainer",
+      "pokemon": "Pokemon"
+    },
+    "Item": {
+      "move": "Move"
+    }
+  }
+}
