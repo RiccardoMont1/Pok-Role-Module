@@ -40,12 +40,25 @@
         <label>
           <span>{{localize "POKROLE.Trainer.CardRank"}}</span>
           <input
-            type="number"
+            type="hidden"
             name="system.level"
             value="{{system.level}}"
-            min="1"
             data-dtype="Number"
           />
+          <div class="track-bar">
+            {{#each levelTrack.slots as |slot|}}
+            <button
+              type="button"
+              class="track-box {{#if slot.active}}is-active{{/if}}"
+              data-action="set-track"
+              data-track-field="system.level"
+              data-track-value="{{slot.value}}"
+              data-track-min="{{../levelTrack.min}}"
+              data-track-max="{{../levelTrack.max}}"
+              title="{{localize 'POKROLE.Trainer.CardRank'}} {{slot.value}}"
+            ></button>
+            {{/each}}
+          </div>
         </label>
       </header>
 
@@ -62,33 +75,71 @@
         <label>
           <span>{{localize "POKROLE.Trainer.Money"}}</span>
           <input
-            type="number"
+            type="hidden"
             name="system.money"
             value="{{system.money}}"
-            min="0"
             data-dtype="Number"
           />
+          <div class="track-bar">
+            {{#each moneyTrack.slots as |slot|}}
+            <button
+              type="button"
+              class="track-box {{#if slot.active}}is-active{{/if}}"
+              data-action="set-track"
+              data-track-field="system.money"
+              data-track-value="{{slot.value}}"
+              data-track-min="{{../moneyTrack.min}}"
+              data-track-max="{{../moneyTrack.max}}"
+              title="{{localize 'POKROLE.Trainer.Money'}} {{slot.value}}"
+            ></button>
+            {{/each}}
+          </div>
         </label>
         <label>
           <span>{{localize "POKROLE.Trainer.Badges"}}</span>
           <input
-            type="number"
+            type="hidden"
             name="system.badges"
             value="{{system.badges}}"
-            min="0"
             data-dtype="Number"
           />
+          <div class="track-bar">
+            {{#each badgesTrack.slots as |slot|}}
+            <button
+              type="button"
+              class="track-box {{#if slot.active}}is-active{{/if}}"
+              data-action="set-track"
+              data-track-field="system.badges"
+              data-track-value="{{slot.value}}"
+              data-track-min="{{../badgesTrack.min}}"
+              data-track-max="{{../badgesTrack.max}}"
+              title="{{localize 'POKROLE.Trainer.Badges'}} {{slot.value}}"
+            ></button>
+            {{/each}}
+          </div>
         </label>
         <label>
           <span>{{localize "POKROLE.Combat.ActionNumber"}}</span>
           <input
-            type="number"
+            type="hidden"
             name="system.combat.actionNumber"
             value="{{system.combat.actionNumber}}"
-            min="1"
-            max="5"
             data-dtype="Number"
           />
+          <div class="track-bar">
+            {{#each actionTrack.slots as |slot|}}
+            <button
+              type="button"
+              class="track-box {{#if slot.active}}is-active{{/if}}"
+              data-action="set-track"
+              data-track-field="system.combat.actionNumber"
+              data-track-value="{{slot.value}}"
+              data-track-min="{{../actionTrack.min}}"
+              data-track-max="{{../actionTrack.max}}"
+              title="{{localize 'POKROLE.Combat.ActionNumber'}} {{slot.value}}"
+            ></button>
+            {{/each}}
+          </div>
         </label>
       </div>
 
@@ -138,6 +189,7 @@
       <p class="inline-meta">
         <strong>{{localize "POKROLE.Combat.InitiativeScore"}}:</strong>
         {{initiativeScore}}
+        ({{localize "POKROLE.Combat.BaseInitiativeScore"}}: {{baseInitiativeScore}})
         |
         <strong>{{localize "POKROLE.Combat.PainPenalty"}}:</strong>
         -{{painPenalty}}
@@ -151,17 +203,29 @@
       <div class="attribute-grid">
         {{#each attributeDefinitions as |attribute|}}
         <div class="attribute-row">
-          <label for="{{../actor.id}}-{{attribute.key}}">
+          <label>
             {{localize attribute.label}}
           </label>
           <input
-            id="{{../actor.id}}-{{attribute.key}}"
-            type="number"
+            type="hidden"
             name="system.attributes.{{attribute.key}}"
             value="{{attribute.value}}"
-            min="0"
             data-dtype="Number"
           />
+          <div class="track-bar compact">
+            {{#each attribute.track.slots as |slot|}}
+            <button
+              type="button"
+              class="track-box {{#if slot.active}}is-active{{/if}}"
+              data-action="set-track"
+              data-track-field="system.attributes.{{../key}}"
+              data-track-value="{{slot.value}}"
+              data-track-min="{{../track.min}}"
+              data-track-max="{{../track.max}}"
+              title="{{localize ../label}} {{slot.value}}"
+            ></button>
+            {{/each}}
+          </div>
           <button
             type="button"
             class="icon-button"
@@ -181,17 +245,29 @@
       <div class="attribute-grid">
         {{#each skillDefinitions as |skill|}}
         <div class="attribute-row">
-          <label for="{{../actor.id}}-{{skill.key}}">
+          <label>
             {{localize skill.label}}
           </label>
           <input
-            id="{{../actor.id}}-{{skill.key}}"
-            type="number"
+            type="hidden"
             name="system.skills.{{skill.key}}"
             value="{{skill.value}}"
-            min="0"
             data-dtype="Number"
           />
+          <div class="track-bar compact">
+            {{#each skill.track.slots as |slot|}}
+            <button
+              type="button"
+              class="track-box {{#if slot.active}}is-active{{/if}}"
+              data-action="set-track"
+              data-track-field="system.skills.{{../key}}"
+              data-track-value="{{slot.value}}"
+              data-track-min="{{../track.min}}"
+              data-track-max="{{../track.max}}"
+              title="{{localize ../label}} {{slot.value}}"
+            ></button>
+            {{/each}}
+          </div>
           <button
             type="button"
             class="icon-button"
@@ -206,13 +282,109 @@
       </div>
     </section>
 
-    <section class="sheet-section trainer-bio-panel">
-      <h2>{{localize "POKROLE.Common.Biography"}}</h2>
-      <textarea
-        name="system.biography"
-        rows="10"
-        placeholder="{{localize 'POKROLE.Common.BiographyPlaceholder'}}"
-      >{{system.biography}}</textarea>
+    <section class="trainer-side-column">
+      <section class="sheet-section trainer-inventory-panel">
+        <h2>{{localize "POKROLE.Trainer.InventoryTitle"}}</h2>
+
+        <label class="inventory-track-row">
+          <span>{{localize "POKROLE.Trainer.Potion"}}</span>
+          <input
+            type="hidden"
+            name="system.inventory.potion"
+            value="{{system.inventory.potion}}"
+            data-dtype="Number"
+          />
+          <div class="track-bar compact">
+            {{#each inventoryTracks.potion.slots as |slot|}}
+            <button
+              type="button"
+              class="track-box {{#if slot.active}}is-active{{/if}}"
+              data-action="set-track"
+              data-track-field="system.inventory.potion"
+              data-track-value="{{slot.value}}"
+              data-track-min="{{../inventoryTracks.potion.min}}"
+              data-track-max="{{../inventoryTracks.potion.max}}"
+              title="{{localize 'POKROLE.Trainer.Potion'}} {{slot.value}}"
+            ></button>
+            {{/each}}
+          </div>
+        </label>
+
+        <label class="inventory-track-row">
+          <span>{{localize "POKROLE.Trainer.SuperPotion"}}</span>
+          <input
+            type="hidden"
+            name="system.inventory.superPotion"
+            value="{{system.inventory.superPotion}}"
+            data-dtype="Number"
+          />
+          <div class="track-bar compact">
+            {{#each inventoryTracks.superPotion.slots as |slot|}}
+            <button
+              type="button"
+              class="track-box {{#if slot.active}}is-active{{/if}}"
+              data-action="set-track"
+              data-track-field="system.inventory.superPotion"
+              data-track-value="{{slot.value}}"
+              data-track-min="{{../inventoryTracks.superPotion.min}}"
+              data-track-max="{{../inventoryTracks.superPotion.max}}"
+              title="{{localize 'POKROLE.Trainer.SuperPotion'}} {{slot.value}}"
+            ></button>
+            {{/each}}
+          </div>
+        </label>
+
+        <label class="inventory-track-row">
+          <span>{{localize "POKROLE.Trainer.HyperPotion"}}</span>
+          <input
+            type="hidden"
+            name="system.inventory.hyperPotion"
+            value="{{system.inventory.hyperPotion}}"
+            data-dtype="Number"
+          />
+          <div class="track-bar compact">
+            {{#each inventoryTracks.hyperPotion.slots as |slot|}}
+            <button
+              type="button"
+              class="track-box {{#if slot.active}}is-active{{/if}}"
+              data-action="set-track"
+              data-track-field="system.inventory.hyperPotion"
+              data-track-value="{{slot.value}}"
+              data-track-min="{{../inventoryTracks.hyperPotion.min}}"
+              data-track-max="{{../inventoryTracks.hyperPotion.max}}"
+              title="{{localize 'POKROLE.Trainer.HyperPotion'}} {{slot.value}}"
+            ></button>
+            {{/each}}
+          </div>
+        </label>
+
+        <label class="inventory-notes-field">
+          <span>{{localize "POKROLE.Trainer.InventoryItems"}}</span>
+          <textarea
+            name="system.inventory.items"
+            rows="5"
+            placeholder="{{localize 'POKROLE.Trainer.InventoryPlaceholder'}}"
+          >{{system.inventory.items}}</textarea>
+        </label>
+      </section>
+
+      <section class="sheet-section trainer-bio-panel">
+        <h2>{{localize "POKROLE.Common.Biography"}}</h2>
+        <textarea
+          name="system.biography"
+          rows="6"
+          placeholder="{{localize 'POKROLE.Common.BiographyPlaceholder'}}"
+        >{{system.biography}}</textarea>
+      </section>
+
+      <section class="sheet-section trainer-achievements-panel">
+        <h2>{{localize "POKROLE.Trainer.Achievements"}}</h2>
+        <textarea
+          name="system.inventory.achievements"
+          rows="4"
+          placeholder="{{localize 'POKROLE.Trainer.AchievementsPlaceholder'}}"
+        >{{system.inventory.achievements}}</textarea>
+      </section>
     </section>
   </section>
 </form>

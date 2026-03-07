@@ -25,6 +25,19 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     });
   }
 
+  setPosition(options = {}) {
+    if (this.actor?.type === "trainer") {
+      const currentPosition = this.position ?? {};
+      const baseWidth = Number(options.width ?? currentPosition.width ?? this.options.width ?? 960);
+      const baseHeight = Number(
+        options.height ?? currentPosition.height ?? this.options.height ?? 860
+      );
+      options.width = Math.max(baseWidth, 960);
+      options.height = Math.max(baseHeight, 860);
+    }
+    return super.setPosition(options);
+  }
+
   get template() {
     return TEMPLATE_BY_TYPE[this.actor.type] || TEMPLATE_BY_TYPE.trainer;
   }
@@ -34,16 +47,28 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.system = this.actor.system;
     context.attributeDefinitions = ATTRIBUTE_DEFINITIONS.map((attribute) => ({
       ...attribute,
-      value: Number(this.actor.system.attributes?.[attribute.key] ?? 0)
+      value: Number(this.actor.system.attributes?.[attribute.key] ?? 0),
+      track: this._buildTrack(this.actor.system.attributes?.[attribute.key], 5, 0)
     }));
     context.skillDefinitions = SKILL_DEFINITIONS.map((skill) => ({
       ...skill,
-      value: Number(this.actor.system.skills?.[skill.key] ?? 0)
+      value: Number(this.actor.system.skills?.[skill.key] ?? 0),
+      track: this._buildTrack(this.actor.system.skills?.[skill.key], 5, 0)
     }));
-    context.initiativeScore = this.actor.getInitiativeScore();
+    context.initiativeScore = Number(this.actor.system.combat?.initiative ?? 0);
+    context.baseInitiativeScore = this.actor.getInitiativeScore();
     context.defense = this.actor.getDefense("physical");
     context.specialDefense = this.actor.getDefense("special");
     context.painPenalty = this.actor.getPainPenalty();
+    context.actionTrack = this._buildTrack(this.actor.system.combat?.actionNumber, 5, 1);
+    context.levelTrack = this._buildTrack(this.actor.system.level, 5, 1);
+    context.moneyTrack = this._buildTrack(this.actor.system.money, 5, 0);
+    context.badgesTrack = this._buildTrack(this.actor.system.badges, 5, 0);
+    context.inventoryTracks = {
+      potion: this._buildTrack(this.actor.system.inventory?.potion, 5, 0),
+      superPotion: this._buildTrack(this.actor.system.inventory?.superPotion, 5, 0),
+      hyperPotion: this._buildTrack(this.actor.system.inventory?.hyperPotion, 5, 0)
+    };
     context.typeOptions = Object.fromEntries(
       TYPE_OPTIONS.map((typeKey) => [
         typeKey,
@@ -79,6 +104,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       this.actor.resetActionCounter()
     );
     html.find("[data-action='roll-evasion']").on("click", () => this.actor.rollEvasion());
+    html.find("[data-action='set-track']").on("click", (event) => this._onSetTrack(event));
 
     html.find("[data-action='create-move']").on("click", (event) =>
       this._onCreateMove(event)
@@ -169,6 +195,31 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     await this.actor.deleteEmbeddedDocuments("Item", [itemId]);
   }
 
+  async _onSetTrack(event) {
+    event.preventDefault();
+    if (!this.isEditable) return;
+
+    const button = event.currentTarget;
+    const field = button.dataset.trackField;
+    const value = Number(button.dataset.trackValue);
+    const min = Number(button.dataset.trackMin ?? 1);
+    const max = Number(button.dataset.trackMax ?? 5);
+    if (!field || !Number.isFinite(value) || !Number.isFinite(min) || !Number.isFinite(max)) {
+      return;
+    }
+
+    const systemPath = field.startsWith("system.") ? field.slice(7) : field;
+    const currentValue = Number(foundry.utils.getProperty(this.actor.system, systemPath) ?? min);
+    let nextValue = value;
+
+    if (min === 0 && currentValue === value) {
+      nextValue = value - 1;
+    }
+
+    nextValue = Math.min(Math.max(nextValue, min), max);
+    await this.actor.update({ [field]: nextValue });
+  }
+
   _prepareMoveData(move) {
     const category = move.system.category || "physical";
     const moveType = move.system.type || "normal";
@@ -230,5 +281,24 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const damageAttribute = moveSystem.damageAttribute || "auto";
     if (damageAttribute !== "auto") return damageAttribute;
     return moveSystem.category === "special" ? "special" : "strength";
+  }
+
+  _buildTrack(currentValue, maxValue, minValue = 1) {
+    const numericCurrent = Number(currentValue);
+    const normalizedCurrent = Number.isFinite(numericCurrent) ? numericCurrent : minValue;
+    const clampedCurrent = Math.min(Math.max(normalizedCurrent, minValue), maxValue);
+    const slots = [];
+    for (let slotValue = 1; slotValue <= maxValue; slotValue += 1) {
+      slots.push({
+        value: slotValue,
+        active: slotValue <= clampedCurrent
+      });
+    }
+    return {
+      min: minValue,
+      max: maxValue,
+      value: clampedCurrent,
+      slots
+    };
   }
 }

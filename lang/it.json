@@ -24,7 +24,15 @@
       "RolePlaceholder": "Ricercatore, Ranger, Allenatore...",
       "Badges": "Medaglie",
       "Money": "Denaro",
-      "CardRank": "Grado Tessera Allenatore"
+      "CardRank": "Grado Tessera Allenatore",
+      "InventoryTitle": "Inventario",
+      "Potion": "Pozione",
+      "SuperPotion": "Super Pozione",
+      "HyperPotion": "Iper Pozione",
+      "InventoryItems": "Oggetti",
+      "InventoryPlaceholder": "Pokeball, corde, mappe, strumenti chiave...",
+      "Achievements": "Traguardi",
+      "AchievementsPlaceholder": "Medaglie, catture e obiettivi..."
     },
     "Pokemon": {
       "Species": "Specie",
@@ -136,6 +144,7 @@
     "Combat": {
       "QuickRolls": "Tiri Rapidi",
       "InitiativeScore": "Valore Iniziativa",
+      "BaseInitiativeScore": "Base",
       "Defense": "Difesa",
       "SpecialDefense": "Difesa Sp.",
       "PainPenalty": "Penalita Dolore",

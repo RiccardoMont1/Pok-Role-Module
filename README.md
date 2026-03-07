@@ -23,6 +23,7 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
     - each new action by the same actor in the same round requires `+1` success (Action Number `1..5`)
     - the same move can be used multiple times in the same round
     - manual reset button available on sheets (`Reset Actions`)
+    - at each new combat turn, active actor resets `Action Number` and turn initiative
   - Move accuracy resolution:
     - Accuracy pool = `Accuracy Attribute + Accuracy Skill`
     - Reduced Accuracy + Pain penalization remove successes

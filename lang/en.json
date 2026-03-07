@@ -24,7 +24,15 @@
       "RolePlaceholder": "Researcher, Ranger, Ace Trainer...",
       "Badges": "Badges",
       "Money": "Money",
-      "CardRank": "Trainer's Card Rank"
+      "CardRank": "Trainer's Card Rank",
+      "InventoryTitle": "Inventory",
+      "Potion": "Potion",
+      "SuperPotion": "Super Potion",
+      "HyperPotion": "Hyper Potion",
+      "InventoryItems": "Items",
+      "InventoryPlaceholder": "Pokeballs, ropes, maps, key items...",
+      "Achievements": "Achievements",
+      "AchievementsPlaceholder": "Medals, catches and milestones..."
     },
     "Pokemon": {
       "Species": "Species",
@@ -136,6 +144,7 @@
     "Combat": {
       "QuickRolls": "Quick Rolls",
       "InitiativeScore": "Initiative Score",
+      "BaseInitiativeScore": "Base",
       "Defense": "Defense",
       "SpecialDefense": "Sp. Defense",
       "PainPenalty": "Pain Penalty",

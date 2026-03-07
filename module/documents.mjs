@@ -268,12 +268,14 @@ export class PokRoleActor extends Actor {
       dexterity: this.getTraitValue("dexterity"),
       alert: this.getSkillValue("alert")
     }).evaluate({ async: true });
+    const rolledInitiative = Math.max(toNumber(roll.total, 0), 0);
+    await this.update({ "system.combat.initiative": rolledInitiative });
 
     await roll.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: this }),
       flavor: game.i18n.format("POKROLE.Chat.InitiativeFlavor", {
         actor: this.name,
-        score: this.getInitiativeScore()
+        score: rolledInitiative
       })
     });
 
@@ -810,10 +812,24 @@ export class PokRoleActor extends Actor {
   }
 
   async resetActionCounter(options = {}) {
+    await this.resetTurnState({ ...options, resetInitiative: false });
+  }
+
+  async resetTurnState(options = {}) {
     const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
+    const updates = {};
     const currentActionNumber = clamp(toNumber(this.system.combat?.actionNumber, 1), 1, 5);
     if (currentActionNumber !== 1) {
-      await this.update({ "system.combat.actionNumber": 1 });
+      updates["system.combat.actionNumber"] = 1;
+    }
+    if (options.resetInitiative !== false) {
+      const currentInitiative = Math.max(toNumber(this.system.combat?.initiative, 0), 0);
+      if (currentInitiative !== 0) {
+        updates["system.combat.initiative"] = 0;
+      }
+    }
+    if (Object.keys(updates).length > 0) {
+      await this.update(updates);
     }
     if (roundKey) {
       await this.setFlag(POKROLE.ID, COMBAT_FLAG_KEYS.LAST_ACTION_ROUND, roundKey);

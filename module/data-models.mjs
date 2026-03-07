@@ -25,10 +25,10 @@ function resourceField(initial) {
   });
 }
 
-function valueSchema(definitions, initial = 1) {
+function valueSchema(definitions, initial = 1, options = {}) {
   const schema = {};
   for (const { key } of definitions) {
-    schema[key] = integerField(initial, { min: 0 });
+    schema[key] = integerField(initial, { min: 0, ...options });
   }
   return schema;
 }
@@ -45,10 +45,11 @@ class BaseCharacterDataModel extends foundry.abstract.TypeDataModel {
         hp: resourceField(10),
         will: resourceField(3)
       }),
-      attributes: new SchemaField(valueSchema(ATTRIBUTE_DEFINITIONS)),
-      skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 0)),
+      attributes: new SchemaField(valueSchema(ATTRIBUTE_DEFINITIONS, 1, { max: 5 })),
+      skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 0, { max: 5 })),
       combat: new SchemaField({
-        actionNumber: integerField(1, { min: 1, max: 5 })
+        actionNumber: integerField(1, { min: 1, max: 5 }),
+        initiative: integerField(0, { min: 0 })
       })
     };
   }
@@ -59,10 +60,17 @@ export class TrainerDataModel extends BaseCharacterDataModel {
     const base = super.defineSchema();
     return {
       ...base,
-      level: integerField(1, { min: 1 }),
+      level: integerField(1, { min: 1, max: 5 }),
       role: trimmedStringField(""),
-      money: integerField(0, { min: 0 }),
-      badges: integerField(0, { min: 0 })
+      money: integerField(0, { min: 0, max: 5 }),
+      badges: integerField(0, { min: 0, max: 5 }),
+      inventory: new SchemaField({
+        potion: integerField(0, { min: 0, max: 5 }),
+        superPotion: integerField(0, { min: 0, max: 5 }),
+        hyperPotion: integerField(0, { min: 0, max: 5 }),
+        items: trimmedStringField(""),
+        achievements: trimmedStringField("")
+      })
     };
   }
 }
