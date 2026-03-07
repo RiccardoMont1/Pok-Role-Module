@@ -210,13 +210,13 @@
 
 .trainer-sheet {
   background:
-    radial-gradient(circle at 6px 6px, #dfe3eb 2px, transparent 2px) 0 0 / 14px 14px,
-    linear-gradient(180deg, #d4d7de 0%, #c8ccd5 100%);
-  border: 1px solid #7f8595;
+    radial-gradient(circle at 6px 6px, #bcc3d2 2px, transparent 2px) 0 0 / 14px 14px,
+    linear-gradient(180deg, #aab1c1 0%, #979faf 100%);
+  border: 1px solid #5f6778;
   border-radius: 14px;
   padding: 10px;
   width: 100%;
-  min-width: 980px;
+  min-width: 940px;
   min-height: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -229,15 +229,15 @@
 
 .trainer-sheet .trainer-top {
   display: grid;
-  grid-template-columns: minmax(250px, 0.7fr) minmax(520px, 1.9fr);
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 10px;
   margin-bottom: 10px;
   align-items: start;
 }
 
 .trainer-sheet .trainer-portrait-card {
-  background: linear-gradient(180deg, #3f434c 0%, #2f333b 100%);
-  border: 1px solid #21252e;
+  background: linear-gradient(180deg, #343942 0%, #252a32 100%);
+  border: 1px solid #1a1f26;
   border-radius: 12px;
   padding: 10px;
   display: grid;
@@ -301,8 +301,8 @@
 }
 
 .trainer-sheet .trainer-identity-card {
-  background: linear-gradient(180deg, #eff1f6 0%, #e3e7ef 100%);
-  border: 1px solid #a0a7b6;
+  background: linear-gradient(180deg, #d6dbe6 0%, #c8cfdd 100%);
+  border: 1px solid #7f889c;
   border-radius: 12px;
   padding: 8px;
   display: grid;
@@ -381,8 +381,8 @@
 .trainer-sheet .trainer-identity-grid input,
 .trainer-sheet .trainer-status-grid input {
   border-radius: 999px;
-  border: 2px solid #8f96a8;
-  background: #f8f9fc;
+  border: 2px solid #70798f;
+  background: #eef2fa;
   height: 28px;
   padding: 0 10px;
 }
@@ -433,8 +433,8 @@
   height: 18px;
   min-width: 18px;
   border-radius: 4px;
-  border: 1px solid #8790a5;
-  background: #edf0f7;
+  border: 1px solid #6f7890;
+  background: #d8dde9;
   padding: 0;
   margin: 0;
   line-height: 1;
@@ -462,25 +462,26 @@
 
 .trainer-sheet .trainer-main-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   gap: 10px;
   align-items: start;
   margin-bottom: 10px;
 }
 
 .trainer-sheet .trainer-stat-panel {
-  background: #eff2f8;
+  background: #d6dceb;
+  border-color: #7b8498;
 }
 
 .trainer-sheet .trainer-stat-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 6px;
 }
 
 .trainer-sheet .trainer-stat-row {
   display: grid;
-  grid-template-columns: 108px 1fr 30px;
+  grid-template-columns: minmax(84px, 1fr) max-content 30px;
   gap: 6px;
   align-items: center;
   border-radius: 10px;
@@ -492,6 +493,9 @@
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .trainer-sheet .trainer-attributes-panel .trainer-stat-row {
@@ -516,21 +520,22 @@
 
 .trainer-sheet .trainer-inventory-panel {
   background:
-    radial-gradient(circle at 5px 5px, #c4c8d1 2px, #d9dce3 2px) 0 0 / 14px 14px,
-    #d5d9e0;
+    radial-gradient(circle at 5px 5px, #adb4c3 2px, #c4cad7 2px) 0 0 / 14px 14px,
+    #bbc3d1;
+  border-color: #697286;
   grid-column: 1 / -1;
 }
 
 .trainer-sheet .trainer-inventory-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 8px;
 }
 
 .trainer-sheet .gear-pocket-panel {
-  border: 2px solid #8e95a6;
+  border: 2px solid #6f7890;
   border-radius: 10px;
-  background: #edf0f6;
+  background: #d5dbea;
   padding: 6px;
   display: grid;
   gap: 6px;
@@ -538,17 +543,17 @@
 }
 
 .trainer-sheet .gear-pocket-panel.is-battle {
-  border-color: #df785f;
-  background: linear-gradient(180deg, #fff2ee 0%, #f7e4de 100%);
+  border-color: #b85d4a;
+  background: linear-gradient(180deg, #e7d3cf 0%, #dac2bc 100%);
 }
 
 .trainer-sheet .gear-pocket-panel.is-field {
-  border-color: #8b93a6;
-  background: linear-gradient(180deg, #f3f5fa 0%, #e8ecf4 100%);
+  border-color: #667085;
+  background: linear-gradient(180deg, #cfd6e2 0%, #c2cad8 100%);
 }
 
 .trainer-sheet .gear-pocket-panel header {
-  border-bottom: 1px solid #a7aebe;
+  border-bottom: 1px solid #7f879a;
   padding-bottom: 4px;
 }
 
@@ -560,30 +565,31 @@
 }
 
 .trainer-sheet .gear-pocket-panel small {
-  color: #5b6171;
+  color: #4a5060;
   font-size: 0.69rem;
   text-transform: uppercase;
 }
 
 .trainer-sheet .gear-table-wrap {
   width: 100%;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 .trainer-sheet .gear-table {
-  font-size: 0.74rem;
-  table-layout: auto;
-  min-width: 480px;
+  font-size: 0.72rem;
+  table-layout: fixed;
+  min-width: 0;
+  width: 100%;
 }
 
 .trainer-sheet .gear-table th:nth-child(1),
 .trainer-sheet .gear-table td:nth-child(1) {
-  width: 30%;
+  width: 26%;
 }
 
 .trainer-sheet .gear-table th:nth-child(2),
 .trainer-sheet .gear-table td:nth-child(2) {
-  width: 20%;
+  width: 18%;
 }
 
 .trainer-sheet .gear-table th:nth-child(3),
@@ -593,28 +599,66 @@
 
 .trainer-sheet .gear-table th:nth-child(4),
 .trainer-sheet .gear-table td:nth-child(4) {
-  width: 24%;
+  width: calc(100% - 26% - 18% - 14% - 84px);
 }
 
 .trainer-sheet .gear-table th:nth-child(5),
 .trainer-sheet .gear-table td:nth-child(5) {
-  width: 12%;
+  width: 84px;
 }
 
 .trainer-sheet .gear-table th {
-  white-space: normal;
+  white-space: nowrap;
   font-size: 0.71rem;
   letter-spacing: 0.01em;
+  background: rgba(34, 40, 49, 0.65);
+  color: #f1f4fb;
+}
+
+.trainer-sheet .gear-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trainer-sheet .gear-table td:nth-child(4) {
+  white-space: normal;
+  line-height: 1.15;
+}
+
+.trainer-sheet .gear-table td:nth-child(5) {
+  overflow: visible;
 }
 
 .trainer-sheet .gear-table .move-actions {
-  justify-content: flex-start;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: repeat(3, 22px);
+  gap: 2px;
+  justify-content: start;
+  align-items: center;
 }
 
 .trainer-sheet .gear-table .move-actions .icon-button {
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 4px;
+}
+
+.trainer-sheet .gear-table .move-name img {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  object-fit: contain;
+  border-radius: 3px;
+  background: #e7ebf4;
+}
+
+.trainer-sheet .gear-table .move-name span {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .trainer-sheet .pocket-chip {
@@ -692,22 +736,38 @@
 
 .trainer-sheet .trainer-bio-panel textarea {
   min-height: 130px;
-  border: 1px solid #9aa1af;
+  border: 1px solid #778197;
   border-radius: 8px;
-  background: #f7f8fb;
+  background: #e6ebf4;
   line-height: 1.35;
 }
 
-@media (max-width: 1250px) {
-  .trainer-sheet .trainer-main-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+.trainer-sheet .trainer-inventory-panel .section-title-row {
+  align-items: center;
+  margin-bottom: 10px;
+}
 
+.trainer-sheet .trainer-inventory-panel .section-title-row h2 {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.trainer-sheet .trainer-inventory-panel .inventory-add-button {
+  background: #2d3340;
+  border: 1px solid #5b6479;
+  color: #f2f5fd;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 1250px) {
   .trainer-sheet .trainer-inventory-columns {
     grid-template-columns: 1fr;
   }
 
-  .trainer-sheet .trainer-stat-list {
+  .trainer-sheet .trainer-main-grid {
     grid-template-columns: 1fr;
   }
 }
