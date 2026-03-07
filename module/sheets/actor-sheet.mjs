@@ -30,7 +30,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     if (this.actor?.type === "trainer") {
       const currentPosition = this.position ?? {};
       const baseWidth = Number(options.width ?? currentPosition.width ?? this.options.width ?? 1000);
+      const baseHeight = Number(options.height ?? currentPosition.height ?? this.options.height ?? 860);
       options.width = Math.min(Math.max(baseWidth, 680), 1000);
+      options.height = Math.max(baseHeight, 600);
     }
     return super.setPosition(options);
   }
