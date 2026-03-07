@@ -18,7 +18,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["pok-role", "sheet", "actor"],
-      width: 900,
+      width: 1000,
       height: 860,
       submitOnClose: true,
       submitOnChange: true,
@@ -29,8 +29,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   setPosition(options = {}) {
     if (this.actor?.type === "trainer") {
       const currentPosition = this.position ?? {};
-      const baseWidth = Number(options.width ?? currentPosition.width ?? this.options.width ?? 900);
-      options.width = Math.min(baseWidth, 900);
+      const baseWidth = Number(options.width ?? currentPosition.width ?? this.options.width ?? 1000);
+      options.width = Math.min(Math.max(baseWidth, 680), 1000);
     }
     return super.setPosition(options);
   }

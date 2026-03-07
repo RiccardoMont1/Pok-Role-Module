@@ -3,15 +3,25 @@
   font-family: var(--font-primary);
 }
 
-.pok-role.sheet.actor .window-content {
+.pok-role.sheet.actor {
   background: transparent;
+}
+
+.pok-role.sheet.actor .window-content {
+  background: transparent !important;
+  background-image: none !important;
   padding: 0;
   overflow-y: auto;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .pok-role.sheet.actor .window-content > form.trainer-sheet {
-  margin: 0 auto;
+  margin: 0;
+  width: min(100%, 1000px);
+  min-height: 100%;
 }
 
 .pok-role-sheet .sheet-header {
@@ -224,10 +234,10 @@
   border: 1px solid #5f6778;
   border-radius: 14px;
   padding: 10px;
-  width: 100%;
-  min-width: 0;
-  max-width: 900px;
-  min-height: 0;
+  width: min(100%, 1000px);
+  min-width: 680px;
+  max-width: 1000px;
+  min-height: 100%;
   height: auto;
   box-sizing: border-box;
   overflow: visible;
