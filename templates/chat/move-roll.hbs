@@ -36,6 +36,15 @@
       ({{localize "POKROLE.Chat.CriticalHit"}})
     {{/if}}
   </p>
+  {{#if holdingBackActive}}
+  <p>
+    <strong>{{localize "POKROLE.Chat.HoldingBack.Label"}}:</strong>
+    {{holdingBackLabel}}
+    {{#if holdingBackNonLethalApplied}}
+      ({{localize "POKROLE.Chat.HoldingBack.NonLethalNote"}})
+    {{/if}}
+  </p>
+  {{/if}}
   {{#if reactionAttempted}}
   <hr />
   <p>

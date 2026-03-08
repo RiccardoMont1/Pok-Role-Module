@@ -30,7 +30,7 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
     - each new action by the same actor in the same round requires `+1` success (Action Number `1..5`)
     - the same move can be used multiple times in the same round
     - manual reset button available on sheets (`Reset Actions`)
-    - at each new combat turn, active actor resets `Action Number` and turn initiative
+    - at each new combat round, all combatants reset `Action Number` and reroll initiative
   - Move accuracy resolution:
     - Accuracy pool = `Accuracy Attribute + Accuracy Skill`
     - Reduced Accuracy + Pain penalization remove successes
@@ -46,7 +46,11 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
     - Damage pool = `Damage Attribute + Power + STAB + Critical - Pain - DEF/S.DEF`
     - Physical moves use target `DEF` (`Vitality`)
     - Special moves use target `S.DEF` (`Insight`)
-    - Minimum `1` damage on hit
+    - Minimum `1` damage on hit if the target is not immune, including resisted hits
+  - Holding Back support (p.53):
+    - choose before resolving a damaging move
+    - option to deal half damage (rounded down)
+    - lethal moves can be restrained to deal regular (non-lethal) damage
   - Critical hit support:
     - `+3` net successes over requirement (`+2` if `High Critical`)
     - Adds `+2` dice to damage pool

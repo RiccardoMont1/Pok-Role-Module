@@ -239,7 +239,12 @@
       "ReactionPrompt": "{target} can react to {move}",
       "ConfirmReaction": "Confirm",
       "SkipReaction": "Skip",
-      "ClashMove": "Clash Move"
+      "ClashMove": "Clash Move",
+      "HoldingBackTitle": "Holding Back",
+      "HoldingBackPrompt": "How should {move} be used?",
+      "HoldingBackNormal": "Go all out",
+      "HoldingBackHalf": "Hold Back (half damage)",
+      "HoldingBackNonLethal": "Hold Back (no lethal damage)"
     },
     "Chat": {
       "Actor": "Actor",
@@ -275,6 +280,13 @@
       "GearLethalHealNote": "Lethal damage reduced by {value}.",
       "GearAwarenessNote": "Awareness restored.",
       "GearStatusNote": "Status recovery: {value}.",
+      "HoldingBack": {
+        "Label": "Holding Back",
+        "None": "No Holding Back",
+        "HalfDamage": "Half damage (rounded down)",
+        "NonLethal": "Regular damage instead of lethal damage",
+        "NonLethalNote": "Lethal damage was converted to regular damage"
+      },
       "Reaction": {
         "Label": "Reaction",
         "None": "No reaction",

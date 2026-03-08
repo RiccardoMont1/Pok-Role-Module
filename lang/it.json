@@ -239,7 +239,12 @@
       "ReactionPrompt": "{target} puo reagire a {move}",
       "ConfirmReaction": "Conferma",
       "SkipReaction": "Salta",
-      "ClashMove": "Mossa per Clash"
+      "ClashMove": "Mossa per Clash",
+      "HoldingBackTitle": "Holding Back",
+      "HoldingBackPrompt": "Come vuoi usare {move}?",
+      "HoldingBackNormal": "Colpisci al massimo",
+      "HoldingBackHalf": "Trattieni (meta danno)",
+      "HoldingBackNonLethal": "Trattieni (niente danno letale)"
     },
     "Chat": {
       "Actor": "Attore",
@@ -275,6 +280,13 @@
       "GearLethalHealNote": "Danno letale ridotto di {value}.",
       "GearAwarenessNote": "Coscienza ripristinata.",
       "GearStatusNote": "Cura stati: {value}.",
+      "HoldingBack": {
+        "Label": "Holding Back",
+        "None": "Nessun contenimento",
+        "HalfDamage": "Meta danno (arrotondato per difetto)",
+        "NonLethal": "Danno normale invece di danno letale",
+        "NonLethalNote": "Il danno letale e stato convertito in danno normale"
+      },
       "Reaction": {
         "Label": "Reazione",
         "None": "Nessuna reazione",

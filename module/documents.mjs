@@ -263,7 +263,7 @@ export class PokRoleActor extends Actor {
     });
   }
 
-  async rollInitiative() {
+  async rollInitiative(options = {}) {
     const roll = await new Roll(POKROLE.INITIATIVE_FORMULA, {
       dexterity: this.getTraitValue("dexterity"),
       alert: this.getSkillValue("alert")
@@ -271,13 +271,15 @@ export class PokRoleActor extends Actor {
     const rolledInitiative = Math.max(toNumber(roll.total, 0), 0);
     await this.update({ "system.combat.initiative": rolledInitiative });
 
-    await roll.toMessage({
-      speaker: ChatMessage.getSpeaker({ actor: this }),
-      flavor: game.i18n.format("POKROLE.Chat.InitiativeFlavor", {
-        actor: this.name,
-        score: rolledInitiative
-      })
-    });
+    if (!options.silent) {
+      await roll.toMessage({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        flavor: game.i18n.format("POKROLE.Chat.InitiativeFlavor", {
+          actor: this.name,
+          score: rolledInitiative
+        })
+      });
+    }
 
     return roll;
   }
@@ -367,6 +369,10 @@ export class PokRoleActor extends Actor {
       return null;
     }
     const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
+    const holdingBackMode = await this._resolveHoldingBackChoice(move, options);
+    if (holdingBackMode === null) return null;
+    const isHoldingBackHalf = holdingBackMode === "half";
+    const isHoldingBackNonLethal = holdingBackMode === "nonlethal" && Boolean(move.system.lethal);
     const actionNumber = await this._resolveActionRequirement(options.actionNumber, roundKey);
     const painPenalty = this.getPainPenalty();
     const accuracyAttributeKey = move.system.accuracyAttribute || "dexterity";
@@ -476,16 +482,19 @@ export class PokRoleActor extends Actor {
         });
       }
 
-      let baseDamage = Math.max(damageSuccesses, 1);
+      const baseDamage = Math.max(damageSuccesses, 1);
       if (typeInteraction.immune) {
         finalDamage = 0;
       } else {
         const weaknessBonus =
           damageSuccesses >= 1 ? typeInteraction.weaknessBonus : 0;
-        finalDamage = Math.max(
+        const resolvedDamage = Math.max(
           baseDamage + weaknessBonus - typeInteraction.resistancePenalty,
-          0
+          1
         );
+        finalDamage = isHoldingBackHalf
+          ? Math.max(Math.floor(resolvedDamage / 2), 0)
+          : resolvedDamage;
       }
 
       if (targetActor && finalDamage > 0) {
@@ -520,6 +529,14 @@ export class PokRoleActor extends Actor {
         reactionClashMoveName: reaction.clashMoveName,
         reactionAttackerDamage: reaction.attackerDamage,
         reactionTargetDamage: reaction.targetDamage,
+        holdingBackActive: holdingBackMode !== "none",
+        holdingBackLabel:
+          holdingBackMode === "half"
+            ? game.i18n.localize("POKROLE.Chat.HoldingBack.HalfDamage")
+            : holdingBackMode === "nonlethal"
+              ? game.i18n.localize("POKROLE.Chat.HoldingBack.NonLethal")
+              : game.i18n.localize("POKROLE.Chat.HoldingBack.None"),
+        holdingBackNonLethalApplied: isHoldingBackNonLethal,
         isDamagingMove,
         showDamageSection: hit && isDamagingMove && !reaction.clashResolved,
         damageAttributeLabel,
@@ -913,10 +930,61 @@ export class PokRoleActor extends Actor {
     return { type, clashMoveId };
   }
 
+  async _resolveHoldingBackChoice(move, options = {}) {
+    if (!move || move.type !== "move" || move.system.category === "support") {
+      return "none";
+    }
+
+    const normalizedOption = `${options.holdingBack ?? ""}`.trim().toLowerCase();
+    if (normalizedOption === "none" || normalizedOption === "half") {
+      return normalizedOption;
+    }
+    if (normalizedOption === "nonlethal") {
+      return move.system.lethal ? "nonlethal" : "none";
+    }
+
+    if (options.promptHoldingBack === false) {
+      return "none";
+    }
+
+    return new Promise((resolve) => {
+      const buttons = {
+        normal: {
+          icon: "<i class='fas fa-check'></i>",
+          label: game.i18n.localize("POKROLE.Combat.HoldingBackNormal"),
+          callback: () => resolve("none")
+        },
+        half: {
+          icon: "<i class='fas fa-hand-paper'></i>",
+          label: game.i18n.localize("POKROLE.Combat.HoldingBackHalf"),
+          callback: () => resolve("half")
+        }
+      };
+
+      if (move.system.lethal) {
+        buttons.nonlethal = {
+          icon: "<i class='fas fa-shield-heart'></i>",
+          label: game.i18n.localize("POKROLE.Combat.HoldingBackNonLethal"),
+          callback: () => resolve("nonlethal")
+        };
+      }
+
+      new Dialog({
+        title: game.i18n.localize("POKROLE.Combat.HoldingBackTitle"),
+        content: `<p>${game.i18n.format("POKROLE.Combat.HoldingBackPrompt", {
+          move: move.name
+        })}</p>`,
+        buttons,
+        default: "normal",
+        close: () => resolve("none")
+      }).render(true);
+    });
+  }
+
   _computeClashDamage(moveType, targetActor) {
     const interaction = this._evaluateTypeInteraction(moveType, targetActor);
     if (interaction.immune) return 0;
-    return Math.max(1 + interaction.weaknessBonus - interaction.resistancePenalty, 0);
+    return Math.max(1 + interaction.weaknessBonus - interaction.resistancePenalty, 1);
   }
 
   _isSocialAccuracyMove(move) {
