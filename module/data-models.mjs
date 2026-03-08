@@ -171,6 +171,12 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
         initial: "physical",
         choices: ["physical", "special", "support"]
       }),
+      actionTag: new StringField({
+        required: true,
+        blank: false,
+        initial: "1A",
+        choices: ["1A", "2A", "5A"]
+      }),
       accuracyAttribute: new StringField({
         required: true,
         blank: false,

@@ -68,6 +68,11 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
         label
       ])
     );
+    context.actionTagOptions = {
+      "1A": "POKROLE.Move.ActionTagValues.1A",
+      "2A": "POKROLE.Move.ActionTagValues.2A",
+      "5A": "POKROLE.Move.ActionTagValues.5A"
+    };
     context.typeOptions = Object.fromEntries(
       TYPE_OPTIONS.map((typeKey) => [
         typeKey,

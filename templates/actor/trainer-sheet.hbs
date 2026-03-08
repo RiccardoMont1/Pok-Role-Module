@@ -203,41 +203,86 @@
   <section class="trainer-main-grid">
     <section class="sheet-section trainer-stat-panel trainer-attributes-panel">
       <h2>{{localize "POKROLE.Attributes.Title"}}</h2>
-      <div class="trainer-stat-list">
-        {{#each attributeDefinitions as |attribute|}}
-        <div class="trainer-stat-row">
-          <label>{{localize attribute.label}}</label>
-          <input
-            type="hidden"
-            name="system.attributes.{{attribute.key}}"
-            value="{{attribute.value}}"
-            data-dtype="Number"
-          />
-          <div class="track-bar compact">
-            {{#each attribute.track.slots as |slot|}}
-            <button
-              type="button"
-              class="track-box {{#if slot.active}}is-active{{/if}}"
-              data-action="set-track"
-              data-track-field="system.attributes.{{../key}}"
-              data-track-value="{{slot.value}}"
-              data-track-min="{{../track.min}}"
-              data-track-max="{{../track.max}}"
-              title="{{localize ../label}} {{slot.value}}"
-            ></button>
+      <div class="trainer-attribute-zones">
+        <section class="trait-zone">
+          <h3>{{localize "POKROLE.Attributes.PhysicalMental"}}</h3>
+          <div class="trainer-stat-list">
+            {{#each trainerPhysicalMentalAttributes as |attribute|}}
+            <div class="trainer-stat-row">
+              <label>{{localize attribute.label}}</label>
+              <input
+                type="hidden"
+                name="{{attribute.fieldPath}}"
+                value="{{attribute.value}}"
+                data-dtype="Number"
+              />
+              <div class="track-bar compact">
+                {{#each attribute.track.slots as |slot|}}
+                <button
+                  type="button"
+                  class="track-box {{#if slot.active}}is-active{{/if}}"
+                  data-action="set-track"
+                  data-track-field="{{../fieldPath}}"
+                  data-track-value="{{slot.value}}"
+                  data-track-min="{{../track.min}}"
+                  data-track-max="{{../track.max}}"
+                  title="{{localize ../label}} {{slot.value}}"
+                ></button>
+                {{/each}}
+              </div>
+              <button
+                type="button"
+                class="icon-button"
+                data-action="roll-attribute"
+                data-attribute="{{attribute.key}}"
+                title="{{localize 'POKROLE.Actions.RollAttribute'}}"
+              >
+                <i class="fas fa-dice-d20"></i>
+              </button>
+            </div>
             {{/each}}
           </div>
-          <button
-            type="button"
-            class="icon-button"
-            data-action="roll-attribute"
-            data-attribute="{{attribute.key}}"
-            title="{{localize 'POKROLE.Actions.RollAttribute'}}"
-          >
-            <i class="fas fa-dice-d20"></i>
-          </button>
-        </div>
-        {{/each}}
+        </section>
+
+        <section class="trait-zone">
+          <h3>{{localize "POKROLE.Attributes.Social"}}</h3>
+          <div class="trainer-stat-list">
+            {{#each trainerSocialAttributes as |attribute|}}
+            <div class="trainer-stat-row">
+              <label>{{localize attribute.label}}</label>
+              <input
+                type="hidden"
+                name="{{attribute.fieldPath}}"
+                value="{{attribute.value}}"
+                data-dtype="Number"
+              />
+              <div class="track-bar compact">
+                {{#each attribute.track.slots as |slot|}}
+                <button
+                  type="button"
+                  class="track-box {{#if slot.active}}is-active{{/if}}"
+                  data-action="set-track"
+                  data-track-field="{{../fieldPath}}"
+                  data-track-value="{{slot.value}}"
+                  data-track-min="{{../track.min}}"
+                  data-track-max="{{../track.max}}"
+                  title="{{localize ../label}} {{slot.value}}"
+                ></button>
+                {{/each}}
+              </div>
+              <button
+                type="button"
+                class="icon-button"
+                data-action="roll-attribute"
+                data-attribute="{{attribute.key}}"
+                title="{{localize 'POKROLE.Actions.RollAttribute'}}"
+              >
+                <i class="fas fa-dice-d20"></i>
+              </button>
+            </div>
+            {{/each}}
+          </div>
+        </section>
       </div>
     </section>
 

@@ -90,6 +90,8 @@
       "EvolutionAvailable": "Evolution Available",
       "EvolutionAvailableNotice": "{name} can evolve now.",
       "Extra": "Extra",
+      "MainSheetTab": "Main Sheet",
+      "LearnableMovesTab": "Learnable Moves",
       "UsableMoves": "Usable Moves",
       "UsableMovesTab": "Usable Moves",
       "LearnedMoves": "Learned Moves",
@@ -115,6 +117,8 @@
     },
     "Attributes": {
       "Title": "Attributes",
+      "PhysicalMental": "Physical / Mental",
+      "Social": "Social",
       "Strength": "Strength",
       "Dexterity": "Dexterity",
       "Vitality": "Vitality",
@@ -155,6 +159,13 @@
       "Empty": "No moves yet. Add one to start rolling.",
       "NoStat": "No Stat",
       "Type": "Type",
+      "ActionTag": "Action Cost",
+      "ActionTagShort": "Tag",
+      "ActionTagValues": {
+        "1A": "1 Action",
+        "2A": "2 Actions",
+        "5A": "5 Actions"
+      },
       "Category": {
         "Label": "Category",
         "Physical": "Physical",

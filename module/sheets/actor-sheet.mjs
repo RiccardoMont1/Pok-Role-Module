@@ -81,57 +81,52 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       ])
     );
     context.pokemonTierOptions = POKEMON_TIER_LABEL_BY_KEY;
-    if (this.actor.type === "pokemon") {
-      context.pokemonAttributeRows = [
+    if (this.actor.type === "trainer") {
+      context.trainerPhysicalMentalAttributes = this._buildAttributeRows([
         "strength",
-        "dexterity",
         "vitality",
-        "special",
+        "dexterity",
         "insight",
+        "special"
+      ]);
+      context.trainerSocialAttributes = this._buildAttributeRows([
         "tough",
-        "cool",
         "beauty",
+        "cool",
         "cute",
-        "clever"
-      ].map((key) => ({
-        key,
-        label: TRAIT_LABEL_BY_KEY[key],
-        value: Number(this.actor.system.attributes?.[key] ?? 0),
-        track: this._buildTrack(this.actor.system.attributes?.[key], 5, 0),
-        fieldPath: `system.attributes.${key}`
-      }));
-      context.pokemonSkillRows = [
-        { key: "brawl", kind: "skill" },
-        { key: "channel", kind: "skill" },
-        { key: "clash", kind: "skill" },
-        { key: "evasion", kind: "skill" },
-        { key: "alert", kind: "skill" },
-        { key: "athletic", kind: "skill" },
-        { key: "nature", kind: "skill" },
-        { key: "stealth", kind: "skill" },
-        { key: "allure", kind: "attribute" },
-        { key: "etiquette", kind: "skill" },
-        { key: "intimidate", kind: "skill" },
-        { key: "perform", kind: "skill" }
-      ].map((entry) => {
-        const isAttribute = entry.kind === "attribute";
-        const value =
-          isAttribute
-            ? Number(this.actor.system.attributes?.[entry.key] ?? 0)
-            : Number(this.actor.system.skills?.[entry.key] ?? 0);
-        return {
-          ...entry,
-          isAttribute,
-          fieldPath: isAttribute
-            ? `system.attributes.${entry.key}`
-            : `system.skills.${entry.key}`,
-          rollAction: isAttribute ? "roll-attribute" : "roll-skill",
-          dataKey: entry.key,
-          label: TRAIT_LABEL_BY_KEY[entry.key] ?? "POKROLE.Common.Unknown",
-          value,
-          track: this._buildTrack(value, 5, 0)
-        };
-      });
+        "clever",
+        "allure"
+      ]);
+    }
+    if (this.actor.type === "pokemon") {
+      context.pokemonPhysicalMentalRows = this._buildAttributeRows([
+        "strength",
+        "vitality",
+        "dexterity",
+        "insight",
+        "special"
+      ]);
+      context.pokemonSocialRows = this._buildAttributeRows([
+        "tough",
+        "beauty",
+        "cool",
+        "cute",
+        "clever",
+        "allure"
+      ]);
+      context.pokemonSkillRows = this._buildSkillRows([
+        "brawl",
+        "channel",
+        "clash",
+        "evasion",
+        "alert",
+        "athletic",
+        "nature",
+        "stealth",
+        "etiquette",
+        "intimidate",
+        "perform"
+      ]);
       context.pokemonExtraTrack = this._buildTrack(this.actor.system.extra, 5, 0);
       context.pokemonMatchups = this._buildPokemonMatchups();
       context.evolutionTimeOptions = {
@@ -156,7 +151,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       context.usableMoves = moves.filter((move) => move.isUsable);
       context.learnedMoves = moves;
       context.usableMovesCount = context.usableMoves.length;
-      context.pokemonTab = this._pokemonActiveTab ?? "usable";
+      context.pokemonView = this._pokemonActiveView ?? "main";
     }
     const pocketOrder = {
       potions: 0,
@@ -246,7 +241,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     );
 
     if (this.actor.type === "pokemon") {
-      this._applyPokemonTabState(html, this._pokemonActiveTab ?? "usable");
+      this._applyPokemonTabState(html, this._pokemonActiveView ?? "main");
     }
   }
 
@@ -291,6 +286,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           highCritical: false,
           neverFail: false,
           lethal: false,
+          actionTag: "1A",
           isUsable: canMarkUsable
         }
       }
@@ -369,7 +365,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
     const tab = event.currentTarget.dataset.tab;
     if (!tab) return;
-    this._pokemonActiveTab = tab;
+    this._pokemonActiveView = tab;
     this._applyPokemonTabState(html, tab);
   }
 
@@ -529,12 +525,19 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       );
     }
     const isUsable = move.system?.isUsable !== false;
+    const actionTag = this._normalizeMoveActionTag(move.system?.actionTag);
+    const actionTagLabel = game.i18n.localize(
+      `POKROLE.Move.ActionTagValues.${actionTag}`
+    );
 
     return {
       id: move.id,
       name: move.name,
       img: move.img,
       isUsable,
+      actionTag,
+      actionTagShort: actionTag,
+      actionTagLabel,
       categoryLabel,
       typeLabel,
       accuracySummary,
@@ -625,6 +628,38 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     };
   }
 
+  _normalizeMoveActionTag(actionTag) {
+    const normalized = `${actionTag ?? "1A"}`.trim().toUpperCase();
+    if (normalized === "2A" || normalized === "5A") return normalized;
+    return "1A";
+  }
+
+  _buildAttributeRows(attributeKeys) {
+    return attributeKeys.map((attributeKey) => {
+      const value = Number(this.actor.system.attributes?.[attributeKey] ?? 0);
+      return {
+        key: attributeKey,
+        label: TRAIT_LABEL_BY_KEY[attributeKey] ?? "POKROLE.Common.Unknown",
+        value,
+        fieldPath: `system.attributes.${attributeKey}`,
+        track: this._buildTrack(value, 5, 0)
+      };
+    });
+  }
+
+  _buildSkillRows(skillKeys) {
+    return skillKeys.map((skillKey) => {
+      const value = Number(this.actor.system.skills?.[skillKey] ?? 0);
+      return {
+        key: skillKey,
+        label: TRAIT_LABEL_BY_KEY[skillKey] ?? "POKROLE.Common.Unknown",
+        value,
+        fieldPath: `system.skills.${skillKey}`,
+        track: this._buildTrack(value, 5, 0)
+      };
+    });
+  }
+
   _buildTrack(currentValue, maxValue, minValue = 1) {
     const numericCurrent = Number(currentValue);
     const normalizedCurrent = Number.isFinite(numericCurrent) ? numericCurrent : minValue;
@@ -650,11 +685,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   _applyPokemonTabState(html, tabName) {
-    const tab = tabName || "usable";
+    const tab = tabName === "learned" ? "learned" : "main";
     html.find("[data-action='switch-pokemon-tab']").removeClass("is-active");
-    html.find(`.pokemon-tab-button[data-tab='${tab}']`).addClass("is-active");
-    html.find(".pokemon-tab-panel").removeClass("is-active");
-    html.find(`.pokemon-tab-panel[data-tab='${tab}']`).addClass("is-active");
+    html.find(`.pokemon-view-button[data-tab='${tab}']`).addClass("is-active");
+    html.find(".pokemon-view-panel").removeClass("is-active");
+    html.find(`.pokemon-view-panel[data-tab='${tab}']`).addClass("is-active");
   }
 
   _buildPokemonMatchups() {
