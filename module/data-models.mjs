@@ -74,6 +74,7 @@ export class TrainerDataModel extends BaseCharacterDataModel {
       nature: trimmedStringField(""),
       role: trimmedStringField(""),
       money: integerField(0, { min: 0 }),
+      activeEffects: trimmedStringField(""),
       badges: integerField(0, { min: 0, max: 8 }),
       pokedex: new SchemaField({
         seen: integerField(0, { min: 0 }),
@@ -99,7 +100,12 @@ export class PokemonDataModel extends BaseCharacterDataModel {
     return {
       ...base,
       species: trimmedStringField(""),
+      ability: trimmedStringField(""),
       nature: trimmedStringField(""),
+      battleItem: trimmedStringField(""),
+      accessory: trimmedStringField(""),
+      size: trimmedStringField(""),
+      weight: trimmedStringField(""),
       types: new SchemaField({
         primary: new StringField({
           required: true,
@@ -120,8 +126,24 @@ export class PokemonDataModel extends BaseCharacterDataModel {
         initial: "starter",
         choices: POKEMON_TIER_KEYS
       }),
+      evolutionTime: new StringField({
+        required: true,
+        blank: false,
+        initial: "medium",
+        choices: ["fast", "medium", "slow"]
+      }),
+      confidence: integerField(2, { min: 0, max: 5 }),
       loyalty: integerField(2, { min: 0, max: 5 }),
-      happiness: integerField(2, { min: 0, max: 5 })
+      happiness: integerField(2, { min: 0, max: 5 }),
+      battles: integerField(0, { min: 0 }),
+      victories: integerField(0, { min: 0 }),
+      extra: integerField(0, { min: 0, max: 5 }),
+      combatProfile: new SchemaField({
+        accuracy: integerField(0, { min: 0, max: 99 }),
+        damage: integerField(0, { min: 0, max: 99 }),
+        evasion: integerField(0, { min: 0, max: 99 }),
+        clash: integerField(0, { min: 0, max: 99 })
+      })
     };
   }
 }
@@ -173,6 +195,7 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
       highCritical: new BooleanField({ required: true, initial: false }),
       neverFail: new BooleanField({ required: true, initial: false }),
       lethal: new BooleanField({ required: true, initial: false }),
+      isUsable: new BooleanField({ required: true, initial: true }),
       description: trimmedStringField("")
     };
   }

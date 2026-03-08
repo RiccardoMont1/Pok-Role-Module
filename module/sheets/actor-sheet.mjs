@@ -6,6 +6,7 @@ import {
   SKILL_DEFINITIONS,
   TRAINER_CARD_RANK_LABEL_BY_KEY,
   TRAIT_LABEL_BY_KEY,
+  TYPE_EFFECTIVENESS,
   TYPE_OPTIONS
 } from "../constants.mjs";
 
@@ -80,10 +81,83 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       ])
     );
     context.pokemonTierOptions = POKEMON_TIER_LABEL_BY_KEY;
-    context.moves = this.actor.items
+    if (this.actor.type === "pokemon") {
+      context.pokemonAttributeRows = [
+        "strength",
+        "dexterity",
+        "vitality",
+        "special",
+        "insight",
+        "tough",
+        "cool",
+        "beauty",
+        "cute",
+        "clever"
+      ].map((key) => ({
+        key,
+        label: TRAIT_LABEL_BY_KEY[key],
+        value: Number(this.actor.system.attributes?.[key] ?? 0),
+        track: this._buildTrack(this.actor.system.attributes?.[key], 5, 0),
+        fieldPath: `system.attributes.${key}`
+      }));
+      context.pokemonSkillRows = [
+        { key: "brawl", kind: "skill" },
+        { key: "channel", kind: "skill" },
+        { key: "clash", kind: "skill" },
+        { key: "evasion", kind: "skill" },
+        { key: "alert", kind: "skill" },
+        { key: "athletic", kind: "skill" },
+        { key: "nature", kind: "skill" },
+        { key: "stealth", kind: "skill" },
+        { key: "allure", kind: "attribute" },
+        { key: "etiquette", kind: "skill" },
+        { key: "intimidate", kind: "skill" },
+        { key: "perform", kind: "skill" }
+      ].map((entry) => {
+        const isAttribute = entry.kind === "attribute";
+        const value =
+          isAttribute
+            ? Number(this.actor.system.attributes?.[entry.key] ?? 0)
+            : Number(this.actor.system.skills?.[entry.key] ?? 0);
+        return {
+          ...entry,
+          isAttribute,
+          fieldPath: isAttribute
+            ? `system.attributes.${entry.key}`
+            : `system.skills.${entry.key}`,
+          rollAction: isAttribute ? "roll-attribute" : "roll-skill",
+          dataKey: entry.key,
+          label: TRAIT_LABEL_BY_KEY[entry.key] ?? "POKROLE.Common.Unknown",
+          value,
+          track: this._buildTrack(value, 5, 0)
+        };
+      });
+      context.pokemonExtraTrack = this._buildTrack(this.actor.system.extra, 5, 0);
+      context.pokemonMatchups = this._buildPokemonMatchups();
+      context.evolutionTimeOptions = {
+        fast: "POKROLE.Pokemon.EvolutionFast",
+        medium: "POKROLE.Pokemon.EvolutionMedium",
+        slow: "POKROLE.Pokemon.EvolutionSlow"
+      };
+      const evolutionThresholdByTime = { fast: 5, medium: 15, slow: 45 };
+      const evolutionTimeKey = `${this.actor.system.evolutionTime ?? "medium"}`.toLowerCase();
+      context.evolutionThreshold = evolutionThresholdByTime[evolutionTimeKey] ?? 15;
+      context.evolutionProgressValue = Math.max(Number(this.actor.system.victories ?? 0), 0);
+      context.evolutionReady = context.evolutionProgressValue >= context.evolutionThreshold;
+    }
+    const moves = this.actor.items
       .filter((item) => item.type === "move")
       .sort((a, b) => a.sort - b.sort)
       .map((move) => this._prepareMoveData(move));
+    context.moves = moves;
+    if (this.actor.type === "pokemon") {
+      const insightValue = Math.max(Number(this.actor.system.attributes?.insight ?? 0), 0);
+      context.maxUsableMoves = insightValue + 2;
+      context.usableMoves = moves.filter((move) => move.isUsable);
+      context.learnedMoves = moves;
+      context.usableMovesCount = context.usableMoves.length;
+      context.pokemonTab = this._pokemonActiveTab ?? "usable";
+    }
     const pocketOrder = {
       potions: 0,
       small: 1,
@@ -161,6 +235,19 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     html.find("[data-action='delete-gear']").on("click", (event) =>
       this._onDeleteGear(event)
     );
+    html.find("[data-action='toggle-move-usable']").on("change", (event) =>
+      this._onToggleMoveUsable(event)
+    );
+    html.find("[data-action='switch-pokemon-tab']").on("click", (event) =>
+      this._onSwitchPokemonTab(event, html)
+    );
+    html.find("[data-action='evolution-available']").on("click", (event) =>
+      this._onEvolutionAvailable(event)
+    );
+
+    if (this.actor.type === "pokemon") {
+      this._applyPokemonTabState(html, this._pokemonActiveTab ?? "usable");
+    }
   }
 
   async _onRollAttribute(event) {
@@ -180,6 +267,12 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   async _onCreateMove(event) {
     event.preventDefault();
     if (!this.isEditable || this.actor.type !== "pokemon") return;
+    const insightValue = Math.max(Number(this.actor.system.attributes?.insight ?? 0), 0);
+    const maxUsableMoves = insightValue + 2;
+    const usableMovesCount = this.actor.items.filter(
+      (item) => item.type === "move" && item.system?.isUsable !== false
+    ).length;
+    const canMarkUsable = usableMovesCount < maxUsableMoves;
 
     await this.actor.createEmbeddedDocuments("Item", [
       {
@@ -197,7 +290,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           priority: 0,
           highCritical: false,
           neverFail: false,
-          lethal: false
+          lethal: false,
+          isUsable: canMarkUsable
         }
       }
     ]);
@@ -233,6 +327,58 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const { itemId } = event.currentTarget.dataset;
     if (!itemId) return;
     await this.actor.deleteEmbeddedDocuments("Item", [itemId]);
+  }
+
+  async _onToggleMoveUsable(event) {
+    event.preventDefault();
+    if (!this.isEditable || this.actor.type !== "pokemon") return;
+
+    const checkbox = event.currentTarget;
+    const { itemId } = checkbox.dataset;
+    if (!itemId) return;
+
+    const move = this.actor.items.get(itemId);
+    if (!move || move.type !== "move") return;
+
+    const nextValue = Boolean(checkbox.checked);
+    const currentValue = move.system?.isUsable !== false;
+    if (nextValue === currentValue) return;
+
+    if (nextValue) {
+      const insightValue = Math.max(Number(this.actor.system.attributes?.insight ?? 0), 0);
+      const maxUsableMoves = insightValue + 2;
+      const usableMovesCount = this.actor.items.filter(
+        (item) => item.type === "move" && item.system?.isUsable !== false
+      ).length;
+
+      if (usableMovesCount >= maxUsableMoves) {
+        checkbox.checked = false;
+        ui.notifications.warn(
+          game.i18n.format("POKROLE.Errors.MaxUsableMovesReached", { max: maxUsableMoves })
+        );
+        return;
+      }
+    }
+
+    await move.update({ "system.isUsable": nextValue });
+  }
+
+  _onSwitchPokemonTab(event, html) {
+    event.preventDefault();
+    if (this.actor.type !== "pokemon") return;
+
+    const tab = event.currentTarget.dataset.tab;
+    if (!tab) return;
+    this._pokemonActiveTab = tab;
+    this._applyPokemonTabState(html, tab);
+  }
+
+  _onEvolutionAvailable(event) {
+    event.preventDefault();
+    if (this.actor.type !== "pokemon") return;
+    ui.notifications.info(
+      game.i18n.format("POKROLE.Pokemon.EvolutionAvailableNotice", { name: this.actor.name })
+    );
   }
 
   async _onCreateGear(event) {
@@ -382,11 +528,13 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         })
       );
     }
+    const isUsable = move.system?.isUsable !== false;
 
     return {
       id: move.id,
       name: move.name,
       img: move.img,
+      isUsable,
       categoryLabel,
       typeLabel,
       accuracySummary,
@@ -499,5 +647,52 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   _toTitleCaseKey(value) {
     if (!value || typeof value !== "string") return "Other";
     return `${value[0].toUpperCase()}${value.slice(1)}`;
+  }
+
+  _applyPokemonTabState(html, tabName) {
+    const tab = tabName || "usable";
+    html.find("[data-action='switch-pokemon-tab']").removeClass("is-active");
+    html.find(`.pokemon-tab-button[data-tab='${tab}']`).addClass("is-active");
+    html.find(".pokemon-tab-panel").removeClass("is-active");
+    html.find(`.pokemon-tab-panel[data-tab='${tab}']`).addClass("is-active");
+  }
+
+  _buildPokemonMatchups() {
+    const primary = this.actor.system.types?.primary;
+    const secondary = this.actor.system.types?.secondary;
+    const defenderTypes = [primary, secondary].filter((typeKey) => typeKey && typeKey !== "none");
+
+    const matchups = {
+      resistHalf: [],
+      resistQuarter: [],
+      weakDouble: [],
+      weakQuad: [],
+      immune: []
+    };
+
+    for (const attackType of TYPE_OPTIONS) {
+      if (attackType === "none") continue;
+      const table = TYPE_EFFECTIVENESS[attackType];
+      if (!table) continue;
+
+      let multiplier = 1;
+      for (const defenderType of defenderTypes) {
+        if (table.immune.includes(defenderType)) {
+          multiplier = 0;
+          break;
+        }
+        if (table.double.includes(defenderType)) multiplier *= 2;
+        if (table.half.includes(defenderType)) multiplier *= 0.5;
+      }
+
+      const labelPath = MOVE_TYPE_LABEL_BY_KEY[attackType] ?? "POKROLE.Common.Unknown";
+      if (multiplier === 0) matchups.immune.push(labelPath);
+      else if (multiplier === 0.25) matchups.resistQuarter.push(labelPath);
+      else if (multiplier === 0.5) matchups.resistHalf.push(labelPath);
+      else if (multiplier === 2) matchups.weakDouble.push(labelPath);
+      else if (multiplier === 4) matchups.weakQuad.push(labelPath);
+    }
+
+    return matchups;
   }
 }
