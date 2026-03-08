@@ -17,7 +17,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.398. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -43,7 +43,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.367. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -69,7 +69,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.392. Hits 2-5 times in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -95,7 +95,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.390. Hits 2-5 times in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -121,7 +121,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.397. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -147,7 +147,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.398. Scatters money on the ground worth five times the user\u2019s level."
     },
     "flags": {
       "pok-role-module": {
@@ -173,7 +173,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.370. Has a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -199,7 +199,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.388. Has a 10% chance to [freeze]{mechanic:freeze} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -225,7 +225,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.361. Has a 10% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -251,7 +251,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.400. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -277,7 +277,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -303,7 +303,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.394. Causes a one-hit KO."
     },
     "flags": {
       "pok-role-module": {
@@ -329,7 +329,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.399. Requires a turn to charge before attacking."
     },
     "flags": {
       "pok-role-module": {
@@ -355,7 +355,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.404. Raises the user\u2019s Attack by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -381,7 +381,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.351. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -407,7 +407,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.375. Inflicts regular damage and can hit Pok\u00e9mon in the air."
     },
     "flags": {
       "pok-role-module": {
@@ -433,7 +433,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -459,7 +459,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Immediately ends wild battles. Forces trainers to switch Pok\u00e9mon."
     },
     "flags": {
       "pok-role-module": {
@@ -485,7 +485,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.373. User flies high into the air, dodging all attacks, and hits next turn."
     },
     "flags": {
       "pok-role-module": {
@@ -511,7 +511,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.390. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
       "pok-role-module": {
@@ -537,7 +537,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.390. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -563,7 +563,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.383. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -589,7 +589,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.403. Has a 30% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -615,7 +615,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.366. Hits twice in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -641,7 +641,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.397. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -667,7 +667,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.366. If the user misses, it takes half the damage it would have inflicted in recoil."
     },
     "flags": {
       "pok-role-module": {
@@ -693,7 +693,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.368. Has a 30% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -719,7 +719,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.385. Lowers the target\u2019s accuracy by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -745,7 +745,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.395. Has a 30% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -771,7 +771,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.395. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -797,7 +797,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.394. Hits 2-5 times in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -823,7 +823,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.395. Causes a one-hit KO."
     },
     "flags": {
       "pok-role-module": {
@@ -849,7 +849,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.354. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -875,7 +875,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.390. Has a 30% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -901,7 +901,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.406. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
       "pok-role-module": {
@@ -927,7 +927,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.404. User receives 1/4 the damage it inflicts in recoil."
     },
     "flags": {
       "pok-role-module": {
@@ -953,7 +953,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.405. Hits every turn for 2-3 turns, then confuses the user."
     },
     "flags": {
       "pok-role-module": {
@@ -979,7 +979,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.392. User receives 1/3 the damage inflicted in recoil."
     },
     "flags": {
       "pok-role-module": {
@@ -1005,7 +1005,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.404. Lowers the target\u2019s Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -1031,7 +1031,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.408. Has a 30% chance to [poison]{mechanic:poison} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -1057,7 +1057,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.351. Hits twice in the same turn. Has a 20% chance to poison the target."
     },
     "flags": {
       "pok-role-module": {
@@ -1083,7 +1083,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.350. Hits 2-5 times in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -1109,7 +1109,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.396. Lowers the target\u2019s Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -1135,7 +1135,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Has a 30% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -1161,7 +1161,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.394. Lowers the target\u2019s Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -1187,7 +1187,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Immediately ends wild battles. Forces trainers to switch Pok\u00e9mon."
     },
     "flags": {
       "pok-role-module": {
@@ -1213,7 +1213,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.401. Puts the target to sleep."
     },
     "flags": {
       "pok-role-module": {
@@ -1239,7 +1239,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.403. Confuses the target."
     },
     "flags": {
       "pok-role-module": {
@@ -1265,7 +1265,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.402. Inflicts 20 points of damage."
     },
     "flags": {
       "pok-role-module": {
@@ -1291,7 +1291,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.391. Disables the target\u2019s last used move for 1-8 turns."
     },
     "flags": {
       "pok-role-module": {
@@ -1317,7 +1317,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -1343,7 +1343,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.370. Has a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -1369,7 +1369,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.371. Has a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -1395,7 +1395,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Protects the user\u2019s stats from being changed by enemy moves."
     },
     "flags": {
       "pok-role-module": {
@@ -1421,7 +1421,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.423. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -1447,7 +1447,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.422. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -1473,7 +1473,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.423. Inflicts regular damage and can hit Dive users."
     },
     "flags": {
       "pok-role-module": {
@@ -1499,7 +1499,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.387. Has a 10% chance to [freeze]{mechanic:freeze} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -1525,7 +1525,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.381. Has a 10% chance to freeze the target."
     },
     "flags": {
       "pok-role-module": {
@@ -1551,7 +1551,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.413. Has a 10% chance to confuse the target."
     },
     "flags": {
       "pok-role-module": {
@@ -1577,7 +1577,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Has a 10% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -1603,7 +1603,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.386. Has a 10% chance to lower the target\u2019s Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -1629,7 +1629,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.395. User foregoes its next turn to recharge."
     },
     "flags": {
       "pok-role-module": {
@@ -1655,7 +1655,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.374. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -1681,7 +1681,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.374. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -1707,7 +1707,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.369. User receives 1/4 the damage it inflicts in recoil."
     },
     "flags": {
       "pok-role-module": {
@@ -1733,7 +1733,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.367. Inflicts more damage to heavier targets, with a maximum of 120 power."
     },
     "flags": {
       "pok-role-module": {
@@ -1759,7 +1759,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Inflicts twice the damage the user received from the last physical hit it took."
     },
     "flags": {
       "pok-role-module": {
@@ -1785,7 +1785,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.368. Inflicts damage equal to the user\u2019s level."
     },
     "flags": {
       "pok-role-module": {
@@ -1811,7 +1811,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -1837,7 +1837,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.378. Drains half the damage inflicted to heal the user."
     },
     "flags": {
       "pok-role-module": {
@@ -1863,7 +1863,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.381. Drains half the damage inflicted to heal the user."
     },
     "flags": {
       "pok-role-module": {
@@ -1889,7 +1889,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.381. Seeds the target, stealing HP from it every turn."
     },
     "flags": {
       "pok-role-module": {
@@ -1915,7 +1915,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.385. Raises the user\u2019s Attack and Special Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -1941,7 +1941,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.381. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -1967,7 +1967,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.382. Requires a turn to charge before attacking."
     },
     "flags": {
       "pok-role-module": {
@@ -1993,7 +1993,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.408. Poisons the target."
     },
     "flags": {
       "pok-role-module": {
@@ -2019,7 +2019,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.383. Paralyzes the target."
     },
     "flags": {
       "pok-role-module": {
@@ -2045,7 +2045,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.382. Puts the target to sleep."
     },
     "flags": {
       "pok-role-module": {
@@ -2071,7 +2071,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.381. Hits every turn for 2-3 turns, then confuses the user."
     },
     "flags": {
       "pok-role-module": {
@@ -2097,7 +2097,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.351. Lowers the target\u2019s Speed by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -2123,7 +2123,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.357. Inflicts 40 points of damage."
     },
     "flags": {
       "pok-role-module": {
@@ -2149,7 +2149,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.371. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
       "pok-role-module": {
@@ -2175,7 +2175,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.361. Has a 10% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -2201,7 +2201,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.361. Has a 10% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -2227,7 +2227,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.361. Paralyzes the target."
     },
     "flags": {
       "pok-role-module": {
@@ -2253,7 +2253,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.361. Has a 30% chance to paralyze the target."
     },
     "flags": {
       "pok-role-module": {
@@ -2279,7 +2279,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.417. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -2305,7 +2305,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.384. Inflicts regular damage and can hit Dig users."
     },
     "flags": {
       "pok-role-module": {
@@ -2331,7 +2331,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.384. Causes a one-hit KO."
     },
     "flags": {
       "pok-role-module": {
@@ -2357,7 +2357,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.384. User digs underground, dodging all attacks, and hits next turn."
     },
     "flags": {
       "pok-role-module": {
@@ -2383,7 +2383,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.364. Badly poisons the target, inflicting more damage every turn."
     },
     "flags": {
       "pok-role-module": {
@@ -2409,7 +2409,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.403. Has a 10% chance to confuse the target."
     },
     "flags": {
       "pok-role-module": {
@@ -2435,7 +2435,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -2461,7 +2461,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.411. Puts the target to sleep."
     },
     "flags": {
       "pok-role-module": {
@@ -2487,7 +2487,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.412. Raises the user\u2019s Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -2513,7 +2513,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.409. Raises the user\u2019s Speed by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -2539,7 +2539,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.399. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -2565,7 +2565,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.350. If the user is hit after using this move, its Attack rises by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -2591,7 +2591,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.415. Immediately ends wild battles. No effect otherwise."
     },
     "flags": {
       "pok-role-module": {
@@ -2617,7 +2617,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.377. Inflicts damage equal to the user\u2019s level."
     },
     "flags": {
       "pok-role-module": {
@@ -2643,7 +2643,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.397. Copies the target\u2019s last used move."
     },
     "flags": {
       "pok-role-module": {
@@ -2669,7 +2669,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.401. Lowers the target\u2019s Defense by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -2695,7 +2695,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.392. Raises the user\u2019s evasion by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -2721,7 +2721,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.399. Heals the user by half its max HP."
     },
     "flags": {
       "pok-role-module": {
@@ -2747,7 +2747,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.395. Raises the user\u2019s Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -2773,7 +2773,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Raises the user\u2019s evasion by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -2799,7 +2799,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.402. Lowers the target\u2019s accuracy by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -2825,7 +2825,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Confuses the target."
     },
     "flags": {
       "pok-role-module": {
@@ -2851,7 +2851,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Raises the user\u2019s Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -2877,7 +2877,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.387. Raises user\u2019s Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -2903,7 +2903,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Raises the user\u2019s Defense by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -2929,7 +2929,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Reduces damage from special attacks by 50% for five turns."
     },
     "flags": {
       "pok-role-module": {
@@ -2955,7 +2955,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.387. Resets all Pok\u00e9mon\u2019s stats, accuracy, and evasion."
     },
     "flags": {
       "pok-role-module": {
@@ -2981,7 +2981,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Reduces damage from physical attacks by half."
     },
     "flags": {
       "pok-role-module": {
@@ -3007,7 +3007,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.393. Increases the user\u2019s chance to score a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -3033,7 +3033,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. User waits for two turns, then hits back for twice the damage it took."
     },
     "flags": {
       "pok-role-module": {
@@ -3059,7 +3059,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.397. Randomly selects and uses any move in the game."
     },
     "flags": {
       "pok-role-module": {
@@ -3085,7 +3085,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.375. Uses the target\u2019s last used move."
     },
     "flags": {
       "pok-role-module": {
@@ -3111,7 +3111,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.401. User faints."
     },
     "flags": {
       "pok-role-module": {
@@ -3137,7 +3137,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.392. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -3163,7 +3163,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.377. Has a 30% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -3189,7 +3189,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Has a 40% chance to [poison]{mechanic:poison} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -3215,7 +3215,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Has a 30% chance to [poison]{mechanic:poison} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -3241,7 +3241,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.383. Has a 10% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -3267,7 +3267,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.370. Has a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -3293,7 +3293,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Has a 20% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -3319,7 +3319,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
       "pok-role-module": {
@@ -3345,7 +3345,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.392. Never misses."
     },
     "flags": {
       "pok-role-module": {
@@ -3371,7 +3371,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.401. Raises the user\u2019s Defense by one stage. User charges for one turn before attacking."
     },
     "flags": {
       "pok-role-module": {
@@ -3397,7 +3397,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.402. Hits 2-5 times in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -3423,7 +3423,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.390. Has a 10% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -3449,7 +3449,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.409. Raises the user\u2019s Special Defense by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -3475,7 +3475,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.412. Lowers the target\u2019s accuracy by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -3501,7 +3501,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.402. Heals the user by half its max HP."
     },
     "flags": {
       "pok-role-module": {
@@ -3527,7 +3527,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.366. If the user misses, it takes half the damage it would have inflicted in recoil."
     },
     "flags": {
       "pok-role-module": {
@@ -3553,7 +3553,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.394. Paralyzes the target."
     },
     "flags": {
       "pok-role-module": {
@@ -3579,7 +3579,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Only works on sleeping Pok\u00e9mon. Drains half the damage inflicted to heal the user."
     },
     "flags": {
       "pok-role-module": {
@@ -3605,7 +3605,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.408. Poisons the target."
     },
     "flags": {
       "pok-role-module": {
@@ -3631,7 +3631,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Hits 2-5 times in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -3657,7 +3657,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.350. Drains half the damage inflicted to heal the user."
     },
     "flags": {
       "pok-role-module": {
@@ -3683,7 +3683,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.396. Puts the target to sleep."
     },
     "flags": {
       "pok-role-module": {
@@ -3709,7 +3709,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.375. User charges for one turn before attacking. Has a 30% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -3735,7 +3735,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.405. User becomes a copy of the target until it leaves battle."
     },
     "flags": {
       "pok-role-module": {
@@ -3761,7 +3761,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Has a 10% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -3787,7 +3787,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.392. Has a 20% chance to confuse the target."
     },
     "flags": {
       "pok-role-module": {
@@ -3813,7 +3813,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Puts the target to sleep."
     },
     "flags": {
       "pok-role-module": {
@@ -3839,7 +3839,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Lowers the target\u2019s accuracy by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -3865,7 +3865,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.414. Inflicts damage between 50% and 150% of the user\u2019s level."
     },
     "flags": {
       "pok-role-module": {
@@ -3891,7 +3891,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.403. Does nothing."
     },
     "flags": {
       "pok-role-module": {
@@ -3917,7 +3917,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Raises the user\u2019s Defense by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -3943,7 +3943,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -3969,7 +3969,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.370. User faints."
     },
     "flags": {
       "pok-role-module": {
@@ -3995,7 +3995,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.394. Hits 2-5 times in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -4021,7 +4021,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.384. Hits twice in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -4047,7 +4047,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.355. User sleeps for two turns, completely healing itself."
     },
     "flags": {
       "pok-role-module": {
@@ -4073,7 +4073,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.416. Has a 30% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -4099,7 +4099,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.396. Has a 10% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -4125,7 +4125,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Raises the user\u2019s Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -4151,7 +4151,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.391. User\u2019s type changes to the type of one of its moves at random."
     },
     "flags": {
       "pok-role-module": {
@@ -4177,7 +4177,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.405. Has a 20% chance to [burn]{mechanic:burn}, [freeze]{mechanic:freeze}, or [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -4203,7 +4203,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.403. Inflicts damage equal to half the target\u2019s HP."
     },
     "flags": {
       "pok-role-module": {
@@ -4229,7 +4229,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.354. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -4255,7 +4255,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.403. Transfers 1/4 of the user\u2019s max HP into a doll, protecting the user from further damage or status changes until it breaks."
     },
     "flags": {
       "pok-role-module": {
@@ -4281,7 +4281,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.351. User takes 1/4 its max HP in recoil."
     },
     "flags": {
       "pok-role-module": {
@@ -4307,7 +4307,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.401. Permanently becomes the target\u2019s last used move."
     },
     "flags": {
       "pok-role-module": {
@@ -4333,7 +4333,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.369. Hits three times, increasing power by 100% with each successful hit."
     },
     "flags": {
       "pok-role-module": {
@@ -4359,7 +4359,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.355. Takes the target\u2019s item."
     },
     "flags": {
       "pok-role-module": {
@@ -4385,7 +4385,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.351. Prevents the target from leaving battle."
     },
     "flags": {
       "pok-role-module": {
@@ -4411,7 +4411,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.397. Ensures that the user\u2019s next move will hit the target."
     },
     "flags": {
       "pok-role-module": {
@@ -4437,7 +4437,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.377. Target loses 1/4 its max HP every turn as long as it\u2019s asleep."
     },
     "flags": {
       "pok-role-module": {
@@ -4463,7 +4463,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.371. Has a 10% chance to [burn]{mechanic:burn} the target. Lets frozen Pok\u00e9mon thaw themselves."
     },
     "flags": {
       "pok-role-module": {
@@ -4489,7 +4489,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.402. Has a 30% chance to make the target flinch. Only works if the user is sleeping."
     },
     "flags": {
       "pok-role-module": {
@@ -4515,7 +4515,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Ghosts pay half their max HP to hurt the target every turn. Others decrease Speed but raise Attack and Defense."
     },
     "flags": {
       "pok-role-module": {
@@ -4541,7 +4541,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.393. Inflicts more damage when the user has less HP remaining, with a maximum of 200 power."
     },
     "flags": {
       "pok-role-module": {
@@ -4567,7 +4567,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.391. Changes the user\u2019s type to a random type either resistant or immune to the last move used against it."
     },
     "flags": {
       "pok-role-module": {
@@ -4593,7 +4593,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.373. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -4619,7 +4619,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Lowers the target\u2019s Speed by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -4645,7 +4645,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.368. Inflicts more damage when the user has less HP remaining, with a maximum of 200 power."
     },
     "flags": {
       "pok-role-module": {
@@ -4671,7 +4671,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.378. Lowers the PP of the target\u2019s last used move by 4."
     },
     "flags": {
       "pok-role-module": {
@@ -4697,7 +4697,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.388. Has a 10% chance to [freeze]{mechanic:freeze} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -4723,7 +4723,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Prevents any moves from hitting the user this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -4749,7 +4749,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.367. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -4775,7 +4775,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.400. Lowers the target\u2019s Speed by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -4801,7 +4801,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.353. Never misses."
     },
     "flags": {
       "pok-role-module": {
@@ -4827,7 +4827,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.364. Confuses the target."
     },
     "flags": {
       "pok-role-module": {
@@ -4853,7 +4853,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. User pays half its max HP to max out its Attack."
     },
     "flags": {
       "pok-role-module": {
@@ -4879,7 +4879,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.408. Has a 30% chance to [poison]{mechanic:poison} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -4905,7 +4905,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.385. Has a 100% chance to lower the target\u2019s accuracy by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -4931,7 +4931,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.422. Has a 50% chance to lower the target\u2019s accuracy by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -4957,7 +4957,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.350. Scatters Spikes, hurting opposing Pok\u00e9mon that switch in."
     },
     "flags": {
       "pok-role-module": {
@@ -4983,7 +4983,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.361. Has a 100% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -5009,7 +5009,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.394. Forces the target to have no Evade, and allows it to be hit by Normal and Fighting moves even if it\u2019s a Ghost."
     },
     "flags": {
       "pok-role-module": {
@@ -5035,7 +5035,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. If the user faints this turn, the target automatically will, too."
     },
     "flags": {
       "pok-role-module": {
@@ -5061,7 +5061,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.398. User and target both faint after three turns."
     },
     "flags": {
       "pok-role-module": {
@@ -5087,7 +5087,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.388. Has a 100% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -5113,7 +5113,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Prevents any moves from hitting the user this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -5139,7 +5139,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.383. Hits 2-5 times in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -5165,7 +5165,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.396. Ensures that the user\u2019s next move will hit the target."
     },
     "flags": {
       "pok-role-module": {
@@ -5191,7 +5191,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Hits every turn for 2-3 turns, then confuses the user."
     },
     "flags": {
       "pok-role-module": {
@@ -5217,7 +5217,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.382. Changes the weather to a sandstorm for five turns."
     },
     "flags": {
       "pok-role-module": {
@@ -5243,7 +5243,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.380. Drains half the damage inflicted to heal the user."
     },
     "flags": {
       "pok-role-module": {
@@ -5269,7 +5269,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.378. Prevents the user\u2019s HP from lowering below 1 this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -5295,7 +5295,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Lowers the target\u2019s Attack by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -5321,7 +5321,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.417. Power doubles every turn this move is used in succession after the first, resetting after five turns."
     },
     "flags": {
       "pok-role-module": {
@@ -5347,7 +5347,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.393. Cannot lower the target\u2019s HP below 1."
     },
     "flags": {
       "pok-role-module": {
@@ -5373,7 +5373,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.403. Raises the target\u2019s Attack by two stages and confuses the target."
     },
     "flags": {
       "pok-role-module": {
@@ -5399,7 +5399,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.397. Heals the user by half its max HP."
     },
     "flags": {
       "pok-role-module": {
@@ -5425,7 +5425,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.360. Has a 30% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -5451,7 +5451,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Power doubles every turn this move is used in succession after the first, maxing out after five turns."
     },
     "flags": {
       "pok-role-module": {
@@ -5477,7 +5477,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.420. Has a 10% chance to raise the user\u2019s Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -5503,7 +5503,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.397. Prevents the target from leaving battle."
     },
     "flags": {
       "pok-role-module": {
@@ -5529,7 +5529,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Target falls in love if it has the opposite gender, and has a 50% chance to refuse attacking the user."
     },
     "flags": {
       "pok-role-module": {
@@ -5555,7 +5555,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.402. Randomly uses one of the user\u2019s other three moves. Only works if the user is sleeping."
     },
     "flags": {
       "pok-role-module": {
@@ -5581,7 +5581,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.395. Cures the entire party of major status effects."
     },
     "flags": {
       "pok-role-module": {
@@ -5607,7 +5607,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.400. Power increases with happiness, up to a maximum of 102."
     },
     "flags": {
       "pok-role-module": {
@@ -5633,7 +5633,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.398. Randomly inflicts damage with power from 40 to 120 or heals the target for 1/4 its max HP."
     },
     "flags": {
       "pok-role-module": {
@@ -5659,7 +5659,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.394. Power increases as happiness decreases, up to a maximum of 102."
     },
     "flags": {
       "pok-role-module": {
@@ -5685,7 +5685,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.400. Protects the user\u2019s field from major status ailments and confusion for five turns."
     },
     "flags": {
       "pok-role-module": {
@@ -5711,7 +5711,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.398. Sets the user\u2019s and targets\u2019s HP to the average of their current HP."
     },
     "flags": {
       "pok-role-module": {
@@ -5737,7 +5737,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.372. Has a 50% chance to [burn]{mechanic:burn} the target. Lets frozen Pok\u00e9mon thaw themselves."
     },
     "flags": {
       "pok-role-module": {
@@ -5763,7 +5763,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.384. Power varies randomly from 10 to 150."
     },
     "flags": {
       "pok-role-module": {
@@ -5789,7 +5789,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.366. Has a 100% chance to confuse the target."
     },
     "flags": {
       "pok-role-module": {
@@ -5815,7 +5815,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.350. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -5841,7 +5841,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Has a 30% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -5867,7 +5867,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Allows the trainer to switch out the user and pass effects along to its replacement."
     },
     "flags": {
       "pok-role-module": {
@@ -5893,7 +5893,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.392. Forces the target to repeat its last used move every turn for 2 to 6 turns."
     },
     "flags": {
       "pok-role-module": {
@@ -5919,7 +5919,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.354. Has double power against, and can hit, Pok\u00e9mon attempting to switch out."
     },
     "flags": {
       "pok-role-module": {
@@ -5945,7 +5945,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.399. Frees the user from binding moves, removes Leech Seed, and blows away Spikes."
     },
     "flags": {
       "pok-role-module": {
@@ -5971,7 +5971,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.404. Lowers the target\u2019s evasion by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -5997,7 +5997,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.419. Has a 30% chance to lower the target\u2019s Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -6023,7 +6023,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.420. Has a 10% chance to raise the user\u2019s Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -6049,7 +6049,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.369. Never misses."
     },
     "flags": {
       "pok-role-module": {
@@ -6075,7 +6075,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.397. Heals the user by half its max HP. Affected by weather."
     },
     "flags": {
       "pok-role-module": {
@@ -6101,7 +6101,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.383. Heals the user by half its max HP. Affected by weather."
     },
     "flags": {
       "pok-role-module": {
@@ -6127,7 +6127,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.364. Heals the user by half its max HP. Affected by weather."
     },
     "flags": {
       "pok-role-module": {
@@ -6153,7 +6153,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.395. Power and type depend upon user\u2019s IVs. Power can range from 30 to 70."
     },
     "flags": {
       "pok-role-module": {
@@ -6179,7 +6179,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -6205,7 +6205,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Has a 20% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -6231,7 +6231,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.422. Changes the weather to rain for five turns."
     },
     "flags": {
       "pok-role-module": {
@@ -6257,7 +6257,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.373. Changes the weather to sunny for five turns."
     },
     "flags": {
       "pok-role-module": {
@@ -6283,7 +6283,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.352. Has a 20% chance to lower the target\u2019s Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -6309,7 +6309,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.412. Inflicts twice the damage the user received from the last special hit it took."
     },
     "flags": {
       "pok-role-module": {
@@ -6335,7 +6335,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.399. Discards the user\u2019s stat changes and copies the target\u2019s."
     },
     "flags": {
       "pok-role-module": {
@@ -6361,7 +6361,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.393. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -6387,7 +6387,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.416. Has a 10% chance to raise all of the user\u2019s stats by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -6413,7 +6413,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.377. Has a 20% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -6439,7 +6439,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Hits the target two turns later."
     },
     "flags": {
       "pok-role-module": {
@@ -6465,7 +6465,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.368. Has a 50% chance to lower the target\u2019s Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -6491,7 +6491,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Prevents the target from leaving battle and inflicts 1/16 its max HP in damage for 2-5 turns."
     },
     "flags": {
       "pok-role-module": {
@@ -6517,7 +6517,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.352. Hits once for every conscious Pok\u00e9mon the trainer has."
     },
     "flags": {
       "pok-role-module": {
@@ -6543,7 +6543,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.393. Can only be used as the first move after the user enters battle. Causes the target to flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -6569,7 +6569,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.405. Forced to use this move for several turns. Pok\u00e9mon cannot fall asleep in that time."
     },
     "flags": {
       "pok-role-module": {
@@ -6595,7 +6595,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.402. Stores energy up to three times for use with Spit Up and Swallow."
     },
     "flags": {
       "pok-role-module": {
@@ -6621,7 +6621,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.402. Power is 100 times the amount of energy Stockpiled."
     },
     "flags": {
       "pok-role-module": {
@@ -6647,7 +6647,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.404. Recovers 1/4 HP after one Stockpile, 1/2 HP after two Stockpiles, or full HP after three Stockpiles."
     },
     "flags": {
       "pok-role-module": {
@@ -6673,7 +6673,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.371. Has a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -6699,7 +6699,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.382. Changes the weather to a hailstorm for five turns."
     },
     "flags": {
       "pok-role-module": {
@@ -6725,7 +6725,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Prevents the target from using the same move twice in a row."
     },
     "flags": {
       "pok-role-module": {
@@ -6751,7 +6751,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.353. Raises the target\u2019s Special Attack by one stage and confuses the target."
     },
     "flags": {
       "pok-role-module": {
@@ -6777,7 +6777,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.373. Burns the target."
     },
     "flags": {
       "pok-role-module": {
@@ -6803,7 +6803,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.354. Lowers the target\u2019s Attack and Special Attack by two stages. User faints."
     },
     "flags": {
       "pok-role-module": {
@@ -6829,7 +6829,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.393. Power doubles if user is burned, paralyzed, or poisoned."
     },
     "flags": {
       "pok-role-module": {
@@ -6855,7 +6855,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.366. If the user takes damage before attacking, the attack is canceled."
     },
     "flags": {
       "pok-role-module": {
@@ -6881,7 +6881,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.402. If the target is paralyzed, inflicts double damage and cures the paralysis."
     },
     "flags": {
       "pok-role-module": {
@@ -6907,7 +6907,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.394. Redirects the target\u2019s single-target effects to the user for this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -6933,7 +6933,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.359. Uses a move which depends upon the terrain."
     },
     "flags": {
       "pok-role-module": {
@@ -6959,7 +6959,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Raises the user\u2019s Special Defense by one stage. User\u2019s Electric moves have doubled power next turn."
     },
     "flags": {
       "pok-role-module": {
@@ -6985,7 +6985,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.355. For the next few turns, the target can only use damaging moves."
     },
     "flags": {
       "pok-role-module": {
@@ -7011,7 +7011,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.395. Ally\u2019s next move inflicts half more damage."
     },
     "flags": {
       "pok-role-module": {
@@ -7037,7 +7037,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.378. User and target swap items."
     },
     "flags": {
       "pok-role-module": {
@@ -7063,7 +7063,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.414. Copies the target\u2019s ability."
     },
     "flags": {
       "pok-role-module": {
@@ -7089,7 +7089,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. User will recover half its max HP at the end of the next turn."
     },
     "flags": {
       "pok-role-module": {
@@ -7115,7 +7115,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Randomly selects and uses one of the trainer\u2019s other Pok\u00e9mon\u2019s moves."
     },
     "flags": {
       "pok-role-module": {
@@ -7141,7 +7141,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.380. Prevents the user from leaving battle. User regains 1/16 of its max HP every turn."
     },
     "flags": {
       "pok-role-module": {
@@ -7167,7 +7167,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.369. Lowers the user\u2019s Attack and Defense by one stage after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -7193,7 +7193,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.412. Reflects back the first effect move used on the user this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -7219,7 +7219,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.399. User recovers the item it last used up."
     },
     "flags": {
       "pok-role-module": {
@@ -7245,7 +7245,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.368. Inflicts double damage if the user takes damage before attacking this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -7271,7 +7271,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Destroys Reflect and Light Screen."
     },
     "flags": {
       "pok-role-module": {
@@ -7297,7 +7297,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.406. Target sleeps at the end of the next turn."
     },
     "flags": {
       "pok-role-module": {
@@ -7323,7 +7323,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.354. Target drops its held item."
     },
     "flags": {
       "pok-role-module": {
@@ -7349,7 +7349,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.392. Lowers the target\u2019s HP to equal the user\u2019s."
     },
     "flags": {
       "pok-role-module": {
@@ -7375,7 +7375,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.370. Inflicts more damage when the user has more HP remaining, with a maximum of 150 power."
     },
     "flags": {
       "pok-role-module": {
@@ -7401,7 +7401,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.414. User and target swap abilities."
     },
     "flags": {
       "pok-role-module": {
@@ -7427,7 +7427,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.411. Prevents the target from using any moves that the user also knows."
     },
     "flags": {
       "pok-role-module": {
@@ -7453,7 +7453,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Cleanses the user of a burn, paralysis, or poison."
     },
     "flags": {
       "pok-role-module": {
@@ -7479,7 +7479,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. If the user faints this turn, the PP of the move that fainted it drops to 0."
     },
     "flags": {
       "pok-role-module": {
@@ -7505,7 +7505,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.355. Steals the target\u2019s move, if it\u2019s self-targeted."
     },
     "flags": {
       "pok-role-module": {
@@ -7531,7 +7531,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.401. Has a 30% chance to inflict a status effect which depends upon the terrain."
     },
     "flags": {
       "pok-role-module": {
@@ -7557,7 +7557,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.422. User dives underwater, dodging all attacks, and hits next turn."
     },
     "flags": {
       "pok-role-module": {
@@ -7583,7 +7583,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Hits 2-5 times in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -7609,7 +7609,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.390. User\u2019s type changes to match the terrain."
     },
     "flags": {
       "pok-role-module": {
@@ -7635,7 +7635,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.351. Raises the user\u2019s Special Attack by three stages."
     },
     "flags": {
       "pok-role-module": {
@@ -7661,7 +7661,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.412. Has a 50% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -7687,7 +7687,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.413. Has a 50% chance to lower the target\u2019s Special Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -7713,7 +7713,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.374. Lowers the target\u2019s Attack by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -7739,7 +7739,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.405. Confuses the target."
     },
     "flags": {
       "pok-role-module": {
@@ -7765,7 +7765,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.369. Has an increased chance for a critical hit and a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -7791,7 +7791,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.385. Halves all Electric-type damage."
     },
     "flags": {
       "pok-role-module": {
@@ -7817,7 +7817,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.387. Power doubles every turn this move is used in succession after the first, resetting after five turns."
     },
     "flags": {
       "pok-role-module": {
@@ -7843,7 +7843,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.381. Has a 30% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -7869,7 +7869,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.401. Heals the user by half its max HP."
     },
     "flags": {
       "pok-role-module": {
@@ -7895,7 +7895,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.396. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -7921,7 +7921,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Has a 50% chance to badly poison the target."
     },
     "flags": {
       "pok-role-module": {
@@ -7947,7 +7947,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.391. Has a 50% chance to lower the target\u2019s Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -7973,7 +7973,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.369. User foregoes its next turn to recharge."
     },
     "flags": {
       "pok-role-module": {
@@ -7999,7 +7999,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.422. User foregoes its next turn to recharge."
     },
     "flags": {
       "pok-role-module": {
@@ -8025,7 +8025,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.420. Has a 20% chance to raise the user\u2019s Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -8051,7 +8051,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Has a 30% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -8077,7 +8077,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.406. If there be weather, this move has doubled power and the weather\u2019s type."
     },
     "flags": {
       "pok-role-module": {
@@ -8103,7 +8103,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Cures the entire party of major status effects."
     },
     "flags": {
       "pok-role-module": {
@@ -8129,7 +8129,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.353. Lowers the target\u2019s Special Defense by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -8155,7 +8155,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.373. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -8181,7 +8181,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.372. Lowers the user\u2019s Special Attack by two stages after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -8207,7 +8207,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.398. Forces the target to have no Evade, and allows it to be hit by Normal and Fighting moves even if it\u2019s a Ghost."
     },
     "flags": {
       "pok-role-module": {
@@ -8233,7 +8233,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.417. Has a 100% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -8259,7 +8259,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.351. Has a 10% chance to raise all of the user\u2019s stats by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -8285,7 +8285,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.420. Lowers the target\u2019s Special Defense by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -8311,7 +8311,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.380. Puts the target to sleep."
     },
     "flags": {
       "pok-role-module": {
@@ -8337,7 +8337,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.405. Lowers the target\u2019s Attack and Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -8363,7 +8363,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Raises the user\u2019s Defense and Special Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -8389,7 +8389,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Inflicts more damage when the user has more HP remaining, with a maximum of 150 power."
     },
     "flags": {
       "pok-role-module": {
@@ -8415,7 +8415,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.350. Has a 10% chance to confuse the target."
     },
     "flags": {
       "pok-role-module": {
@@ -8441,7 +8441,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.378. Never misses."
     },
     "flags": {
       "pok-role-module": {
@@ -8467,7 +8467,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Has a 10% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -8493,7 +8493,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.368. Inflicts regular damage and can hit Bounce and Fly users."
     },
     "flags": {
       "pok-role-module": {
@@ -8519,7 +8519,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.385. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
       "pok-role-module": {
@@ -8545,7 +8545,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.388. Causes a one-hit KO."
     },
     "flags": {
       "pok-role-module": {
@@ -8571,7 +8571,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.422. Has a 30% chance to lower the target\u2019s accuracy by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -8597,7 +8597,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Hits 2-5 times in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -8623,7 +8623,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.373. Never misses."
     },
     "flags": {
       "pok-role-module": {
@@ -8649,7 +8649,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.388. Hits 2-5 times in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -8675,7 +8675,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.419. Raises the user\u2019s Defense by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -8701,7 +8701,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.354. Prevents the target from leaving battle."
     },
     "flags": {
       "pok-role-module": {
@@ -8727,7 +8727,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.395. Raises the user\u2019s Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -8753,7 +8753,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.357. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -8779,7 +8779,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. User foregoes its next turn to recharge."
     },
     "flags": {
       "pok-role-module": {
@@ -8805,7 +8805,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Raises the user\u2019s Attack and Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -8831,7 +8831,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.374. User bounces high into the air, dodging all attacks, and hits next turn."
     },
     "flags": {
       "pok-role-module": {
@@ -8857,7 +8857,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.385. Has a 100% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -8883,7 +8883,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.408. Has an increased chance for a critical hit and a 10% chance to poison the target."
     },
     "flags": {
       "pok-role-module": {
@@ -8909,7 +8909,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Takes the target\u2019s item."
     },
     "flags": {
       "pok-role-module": {
@@ -8935,7 +8935,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.361. User takes 1/3 the damage inflicted in recoil. Has a 10% chance to paralyze the target."
     },
     "flags": {
       "pok-role-module": {
@@ -8961,7 +8961,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.381. Never misses."
     },
     "flags": {
       "pok-role-module": {
@@ -8987,7 +8987,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Halves all Fire-type damage."
     },
     "flags": {
       "pok-role-module": {
@@ -9013,7 +9013,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Raises the user\u2019s Special Attack and Special Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -9039,7 +9039,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.380. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -9065,7 +9065,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.357. Raises the user\u2019s Attack and Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -9091,7 +9091,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.416. Hits 2-5 times in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -9117,7 +9117,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.360. Never misses."
     },
     "flags": {
       "pok-role-module": {
@@ -9143,7 +9143,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Has a 20% chance to confuse the target."
     },
     "flags": {
       "pok-role-module": {
@@ -9169,7 +9169,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.418. Hits the target two turns later."
     },
     "flags": {
       "pok-role-module": {
@@ -9195,7 +9195,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.414. Lowers the user\u2019s Special Attack by two stages after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -9221,7 +9221,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.375. Heals the user by half its max HP."
     },
     "flags": {
       "pok-role-module": {
@@ -9247,7 +9247,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Disables moves and immunities that involve flying or levitating for five turns."
     },
     "flags": {
       "pok-role-module": {
@@ -9273,7 +9273,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.412. Forces the target to have no evasion, and allows it to be hit by Psychic moves even if it\u2019s Dark."
     },
     "flags": {
       "pok-role-module": {
@@ -9299,7 +9299,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.369. If the target is asleep, has double power and wakes it up."
     },
     "flags": {
       "pok-role-module": {
@@ -9325,7 +9325,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.366. Lowers user\u2019s Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -9351,7 +9351,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.419. Power raises when the user has lower Speed, up to a maximum of 150."
     },
     "flags": {
       "pok-role-module": {
@@ -9377,7 +9377,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.411. User faints. Its replacement has its HP fully restored and any major status effect removed."
     },
     "flags": {
       "pok-role-module": {
@@ -9403,7 +9403,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Has double power against Pok\u00e9mon that have less than half their max HP remaining."
     },
     "flags": {
       "pok-role-module": {
@@ -9429,7 +9429,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.398. Power and type depend on the held berry."
     },
     "flags": {
       "pok-role-module": {
@@ -9455,7 +9455,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.353. Hits through Protect and Detect."
     },
     "flags": {
       "pok-role-module": {
@@ -9481,7 +9481,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.375. If target has a berry, inflicts double damage and uses the berry."
     },
     "flags": {
       "pok-role-module": {
@@ -9507,7 +9507,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. For three turns, friendly Pok\u00e9mon have doubled Speed."
     },
     "flags": {
       "pok-role-module": {
@@ -9533,7 +9533,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Raises one of a friendly Pok\u00e9mon\u2019s stats at random by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -9559,7 +9559,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.419. Strikes back at the last Pok\u00e9mon to hit the user this turn with 1.5\u00d7 the damage."
     },
     "flags": {
       "pok-role-module": {
@@ -9585,7 +9585,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.351. User must switch out after attacking."
     },
     "flags": {
       "pok-role-module": {
@@ -9611,7 +9611,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Lowers the user\u2019s Defense and Special Defense by one stage after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -9637,7 +9637,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.354. Power is doubled if the target has already moved this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -9663,7 +9663,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.352. Power is doubled if the target has already received damage this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -9689,7 +9689,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.353. Target cannot use held items."
     },
     "flags": {
       "pok-role-module": {
@@ -9715,7 +9715,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.353. Throws held item at the target; power depends on the item."
     },
     "flags": {
       "pok-role-module": {
@@ -9741,7 +9741,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.414. Transfers the user\u2019s major status effect to the target."
     },
     "flags": {
       "pok-role-module": {
@@ -9767,7 +9767,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.405. Power increases when this move has less PP, up to a maximum of 200."
     },
     "flags": {
       "pok-role-module": {
@@ -9793,7 +9793,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.411. Prevents target from restoring its HP for five turns."
     },
     "flags": {
       "pok-role-module": {
@@ -9819,7 +9819,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.406. Power increases against targets with more HP remaining, up to a maximum of 121 power."
     },
     "flags": {
       "pok-role-module": {
@@ -9845,7 +9845,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.413. User swaps Attack and Defense."
     },
     "flags": {
       "pok-role-module": {
@@ -9871,7 +9871,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Nullifies target\u2019s ability until it leaves battle."
     },
     "flags": {
       "pok-role-module": {
@@ -9897,7 +9897,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.396. Prevents the target from scoring critical hits for five turns."
     },
     "flags": {
       "pok-role-module": {
@@ -9923,7 +9923,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.396. Uses the target\u2019s move against it before it attacks, with power increased by half."
     },
     "flags": {
       "pok-role-module": {
@@ -9949,7 +9949,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.391. Uses the target\u2019s last used move."
     },
     "flags": {
       "pok-role-module": {
@@ -9975,7 +9975,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.413. User swaps Attack and Special Attack changes with the target."
     },
     "flags": {
       "pok-role-module": {
@@ -10001,7 +10001,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.411. User swaps Defense and Special Defense changes with the target."
     },
     "flags": {
       "pok-role-module": {
@@ -10027,7 +10027,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.355. Power increases against targets with more raised stats, up to a maximum of 200."
     },
     "flags": {
       "pok-role-module": {
@@ -10053,7 +10053,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.396. Can only be used after all of the user\u2019s other moves have been used."
     },
     "flags": {
       "pok-role-module": {
@@ -10079,7 +10079,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.383. Changes the target\u2019s ability to Insomnia."
     },
     "flags": {
       "pok-role-module": {
@@ -10105,7 +10105,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.355. Only works if the target is about to use a damaging move."
     },
     "flags": {
       "pok-role-module": {
@@ -10131,7 +10131,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.374. Scatters poisoned spikes, poisoning opposing Pok\u00e9mon that switch in."
     },
     "flags": {
       "pok-role-module": {
@@ -10157,7 +10157,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.411. User and target swap stat changes."
     },
     "flags": {
       "pok-role-module": {
@@ -10183,7 +10183,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Restores 1/16 of the user\u2019s max HP each turn."
     },
     "flags": {
       "pok-role-module": {
@@ -10209,7 +10209,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.360. User is immune to Ground moves and effects for five turns."
     },
     "flags": {
       "pok-role-module": {
@@ -10235,7 +10235,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.371. User takes 1/3 the damage inflicted in recoil. Has a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -10261,7 +10261,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.366. Has a 30% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -10287,7 +10287,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Never misses."
     },
     "flags": {
       "pok-role-module": {
@@ -10313,7 +10313,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.416. Raises the user\u2019s Speed by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -10339,7 +10339,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.408. Has a 30% chance to [poison]{mechanic:poison} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -10365,7 +10365,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.352. Has a 20% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -10391,7 +10391,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.354. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -10417,7 +10417,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -10443,7 +10443,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.382. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -10469,7 +10469,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.374. Has a 30% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -10495,7 +10495,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.351. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -10521,7 +10521,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -10547,7 +10547,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.357. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -10573,7 +10573,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.357. Has a 20% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -10599,7 +10599,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.416. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -10625,7 +10625,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.366. Drains half the damage inflicted to heal the user."
     },
     "flags": {
       "pok-role-module": {
@@ -10651,7 +10651,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.369. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -10677,7 +10677,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.366. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -10703,7 +10703,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -10729,7 +10729,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.374. User receives 1/3 the damage inflicted in recoil."
     },
     "flags": {
       "pok-role-module": {
@@ -10755,7 +10755,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.384. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -10781,7 +10781,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.355. User and target swap items."
     },
     "flags": {
       "pok-role-module": {
@@ -10807,7 +10807,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.394. User foregoes its next turn to recharge."
     },
     "flags": {
       "pok-role-module": {
@@ -10833,7 +10833,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.354. Raises the user\u2019s Special Attack by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -10859,7 +10859,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.418. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -10885,7 +10885,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.386. Inflicts double damage if the user takes damage before attacking this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -10911,7 +10911,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.388. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -10937,7 +10937,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.377. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -10963,7 +10963,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.361. Has a 10% chance to paralyze the target and a 10% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -10989,7 +10989,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.387. Has a 10% chance to freeze the target and a 10% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -11015,7 +11015,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.370. Has a 10% chance to [burn]{mechanic:burn} the target and a 10% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -11041,7 +11041,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.378. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -11067,7 +11067,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.385. Has a 30% chance to lower the target\u2019s accuracy by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -11093,7 +11093,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.414. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -11119,7 +11119,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.415. Has a 20% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -11145,7 +11145,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.420. Has a 30% chance to lower the target\u2019s accuracy by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -11171,7 +11171,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.418. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -11197,7 +11197,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.400. Has a 20% chance to confuse the target."
     },
     "flags": {
       "pok-role-module": {
@@ -11223,7 +11223,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.374. Lowers the target\u2019s evasion by one stage. Removes field effects from the enemy field."
     },
     "flags": {
       "pok-role-module": {
@@ -11249,7 +11249,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.415. For five turns, slower Pok\u00e9mon will act before faster Pok\u00e9mon."
     },
     "flags": {
       "pok-role-module": {
@@ -11275,7 +11275,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Lowers the user\u2019s Special Attack by two stages after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -11301,7 +11301,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Has a 30% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -11327,7 +11327,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.372. Has a 30% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -11353,7 +11353,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.380. Lowers the user\u2019s Special Attack by two stages after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -11379,7 +11379,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.381. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -11405,7 +11405,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.417. User foregoes its next turn to recharge."
     },
     "flags": {
       "pok-role-module": {
@@ -11431,7 +11431,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Has an increased chance for a critical hit and a 10% chance to poison the target."
     },
     "flags": {
       "pok-role-module": {
@@ -11457,7 +11457,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Has a 30% chance to [poison]{mechanic:poison} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -11483,7 +11483,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.419. Has a 30% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -11509,7 +11509,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.419. Never misses."
     },
     "flags": {
       "pok-role-module": {
@@ -11535,7 +11535,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.417. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -11561,7 +11561,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.390. Lowers the target\u2019s Special Attack by two stages if it\u2019s the opposite gender."
     },
     "flags": {
       "pok-role-module": {
@@ -11587,7 +11587,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.374. Causes damage when opposing Pok\u00e9mon switch in."
     },
     "flags": {
       "pok-role-module": {
@@ -11613,7 +11613,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.380. Inflicts more damage to heavier targets, with a maximum of 120 power."
     },
     "flags": {
       "pok-role-module": {
@@ -11639,7 +11639,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.374. Has a higher chance to confuse the target when the recorded sound is louder."
     },
     "flags": {
       "pok-role-module": {
@@ -11665,7 +11665,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.396. If the user is holding a appropriate plate or drive, the damage inflicted will match it."
     },
     "flags": {
       "pok-role-module": {
@@ -11691,7 +11691,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. If target has a berry, inflicts double damage and uses the berry."
     },
     "flags": {
       "pok-role-module": {
@@ -11717,7 +11717,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.359. Has a 70% chance to raise the user\u2019s Special Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -11743,7 +11743,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.383. User receives 1/3 the damage inflicted in recoil."
     },
     "flags": {
       "pok-role-module": {
@@ -11769,7 +11769,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -11795,7 +11795,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -11821,7 +11821,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Raises the user\u2019s Defense and Special Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -11847,7 +11847,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Heals the user by half its max HP."
     },
     "flags": {
       "pok-role-module": {
@@ -11873,7 +11873,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.416. User receives 1/2 the damage inflicted in recoil."
     },
     "flags": {
       "pok-role-module": {
@@ -11899,7 +11899,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.392. Hits twice in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -11925,7 +11925,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. User foregoes its next turn to recharge."
     },
     "flags": {
       "pok-role-module": {
@@ -11951,7 +11951,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -11977,7 +11977,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.412. User faints, and its replacement is fully healed."
     },
     "flags": {
       "pok-role-module": {
@@ -12003,7 +12003,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.391. Power increases against targets with more HP remaining, up to a maximum of 121 power."
     },
     "flags": {
       "pok-role-module": {
@@ -12029,7 +12029,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.372. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
       "pok-role-module": {
@@ -12055,7 +12055,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.352. Puts the target to sleep."
     },
     "flags": {
       "pok-role-module": {
@@ -12081,7 +12081,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.382. Has a 40% chance to lower the target\u2019s Special Defense by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -12107,7 +12107,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.377. Has a 10% chance to raise all of the user\u2019s stats by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -12133,7 +12133,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.378. User vanishes, dodging all attacks, and hits next turn. Hits through Protect and Detect."
     },
     "flags": {
       "pok-role-module": {
@@ -12159,7 +12159,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.353. Raises the user\u2019s Attack and accuracy by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -12185,7 +12185,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.417. Prevents any multi-target moves from hitting friendly Pok\u00e9mon this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -12211,7 +12211,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Averages Defense and Special Defense with the target."
     },
     "flags": {
       "pok-role-module": {
@@ -12237,7 +12237,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.413. Averages Attack and Special Attack with the target."
     },
     "flags": {
       "pok-role-module": {
@@ -12263,7 +12263,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.415. All Pok\u00e9mon\u2019s Defense and Special Defense are swapped for 5 turns."
     },
     "flags": {
       "pok-role-module": {
@@ -12289,7 +12289,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.414. Inflicts damage based on the target\u2019s Defense, not Special Defense."
     },
     "flags": {
       "pok-role-module": {
@@ -12315,7 +12315,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.409. Inflicts double damage if the target is Poisoned."
     },
     "flags": {
       "pok-role-module": {
@@ -12341,7 +12341,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.418. Raises the user\u2019s Speed by two stages and halves the user\u2019s weight."
     },
     "flags": {
       "pok-role-module": {
@@ -12367,7 +12367,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.350. Redirects the target\u2019s single-target effects to the user for this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -12393,7 +12393,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.413. Moves have 100% accuracy against the target for three turns."
     },
     "flags": {
       "pok-role-module": {
@@ -12419,7 +12419,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.412. Negates held items for five turns."
     },
     "flags": {
       "pok-role-module": {
@@ -12445,7 +12445,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.417. Removes any immunity to Ground damage."
     },
     "flags": {
       "pok-role-module": {
@@ -12471,7 +12471,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.368. Always scores a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -12497,7 +12497,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.371. Deals splash damage to Pok\u00e9mon next to the target."
     },
     "flags": {
       "pok-role-module": {
@@ -12523,7 +12523,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.408. Has a 10% chance to [poison]{mechanic:poison} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -12549,7 +12549,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.350. Raises the user\u2019s Special Attack, Special Defense, and Speed by one stage each."
     },
     "flags": {
       "pok-role-module": {
@@ -12575,7 +12575,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.419. Power is higher when the user weighs more than the target, up to a maximum of 120."
     },
     "flags": {
       "pok-role-module": {
@@ -12601,7 +12601,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.415. Hits any Pok\u00e9mon that shares a type with the user."
     },
     "flags": {
       "pok-role-module": {
@@ -12627,7 +12627,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.359. Power is higher when the user has greater Speed than the target, up to a maximum of 150."
     },
     "flags": {
       "pok-role-module": {
@@ -12653,7 +12653,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.423. Changes the target\u2019s type to Water."
     },
     "flags": {
       "pok-role-module": {
@@ -12679,7 +12679,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.371. Inflicts regular damage. Raises the user\u2019s Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -12705,7 +12705,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Raises the user\u2019s Attack, Defense, and accuracy by one stage each."
     },
     "flags": {
       "pok-role-module": {
@@ -12731,7 +12731,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.367. Lowers the target\u2019s Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -12757,7 +12757,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Lowers the target\u2019s Special Defense by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -12783,7 +12783,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.353. Calculates damage with the target\u2019s attacking stat."
     },
     "flags": {
       "pok-role-module": {
@@ -12809,7 +12809,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.401. Changes the target\u2019s ability to Simple."
     },
     "flags": {
       "pok-role-module": {
@@ -12835,7 +12835,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.393. Copies the user\u2019s ability onto the target."
     },
     "flags": {
       "pok-role-module": {
@@ -12861,7 +12861,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Makes the target act next this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -12887,7 +12887,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Has double power if it\u2019s used more than once per turn."
     },
     "flags": {
       "pok-role-module": {
@@ -12913,7 +12913,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.392. Power increases by 100% for each consecutive use by any friendly Pok\u00e9mon, to a maximum of 200."
     },
     "flags": {
       "pok-role-module": {
@@ -12939,7 +12939,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.390. Ignores the target\u2019s stat modifiers."
     },
     "flags": {
       "pok-role-module": {
@@ -12965,7 +12965,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Removes all of the target\u2019s stat modifiers."
     },
     "flags": {
       "pok-role-module": {
@@ -12991,7 +12991,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.415. Power is higher the more the user\u2019s stats have been raised, to a maximum of 31\u00d7."
     },
     "flags": {
       "pok-role-module": {
@@ -13017,7 +13017,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.368. Prevents any priority moves from hitting friendly Pok\u00e9mon this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -13043,7 +13043,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.409. User switches places with the friendly Pok\u00e9mon opposite it."
     },
     "flags": {
       "pok-role-module": {
@@ -13069,7 +13069,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.423. Has a 30% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -13095,7 +13095,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.401. Raises user\u2019s Attack, Special Attack, and Speed by two stages. Lower user\u2019s Defense and Special Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -13121,7 +13121,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.411. Heals the target for half its max HP."
     },
     "flags": {
       "pok-role-module": {
@@ -13147,7 +13147,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.377. Has double power if the target has a major status ailment."
     },
     "flags": {
       "pok-role-module": {
@@ -13173,7 +13173,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.375. Carries the target high into the air, dodging all attacks against either, and drops it next turn."
     },
     "flags": {
       "pok-role-module": {
@@ -13199,7 +13199,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.420. Raises the user\u2019s Attack by one stage and its Speed by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -13225,7 +13225,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Ends wild battles. Forces trainers to switch Pok\u00e9mon."
     },
     "flags": {
       "pok-role-module": {
@@ -13251,7 +13251,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.371. Destroys the target\u2019s held berry."
     },
     "flags": {
       "pok-role-module": {
@@ -13277,7 +13277,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.355. Makes the target act last this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -13303,7 +13303,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.373. Has double power if the user has no held item."
     },
     "flags": {
       "pok-role-module": {
@@ -13329,7 +13329,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.399. User becomes the target\u2019s type."
     },
     "flags": {
       "pok-role-module": {
@@ -13355,7 +13355,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.368. Has double power if a friendly Pok\u00e9mon fainted last turn."
     },
     "flags": {
       "pok-role-module": {
@@ -13381,7 +13381,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.366. Inflicts damage equal to the user\u2019s remaining HP. User faints."
     },
     "flags": {
       "pok-role-module": {
@@ -13407,7 +13407,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Gives the user\u2019s held item to the target."
     },
     "flags": {
       "pok-role-module": {
@@ -13433,7 +13433,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.372. Has a 100% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -13459,7 +13459,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.423. With [Grass Pledge]{move:grass-pledge}, halves opposing Pok\u00e9mon\u2019s Speed for four turns."
     },
     "flags": {
       "pok-role-module": {
@@ -13485,7 +13485,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.370. With [Water Pledge]{move:water-pledge}, doubles the effect chance of friendly Pok\u00e9mon\u2019s moves for four turns."
     },
     "flags": {
       "pok-role-module": {
@@ -13511,7 +13511,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.380. With [Fire Pledge]{move:fire-pledge}, damages opposing Pok\u00e9mon for 1/8 their max HP every turn for four turns."
     },
     "flags": {
       "pok-role-module": {
@@ -13537,7 +13537,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.361. User must switch out after attacking."
     },
     "flags": {
       "pok-role-module": {
@@ -13563,7 +13563,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.351. Has a 100% chance to lower the target\u2019s Special Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -13589,7 +13589,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.384. Has a 100% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -13615,7 +13615,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.387. Always scores a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -13641,7 +13641,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.357. Ends wild battles. Forces trainers to switch Pok\u00e9mon."
     },
     "flags": {
       "pok-role-module": {
@@ -13667,7 +13667,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.406. Raises the user\u2019s Attack and Special Attack by one stage each."
     },
     "flags": {
       "pok-role-module": {
@@ -13693,7 +13693,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.359. Lowers the target\u2019s Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -13719,7 +13719,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.361. User receives 1/4 the damage it inflicts in recoil."
     },
     "flags": {
       "pok-role-module": {
@@ -13745,7 +13745,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.384. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -13771,7 +13771,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.357. Hits twice in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -13797,7 +13797,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.411. Has a 30% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -13823,7 +13823,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.380. Drains half the damage inflicted to heal the user."
     },
     "flags": {
       "pok-role-module": {
@@ -13849,7 +13849,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.368. Ignores the target\u2019s stat modifiers."
     },
     "flags": {
       "pok-role-module": {
@@ -13875,7 +13875,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.423. Has a 50% chance to lower the target\u2019s Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -13901,7 +13901,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.371. Power is higher when the user weighs more than the target, up to a maximum of 120."
     },
     "flags": {
       "pok-role-module": {
@@ -13927,7 +13927,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.381. Has a 50% chance to lower the target\u2019s accuracy by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -13953,7 +13953,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.351. Has a 30% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -13979,7 +13979,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Raises the user\u2019s Defense by three stages."
     },
     "flags": {
       "pok-role-module": {
@@ -14005,7 +14005,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.354. Has a 40% chance to lower the target\u2019s accuracy by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -14031,7 +14031,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.414. Inflicts damage based on the target\u2019s Defense, not Special Defense."
     },
     "flags": {
       "pok-role-module": {
@@ -14057,7 +14057,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.404. Hits 2-5 times in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -14083,7 +14083,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.375. Has a 30% chance to confuse the target."
     },
     "flags": {
       "pok-role-module": {
@@ -14109,7 +14109,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.395. User receives 1/4 the damage it inflicts in recoil."
     },
     "flags": {
       "pok-role-module": {
@@ -14135,7 +14135,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.419. Hits twice in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -14161,7 +14161,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.372. Has a 30% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -14187,7 +14187,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.405. If the user is holding a appropriate plate or drive, the damage inflicted will match it."
     },
     "flags": {
       "pok-role-module": {
@@ -14213,7 +14213,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.400. Has a 10% chance to put the target to sleep."
     },
     "flags": {
       "pok-role-module": {
@@ -14239,7 +14239,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.368. Inflicts damage based on the target\u2019s Defense, not Special Defense."
     },
     "flags": {
       "pok-role-module": {
@@ -14265,7 +14265,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.387. Lowers the target\u2019s Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -14291,7 +14291,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Has a 20% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -14317,7 +14317,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.370. Has a 20% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -14343,7 +14343,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.370. Has a 50% chance to raise the user\u2019s Special Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -14369,7 +14369,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.387. Requires a turn to charge before attacking. Has a 30% chance to paralyze the target."
     },
     "flags": {
       "pok-role-module": {
@@ -14395,7 +14395,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.387. Requires a turn to charge before attacking. Has a 30% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -14421,7 +14421,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.355. Has a 100% chance to lower the target\u2019s Special Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -14447,7 +14447,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.388. Has a 30% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -14473,7 +14473,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.373. Lowers the user\u2019s Defense, Special Defense, and Speed by one stage each."
     },
     "flags": {
       "pok-role-module": {
@@ -14499,7 +14499,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.359. With [Fusion Bolt]{move:fusion-bolt}, inflicts double damage."
     },
     "flags": {
       "pok-role-module": {
@@ -14525,7 +14525,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.359. With [Fusion Flare]{move:fusion-flare}, inflicts double damage."
     },
     "flags": {
       "pok-role-module": {
@@ -14551,7 +14551,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.366. Deals both []{type:fighting} and []{type:flying}-type damage."
     },
     "flags": {
       "pok-role-module": {
@@ -14577,7 +14577,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.367. Protects all friendly Pok\u00e9mon from damaging moves. Only works on the first turn after the user is sent out."
     },
     "flags": {
       "pok-role-module": {
@@ -14603,7 +14603,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Can only be used after the user has eaten a berry."
     },
     "flags": {
       "pok-role-module": {
@@ -14629,7 +14629,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.385. Raises the Attack and Special Attack of all []{type:grass} Pok\u00e9mon in battle."
     },
     "flags": {
       "pok-role-module": {
@@ -14655,7 +14655,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.351. Covers the opposing field, lowering opponents\u2019 Speed by one stage upon switching in."
     },
     "flags": {
       "pok-role-module": {
@@ -14681,7 +14681,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Raises the user\u2019s Attack by two stages if it KOs the target."
     },
     "flags": {
       "pok-role-module": {
@@ -14707,7 +14707,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.377. User vanishes, dodging all attacks, and hits next turn. Hits through Protect and Detect."
     },
     "flags": {
       "pok-role-module": {
@@ -14733,7 +14733,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.378. Adds []{type:ghost} to the target\u2019s types."
     },
     "flags": {
       "pok-role-module": {
@@ -14759,7 +14759,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.398. Lowers the target\u2019s Attack and Special Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -14785,7 +14785,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.360. Changes all []{type:normal} moves to []{type:electric} moves for the rest of the turn."
     },
     "flags": {
       "pok-role-module": {
@@ -14811,7 +14811,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.360. Heals the user for half the total damage dealt to all targets."
     },
     "flags": {
       "pok-role-module": {
@@ -14837,7 +14837,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Adds []{type:grass} to the target\u2019s types."
     },
     "flags": {
       "pok-role-module": {
@@ -14863,7 +14863,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.381. Inflicts regular damage."
     },
     "flags": {
       "pok-role-module": {
@@ -14889,7 +14889,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.386. Super-effective against []{type:water}."
     },
     "flags": {
       "pok-role-module": {
@@ -14915,7 +14915,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.363. Never misses."
     },
     "flags": {
       "pok-role-module": {
@@ -14941,7 +14941,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.354. Lowers all targets\u2019 Attack and Special Attack by one stage. Makes the user switch out."
     },
     "flags": {
       "pok-role-module": {
@@ -14967,7 +14967,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Inverts the target\u2019s stat modifiers."
     },
     "flags": {
       "pok-role-module": {
@@ -14993,7 +14993,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.363. Drains 75% of the damage inflicted to heal the user."
     },
     "flags": {
       "pok-role-module": {
@@ -15019,7 +15019,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Protects all friendly Pok\u00e9mon from non-damaging moves."
     },
     "flags": {
       "pok-role-module": {
@@ -15045,7 +15045,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.363. Raises the Defense of all []{type:grass} Pok\u00e9mon in battle."
     },
     "flags": {
       "pok-role-module": {
@@ -15071,7 +15071,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.363. For five turns, heals all Pok\u00e9mon on the ground for 1/16 max HP each turn and strengthens their []{type:grass} moves to 1.5\u00d7 their power."
     },
     "flags": {
       "pok-role-module": {
@@ -15097,7 +15097,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.363. For five turns, protects all Pok\u00e9mon on the ground from major status ailments and confusion, and halves the power of incoming []{type:dragon} moves."
     },
     "flags": {
       "pok-role-module": {
@@ -15123,7 +15123,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.359. Changes the target\u2019s move\u2019s type to []{type:electric} if it hasn\u2019t moved yet this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -15149,7 +15149,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.364. Has a 10% chance to lower the target\u2019s Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -15175,7 +15175,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.363. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -15201,7 +15201,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.364. Has a 30% chance to lower the target\u2019s Special Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -15227,7 +15227,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.390. Inflicts regular damage."
     },
     "flags": {
       "pok-role-module": {
@@ -15253,7 +15253,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.363. Prevents all Pok\u00e9mon from fleeing or switching out during the next turn."
     },
     "flags": {
       "pok-role-module": {
@@ -15279,7 +15279,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.419. Blocks damaging attacks and lowers attacking Pok\u00e9mon\u2019s Attack by two stages on contact. Switches Aegislash to Shield Forme."
     },
     "flags": {
       "pok-role-module": {
@@ -15305,7 +15305,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.398. Lowers the target\u2019s Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -15331,7 +15331,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.390. Lowers the target\u2019s Special Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -15357,7 +15357,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.416. Has a 50% chance to raise the user\u2019s Defense by two stages for each target hit."
     },
     "flags": {
       "pok-role-module": {
@@ -15383,7 +15383,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.423. Has a 30% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -15409,7 +15409,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.411. Ignores and destroys protection effects."
     },
     "flags": {
       "pok-role-module": {
@@ -15435,7 +15435,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Hits 2\u20135 times."
     },
     "flags": {
       "pok-role-module": {
@@ -15461,7 +15461,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.372. Has a 100% chance to lower the target\u2019s Special Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -15487,7 +15487,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.382. Blocks damaging attacks and damages attacking Pok\u00e9mon for 1/8 their max HP."
     },
     "flags": {
       "pok-role-module": {
@@ -15513,7 +15513,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Raises a selected ally\u2019s Special Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -15539,7 +15539,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.359. Lowers the target\u2019s Special Attack by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -15565,7 +15565,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.409. Lowers the target\u2019s Attack, Special Attack, and Speed by one stage if it is poisoned."
     },
     "flags": {
       "pok-role-module": {
@@ -15591,7 +15591,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.350. Explodes if the target uses a []{type:fire} move this turn, damaging it for 1/4 its max HP and preventing the move."
     },
     "flags": {
       "pok-role-module": {
@@ -15617,7 +15617,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.363. Takes one turn to charge, then raises the user\u2019s Special Attack, Special Defense, and Speed by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -15643,7 +15643,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.360. Raises the Defense and Special Defense of all friendly Pok\u00e9mon with []{ability:plus} or []{ability:minus} by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -15669,7 +15669,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Doubles prize money."
     },
     "flags": {
       "pok-role-module": {
@@ -15695,7 +15695,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.359. For five turns, prevents all Pok\u00e9mon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5\u00d7 their power."
     },
     "flags": {
       "pok-role-module": {
@@ -15721,7 +15721,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -15747,7 +15747,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Does nothing."
     },
     "flags": {
       "pok-role-module": {
@@ -15773,7 +15773,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Does nothing."
     },
     "flags": {
       "pok-role-module": {
@@ -15799,7 +15799,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Lowers the target\u2019s Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -15825,7 +15825,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.360. Has a 100% chance to paralyze the target."
     },
     "flags": {
       "pok-role-module": {
@@ -15851,7 +15851,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Cannot lower the target\u2019s HP below 1."
     },
     "flags": {
       "pok-role-module": {
@@ -15877,7 +15877,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.350. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
       "pok-role-module": {
@@ -15903,7 +15903,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.367. Raises the user\u2019s Attack by one stage after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -15929,7 +15929,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.375. Drains 75% of the damage inflicted to heal the user."
     },
     "flags": {
       "pok-role-module": {
@@ -15955,7 +15955,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.386. Grounds the target, and hits even Flying-type or levitating Pok\u00e9mon."
     },
     "flags": {
       "pok-role-module": {
@@ -15981,7 +15981,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.386. Prevents the target from leaving battle."
     },
     "flags": {
       "pok-role-module": {
@@ -16007,7 +16007,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.384. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16033,7 +16033,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.363. User receives 1/2 the damage inflicted in recoil."
     },
     "flags": {
       "pok-role-module": {
@@ -16059,7 +16059,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.422. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16085,7 +16085,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.385. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16111,7 +16111,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.374. Lowers the user\u2019s Defense and Special Defense by one stage after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -16137,7 +16137,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.353. Ignores and destroys protection effects."
     },
     "flags": {
       "pok-role-module": {
@@ -16163,7 +16163,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16189,7 +16189,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16215,7 +16215,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16241,7 +16241,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16267,7 +16267,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.373. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16293,7 +16293,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.373. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16319,7 +16319,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16345,7 +16345,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16371,7 +16371,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.383. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16397,7 +16397,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.383. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16423,7 +16423,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.416. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16449,7 +16449,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.416. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16475,7 +16475,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16501,7 +16501,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16527,7 +16527,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16553,7 +16553,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16579,7 +16579,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.418. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16605,7 +16605,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.418. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16631,7 +16631,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.369. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16657,7 +16657,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.369. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16683,7 +16683,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16709,7 +16709,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16735,7 +16735,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16761,7 +16761,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16787,7 +16787,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16813,7 +16813,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16839,7 +16839,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16865,7 +16865,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16891,7 +16891,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.386. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16917,7 +16917,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.386. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16943,7 +16943,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16969,7 +16969,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16995,7 +16995,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -17021,7 +17021,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -17047,7 +17047,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -17073,7 +17073,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -17099,7 +17099,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -17125,7 +17125,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.385. Heals the user for \u00bd its max HP, or \u2154 during a sandstorm."
     },
     "flags": {
       "pok-role-module": {
@@ -17151,7 +17151,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Can only be used as the first move after the user enters battle."
     },
     "flags": {
       "pok-role-module": {
@@ -17177,7 +17177,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Grants the user protection for the rest of the turn and poisons any Pok\u00e9mon that tries to use a contact move on it."
     },
     "flags": {
       "pok-role-module": {
@@ -17203,7 +17203,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.378. Traps the target."
     },
     "flags": {
       "pok-role-module": {
@@ -17229,7 +17229,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.353. Ignores the target\u2019s stat modifiers."
     },
     "flags": {
       "pok-role-module": {
@@ -17255,7 +17255,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.423. Cures the target of burns."
     },
     "flags": {
       "pok-role-module": {
@@ -17281,7 +17281,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.388. Lowers user\u2019s Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -17307,7 +17307,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.363. Heals the target for \u00bd its max HP, or \u2154 on Grassy Terrain."
     },
     "flags": {
       "pok-role-module": {
@@ -17333,7 +17333,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.384. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -17359,7 +17359,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.382. Heals the user by the target\u2019s current Attack stat and lowers the target\u2019s Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -17385,7 +17385,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.382. Requires a turn to charge before attacking."
     },
     "flags": {
       "pok-role-module": {
@@ -17411,7 +17411,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.381. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -17437,7 +17437,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.403. Forces the target\u2019s opponents to aim at the target for the rest of the turn."
     },
     "flags": {
       "pok-role-module": {
@@ -17463,7 +17463,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.409. Poisons the target and lowers its Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -17489,7 +17489,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.396. Guarantees a critical hit with the user\u2019s next move."
     },
     "flags": {
       "pok-role-module": {
@@ -17515,7 +17515,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.419. Raises the Attack and Special Attack of all friendly Pok\u00e9mon with []{ability:plus} or []{ability:minus} by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -17541,7 +17541,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.355. Prevents the target from using sound-based moves for two turns."
     },
     "flags": {
       "pok-role-module": {
@@ -17567,7 +17567,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.350. Damages opponents, but heals allies for 50% of their max HP."
     },
     "flags": {
       "pok-role-module": {
@@ -17593,7 +17593,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.418. Traps the target."
     },
     "flags": {
       "pok-role-module": {
@@ -17619,7 +17619,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.413. Protects Pok\u00e9mon on the ground from priority moves and increases the power of their Psychic moves by 50%."
     },
     "flags": {
       "pok-role-module": {
@@ -17645,7 +17645,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.350. Lowers the target\u2019s Attack by one stage after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -17671,7 +17671,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.370. Lowers the target\u2019s Defense by one stage after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -17697,7 +17697,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.354. Power is higher the more the user\u2019s stats have been raised, to a maximum of 31\u00d7."
     },
     "flags": {
       "pok-role-module": {
@@ -17723,7 +17723,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.370. Removes the user\u2019s []{type:fire} type after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -17749,7 +17749,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.415. Exchanges the user\u2019s Speed with the target\u2019s."
     },
     "flags": {
       "pok-role-module": {
@@ -17775,7 +17775,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.420. Never misses."
     },
     "flags": {
       "pok-role-module": {
@@ -17801,7 +17801,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.408. Cures the target of a major status ailment and heals the user for 50% of its max HP."
     },
     "flags": {
       "pok-role-module": {
@@ -17827,7 +17827,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.400. Has the same type as the user."
     },
     "flags": {
       "pok-role-module": {
@@ -17853,7 +17853,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Nullifies the target\u2019s ability if it moves earlier."
     },
     "flags": {
       "pok-role-module": {
@@ -17879,7 +17879,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.383. Lowers the target\u2019s Attack by one stage after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -17905,7 +17905,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.411. Forces the target to repeat its last used move."
     },
     "flags": {
       "pok-role-module": {
@@ -17931,7 +17931,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.374. Inflicts a burn on any Pok\u00e9mon that makes contact before the attack."
     },
     "flags": {
       "pok-role-module": {
@@ -17957,7 +17957,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Lowers the user\u2019s Defense by one stage after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -17983,7 +17983,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.357. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -18009,7 +18009,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -18035,7 +18035,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.386. Reduces damage five turns, but must be used during hail."
     },
     "flags": {
       "pok-role-module": {
@@ -18061,7 +18061,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -18087,7 +18087,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -18113,7 +18113,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -18139,7 +18139,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Damages the target for 75% of its remaining HP."
     },
     "flags": {
       "pok-role-module": {
@@ -18165,7 +18165,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -18191,7 +18191,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Has a 100% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -18217,7 +18217,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -18243,7 +18243,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Raises all of the user\u2019s stats by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -18269,7 +18269,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Changes the terrain to Psychic Terrain after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -18295,7 +18295,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.372. Only inflicts damage if the user was hit by a physical move this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -18321,7 +18321,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.363. Lowers the user\u2019s Special Attack by two stages after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -18347,7 +18347,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.413. Destroys Reflect and Light Screen."
     },
     "flags": {
       "pok-role-module": {
@@ -18373,7 +18373,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.386. Has double power if the user\u2019s last move failed."
     },
     "flags": {
       "pok-role-module": {
@@ -18399,7 +18399,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.377. Has a 20% chance to lower the target\u2019s Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -18425,7 +18425,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.416. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -18451,7 +18451,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.422. Has a 20% chance to lower the target\u2019s Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -18477,7 +18477,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.413. User foregoes its next turn to recharge."
     },
     "flags": {
       "pok-role-module": {
@@ -18503,7 +18503,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.378. Steals the target\u2019s stat increases, then inflicts damage."
     },
     "flags": {
       "pok-role-module": {
@@ -18529,7 +18529,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.420. Cannot be disrupted by abilities."
     },
     "flags": {
       "pok-role-module": {
@@ -18555,7 +18555,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.377. Cannot be disrupted by abilities."
     },
     "flags": {
       "pok-role-module": {
@@ -18581,7 +18581,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.404. Lowers the target\u2019s Attack and Special Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -18607,7 +18607,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Has a 30% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -18633,7 +18633,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.364. Inflicts damage equal to half the target\u2019s HP."
     },
     "flags": {
       "pok-role-module": {
@@ -18659,7 +18659,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.397. If the user is holding a appropriate plate or drive, the damage inflicted will match it."
     },
     "flags": {
       "pok-role-module": {
@@ -18685,7 +18685,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -18711,7 +18711,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.372. Inflicts damage, and the user takes damage equal to half of its max HP, rounded up."
     },
     "flags": {
       "pok-role-module": {
@@ -18737,7 +18737,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.360. After inflicting damage, causes all Normal-type moves to become Electric-type for the remainder of the turn."
     },
     "flags": {
       "pok-role-module": {
@@ -18763,7 +18763,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.413. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -18789,7 +18789,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Inflicts damage using either Attack or Special Attack stat, whichever is higher."
     },
     "flags": {
       "pok-role-module": {
@@ -18815,7 +18815,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.418. Cannot be disrupted by abilities."
     },
     "flags": {
       "pok-role-module": {
@@ -18841,7 +18841,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Cannot be disrupted by abilities."
     },
     "flags": {
       "pok-role-module": {
@@ -18867,7 +18867,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -18893,7 +18893,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.416. Inflicts damage and removes any terrain present on the battlefield."
     },
     "flags": {
       "pok-role-module": {
@@ -18919,7 +18919,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Inflicts damage to all opposing Pok\u00e9mon and increases the user\u2019s Attack, Defense, Special Attack, Special Defense, and Speed by one stage each."
     },
     "flags": {
       "pok-role-module": {
@@ -18945,7 +18945,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -18971,7 +18971,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.423. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -18997,7 +18997,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.374. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19023,7 +19023,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.360. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19049,7 +19049,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19075,7 +19075,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.359. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19101,7 +19101,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.373. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19127,7 +19127,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19153,7 +19153,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19179,7 +19179,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.382. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19205,7 +19205,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.387. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19231,7 +19231,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.364. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19257,7 +19257,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.405. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19283,7 +19283,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.418. Hits twice in one turn."
     },
     "flags": {
       "pok-role-module": {
@@ -19309,7 +19309,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Prevents any moves from hitting the user this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -19335,7 +19335,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.357. Sets [Light Screen]{move:light-screen} on the user\u2019s side of the field after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -19361,7 +19361,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.423. Sets [Reflect]{move:reflect} on the user\u2019s side of the field after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -19387,7 +19387,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.354. Seeds the target after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -19413,7 +19413,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.403. Cures the entire party of major status effects after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -19439,7 +19439,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.367. Hits twice in one turn, with a 100% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -19465,7 +19465,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.417. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -19491,7 +19491,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.412. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -19517,7 +19517,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.357. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -19543,7 +19543,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.404. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -19569,7 +19569,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.367. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -19595,7 +19595,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -19621,7 +19621,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.422. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -19647,7 +19647,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.391. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -19673,7 +19673,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.369. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19699,7 +19699,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19725,7 +19725,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19751,7 +19751,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19777,7 +19777,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19803,7 +19803,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19829,7 +19829,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.386. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19855,7 +19855,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19881,7 +19881,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19907,7 +19907,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.373. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19933,7 +19933,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19959,7 +19959,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19985,7 +19985,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20011,7 +20011,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.416. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20037,7 +20037,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.383. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20063,7 +20063,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20089,7 +20089,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20115,7 +20115,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.418. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20141,7 +20141,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -20167,7 +20167,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -20193,7 +20193,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -20219,7 +20219,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Has a 100% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -20245,7 +20245,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.382. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
       "pok-role-module": {
@@ -20271,7 +20271,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.372. Has a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -20297,7 +20297,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.418. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -20323,7 +20323,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.418. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -20349,7 +20349,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -20375,7 +20375,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Lowers the target\u2019s Attack by one stage after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -20401,7 +20401,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20427,7 +20427,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.360. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -20453,7 +20453,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -20479,7 +20479,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.380. Lowers the target\u2019s Defense by one stage after inflicting damage."
     },
     "flags": {
       "pok-role-module": {
@@ -20505,7 +20505,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.364. Has a 100% chance to lower the target\u2019s Special Attack by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -20531,7 +20531,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.364. Has a 20% chance to confuse the target."
     },
     "flags": {
       "pok-role-module": {
@@ -20557,7 +20557,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.422. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -20583,7 +20583,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.354. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -20609,7 +20609,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.353. Never misses."
     },
     "flags": {
       "pok-role-module": {
@@ -20635,7 +20635,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.367. User foregoes its next turn to recharge."
     },
     "flags": {
       "pok-role-module": {
@@ -20661,7 +20661,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. User foregoes its next turn to recharge."
     },
     "flags": {
       "pok-role-module": {
@@ -20687,7 +20687,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.420. Inflicts damage, and the user takes damage equal to half of its max HP, rounded up."
     },
     "flags": {
       "pok-role-module": {
@@ -20713,7 +20713,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20739,7 +20739,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.418. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20765,7 +20765,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Boosts the user\u2019s Speed and lowers their Defense by one stage after inflicting damage two to five times in a row."
     },
     "flags": {
       "pok-role-module": {
@@ -20791,7 +20791,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.416. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20817,7 +20817,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20843,7 +20843,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20869,7 +20869,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20895,7 +20895,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20921,7 +20921,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20947,7 +20947,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.349. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20973,7 +20973,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.369. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20999,7 +20999,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21025,7 +21025,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21051,7 +21051,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21077,7 +21077,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21103,7 +21103,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21129,7 +21129,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.386. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21155,7 +21155,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.373. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21181,7 +21181,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.383. Has a 30% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -21207,7 +21207,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21233,7 +21233,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21259,7 +21259,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21285,7 +21285,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21311,7 +21311,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.356. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21337,7 +21337,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21363,7 +21363,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21389,7 +21389,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21415,7 +21415,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.386. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21441,7 +21441,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21467,7 +21467,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -21493,7 +21493,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21519,7 +21519,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21545,7 +21545,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.389. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21571,7 +21571,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.416. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21597,7 +21597,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.362. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21623,7 +21623,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21649,7 +21649,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.355. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21675,7 +21675,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.421. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21701,7 +21701,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.379. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21727,7 +21727,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.386. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21753,7 +21753,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21779,7 +21779,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.383. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21805,7 +21805,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.407. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21831,7 +21831,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21857,7 +21857,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21883,7 +21883,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.378. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21909,7 +21909,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.365. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21935,7 +21935,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21961,7 +21961,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.352. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -21987,7 +21987,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.373. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -22013,7 +22013,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.358. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -22039,7 +22039,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.383. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -22065,7 +22065,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -22091,7 +22091,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.410. Move description available in the move section."
     },
     "flags": {
       "pok-role-module": {
@@ -22117,7 +22117,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Has an increased chance for a critical hit in Hyper Mode."
     },
     "flags": {
       "pok-role-module": {
@@ -22143,7 +22143,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Has an increased chance for a critical hit."
     },
     "flags": {
       "pok-role-module": {
@@ -22169,7 +22169,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -22195,7 +22195,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Has a 10% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -22221,7 +22221,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -22247,7 +22247,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Has a 10% chance to [freeze]{mechanic:freeze} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -22273,7 +22273,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. User receives 1/2 its HP in recoil."
     },
     "flags": {
       "pok-role-module": {
@@ -22299,7 +22299,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Has a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -22325,7 +22325,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -22351,7 +22351,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -22377,7 +22377,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -22403,7 +22403,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Lowers the target\u2019s Defense by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -22429,7 +22429,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Halves HP of all Pok\u00e9mon on the field. Must recharge"
     },
     "flags": {
       "pok-role-module": {
@@ -22455,7 +22455,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Prevents the target from leaving battle."
     },
     "flags": {
       "pok-role-module": {
@@ -22481,7 +22481,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Lowers the target\u2019s evasion by two stages."
     },
     "flags": {
       "pok-role-module": {
@@ -22507,7 +22507,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Confuses the target."
     },
     "flags": {
       "pok-role-module": {
@@ -22533,7 +22533,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Removes [Light Screen]{move:light-screen}, [Reflect]{move:reflect}, and [Safeguard]{move:safeguard}."
     },
     "flags": {
       "pok-role-module": {
@@ -22559,7 +22559,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+      "description": "Corebook p.376. Changes the weather to Shadow Sky for five turns."
     },
     "flags": {
       "pok-role-module": {

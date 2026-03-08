@@ -5,6 +5,7 @@ import re
 from pathlib import Path
 
 import requests
+from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "module" / "seeds" / "generated"
@@ -17,6 +18,32 @@ VALID_TYPE_KEYS = {
 TYPE_FALLBACKS = {
     "shadow": "ghost",
     "unknown": "normal"
+}
+MOVE_SECTION_START_PAGE = 349
+MOVE_SECTION_END_PAGE = 423
+COREBOOK_PDF_CANDIDATES = [
+    ROOT / "POKEROLE COREBOOK 2.0.pdf",
+    Path(r"C:\Users\Ricch\Downloads\POKEROLE COREBOOK 2.0.pdf")
+]
+TYPE_SECTION_START_PAGE = {
+    "bug": 349,
+    "dark": 352,
+    "dragon": 356,
+    "electric": 358,
+    "fairy": 362,
+    "fighting": 365,
+    "fire": 369,
+    "flying": 373,
+    "ghost": 376,
+    "grass": 379,
+    "ground": 383,
+    "ice": 386,
+    "normal": 389,
+    "poison": 407,
+    "psychic": 410,
+    "rock": 416,
+    "steel": 418,
+    "water": 421
 }
 
 
@@ -95,9 +122,68 @@ def write_module(path, const_name, payload):
     path.write_text(f"export const {const_name} = Object.freeze({serialized});\n", encoding="utf-8")
 
 
+def clean_text(value):
+    text = re.sub(r"\s+", " ", f"{value or ''}").strip()
+    return text
+
+
+def normalize_for_search(value):
+    text = (value or "").lower().replace("’", "'")
+    text = re.sub(r"[^a-z0-9]+", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return f" {text} " if text else " "
+
+
+def find_corebook_pdf_path():
+    for candidate in COREBOOK_PDF_CANDIDATES:
+        if candidate.exists():
+            return candidate
+    return None
+
+
+def extract_move_pages(move_name_by_id):
+    pdf_path = find_corebook_pdf_path()
+    if not pdf_path:
+        return {}
+
+    reader = PdfReader(str(pdf_path))
+    move_norm_by_id = {
+        move_id: normalize_for_search(name)
+        for move_id, name in move_name_by_id.items()
+    }
+    unresolved_ids = set(move_name_by_id.keys())
+    page_by_move_id = {}
+
+    for page_index in range(MOVE_SECTION_START_PAGE - 1, MOVE_SECTION_END_PAGE):
+        page_text = reader.pages[page_index].extract_text() or ""
+        page_norm = normalize_for_search(page_text)
+        if len(page_norm) <= 2:
+            continue
+
+        # Check longest names first to reduce accidental short-name matches.
+        for move_id in sorted(unresolved_ids, key=lambda item: len(move_norm_by_id[item]), reverse=True):
+            if move_norm_by_id[move_id] in page_norm:
+                page_by_move_id[move_id] = page_index + 1
+
+        unresolved_ids = {move_id for move_id in unresolved_ids if move_id not in page_by_move_id}
+        if not unresolved_ids:
+            break
+
+    return page_by_move_id
+
+
+def resolve_effect_text(effect_template, effect_chance):
+    text = clean_text(effect_template)
+    if "$effect_chance" in text:
+        chance_text = str(effect_chance) if effect_chance else "X"
+        text = text.replace("$effect_chance", chance_text)
+    return text
+
+
 def build_moves():
     moves = load_csv("moves.csv")
     move_names = load_csv("move_names.csv")
+    move_effect_prose = load_csv("move_effect_prose.csv")
     move_meta = load_csv("move_meta.csv")
     types = load_csv("types.csv")
 
@@ -107,7 +193,13 @@ def build_moves():
         for row in move_names
         if row["local_language_id"] == "9"
     }
+    short_effect_by_effect_id = {
+        int(row["move_effect_id"]): row["short_effect"]
+        for row in move_effect_prose
+        if row["local_language_id"] == "9"
+    }
     meta_by_move_id = {int(row["move_id"]): row for row in move_meta}
+    page_by_move_id = extract_move_pages(english_move_name)
 
     entries = []
     for row in sorted(moves, key=lambda item: int(item["id"])):
@@ -157,6 +249,16 @@ def build_moves():
             accuracy_skill = "brawl"
             damage_attribute = "strength"
 
+        effect_id = int(row["effect_id"]) if row["effect_id"] else 0
+        effect_chance = int(row["effect_chance"]) if row["effect_chance"] else None
+        effect_text = resolve_effect_text(short_effect_by_effect_id.get(effect_id, ""), effect_chance)
+        page = page_by_move_id.get(move_id, TYPE_SECTION_START_PAGE.get(type_key, MOVE_SECTION_START_PAGE))
+        page_text = f"Corebook p.{page}"
+        if effect_text:
+            description = f"{page_text}. {effect_text}"
+        else:
+            description = f"{page_text}. Move description available in the move section."
+
         entries.append({
             "name": name,
             "type": "move",
@@ -175,7 +277,7 @@ def build_moves():
                 "neverFail": accuracy_percent is None,
                 "lethal": category != "support" and power >= 6,
                 "isUsable": True,
-                "description": "Imported from the PokeRole Corebook move roster (Gen 1-8 coverage)."
+                "description": description
             },
             "flags": {
                 "pok-role-module": {

@@ -21,6 +21,7 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
   - At first world load (GM), compendia are seeded from Corebook references (items and playable rule objects).
   - Item seeds include all listed Corebook items from `Trainer's Basics`, `Healing Items`, `Items for Pokemon Care`, `Evolutionary Items`, and `Held Items` (p.76-85, 107 total item entries).
   - `Moves` compendium is fully seeded with Gen 1-8 move roster entries (868 move items).
+  - Every move entry now includes a description text and a `Corebook p.X` reference in the move description field.
   - `Pokedex` compendium is fully seeded with `#001-#890` plus supported regional/mega/primal forms (1022 pokedex items).
   - Manual reseed command available in browser console:
     - `await game.pokrole.seedCompendia()`
