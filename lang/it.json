@@ -283,7 +283,7 @@
       "HoldingBack": {
         "Label": "Holding Back",
         "None": "Nessun contenimento",
-        "HalfDamage": "Meta danno (arrotondato per difetto)",
+        "HalfDamage": "Meta danno (arrotondato per difetto, minimo 1)",
         "NonLethal": "Danno normale invece di danno letale",
         "NonLethalNote": "Il danno letale e stato convertito in danno normale"
       },

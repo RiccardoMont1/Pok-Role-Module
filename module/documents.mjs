@@ -493,7 +493,7 @@ export class PokRoleActor extends Actor {
           1
         );
         finalDamage = isHoldingBackHalf
-          ? Math.max(Math.floor(resolvedDamage / 2), 0)
+          ? Math.max(Math.floor(resolvedDamage / 2), 1)
           : resolvedDamage;
       }
 

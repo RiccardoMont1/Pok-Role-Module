@@ -283,7 +283,7 @@
       "HoldingBack": {
         "Label": "Holding Back",
         "None": "No Holding Back",
-        "HalfDamage": "Half damage (rounded down)",
+        "HalfDamage": "Half damage (rounded down, minimum 1)",
         "NonLethal": "Regular damage instead of lethal damage",
         "NonLethalNote": "Lethal damage was converted to regular damage"
       },
