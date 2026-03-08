@@ -40,6 +40,11 @@
   box-sizing: border-box;
 }
 
+.pok-role-pokemon-window .window-content {
+  background: #e25033 !important;
+  background-image: none !important;
+}
+
 .pok-role-sheet .sheet-header {
   display: grid;
   grid-template-columns: 112px 1fr;
@@ -937,7 +942,7 @@
 
 .pok-role.sheet.actor .window-content > form.pokemon-sheet {
   width: min(100%, 1000px);
-  background: #e25033 !important;
+  background: transparent !important;
   border-radius: 16px;
   padding: 12px;
   box-sizing: border-box;
@@ -950,7 +955,7 @@
   --pk-ink: #272c34;
   --pk-light: #ecf0ff;
   --pk-bar: #b3bde0;
-  background: var(--pk-bg) !important;
+  background: transparent !important;
   color: var(--pk-ink);
   font-family: "Agency FB", "Trebuchet MS", "Tahoma", sans-serif;
   border: 2px solid #b6402a;
@@ -1084,14 +1089,45 @@
   letter-spacing: 0.02em;
 }
 
-.pokemon-sheet .pokemon-combat-card .button-row button {
+.pokemon-sheet .pokemon-combat-card .pokemon-quick-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.pokemon-sheet .pokemon-combat-card .pokemon-quick-action {
+  flex: 0 0 clamp(18%, 22%, 24%);
+  width: clamp(18%, 22%, 24%);
+  min-width: 74px;
+  max-width: 24%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 5px;
+  text-align: center;
   background: #2f342d;
   border: 2px solid #585247;
   color: #f4f6fb;
   border-radius: 10px;
-  font-size: 0.8rem;
+  font-size: 0.66rem;
   font-weight: 700;
   text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.pokemon-sheet .pokemon-combat-card .pokemon-quick-action i {
+  font-size: 1rem;
+}
+
+.pokemon-sheet .pokemon-combat-card .pokemon-quick-action span {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .pokemon-sheet .pokemon-combat-card .resource-grid {
@@ -1406,5 +1442,11 @@
 
   .pokemon-sheet .pokemon-combat-card .resource-grid {
     grid-template-columns: 1fr;
+  }
+
+  .pokemon-sheet .pokemon-combat-card .pokemon-quick-action {
+    flex-basis: clamp(42%, 48%, 49%);
+    width: clamp(42%, 48%, 49%);
+    max-width: 49%;
   }
 }

@@ -101,22 +101,42 @@
     <section class="sheet-section pokemon-combat-card">
       <div class="section-title-row">
         <h2>{{localize "POKROLE.Combat.QuickRolls"}}</h2>
-        <div class="button-row">
-          <button type="button" data-action="roll-initiative">
+        <div class="button-row pokemon-quick-buttons">
+          <button
+            type="button"
+            class="pokemon-quick-action"
+            data-action="roll-initiative"
+            title="{{localize 'POKROLE.Actions.RollInitiative'}}"
+          >
             <i class="fas fa-bolt"></i>
-            {{localize "POKROLE.Actions.RollInitiative"}}
+            <span>{{localize "POKROLE.Actions.RollInitiative"}}</span>
           </button>
-          <button type="button" data-action="roll-combined">
+          <button
+            type="button"
+            class="pokemon-quick-action"
+            data-action="roll-combined"
+            title="{{localize 'POKROLE.Actions.RollCombined'}}"
+          >
             <i class="fas fa-dice"></i>
-            {{localize "POKROLE.Actions.RollCombined"}}
+            <span>{{localize "POKROLE.Actions.RollCombined"}}</span>
           </button>
-          <button type="button" data-action="reset-action-counter">
+          <button
+            type="button"
+            class="pokemon-quick-action"
+            data-action="reset-action-counter"
+            title="{{localize 'POKROLE.Actions.ResetActionCounter'}}"
+          >
             <i class="fas fa-rotate-left"></i>
-            {{localize "POKROLE.Actions.ResetActionCounter"}}
+            <span>{{localize "POKROLE.Actions.ResetActionCounter"}}</span>
           </button>
-          <button type="button" data-action="roll-evasion">
+          <button
+            type="button"
+            class="pokemon-quick-action"
+            data-action="roll-evasion"
+            title="{{localize 'POKROLE.Actions.RollEvasion'}}"
+          >
             <i class="fas fa-person-running"></i>
-            {{localize "POKROLE.Actions.RollEvasion"}}
+            <span>{{localize "POKROLE.Actions.RollEvasion"}}</span>
           </button>
         </div>
       </div>

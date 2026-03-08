@@ -178,6 +178,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
   activateListeners(html) {
     super.activateListeners(html);
+    const appElement = html.closest(".app");
+    if (appElement?.length) {
+      appElement.toggleClass("pok-role-pokemon-window", this.actor.type === "pokemon");
+      appElement.toggleClass("pok-role-trainer-window", this.actor.type === "trainer");
+    }
 
     html.find("[data-action='roll-attribute']").on("click", (event) =>
       this._onRollAttribute(event)
