@@ -20,8 +20,9 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
 - Auto-seeding:
   - At first world load (GM), compendia are seeded from Corebook references (items and playable rule objects).
   - Item seeds include all listed Corebook items from `Trainer's Basics`, `Healing Items`, `Items for Pokemon Care`, `Evolutionary Items`, and `Held Items` (p.76-85, 107 total item entries).
-  - `Moves` compendium is fully seeded with Gen 1-8 move roster entries (868 move items).
-  - Every move entry now includes a description text and a `Corebook p.X` reference in the move description field.
+  - `Moves` compendium is rebuilt from Corebook pages `346-430` (772 move items).
+  - Every move entry includes description text and a `Corebook p.X` reference in the move description field.
+  - `Abilities` compendium is rebuilt from Corebook pages `434-471` (257 ability items), each with effect text and `Corebook p.X` in description.
   - `Pokedex` compendium is fully seeded with `#001-#890` plus supported regional/mega/primal forms (1022 pokedex items).
   - Manual reseed command available in browser console:
     - `await game.pokrole.seedCompendia()`
@@ -101,12 +102,12 @@ Important: do not use the GitHub `.../blob/...` URL, because Foundry expects raw
 - `system.json`: Foundry system manifest
 - `pok-role-module.mjs`: system bootstrap
 - `module/`: data models, documents, sheets
-- `module/seeds/generated/`: generated datasets for `moves` and `pokedex` compendia
+- `module/seeds/generated/`: generated datasets for `moves`, `abilities`, and `pokedex` compendia
 - `packs/`: compendium pack databases (v13 LevelDB folders)
 - `templates/`: handlebars sheets/chat card
 - `styles/`: sheet styles
 - `lang/`: localization files
-- `tools/build_compendium_seeds.py`: regenerates `moves` and `pokedex` seed modules
+- `tools/build_compendium_seeds.py`: regenerates `moves`, `abilities`, and `pokedex` seed modules
 
 ## Compendia Usage
 
@@ -126,7 +127,7 @@ Compendium grouping and rules mapping (PokeRole 2.0 PDF):
 - Weather conditions: p.56-57
 - Pokemon status conditions: p.58-59
 - Move reference/icons: p.347-348
-- Ability references (including hidden abilities context): p.22, p.69
+- Abilities roster: p.434-471
 
 ## Rules Mapping (PokeRole 2.0 PDF)
 

@@ -19,33 +19,14 @@ TYPE_FALLBACKS = {
     "shadow": "ghost",
     "unknown": "normal"
 }
-MOVE_SECTION_START_PAGE = 349
-MOVE_SECTION_END_PAGE = 423
+MOVE_SECTION_START_PAGE = 346
+MOVE_SECTION_END_PAGE = 430
+ABILITY_SECTION_START_PAGE = 434
+ABILITY_SECTION_END_PAGE = 471
 COREBOOK_PDF_CANDIDATES = [
     ROOT / "POKEROLE COREBOOK 2.0.pdf",
     Path(r"C:\Users\Ricch\Downloads\POKEROLE COREBOOK 2.0.pdf")
 ]
-TYPE_SECTION_START_PAGE = {
-    "bug": 349,
-    "dark": 352,
-    "dragon": 356,
-    "electric": 358,
-    "fairy": 362,
-    "fighting": 365,
-    "fire": 369,
-    "flying": 373,
-    "ghost": 376,
-    "grass": 379,
-    "ground": 383,
-    "ice": 386,
-    "normal": 389,
-    "poison": 407,
-    "psychic": 410,
-    "rock": 416,
-    "steel": 418,
-    "water": 421
-}
-
 
 def load_csv(filename):
     response = requests.get(f"{BASE}/{filename}", timeout=120)
@@ -172,6 +153,36 @@ def extract_move_pages(move_name_by_id):
     return page_by_move_id
 
 
+def extract_ability_pages(ability_name_by_id):
+    pdf_path = find_corebook_pdf_path()
+    if not pdf_path:
+        return {}
+
+    reader = PdfReader(str(pdf_path))
+    ability_norm_by_id = {
+        ability_id: normalize_for_search(name)
+        for ability_id, name in ability_name_by_id.items()
+    }
+    unresolved_ids = set(ability_name_by_id.keys())
+    page_by_ability_id = {}
+
+    for page_index in range(ABILITY_SECTION_START_PAGE - 1, ABILITY_SECTION_END_PAGE):
+        page_text = reader.pages[page_index].extract_text() or ""
+        page_norm = normalize_for_search(page_text)
+        if len(page_norm) <= 2:
+            continue
+
+        for ability_id in sorted(unresolved_ids, key=lambda item: len(ability_norm_by_id[item]), reverse=True):
+            if ability_norm_by_id[ability_id] in page_norm:
+                page_by_ability_id[ability_id] = page_index + 1
+
+        unresolved_ids = {ability_id for ability_id in unresolved_ids if ability_id not in page_by_ability_id}
+        if not unresolved_ids:
+            break
+
+    return page_by_ability_id
+
+
 def resolve_effect_text(effect_template, effect_chance):
     text = clean_text(effect_template)
     if "$effect_chance" in text:
@@ -208,6 +219,9 @@ def build_moves():
             continue
 
         move_id = int(row["id"])
+        if move_id not in page_by_move_id:
+            continue
+
         identifier = row["identifier"]
         name = english_move_name.get(move_id) or format_identifier(identifier)
         type_key = type_by_id.get(int(row["type_id"]), "normal")
@@ -252,7 +266,7 @@ def build_moves():
         effect_id = int(row["effect_id"]) if row["effect_id"] else 0
         effect_chance = int(row["effect_chance"]) if row["effect_chance"] else None
         effect_text = resolve_effect_text(short_effect_by_effect_id.get(effect_id, ""), effect_chance)
-        page = page_by_move_id.get(move_id, TYPE_SECTION_START_PAGE.get(type_key, MOVE_SECTION_START_PAGE))
+        page = page_by_move_id[move_id]
         page_text = f"Corebook p.{page}"
         if effect_text:
             description = f"{page_text}. {effect_text}"
@@ -282,6 +296,105 @@ def build_moves():
             "flags": {
                 "pok-role-module": {
                     "seedId": f"move-{slugify(identifier)}"
+                }
+            }
+        })
+
+    return entries
+
+
+def build_abilities():
+    abilities = load_csv("abilities.csv")
+    ability_names = load_csv("ability_names.csv")
+    ability_prose = load_csv("ability_prose.csv")
+    ability_flavor_text = load_csv("ability_flavor_text.csv")
+    pokemon_abilities = load_csv("pokemon_abilities.csv")
+
+    english_ability_name = {
+        int(row["ability_id"]): row["name"]
+        for row in ability_names
+        if row["local_language_id"] == "9"
+    }
+
+    prose_by_ability_id = {
+        int(row["ability_id"]): row
+        for row in ability_prose
+        if row["local_language_id"] == "9"
+    }
+
+    flavor_by_ability_id = {}
+    for row in ability_flavor_text:
+        if row["language_id"] != "9":
+            continue
+        ability_id = int(row["ability_id"])
+        version_group_id = int(row["version_group_id"])
+        current = flavor_by_ability_id.get(ability_id)
+        if current is None or version_group_id > current["version_group_id"]:
+            flavor_by_ability_id[ability_id] = {
+                "version_group_id": version_group_id,
+                "flavor_text": row["flavor_text"]
+            }
+
+    visibility_by_ability_id = {}
+    for row in pokemon_abilities:
+        ability_id = int(row["ability_id"])
+        tracker = visibility_by_ability_id.setdefault(ability_id, {"hidden": False, "shown": False})
+        if row["is_hidden"] == "1":
+            tracker["hidden"] = True
+        else:
+            tracker["shown"] = True
+
+    page_by_ability_id = extract_ability_pages(english_ability_name)
+
+    entries = []
+    for row in sorted(abilities, key=lambda item: int(item["id"])):
+        if row["is_main_series"] != "1":
+            continue
+
+        generation_id = int(row["generation_id"])
+        if generation_id > 8:
+            continue
+
+        ability_id = int(row["id"])
+        if ability_id not in page_by_ability_id:
+            continue
+
+        identifier = row["identifier"]
+        name = english_ability_name.get(ability_id) or format_identifier(identifier)
+
+        prose = prose_by_ability_id.get(ability_id, {})
+        short_effect = clean_text(prose.get("short_effect", ""))
+        long_effect = clean_text(prose.get("effect", ""))
+        effect = short_effect or long_effect or "See corebook ability entry."
+
+        flavor_info = flavor_by_ability_id.get(ability_id)
+        flavor_text = clean_text(flavor_info["flavor_text"]) if flavor_info else ""
+
+        page = page_by_ability_id[ability_id]
+        description = f"Corebook p.{page}. {flavor_text or effect}"
+
+        visibility = visibility_by_ability_id.get(ability_id, {"hidden": False, "shown": True})
+        is_hidden_only = visibility["hidden"] and not visibility["shown"]
+        ability_type = "hidden" if is_hidden_only else "passive"
+        trigger = "Storyteller Discovery" if is_hidden_only else "Always On / Species Rule"
+        frequency = "Conditional" if is_hidden_only else "Persistent"
+        target = "Species-specific" if is_hidden_only else "Self / Scene"
+
+        entries.append({
+            "name": name,
+            "type": "ability",
+            "img": "icons/svg/aura.svg",
+            "system": {
+                "abilityType": ability_type,
+                "trigger": trigger,
+                "frequency": frequency,
+                "target": target,
+                "effect": effect,
+                "description": description
+            },
+            "flags": {
+                "pok-role-module": {
+                    "seedId": f"ability-{slugify(identifier)}"
                 }
             }
         })
@@ -446,10 +559,13 @@ def build_pokedex():
 
 def main():
     moves = build_moves()
+    ability_entries = build_abilities()
     pokedex = build_pokedex()
     write_module(OUT_DIR / "move-seeds.mjs", "MOVE_COMPENDIUM_ENTRIES", moves)
+    write_module(OUT_DIR / "ability-seeds.mjs", "ABILITY_COMPENDIUM_ENTRIES", ability_entries)
     write_module(OUT_DIR / "pokedex-seeds.mjs", "POKEDEX_COMPENDIUM_ENTRIES", pokedex)
     print(f"Generated moves: {len(moves)}")
+    print(f"Generated abilities: {len(ability_entries)}")
     print(f"Generated pokedex entries: {len(pokedex)}")
 
 

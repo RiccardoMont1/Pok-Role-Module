@@ -260,32 +260,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
     }
   },
   {
-    "name": "Vise Grip",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "normal",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 3,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.389. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-vice-grip"
-      }
-    }
-  },
-  {
     "name": "Guillotine",
     "type": "move",
     "img": "icons/svg/sword.svg",
@@ -1811,7 +1785,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.349. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.347. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -2201,7 +2175,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.361. Has a 10% chance to [paralyze]{mechanic:paralysis} the target."
+      "description": "Corebook p.346. Has a 10% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
       "pok-role-module": {
@@ -2435,7 +2409,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.349. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
+      "description": "Corebook p.346. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -2851,7 +2825,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.421. Raises the user\u2019s Defense by one stage."
+      "description": "Corebook p.424. Raises the user\u2019s Defense by one stage."
     },
     "flags": {
       "pok-role-module": {
@@ -2929,7 +2903,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.365. Reduces damage from special attacks by 50% for five turns."
+      "description": "Corebook p.348. Reduces damage from special attacks by 50% for five turns."
     },
     "flags": {
       "pok-role-module": {
@@ -2981,7 +2955,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.365. Reduces damage from physical attacks by half."
+      "description": "Corebook p.348. Reduces damage from physical attacks by half."
     },
     "flags": {
       "pok-role-module": {
@@ -3293,7 +3267,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.421. Has a 20% chance to make the target flinch."
+      "description": "Corebook p.424. Has a 20% chance to make the target flinch."
     },
     "flags": {
       "pok-role-module": {
@@ -4047,7 +4021,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.355. User sleeps for two turns, completely healing itself."
+      "description": "Corebook p.348. User sleeps for two turns, completely healing itself."
     },
     "flags": {
       "pok-role-module": {
@@ -4255,7 +4229,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.403. Transfers 1/4 of the user\u2019s max HP into a doll, protecting the user from further damage or status changes until it breaks."
+      "description": "Corebook p.348. Transfers 1/4 of the user\u2019s max HP into a doll, protecting the user from further damage or status changes until it breaks."
     },
     "flags": {
       "pok-role-module": {
@@ -4723,7 +4697,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.349. Prevents any moves from hitting the user this turn."
+      "description": "Corebook p.346. Prevents any moves from hitting the user this turn."
     },
     "flags": {
       "pok-role-module": {
@@ -6491,7 +6465,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.421. Prevents the target from leaving battle and inflicts 1/16 its max HP in damage for 2-5 turns."
+      "description": "Corebook p.424. Prevents the target from leaving battle and inflicts 1/16 its max HP in damage for 2-5 turns."
     },
     "flags": {
       "pok-role-module": {
@@ -6959,7 +6933,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.349. Raises the user\u2019s Special Defense by one stage. User\u2019s Electric moves have doubled power next turn."
+      "description": "Corebook p.348. Raises the user\u2019s Special Defense by one stage. User\u2019s Electric moves have doubled power next turn."
     },
     "flags": {
       "pok-role-module": {
@@ -8389,7 +8363,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": true,
       "isUsable": true,
-      "description": "Corebook p.421. Inflicts more damage when the user has more HP remaining, with a maximum of 150 power."
+      "description": "Corebook p.424. Inflicts more damage when the user has more HP remaining, with a maximum of 150 power."
     },
     "flags": {
       "pok-role-module": {
@@ -8701,7 +8675,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.354. Prevents the target from leaving battle."
+      "description": "Corebook p.348. Prevents the target from leaving battle."
     },
     "flags": {
       "pok-role-module": {
@@ -8987,7 +8961,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.421. Halves all Fire-type damage."
+      "description": "Corebook p.424. Halves all Fire-type damage."
     },
     "flags": {
       "pok-role-module": {
@@ -9143,7 +9117,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.421. Has a 20% chance to confuse the target."
+      "description": "Corebook p.424. Has a 20% chance to confuse the target."
     },
     "flags": {
       "pok-role-module": {
@@ -9512,32 +9486,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-module": {
         "seedId": "move-tailwind"
-      }
-    }
-  },
-  {
-    "name": "Acupressure",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "normal",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.389. Raises one of a friendly Pok\u00e9mon\u2019s stats at random by two stages."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-acupressure"
       }
     }
   },
@@ -12887,7 +12835,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.349. Has double power if it\u2019s used more than once per turn."
+      "description": "Corebook p.346. Has double power if it\u2019s used more than once per turn."
     },
     "flags": {
       "pok-role-module": {
@@ -15435,7 +15383,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.421. Hits 2\u20135 times."
+      "description": "Corebook p.424. Hits 2\u20135 times."
     },
     "flags": {
       "pok-role-module": {
@@ -15652,32 +15600,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
     }
   },
   {
-    "name": "Happy Hour",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "normal",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.389. Doubles prize money."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-happy-hour"
-      }
-    }
-  },
-  {
     "name": "Electric Terrain",
     "type": "move",
     "img": "icons/svg/sword.svg",
@@ -15730,58 +15652,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
     }
   },
   {
-    "name": "Celebrate",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "normal",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.389. Does nothing."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-celebrate"
-      }
-    }
-  },
-  {
-    "name": "Hold Hands",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "normal",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.389. Does nothing."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-hold-hands"
-      }
-    }
-  },
-  {
     "name": "Baby-Doll Eyes",
     "type": "move",
     "img": "icons/svg/sword.svg",
@@ -15830,32 +15700,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-module": {
         "seedId": "move-nuzzle"
-      }
-    }
-  },
-  {
-    "name": "Hold Back",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "normal",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 2,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.389. Cannot lower the target\u2019s HP below 1."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-hold-back"
       }
     }
   },
@@ -16163,7 +16007,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.389. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16189,7 +16033,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.389. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16215,7 +16059,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.365. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16241,7 +16085,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.365. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16267,7 +16111,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.373. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16293,7 +16137,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.373. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16319,7 +16163,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.407. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16345,7 +16189,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.407. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16371,7 +16215,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.383. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16397,7 +16241,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.383. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16423,7 +16267,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.416. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16449,7 +16293,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.416. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16475,7 +16319,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.349. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.428. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16501,7 +16345,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.349. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.428. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16527,7 +16371,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16553,7 +16397,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16579,7 +16423,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.418. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16605,7 +16449,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.418. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16631,7 +16475,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.369. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16657,7 +16501,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.369. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16683,7 +16527,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.421. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16709,7 +16553,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.421. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16735,7 +16579,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.379. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16761,7 +16605,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.379. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16787,7 +16631,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.358. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16813,7 +16657,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.358. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16839,7 +16683,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.410. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16865,7 +16709,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.410. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16891,7 +16735,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.386. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16917,7 +16761,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.386. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16943,7 +16787,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.356. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16969,7 +16813,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.356. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -16995,7 +16839,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -17021,7 +16865,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -17047,7 +16891,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.362. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -17073,37 +16917,11 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.362. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
         "seedId": "move-twinkle-tackle-special"
-      }
-    }
-  },
-  {
-    "name": "Catastropika",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "electric",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.358. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-catastropika"
       }
     }
   },
@@ -18044,240 +17862,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
     }
   },
   {
-    "name": "Sinister Arrow Raid",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-sinister-arrow-raid"
-      }
-    }
-  },
-  {
-    "name": "Malicious Moonsault",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "dark",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-malicious-moonsault"
-      }
-    }
-  },
-  {
-    "name": "Oceanic Operetta",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "water",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.421. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-oceanic-operetta"
-      }
-    }
-  },
-  {
-    "name": "Guardian of Alola",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "fairy",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.362. Damages the target for 75% of its remaining HP."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-guardian-of-alola"
-      }
-    }
-  },
-  {
-    "name": "Soul-Stealing 7-Star Strike",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-soul-stealing-7-star-strike"
-      }
-    }
-  },
-  {
-    "name": "Stoked Sparksurfer",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "electric",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.358. Has a 100% chance to [paralyze]{mechanic:paralysis} the target."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-stoked-sparksurfer"
-      }
-    }
-  },
-  {
-    "name": "Pulverizing Pancake",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "normal",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.389. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-pulverizing-pancake"
-      }
-    }
-  },
-  {
-    "name": "Extreme Evoboost",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "normal",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.389. Raises all of the user\u2019s stats by two stages."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-extreme-evoboost"
-      }
-    }
-  },
-  {
-    "name": "Genesis Supernova",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "psychic",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.410. Changes the terrain to Psychic Terrain after inflicting damage."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-genesis-supernova"
-      }
-    }
-  },
-  {
     "name": "Shell Trap",
     "type": "move",
     "img": "icons/svg/sword.svg",
@@ -18668,32 +18252,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
     }
   },
   {
-    "name": "10,000,000 Volt Thunderbolt",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "electric",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": true,
-      "neverFail": true,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.358. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-10-000-000-volt-thunderbolt"
-      }
-    }
-  },
-  {
     "name": "Mind Blown",
     "type": "move",
     "img": "icons/svg/sword.svg",
@@ -18768,162 +18326,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-module": {
         "seedId": "move-photon-geyser"
-      }
-    }
-  },
-  {
-    "name": "Light That Burns the Sky",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "psychic",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.410. Inflicts damage using either Attack or Special Attack stat, whichever is higher."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-light-that-burns-the-sky"
-      }
-    }
-  },
-  {
-    "name": "Searing Sunraze Smash",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "steel",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.418. Cannot be disrupted by abilities."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-searing-sunraze-smash"
-      }
-    }
-  },
-  {
-    "name": "Menacing Moonraze Maelstrom",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.376. Cannot be disrupted by abilities."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-menacing-moonraze-maelstrom"
-      }
-    }
-  },
-  {
-    "name": "Let\u2019s Snuggle Forever",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "fairy",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.362. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-lets-snuggle-forever"
-      }
-    }
-  },
-  {
-    "name": "Splintered Stormshards",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "rock",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.416. Inflicts damage and removes any terrain present on the battlefield."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-splintered-stormshards"
-      }
-    }
-  },
-  {
-    "name": "Clangorous Soulblaze",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "dragon",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.356. Inflicts damage to all opposing Pok\u00e9mon and increases the user\u2019s Attack, Defense, Special Attack, Special Defense, and Speed by one stage each."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-clangorous-soulblaze"
       }
     }
   },
@@ -19292,32 +18694,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
     }
   },
   {
-    "name": "Max Guard",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "normal",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 4,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.389. Prevents any moves from hitting the user this turn."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-max-guard"
-      }
-    }
-  },
-  {
     "name": "Dynamax Cannon",
     "type": "move",
     "img": "icons/svg/sword.svg",
@@ -19673,7 +19049,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.369. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19699,7 +19075,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.349. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.425. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19725,7 +19101,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.358. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19751,7 +19127,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.389. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19777,7 +19153,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.365. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19803,7 +19179,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19829,7 +19205,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.386. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19855,7 +19231,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.407. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19881,7 +19257,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.421. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.428. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19907,7 +19283,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.373. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19933,7 +19309,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.362. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19959,7 +19335,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.356. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -19985,7 +19361,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.410. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20011,7 +19387,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.416. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20037,7 +19413,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.383. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20063,7 +19439,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20089,7 +19465,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.379. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20115,7 +19491,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": true,
       "lethal": false,
       "isUsable": true,
-      "description": "Corebook p.418. Inflicts regular damage with no additional effect."
+      "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
       "pok-role-module": {
@@ -20276,58 +19652,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-module": {
         "seedId": "move-pyro-ball"
-      }
-    }
-  },
-  {
-    "name": "Behemoth Blade",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "steel",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 5,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.418. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-behemoth-blade"
-      }
-    }
-  },
-  {
-    "name": "Behemoth Bash",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "steel",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 5,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.418. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-behemoth-bash"
       }
     }
   },
@@ -20696,942 +20020,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
     }
   },
   {
-    "name": "Expanding Force",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "psychic",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.410. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-expanding-force"
-      }
-    }
-  },
-  {
-    "name": "Steel Roller",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "steel",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 6,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.418. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-steel-roller"
-      }
-    }
-  },
-  {
-    "name": "Scale Shot",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "dragon",
-      "category": "physical",
-      "actionTag": "5A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 1,
-      "reducedAccuracy": 2,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.356. Boosts the user\u2019s Speed and lowers their Defense by one stage after inflicting damage two to five times in a row."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-scale-shot"
-      }
-    }
-  },
-  {
-    "name": "Meteor Beam",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "rock",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 6,
-      "reducedAccuracy": 2,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.416. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-meteor-beam"
-      }
-    }
-  },
-  {
-    "name": "Shell Side Arm",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "poison",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.407. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shell-side-arm"
-      }
-    }
-  },
-  {
-    "name": "Misty Explosion",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "fairy",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 5,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.362. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-misty-explosion"
-      }
-    }
-  },
-  {
-    "name": "Grassy Glide",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "grass",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 3,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.379. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-grassy-glide"
-      }
-    }
-  },
-  {
-    "name": "Rising Voltage",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "electric",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.358. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-rising-voltage"
-      }
-    }
-  },
-  {
-    "name": "Terrain Pulse",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "normal",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 2,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.389. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-terrain-pulse"
-      }
-    }
-  },
-  {
-    "name": "Skitter Smack",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "bug",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 4,
-      "reducedAccuracy": 2,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.349. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-skitter-smack"
-      }
-    }
-  },
-  {
-    "name": "Burning Jealousy",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "fire",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.369. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-burning-jealousy"
-      }
-    }
-  },
-  {
-    "name": "Lash Out",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "dark",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-lash-out"
-      }
-    }
-  },
-  {
-    "name": "Poltergeist",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 6,
-      "reducedAccuracy": 2,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-poltergeist"
-      }
-    }
-  },
-  {
-    "name": "Corrosive Gas",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "poison",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.407. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-corrosive-gas"
-      }
-    }
-  },
-  {
-    "name": "Coaching",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "fighting",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.365. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-coaching"
-      }
-    }
-  },
-  {
-    "name": "Flip Turn",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "water",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 3,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.421. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-flip-turn"
-      }
-    }
-  },
-  {
-    "name": "Triple Axel",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ice",
-      "category": "physical",
-      "actionTag": "2A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 1,
-      "reducedAccuracy": 2,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.386. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-triple-axel"
-      }
-    }
-  },
-  {
-    "name": "Dual Wingbeat",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "flying",
-      "category": "physical",
-      "actionTag": "2A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 2,
-      "reducedAccuracy": 2,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.373. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-dual-wingbeat"
-      }
-    }
-  },
-  {
-    "name": "Scorching Sands",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ground",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.383. Has a 30% chance to [burn]{mechanic:burn} the target."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-scorching-sands"
-      }
-    }
-  },
-  {
-    "name": "Jungle Healing",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "grass",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.379. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-jungle-healing"
-      }
-    }
-  },
-  {
-    "name": "Wicked Blow",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "dark",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": true,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-wicked-blow"
-      }
-    }
-  },
-  {
-    "name": "Surging Strikes",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "water",
-      "category": "physical",
-      "actionTag": "2A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 1,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": true,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.421. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-surging-strikes"
-      }
-    }
-  },
-  {
-    "name": "Thunder Cage",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "electric",
-      "category": "special",
-      "actionTag": "5A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 2,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.358. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-thunder-cage"
-      }
-    }
-  },
-  {
-    "name": "Dragon Energy",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "dragon",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 7,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.356. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-dragon-energy"
-      }
-    }
-  },
-  {
-    "name": "Freezing Glare",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "psychic",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.410. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-freezing-glare"
-      }
-    }
-  },
-  {
-    "name": "Fiery Wrath",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "dark",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.352. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-fiery-wrath"
-      }
-    }
-  },
-  {
-    "name": "Thunderous Kick",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "fighting",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.365. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-thunderous-kick"
-      }
-    }
-  },
-  {
-    "name": "Glacial Lance",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ice",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 6,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.386. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-glacial-lance"
-      }
-    }
-  },
-  {
-    "name": "Astral Barrage",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 6,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-astral-barrage"
-      }
-    }
-  },
-  {
-    "name": "Eerie Spell",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "psychic",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.410. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-eerie-spell"
-      }
-    }
-  },
-  {
-    "name": "Dire Claw",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "poison",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.407. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-dire-claw"
-      }
-    }
-  },
-  {
-    "name": "Psyshield Bash",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "psychic",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 4,
-      "reducedAccuracy": 2,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.410. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-psyshield-bash"
-      }
-    }
-  },
-  {
-    "name": "Power Shift",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "normal",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.389. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-power-shift"
-      }
-    }
-  },
-  {
-    "name": "Stone Axe",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "rock",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 3,
-      "reducedAccuracy": 2,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.416. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-stone-axe"
-      }
-    }
-  },
-  {
-    "name": "Springtide Storm",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "fairy",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 5,
-      "reducedAccuracy": 3,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.362. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-springtide-storm"
-      }
-    }
-  },
-  {
-    "name": "Mystical Power",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "psychic",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 2,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.410. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-mystical-power"
-      }
-    }
-  },
-  {
     "name": "Raging Fury",
     "type": "move",
     "img": "icons/svg/sword.svg",
@@ -21658,214 +20046,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
     }
   },
   {
-    "name": "Wave Crash",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "water",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 6,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.421. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-wave-crash"
-      }
-    }
-  },
-  {
-    "name": "Chloroblast",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "grass",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 7,
-      "reducedAccuracy": 1,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.379. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-chloroblast"
-      }
-    }
-  },
-  {
-    "name": "Mountain Gale",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ice",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 5,
-      "reducedAccuracy": 2,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.386. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-mountain-gale"
-      }
-    }
-  },
-  {
-    "name": "Victory Dance",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "fighting",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.365. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-victory-dance"
-      }
-    }
-  },
-  {
-    "name": "Headlong Rush",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ground",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 6,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.383. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-headlong-rush"
-      }
-    }
-  },
-  {
-    "name": "Barb Barrage",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "poison",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 3,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.407. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-barb-barrage"
-      }
-    }
-  },
-  {
-    "name": "Esper Wing",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "psychic",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.410. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-esper-wing"
-      }
-    }
-  },
-  {
-    "name": "Bitter Malice",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-bitter-malice"
-      }
-    }
-  },
-  {
     "name": "Shelter",
     "type": "move",
     "img": "icons/svg/sword.svg",
@@ -21888,682 +20068,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-module": {
         "seedId": "move-shelter"
-      }
-    }
-  },
-  {
-    "name": "Triple Arrows",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "fighting",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.365. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-triple-arrows"
-      }
-    }
-  },
-  {
-    "name": "Infernal Parade",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 3,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-infernal-parade"
-      }
-    }
-  },
-  {
-    "name": "Ceaseless Edge",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "dark",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 3,
-      "reducedAccuracy": 2,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.352. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-ceaseless-edge"
-      }
-    }
-  },
-  {
-    "name": "Bleakwind Storm",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "flying",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 5,
-      "reducedAccuracy": 3,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.373. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-bleakwind-storm"
-      }
-    }
-  },
-  {
-    "name": "Wildbolt Storm",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "electric",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 5,
-      "reducedAccuracy": 3,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.358. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-wildbolt-storm"
-      }
-    }
-  },
-  {
-    "name": "Sandsear Storm",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ground",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 5,
-      "reducedAccuracy": 3,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.383. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-sandsear-storm"
-      }
-    }
-  },
-  {
-    "name": "Lunar Blessing",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "psychic",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.410. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-lunar-blessing"
-      }
-    }
-  },
-  {
-    "name": "Take Heart",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "psychic",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.410. Move description available in the move section."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-take-heart"
-      }
-    }
-  },
-  {
-    "name": "Shadow Rush",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 3,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Has an increased chance for a critical hit in Hyper Mode."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-rush"
-      }
-    }
-  },
-  {
-    "name": "Shadow Blast",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Has an increased chance for a critical hit."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-blast"
-      }
-    }
-  },
-  {
-    "name": "Shadow Blitz",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 2,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-blitz"
-      }
-    }
-  },
-  {
-    "name": "Shadow Bolt",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Has a 10% chance to [paralyze]{mechanic:paralysis} the target."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-bolt"
-      }
-    }
-  },
-  {
-    "name": "Shadow Break",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-break"
-      }
-    }
-  },
-  {
-    "name": "Shadow Chill",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Has a 10% chance to [freeze]{mechanic:freeze} the target."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-chill"
-      }
-    }
-  },
-  {
-    "name": "Shadow End",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "physical",
-      "actionTag": "1A",
-      "accuracyAttribute": "dexterity",
-      "accuracySkill": "brawl",
-      "power": 6,
-      "reducedAccuracy": 5,
-      "damageAttribute": "strength",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": true,
-      "isUsable": true,
-      "description": "Corebook p.376. User receives 1/2 its HP in recoil."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-end"
-      }
-    }
-  },
-  {
-    "name": "Shadow Fire",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Has a 10% chance to [burn]{mechanic:burn} the target."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-fire"
-      }
-    }
-  },
-  {
-    "name": "Shadow Rave",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 4,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-rave"
-      }
-    }
-  },
-  {
-    "name": "Shadow Storm",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 5,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-storm"
-      }
-    }
-  },
-  {
-    "name": "Shadow Wave",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 2,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Inflicts regular damage with no additional effect."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-wave"
-      }
-    }
-  },
-  {
-    "name": "Shadow Down",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Lowers the target\u2019s Defense by two stages."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-down"
-      }
-    }
-  },
-  {
-    "name": "Shadow Half",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "special",
-      "actionTag": "1A",
-      "accuracyAttribute": "special",
-      "accuracySkill": "channel",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "special",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Halves HP of all Pok\u00e9mon on the field. Must recharge"
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-half"
-      }
-    }
-  },
-  {
-    "name": "Shadow Hold",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Prevents the target from leaving battle."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-hold"
-      }
-    }
-  },
-  {
-    "name": "Shadow Mist",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Lowers the target\u2019s evasion by two stages."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-mist"
-      }
-    }
-  },
-  {
-    "name": "Shadow Panic",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 2,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": false,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Confuses the target."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-panic"
-      }
-    }
-  },
-  {
-    "name": "Shadow Shed",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Removes [Light Screen]{move:light-screen}, [Reflect]{move:reflect}, and [Safeguard]{move:safeguard}."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-shed"
-      }
-    }
-  },
-  {
-    "name": "Shadow Sky",
-    "type": "move",
-    "img": "icons/svg/sword.svg",
-    "system": {
-      "type": "ghost",
-      "category": "support",
-      "actionTag": "1A",
-      "accuracyAttribute": "insight",
-      "accuracySkill": "alert",
-      "power": 0,
-      "reducedAccuracy": 0,
-      "damageAttribute": "none",
-      "priority": 0,
-      "highCritical": false,
-      "neverFail": true,
-      "lethal": false,
-      "isUsable": true,
-      "description": "Corebook p.376. Changes the weather to Shadow Sky for five turns."
-    },
-    "flags": {
-      "pok-role-module": {
-        "seedId": "move-shadow-sky"
       }
     }
   }

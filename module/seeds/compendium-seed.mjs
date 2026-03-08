@@ -1,8 +1,9 @@
 import { POKROLE } from "../constants.mjs";
 import { MOVE_COMPENDIUM_ENTRIES } from "./generated/move-seeds.mjs";
 import { POKEDEX_COMPENDIUM_ENTRIES } from "./generated/pokedex-seeds.mjs";
+import { ABILITY_COMPENDIUM_ENTRIES } from "./generated/ability-seeds.mjs";
 
-export const COMPENDIUM_SEED_VERSION = "2026-03-08-corebook-full-moves-and-pokedex-v1";
+export const COMPENDIUM_SEED_VERSION = "2026-03-09-corebook-moves-abilities-full-v1";
 const VALID_ITEM_TYPES = new Set(["move", "gear", "ability", "weather", "status", "pokedex"]);
 
 function baseStatus() {
@@ -817,24 +818,7 @@ const ITEM_SEEDS = Object.freeze({
     })
   ],
 
-  abilities: [
-    makePlayableItem("item-abilities-reference", "Abilities Reference", "ability", {
-      abilityType: "passive",
-      trigger: "Always On / Species Rule",
-      frequency: "Persistent",
-      target: "Self / Scene",
-      effect: "Pokemon abilities are selected from each species Pokedex entry and then applied on the Pokemon sheet.",
-      description: "Corebook p.22."
-    }),
-    makePlayableItem("item-abilities-hidden", "Hidden Abilities", "ability", {
-      abilityType: "hidden",
-      trigger: "Storyteller Discovery",
-      frequency: "Conditional",
-      target: "Species-specific",
-      effect: "Some Pokemon can present hidden/rare abilities and moves at storyteller discretion.",
-      description: "Corebook p.69."
-    })
-  ]
+  abilities: ABILITY_COMPENDIUM_ENTRIES
 });
 
 function getSeedCollection(packName, documentName) {
