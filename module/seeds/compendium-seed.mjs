@@ -1,6 +1,7 @@
 ﻿import { POKROLE } from "../constants.mjs";
 
-export const COMPENDIUM_SEED_VERSION = "2026-03-08-corebook-items-v2";
+export const COMPENDIUM_SEED_VERSION = "2026-03-08-corebook-playable-items-v4";
+const VALID_ITEM_TYPES = new Set(["move", "gear", "ability", "weather", "status", "pokedex"]);
 
 function baseStatus() {
   return {
@@ -64,19 +65,12 @@ function makeGear(seedId, name, config = {}) {
   };
 }
 
-function makeJournal(seedId, name, html) {
+function makePlayableItem(seedId, name, type, system, img = "icons/svg/book.svg") {
   return {
     name,
-    pages: [
-      {
-        name: "Overview",
-        type: "text",
-        text: {
-          content: html,
-          format: 1
-        }
-      }
-    ],
+    type,
+    img,
+    system,
     flags: {
       [POKROLE.ID]: {
         seedId
@@ -650,83 +644,217 @@ const ITEM_SEEDS = Object.freeze({
     makeGear("held-razor-fang", "Razor Fang", { category: "held", pocket: "held", consumable: false, canUseInBattle: true, description: "Corebook p.85. Combat support item." }),
     makeGear("held-rocky-helmet", "Rocky Helmet", { category: "held", pocket: "held", consumable: false, canUseInBattle: true, description: "Corebook p.85. Reflect damage on non-ranged physical attacks." }),
     makeGear("held-wide-lens", "Wide Lens", { category: "held", pocket: "held", consumable: false, canUseInBattle: true, description: "Corebook p.85. Accuracy bonus item." })
-  ]
-});
+  ],
 
-const JOURNAL_SEEDS = Object.freeze({
   pokedex: [
-    makeJournal(
-      "pokedex-window-reference",
+    makePlayableItem(
+      "item-pokedex-window-reference",
       "Pokedex Window Reference",
-      "<h2>Pokedex Window</h2><p><strong>Source:</strong> Corebook p.22</p><ul><li>Pokemon picture and Dex Number.</li><li>Species/Nickname and Ability.</li><li>Quick references: HP, Will, Held Item, Status, Initiative, Accuracy, Damage, Evasion, Clash, DEF/S.DEF, Rank.</li><li>Move windows and Attributes/Skills area.</li></ul>"
+      "pokedex",
+      {
+        dexNumber: 0,
+        rank: "starter",
+        primaryType: "normal",
+        secondaryType: "none",
+        habitats: "All Regions",
+        abilities: "Species-defined",
+        commonMoves: "Species-defined",
+        evolutionNotes: "Check species rank and evolution requirements.",
+        description: "Corebook p.22. Quick references: Dex Number, species, ability, HP/Will, held item, status, initiative, accuracy, damage, evasion, clash, DEF/S.DEF and rank."
+      },
+      "icons/svg/book.svg"
     )
   ],
+
   "weather-conditions": [
-    makeJournal(
-      "weather-sunny",
-      "Sunny Weather",
-      "<p><strong>Source:</strong> Corebook p.56</p><ul><li>Fire moves gain +1 damage die.</li><li>Water moves total damage -1.</li><li>Frozen status cannot be inflicted.</li></ul>"
-    ),
-    makeJournal(
-      "weather-rain",
-      "Rain Weather",
-      "<p><strong>Source:</strong> Corebook p.56</p><ul><li>Water moves gain +1 damage die.</li><li>Fire moves total damage -1.</li></ul>"
-    ),
-    makeJournal(
-      "weather-sandstorm",
-      "Sandstorm Weather",
-      "<p><strong>Source:</strong> Corebook p.56</p><ul><li>End of round: non Rock/Ground/Steel Pokemon take 1 damage.</li><li>Rock Pokemon gain +1 Special Defense.</li></ul>"
-    ),
-    makeJournal(
-      "weather-hail",
-      "Hail Weather",
-      "<p><strong>Source:</strong> Corebook p.57</p><ul><li>End of round: non Ice Pokemon take 1 damage.</li><li>Ice Pokemon gain +1 Defense.</li></ul>"
-    ),
-    makeJournal(
-      "weather-fog-darkness",
-      "Fog / Darkness",
-      "<p><strong>Source:</strong> Corebook p.57</p><p>All Pokemon get extra Reduced Accuracy on moves.</p>"
-    ),
-    makeJournal(
-      "weather-muddy",
-      "Muddy",
-      "<p><strong>Source:</strong> Corebook p.57</p><p>Mobility is reduced; Pokemon cannot get out of range.</p>"
-    ),
-    makeJournal(
-      "weather-on-fire",
-      "On Fire!",
-      "<p><strong>Source:</strong> Corebook p.57</p><p>Environmental challenge that inflicts end-of-round damage.</p>"
-    )
+    makePlayableItem("item-weather-sunny", "Sunny Weather", "weather", {
+      category: "climate",
+      duration: 0,
+      accuracyModifier: 0,
+      damageModifier: 0,
+      endOfRoundDamage: 0,
+      affectedTypes: "Fire (+1 damage die), Water (-1 total damage)",
+      effect: "Frozen cannot be inflicted while sunny weather is active.",
+      description: "Corebook p.56."
+    }, "icons/magic/time/day-night-sun-cloud.webp"),
+    makePlayableItem("item-weather-rain", "Rain Weather", "weather", {
+      category: "climate",
+      duration: 0,
+      accuracyModifier: 0,
+      damageModifier: 0,
+      endOfRoundDamage: 0,
+      affectedTypes: "Water (+1 damage die), Fire (-1 total damage)",
+      effect: "Rain boosts water output and dampens fire moves.",
+      description: "Corebook p.56."
+    }, "icons/magic/time/day-night-rain.webp"),
+    makePlayableItem("item-weather-sandstorm", "Sandstorm Weather", "weather", {
+      category: "hazard",
+      duration: 0,
+      accuracyModifier: 0,
+      damageModifier: 0,
+      endOfRoundDamage: 1,
+      affectedTypes: "Rock/Ground/Steel ignore sandstorm chip damage",
+      effect: "Rock Pokemon gain +1 Special Defense.",
+      description: "Corebook p.56."
+    }, "icons/magic/air/wind-swirl-sand.webp"),
+    makePlayableItem("item-weather-hail", "Hail Weather", "weather", {
+      category: "hazard",
+      duration: 0,
+      accuracyModifier: 0,
+      damageModifier: 0,
+      endOfRoundDamage: 1,
+      affectedTypes: "Ice ignores hail chip damage",
+      effect: "Ice Pokemon gain +1 Defense.",
+      description: "Corebook p.57."
+    }, "icons/magic/water/projectile-ice-shard.webp"),
+    makePlayableItem("item-weather-fog-darkness", "Fog / Darkness", "weather", {
+      category: "climate",
+      duration: 0,
+      accuracyModifier: -1,
+      damageModifier: 0,
+      endOfRoundDamage: 0,
+      affectedTypes: "All",
+      effect: "All Pokemon receive extra Reduced Accuracy on moves.",
+      description: "Corebook p.57."
+    }, "icons/magic/perception/eye-ringed-glow-angry-red.webp"),
+    makePlayableItem("item-weather-muddy", "Muddy", "weather", {
+      category: "terrain",
+      duration: 0,
+      accuracyModifier: 0,
+      damageModifier: 0,
+      endOfRoundDamage: 0,
+      affectedTypes: "Ground mobility",
+      effect: "Mobility is reduced and Pokemon cannot get out of range.",
+      description: "Corebook p.57."
+    }, "icons/environment/wilderness/terrain-rocky-ground.webp"),
+    makePlayableItem("item-weather-on-fire", "On Fire!", "weather", {
+      category: "hazard",
+      duration: 0,
+      accuracyModifier: 0,
+      damageModifier: 0,
+      endOfRoundDamage: 1,
+      affectedTypes: "Area hazard",
+      effect: "Environmental hazard that inflicts recurring damage each round.",
+      description: "Corebook p.57."
+    }, "icons/magic/fire/projectile-fireball-orange-yellow.webp")
   ],
+
   "pokemon-status": [
-    makeJournal("status-burn-1", "Burn 1", "<p><strong>Source:</strong> Corebook p.58</p><p>End of round: 1 damage. Fire-type immune.</p>"),
-    makeJournal("status-burn-2", "Burn 2", "<p><strong>Source:</strong> Corebook p.58</p><p>End of round: 2 lethal damage. Fire-type immune.</p>"),
-    makeJournal("status-burn-3", "Burn 3", "<p><strong>Source:</strong> Corebook p.58</p><p>End of round: 3 lethal damage. Fire-type immune.</p>"),
-    makeJournal("status-frozen-solid", "Frozen Solid", "<p><strong>Source:</strong> Corebook p.58</p><p>Target cannot act until thawed by rules/effects.</p>"),
-    makeJournal("status-paralysis", "Paralysis", "<p><strong>Source:</strong> Corebook p.58</p><p>Muscle cramps and reduced performance until cured.</p>"),
-    makeJournal("status-poison", "Poison / Poison+", "<p><strong>Source:</strong> Corebook p.58</p><p>Poisoned target takes recurring damage by severity.</p>"),
-    makeJournal("status-sleep", "Sleep", "<p><strong>Source:</strong> Corebook p.59</p><p>Cannot act while asleep; may wake with Insight checks under stress.</p>"),
-    makeJournal("status-confused", "Confused", "<p><strong>Source:</strong> Corebook p.59</p><p>Removes 1 success from action rolls; on failed action, self-damage.</p>"),
-    makeJournal("status-flinched", "Flinched", "<p><strong>Source:</strong> Corebook p.59</p><p>Target hesitates and loses immediate action flow.</p>")
+    makePlayableItem("item-status-burn-1", "Burn 1", "status", {
+      severity: "minor",
+      target: "pokemon",
+      endOfRoundDamage: 1,
+      removedSuccesses: 0,
+      blocksAction: false,
+      recovery: "Burn Heal / Full Heal / relevant effects",
+      effect: "End of round: 1 damage. Fire-type Pokemon are immune.",
+      description: "Corebook p.58."
+    }),
+    makePlayableItem("item-status-burn-2", "Burn 2", "status", {
+      severity: "major",
+      target: "pokemon",
+      endOfRoundDamage: 2,
+      removedSuccesses: 0,
+      blocksAction: false,
+      recovery: "Burn Heal / Full Heal / relevant effects",
+      effect: "End of round: 2 lethal damage. Fire-type Pokemon are immune.",
+      description: "Corebook p.58."
+    }),
+    makePlayableItem("item-status-burn-3", "Burn 3", "status", {
+      severity: "critical",
+      target: "pokemon",
+      endOfRoundDamage: 3,
+      removedSuccesses: 0,
+      blocksAction: false,
+      recovery: "Burn Heal / Full Heal / relevant effects",
+      effect: "End of round: 3 lethal damage. Fire-type Pokemon are immune.",
+      description: "Corebook p.58."
+    }),
+    makePlayableItem("item-status-frozen-solid", "Frozen Solid", "status", {
+      severity: "critical",
+      target: "pokemon",
+      endOfRoundDamage: 0,
+      removedSuccesses: 0,
+      blocksAction: true,
+      recovery: "Ice Heal / specific thawing effects",
+      effect: "The target cannot act until thawed by effects or scene conditions.",
+      description: "Corebook p.58."
+    }),
+    makePlayableItem("item-status-paralysis", "Paralysis", "status", {
+      severity: "major",
+      target: "pokemon",
+      endOfRoundDamage: 0,
+      removedSuccesses: 0,
+      blocksAction: false,
+      recovery: "Paralyze Heal / Full Heal / relevant effects",
+      effect: "Muscle cramps and reduced performance until cured.",
+      description: "Corebook p.58."
+    }),
+    makePlayableItem("item-status-poison", "Poison / Poison+", "status", {
+      severity: "major",
+      target: "pokemon",
+      endOfRoundDamage: 1,
+      removedSuccesses: 0,
+      blocksAction: false,
+      recovery: "Antidote / Full Heal / relevant effects",
+      effect: "Poisoned targets take recurring damage according to severity.",
+      description: "Corebook p.58."
+    }),
+    makePlayableItem("item-status-sleep", "Sleep", "status", {
+      severity: "major",
+      target: "pokemon",
+      endOfRoundDamage: 0,
+      removedSuccesses: 0,
+      blocksAction: true,
+      recovery: "Awakening / Chesto Berry / relevant effects",
+      effect: "Sleeping targets cannot act until they wake up by rule/effect.",
+      description: "Corebook p.59."
+    }),
+    makePlayableItem("item-status-confused", "Confused", "status", {
+      severity: "minor",
+      target: "pokemon",
+      endOfRoundDamage: 0,
+      removedSuccesses: 1,
+      blocksAction: false,
+      recovery: "Persim Berry / Lum Berry / relevant effects",
+      effect: "Removes 1 success from action rolls; failed actions can self-damage.",
+      description: "Corebook p.59."
+    }),
+    makePlayableItem("item-status-flinched", "Flinched", "status", {
+      severity: "minor",
+      target: "pokemon",
+      endOfRoundDamage: 0,
+      removedSuccesses: 0,
+      blocksAction: true,
+      recovery: "Ends on the immediate next action opportunity.",
+      effect: "The target hesitates and loses immediate action flow.",
+      description: "Corebook p.59."
+    })
   ],
+
   abilities: [
-    makeJournal(
-      "abilities-reference",
-      "Abilities Reference",
-      "<p><strong>Source:</strong> Corebook p.22 and species entries.</p><p>Pokemon abilities are selected from each species Pokedex entry and applied on the Pokemon sheet.</p>"
-    ),
-    makeJournal(
-      "abilities-hidden",
-      "Hidden Abilities",
-      "<p><strong>Source:</strong> Corebook p.69</p><p>Some Pokemon may present hidden/rare abilities and moves at storyteller discretion.</p>"
-    )
+    makePlayableItem("item-abilities-reference", "Abilities Reference", "ability", {
+      abilityType: "passive",
+      trigger: "Always On / Species Rule",
+      frequency: "Persistent",
+      target: "Self / Scene",
+      effect: "Pokemon abilities are selected from each species Pokedex entry and then applied on the Pokemon sheet.",
+      description: "Corebook p.22."
+    }),
+    makePlayableItem("item-abilities-hidden", "Hidden Abilities", "ability", {
+      abilityType: "hidden",
+      trigger: "Storyteller Discovery",
+      frequency: "Conditional",
+      target: "Species-specific",
+      effect: "Some Pokemon can present hidden/rare abilities and moves at storyteller discretion.",
+      description: "Corebook p.69."
+    })
   ]
 });
 
 function getSeedCollection(packName, documentName) {
-  if (documentName === "Item") return ITEM_SEEDS[packName] ?? [];
-  if (documentName === "JournalEntry") return JOURNAL_SEEDS[packName] ?? [];
-  return [];
+  if (documentName !== "Item") return [];
+  return ITEM_SEEDS[packName] ?? [];
 }
 
 async function ensureUnlocked(pack) {
@@ -765,7 +893,7 @@ export async function seedCompendia({ force = false, notify = true } = {}) {
 
     const shouldRelock = await ensureUnlocked(pack);
     try {
-      const index = await pack.getIndex({ fields: ["flags"] });
+      const index = await pack.getIndex({ fields: ["flags", "type"] });
       if (force && index.length > 0) {
         const ids = index.map((entry) => entry._id).filter(Boolean);
         if (ids.length > 0) {
@@ -773,7 +901,17 @@ export async function seedCompendia({ force = false, notify = true } = {}) {
         }
       }
 
-      const freshIndex = force ? [] : await pack.getIndex({ fields: ["flags"] });
+      if (!force && pack.documentName === "Item") {
+        const incompatibleIds = index
+          .filter((entry) => !VALID_ITEM_TYPES.has(`${entry.type ?? ""}`))
+          .map((entry) => entry._id)
+          .filter(Boolean);
+        if (incompatibleIds.length > 0) {
+          await pack.documentClass.deleteDocuments(incompatibleIds, { pack: pack.collection });
+        }
+      }
+
+      const freshIndex = force ? [] : await pack.getIndex({ fields: ["flags", "type"] });
       const existingSeedIds = new Set(
         freshIndex
           .map((entry) => entry.flags?.[POKROLE.ID]?.seedId)

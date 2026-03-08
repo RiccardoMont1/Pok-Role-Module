@@ -8,9 +8,13 @@ import {
   seedCompendia
 } from "./module/seeds/compendium-seed.mjs";
 import {
+  AbilityDataModel,
   GearDataModel,
   MoveDataModel,
+  PokedexDataModel,
   PokemonDataModel,
+  StatusDataModel,
+  WeatherDataModel,
   TrainerDataModel
 } from "./module/data-models.mjs";
 import { PokRoleActor, PokRoleItem } from "./module/documents.mjs";
@@ -30,7 +34,11 @@ Hooks.once("init", () => {
 
   CONFIG.Item.dataModels = {
     move: MoveDataModel,
-    gear: GearDataModel
+    gear: GearDataModel,
+    ability: AbilityDataModel,
+    weather: WeatherDataModel,
+    status: StatusDataModel,
+    pokedex: PokedexDataModel
   };
 
   const sharedTrackableValues = [
@@ -67,7 +75,7 @@ Hooks.once("init", () => {
   });
 
   sheetConfig.registerSheet(Item, POKROLE.ID, PokRoleMoveSheet, {
-    types: ["move", "gear"],
+    types: ["move", "gear", "ability", "weather", "status", "pokedex"],
     makeDefault: true,
     label: "POKROLE.Sheets.Item"
   });

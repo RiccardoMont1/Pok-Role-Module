@@ -99,6 +99,8 @@ export class PokemonDataModel extends BaseCharacterDataModel {
     const base = super.defineSchema();
     return {
       ...base,
+      attributes: new SchemaField(valueSchema(ATTRIBUTE_DEFINITIONS, 1, { max: 10 })),
+      skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 0, { max: 10 })),
       species: trimmedStringField(""),
       ability: trimmedStringField(""),
       nature: trimmedStringField(""),
@@ -137,7 +139,16 @@ export class PokemonDataModel extends BaseCharacterDataModel {
       happiness: integerField(2, { min: 0, max: 5 }),
       battles: integerField(0, { min: 0 }),
       victories: integerField(0, { min: 0 }),
-      extra: integerField(0, { min: 0, max: 5 }),
+      extra: integerField(0, { min: 0, max: 10 }),
+      sheetSettings: new SchemaField({
+        trackMax: new SchemaField({
+          attributes: new SchemaField(
+            valueSchema(ATTRIBUTE_DEFINITIONS, 5, { min: 1, max: 10 })
+          ),
+          skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 5, { min: 1, max: 10 })),
+          extra: integerField(5, { min: 1, max: 10 })
+        })
+      }),
       combatProfile: new SchemaField({
         accuracy: integerField(0, { min: 0, max: 99 }),
         damage: integerField(0, { min: 0, max: 99 }),
@@ -266,6 +277,100 @@ export class GearDataModel extends foundry.abstract.TypeDataModel {
         paralysis: new BooleanField({ required: true, initial: false }),
         confusion: new BooleanField({ required: true, initial: false })
       }),
+      description: trimmedStringField("")
+    };
+  }
+}
+
+export class AbilityDataModel extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    return {
+      abilityType: new StringField({
+        required: true,
+        blank: false,
+        initial: "passive",
+        choices: ["passive", "active", "hidden"]
+      }),
+      trigger: trimmedStringField(""),
+      frequency: trimmedStringField(""),
+      target: trimmedStringField(""),
+      effect: trimmedStringField(""),
+      description: trimmedStringField("")
+    };
+  }
+}
+
+export class WeatherDataModel extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    return {
+      category: new StringField({
+        required: true,
+        blank: false,
+        initial: "climate",
+        choices: ["climate", "terrain", "hazard", "other"]
+      }),
+      duration: integerField(0, { min: 0, max: 999 }),
+      accuracyModifier: integerField(0, { min: -6, max: 6 }),
+      damageModifier: integerField(0, { min: -6, max: 6 }),
+      endOfRoundDamage: integerField(0, { min: 0, max: 20 }),
+      affectedTypes: trimmedStringField(""),
+      effect: trimmedStringField(""),
+      description: trimmedStringField("")
+    };
+  }
+}
+
+export class StatusDataModel extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    return {
+      severity: new StringField({
+        required: true,
+        blank: false,
+        initial: "minor",
+        choices: ["minor", "major", "critical"]
+      }),
+      target: new StringField({
+        required: true,
+        blank: false,
+        initial: "pokemon",
+        choices: ["pokemon", "trainer", "any"]
+      }),
+      endOfRoundDamage: integerField(0, { min: 0, max: 20 }),
+      removedSuccesses: integerField(0, { min: 0, max: 6 }),
+      blocksAction: new BooleanField({ required: true, initial: false }),
+      recovery: trimmedStringField(""),
+      effect: trimmedStringField(""),
+      description: trimmedStringField("")
+    };
+  }
+}
+
+export class PokedexDataModel extends foundry.abstract.TypeDataModel {
+  static defineSchema() {
+    return {
+      dexNumber: integerField(0, { min: 0, max: 9999 }),
+      rank: new StringField({
+        required: true,
+        blank: false,
+        initial: "starter",
+        choices: POKEMON_TIER_KEYS
+      }),
+      primaryType: new StringField({
+        required: true,
+        blank: false,
+        initial: "normal",
+        choices: MOVE_TYPE_KEYS
+      }),
+      secondaryType: new StringField({
+        required: true,
+        blank: false,
+        initial: "none",
+        choices: TYPE_OPTIONS
+      }),
+      habitats: trimmedStringField(""),
+      abilities: trimmedStringField(""),
+      commonMoves: trimmedStringField(""),
+      evolutionNotes: trimmedStringField(""),
       description: trimmedStringField("")
     };
   }

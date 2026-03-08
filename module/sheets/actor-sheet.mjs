@@ -99,22 +99,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       ]);
     }
     if (this.actor.type === "pokemon") {
-      context.pokemonPhysicalMentalRows = this._buildAttributeRows([
-        "strength",
-        "vitality",
-        "dexterity",
-        "insight",
-        "special"
-      ]);
-      context.pokemonSocialRows = this._buildAttributeRows([
-        "tough",
-        "beauty",
-        "cool",
-        "cute",
-        "clever",
-        "allure"
-      ]);
-      context.pokemonSkillRows = this._buildSkillRows([
+      const trackMax = this._getPokemonTrackMaxConfig();
+      const pokemonSkillKeys = [
         "brawl",
         "channel",
         "clash",
@@ -126,9 +112,44 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         "etiquette",
         "intimidate",
         "perform"
-      ]);
-      context.pokemonExtraTrack = this._buildTrack(this.actor.system.extra, 5, 0);
+      ];
+      context.pokemonPhysicalMentalRows = this._buildAttributeRows([
+        "strength",
+        "vitality",
+        "dexterity",
+        "insight",
+        "special"
+      ], trackMax.attributes);
+      context.pokemonSocialRows = this._buildAttributeRows([
+        "tough",
+        "beauty",
+        "cool",
+        "cute",
+        "clever",
+        "allure"
+      ], trackMax.attributes);
+      context.pokemonSkillRows = this._buildSkillRows(pokemonSkillKeys, trackMax.skills);
+      context.pokemonExtraTrack = this._buildTrack(this.actor.system.extra, trackMax.extra, 0);
       context.pokemonMatchups = this._buildPokemonMatchups();
+      context.pokemonTrackSettingAttributes = [
+        ...context.pokemonPhysicalMentalRows,
+        ...context.pokemonSocialRows
+      ].map((row) => ({
+        key: row.key,
+        label: row.label,
+        fieldPath: `system.sheetSettings.trackMax.attributes.${row.key}`,
+        value: trackMax.attributes?.[row.key] ?? 5
+      }));
+      context.pokemonTrackSettingSkills = context.pokemonSkillRows.map((row) => ({
+        key: row.key,
+        label: row.label,
+        fieldPath: `system.sheetSettings.trackMax.skills.${row.key}`,
+        value: trackMax.skills?.[row.key] ?? 5
+      }));
+      context.pokemonTrackSettingExtra = {
+        fieldPath: "system.sheetSettings.trackMax.extra",
+        value: trackMax.extra
+      };
       context.evolutionTimeOptions = {
         fast: "POKROLE.Pokemon.EvolutionFast",
         medium: "POKROLE.Pokemon.EvolutionMedium",
@@ -151,7 +172,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       context.usableMoves = moves.filter((move) => move.isUsable);
       context.learnedMoves = moves;
       context.usableMovesCount = context.usableMoves.length;
-      context.pokemonView = this._pokemonActiveView ?? "main";
+      context.pokemonView = this._normalizePokemonView(this._pokemonActiveView ?? "main");
     }
     const pocketOrder = {
       potions: 0,
@@ -370,8 +391,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
     const tab = event.currentTarget.dataset.tab;
     if (!tab) return;
-    this._pokemonActiveView = tab;
-    this._applyPokemonTabState(html, tab);
+    this._pokemonActiveView = this._normalizePokemonView(tab);
+    this._applyPokemonTabState(html, this._pokemonActiveView);
   }
 
   _onEvolutionAvailable(event) {
@@ -639,28 +660,30 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     return "1A";
   }
 
-  _buildAttributeRows(attributeKeys) {
+  _buildAttributeRows(attributeKeys, trackMaxByKey = null) {
     return attributeKeys.map((attributeKey) => {
       const value = Number(this.actor.system.attributes?.[attributeKey] ?? 0);
+      const maxValue = this._resolveTrackMax(trackMaxByKey?.[attributeKey], 5);
       return {
         key: attributeKey,
         label: TRAIT_LABEL_BY_KEY[attributeKey] ?? "POKROLE.Common.Unknown",
         value,
         fieldPath: `system.attributes.${attributeKey}`,
-        track: this._buildTrack(value, 5, 0)
+        track: this._buildTrack(value, maxValue, 0)
       };
     });
   }
 
-  _buildSkillRows(skillKeys) {
+  _buildSkillRows(skillKeys, trackMaxByKey = null) {
     return skillKeys.map((skillKey) => {
       const value = Number(this.actor.system.skills?.[skillKey] ?? 0);
+      const maxValue = this._resolveTrackMax(trackMaxByKey?.[skillKey], 5);
       return {
         key: skillKey,
         label: TRAIT_LABEL_BY_KEY[skillKey] ?? "POKROLE.Common.Unknown",
         value,
         fieldPath: `system.skills.${skillKey}`,
-        track: this._buildTrack(value, 5, 0)
+        track: this._buildTrack(value, maxValue, 0)
       };
     });
   }
@@ -680,8 +703,33 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       min: minValue,
       max: maxValue,
       value: clampedCurrent,
-      slots
+      slots,
+      style: `--track-columns:${maxValue};`
     };
+  }
+
+  _resolveTrackMax(value, fallback = 5) {
+    const numeric = Number(value);
+    const base = Number.isFinite(numeric) ? numeric : fallback;
+    return Math.min(Math.max(Math.floor(base), 1), 10);
+  }
+
+  _getPokemonTrackMaxConfig() {
+    const settings = this.actor.system.sheetSettings?.trackMax ?? {};
+    const attributes = Object.fromEntries(
+      ATTRIBUTE_DEFINITIONS.map((attribute) => [
+        attribute.key,
+        this._resolveTrackMax(settings.attributes?.[attribute.key], 5)
+      ])
+    );
+    const skills = Object.fromEntries(
+      SKILL_DEFINITIONS.map((skill) => [
+        skill.key,
+        this._resolveTrackMax(settings.skills?.[skill.key], 5)
+      ])
+    );
+    const extra = this._resolveTrackMax(settings.extra, 5);
+    return { attributes, skills, extra };
   }
 
   _toTitleCaseKey(value) {
@@ -690,11 +738,16 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   _applyPokemonTabState(html, tabName) {
-    const tab = tabName === "learned" ? "learned" : "main";
+    const tab = this._normalizePokemonView(tabName);
     html.find("[data-action='switch-pokemon-tab']").removeClass("is-active");
     html.find(`.pokemon-view-button[data-tab='${tab}']`).addClass("is-active");
     html.find(".pokemon-view-panel").removeClass("is-active");
     html.find(`.pokemon-view-panel[data-tab='${tab}']`).addClass("is-active");
+  }
+
+  _normalizePokemonView(tabName) {
+    if (tabName === "learned" || tabName === "settings") return tabName;
+    return "main";
   }
 
   _buildPokemonMatchups() {

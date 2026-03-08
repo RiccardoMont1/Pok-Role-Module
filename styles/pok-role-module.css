@@ -251,14 +251,16 @@
 }
 
 .move-sheet,
-.gear-sheet {
+.gear-sheet,
+.reference-sheet {
   border: 1px solid #39445b;
   border-radius: 14px;
   box-shadow: inset 0 0 0 1px rgba(8, 12, 20, 0.45);
 }
 
 .move-sheet .sheet-header,
-.gear-sheet .sheet-header {
+.gear-sheet .sheet-header,
+.reference-sheet .sheet-header {
   border: 1px solid #1a1f26;
   border-radius: 12px;
   padding: 10px;
@@ -266,7 +268,8 @@
 }
 
 .move-sheet .profile-img,
-.gear-sheet .profile-img {
+.gear-sheet .profile-img,
+.reference-sheet .profile-img {
   border: 2px solid #5f6471;
   border-radius: 8px;
   object-fit: contain;
@@ -276,7 +279,8 @@
 }
 
 .move-sheet .sheet-section,
-.gear-sheet .sheet-section {
+.gear-sheet .sheet-section,
+.reference-sheet .sheet-section {
   border: 1px solid #7f889c;
   border-radius: 12px;
   padding: 10px;
@@ -286,7 +290,8 @@
 }
 
 .move-sheet .sheet-section h2,
-.gear-sheet .sheet-section h2 {
+.gear-sheet .sheet-section h2,
+.reference-sheet .sheet-section h2 {
   color: #2f3646;
   border-bottom: 1px solid #9099ad;
   text-transform: uppercase;
@@ -294,7 +299,8 @@
 }
 
 .move-sheet label span,
-.gear-sheet label span {
+.gear-sheet label span,
+.reference-sheet label span {
   font-size: 0.69rem;
   text-transform: uppercase;
   color: #404552;
@@ -308,7 +314,11 @@
 .gear-sheet input[type="text"],
 .gear-sheet input[type="number"],
 .gear-sheet select,
-.gear-sheet textarea {
+.gear-sheet textarea,
+.reference-sheet input[type="text"],
+.reference-sheet input[type="number"],
+.reference-sheet select,
+.reference-sheet textarea {
   border-radius: 10px;
   border: 2px solid #70798f;
   background: #eef2fa;
@@ -316,19 +326,22 @@
 }
 
 .move-sheet textarea,
-.gear-sheet textarea {
+.gear-sheet textarea,
+.reference-sheet textarea {
   min-height: 120px;
   line-height: 1.35;
 }
 
 .move-sheet .checkbox-grid,
-.gear-sheet .checkbox-grid {
+.gear-sheet .checkbox-grid,
+.reference-sheet .checkbox-grid {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 8px;
 }
 
 .move-sheet .checkbox-row,
-.gear-sheet .checkbox-row {
+.gear-sheet .checkbox-row,
+.reference-sheet .checkbox-row {
   margin: 0;
   padding: 5px 8px;
   border: 1px solid #a3abba;
@@ -337,7 +350,8 @@
 }
 
 .move-sheet .checkbox-row input[type="checkbox"],
-.gear-sheet .checkbox-row input[type="checkbox"] {
+.gear-sheet .checkbox-row input[type="checkbox"],
+.reference-sheet .checkbox-row input[type="checkbox"] {
   width: 15px;
   height: 15px;
 }
@@ -567,7 +581,7 @@
 
 .trainer-sheet .track-bar {
   display: grid;
-  grid-template-columns: repeat(5, 18px);
+  grid-template-columns: repeat(var(--track-columns, 5), 18px);
   gap: 5px;
   justify-content: start;
   align-items: center;
@@ -1288,7 +1302,7 @@
 
 .pokemon-sheet .track-bar {
   display: grid;
-  grid-template-columns: repeat(5, 16px);
+  grid-template-columns: repeat(var(--track-columns, 5), 16px);
   gap: 4px;
 }
 
@@ -1405,6 +1419,81 @@
   background: #f3f6fd;
 }
 
+.pokemon-sheet .pokemon-settings-section {
+  border: 4px solid var(--pk-outline);
+  border-radius: 20px;
+  background: #d24a30;
+}
+
+.pokemon-sheet .pokemon-settings-section h2 {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+}
+
+.pokemon-sheet .pokemon-settings-section .inline-meta {
+  color: #f7f8ff;
+  margin: 0 0 8px;
+}
+
+.pokemon-sheet .pokemon-settings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.pokemon-sheet .pokemon-settings-block {
+  border: 3px solid var(--pk-outline);
+  border-radius: 12px;
+  background: #f5f8ff;
+  padding: 8px;
+}
+
+.pokemon-sheet .pokemon-settings-block h3 {
+  margin: 0 0 8px;
+  font-size: 0.86rem;
+  text-transform: uppercase;
+  color: #8f3b27;
+}
+
+.pokemon-sheet .pokemon-settings-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 6px;
+}
+
+.pokemon-sheet .pokemon-settings-list label,
+.pokemon-sheet .pokemon-settings-extra label {
+  margin: 0;
+  border: 2px solid var(--pk-outline);
+  border-radius: 12px;
+  padding: 4px 8px;
+  background: #f7f9ff;
+}
+
+.pokemon-sheet .pokemon-settings-list label span,
+.pokemon-sheet .pokemon-settings-extra label span {
+  color: #7d3727;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.pokemon-sheet .pokemon-settings-list input,
+.pokemon-sheet .pokemon-settings-extra input {
+  height: 28px;
+  border: none;
+  border-radius: 8px;
+  background: var(--pk-bar);
+  color: #202530;
+  font-weight: 700;
+}
+
+.pokemon-sheet .pokemon-settings-extra {
+  margin-top: 10px;
+  max-width: 240px;
+}
+
 @media (max-width: 1250px) {
   .trainer-sheet .trainer-inventory-columns {
     grid-template-columns: 1fr;
@@ -1441,6 +1530,10 @@
   }
 
   .pokemon-sheet .pokemon-combat-card .resource-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pokemon-sheet .pokemon-settings-grid {
     grid-template-columns: 1fr;
   }
 

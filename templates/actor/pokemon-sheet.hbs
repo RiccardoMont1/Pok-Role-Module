@@ -16,6 +16,14 @@
     >
       {{localize "POKROLE.Pokemon.LearnableMovesTab"}}
     </button>
+    <button
+      type="button"
+      class="pokemon-view-button"
+      data-action="switch-pokemon-tab"
+      data-tab="settings"
+    >
+      {{localize "POKROLE.Pokemon.SettingsTab"}}
+    </button>
   </nav>
 
   <div class="pokemon-view-panel is-active" data-tab="main">
@@ -333,7 +341,7 @@
                 value="{{attribute.value}}"
                 data-dtype="Number"
               />
-              <div class="track-bar compact">
+              <div class="track-bar compact" style="{{attribute.track.style}}">
                 {{#each attribute.track.slots as |slot|}}
                 <button
                   type="button"
@@ -373,7 +381,7 @@
                 value="{{attribute.value}}"
                 data-dtype="Number"
               />
-              <div class="track-bar compact">
+              <div class="track-bar compact" style="{{attribute.track.style}}">
                 {{#each attribute.track.slots as |slot|}}
                 <button
                   type="button"
@@ -415,7 +423,7 @@
             value="{{skill.value}}"
             data-dtype="Number"
           />
-          <div class="track-bar compact">
+          <div class="track-bar compact" style="{{skill.track.style}}">
             {{#each skill.track.slots as |slot|}}
             <button
               type="button"
@@ -448,7 +456,7 @@
             value="{{system.extra}}"
             data-dtype="Number"
           />
-          <div class="track-bar compact">
+          <div class="track-bar compact" style="{{pokemonExtraTrack.style}}">
             {{#each pokemonExtraTrack.slots as |slot|}}
             <button
               type="button"
@@ -456,8 +464,8 @@
               data-action="set-track"
               data-track-field="system.extra"
               data-track-value="{{slot.value}}"
-              data-track-min="{{../pokemonExtraTrack.min}}"
-              data-track-max="{{../pokemonExtraTrack.max}}"
+              data-track-min="{{../min}}"
+              data-track-max="{{../max}}"
               title="{{localize 'POKROLE.Pokemon.Extra'}} {{slot.value}}"
             ></button>
             {{/each}}
@@ -641,6 +649,67 @@
       {{else}}
       <p class="empty-state">{{localize "POKROLE.Move.Empty"}}</p>
       {{/if}}
+    </section>
+  </div>
+
+  <div class="pokemon-view-panel" data-tab="settings">
+    <section class="sheet-section pokemon-settings-section">
+      <h2>{{localize "POKROLE.Pokemon.SettingsTitle"}}</h2>
+      <p class="inline-meta">{{localize "POKROLE.Pokemon.SettingsHint"}}</p>
+
+      <div class="pokemon-settings-grid">
+        <section class="pokemon-settings-block">
+          <h3>{{localize "POKROLE.Pokemon.SettingsAttributesMax"}}</h3>
+          <div class="pokemon-settings-list">
+            {{#each pokemonTrackSettingAttributes as |row|}}
+            <label>
+              <span>{{localize row.label}}</span>
+              <input
+                type="number"
+                name="{{row.fieldPath}}"
+                value="{{row.value}}"
+                min="1"
+                max="10"
+                data-dtype="Number"
+              />
+            </label>
+            {{/each}}
+          </div>
+        </section>
+
+        <section class="pokemon-settings-block">
+          <h3>{{localize "POKROLE.Pokemon.SettingsSkillsMax"}}</h3>
+          <div class="pokemon-settings-list">
+            {{#each pokemonTrackSettingSkills as |row|}}
+            <label>
+              <span>{{localize row.label}}</span>
+              <input
+                type="number"
+                name="{{row.fieldPath}}"
+                value="{{row.value}}"
+                min="1"
+                max="10"
+                data-dtype="Number"
+              />
+            </label>
+            {{/each}}
+          </div>
+        </section>
+      </div>
+
+      <div class="pokemon-settings-extra">
+        <label>
+          <span>{{localize "POKROLE.Pokemon.SettingsExtraMax"}}</span>
+          <input
+            type="number"
+            name="{{pokemonTrackSettingExtra.fieldPath}}"
+            value="{{pokemonTrackSettingExtra.value}}"
+            min="1"
+            max="10"
+            data-dtype="Number"
+          />
+        </label>
+      </div>
     </section>
   </div>
 </form>

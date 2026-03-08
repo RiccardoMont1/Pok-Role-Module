@@ -5,20 +5,20 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
 ## Current MVP
 
 - Actor types: `trainer`, `pokemon`
-- Item types: `move`, `gear`
+- Item types: `move`, `gear`, `ability`, `weather`, `status`, `pokedex`
 - Compendia (configured):
   - `Trainer Items` (`Item`)
   - `Healing Items` (`Item`)
   - `Pokemon Care Items` (`Item`)
   - `Evolutionary Items` (`Item`)
   - `Held Items` (`Item`)
-  - `Pokedex` (`JournalEntry`)
+  - `Pokedex` (`Item`)
   - `Moves` (`Item`)
-  - `Weather Conditions` (`JournalEntry`)
-  - `Pokemon Status` (`JournalEntry`)
-  - `Abilities` (`JournalEntry`)
+  - `Weather Conditions` (`Item`)
+  - `Pokemon Status` (`Item`)
+  - `Abilities` (`Item`)
 - Auto-seeding:
-  - At first world load (GM), compendia are seeded from Corebook references (items and rule journals).
+  - At first world load (GM), compendia are seeded from Corebook references (items and playable rule objects).
   - Item seeds include all listed Corebook items from `Trainer's Basics`, `Healing Items`, `Items for Pokemon Care`, `Evolutionary Items`, and `Held Items` (p.76-85, 107 total item entries).
   - Manual reseed command available in browser console:
     - `await game.pokrole.seedCompendia()`
@@ -27,8 +27,10 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
 - Custom sheets:
   - Trainer sheet
   - Pokemon sheet
+  - Pokemon `Settings` tab for per-actor track maximums (saved on that actor only)
   - Move item sheet
   - Gear item sheet
+  - Playable reference item sheets: `ability`, `weather`, `status`, `pokedex`
 - Pokemon progression:
   - Uses `Tier` (Starter, Beginner, Amateur, Ace, Pro, Master, Champion)
 - Automation:

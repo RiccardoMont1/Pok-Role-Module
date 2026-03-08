@@ -2,7 +2,7 @@
   "id": "pok-role-module",
   "title": "Poke Role Module",
   "description": "MVP Foundry VTT v13 system scaffold for PokeRole 2.0 inspired campaigns.",
-  "version": "0.7.0",
+  "version": "0.7.2",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -75,7 +75,7 @@
       "label": "Pokedex",
       "system": "pok-role-module",
       "path": "packs/pokedex",
-      "type": "JournalEntry",
+      "type": "Item",
       "private": false
     },
     {
@@ -83,7 +83,7 @@
       "label": "Weather Conditions",
       "system": "pok-role-module",
       "path": "packs/weather-conditions",
-      "type": "JournalEntry",
+      "type": "Item",
       "private": false
     },
     {
@@ -91,7 +91,7 @@
       "label": "Pokemon Status",
       "system": "pok-role-module",
       "path": "packs/pokemon-status",
-      "type": "JournalEntry",
+      "type": "Item",
       "private": false
     },
     {
@@ -99,7 +99,7 @@
       "label": "Abilities",
       "system": "pok-role-module",
       "path": "packs/abilities",
-      "type": "JournalEntry",
+      "type": "Item",
       "private": false
     }
   ],
@@ -156,7 +156,11 @@
     },
     "Item": {
       "move": {},
-      "gear": {}
+      "gear": {},
+      "ability": {},
+      "weather": {},
+      "status": {},
+      "pokedex": {}
     }
   },
   "grid": {

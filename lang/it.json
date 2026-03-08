@@ -92,6 +92,7 @@
       "Extra": "Extra",
       "MainSheetTab": "Scheda Principale",
       "LearnableMovesTab": "Mosse Apprendibili",
+      "SettingsTab": "Impostazioni",
       "UsableMoves": "Mosse utilizzabili",
       "UsableMovesTab": "Mosse utilizzabili",
       "LearnedMoves": "Mosse apprese",
@@ -100,6 +101,11 @@
       "NoUsableMoves": "Nessuna mossa utilizzabile selezionata.",
       "SkillSet": "Set Abilita",
       "TypeMatchups": "Resistenze / Vulnerabilita / Immunita",
+      "SettingsTitle": "Impostazioni Pokemon",
+      "SettingsHint": "Questi limiti vengono salvati solo su questo attore Pokemon.",
+      "SettingsAttributesMax": "Massimi Attributi",
+      "SettingsSkillsMax": "Massimi Abilita",
+      "SettingsExtraMax": "Massimo Extra",
       "ResistancesHalf": "Resistenze 1/2",
       "ResistancesQuarter": "Resistenze 1/4",
       "VulnerabilitiesDouble": "Vulnerabilita x2",
@@ -250,6 +256,59 @@
         "Frozen": "Congelato",
         "Paralysis": "Paralisi",
         "Confusion": "Confusione"
+      }
+    },
+    "Playable": {
+      "Ability": {
+        "Name": "Nome Abilita",
+        "Type": {
+          "Label": "Tipo Abilita",
+          "Passive": "Passiva",
+          "Active": "Attiva",
+          "Hidden": "Nascosta"
+        },
+        "Trigger": "Innesco",
+        "Frequency": "Frequenza",
+        "Target": "Bersaglio",
+        "Effect": "Effetto"
+      },
+      "Weather": {
+        "Name": "Nome Meteo",
+        "Category": {
+          "Label": "Categoria Meteo",
+          "Climate": "Climatico",
+          "Terrain": "Terreno",
+          "Hazard": "Pericolo",
+          "Other": "Altro"
+        },
+        "Duration": "Durata (Round)",
+        "AccuracyMod": "Modificatore Precisione",
+        "DamageMod": "Modificatore Danno",
+        "EndRoundDamage": "Danno Fine Round",
+        "AffectedTypes": "Tipi Coinvolti",
+        "Effect": "Effetto"
+      },
+      "Status": {
+        "Name": "Nome Stato",
+        "Severity": {
+          "Label": "Gravita",
+          "Minor": "Lieve",
+          "Major": "Grave",
+          "Critical": "Critico"
+        },
+        "EndRoundDamage": "Danno Fine Round",
+        "RemovedSuccesses": "Successi Rimossi",
+        "Recovery": "Recupero",
+        "BlocksAction": "Blocca Azione",
+        "Effect": "Effetto"
+      },
+      "Pokedex": {
+        "Name": "Nome Specie",
+        "DexNumber": "Numero Dex",
+        "Habitats": "Habitat",
+        "Abilities": "Abilita",
+        "CommonMoves": "Mosse Comuni",
+        "EvolutionNotes": "Note Evoluzione"
       }
     },
     "Actions": {
@@ -406,7 +465,11 @@
     },
     "Item": {
       "move": "Mossa",
-      "gear": "Oggetto"
+      "gear": "Oggetto",
+      "ability": "Abilita",
+      "weather": "Meteo",
+      "status": "Stato",
+      "pokedex": "Voce Pokedex"
     }
   }
 }

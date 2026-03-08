@@ -1,0 +1,68 @@
+<form class="{{cssClass}} pok-role-sheet reference-sheet pokedex-sheet" autocomplete="off">
+  <header class="sheet-header">
+    <img
+      class="profile-img"
+      src="{{item.img}}"
+      data-edit="img"
+      title="{{item.name}}"
+    />
+    <div class="header-fields">
+      <h1 class="charname">
+        <input
+          name="name"
+          type="text"
+          value="{{item.name}}"
+          placeholder="{{localize 'POKROLE.Playable.Pokedex.Name'}}"
+        />
+      </h1>
+    </div>
+  </header>
+
+  <section class="sheet-section">
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Playable.Pokedex.DexNumber"}}</span>
+        <input type="number" name="system.dexNumber" value="{{system.dexNumber}}" min="0" max="9999" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Pokemon.Rank"}}</span>
+        <select name="system.rank">
+          {{selectOptions rankOptions selected=system.rank localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Pokemon.TypePrimary"}}</span>
+        <select name="system.primaryType">
+          {{selectOptions typeOptions selected=system.primaryType localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Pokemon.TypeSecondary"}}</span>
+        <select name="system.secondaryType">
+          {{selectOptions typeOptions selected=system.secondaryType localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Playable.Pokedex.Habitats"}}</span>
+        <input type="text" name="system.habitats" value="{{system.habitats}}" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Playable.Pokedex.Abilities"}}</span>
+        <input type="text" name="system.abilities" value="{{system.abilities}}" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Playable.Pokedex.CommonMoves"}}</span>
+        <input type="text" name="system.commonMoves" value="{{system.commonMoves}}" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Playable.Pokedex.EvolutionNotes"}}</span>
+        <input type="text" name="system.evolutionNotes" value="{{system.evolutionNotes}}" />
+      </label>
+    </div>
+  </section>
+
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Common.Description"}}</h2>
+    <textarea name="system.description" rows="8">{{system.description}}</textarea>
+  </section>
+</form>

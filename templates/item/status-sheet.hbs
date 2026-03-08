@@ -1,0 +1,63 @@
+<form class="{{cssClass}} pok-role-sheet reference-sheet status-sheet" autocomplete="off">
+  <header class="sheet-header">
+    <img
+      class="profile-img"
+      src="{{item.img}}"
+      data-edit="img"
+      title="{{item.name}}"
+    />
+    <div class="header-fields">
+      <h1 class="charname">
+        <input
+          name="name"
+          type="text"
+          value="{{item.name}}"
+          placeholder="{{localize 'POKROLE.Playable.Status.Name'}}"
+        />
+      </h1>
+    </div>
+  </header>
+
+  <section class="sheet-section">
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Playable.Status.Severity.Label"}}</span>
+        <select name="system.severity">
+          {{selectOptions statusSeverityOptions selected=system.severity localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.Target.Label"}}</span>
+        <select name="system.target">
+          {{selectOptions statusTargetOptions selected=system.target localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Playable.Status.EndRoundDamage"}}</span>
+        <input type="number" name="system.endOfRoundDamage" value="{{system.endOfRoundDamage}}" min="0" max="20" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Playable.Status.RemovedSuccesses"}}</span>
+        <input type="number" name="system.removedSuccesses" value="{{system.removedSuccesses}}" min="0" max="6" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Playable.Status.Recovery"}}</span>
+        <input type="text" name="system.recovery" value="{{system.recovery}}" />
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.blocksAction" {{checked system.blocksAction}} />
+        <span>{{localize "POKROLE.Playable.Status.BlocksAction"}}</span>
+      </label>
+    </div>
+  </section>
+
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Playable.Status.Effect"}}</h2>
+    <textarea name="system.effect" rows="6">{{system.effect}}</textarea>
+  </section>
+
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Common.Description"}}</h2>
+    <textarea name="system.description" rows="6">{{system.description}}</textarea>
+  </section>
+</form>

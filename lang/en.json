@@ -92,6 +92,7 @@
       "Extra": "Extra",
       "MainSheetTab": "Main Sheet",
       "LearnableMovesTab": "Learnable Moves",
+      "SettingsTab": "Settings",
       "UsableMoves": "Usable Moves",
       "UsableMovesTab": "Usable Moves",
       "LearnedMoves": "Learned Moves",
@@ -100,6 +101,11 @@
       "NoUsableMoves": "No usable moves selected.",
       "SkillSet": "Skill Set",
       "TypeMatchups": "Resistances / Vulnerabilities / Immunities",
+      "SettingsTitle": "Pokemon Settings",
+      "SettingsHint": "These limits are saved only on this Pokemon actor.",
+      "SettingsAttributesMax": "Attribute Maximums",
+      "SettingsSkillsMax": "Skill Maximums",
+      "SettingsExtraMax": "Extra Maximum",
       "ResistancesHalf": "Resistances 1/2",
       "ResistancesQuarter": "Resistances 1/4",
       "VulnerabilitiesDouble": "Vulnerabilities x2",
@@ -250,6 +256,59 @@
         "Frozen": "Frozen",
         "Paralysis": "Paralysis",
         "Confusion": "Confusion"
+      }
+    },
+    "Playable": {
+      "Ability": {
+        "Name": "Ability Name",
+        "Type": {
+          "Label": "Ability Type",
+          "Passive": "Passive",
+          "Active": "Active",
+          "Hidden": "Hidden"
+        },
+        "Trigger": "Trigger",
+        "Frequency": "Frequency",
+        "Target": "Target",
+        "Effect": "Effect"
+      },
+      "Weather": {
+        "Name": "Weather Name",
+        "Category": {
+          "Label": "Weather Category",
+          "Climate": "Climate",
+          "Terrain": "Terrain",
+          "Hazard": "Hazard",
+          "Other": "Other"
+        },
+        "Duration": "Duration (Rounds)",
+        "AccuracyMod": "Accuracy Modifier",
+        "DamageMod": "Damage Modifier",
+        "EndRoundDamage": "End of Round Damage",
+        "AffectedTypes": "Affected Types",
+        "Effect": "Effect"
+      },
+      "Status": {
+        "Name": "Status Name",
+        "Severity": {
+          "Label": "Severity",
+          "Minor": "Minor",
+          "Major": "Major",
+          "Critical": "Critical"
+        },
+        "EndRoundDamage": "End of Round Damage",
+        "RemovedSuccesses": "Removed Successes",
+        "Recovery": "Recovery",
+        "BlocksAction": "Blocks Action",
+        "Effect": "Effect"
+      },
+      "Pokedex": {
+        "Name": "Species Name",
+        "DexNumber": "Dex Number",
+        "Habitats": "Habitats",
+        "Abilities": "Abilities",
+        "CommonMoves": "Common Moves",
+        "EvolutionNotes": "Evolution Notes"
       }
     },
     "Actions": {
@@ -406,7 +465,11 @@
     },
     "Item": {
       "move": "Move",
-      "gear": "Item"
+      "gear": "Item",
+      "ability": "Ability",
+      "weather": "Weather",
+      "status": "Status",
+      "pokedex": "Pokedex Entry"
     }
   }
 }
