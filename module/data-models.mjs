@@ -99,8 +99,8 @@ export class PokemonDataModel extends BaseCharacterDataModel {
     const base = super.defineSchema();
     return {
       ...base,
-      attributes: new SchemaField(valueSchema(ATTRIBUTE_DEFINITIONS, 1, { max: 10 })),
-      skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 0, { max: 10 })),
+      attributes: new SchemaField(valueSchema(ATTRIBUTE_DEFINITIONS, 1, { max: 12 })),
+      skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 0, { max: 12 })),
       species: trimmedStringField(""),
       ability: trimmedStringField(""),
       nature: trimmedStringField(""),
@@ -139,14 +139,14 @@ export class PokemonDataModel extends BaseCharacterDataModel {
       happiness: integerField(2, { min: 0, max: 5 }),
       battles: integerField(0, { min: 0 }),
       victories: integerField(0, { min: 0 }),
-      extra: integerField(0, { min: 0, max: 10 }),
+      extra: integerField(0, { min: 0, max: 12 }),
       sheetSettings: new SchemaField({
         trackMax: new SchemaField({
           attributes: new SchemaField(
-            valueSchema(ATTRIBUTE_DEFINITIONS, 5, { min: 1, max: 10 })
+            valueSchema(ATTRIBUTE_DEFINITIONS, 5, { min: 1, max: 12 })
           ),
-          skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 5, { min: 1, max: 10 })),
-          extra: integerField(5, { min: 1, max: 10 })
+          skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 5, { min: 1, max: 12 })),
+          extra: integerField(5, { min: 1, max: 12 })
         })
       }),
       combatProfile: new SchemaField({

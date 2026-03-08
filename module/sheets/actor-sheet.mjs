@@ -711,7 +711,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   _resolveTrackMax(value, fallback = 5) {
     const numeric = Number(value);
     const base = Number.isFinite(numeric) ? numeric : fallback;
-    return Math.min(Math.max(Math.floor(base), 1), 10);
+    return Math.min(Math.max(Math.floor(base), 1), 12);
   }
 
   _getPokemonTrackMaxConfig() {

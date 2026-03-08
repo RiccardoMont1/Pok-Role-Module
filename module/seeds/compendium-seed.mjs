@@ -1,6 +1,8 @@
-﻿import { POKROLE } from "../constants.mjs";
+import { POKROLE } from "../constants.mjs";
+import { MOVE_COMPENDIUM_ENTRIES } from "./generated/move-seeds.mjs";
+import { POKEDEX_COMPENDIUM_ENTRIES } from "./generated/pokedex-seeds.mjs";
 
-export const COMPENDIUM_SEED_VERSION = "2026-03-08-corebook-playable-items-v4";
+export const COMPENDIUM_SEED_VERSION = "2026-03-08-corebook-full-moves-and-pokedex-v1";
 const VALID_ITEM_TYPES = new Set(["move", "gear", "ability", "weather", "status", "pokedex"]);
 
 function baseStatus() {
@@ -645,26 +647,9 @@ const ITEM_SEEDS = Object.freeze({
     makeGear("held-rocky-helmet", "Rocky Helmet", { category: "held", pocket: "held", consumable: false, canUseInBattle: true, description: "Corebook p.85. Reflect damage on non-ranged physical attacks." }),
     makeGear("held-wide-lens", "Wide Lens", { category: "held", pocket: "held", consumable: false, canUseInBattle: true, description: "Corebook p.85. Accuracy bonus item." })
   ],
+  moves: MOVE_COMPENDIUM_ENTRIES,
 
-  pokedex: [
-    makePlayableItem(
-      "item-pokedex-window-reference",
-      "Pokedex Window Reference",
-      "pokedex",
-      {
-        dexNumber: 0,
-        rank: "starter",
-        primaryType: "normal",
-        secondaryType: "none",
-        habitats: "All Regions",
-        abilities: "Species-defined",
-        commonMoves: "Species-defined",
-        evolutionNotes: "Check species rank and evolution requirements.",
-        description: "Corebook p.22. Quick references: Dex Number, species, ability, HP/Will, held item, status, initiative, accuracy, damage, evasion, clash, DEF/S.DEF and rank."
-      },
-      "icons/svg/book.svg"
-    )
-  ],
+  pokedex: POKEDEX_COMPENDIUM_ENTRIES,
 
   "weather-conditions": [
     makePlayableItem("item-weather-sunny", "Sunny Weather", "weather", {
@@ -912,8 +897,28 @@ export async function seedCompendia({ force = false, notify = true } = {}) {
       }
 
       const freshIndex = force ? [] : await pack.getIndex({ fields: ["flags", "type"] });
+      const seedIdsInCode = new Set(
+        seeds
+          .map((seed) => seed.flags?.[POKROLE.ID]?.seedId)
+          .filter((value) => typeof value === "string" && value.length > 0)
+      );
+
+      if (!force) {
+        const staleSeededDocumentIds = freshIndex
+          .filter((entry) => {
+            const seedId = entry.flags?.[POKROLE.ID]?.seedId;
+            return typeof seedId === "string" && seedId.length > 0 && !seedIdsInCode.has(seedId);
+          })
+          .map((entry) => entry._id)
+          .filter(Boolean);
+
+        if (staleSeededDocumentIds.length > 0) {
+          await pack.documentClass.deleteDocuments(staleSeededDocumentIds, { pack: pack.collection });
+        }
+      }
+
       const existingSeedIds = new Set(
-        freshIndex
+        (force ? [] : await pack.getIndex({ fields: ["flags"] }))
           .map((entry) => entry.flags?.[POKROLE.ID]?.seedId)
           .filter((value) => typeof value === "string" && value.length > 0)
       );
