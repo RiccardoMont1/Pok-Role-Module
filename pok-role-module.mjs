@@ -4,6 +4,10 @@ import {
   SKILL_DEFINITIONS
 } from "./module/constants.mjs";
 import {
+  COMPENDIUM_SEED_VERSION,
+  seedCompendia
+} from "./module/seeds/compendium-seed.mjs";
+import {
   GearDataModel,
   MoveDataModel,
   PokemonDataModel,
@@ -67,6 +71,31 @@ Hooks.once("init", () => {
     makeDefault: true,
     label: "POKROLE.Sheets.Item"
   });
+
+  game.settings.register(POKROLE.ID, "compendiumSeedVersion", {
+    name: "Compendium Seed Version",
+    scope: "world",
+    config: false,
+    type: String,
+    default: ""
+  });
+});
+
+Hooks.once("ready", async () => {
+  game.pokrole ??= {};
+  game.pokrole.seedCompendia = async (options = {}) => seedCompendia(options);
+
+  if (!game.user?.isGM) return;
+
+  const seededVersion = game.settings.get(POKROLE.ID, "compendiumSeedVersion");
+  if (seededVersion === COMPENDIUM_SEED_VERSION) return;
+
+  try {
+    await seedCompendia({ force: false, notify: true });
+    await game.settings.set(POKROLE.ID, "compendiumSeedVersion", COMPENDIUM_SEED_VERSION);
+  } catch (error) {
+    console.error(`${POKROLE.ID} | Failed to auto-seed compendia`, error);
+  }
 });
 
 Hooks.on("updateCombat", async (combat, changed) => {

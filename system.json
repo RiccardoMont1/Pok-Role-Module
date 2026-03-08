@@ -21,6 +21,122 @@
   "styles": [
     "styles/pok-role-module.css"
   ],
+  "packs": [
+    {
+      "name": "trainer-items",
+      "label": "Trainer Items",
+      "system": "pok-role-module",
+      "path": "packs/trainer-items",
+      "type": "Item",
+      "private": false
+    },
+    {
+      "name": "healing-items",
+      "label": "Healing Items",
+      "system": "pok-role-module",
+      "path": "packs/healing-items",
+      "type": "Item",
+      "private": false
+    },
+    {
+      "name": "pokemon-care-items",
+      "label": "Pokemon Care Items",
+      "system": "pok-role-module",
+      "path": "packs/pokemon-care-items",
+      "type": "Item",
+      "private": false
+    },
+    {
+      "name": "evolutionary-items",
+      "label": "Evolutionary Items",
+      "system": "pok-role-module",
+      "path": "packs/evolutionary-items",
+      "type": "Item",
+      "private": false
+    },
+    {
+      "name": "held-items",
+      "label": "Held Items",
+      "system": "pok-role-module",
+      "path": "packs/held-items",
+      "type": "Item",
+      "private": false
+    },
+    {
+      "name": "moves",
+      "label": "Moves",
+      "system": "pok-role-module",
+      "path": "packs/moves",
+      "type": "Item",
+      "private": false
+    },
+    {
+      "name": "pokedex",
+      "label": "Pokedex",
+      "system": "pok-role-module",
+      "path": "packs/pokedex",
+      "type": "JournalEntry",
+      "private": false
+    },
+    {
+      "name": "weather-conditions",
+      "label": "Weather Conditions",
+      "system": "pok-role-module",
+      "path": "packs/weather-conditions",
+      "type": "JournalEntry",
+      "private": false
+    },
+    {
+      "name": "pokemon-status",
+      "label": "Pokemon Status",
+      "system": "pok-role-module",
+      "path": "packs/pokemon-status",
+      "type": "JournalEntry",
+      "private": false
+    },
+    {
+      "name": "abilities",
+      "label": "Abilities",
+      "system": "pok-role-module",
+      "path": "packs/abilities",
+      "type": "JournalEntry",
+      "private": false
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "PokeRole Compendia",
+      "sorting": "m",
+      "color": "#d2553d",
+      "packs": [],
+      "folders": [
+        {
+          "name": "Items",
+          "sorting": "m",
+          "color": "#318f84",
+          "packs": [
+            "trainer-items",
+            "healing-items",
+            "pokemon-care-items",
+            "evolutionary-items",
+            "held-items",
+            "moves"
+          ]
+        },
+        {
+          "name": "References",
+          "sorting": "m",
+          "color": "#4d5c7a",
+          "packs": [
+            "pokedex",
+            "weather-conditions",
+            "pokemon-status",
+            "abilities"
+          ]
+        }
+      ]
+    }
+  ],
   "languages": [
     {
       "lang": "en",

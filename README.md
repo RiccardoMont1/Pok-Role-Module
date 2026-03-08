@@ -6,6 +6,23 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
 
 - Actor types: `trainer`, `pokemon`
 - Item types: `move`, `gear`
+- Compendia (configured):
+  - `Trainer Items` (`Item`)
+  - `Healing Items` (`Item`)
+  - `Pokemon Care Items` (`Item`)
+  - `Evolutionary Items` (`Item`)
+  - `Held Items` (`Item`)
+  - `Pokedex` (`JournalEntry`)
+  - `Moves` (`Item`)
+  - `Weather Conditions` (`JournalEntry`)
+  - `Pokemon Status` (`JournalEntry`)
+  - `Abilities` (`JournalEntry`)
+- Auto-seeding:
+  - At first world load (GM), compendia are seeded from Corebook references (items and rule journals).
+  - Item seeds include all listed Corebook items from `Trainer's Basics`, `Healing Items`, `Items for Pokemon Care`, `Evolutionary Items`, and `Held Items` (p.76-85, 107 total item entries).
+  - Manual reseed command available in browser console:
+    - `await game.pokrole.seedCompendia()`
+    - `await game.pokrole.seedCompendia({ force: true })` (rebuild from seed data)
 - Bilingual UI: English + Italian (`lang/en.json`, `lang/it.json`)
 - Custom sheets:
   - Trainer sheet
@@ -79,9 +96,29 @@ Important: do not use the GitHub `.../blob/...` URL, because Foundry expects raw
 - `system.json`: Foundry system manifest
 - `pok-role-module.mjs`: system bootstrap
 - `module/`: data models, documents, sheets
+- `packs/`: compendium pack databases (v13 LevelDB folders)
 - `templates/`: handlebars sheets/chat card
 - `styles/`: sheet styles
 - `lang/`: localization files
+
+## Compendia Usage
+
+- The system now defines 10 compendium packs in `system.json`.
+- Item and rule-reference packs are auto-seeded once per world by the system bootstrap.
+- Populate them directly in Foundry:
+  1. Open the Compendiums tab.
+  2. Create/import Actors or Items into the desired pack.
+  3. Export your curated pack data by publishing a new release/manifest zip.
+
+Compendium grouping and rules mapping (PokeRole 2.0 PDF):
+- Trainer/Travel/Healing Items: p.76-80
+- Pokemon Care Items: p.81-82
+- Evolutionary and Held Items: p.83-85
+- Pokedex window and usage references: p.22
+- Weather conditions: p.56-57
+- Pokemon status conditions: p.58-59
+- Move reference/icons: p.347-348
+- Ability references (including hidden abilities context): p.22, p.69
 
 ## Rules Mapping (PokeRole 2.0 PDF)
 
