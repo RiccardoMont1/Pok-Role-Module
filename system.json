@@ -2,7 +2,7 @@
   "id": "pok-role-module",
   "title": "Poke Role Module",
   "description": "MVP Foundry VTT v13 system scaffold for PokeRole 2.0 inspired campaigns.",
-  "version": "0.8.2",
+  "version": "0.8.4",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -111,7 +111,7 @@
       "packs": [],
       "folders": [
         {
-          "name": "Items",
+          "name": "Trainer Gear",
           "sorting": "m",
           "color": "#318f84",
           "packs": [
@@ -119,19 +119,26 @@
             "healing-items",
             "pokemon-care-items",
             "evolutionary-items",
-            "held-items",
-            "moves"
+            "held-items"
           ]
         },
         {
-          "name": "References",
+          "name": "Battle Rules",
           "sorting": "m",
           "color": "#4d5c7a",
           "packs": [
-            "pokedex",
+            "moves",
+            "abilities",
             "weather-conditions",
-            "pokemon-status",
-            "abilities"
+            "pokemon-status"
+          ]
+        },
+        {
+          "name": "Pokedex & Lore",
+          "sorting": "m",
+          "color": "#7c5b95",
+          "packs": [
+            "pokedex"
           ]
         }
       ]

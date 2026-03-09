@@ -1,0 +1,24 @@
+{
+  "move_summary": {
+    "total": 771,
+    "pass": 770,
+    "warn": 1,
+    "fail": 0,
+    "missing_any": 0,
+    "missing_ref": 0,
+    "type_mismatch": 0,
+    "power_mismatch": 0,
+    "parse_issue": 1
+  },
+  "ability_summary": {
+    "total": 257,
+    "pass": 257,
+    "warn": 0,
+    "fail": 0,
+    "missing_any": 0,
+    "missing_ref": 0,
+    "low_effect_overlap": 63
+  },
+  "move_report": "D:\\DeskTop\\Script\\Pok\u00e8Role Module\\Pok-Role-Module\\reports\\corebook_move_card_audit.csv",
+  "ability_report": "D:\\DeskTop\\Script\\Pok\u00e8Role Module\\Pok-Role-Module\\reports\\corebook_ability_card_audit.csv"
+}

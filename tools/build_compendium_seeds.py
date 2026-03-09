@@ -27,6 +27,40 @@ COREBOOK_PDF_CANDIDATES = [
     ROOT / "POKEROLE COREBOOK 2.0.pdf",
     Path(r"C:\Users\Ricch\Downloads\POKEROLE COREBOOK 2.0.pdf")
 ]
+MANUAL_TYPE_MAP = {
+    "normal": "normal",
+    "bug": "bug",
+    "dark": "dark",
+    "dragon": "dragon",
+    "electric": "electric",
+    "fairy": "fairy",
+    "fight": "fighting",
+    "fighting": "fighting",
+    "fire": "fire",
+    "flying": "flying",
+    "ghost": "ghost",
+    "grass": "grass",
+    "ground": "ground",
+    "ice": "ice",
+    "poison": "poison",
+    "psychic": "psychic",
+    "rock": "rock",
+    "steel": "steel",
+    "water": "water"
+}
+MANUAL_MOVE_OVERRIDES = {
+    # Ambiguous card extraction in OCR-heavy pages: force canonical values from Corebook cards.
+    "bubble": {"page": 421, "type": "water", "power": 2},
+    "whirlwind": {"page": 406, "type": "normal", "power": 0},
+    "thunder": {"power": 5},
+    "acid-armor": {"type": "poison", "power": 0},
+    "refresh": {"page": 399, "type": "normal", "power": 0},
+    "dragon-dance": {"type": "dragon", "power": 0},
+    "incinerate": {"type": "fire", "power": 2},
+    "head-charge": {"type": "normal", "power": 5},
+    "fusion-flare": {"page": 371, "type": "fire", "power": 4},
+    "strength": {"page": 403, "type": "normal", "power": 3}
+}
 
 def load_csv(filename):
     response = requests.get(f"{BASE}/{filename}", timeout=120)
@@ -109,10 +143,292 @@ def clean_text(value):
 
 
 def normalize_for_search(value):
-    text = (value or "").lower().replace("’", "'")
+    text = (value or "").lower()
     text = re.sub(r"[^a-z0-9]+", " ", text)
     text = re.sub(r"\s+", " ", text).strip()
     return f" {text} " if text else " "
+
+
+def normalize_token(value):
+    return normalize_for_search(value).strip()
+
+
+def parse_manual_type(value):
+    token = normalize_token(value)
+    if not token:
+        return None
+    token = token.split(" ")[0]
+    return MANUAL_TYPE_MAP.get(token)
+
+
+def parse_manual_power_token(token):
+    token = (token or "").strip()
+    if not token:
+        return None
+    if token == "-":
+        return 0
+    if token == "*":
+        return -1
+    token = token.replace("*", "")
+    return int(token) if token.isdigit() else None
+
+
+def load_move_page_cache():
+    pdf_path = find_corebook_pdf_path()
+    if not pdf_path:
+        return {}
+
+    reader = PdfReader(str(pdf_path))
+    cache = {}
+    for page in range(MOVE_SECTION_START_PAGE, MOVE_SECTION_END_PAGE + 1):
+        raw_text = reader.pages[page - 1].extract_text() or ""
+        raw_lines = [line for line in raw_text.splitlines() if line.strip()]
+        norm_lines = [normalize_token(line) for line in raw_lines]
+        cache[page] = {
+            "raw_lines": raw_lines,
+            "norm_lines": norm_lines,
+            "norm_text": f" {normalize_token(raw_text)} "
+        }
+    return cache
+
+
+def find_move_anchor_indices(name, page_data):
+    needle = normalize_token(name)
+    indices = []
+    power_suffix_re = re.compile(r"^(-|\d+\*?|\*)($|\b)")
+    for index, line in enumerate(page_data["norm_lines"]):
+        if line == needle:
+            indices.append(index)
+            continue
+        if not line.startswith(f"{needle} "):
+            continue
+        suffix = line[len(needle):].strip()
+        if power_suffix_re.match(suffix):
+            indices.append(index)
+    return indices
+
+
+def score_move_anchor(page_data, index, name):
+    norm_lines = page_data["norm_lines"]
+    raw_lines = page_data["raw_lines"]
+    start = max(0, index - 10)
+    end = min(len(norm_lines), index + 18)
+    window = " ".join(norm_lines[start:end])
+    raw_line = raw_lines[index]
+
+    score = 0
+    if "power" in window:
+        score += 4
+    if "type" in window:
+        score += 3
+    if "accuracy" in window:
+        score += 2
+    if "damage pool" in window:
+        score += 2
+    if "added effect" in window:
+        score += 1
+
+    if re.search(rf"{re.escape(name)}\s+(-|\d+\*?)\s*$", raw_line, flags=re.IGNORECASE):
+        score += 4
+    return score
+
+
+def is_move_header_candidate(page_data, index, name):
+    line = page_data["norm_lines"][index]
+    name_norm = normalize_token(name)
+    if line != name_norm:
+        if not line.startswith(f"{name_norm} "):
+            return False
+        suffix = line[len(name_norm):].strip()
+        if not re.match(r"^(-|\d+\*?|\*)($|\b)", suffix):
+            return False
+
+    if not (line == name_norm or line.startswith(f"{name_norm} ")):
+        return False
+
+    norm_lines = page_data["norm_lines"]
+    context_start = max(0, index - 12)
+    context_end = min(len(norm_lines), index + 14)
+    context_window = " ".join(norm_lines[context_start:context_end])
+    window_before = " ".join(norm_lines[context_start:index + 1])
+
+    raw_line = page_data["raw_lines"][index]
+    if re.search(rf"{re.escape(name)}\s+(-|\d+\*?|\*)\s*$", raw_line, flags=re.IGNORECASE):
+        return True
+
+    if "power" in context_window and "type" in context_window and (
+        "accuracy" in context_window or "damage pool" in context_window
+    ):
+        return True
+
+    if "power" in window_before and "type" in context_window and (
+        "accuracy" in context_window or "damage pool" in context_window
+    ):
+        return True
+
+    return False
+
+
+def select_move_anchor(name, page_data):
+    indices = find_move_anchor_indices(name, page_data)
+    if not indices:
+        return None
+    candidates = [index for index in indices if is_move_header_candidate(page_data, index, name)]
+    if not candidates:
+        return None
+    candidates.sort(key=lambda idx: score_move_anchor(page_data, idx, name), reverse=True)
+    return candidates[0]
+
+
+def extract_manual_move_type(page_data, anchor_index):
+    raw_lines = page_data["raw_lines"]
+    start = max(0, anchor_index - 20)
+    end = min(len(raw_lines), anchor_index + 30)
+
+    candidates = []
+    for i in range(start, end):
+        direct = re.search(r"Type\s*:?\s*([A-Za-z]+)", raw_lines[i], flags=re.IGNORECASE)
+        if direct:
+            mapped = parse_manual_type(direct.group(1))
+            if mapped:
+                candidates.append((abs(i - anchor_index), 0 if i <= anchor_index else 1, i, mapped))
+
+    norm_lines = page_data["norm_lines"]
+    for i in range(start, end):
+        if norm_lines[i].startswith("type"):
+            for j in range(i + 1, min(end, i + 8)):
+                match = re.search(r"([A-Za-z]+)", raw_lines[j])
+                if not match:
+                    continue
+                mapped = parse_manual_type(match.group(1))
+                if mapped:
+                    candidates.append((abs(j - anchor_index), 0 if j <= anchor_index else 1, j, mapped))
+
+    if not candidates:
+        return None
+
+    candidates.sort(key=lambda item: (item[0], item[1], item[2]))
+    return candidates[0][3]
+
+
+def extract_manual_move_power(name, page_data, anchor_index):
+    raw_lines = page_data["raw_lines"]
+    name_re = re.compile(rf"{re.escape(name)}\s+(-|\d+\*?|\*)\s*$", flags=re.IGNORECASE)
+
+    local_start = max(0, anchor_index - 2)
+    local_end = min(len(raw_lines), anchor_index + 3)
+    for i in range(local_start, local_end):
+        line = raw_lines[i].strip()
+        if not line:
+            continue
+        match = name_re.search(line)
+        if match:
+            parsed = parse_manual_power_token(match.group(1))
+            if parsed is not None:
+                return parsed
+
+    search_start = anchor_index
+    search_end = min(len(raw_lines), anchor_index + 14)
+
+    for i in range(search_start, search_end):
+        line = raw_lines[i].strip()
+        pool_match = re.search(r"Damage Pool:\s*[^\n]*?\+\s*(\d+\*?|\*)", line, flags=re.IGNORECASE)
+        if pool_match:
+            parsed = parse_manual_power_token(pool_match.group(1))
+            if parsed is not None:
+                return parsed
+
+        no_pool_match = re.search(r"Damage Pool:\s*-", line, flags=re.IGNORECASE)
+        if no_pool_match:
+            return 0
+
+        if normalize_token(line).startswith("damage pool"):
+            trailing_plus = bool(re.search(r"\+\s*$", line))
+            for j in range(i + 1, min(search_end, i + 12)):
+                follow = raw_lines[j].strip()
+                split_pool_match = re.search(r"\+\s*(\d+\*?|\*)", follow)
+                if split_pool_match:
+                    parsed = parse_manual_power_token(split_pool_match.group(1))
+                    if parsed is not None:
+                        return parsed
+                if trailing_plus:
+                    standalone_num = re.match(r"^(\d+\*?|\*)$", follow)
+                    if standalone_num:
+                        parsed = parse_manual_power_token(standalone_num.group(1))
+                        if parsed is not None:
+                            return parsed
+
+    for i in range(anchor_index, search_end):
+        line = raw_lines[i].strip()
+        merged = re.search(r"POWER\s*(-|\d+\*?|\*)", line, flags=re.IGNORECASE)
+        if merged:
+            parsed = parse_manual_power_token(merged.group(1))
+            if parsed is not None:
+                return parsed
+        if normalize_token(line) == "power":
+            for j in range(i + 1, min(search_end, i + 6)):
+                token = raw_lines[j].strip()
+                if re.search(r"(type|accuracy|damage pool|added effect)", token, flags=re.IGNORECASE):
+                    continue
+                parsed = parse_manual_power_token(token)
+                if parsed is not None:
+                    return parsed
+
+    window_norm = " ".join(normalize_token(raw_lines[i]) for i in range(search_start, search_end))
+    variable_markers = (
+        "move s power",
+        "moves power",
+        "same as base move",
+        "damage pool varies",
+        "power varies"
+    )
+    if any(marker in window_norm for marker in variable_markers):
+        return -1
+
+    fallback_start = max(0, anchor_index - 12)
+    for i in range(fallback_start, anchor_index):
+        line = raw_lines[i].strip()
+        pool_match = re.search(r"Damage Pool:\s*[^\n]*?\+\s*(\d+\*?|\*)", line, flags=re.IGNORECASE)
+        if pool_match:
+            parsed = parse_manual_power_token(pool_match.group(1))
+            if parsed is not None:
+                return parsed
+
+        if normalize_token(line).startswith("damage pool"):
+            trailing_plus = bool(re.search(r"\+\s*$", line))
+            for j in range(i + 1, min(anchor_index, i + 12)):
+                follow = raw_lines[j].strip()
+                split_pool_match = re.search(r"\+\s*(\d+\*?|\*)", follow)
+                if split_pool_match:
+                    parsed = parse_manual_power_token(split_pool_match.group(1))
+                    if parsed is not None:
+                        return parsed
+                if trailing_plus:
+                    standalone_num = re.match(r"^(\d+\*?|\*)$", follow)
+                    if standalone_num:
+                        parsed = parse_manual_power_token(standalone_num.group(1))
+                        if parsed is not None:
+                            return parsed
+
+        merged = re.search(r"POWER\s*(-|\d+\*?|\*)", line, flags=re.IGNORECASE)
+        if merged:
+            parsed = parse_manual_power_token(merged.group(1))
+            if parsed is not None:
+                return parsed
+
+    return None
+
+
+def extract_manual_move_fields(name, page, move_page_cache):
+    page_data = move_page_cache.get(page)
+    if not page_data:
+        return None, None
+    anchor = select_move_anchor(name, page_data)
+    if anchor is None:
+        return None, None
+    manual_type = extract_manual_move_type(page_data, anchor)
+    manual_power = extract_manual_move_power(name, page_data, anchor)
+    return manual_type, manual_power
 
 
 def find_corebook_pdf_path():
@@ -122,33 +438,31 @@ def find_corebook_pdf_path():
     return None
 
 
-def extract_move_pages(move_name_by_id):
-    pdf_path = find_corebook_pdf_path()
-    if not pdf_path:
+def extract_move_pages(move_name_by_id, move_page_cache=None):
+    page_cache = move_page_cache or load_move_page_cache()
+    if not page_cache:
         return {}
 
-    reader = PdfReader(str(pdf_path))
-    move_norm_by_id = {
-        move_id: normalize_for_search(name)
-        for move_id, name in move_name_by_id.items()
-    }
-    unresolved_ids = set(move_name_by_id.keys())
     page_by_move_id = {}
+    for move_id, name in move_name_by_id.items():
+        best_page = None
+        best_score = -10_000
 
-    for page_index in range(MOVE_SECTION_START_PAGE - 1, MOVE_SECTION_END_PAGE):
-        page_text = reader.pages[page_index].extract_text() or ""
-        page_norm = normalize_for_search(page_text)
-        if len(page_norm) <= 2:
-            continue
+        # Prefer pages where we can detect a real move-card header anchor.
+        for page, page_data in page_cache.items():
+            indices = find_move_anchor_indices(name, page_data)
+            if not indices:
+                continue
+            anchor = select_move_anchor(name, page_data)
+            if anchor is None:
+                continue
+            score = score_move_anchor(page_data, anchor, name)
+            if score > best_score:
+                best_score = score
+                best_page = page
 
-        # Check longest names first to reduce accidental short-name matches.
-        for move_id in sorted(unresolved_ids, key=lambda item: len(move_norm_by_id[item]), reverse=True):
-            if move_norm_by_id[move_id] in page_norm:
-                page_by_move_id[move_id] = page_index + 1
-
-        unresolved_ids = {move_id for move_id in unresolved_ids if move_id not in page_by_move_id}
-        if not unresolved_ids:
-            break
+        if best_page is not None:
+            page_by_move_id[move_id] = best_page
 
     return page_by_move_id
 
@@ -210,7 +524,11 @@ def build_moves():
         if row["local_language_id"] == "9"
     }
     meta_by_move_id = {int(row["move_id"]): row for row in move_meta}
-    page_by_move_id = extract_move_pages(english_move_name)
+    move_page_cache = load_move_page_cache()
+    page_by_move_id = extract_move_pages(english_move_name, move_page_cache=move_page_cache)
+    manual_type_overrides = 0
+    manual_power_overrides = 0
+    manual_page_overrides = 0
 
     entries = []
     for row in sorted(moves, key=lambda item: int(item["id"])):
@@ -219,10 +537,12 @@ def build_moves():
             continue
 
         move_id = int(row["id"])
-        if move_id not in page_by_move_id:
+        identifier = row["identifier"]
+        manual_override = MANUAL_MOVE_OVERRIDES.get(identifier, {})
+        override_page = manual_override.get("page")
+        if move_id not in page_by_move_id and not isinstance(override_page, int):
             continue
 
-        identifier = row["identifier"]
         name = english_move_name.get(move_id) or format_identifier(identifier)
         type_key = type_by_id.get(int(row["type_id"]), "normal")
         type_key = TYPE_FALLBACKS.get(type_key, type_key)
@@ -263,10 +583,37 @@ def build_moves():
             accuracy_skill = "brawl"
             damage_attribute = "strength"
 
+        page = page_by_move_id.get(move_id)
+        if page is None and isinstance(override_page, int):
+            page = override_page
+            manual_page_overrides += 1
+        elif isinstance(override_page, int) and override_page != page:
+            page = override_page
+            manual_page_overrides += 1
+
+        manual_type, manual_power = extract_manual_move_fields(name, page, move_page_cache)
+        if manual_type in VALID_TYPE_KEYS:
+            if manual_type != type_key:
+                manual_type_overrides += 1
+            type_key = manual_type
+        if manual_power is not None and manual_power >= 0:
+            if manual_power != power:
+                manual_power_overrides += 1
+            power = manual_power
+
+        override_type = manual_override.get("type")
+        if override_type in VALID_TYPE_KEYS and override_type != type_key:
+            manual_type_overrides += 1
+            type_key = override_type
+
+        override_power = manual_override.get("power")
+        if isinstance(override_power, int) and override_power != power:
+            manual_power_overrides += 1
+            power = override_power
+
         effect_id = int(row["effect_id"]) if row["effect_id"] else 0
         effect_chance = int(row["effect_chance"]) if row["effect_chance"] else None
         effect_text = resolve_effect_text(short_effect_by_effect_id.get(effect_id, ""), effect_chance)
-        page = page_by_move_id[move_id]
         page_text = f"Corebook p.{page}"
         if effect_text:
             description = f"{page_text}. {effect_text}"
@@ -300,6 +647,10 @@ def build_moves():
             }
         })
 
+    print(
+        "Moves manual overrides -> "
+        f"page: {manual_page_overrides}, type: {manual_type_overrides}, power: {manual_power_overrides}"
+    )
     return entries
 
 

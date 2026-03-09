@@ -18,7 +18,8 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
   - `Pokemon Status` (`Item`)
   - `Abilities` (`Item`)
 - Auto-seeding:
-  - At first world load (GM), compendia are seeded from Corebook references (items and playable rule objects).
+  - Compendium data is prepared externally via `tools/build_compendium_seeds.py` and stored in `module/seeds/generated/`.
+  - Automatic startup seeding is optional (`Auto-seed Compendia` world setting) and disabled by default.
   - Item seeds include all listed Corebook items from `Trainer's Basics`, `Healing Items`, `Items for Pokemon Care`, `Evolutionary Items`, and `Held Items` (p.76-85, 107 total item entries).
   - `Moves` compendium is rebuilt from Corebook pages `346-430` (772 move items).
   - Every move entry includes description text and a `Corebook p.X` reference in the move description field.
@@ -112,7 +113,7 @@ Important: do not use the GitHub `.../blob/...` URL, because Foundry expects raw
 ## Compendia Usage
 
 - The system now defines 10 compendium packs in `system.json`.
-- Item and rule-reference packs are auto-seeded once per world by the system bootstrap.
+- Item and rule-reference packs can be seeded on demand with `game.pokrole.seedCompendia(...)`.
 - Populate them directly in Foundry:
   1. Open the Compendiums tab.
   2. Create/import Actors or Items into the desired pack.

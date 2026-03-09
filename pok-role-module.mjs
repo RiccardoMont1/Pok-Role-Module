@@ -87,6 +87,15 @@ Hooks.once("init", () => {
     type: String,
     default: ""
   });
+
+  game.settings.register(POKROLE.ID, "autoSeedCompendia", {
+    name: "Auto-seed Compendia",
+    hint: "If enabled, default compendia seeds are applied automatically on world startup for GMs.",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: false
+  });
 });
 
 Hooks.once("ready", async () => {
@@ -94,6 +103,8 @@ Hooks.once("ready", async () => {
   game.pokrole.seedCompendia = async (options = {}) => seedCompendia(options);
 
   if (!game.user?.isGM) return;
+  const autoSeedEnabled = game.settings.get(POKROLE.ID, "autoSeedCompendia");
+  if (!autoSeedEnabled) return;
 
   const seededVersion = game.settings.get(POKROLE.ID, "compendiumSeedVersion");
   if (seededVersion === COMPENDIUM_SEED_VERSION) return;

@@ -1,0 +1,258 @@
+status,name,seed_id,ref_page,found_pages,found_on_ref_page,line_hits_on_ref_page,ability_type,effect_overlap_ratio
+PASS,Stench,ability-stench,464,464,True,1,passive,0.700
+PASS,Drizzle,ability-drizzle,440,440,True,1,passive,0.000
+PASS,Speed Boost,ability-speed-boost,463,463,True,1,passive,0.100
+PASS,Battle Armor,ability-battle-armor,436,436,True,1,passive,0.333
+PASS,Sturdy,ability-sturdy,461,"461,465,467",True,1,passive,0.267
+PASS,Damp,ability-damp,439,439,True,1,passive,0.429
+PASS,Limber,ability-limber,449,449,True,1,passive,0.333
+PASS,Sand Veil,ability-sand-veil,459,459,True,1,passive,0.375
+PASS,Static,ability-static,464,464,True,1,passive,0.125
+PASS,Volt Absorb,ability-volt-absorb,469,469,True,1,passive,0.500
+PASS,Water Absorb,ability-water-absorb,469,469,True,1,passive,0.375
+PASS,Oblivious,ability-oblivious,453,"453,468",True,1,passive,0.125
+PASS,Cloud Nine,ability-cloud-nine,437,437,True,1,passive,0.273
+PASS,Compound Eyes,ability-compound-eyes,438,438,True,1,passive,0.250
+PASS,Insomnia,ability-insomnia,447,447,True,1,passive,0.333
+PASS,Color Change,ability-color-change,437,437,True,1,passive,0.857
+PASS,Immunity,ability-immunity,435,"435,438,447,451,455,467,468",True,1,passive,0.000
+PASS,Flash Fire,ability-flash-fire,442,442,True,1,passive,0.333
+PASS,Shield Dust,ability-shield-dust,461,461,True,1,passive,0.167
+PASS,Own Tempo,ability-own-tempo,454,454,True,1,passive,0.000
+PASS,Suction Cups,ability-suction-cups,465,465,True,1,passive,0.125
+PASS,Intimidate,ability-intimidate,447,447,True,2,passive,0.182
+PASS,Shadow Tag,ability-shadow-tag,460,460,True,1,passive,0.000
+PASS,Rough Skin,ability-rough-skin,459,459,True,1,passive,0.125
+PASS,Wonder Guard,ability-wonder-guard,468,"468,469,470",True,1,passive,0.200
+PASS,Levitate,ability-levitate,449,"449,467,468",True,1,passive,0.750
+PASS,Effect Spore,ability-effect-spore,441,441,True,1,passive,0.273
+PASS,Synchronize,ability-synchronize,466,466,True,1,passive,0.286
+PASS,Clear Body,ability-clear-body,437,437,True,1,passive,0.100
+PASS,Natural Cure,ability-natural-cure,452,452,True,1,passive,0.333
+PASS,Lightning Rod,ability-lightning-rod,449,449,True,1,passive,0.263
+PASS,Serene Grace,ability-serene-grace,460,460,True,1,passive,0.571
+PASS,Swift Swim,ability-swift-swim,466,466,True,1,passive,0.000
+PASS,Chlorophyll,ability-chlorophyll,437,437,True,1,passive,0.000
+PASS,Illuminate,ability-illuminate,446,446,True,1,passive,0.400
+PASS,Trace,ability-trace,468,468,True,1,passive,0.167
+PASS,Huge Power,ability-huge-power,445,445,True,1,passive,0.000
+PASS,Poison Point,ability-poison-point,455,455,True,1,passive,0.375
+PASS,Inner Focus,ability-inner-focus,447,447,True,1,passive,0.000
+PASS,Magma Armor,ability-magma-armor,450,450,True,1,passive,0.000
+PASS,Water Veil,ability-water-veil,470,470,True,1,passive,0.250
+PASS,Magnet Pull,ability-magnet-pull,450,450,True,1,passive,0.250
+PASS,Soundproof,ability-soundproof,463,463,True,1,passive,0.600
+PASS,Rain Dish,ability-rain-dish,457,457,True,1,passive,0.222
+PASS,Sand Stream,ability-sand-stream,459,459,True,1,passive,0.222
+PASS,Pressure,ability-pressure,454,"454,456,467",True,1,passive,0.250
+PASS,Thick Fat,ability-thick-fat,467,467,True,1,passive,0.875
+PASS,Early Bird,ability-early-bird,441,441,True,1,passive,0.167
+PASS,Flame Body,ability-flame-body,441,441,True,1,passive,0.250
+PASS,Run Away,ability-run-away,459,"459,462",True,1,passive,0.167
+PASS,Keen Eye,ability-keen-eye,448,448,True,1,passive,0.125
+PASS,Hyper Cutter,ability-hyper-cutter,446,446,True,1,passive,0.300
+PASS,Truant,ability-truant,468,468,True,1,passive,0.500
+PASS,Hustle,ability-hustle,445,445,True,1,passive,0.200
+PASS,Cute Charm,ability-cute-charm,438,438,True,1,passive,0.250
+PASS,Plus,ability-plus,451,"451,455",True,2,passive,0.636
+PASS,Minus,ability-minus,451,"451,455",True,1,passive,0.636
+PASS,Forecast,ability-forecast,442,442,True,1,passive,0.600
+PASS,Sticky Hold,ability-sticky-hold,465,465,True,1,passive,0.625
+PASS,Shed Skin,ability-shed-skin,461,461,True,1,passive,0.273
+PASS,Guts,ability-guts,444,444,True,1,passive,0.143
+PASS,Marvel Scale,ability-marvel-scale,450,450,True,1,passive,0.429
+PASS,Liquid Ooze,ability-liquid-ooze,449,449,True,1,passive,0.000
+PASS,Overgrow,ability-overgrow,453,453,True,1,passive,0.556
+PASS,Blaze,ability-blaze,436,436,True,1,passive,0.222
+PASS,Torrent,ability-torrent,467,467,True,1,passive,0.444
+PASS,Swarm,ability-swarm,466,466,True,1,passive,0.111
+PASS,Rock Head,ability-rock-head,458,458,True,1,passive,0.500
+PASS,Drought,ability-drought,440,440,True,1,passive,0.000
+PASS,Arena Trap,ability-arena-trap,435,435,True,1,passive,0.286
+PASS,Vital Spirit,ability-vital-spirit,469,469,True,1,passive,0.333
+PASS,White Smoke,ability-white-smoke,470,470,True,1,passive,0.300
+PASS,Pure Power,ability-pure-power,457,457,True,1,passive,0.250
+PASS,Shell Armor,ability-shell-armor,461,461,True,1,passive,0.333
+PASS,Air Lock,ability-air-lock,434,434,True,1,passive,0.455
+PASS,Tangled Feet,ability-tangled-feet,466,466,True,1,passive,0.167
+PASS,Motor Drive,ability-motor-drive,452,452,True,1,passive,0.364
+PASS,Rivalry,ability-rivalry,458,458,True,1,passive,0.545
+PASS,Steadfast,ability-steadfast,464,464,True,1,passive,0.000
+PASS,Snow Cloak,ability-snow-cloak,462,462,True,1,passive,0.250
+PASS,Gluttony,ability-gluttony,443,443,True,1,passive,0.231
+PASS,Anger Point,ability-anger-point,435,435,True,1,passive,0.308
+PASS,Unburden,ability-unburden,468,468,True,1,passive,0.125
+PASS,Heatproof,ability-heatproof,445,445,True,1,passive,0.500
+PASS,Simple,ability-simple,450,"450,461",True,1,passive,0.167
+PASS,Dry Skin,ability-dry-skin,440,440,True,1,passive,0.238
+PASS,Download,ability-download,440,440,True,2,passive,0.133
+PASS,Iron Fist,ability-iron-fist,448,448,True,1,passive,0.333
+PASS,Poison Heal,ability-poison-heal,455,455,True,1,passive,0.250
+PASS,Adaptability,ability-adaptability,434,434,True,1,passive,0.375
+PASS,Skill Link,ability-skill-link,461,461,True,1,passive,0.143
+PASS,Hydration,ability-hydration,440,"440,446",True,1,passive,0.091
+PASS,Solar Power,ability-solar-power,462,462,True,1,passive,0.154
+PASS,Quick Feet,ability-quick-feet,457,457,True,1,passive,0.143
+PASS,Normalize,ability-normalize,453,453,True,1,passive,0.750
+PASS,Sniper,ability-sniper,462,462,True,1,passive,0.333
+PASS,Magic Guard,ability-magic-guard,450,450,True,1,passive,0.143
+PASS,No Guard,ability-no-guard,453,453,True,1,passive,0.444
+PASS,Stall,ability-stall,463,463,True,1,passive,0.444
+PASS,Technician,ability-technician,467,467,True,1,passive,0.500
+PASS,Leaf Guard,ability-leaf-guard,448,448,True,1,passive,0.222
+PASS,Klutz,ability-klutz,448,448,True,1,passive,0.556
+PASS,Mold Breaker,ability-mold-breaker,451,451,True,1,passive,0.375
+PASS,Super Luck,ability-super-luck,465,465,True,1,passive,0.125
+PASS,Aftermath,ability-aftermath,434,434,True,1,passive,0.250
+PASS,Anticipation,ability-anticipation,435,435,True,1,passive,0.176
+PASS,Forewarn,ability-forewarn,442,442,True,1,passive,0.125
+PASS,Unaware,ability-unaware,468,468,True,1,passive,0.400
+PASS,Tinted Lens,ability-tinted-lens,467,467,True,1,passive,0.222
+PASS,Filter,ability-filter,441,441,True,1,passive,0.500
+PASS,Slow Start,ability-slow-start,462,462,True,1,passive,0.000
+PASS,Scrappy,ability-scrappy,460,460,True,1,passive,0.500
+PASS,Storm Drain,ability-storm-drain,465,465,True,1,passive,0.316
+PASS,Ice Body,ability-ice-body,446,446,True,1,passive,0.167
+PASS,Solid Rock,ability-solid-rock,462,462,True,1,passive,0.500
+PASS,Snow Warning,ability-snow-warning,462,462,True,1,passive,0.000
+PASS,Honey Gather,ability-honey-gather,445,445,True,1,passive,0.375
+PASS,Frisk,ability-frisk,443,443,True,1,passive,0.286
+PASS,Reckless,ability-reckless,444,"444,458",True,1,passive,0.000
+PASS,Multitype,ability-multitype,452,452,True,1,passive,0.400
+PASS,Flower Gift,ability-flower-gift,442,"442,468,469",True,1,passive,0.273
+PASS,Bad Dreams,ability-bad-dreams,435,435,True,1,passive,0.182
+PASS,Pickpocket,ability-pickpocket,454,454,True,1,passive,0.500
+PASS,Sheer Force,ability-sheer-force,461,461,True,1,passive,0.000
+PASS,Contrary,ability-contrary,438,438,True,1,passive,0.000
+PASS,Unnerve,ability-unnerve,469,469,True,1,passive,0.429
+PASS,Defiant,ability-defiant,439,439,True,1,passive,0.000
+PASS,Defeatist,ability-defeatist,439,439,True,1,passive,0.143
+PASS,Cursed Body,ability-cursed-body,438,438,True,1,passive,0.800
+PASS,Healer,ability-healer,445,445,True,1,passive,0.154
+PASS,Friend Guard,ability-friend-guard,443,443,True,1,passive,0.286
+PASS,Weak Armor,ability-weak-armor,470,470,True,1,passive,0.143
+PASS,Heavy Metal,ability-heavy-metal,445,445,True,1,passive,0.750
+PASS,Light Metal,ability-light-metal,449,449,True,1,passive,0.750
+PASS,Multiscale,ability-multiscale,452,452,True,1,hidden,0.500
+PASS,Toxic Boost,ability-toxic-boost,468,468,True,1,hidden,0.167
+PASS,Flare Boost,ability-flare-boost,442,442,True,1,hidden,0.286
+PASS,Harvest,ability-harvest,444,444,True,1,hidden,0.154
+PASS,Telepathy,ability-telepathy,467,467,True,1,passive,0.333
+PASS,Moody,ability-moody,452,452,True,1,hidden,0.267
+PASS,Overcoat,ability-overcoat,453,453,True,1,passive,0.500
+PASS,Poison Touch,ability-poison-touch,455,455,True,1,passive,0.333
+PASS,Regenerator,ability-regenerator,458,458,True,1,passive,0.286
+PASS,Big Pecks,ability-big-pecks,436,436,True,1,passive,0.200
+PASS,Sand Rush,ability-sand-rush,459,459,True,1,passive,0.250
+PASS,Wonder Skin,ability-wonder-skin,470,470,True,1,passive,0.000
+PASS,Analytic,ability-analytic,434,434,True,1,hidden,0.143
+PASS,Illusion,ability-illusion,446,"446,468,469",True,1,passive,0.333
+PASS,Imposter,ability-imposter,447,"447,468,469",True,1,hidden,0.333
+PASS,Infiltrator,ability-infiltrator,447,447,True,1,passive,0.714
+PASS,Mummy,ability-mummy,452,452,True,1,passive,0.333
+PASS,Moxie,ability-moxie,452,452,True,1,passive,0.125
+PASS,Justified,ability-justified,448,448,True,1,passive,0.083
+PASS,Rattled,ability-rattled,457,457,True,1,passive,0.333
+PASS,Magic Bounce,ability-magic-bounce,450,450,True,1,passive,0.125
+PASS,Sap Sipper,ability-sap-sipper,460,460,True,1,passive,0.273
+PASS,Prankster,ability-prankster,456,456,True,1,passive,0.286
+PASS,Sand Force,ability-sand-force,459,459,True,1,passive,0.133
+PASS,Iron Barbs,ability-iron-barbs,448,448,True,1,passive,0.125
+PASS,Zen Mode,ability-zen-mode,471,471,True,2,hidden,0.529
+PASS,Victory Star,ability-victory-star,469,469,True,1,passive,0.500
+PASS,Turboblaze,ability-turboblaze,468,468,True,1,passive,0.375
+PASS,Teravolt,ability-teravolt,467,467,True,1,passive,0.500
+PASS,Aroma Veil,ability-aroma-veil,435,435,True,1,passive,0.222
+PASS,Flower Veil,ability-flower-veil,442,442,True,1,passive,0.091
+PASS,Cheek Pouch,ability-cheek-pouch,437,437,True,1,passive,0.429
+PASS,Protean,ability-protean,456,456,True,1,hidden,0.500
+PASS,Fur Coat,ability-fur-coat,443,443,True,1,passive,0.600
+PASS,Magician,ability-magician,450,450,True,1,passive,0.400
+PASS,Bulletproof,ability-bulletproof,437,437,True,1,passive,0.250
+PASS,Competitive,ability-competitive,438,"438,458",True,1,passive,0.200
+PASS,Strong Jaw,ability-strong-jaw,465,465,True,1,passive,0.600
+PASS,Refrigerate,ability-refrigerate,458,458,True,1,passive,0.692
+PASS,Sweet Veil,ability-sweet-veil,466,466,True,1,passive,0.200
+PASS,Stance Change,ability-stance-change,464,"464,468,469",True,1,passive,0.091
+PASS,Gale Wings,ability-gale-wings,443,443,True,1,hidden,0.571
+PASS,Mega Launcher,ability-mega-launcher,451,451,True,1,passive,0.714
+PASS,Grass Pelt,ability-grass-pelt,444,444,True,1,hidden,0.429
+PASS,Symbiosis,ability-symbiosis,466,466,True,1,hidden,0.556
+PASS,Tough Claws,ability-tough-claws,467,467,True,1,passive,0.286
+PASS,Pixilate,ability-pixilate,454,454,True,1,passive,0.385
+PASS,Gooey,ability-gooey,444,444,True,1,passive,0.143
+PASS,Aerilate,ability-aerilate,434,434,True,1,passive,0.308
+PASS,Parental Bond,ability-parental-bond,454,454,True,1,passive,0.250
+PASS,Dark Aura,ability-dark-aura,435,"435,439",True,2,passive,0.417
+PASS,Fairy Aura,ability-fairy-aura,435,"435,441",True,1,passive,0.333
+PASS,Aura Break,ability-aura-break,435,435,True,1,passive,0.455
+PASS,Primordial Sea,ability-primordial-sea,456,456,True,1,passive,0.118
+PASS,Desolate Land,ability-desolate-land,440,440,True,1,passive,0.211
+PASS,Delta Stream,ability-delta-stream,440,440,True,1,passive,0.125
+PASS,Stamina,ability-stamina,463,463,True,1,passive,0.636
+PASS,Wimp Out,ability-wimp-out,470,470,True,1,passive,0.400
+PASS,Emergency Exit,ability-emergency-exit,441,441,True,1,passive,0.500
+PASS,Water Compaction,ability-water-compaction,470,470,True,1,passive,0.400
+PASS,Merciless,ability-merciless,451,451,True,1,passive,0.625
+PASS,Shields Down,ability-shields-down,461,461,True,1,passive,0.214
+PASS,Stakeout,ability-stakeout,463,463,True,1,passive,0.300
+PASS,Water Bubble,ability-water-bubble,469,469,True,1,passive,0.500
+PASS,Steelworker,ability-steelworker,464,464,True,1,passive,0.500
+PASS,Berserk,ability-berserk,436,436,True,1,passive,0.385
+PASS,Slush Rush,ability-slush-rush,462,462,True,1,passive,0.714
+PASS,Long Reach,ability-long-reach,450,450,True,1,hidden,0.500
+PASS,Liquid Voice,ability-liquid-voice,449,449,True,1,hidden,0.833
+PASS,Triage,ability-triage,468,468,True,1,passive,0.250
+PASS,Galvanize,ability-galvanize,443,443,True,1,hidden,0.545
+PASS,Surge Surfer,ability-surge-surfer,465,465,True,1,passive,0.333
+PASS,Schooling,ability-schooling,460,460,True,1,passive,0.429
+PASS,Disguise,ability-disguise,440,440,True,1,passive,0.500
+PASS,Battle Bond,ability-battle-bond,436,436,True,1,passive,0.294
+PASS,Power Construct,ability-power-construct,455,455,True,1,passive,0.250
+PASS,Corrosion,ability-corrosion,438,438,True,1,passive,0.714
+PASS,Comatose,ability-comatose,437,437,True,1,passive,0.286
+PASS,Queenly Majesty,ability-queenly-majesty,457,457,True,1,passive,0.667
+PASS,Innards Out,ability-innards-out,447,447,True,1,passive,0.429
+PASS,Dancer,ability-dancer,439,439,True,1,passive,0.538
+PASS,Battery,ability-battery,436,"436,469",True,1,passive,0.429
+PASS,Fluffy,ability-fluffy,442,"442,443",True,1,passive,0.429
+PASS,Dazzling,ability-dazzling,439,439,True,1,passive,0.667
+PASS,Soul-Heart,ability-soul-heart,463,463,True,1,passive,0.455
+PASS,Tangling Hair,ability-tangling-hair,466,466,True,1,passive,0.333
+PASS,Receiver,ability-receiver,457,457,True,1,passive,0.500
+PASS,Power of Alchemy,ability-power-of-alchemy,455,455,True,1,hidden,0.500
+PASS,Beast Boost,ability-beast-boost,436,436,True,1,passive,0.500
+PASS,RKS System,ability-rks-system,458,458,True,1,passive,0.750
+PASS,Electric Surge,ability-electric-surge,441,441,True,1,passive,0.667
+PASS,Psychic Surge,ability-psychic-surge,456,456,True,1,passive,0.556
+PASS,Misty Surge,ability-misty-surge,451,451,True,1,passive,0.667
+PASS,Grassy Surge,ability-grassy-surge,444,444,True,1,passive,0.556
+PASS,Full Metal Body,ability-full-metal-body,443,443,True,1,passive,0.333
+PASS,Shadow Shield,ability-shadow-shield,460,460,True,1,passive,0.600
+PASS,Prism Armor,ability-prism-armor,456,456,True,1,passive,0.750
+PASS,Neuroforce,ability-neuroforce,453,453,True,1,passive,0.600
+PASS,Intrepid Sword,ability-intrepid-sword,448,448,True,1,passive,0.333
+PASS,Dauntless Shield,ability-dauntless-shield,439,439,True,1,passive,0.667
+PASS,Libero,ability-libero,449,449,True,1,hidden,0.600
+PASS,Ball Fetch,ability-ball-fetch,435,435,True,1,passive,0.214
+PASS,Cotton Down,ability-cotton-down,438,438,True,1,passive,0.143
+PASS,Propeller Tail,ability-propeller-tail,456,456,True,1,hidden,0.667
+PASS,Mirror Armor,ability-mirror-armor,451,451,True,1,hidden,0.200
+PASS,Gulp Missile,ability-gulp-missile,444,444,True,1,passive,0.600
+PASS,Stalwart,ability-stalwart,463,463,True,1,hidden,0.667
+PASS,Steam Engine,ability-steam-engine,464,464,True,1,passive,0.583
+PASS,Punk Rock,ability-punk-rock,457,457,True,1,passive,0.500
+PASS,Sand Spit,ability-sand-spit,459,459,True,1,passive,0.600
+PASS,Ice Scales,ability-ice-scales,446,446,True,1,hidden,0.400
+PASS,Ripen,ability-ripen,458,458,True,1,passive,0.500
+PASS,Ice Face,ability-ice-face,446,446,True,2,passive,0.294
+PASS,Power Spot,ability-power-spot,455,455,True,1,passive,0.286
+PASS,Mimicry,ability-mimicry,451,451,True,1,passive,1.000
+PASS,Screen Cleaner,ability-screen-cleaner,460,460,True,1,passive,0.750
+PASS,Steely Spirit,ability-steely-spirit,464,464,True,1,hidden,0.000
+PASS,Perish Body,ability-perish-body,454,454,True,1,hidden,0.476
+PASS,Wandering Spirit,ability-wandering-spirit,469,469,True,1,passive,0.200
+PASS,Gorilla Tactics,ability-gorilla-tactics,444,444,True,1,passive,0.417
+PASS,Neutralizing Gas,ability-neutralizing-gas,453,453,True,1,passive,0.400
+PASS,Pastel Veil,ability-pastel-veil,454,454,True,1,passive,0.556
+PASS,Hunger Switch,ability-hunger-switch,445,445,True,1,passive,0.357

@@ -1,0 +1,772 @@
+status,name,seed_id,ref_page,found_pages,found_on_ref_page,line_hits_on_ref_page,seed_type,manual_type,type_match,seed_power,manual_power,power_match
+PASS,Pound,move-pound,398,398,True,1,normal,normal,True,2,2,True
+PASS,Karate Chop,move-karate-chop,367,367,True,1,fighting,fighting,True,3,3,True
+PASS,Double Slap,move-double-slap,392,392,True,1,normal,normal,True,1,1,True
+PASS,Comet Punch,move-comet-punch,390,390,True,1,normal,normal,True,1,1,True
+PASS,Mega Punch,move-mega-punch,397,397,True,1,normal,normal,True,3,3,True
+PASS,Pay Day,move-pay-day,398,398,True,1,normal,normal,True,2,2,True
+PASS,Fire Punch,move-fire-punch,370,370,True,1,fire,fire,True,3,3,True
+PASS,Ice Punch,move-ice-punch,388,388,True,1,ice,ice,True,3,3,True
+PASS,Thunder Punch,move-thunder-punch,361,361,True,1,electric,electric,True,3,3,True
+PASS,Scratch,move-scratch,400,400,True,1,normal,normal,True,2,2,True
+PASS,Guillotine,move-guillotine,394,394,True,1,normal,normal,True,0,0,True
+PASS,Razor Wind,move-razor-wind,399,399,True,1,normal,normal,True,3,3,True
+PASS,Swords Dance,move-swords-dance,404,404,True,1,normal,normal,True,0,0,True
+PASS,Cut,move-cut,391,"351,380,381,383,391,414,422,423",True,1,normal,normal,True,2,2,True
+PASS,Gust,move-gust,375,375,True,1,flying,flying,True,2,2,True
+PASS,Wing Attack,move-wing-attack,376,376,True,1,flying,flying,True,2,2,True
+PASS,Whirlwind,move-whirlwind,406,"358,406",True,1,normal,normal,True,0,0,True
+PASS,Fly,move-fly,375,"373,375,387",True,1,flying,flying,True,3,3,True
+PASS,Bind,move-bind,390,"390,411",True,1,normal,normal,True,1,1,True
+PASS,Slam,move-slam,402,"390,402,419",True,1,normal,normal,True,3,3,True
+PASS,Vine Whip,move-vine-whip,383,383,True,1,grass,grass,True,2,2,True
+PASS,Stomp,move-stomp,403,403,True,1,normal,normal,True,2,2,True
+PASS,Double Kick,move-double-kick,366,366,True,1,fighting,fighting,True,2,2,True
+PASS,Mega Kick,move-mega-kick,397,397,True,1,normal,normal,True,5,5,True
+PASS,Jump Kick,move-jump-kick,367,"366,367",True,1,fighting,fighting,True,4,4,True
+PASS,Rolling Kick,move-rolling-kick,368,368,True,1,fighting,fighting,True,2,2,True
+PASS,Sand Attack,move-sand-attack,385,385,True,1,ground,ground,True,0,0,True
+PASS,Headbutt,move-headbutt,395,"395,415,419",True,1,normal,normal,True,3,3,True
+PASS,Horn Attack,move-horn-attack,395,395,True,1,normal,normal,True,2,2,True
+PASS,Fury Attack,move-fury-attack,394,394,True,1,normal,normal,True,1,1,True
+PASS,Horn Drill,move-horn-drill,395,395,True,1,normal,normal,True,0,0,True
+PASS,Tackle,move-tackle,404,"354,358,361,371,404,429",True,1,normal,normal,True,2,2,True
+PASS,Body Slam,move-body-slam,390,390,True,1,normal,normal,True,3,3,True
+PASS,Wrap,move-wrap,406,406,True,1,normal,normal,True,1,1,True
+PASS,Take Down,move-take-down,404,404,True,1,normal,normal,True,3,3,True
+PASS,Thrash,move-thrash,405,405,True,1,normal,normal,True,5,5,True
+PASS,Double-Edge,move-double-edge,392,392,True,1,normal,normal,True,5,5,True
+PASS,Tail Whip,move-tail-whip,404,404,True,1,normal,normal,True,0,0,True
+PASS,Poison Sting,move-poison-sting,408,408,True,1,poison,poison,True,1,1,True
+PASS,Twineedle,move-twineedle,351,351,True,1,bug,bug,True,3,3,True
+PASS,Pin Missile,move-pin-missile,350,350,True,1,bug,bug,True,1,1,True
+PASS,Leer,move-leer,396,396,True,1,normal,normal,True,0,0,True
+PASS,Bite,move-bite,352,"349,352,361,403,413",True,1,dark,dark,True,2,2,True
+PASS,Growl,move-growl,394,394,True,1,normal,normal,True,0,0,True
+PASS,Roar,move-roar,400,"358,398,400,426",True,1,normal,normal,True,0,0,True
+PASS,Sing,move-sing,401,401,True,1,normal,normal,True,0,0,True
+PASS,Supersonic,move-supersonic,403,"403,429",True,1,normal,normal,True,0,0,True
+PASS,Sonic Boom,move-sonic-boom,402,402,True,1,fighting,fighting,True,0,*,True
+PASS,Disable,move-disable,391,391,True,1,normal,normal,True,0,0,True
+PASS,Acid,move-acid,406,"379,406,407,430",True,1,poison,poison,True,2,2,True
+PASS,Ember,move-ember,370,"370,373",True,1,fire,fire,True,2,2,True
+PASS,Flamethrower,move-flamethrower,371,371,True,1,fire,fire,True,3,3,True
+PASS,Mist,move-mist,388,"362,363,388,413",True,1,ice,ice,True,0,0,True
+PASS,Water Gun,move-water-gun,423,423,True,1,water,water,True,2,2,True
+PASS,Hydro Pump,move-hydro-pump,422,422,True,1,water,water,True,5,5,True
+PASS,Surf,move-surf,423,423,True,1,water,water,True,3,3,True
+PASS,Ice Beam,move-ice-beam,387,387,True,1,ice,ice,True,3,3,True
+PASS,Blizzard,move-blizzard,386,"381,386,427",True,1,ice,ice,True,5,5,True
+PASS,Psybeam,move-psybeam,413,413,True,1,psychic,psychic,True,2,2,True
+PASS,Bubble Beam,move-bubble-beam,421,421,True,1,water,water,True,3,3,True
+PASS,Aurora Beam,move-aurora-beam,386,386,True,1,ice,ice,True,2,2,True
+PASS,Hyper Beam,move-hyper-beam,395,395,True,1,normal,normal,True,6,6,True
+PASS,Peck,move-peck,375,"374,375",True,1,flying,flying,True,2,2,True
+PASS,Drill Peck,move-drill-peck,374,374,True,1,flying,flying,True,3,3,True
+PASS,Submission,move-submission,369,369,True,1,fighting,fighting,True,3,3,True
+PASS,Low Kick,move-low-kick,367,367,True,1,fighting,fighting,True,1,1,True
+PASS,Counter,move-counter,365,365,True,1,fighting,fighting,True,0,*,True
+PASS,Seismic Toss,move-seismic-toss,368,368,True,1,fighting,fighting,True,0,*,True
+PASS,Strength,move-strength,403,"347,349,350,351,352,353,354,355,356,357,358,359,360,361,362,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428",True,2,normal,normal,True,3,3,True
+PASS,Absorb,move-absorb,378,378,True,1,grass,grass,True,1,1,True
+PASS,Mega Drain,move-mega-drain,381,381,True,1,grass,grass,True,2,2,True
+PASS,Leech Seed,move-leech-seed,381,"381,399",True,1,grass,grass,True,0,0,True
+PASS,Growth,move-growth,394,"385,394",True,1,normal,normal,True,0,0,True
+PASS,Razor Leaf,move-razor-leaf,381,381,True,1,grass,grass,True,2,2,True
+PASS,Solar Beam,move-solar-beam,382,382,True,1,grass,grass,True,5,5,True
+PASS,Poison Powder,move-poison-powder,408,408,True,1,poison,poison,True,0,0,True
+PASS,Stun Spore,move-stun-spore,383,383,True,1,grass,grass,True,0,0,True
+PASS,Sleep Powder,move-sleep-powder,382,382,True,1,grass,grass,True,0,0,True
+PASS,Petal Dance,move-petal-dance,381,381,True,1,grass,grass,True,5,5,True
+PASS,String Shot,move-string-shot,351,351,True,1,bug,bug,True,0,0,True
+PASS,Dragon Rage,move-dragon-rage,357,357,True,1,dragon,dragon,True,0,0,True
+PASS,Fire Spin,move-fire-spin,371,371,True,1,fire,fire,True,2,2,True
+PASS,Thunder Shock,move-thunder-shock,361,361,True,1,electric,electric,True,2,2,True
+PASS,Thunderbolt,move-thunderbolt,346,"346,361",True,1,electric,electric,True,3,3,True
+PASS,Thunder Wave,move-thunder-wave,361,361,True,1,electric,electric,True,0,0,True
+PASS,Thunder,move-thunder,361,"361,375",True,1,electric,electric,True,5,5,True
+PASS,Rock Throw,move-rock-throw,417,417,True,1,rock,rock,True,2,2,True
+PASS,Earthquake,move-earthquake,384,384,True,1,ground,ground,True,4,4,True
+PASS,Fissure,move-fissure,384,384,True,1,ground,ground,True,0,0,True
+PASS,Dig,move-dig,384,384,True,1,ground,ground,True,3,3,True
+PASS,Toxic,move-toxic,409,"364,374,391,407,408,409",True,1,poison,poison,True,0,0,True
+PASS,Confusion,move-confusion,410,"403,405,410",True,1,psychic,psychic,True,2,2,True
+PASS,Psychic,move-psychic,364,"346,349,352,364,376,401,409,410,411,412,413,414,415,427,430",True,1,fairy,fairy,True,0,0,True
+PASS,Hypnosis,move-hypnosis,411,411,True,1,psychic,psychic,True,0,0,True
+PASS,Meditate,move-meditate,412,412,True,1,psychic,psychic,True,0,0,True
+PASS,Agility,move-agility,409,409,True,1,psychic,psychic,True,0,0,True
+PASS,Quick Attack,move-quick-attack,399,399,True,1,normal,normal,True,2,2,True
+PASS,Rage,move-rage,399,"350,357,399,426,430",True,1,normal,normal,True,1,1,True
+PASS,Teleport,move-teleport,415,415,True,1,psychic,psychic,True,0,0,True
+PASS,Night Shade,move-night-shade,377,377,True,1,ghost,ghost,True,0,*,True
+PASS,Mimic,move-mimic,397,397,True,1,normal,normal,True,0,0,True
+PASS,Screech,move-screech,401,401,True,1,normal,normal,True,0,0,True
+PASS,Double Team,move-double-team,392,392,True,1,normal,normal,True,0,0,True
+PASS,Recover,move-recover,399,399,True,1,normal,normal,True,0,0,True
+PASS,Harden,move-harden,395,395,True,1,normal,normal,True,0,0,True
+PASS,Minimize,move-minimize,397,"365,397",True,1,normal,normal,True,0,0,True
+PASS,Smokescreen,move-smokescreen,402,402,True,1,normal,normal,True,0,0,True
+PASS,Confuse Ray,move-confuse-ray,376,376,True,1,ghost,ghost,True,0,0,True
+PASS,Withdraw,move-withdraw,424,424,True,1,water,water,True,0,0,True
+PASS,Defense Curl,move-defense-curl,391,"387,391,417",True,1,normal,normal,True,0,0,True
+PASS,Barrier,move-barrier,410,"349,365,410,412,413",True,1,psychic,psychic,True,0,0,True
+PASS,Light Screen,move-light-screen,412,"348,365,374,391,412,413",True,1,psychic,psychic,True,0,0,True
+PASS,Haze,move-haze,387,387,True,1,ice,ice,True,0,0,True
+PASS,Reflect,move-reflect,414,"348,365,374,391,399,413,414",True,1,psychic,psychic,True,0,0,True
+PASS,Focus Energy,move-focus-energy,393,393,True,1,normal,normal,True,0,0,True
+PASS,Bide,move-bide,389,389,True,1,normal,normal,True,0,*,True
+PASS,Metronome,move-metronome,397,397,True,1,normal,normal,True,0,*,True
+PASS,Mirror Move,move-mirror-move,375,375,True,1,flying,flying,True,0,*,True
+PASS,Self-Destruct,move-self-destruct,401,401,True,1,normal,normal,True,8,8,True
+PASS,Egg Bomb,move-egg-bomb,392,392,True,1,normal,normal,True,4,4,True
+PASS,Lick,move-lick,377,377,True,1,ghost,ghost,True,1,1,True
+PASS,Smog,move-smog,408,"407,408",True,1,poison,poison,True,1,1,True
+PASS,Sludge,move-sludge,408,"407,408",True,1,poison,poison,True,2,2,True
+PASS,Bone Club,move-bone-club,383,383,True,1,ground,ground,True,2,2,True
+PASS,Fire Blast,move-fire-blast,370,370,True,1,fire,fire,True,5,5,True
+PASS,Waterfall,move-waterfall,424,424,True,1,water,water,True,3,3,True
+PASS,Clamp,move-clamp,421,421,True,1,water,water,True,2,2,True
+PASS,Swift,move-swift,404,"392,393,404",True,1,normal,normal,True,2,2,True
+PASS,Skull Bash,move-skull-bash,401,401,True,1,normal,normal,True,5,5,True
+PASS,Spike Cannon,move-spike-cannon,402,402,True,1,normal,normal,True,1,1,True
+PASS,Constrict,move-constrict,390,390,True,1,normal,normal,True,1,1,True
+PASS,Amnesia,move-amnesia,409,409,True,1,psychic,psychic,True,0,0,True
+PASS,Kinesis,move-kinesis,412,412,True,1,psychic,psychic,True,0,0,True
+PASS,Soft-Boiled,move-soft-boiled,402,402,True,1,normal,normal,True,0,0,True
+PASS,High Jump Kick,move-high-jump-kick,366,366,True,1,fighting,fighting,True,5,5,True
+PASS,Glare,move-glare,394,"394,396",True,1,normal,normal,True,0,0,True
+PASS,Dream Eater,move-dream-eater,410,410,True,1,psychic,psychic,True,4,4,True
+PASS,Poison Gas,move-poison-gas,408,408,True,1,poison,poison,True,0,0,True
+PASS,Barrage,move-barrage,389,389,True,1,normal,normal,True,1,1,True
+PASS,Leech Life,move-leech-life,350,350,True,1,bug,bug,True,1,1,True
+PASS,Lovely Kiss,move-lovely-kiss,396,396,True,1,normal,normal,True,0,0,True
+PASS,Sky Attack,move-sky-attack,375,375,True,1,flying,flying,True,6,6,True
+PASS,Transform,move-transform,405,405,True,1,normal,normal,True,0,0,True
+WARN,Bubble,move-bubble,421,421,True,0,water,,,2,,
+PASS,Dizzy Punch,move-dizzy-punch,392,392,True,1,normal,normal,True,3,3,True
+PASS,Spore,move-spore,382,"379,382,383",True,1,grass,grass,True,0,0,True
+PASS,Flash,move-flash,393,"362,393,418",True,1,normal,normal,True,0,0,True
+PASS,Psywave,move-psywave,414,414,True,1,psychic,psychic,True,0,*,True
+PASS,Splash,move-splash,403,"403,423",True,1,normal,normal,True,0,0,True
+PASS,Acid Armor,move-acid-armor,407,407,True,1,poison,poison,True,0,0,True
+PASS,Crabhammer,move-crabhammer,421,421,True,1,water,water,True,3,3,True
+PASS,Explosion,move-explosion,393,"370,373,382,387,393,414",True,1,normal,normal,True,10,10,True
+PASS,Fury Swipes,move-fury-swipes,394,394,True,1,normal,normal,True,1,1,True
+PASS,Bonemerang,move-bonemerang,384,384,True,1,ground,ground,True,2,2,True
+PASS,Rest,move-rest,414,"348,355,356,360,370,386,389,390,392,401,404,414,418,422,426",True,1,psychic,psychic,True,0,0,True
+PASS,Rock Slide,move-rock-slide,416,416,True,1,rock,rock,True,3,3,True
+PASS,Hyper Fang,move-hyper-fang,396,396,True,1,normal,normal,True,3,3,True
+PASS,Sharpen,move-sharpen,401,"356,401",True,1,normal,normal,True,0,0,True
+PASS,Conversion,move-conversion,391,391,True,2,normal,normal,True,2,2,True
+PASS,Tri Attack,move-tri-attack,405,405,True,1,normal,normal,True,3,3,True
+PASS,Super Fang,move-super-fang,403,403,True,1,normal,normal,True,0,*,True
+PASS,Slash,move-slash,402,"354,374,402,407",True,1,normal,normal,True,3,3,True
+PASS,Substitute,move-substitute,403,"348,403",True,1,normal,normal,True,0,0,True
+PASS,Struggle,move-struggle,424,"351,424",True,1,water,water,True,1,1,True
+PASS,Sketch,move-sketch,401,401,True,1,normal,normal,True,0,0,True
+PASS,Triple Kick,move-triple-kick,369,369,True,1,fighting,fighting,True,1,1,True
+PASS,Thief,move-thief,355,"355,378",True,1,dark,dark,True,2,2,True
+PASS,Spider Web,move-spider-web,351,351,True,1,bug,bug,True,0,0,True
+PASS,Mind Reader,move-mind-reader,397,397,True,1,normal,normal,True,0,0,True
+PASS,Nightmare,move-nightmare,377,"377,429",True,1,ghost,ghost,True,0,0,True
+PASS,Flame Wheel,move-flame-wheel,371,371,True,1,fire,fire,True,2,2,True
+PASS,Snore,move-snore,402,402,True,1,normal,normal,True,2,2,True
+PASS,Curse,move-curse,376,"376,379",True,1,ghost,ghost,True,0,0,True
+PASS,Flail,move-flail,393,393,True,1,normal,normal,True,1,1,True
+PASS,Conversion 2,move-conversion-2,391,391,True,1,normal,normal,True,0,0,True
+PASS,Aeroblast,move-aeroblast,373,373,True,1,flying,flying,True,4,4,True
+PASS,Cotton Spore,move-cotton-spore,379,379,True,1,grass,grass,True,0,0,True
+PASS,Reversal,move-reversal,368,368,True,1,fighting,fighting,True,1,1,True
+PASS,Spite,move-spite,378,378,True,1,ghost,ghost,True,0,0,True
+PASS,Powder Snow,move-powder-snow,388,388,True,1,ice,ice,True,2,2,True
+PASS,Protect,move-protect,399,"346,349,362,364,391,393,399,419,424",True,1,normal,normal,True,0,0,True
+PASS,Mach Punch,move-mach-punch,367,367,True,1,fighting,fighting,True,2,2,True
+PASS,Scary Face,move-scary-face,400,400,True,1,normal,normal,True,0,0,True
+PASS,Feint Attack,move-feint-attack,353,353,True,1,dark,dark,True,2,2,True
+PASS,Sweet Kiss,move-sweet-kiss,364,364,True,1,fairy,fairy,True,0,0,True
+PASS,Belly Drum,move-belly-drum,389,389,True,1,normal,normal,True,0,0,True
+PASS,Sludge Bomb,move-sludge-bomb,408,408,True,1,poison,poison,True,3,3,True
+PASS,Mud-Slap,move-mud-slap,385,385,True,1,ground,ground,True,1,1,True
+PASS,Octazooka,move-octazooka,422,422,True,1,water,water,True,2,2,True
+PASS,Spikes,move-spikes,385,"350,351,374,385,391,399,409",True,1,ground,ground,True,0,0,True
+PASS,Zap Cannon,move-zap-cannon,361,361,True,1,electric,electric,True,5,5,True
+PASS,Foresight,move-foresight,394,394,True,1,normal,normal,True,0,0,True
+PASS,Destiny Bond,move-destiny-bond,376,376,True,1,ghost,ghost,True,0,0,True
+PASS,Perish Song,move-perish-song,398,398,True,1,normal,normal,True,0,0,True
+PASS,Icy Wind,move-icy-wind,388,388,True,1,ice,ice,True,2,2,True
+PASS,Detect,move-detect,365,"365,398",True,1,fighting,fighting,True,0,0,True
+PASS,Bone Rush,move-bone-rush,383,383,True,1,ground,ground,True,1,1,True
+PASS,Lock-On,move-lock-on,396,396,True,1,normal,normal,True,0,0,True
+PASS,Outrage,move-outrage,358,358,True,1,dragon,dragon,True,5,5,True
+PASS,Sandstorm,move-sandstorm,417,"382,383,385,397,417,427",True,1,rock,rock,True,0,0,True
+PASS,Giga Drain,move-giga-drain,380,380,True,1,grass,grass,True,3,3,True
+PASS,Endure,move-endure,392,"378,392",True,1,normal,normal,True,0,0,True
+PASS,Charm,move-charm,362,362,True,1,fairy,fairy,True,0,0,True
+PASS,Rollout,move-rollout,417,417,True,1,rock,rock,True,1,1,True
+PASS,False Swipe,move-false-swipe,393,393,True,1,normal,normal,True,2,2,True
+PASS,Swagger,move-swagger,403,403,True,1,normal,normal,True,0,0,True
+PASS,Milk Drink,move-milk-drink,397,397,True,1,normal,normal,True,0,0,True
+PASS,Spark,move-spark,360,360,True,1,electric,electric,True,2,2,True
+PASS,Fury Cutter,move-fury-cutter,349,349,True,1,bug,bug,True,1,1,True
+PASS,Steel Wing,move-steel-wing,420,420,True,1,steel,steel,True,3,3,True
+PASS,Mean Look,move-mean-look,397,397,True,1,normal,normal,True,0,0,True
+PASS,Attract,move-attract,389,"389,404",True,1,normal,normal,True,0,0,True
+PASS,Sleep Talk,move-sleep-talk,402,402,True,1,normal,normal,True,0,*,True
+PASS,Heal Bell,move-heal-bell,395,395,True,1,normal,normal,True,0,0,True
+PASS,Return,move-return,400,400,True,1,normal,normal,True,0,*,True
+PASS,Present,move-present,398,398,True,1,normal,normal,True,0,0,True
+PASS,Frustration,move-frustration,394,394,True,1,normal,normal,True,0,*,True
+PASS,Safeguard,move-safeguard,400,400,True,1,normal,normal,True,0,0,True
+PASS,Pain Split,move-pain-split,398,398,True,1,normal,normal,True,0,0,True
+PASS,Sacred Fire,move-sacred-fire,372,372,True,1,fire,fire,True,4,4,True
+PASS,Magnitude,move-magnitude,384,384,True,1,ground,ground,True,0,*,True
+PASS,Dynamic Punch,move-dynamic-punch,366,366,True,1,fighting,fighting,True,4,4,True
+PASS,Megahorn,move-megahorn,350,350,True,1,bug,bug,True,5,5,True
+PASS,Dragon Breath,move-dragon-breath,356,356,True,1,dragon,dragon,True,2,2,True
+PASS,Baton Pass,move-baton-pass,389,389,True,1,normal,normal,True,0,0,True
+PASS,Encore,move-encore,392,392,True,1,normal,normal,True,0,0,True
+PASS,Pursuit,move-pursuit,355,"354,355,381",True,1,dark,dark,True,2,2,True
+PASS,Rapid Spin,move-rapid-spin,399,399,True,1,normal,normal,True,2,2,True
+PASS,Sweet Scent,move-sweet-scent,404,404,True,1,normal,normal,True,0,0,True
+PASS,Iron Tail,move-iron-tail,419,419,True,1,steel,steel,True,4,4,True
+PASS,Metal Claw,move-metal-claw,420,420,True,1,steel,steel,True,2,2,True
+PASS,Vital Throw,move-vital-throw,369,369,True,1,fighting,fighting,True,2,2,True
+PASS,Morning Sun,move-morning-sun,397,397,True,1,normal,normal,True,0,0,True
+PASS,Synthesis,move-synthesis,383,383,True,1,grass,grass,True,0,0,True
+PASS,Moonlight,move-moonlight,364,364,True,1,fairy,fairy,True,0,0,True
+PASS,Hidden Power,move-hidden-power,395,395,True,1,normal,normal,True,3,*,True
+PASS,Cross Chop,move-cross-chop,365,365,True,1,fighting,fighting,True,4,4,True
+PASS,Twister,move-twister,358,358,True,1,dragon,dragon,True,2,2,True
+PASS,Rain Dance,move-rain-dance,422,422,True,1,water,water,True,0,0,True
+PASS,Sunny Day,move-sunny-day,373,373,True,1,fire,fire,True,0,0,True
+PASS,Crunch,move-crunch,352,352,True,1,dark,dark,True,3,3,True
+PASS,Mirror Coat,move-mirror-coat,412,412,True,1,psychic,psychic,True,0,*,True
+PASS,Psych Up,move-psych-up,399,399,True,1,normal,normal,True,0,0,True
+PASS,Extreme Speed,move-extreme-speed,393,393,True,1,normal,normal,True,3,3,True
+PASS,Ancient Power,move-ancient-power,416,416,True,1,rock,rock,True,2,2,True
+PASS,Shadow Ball,move-shadow-ball,377,377,True,1,ghost,ghost,True,3,3,True
+PASS,Future Sight,move-future-sight,410,410,True,1,psychic,psychic,True,5,5,True
+PASS,Rock Smash,move-rock-smash,368,368,True,1,fighting,fighting,True,2,2,True
+PASS,Whirlpool,move-whirlpool,424,424,True,1,water,water,True,2,2,True
+PASS,Beat Up,move-beat-up,352,352,True,1,dark,dark,True,2,2,True
+PASS,Fake Out,move-fake-out,393,393,True,1,normal,normal,True,2,2,True
+PASS,Uproar,move-uproar,405,405,True,1,normal,normal,True,3,3,True
+PASS,Stockpile,move-stockpile,403,"402,403,404",True,1,normal,normal,True,0,0,True
+PASS,Spit Up,move-spit-up,402,402,True,1,normal,normal,True,4,4,True
+PASS,Swallow,move-swallow,404,404,True,1,normal,normal,True,0,0,True
+PASS,Heat Wave,move-heat-wave,371,371,True,1,fire,fire,True,3,3,True
+PASS,Hail,move-hail,387,"382,386,387,406,427",True,1,ice,ice,True,0,0,True
+PASS,Torment,move-torment,356,"356,376,377",True,1,dark,dark,True,0,0,True
+PASS,Flatter,move-flatter,353,353,True,1,dark,dark,True,0,0,True
+PASS,Will-O-Wisp,move-will-o-wisp,373,373,True,1,fire,fire,True,0,0,True
+PASS,Memento,move-memento,354,354,True,1,dark,dark,True,0,0,True
+PASS,Facade,move-facade,393,393,True,1,normal,normal,True,3,3,True
+PASS,Focus Punch,move-focus-punch,366,366,True,1,fighting,fighting,True,6,6,True
+PASS,Smelling Salts,move-smelling-salts,402,402,True,1,normal,normal,True,3,3,True
+PASS,Follow Me,move-follow-me,394,394,True,1,normal,normal,True,0,0,True
+PASS,Nature Power,move-nature-power,398,"359,363,376,379,382,385,387,398",True,1,normal,normal,True,3,3,True
+PASS,Charge,move-charge,359,"348,349,358,359,360,361,363,366,371,374,375,377,378,382,384,387,395,399,422",True,1,electric,electric,True,0,0,True
+PASS,Taunt,move-taunt,355,355,True,1,dark,dark,True,0,0,True
+PASS,Helping Hand,move-helping-hand,395,395,True,1,normal,normal,True,0,0,True
+PASS,Trick,move-trick,415,"378,409,412,413,415",True,1,psychic,psychic,True,0,0,True
+PASS,Role Play,move-role-play,414,414,True,1,psychic,psychic,True,0,0,True
+PASS,Wish,move-wish,406,"356,406,411,418,426",True,1,normal,normal,True,0,0,True
+PASS,Assist,move-assist,389,389,True,1,normal,normal,True,0,0,True
+PASS,Ingrain,move-ingrain,380,380,True,1,grass,grass,True,0,0,True
+PASS,Superpower,move-superpower,369,369,True,1,fighting,fighting,True,5,5,True
+PASS,Magic Coat,move-magic-coat,412,412,True,1,psychic,psychic,True,0,0,True
+PASS,Recycle,move-recycle,399,399,True,1,normal,normal,True,0,0,True
+PASS,Revenge,move-revenge,368,"368,427",True,1,fighting,fighting,True,2,2,True
+PASS,Brick Break,move-brick-break,365,365,True,1,fighting,fighting,True,3,3,True
+PASS,Yawn,move-yawn,406,406,True,1,normal,normal,True,0,0,True
+PASS,Knock Off,move-knock-off,354,354,True,1,dark,dark,True,2,2,True
+PASS,Endeavor,move-endeavor,392,392,True,1,normal,normal,True,0,0,True
+PASS,Eruption,move-eruption,370,"370,372,423",True,1,fire,fire,True,6,6,True
+PASS,Skill Swap,move-skill-swap,414,414,True,1,psychic,psychic,True,0,0,True
+PASS,Imprison,move-imprison,411,411,True,1,psychic,psychic,True,0,0,True
+PASS,Refresh,move-refresh,399,"379,399",True,1,normal,normal,True,0,0,True
+PASS,Grudge,move-grudge,376,376,True,1,ghost,ghost,True,0,0,True
+PASS,Snatch,move-snatch,355,355,True,1,dark,dark,True,0,0,True
+PASS,Secret Power,move-secret-power,401,401,True,1,normal,normal,True,3,3,True
+PASS,Dive,move-dive,422,422,True,1,water,water,True,2,2,True
+PASS,Arm Thrust,move-arm-thrust,365,"365,366",True,1,fighting,fighting,True,1,1,True
+PASS,Camouflage,move-camouflage,390,390,True,1,normal,normal,True,0,0,True
+PASS,Tail Glow,move-tail-glow,351,351,True,1,bug,bug,True,0,0,True
+PASS,Luster Purge,move-luster-purge,412,412,True,1,psychic,psychic,True,2,2,True
+PASS,Mist Ball,move-mist-ball,413,413,True,1,psychic,psychic,True,2,2,True
+PASS,Feather Dance,move-feather-dance,374,374,True,1,flying,flying,True,0,0,True
+PASS,Teeter Dance,move-teeter-dance,405,405,True,1,fire,fire,True,0,0,True
+PASS,Blaze Kick,move-blaze-kick,369,369,True,1,fire,fire,True,3,3,True
+PASS,Mud Sport,move-mud-sport,385,385,True,1,ground,ground,True,0,0,True
+PASS,Ice Ball,move-ice-ball,387,387,True,1,ice,ice,True,1,1,True
+PASS,Needle Arm,move-needle-arm,381,381,True,1,grass,grass,True,2,2,True
+PASS,Slack Off,move-slack-off,401,401,True,1,normal,normal,True,0,0,True
+PASS,Hyper Voice,move-hyper-voice,396,396,True,1,normal,normal,True,3,3,True
+PASS,Poison Fang,move-poison-fang,407,407,True,1,poison,poison,True,2,2,True
+PASS,Crush Claw,move-crush-claw,391,391,True,1,normal,normal,True,3,3,True
+PASS,Blast Burn,move-blast-burn,369,369,True,1,fire,fire,True,6,6,True
+PASS,Hydro Cannon,move-hydro-cannon,422,422,True,1,water,water,True,6,6,True
+PASS,Meteor Mash,move-meteor-mash,420,420,True,1,steel,steel,True,3,3,True
+PASS,Astonish,move-astonish,376,376,True,1,ghost,ghost,True,1,1,True
+PASS,Weather Ball,move-weather-ball,406,406,True,1,normal,normal,True,2,2,True
+PASS,Aromatherapy,move-aromatherapy,379,379,True,1,grass,grass,True,0,0,True
+PASS,Fake Tears,move-fake-tears,353,353,True,1,dark,dark,True,0,0,True
+PASS,Air Cutter,move-air-cutter,373,373,True,1,flying,flying,True,2,2,True
+PASS,Overheat,move-overheat,372,372,True,1,fire,fire,True,6,6,True
+PASS,Odor Sleuth,move-odor-sleuth,398,398,True,1,normal,normal,True,0,0,True
+PASS,Rock Tomb,move-rock-tomb,417,417,True,1,rock,rock,True,2,2,True
+PASS,Silver Wind,move-silver-wind,351,351,True,1,bug,bug,True,2,2,True
+PASS,Metal Sound,move-metal-sound,420,420,True,1,steel,steel,True,0,0,True
+PASS,Grass Whistle,move-grass-whistle,380,380,True,1,grass,grass,True,0,0,True
+PASS,Tickle,move-tickle,405,405,True,1,normal,normal,True,0,0,True
+PASS,Cosmic Power,move-cosmic-power,410,410,True,1,psychic,psychic,True,0,0,True
+PASS,Water Spout,move-water-spout,424,424,True,1,water,water,True,6,6,True
+PASS,Signal Beam,move-signal-beam,350,350,True,1,bug,bug,True,3,3,True
+PASS,Shadow Punch,move-shadow-punch,378,378,True,1,ghost,ghost,True,2,2,True
+PASS,Extrasensory,move-extrasensory,410,410,True,1,psychic,psychic,True,3,3,True
+PASS,Sky Uppercut,move-sky-uppercut,368,368,True,1,fighting,fighting,True,3,3,True
+PASS,Sand Tomb,move-sand-tomb,385,385,True,1,ground,ground,True,2,2,True
+PASS,Sheer Cold,move-sheer-cold,388,388,True,1,ice,ice,True,0,0,True
+PASS,Muddy Water,move-muddy-water,422,422,True,1,water,water,True,3,3,True
+PASS,Bullet Seed,move-bullet-seed,379,379,True,1,grass,grass,True,1,1,True
+PASS,Aerial Ace,move-aerial-ace,373,373,True,1,flying,flying,True,2,2,True
+PASS,Icicle Spear,move-icicle-spear,388,388,True,1,ice,ice,True,1,1,True
+PASS,Iron Defense,move-iron-defense,419,419,True,1,steel,steel,True,0,0,True
+PASS,Block,move-block,390,"348,354,367,387,390,399,411,415,421,424",True,1,normal,normal,True,0,0,True
+PASS,Howl,move-howl,395,395,True,1,normal,normal,True,0,0,True
+PASS,Dragon Claw,move-dragon-claw,357,357,True,1,dragon,dragon,True,3,3,True
+PASS,Frenzy Plant,move-frenzy-plant,379,379,True,1,grass,grass,True,6,6,True
+PASS,Bulk Up,move-bulk-up,365,365,True,1,fighting,fighting,True,0,0,True
+PASS,Bounce,move-bounce,374,"374,412,421",True,1,flying,flying,True,3,3,True
+PASS,Mud Shot,move-mud-shot,385,385,True,1,ground,ground,True,2,2,True
+PASS,Poison Tail,move-poison-tail,408,408,True,1,poison,poison,True,2,2,True
+PASS,Covet,move-covet,391,"356,391",True,1,normal,normal,True,2,2,True
+PASS,Volt Tackle,move-volt-tackle,361,361,True,1,electric,electric,True,5,5,True
+PASS,Magical Leaf,move-magical-leaf,381,381,True,1,grass,grass,True,2,2,True
+PASS,Water Sport,move-water-sport,424,424,True,1,water,water,True,0,0,True
+PASS,Calm Mind,move-calm-mind,410,410,True,1,psychic,psychic,True,0,0,True
+PASS,Leaf Blade,move-leaf-blade,380,380,True,1,grass,grass,True,3,3,True
+PASS,Dragon Dance,move-dragon-dance,357,357,True,1,dragon,dragon,True,0,0,True
+PASS,Rock Blast,move-rock-blast,416,416,True,1,rock,rock,True,1,1,True
+PASS,Shock Wave,move-shock-wave,360,360,True,1,electric,electric,True,2,2,True
+PASS,Water Pulse,move-water-pulse,424,424,True,1,water,water,True,2,2,True
+PASS,Doom Desire,move-doom-desire,418,418,True,1,steel,steel,True,6,6,True
+PASS,Psycho Boost,move-psycho-boost,414,414,True,1,psychic,psychic,True,6,6,True
+PASS,Roost,move-roost,375,375,True,1,flying,flying,True,0,0,True
+PASS,Gravity,move-gravity,410,410,True,1,psychic,psychic,True,0,0,True
+PASS,Miracle Eye,move-miracle-eye,412,412,True,1,psychic,psychic,True,0,0,True
+PASS,Wake-Up Slap,move-wake-up-slap,369,369,True,1,fighting,fighting,True,2,2,True
+PASS,Hammer Arm,move-hammer-arm,366,366,True,1,fighting,fighting,True,4,4,True
+PASS,Gyro Ball,move-gyro-ball,419,419,True,1,steel,steel,True,1,1,True
+PASS,Healing Wish,move-healing-wish,411,411,True,1,psychic,psychic,True,0,0,True
+PASS,Brine,move-brine,421,421,True,1,water,water,True,2,2,True
+PASS,Natural Gift,move-natural-gift,398,398,True,1,normal,normal,True,3,3,True
+PASS,Feint,move-feint,393,"353,393",True,1,normal,normal,True,1,1,True
+PASS,Pluck,move-pluck,375,375,True,1,flying,flying,True,2,2,True
+PASS,Tailwind,move-tailwind,376,"376,391",True,1,flying,flying,True,0,0,True
+PASS,Metal Burst,move-metal-burst,419,419,True,1,steel,steel,True,0,*,True
+PASS,U-turn,move-u-turn,351,351,True,1,bug,bug,True,3,3,True
+PASS,Close Combat,move-close-combat,365,365,True,1,fighting,fighting,True,5,5,True
+PASS,Payback,move-payback,354,354,True,1,dark,dark,True,2,2,True
+PASS,Assurance,move-assurance,352,352,True,1,dark,dark,True,2,2,True
+PASS,Embargo,move-embargo,353,353,True,1,dark,dark,True,0,0,True
+PASS,Fling,move-fling,353,353,True,1,dark,dark,True,1,1,True
+PASS,Psycho Shift,move-psycho-shift,414,414,True,1,psychic,psychic,True,0,0,True
+PASS,Trump Card,move-trump-card,405,405,True,1,normal,normal,True,2,2,True
+PASS,Heal Block,move-heal-block,411,411,True,1,psychic,psychic,True,0,0,True
+PASS,Wring Out,move-wring-out,406,406,True,1,fire,fire,True,5,5,True
+PASS,Power Trick,move-power-trick,413,413,True,1,psychic,psychic,True,0,0,True
+PASS,Gastro Acid,move-gastro-acid,407,407,True,1,poison,poison,True,0,0,True
+PASS,Lucky Chant,move-lucky-chant,396,396,True,1,normal,normal,True,0,0,True
+PASS,Me First,move-me-first,396,396,True,1,normal,normal,True,1,1,True
+PASS,Copycat,move-copycat,391,391,True,1,normal,normal,True,0,0,True
+PASS,Power Swap,move-power-swap,413,413,True,1,psychic,psychic,True,0,0,True
+PASS,Guard Swap,move-guard-swap,411,411,True,1,psychic,psychic,True,0,0,True
+PASS,Punishment,move-punishment,355,355,True,1,dark,dark,True,1,1,True
+PASS,Last Resort,move-last-resort,396,396,True,1,normal,normal,True,6,6,True
+PASS,Worry Seed,move-worry-seed,383,383,True,1,grass,grass,True,0,0,True
+PASS,Sucker Punch,move-sucker-punch,355,355,True,1,dark,dark,True,3,3,True
+PASS,Toxic Spikes,move-toxic-spikes,409,"374,391,409",True,1,poison,poison,True,0,0,True
+PASS,Heart Swap,move-heart-swap,411,411,True,1,psychic,psychic,True,0,0,True
+PASS,Aqua Ring,move-aqua-ring,421,421,True,1,water,water,True,0,0,True
+PASS,Magnet Rise,move-magnet-rise,360,360,True,1,electric,electric,True,0,0,True
+PASS,Flare Blitz,move-flare-blitz,371,371,True,1,fire,fire,True,5,5,True
+PASS,Force Palm,move-force-palm,366,366,True,1,fighting,fighting,True,2,2,True
+PASS,Aura Sphere,move-aura-sphere,365,365,True,1,fighting,fighting,True,3,3,True
+PASS,Rock Polish,move-rock-polish,416,416,True,1,rock,rock,True,0,0,True
+PASS,Poison Jab,move-poison-jab,408,408,True,1,poison,poison,True,3,3,True
+PASS,Dark Pulse,move-dark-pulse,352,352,True,1,dark,dark,True,3,3,True
+PASS,Night Slash,move-night-slash,354,354,True,1,dark,dark,True,3,3,True
+PASS,Aqua Tail,move-aqua-tail,421,421,True,1,water,water,True,3,3,True
+PASS,Seed Bomb,move-seed-bomb,382,382,True,1,grass,grass,True,3,3,True
+PASS,Air Slash,move-air-slash,374,374,True,1,electric,electric,True,3,3,True
+PASS,X-Scissor,move-x-scissor,351,351,True,1,bug,bug,True,3,3,True
+PASS,Bug Buzz,move-bug-buzz,349,349,True,1,bug,bug,True,3,3,True
+PASS,Dragon Pulse,move-dragon-pulse,357,357,True,1,dragon,dragon,True,3,3,True
+PASS,Dragon Rush,move-dragon-rush,357,357,True,1,dragon,dragon,True,4,4,True
+PASS,Power Gem,move-power-gem,416,416,True,1,rock,rock,True,3,3,True
+PASS,Drain Punch,move-drain-punch,366,366,True,1,fighting,fighting,True,3,3,True
+PASS,Vacuum Wave,move-vacuum-wave,369,369,True,1,fighting,fighting,True,2,2,True
+PASS,Focus Blast,move-focus-blast,366,366,True,1,fighting,fighting,True,5,5,True
+PASS,Energy Ball,move-energy-ball,379,379,True,1,grass,grass,True,3,3,True
+PASS,Brave Bird,move-brave-bird,374,374,True,1,flying,flying,True,5,5,True
+PASS,Earth Power,move-earth-power,384,384,True,1,ground,ground,True,3,3,True
+PASS,Switcheroo,move-switcheroo,355,355,True,1,dark,dark,True,0,0,True
+PASS,Giga Impact,move-giga-impact,394,394,True,1,normal,normal,True,6,6,True
+PASS,Nasty Plot,move-nasty-plot,354,354,True,1,dark,dark,True,0,0,True
+PASS,Bullet Punch,move-bullet-punch,418,418,True,1,steel,steel,True,2,2,True
+PASS,Avalanche,move-avalanche,386,386,True,1,ground,ground,True,2,2,True
+PASS,Ice Shard,move-ice-shard,388,388,True,1,ice,ice,True,2,2,True
+PASS,Shadow Claw,move-shadow-claw,377,377,True,1,ghost,ghost,True,3,3,True
+PASS,Thunder Fang,move-thunder-fang,361,361,True,1,electric,electric,True,2,2,True
+PASS,Ice Fang,move-ice-fang,387,387,True,1,ice,ice,True,2,2,True
+PASS,Fire Fang,move-fire-fang,370,370,True,1,fire,fire,True,2,2,True
+PASS,Shadow Sneak,move-shadow-sneak,378,378,True,1,ghost,ghost,True,2,2,True
+PASS,Mud Bomb,move-mud-bomb,385,385,True,1,ground,ground,True,2,2,True
+PASS,Psycho Cut,move-psycho-cut,414,414,True,1,psychic,psychic,True,3,3,True
+PASS,Zen Headbutt,move-zen-headbutt,415,415,True,1,psychic,psychic,True,3,3,True
+PASS,Mirror Shot,move-mirror-shot,420,420,True,1,steel,steel,True,2,2,True
+PASS,Flash Cannon,move-flash-cannon,418,418,True,1,steel,steel,True,3,3,True
+PASS,Rock Climb,move-rock-climb,400,400,True,1,normal,normal,True,3,3,True
+PASS,Defog,move-defog,374,374,True,1,dragon,dragon,True,0,0,True
+PASS,Trick Room,move-trick-room,415,415,True,1,psychic,psychic,True,0,0,True
+PASS,Draco Meteor,move-draco-meteor,356,356,True,1,dragon,dragon,True,6,6,True
+PASS,Discharge,move-discharge,359,"358,359,387,408",True,1,electric,electric,True,3,3,True
+PASS,Lava Plume,move-lava-plume,372,372,True,1,fire,fire,True,3,3,True
+PASS,Leaf Storm,move-leaf-storm,380,380,True,1,grass,grass,True,6,6,True
+PASS,Power Whip,move-power-whip,381,381,True,1,grass,grass,True,5,5,True
+PASS,Rock Wrecker,move-rock-wrecker,417,417,True,1,rock,rock,True,6,6,True
+PASS,Cross Poison,move-cross-poison,407,407,True,1,poison,poison,True,3,3,True
+PASS,Gunk Shot,move-gunk-shot,407,407,True,1,poison,poison,True,5,5,True
+PASS,Iron Head,move-iron-head,419,419,True,1,steel,steel,True,3,3,True
+PASS,Magnet Bomb,move-magnet-bomb,419,419,True,1,steel,steel,True,2,2,True
+PASS,Stone Edge,move-stone-edge,417,417,True,1,rock,rock,True,4,4,True
+PASS,Captivate,move-captivate,390,390,True,1,normal,normal,True,0,0,True
+PASS,Stealth Rock,move-stealth-rock,417,"374,399,412,417",True,1,rock,rock,True,0,0,True
+PASS,Grass Knot,move-grass-knot,380,380,True,1,grass,grass,True,1,1,True
+PASS,Chatter,move-chatter,374,374,True,1,flying,flying,True,2,2,True
+PASS,Judgment,move-judgment,396,396,True,1,normal,normal,True,5,*,True
+PASS,Bug Bite,move-bug-bite,349,349,True,1,bug,bug,True,2,2,True
+PASS,Charge Beam,move-charge-beam,359,359,True,1,electric,electric,True,2,2,True
+PASS,Wood Hammer,move-wood-hammer,383,383,True,1,grass,grass,True,5,5,True
+PASS,Aqua Jet,move-aqua-jet,421,421,True,1,water,water,True,2,2,True
+PASS,Attack Order,move-attack-order,349,349,True,1,bug,bug,True,3,3,True
+PASS,Defend Order,move-defend-order,349,349,True,1,bug,bug,True,0,0,True
+PASS,Heal Order,move-heal-order,349,349,True,1,bug,bug,True,0,0,True
+PASS,Head Smash,move-head-smash,416,416,True,1,rock,rock,True,6,6,True
+PASS,Double Hit,move-double-hit,392,392,True,1,normal,normal,True,2,2,True
+PASS,Roar of Time,move-roar-of-time,358,358,True,1,dragon,dragon,True,6,6,True
+PASS,Spacial Rend,move-spacial-rend,358,358,True,1,dragon,dragon,True,4,4,True
+PASS,Lunar Dance,move-lunar-dance,412,412,True,1,psychic,psychic,True,0,0,True
+PASS,Crush Grip,move-crush-grip,391,391,True,1,normal,normal,True,1,1,True
+PASS,Magma Storm,move-magma-storm,372,372,True,1,fire,fire,True,4,4,True
+PASS,Dark Void,move-dark-void,352,352,True,1,dark,dark,True,0,0,True
+PASS,Seed Flare,move-seed-flare,382,382,True,1,grass,grass,True,5,5,True
+PASS,Ominous Wind,move-ominous-wind,377,377,True,1,ghost,ghost,True,2,2,True
+PASS,Shadow Force,move-shadow-force,378,378,True,1,ghost,ghost,True,5,5,True
+PASS,Hone Claws,move-hone-claws,353,353,True,1,dark,dark,True,0,0,True
+PASS,Wide Guard,move-wide-guard,417,417,True,1,rock,rock,True,0,0,True
+PASS,Guard Split,move-guard-split,410,410,True,1,psychic,psychic,True,0,0,True
+PASS,Power Split,move-power-split,413,413,True,1,psychic,psychic,True,0,0,True
+PASS,Wonder Room,move-wonder-room,415,415,True,1,psychic,psychic,True,0,0,True
+PASS,Psyshock,move-psyshock,414,414,True,1,psychic,psychic,True,3,3,True
+PASS,Venoshock,move-venoshock,409,409,True,1,poison,poison,True,2,2,True
+PASS,Autotomize,move-autotomize,418,418,True,1,steel,steel,True,0,0,True
+PASS,Rage Powder,move-rage-powder,350,350,True,1,bug,bug,True,0,0,True
+PASS,Telekinesis,move-telekinesis,415,"413,415",True,1,psychic,psychic,True,0,0,True
+PASS,Magic Room,move-magic-room,412,412,True,1,psychic,psychic,True,0,0,True
+PASS,Smack Down,move-smack-down,417,417,True,1,rock,rock,True,2,2,True
+PASS,Storm Throw,move-storm-throw,368,368,True,1,fighting,fighting,True,2,2,True
+PASS,Flame Burst,move-flame-burst,371,371,True,1,fire,fire,True,3,3,True
+PASS,Sludge Wave,move-sludge-wave,408,408,True,1,poison,poison,True,3,3,True
+PASS,Quiver Dance,move-quiver-dance,350,350,True,1,bug,bug,True,0,0,True
+PASS,Heavy Slam,move-heavy-slam,419,419,True,1,steel,steel,True,1,1,True
+PASS,Synchronoise,move-synchronoise,415,415,True,1,psychic,psychic,True,5,5,True
+PASS,Electro Ball,move-electro-ball,359,359,True,1,electric,electric,True,2,2,True
+PASS,Soak,move-soak,423,423,True,1,water,water,True,0,0,True
+PASS,Flame Charge,move-flame-charge,371,371,True,1,fire,fire,True,2,2,True
+PASS,Coil,move-coil,407,407,True,1,poison,poison,True,0,0,True
+PASS,Low Sweep,move-low-sweep,367,367,True,1,fighting,fighting,True,2,2,True
+PASS,Acid Spray,move-acid-spray,407,407,True,1,poison,poison,True,2,2,True
+PASS,Foul Play,move-foul-play,353,353,True,1,dark,dark,True,3,3,True
+PASS,Simple Beam,move-simple-beam,401,401,True,1,normal,normal,True,0,0,True
+PASS,Entrainment,move-entrainment,393,393,True,1,normal,normal,True,0,0,True
+PASS,After You,move-after-you,389,389,True,1,normal,normal,True,0,0,True
+PASS,Round,move-round,358,"346,348,349,350,352,354,356,358,359,361,363,365,367,368,370,371,372,376,377,380,381,382,385,386,387,389,390,392,393,394,397,400,405,406,409,410,411,414,417,418,421,422,424,425",True,1,dragon,dragon,True,2,2,True
+PASS,Echoed Voice,move-echoed-voice,392,392,True,1,normal,normal,True,2,2,True
+PASS,Chip Away,move-chip-away,390,390,True,1,normal,normal,True,3,3,True
+PASS,Clear Smog,move-clear-smog,407,407,True,1,poison,poison,True,2,2,True
+PASS,Stored Power,move-stored-power,415,415,True,1,psychic,psychic,True,1,1,True
+PASS,Quick Guard,move-quick-guard,368,368,True,1,fighting,fighting,True,0,0,True
+PASS,Ally Switch,move-ally-switch,409,409,True,1,psychic,psychic,True,0,0,True
+PASS,Scald,move-scald,423,423,True,1,water,water,True,3,3,True
+PASS,Shell Smash,move-shell-smash,401,401,True,1,normal,normal,True,0,0,True
+PASS,Heal Pulse,move-heal-pulse,411,411,True,1,psychic,psychic,True,0,0,True
+PASS,Hex,move-hex,377,377,True,1,ghost,ghost,True,2,2,True
+PASS,Sky Drop,move-sky-drop,375,375,True,1,flying,flying,True,2,2,True
+PASS,Shift Gear,move-shift-gear,420,420,True,1,steel,steel,True,0,0,True
+PASS,Circle Throw,move-circle-throw,365,365,True,1,fighting,fighting,True,2,2,True
+PASS,Incinerate,move-incinerate,371,371,True,1,fire,fire,True,2,2,True
+PASS,Quash,move-quash,355,355,True,1,dark,dark,True,0,0,True
+PASS,Acrobatics,move-acrobatics,373,373,True,1,flying,flying,True,4,4,True
+PASS,Reflect Type,move-reflect-type,399,399,True,1,normal,normal,True,0,0,True
+PASS,Retaliate,move-retaliate,400,"368,389,400",True,1,normal,normal,True,3,3,True
+PASS,Final Gambit,move-final-gambit,366,366,True,1,fighting,fighting,True,4,4,True
+PASS,Bestow,move-bestow,389,389,True,1,normal,normal,True,0,0,True
+PASS,Inferno,move-inferno,372,"372,429",True,1,fire,fire,True,4,4,True
+PASS,Water Pledge,move-water-pledge,423,423,True,1,water,water,True,2,2,True
+PASS,Fire Pledge,move-fire-pledge,370,370,True,1,fire,fire,True,2,2,True
+PASS,Grass Pledge,move-grass-pledge,380,380,True,1,grass,grass,True,2,2,True
+PASS,Volt Switch,move-volt-switch,361,361,True,1,electric,electric,True,2,2,True
+PASS,Struggle Bug,move-struggle-bug,351,351,True,1,bug,bug,True,1,1,True
+PASS,Bulldoze,move-bulldoze,384,384,True,1,ground,ground,True,2,2,True
+PASS,Frost Breath,move-frost-breath,387,387,True,1,ice,ice,True,2,2,True
+PASS,Dragon Tail,move-dragon-tail,357,357,True,1,dragon,dragon,True,2,2,True
+PASS,Work Up,move-work-up,406,406,True,1,normal,normal,True,0,0,True
+PASS,Electroweb,move-electroweb,359,359,True,1,electric,electric,True,2,2,True
+PASS,Wild Charge,move-wild-charge,361,361,True,1,electric,electric,True,3,3,True
+PASS,Drill Run,move-drill-run,384,384,True,1,ground,ground,True,3,3,True
+PASS,Dual Chop,move-dual-chop,357,357,True,1,dragon,dragon,True,2,2,True
+PASS,Heart Stamp,move-heart-stamp,411,411,True,1,psychic,psychic,True,2,2,True
+PASS,Horn Leech,move-horn-leech,380,380,True,1,grass,grass,True,3,3,True
+PASS,Sacred Sword,move-sacred-sword,368,368,True,1,fighting,fighting,True,3,3,True
+PASS,Razor Shell,move-razor-shell,423,423,True,1,water,water,True,3,3,True
+PASS,Heat Crash,move-heat-crash,371,371,True,1,fire,fire,True,2,2,True
+PASS,Leaf Tornado,move-leaf-tornado,381,381,True,1,grass,grass,True,2,2,True
+PASS,Steamroller,move-steamroller,351,351,True,1,bug,bug,True,2,2,True
+PASS,Cotton Guard,move-cotton-guard,379,379,True,1,grass,grass,True,0,0,True
+PASS,Night Daze,move-night-daze,354,354,True,1,dark,dark,True,3,3,True
+PASS,Psystrike,move-psystrike,414,414,True,1,psychic,psychic,True,4,4,True
+PASS,Tail Slap,move-tail-slap,404,404,True,1,normal,normal,True,1,1,True
+PASS,Hurricane,move-hurricane,375,"375,425",True,1,flying,flying,True,5,5,True
+PASS,Head Charge,move-head-charge,395,395,True,1,normal,normal,True,5,5,True
+PASS,Gear Grind,move-gear-grind,419,419,True,1,steel,steel,True,2,2,True
+PASS,Searing Shot,move-searing-shot,372,372,True,1,fire,fire,True,5,5,True
+PASS,Techno Blast,move-techno-blast,405,405,True,1,fire,fire,True,5,5,True
+PASS,Relic Song,move-relic-song,400,400,True,1,normal,normal,True,2,2,True
+PASS,Secret Sword,move-secret-sword,368,368,True,1,fighting,fighting,True,3,3,True
+PASS,Glaciate,move-glaciate,387,387,True,1,ice,ice,True,2,2,True
+PASS,Bolt Strike,move-bolt-strike,358,358,True,1,electric,electric,True,6,6,True
+PASS,Blue Flare,move-blue-flare,370,370,True,1,fire,fire,True,6,6,True
+PASS,Fiery Dance,move-fiery-dance,370,370,True,1,fire,fire,True,3,3,True
+PASS,Freeze Shock,move-freeze-shock,387,387,True,1,ice,ice,True,6,6,True
+PASS,Ice Burn,move-ice-burn,387,387,True,1,ice,ice,True,6,6,True
+PASS,Snarl,move-snarl,355,355,True,1,dark,dark,True,2,2,True
+PASS,Icicle Crash,move-icicle-crash,388,388,True,1,ice,ice,True,3,3,True
+PASS,V-create,move-v-create,373,373,True,1,fire,fire,True,7,7,True
+PASS,Fusion Flare,move-fusion-flare,371,"359,371",True,1,fire,fire,True,4,4,True
+PASS,Fusion Bolt,move-fusion-bolt,359,"359,371",True,1,electric,electric,True,4,4,True
+PASS,Flying Press,move-flying-press,366,366,True,1,fighting,fighting,True,3,3,True
+PASS,Mat Block,move-mat-block,367,367,True,1,fighting,fighting,True,0,0,True
+PASS,Belch,move-belch,407,407,True,1,poison,poison,True,5,5,True
+PASS,Rototiller,move-rototiller,385,385,True,1,ground,ground,True,0,0,True
+PASS,Sticky Web,move-sticky-web,351,"351,391",True,1,bug,bug,True,0,0,True
+PASS,Fell Stinger,move-fell-stinger,349,349,True,1,bug,bug,True,1,1,True
+PASS,Phantom Force,move-phantom-force,377,377,True,1,ghost,ghost,True,3,3,True
+PASS,Trick-or-Treat,move-trick-or-treat,378,378,True,1,ghost,ghost,True,0,0,True
+PASS,Noble Roar,move-noble-roar,398,398,True,1,normal,normal,True,0,0,True
+PASS,Ion Deluge,move-ion-deluge,360,360,True,1,electric,electric,True,0,0,True
+PASS,Parabolic Charge,move-parabolic-charge,360,360,True,1,electric,electric,True,2,2,True
+PASS,Forest’s Curse,move-forests-curse,379,379,True,1,grass,grass,True,0,0,True
+PASS,Petal Blizzard,move-petal-blizzard,381,381,True,1,grass,grass,True,3,3,True
+PASS,Freeze-Dry,move-freeze-dry,386,386,True,1,ice,ice,True,3,3,True
+PASS,Disarming Voice,move-disarming-voice,363,363,True,1,fairy,fairy,True,2,2,True
+PASS,Parting Shot,move-parting-shot,354,354,True,1,dark,dark,True,0,0,True
+PASS,Topsy-Turvy,move-topsy-turvy,356,356,True,1,dark,dark,True,0,0,True
+PASS,Draining Kiss,move-draining-kiss,363,363,True,1,fairy,fairy,True,2,2,True
+PASS,Crafty Shield,move-crafty-shield,362,362,True,1,fairy,fairy,True,0,0,True
+PASS,Flower Shield,move-flower-shield,363,363,True,1,fairy,fairy,True,0,0,True
+PASS,Grassy Terrain,move-grassy-terrain,380,"363,380,391,427",True,1,grass,grass,True,0,0,True
+PASS,Misty Terrain,move-misty-terrain,363,"363,374,426",True,1,fairy,fairy,True,0,0,True
+PASS,Electrify,move-electrify,359,359,True,1,electric,electric,True,0,0,True
+PASS,Play Rough,move-play-rough,364,364,True,1,fairy,fairy,True,3,3,True
+PASS,Fairy Wind,move-fairy-wind,363,363,True,1,fairy,fairy,True,2,2,True
+PASS,Moonblast,move-moonblast,364,364,True,1,fairy,fairy,True,3,3,True
+PASS,Boomburst,move-boomburst,390,390,True,1,normal,normal,True,6,6,True
+PASS,Fairy Lock,move-fairy-lock,363,363,True,1,fairy,fairy,True,0,0,True
+PASS,King’s Shield,move-kings-shield,419,419,True,1,steel,steel,True,0,0,True
+PASS,Play Nice,move-play-nice,398,398,True,1,normal,normal,True,0,0,True
+PASS,Confide,move-confide,390,390,True,1,normal,normal,True,0,0,True
+PASS,Diamond Storm,move-diamond-storm,416,416,True,1,rock,rock,True,4,4,True
+PASS,Steam Eruption,move-steam-eruption,423,423,True,1,water,water,True,4,4,True
+PASS,Hyperspace Hole,move-hyperspace-hole,411,411,True,1,psychic,psychic,True,3,3,True
+PASS,Water Shuriken,move-water-shuriken,424,424,True,1,water,water,True,1,1,True
+PASS,Mystical Fire,move-mystical-fire,372,372,True,1,fire,fire,True,2,2,True
+PASS,Spiky Shield,move-spiky-shield,382,382,True,1,grass,grass,True,0,0,True
+PASS,Aromatic Mist,move-aromatic-mist,362,362,True,1,fairy,fairy,True,0,0,True
+PASS,Eerie Impulse,move-eerie-impulse,359,359,True,1,electric,electric,True,0,0,True
+PASS,Venom Drench,move-venom-drench,409,409,True,1,poison,poison,True,0,0,True
+PASS,Powder,move-powder,350,"350,382,388,408,412",True,1,bug,bug,True,0,0,True
+PASS,Geomancy,move-geomancy,363,363,True,1,fairy,fairy,True,0,0,True
+PASS,Magnetic Flux,move-magnetic-flux,360,360,True,1,electric,electric,True,3,3,True
+PASS,Electric Terrain,move-electric-terrain,359,"359,374,426",True,1,electric,electric,True,0,0,True
+PASS,Dazzling Gleam,move-dazzling-gleam,362,362,True,1,fairy,fairy,True,3,3,True
+PASS,Baby-Doll Eyes,move-baby-doll-eyes,362,362,True,1,fairy,fairy,True,0,0,True
+PASS,Nuzzle,move-nuzzle,360,360,True,1,electric,electric,True,1,1,True
+PASS,Infestation,move-infestation,350,350,True,1,bug,bug,True,1,1,True
+PASS,Power-Up Punch,move-power-up-punch,367,367,True,1,fighting,fighting,True,2,2,True
+PASS,Oblivion Wing,move-oblivion-wing,375,375,True,1,flying,flying,True,4,4,True
+PASS,Thousand Arrows,move-thousand-arrows,386,386,True,1,ground,ground,True,3,3,True
+PASS,Thousand Waves,move-thousand-waves,386,386,True,1,ground,ground,True,3,3,True
+PASS,Land’s Wrath,move-lands-wrath,384,384,True,1,ground,ground,True,3,3,True
+PASS,Light of Ruin,move-light-of-ruin,363,363,True,1,fairy,fairy,True,6,6,True
+PASS,Origin Pulse,move-origin-pulse,422,422,True,1,water,water,True,4,4,True
+PASS,Precipice Blades,move-precipice-blades,385,385,True,1,ground,ground,True,5,5,True
+PASS,Dragon Ascent,move-dragon-ascent,374,374,True,1,dragon,dragon,True,5,5,True
+PASS,Hyperspace Fury,move-hyperspace-fury,353,353,True,1,dark,dark,True,4,4,True
+PASS,Breakneck Blitz,move-breakneck-blitz-physical,430,430,True,1,normal,normal,True,0,*,True
+PASS,Breakneck Blitz,move-breakneck-blitz-special,430,430,True,1,normal,normal,True,0,*,True
+PASS,All-Out Pummeling,move-all-out-pummeling-physical,429,429,True,1,fighting,fighting,True,0,*,True
+PASS,All-Out Pummeling,move-all-out-pummeling-special,429,429,True,1,fighting,fighting,True,0,*,True
+PASS,Supersonic Skystrike,move-supersonic-skystrike-physical,429,429,True,1,flying,flying,True,0,*,True
+PASS,Supersonic Skystrike,move-supersonic-skystrike-special,429,429,True,1,flying,flying,True,0,*,True
+PASS,Acid Downpour,move-acid-downpour-physical,430,430,True,1,poison,poison,True,0,*,True
+PASS,Acid Downpour,move-acid-downpour-special,430,430,True,1,poison,poison,True,0,*,True
+PASS,Tectonic Rage,move-tectonic-rage-physical,430,430,True,1,ground,ground,True,0,*,True
+PASS,Tectonic Rage,move-tectonic-rage-special,430,430,True,1,ground,ground,True,0,*,True
+PASS,Continental Crush,move-continental-crush-physical,430,430,True,1,rock,rock,True,0,*,True
+PASS,Continental Crush,move-continental-crush-special,430,430,True,1,rock,rock,True,0,*,True
+PASS,Savage Spin-Out,move-savage-spin-out-physical,428,428,True,1,bug,bug,True,2,2,True
+PASS,Savage Spin-Out,move-savage-spin-out-special,428,428,True,1,bug,bug,True,2,2,True
+PASS,Never-Ending Nightmare,move-never-ending-nightmare-physical,429,429,True,1,ghost,ghost,True,0,*,True
+PASS,Never-Ending Nightmare,move-never-ending-nightmare-special,429,429,True,1,ghost,ghost,True,0,*,True
+PASS,Corkscrew Crash,move-corkscrew-crash-physical,430,430,True,1,steel,steel,True,0,*,True
+PASS,Corkscrew Crash,move-corkscrew-crash-special,430,430,True,1,steel,steel,True,0,*,True
+PASS,Inferno Overdrive,move-inferno-overdrive-physical,429,429,True,1,fire,fire,True,0,*,True
+PASS,Inferno Overdrive,move-inferno-overdrive-special,429,429,True,1,fire,fire,True,0,*,True
+PASS,Hydro Vortex,move-hydro-vortex-physical,430,430,True,1,water,water,True,0,*,True
+PASS,Hydro Vortex,move-hydro-vortex-special,430,430,True,1,water,water,True,0,*,True
+PASS,Bloom Doom,move-bloom-doom-physical,429,429,True,1,grass,grass,True,0,*,True
+PASS,Bloom Doom,move-bloom-doom-special,429,429,True,1,grass,grass,True,0,*,True
+PASS,Gigavolt Havoc,move-gigavolt-havoc-physical,429,429,True,1,electric,electric,True,0,*,True
+PASS,Gigavolt Havoc,move-gigavolt-havoc-special,429,429,True,1,electric,electric,True,0,*,True
+PASS,Shattered Psyche,move-shattered-psyche-physical,430,430,True,1,psychic,psychic,True,0,*,True
+PASS,Shattered Psyche,move-shattered-psyche-special,430,430,True,1,psychic,psychic,True,0,*,True
+PASS,Subzero Slammer,move-subzero-slammer-physical,430,430,True,1,ice,ice,True,0,*,True
+PASS,Subzero Slammer,move-subzero-slammer-special,430,430,True,1,ice,ice,True,0,*,True
+PASS,Devastating Drake,move-devastating-drake-physical,429,429,True,1,dragon,dragon,True,0,*,True
+PASS,Devastating Drake,move-devastating-drake-special,429,429,True,1,dragon,dragon,True,0,*,True
+PASS,Black Hole Eclipse,move-black-hole-eclipse-physical,429,429,True,1,dark,dark,True,0,*,True
+PASS,Black Hole Eclipse,move-black-hole-eclipse-special,429,429,True,1,dark,dark,True,0,*,True
+PASS,Twinkle Tackle,move-twinkle-tackle-physical,429,429,True,1,fairy,fairy,True,0,*,True
+PASS,Twinkle Tackle,move-twinkle-tackle-special,429,429,True,1,fairy,fairy,True,0,*,True
+PASS,Shore Up,move-shore-up,385,385,True,1,ground,ground,True,0,0,True
+PASS,First Impression,move-first-impression,349,349,True,1,bug,bug,True,3,3,True
+PASS,Baneful Bunker,move-baneful-bunker,407,407,True,1,poison,poison,True,0,0,True
+PASS,Spirit Shackle,move-spirit-shackle,378,378,True,1,ghost,ghost,True,3,3,True
+PASS,Darkest Lariat,move-darkest-lariat,353,353,True,1,dark,dark,True,3,3,True
+PASS,Sparkling Aria,move-sparkling-aria,423,423,True,1,water,water,True,3,3,True
+PASS,Ice Hammer,move-ice-hammer,388,388,True,1,ice,ice,True,4,4,True
+PASS,Floral Healing,move-floral-healing,363,363,True,1,fairy,fairy,True,0,0,True
+PASS,High Horsepower,move-high-horsepower,384,384,True,1,ground,ground,True,3,3,True
+PASS,Strength Sap,move-strength-sap,382,382,True,1,grass,grass,True,0,0,True
+PASS,Solar Blade,move-solar-blade,382,382,True,1,grass,grass,True,5,5,True
+PASS,Leafage,move-leafage,381,381,True,1,grass,grass,True,2,2,True
+PASS,Spotlight,move-spotlight,403,403,True,1,normal,normal,True,0,0,True
+PASS,Toxic Thread,move-toxic-thread,409,409,True,1,poison,poison,True,0,0,True
+PASS,Laser Focus,move-laser-focus,396,396,True,1,normal,normal,True,0,*,True
+PASS,Gear Up,move-gear-up,419,419,True,1,steel,steel,True,0,0,True
+PASS,Throat Chop,move-throat-chop,355,355,True,1,dark,dark,True,3,3,True
+PASS,Pollen Puff,move-pollen-puff,350,350,True,1,bug,bug,True,3,3,True
+PASS,Anchor Shot,move-anchor-shot,418,418,True,1,steel,steel,True,3,3,True
+PASS,Psychic Terrain,move-psychic-terrain,413,"413,427,430",True,1,psychic,psychic,True,0,0,True
+PASS,Lunge,move-lunge,350,"350,367,376",True,1,bug,bug,True,3,3,True
+PASS,Fire Lash,move-fire-lash,370,370,True,1,fire,fire,True,3,3,True
+PASS,Power Trip,move-power-trip,354,354,True,1,dark,dark,True,1,1,True
+PASS,Burn Up,move-burn-up,370,370,True,1,fire,fire,True,7,7,True
+PASS,Speed Swap,move-speed-swap,415,415,True,1,psychic,psychic,True,0,0,True
+PASS,Smart Strike,move-smart-strike,420,420,True,1,steel,steel,True,3,3,True
+PASS,Purify,move-purify,408,408,True,1,poison,poison,True,0,0,True
+PASS,Revelation Dance,move-revelation-dance,400,400,True,1,normal,normal,True,3,3,True
+PASS,Core Enforcer,move-core-enforcer,356,356,True,1,dragon,dragon,True,4,4,True
+PASS,Trop Kick,move-trop-kick,383,383,True,1,grass,grass,True,3,3,True
+PASS,Instruct,move-instruct,411,411,True,1,psychic,psychic,True,0,0,True
+PASS,Beak Blast,move-beak-blast,374,374,True,1,flying,flying,True,4,4,True
+PASS,Clanging Scales,move-clanging-scales,356,356,True,1,dragon,dragon,True,4,4,True
+PASS,Dragon Hammer,move-dragon-hammer,357,357,True,1,dragon,dragon,True,3,3,True
+PASS,Brutal Swing,move-brutal-swing,352,352,True,1,dark,dark,True,2,2,True
+PASS,Aurora Veil,move-aurora-veil,386,386,True,1,ground,ground,True,0,0,True
+PASS,Shell Trap,move-shell-trap,372,372,True,1,fire,fire,True,6,6,True
+PASS,Fleur Cannon,move-fleur-cannon,363,363,True,1,fairy,fairy,True,6,6,True
+PASS,Psychic Fangs,move-psychic-fangs,413,413,True,1,psychic,psychic,True,3,3,True
+PASS,Stomping Tantrum,move-stomping-tantrum,386,386,True,1,ground,ground,True,3,3,True
+PASS,Shadow Bone,move-shadow-bone,377,377,True,1,ghost,ghost,True,3,3,True
+PASS,Accelerock,move-accelerock,416,416,True,1,rock,rock,True,2,2,True
+PASS,Liquidation,move-liquidation,422,422,True,1,water,water,True,3,3,True
+PASS,Prismatic Laser,move-prismatic-laser,413,413,True,1,psychic,psychic,True,6,6,True
+PASS,Spectral Thief,move-spectral-thief,378,378,True,1,ghost,ghost,True,3,3,True
+PASS,Sunsteel Strike,move-sunsteel-strike,420,420,True,1,steel,steel,True,4,4,True
+PASS,Moongeist Beam,move-moongeist-beam,377,377,True,1,ghost,ghost,True,4,4,True
+PASS,Tearful Look,move-tearful-look,404,404,True,1,normal,normal,True,0,0,True
+PASS,Zing Zap,move-zing-zap,362,362,True,1,electric,electric,True,3,3,True
+PASS,Nature’s Madness,move-natures-madness,364,364,True,1,fairy,fairy,True,0,*,True
+PASS,Multi-Attack,move-multi-attack,397,397,True,1,normal,normal,True,3,3,True
+PASS,Mind Blown,move-mind-blown,372,372,True,1,fire,fire,True,6,6,True
+PASS,Plasma Fists,move-plasma-fists,360,360,True,1,electric,electric,True,4,4,True
+PASS,Photon Geyser,move-photon-geyser,413,413,True,1,psychic,psychic,True,4,4,True
+PASS,Zippy Zap,move-zippy-zap,362,362,True,1,fairy,fairy,True,2,2,True
+PASS,Splishy Splash,move-splishy-splash,423,423,True,1,water,water,True,3,3,True
+PASS,Floaty Fall,move-floaty-fall,374,374,True,1,flying,flying,True,3,3,True
+PASS,Pika Papow,move-pika-papow,360,360,True,1,electric,electric,True,0,0,True
+PASS,Bouncy Bubble,move-bouncy-bubble,421,421,True,1,water,water,True,3,3,True
+PASS,Buzzy Buzz,move-buzzy-buzz,359,359,True,1,electric,electric,True,3,3,True
+PASS,Sizzly Slide,move-sizzly-slide,373,373,True,1,fire,fire,True,3,3,True
+PASS,Glitzy Glow,move-glitzy-glow,410,410,True,1,psychic,psychic,True,3,3,True
+PASS,Baddy Bad,move-baddy-bad,352,352,True,1,dark,dark,True,3,3,True
+PASS,Sappy Seed,move-sappy-seed,382,382,True,1,grass,grass,True,3,3,True
+PASS,Freezy Frost,move-freezy-frost,387,387,True,1,ice,ice,True,3,3,True
+PASS,Sparkly Swirl,move-sparkly-swirl,364,364,True,1,fairy,fairy,True,3,3,True
+PASS,Veevee Volley,move-veevee-volley,405,405,True,1,normal,normal,True,0,*,True
+PASS,Double Iron Bash,move-double-iron-bash,418,418,True,1,steel,steel,True,2,2,True
+PASS,Dynamax Cannon,move-dynamax-cannon,357,357,True,1,dragon,dragon,True,4,4,True
+PASS,Snipe Shot,move-snipe-shot,423,423,True,1,water,water,True,3,3,True
+PASS,Jaw Lock,move-jaw-lock,354,354,True,1,dark,dark,True,3,3,True
+PASS,Stuff Cheeks,move-stuff-cheeks,403,403,True,1,normal,normal,True,0,0,True
+PASS,No Retreat,move-no-retreat,367,367,True,1,fighting,fighting,True,0,0,True
+PASS,Tar Shot,move-tar-shot,417,417,True,1,rock,rock,True,0,0,True
+PASS,Magic Powder,move-magic-powder,412,412,True,1,psychic,psychic,True,0,0,True
+PASS,Dragon Darts,move-dragon-darts,357,357,True,1,dragon,dragon,True,2,2,True
+PASS,Teatime,move-teatime,404,404,True,1,normal,normal,True,0,0,True
+PASS,Octolock,move-octolock,367,367,True,1,fighting,fighting,True,0,0,True
+PASS,Bolt Beak,move-bolt-beak,358,358,True,1,electric,electric,True,2,2,True
+PASS,Fishious Rend,move-fishious-rend,422,422,True,1,water,water,True,3,3,True
+PASS,Court Change,move-court-change,391,391,True,1,normal,normal,True,0,0,True
+PASS,Max Flare,move-max-flare,426,426,True,1,fire,fire,True,2,2,True
+PASS,Max Flutterby,move-max-flutterby,425,425,True,1,bug,bug,True,1,1,True
+PASS,Max Lightning,move-max-lightning,426,426,True,1,electric,electric,True,2,2,True
+PASS,Max Strike,move-max-strike,427,427,True,1,normal,normal,True,2,2,True
+PASS,Max Knuckle,move-max-knuckle,426,426,True,1,fighting,fighting,True,2,2,True
+PASS,Max Phantasm,move-max-phantasm,426,426,True,1,ghost,ghost,True,2,2,True
+PASS,Max Hailstorm,move-max-hailstorm,427,427,True,1,ice,ice,True,2,2,True
+PASS,Max Ooze,move-max-ooze,427,427,True,1,poison,poison,True,2,2,True
+PASS,Max Geyser,move-max-geyser,428,428,True,1,water,water,True,2,2,True
+PASS,Max Airstream,move-max-airstream,426,426,True,1,flying,flying,True,2,2,True
+PASS,Max Starfall,move-max-starfall,426,426,True,1,fairy,fairy,True,2,2,True
+PASS,Max Wyrmwind,move-max-wyrmwind,426,426,True,1,dragon,dragon,True,2,2,True
+PASS,Max Mindstorm,move-max-mindstorm,427,427,True,1,psychic,psychic,True,2,2,True
+PASS,Max Rockfall,move-max-rockfall,427,427,True,1,rock,rock,True,2,2,True
+PASS,Max Quake,move-max-quake,427,427,True,1,ground,ground,True,2,2,True
+PASS,Max Darkness,move-max-darkness,426,426,True,1,dark,dark,True,2,2,True
+PASS,Max Overgrowth,move-max-overgrowth,427,427,True,1,grass,grass,True,2,2,True
+PASS,Max Steelspike,move-max-steelspike,427,427,True,1,steel,steel,True,2,2,True
+PASS,Clangorous Soul,move-clangorous-soul,356,356,True,1,dragon,dragon,True,0,0,True
+PASS,Body Press,move-body-press,365,365,True,1,fighting,fighting,True,3,3,True
+PASS,Decorate,move-decorate,362,362,True,1,fairy,fairy,True,0,0,True
+PASS,Drum Beating,move-drum-beating,379,379,True,1,grass,grass,True,3,3,True
+PASS,Snap Trap,move-snap-trap,382,382,True,1,grass,grass,True,2,2,True
+PASS,Pyro Ball,move-pyro-ball,372,372,True,1,fire,fire,True,5,5,True
+PASS,Aura Wheel,move-aura-wheel,358,358,True,1,electric,electric,True,4,4,True
+PASS,Breaking Swipe,move-breaking-swipe,356,356,True,1,dragon,dragon,True,2,2,True
+PASS,Branch Poke,move-branch-poke,379,379,True,1,grass,grass,True,2,2,True
+PASS,Overdrive,move-overdrive,360,"360,429",True,1,electric,electric,True,3,3,True
+PASS,Apple Acid,move-apple-acid,379,379,True,1,grass,grass,True,3,3,True
+PASS,Grav Apple,move-grav-apple,380,380,True,1,grass,grass,True,3,3,True
+PASS,Spirit Break,move-spirit-break,364,364,True,1,fairy,fairy,True,2,2,True
+PASS,Strange Steam,move-strange-steam,364,364,True,1,fighting,fighting,True,3,3,True
+PASS,Life Dew,move-life-dew,422,422,True,1,water,water,True,0,0,True
+PASS,Obstruct,move-obstruct,354,"354,422",True,1,dark,dark,True,0,0,True
+PASS,False Surrender,move-false-surrender,353,353,True,1,dark,dark,True,3,3,True
+PASS,Meteor Assault,move-meteor-assault,367,367,True,1,fighting,fighting,True,6,6,True
+PASS,Eternabeam,move-eternabeam,358,358,True,1,dragon,dragon,True,7,7,True
+PASS,Steel Beam,move-steel-beam,420,420,True,1,steel,steel,True,6,6,True
+PASS,Raging Fury,move-raging-fury,355,355,True,1,dark,dark,True,2,2,True
