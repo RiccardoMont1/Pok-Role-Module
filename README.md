@@ -38,6 +38,8 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
   - Trainer sheet
   - Pokemon sheet
   - Pokemon `Settings` tab for per-actor track maximums (saved on that actor only)
+  - Pokemon attribute cap rules: `Strength/Dexterity/Vitality/Special/Insight` configurable up to `12`; social attributes, skills, and `Extra` fixed to `1-5`
+  - Pokemon settings include per-actor `manual core base` fields and `learnable moves by rank` notes
   - Ailment quick toggles (Sleep, Burn, Frozen, Paralyzed, Poisoned, Fainted) on Trainer and Pokemon sheets, with icon chips
   - Pokemon matchup panel rendered with multiplier icons (`1/2`, `1/4`, `x2`, `x4`, `x0`) plus type icons
   - Move item sheet

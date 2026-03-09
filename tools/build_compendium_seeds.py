@@ -55,6 +55,15 @@ POKROLE_SKILL_KEYS = [
     "throw",
     "weapons"
 ]
+POKEMON_TIER_KEYS = [
+    "starter",
+    "beginner",
+    "amateur",
+    "ace",
+    "pro",
+    "master",
+    "champion"
+]
 MOVE_SECTION_START_PAGE = 346
 MOVE_SECTION_END_PAGE = 430
 ABILITY_SECTION_START_PAGE = 434
@@ -239,6 +248,10 @@ def scale_power(raw_power):
         return 0
     mapped = round(raw_power / 20)
     return clamp(mapped, 1, 7)
+
+
+def empty_rank_learnset():
+    return {key: "" for key in POKEMON_TIER_KEYS}
 
 
 def write_module(path, const_name, payload):
@@ -1179,15 +1192,15 @@ def build_pokemon_actors():
         attributes = {key: 1 for key in POKROLE_ATTRIBUTE_KEYS}
         attributes.update(core_attributes)
 
-        skills = {key: 0 for key in POKROLE_SKILL_KEYS}
+        skills = {key: 1 for key in POKROLE_SKILL_KEYS}
         skills.update({
-            "brawl": scale_actor_skill(core_attributes["strength"]),
-            "channel": scale_actor_skill(core_attributes["special"]),
-            "clash": scale_actor_skill(core_attributes["vitality"]),
-            "evasion": scale_actor_skill(core_attributes["dexterity"]),
-            "alert": scale_actor_skill(core_attributes["insight"]),
-            "athletic": scale_actor_skill(core_attributes["vitality"]),
-            "nature": scale_actor_skill(core_attributes["insight"])
+            "brawl": max(1, scale_actor_skill(core_attributes["strength"])),
+            "channel": max(1, scale_actor_skill(core_attributes["special"])),
+            "clash": max(1, scale_actor_skill(core_attributes["vitality"])),
+            "evasion": max(1, scale_actor_skill(core_attributes["dexterity"])),
+            "alert": max(1, scale_actor_skill(core_attributes["insight"])),
+            "athletic": max(1, scale_actor_skill(core_attributes["vitality"])),
+            "nature": max(1, scale_actor_skill(core_attributes["insight"]))
         })
 
         hp_max = clamp(5 + core_attributes["vitality"], 6, 24)
@@ -1245,14 +1258,14 @@ def build_pokemon_actors():
                 "happiness": 2,
                 "battles": 0,
                 "victories": 0,
-                "extra": 0,
+                "extra": 1,
+                "manualCoreBase": core_attributes,
                 "sheetSettings": {
                     "trackMax": {
-                        "attributes": {key: 12 for key in POKROLE_ATTRIBUTE_KEYS},
-                        "skills": {key: 12 for key in POKROLE_SKILL_KEYS},
-                        "extra": 12
+                        "attributes": {key: 12 for key in core_attributes.keys()}
                     }
                 },
+                "learnsetByRank": empty_rank_learnset(),
                 "combatProfile": {
                     "accuracy": core_attributes["dexterity"],
                     "damage": core_attributes["strength"],

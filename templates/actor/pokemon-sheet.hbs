@@ -1,32 +1,43 @@
 <form class="{{cssClass}} pok-role-sheet pokemon-sheet" autocomplete="off">
-  <nav class="pokemon-view-nav" aria-label="{{localize 'POKROLE.Pokemon.LearnableMovesTab'}}">
-    <button
-      type="button"
-      class="pokemon-view-button is-active"
-      data-action="switch-pokemon-tab"
-      data-tab="main"
-    >
-      {{localize "POKROLE.Pokemon.MainSheetTab"}}
-    </button>
-    <button
-      type="button"
-      class="pokemon-view-button"
-      data-action="switch-pokemon-tab"
-      data-tab="learned"
-    >
-      {{localize "POKROLE.Pokemon.LearnableMovesTab"}}
-    </button>
-    <button
-      type="button"
-      class="pokemon-view-button"
-      data-action="switch-pokemon-tab"
-      data-tab="settings"
-    >
-      {{localize "POKROLE.Pokemon.SettingsTab"}}
-    </button>
-  </nav>
+  <div class="pokemon-sheet-shell">
+    <nav class="pokemon-view-nav" aria-label="{{localize 'POKROLE.Pokemon.LearnableMovesTab'}}">
+      <button
+        type="button"
+        class="pokemon-view-button is-active"
+        data-action="switch-pokemon-tab"
+        data-tab="main"
+        title="{{localize 'POKROLE.Pokemon.MainSheetTab'}}"
+        aria-label="{{localize 'POKROLE.Pokemon.MainSheetTab'}}"
+      >
+        <i class="fas fa-id-card"></i>
+        <span class="pokemon-view-label">{{localize "POKROLE.Pokemon.MainSheetTab"}}</span>
+      </button>
+      <button
+        type="button"
+        class="pokemon-view-button"
+        data-action="switch-pokemon-tab"
+        data-tab="learned"
+        title="{{localize 'POKROLE.Pokemon.LearnableMovesTab'}}"
+        aria-label="{{localize 'POKROLE.Pokemon.LearnableMovesTab'}}"
+      >
+        <i class="fas fa-book-open"></i>
+        <span class="pokemon-view-label">{{localize "POKROLE.Pokemon.LearnableMovesTab"}}</span>
+      </button>
+      <button
+        type="button"
+        class="pokemon-view-button"
+        data-action="switch-pokemon-tab"
+        data-tab="settings"
+        title="{{localize 'POKROLE.Pokemon.SettingsTab'}}"
+        aria-label="{{localize 'POKROLE.Pokemon.SettingsTab'}}"
+      >
+        <i class="fas fa-sliders-h"></i>
+        <span class="pokemon-view-label">{{localize "POKROLE.Pokemon.SettingsTab"}}</span>
+      </button>
+    </nav>
 
-  <div class="pokemon-view-panel is-active" data-tab="main">
+    <div class="pokemon-view-content">
+      <div class="pokemon-view-panel is-active" data-tab="main">
     <div class="pokemon-arcade-top">
       <header class="sheet-header pokemon-identity-header">
         <img
@@ -452,7 +463,7 @@
           <input
             type="hidden"
             name="system.extra"
-            value="{{system.extra}}"
+            value="{{pokemonExtraTrack.value}}"
             data-dtype="Number"
           />
           <div class="track-bar compact" style="{{pokemonExtraTrack.style}}">
@@ -571,9 +582,9 @@
         placeholder="{{localize 'POKROLE.Common.BiographyPlaceholder'}}"
       >{{system.biography}}</textarea>
     </section>
-  </div>
+      </div>
 
-  <div class="pokemon-view-panel" data-tab="learned">
+      <div class="pokemon-view-panel" data-tab="learned">
     <section class="sheet-section pokemon-moves-section">
       <div class="section-title-row">
         <h2>{{localize "POKROLE.Pokemon.LearnableMovesTab"}}</h2>
@@ -649,18 +660,18 @@
       <p class="empty-state">{{localize "POKROLE.Move.Empty"}}</p>
       {{/if}}
     </section>
-  </div>
+      </div>
 
-  <div class="pokemon-view-panel" data-tab="settings">
+      <div class="pokemon-view-panel" data-tab="settings">
     <section class="sheet-section pokemon-settings-section">
       <h2>{{localize "POKROLE.Pokemon.SettingsTitle"}}</h2>
       <p class="inline-meta">{{localize "POKROLE.Pokemon.SettingsHint"}}</p>
 
       <div class="pokemon-settings-grid">
         <section class="pokemon-settings-block">
-          <h3>{{localize "POKROLE.Pokemon.SettingsAttributesMax"}}</h3>
+          <h3>{{localize "POKROLE.Pokemon.SettingsCoreBase"}}</h3>
           <div class="pokemon-settings-list">
-            {{#each pokemonTrackSettingAttributes as |row|}}
+            {{#each pokemonCoreBaseAttributes as |row|}}
             <label>
               <span>{{localize row.label}}</span>
               <input
@@ -677,9 +688,9 @@
         </section>
 
         <section class="pokemon-settings-block">
-          <h3>{{localize "POKROLE.Pokemon.SettingsSkillsMax"}}</h3>
+          <h3>{{localize "POKROLE.Pokemon.SettingsCoreMax"}}</h3>
           <div class="pokemon-settings-list">
-            {{#each pokemonTrackSettingSkills as |row|}}
+            {{#each pokemonTrackSettingCoreAttributes as |row|}}
             <label>
               <span>{{localize row.label}}</span>
               <input
@@ -697,18 +708,27 @@
       </div>
 
       <div class="pokemon-settings-extra">
-        <label>
-          <span>{{localize "POKROLE.Pokemon.SettingsExtraMax"}}</span>
-          <input
-            type="number"
-            name="{{pokemonTrackSettingExtra.fieldPath}}"
-            value="{{pokemonTrackSettingExtra.value}}"
-            min="1"
-            max="12"
-            data-dtype="Number"
-          />
-        </label>
+        <p class="inline-meta">{{localize "POKROLE.Pokemon.SettingsFixedAtFive"}}</p>
       </div>
+
+      <section class="pokemon-settings-block pokemon-settings-learnset">
+        <h3>{{localize "POKROLE.Pokemon.RankLearnsetTitle"}}</h3>
+        <p class="inline-meta">{{localize "POKROLE.Pokemon.RankLearnsetHint"}}</p>
+        <div class="pokemon-rank-learnset-list">
+          {{#each pokemonLearnsetByRankRows as |row|}}
+          <label>
+            <span>{{localize row.label}}</span>
+            <textarea
+              name="{{row.fieldPath}}"
+              rows="2"
+              placeholder="{{localize 'POKROLE.Pokemon.RankLearnsetPlaceholder'}}"
+            >{{row.value}}</textarea>
+          </label>
+          {{/each}}
+        </div>
+      </section>
     </section>
+      </div>
+    </div>
   </div>
 </form>

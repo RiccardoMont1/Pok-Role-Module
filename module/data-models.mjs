@@ -34,6 +34,24 @@ function valueSchema(definitions, initial = 1, options = {}) {
   return schema;
 }
 
+function pokemonAttributeSchema() {
+  const coreKeys = new Set(CORE_ATTRIBUTE_DEFINITIONS.map((attribute) => attribute.key));
+  const schema = {};
+  for (const { key } of ATTRIBUTE_DEFINITIONS) {
+    const maxValue = coreKeys.has(key) ? 12 : 5;
+    schema[key] = integerField(1, { min: 1, max: maxValue });
+  }
+  return schema;
+}
+
+function rankLearnsetSchema() {
+  const schema = {};
+  for (const rankKey of POKEMON_TIER_KEYS) {
+    schema[rankKey] = trimmedStringField("");
+  }
+  return new SchemaField(schema);
+}
+
 function trimmedStringField(initial = "") {
   return new StringField({ required: true, blank: true, trim: true, initial });
 }
@@ -111,8 +129,8 @@ export class PokemonDataModel extends BaseCharacterDataModel {
     const base = super.defineSchema();
     return {
       ...base,
-      attributes: new SchemaField(valueSchema(ATTRIBUTE_DEFINITIONS, 1, { max: 12 })),
-      skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 0, { max: 12 })),
+      attributes: new SchemaField(pokemonAttributeSchema()),
+      skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 1, { min: 1, max: 5 })),
       species: trimmedStringField(""),
       ability: trimmedStringField(""),
       nature: trimmedStringField(""),
@@ -151,16 +169,18 @@ export class PokemonDataModel extends BaseCharacterDataModel {
       happiness: integerField(2, { min: 0, max: 5 }),
       battles: integerField(0, { min: 0 }),
       victories: integerField(0, { min: 0 }),
-      extra: integerField(0, { min: 0, max: 12 }),
+      extra: integerField(1, { min: 1, max: 5 }),
+      manualCoreBase: new SchemaField(
+        valueSchema(CORE_ATTRIBUTE_DEFINITIONS, 1, { min: 1, max: 12 })
+      ),
       sheetSettings: new SchemaField({
         trackMax: new SchemaField({
           attributes: new SchemaField(
-            valueSchema(ATTRIBUTE_DEFINITIONS, 5, { min: 1, max: 12 })
-          ),
-          skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 5, { min: 1, max: 12 })),
-          extra: integerField(5, { min: 1, max: 12 })
+            valueSchema(CORE_ATTRIBUTE_DEFINITIONS, 12, { min: 1, max: 12 })
+          )
         })
       }),
+      learnsetByRank: rankLearnsetSchema(),
       combatProfile: new SchemaField({
         accuracy: integerField(0, { min: 0, max: 99 }),
         damage: integerField(0, { min: 0, max: 99 }),

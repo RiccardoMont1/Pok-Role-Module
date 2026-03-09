@@ -1046,29 +1046,50 @@
   border-radius: 16px;
 }
 
+.pokemon-sheet .pokemon-sheet-shell {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.pokemon-sheet .pokemon-view-content {
+  min-width: 0;
+}
+
 .pokemon-sheet .pokemon-view-nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0 0 12px;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
   padding: 0;
 }
 
 .pokemon-sheet .pokemon-view-button {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
   border: 3px solid var(--pk-outline);
-  border-radius: 999px;
-  padding: 6px 14px;
+  border-radius: 10px;
+  padding: 0;
   background: #f0f2f8;
   color: var(--pk-ink);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  line-height: 1;
 }
 
 .pokemon-sheet .pokemon-view-button.is-active {
   background: #2f342d;
   color: #ffffff;
+}
+
+.pokemon-sheet .pokemon-view-button .pokemon-view-label {
+  display: none;
 }
 
 .pokemon-sheet .pokemon-view-panel {
@@ -1584,6 +1605,10 @@
   margin: 0 0 8px;
 }
 
+.pokemon-sheet .pokemon-settings-block .inline-meta {
+  color: #5a6274;
+}
+
 .pokemon-sheet .pokemon-settings-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1611,7 +1636,8 @@
 }
 
 .pokemon-sheet .pokemon-settings-list label,
-.pokemon-sheet .pokemon-settings-extra label {
+.pokemon-sheet .pokemon-settings-extra label,
+.pokemon-sheet .pokemon-rank-learnset-list label {
   margin: 0;
   border: 2px solid var(--pk-outline);
   border-radius: 12px;
@@ -1620,7 +1646,8 @@
 }
 
 .pokemon-sheet .pokemon-settings-list label span,
-.pokemon-sheet .pokemon-settings-extra label span {
+.pokemon-sheet .pokemon-settings-extra label span,
+.pokemon-sheet .pokemon-rank-learnset-list label span {
   color: #7d3727;
   font-size: 0.74rem;
   font-weight: 700;
@@ -1628,7 +1655,8 @@
 }
 
 .pokemon-sheet .pokemon-settings-list input,
-.pokemon-sheet .pokemon-settings-extra input {
+.pokemon-sheet .pokemon-settings-extra input,
+.pokemon-sheet .pokemon-rank-learnset-list textarea {
   height: 28px;
   border: none;
   border-radius: 8px;
@@ -1639,7 +1667,29 @@
 
 .pokemon-sheet .pokemon-settings-extra {
   margin-top: 10px;
-  max-width: 240px;
+}
+
+.pokemon-sheet .pokemon-settings-learnset {
+  margin-top: 10px;
+}
+
+.pokemon-sheet .pokemon-rank-learnset-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.pokemon-sheet .pokemon-rank-learnset-list label {
+  display: grid;
+  gap: 4px;
+}
+
+.pokemon-sheet .pokemon-rank-learnset-list textarea {
+  min-height: 56px;
+  height: auto;
+  resize: vertical;
+  padding: 6px 8px;
+  line-height: 1.25;
 }
 
 @media (max-width: 1250px) {
@@ -1671,6 +1721,32 @@
 
   .pokemon-sheet .pokemon-identity-header {
     grid-template-columns: 1fr;
+  }
+
+  .pokemon-sheet .pokemon-sheet-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .pokemon-sheet .pokemon-view-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .pokemon-sheet .pokemon-view-button {
+    width: auto;
+    min-width: 124px;
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 999px;
+    justify-content: flex-start;
+  }
+
+  .pokemon-sheet .pokemon-view-button .pokemon-view-label {
+    display: inline;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
   }
 
   .pokemon-sheet .pokemon-identity-header .resource-grid {

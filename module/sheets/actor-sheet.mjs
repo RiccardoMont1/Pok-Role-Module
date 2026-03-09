@@ -1,7 +1,9 @@
 import {
   ATTRIBUTE_DEFINITIONS,
+  CORE_ATTRIBUTE_DEFINITIONS,
   MOVE_CATEGORY_LABEL_BY_KEY,
   MOVE_TYPE_LABEL_BY_KEY,
+  POKEMON_TIER_KEYS,
   POKEMON_TIER_LABEL_BY_KEY,
   SKILL_DEFINITIONS,
   TRAINER_CARD_RANK_LABEL_BY_KEY,
@@ -15,6 +17,10 @@ const TEMPLATE_BY_TYPE = Object.freeze({
   trainer: "systems/pok-role-module/templates/actor/trainer-sheet.hbs",
   pokemon: "systems/pok-role-module/templates/actor/pokemon-sheet.hbs"
 });
+const CORE_ATTRIBUTE_KEYS = Object.freeze(
+  CORE_ATTRIBUTE_DEFINITIONS.map((attribute) => attribute.key)
+);
+const CORE_ATTRIBUTE_KEY_SET = new Set(CORE_ATTRIBUTE_KEYS);
 
 const AILMENT_DEFINITIONS = Object.freeze([
   {
@@ -187,7 +193,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         "dexterity",
         "insight",
         "special"
-      ], trackMax.attributes);
+      ], trackMax.attributes, 1);
       context.pokemonSocialRows = this._buildAttributeRows([
         "tough",
         "beauty",
@@ -195,29 +201,28 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         "cute",
         "clever",
         "allure"
-      ], trackMax.attributes);
-      context.pokemonSkillRows = this._buildSkillRows(pokemonSkillKeys, trackMax.skills);
-      context.pokemonExtraTrack = this._buildTrack(this.actor.system.extra, trackMax.extra, 0);
+      ], trackMax.attributes, 1);
+      context.pokemonSkillRows = this._buildSkillRows(pokemonSkillKeys, trackMax.skills, 1);
+      context.pokemonExtraTrack = this._buildTrack(this.actor.system.extra, trackMax.extra, 1);
       context.pokemonMatchups = this._buildPokemonMatchups();
-      context.pokemonTrackSettingAttributes = [
-        ...context.pokemonPhysicalMentalRows,
-        ...context.pokemonSocialRows
-      ].map((row) => ({
+      context.pokemonTrackSettingCoreAttributes = context.pokemonPhysicalMentalRows.map((row) => ({
         key: row.key,
         label: row.label,
         fieldPath: `system.sheetSettings.trackMax.attributes.${row.key}`,
-        value: trackMax.attributes?.[row.key] ?? 5
+        value: trackMax.attributes?.[row.key] ?? 12
       }));
-      context.pokemonTrackSettingSkills = context.pokemonSkillRows.map((row) => ({
-        key: row.key,
-        label: row.label,
-        fieldPath: `system.sheetSettings.trackMax.skills.${row.key}`,
-        value: trackMax.skills?.[row.key] ?? 5
+      context.pokemonCoreBaseAttributes = CORE_ATTRIBUTE_DEFINITIONS.map((attribute) => ({
+        key: attribute.key,
+        label: attribute.label,
+        fieldPath: `system.manualCoreBase.${attribute.key}`,
+        value: this._resolveTrackMax(this.actor.system.manualCoreBase?.[attribute.key], 1)
       }));
-      context.pokemonTrackSettingExtra = {
-        fieldPath: "system.sheetSettings.trackMax.extra",
-        value: trackMax.extra
-      };
+      context.pokemonLearnsetByRankRows = POKEMON_TIER_KEYS.map((rankKey) => ({
+        key: rankKey,
+        label: POKEMON_TIER_LABEL_BY_KEY[rankKey] ?? "POKROLE.Common.Unknown",
+        fieldPath: `system.learnsetByRank.${rankKey}`,
+        value: `${this.actor.system.learnsetByRank?.[rankKey] ?? ""}`
+      }));
       context.evolutionTimeOptions = {
         fast: "POKROLE.Pokemon.EvolutionFast",
         medium: "POKROLE.Pokemon.EvolutionMedium",
@@ -728,30 +733,32 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     return "1A";
   }
 
-  _buildAttributeRows(attributeKeys, trackMaxByKey = null) {
+  _buildAttributeRows(attributeKeys, trackMaxByKey = null, minValue = 0) {
     return attributeKeys.map((attributeKey) => {
       const value = Number(this.actor.system.attributes?.[attributeKey] ?? 0);
       const maxValue = this._resolveTrackMax(trackMaxByKey?.[attributeKey], 5);
+      const track = this._buildTrack(value, maxValue, minValue);
       return {
         key: attributeKey,
         label: TRAIT_LABEL_BY_KEY[attributeKey] ?? "POKROLE.Common.Unknown",
-        value,
+        value: track.value,
         fieldPath: `system.attributes.${attributeKey}`,
-        track: this._buildTrack(value, maxValue, 0)
+        track
       };
     });
   }
 
-  _buildSkillRows(skillKeys, trackMaxByKey = null) {
+  _buildSkillRows(skillKeys, trackMaxByKey = null, minValue = 0) {
     return skillKeys.map((skillKey) => {
       const value = Number(this.actor.system.skills?.[skillKey] ?? 0);
       const maxValue = this._resolveTrackMax(trackMaxByKey?.[skillKey], 5);
+      const track = this._buildTrack(value, maxValue, minValue);
       return {
         key: skillKey,
         label: TRAIT_LABEL_BY_KEY[skillKey] ?? "POKROLE.Common.Unknown",
-        value,
+        value: track.value,
         fieldPath: `system.skills.${skillKey}`,
-        track: this._buildTrack(value, maxValue, 0)
+        track
       };
     });
   }
@@ -783,20 +790,22 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   _getPokemonTrackMaxConfig() {
-    const settings = this.actor.system.sheetSettings?.trackMax ?? {};
+    const settings = this.actor.system.sheetSettings?.trackMax?.attributes ?? {};
     const attributes = Object.fromEntries(
       ATTRIBUTE_DEFINITIONS.map((attribute) => [
         attribute.key,
-        this._resolveTrackMax(settings.attributes?.[attribute.key], 5)
+        CORE_ATTRIBUTE_KEY_SET.has(attribute.key)
+          ? this._resolveTrackMax(settings?.[attribute.key], 12)
+          : 5
       ])
     );
     const skills = Object.fromEntries(
       SKILL_DEFINITIONS.map((skill) => [
         skill.key,
-        this._resolveTrackMax(settings.skills?.[skill.key], 5)
+        5
       ])
     );
-    const extra = this._resolveTrackMax(settings.extra, 5);
+    const extra = 5;
     return { attributes, skills, extra };
   }
 
