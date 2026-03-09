@@ -2,9 +2,11 @@ import { POKROLE } from "../constants.mjs";
 import { MOVE_COMPENDIUM_ENTRIES } from "./generated/move-seeds.mjs";
 import { POKEDEX_COMPENDIUM_ENTRIES } from "./generated/pokedex-seeds.mjs";
 import { ABILITY_COMPENDIUM_ENTRIES } from "./generated/ability-seeds.mjs";
+import { POKEMON_ACTOR_COMPENDIUM_ENTRIES } from "./generated/pokemon-actor-seeds.mjs";
 
-export const COMPENDIUM_SEED_VERSION = "2026-03-09-corebook-moves-abilities-full-v1";
+export const COMPENDIUM_SEED_VERSION = "2026-03-09-corebook-moves-abilities-pokemon-actors-v3";
 const VALID_ITEM_TYPES = new Set(["move", "gear", "ability", "weather", "status", "pokedex"]);
+const VALID_ACTOR_TYPES = new Set(["trainer", "pokemon"]);
 
 function baseStatus() {
   return {
@@ -821,9 +823,21 @@ const ITEM_SEEDS = Object.freeze({
   abilities: ABILITY_COMPENDIUM_ENTRIES
 });
 
+const ACTOR_SEEDS = Object.freeze({
+  "pokemon-actors": POKEMON_ACTOR_COMPENDIUM_ENTRIES
+});
+
+export const STATIC_ITEM_SEEDS_BY_PACK = ITEM_SEEDS;
+export const STATIC_ACTOR_SEEDS_BY_PACK = ACTOR_SEEDS;
+
 function getSeedCollection(packName, documentName) {
-  if (documentName !== "Item") return [];
-  return ITEM_SEEDS[packName] ?? [];
+  if (documentName === "Item") {
+    return ITEM_SEEDS[packName] ?? [];
+  }
+  if (documentName === "Actor") {
+    return ACTOR_SEEDS[packName] ?? [];
+  }
+  return [];
 }
 
 async function ensureUnlocked(pack) {
@@ -873,6 +887,16 @@ export async function seedCompendia({ force = false, notify = true } = {}) {
       if (!force && pack.documentName === "Item") {
         const incompatibleIds = index
           .filter((entry) => !VALID_ITEM_TYPES.has(`${entry.type ?? ""}`))
+          .map((entry) => entry._id)
+          .filter(Boolean);
+        if (incompatibleIds.length > 0) {
+          await pack.documentClass.deleteDocuments(incompatibleIds, { pack: pack.collection });
+        }
+      }
+
+      if (!force && pack.documentName === "Actor") {
+        const incompatibleIds = index
+          .filter((entry) => !VALID_ACTOR_TYPES.has(`${entry.type ?? ""}`))
           .map((entry) => entry._id)
           .filter(Boolean);
         if (incompatibleIds.length > 0) {

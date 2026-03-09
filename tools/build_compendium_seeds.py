@@ -19,6 +19,39 @@ TYPE_FALLBACKS = {
     "shadow": "ghost",
     "unknown": "normal"
 }
+POKROLE_ATTRIBUTE_KEYS = [
+    "strength",
+    "dexterity",
+    "vitality",
+    "special",
+    "insight",
+    "tough",
+    "beauty",
+    "cool",
+    "cute",
+    "clever",
+    "allure"
+]
+POKROLE_SKILL_KEYS = [
+    "alert",
+    "athletic",
+    "brawl",
+    "channel",
+    "clash",
+    "crafts",
+    "empathy",
+    "etiquette",
+    "evasion",
+    "intimidate",
+    "lore",
+    "medicine",
+    "nature",
+    "perform",
+    "science",
+    "stealth",
+    "throw",
+    "weapons"
+]
 MOVE_SECTION_START_PAGE = 346
 MOVE_SECTION_END_PAGE = 430
 ABILITY_SECTION_START_PAGE = 434
@@ -123,6 +156,30 @@ def rank_from_bst(bst):
     if bst <= 700:
         return "master"
     return "champion"
+
+
+def scale_actor_attribute(base_stat):
+    if base_stat <= 0:
+        return 1
+    return clamp(round(base_stat / 21), 1, 12)
+
+
+def scale_actor_skill(attribute_value):
+    return clamp(round((attribute_value - 1) / 2), 0, 5)
+
+
+def format_meters_from_decimeters(value):
+    meters = (value or 0) / 10
+    if float(meters).is_integer():
+        return f"{int(meters)} m"
+    return f"{meters:.1f} m"
+
+
+def format_kilograms_from_hectograms(value):
+    kilograms = (value or 0) / 10
+    if float(kilograms).is_integer():
+        return f"{int(kilograms)} kg"
+    return f"{kilograms:.1f} kg"
 
 
 def scale_power(raw_power):
@@ -908,16 +965,281 @@ def build_pokedex():
     return list(unique_entries.values())
 
 
+def build_pokemon_actors():
+    species = load_csv("pokemon_species.csv")
+    species_names = load_csv("pokemon_species_names.csv")
+    pokemon = load_csv("pokemon.csv")
+    pokemon_types = load_csv("pokemon_types.csv")
+    pokemon_stats = load_csv("pokemon_stats.csv")
+    pokemon_abilities = load_csv("pokemon_abilities.csv")
+    abilities = load_csv("abilities.csv")
+    ability_names = load_csv("ability_names.csv")
+    types = load_csv("types.csv")
+    habitats = load_csv("pokemon_habitats.csv")
+    habitat_names = load_csv("pokemon_habitat_names.csv")
+
+    type_by_id = {int(row["id"]): row["identifier"] for row in types}
+    species_name_en = {
+        int(row["pokemon_species_id"]): row["name"]
+        for row in species_names
+        if row["local_language_id"] == "9"
+    }
+    ability_identifier_by_id = {int(row["id"]): row["identifier"] for row in abilities}
+    ability_name_en = {
+        int(row["ability_id"]): row["name"]
+        for row in ability_names
+        if row["local_language_id"] == "9"
+    }
+    habitat_identifier_by_id = {int(row["id"]): row["identifier"] for row in habitats}
+    habitat_name_en = {
+        int(row["pokemon_habitat_id"]): row["name"]
+        for row in habitat_names
+        if row["local_language_id"] == "9"
+    }
+
+    pokemon_by_id = {int(row["id"]): row for row in pokemon}
+    default_pokemon_by_species = {}
+    forms = []
+    for row in pokemon:
+        species_id = int(row["species_id"])
+        if species_id > 890:
+            continue
+        if row["is_default"] == "1":
+            default_pokemon_by_species[species_id] = int(row["id"])
+        else:
+            identifier = row["identifier"]
+            if any(tag in identifier for tag in ("-alola", "-galar", "-mega", "-primal")):
+                forms.append(int(row["id"]))
+
+    type_rows_by_pokemon = {}
+    for row in pokemon_types:
+        pokemon_id = int(row["pokemon_id"])
+        type_rows_by_pokemon.setdefault(pokemon_id, []).append((int(row["slot"]), int(row["type_id"])))
+
+    bst_by_pokemon = {}
+    stat_values_by_pokemon = {}
+    for row in pokemon_stats:
+        pokemon_id = int(row["pokemon_id"])
+        stat_id = int(row["stat_id"])
+        base_stat = int(row["base_stat"])
+        bst_by_pokemon[pokemon_id] = bst_by_pokemon.get(pokemon_id, 0) + base_stat
+        stat_values_by_pokemon.setdefault(pokemon_id, {})[stat_id] = base_stat
+
+    abilities_by_pokemon = {}
+    for row in pokemon_abilities:
+        pokemon_id = int(row["pokemon_id"])
+        abilities_by_pokemon.setdefault(pokemon_id, []).append((int(row["slot"]), int(row["ability_id"]), row["is_hidden"] == "1"))
+
+    species_rows = [row for row in species if int(row["id"]) <= 890]
+    species_rows.sort(key=lambda row: int(row["id"]))
+    species_row_by_id = {int(row["id"]): row for row in species_rows}
+
+    def normalize_type_identifier(identifier):
+        type_key = TYPE_FALLBACKS.get(identifier, identifier)
+        return type_key if type_key in VALID_TYPE_KEYS else "normal"
+
+    def get_types_for_pokemon(pokemon_id):
+        rows = sorted(type_rows_by_pokemon.get(pokemon_id, []), key=lambda item: item[0])
+        keys = [normalize_type_identifier(type_by_id.get(type_id, "normal")) for _, type_id in rows]
+        if not keys:
+            return "normal", "none"
+        if len(keys) == 1:
+            return keys[0], "none"
+        return keys[0], keys[1]
+
+    def get_primary_ability_for_pokemon(pokemon_id):
+        rows = sorted(abilities_by_pokemon.get(pokemon_id, []), key=lambda item: item[0])
+        if not rows:
+            return ""
+        non_hidden = [row for row in rows if not row[2]]
+        _, ability_id, _ = non_hidden[0] if non_hidden else rows[0]
+        return ability_name_en.get(ability_id) or format_identifier(ability_identifier_by_id.get(ability_id, ""))
+
+    def get_habitat_for_species(species_id):
+        species_row = species_row_by_id.get(species_id)
+        if not species_row or not species_row.get("habitat_id"):
+            return ""
+        habitat_id = int(species_row["habitat_id"])
+        return habitat_name_en.get(habitat_id) or format_identifier(habitat_identifier_by_id.get(habitat_id, ""))
+
+    def evolution_time_from_species(species_id):
+        species_row = species_row_by_id.get(species_id)
+        growth_rate_id = int(species_row.get("growth_rate_id") or 0) if species_row else 0
+        if growth_rate_id in {3, 5}:
+            return "fast"
+        if growth_rate_id in {1, 6}:
+            return "slow"
+        return "medium"
+
+    def build_entry(species_id, pokemon_id, name, seed_suffix):
+        pokemon_row = pokemon_by_id.get(pokemon_id, {})
+        stat_values = stat_values_by_pokemon.get(pokemon_id, {})
+        hp_base = int(stat_values.get(1, 50))
+        attack_base = int(stat_values.get(2, 50))
+        defense_base = int(stat_values.get(3, 50))
+        sp_attack_base = int(stat_values.get(4, 50))
+        sp_defense_base = int(stat_values.get(5, 50))
+        speed_base = int(stat_values.get(6, 50))
+
+        core_attributes = {
+            "strength": scale_actor_attribute(attack_base),
+            "dexterity": scale_actor_attribute(speed_base),
+            "vitality": scale_actor_attribute(hp_base),
+            "special": scale_actor_attribute(round((sp_attack_base + sp_defense_base) / 2)),
+            "insight": scale_actor_attribute(sp_defense_base)
+        }
+
+        attributes = {key: 1 for key in POKROLE_ATTRIBUTE_KEYS}
+        attributes.update(core_attributes)
+
+        skills = {key: 0 for key in POKROLE_SKILL_KEYS}
+        skills.update({
+            "brawl": scale_actor_skill(core_attributes["strength"]),
+            "channel": scale_actor_skill(core_attributes["special"]),
+            "clash": scale_actor_skill(core_attributes["vitality"]),
+            "evasion": scale_actor_skill(core_attributes["dexterity"]),
+            "alert": scale_actor_skill(core_attributes["insight"]),
+            "athletic": scale_actor_skill(core_attributes["vitality"]),
+            "nature": scale_actor_skill(core_attributes["insight"])
+        })
+
+        hp_max = clamp(5 + core_attributes["vitality"], 6, 24)
+        will_max = clamp(1 + round(core_attributes["insight"] / 4), 1, 6)
+
+        primary_type, secondary_type = get_types_for_pokemon(pokemon_id)
+        ability = get_primary_ability_for_pokemon(pokemon_id)
+        habitat = get_habitat_for_species(species_id)
+        bst = bst_by_pokemon.get(pokemon_id, 350)
+        tier = rank_from_bst(bst)
+
+        biography = f"Corebook Pokedex import #{species_id:03d}."
+        if habitat:
+            biography = f"{biography} Habitat: {habitat}."
+        if ability:
+            biography = f"{biography} Ability: {ability}."
+
+        return {
+            "name": name,
+            "type": "pokemon",
+            "img": "icons/svg/mystery-man.svg",
+            "system": {
+                "biography": biography,
+                "resources": {
+                    "hp": {
+                        "value": hp_max,
+                        "max": hp_max
+                    },
+                    "will": {
+                        "value": will_max,
+                        "max": will_max
+                    }
+                },
+                "attributes": attributes,
+                "skills": skills,
+                "combat": {
+                    "actionNumber": 1,
+                    "initiative": core_attributes["dexterity"]
+                },
+                "species": name,
+                "ability": ability,
+                "nature": "",
+                "battleItem": "",
+                "accessory": "",
+                "size": format_meters_from_decimeters(int(pokemon_row.get("height") or 0)),
+                "weight": format_kilograms_from_hectograms(int(pokemon_row.get("weight") or 0)),
+                "types": {
+                    "primary": primary_type,
+                    "secondary": secondary_type
+                },
+                "tier": tier,
+                "evolutionTime": evolution_time_from_species(species_id),
+                "confidence": 2,
+                "loyalty": 2,
+                "happiness": 2,
+                "battles": 0,
+                "victories": 0,
+                "extra": 0,
+                "sheetSettings": {
+                    "trackMax": {
+                        "attributes": {key: 12 for key in POKROLE_ATTRIBUTE_KEYS},
+                        "skills": {key: 12 for key in POKROLE_SKILL_KEYS},
+                        "extra": 12
+                    }
+                },
+                "combatProfile": {
+                    "accuracy": core_attributes["dexterity"],
+                    "damage": core_attributes["strength"],
+                    "evasion": core_attributes["dexterity"],
+                    "clash": core_attributes["vitality"]
+                }
+            },
+            "prototypeToken": {
+                "name": name,
+                "randomImg": False
+            },
+            "flags": {
+                "pok-role-module": {
+                    "seedId": f"actor-pokemon-{species_id:03d}-{seed_suffix}"
+                }
+            }
+        }
+
+    entries = []
+
+    for row in species_rows:
+        species_id = int(row["id"])
+        pokemon_id = default_pokemon_by_species.get(species_id)
+        if not pokemon_id:
+            continue
+        base_name = species_name_en.get(species_id) or format_identifier(row["identifier"])
+        entries.append(build_entry(species_id, pokemon_id, base_name, slugify(row["identifier"])))
+
+    for pokemon_id in sorted(forms):
+        row = pokemon_by_id.get(pokemon_id)
+        if not row:
+            continue
+        species_id = int(row["species_id"])
+        species_name = species_name_en.get(species_id) or format_identifier(row["identifier"])
+        identifier = row["identifier"]
+        if identifier.endswith("-alola"):
+            form_name = f"{species_name} (Alola)"
+        elif identifier.endswith("-galar"):
+            form_name = f"{species_name} (Galar)"
+        elif identifier.endswith("-mega-x"):
+            form_name = f"Mega {species_name} X"
+        elif identifier.endswith("-mega-y"):
+            form_name = f"Mega {species_name} Y"
+        elif identifier.endswith("-mega"):
+            form_name = f"Mega {species_name}"
+        elif identifier.endswith("-primal"):
+            form_name = f"{species_name} (Primal)"
+        else:
+            form_name = format_identifier(identifier)
+        entries.append(build_entry(species_id, pokemon_id, form_name, slugify(identifier)))
+
+    unique_entries = {}
+    for entry in entries:
+        unique_entries[entry["flags"]["pok-role-module"]["seedId"]] = entry
+    return list(unique_entries.values())
+
+
 def main():
     moves = build_moves()
     ability_entries = build_abilities()
     pokedex = build_pokedex()
+    pokemon_actor_entries = build_pokemon_actors()
     write_module(OUT_DIR / "move-seeds.mjs", "MOVE_COMPENDIUM_ENTRIES", moves)
     write_module(OUT_DIR / "ability-seeds.mjs", "ABILITY_COMPENDIUM_ENTRIES", ability_entries)
     write_module(OUT_DIR / "pokedex-seeds.mjs", "POKEDEX_COMPENDIUM_ENTRIES", pokedex)
+    write_module(
+        OUT_DIR / "pokemon-actor-seeds.mjs",
+        "POKEMON_ACTOR_COMPENDIUM_ENTRIES",
+        pokemon_actor_entries
+    )
     print(f"Generated moves: {len(moves)}")
     print(f"Generated abilities: {len(ability_entries)}")
     print(f"Generated pokedex entries: {len(pokedex)}")
+    print(f"Generated pokemon actor entries: {len(pokemon_actor_entries)}")
 
 
 if __name__ == "__main__":

@@ -13,19 +13,22 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
   - `Evolutionary Items` (`Item`)
   - `Held Items` (`Item`)
   - `Pokedex` (`Item`)
+  - `Pokemon Actors` (`Actor`)
   - `Moves` (`Item`)
   - `Weather Conditions` (`Item`)
   - `Pokemon Status` (`Item`)
   - `Abilities` (`Item`)
-- Auto-seeding:
+- Compendium build model:
   - Compendium data is prepared externally via `tools/build_compendium_seeds.py` and stored in `module/seeds/generated/`.
-  - Automatic startup seeding is optional (`Auto-seed Compendia` world setting) and disabled by default.
+  - Foundry packs are precompiled into `packs/*` (LevelDB) via `tools/build_static_compendia.mjs`.
+  - No automatic seeding/generation runs at world startup.
   - Item seeds include all listed Corebook items from `Trainer's Basics`, `Healing Items`, `Items for Pokemon Care`, `Evolutionary Items`, and `Held Items` (p.76-85, 107 total item entries).
-  - `Moves` compendium is rebuilt from Corebook pages `346-430` (772 move items).
+  - `Moves` compendium is rebuilt from Corebook pages `346-430` (771 move items).
   - Every move entry includes description text and a `Corebook p.X` reference in the move description field.
   - `Abilities` compendium is rebuilt from Corebook pages `434-471` (257 ability items), each with effect text and `Corebook p.X` in description.
   - `Pokedex` compendium is fully seeded with `#001-#890` plus supported regional/mega/primal forms (1022 pokedex items).
-  - Manual reseed command available in browser console:
+  - `Pokemon Actors` compendium is seeded from the same roster as playable `Actor` entries (`type: pokemon`) with prefilled stats, tier, typing, abilities, size, and weight.
+  - Manual GM-only seed command remains available in browser console for maintenance/debug:
     - `await game.pokrole.seedCompendia()`
     - `await game.pokrole.seedCompendia({ force: true })` (rebuild from seed data)
 - Bilingual UI: English + Italian (`lang/en.json`, `lang/it.json`)
@@ -103,21 +106,22 @@ Important: do not use the GitHub `.../blob/...` URL, because Foundry expects raw
 - `system.json`: Foundry system manifest
 - `pok-role-module.mjs`: system bootstrap
 - `module/`: data models, documents, sheets
-- `module/seeds/generated/`: generated datasets for `moves`, `abilities`, and `pokedex` compendia
+- `module/seeds/generated/`: generated datasets for `moves`, `abilities`, `pokedex`, and `pokemon actor` compendia
 - `packs/`: compendium pack databases (v13 LevelDB folders)
 - `templates/`: handlebars sheets/chat card
 - `styles/`: sheet styles
 - `lang/`: localization files
-- `tools/build_compendium_seeds.py`: regenerates `moves`, `abilities`, and `pokedex` seed modules
+- `tools/build_compendium_seeds.py`: regenerates `moves`, `abilities`, `pokedex`, and `pokemon actor` seed modules
+- `tools/build_static_compendia.mjs`: compiles hard-coded seed data into static `packs/*` LevelDB compendia
 
 ## Compendia Usage
 
-- The system now defines 10 compendium packs in `system.json`.
-- Item and rule-reference packs can be seeded on demand with `game.pokrole.seedCompendia(...)`.
-- Populate them directly in Foundry:
-  1. Open the Compendiums tab.
-  2. Create/import Actors or Items into the desired pack.
-  3. Export your curated pack data by publishing a new release/manifest zip.
+- The system now defines 11 compendium packs in `system.json`.
+- Packs are shipped precompiled and populated by default.
+- If you regenerate data:
+  1. Run `python tools/build_compendium_seeds.py`.
+  2. Run `node tools/build_static_compendia.mjs`.
+  3. Publish the updated `packs/*` content in your release/zip.
 
 Compendium grouping and rules mapping (PokeRole 2.0 PDF):
 - Trainer/Travel/Healing Items: p.76-80

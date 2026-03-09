@@ -2,7 +2,7 @@
   "id": "pok-role-module",
   "title": "Poke Role Module",
   "description": "MVP Foundry VTT v13 system scaffold for PokeRole 2.0 inspired campaigns.",
-  "version": "0.8.4",
+  "version": "0.9.1",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -79,6 +79,14 @@
       "private": false
     },
     {
+      "name": "pokemon-actors",
+      "label": "Pokemon Actors",
+      "system": "pok-role-module",
+      "path": "packs/pokemon-actors",
+      "type": "Actor",
+      "private": false
+    },
+    {
       "name": "weather-conditions",
       "label": "Weather Conditions",
       "system": "pok-role-module",
@@ -138,7 +146,8 @@
           "sorting": "m",
           "color": "#7c5b95",
           "packs": [
-            "pokedex"
+            "pokedex",
+            "pokemon-actors"
           ]
         }
       ]
