@@ -2,7 +2,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bulbasaur",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bulbasaur.png",
     "system": {
       "dexNumber": 1,
       "rank": "beginner",
@@ -23,7 +23,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ivysaur",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ivysaur.png",
     "system": {
       "dexNumber": 2,
       "rank": "amateur",
@@ -44,7 +44,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venusaur",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/venusaur.png",
     "system": {
       "dexNumber": 3,
       "rank": "ace",
@@ -65,7 +65,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charmander",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/charmander.png",
     "system": {
       "dexNumber": 4,
       "rank": "beginner",
@@ -86,7 +86,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charmeleon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/charmeleon.png",
     "system": {
       "dexNumber": 5,
       "rank": "amateur",
@@ -107,7 +107,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charizard",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/charizard.png",
     "system": {
       "dexNumber": 6,
       "rank": "ace",
@@ -128,7 +128,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Squirtle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/squirtle.png",
     "system": {
       "dexNumber": 7,
       "rank": "beginner",
@@ -149,7 +149,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wartortle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wartortle.png",
     "system": {
       "dexNumber": 8,
       "rank": "amateur",
@@ -170,7 +170,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blastoise",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blastoise.png",
     "system": {
       "dexNumber": 9,
       "rank": "ace",
@@ -191,7 +191,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Caterpie",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/caterpie.png",
     "system": {
       "dexNumber": 10,
       "rank": "starter",
@@ -212,7 +212,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metapod",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/metapod.png",
     "system": {
       "dexNumber": 11,
       "rank": "starter",
@@ -233,7 +233,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Butterfree",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/butterfree.png",
     "system": {
       "dexNumber": 12,
       "rank": "amateur",
@@ -254,7 +254,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weedle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/weedle.png",
     "system": {
       "dexNumber": 13,
       "rank": "starter",
@@ -275,7 +275,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kakuna",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kakuna.png",
     "system": {
       "dexNumber": 14,
       "rank": "starter",
@@ -296,7 +296,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beedrill",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/beedrill.png",
     "system": {
       "dexNumber": 15,
       "rank": "amateur",
@@ -317,7 +317,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pidgey",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pidgey.png",
     "system": {
       "dexNumber": 16,
       "rank": "starter",
@@ -338,7 +338,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pidgeotto",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pidgeotto.png",
     "system": {
       "dexNumber": 17,
       "rank": "beginner",
@@ -359,7 +359,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pidgeot",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pidgeot.png",
     "system": {
       "dexNumber": 18,
       "rank": "ace",
@@ -380,7 +380,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rattata",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rattata.png",
     "system": {
       "dexNumber": 19,
       "rank": "starter",
@@ -401,7 +401,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raticate",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raticate.png",
     "system": {
       "dexNumber": 20,
       "rank": "amateur",
@@ -422,7 +422,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spearow",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spearow.png",
     "system": {
       "dexNumber": 21,
       "rank": "starter",
@@ -443,7 +443,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fearow",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/fearow.png",
     "system": {
       "dexNumber": 22,
       "rank": "amateur",
@@ -464,7 +464,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ekans",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ekans.png",
     "system": {
       "dexNumber": 23,
       "rank": "starter",
@@ -485,7 +485,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arbok",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/arbok.png",
     "system": {
       "dexNumber": 24,
       "rank": "amateur",
@@ -506,7 +506,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pikachu",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pikachu.png",
     "system": {
       "dexNumber": 25,
       "rank": "beginner",
@@ -527,7 +527,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raichu",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raichu.png",
     "system": {
       "dexNumber": 26,
       "rank": "ace",
@@ -548,7 +548,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandshrew",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sandshrew.png",
     "system": {
       "dexNumber": 27,
       "rank": "starter",
@@ -569,7 +569,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandslash",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sandslash.png",
     "system": {
       "dexNumber": 28,
       "rank": "amateur",
@@ -590,7 +590,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidoran\u2640",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nidoran-f.png",
     "system": {
       "dexNumber": 29,
       "rank": "starter",
@@ -611,7 +611,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidorina",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nidorina.png",
     "system": {
       "dexNumber": 30,
       "rank": "beginner",
@@ -632,7 +632,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidoqueen",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nidoqueen.png",
     "system": {
       "dexNumber": 31,
       "rank": "ace",
@@ -653,7 +653,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidoran\u2642",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nidoran-m.png",
     "system": {
       "dexNumber": 32,
       "rank": "starter",
@@ -674,7 +674,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidorino",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nidorino.png",
     "system": {
       "dexNumber": 33,
       "rank": "beginner",
@@ -695,7 +695,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidoking",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nidoking.png",
     "system": {
       "dexNumber": 34,
       "rank": "ace",
@@ -716,7 +716,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clefairy",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/clefairy.png",
     "system": {
       "dexNumber": 35,
       "rank": "beginner",
@@ -737,7 +737,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clefable",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/clefable.png",
     "system": {
       "dexNumber": 36,
       "rank": "ace",
@@ -758,7 +758,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vulpix",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vulpix.png",
     "system": {
       "dexNumber": 37,
       "rank": "starter",
@@ -779,7 +779,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ninetales",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ninetales.png",
     "system": {
       "dexNumber": 38,
       "rank": "ace",
@@ -800,7 +800,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jigglypuff",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/jigglypuff.png",
     "system": {
       "dexNumber": 39,
       "rank": "starter",
@@ -821,7 +821,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wigglytuff",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wigglytuff.png",
     "system": {
       "dexNumber": 40,
       "rank": "amateur",
@@ -842,7 +842,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zubat",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zubat.png",
     "system": {
       "dexNumber": 41,
       "rank": "starter",
@@ -863,7 +863,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golbat",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golbat.png",
     "system": {
       "dexNumber": 42,
       "rank": "amateur",
@@ -884,7 +884,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Oddish",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/oddish.png",
     "system": {
       "dexNumber": 43,
       "rank": "beginner",
@@ -905,7 +905,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gloom",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gloom.png",
     "system": {
       "dexNumber": 44,
       "rank": "amateur",
@@ -926,7 +926,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vileplume",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vileplume.png",
     "system": {
       "dexNumber": 45,
       "rank": "ace",
@@ -947,7 +947,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Paras",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/paras.png",
     "system": {
       "dexNumber": 46,
       "rank": "starter",
@@ -968,7 +968,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Parasect",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/parasect.png",
     "system": {
       "dexNumber": 47,
       "rank": "amateur",
@@ -989,7 +989,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venonat",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/venonat.png",
     "system": {
       "dexNumber": 48,
       "rank": "beginner",
@@ -1010,7 +1010,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venomoth",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/venomoth.png",
     "system": {
       "dexNumber": 49,
       "rank": "amateur",
@@ -1031,7 +1031,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Diglett",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/diglett.png",
     "system": {
       "dexNumber": 50,
       "rank": "starter",
@@ -1052,7 +1052,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dugtrio",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dugtrio.png",
     "system": {
       "dexNumber": 51,
       "rank": "amateur",
@@ -1073,7 +1073,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meowth",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meowth.png",
     "system": {
       "dexNumber": 52,
       "rank": "starter",
@@ -1094,7 +1094,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Persian",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/persian.png",
     "system": {
       "dexNumber": 53,
       "rank": "amateur",
@@ -1115,7 +1115,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psyduck",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/psyduck.png",
     "system": {
       "dexNumber": 54,
       "rank": "beginner",
@@ -1136,7 +1136,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golduck",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golduck.png",
     "system": {
       "dexNumber": 55,
       "rank": "ace",
@@ -1157,7 +1157,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mankey",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mankey.png",
     "system": {
       "dexNumber": 56,
       "rank": "beginner",
@@ -1178,7 +1178,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Primeape",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/primeape.png",
     "system": {
       "dexNumber": 57,
       "rank": "amateur",
@@ -1199,7 +1199,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Growlithe",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/growlithe.png",
     "system": {
       "dexNumber": 58,
       "rank": "beginner",
@@ -1220,7 +1220,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arcanine",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/arcanine.png",
     "system": {
       "dexNumber": 59,
       "rank": "pro",
@@ -1241,7 +1241,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poliwag",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/poliwag.png",
     "system": {
       "dexNumber": 60,
       "rank": "starter",
@@ -1262,7 +1262,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poliwhirl",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/poliwhirl.png",
     "system": {
       "dexNumber": 61,
       "rank": "amateur",
@@ -1283,7 +1283,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poliwrath",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/poliwrath.png",
     "system": {
       "dexNumber": 62,
       "rank": "ace",
@@ -1304,7 +1304,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Abra",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/abra.png",
     "system": {
       "dexNumber": 63,
       "rank": "beginner",
@@ -1325,7 +1325,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kadabra",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kadabra.png",
     "system": {
       "dexNumber": 64,
       "rank": "amateur",
@@ -1346,7 +1346,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Alakazam",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/alakazam.png",
     "system": {
       "dexNumber": 65,
       "rank": "ace",
@@ -1367,7 +1367,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Machop",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/machop.png",
     "system": {
       "dexNumber": 66,
       "rank": "beginner",
@@ -1388,7 +1388,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Machoke",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/machoke.png",
     "system": {
       "dexNumber": 67,
       "rank": "amateur",
@@ -1409,7 +1409,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Machamp",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/machamp.png",
     "system": {
       "dexNumber": 68,
       "rank": "ace",
@@ -1430,7 +1430,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bellsprout",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bellsprout.png",
     "system": {
       "dexNumber": 69,
       "rank": "starter",
@@ -1451,7 +1451,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weepinbell",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/weepinbell.png",
     "system": {
       "dexNumber": 70,
       "rank": "amateur",
@@ -1472,7 +1472,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Victreebel",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/victreebel.png",
     "system": {
       "dexNumber": 71,
       "rank": "ace",
@@ -1493,7 +1493,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tentacool",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tentacool.png",
     "system": {
       "dexNumber": 72,
       "rank": "beginner",
@@ -1514,7 +1514,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tentacruel",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tentacruel.png",
     "system": {
       "dexNumber": 73,
       "rank": "ace",
@@ -1535,7 +1535,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Geodude",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/geodude.png",
     "system": {
       "dexNumber": 74,
       "rank": "starter",
@@ -1556,7 +1556,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Graveler",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/graveler.png",
     "system": {
       "dexNumber": 75,
       "rank": "amateur",
@@ -1577,7 +1577,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golem",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golem.png",
     "system": {
       "dexNumber": 76,
       "rank": "ace",
@@ -1598,7 +1598,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ponyta",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ponyta.png",
     "system": {
       "dexNumber": 77,
       "rank": "amateur",
@@ -1619,7 +1619,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rapidash",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rapidash.png",
     "system": {
       "dexNumber": 78,
       "rank": "ace",
@@ -1640,7 +1640,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowpoke",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slowpoke.png",
     "system": {
       "dexNumber": 79,
       "rank": "beginner",
@@ -1661,7 +1661,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowbro",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slowbro.png",
     "system": {
       "dexNumber": 80,
       "rank": "ace",
@@ -1682,7 +1682,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magnemite",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magnemite.png",
     "system": {
       "dexNumber": 81,
       "rank": "beginner",
@@ -1703,7 +1703,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magneton",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magneton.png",
     "system": {
       "dexNumber": 82,
       "rank": "ace",
@@ -1724,7 +1724,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Farfetch\u2019d",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/farfetchd.png",
     "system": {
       "dexNumber": 83,
       "rank": "beginner",
@@ -1745,7 +1745,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Doduo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/doduo.png",
     "system": {
       "dexNumber": 84,
       "rank": "beginner",
@@ -1766,7 +1766,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dodrio",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dodrio.png",
     "system": {
       "dexNumber": 85,
       "rank": "ace",
@@ -1787,7 +1787,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seel",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/seel.png",
     "system": {
       "dexNumber": 86,
       "rank": "beginner",
@@ -1808,7 +1808,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dewgong",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dewgong.png",
     "system": {
       "dexNumber": 87,
       "rank": "ace",
@@ -1829,7 +1829,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grimer",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grimer.png",
     "system": {
       "dexNumber": 88,
       "rank": "beginner",
@@ -1850,7 +1850,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Muk",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/muk.png",
     "system": {
       "dexNumber": 89,
       "rank": "ace",
@@ -1871,7 +1871,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shellder",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shellder.png",
     "system": {
       "dexNumber": 90,
       "rank": "beginner",
@@ -1892,7 +1892,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cloyster",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cloyster.png",
     "system": {
       "dexNumber": 91,
       "rank": "ace",
@@ -1913,7 +1913,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gastly",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gastly.png",
     "system": {
       "dexNumber": 92,
       "rank": "beginner",
@@ -1934,7 +1934,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Haunter",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/haunter.png",
     "system": {
       "dexNumber": 93,
       "rank": "amateur",
@@ -1955,7 +1955,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gengar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gengar.png",
     "system": {
       "dexNumber": 94,
       "rank": "ace",
@@ -1976,7 +1976,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Onix",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/onix.png",
     "system": {
       "dexNumber": 95,
       "rank": "amateur",
@@ -1997,7 +1997,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drowzee",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drowzee.png",
     "system": {
       "dexNumber": 96,
       "rank": "beginner",
@@ -2018,7 +2018,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hypno",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hypno.png",
     "system": {
       "dexNumber": 97,
       "rank": "ace",
@@ -2039,7 +2039,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Krabby",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/krabby.png",
     "system": {
       "dexNumber": 98,
       "rank": "beginner",
@@ -2060,7 +2060,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kingler",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kingler.png",
     "system": {
       "dexNumber": 99,
       "rank": "ace",
@@ -2081,7 +2081,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Voltorb",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/voltorb.png",
     "system": {
       "dexNumber": 100,
       "rank": "beginner",
@@ -2102,7 +2102,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electrode",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/electrode.png",
     "system": {
       "dexNumber": 101,
       "rank": "ace",
@@ -2123,7 +2123,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Exeggcute",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/exeggcute.png",
     "system": {
       "dexNumber": 102,
       "rank": "beginner",
@@ -2144,7 +2144,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Exeggutor",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/exeggutor.png",
     "system": {
       "dexNumber": 103,
       "rank": "ace",
@@ -2165,7 +2165,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cubone",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cubone.png",
     "system": {
       "dexNumber": 104,
       "rank": "beginner",
@@ -2186,7 +2186,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Marowak",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/marowak.png",
     "system": {
       "dexNumber": 105,
       "rank": "amateur",
@@ -2207,7 +2207,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hitmonlee",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hitmonlee.png",
     "system": {
       "dexNumber": 106,
       "rank": "amateur",
@@ -2228,7 +2228,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hitmonchan",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hitmonchan.png",
     "system": {
       "dexNumber": 107,
       "rank": "amateur",
@@ -2249,7 +2249,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lickitung",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lickitung.png",
     "system": {
       "dexNumber": 108,
       "rank": "amateur",
@@ -2270,7 +2270,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Koffing",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/koffing.png",
     "system": {
       "dexNumber": 109,
       "rank": "beginner",
@@ -2291,7 +2291,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weezing",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/weezing.png",
     "system": {
       "dexNumber": 110,
       "rank": "ace",
@@ -2312,7 +2312,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rhyhorn",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rhyhorn.png",
     "system": {
       "dexNumber": 111,
       "rank": "beginner",
@@ -2333,7 +2333,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rhydon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rhydon.png",
     "system": {
       "dexNumber": 112,
       "rank": "ace",
@@ -2354,7 +2354,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chansey",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chansey.png",
     "system": {
       "dexNumber": 113,
       "rank": "amateur",
@@ -2375,7 +2375,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tangela",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tangela.png",
     "system": {
       "dexNumber": 114,
       "rank": "amateur",
@@ -2396,7 +2396,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kangaskhan",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kangaskhan.png",
     "system": {
       "dexNumber": 115,
       "rank": "ace",
@@ -2417,7 +2417,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Horsea",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/horsea.png",
     "system": {
       "dexNumber": 116,
       "rank": "starter",
@@ -2438,7 +2438,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seadra",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/seadra.png",
     "system": {
       "dexNumber": 117,
       "rank": "amateur",
@@ -2459,7 +2459,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Goldeen",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/goldeen.png",
     "system": {
       "dexNumber": 118,
       "rank": "beginner",
@@ -2480,7 +2480,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seaking",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/seaking.png",
     "system": {
       "dexNumber": 119,
       "rank": "amateur",
@@ -2501,7 +2501,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Staryu",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/staryu.png",
     "system": {
       "dexNumber": 120,
       "rank": "beginner",
@@ -2522,7 +2522,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Starmie",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/starmie.png",
     "system": {
       "dexNumber": 121,
       "rank": "ace",
@@ -2543,7 +2543,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mr. Mime",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mr-mime.png",
     "system": {
       "dexNumber": 122,
       "rank": "amateur",
@@ -2564,7 +2564,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scyther",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scyther.png",
     "system": {
       "dexNumber": 123,
       "rank": "ace",
@@ -2585,7 +2585,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jynx",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/jynx.png",
     "system": {
       "dexNumber": 124,
       "rank": "amateur",
@@ -2606,7 +2606,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electabuzz",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/electabuzz.png",
     "system": {
       "dexNumber": 125,
       "rank": "ace",
@@ -2627,7 +2627,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magmar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magmar.png",
     "system": {
       "dexNumber": 126,
       "rank": "ace",
@@ -2648,7 +2648,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pinsir",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pinsir.png",
     "system": {
       "dexNumber": 127,
       "rank": "ace",
@@ -2669,7 +2669,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tauros",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tauros.png",
     "system": {
       "dexNumber": 128,
       "rank": "ace",
@@ -2690,7 +2690,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magikarp",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magikarp.png",
     "system": {
       "dexNumber": 129,
       "rank": "starter",
@@ -2711,7 +2711,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gyarados",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gyarados.png",
     "system": {
       "dexNumber": 130,
       "rank": "ace",
@@ -2732,7 +2732,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lapras",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lapras.png",
     "system": {
       "dexNumber": 131,
       "rank": "ace",
@@ -2753,7 +2753,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ditto",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ditto.png",
     "system": {
       "dexNumber": 132,
       "rank": "starter",
@@ -2774,7 +2774,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eevee",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/eevee.png",
     "system": {
       "dexNumber": 133,
       "rank": "beginner",
@@ -2795,7 +2795,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vaporeon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vaporeon.png",
     "system": {
       "dexNumber": 134,
       "rank": "ace",
@@ -2816,7 +2816,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jolteon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/jolteon.png",
     "system": {
       "dexNumber": 135,
       "rank": "ace",
@@ -2837,7 +2837,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flareon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/flareon.png",
     "system": {
       "dexNumber": 136,
       "rank": "ace",
@@ -2858,7 +2858,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Porygon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/porygon.png",
     "system": {
       "dexNumber": 137,
       "rank": "amateur",
@@ -2879,7 +2879,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Omanyte",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/omanyte.png",
     "system": {
       "dexNumber": 138,
       "rank": "beginner",
@@ -2900,7 +2900,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Omastar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/omastar.png",
     "system": {
       "dexNumber": 139,
       "rank": "ace",
@@ -2921,7 +2921,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kabuto",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kabuto.png",
     "system": {
       "dexNumber": 140,
       "rank": "beginner",
@@ -2942,7 +2942,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kabutops",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kabutops.png",
     "system": {
       "dexNumber": 141,
       "rank": "ace",
@@ -2963,7 +2963,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aerodactyl",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aerodactyl.png",
     "system": {
       "dexNumber": 142,
       "rank": "ace",
@@ -2984,7 +2984,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snorlax",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/snorlax.png",
     "system": {
       "dexNumber": 143,
       "rank": "ace",
@@ -3005,7 +3005,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Articuno",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/articuno.png",
     "system": {
       "dexNumber": 144,
       "rank": "pro",
@@ -3026,7 +3026,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zapdos",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zapdos.png",
     "system": {
       "dexNumber": 145,
       "rank": "pro",
@@ -3047,7 +3047,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Moltres",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/moltres.png",
     "system": {
       "dexNumber": 146,
       "rank": "pro",
@@ -3068,7 +3068,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dratini",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dratini.png",
     "system": {
       "dexNumber": 147,
       "rank": "starter",
@@ -3089,7 +3089,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragonair",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dragonair.png",
     "system": {
       "dexNumber": 148,
       "rank": "amateur",
@@ -3110,7 +3110,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragonite",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dragonite.png",
     "system": {
       "dexNumber": 149,
       "rank": "pro",
@@ -3131,7 +3131,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mewtwo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mewtwo.png",
     "system": {
       "dexNumber": 150,
       "rank": "master",
@@ -3152,7 +3152,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mew",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mew.png",
     "system": {
       "dexNumber": 151,
       "rank": "pro",
@@ -3173,7 +3173,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chikorita",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chikorita.png",
     "system": {
       "dexNumber": 152,
       "rank": "beginner",
@@ -3194,7 +3194,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bayleef",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bayleef.png",
     "system": {
       "dexNumber": 153,
       "rank": "amateur",
@@ -3215,7 +3215,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meganium",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meganium.png",
     "system": {
       "dexNumber": 154,
       "rank": "ace",
@@ -3236,7 +3236,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cyndaquil",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cyndaquil.png",
     "system": {
       "dexNumber": 155,
       "rank": "beginner",
@@ -3257,7 +3257,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quilava",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/quilava.png",
     "system": {
       "dexNumber": 156,
       "rank": "amateur",
@@ -3278,7 +3278,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Typhlosion",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/typhlosion.png",
     "system": {
       "dexNumber": 157,
       "rank": "ace",
@@ -3299,7 +3299,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Totodile",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/totodile.png",
     "system": {
       "dexNumber": 158,
       "rank": "beginner",
@@ -3320,7 +3320,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Croconaw",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/croconaw.png",
     "system": {
       "dexNumber": 159,
       "rank": "amateur",
@@ -3341,7 +3341,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Feraligatr",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/feraligatr.png",
     "system": {
       "dexNumber": 160,
       "rank": "ace",
@@ -3362,7 +3362,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sentret",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sentret.png",
     "system": {
       "dexNumber": 161,
       "rank": "starter",
@@ -3383,7 +3383,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Furret",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/furret.png",
     "system": {
       "dexNumber": 162,
       "rank": "amateur",
@@ -3404,7 +3404,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hoothoot",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hoothoot.png",
     "system": {
       "dexNumber": 163,
       "rank": "starter",
@@ -3425,7 +3425,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Noctowl",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/noctowl.png",
     "system": {
       "dexNumber": 164,
       "rank": "amateur",
@@ -3446,7 +3446,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ledyba",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ledyba.png",
     "system": {
       "dexNumber": 165,
       "rank": "starter",
@@ -3467,7 +3467,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ledian",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ledian.png",
     "system": {
       "dexNumber": 166,
       "rank": "amateur",
@@ -3488,7 +3488,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spinarak",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spinarak.png",
     "system": {
       "dexNumber": 167,
       "rank": "starter",
@@ -3509,7 +3509,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ariados",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ariados.png",
     "system": {
       "dexNumber": 168,
       "rank": "amateur",
@@ -3530,7 +3530,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crobat",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/crobat.png",
     "system": {
       "dexNumber": 169,
       "rank": "ace",
@@ -3551,7 +3551,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chinchou",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chinchou.png",
     "system": {
       "dexNumber": 170,
       "rank": "beginner",
@@ -3572,7 +3572,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lanturn",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lanturn.png",
     "system": {
       "dexNumber": 171,
       "rank": "amateur",
@@ -3593,7 +3593,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pichu",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pichu.png",
     "system": {
       "dexNumber": 172,
       "rank": "starter",
@@ -3614,7 +3614,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cleffa",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cleffa.png",
     "system": {
       "dexNumber": 173,
       "rank": "starter",
@@ -3635,7 +3635,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Igglybuff",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/igglybuff.png",
     "system": {
       "dexNumber": 174,
       "rank": "starter",
@@ -3656,7 +3656,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Togepi",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/togepi.png",
     "system": {
       "dexNumber": 175,
       "rank": "starter",
@@ -3677,7 +3677,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Togetic",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/togetic.png",
     "system": {
       "dexNumber": 176,
       "rank": "amateur",
@@ -3698,7 +3698,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Natu",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/natu.png",
     "system": {
       "dexNumber": 177,
       "rank": "beginner",
@@ -3719,7 +3719,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Xatu",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/xatu.png",
     "system": {
       "dexNumber": 178,
       "rank": "ace",
@@ -3740,7 +3740,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mareep",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mareep.png",
     "system": {
       "dexNumber": 179,
       "rank": "starter",
@@ -3761,7 +3761,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flaaffy",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/flaaffy.png",
     "system": {
       "dexNumber": 180,
       "rank": "beginner",
@@ -3782,7 +3782,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ampharos",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ampharos.png",
     "system": {
       "dexNumber": 181,
       "rank": "ace",
@@ -3803,7 +3803,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bellossom",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bellossom.png",
     "system": {
       "dexNumber": 182,
       "rank": "ace",
@@ -3824,7 +3824,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Marill",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/marill.png",
     "system": {
       "dexNumber": 183,
       "rank": "starter",
@@ -3845,7 +3845,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Azumarill",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/azumarill.png",
     "system": {
       "dexNumber": 184,
       "rank": "amateur",
@@ -3866,7 +3866,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sudowoodo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sudowoodo.png",
     "system": {
       "dexNumber": 185,
       "rank": "amateur",
@@ -3887,7 +3887,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Politoed",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/politoed.png",
     "system": {
       "dexNumber": 186,
       "rank": "ace",
@@ -3908,7 +3908,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hoppip",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hoppip.png",
     "system": {
       "dexNumber": 187,
       "rank": "starter",
@@ -3929,7 +3929,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skiploom",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skiploom.png",
     "system": {
       "dexNumber": 188,
       "rank": "beginner",
@@ -3950,7 +3950,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jumpluff",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/jumpluff.png",
     "system": {
       "dexNumber": 189,
       "rank": "amateur",
@@ -3971,7 +3971,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aipom",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aipom.png",
     "system": {
       "dexNumber": 190,
       "rank": "beginner",
@@ -3992,7 +3992,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sunkern",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sunkern.png",
     "system": {
       "dexNumber": 191,
       "rank": "starter",
@@ -4013,7 +4013,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sunflora",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sunflora.png",
     "system": {
       "dexNumber": 192,
       "rank": "amateur",
@@ -4034,7 +4034,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yanma",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/yanma.png",
     "system": {
       "dexNumber": 193,
       "rank": "amateur",
@@ -4055,7 +4055,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wooper",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wooper.png",
     "system": {
       "dexNumber": 194,
       "rank": "starter",
@@ -4076,7 +4076,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quagsire",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/quagsire.png",
     "system": {
       "dexNumber": 195,
       "rank": "amateur",
@@ -4097,7 +4097,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Espeon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/espeon.png",
     "system": {
       "dexNumber": 196,
       "rank": "ace",
@@ -4118,7 +4118,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Umbreon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/umbreon.png",
     "system": {
       "dexNumber": 197,
       "rank": "ace",
@@ -4139,7 +4139,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Murkrow",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/murkrow.png",
     "system": {
       "dexNumber": 198,
       "rank": "amateur",
@@ -4160,7 +4160,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowking",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slowking.png",
     "system": {
       "dexNumber": 199,
       "rank": "ace",
@@ -4181,7 +4181,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Misdreavus",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/misdreavus.png",
     "system": {
       "dexNumber": 200,
       "rank": "amateur",
@@ -4202,7 +4202,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Unown",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/unown.png",
     "system": {
       "dexNumber": 201,
       "rank": "beginner",
@@ -4223,7 +4223,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wobbuffet",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wobbuffet.png",
     "system": {
       "dexNumber": 202,
       "rank": "amateur",
@@ -4244,7 +4244,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Girafarig",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/girafarig.png",
     "system": {
       "dexNumber": 203,
       "rank": "amateur",
@@ -4265,7 +4265,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pineco",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pineco.png",
     "system": {
       "dexNumber": 204,
       "rank": "starter",
@@ -4286,7 +4286,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Forretress",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/forretress.png",
     "system": {
       "dexNumber": 205,
       "rank": "ace",
@@ -4307,7 +4307,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dunsparce",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dunsparce.png",
     "system": {
       "dexNumber": 206,
       "rank": "amateur",
@@ -4328,7 +4328,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gligar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gligar.png",
     "system": {
       "dexNumber": 207,
       "rank": "amateur",
@@ -4349,7 +4349,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Steelix",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/steelix.png",
     "system": {
       "dexNumber": 208,
       "rank": "ace",
@@ -4370,7 +4370,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snubbull",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/snubbull.png",
     "system": {
       "dexNumber": 209,
       "rank": "starter",
@@ -4391,7 +4391,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Granbull",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/granbull.png",
     "system": {
       "dexNumber": 210,
       "rank": "amateur",
@@ -4412,7 +4412,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Qwilfish",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/qwilfish.png",
     "system": {
       "dexNumber": 211,
       "rank": "amateur",
@@ -4433,7 +4433,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scizor",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scizor.png",
     "system": {
       "dexNumber": 212,
       "rank": "ace",
@@ -4454,7 +4454,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shuckle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shuckle.png",
     "system": {
       "dexNumber": 213,
       "rank": "ace",
@@ -4475,7 +4475,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heracross",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/heracross.png",
     "system": {
       "dexNumber": 214,
       "rank": "ace",
@@ -4496,7 +4496,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sneasel",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sneasel.png",
     "system": {
       "dexNumber": 215,
       "rank": "amateur",
@@ -4517,7 +4517,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Teddiursa",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/teddiursa.png",
     "system": {
       "dexNumber": 216,
       "rank": "beginner",
@@ -4538,7 +4538,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ursaring",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ursaring.png",
     "system": {
       "dexNumber": 217,
       "rank": "ace",
@@ -4559,7 +4559,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slugma",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slugma.png",
     "system": {
       "dexNumber": 218,
       "rank": "starter",
@@ -4580,7 +4580,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magcargo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magcargo.png",
     "system": {
       "dexNumber": 219,
       "rank": "amateur",
@@ -4601,7 +4601,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swinub",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swinub.png",
     "system": {
       "dexNumber": 220,
       "rank": "starter",
@@ -4622,7 +4622,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Piloswine",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/piloswine.png",
     "system": {
       "dexNumber": 221,
       "rank": "amateur",
@@ -4643,7 +4643,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corsola",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/corsola.png",
     "system": {
       "dexNumber": 222,
       "rank": "amateur",
@@ -4664,7 +4664,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Remoraid",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/remoraid.png",
     "system": {
       "dexNumber": 223,
       "rank": "starter",
@@ -4685,7 +4685,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Octillery",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/octillery.png",
     "system": {
       "dexNumber": 224,
       "rank": "ace",
@@ -4706,7 +4706,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Delibird",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/delibird.png",
     "system": {
       "dexNumber": 225,
       "rank": "beginner",
@@ -4727,7 +4727,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mantine",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mantine.png",
     "system": {
       "dexNumber": 226,
       "rank": "ace",
@@ -4748,7 +4748,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skarmory",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skarmory.png",
     "system": {
       "dexNumber": 227,
       "rank": "ace",
@@ -4769,7 +4769,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Houndour",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/houndour.png",
     "system": {
       "dexNumber": 228,
       "rank": "beginner",
@@ -4790,7 +4790,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Houndoom",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/houndoom.png",
     "system": {
       "dexNumber": 229,
       "rank": "ace",
@@ -4811,7 +4811,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kingdra",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kingdra.png",
     "system": {
       "dexNumber": 230,
       "rank": "ace",
@@ -4832,7 +4832,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Phanpy",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/phanpy.png",
     "system": {
       "dexNumber": 231,
       "rank": "beginner",
@@ -4853,7 +4853,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Donphan",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/donphan.png",
     "system": {
       "dexNumber": 232,
       "rank": "ace",
@@ -4874,7 +4874,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Porygon2",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/porygon2.png",
     "system": {
       "dexNumber": 233,
       "rank": "ace",
@@ -4895,7 +4895,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stantler",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stantler.png",
     "system": {
       "dexNumber": 234,
       "rank": "ace",
@@ -4916,7 +4916,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smeargle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/smeargle.png",
     "system": {
       "dexNumber": 235,
       "rank": "starter",
@@ -4937,7 +4937,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tyrogue",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tyrogue.png",
     "system": {
       "dexNumber": 236,
       "rank": "starter",
@@ -4958,7 +4958,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hitmontop",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hitmontop.png",
     "system": {
       "dexNumber": 237,
       "rank": "amateur",
@@ -4979,7 +4979,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smoochum",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/smoochum.png",
     "system": {
       "dexNumber": 238,
       "rank": "beginner",
@@ -5000,7 +5000,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Elekid",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/elekid.png",
     "system": {
       "dexNumber": 239,
       "rank": "beginner",
@@ -5021,7 +5021,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magby",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magby.png",
     "system": {
       "dexNumber": 240,
       "rank": "beginner",
@@ -5042,7 +5042,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Miltank",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/miltank.png",
     "system": {
       "dexNumber": 241,
       "rank": "ace",
@@ -5063,7 +5063,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blissey",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blissey.png",
     "system": {
       "dexNumber": 242,
       "rank": "ace",
@@ -5084,7 +5084,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raikou",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raikou.png",
     "system": {
       "dexNumber": 243,
       "rank": "pro",
@@ -5105,7 +5105,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Entei",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/entei.png",
     "system": {
       "dexNumber": 244,
       "rank": "pro",
@@ -5126,7 +5126,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Suicune",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/suicune.png",
     "system": {
       "dexNumber": 245,
       "rank": "pro",
@@ -5147,7 +5147,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Larvitar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/larvitar.png",
     "system": {
       "dexNumber": 246,
       "rank": "starter",
@@ -5168,7 +5168,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pupitar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pupitar.png",
     "system": {
       "dexNumber": 247,
       "rank": "amateur",
@@ -5189,7 +5189,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tyranitar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tyranitar.png",
     "system": {
       "dexNumber": 248,
       "rank": "pro",
@@ -5210,7 +5210,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lugia",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lugia.png",
     "system": {
       "dexNumber": 249,
       "rank": "master",
@@ -5231,7 +5231,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ho-Oh",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ho-oh.png",
     "system": {
       "dexNumber": 250,
       "rank": "master",
@@ -5252,7 +5252,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Celebi",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/celebi.png",
     "system": {
       "dexNumber": 251,
       "rank": "pro",
@@ -5273,7 +5273,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Treecko",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/treecko.png",
     "system": {
       "dexNumber": 252,
       "rank": "beginner",
@@ -5294,7 +5294,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grovyle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grovyle.png",
     "system": {
       "dexNumber": 253,
       "rank": "amateur",
@@ -5315,7 +5315,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sceptile",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sceptile.png",
     "system": {
       "dexNumber": 254,
       "rank": "ace",
@@ -5336,7 +5336,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Torchic",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/torchic.png",
     "system": {
       "dexNumber": 255,
       "rank": "beginner",
@@ -5357,7 +5357,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Combusken",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/combusken.png",
     "system": {
       "dexNumber": 256,
       "rank": "amateur",
@@ -5378,7 +5378,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blaziken",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blaziken.png",
     "system": {
       "dexNumber": 257,
       "rank": "ace",
@@ -5399,7 +5399,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mudkip",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mudkip.png",
     "system": {
       "dexNumber": 258,
       "rank": "beginner",
@@ -5420,7 +5420,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Marshtomp",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/marshtomp.png",
     "system": {
       "dexNumber": 259,
       "rank": "amateur",
@@ -5441,7 +5441,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swampert",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swampert.png",
     "system": {
       "dexNumber": 260,
       "rank": "ace",
@@ -5462,7 +5462,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poochyena",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/poochyena.png",
     "system": {
       "dexNumber": 261,
       "rank": "starter",
@@ -5483,7 +5483,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mightyena",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mightyena.png",
     "system": {
       "dexNumber": 262,
       "rank": "amateur",
@@ -5504,7 +5504,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zigzagoon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zigzagoon.png",
     "system": {
       "dexNumber": 263,
       "rank": "starter",
@@ -5525,7 +5525,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Linoone",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/linoone.png",
     "system": {
       "dexNumber": 264,
       "rank": "amateur",
@@ -5546,7 +5546,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wurmple",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wurmple.png",
     "system": {
       "dexNumber": 265,
       "rank": "starter",
@@ -5567,7 +5567,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Silcoon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/silcoon.png",
     "system": {
       "dexNumber": 266,
       "rank": "starter",
@@ -5588,7 +5588,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beautifly",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/beautifly.png",
     "system": {
       "dexNumber": 267,
       "rank": "amateur",
@@ -5609,7 +5609,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cascoon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cascoon.png",
     "system": {
       "dexNumber": 268,
       "rank": "starter",
@@ -5630,7 +5630,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dustox",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dustox.png",
     "system": {
       "dexNumber": 269,
       "rank": "amateur",
@@ -5651,7 +5651,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lotad",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lotad.png",
     "system": {
       "dexNumber": 270,
       "rank": "starter",
@@ -5672,7 +5672,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lombre",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lombre.png",
     "system": {
       "dexNumber": 271,
       "rank": "beginner",
@@ -5693,7 +5693,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ludicolo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ludicolo.png",
     "system": {
       "dexNumber": 272,
       "rank": "ace",
@@ -5714,7 +5714,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seedot",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/seedot.png",
     "system": {
       "dexNumber": 273,
       "rank": "starter",
@@ -5735,7 +5735,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nuzleaf",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nuzleaf.png",
     "system": {
       "dexNumber": 274,
       "rank": "beginner",
@@ -5756,7 +5756,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shiftry",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shiftry.png",
     "system": {
       "dexNumber": 275,
       "rank": "ace",
@@ -5777,7 +5777,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Taillow",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/taillow.png",
     "system": {
       "dexNumber": 276,
       "rank": "starter",
@@ -5798,7 +5798,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swellow",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swellow.png",
     "system": {
       "dexNumber": 277,
       "rank": "amateur",
@@ -5819,7 +5819,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wingull",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wingull.png",
     "system": {
       "dexNumber": 278,
       "rank": "starter",
@@ -5840,7 +5840,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pelipper",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pelipper.png",
     "system": {
       "dexNumber": 279,
       "rank": "amateur",
@@ -5861,7 +5861,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ralts",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ralts.png",
     "system": {
       "dexNumber": 280,
       "rank": "starter",
@@ -5882,7 +5882,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kirlia",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kirlia.png",
     "system": {
       "dexNumber": 281,
       "rank": "starter",
@@ -5903,7 +5903,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gardevoir",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gardevoir.png",
     "system": {
       "dexNumber": 282,
       "rank": "ace",
@@ -5924,7 +5924,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Surskit",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/surskit.png",
     "system": {
       "dexNumber": 283,
       "rank": "starter",
@@ -5945,7 +5945,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Masquerain",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/masquerain.png",
     "system": {
       "dexNumber": 284,
       "rank": "amateur",
@@ -5966,7 +5966,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shroomish",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shroomish.png",
     "system": {
       "dexNumber": 285,
       "rank": "starter",
@@ -5987,7 +5987,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Breloom",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/breloom.png",
     "system": {
       "dexNumber": 286,
       "rank": "amateur",
@@ -6008,7 +6008,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slakoth",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slakoth.png",
     "system": {
       "dexNumber": 287,
       "rank": "starter",
@@ -6029,7 +6029,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vigoroth",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vigoroth.png",
     "system": {
       "dexNumber": 288,
       "rank": "amateur",
@@ -6050,7 +6050,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slaking",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slaking.png",
     "system": {
       "dexNumber": 289,
       "rank": "master",
@@ -6071,7 +6071,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nincada",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nincada.png",
     "system": {
       "dexNumber": 290,
       "rank": "starter",
@@ -6092,7 +6092,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ninjask",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ninjask.png",
     "system": {
       "dexNumber": 291,
       "rank": "amateur",
@@ -6113,7 +6113,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shedinja",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shedinja.png",
     "system": {
       "dexNumber": 292,
       "rank": "starter",
@@ -6134,7 +6134,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whismur",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/whismur.png",
     "system": {
       "dexNumber": 293,
       "rank": "starter",
@@ -6155,7 +6155,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Loudred",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/loudred.png",
     "system": {
       "dexNumber": 294,
       "rank": "beginner",
@@ -6176,7 +6176,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Exploud",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/exploud.png",
     "system": {
       "dexNumber": 295,
       "rank": "ace",
@@ -6197,7 +6197,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Makuhita",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/makuhita.png",
     "system": {
       "dexNumber": 296,
       "rank": "starter",
@@ -6218,7 +6218,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hariyama",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hariyama.png",
     "system": {
       "dexNumber": 297,
       "rank": "ace",
@@ -6239,7 +6239,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Azurill",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/azurill.png",
     "system": {
       "dexNumber": 298,
       "rank": "starter",
@@ -6260,7 +6260,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nosepass",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nosepass.png",
     "system": {
       "dexNumber": 299,
       "rank": "beginner",
@@ -6281,7 +6281,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skitty",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skitty.png",
     "system": {
       "dexNumber": 300,
       "rank": "starter",
@@ -6302,7 +6302,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Delcatty",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/delcatty.png",
     "system": {
       "dexNumber": 301,
       "rank": "amateur",
@@ -6323,7 +6323,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sableye",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sableye.png",
     "system": {
       "dexNumber": 302,
       "rank": "beginner",
@@ -6344,7 +6344,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mawile",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mawile.png",
     "system": {
       "dexNumber": 303,
       "rank": "beginner",
@@ -6365,7 +6365,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aron",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aron.png",
     "system": {
       "dexNumber": 304,
       "rank": "beginner",
@@ -6386,7 +6386,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lairon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lairon.png",
     "system": {
       "dexNumber": 305,
       "rank": "amateur",
@@ -6407,7 +6407,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aggron",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aggron.png",
     "system": {
       "dexNumber": 306,
       "rank": "ace",
@@ -6428,7 +6428,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meditite",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meditite.png",
     "system": {
       "dexNumber": 307,
       "rank": "starter",
@@ -6449,7 +6449,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Medicham",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/medicham.png",
     "system": {
       "dexNumber": 308,
       "rank": "amateur",
@@ -6470,7 +6470,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electrike",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/electrike.png",
     "system": {
       "dexNumber": 309,
       "rank": "starter",
@@ -6491,7 +6491,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Manectric",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/manectric.png",
     "system": {
       "dexNumber": 310,
       "rank": "ace",
@@ -6512,7 +6512,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Plusle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/plusle.png",
     "system": {
       "dexNumber": 311,
       "rank": "amateur",
@@ -6533,7 +6533,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Minun",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/minun.png",
     "system": {
       "dexNumber": 312,
       "rank": "amateur",
@@ -6554,7 +6554,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Volbeat",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/volbeat.png",
     "system": {
       "dexNumber": 313,
       "rank": "amateur",
@@ -6575,7 +6575,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Illumise",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/illumise.png",
     "system": {
       "dexNumber": 314,
       "rank": "amateur",
@@ -6596,7 +6596,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Roselia",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/roselia.png",
     "system": {
       "dexNumber": 315,
       "rank": "amateur",
@@ -6617,7 +6617,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gulpin",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gulpin.png",
     "system": {
       "dexNumber": 316,
       "rank": "beginner",
@@ -6638,7 +6638,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swalot",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swalot.png",
     "system": {
       "dexNumber": 317,
       "rank": "ace",
@@ -6659,7 +6659,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Carvanha",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/carvanha.png",
     "system": {
       "dexNumber": 318,
       "rank": "beginner",
@@ -6680,7 +6680,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sharpedo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sharpedo.png",
     "system": {
       "dexNumber": 319,
       "rank": "amateur",
@@ -6701,7 +6701,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wailmer",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wailmer.png",
     "system": {
       "dexNumber": 320,
       "rank": "amateur",
@@ -6722,7 +6722,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wailord",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wailord.png",
     "system": {
       "dexNumber": 321,
       "rank": "ace",
@@ -6743,7 +6743,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Numel",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/numel.png",
     "system": {
       "dexNumber": 322,
       "rank": "beginner",
@@ -6764,7 +6764,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Camerupt",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/camerupt.png",
     "system": {
       "dexNumber": 323,
       "rank": "amateur",
@@ -6785,7 +6785,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Torkoal",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/torkoal.png",
     "system": {
       "dexNumber": 324,
       "rank": "ace",
@@ -6806,7 +6806,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spoink",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spoink.png",
     "system": {
       "dexNumber": 325,
       "rank": "beginner",
@@ -6827,7 +6827,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grumpig",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grumpig.png",
     "system": {
       "dexNumber": 326,
       "rank": "ace",
@@ -6848,7 +6848,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spinda",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spinda.png",
     "system": {
       "dexNumber": 327,
       "rank": "beginner",
@@ -6869,7 +6869,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trapinch",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/trapinch.png",
     "system": {
       "dexNumber": 328,
       "rank": "starter",
@@ -6890,7 +6890,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vibrava",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vibrava.png",
     "system": {
       "dexNumber": 329,
       "rank": "beginner",
@@ -6911,7 +6911,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flygon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/flygon.png",
     "system": {
       "dexNumber": 330,
       "rank": "ace",
@@ -6932,7 +6932,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cacnea",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cacnea.png",
     "system": {
       "dexNumber": 331,
       "rank": "beginner",
@@ -6953,7 +6953,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cacturne",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cacturne.png",
     "system": {
       "dexNumber": 332,
       "rank": "ace",
@@ -6974,7 +6974,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swablu",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swablu.png",
     "system": {
       "dexNumber": 333,
       "rank": "beginner",
@@ -6995,7 +6995,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Altaria",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/altaria.png",
     "system": {
       "dexNumber": 334,
       "rank": "ace",
@@ -7016,7 +7016,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zangoose",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zangoose.png",
     "system": {
       "dexNumber": 335,
       "rank": "amateur",
@@ -7037,7 +7037,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seviper",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/seviper.png",
     "system": {
       "dexNumber": 336,
       "rank": "amateur",
@@ -7058,7 +7058,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lunatone",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lunatone.png",
     "system": {
       "dexNumber": 337,
       "rank": "amateur",
@@ -7079,7 +7079,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Solrock",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/solrock.png",
     "system": {
       "dexNumber": 338,
       "rank": "amateur",
@@ -7100,7 +7100,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Barboach",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/barboach.png",
     "system": {
       "dexNumber": 339,
       "rank": "starter",
@@ -7121,7 +7121,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whiscash",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/whiscash.png",
     "system": {
       "dexNumber": 340,
       "rank": "ace",
@@ -7142,7 +7142,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corphish",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/corphish.png",
     "system": {
       "dexNumber": 341,
       "rank": "beginner",
@@ -7163,7 +7163,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crawdaunt",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/crawdaunt.png",
     "system": {
       "dexNumber": 342,
       "rank": "ace",
@@ -7184,7 +7184,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Baltoy",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/baltoy.png",
     "system": {
       "dexNumber": 343,
       "rank": "starter",
@@ -7205,7 +7205,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Claydol",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/claydol.png",
     "system": {
       "dexNumber": 344,
       "rank": "ace",
@@ -7226,7 +7226,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lileep",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lileep.png",
     "system": {
       "dexNumber": 345,
       "rank": "beginner",
@@ -7247,7 +7247,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cradily",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cradily.png",
     "system": {
       "dexNumber": 346,
       "rank": "ace",
@@ -7268,7 +7268,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Anorith",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/anorith.png",
     "system": {
       "dexNumber": 347,
       "rank": "beginner",
@@ -7289,7 +7289,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Armaldo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/armaldo.png",
     "system": {
       "dexNumber": 348,
       "rank": "ace",
@@ -7310,7 +7310,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Feebas",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/feebas.png",
     "system": {
       "dexNumber": 349,
       "rank": "starter",
@@ -7331,7 +7331,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Milotic",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/milotic.png",
     "system": {
       "dexNumber": 350,
       "rank": "ace",
@@ -7352,7 +7352,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Castform",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/castform.png",
     "system": {
       "dexNumber": 351,
       "rank": "amateur",
@@ -7373,7 +7373,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kecleon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kecleon.png",
     "system": {
       "dexNumber": 352,
       "rank": "amateur",
@@ -7394,7 +7394,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shuppet",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shuppet.png",
     "system": {
       "dexNumber": 353,
       "rank": "starter",
@@ -7415,7 +7415,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Banette",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/banette.png",
     "system": {
       "dexNumber": 354,
       "rank": "amateur",
@@ -7436,7 +7436,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Duskull",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/duskull.png",
     "system": {
       "dexNumber": 355,
       "rank": "starter",
@@ -7457,7 +7457,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dusclops",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dusclops.png",
     "system": {
       "dexNumber": 356,
       "rank": "amateur",
@@ -7478,7 +7478,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tropius",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tropius.png",
     "system": {
       "dexNumber": 357,
       "rank": "amateur",
@@ -7499,7 +7499,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chimecho",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chimecho.png",
     "system": {
       "dexNumber": 358,
       "rank": "amateur",
@@ -7520,7 +7520,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Absol",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/absol.png",
     "system": {
       "dexNumber": 359,
       "rank": "ace",
@@ -7541,7 +7541,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wynaut",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wynaut.png",
     "system": {
       "dexNumber": 360,
       "rank": "starter",
@@ -7562,7 +7562,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snorunt",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/snorunt.png",
     "system": {
       "dexNumber": 361,
       "rank": "starter",
@@ -7583,7 +7583,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Glalie",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/glalie.png",
     "system": {
       "dexNumber": 362,
       "rank": "ace",
@@ -7604,7 +7604,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spheal",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spheal.png",
     "system": {
       "dexNumber": 363,
       "rank": "starter",
@@ -7625,7 +7625,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sealeo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sealeo.png",
     "system": {
       "dexNumber": 364,
       "rank": "amateur",
@@ -7646,7 +7646,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Walrein",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/walrein.png",
     "system": {
       "dexNumber": 365,
       "rank": "ace",
@@ -7667,7 +7667,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clamperl",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/clamperl.png",
     "system": {
       "dexNumber": 366,
       "rank": "beginner",
@@ -7688,7 +7688,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Huntail",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/huntail.png",
     "system": {
       "dexNumber": 367,
       "rank": "ace",
@@ -7709,7 +7709,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gorebyss",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gorebyss.png",
     "system": {
       "dexNumber": 368,
       "rank": "ace",
@@ -7730,7 +7730,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Relicanth",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/relicanth.png",
     "system": {
       "dexNumber": 369,
       "rank": "ace",
@@ -7751,7 +7751,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Luvdisc",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/luvdisc.png",
     "system": {
       "dexNumber": 370,
       "rank": "beginner",
@@ -7772,7 +7772,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bagon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bagon.png",
     "system": {
       "dexNumber": 371,
       "rank": "starter",
@@ -7793,7 +7793,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shelgon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shelgon.png",
     "system": {
       "dexNumber": 372,
       "rank": "amateur",
@@ -7814,7 +7814,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Salamence",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/salamence.png",
     "system": {
       "dexNumber": 373,
       "rank": "pro",
@@ -7835,7 +7835,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beldum",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/beldum.png",
     "system": {
       "dexNumber": 374,
       "rank": "starter",
@@ -7856,7 +7856,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metang",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/metang.png",
     "system": {
       "dexNumber": 375,
       "rank": "amateur",
@@ -7877,7 +7877,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metagross",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/metagross.png",
     "system": {
       "dexNumber": 376,
       "rank": "pro",
@@ -7898,7 +7898,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Regirock",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/regirock.png",
     "system": {
       "dexNumber": 377,
       "rank": "pro",
@@ -7919,7 +7919,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Regice",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/regice.png",
     "system": {
       "dexNumber": 378,
       "rank": "pro",
@@ -7940,7 +7940,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Registeel",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/registeel.png",
     "system": {
       "dexNumber": 379,
       "rank": "pro",
@@ -7961,7 +7961,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Latias",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/latias.png",
     "system": {
       "dexNumber": 380,
       "rank": "pro",
@@ -7982,7 +7982,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Latios",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/latios.png",
     "system": {
       "dexNumber": 381,
       "rank": "pro",
@@ -8003,7 +8003,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kyogre",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kyogre.png",
     "system": {
       "dexNumber": 382,
       "rank": "master",
@@ -8024,7 +8024,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Groudon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/groudon.png",
     "system": {
       "dexNumber": 383,
       "rank": "master",
@@ -8045,7 +8045,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rayquaza",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rayquaza.png",
     "system": {
       "dexNumber": 384,
       "rank": "master",
@@ -8066,7 +8066,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jirachi",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/jirachi.png",
     "system": {
       "dexNumber": 385,
       "rank": "pro",
@@ -8087,7 +8087,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Deoxys",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/deoxys.png",
     "system": {
       "dexNumber": 386,
       "rank": "pro",
@@ -8108,7 +8108,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Turtwig",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/turtwig.png",
     "system": {
       "dexNumber": 387,
       "rank": "beginner",
@@ -8129,7 +8129,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grotle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grotle.png",
     "system": {
       "dexNumber": 388,
       "rank": "amateur",
@@ -8150,7 +8150,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Torterra",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/torterra.png",
     "system": {
       "dexNumber": 389,
       "rank": "ace",
@@ -8171,7 +8171,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chimchar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chimchar.png",
     "system": {
       "dexNumber": 390,
       "rank": "beginner",
@@ -8192,7 +8192,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Monferno",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/monferno.png",
     "system": {
       "dexNumber": 391,
       "rank": "amateur",
@@ -8213,7 +8213,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Infernape",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/infernape.png",
     "system": {
       "dexNumber": 392,
       "rank": "ace",
@@ -8234,7 +8234,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Piplup",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/piplup.png",
     "system": {
       "dexNumber": 393,
       "rank": "beginner",
@@ -8255,7 +8255,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Prinplup",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/prinplup.png",
     "system": {
       "dexNumber": 394,
       "rank": "amateur",
@@ -8276,7 +8276,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Empoleon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/empoleon.png",
     "system": {
       "dexNumber": 395,
       "rank": "ace",
@@ -8297,7 +8297,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Starly",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/starly.png",
     "system": {
       "dexNumber": 396,
       "rank": "starter",
@@ -8318,7 +8318,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Staravia",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/staravia.png",
     "system": {
       "dexNumber": 397,
       "rank": "beginner",
@@ -8339,7 +8339,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Staraptor",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/staraptor.png",
     "system": {
       "dexNumber": 398,
       "rank": "ace",
@@ -8360,7 +8360,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bidoof",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bidoof.png",
     "system": {
       "dexNumber": 399,
       "rank": "starter",
@@ -8381,7 +8381,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bibarel",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bibarel.png",
     "system": {
       "dexNumber": 400,
       "rank": "amateur",
@@ -8402,7 +8402,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kricketot",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kricketot.png",
     "system": {
       "dexNumber": 401,
       "rank": "starter",
@@ -8423,7 +8423,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kricketune",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kricketune.png",
     "system": {
       "dexNumber": 402,
       "rank": "amateur",
@@ -8444,7 +8444,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shinx",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shinx.png",
     "system": {
       "dexNumber": 403,
       "rank": "starter",
@@ -8465,7 +8465,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Luxio",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/luxio.png",
     "system": {
       "dexNumber": 404,
       "rank": "beginner",
@@ -8486,7 +8486,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Luxray",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/luxray.png",
     "system": {
       "dexNumber": 405,
       "rank": "ace",
@@ -8507,7 +8507,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Budew",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/budew.png",
     "system": {
       "dexNumber": 406,
       "rank": "starter",
@@ -8528,7 +8528,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Roserade",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/roserade.png",
     "system": {
       "dexNumber": 407,
       "rank": "ace",
@@ -8549,7 +8549,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cranidos",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cranidos.png",
     "system": {
       "dexNumber": 408,
       "rank": "beginner",
@@ -8570,7 +8570,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rampardos",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rampardos.png",
     "system": {
       "dexNumber": 409,
       "rank": "ace",
@@ -8591,7 +8591,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shieldon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shieldon.png",
     "system": {
       "dexNumber": 410,
       "rank": "beginner",
@@ -8612,7 +8612,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bastiodon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bastiodon.png",
     "system": {
       "dexNumber": 411,
       "rank": "ace",
@@ -8633,7 +8633,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Burmy",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/burmy.png",
     "system": {
       "dexNumber": 412,
       "rank": "starter",
@@ -8654,7 +8654,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wormadam",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wormadam.png",
     "system": {
       "dexNumber": 413,
       "rank": "amateur",
@@ -8675,7 +8675,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mothim",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mothim.png",
     "system": {
       "dexNumber": 414,
       "rank": "amateur",
@@ -8696,7 +8696,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Combee",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/combee.png",
     "system": {
       "dexNumber": 415,
       "rank": "starter",
@@ -8717,7 +8717,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vespiquen",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vespiquen.png",
     "system": {
       "dexNumber": 416,
       "rank": "ace",
@@ -8738,7 +8738,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pachirisu",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pachirisu.png",
     "system": {
       "dexNumber": 417,
       "rank": "amateur",
@@ -8759,7 +8759,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Buizel",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/buizel.png",
     "system": {
       "dexNumber": 418,
       "rank": "beginner",
@@ -8780,7 +8780,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Floatzel",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/floatzel.png",
     "system": {
       "dexNumber": 419,
       "rank": "ace",
@@ -8801,7 +8801,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cherubi",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cherubi.png",
     "system": {
       "dexNumber": 420,
       "rank": "starter",
@@ -8822,7 +8822,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cherrim",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cherrim.png",
     "system": {
       "dexNumber": 421,
       "rank": "amateur",
@@ -8843,7 +8843,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shellos",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shellos.png",
     "system": {
       "dexNumber": 422,
       "rank": "beginner",
@@ -8864,7 +8864,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gastrodon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gastrodon.png",
     "system": {
       "dexNumber": 423,
       "rank": "ace",
@@ -8885,7 +8885,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ambipom",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ambipom.png",
     "system": {
       "dexNumber": 424,
       "rank": "ace",
@@ -8906,7 +8906,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drifloon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drifloon.png",
     "system": {
       "dexNumber": 425,
       "rank": "beginner",
@@ -8927,7 +8927,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drifblim",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drifblim.png",
     "system": {
       "dexNumber": 426,
       "rank": "ace",
@@ -8948,7 +8948,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Buneary",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/buneary.png",
     "system": {
       "dexNumber": 427,
       "rank": "beginner",
@@ -8969,7 +8969,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lopunny",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lopunny.png",
     "system": {
       "dexNumber": 428,
       "rank": "ace",
@@ -8990,7 +8990,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mismagius",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mismagius.png",
     "system": {
       "dexNumber": 429,
       "rank": "ace",
@@ -9011,7 +9011,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Honchkrow",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/honchkrow.png",
     "system": {
       "dexNumber": 430,
       "rank": "ace",
@@ -9032,7 +9032,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Glameow",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/glameow.png",
     "system": {
       "dexNumber": 431,
       "rank": "beginner",
@@ -9053,7 +9053,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Purugly",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/purugly.png",
     "system": {
       "dexNumber": 432,
       "rank": "amateur",
@@ -9074,7 +9074,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chingling",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chingling.png",
     "system": {
       "dexNumber": 433,
       "rank": "starter",
@@ -9095,7 +9095,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stunky",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stunky.png",
     "system": {
       "dexNumber": 434,
       "rank": "beginner",
@@ -9116,7 +9116,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skuntank",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skuntank.png",
     "system": {
       "dexNumber": 435,
       "rank": "ace",
@@ -9137,7 +9137,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bronzor",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bronzor.png",
     "system": {
       "dexNumber": 436,
       "rank": "starter",
@@ -9158,7 +9158,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bronzong",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bronzong.png",
     "system": {
       "dexNumber": 437,
       "rank": "ace",
@@ -9179,7 +9179,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bonsly",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bonsly.png",
     "system": {
       "dexNumber": 438,
       "rank": "starter",
@@ -9200,7 +9200,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mime Jr.",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mime-jr.png",
     "system": {
       "dexNumber": 439,
       "rank": "beginner",
@@ -9221,7 +9221,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Happiny",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/happiny.png",
     "system": {
       "dexNumber": 440,
       "rank": "starter",
@@ -9242,7 +9242,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chatot",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chatot.png",
     "system": {
       "dexNumber": 441,
       "rank": "amateur",
@@ -9263,7 +9263,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spiritomb",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spiritomb.png",
     "system": {
       "dexNumber": 442,
       "rank": "ace",
@@ -9284,7 +9284,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gible",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gible.png",
     "system": {
       "dexNumber": 443,
       "rank": "starter",
@@ -9305,7 +9305,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gabite",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gabite.png",
     "system": {
       "dexNumber": 444,
       "rank": "amateur",
@@ -9326,7 +9326,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Garchomp",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/garchomp.png",
     "system": {
       "dexNumber": 445,
       "rank": "pro",
@@ -9347,7 +9347,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Munchlax",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/munchlax.png",
     "system": {
       "dexNumber": 446,
       "rank": "amateur",
@@ -9368,7 +9368,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Riolu",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/riolu.png",
     "system": {
       "dexNumber": 447,
       "rank": "starter",
@@ -9389,7 +9389,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lucario",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lucario.png",
     "system": {
       "dexNumber": 448,
       "rank": "ace",
@@ -9410,7 +9410,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hippopotas",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hippopotas.png",
     "system": {
       "dexNumber": 449,
       "rank": "beginner",
@@ -9431,7 +9431,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hippowdon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hippowdon.png",
     "system": {
       "dexNumber": 450,
       "rank": "ace",
@@ -9452,7 +9452,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skorupi",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skorupi.png",
     "system": {
       "dexNumber": 451,
       "rank": "beginner",
@@ -9473,7 +9473,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drapion",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drapion.png",
     "system": {
       "dexNumber": 452,
       "rank": "ace",
@@ -9494,7 +9494,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Croagunk",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/croagunk.png",
     "system": {
       "dexNumber": 453,
       "rank": "starter",
@@ -9515,7 +9515,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxicroak",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/toxicroak.png",
     "system": {
       "dexNumber": 454,
       "rank": "ace",
@@ -9536,7 +9536,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Carnivine",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/carnivine.png",
     "system": {
       "dexNumber": 455,
       "rank": "amateur",
@@ -9557,7 +9557,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Finneon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/finneon.png",
     "system": {
       "dexNumber": 456,
       "rank": "beginner",
@@ -9578,7 +9578,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lumineon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lumineon.png",
     "system": {
       "dexNumber": 457,
       "rank": "amateur",
@@ -9599,7 +9599,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mantyke",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mantyke.png",
     "system": {
       "dexNumber": 458,
       "rank": "beginner",
@@ -9620,7 +9620,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snover",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/snover.png",
     "system": {
       "dexNumber": 459,
       "rank": "beginner",
@@ -9641,7 +9641,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Abomasnow",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/abomasnow.png",
     "system": {
       "dexNumber": 460,
       "rank": "ace",
@@ -9662,7 +9662,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weavile",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/weavile.png",
     "system": {
       "dexNumber": 461,
       "rank": "ace",
@@ -9683,7 +9683,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magnezone",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magnezone.png",
     "system": {
       "dexNumber": 462,
       "rank": "ace",
@@ -9704,7 +9704,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lickilicky",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lickilicky.png",
     "system": {
       "dexNumber": 463,
       "rank": "ace",
@@ -9725,7 +9725,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rhyperior",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rhyperior.png",
     "system": {
       "dexNumber": 464,
       "rank": "ace",
@@ -9746,7 +9746,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tangrowth",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tangrowth.png",
     "system": {
       "dexNumber": 465,
       "rank": "ace",
@@ -9767,7 +9767,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electivire",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/electivire.png",
     "system": {
       "dexNumber": 466,
       "rank": "ace",
@@ -9788,7 +9788,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magmortar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magmortar.png",
     "system": {
       "dexNumber": 467,
       "rank": "ace",
@@ -9809,7 +9809,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Togekiss",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/togekiss.png",
     "system": {
       "dexNumber": 468,
       "rank": "pro",
@@ -9830,7 +9830,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yanmega",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/yanmega.png",
     "system": {
       "dexNumber": 469,
       "rank": "ace",
@@ -9851,7 +9851,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leafeon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/leafeon.png",
     "system": {
       "dexNumber": 470,
       "rank": "ace",
@@ -9872,7 +9872,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Glaceon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/glaceon.png",
     "system": {
       "dexNumber": 471,
       "rank": "ace",
@@ -9893,7 +9893,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gliscor",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gliscor.png",
     "system": {
       "dexNumber": 472,
       "rank": "ace",
@@ -9914,7 +9914,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mamoswine",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mamoswine.png",
     "system": {
       "dexNumber": 473,
       "rank": "ace",
@@ -9935,7 +9935,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Porygon-Z",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/porygon-z.png",
     "system": {
       "dexNumber": 474,
       "rank": "ace",
@@ -9956,7 +9956,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gallade",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gallade.png",
     "system": {
       "dexNumber": 475,
       "rank": "ace",
@@ -9977,7 +9977,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Probopass",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/probopass.png",
     "system": {
       "dexNumber": 476,
       "rank": "ace",
@@ -9998,7 +9998,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dusknoir",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dusknoir.png",
     "system": {
       "dexNumber": 477,
       "rank": "ace",
@@ -10019,7 +10019,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Froslass",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/froslass.png",
     "system": {
       "dexNumber": 478,
       "rank": "ace",
@@ -10040,7 +10040,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rotom",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rotom.png",
     "system": {
       "dexNumber": 479,
       "rank": "amateur",
@@ -10061,7 +10061,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Uxie",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/uxie.png",
     "system": {
       "dexNumber": 480,
       "rank": "pro",
@@ -10082,7 +10082,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mesprit",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mesprit.png",
     "system": {
       "dexNumber": 481,
       "rank": "pro",
@@ -10103,7 +10103,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Azelf",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/azelf.png",
     "system": {
       "dexNumber": 482,
       "rank": "pro",
@@ -10124,7 +10124,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dialga",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dialga.png",
     "system": {
       "dexNumber": 483,
       "rank": "master",
@@ -10145,7 +10145,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Palkia",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/palkia.png",
     "system": {
       "dexNumber": 484,
       "rank": "master",
@@ -10166,7 +10166,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heatran",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/heatran.png",
     "system": {
       "dexNumber": 485,
       "rank": "pro",
@@ -10187,7 +10187,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Regigigas",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/regigigas.png",
     "system": {
       "dexNumber": 486,
       "rank": "master",
@@ -10208,7 +10208,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Giratina",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/giratina.png",
     "system": {
       "dexNumber": 487,
       "rank": "master",
@@ -10229,7 +10229,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cresselia",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cresselia.png",
     "system": {
       "dexNumber": 488,
       "rank": "pro",
@@ -10250,7 +10250,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Phione",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/phione.png",
     "system": {
       "dexNumber": 489,
       "rank": "ace",
@@ -10271,7 +10271,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Manaphy",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/manaphy.png",
     "system": {
       "dexNumber": 490,
       "rank": "pro",
@@ -10292,7 +10292,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darkrai",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/darkrai.png",
     "system": {
       "dexNumber": 491,
       "rank": "pro",
@@ -10313,7 +10313,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shaymin",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shaymin.png",
     "system": {
       "dexNumber": 492,
       "rank": "pro",
@@ -10334,7 +10334,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arceus",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/arceus.png",
     "system": {
       "dexNumber": 493,
       "rank": "champion",
@@ -10355,7 +10355,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Victini",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/victini.png",
     "system": {
       "dexNumber": 494,
       "rank": "pro",
@@ -10376,7 +10376,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snivy",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/snivy.png",
     "system": {
       "dexNumber": 495,
       "rank": "beginner",
@@ -10397,7 +10397,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Servine",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/servine.png",
     "system": {
       "dexNumber": 496,
       "rank": "amateur",
@@ -10418,7 +10418,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Serperior",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/serperior.png",
     "system": {
       "dexNumber": 497,
       "rank": "ace",
@@ -10439,7 +10439,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tepig",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tepig.png",
     "system": {
       "dexNumber": 498,
       "rank": "beginner",
@@ -10460,7 +10460,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pignite",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pignite.png",
     "system": {
       "dexNumber": 499,
       "rank": "amateur",
@@ -10481,7 +10481,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Emboar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/emboar.png",
     "system": {
       "dexNumber": 500,
       "rank": "ace",
@@ -10502,7 +10502,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Oshawott",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/oshawott.png",
     "system": {
       "dexNumber": 501,
       "rank": "beginner",
@@ -10523,7 +10523,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dewott",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dewott.png",
     "system": {
       "dexNumber": 502,
       "rank": "amateur",
@@ -10544,7 +10544,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Samurott",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/samurott.png",
     "system": {
       "dexNumber": 503,
       "rank": "ace",
@@ -10565,7 +10565,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Patrat",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/patrat.png",
     "system": {
       "dexNumber": 504,
       "rank": "starter",
@@ -10586,7 +10586,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Watchog",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/watchog.png",
     "system": {
       "dexNumber": 505,
       "rank": "amateur",
@@ -10607,7 +10607,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lillipup",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lillipup.png",
     "system": {
       "dexNumber": 506,
       "rank": "starter",
@@ -10628,7 +10628,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Herdier",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/herdier.png",
     "system": {
       "dexNumber": 507,
       "rank": "beginner",
@@ -10649,7 +10649,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stoutland",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stoutland.png",
     "system": {
       "dexNumber": 508,
       "rank": "ace",
@@ -10670,7 +10670,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Purrloin",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/purrloin.png",
     "system": {
       "dexNumber": 509,
       "rank": "starter",
@@ -10691,7 +10691,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Liepard",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/liepard.png",
     "system": {
       "dexNumber": 510,
       "rank": "amateur",
@@ -10712,7 +10712,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pansage",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pansage.png",
     "system": {
       "dexNumber": 511,
       "rank": "beginner",
@@ -10733,7 +10733,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Simisage",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/simisage.png",
     "system": {
       "dexNumber": 512,
       "rank": "ace",
@@ -10754,7 +10754,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pansear",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pansear.png",
     "system": {
       "dexNumber": 513,
       "rank": "beginner",
@@ -10775,7 +10775,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Simisear",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/simisear.png",
     "system": {
       "dexNumber": 514,
       "rank": "ace",
@@ -10796,7 +10796,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Panpour",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/panpour.png",
     "system": {
       "dexNumber": 515,
       "rank": "beginner",
@@ -10817,7 +10817,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Simipour",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/simipour.png",
     "system": {
       "dexNumber": 516,
       "rank": "ace",
@@ -10838,7 +10838,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Munna",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/munna.png",
     "system": {
       "dexNumber": 517,
       "rank": "starter",
@@ -10859,7 +10859,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Musharna",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/musharna.png",
     "system": {
       "dexNumber": 518,
       "rank": "ace",
@@ -10880,7 +10880,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pidove",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pidove.png",
     "system": {
       "dexNumber": 519,
       "rank": "starter",
@@ -10901,7 +10901,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tranquill",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tranquill.png",
     "system": {
       "dexNumber": 520,
       "rank": "beginner",
@@ -10922,7 +10922,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Unfezant",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/unfezant.png",
     "system": {
       "dexNumber": 521,
       "rank": "ace",
@@ -10943,7 +10943,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blitzle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blitzle.png",
     "system": {
       "dexNumber": 522,
       "rank": "starter",
@@ -10964,7 +10964,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zebstrika",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zebstrika.png",
     "system": {
       "dexNumber": 523,
       "rank": "ace",
@@ -10985,7 +10985,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Roggenrola",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/roggenrola.png",
     "system": {
       "dexNumber": 524,
       "rank": "starter",
@@ -11006,7 +11006,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Boldore",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/boldore.png",
     "system": {
       "dexNumber": 525,
       "rank": "amateur",
@@ -11027,7 +11027,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gigalith",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gigalith.png",
     "system": {
       "dexNumber": 526,
       "rank": "ace",
@@ -11048,7 +11048,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Woobat",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/woobat.png",
     "system": {
       "dexNumber": 527,
       "rank": "beginner",
@@ -11069,7 +11069,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swoobat",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swoobat.png",
     "system": {
       "dexNumber": 528,
       "rank": "amateur",
@@ -11090,7 +11090,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drilbur",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drilbur.png",
     "system": {
       "dexNumber": 529,
       "rank": "beginner",
@@ -11111,7 +11111,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Excadrill",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/excadrill.png",
     "system": {
       "dexNumber": 530,
       "rank": "ace",
@@ -11132,7 +11132,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Audino",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/audino.png",
     "system": {
       "dexNumber": 531,
       "rank": "amateur",
@@ -11153,7 +11153,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Timburr",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/timburr.png",
     "system": {
       "dexNumber": 532,
       "rank": "beginner",
@@ -11174,7 +11174,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gurdurr",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gurdurr.png",
     "system": {
       "dexNumber": 533,
       "rank": "amateur",
@@ -11195,7 +11195,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Conkeldurr",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/conkeldurr.png",
     "system": {
       "dexNumber": 534,
       "rank": "ace",
@@ -11216,7 +11216,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tympole",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tympole.png",
     "system": {
       "dexNumber": 535,
       "rank": "starter",
@@ -11237,7 +11237,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Palpitoad",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/palpitoad.png",
     "system": {
       "dexNumber": 536,
       "rank": "amateur",
@@ -11258,7 +11258,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seismitoad",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/seismitoad.png",
     "system": {
       "dexNumber": 537,
       "rank": "ace",
@@ -11279,7 +11279,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Throh",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/throh.png",
     "system": {
       "dexNumber": 538,
       "rank": "ace",
@@ -11300,7 +11300,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sawk",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sawk.png",
     "system": {
       "dexNumber": 539,
       "rank": "ace",
@@ -11321,7 +11321,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sewaddle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sewaddle.png",
     "system": {
       "dexNumber": 540,
       "rank": "beginner",
@@ -11342,7 +11342,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swadloon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swadloon.png",
     "system": {
       "dexNumber": 541,
       "rank": "beginner",
@@ -11363,7 +11363,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leavanny",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/leavanny.png",
     "system": {
       "dexNumber": 542,
       "rank": "ace",
@@ -11384,7 +11384,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venipede",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/venipede.png",
     "system": {
       "dexNumber": 543,
       "rank": "starter",
@@ -11405,7 +11405,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whirlipede",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/whirlipede.png",
     "system": {
       "dexNumber": 544,
       "rank": "beginner",
@@ -11426,7 +11426,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scolipede",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scolipede.png",
     "system": {
       "dexNumber": 545,
       "rank": "ace",
@@ -11447,7 +11447,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cottonee",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cottonee.png",
     "system": {
       "dexNumber": 546,
       "rank": "starter",
@@ -11468,7 +11468,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whimsicott",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/whimsicott.png",
     "system": {
       "dexNumber": 547,
       "rank": "ace",
@@ -11489,7 +11489,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Petilil",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/petilil.png",
     "system": {
       "dexNumber": 548,
       "rank": "starter",
@@ -11510,7 +11510,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lilligant",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lilligant.png",
     "system": {
       "dexNumber": 549,
       "rank": "ace",
@@ -11531,7 +11531,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Basculin",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/basculin.png",
     "system": {
       "dexNumber": 550,
       "rank": "amateur",
@@ -11552,7 +11552,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandile",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sandile.png",
     "system": {
       "dexNumber": 551,
       "rank": "starter",
@@ -11573,7 +11573,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Krokorok",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/krokorok.png",
     "system": {
       "dexNumber": 552,
       "rank": "beginner",
@@ -11594,7 +11594,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Krookodile",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/krookodile.png",
     "system": {
       "dexNumber": 553,
       "rank": "ace",
@@ -11615,7 +11615,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darumaka",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/darumaka.png",
     "system": {
       "dexNumber": 554,
       "rank": "beginner",
@@ -11636,7 +11636,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darmanitan",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/darmanitan.png",
     "system": {
       "dexNumber": 555,
       "rank": "ace",
@@ -11657,7 +11657,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Maractus",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/maractus.png",
     "system": {
       "dexNumber": 556,
       "rank": "ace",
@@ -11678,7 +11678,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dwebble",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dwebble.png",
     "system": {
       "dexNumber": 557,
       "rank": "beginner",
@@ -11699,7 +11699,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crustle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/crustle.png",
     "system": {
       "dexNumber": 558,
       "rank": "ace",
@@ -11720,7 +11720,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scraggy",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scraggy.png",
     "system": {
       "dexNumber": 559,
       "rank": "beginner",
@@ -11741,7 +11741,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scrafty",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scrafty.png",
     "system": {
       "dexNumber": 560,
       "rank": "ace",
@@ -11762,7 +11762,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sigilyph",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sigilyph.png",
     "system": {
       "dexNumber": 561,
       "rank": "ace",
@@ -11783,7 +11783,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yamask",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/yamask.png",
     "system": {
       "dexNumber": 562,
       "rank": "beginner",
@@ -11804,7 +11804,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cofagrigus",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cofagrigus.png",
     "system": {
       "dexNumber": 563,
       "rank": "ace",
@@ -11825,7 +11825,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tirtouga",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tirtouga.png",
     "system": {
       "dexNumber": 564,
       "rank": "beginner",
@@ -11846,7 +11846,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Carracosta",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/carracosta.png",
     "system": {
       "dexNumber": 565,
       "rank": "ace",
@@ -11867,7 +11867,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Archen",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/archen.png",
     "system": {
       "dexNumber": 566,
       "rank": "amateur",
@@ -11888,7 +11888,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Archeops",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/archeops.png",
     "system": {
       "dexNumber": 567,
       "rank": "pro",
@@ -11909,7 +11909,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trubbish",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/trubbish.png",
     "system": {
       "dexNumber": 568,
       "rank": "beginner",
@@ -11930,7 +11930,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Garbodor",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/garbodor.png",
     "system": {
       "dexNumber": 569,
       "rank": "ace",
@@ -11951,7 +11951,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zorua",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zorua.png",
     "system": {
       "dexNumber": 570,
       "rank": "beginner",
@@ -11972,7 +11972,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zoroark",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zoroark.png",
     "system": {
       "dexNumber": 571,
       "rank": "ace",
@@ -11993,7 +11993,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Minccino",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/minccino.png",
     "system": {
       "dexNumber": 572,
       "rank": "starter",
@@ -12014,7 +12014,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cinccino",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cinccino.png",
     "system": {
       "dexNumber": 573,
       "rank": "ace",
@@ -12035,7 +12035,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gothita",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gothita.png",
     "system": {
       "dexNumber": 574,
       "rank": "starter",
@@ -12056,7 +12056,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gothorita",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gothorita.png",
     "system": {
       "dexNumber": 575,
       "rank": "amateur",
@@ -12077,7 +12077,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gothitelle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gothitelle.png",
     "system": {
       "dexNumber": 576,
       "rank": "ace",
@@ -12098,7 +12098,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Solosis",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/solosis.png",
     "system": {
       "dexNumber": 577,
       "rank": "starter",
@@ -12119,7 +12119,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Duosion",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/duosion.png",
     "system": {
       "dexNumber": 578,
       "rank": "beginner",
@@ -12140,7 +12140,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Reuniclus",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/reuniclus.png",
     "system": {
       "dexNumber": 579,
       "rank": "ace",
@@ -12161,7 +12161,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ducklett",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ducklett.png",
     "system": {
       "dexNumber": 580,
       "rank": "beginner",
@@ -12182,7 +12182,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swanna",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swanna.png",
     "system": {
       "dexNumber": 581,
       "rank": "ace",
@@ -12203,7 +12203,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vanillite",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vanillite.png",
     "system": {
       "dexNumber": 582,
       "rank": "beginner",
@@ -12224,7 +12224,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vanillish",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vanillish.png",
     "system": {
       "dexNumber": 583,
       "rank": "amateur",
@@ -12245,7 +12245,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vanilluxe",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vanilluxe.png",
     "system": {
       "dexNumber": 584,
       "rank": "ace",
@@ -12266,7 +12266,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Deerling",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/deerling.png",
     "system": {
       "dexNumber": 585,
       "rank": "beginner",
@@ -12287,7 +12287,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sawsbuck",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sawsbuck.png",
     "system": {
       "dexNumber": 586,
       "rank": "ace",
@@ -12308,7 +12308,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Emolga",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/emolga.png",
     "system": {
       "dexNumber": 587,
       "rank": "amateur",
@@ -12329,7 +12329,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Karrablast",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/karrablast.png",
     "system": {
       "dexNumber": 588,
       "rank": "beginner",
@@ -12350,7 +12350,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Escavalier",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/escavalier.png",
     "system": {
       "dexNumber": 589,
       "rank": "ace",
@@ -12371,7 +12371,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Foongus",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/foongus.png",
     "system": {
       "dexNumber": 590,
       "rank": "starter",
@@ -12392,7 +12392,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Amoonguss",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/amoonguss.png",
     "system": {
       "dexNumber": 591,
       "rank": "ace",
@@ -12413,7 +12413,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Frillish",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/frillish.png",
     "system": {
       "dexNumber": 592,
       "rank": "beginner",
@@ -12434,7 +12434,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jellicent",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/jellicent.png",
     "system": {
       "dexNumber": 593,
       "rank": "ace",
@@ -12455,7 +12455,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Alomomola",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/alomomola.png",
     "system": {
       "dexNumber": 594,
       "rank": "ace",
@@ -12476,7 +12476,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Joltik",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/joltik.png",
     "system": {
       "dexNumber": 595,
       "rank": "beginner",
@@ -12497,7 +12497,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Galvantula",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/galvantula.png",
     "system": {
       "dexNumber": 596,
       "rank": "ace",
@@ -12518,7 +12518,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ferroseed",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ferroseed.png",
     "system": {
       "dexNumber": 597,
       "rank": "beginner",
@@ -12539,7 +12539,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ferrothorn",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ferrothorn.png",
     "system": {
       "dexNumber": 598,
       "rank": "ace",
@@ -12560,7 +12560,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Klink",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/klink.png",
     "system": {
       "dexNumber": 599,
       "rank": "starter",
@@ -12581,7 +12581,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Klang",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/klang.png",
     "system": {
       "dexNumber": 600,
       "rank": "amateur",
@@ -12602,7 +12602,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Klinklang",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/klinklang.png",
     "system": {
       "dexNumber": 601,
       "rank": "ace",
@@ -12623,7 +12623,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tynamo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tynamo.png",
     "system": {
       "dexNumber": 602,
       "rank": "starter",
@@ -12644,7 +12644,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eelektrik",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/eelektrik.png",
     "system": {
       "dexNumber": 603,
       "rank": "amateur",
@@ -12665,7 +12665,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eelektross",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/eelektross.png",
     "system": {
       "dexNumber": 604,
       "rank": "ace",
@@ -12686,7 +12686,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Elgyem",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/elgyem.png",
     "system": {
       "dexNumber": 605,
       "rank": "beginner",
@@ -12707,7 +12707,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beheeyem",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/beheeyem.png",
     "system": {
       "dexNumber": 606,
       "rank": "ace",
@@ -12728,7 +12728,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Litwick",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/litwick.png",
     "system": {
       "dexNumber": 607,
       "rank": "starter",
@@ -12749,7 +12749,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lampent",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lampent.png",
     "system": {
       "dexNumber": 608,
       "rank": "beginner",
@@ -12770,7 +12770,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chandelure",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chandelure.png",
     "system": {
       "dexNumber": 609,
       "rank": "ace",
@@ -12791,7 +12791,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Axew",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/axew.png",
     "system": {
       "dexNumber": 610,
       "rank": "beginner",
@@ -12812,7 +12812,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fraxure",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/fraxure.png",
     "system": {
       "dexNumber": 611,
       "rank": "amateur",
@@ -12833,7 +12833,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Haxorus",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/haxorus.png",
     "system": {
       "dexNumber": 612,
       "rank": "ace",
@@ -12854,7 +12854,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cubchoo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cubchoo.png",
     "system": {
       "dexNumber": 613,
       "rank": "beginner",
@@ -12875,7 +12875,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beartic",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/beartic.png",
     "system": {
       "dexNumber": 614,
       "rank": "ace",
@@ -12896,7 +12896,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cryogonal",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cryogonal.png",
     "system": {
       "dexNumber": 615,
       "rank": "ace",
@@ -12917,7 +12917,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shelmet",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shelmet.png",
     "system": {
       "dexNumber": 616,
       "rank": "beginner",
@@ -12938,7 +12938,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Accelgor",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/accelgor.png",
     "system": {
       "dexNumber": 617,
       "rank": "ace",
@@ -12959,7 +12959,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stunfisk",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stunfisk.png",
     "system": {
       "dexNumber": 618,
       "rank": "ace",
@@ -12980,7 +12980,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mienfoo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mienfoo.png",
     "system": {
       "dexNumber": 619,
       "rank": "beginner",
@@ -13001,7 +13001,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mienshao",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mienshao.png",
     "system": {
       "dexNumber": 620,
       "rank": "ace",
@@ -13022,7 +13022,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Druddigon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/druddigon.png",
     "system": {
       "dexNumber": 621,
       "rank": "ace",
@@ -13043,7 +13043,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golett",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golett.png",
     "system": {
       "dexNumber": 622,
       "rank": "beginner",
@@ -13064,7 +13064,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golurk",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golurk.png",
     "system": {
       "dexNumber": 623,
       "rank": "ace",
@@ -13085,7 +13085,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pawniard",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pawniard.png",
     "system": {
       "dexNumber": 624,
       "rank": "beginner",
@@ -13106,7 +13106,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bisharp",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bisharp.png",
     "system": {
       "dexNumber": 625,
       "rank": "ace",
@@ -13127,7 +13127,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bouffalant",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bouffalant.png",
     "system": {
       "dexNumber": 626,
       "rank": "ace",
@@ -13148,7 +13148,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rufflet",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rufflet.png",
     "system": {
       "dexNumber": 627,
       "rank": "beginner",
@@ -13169,7 +13169,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Braviary",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/braviary.png",
     "system": {
       "dexNumber": 628,
       "rank": "ace",
@@ -13190,7 +13190,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vullaby",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vullaby.png",
     "system": {
       "dexNumber": 629,
       "rank": "beginner",
@@ -13211,7 +13211,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mandibuzz",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mandibuzz.png",
     "system": {
       "dexNumber": 630,
       "rank": "ace",
@@ -13232,7 +13232,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heatmor",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/heatmor.png",
     "system": {
       "dexNumber": 631,
       "rank": "ace",
@@ -13253,7 +13253,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Durant",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/durant.png",
     "system": {
       "dexNumber": 632,
       "rank": "ace",
@@ -13274,7 +13274,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Deino",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/deino.png",
     "system": {
       "dexNumber": 633,
       "rank": "starter",
@@ -13295,7 +13295,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zweilous",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zweilous.png",
     "system": {
       "dexNumber": 634,
       "rank": "amateur",
@@ -13316,7 +13316,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hydreigon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hydreigon.png",
     "system": {
       "dexNumber": 635,
       "rank": "pro",
@@ -13337,7 +13337,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Larvesta",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/larvesta.png",
     "system": {
       "dexNumber": 636,
       "rank": "beginner",
@@ -13358,7 +13358,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Volcarona",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/volcarona.png",
     "system": {
       "dexNumber": 637,
       "rank": "pro",
@@ -13379,7 +13379,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cobalion",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cobalion.png",
     "system": {
       "dexNumber": 638,
       "rank": "pro",
@@ -13400,7 +13400,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Terrakion",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/terrakion.png",
     "system": {
       "dexNumber": 639,
       "rank": "pro",
@@ -13421,7 +13421,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Virizion",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/virizion.png",
     "system": {
       "dexNumber": 640,
       "rank": "pro",
@@ -13442,7 +13442,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tornadus",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tornadus.png",
     "system": {
       "dexNumber": 641,
       "rank": "pro",
@@ -13463,7 +13463,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thundurus",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/thundurus.png",
     "system": {
       "dexNumber": 642,
       "rank": "pro",
@@ -13484,7 +13484,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Reshiram",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/reshiram.png",
     "system": {
       "dexNumber": 643,
       "rank": "master",
@@ -13505,7 +13505,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zekrom",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zekrom.png",
     "system": {
       "dexNumber": 644,
       "rank": "master",
@@ -13526,7 +13526,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Landorus",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/landorus.png",
     "system": {
       "dexNumber": 645,
       "rank": "pro",
@@ -13547,7 +13547,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kyurem",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kyurem.png",
     "system": {
       "dexNumber": 646,
       "rank": "master",
@@ -13568,7 +13568,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Keldeo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/keldeo.png",
     "system": {
       "dexNumber": 647,
       "rank": "pro",
@@ -13589,7 +13589,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meloetta",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meloetta.png",
     "system": {
       "dexNumber": 648,
       "rank": "pro",
@@ -13610,7 +13610,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Genesect",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/genesect.png",
     "system": {
       "dexNumber": 649,
       "rank": "pro",
@@ -13631,7 +13631,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chespin",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chespin.png",
     "system": {
       "dexNumber": 650,
       "rank": "beginner",
@@ -13652,7 +13652,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quilladin",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/quilladin.png",
     "system": {
       "dexNumber": 651,
       "rank": "amateur",
@@ -13673,7 +13673,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chesnaught",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chesnaught.png",
     "system": {
       "dexNumber": 652,
       "rank": "ace",
@@ -13694,7 +13694,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fennekin",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/fennekin.png",
     "system": {
       "dexNumber": 653,
       "rank": "beginner",
@@ -13715,7 +13715,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Braixen",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/braixen.png",
     "system": {
       "dexNumber": 654,
       "rank": "amateur",
@@ -13736,7 +13736,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Delphox",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/delphox.png",
     "system": {
       "dexNumber": 655,
       "rank": "ace",
@@ -13757,7 +13757,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Froakie",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/froakie.png",
     "system": {
       "dexNumber": 656,
       "rank": "beginner",
@@ -13778,7 +13778,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Frogadier",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/frogadier.png",
     "system": {
       "dexNumber": 657,
       "rank": "amateur",
@@ -13799,7 +13799,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Greninja",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/greninja.png",
     "system": {
       "dexNumber": 658,
       "rank": "ace",
@@ -13820,7 +13820,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bunnelby",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bunnelby.png",
     "system": {
       "dexNumber": 659,
       "rank": "starter",
@@ -13841,7 +13841,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Diggersby",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/diggersby.png",
     "system": {
       "dexNumber": 660,
       "rank": "amateur",
@@ -13862,7 +13862,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fletchling",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/fletchling.png",
     "system": {
       "dexNumber": 661,
       "rank": "starter",
@@ -13883,7 +13883,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fletchinder",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/fletchinder.png",
     "system": {
       "dexNumber": 662,
       "rank": "amateur",
@@ -13904,7 +13904,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Talonflame",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/talonflame.png",
     "system": {
       "dexNumber": 663,
       "rank": "ace",
@@ -13925,7 +13925,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scatterbug",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scatterbug.png",
     "system": {
       "dexNumber": 664,
       "rank": "starter",
@@ -13946,7 +13946,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spewpa",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spewpa.png",
     "system": {
       "dexNumber": 665,
       "rank": "starter",
@@ -13967,7 +13967,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vivillon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vivillon.png",
     "system": {
       "dexNumber": 666,
       "rank": "amateur",
@@ -13988,7 +13988,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Litleo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/litleo.png",
     "system": {
       "dexNumber": 667,
       "rank": "beginner",
@@ -14009,7 +14009,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pyroar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pyroar.png",
     "system": {
       "dexNumber": 668,
       "rank": "ace",
@@ -14030,7 +14030,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flab\u00e9b\u00e9",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/flabebe.png",
     "system": {
       "dexNumber": 669,
       "rank": "beginner",
@@ -14051,7 +14051,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Floette",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/floette.png",
     "system": {
       "dexNumber": 670,
       "rank": "beginner",
@@ -14072,7 +14072,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Florges",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/florges.png",
     "system": {
       "dexNumber": 671,
       "rank": "pro",
@@ -14093,7 +14093,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skiddo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skiddo.png",
     "system": {
       "dexNumber": 672,
       "rank": "beginner",
@@ -14114,7 +14114,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gogoat",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gogoat.png",
     "system": {
       "dexNumber": 673,
       "rank": "ace",
@@ -14135,7 +14135,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pancham",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pancham.png",
     "system": {
       "dexNumber": 674,
       "rank": "beginner",
@@ -14156,7 +14156,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pangoro",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pangoro.png",
     "system": {
       "dexNumber": 675,
       "rank": "ace",
@@ -14177,7 +14177,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Furfrou",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/furfrou.png",
     "system": {
       "dexNumber": 676,
       "rank": "ace",
@@ -14198,7 +14198,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Espurr",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/espurr.png",
     "system": {
       "dexNumber": 677,
       "rank": "beginner",
@@ -14219,7 +14219,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meowstic",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meowstic.png",
     "system": {
       "dexNumber": 678,
       "rank": "ace",
@@ -14240,7 +14240,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Honedge",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/honedge.png",
     "system": {
       "dexNumber": 679,
       "rank": "beginner",
@@ -14261,7 +14261,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Doublade",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/doublade.png",
     "system": {
       "dexNumber": 680,
       "rank": "amateur",
@@ -14282,7 +14282,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aegislash",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aegislash.png",
     "system": {
       "dexNumber": 681,
       "rank": "ace",
@@ -14303,7 +14303,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spritzee",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spritzee.png",
     "system": {
       "dexNumber": 682,
       "rank": "beginner",
@@ -14324,7 +14324,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aromatisse",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aromatisse.png",
     "system": {
       "dexNumber": 683,
       "rank": "ace",
@@ -14345,7 +14345,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swirlix",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swirlix.png",
     "system": {
       "dexNumber": 684,
       "rank": "beginner",
@@ -14366,7 +14366,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slurpuff",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slurpuff.png",
     "system": {
       "dexNumber": 685,
       "rank": "ace",
@@ -14387,7 +14387,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Inkay",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/inkay.png",
     "system": {
       "dexNumber": 686,
       "rank": "starter",
@@ -14408,7 +14408,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Malamar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/malamar.png",
     "system": {
       "dexNumber": 687,
       "rank": "ace",
@@ -14429,7 +14429,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Binacle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/binacle.png",
     "system": {
       "dexNumber": 688,
       "rank": "beginner",
@@ -14450,7 +14450,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Barbaracle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/barbaracle.png",
     "system": {
       "dexNumber": 689,
       "rank": "ace",
@@ -14471,7 +14471,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skrelp",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skrelp.png",
     "system": {
       "dexNumber": 690,
       "rank": "beginner",
@@ -14492,7 +14492,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragalge",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dragalge.png",
     "system": {
       "dexNumber": 691,
       "rank": "ace",
@@ -14513,7 +14513,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clauncher",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/clauncher.png",
     "system": {
       "dexNumber": 692,
       "rank": "beginner",
@@ -14534,7 +14534,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clawitzer",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/clawitzer.png",
     "system": {
       "dexNumber": 693,
       "rank": "ace",
@@ -14555,7 +14555,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Helioptile",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/helioptile.png",
     "system": {
       "dexNumber": 694,
       "rank": "starter",
@@ -14576,7 +14576,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heliolisk",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/heliolisk.png",
     "system": {
       "dexNumber": 695,
       "rank": "ace",
@@ -14597,7 +14597,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tyrunt",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tyrunt.png",
     "system": {
       "dexNumber": 696,
       "rank": "beginner",
@@ -14618,7 +14618,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tyrantrum",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tyrantrum.png",
     "system": {
       "dexNumber": 697,
       "rank": "ace",
@@ -14639,7 +14639,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Amaura",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/amaura.png",
     "system": {
       "dexNumber": 698,
       "rank": "beginner",
@@ -14660,7 +14660,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aurorus",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aurorus.png",
     "system": {
       "dexNumber": 699,
       "rank": "ace",
@@ -14681,7 +14681,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sylveon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sylveon.png",
     "system": {
       "dexNumber": 700,
       "rank": "ace",
@@ -14702,7 +14702,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hawlucha",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hawlucha.png",
     "system": {
       "dexNumber": 701,
       "rank": "ace",
@@ -14723,7 +14723,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dedenne",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dedenne.png",
     "system": {
       "dexNumber": 702,
       "rank": "amateur",
@@ -14744,7 +14744,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Carbink",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/carbink.png",
     "system": {
       "dexNumber": 703,
       "rank": "ace",
@@ -14765,7 +14765,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Goomy",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/goomy.png",
     "system": {
       "dexNumber": 704,
       "rank": "starter",
@@ -14786,7 +14786,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sliggoo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sliggoo.png",
     "system": {
       "dexNumber": 705,
       "rank": "amateur",
@@ -14807,7 +14807,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Goodra",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/goodra.png",
     "system": {
       "dexNumber": 706,
       "rank": "pro",
@@ -14828,7 +14828,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Klefki",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/klefki.png",
     "system": {
       "dexNumber": 707,
       "rank": "ace",
@@ -14849,7 +14849,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Phantump",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/phantump.png",
     "system": {
       "dexNumber": 708,
       "rank": "beginner",
@@ -14870,7 +14870,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trevenant",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/trevenant.png",
     "system": {
       "dexNumber": 709,
       "rank": "ace",
@@ -14891,7 +14891,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pumpkaboo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pumpkaboo.png",
     "system": {
       "dexNumber": 710,
       "rank": "beginner",
@@ -14912,7 +14912,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gourgeist",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gourgeist.png",
     "system": {
       "dexNumber": 711,
       "rank": "ace",
@@ -14933,7 +14933,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bergmite",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bergmite.png",
     "system": {
       "dexNumber": 712,
       "rank": "beginner",
@@ -14954,7 +14954,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Avalugg",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/avalugg.png",
     "system": {
       "dexNumber": 713,
       "rank": "ace",
@@ -14975,7 +14975,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Noibat",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/noibat.png",
     "system": {
       "dexNumber": 714,
       "rank": "starter",
@@ -14996,7 +14996,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Noivern",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/noivern.png",
     "system": {
       "dexNumber": 715,
       "rank": "ace",
@@ -15017,7 +15017,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Xerneas",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/xerneas.png",
     "system": {
       "dexNumber": 716,
       "rank": "master",
@@ -15038,7 +15038,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yveltal",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/yveltal.png",
     "system": {
       "dexNumber": 717,
       "rank": "master",
@@ -15059,7 +15059,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zygarde",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zygarde-50.png",
     "system": {
       "dexNumber": 718,
       "rank": "pro",
@@ -15080,7 +15080,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Diancie",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/diancie.png",
     "system": {
       "dexNumber": 719,
       "rank": "pro",
@@ -15101,7 +15101,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hoopa",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hoopa.png",
     "system": {
       "dexNumber": 720,
       "rank": "pro",
@@ -15122,7 +15122,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Volcanion",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/volcanion.png",
     "system": {
       "dexNumber": 721,
       "rank": "pro",
@@ -15143,7 +15143,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rowlet",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rowlet.png",
     "system": {
       "dexNumber": 722,
       "rank": "beginner",
@@ -15164,7 +15164,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dartrix",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dartrix.png",
     "system": {
       "dexNumber": 723,
       "rank": "amateur",
@@ -15185,7 +15185,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Decidueye",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/decidueye.png",
     "system": {
       "dexNumber": 724,
       "rank": "ace",
@@ -15206,7 +15206,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Litten",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/litten.png",
     "system": {
       "dexNumber": 725,
       "rank": "beginner",
@@ -15227,7 +15227,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Torracat",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/torracat.png",
     "system": {
       "dexNumber": 726,
       "rank": "amateur",
@@ -15248,7 +15248,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Incineroar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/incineroar.png",
     "system": {
       "dexNumber": 727,
       "rank": "ace",
@@ -15269,7 +15269,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Popplio",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/popplio.png",
     "system": {
       "dexNumber": 728,
       "rank": "beginner",
@@ -15290,7 +15290,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Brionne",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/brionne.png",
     "system": {
       "dexNumber": 729,
       "rank": "amateur",
@@ -15311,7 +15311,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Primarina",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/primarina.png",
     "system": {
       "dexNumber": 730,
       "rank": "ace",
@@ -15332,7 +15332,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pikipek",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pikipek.png",
     "system": {
       "dexNumber": 731,
       "rank": "starter",
@@ -15353,7 +15353,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trumbeak",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/trumbeak.png",
     "system": {
       "dexNumber": 732,
       "rank": "beginner",
@@ -15374,7 +15374,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toucannon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/toucannon.png",
     "system": {
       "dexNumber": 733,
       "rank": "ace",
@@ -15395,7 +15395,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yungoos",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/yungoos.png",
     "system": {
       "dexNumber": 734,
       "rank": "starter",
@@ -15416,7 +15416,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gumshoos",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gumshoos.png",
     "system": {
       "dexNumber": 735,
       "rank": "amateur",
@@ -15437,7 +15437,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grubbin",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grubbin.png",
     "system": {
       "dexNumber": 736,
       "rank": "starter",
@@ -15458,7 +15458,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charjabug",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/charjabug.png",
     "system": {
       "dexNumber": 737,
       "rank": "amateur",
@@ -15479,7 +15479,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vikavolt",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vikavolt.png",
     "system": {
       "dexNumber": 738,
       "rank": "ace",
@@ -15500,7 +15500,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crabrawler",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/crabrawler.png",
     "system": {
       "dexNumber": 739,
       "rank": "beginner",
@@ -15521,7 +15521,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crabominable",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/crabominable.png",
     "system": {
       "dexNumber": 740,
       "rank": "ace",
@@ -15542,7 +15542,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Oricorio",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/oricorio.png",
     "system": {
       "dexNumber": 741,
       "rank": "ace",
@@ -15563,7 +15563,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cutiefly",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cutiefly.png",
     "system": {
       "dexNumber": 742,
       "rank": "beginner",
@@ -15584,7 +15584,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ribombee",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ribombee.png",
     "system": {
       "dexNumber": 743,
       "rank": "ace",
@@ -15605,7 +15605,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rockruff",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rockruff.png",
     "system": {
       "dexNumber": 744,
       "rank": "starter",
@@ -15626,7 +15626,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lycanroc",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lycanroc-midday.png",
     "system": {
       "dexNumber": 745,
       "rank": "ace",
@@ -15647,7 +15647,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wishiwashi",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wishiwashi.png",
     "system": {
       "dexNumber": 746,
       "rank": "starter",
@@ -15668,7 +15668,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mareanie",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mareanie.png",
     "system": {
       "dexNumber": 747,
       "rank": "beginner",
@@ -15689,7 +15689,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxapex",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/toxapex.png",
     "system": {
       "dexNumber": 748,
       "rank": "ace",
@@ -15710,7 +15710,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mudbray",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mudbray.png",
     "system": {
       "dexNumber": 749,
       "rank": "amateur",
@@ -15731,7 +15731,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mudsdale",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mudsdale.png",
     "system": {
       "dexNumber": 750,
       "rank": "ace",
@@ -15752,7 +15752,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dewpider",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dewpider.png",
     "system": {
       "dexNumber": 751,
       "rank": "starter",
@@ -15773,7 +15773,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Araquanid",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/araquanid.png",
     "system": {
       "dexNumber": 752,
       "rank": "amateur",
@@ -15794,7 +15794,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fomantis",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/fomantis.png",
     "system": {
       "dexNumber": 753,
       "rank": "starter",
@@ -15815,7 +15815,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lurantis",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lurantis.png",
     "system": {
       "dexNumber": 754,
       "rank": "ace",
@@ -15836,7 +15836,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Morelull",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/morelull.png",
     "system": {
       "dexNumber": 755,
       "rank": "starter",
@@ -15857,7 +15857,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shiinotic",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shiinotic.png",
     "system": {
       "dexNumber": 756,
       "rank": "amateur",
@@ -15878,7 +15878,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Salandit",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/salandit.png",
     "system": {
       "dexNumber": 757,
       "rank": "beginner",
@@ -15899,7 +15899,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Salazzle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/salazzle.png",
     "system": {
       "dexNumber": 758,
       "rank": "ace",
@@ -15920,7 +15920,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stufful",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stufful.png",
     "system": {
       "dexNumber": 759,
       "rank": "beginner",
@@ -15941,7 +15941,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bewear",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bewear.png",
     "system": {
       "dexNumber": 760,
       "rank": "ace",
@@ -15962,7 +15962,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bounsweet",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bounsweet.png",
     "system": {
       "dexNumber": 761,
       "rank": "starter",
@@ -15983,7 +15983,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Steenee",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/steenee.png",
     "system": {
       "dexNumber": 762,
       "rank": "starter",
@@ -16004,7 +16004,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tsareena",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tsareena.png",
     "system": {
       "dexNumber": 763,
       "rank": "ace",
@@ -16025,7 +16025,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Comfey",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/comfey.png",
     "system": {
       "dexNumber": 764,
       "rank": "ace",
@@ -16046,7 +16046,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Oranguru",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/oranguru.png",
     "system": {
       "dexNumber": 765,
       "rank": "ace",
@@ -16067,7 +16067,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Passimian",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/passimian.png",
     "system": {
       "dexNumber": 766,
       "rank": "ace",
@@ -16088,7 +16088,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wimpod",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wimpod.png",
     "system": {
       "dexNumber": 767,
       "rank": "starter",
@@ -16109,7 +16109,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golisopod",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golisopod.png",
     "system": {
       "dexNumber": 768,
       "rank": "ace",
@@ -16130,7 +16130,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandygast",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sandygast.png",
     "system": {
       "dexNumber": 769,
       "rank": "beginner",
@@ -16151,7 +16151,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Palossand",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/palossand.png",
     "system": {
       "dexNumber": 770,
       "rank": "ace",
@@ -16172,7 +16172,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pyukumuku",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pyukumuku.png",
     "system": {
       "dexNumber": 771,
       "rank": "amateur",
@@ -16193,7 +16193,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Type: Null",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/type-null.png",
     "system": {
       "dexNumber": 772,
       "rank": "ace",
@@ -16214,7 +16214,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Silvally",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/silvally.png",
     "system": {
       "dexNumber": 773,
       "rank": "pro",
@@ -16235,7 +16235,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Minior",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/minior.png",
     "system": {
       "dexNumber": 774,
       "rank": "amateur",
@@ -16256,7 +16256,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Komala",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/komala.png",
     "system": {
       "dexNumber": 775,
       "rank": "ace",
@@ -16277,7 +16277,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Turtonator",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/turtonator.png",
     "system": {
       "dexNumber": 776,
       "rank": "ace",
@@ -16298,7 +16298,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Togedemaru",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/togedemaru.png",
     "system": {
       "dexNumber": 777,
       "rank": "amateur",
@@ -16319,7 +16319,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mimikyu",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mimikyu.png",
     "system": {
       "dexNumber": 778,
       "rank": "ace",
@@ -16340,7 +16340,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bruxish",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bruxish.png",
     "system": {
       "dexNumber": 779,
       "rank": "ace",
@@ -16361,7 +16361,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drampa",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drampa.png",
     "system": {
       "dexNumber": 780,
       "rank": "ace",
@@ -16382,7 +16382,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dhelmise",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dhelmise.png",
     "system": {
       "dexNumber": 781,
       "rank": "ace",
@@ -16403,7 +16403,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jangmo-o",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/jangmo-o.png",
     "system": {
       "dexNumber": 782,
       "rank": "starter",
@@ -16424,7 +16424,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hakamo-o",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hakamo-o.png",
     "system": {
       "dexNumber": 783,
       "rank": "amateur",
@@ -16445,7 +16445,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kommo-o",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kommo-o.png",
     "system": {
       "dexNumber": 784,
       "rank": "pro",
@@ -16466,7 +16466,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tapu Koko",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tapu-koko.png",
     "system": {
       "dexNumber": 785,
       "rank": "pro",
@@ -16487,7 +16487,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tapu Lele",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tapu-lele.png",
     "system": {
       "dexNumber": 786,
       "rank": "pro",
@@ -16508,7 +16508,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tapu Bulu",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tapu-bulu.png",
     "system": {
       "dexNumber": 787,
       "rank": "pro",
@@ -16529,7 +16529,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tapu Fini",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tapu-fini.png",
     "system": {
       "dexNumber": 788,
       "rank": "pro",
@@ -16550,7 +16550,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cosmog",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cosmog.png",
     "system": {
       "dexNumber": 789,
       "rank": "starter",
@@ -16571,7 +16571,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cosmoem",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cosmoem.png",
     "system": {
       "dexNumber": 790,
       "rank": "amateur",
@@ -16592,7 +16592,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Solgaleo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/solgaleo.png",
     "system": {
       "dexNumber": 791,
       "rank": "master",
@@ -16613,7 +16613,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lunala",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lunala.png",
     "system": {
       "dexNumber": 792,
       "rank": "master",
@@ -16634,7 +16634,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nihilego",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nihilego.png",
     "system": {
       "dexNumber": 793,
       "rank": "pro",
@@ -16655,7 +16655,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Buzzwole",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/buzzwole.png",
     "system": {
       "dexNumber": 794,
       "rank": "pro",
@@ -16676,7 +16676,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pheromosa",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pheromosa.png",
     "system": {
       "dexNumber": 795,
       "rank": "pro",
@@ -16697,7 +16697,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Xurkitree",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/xurkitree.png",
     "system": {
       "dexNumber": 796,
       "rank": "pro",
@@ -16718,7 +16718,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Celesteela",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/celesteela.png",
     "system": {
       "dexNumber": 797,
       "rank": "pro",
@@ -16739,7 +16739,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kartana",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kartana.png",
     "system": {
       "dexNumber": 798,
       "rank": "pro",
@@ -16760,7 +16760,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Guzzlord",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/guzzlord.png",
     "system": {
       "dexNumber": 799,
       "rank": "pro",
@@ -16781,7 +16781,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Necrozma",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/necrozma.png",
     "system": {
       "dexNumber": 800,
       "rank": "pro",
@@ -16802,7 +16802,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magearna",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magearna.png",
     "system": {
       "dexNumber": 801,
       "rank": "pro",
@@ -16823,7 +16823,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Marshadow",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/marshadow.png",
     "system": {
       "dexNumber": 802,
       "rank": "pro",
@@ -16844,7 +16844,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poipole",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/poipole.png",
     "system": {
       "dexNumber": 803,
       "rank": "amateur",
@@ -16865,7 +16865,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Naganadel",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/naganadel.png",
     "system": {
       "dexNumber": 804,
       "rank": "ace",
@@ -16886,7 +16886,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stakataka",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stakataka.png",
     "system": {
       "dexNumber": 805,
       "rank": "pro",
@@ -16907,7 +16907,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blacephalon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blacephalon.png",
     "system": {
       "dexNumber": 806,
       "rank": "pro",
@@ -16928,7 +16928,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zeraora",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zeraora.png",
     "system": {
       "dexNumber": 807,
       "rank": "pro",
@@ -16949,7 +16949,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meltan",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meltan.png",
     "system": {
       "dexNumber": 808,
       "rank": "starter",
@@ -16970,7 +16970,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Melmetal",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/melmetal.png",
     "system": {
       "dexNumber": 809,
       "rank": "pro",
@@ -16991,7 +16991,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grookey",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grookey.png",
     "system": {
       "dexNumber": 810,
       "rank": "beginner",
@@ -17012,7 +17012,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thwackey",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/thwackey.png",
     "system": {
       "dexNumber": 811,
       "rank": "amateur",
@@ -17033,7 +17033,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rillaboom",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rillaboom.png",
     "system": {
       "dexNumber": 812,
       "rank": "ace",
@@ -17054,7 +17054,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scorbunny",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scorbunny.png",
     "system": {
       "dexNumber": 813,
       "rank": "beginner",
@@ -17075,7 +17075,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raboot",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raboot.png",
     "system": {
       "dexNumber": 814,
       "rank": "amateur",
@@ -17096,7 +17096,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cinderace",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cinderace.png",
     "system": {
       "dexNumber": 815,
       "rank": "ace",
@@ -17117,7 +17117,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sobble",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sobble.png",
     "system": {
       "dexNumber": 816,
       "rank": "beginner",
@@ -17138,7 +17138,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drizzile",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drizzile.png",
     "system": {
       "dexNumber": 817,
       "rank": "amateur",
@@ -17159,7 +17159,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Inteleon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/inteleon.png",
     "system": {
       "dexNumber": 818,
       "rank": "ace",
@@ -17180,7 +17180,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skwovet",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skwovet.png",
     "system": {
       "dexNumber": 819,
       "rank": "starter",
@@ -17201,7 +17201,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Greedent",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/greedent.png",
     "system": {
       "dexNumber": 820,
       "rank": "amateur",
@@ -17222,7 +17222,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rookidee",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rookidee.png",
     "system": {
       "dexNumber": 821,
       "rank": "starter",
@@ -17243,7 +17243,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corvisquire",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/corvisquire.png",
     "system": {
       "dexNumber": 822,
       "rank": "beginner",
@@ -17264,7 +17264,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corviknight",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/corviknight.png",
     "system": {
       "dexNumber": 823,
       "rank": "ace",
@@ -17285,7 +17285,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blipbug",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blipbug.png",
     "system": {
       "dexNumber": 824,
       "rank": "starter",
@@ -17306,7 +17306,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dottler",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dottler.png",
     "system": {
       "dexNumber": 825,
       "rank": "beginner",
@@ -17327,7 +17327,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Orbeetle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/orbeetle.png",
     "system": {
       "dexNumber": 826,
       "rank": "ace",
@@ -17348,7 +17348,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nickit",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nickit.png",
     "system": {
       "dexNumber": 827,
       "rank": "starter",
@@ -17369,7 +17369,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thievul",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/thievul.png",
     "system": {
       "dexNumber": 828,
       "rank": "amateur",
@@ -17390,7 +17390,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gossifleur",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gossifleur.png",
     "system": {
       "dexNumber": 829,
       "rank": "starter",
@@ -17411,7 +17411,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eldegoss",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/eldegoss.png",
     "system": {
       "dexNumber": 830,
       "rank": "amateur",
@@ -17432,7 +17432,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wooloo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wooloo.png",
     "system": {
       "dexNumber": 831,
       "rank": "starter",
@@ -17453,7 +17453,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dubwool",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dubwool.png",
     "system": {
       "dexNumber": 832,
       "rank": "ace",
@@ -17474,7 +17474,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chewtle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chewtle.png",
     "system": {
       "dexNumber": 833,
       "rank": "starter",
@@ -17495,7 +17495,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drednaw",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drednaw.png",
     "system": {
       "dexNumber": 834,
       "rank": "ace",
@@ -17516,7 +17516,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yamper",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/yamper.png",
     "system": {
       "dexNumber": 835,
       "rank": "starter",
@@ -17537,7 +17537,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Boltund",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/boltund.png",
     "system": {
       "dexNumber": 836,
       "rank": "ace",
@@ -17558,7 +17558,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rolycoly",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rolycoly.png",
     "system": {
       "dexNumber": 837,
       "rank": "starter",
@@ -17579,7 +17579,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Carkol",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/carkol.png",
     "system": {
       "dexNumber": 838,
       "rank": "amateur",
@@ -17600,7 +17600,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Coalossal",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/coalossal.png",
     "system": {
       "dexNumber": 839,
       "rank": "ace",
@@ -17621,7 +17621,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Applin",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/applin.png",
     "system": {
       "dexNumber": 840,
       "rank": "starter",
@@ -17642,7 +17642,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flapple",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/flapple.png",
     "system": {
       "dexNumber": 841,
       "rank": "ace",
@@ -17663,7 +17663,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Appletun",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/appletun.png",
     "system": {
       "dexNumber": 842,
       "rank": "ace",
@@ -17684,7 +17684,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Silicobra",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/silicobra.png",
     "system": {
       "dexNumber": 843,
       "rank": "beginner",
@@ -17705,7 +17705,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandaconda",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sandaconda.png",
     "system": {
       "dexNumber": 844,
       "rank": "ace",
@@ -17726,7 +17726,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cramorant",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cramorant.png",
     "system": {
       "dexNumber": 845,
       "rank": "ace",
@@ -17747,7 +17747,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arrokuda",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/arrokuda.png",
     "system": {
       "dexNumber": 846,
       "rank": "starter",
@@ -17768,7 +17768,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Barraskewda",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/barraskewda.png",
     "system": {
       "dexNumber": 847,
       "rank": "ace",
@@ -17789,7 +17789,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxel",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/toxel.png",
     "system": {
       "dexNumber": 848,
       "rank": "starter",
@@ -17810,7 +17810,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxtricity",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/toxtricity.png",
     "system": {
       "dexNumber": 849,
       "rank": "ace",
@@ -17831,7 +17831,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sizzlipede",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sizzlipede.png",
     "system": {
       "dexNumber": 850,
       "rank": "beginner",
@@ -17852,7 +17852,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Centiskorch",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/centiskorch.png",
     "system": {
       "dexNumber": 851,
       "rank": "ace",
@@ -17873,7 +17873,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clobbopus",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/clobbopus.png",
     "system": {
       "dexNumber": 852,
       "rank": "beginner",
@@ -17894,7 +17894,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grapploct",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grapploct.png",
     "system": {
       "dexNumber": 853,
       "rank": "ace",
@@ -17915,7 +17915,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sinistea",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sinistea.png",
     "system": {
       "dexNumber": 854,
       "rank": "beginner",
@@ -17936,7 +17936,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Polteageist",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/polteageist.png",
     "system": {
       "dexNumber": 855,
       "rank": "ace",
@@ -17957,7 +17957,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hatenna",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hatenna.png",
     "system": {
       "dexNumber": 856,
       "rank": "starter",
@@ -17978,7 +17978,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hattrem",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hattrem.png",
     "system": {
       "dexNumber": 857,
       "rank": "beginner",
@@ -17999,7 +17999,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hatterene",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hatterene.png",
     "system": {
       "dexNumber": 858,
       "rank": "ace",
@@ -18020,7 +18020,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Impidimp",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/impidimp.png",
     "system": {
       "dexNumber": 859,
       "rank": "starter",
@@ -18041,7 +18041,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Morgrem",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/morgrem.png",
     "system": {
       "dexNumber": 860,
       "rank": "beginner",
@@ -18062,7 +18062,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grimmsnarl",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grimmsnarl.png",
     "system": {
       "dexNumber": 861,
       "rank": "ace",
@@ -18083,7 +18083,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Obstagoon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/obstagoon.png",
     "system": {
       "dexNumber": 862,
       "rank": "ace",
@@ -18104,7 +18104,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Perrserker",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/perrserker.png",
     "system": {
       "dexNumber": 863,
       "rank": "amateur",
@@ -18125,7 +18125,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cursola",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cursola.png",
     "system": {
       "dexNumber": 864,
       "rank": "ace",
@@ -18146,7 +18146,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sirfetch\u2019d",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sirfetchd.png",
     "system": {
       "dexNumber": 865,
       "rank": "ace",
@@ -18167,7 +18167,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mr. Rime",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mr-rime.png",
     "system": {
       "dexNumber": 866,
       "rank": "ace",
@@ -18188,7 +18188,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Runerigus",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/runerigus.png",
     "system": {
       "dexNumber": 867,
       "rank": "ace",
@@ -18209,7 +18209,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Milcery",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/milcery.png",
     "system": {
       "dexNumber": 868,
       "rank": "starter",
@@ -18230,7 +18230,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Alcremie",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/alcremie.png",
     "system": {
       "dexNumber": 869,
       "rank": "ace",
@@ -18251,7 +18251,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Falinks",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/falinks.png",
     "system": {
       "dexNumber": 870,
       "rank": "ace",
@@ -18272,7 +18272,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pincurchin",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pincurchin.png",
     "system": {
       "dexNumber": 871,
       "rank": "amateur",
@@ -18293,7 +18293,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snom",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/snom.png",
     "system": {
       "dexNumber": 872,
       "rank": "starter",
@@ -18314,7 +18314,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Frosmoth",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/frosmoth.png",
     "system": {
       "dexNumber": 873,
       "rank": "ace",
@@ -18335,7 +18335,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stonjourner",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stonjourner.png",
     "system": {
       "dexNumber": 874,
       "rank": "ace",
@@ -18356,7 +18356,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eiscue",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/eiscue.png",
     "system": {
       "dexNumber": 875,
       "rank": "ace",
@@ -18377,7 +18377,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Indeedee",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/indeedee.png",
     "system": {
       "dexNumber": 876,
       "rank": "ace",
@@ -18398,7 +18398,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Morpeko",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/morpeko.png",
     "system": {
       "dexNumber": 877,
       "rank": "amateur",
@@ -18419,7 +18419,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cufant",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cufant.png",
     "system": {
       "dexNumber": 878,
       "rank": "beginner",
@@ -18440,7 +18440,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Copperajah",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/copperajah.png",
     "system": {
       "dexNumber": 879,
       "rank": "ace",
@@ -18461,7 +18461,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dracozolt",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dracozolt.png",
     "system": {
       "dexNumber": 880,
       "rank": "ace",
@@ -18482,7 +18482,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arctozolt",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/arctozolt.png",
     "system": {
       "dexNumber": 881,
       "rank": "ace",
@@ -18503,7 +18503,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dracovish",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dracovish.png",
     "system": {
       "dexNumber": 882,
       "rank": "ace",
@@ -18524,7 +18524,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arctovish",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/arctovish.png",
     "system": {
       "dexNumber": 883,
       "rank": "ace",
@@ -18545,7 +18545,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Duraludon",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/duraludon.png",
     "system": {
       "dexNumber": 884,
       "rank": "ace",
@@ -18566,7 +18566,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dreepy",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dreepy.png",
     "system": {
       "dexNumber": 885,
       "rank": "starter",
@@ -18587,7 +18587,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drakloak",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drakloak.png",
     "system": {
       "dexNumber": 886,
       "rank": "amateur",
@@ -18608,7 +18608,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragapult",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dragapult.png",
     "system": {
       "dexNumber": 887,
       "rank": "pro",
@@ -18629,7 +18629,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zacian",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zacian.png",
     "system": {
       "dexNumber": 888,
       "rank": "master",
@@ -18650,7 +18650,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zamazenta",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zamazenta.png",
     "system": {
       "dexNumber": 889,
       "rank": "master",
@@ -18671,7 +18671,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eternatus",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/eternatus.png",
     "system": {
       "dexNumber": 890,
       "rank": "master",
@@ -18692,7 +18692,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Venusaur",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/venusaur-mega.png",
     "system": {
       "dexNumber": 3,
       "rank": "master",
@@ -18713,7 +18713,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Charizard X",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/charizard-mega-x.png",
     "system": {
       "dexNumber": 6,
       "rank": "master",
@@ -18734,7 +18734,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Charizard Y",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/charizard-mega-y.png",
     "system": {
       "dexNumber": 6,
       "rank": "master",
@@ -18755,7 +18755,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Blastoise",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blastoise-mega.png",
     "system": {
       "dexNumber": 9,
       "rank": "master",
@@ -18776,7 +18776,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Alakazam",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/alakazam-mega.png",
     "system": {
       "dexNumber": 65,
       "rank": "pro",
@@ -18797,7 +18797,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Gengar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gengar-mega.png",
     "system": {
       "dexNumber": 94,
       "rank": "pro",
@@ -18818,7 +18818,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Kangaskhan",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kangaskhan-mega.png",
     "system": {
       "dexNumber": 115,
       "rank": "pro",
@@ -18839,7 +18839,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Pinsir",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pinsir-mega.png",
     "system": {
       "dexNumber": 127,
       "rank": "pro",
@@ -18860,7 +18860,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Gyarados",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gyarados-mega.png",
     "system": {
       "dexNumber": 130,
       "rank": "master",
@@ -18881,7 +18881,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Aerodactyl",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aerodactyl-mega.png",
     "system": {
       "dexNumber": 142,
       "rank": "pro",
@@ -18902,7 +18902,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Mewtwo X",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mewtwo-mega-x.png",
     "system": {
       "dexNumber": 150,
       "rank": "champion",
@@ -18923,7 +18923,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Mewtwo Y",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mewtwo-mega-y.png",
     "system": {
       "dexNumber": 150,
       "rank": "champion",
@@ -18944,7 +18944,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Ampharos",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ampharos-mega.png",
     "system": {
       "dexNumber": 181,
       "rank": "pro",
@@ -18965,7 +18965,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Scizor",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scizor-mega.png",
     "system": {
       "dexNumber": 212,
       "rank": "pro",
@@ -18986,7 +18986,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Heracross",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/heracross-mega.png",
     "system": {
       "dexNumber": 214,
       "rank": "pro",
@@ -19007,7 +19007,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Houndoom",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/houndoom-mega.png",
     "system": {
       "dexNumber": 229,
       "rank": "pro",
@@ -19028,7 +19028,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Tyranitar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tyranitar-mega.png",
     "system": {
       "dexNumber": 248,
       "rank": "master",
@@ -19049,7 +19049,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Blaziken",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blaziken-mega.png",
     "system": {
       "dexNumber": 257,
       "rank": "master",
@@ -19070,7 +19070,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Gardevoir",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gardevoir-mega.png",
     "system": {
       "dexNumber": 282,
       "rank": "pro",
@@ -19091,7 +19091,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Mawile",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mawile-mega.png",
     "system": {
       "dexNumber": 303,
       "rank": "ace",
@@ -19112,7 +19112,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Aggron",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aggron-mega.png",
     "system": {
       "dexNumber": 306,
       "rank": "master",
@@ -19133,7 +19133,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Medicham",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/medicham-mega.png",
     "system": {
       "dexNumber": 308,
       "rank": "ace",
@@ -19154,7 +19154,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Manectric",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/manectric-mega.png",
     "system": {
       "dexNumber": 310,
       "rank": "pro",
@@ -19175,7 +19175,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Banette",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/banette-mega.png",
     "system": {
       "dexNumber": 354,
       "rank": "pro",
@@ -19196,7 +19196,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Absol",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/absol-mega.png",
     "system": {
       "dexNumber": 359,
       "rank": "pro",
@@ -19217,7 +19217,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Garchomp",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/garchomp-mega.png",
     "system": {
       "dexNumber": 445,
       "rank": "master",
@@ -19238,7 +19238,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Lucario",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lucario-mega.png",
     "system": {
       "dexNumber": 448,
       "rank": "master",
@@ -19259,7 +19259,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Abomasnow",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/abomasnow-mega.png",
     "system": {
       "dexNumber": 460,
       "rank": "pro",
@@ -19280,7 +19280,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Latias",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/latias-mega.png",
     "system": {
       "dexNumber": 380,
       "rank": "master",
@@ -19301,7 +19301,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Latios",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/latios-mega.png",
     "system": {
       "dexNumber": 381,
       "rank": "master",
@@ -19322,7 +19322,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Swampert",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swampert-mega.png",
     "system": {
       "dexNumber": 260,
       "rank": "master",
@@ -19343,7 +19343,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Sceptile",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sceptile-mega.png",
     "system": {
       "dexNumber": 254,
       "rank": "master",
@@ -19364,7 +19364,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Sableye",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sableye-mega.png",
     "system": {
       "dexNumber": 302,
       "rank": "ace",
@@ -19385,7 +19385,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Altaria",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/altaria-mega.png",
     "system": {
       "dexNumber": 334,
       "rank": "pro",
@@ -19406,7 +19406,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Gallade",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gallade-mega.png",
     "system": {
       "dexNumber": 475,
       "rank": "pro",
@@ -19427,7 +19427,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Audino",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/audino-mega.png",
     "system": {
       "dexNumber": 531,
       "rank": "pro",
@@ -19448,7 +19448,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Sharpedo",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sharpedo-mega.png",
     "system": {
       "dexNumber": 319,
       "rank": "pro",
@@ -19469,7 +19469,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Slowbro",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slowbro-mega.png",
     "system": {
       "dexNumber": 80,
       "rank": "pro",
@@ -19490,7 +19490,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Steelix",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/steelix-mega.png",
     "system": {
       "dexNumber": 208,
       "rank": "pro",
@@ -19511,7 +19511,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Pidgeot",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pidgeot-mega.png",
     "system": {
       "dexNumber": 18,
       "rank": "pro",
@@ -19532,7 +19532,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Glalie",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/glalie-mega.png",
     "system": {
       "dexNumber": 362,
       "rank": "pro",
@@ -19553,7 +19553,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Diancie",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/diancie-mega.png",
     "system": {
       "dexNumber": 719,
       "rank": "master",
@@ -19574,7 +19574,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Metagross",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/metagross-mega.png",
     "system": {
       "dexNumber": 376,
       "rank": "master",
@@ -19595,7 +19595,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kyogre (Primal)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kyogre-primal.png",
     "system": {
       "dexNumber": 382,
       "rank": "champion",
@@ -19616,7 +19616,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Groudon (Primal)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/groudon-primal.png",
     "system": {
       "dexNumber": 383,
       "rank": "champion",
@@ -19637,7 +19637,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Rayquaza",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rayquaza-mega.png",
     "system": {
       "dexNumber": 384,
       "rank": "champion",
@@ -19658,7 +19658,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Camerupt",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/camerupt-mega.png",
     "system": {
       "dexNumber": 323,
       "rank": "pro",
@@ -19679,7 +19679,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Lopunny",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lopunny-mega.png",
     "system": {
       "dexNumber": 428,
       "rank": "pro",
@@ -19700,7 +19700,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Salamence",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/salamence-mega.png",
     "system": {
       "dexNumber": 373,
       "rank": "master",
@@ -19721,7 +19721,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Beedrill",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/beedrill-mega.png",
     "system": {
       "dexNumber": 15,
       "rank": "ace",
@@ -19742,7 +19742,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rattata (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rattata-alola.png",
     "system": {
       "dexNumber": 19,
       "rank": "starter",
@@ -19763,7 +19763,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raticate (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raticate-alola.png",
     "system": {
       "dexNumber": 20,
       "rank": "amateur",
@@ -19784,7 +19784,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raticate (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raticate.png",
     "system": {
       "dexNumber": 20,
       "rank": "amateur",
@@ -19805,7 +19805,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pikachu Alola Cap",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pikachu.png",
     "system": {
       "dexNumber": 25,
       "rank": "beginner",
@@ -19826,7 +19826,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raichu (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raichu-alola.png",
     "system": {
       "dexNumber": 26,
       "rank": "ace",
@@ -19847,7 +19847,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandshrew (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sandshrew-alola.png",
     "system": {
       "dexNumber": 27,
       "rank": "starter",
@@ -19868,7 +19868,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandslash (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sandslash-alola.png",
     "system": {
       "dexNumber": 28,
       "rank": "amateur",
@@ -19889,7 +19889,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vulpix (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vulpix-alola.png",
     "system": {
       "dexNumber": 37,
       "rank": "starter",
@@ -19910,7 +19910,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ninetales (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ninetales-alola.png",
     "system": {
       "dexNumber": 38,
       "rank": "ace",
@@ -19931,7 +19931,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Diglett (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/diglett-alola.png",
     "system": {
       "dexNumber": 50,
       "rank": "starter",
@@ -19952,7 +19952,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dugtrio (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dugtrio-alola.png",
     "system": {
       "dexNumber": 51,
       "rank": "amateur",
@@ -19973,7 +19973,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meowth (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meowth-alola.png",
     "system": {
       "dexNumber": 52,
       "rank": "starter",
@@ -19994,7 +19994,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Persian (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/persian-alola.png",
     "system": {
       "dexNumber": 53,
       "rank": "amateur",
@@ -20015,7 +20015,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Geodude (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/geodude-alola.png",
     "system": {
       "dexNumber": 74,
       "rank": "starter",
@@ -20036,7 +20036,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Graveler (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/graveler-alola.png",
     "system": {
       "dexNumber": 75,
       "rank": "amateur",
@@ -20057,7 +20057,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golem (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golem-alola.png",
     "system": {
       "dexNumber": 76,
       "rank": "ace",
@@ -20078,7 +20078,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grimer (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grimer-alola.png",
     "system": {
       "dexNumber": 88,
       "rank": "beginner",
@@ -20099,7 +20099,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Muk (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/muk-alola.png",
     "system": {
       "dexNumber": 89,
       "rank": "ace",
@@ -20120,7 +20120,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Exeggutor (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/exeggutor-alola.png",
     "system": {
       "dexNumber": 103,
       "rank": "ace",
@@ -20141,7 +20141,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Marowak (Alola)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/marowak-alola.png",
     "system": {
       "dexNumber": 105,
       "rank": "amateur",
@@ -20162,7 +20162,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meowth (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meowth-galar.png",
     "system": {
       "dexNumber": 52,
       "rank": "starter",
@@ -20183,7 +20183,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ponyta (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ponyta-galar.png",
     "system": {
       "dexNumber": 77,
       "rank": "amateur",
@@ -20204,7 +20204,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rapidash (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rapidash-galar.png",
     "system": {
       "dexNumber": 78,
       "rank": "ace",
@@ -20225,7 +20225,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowpoke (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slowpoke-galar.png",
     "system": {
       "dexNumber": 79,
       "rank": "beginner",
@@ -20246,7 +20246,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowbro (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slowbro-galar.png",
     "system": {
       "dexNumber": 80,
       "rank": "ace",
@@ -20267,7 +20267,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Farfetch\u2019d (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/farfetchd-galar.png",
     "system": {
       "dexNumber": 83,
       "rank": "beginner",
@@ -20288,7 +20288,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weezing (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/weezing-galar.png",
     "system": {
       "dexNumber": 110,
       "rank": "ace",
@@ -20309,7 +20309,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mr. Mime (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mr-mime-galar.png",
     "system": {
       "dexNumber": 122,
       "rank": "amateur",
@@ -20330,7 +20330,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Articuno (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/articuno-galar.png",
     "system": {
       "dexNumber": 144,
       "rank": "pro",
@@ -20351,7 +20351,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zapdos (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zapdos-galar.png",
     "system": {
       "dexNumber": 145,
       "rank": "pro",
@@ -20372,7 +20372,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Moltres (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/moltres-galar.png",
     "system": {
       "dexNumber": 146,
       "rank": "pro",
@@ -20393,7 +20393,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowking (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slowking-galar.png",
     "system": {
       "dexNumber": 199,
       "rank": "ace",
@@ -20414,7 +20414,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corsola (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/corsola-galar.png",
     "system": {
       "dexNumber": 222,
       "rank": "amateur",
@@ -20435,7 +20435,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zigzagoon (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zigzagoon-galar.png",
     "system": {
       "dexNumber": 263,
       "rank": "starter",
@@ -20456,7 +20456,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Linoone (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/linoone-galar.png",
     "system": {
       "dexNumber": 264,
       "rank": "amateur",
@@ -20477,7 +20477,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darumaka (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/darumaka-galar.png",
     "system": {
       "dexNumber": 554,
       "rank": "beginner",
@@ -20498,7 +20498,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darmanitan Galar Standard",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/darmanitan.png",
     "system": {
       "dexNumber": 555,
       "rank": "ace",
@@ -20519,7 +20519,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darmanitan Galar Zen",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/darmanitan-galar-zen.png",
     "system": {
       "dexNumber": 555,
       "rank": "ace",
@@ -20540,7 +20540,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yamask (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/yamask-galar.png",
     "system": {
       "dexNumber": 562,
       "rank": "beginner",
@@ -20561,7 +20561,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stunfisk (Galar)",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stunfisk-galar.png",
     "system": {
       "dexNumber": 618,
       "rank": "ace",
@@ -20582,7 +20582,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Clefable",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/clefable.png",
     "system": {
       "dexNumber": 36,
       "rank": "pro",
@@ -20603,7 +20603,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Victreebel",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/victreebel.png",
     "system": {
       "dexNumber": 71,
       "rank": "pro",
@@ -20624,7 +20624,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Starmie",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/starmie.png",
     "system": {
       "dexNumber": 121,
       "rank": "master",
@@ -20645,7 +20645,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Dragonite",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dragonite.png",
     "system": {
       "dexNumber": 149,
       "rank": "master",
@@ -20666,7 +20666,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Meganium",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meganium.png",
     "system": {
       "dexNumber": 154,
       "rank": "master",
@@ -20687,7 +20687,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Feraligatr",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/feraligatr.png",
     "system": {
       "dexNumber": 160,
       "rank": "master",
@@ -20708,7 +20708,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Skarmory",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skarmory.png",
     "system": {
       "dexNumber": 227,
       "rank": "pro",
@@ -20729,7 +20729,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Froslass",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/froslass.png",
     "system": {
       "dexNumber": 478,
       "rank": "pro",
@@ -20750,7 +20750,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Emboar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/emboar.png",
     "system": {
       "dexNumber": 500,
       "rank": "master",
@@ -20771,7 +20771,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Excadrill",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/excadrill.png",
     "system": {
       "dexNumber": 530,
       "rank": "pro",
@@ -20792,7 +20792,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Scolipede",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scolipede.png",
     "system": {
       "dexNumber": 545,
       "rank": "pro",
@@ -20813,7 +20813,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Scrafty",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scrafty.png",
     "system": {
       "dexNumber": 560,
       "rank": "pro",
@@ -20834,7 +20834,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Eelektross",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/eelektross.png",
     "system": {
       "dexNumber": 604,
       "rank": "pro",
@@ -20855,7 +20855,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Chandelure",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chandelure.png",
     "system": {
       "dexNumber": 609,
       "rank": "pro",
@@ -20876,7 +20876,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Chesnaught",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chesnaught.png",
     "system": {
       "dexNumber": 652,
       "rank": "master",
@@ -20897,7 +20897,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Delphox",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/delphox.png",
     "system": {
       "dexNumber": 655,
       "rank": "master",
@@ -20918,7 +20918,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Greninja",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/greninja.png",
     "system": {
       "dexNumber": 658,
       "rank": "master",
@@ -20939,7 +20939,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Pyroar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pyroar.png",
     "system": {
       "dexNumber": 668,
       "rank": "pro",
@@ -20960,7 +20960,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Floette",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/floette.png",
     "system": {
       "dexNumber": 670,
       "rank": "master",
@@ -20981,7 +20981,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Malamar",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/malamar.png",
     "system": {
       "dexNumber": 687,
       "rank": "pro",
@@ -21002,7 +21002,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Barbaracle",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/barbaracle.png",
     "system": {
       "dexNumber": 689,
       "rank": "pro",
@@ -21023,7 +21023,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Dragalge",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dragalge.png",
     "system": {
       "dexNumber": 691,
       "rank": "pro",
@@ -21044,7 +21044,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Hawlucha",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hawlucha.png",
     "system": {
       "dexNumber": 701,
       "rank": "pro",
@@ -21065,7 +21065,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Zygarde",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zygarde.png",
     "system": {
       "dexNumber": 718,
       "rank": "champion",
@@ -21086,7 +21086,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Drampa",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drampa.png",
     "system": {
       "dexNumber": 780,
       "rank": "pro",
@@ -21107,7 +21107,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Falinks",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/falinks.png",
     "system": {
       "dexNumber": 870,
       "rank": "pro",
@@ -21128,7 +21128,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Raichu X",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raichu.png",
     "system": {
       "dexNumber": 26,
       "rank": "pro",
@@ -21149,7 +21149,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Raichu Y",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raichu.png",
     "system": {
       "dexNumber": 26,
       "rank": "pro",
@@ -21170,7 +21170,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Chimecho",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chimecho.png",
     "system": {
       "dexNumber": 358,
       "rank": "pro",
@@ -21191,7 +21191,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Absol Mega Z",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/absol.png",
     "system": {
       "dexNumber": 359,
       "rank": "pro",
@@ -21212,7 +21212,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Staraptor",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/staraptor.png",
     "system": {
       "dexNumber": 398,
       "rank": "pro",
@@ -21233,7 +21233,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Garchomp Mega Z",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/garchomp.png",
     "system": {
       "dexNumber": 445,
       "rank": "master",
@@ -21254,7 +21254,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lucario Mega Z",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lucario.png",
     "system": {
       "dexNumber": 448,
       "rank": "master",
@@ -21275,7 +21275,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Heatran",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/heatran.png",
     "system": {
       "dexNumber": 485,
       "rank": "master",
@@ -21296,7 +21296,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Darkrai",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/darkrai.png",
     "system": {
       "dexNumber": 491,
       "rank": "master",
@@ -21317,7 +21317,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Golurk",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golurk.png",
     "system": {
       "dexNumber": 623,
       "rank": "pro",
@@ -21338,7 +21338,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Meowstic",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meowstic.png",
     "system": {
       "dexNumber": 678,
       "rank": "pro",
@@ -21359,7 +21359,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Crabominable",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/crabominable.png",
     "system": {
       "dexNumber": 740,
       "rank": "pro",
@@ -21380,7 +21380,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Golisopod",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golisopod.png",
     "system": {
       "dexNumber": 768,
       "rank": "master",
@@ -21401,7 +21401,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Magearna",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magearna.png",
     "system": {
       "dexNumber": 801,
       "rank": "master",
@@ -21422,7 +21422,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Magearna",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magearna.png",
     "system": {
       "dexNumber": 801,
       "rank": "master",
@@ -21443,7 +21443,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Zeraora",
     "type": "pokedex",
-    "img": "icons/svg/book.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zeraora.png",
     "system": {
       "dexNumber": 807,
       "rank": "master",

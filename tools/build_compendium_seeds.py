@@ -11,6 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "module" / "seeds" / "generated"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 BASE = "https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv"
+POKEMON_IMAGE_DIR = ROOT / "assets" / "pokemon" / "book" / "book"
+POKEMON_IMAGE_ROOT = "systems/pok-role-module/assets/pokemon/book/book"
 VALID_TYPE_KEYS = {
     "normal", "bug", "dark", "dragon", "electric", "fairy", "fighting", "fire", "flying",
     "ghost", "grass", "ground", "ice", "poison", "psychic", "rock", "steel", "water"
@@ -19,6 +21,7 @@ TYPE_FALLBACKS = {
     "shadow": "ghost",
     "unknown": "normal"
 }
+MOVE_TYPE_ICON_ROOT = "systems/pok-role-module/assets/types"
 POKROLE_ATTRIBUTE_KEYS = [
     "strength",
     "dexterity",
@@ -95,6 +98,8 @@ MANUAL_MOVE_OVERRIDES = {
     "strength": {"page": 403, "type": "normal", "power": 3}
 }
 
+_POKEMON_IMAGE_STEMS = None
+
 def load_csv(filename):
     response = requests.get(f"{BASE}/{filename}", timeout=120)
     response.raise_for_status()
@@ -140,6 +145,53 @@ def format_identifier(identifier):
         else:
             words.append(word.capitalize())
     return " ".join(words)
+
+
+def move_type_icon_path(type_key):
+    normalized = type_key if type_key in VALID_TYPE_KEYS else "none"
+    return f"{MOVE_TYPE_ICON_ROOT}/{normalized}.svg"
+
+
+def load_pokemon_image_stems():
+    if not POKEMON_IMAGE_DIR.exists():
+        return set()
+    return {
+        image_path.stem.lower()
+        for image_path in POKEMON_IMAGE_DIR.glob("*.png")
+    }
+
+
+def pokemon_image_path(*candidates):
+    global _POKEMON_IMAGE_STEMS
+    if _POKEMON_IMAGE_STEMS is None:
+        _POKEMON_IMAGE_STEMS = load_pokemon_image_stems()
+
+    if not _POKEMON_IMAGE_STEMS:
+        return None
+
+    expanded = []
+    for candidate in candidates:
+        if not candidate:
+            continue
+        normalized = slugify(str(candidate))
+        if not normalized:
+            continue
+        expanded.append(normalized)
+        expanded.append(normalized.replace("-form", ""))
+        if normalized.endswith("-alola"):
+            expanded.append(normalized.replace("-alola", "-alolan-form"))
+        if normalized.endswith("-galar"):
+            expanded.append(normalized.replace("-galar", "-galarian-form"))
+        if normalized.endswith("-mega"):
+            expanded.append(normalized.replace("-mega", "-mega-form"))
+        if normalized.endswith("-primal"):
+            expanded.append(normalized.replace("-primal", "-primal-form"))
+
+    for stem in expanded:
+        if stem in _POKEMON_IMAGE_STEMS:
+            return f"{POKEMON_IMAGE_ROOT}/{stem}.png"
+
+    return None
 
 
 def rank_from_bst(bst):
@@ -680,7 +732,7 @@ def build_moves():
         entries.append({
             "name": name,
             "type": "move",
-            "img": "icons/svg/sword.svg",
+            "img": move_type_icon_path(type_key),
             "system": {
                 "type": type_key,
                 "category": category,
@@ -893,10 +945,16 @@ def build_pokedex():
             names.append(f"{base_name} (Hidden)" if is_hidden else base_name)
         return ", ".join(names)
 
-    def build_entry(species_id, pokemon_id, name, seed_suffix):
+    def build_entry(species_id, pokemon_id, name, seed_suffix, species_identifier, pokemon_identifier):
         primary, secondary = get_types_for_pokemon(pokemon_id)
         bst = bst_by_pokemon.get(pokemon_id, 350)
         rank = rank_from_bst(bst)
+        pokemon_img = pokemon_image_path(
+            pokemon_identifier,
+            species_identifier,
+            seed_suffix,
+            name
+        ) or "icons/svg/book.svg"
 
         species_row = species_row_by_id.get(species_id)
         habitat_value = ""
@@ -907,7 +965,7 @@ def build_pokedex():
         return {
             "name": name,
             "type": "pokedex",
-            "img": "icons/svg/book.svg",
+            "img": pokemon_img,
             "system": {
                 "dexNumber": species_id,
                 "rank": rank,
@@ -933,14 +991,28 @@ def build_pokedex():
         pokemon_id = default_pokemon_by_species.get(species_id)
         if not pokemon_id:
             continue
-        base_name = species_name_en.get(species_id) or format_identifier(row["identifier"])
-        entries.append(build_entry(species_id, pokemon_id, base_name, slugify(row["identifier"])))
+        species_identifier = row["identifier"]
+        pokemon_identifier = pokemon_by_id.get(pokemon_id, {}).get("identifier", "")
+        base_name = species_name_en.get(species_id) or format_identifier(species_identifier)
+        entries.append(
+            build_entry(
+                species_id,
+                pokemon_id,
+                base_name,
+                slugify(species_identifier),
+                species_identifier,
+                pokemon_identifier
+            )
+        )
 
     for pokemon_id in sorted(forms):
         row = pokemon_by_id.get(pokemon_id)
         if not row:
             continue
         species_id = int(row["species_id"])
+        species_row = species_row_by_id.get(species_id, {})
+        species_identifier = species_row.get("identifier", "")
+        pokemon_identifier = row["identifier"]
         species_name = species_name_en.get(species_id) or format_identifier(row["identifier"])
         identifier = row["identifier"]
         if identifier.endswith("-alola"):
@@ -957,7 +1029,16 @@ def build_pokedex():
             form_name = f"{species_name} (Primal)"
         else:
             form_name = format_identifier(identifier)
-        entries.append(build_entry(species_id, pokemon_id, form_name, slugify(identifier)))
+        entries.append(
+            build_entry(
+                species_id,
+                pokemon_id,
+                form_name,
+                slugify(identifier),
+                species_identifier,
+                pokemon_identifier
+            )
+        )
 
     unique_entries = {}
     for entry in entries:
@@ -1071,9 +1152,15 @@ def build_pokemon_actors():
             return "slow"
         return "medium"
 
-    def build_entry(species_id, pokemon_id, name, seed_suffix):
+    def build_entry(species_id, pokemon_id, name, seed_suffix, species_identifier, pokemon_identifier):
         pokemon_row = pokemon_by_id.get(pokemon_id, {})
         stat_values = stat_values_by_pokemon.get(pokemon_id, {})
+        pokemon_img = pokemon_image_path(
+            pokemon_identifier,
+            species_identifier,
+            seed_suffix,
+            name
+        ) or "icons/svg/mystery-man.svg"
         hp_base = int(stat_values.get(1, 50))
         attack_base = int(stat_values.get(2, 50))
         defense_base = int(stat_values.get(3, 50))
@@ -1121,7 +1208,7 @@ def build_pokemon_actors():
         return {
             "name": name,
             "type": "pokemon",
-            "img": "icons/svg/mystery-man.svg",
+            "img": pokemon_img,
             "system": {
                 "biography": biography,
                 "resources": {
@@ -1191,14 +1278,28 @@ def build_pokemon_actors():
         pokemon_id = default_pokemon_by_species.get(species_id)
         if not pokemon_id:
             continue
+        species_identifier = row["identifier"]
+        pokemon_identifier = pokemon_by_id.get(pokemon_id, {}).get("identifier", "")
         base_name = species_name_en.get(species_id) or format_identifier(row["identifier"])
-        entries.append(build_entry(species_id, pokemon_id, base_name, slugify(row["identifier"])))
+        entries.append(
+            build_entry(
+                species_id,
+                pokemon_id,
+                base_name,
+                slugify(species_identifier),
+                species_identifier,
+                pokemon_identifier
+            )
+        )
 
     for pokemon_id in sorted(forms):
         row = pokemon_by_id.get(pokemon_id)
         if not row:
             continue
         species_id = int(row["species_id"])
+        species_row = species_row_by_id.get(species_id, {})
+        species_identifier = species_row.get("identifier", "")
+        pokemon_identifier = row["identifier"]
         species_name = species_name_en.get(species_id) or format_identifier(row["identifier"])
         identifier = row["identifier"]
         if identifier.endswith("-alola"):
@@ -1215,7 +1316,16 @@ def build_pokemon_actors():
             form_name = f"{species_name} (Primal)"
         else:
             form_name = format_identifier(identifier)
-        entries.append(build_entry(species_id, pokemon_id, form_name, slugify(identifier)))
+        entries.append(
+            build_entry(
+                species_id,
+                pokemon_id,
+                form_name,
+                slugify(identifier),
+                species_identifier,
+                pokemon_identifier
+            )
+        )
 
     unique_entries = {}
     for entry in entries:

@@ -9,11 +9,78 @@ import {
   TYPE_EFFECTIVENESS,
   TYPE_OPTIONS
 } from "../constants.mjs";
+import { getMoveTypeIcon } from "../move-type-icons.mjs";
 
 const TEMPLATE_BY_TYPE = Object.freeze({
   trainer: "systems/pok-role-module/templates/actor/trainer-sheet.hbs",
   pokemon: "systems/pok-role-module/templates/actor/pokemon-sheet.hbs"
 });
+
+const AILMENT_DEFINITIONS = Object.freeze([
+  {
+    key: "sleep",
+    labelPath: "POKROLE.Conditions.Sleep",
+    icon: "systems/pok-role-module/assets/ailments/asleep.svg"
+  },
+  {
+    key: "burn",
+    labelPath: "POKROLE.Conditions.Burn",
+    icon: "systems/pok-role-module/assets/ailments/burn.svg"
+  },
+  {
+    key: "frozen",
+    labelPath: "POKROLE.Conditions.Frozen",
+    icon: "systems/pok-role-module/assets/ailments/frozen.svg"
+  },
+  {
+    key: "paralyzed",
+    labelPath: "POKROLE.Conditions.Paralyzed",
+    icon: "systems/pok-role-module/assets/ailments/paralyzed.svg"
+  },
+  {
+    key: "poisoned",
+    labelPath: "POKROLE.Conditions.Poisoned",
+    icon: "systems/pok-role-module/assets/ailments/poisoned.svg"
+  },
+  {
+    key: "fainted",
+    labelPath: "POKROLE.Conditions.Fainted",
+    icon: "systems/pok-role-module/assets/ailments/fainted.svg"
+  }
+]);
+
+const MATCHUP_GROUP_DEFINITIONS = Object.freeze([
+  {
+    key: "resistHalf",
+    labelPath: "POKROLE.Pokemon.ResistancesHalf",
+    multiplier: 0.5,
+    multiplierIcon: "systems/pok-role-module/assets/icons/matchups/1-2.svg"
+  },
+  {
+    key: "resistQuarter",
+    labelPath: "POKROLE.Pokemon.ResistancesQuarter",
+    multiplier: 0.25,
+    multiplierIcon: "systems/pok-role-module/assets/icons/matchups/1-4.svg"
+  },
+  {
+    key: "weakDouble",
+    labelPath: "POKROLE.Pokemon.VulnerabilitiesDouble",
+    multiplier: 2,
+    multiplierIcon: "systems/pok-role-module/assets/icons/matchups/X2.svg"
+  },
+  {
+    key: "weakQuad",
+    labelPath: "POKROLE.Pokemon.VulnerabilitiesQuad",
+    multiplier: 4,
+    multiplierIcon: "systems/pok-role-module/assets/icons/matchups/X4.svg"
+  },
+  {
+    key: "immune",
+    labelPath: "POKROLE.Pokemon.Immunities",
+    multiplier: 0,
+    multiplierIcon: "systems/pok-role-module/assets/icons/matchups/X0.svg"
+  }
+]);
 
 export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   static get defaultOptions() {
@@ -81,6 +148,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       ])
     );
     context.pokemonTierOptions = POKEMON_TIER_LABEL_BY_KEY;
+    context.conditionChips = this._buildConditionChips();
     if (this.actor.type === "trainer") {
       context.trainerPhysicalMentalAttributes = this._buildAttributeRows([
         "strength",
@@ -299,7 +367,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       {
         name: game.i18n.localize("POKROLE.Move.New"),
         type: "move",
-        img: "icons/svg/sword.svg",
+        img: getMoveTypeIcon("normal"),
         system: {
           type: "normal",
           category: "physical",
@@ -559,7 +627,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     return {
       id: move.id,
       name: move.name,
-      img: move.img,
+      img: getMoveTypeIcon(moveType),
       isUsable,
       actionTag,
       actionTagShort: actionTag,
@@ -755,13 +823,13 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const secondary = this.actor.system.types?.secondary;
     const defenderTypes = [primary, secondary].filter((typeKey) => typeKey && typeKey !== "none");
 
-    const matchups = {
-      resistHalf: [],
-      resistQuarter: [],
-      weakDouble: [],
-      weakQuad: [],
-      immune: []
-    };
+    const matchupGroups = MATCHUP_GROUP_DEFINITIONS.map((group) => ({
+      ...group,
+      entries: []
+    }));
+    const groupByMultiplier = new Map(
+      matchupGroups.map((group) => [group.multiplier, group])
+    );
 
     for (const attackType of TYPE_OPTIONS) {
       if (attackType === "none") continue;
@@ -778,14 +846,24 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         if (table.half.includes(defenderType)) multiplier *= 0.5;
       }
 
-      const labelPath = MOVE_TYPE_LABEL_BY_KEY[attackType] ?? "POKROLE.Common.Unknown";
-      if (multiplier === 0) matchups.immune.push(labelPath);
-      else if (multiplier === 0.25) matchups.resistQuarter.push(labelPath);
-      else if (multiplier === 0.5) matchups.resistHalf.push(labelPath);
-      else if (multiplier === 2) matchups.weakDouble.push(labelPath);
-      else if (multiplier === 4) matchups.weakQuad.push(labelPath);
+      const group = groupByMultiplier.get(multiplier);
+      if (!group) continue;
+
+      group.entries.push({
+        typeKey: attackType,
+        labelPath: MOVE_TYPE_LABEL_BY_KEY[attackType] ?? "POKROLE.Common.Unknown",
+        icon: getMoveTypeIcon(attackType)
+      });
     }
 
-    return matchups;
+    return matchupGroups;
+  }
+
+  _buildConditionChips() {
+    return AILMENT_DEFINITIONS.map((ailment) => ({
+      ...ailment,
+      fieldPath: `system.conditions.${ailment.key}`,
+      active: Boolean(this.actor.system.conditions?.[ailment.key])
+    }));
   }
 }

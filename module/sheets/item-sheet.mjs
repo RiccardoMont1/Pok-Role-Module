@@ -6,6 +6,7 @@ import {
   SKILL_DEFINITIONS,
   TYPE_OPTIONS
 } from "../constants.mjs";
+import { getMoveTypeIcon } from "../move-type-icons.mjs";
 
 export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
   static get defaultOptions() {
@@ -152,5 +153,25 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       none: "POKROLE.Move.NoStat"
     };
     return context;
+  }
+
+  activateListeners(html) {
+    super.activateListeners(html);
+    if (this.item.type !== "move") return;
+
+    html.find("select[name='system.type']").on("change", (event) => {
+      const typeKey = event.currentTarget.value || "none";
+      const iconPath = getMoveTypeIcon(typeKey);
+      const imageElement = html.find(".profile-img");
+      imageElement.attr("src", iconPath);
+    });
+  }
+
+  async _updateObject(event, formData) {
+    if (this.item.type === "move") {
+      const typeKey = formData["system.type"] || this.item.system?.type || "none";
+      formData.img = getMoveTypeIcon(typeKey);
+    }
+    return super._updateObject(event, formData);
   }
 }

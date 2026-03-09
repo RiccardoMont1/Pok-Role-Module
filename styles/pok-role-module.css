@@ -224,6 +224,54 @@
   gap: 8px;
 }
 
+.pok-role-sheet .condition-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(116px, 1fr));
+  gap: 6px;
+}
+
+.pok-role-sheet .condition-chip {
+  position: relative;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 10px;
+  border: 2px solid #6f7890;
+  background: #d8deec;
+  padding: 4px 6px;
+  min-height: 30px;
+  cursor: pointer;
+}
+
+.pok-role-sheet .condition-chip input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+}
+
+.pok-role-sheet .condition-chip img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex: 0 0 18px;
+}
+
+.pok-role-sheet .condition-chip span {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #2f3646;
+}
+
+.pok-role-sheet .condition-chip.is-active {
+  border-color: #d2553d;
+  background: linear-gradient(180deg, #f8b08f 0%, #ed8969 100%);
+}
+
 .pok-role-chat-card h3 {
   margin: 0 0 6px;
   font-size: 1.1rem;
@@ -930,6 +978,28 @@
   line-height: 1.35;
 }
 
+.trainer-sheet .trainer-conditions-panel {
+  border: 1px solid #7f889c;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #d6dbe6 0%, #c8cfdd 100%);
+}
+
+.trainer-sheet .trainer-conditions-panel h2 {
+  color: #2f3646;
+}
+
+.trainer-sheet .trainer-conditions-panel .condition-chip-grid {
+  margin-bottom: 8px;
+}
+
+.trainer-sheet .trainer-conditions-panel textarea {
+  min-height: 96px;
+  border: 1px solid #778197;
+  border-radius: 8px;
+  background: #e6ebf4;
+  line-height: 1.35;
+}
+
 .trainer-sheet .trainer-bio-panel h2 {
   color: #ffffff;
 }
@@ -1185,18 +1255,96 @@
   font-weight: 700;
 }
 
-.pokemon-sheet .pokemon-matchups-card p {
-  margin: 4px 0;
-  border: 2px solid var(--pk-outline);
+.pokemon-sheet .pokemon-conditions-strip {
+  margin-top: 8px;
+  border: 3px solid var(--pk-outline);
   border-radius: 12px;
-  padding: 4px 8px;
-  background: #f1f4fb;
-  font-size: 0.88rem;
-  line-height: 1.2;
+  padding: 6px;
+  background: #2f342d;
 }
 
-.pokemon-sheet .pokemon-matchups-card strong {
+.pokemon-sheet .pokemon-conditions-strip h3 {
+  margin: 0 0 6px;
+  color: #f4f6fb;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.pokemon-sheet .pokemon-conditions-strip .condition-chip-grid.compact {
+  grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+}
+
+.pokemon-sheet .pokemon-conditions-strip .condition-chip {
+  border-color: #5c5548;
+  background: #f1f4fb;
+}
+
+.pokemon-sheet .pokemon-matchups-card .matchup-group-list {
+  display: grid;
+  gap: 6px;
+}
+
+.pokemon-sheet .pokemon-matchups-card .matchup-group {
+  margin: 0;
+  border: 2px solid var(--pk-outline);
+  border-radius: 12px;
+  padding: 6px;
+  background: #f1f4fb;
+}
+
+.pokemon-sheet .pokemon-matchups-card .matchup-group-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.pokemon-sheet .pokemon-matchups-card .matchup-group-header img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.pokemon-sheet .pokemon-matchups-card .matchup-group-header strong {
   color: #8f3b27;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+}
+
+.pokemon-sheet .pokemon-matchups-card .matchup-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.pokemon-sheet .pokemon-matchups-card .matchup-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #8f97ad;
+  border-radius: 999px;
+  padding: 2px 6px 2px 4px;
+  background: #f8faff;
+}
+
+.pokemon-sheet .pokemon-matchups-card .matchup-chip img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.pokemon-sheet .pokemon-matchups-card .matchup-chip span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #2f3646;
+}
+
+.pokemon-sheet .pokemon-matchups-card .matchup-empty {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #3d4250;
 }
 
 .pokemon-sheet .pokemon-arcade-core {

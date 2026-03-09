@@ -38,10 +38,22 @@ function trimmedStringField(initial = "") {
   return new StringField({ required: true, blank: true, trim: true, initial });
 }
 
+function conditionSchemaField() {
+  return new SchemaField({
+    sleep: new BooleanField({ required: true, initial: false }),
+    burn: new BooleanField({ required: true, initial: false }),
+    frozen: new BooleanField({ required: true, initial: false }),
+    paralyzed: new BooleanField({ required: true, initial: false }),
+    poisoned: new BooleanField({ required: true, initial: false }),
+    fainted: new BooleanField({ required: true, initial: false })
+  });
+}
+
 class BaseCharacterDataModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     return {
       biography: trimmedStringField(""),
+      conditions: conditionSchemaField(),
       resources: new SchemaField({
         hp: resourceField(10),
         will: resourceField(3)

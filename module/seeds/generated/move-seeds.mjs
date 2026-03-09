@@ -2,7 +2,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pound",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -28,7 +28,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Karate Chop",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -54,7 +54,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Double Slap",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -80,7 +80,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Comet Punch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -106,7 +106,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Punch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -132,7 +132,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pay Day",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -158,7 +158,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fire Punch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -184,7 +184,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ice Punch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -210,7 +210,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thunder Punch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -236,7 +236,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scratch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -262,7 +262,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Guillotine",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -288,7 +288,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Razor Wind",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -314,7 +314,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swords Dance",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -340,7 +340,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cut",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -366,7 +366,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gust",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "special",
@@ -392,7 +392,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wing Attack",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -418,7 +418,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whirlwind",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -444,7 +444,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fly",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -470,7 +470,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bind",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -496,7 +496,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -522,7 +522,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vine Whip",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -548,7 +548,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stomp",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -574,7 +574,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Double Kick",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -600,7 +600,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Kick",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -626,7 +626,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jump Kick",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -652,7 +652,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rolling Kick",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -678,7 +678,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sand Attack",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "support",
@@ -704,7 +704,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Headbutt",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -730,7 +730,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Horn Attack",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -756,7 +756,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fury Attack",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -782,7 +782,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Horn Drill",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -808,7 +808,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tackle",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -834,7 +834,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Body Slam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -860,7 +860,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wrap",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -886,7 +886,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Take Down",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -912,7 +912,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thrash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -938,7 +938,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Double-Edge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -964,7 +964,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tail Whip",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -990,7 +990,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poison Sting",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -1016,7 +1016,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Twineedle",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -1042,7 +1042,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pin Missile",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -1068,7 +1068,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leer",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -1094,7 +1094,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bite",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -1120,7 +1120,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Growl",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -1146,7 +1146,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Roar",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -1172,7 +1172,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sing",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -1198,7 +1198,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Supersonic",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -1224,7 +1224,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sonic Boom",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -1250,7 +1250,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Disable",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -1276,7 +1276,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Acid",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -1302,7 +1302,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ember",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -1328,7 +1328,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flamethrower",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -1354,7 +1354,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mist",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "support",
@@ -1380,7 +1380,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Water Gun",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -1406,7 +1406,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hydro Pump",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -1432,7 +1432,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Surf",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -1458,7 +1458,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ice Beam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -1484,7 +1484,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blizzard",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -1510,7 +1510,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psybeam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -1536,7 +1536,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bubble Beam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -1562,7 +1562,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aurora Beam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -1588,7 +1588,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hyper Beam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -1614,7 +1614,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Peck",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -1640,7 +1640,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drill Peck",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -1666,7 +1666,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Submission",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -1692,7 +1692,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Low Kick",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -1718,7 +1718,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Counter",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -1744,7 +1744,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seismic Toss",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -1770,7 +1770,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Strength",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -1796,7 +1796,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Absorb",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -1822,7 +1822,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Drain",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -1848,7 +1848,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leech Seed",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -1874,7 +1874,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Growth",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -1900,7 +1900,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Razor Leaf",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -1926,7 +1926,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Solar Beam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -1952,7 +1952,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poison Powder",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -1978,7 +1978,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stun Spore",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -2004,7 +2004,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sleep Powder",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -2030,7 +2030,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Petal Dance",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -2056,7 +2056,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "String Shot",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -2082,7 +2082,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Rage",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -2108,7 +2108,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fire Spin",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -2134,7 +2134,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thunder Shock",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -2160,7 +2160,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thunderbolt",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -2186,7 +2186,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thunder Wave",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -2212,7 +2212,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thunder",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -2238,7 +2238,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Throw",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -2264,7 +2264,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Earthquake",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -2290,7 +2290,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fissure",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -2316,7 +2316,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dig",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -2342,7 +2342,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxic",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -2368,7 +2368,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Confusion",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -2394,7 +2394,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psychic",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -2420,7 +2420,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hypnosis",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -2446,7 +2446,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meditate",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -2472,7 +2472,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Agility",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -2498,7 +2498,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quick Attack",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -2524,7 +2524,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rage",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -2550,7 +2550,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Teleport",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -2576,7 +2576,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Night Shade",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "special",
@@ -2602,7 +2602,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mimic",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2628,7 +2628,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Screech",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2654,7 +2654,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Double Team",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2680,7 +2680,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Recover",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2706,7 +2706,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Harden",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2732,7 +2732,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Minimize",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2758,7 +2758,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smokescreen",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2784,7 +2784,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Confuse Ray",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "support",
@@ -2810,7 +2810,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Withdraw",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "support",
@@ -2836,7 +2836,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Defense Curl",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2862,7 +2862,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Barrier",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -2888,7 +2888,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Light Screen",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -2914,7 +2914,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Haze",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "support",
@@ -2940,7 +2940,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Reflect",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -2966,7 +2966,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Focus Energy",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2992,7 +2992,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bide",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3018,7 +3018,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metronome",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -3044,7 +3044,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mirror Move",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "support",
@@ -3070,7 +3070,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Self-Destruct",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3096,7 +3096,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Egg Bomb",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3122,7 +3122,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lick",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -3148,7 +3148,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smog",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -3174,7 +3174,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sludge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -3200,7 +3200,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bone Club",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -3226,7 +3226,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fire Blast",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -3252,7 +3252,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Waterfall",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -3278,7 +3278,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clamp",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -3304,7 +3304,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swift",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -3330,7 +3330,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skull Bash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3356,7 +3356,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spike Cannon",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3382,7 +3382,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Constrict",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3408,7 +3408,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Amnesia",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -3434,7 +3434,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kinesis",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -3460,7 +3460,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Soft-Boiled",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -3486,7 +3486,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "High Jump Kick",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -3512,7 +3512,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Glare",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -3538,7 +3538,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dream Eater",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -3564,7 +3564,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poison Gas",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -3590,7 +3590,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Barrage",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3616,7 +3616,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leech Life",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -3642,7 +3642,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lovely Kiss",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -3668,7 +3668,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sky Attack",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -3694,7 +3694,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Transform",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -3720,7 +3720,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bubble",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -3746,7 +3746,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dizzy Punch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3772,7 +3772,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spore",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -3798,7 +3798,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -3824,7 +3824,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psywave",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -3850,7 +3850,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Splash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -3876,7 +3876,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Acid Armor",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -3902,7 +3902,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crabhammer",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -3928,7 +3928,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Explosion",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3954,7 +3954,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fury Swipes",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3980,7 +3980,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bonemerang",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -4006,7 +4006,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rest",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -4032,7 +4032,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Slide",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -4058,7 +4058,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hyper Fang",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -4084,7 +4084,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sharpen",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4110,7 +4110,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Conversion",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4136,7 +4136,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tri Attack",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -4162,7 +4162,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Super Fang",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -4188,7 +4188,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -4214,7 +4214,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Substitute",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4240,7 +4240,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Struggle",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -4266,7 +4266,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sketch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4292,7 +4292,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Triple Kick",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -4318,7 +4318,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thief",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -4344,7 +4344,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spider Web",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -4370,7 +4370,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mind Reader",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4396,7 +4396,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nightmare",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "support",
@@ -4422,7 +4422,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flame Wheel",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -4448,7 +4448,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snore",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -4474,7 +4474,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Curse",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "support",
@@ -4500,7 +4500,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flail",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -4526,7 +4526,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Conversion 2",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4552,7 +4552,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aeroblast",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "special",
@@ -4578,7 +4578,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cotton Spore",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -4604,7 +4604,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Reversal",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -4630,7 +4630,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spite",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "support",
@@ -4656,7 +4656,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Powder Snow",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -4682,7 +4682,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Protect",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4708,7 +4708,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mach Punch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -4734,7 +4734,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scary Face",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4760,7 +4760,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Feint Attack",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -4786,7 +4786,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sweet Kiss",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -4812,7 +4812,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Belly Drum",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4838,7 +4838,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sludge Bomb",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -4864,7 +4864,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mud-Slap",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "special",
@@ -4890,7 +4890,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Octazooka",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -4916,7 +4916,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spikes",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "support",
@@ -4942,7 +4942,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zap Cannon",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -4968,7 +4968,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Foresight",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4994,7 +4994,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Destiny Bond",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "support",
@@ -5020,7 +5020,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Perish Song",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5046,7 +5046,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Icy Wind",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -5072,7 +5072,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Detect",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "support",
@@ -5098,7 +5098,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bone Rush",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -5124,7 +5124,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lock-On",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5150,7 +5150,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Outrage",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -5176,7 +5176,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandstorm",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "support",
@@ -5202,7 +5202,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Giga Drain",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -5228,7 +5228,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Endure",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5254,7 +5254,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charm",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -5280,7 +5280,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rollout",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -5306,7 +5306,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "False Swipe",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -5332,7 +5332,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swagger",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5358,7 +5358,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Milk Drink",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5384,7 +5384,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spark",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -5410,7 +5410,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fury Cutter",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -5436,7 +5436,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Steel Wing",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -5462,7 +5462,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mean Look",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5488,7 +5488,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Attract",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5514,7 +5514,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sleep Talk",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5540,7 +5540,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heal Bell",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5566,7 +5566,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Return",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -5592,7 +5592,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Present",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -5618,7 +5618,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Frustration",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -5644,7 +5644,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Safeguard",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5670,7 +5670,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pain Split",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5696,7 +5696,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sacred Fire",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -5722,7 +5722,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magnitude",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -5748,7 +5748,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dynamic Punch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -5774,7 +5774,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Megahorn",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -5800,7 +5800,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Breath",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -5826,7 +5826,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Baton Pass",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5852,7 +5852,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Encore",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5878,7 +5878,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pursuit",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -5904,7 +5904,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rapid Spin",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -5930,7 +5930,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sweet Scent",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5956,7 +5956,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Iron Tail",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -5982,7 +5982,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metal Claw",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -6008,7 +6008,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vital Throw",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -6034,7 +6034,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Morning Sun",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -6060,7 +6060,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Synthesis",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -6086,7 +6086,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Moonlight",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -6112,7 +6112,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hidden Power",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -6138,7 +6138,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cross Chop",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -6164,7 +6164,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Twister",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -6190,7 +6190,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rain Dance",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "support",
@@ -6216,7 +6216,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sunny Day",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "support",
@@ -6242,7 +6242,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crunch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -6268,7 +6268,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mirror Coat",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -6294,7 +6294,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psych Up",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -6320,7 +6320,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Extreme Speed",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -6346,7 +6346,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ancient Power",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "special",
@@ -6372,7 +6372,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shadow Ball",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "special",
@@ -6398,7 +6398,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Future Sight",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -6424,7 +6424,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Smash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -6450,7 +6450,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whirlpool",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -6476,7 +6476,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beat Up",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -6502,7 +6502,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fake Out",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -6528,7 +6528,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Uproar",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -6554,7 +6554,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stockpile",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -6580,7 +6580,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spit Up",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -6606,7 +6606,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swallow",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -6632,7 +6632,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heat Wave",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -6658,7 +6658,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hail",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "support",
@@ -6684,7 +6684,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Torment",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -6710,7 +6710,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flatter",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -6736,7 +6736,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Will-O-Wisp",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "support",
@@ -6762,7 +6762,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Memento",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -6788,7 +6788,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Facade",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -6814,7 +6814,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Focus Punch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -6840,7 +6840,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smelling Salts",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -6866,7 +6866,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Follow Me",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -6892,7 +6892,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nature Power",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -6918,7 +6918,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -6944,7 +6944,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Taunt",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -6970,7 +6970,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Helping Hand",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -6996,7 +6996,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trick",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -7022,7 +7022,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Role Play",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -7048,7 +7048,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wish",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -7074,7 +7074,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Assist",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -7100,7 +7100,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ingrain",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -7126,7 +7126,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Superpower",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -7152,7 +7152,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magic Coat",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -7178,7 +7178,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Recycle",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -7204,7 +7204,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Revenge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -7230,7 +7230,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Brick Break",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -7256,7 +7256,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yawn",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -7282,7 +7282,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Knock Off",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -7308,7 +7308,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Endeavor",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -7334,7 +7334,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eruption",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -7360,7 +7360,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skill Swap",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -7386,7 +7386,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Imprison",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -7412,7 +7412,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Refresh",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -7438,7 +7438,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grudge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "support",
@@ -7464,7 +7464,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snatch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -7490,7 +7490,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Secret Power",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -7516,7 +7516,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dive",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -7542,7 +7542,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arm Thrust",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -7568,7 +7568,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Camouflage",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -7594,7 +7594,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tail Glow",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -7620,7 +7620,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Luster Purge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -7646,7 +7646,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mist Ball",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -7672,7 +7672,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Feather Dance",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "support",
@@ -7698,7 +7698,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Teeter Dance",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "support",
@@ -7724,7 +7724,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blaze Kick",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -7750,7 +7750,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mud Sport",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "support",
@@ -7776,7 +7776,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ice Ball",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -7802,7 +7802,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Needle Arm",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -7828,7 +7828,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slack Off",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -7854,7 +7854,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hyper Voice",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -7880,7 +7880,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poison Fang",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -7906,7 +7906,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crush Claw",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -7932,7 +7932,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blast Burn",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -7958,7 +7958,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hydro Cannon",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -7984,7 +7984,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meteor Mash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -8010,7 +8010,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Astonish",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -8036,7 +8036,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weather Ball",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -8062,7 +8062,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aromatherapy",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -8088,7 +8088,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fake Tears",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -8114,7 +8114,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Air Cutter",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "special",
@@ -8140,7 +8140,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Overheat",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -8166,7 +8166,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Odor Sleuth",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -8192,7 +8192,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Tomb",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -8218,7 +8218,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Silver Wind",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "special",
@@ -8244,7 +8244,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metal Sound",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "support",
@@ -8270,7 +8270,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grass Whistle",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -8296,7 +8296,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tickle",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -8322,7 +8322,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cosmic Power",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -8348,7 +8348,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Water Spout",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -8374,7 +8374,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Signal Beam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "special",
@@ -8400,7 +8400,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shadow Punch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -8426,7 +8426,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Extrasensory",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -8452,7 +8452,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sky Uppercut",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -8478,7 +8478,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sand Tomb",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -8504,7 +8504,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sheer Cold",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -8530,7 +8530,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Muddy Water",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -8556,7 +8556,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bullet Seed",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -8582,7 +8582,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aerial Ace",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -8608,7 +8608,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Icicle Spear",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -8634,7 +8634,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Iron Defense",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "support",
@@ -8660,7 +8660,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Block",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -8686,7 +8686,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Howl",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -8712,7 +8712,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Claw",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -8738,7 +8738,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Frenzy Plant",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -8764,7 +8764,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bulk Up",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "support",
@@ -8790,7 +8790,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bounce",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -8816,7 +8816,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mud Shot",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "special",
@@ -8842,7 +8842,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poison Tail",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -8868,7 +8868,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Covet",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -8894,7 +8894,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Volt Tackle",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -8920,7 +8920,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magical Leaf",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -8946,7 +8946,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Water Sport",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "support",
@@ -8972,7 +8972,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Calm Mind",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -8998,7 +8998,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leaf Blade",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -9024,7 +9024,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Dance",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "support",
@@ -9050,7 +9050,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Blast",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -9076,7 +9076,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shock Wave",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -9102,7 +9102,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Water Pulse",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -9128,7 +9128,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Doom Desire",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "special",
@@ -9154,7 +9154,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psycho Boost",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -9180,7 +9180,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Roost",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "support",
@@ -9206,7 +9206,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gravity",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9232,7 +9232,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Miracle Eye",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9258,7 +9258,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wake-Up Slap",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -9284,7 +9284,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hammer Arm",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -9310,7 +9310,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gyro Ball",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -9336,7 +9336,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Healing Wish",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9362,7 +9362,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Brine",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -9388,7 +9388,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Natural Gift",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -9414,7 +9414,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Feint",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -9440,7 +9440,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pluck",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -9466,7 +9466,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tailwind",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "support",
@@ -9492,7 +9492,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metal Burst",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -9518,7 +9518,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "U-turn",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -9544,7 +9544,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Close Combat",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -9570,7 +9570,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Payback",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -9596,7 +9596,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Assurance",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -9622,7 +9622,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Embargo",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -9648,7 +9648,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fling",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -9674,7 +9674,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psycho Shift",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9700,7 +9700,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trump Card",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -9726,7 +9726,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heal Block",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9752,7 +9752,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wring Out",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -9778,7 +9778,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Power Trick",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9804,7 +9804,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gastro Acid",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -9830,7 +9830,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lucky Chant",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -9856,7 +9856,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Me First",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -9882,7 +9882,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Copycat",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -9908,7 +9908,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Power Swap",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9934,7 +9934,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Guard Swap",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9960,7 +9960,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Punishment",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -9986,7 +9986,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Last Resort",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -10012,7 +10012,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Worry Seed",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -10038,7 +10038,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sucker Punch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -10064,7 +10064,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxic Spikes",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -10090,7 +10090,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heart Swap",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -10116,7 +10116,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aqua Ring",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "support",
@@ -10142,7 +10142,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magnet Rise",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -10168,7 +10168,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flare Blitz",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -10194,7 +10194,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Force Palm",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -10220,7 +10220,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aura Sphere",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -10246,7 +10246,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Polish",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "support",
@@ -10272,7 +10272,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poison Jab",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -10298,7 +10298,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dark Pulse",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "special",
@@ -10324,7 +10324,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Night Slash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -10350,7 +10350,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aqua Tail",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -10376,7 +10376,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seed Bomb",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -10402,7 +10402,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Air Slash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -10428,7 +10428,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "X-Scissor",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -10454,7 +10454,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bug Buzz",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "special",
@@ -10480,7 +10480,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Pulse",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -10506,7 +10506,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Rush",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -10532,7 +10532,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Power Gem",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "special",
@@ -10558,7 +10558,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drain Punch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -10584,7 +10584,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vacuum Wave",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -10610,7 +10610,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Focus Blast",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -10636,7 +10636,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Energy Ball",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -10662,7 +10662,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Brave Bird",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -10688,7 +10688,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Earth Power",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "special",
@@ -10714,7 +10714,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Switcheroo",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -10740,7 +10740,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Giga Impact",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -10766,7 +10766,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nasty Plot",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -10792,7 +10792,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bullet Punch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -10818,7 +10818,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Avalanche",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -10844,7 +10844,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ice Shard",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -10870,7 +10870,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shadow Claw",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -10896,7 +10896,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thunder Fang",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -10922,7 +10922,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ice Fang",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -10948,7 +10948,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fire Fang",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -10974,7 +10974,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shadow Sneak",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -11000,7 +11000,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mud Bomb",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "special",
@@ -11026,7 +11026,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psycho Cut",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "physical",
@@ -11052,7 +11052,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zen Headbutt",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "physical",
@@ -11078,7 +11078,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mirror Shot",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "special",
@@ -11104,7 +11104,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flash Cannon",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "special",
@@ -11130,7 +11130,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Climb",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -11156,7 +11156,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Defog",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "support",
@@ -11182,7 +11182,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trick Room",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -11208,7 +11208,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Draco Meteor",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -11234,7 +11234,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Discharge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -11260,7 +11260,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lava Plume",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -11286,7 +11286,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leaf Storm",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -11312,7 +11312,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Power Whip",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -11338,7 +11338,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Wrecker",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -11364,7 +11364,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cross Poison",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -11390,7 +11390,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gunk Shot",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -11416,7 +11416,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Iron Head",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -11442,7 +11442,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magnet Bomb",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -11468,7 +11468,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stone Edge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -11494,7 +11494,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Captivate",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -11520,7 +11520,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stealth Rock",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "support",
@@ -11546,7 +11546,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grass Knot",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -11572,7 +11572,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chatter",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "special",
@@ -11598,7 +11598,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Judgment",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -11624,7 +11624,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bug Bite",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -11650,7 +11650,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charge Beam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -11676,7 +11676,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wood Hammer",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -11702,7 +11702,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aqua Jet",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -11728,7 +11728,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Attack Order",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -11754,7 +11754,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Defend Order",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -11780,7 +11780,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heal Order",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -11806,7 +11806,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Head Smash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -11832,7 +11832,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Double Hit",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -11858,7 +11858,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Roar of Time",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -11884,7 +11884,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spacial Rend",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -11910,7 +11910,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lunar Dance",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -11936,7 +11936,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crush Grip",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -11962,7 +11962,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magma Storm",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -11988,7 +11988,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dark Void",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -12014,7 +12014,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seed Flare",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -12040,7 +12040,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ominous Wind",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "special",
@@ -12066,7 +12066,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shadow Force",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -12092,7 +12092,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hone Claws",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -12118,7 +12118,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wide Guard",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "support",
@@ -12144,7 +12144,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Guard Split",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -12170,7 +12170,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Power Split",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -12196,7 +12196,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wonder Room",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -12222,7 +12222,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psyshock",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -12248,7 +12248,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venoshock",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -12274,7 +12274,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Autotomize",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "support",
@@ -12300,7 +12300,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rage Powder",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -12326,7 +12326,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Telekinesis",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -12352,7 +12352,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magic Room",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -12378,7 +12378,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smack Down",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -12404,7 +12404,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Storm Throw",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -12430,7 +12430,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flame Burst",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -12456,7 +12456,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sludge Wave",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -12482,7 +12482,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quiver Dance",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -12508,7 +12508,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heavy Slam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -12534,7 +12534,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Synchronoise",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -12560,7 +12560,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electro Ball",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -12586,7 +12586,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Soak",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "support",
@@ -12612,7 +12612,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flame Charge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -12638,7 +12638,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Coil",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -12664,7 +12664,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Low Sweep",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -12690,7 +12690,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Acid Spray",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -12716,7 +12716,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Foul Play",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -12742,7 +12742,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Simple Beam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -12768,7 +12768,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Entrainment",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -12794,7 +12794,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "After You",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -12820,7 +12820,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Round",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -12846,7 +12846,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Echoed Voice",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -12872,7 +12872,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chip Away",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -12898,7 +12898,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clear Smog",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -12924,7 +12924,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stored Power",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -12950,7 +12950,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quick Guard",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "support",
@@ -12976,7 +12976,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ally Switch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -13002,7 +13002,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scald",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -13028,7 +13028,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shell Smash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -13054,7 +13054,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heal Pulse",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -13080,7 +13080,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hex",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "special",
@@ -13106,7 +13106,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sky Drop",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -13132,7 +13132,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shift Gear",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "support",
@@ -13158,7 +13158,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Circle Throw",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -13184,7 +13184,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Incinerate",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -13210,7 +13210,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -13236,7 +13236,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Acrobatics",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -13262,7 +13262,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Reflect Type",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -13288,7 +13288,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Retaliate",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -13314,7 +13314,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Final Gambit",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -13340,7 +13340,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bestow",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -13366,7 +13366,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Inferno",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -13392,7 +13392,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Water Pledge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -13418,7 +13418,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fire Pledge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -13444,7 +13444,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grass Pledge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -13470,7 +13470,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Volt Switch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -13496,7 +13496,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Struggle Bug",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "special",
@@ -13522,7 +13522,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bulldoze",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -13548,7 +13548,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Frost Breath",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -13574,7 +13574,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Tail",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -13600,7 +13600,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Work Up",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -13626,7 +13626,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electroweb",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -13652,7 +13652,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wild Charge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -13678,7 +13678,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drill Run",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -13704,7 +13704,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dual Chop",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -13730,7 +13730,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heart Stamp",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "physical",
@@ -13756,7 +13756,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Horn Leech",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -13782,7 +13782,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sacred Sword",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -13808,7 +13808,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Razor Shell",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -13834,7 +13834,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heat Crash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -13860,7 +13860,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leaf Tornado",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -13886,7 +13886,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Steamroller",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -13912,7 +13912,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cotton Guard",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -13938,7 +13938,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Night Daze",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "special",
@@ -13964,7 +13964,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psystrike",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -13990,7 +13990,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tail Slap",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -14016,7 +14016,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hurricane",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "special",
@@ -14042,7 +14042,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Head Charge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -14068,7 +14068,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gear Grind",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -14094,7 +14094,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Searing Shot",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -14120,7 +14120,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Techno Blast",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -14146,7 +14146,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Relic Song",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -14172,7 +14172,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Secret Sword",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -14198,7 +14198,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Glaciate",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -14224,7 +14224,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bolt Strike",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -14250,7 +14250,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blue Flare",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -14276,7 +14276,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fiery Dance",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -14302,7 +14302,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Freeze Shock",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -14328,7 +14328,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ice Burn",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -14354,7 +14354,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snarl",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "special",
@@ -14380,7 +14380,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Icicle Crash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -14406,7 +14406,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "V-create",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -14432,7 +14432,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fusion Flare",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -14458,7 +14458,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fusion Bolt",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -14484,7 +14484,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flying Press",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -14510,7 +14510,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mat Block",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "support",
@@ -14536,7 +14536,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Belch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -14562,7 +14562,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rototiller",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "support",
@@ -14588,7 +14588,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sticky Web",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -14614,7 +14614,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fell Stinger",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -14640,7 +14640,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Phantom Force",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -14666,7 +14666,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trick-or-Treat",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "support",
@@ -14692,7 +14692,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Noble Roar",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -14718,7 +14718,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ion Deluge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -14744,7 +14744,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Parabolic Charge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -14770,7 +14770,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Forest\u2019s Curse",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -14796,7 +14796,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Petal Blizzard",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -14822,7 +14822,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Freeze-Dry",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -14848,7 +14848,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Disarming Voice",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -14874,7 +14874,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Parting Shot",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -14900,7 +14900,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Topsy-Turvy",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -14926,7 +14926,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Draining Kiss",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -14952,7 +14952,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crafty Shield",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -14978,7 +14978,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flower Shield",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -15004,7 +15004,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grassy Terrain",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -15030,7 +15030,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Misty Terrain",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -15056,7 +15056,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electrify",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -15082,7 +15082,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Play Rough",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "physical",
@@ -15108,7 +15108,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fairy Wind",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -15134,7 +15134,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Moonblast",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -15160,7 +15160,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Boomburst",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -15186,7 +15186,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fairy Lock",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -15212,7 +15212,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "King\u2019s Shield",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "support",
@@ -15238,7 +15238,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Play Nice",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -15264,7 +15264,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Confide",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -15290,7 +15290,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Diamond Storm",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -15316,7 +15316,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Steam Eruption",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -15342,7 +15342,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hyperspace Hole",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -15368,7 +15368,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Water Shuriken",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -15394,7 +15394,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mystical Fire",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -15420,7 +15420,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spiky Shield",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -15446,7 +15446,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aromatic Mist",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -15472,7 +15472,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eerie Impulse",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -15498,7 +15498,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venom Drench",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -15524,7 +15524,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Powder",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -15550,7 +15550,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Geomancy",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -15576,7 +15576,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magnetic Flux",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -15602,7 +15602,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electric Terrain",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -15628,7 +15628,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dazzling Gleam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -15654,7 +15654,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Baby-Doll Eyes",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -15680,7 +15680,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nuzzle",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -15706,7 +15706,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Infestation",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "special",
@@ -15732,7 +15732,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Power-Up Punch",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -15758,7 +15758,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Oblivion Wing",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "special",
@@ -15784,7 +15784,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thousand Arrows",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -15810,7 +15810,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thousand Waves",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -15836,7 +15836,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Land\u2019s Wrath",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -15862,7 +15862,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Light of Ruin",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -15888,7 +15888,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Origin Pulse",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -15914,7 +15914,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Precipice Blades",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -15940,7 +15940,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Ascent",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -15966,7 +15966,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hyperspace Fury",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -15992,7 +15992,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Breakneck Blitz",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -16018,7 +16018,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Breakneck Blitz",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -16044,7 +16044,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "All-Out Pummeling",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -16070,7 +16070,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "All-Out Pummeling",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -16096,7 +16096,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Supersonic Skystrike",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -16122,7 +16122,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Supersonic Skystrike",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "special",
@@ -16148,7 +16148,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Acid Downpour",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -16174,7 +16174,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Acid Downpour",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -16200,7 +16200,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tectonic Rage",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -16226,7 +16226,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tectonic Rage",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "special",
@@ -16252,7 +16252,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Continental Crush",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -16278,7 +16278,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Continental Crush",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "special",
@@ -16304,7 +16304,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Savage Spin-Out",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -16330,7 +16330,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Savage Spin-Out",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "special",
@@ -16356,7 +16356,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Never-Ending Nightmare",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -16382,7 +16382,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Never-Ending Nightmare",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "special",
@@ -16408,7 +16408,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corkscrew Crash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -16434,7 +16434,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corkscrew Crash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "special",
@@ -16460,7 +16460,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Inferno Overdrive",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -16486,7 +16486,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Inferno Overdrive",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -16512,7 +16512,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hydro Vortex",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -16538,7 +16538,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hydro Vortex",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -16564,7 +16564,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bloom Doom",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -16590,7 +16590,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bloom Doom",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -16616,7 +16616,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gigavolt Havoc",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -16642,7 +16642,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gigavolt Havoc",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -16668,7 +16668,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shattered Psyche",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "physical",
@@ -16694,7 +16694,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shattered Psyche",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -16720,7 +16720,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Subzero Slammer",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -16746,7 +16746,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Subzero Slammer",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -16772,7 +16772,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Devastating Drake",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -16798,7 +16798,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Devastating Drake",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -16824,7 +16824,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Black Hole Eclipse",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -16850,7 +16850,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Black Hole Eclipse",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "special",
@@ -16876,7 +16876,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Twinkle Tackle",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "physical",
@@ -16902,7 +16902,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Twinkle Tackle",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -16928,7 +16928,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shore Up",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "support",
@@ -16954,7 +16954,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "First Impression",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -16980,7 +16980,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Baneful Bunker",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -17006,7 +17006,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spirit Shackle",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -17032,7 +17032,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darkest Lariat",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -17058,7 +17058,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sparkling Aria",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -17084,7 +17084,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ice Hammer",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -17110,7 +17110,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Floral Healing",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -17136,7 +17136,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "High Horsepower",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -17162,7 +17162,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Strength Sap",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -17188,7 +17188,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Solar Blade",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -17214,7 +17214,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leafage",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -17240,7 +17240,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spotlight",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -17266,7 +17266,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxic Thread",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -17292,7 +17292,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Laser Focus",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -17318,7 +17318,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gear Up",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "support",
@@ -17344,7 +17344,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Throat Chop",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -17370,7 +17370,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pollen Puff",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "special",
@@ -17396,7 +17396,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Anchor Shot",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -17422,7 +17422,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psychic Terrain",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -17448,7 +17448,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lunge",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -17474,7 +17474,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fire Lash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -17500,7 +17500,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Power Trip",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -17526,7 +17526,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Burn Up",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -17552,7 +17552,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Speed Swap",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -17578,7 +17578,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smart Strike",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -17604,7 +17604,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Purify",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -17630,7 +17630,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Revelation Dance",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -17656,7 +17656,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Core Enforcer",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -17682,7 +17682,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trop Kick",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -17708,7 +17708,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Instruct",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -17734,7 +17734,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beak Blast",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -17760,7 +17760,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clanging Scales",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -17786,7 +17786,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Hammer",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -17812,7 +17812,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Brutal Swing",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -17838,7 +17838,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aurora Veil",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "support",
@@ -17864,7 +17864,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shell Trap",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -17890,7 +17890,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fleur Cannon",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -17916,7 +17916,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psychic Fangs",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "physical",
@@ -17942,7 +17942,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stomping Tantrum",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -17968,7 +17968,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shadow Bone",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -17994,7 +17994,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Accelerock",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -18020,7 +18020,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Liquidation",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -18046,7 +18046,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Prismatic Laser",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -18072,7 +18072,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spectral Thief",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -18098,7 +18098,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sunsteel Strike",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -18124,7 +18124,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Moongeist Beam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "special",
@@ -18150,7 +18150,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tearful Look",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -18176,7 +18176,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zing Zap",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -18202,7 +18202,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nature\u2019s Madness",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -18228,7 +18228,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Multi-Attack",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -18254,7 +18254,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mind Blown",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -18280,7 +18280,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Plasma Fists",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -18306,7 +18306,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Photon Geyser",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -18332,7 +18332,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zippy Zap",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "physical",
@@ -18358,7 +18358,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Splishy Splash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -18384,7 +18384,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Floaty Fall",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -18410,7 +18410,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pika Papow",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -18436,7 +18436,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bouncy Bubble",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -18462,7 +18462,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Buzzy Buzz",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -18488,7 +18488,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sizzly Slide",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -18514,7 +18514,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Glitzy Glow",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -18540,7 +18540,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Baddy Bad",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "special",
@@ -18566,7 +18566,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sappy Seed",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -18592,7 +18592,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Freezy Frost",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -18618,7 +18618,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sparkly Swirl",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -18644,7 +18644,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Veevee Volley",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -18670,7 +18670,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Double Iron Bash",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -18696,7 +18696,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dynamax Cannon",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -18722,7 +18722,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snipe Shot",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -18748,7 +18748,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jaw Lock",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -18774,7 +18774,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stuff Cheeks",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -18800,7 +18800,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "No Retreat",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "support",
@@ -18826,7 +18826,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tar Shot",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "support",
@@ -18852,7 +18852,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magic Powder",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -18878,7 +18878,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Darts",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -18904,7 +18904,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Teatime",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -18930,7 +18930,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Octolock",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "support",
@@ -18956,7 +18956,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bolt Beak",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -18982,7 +18982,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fishious Rend",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -19008,7 +19008,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Court Change",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -19034,7 +19034,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Flare",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -19060,7 +19060,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Flutterby",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -19086,7 +19086,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Lightning",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -19112,7 +19112,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Strike",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -19138,7 +19138,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Knuckle",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -19164,7 +19164,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Phantasm",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -19190,7 +19190,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Hailstorm",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -19216,7 +19216,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Ooze",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -19242,7 +19242,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Geyser",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -19268,7 +19268,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Airstream",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -19294,7 +19294,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Starfall",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "physical",
@@ -19320,7 +19320,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Wyrmwind",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -19346,7 +19346,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Mindstorm",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "physical",
@@ -19372,7 +19372,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Rockfall",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -19398,7 +19398,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Quake",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -19424,7 +19424,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Darkness",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -19450,7 +19450,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Overgrowth",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -19476,7 +19476,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Steelspike",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -19502,7 +19502,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clangorous Soul",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "support",
@@ -19528,7 +19528,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Body Press",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -19554,7 +19554,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Decorate",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -19580,7 +19580,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drum Beating",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -19606,7 +19606,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snap Trap",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -19632,7 +19632,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pyro Ball",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -19658,7 +19658,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aura Wheel",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -19684,7 +19684,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Breaking Swipe",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -19710,7 +19710,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Branch Poke",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -19736,7 +19736,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Overdrive",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -19762,7 +19762,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Apple Acid",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -19788,7 +19788,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grav Apple",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -19814,7 +19814,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spirit Break",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "physical",
@@ -19840,7 +19840,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Strange Steam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -19866,7 +19866,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Life Dew",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "support",
@@ -19892,7 +19892,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Obstruct",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -19918,7 +19918,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "False Surrender",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -19944,7 +19944,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meteor Assault",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -19970,7 +19970,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eternabeam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -19996,7 +19996,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Steel Beam",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "special",
@@ -20022,7 +20022,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raging Fury",
     "type": "move",
-    "img": "icons/svg/sword.svg",
+    "img": "systems/pok-role-module/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",

@@ -269,6 +269,23 @@
           </div>
         </label>
       </div>
+      <div class="pokemon-conditions-strip">
+        <h3>{{localize "POKROLE.Conditions.QuickTitle"}}</h3>
+        <div class="condition-chip-grid compact">
+          {{#each conditionChips as |condition|}}
+          <label class="condition-chip {{#if condition.active}}is-active{{/if}}">
+            <input
+              type="checkbox"
+              name="{{condition.fieldPath}}"
+              data-dtype="Boolean"
+              {{checked condition.active}}
+            />
+            <img src="{{condition.icon}}" alt="{{localize condition.labelPath}}" />
+            <span>{{localize condition.labelPath}}</span>
+          </label>
+          {{/each}}
+        </div>
+      </div>
       {{#if evolutionReady}}
       <div class="button-row" style="margin-top:8px;">
         <button type="button" data-action="evolution-available">
@@ -281,46 +298,28 @@
 
     <section class="sheet-section pokemon-matchups-card">
       <h2>{{localize "POKROLE.Pokemon.TypeMatchups"}}</h2>
-      <p>
-        <strong>{{localize "POKROLE.Pokemon.ResistancesHalf"}}:</strong>
-        {{#if pokemonMatchups.resistHalf.length}}
-          {{#each pokemonMatchups.resistHalf}}{{localize this}}{{#unless @last}}, {{/unless}}{{/each}}
-        {{else}}
-          -
-        {{/if}}
-      </p>
-      <p>
-        <strong>{{localize "POKROLE.Pokemon.ResistancesQuarter"}}:</strong>
-        {{#if pokemonMatchups.resistQuarter.length}}
-          {{#each pokemonMatchups.resistQuarter}}{{localize this}}{{#unless @last}}, {{/unless}}{{/each}}
-        {{else}}
-          -
-        {{/if}}
-      </p>
-      <p>
-        <strong>{{localize "POKROLE.Pokemon.VulnerabilitiesDouble"}}:</strong>
-        {{#if pokemonMatchups.weakDouble.length}}
-          {{#each pokemonMatchups.weakDouble}}{{localize this}}{{#unless @last}}, {{/unless}}{{/each}}
-        {{else}}
-          -
-        {{/if}}
-      </p>
-      <p>
-        <strong>{{localize "POKROLE.Pokemon.VulnerabilitiesQuad"}}:</strong>
-        {{#if pokemonMatchups.weakQuad.length}}
-          {{#each pokemonMatchups.weakQuad}}{{localize this}}{{#unless @last}}, {{/unless}}{{/each}}
-        {{else}}
-          -
-        {{/if}}
-      </p>
-      <p>
-        <strong>{{localize "POKROLE.Pokemon.Immunities"}}:</strong>
-        {{#if pokemonMatchups.immune.length}}
-          {{#each pokemonMatchups.immune}}{{localize this}}{{#unless @last}}, {{/unless}}{{/each}}
-        {{else}}
-          -
-        {{/if}}
-      </p>
+      <div class="matchup-group-list">
+        {{#each pokemonMatchups as |group|}}
+        <section class="matchup-group">
+          <header class="matchup-group-header">
+            <img src="{{group.multiplierIcon}}" alt="{{localize group.labelPath}}" />
+            <strong>{{localize group.labelPath}}</strong>
+          </header>
+          {{#if group.entries.length}}
+          <div class="matchup-chip-list">
+            {{#each group.entries as |entry|}}
+            <span class="matchup-chip" title="{{localize entry.labelPath}}">
+              <img src="{{entry.icon}}" alt="{{localize entry.labelPath}}" />
+              <span>{{localize entry.labelPath}}</span>
+            </span>
+            {{/each}}
+          </div>
+          {{else}}
+          <p class="matchup-empty">-</p>
+          {{/if}}
+        </section>
+        {{/each}}
+      </div>
     </section>
       </div>
     </div>

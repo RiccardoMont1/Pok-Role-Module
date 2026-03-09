@@ -58,6 +58,15 @@
       "ActiveEffects": "Condizioni / Effetti Attivi",
       "ActiveEffectsPlaceholder": "Condizioni, buff, debuff, effetti persistenti..."
     },
+    "Conditions": {
+      "QuickTitle": "Condizioni Rapide",
+      "Sleep": "Sonno",
+      "Burn": "Scottatura",
+      "Frozen": "Congelato",
+      "Paralyzed": "Paralisi",
+      "Poisoned": "Avvelenato",
+      "Fainted": "Svenuto"
+    },
     "Pokemon": {
       "Species": "Specie",
       "SpeciesPlaceholder": "Pikachu, Charmander...",

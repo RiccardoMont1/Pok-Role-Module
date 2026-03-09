@@ -2,7 +2,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bulbasaur",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bulbasaur.png",
     "system": {
       "biography": "Corebook Pokedex import #001. Habitat: grassland. Ability: Overgrow.",
       "resources": {
@@ -129,7 +129,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ivysaur",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ivysaur.png",
     "system": {
       "biography": "Corebook Pokedex import #002. Habitat: grassland. Ability: Overgrow.",
       "resources": {
@@ -256,7 +256,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venusaur",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/venusaur.png",
     "system": {
       "biography": "Corebook Pokedex import #003. Habitat: grassland. Ability: Overgrow.",
       "resources": {
@@ -383,7 +383,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charmander",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/charmander.png",
     "system": {
       "biography": "Corebook Pokedex import #004. Habitat: mountain. Ability: Blaze.",
       "resources": {
@@ -510,7 +510,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charmeleon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/charmeleon.png",
     "system": {
       "biography": "Corebook Pokedex import #005. Habitat: mountain. Ability: Blaze.",
       "resources": {
@@ -637,7 +637,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charizard",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/charizard.png",
     "system": {
       "biography": "Corebook Pokedex import #006. Habitat: mountain. Ability: Blaze.",
       "resources": {
@@ -764,7 +764,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Squirtle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/squirtle.png",
     "system": {
       "biography": "Corebook Pokedex import #007. Habitat: water's edge. Ability: Torrent.",
       "resources": {
@@ -891,7 +891,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wartortle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wartortle.png",
     "system": {
       "biography": "Corebook Pokedex import #008. Habitat: water's edge. Ability: Torrent.",
       "resources": {
@@ -1018,7 +1018,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blastoise",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blastoise.png",
     "system": {
       "biography": "Corebook Pokedex import #009. Habitat: water's edge. Ability: Torrent.",
       "resources": {
@@ -1145,7 +1145,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Caterpie",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/caterpie.png",
     "system": {
       "biography": "Corebook Pokedex import #010. Habitat: forest. Ability: Shield Dust.",
       "resources": {
@@ -1272,7 +1272,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metapod",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/metapod.png",
     "system": {
       "biography": "Corebook Pokedex import #011. Habitat: forest. Ability: Shed Skin.",
       "resources": {
@@ -1399,7 +1399,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Butterfree",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/butterfree.png",
     "system": {
       "biography": "Corebook Pokedex import #012. Habitat: forest. Ability: Compound Eyes.",
       "resources": {
@@ -1526,7 +1526,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weedle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/weedle.png",
     "system": {
       "biography": "Corebook Pokedex import #013. Habitat: forest. Ability: Shield Dust.",
       "resources": {
@@ -1653,7 +1653,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kakuna",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kakuna.png",
     "system": {
       "biography": "Corebook Pokedex import #014. Habitat: forest. Ability: Shed Skin.",
       "resources": {
@@ -1780,7 +1780,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beedrill",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/beedrill.png",
     "system": {
       "biography": "Corebook Pokedex import #015. Habitat: forest. Ability: Swarm.",
       "resources": {
@@ -1907,7 +1907,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pidgey",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pidgey.png",
     "system": {
       "biography": "Corebook Pokedex import #016. Habitat: forest. Ability: Keen Eye.",
       "resources": {
@@ -2034,7 +2034,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pidgeotto",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pidgeotto.png",
     "system": {
       "biography": "Corebook Pokedex import #017. Habitat: forest. Ability: Keen Eye.",
       "resources": {
@@ -2161,7 +2161,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pidgeot",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pidgeot.png",
     "system": {
       "biography": "Corebook Pokedex import #018. Habitat: forest. Ability: Keen Eye.",
       "resources": {
@@ -2288,7 +2288,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rattata",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rattata.png",
     "system": {
       "biography": "Corebook Pokedex import #019. Habitat: grassland. Ability: Run Away.",
       "resources": {
@@ -2415,7 +2415,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raticate",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raticate.png",
     "system": {
       "biography": "Corebook Pokedex import #020. Habitat: grassland. Ability: Run Away.",
       "resources": {
@@ -2542,7 +2542,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spearow",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spearow.png",
     "system": {
       "biography": "Corebook Pokedex import #021. Habitat: rough terrain. Ability: Keen Eye.",
       "resources": {
@@ -2669,7 +2669,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fearow",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/fearow.png",
     "system": {
       "biography": "Corebook Pokedex import #022. Habitat: rough terrain. Ability: Keen Eye.",
       "resources": {
@@ -2796,7 +2796,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ekans",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ekans.png",
     "system": {
       "biography": "Corebook Pokedex import #023. Habitat: grassland. Ability: Intimidate.",
       "resources": {
@@ -2923,7 +2923,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arbok",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/arbok.png",
     "system": {
       "biography": "Corebook Pokedex import #024. Habitat: grassland. Ability: Intimidate.",
       "resources": {
@@ -3050,7 +3050,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pikachu",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pikachu.png",
     "system": {
       "biography": "Corebook Pokedex import #025. Habitat: forest. Ability: Static.",
       "resources": {
@@ -3177,7 +3177,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raichu",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raichu.png",
     "system": {
       "biography": "Corebook Pokedex import #026. Habitat: forest. Ability: Static.",
       "resources": {
@@ -3304,7 +3304,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandshrew",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sandshrew.png",
     "system": {
       "biography": "Corebook Pokedex import #027. Habitat: rough terrain. Ability: Sand Veil.",
       "resources": {
@@ -3431,7 +3431,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandslash",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sandslash.png",
     "system": {
       "biography": "Corebook Pokedex import #028. Habitat: rough terrain. Ability: Sand Veil.",
       "resources": {
@@ -3558,7 +3558,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidoran\u2640",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nidoran-f.png",
     "system": {
       "biography": "Corebook Pokedex import #029. Habitat: grassland. Ability: Poison Point.",
       "resources": {
@@ -3685,7 +3685,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidorina",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nidorina.png",
     "system": {
       "biography": "Corebook Pokedex import #030. Habitat: grassland. Ability: Poison Point.",
       "resources": {
@@ -3812,7 +3812,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidoqueen",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nidoqueen.png",
     "system": {
       "biography": "Corebook Pokedex import #031. Habitat: grassland. Ability: Poison Point.",
       "resources": {
@@ -3939,7 +3939,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidoran\u2642",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nidoran-m.png",
     "system": {
       "biography": "Corebook Pokedex import #032. Habitat: grassland. Ability: Poison Point.",
       "resources": {
@@ -4066,7 +4066,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidorino",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nidorino.png",
     "system": {
       "biography": "Corebook Pokedex import #033. Habitat: grassland. Ability: Poison Point.",
       "resources": {
@@ -4193,7 +4193,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidoking",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nidoking.png",
     "system": {
       "biography": "Corebook Pokedex import #034. Habitat: grassland. Ability: Poison Point.",
       "resources": {
@@ -4320,7 +4320,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clefairy",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/clefairy.png",
     "system": {
       "biography": "Corebook Pokedex import #035. Habitat: mountain. Ability: Cute Charm.",
       "resources": {
@@ -4447,7 +4447,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clefable",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/clefable.png",
     "system": {
       "biography": "Corebook Pokedex import #036. Habitat: mountain. Ability: Cute Charm.",
       "resources": {
@@ -4574,7 +4574,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vulpix",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vulpix.png",
     "system": {
       "biography": "Corebook Pokedex import #037. Habitat: grassland. Ability: Flash Fire.",
       "resources": {
@@ -4701,7 +4701,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ninetales",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ninetales.png",
     "system": {
       "biography": "Corebook Pokedex import #038. Habitat: grassland. Ability: Flash Fire.",
       "resources": {
@@ -4828,7 +4828,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jigglypuff",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/jigglypuff.png",
     "system": {
       "biography": "Corebook Pokedex import #039. Habitat: grassland. Ability: Cute Charm.",
       "resources": {
@@ -4955,7 +4955,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wigglytuff",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wigglytuff.png",
     "system": {
       "biography": "Corebook Pokedex import #040. Habitat: grassland. Ability: Cute Charm.",
       "resources": {
@@ -5082,7 +5082,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zubat",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zubat.png",
     "system": {
       "biography": "Corebook Pokedex import #041. Habitat: cave. Ability: Inner Focus.",
       "resources": {
@@ -5209,7 +5209,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golbat",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golbat.png",
     "system": {
       "biography": "Corebook Pokedex import #042. Habitat: cave. Ability: Inner Focus.",
       "resources": {
@@ -5336,7 +5336,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Oddish",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/oddish.png",
     "system": {
       "biography": "Corebook Pokedex import #043. Habitat: grassland. Ability: Chlorophyll.",
       "resources": {
@@ -5463,7 +5463,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gloom",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gloom.png",
     "system": {
       "biography": "Corebook Pokedex import #044. Habitat: grassland. Ability: Chlorophyll.",
       "resources": {
@@ -5590,7 +5590,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vileplume",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vileplume.png",
     "system": {
       "biography": "Corebook Pokedex import #045. Habitat: grassland. Ability: Chlorophyll.",
       "resources": {
@@ -5717,7 +5717,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Paras",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/paras.png",
     "system": {
       "biography": "Corebook Pokedex import #046. Habitat: forest. Ability: Effect Spore.",
       "resources": {
@@ -5844,7 +5844,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Parasect",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/parasect.png",
     "system": {
       "biography": "Corebook Pokedex import #047. Habitat: forest. Ability: Effect Spore.",
       "resources": {
@@ -5971,7 +5971,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venonat",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/venonat.png",
     "system": {
       "biography": "Corebook Pokedex import #048. Habitat: forest. Ability: Compound Eyes.",
       "resources": {
@@ -6098,7 +6098,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venomoth",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/venomoth.png",
     "system": {
       "biography": "Corebook Pokedex import #049. Habitat: forest. Ability: Shield Dust.",
       "resources": {
@@ -6225,7 +6225,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Diglett",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/diglett.png",
     "system": {
       "biography": "Corebook Pokedex import #050. Habitat: cave. Ability: Sand Veil.",
       "resources": {
@@ -6352,7 +6352,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dugtrio",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dugtrio.png",
     "system": {
       "biography": "Corebook Pokedex import #051. Habitat: cave. Ability: Sand Veil.",
       "resources": {
@@ -6479,7 +6479,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meowth",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meowth.png",
     "system": {
       "biography": "Corebook Pokedex import #052. Habitat: urban. Ability: Pickup.",
       "resources": {
@@ -6606,7 +6606,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Persian",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/persian.png",
     "system": {
       "biography": "Corebook Pokedex import #053. Habitat: urban. Ability: Limber.",
       "resources": {
@@ -6733,7 +6733,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psyduck",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/psyduck.png",
     "system": {
       "biography": "Corebook Pokedex import #054. Habitat: water's edge. Ability: Damp.",
       "resources": {
@@ -6860,7 +6860,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golduck",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golduck.png",
     "system": {
       "biography": "Corebook Pokedex import #055. Habitat: water's edge. Ability: Damp.",
       "resources": {
@@ -6987,7 +6987,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mankey",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mankey.png",
     "system": {
       "biography": "Corebook Pokedex import #056. Habitat: mountain. Ability: Vital Spirit.",
       "resources": {
@@ -7114,7 +7114,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Primeape",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/primeape.png",
     "system": {
       "biography": "Corebook Pokedex import #057. Habitat: mountain. Ability: Vital Spirit.",
       "resources": {
@@ -7241,7 +7241,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Growlithe",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/growlithe.png",
     "system": {
       "biography": "Corebook Pokedex import #058. Habitat: grassland. Ability: Intimidate.",
       "resources": {
@@ -7368,7 +7368,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arcanine",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/arcanine.png",
     "system": {
       "biography": "Corebook Pokedex import #059. Habitat: grassland. Ability: Intimidate.",
       "resources": {
@@ -7495,7 +7495,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poliwag",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/poliwag.png",
     "system": {
       "biography": "Corebook Pokedex import #060. Habitat: water's edge. Ability: Water Absorb.",
       "resources": {
@@ -7622,7 +7622,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poliwhirl",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/poliwhirl.png",
     "system": {
       "biography": "Corebook Pokedex import #061. Habitat: water's edge. Ability: Water Absorb.",
       "resources": {
@@ -7749,7 +7749,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poliwrath",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/poliwrath.png",
     "system": {
       "biography": "Corebook Pokedex import #062. Habitat: water's edge. Ability: Water Absorb.",
       "resources": {
@@ -7876,7 +7876,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Abra",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/abra.png",
     "system": {
       "biography": "Corebook Pokedex import #063. Habitat: urban. Ability: Synchronize.",
       "resources": {
@@ -8003,7 +8003,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kadabra",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kadabra.png",
     "system": {
       "biography": "Corebook Pokedex import #064. Habitat: urban. Ability: Synchronize.",
       "resources": {
@@ -8130,7 +8130,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Alakazam",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/alakazam.png",
     "system": {
       "biography": "Corebook Pokedex import #065. Habitat: urban. Ability: Synchronize.",
       "resources": {
@@ -8257,7 +8257,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Machop",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/machop.png",
     "system": {
       "biography": "Corebook Pokedex import #066. Habitat: mountain. Ability: Guts.",
       "resources": {
@@ -8384,7 +8384,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Machoke",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/machoke.png",
     "system": {
       "biography": "Corebook Pokedex import #067. Habitat: mountain. Ability: Guts.",
       "resources": {
@@ -8511,7 +8511,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Machamp",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/machamp.png",
     "system": {
       "biography": "Corebook Pokedex import #068. Habitat: mountain. Ability: Guts.",
       "resources": {
@@ -8638,7 +8638,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bellsprout",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bellsprout.png",
     "system": {
       "biography": "Corebook Pokedex import #069. Habitat: forest. Ability: Chlorophyll.",
       "resources": {
@@ -8765,7 +8765,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weepinbell",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/weepinbell.png",
     "system": {
       "biography": "Corebook Pokedex import #070. Habitat: forest. Ability: Chlorophyll.",
       "resources": {
@@ -8892,7 +8892,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Victreebel",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/victreebel.png",
     "system": {
       "biography": "Corebook Pokedex import #071. Habitat: forest. Ability: Chlorophyll.",
       "resources": {
@@ -9019,7 +9019,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tentacool",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tentacool.png",
     "system": {
       "biography": "Corebook Pokedex import #072. Habitat: sea. Ability: Clear Body.",
       "resources": {
@@ -9146,7 +9146,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tentacruel",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tentacruel.png",
     "system": {
       "biography": "Corebook Pokedex import #073. Habitat: sea. Ability: Clear Body.",
       "resources": {
@@ -9273,7 +9273,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Geodude",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/geodude.png",
     "system": {
       "biography": "Corebook Pokedex import #074. Habitat: mountain. Ability: Rock Head.",
       "resources": {
@@ -9400,7 +9400,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Graveler",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/graveler.png",
     "system": {
       "biography": "Corebook Pokedex import #075. Habitat: mountain. Ability: Rock Head.",
       "resources": {
@@ -9527,7 +9527,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golem",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golem.png",
     "system": {
       "biography": "Corebook Pokedex import #076. Habitat: mountain. Ability: Rock Head.",
       "resources": {
@@ -9654,7 +9654,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ponyta",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ponyta.png",
     "system": {
       "biography": "Corebook Pokedex import #077. Habitat: grassland. Ability: Run Away.",
       "resources": {
@@ -9781,7 +9781,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rapidash",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rapidash.png",
     "system": {
       "biography": "Corebook Pokedex import #078. Habitat: grassland. Ability: Run Away.",
       "resources": {
@@ -9908,7 +9908,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowpoke",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slowpoke.png",
     "system": {
       "biography": "Corebook Pokedex import #079. Habitat: water's edge. Ability: Oblivious.",
       "resources": {
@@ -10035,7 +10035,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowbro",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slowbro.png",
     "system": {
       "biography": "Corebook Pokedex import #080. Habitat: water's edge. Ability: Oblivious.",
       "resources": {
@@ -10162,7 +10162,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magnemite",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magnemite.png",
     "system": {
       "biography": "Corebook Pokedex import #081. Habitat: rough terrain. Ability: Magnet Pull.",
       "resources": {
@@ -10289,7 +10289,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magneton",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magneton.png",
     "system": {
       "biography": "Corebook Pokedex import #082. Habitat: rough terrain. Ability: Magnet Pull.",
       "resources": {
@@ -10416,7 +10416,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Farfetch\u2019d",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/farfetchd.png",
     "system": {
       "biography": "Corebook Pokedex import #083. Habitat: grassland. Ability: Keen Eye.",
       "resources": {
@@ -10543,7 +10543,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Doduo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/doduo.png",
     "system": {
       "biography": "Corebook Pokedex import #084. Habitat: grassland. Ability: Run Away.",
       "resources": {
@@ -10670,7 +10670,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dodrio",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dodrio.png",
     "system": {
       "biography": "Corebook Pokedex import #085. Habitat: grassland. Ability: Run Away.",
       "resources": {
@@ -10797,7 +10797,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seel",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/seel.png",
     "system": {
       "biography": "Corebook Pokedex import #086. Habitat: sea. Ability: Thick Fat.",
       "resources": {
@@ -10924,7 +10924,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dewgong",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dewgong.png",
     "system": {
       "biography": "Corebook Pokedex import #087. Habitat: sea. Ability: Thick Fat.",
       "resources": {
@@ -11051,7 +11051,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grimer",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grimer.png",
     "system": {
       "biography": "Corebook Pokedex import #088. Habitat: urban. Ability: Stench.",
       "resources": {
@@ -11178,7 +11178,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Muk",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/muk.png",
     "system": {
       "biography": "Corebook Pokedex import #089. Habitat: urban. Ability: Stench.",
       "resources": {
@@ -11305,7 +11305,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shellder",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shellder.png",
     "system": {
       "biography": "Corebook Pokedex import #090. Habitat: sea. Ability: Shell Armor.",
       "resources": {
@@ -11432,7 +11432,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cloyster",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cloyster.png",
     "system": {
       "biography": "Corebook Pokedex import #091. Habitat: sea. Ability: Shell Armor.",
       "resources": {
@@ -11559,7 +11559,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gastly",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gastly.png",
     "system": {
       "biography": "Corebook Pokedex import #092. Habitat: cave. Ability: Levitate.",
       "resources": {
@@ -11686,7 +11686,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Haunter",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/haunter.png",
     "system": {
       "biography": "Corebook Pokedex import #093. Habitat: cave. Ability: Levitate.",
       "resources": {
@@ -11813,7 +11813,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gengar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gengar.png",
     "system": {
       "biography": "Corebook Pokedex import #094. Habitat: cave. Ability: Cursed Body.",
       "resources": {
@@ -11940,7 +11940,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Onix",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/onix.png",
     "system": {
       "biography": "Corebook Pokedex import #095. Habitat: cave. Ability: Rock Head.",
       "resources": {
@@ -12067,7 +12067,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drowzee",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drowzee.png",
     "system": {
       "biography": "Corebook Pokedex import #096. Habitat: grassland. Ability: Insomnia.",
       "resources": {
@@ -12194,7 +12194,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hypno",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hypno.png",
     "system": {
       "biography": "Corebook Pokedex import #097. Habitat: grassland. Ability: Insomnia.",
       "resources": {
@@ -12321,7 +12321,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Krabby",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/krabby.png",
     "system": {
       "biography": "Corebook Pokedex import #098. Habitat: water's edge. Ability: Hyper Cutter.",
       "resources": {
@@ -12448,7 +12448,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kingler",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kingler.png",
     "system": {
       "biography": "Corebook Pokedex import #099. Habitat: water's edge. Ability: Hyper Cutter.",
       "resources": {
@@ -12575,7 +12575,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Voltorb",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/voltorb.png",
     "system": {
       "biography": "Corebook Pokedex import #100. Habitat: urban. Ability: Soundproof.",
       "resources": {
@@ -12702,7 +12702,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electrode",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/electrode.png",
     "system": {
       "biography": "Corebook Pokedex import #101. Habitat: urban. Ability: Soundproof.",
       "resources": {
@@ -12829,7 +12829,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Exeggcute",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/exeggcute.png",
     "system": {
       "biography": "Corebook Pokedex import #102. Habitat: forest. Ability: Chlorophyll.",
       "resources": {
@@ -12956,7 +12956,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Exeggutor",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/exeggutor.png",
     "system": {
       "biography": "Corebook Pokedex import #103. Habitat: forest. Ability: Chlorophyll.",
       "resources": {
@@ -13083,7 +13083,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cubone",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cubone.png",
     "system": {
       "biography": "Corebook Pokedex import #104. Habitat: mountain. Ability: Rock Head.",
       "resources": {
@@ -13210,7 +13210,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Marowak",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/marowak.png",
     "system": {
       "biography": "Corebook Pokedex import #105. Habitat: mountain. Ability: Rock Head.",
       "resources": {
@@ -13337,7 +13337,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hitmonlee",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hitmonlee.png",
     "system": {
       "biography": "Corebook Pokedex import #106. Habitat: urban. Ability: Limber.",
       "resources": {
@@ -13464,7 +13464,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hitmonchan",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hitmonchan.png",
     "system": {
       "biography": "Corebook Pokedex import #107. Habitat: urban. Ability: Keen Eye.",
       "resources": {
@@ -13591,7 +13591,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lickitung",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lickitung.png",
     "system": {
       "biography": "Corebook Pokedex import #108. Habitat: grassland. Ability: Own Tempo.",
       "resources": {
@@ -13718,7 +13718,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Koffing",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/koffing.png",
     "system": {
       "biography": "Corebook Pokedex import #109. Habitat: urban. Ability: Levitate.",
       "resources": {
@@ -13845,7 +13845,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weezing",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/weezing.png",
     "system": {
       "biography": "Corebook Pokedex import #110. Habitat: urban. Ability: Levitate.",
       "resources": {
@@ -13972,7 +13972,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rhyhorn",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rhyhorn.png",
     "system": {
       "biography": "Corebook Pokedex import #111. Habitat: rough terrain. Ability: Lightning Rod.",
       "resources": {
@@ -14099,7 +14099,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rhydon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rhydon.png",
     "system": {
       "biography": "Corebook Pokedex import #112. Habitat: rough terrain. Ability: Lightning Rod.",
       "resources": {
@@ -14226,7 +14226,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chansey",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chansey.png",
     "system": {
       "biography": "Corebook Pokedex import #113. Habitat: urban. Ability: Natural Cure.",
       "resources": {
@@ -14353,7 +14353,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tangela",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tangela.png",
     "system": {
       "biography": "Corebook Pokedex import #114. Habitat: grassland. Ability: Chlorophyll.",
       "resources": {
@@ -14480,7 +14480,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kangaskhan",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kangaskhan.png",
     "system": {
       "biography": "Corebook Pokedex import #115. Habitat: grassland. Ability: Early Bird.",
       "resources": {
@@ -14607,7 +14607,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Horsea",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/horsea.png",
     "system": {
       "biography": "Corebook Pokedex import #116. Habitat: sea. Ability: Swift Swim.",
       "resources": {
@@ -14734,7 +14734,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seadra",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/seadra.png",
     "system": {
       "biography": "Corebook Pokedex import #117. Habitat: sea. Ability: Poison Point.",
       "resources": {
@@ -14861,7 +14861,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Goldeen",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/goldeen.png",
     "system": {
       "biography": "Corebook Pokedex import #118. Habitat: water's edge. Ability: Swift Swim.",
       "resources": {
@@ -14988,7 +14988,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seaking",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/seaking.png",
     "system": {
       "biography": "Corebook Pokedex import #119. Habitat: water's edge. Ability: Swift Swim.",
       "resources": {
@@ -15115,7 +15115,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Staryu",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/staryu.png",
     "system": {
       "biography": "Corebook Pokedex import #120. Habitat: sea. Ability: Illuminate.",
       "resources": {
@@ -15242,7 +15242,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Starmie",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/starmie.png",
     "system": {
       "biography": "Corebook Pokedex import #121. Habitat: sea. Ability: Illuminate.",
       "resources": {
@@ -15369,7 +15369,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mr. Mime",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mr-mime.png",
     "system": {
       "biography": "Corebook Pokedex import #122. Habitat: urban. Ability: Soundproof.",
       "resources": {
@@ -15496,7 +15496,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scyther",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scyther.png",
     "system": {
       "biography": "Corebook Pokedex import #123. Habitat: grassland. Ability: Swarm.",
       "resources": {
@@ -15623,7 +15623,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jynx",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/jynx.png",
     "system": {
       "biography": "Corebook Pokedex import #124. Habitat: urban. Ability: Oblivious.",
       "resources": {
@@ -15750,7 +15750,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electabuzz",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/electabuzz.png",
     "system": {
       "biography": "Corebook Pokedex import #125. Habitat: grassland. Ability: Static.",
       "resources": {
@@ -15877,7 +15877,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magmar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magmar.png",
     "system": {
       "biography": "Corebook Pokedex import #126. Habitat: mountain. Ability: Flame Body.",
       "resources": {
@@ -16004,7 +16004,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pinsir",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pinsir.png",
     "system": {
       "biography": "Corebook Pokedex import #127. Habitat: forest. Ability: Hyper Cutter.",
       "resources": {
@@ -16131,7 +16131,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tauros",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tauros.png",
     "system": {
       "biography": "Corebook Pokedex import #128. Habitat: grassland. Ability: Intimidate.",
       "resources": {
@@ -16258,7 +16258,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magikarp",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magikarp.png",
     "system": {
       "biography": "Corebook Pokedex import #129. Habitat: water's edge. Ability: Swift Swim.",
       "resources": {
@@ -16385,7 +16385,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gyarados",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gyarados.png",
     "system": {
       "biography": "Corebook Pokedex import #130. Habitat: water's edge. Ability: Intimidate.",
       "resources": {
@@ -16512,7 +16512,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lapras",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lapras.png",
     "system": {
       "biography": "Corebook Pokedex import #131. Habitat: sea. Ability: Water Absorb.",
       "resources": {
@@ -16639,7 +16639,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ditto",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ditto.png",
     "system": {
       "biography": "Corebook Pokedex import #132. Habitat: urban. Ability: Limber.",
       "resources": {
@@ -16766,7 +16766,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eevee",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/eevee.png",
     "system": {
       "biography": "Corebook Pokedex import #133. Habitat: urban. Ability: Run Away.",
       "resources": {
@@ -16893,7 +16893,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vaporeon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vaporeon.png",
     "system": {
       "biography": "Corebook Pokedex import #134. Habitat: urban. Ability: Water Absorb.",
       "resources": {
@@ -17020,7 +17020,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jolteon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/jolteon.png",
     "system": {
       "biography": "Corebook Pokedex import #135. Habitat: urban. Ability: Volt Absorb.",
       "resources": {
@@ -17147,7 +17147,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flareon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/flareon.png",
     "system": {
       "biography": "Corebook Pokedex import #136. Habitat: urban. Ability: Flash Fire.",
       "resources": {
@@ -17274,7 +17274,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Porygon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/porygon.png",
     "system": {
       "biography": "Corebook Pokedex import #137. Habitat: urban. Ability: Trace.",
       "resources": {
@@ -17401,7 +17401,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Omanyte",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/omanyte.png",
     "system": {
       "biography": "Corebook Pokedex import #138. Habitat: sea. Ability: Swift Swim.",
       "resources": {
@@ -17528,7 +17528,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Omastar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/omastar.png",
     "system": {
       "biography": "Corebook Pokedex import #139. Habitat: sea. Ability: Swift Swim.",
       "resources": {
@@ -17655,7 +17655,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kabuto",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kabuto.png",
     "system": {
       "biography": "Corebook Pokedex import #140. Habitat: sea. Ability: Swift Swim.",
       "resources": {
@@ -17782,7 +17782,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kabutops",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kabutops.png",
     "system": {
       "biography": "Corebook Pokedex import #141. Habitat: sea. Ability: Swift Swim.",
       "resources": {
@@ -17909,7 +17909,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aerodactyl",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aerodactyl.png",
     "system": {
       "biography": "Corebook Pokedex import #142. Habitat: mountain. Ability: Rock Head.",
       "resources": {
@@ -18036,7 +18036,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snorlax",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/snorlax.png",
     "system": {
       "biography": "Corebook Pokedex import #143. Habitat: mountain. Ability: Immunity.",
       "resources": {
@@ -18163,7 +18163,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Articuno",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/articuno.png",
     "system": {
       "biography": "Corebook Pokedex import #144. Habitat: rare. Ability: Pressure.",
       "resources": {
@@ -18290,7 +18290,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zapdos",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zapdos.png",
     "system": {
       "biography": "Corebook Pokedex import #145. Habitat: rare. Ability: Pressure.",
       "resources": {
@@ -18417,7 +18417,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Moltres",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/moltres.png",
     "system": {
       "biography": "Corebook Pokedex import #146. Habitat: rare. Ability: Pressure.",
       "resources": {
@@ -18544,7 +18544,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dratini",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dratini.png",
     "system": {
       "biography": "Corebook Pokedex import #147. Habitat: water's edge. Ability: Shed Skin.",
       "resources": {
@@ -18671,7 +18671,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragonair",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dragonair.png",
     "system": {
       "biography": "Corebook Pokedex import #148. Habitat: water's edge. Ability: Shed Skin.",
       "resources": {
@@ -18798,7 +18798,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragonite",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dragonite.png",
     "system": {
       "biography": "Corebook Pokedex import #149. Habitat: water's edge. Ability: Inner Focus.",
       "resources": {
@@ -18925,7 +18925,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mewtwo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mewtwo.png",
     "system": {
       "biography": "Corebook Pokedex import #150. Habitat: rare. Ability: Pressure.",
       "resources": {
@@ -19052,7 +19052,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mew",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mew.png",
     "system": {
       "biography": "Corebook Pokedex import #151. Habitat: rare. Ability: Synchronize.",
       "resources": {
@@ -19179,7 +19179,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chikorita",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chikorita.png",
     "system": {
       "biography": "Corebook Pokedex import #152. Habitat: grassland. Ability: Overgrow.",
       "resources": {
@@ -19306,7 +19306,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bayleef",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bayleef.png",
     "system": {
       "biography": "Corebook Pokedex import #153. Habitat: grassland. Ability: Overgrow.",
       "resources": {
@@ -19433,7 +19433,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meganium",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meganium.png",
     "system": {
       "biography": "Corebook Pokedex import #154. Habitat: grassland. Ability: Overgrow.",
       "resources": {
@@ -19560,7 +19560,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cyndaquil",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cyndaquil.png",
     "system": {
       "biography": "Corebook Pokedex import #155. Habitat: grassland. Ability: Blaze.",
       "resources": {
@@ -19687,7 +19687,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quilava",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/quilava.png",
     "system": {
       "biography": "Corebook Pokedex import #156. Habitat: grassland. Ability: Blaze.",
       "resources": {
@@ -19814,7 +19814,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Typhlosion",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/typhlosion.png",
     "system": {
       "biography": "Corebook Pokedex import #157. Habitat: grassland. Ability: Blaze.",
       "resources": {
@@ -19941,7 +19941,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Totodile",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/totodile.png",
     "system": {
       "biography": "Corebook Pokedex import #158. Habitat: water's edge. Ability: Torrent.",
       "resources": {
@@ -20068,7 +20068,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Croconaw",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/croconaw.png",
     "system": {
       "biography": "Corebook Pokedex import #159. Habitat: water's edge. Ability: Torrent.",
       "resources": {
@@ -20195,7 +20195,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Feraligatr",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/feraligatr.png",
     "system": {
       "biography": "Corebook Pokedex import #160. Habitat: water's edge. Ability: Torrent.",
       "resources": {
@@ -20322,7 +20322,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sentret",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sentret.png",
     "system": {
       "biography": "Corebook Pokedex import #161. Habitat: grassland. Ability: Run Away.",
       "resources": {
@@ -20449,7 +20449,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Furret",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/furret.png",
     "system": {
       "biography": "Corebook Pokedex import #162. Habitat: grassland. Ability: Run Away.",
       "resources": {
@@ -20576,7 +20576,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hoothoot",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hoothoot.png",
     "system": {
       "biography": "Corebook Pokedex import #163. Habitat: forest. Ability: Insomnia.",
       "resources": {
@@ -20703,7 +20703,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Noctowl",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/noctowl.png",
     "system": {
       "biography": "Corebook Pokedex import #164. Habitat: forest. Ability: Insomnia.",
       "resources": {
@@ -20830,7 +20830,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ledyba",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ledyba.png",
     "system": {
       "biography": "Corebook Pokedex import #165. Habitat: forest. Ability: Swarm.",
       "resources": {
@@ -20957,7 +20957,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ledian",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ledian.png",
     "system": {
       "biography": "Corebook Pokedex import #166. Habitat: forest. Ability: Swarm.",
       "resources": {
@@ -21084,7 +21084,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spinarak",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spinarak.png",
     "system": {
       "biography": "Corebook Pokedex import #167. Habitat: forest. Ability: Swarm.",
       "resources": {
@@ -21211,7 +21211,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ariados",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ariados.png",
     "system": {
       "biography": "Corebook Pokedex import #168. Habitat: forest. Ability: Swarm.",
       "resources": {
@@ -21338,7 +21338,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crobat",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/crobat.png",
     "system": {
       "biography": "Corebook Pokedex import #169. Habitat: cave. Ability: Inner Focus.",
       "resources": {
@@ -21465,7 +21465,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chinchou",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chinchou.png",
     "system": {
       "biography": "Corebook Pokedex import #170. Habitat: sea. Ability: Volt Absorb.",
       "resources": {
@@ -21592,7 +21592,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lanturn",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lanturn.png",
     "system": {
       "biography": "Corebook Pokedex import #171. Habitat: sea. Ability: Volt Absorb.",
       "resources": {
@@ -21719,7 +21719,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pichu",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pichu.png",
     "system": {
       "biography": "Corebook Pokedex import #172. Habitat: forest. Ability: Static.",
       "resources": {
@@ -21846,7 +21846,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cleffa",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cleffa.png",
     "system": {
       "biography": "Corebook Pokedex import #173. Habitat: mountain. Ability: Cute Charm.",
       "resources": {
@@ -21973,7 +21973,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Igglybuff",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/igglybuff.png",
     "system": {
       "biography": "Corebook Pokedex import #174. Habitat: grassland. Ability: Cute Charm.",
       "resources": {
@@ -22100,7 +22100,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Togepi",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/togepi.png",
     "system": {
       "biography": "Corebook Pokedex import #175. Habitat: forest. Ability: Hustle.",
       "resources": {
@@ -22227,7 +22227,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Togetic",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/togetic.png",
     "system": {
       "biography": "Corebook Pokedex import #176. Habitat: forest. Ability: Hustle.",
       "resources": {
@@ -22354,7 +22354,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Natu",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/natu.png",
     "system": {
       "biography": "Corebook Pokedex import #177. Habitat: forest. Ability: Synchronize.",
       "resources": {
@@ -22481,7 +22481,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Xatu",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/xatu.png",
     "system": {
       "biography": "Corebook Pokedex import #178. Habitat: forest. Ability: Synchronize.",
       "resources": {
@@ -22608,7 +22608,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mareep",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mareep.png",
     "system": {
       "biography": "Corebook Pokedex import #179. Habitat: grassland. Ability: Static.",
       "resources": {
@@ -22735,7 +22735,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flaaffy",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/flaaffy.png",
     "system": {
       "biography": "Corebook Pokedex import #180. Habitat: grassland. Ability: Static.",
       "resources": {
@@ -22862,7 +22862,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ampharos",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ampharos.png",
     "system": {
       "biography": "Corebook Pokedex import #181. Habitat: grassland. Ability: Static.",
       "resources": {
@@ -22989,7 +22989,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bellossom",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bellossom.png",
     "system": {
       "biography": "Corebook Pokedex import #182. Habitat: grassland. Ability: Chlorophyll.",
       "resources": {
@@ -23116,7 +23116,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Marill",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/marill.png",
     "system": {
       "biography": "Corebook Pokedex import #183. Habitat: water's edge. Ability: Thick Fat.",
       "resources": {
@@ -23243,7 +23243,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Azumarill",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/azumarill.png",
     "system": {
       "biography": "Corebook Pokedex import #184. Habitat: water's edge. Ability: Thick Fat.",
       "resources": {
@@ -23370,7 +23370,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sudowoodo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sudowoodo.png",
     "system": {
       "biography": "Corebook Pokedex import #185. Habitat: forest. Ability: Sturdy.",
       "resources": {
@@ -23497,7 +23497,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Politoed",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/politoed.png",
     "system": {
       "biography": "Corebook Pokedex import #186. Habitat: water's edge. Ability: Water Absorb.",
       "resources": {
@@ -23624,7 +23624,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hoppip",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hoppip.png",
     "system": {
       "biography": "Corebook Pokedex import #187. Habitat: grassland. Ability: Chlorophyll.",
       "resources": {
@@ -23751,7 +23751,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skiploom",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skiploom.png",
     "system": {
       "biography": "Corebook Pokedex import #188. Habitat: grassland. Ability: Chlorophyll.",
       "resources": {
@@ -23878,7 +23878,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jumpluff",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/jumpluff.png",
     "system": {
       "biography": "Corebook Pokedex import #189. Habitat: grassland. Ability: Chlorophyll.",
       "resources": {
@@ -24005,7 +24005,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aipom",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aipom.png",
     "system": {
       "biography": "Corebook Pokedex import #190. Habitat: forest. Ability: Run Away.",
       "resources": {
@@ -24132,7 +24132,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sunkern",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sunkern.png",
     "system": {
       "biography": "Corebook Pokedex import #191. Habitat: grassland. Ability: Chlorophyll.",
       "resources": {
@@ -24259,7 +24259,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sunflora",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sunflora.png",
     "system": {
       "biography": "Corebook Pokedex import #192. Habitat: grassland. Ability: Chlorophyll.",
       "resources": {
@@ -24386,7 +24386,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yanma",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/yanma.png",
     "system": {
       "biography": "Corebook Pokedex import #193. Habitat: forest. Ability: Speed Boost.",
       "resources": {
@@ -24513,7 +24513,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wooper",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wooper.png",
     "system": {
       "biography": "Corebook Pokedex import #194. Habitat: water's edge. Ability: Damp.",
       "resources": {
@@ -24640,7 +24640,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quagsire",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/quagsire.png",
     "system": {
       "biography": "Corebook Pokedex import #195. Habitat: water's edge. Ability: Damp.",
       "resources": {
@@ -24767,7 +24767,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Espeon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/espeon.png",
     "system": {
       "biography": "Corebook Pokedex import #196. Habitat: urban. Ability: Synchronize.",
       "resources": {
@@ -24894,7 +24894,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Umbreon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/umbreon.png",
     "system": {
       "biography": "Corebook Pokedex import #197. Habitat: urban. Ability: Synchronize.",
       "resources": {
@@ -25021,7 +25021,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Murkrow",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/murkrow.png",
     "system": {
       "biography": "Corebook Pokedex import #198. Habitat: forest. Ability: Insomnia.",
       "resources": {
@@ -25148,7 +25148,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowking",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slowking.png",
     "system": {
       "biography": "Corebook Pokedex import #199. Habitat: water's edge. Ability: Oblivious.",
       "resources": {
@@ -25275,7 +25275,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Misdreavus",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/misdreavus.png",
     "system": {
       "biography": "Corebook Pokedex import #200. Habitat: cave. Ability: Levitate.",
       "resources": {
@@ -25402,7 +25402,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Unown",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/unown.png",
     "system": {
       "biography": "Corebook Pokedex import #201. Habitat: rare. Ability: Levitate.",
       "resources": {
@@ -25529,7 +25529,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wobbuffet",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wobbuffet.png",
     "system": {
       "biography": "Corebook Pokedex import #202. Habitat: cave. Ability: Shadow Tag.",
       "resources": {
@@ -25656,7 +25656,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Girafarig",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/girafarig.png",
     "system": {
       "biography": "Corebook Pokedex import #203. Habitat: grassland. Ability: Inner Focus.",
       "resources": {
@@ -25783,7 +25783,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pineco",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pineco.png",
     "system": {
       "biography": "Corebook Pokedex import #204. Habitat: forest. Ability: Sturdy.",
       "resources": {
@@ -25910,7 +25910,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Forretress",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/forretress.png",
     "system": {
       "biography": "Corebook Pokedex import #205. Habitat: forest. Ability: Sturdy.",
       "resources": {
@@ -26037,7 +26037,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dunsparce",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dunsparce.png",
     "system": {
       "biography": "Corebook Pokedex import #206. Habitat: cave. Ability: Serene Grace.",
       "resources": {
@@ -26164,7 +26164,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gligar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gligar.png",
     "system": {
       "biography": "Corebook Pokedex import #207. Habitat: mountain. Ability: Hyper Cutter.",
       "resources": {
@@ -26291,7 +26291,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Steelix",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/steelix.png",
     "system": {
       "biography": "Corebook Pokedex import #208. Habitat: cave. Ability: Rock Head.",
       "resources": {
@@ -26418,7 +26418,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snubbull",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/snubbull.png",
     "system": {
       "biography": "Corebook Pokedex import #209. Habitat: urban. Ability: Intimidate.",
       "resources": {
@@ -26545,7 +26545,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Granbull",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/granbull.png",
     "system": {
       "biography": "Corebook Pokedex import #210. Habitat: urban. Ability: Intimidate.",
       "resources": {
@@ -26672,7 +26672,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Qwilfish",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/qwilfish.png",
     "system": {
       "biography": "Corebook Pokedex import #211. Habitat: sea. Ability: Poison Point.",
       "resources": {
@@ -26799,7 +26799,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scizor",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scizor.png",
     "system": {
       "biography": "Corebook Pokedex import #212. Habitat: grassland. Ability: Swarm.",
       "resources": {
@@ -26926,7 +26926,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shuckle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shuckle.png",
     "system": {
       "biography": "Corebook Pokedex import #213. Habitat: mountain. Ability: Sturdy.",
       "resources": {
@@ -27053,7 +27053,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heracross",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/heracross.png",
     "system": {
       "biography": "Corebook Pokedex import #214. Habitat: forest. Ability: Swarm.",
       "resources": {
@@ -27180,7 +27180,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sneasel",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sneasel.png",
     "system": {
       "biography": "Corebook Pokedex import #215. Habitat: forest. Ability: Inner Focus.",
       "resources": {
@@ -27307,7 +27307,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Teddiursa",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/teddiursa.png",
     "system": {
       "biography": "Corebook Pokedex import #216. Habitat: mountain. Ability: Pickup.",
       "resources": {
@@ -27434,7 +27434,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ursaring",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ursaring.png",
     "system": {
       "biography": "Corebook Pokedex import #217. Habitat: mountain. Ability: Guts.",
       "resources": {
@@ -27561,7 +27561,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slugma",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slugma.png",
     "system": {
       "biography": "Corebook Pokedex import #218. Habitat: mountain. Ability: Magma Armor.",
       "resources": {
@@ -27688,7 +27688,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magcargo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magcargo.png",
     "system": {
       "biography": "Corebook Pokedex import #219. Habitat: mountain. Ability: Magma Armor.",
       "resources": {
@@ -27815,7 +27815,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swinub",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swinub.png",
     "system": {
       "biography": "Corebook Pokedex import #220. Habitat: cave. Ability: Oblivious.",
       "resources": {
@@ -27942,7 +27942,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Piloswine",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/piloswine.png",
     "system": {
       "biography": "Corebook Pokedex import #221. Habitat: cave. Ability: Oblivious.",
       "resources": {
@@ -28069,7 +28069,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corsola",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/corsola.png",
     "system": {
       "biography": "Corebook Pokedex import #222. Habitat: sea. Ability: Hustle.",
       "resources": {
@@ -28196,7 +28196,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Remoraid",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/remoraid.png",
     "system": {
       "biography": "Corebook Pokedex import #223. Habitat: sea. Ability: Hustle.",
       "resources": {
@@ -28323,7 +28323,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Octillery",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/octillery.png",
     "system": {
       "biography": "Corebook Pokedex import #224. Habitat: sea. Ability: Suction Cups.",
       "resources": {
@@ -28450,7 +28450,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Delibird",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/delibird.png",
     "system": {
       "biography": "Corebook Pokedex import #225. Habitat: mountain. Ability: Vital Spirit.",
       "resources": {
@@ -28577,7 +28577,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mantine",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mantine.png",
     "system": {
       "biography": "Corebook Pokedex import #226. Habitat: sea. Ability: Swift Swim.",
       "resources": {
@@ -28704,7 +28704,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skarmory",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skarmory.png",
     "system": {
       "biography": "Corebook Pokedex import #227. Habitat: rough terrain. Ability: Keen Eye.",
       "resources": {
@@ -28831,7 +28831,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Houndour",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/houndour.png",
     "system": {
       "biography": "Corebook Pokedex import #228. Habitat: rough terrain. Ability: Early Bird.",
       "resources": {
@@ -28958,7 +28958,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Houndoom",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/houndoom.png",
     "system": {
       "biography": "Corebook Pokedex import #229. Habitat: rough terrain. Ability: Early Bird.",
       "resources": {
@@ -29085,7 +29085,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kingdra",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kingdra.png",
     "system": {
       "biography": "Corebook Pokedex import #230. Habitat: sea. Ability: Swift Swim.",
       "resources": {
@@ -29212,7 +29212,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Phanpy",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/phanpy.png",
     "system": {
       "biography": "Corebook Pokedex import #231. Habitat: rough terrain. Ability: Pickup.",
       "resources": {
@@ -29339,7 +29339,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Donphan",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/donphan.png",
     "system": {
       "biography": "Corebook Pokedex import #232. Habitat: rough terrain. Ability: Sturdy.",
       "resources": {
@@ -29466,7 +29466,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Porygon2",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/porygon2.png",
     "system": {
       "biography": "Corebook Pokedex import #233. Habitat: urban. Ability: Trace.",
       "resources": {
@@ -29593,7 +29593,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stantler",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stantler.png",
     "system": {
       "biography": "Corebook Pokedex import #234. Habitat: forest. Ability: Intimidate.",
       "resources": {
@@ -29720,7 +29720,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smeargle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/smeargle.png",
     "system": {
       "biography": "Corebook Pokedex import #235. Habitat: urban. Ability: Own Tempo.",
       "resources": {
@@ -29847,7 +29847,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tyrogue",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tyrogue.png",
     "system": {
       "biography": "Corebook Pokedex import #236. Habitat: urban. Ability: Guts.",
       "resources": {
@@ -29974,7 +29974,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hitmontop",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hitmontop.png",
     "system": {
       "biography": "Corebook Pokedex import #237. Habitat: urban. Ability: Intimidate.",
       "resources": {
@@ -30101,7 +30101,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smoochum",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/smoochum.png",
     "system": {
       "biography": "Corebook Pokedex import #238. Habitat: urban. Ability: Oblivious.",
       "resources": {
@@ -30228,7 +30228,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Elekid",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/elekid.png",
     "system": {
       "biography": "Corebook Pokedex import #239. Habitat: grassland. Ability: Static.",
       "resources": {
@@ -30355,7 +30355,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magby",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magby.png",
     "system": {
       "biography": "Corebook Pokedex import #240. Habitat: mountain. Ability: Flame Body.",
       "resources": {
@@ -30482,7 +30482,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Miltank",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/miltank.png",
     "system": {
       "biography": "Corebook Pokedex import #241. Habitat: grassland. Ability: Thick Fat.",
       "resources": {
@@ -30609,7 +30609,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blissey",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blissey.png",
     "system": {
       "biography": "Corebook Pokedex import #242. Habitat: urban. Ability: Natural Cure.",
       "resources": {
@@ -30736,7 +30736,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raikou",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raikou.png",
     "system": {
       "biography": "Corebook Pokedex import #243. Habitat: grassland. Ability: Pressure.",
       "resources": {
@@ -30863,7 +30863,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Entei",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/entei.png",
     "system": {
       "biography": "Corebook Pokedex import #244. Habitat: grassland. Ability: Pressure.",
       "resources": {
@@ -30990,7 +30990,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Suicune",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/suicune.png",
     "system": {
       "biography": "Corebook Pokedex import #245. Habitat: grassland. Ability: Pressure.",
       "resources": {
@@ -31117,7 +31117,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Larvitar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/larvitar.png",
     "system": {
       "biography": "Corebook Pokedex import #246. Habitat: mountain. Ability: Guts.",
       "resources": {
@@ -31244,7 +31244,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pupitar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pupitar.png",
     "system": {
       "biography": "Corebook Pokedex import #247. Habitat: mountain. Ability: Shed Skin.",
       "resources": {
@@ -31371,7 +31371,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tyranitar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tyranitar.png",
     "system": {
       "biography": "Corebook Pokedex import #248. Habitat: mountain. Ability: Sand Stream.",
       "resources": {
@@ -31498,7 +31498,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lugia",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lugia.png",
     "system": {
       "biography": "Corebook Pokedex import #249. Habitat: rare. Ability: Pressure.",
       "resources": {
@@ -31625,7 +31625,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ho-Oh",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ho-oh.png",
     "system": {
       "biography": "Corebook Pokedex import #250. Habitat: rare. Ability: Pressure.",
       "resources": {
@@ -31752,7 +31752,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Celebi",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/celebi.png",
     "system": {
       "biography": "Corebook Pokedex import #251. Habitat: forest. Ability: Natural Cure.",
       "resources": {
@@ -31879,7 +31879,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Treecko",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/treecko.png",
     "system": {
       "biography": "Corebook Pokedex import #252. Habitat: forest. Ability: Overgrow.",
       "resources": {
@@ -32006,7 +32006,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grovyle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grovyle.png",
     "system": {
       "biography": "Corebook Pokedex import #253. Habitat: forest. Ability: Overgrow.",
       "resources": {
@@ -32133,7 +32133,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sceptile",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sceptile.png",
     "system": {
       "biography": "Corebook Pokedex import #254. Habitat: forest. Ability: Overgrow.",
       "resources": {
@@ -32260,7 +32260,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Torchic",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/torchic.png",
     "system": {
       "biography": "Corebook Pokedex import #255. Habitat: grassland. Ability: Blaze.",
       "resources": {
@@ -32387,7 +32387,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Combusken",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/combusken.png",
     "system": {
       "biography": "Corebook Pokedex import #256. Habitat: grassland. Ability: Blaze.",
       "resources": {
@@ -32514,7 +32514,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blaziken",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blaziken.png",
     "system": {
       "biography": "Corebook Pokedex import #257. Habitat: grassland. Ability: Blaze.",
       "resources": {
@@ -32641,7 +32641,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mudkip",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mudkip.png",
     "system": {
       "biography": "Corebook Pokedex import #258. Habitat: water's edge. Ability: Torrent.",
       "resources": {
@@ -32768,7 +32768,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Marshtomp",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/marshtomp.png",
     "system": {
       "biography": "Corebook Pokedex import #259. Habitat: water's edge. Ability: Torrent.",
       "resources": {
@@ -32895,7 +32895,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swampert",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swampert.png",
     "system": {
       "biography": "Corebook Pokedex import #260. Habitat: water's edge. Ability: Torrent.",
       "resources": {
@@ -33022,7 +33022,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poochyena",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/poochyena.png",
     "system": {
       "biography": "Corebook Pokedex import #261. Habitat: grassland. Ability: Run Away.",
       "resources": {
@@ -33149,7 +33149,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mightyena",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mightyena.png",
     "system": {
       "biography": "Corebook Pokedex import #262. Habitat: grassland. Ability: Intimidate.",
       "resources": {
@@ -33276,7 +33276,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zigzagoon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zigzagoon.png",
     "system": {
       "biography": "Corebook Pokedex import #263. Habitat: grassland. Ability: Pickup.",
       "resources": {
@@ -33403,7 +33403,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Linoone",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/linoone.png",
     "system": {
       "biography": "Corebook Pokedex import #264. Habitat: grassland. Ability: Pickup.",
       "resources": {
@@ -33530,7 +33530,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wurmple",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wurmple.png",
     "system": {
       "biography": "Corebook Pokedex import #265. Habitat: forest. Ability: Shield Dust.",
       "resources": {
@@ -33657,7 +33657,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Silcoon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/silcoon.png",
     "system": {
       "biography": "Corebook Pokedex import #266. Habitat: forest. Ability: Shed Skin.",
       "resources": {
@@ -33784,7 +33784,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beautifly",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/beautifly.png",
     "system": {
       "biography": "Corebook Pokedex import #267. Habitat: forest. Ability: Swarm.",
       "resources": {
@@ -33911,7 +33911,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cascoon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cascoon.png",
     "system": {
       "biography": "Corebook Pokedex import #268. Habitat: forest. Ability: Shed Skin.",
       "resources": {
@@ -34038,7 +34038,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dustox",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dustox.png",
     "system": {
       "biography": "Corebook Pokedex import #269. Habitat: forest. Ability: Shield Dust.",
       "resources": {
@@ -34165,7 +34165,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lotad",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lotad.png",
     "system": {
       "biography": "Corebook Pokedex import #270. Habitat: water's edge. Ability: Swift Swim.",
       "resources": {
@@ -34292,7 +34292,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lombre",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lombre.png",
     "system": {
       "biography": "Corebook Pokedex import #271. Habitat: water's edge. Ability: Swift Swim.",
       "resources": {
@@ -34419,7 +34419,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ludicolo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ludicolo.png",
     "system": {
       "biography": "Corebook Pokedex import #272. Habitat: water's edge. Ability: Swift Swim.",
       "resources": {
@@ -34546,7 +34546,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seedot",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/seedot.png",
     "system": {
       "biography": "Corebook Pokedex import #273. Habitat: forest. Ability: Chlorophyll.",
       "resources": {
@@ -34673,7 +34673,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nuzleaf",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nuzleaf.png",
     "system": {
       "biography": "Corebook Pokedex import #274. Habitat: forest. Ability: Chlorophyll.",
       "resources": {
@@ -34800,7 +34800,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shiftry",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shiftry.png",
     "system": {
       "biography": "Corebook Pokedex import #275. Habitat: forest. Ability: Chlorophyll.",
       "resources": {
@@ -34927,7 +34927,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Taillow",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/taillow.png",
     "system": {
       "biography": "Corebook Pokedex import #276. Habitat: grassland. Ability: Guts.",
       "resources": {
@@ -35054,7 +35054,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swellow",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swellow.png",
     "system": {
       "biography": "Corebook Pokedex import #277. Habitat: grassland. Ability: Guts.",
       "resources": {
@@ -35181,7 +35181,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wingull",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wingull.png",
     "system": {
       "biography": "Corebook Pokedex import #278. Habitat: sea. Ability: Keen Eye.",
       "resources": {
@@ -35308,7 +35308,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pelipper",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pelipper.png",
     "system": {
       "biography": "Corebook Pokedex import #279. Habitat: sea. Ability: Keen Eye.",
       "resources": {
@@ -35435,7 +35435,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ralts",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ralts.png",
     "system": {
       "biography": "Corebook Pokedex import #280. Habitat: urban. Ability: Synchronize.",
       "resources": {
@@ -35562,7 +35562,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kirlia",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kirlia.png",
     "system": {
       "biography": "Corebook Pokedex import #281. Habitat: urban. Ability: Synchronize.",
       "resources": {
@@ -35689,7 +35689,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gardevoir",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gardevoir.png",
     "system": {
       "biography": "Corebook Pokedex import #282. Habitat: urban. Ability: Synchronize.",
       "resources": {
@@ -35816,7 +35816,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Surskit",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/surskit.png",
     "system": {
       "biography": "Corebook Pokedex import #283. Habitat: water's edge. Ability: Swift Swim.",
       "resources": {
@@ -35943,7 +35943,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Masquerain",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/masquerain.png",
     "system": {
       "biography": "Corebook Pokedex import #284. Habitat: water's edge. Ability: Intimidate.",
       "resources": {
@@ -36070,7 +36070,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shroomish",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shroomish.png",
     "system": {
       "biography": "Corebook Pokedex import #285. Habitat: forest. Ability: Effect Spore.",
       "resources": {
@@ -36197,7 +36197,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Breloom",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/breloom.png",
     "system": {
       "biography": "Corebook Pokedex import #286. Habitat: forest. Ability: Effect Spore.",
       "resources": {
@@ -36324,7 +36324,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slakoth",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slakoth.png",
     "system": {
       "biography": "Corebook Pokedex import #287. Habitat: forest. Ability: Truant.",
       "resources": {
@@ -36451,7 +36451,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vigoroth",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vigoroth.png",
     "system": {
       "biography": "Corebook Pokedex import #288. Habitat: forest. Ability: Vital Spirit.",
       "resources": {
@@ -36578,7 +36578,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slaking",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slaking.png",
     "system": {
       "biography": "Corebook Pokedex import #289. Habitat: forest. Ability: Truant.",
       "resources": {
@@ -36705,7 +36705,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nincada",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nincada.png",
     "system": {
       "biography": "Corebook Pokedex import #290. Habitat: forest. Ability: Compound Eyes.",
       "resources": {
@@ -36832,7 +36832,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ninjask",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ninjask.png",
     "system": {
       "biography": "Corebook Pokedex import #291. Habitat: forest. Ability: Speed Boost.",
       "resources": {
@@ -36959,7 +36959,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shedinja",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shedinja.png",
     "system": {
       "biography": "Corebook Pokedex import #292. Habitat: forest. Ability: Wonder Guard.",
       "resources": {
@@ -37086,7 +37086,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whismur",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/whismur.png",
     "system": {
       "biography": "Corebook Pokedex import #293. Habitat: cave. Ability: Soundproof.",
       "resources": {
@@ -37213,7 +37213,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Loudred",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/loudred.png",
     "system": {
       "biography": "Corebook Pokedex import #294. Habitat: cave. Ability: Soundproof.",
       "resources": {
@@ -37340,7 +37340,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Exploud",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/exploud.png",
     "system": {
       "biography": "Corebook Pokedex import #295. Habitat: cave. Ability: Soundproof.",
       "resources": {
@@ -37467,7 +37467,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Makuhita",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/makuhita.png",
     "system": {
       "biography": "Corebook Pokedex import #296. Habitat: mountain. Ability: Thick Fat.",
       "resources": {
@@ -37594,7 +37594,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hariyama",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hariyama.png",
     "system": {
       "biography": "Corebook Pokedex import #297. Habitat: mountain. Ability: Thick Fat.",
       "resources": {
@@ -37721,7 +37721,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Azurill",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/azurill.png",
     "system": {
       "biography": "Corebook Pokedex import #298. Habitat: water's edge. Ability: Thick Fat.",
       "resources": {
@@ -37848,7 +37848,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nosepass",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nosepass.png",
     "system": {
       "biography": "Corebook Pokedex import #299. Habitat: cave. Ability: Sturdy.",
       "resources": {
@@ -37975,7 +37975,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skitty",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skitty.png",
     "system": {
       "biography": "Corebook Pokedex import #300. Habitat: forest. Ability: Cute Charm.",
       "resources": {
@@ -38102,7 +38102,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Delcatty",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/delcatty.png",
     "system": {
       "biography": "Corebook Pokedex import #301. Habitat: forest. Ability: Cute Charm.",
       "resources": {
@@ -38229,7 +38229,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sableye",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sableye.png",
     "system": {
       "biography": "Corebook Pokedex import #302. Habitat: cave. Ability: Keen Eye.",
       "resources": {
@@ -38356,7 +38356,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mawile",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mawile.png",
     "system": {
       "biography": "Corebook Pokedex import #303. Habitat: cave. Ability: Hyper Cutter.",
       "resources": {
@@ -38483,7 +38483,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aron",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aron.png",
     "system": {
       "biography": "Corebook Pokedex import #304. Habitat: mountain. Ability: Sturdy.",
       "resources": {
@@ -38610,7 +38610,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lairon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lairon.png",
     "system": {
       "biography": "Corebook Pokedex import #305. Habitat: mountain. Ability: Sturdy.",
       "resources": {
@@ -38737,7 +38737,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aggron",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aggron.png",
     "system": {
       "biography": "Corebook Pokedex import #306. Habitat: mountain. Ability: Sturdy.",
       "resources": {
@@ -38864,7 +38864,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meditite",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meditite.png",
     "system": {
       "biography": "Corebook Pokedex import #307. Habitat: mountain. Ability: Pure Power.",
       "resources": {
@@ -38991,7 +38991,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Medicham",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/medicham.png",
     "system": {
       "biography": "Corebook Pokedex import #308. Habitat: mountain. Ability: Pure Power.",
       "resources": {
@@ -39118,7 +39118,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electrike",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/electrike.png",
     "system": {
       "biography": "Corebook Pokedex import #309. Habitat: grassland. Ability: Static.",
       "resources": {
@@ -39245,7 +39245,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Manectric",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/manectric.png",
     "system": {
       "biography": "Corebook Pokedex import #310. Habitat: grassland. Ability: Static.",
       "resources": {
@@ -39372,7 +39372,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Plusle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/plusle.png",
     "system": {
       "biography": "Corebook Pokedex import #311. Habitat: grassland. Ability: Plus.",
       "resources": {
@@ -39499,7 +39499,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Minun",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/minun.png",
     "system": {
       "biography": "Corebook Pokedex import #312. Habitat: grassland. Ability: Minus.",
       "resources": {
@@ -39626,7 +39626,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Volbeat",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/volbeat.png",
     "system": {
       "biography": "Corebook Pokedex import #313. Habitat: forest. Ability: Illuminate.",
       "resources": {
@@ -39753,7 +39753,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Illumise",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/illumise.png",
     "system": {
       "biography": "Corebook Pokedex import #314. Habitat: forest. Ability: Oblivious.",
       "resources": {
@@ -39880,7 +39880,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Roselia",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/roselia.png",
     "system": {
       "biography": "Corebook Pokedex import #315. Habitat: grassland. Ability: Natural Cure.",
       "resources": {
@@ -40007,7 +40007,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gulpin",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gulpin.png",
     "system": {
       "biography": "Corebook Pokedex import #316. Habitat: grassland. Ability: Liquid Ooze.",
       "resources": {
@@ -40134,7 +40134,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swalot",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swalot.png",
     "system": {
       "biography": "Corebook Pokedex import #317. Habitat: grassland. Ability: Liquid Ooze.",
       "resources": {
@@ -40261,7 +40261,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Carvanha",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/carvanha.png",
     "system": {
       "biography": "Corebook Pokedex import #318. Habitat: sea. Ability: Rough Skin.",
       "resources": {
@@ -40388,7 +40388,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sharpedo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sharpedo.png",
     "system": {
       "biography": "Corebook Pokedex import #319. Habitat: sea. Ability: Rough Skin.",
       "resources": {
@@ -40515,7 +40515,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wailmer",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wailmer.png",
     "system": {
       "biography": "Corebook Pokedex import #320. Habitat: sea. Ability: Water Veil.",
       "resources": {
@@ -40642,7 +40642,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wailord",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wailord.png",
     "system": {
       "biography": "Corebook Pokedex import #321. Habitat: sea. Ability: Water Veil.",
       "resources": {
@@ -40769,7 +40769,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Numel",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/numel.png",
     "system": {
       "biography": "Corebook Pokedex import #322. Habitat: mountain. Ability: Oblivious.",
       "resources": {
@@ -40896,7 +40896,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Camerupt",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/camerupt.png",
     "system": {
       "biography": "Corebook Pokedex import #323. Habitat: mountain. Ability: Magma Armor.",
       "resources": {
@@ -41023,7 +41023,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Torkoal",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/torkoal.png",
     "system": {
       "biography": "Corebook Pokedex import #324. Habitat: mountain. Ability: White Smoke.",
       "resources": {
@@ -41150,7 +41150,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spoink",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spoink.png",
     "system": {
       "biography": "Corebook Pokedex import #325. Habitat: mountain. Ability: Thick Fat.",
       "resources": {
@@ -41277,7 +41277,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grumpig",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grumpig.png",
     "system": {
       "biography": "Corebook Pokedex import #326. Habitat: mountain. Ability: Thick Fat.",
       "resources": {
@@ -41404,7 +41404,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spinda",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spinda.png",
     "system": {
       "biography": "Corebook Pokedex import #327. Habitat: mountain. Ability: Own Tempo.",
       "resources": {
@@ -41531,7 +41531,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trapinch",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/trapinch.png",
     "system": {
       "biography": "Corebook Pokedex import #328. Habitat: rough terrain. Ability: Hyper Cutter.",
       "resources": {
@@ -41658,7 +41658,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vibrava",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vibrava.png",
     "system": {
       "biography": "Corebook Pokedex import #329. Habitat: rough terrain. Ability: Levitate.",
       "resources": {
@@ -41785,7 +41785,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flygon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/flygon.png",
     "system": {
       "biography": "Corebook Pokedex import #330. Habitat: rough terrain. Ability: Levitate.",
       "resources": {
@@ -41912,7 +41912,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cacnea",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cacnea.png",
     "system": {
       "biography": "Corebook Pokedex import #331. Habitat: rough terrain. Ability: Sand Veil.",
       "resources": {
@@ -42039,7 +42039,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cacturne",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cacturne.png",
     "system": {
       "biography": "Corebook Pokedex import #332. Habitat: rough terrain. Ability: Sand Veil.",
       "resources": {
@@ -42166,7 +42166,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swablu",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swablu.png",
     "system": {
       "biography": "Corebook Pokedex import #333. Habitat: forest. Ability: Natural Cure.",
       "resources": {
@@ -42293,7 +42293,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Altaria",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/altaria.png",
     "system": {
       "biography": "Corebook Pokedex import #334. Habitat: forest. Ability: Natural Cure.",
       "resources": {
@@ -42420,7 +42420,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zangoose",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zangoose.png",
     "system": {
       "biography": "Corebook Pokedex import #335. Habitat: grassland. Ability: Immunity.",
       "resources": {
@@ -42547,7 +42547,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seviper",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/seviper.png",
     "system": {
       "biography": "Corebook Pokedex import #336. Habitat: grassland. Ability: Shed Skin.",
       "resources": {
@@ -42674,7 +42674,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lunatone",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lunatone.png",
     "system": {
       "biography": "Corebook Pokedex import #337. Habitat: cave. Ability: Levitate.",
       "resources": {
@@ -42801,7 +42801,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Solrock",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/solrock.png",
     "system": {
       "biography": "Corebook Pokedex import #338. Habitat: cave. Ability: Levitate.",
       "resources": {
@@ -42928,7 +42928,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Barboach",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/barboach.png",
     "system": {
       "biography": "Corebook Pokedex import #339. Habitat: water's edge. Ability: Oblivious.",
       "resources": {
@@ -43055,7 +43055,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whiscash",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/whiscash.png",
     "system": {
       "biography": "Corebook Pokedex import #340. Habitat: water's edge. Ability: Oblivious.",
       "resources": {
@@ -43182,7 +43182,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corphish",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/corphish.png",
     "system": {
       "biography": "Corebook Pokedex import #341. Habitat: water's edge. Ability: Hyper Cutter.",
       "resources": {
@@ -43309,7 +43309,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crawdaunt",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/crawdaunt.png",
     "system": {
       "biography": "Corebook Pokedex import #342. Habitat: water's edge. Ability: Hyper Cutter.",
       "resources": {
@@ -43436,7 +43436,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Baltoy",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/baltoy.png",
     "system": {
       "biography": "Corebook Pokedex import #343. Habitat: rough terrain. Ability: Levitate.",
       "resources": {
@@ -43563,7 +43563,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Claydol",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/claydol.png",
     "system": {
       "biography": "Corebook Pokedex import #344. Habitat: rough terrain. Ability: Levitate.",
       "resources": {
@@ -43690,7 +43690,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lileep",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lileep.png",
     "system": {
       "biography": "Corebook Pokedex import #345. Habitat: sea. Ability: Suction Cups.",
       "resources": {
@@ -43817,7 +43817,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cradily",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cradily.png",
     "system": {
       "biography": "Corebook Pokedex import #346. Habitat: sea. Ability: Suction Cups.",
       "resources": {
@@ -43944,7 +43944,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Anorith",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/anorith.png",
     "system": {
       "biography": "Corebook Pokedex import #347. Habitat: water's edge. Ability: Battle Armor.",
       "resources": {
@@ -44071,7 +44071,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Armaldo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/armaldo.png",
     "system": {
       "biography": "Corebook Pokedex import #348. Habitat: water's edge. Ability: Battle Armor.",
       "resources": {
@@ -44198,7 +44198,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Feebas",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/feebas.png",
     "system": {
       "biography": "Corebook Pokedex import #349. Habitat: water's edge. Ability: Swift Swim.",
       "resources": {
@@ -44325,7 +44325,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Milotic",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/milotic.png",
     "system": {
       "biography": "Corebook Pokedex import #350. Habitat: water's edge. Ability: Marvel Scale.",
       "resources": {
@@ -44452,7 +44452,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Castform",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/castform.png",
     "system": {
       "biography": "Corebook Pokedex import #351. Habitat: grassland. Ability: Forecast.",
       "resources": {
@@ -44579,7 +44579,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kecleon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kecleon.png",
     "system": {
       "biography": "Corebook Pokedex import #352. Habitat: forest. Ability: Color Change.",
       "resources": {
@@ -44706,7 +44706,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shuppet",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shuppet.png",
     "system": {
       "biography": "Corebook Pokedex import #353. Habitat: urban. Ability: Insomnia.",
       "resources": {
@@ -44833,7 +44833,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Banette",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/banette.png",
     "system": {
       "biography": "Corebook Pokedex import #354. Habitat: urban. Ability: Insomnia.",
       "resources": {
@@ -44960,7 +44960,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Duskull",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/duskull.png",
     "system": {
       "biography": "Corebook Pokedex import #355. Habitat: forest. Ability: Levitate.",
       "resources": {
@@ -45087,7 +45087,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dusclops",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dusclops.png",
     "system": {
       "biography": "Corebook Pokedex import #356. Habitat: forest. Ability: Pressure.",
       "resources": {
@@ -45214,7 +45214,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tropius",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tropius.png",
     "system": {
       "biography": "Corebook Pokedex import #357. Habitat: forest. Ability: Chlorophyll.",
       "resources": {
@@ -45341,7 +45341,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chimecho",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chimecho.png",
     "system": {
       "biography": "Corebook Pokedex import #358. Habitat: grassland. Ability: Levitate.",
       "resources": {
@@ -45468,7 +45468,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Absol",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/absol.png",
     "system": {
       "biography": "Corebook Pokedex import #359. Habitat: mountain. Ability: Pressure.",
       "resources": {
@@ -45595,7 +45595,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wynaut",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wynaut.png",
     "system": {
       "biography": "Corebook Pokedex import #360. Habitat: cave. Ability: Shadow Tag.",
       "resources": {
@@ -45722,7 +45722,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snorunt",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/snorunt.png",
     "system": {
       "biography": "Corebook Pokedex import #361. Habitat: cave. Ability: Inner Focus.",
       "resources": {
@@ -45849,7 +45849,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Glalie",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/glalie.png",
     "system": {
       "biography": "Corebook Pokedex import #362. Habitat: cave. Ability: Inner Focus.",
       "resources": {
@@ -45976,7 +45976,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spheal",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spheal.png",
     "system": {
       "biography": "Corebook Pokedex import #363. Habitat: sea. Ability: Thick Fat.",
       "resources": {
@@ -46103,7 +46103,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sealeo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sealeo.png",
     "system": {
       "biography": "Corebook Pokedex import #364. Habitat: sea. Ability: Thick Fat.",
       "resources": {
@@ -46230,7 +46230,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Walrein",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/walrein.png",
     "system": {
       "biography": "Corebook Pokedex import #365. Habitat: sea. Ability: Thick Fat.",
       "resources": {
@@ -46357,7 +46357,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clamperl",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/clamperl.png",
     "system": {
       "biography": "Corebook Pokedex import #366. Habitat: sea. Ability: Shell Armor.",
       "resources": {
@@ -46484,7 +46484,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Huntail",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/huntail.png",
     "system": {
       "biography": "Corebook Pokedex import #367. Habitat: sea. Ability: Swift Swim.",
       "resources": {
@@ -46611,7 +46611,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gorebyss",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gorebyss.png",
     "system": {
       "biography": "Corebook Pokedex import #368. Habitat: sea. Ability: Swift Swim.",
       "resources": {
@@ -46738,7 +46738,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Relicanth",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/relicanth.png",
     "system": {
       "biography": "Corebook Pokedex import #369. Habitat: sea. Ability: Swift Swim.",
       "resources": {
@@ -46865,7 +46865,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Luvdisc",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/luvdisc.png",
     "system": {
       "biography": "Corebook Pokedex import #370. Habitat: sea. Ability: Swift Swim.",
       "resources": {
@@ -46992,7 +46992,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bagon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bagon.png",
     "system": {
       "biography": "Corebook Pokedex import #371. Habitat: rough terrain. Ability: Rock Head.",
       "resources": {
@@ -47119,7 +47119,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shelgon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shelgon.png",
     "system": {
       "biography": "Corebook Pokedex import #372. Habitat: rough terrain. Ability: Rock Head.",
       "resources": {
@@ -47246,7 +47246,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Salamence",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/salamence.png",
     "system": {
       "biography": "Corebook Pokedex import #373. Habitat: rough terrain. Ability: Intimidate.",
       "resources": {
@@ -47373,7 +47373,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beldum",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/beldum.png",
     "system": {
       "biography": "Corebook Pokedex import #374. Habitat: rough terrain. Ability: Clear Body.",
       "resources": {
@@ -47500,7 +47500,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metang",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/metang.png",
     "system": {
       "biography": "Corebook Pokedex import #375. Habitat: rough terrain. Ability: Clear Body.",
       "resources": {
@@ -47627,7 +47627,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metagross",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/metagross.png",
     "system": {
       "biography": "Corebook Pokedex import #376. Habitat: rough terrain. Ability: Clear Body.",
       "resources": {
@@ -47754,7 +47754,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Regirock",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/regirock.png",
     "system": {
       "biography": "Corebook Pokedex import #377. Habitat: cave. Ability: Clear Body.",
       "resources": {
@@ -47881,7 +47881,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Regice",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/regice.png",
     "system": {
       "biography": "Corebook Pokedex import #378. Habitat: cave. Ability: Clear Body.",
       "resources": {
@@ -48008,7 +48008,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Registeel",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/registeel.png",
     "system": {
       "biography": "Corebook Pokedex import #379. Habitat: cave. Ability: Clear Body.",
       "resources": {
@@ -48135,7 +48135,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Latias",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/latias.png",
     "system": {
       "biography": "Corebook Pokedex import #380. Habitat: water's edge. Ability: Levitate.",
       "resources": {
@@ -48262,7 +48262,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Latios",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/latios.png",
     "system": {
       "biography": "Corebook Pokedex import #381. Habitat: water's edge. Ability: Levitate.",
       "resources": {
@@ -48389,7 +48389,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kyogre",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kyogre.png",
     "system": {
       "biography": "Corebook Pokedex import #382. Habitat: sea. Ability: Drizzle.",
       "resources": {
@@ -48516,7 +48516,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Groudon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/groudon.png",
     "system": {
       "biography": "Corebook Pokedex import #383. Habitat: rough terrain. Ability: Drought.",
       "resources": {
@@ -48643,7 +48643,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rayquaza",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rayquaza.png",
     "system": {
       "biography": "Corebook Pokedex import #384. Habitat: rare. Ability: Air Lock.",
       "resources": {
@@ -48770,7 +48770,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jirachi",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/jirachi.png",
     "system": {
       "biography": "Corebook Pokedex import #385. Habitat: mountain. Ability: Serene Grace.",
       "resources": {
@@ -48897,7 +48897,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Deoxys",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/deoxys.png",
     "system": {
       "biography": "Corebook Pokedex import #386. Habitat: rare. Ability: Pressure.",
       "resources": {
@@ -49024,7 +49024,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Turtwig",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/turtwig.png",
     "system": {
       "biography": "Corebook Pokedex import #387. Ability: Overgrow.",
       "resources": {
@@ -49151,7 +49151,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grotle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grotle.png",
     "system": {
       "biography": "Corebook Pokedex import #388. Ability: Overgrow.",
       "resources": {
@@ -49278,7 +49278,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Torterra",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/torterra.png",
     "system": {
       "biography": "Corebook Pokedex import #389. Ability: Overgrow.",
       "resources": {
@@ -49405,7 +49405,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chimchar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chimchar.png",
     "system": {
       "biography": "Corebook Pokedex import #390. Ability: Blaze.",
       "resources": {
@@ -49532,7 +49532,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Monferno",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/monferno.png",
     "system": {
       "biography": "Corebook Pokedex import #391. Ability: Blaze.",
       "resources": {
@@ -49659,7 +49659,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Infernape",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/infernape.png",
     "system": {
       "biography": "Corebook Pokedex import #392. Ability: Blaze.",
       "resources": {
@@ -49786,7 +49786,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Piplup",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/piplup.png",
     "system": {
       "biography": "Corebook Pokedex import #393. Ability: Torrent.",
       "resources": {
@@ -49913,7 +49913,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Prinplup",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/prinplup.png",
     "system": {
       "biography": "Corebook Pokedex import #394. Ability: Torrent.",
       "resources": {
@@ -50040,7 +50040,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Empoleon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/empoleon.png",
     "system": {
       "biography": "Corebook Pokedex import #395. Ability: Torrent.",
       "resources": {
@@ -50167,7 +50167,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Starly",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/starly.png",
     "system": {
       "biography": "Corebook Pokedex import #396. Ability: Keen Eye.",
       "resources": {
@@ -50294,7 +50294,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Staravia",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/staravia.png",
     "system": {
       "biography": "Corebook Pokedex import #397. Ability: Intimidate.",
       "resources": {
@@ -50421,7 +50421,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Staraptor",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/staraptor.png",
     "system": {
       "biography": "Corebook Pokedex import #398. Ability: Intimidate.",
       "resources": {
@@ -50548,7 +50548,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bidoof",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bidoof.png",
     "system": {
       "biography": "Corebook Pokedex import #399. Ability: Simple.",
       "resources": {
@@ -50675,7 +50675,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bibarel",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bibarel.png",
     "system": {
       "biography": "Corebook Pokedex import #400. Ability: Simple.",
       "resources": {
@@ -50802,7 +50802,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kricketot",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kricketot.png",
     "system": {
       "biography": "Corebook Pokedex import #401. Ability: Shed Skin.",
       "resources": {
@@ -50929,7 +50929,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kricketune",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kricketune.png",
     "system": {
       "biography": "Corebook Pokedex import #402. Ability: Swarm.",
       "resources": {
@@ -51056,7 +51056,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shinx",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shinx.png",
     "system": {
       "biography": "Corebook Pokedex import #403. Ability: Rivalry.",
       "resources": {
@@ -51183,7 +51183,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Luxio",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/luxio.png",
     "system": {
       "biography": "Corebook Pokedex import #404. Ability: Rivalry.",
       "resources": {
@@ -51310,7 +51310,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Luxray",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/luxray.png",
     "system": {
       "biography": "Corebook Pokedex import #405. Ability: Rivalry.",
       "resources": {
@@ -51437,7 +51437,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Budew",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/budew.png",
     "system": {
       "biography": "Corebook Pokedex import #406. Ability: Natural Cure.",
       "resources": {
@@ -51564,7 +51564,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Roserade",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/roserade.png",
     "system": {
       "biography": "Corebook Pokedex import #407. Ability: Natural Cure.",
       "resources": {
@@ -51691,7 +51691,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cranidos",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cranidos.png",
     "system": {
       "biography": "Corebook Pokedex import #408. Ability: Mold Breaker.",
       "resources": {
@@ -51818,7 +51818,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rampardos",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rampardos.png",
     "system": {
       "biography": "Corebook Pokedex import #409. Ability: Mold Breaker.",
       "resources": {
@@ -51945,7 +51945,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shieldon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shieldon.png",
     "system": {
       "biography": "Corebook Pokedex import #410. Ability: Sturdy.",
       "resources": {
@@ -52072,7 +52072,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bastiodon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bastiodon.png",
     "system": {
       "biography": "Corebook Pokedex import #411. Ability: Sturdy.",
       "resources": {
@@ -52199,7 +52199,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Burmy",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/burmy.png",
     "system": {
       "biography": "Corebook Pokedex import #412. Ability: Shed Skin.",
       "resources": {
@@ -52326,7 +52326,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wormadam",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wormadam.png",
     "system": {
       "biography": "Corebook Pokedex import #413. Ability: Anticipation.",
       "resources": {
@@ -52453,7 +52453,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mothim",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mothim.png",
     "system": {
       "biography": "Corebook Pokedex import #414. Ability: Swarm.",
       "resources": {
@@ -52580,7 +52580,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Combee",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/combee.png",
     "system": {
       "biography": "Corebook Pokedex import #415. Ability: Honey Gather.",
       "resources": {
@@ -52707,7 +52707,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vespiquen",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vespiquen.png",
     "system": {
       "biography": "Corebook Pokedex import #416. Ability: Pressure.",
       "resources": {
@@ -52834,7 +52834,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pachirisu",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pachirisu.png",
     "system": {
       "biography": "Corebook Pokedex import #417. Ability: Run Away.",
       "resources": {
@@ -52961,7 +52961,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Buizel",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/buizel.png",
     "system": {
       "biography": "Corebook Pokedex import #418. Ability: Swift Swim.",
       "resources": {
@@ -53088,7 +53088,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Floatzel",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/floatzel.png",
     "system": {
       "biography": "Corebook Pokedex import #419. Ability: Swift Swim.",
       "resources": {
@@ -53215,7 +53215,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cherubi",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cherubi.png",
     "system": {
       "biography": "Corebook Pokedex import #420. Ability: Chlorophyll.",
       "resources": {
@@ -53342,7 +53342,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cherrim",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cherrim.png",
     "system": {
       "biography": "Corebook Pokedex import #421. Ability: Flower Gift.",
       "resources": {
@@ -53469,7 +53469,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shellos",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shellos.png",
     "system": {
       "biography": "Corebook Pokedex import #422. Ability: Sticky Hold.",
       "resources": {
@@ -53596,7 +53596,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gastrodon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gastrodon.png",
     "system": {
       "biography": "Corebook Pokedex import #423. Ability: Sticky Hold.",
       "resources": {
@@ -53723,7 +53723,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ambipom",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ambipom.png",
     "system": {
       "biography": "Corebook Pokedex import #424. Ability: Technician.",
       "resources": {
@@ -53850,7 +53850,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drifloon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drifloon.png",
     "system": {
       "biography": "Corebook Pokedex import #425. Ability: Aftermath.",
       "resources": {
@@ -53977,7 +53977,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drifblim",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drifblim.png",
     "system": {
       "biography": "Corebook Pokedex import #426. Ability: Aftermath.",
       "resources": {
@@ -54104,7 +54104,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Buneary",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/buneary.png",
     "system": {
       "biography": "Corebook Pokedex import #427. Ability: Run Away.",
       "resources": {
@@ -54231,7 +54231,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lopunny",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lopunny.png",
     "system": {
       "biography": "Corebook Pokedex import #428. Ability: Cute Charm.",
       "resources": {
@@ -54358,7 +54358,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mismagius",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mismagius.png",
     "system": {
       "biography": "Corebook Pokedex import #429. Ability: Levitate.",
       "resources": {
@@ -54485,7 +54485,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Honchkrow",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/honchkrow.png",
     "system": {
       "biography": "Corebook Pokedex import #430. Ability: Insomnia.",
       "resources": {
@@ -54612,7 +54612,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Glameow",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/glameow.png",
     "system": {
       "biography": "Corebook Pokedex import #431. Ability: Limber.",
       "resources": {
@@ -54739,7 +54739,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Purugly",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/purugly.png",
     "system": {
       "biography": "Corebook Pokedex import #432. Ability: Thick Fat.",
       "resources": {
@@ -54866,7 +54866,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chingling",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chingling.png",
     "system": {
       "biography": "Corebook Pokedex import #433. Ability: Levitate.",
       "resources": {
@@ -54993,7 +54993,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stunky",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stunky.png",
     "system": {
       "biography": "Corebook Pokedex import #434. Ability: Stench.",
       "resources": {
@@ -55120,7 +55120,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skuntank",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skuntank.png",
     "system": {
       "biography": "Corebook Pokedex import #435. Ability: Stench.",
       "resources": {
@@ -55247,7 +55247,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bronzor",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bronzor.png",
     "system": {
       "biography": "Corebook Pokedex import #436. Ability: Levitate.",
       "resources": {
@@ -55374,7 +55374,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bronzong",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bronzong.png",
     "system": {
       "biography": "Corebook Pokedex import #437. Ability: Levitate.",
       "resources": {
@@ -55501,7 +55501,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bonsly",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bonsly.png",
     "system": {
       "biography": "Corebook Pokedex import #438. Ability: Sturdy.",
       "resources": {
@@ -55628,7 +55628,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mime Jr.",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mime-jr.png",
     "system": {
       "biography": "Corebook Pokedex import #439. Ability: Soundproof.",
       "resources": {
@@ -55755,7 +55755,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Happiny",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/happiny.png",
     "system": {
       "biography": "Corebook Pokedex import #440. Ability: Natural Cure.",
       "resources": {
@@ -55882,7 +55882,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chatot",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chatot.png",
     "system": {
       "biography": "Corebook Pokedex import #441. Ability: Keen Eye.",
       "resources": {
@@ -56009,7 +56009,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spiritomb",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spiritomb.png",
     "system": {
       "biography": "Corebook Pokedex import #442. Ability: Pressure.",
       "resources": {
@@ -56136,7 +56136,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gible",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gible.png",
     "system": {
       "biography": "Corebook Pokedex import #443. Ability: Sand Veil.",
       "resources": {
@@ -56263,7 +56263,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gabite",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gabite.png",
     "system": {
       "biography": "Corebook Pokedex import #444. Ability: Sand Veil.",
       "resources": {
@@ -56390,7 +56390,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Garchomp",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/garchomp.png",
     "system": {
       "biography": "Corebook Pokedex import #445. Ability: Sand Veil.",
       "resources": {
@@ -56517,7 +56517,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Munchlax",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/munchlax.png",
     "system": {
       "biography": "Corebook Pokedex import #446. Ability: Pickup.",
       "resources": {
@@ -56644,7 +56644,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Riolu",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/riolu.png",
     "system": {
       "biography": "Corebook Pokedex import #447. Ability: Steadfast.",
       "resources": {
@@ -56771,7 +56771,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lucario",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lucario.png",
     "system": {
       "biography": "Corebook Pokedex import #448. Ability: Steadfast.",
       "resources": {
@@ -56898,7 +56898,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hippopotas",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hippopotas.png",
     "system": {
       "biography": "Corebook Pokedex import #449. Ability: Sand Stream.",
       "resources": {
@@ -57025,7 +57025,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hippowdon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hippowdon.png",
     "system": {
       "biography": "Corebook Pokedex import #450. Ability: Sand Stream.",
       "resources": {
@@ -57152,7 +57152,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skorupi",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skorupi.png",
     "system": {
       "biography": "Corebook Pokedex import #451. Ability: Battle Armor.",
       "resources": {
@@ -57279,7 +57279,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drapion",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drapion.png",
     "system": {
       "biography": "Corebook Pokedex import #452. Ability: Battle Armor.",
       "resources": {
@@ -57406,7 +57406,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Croagunk",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/croagunk.png",
     "system": {
       "biography": "Corebook Pokedex import #453. Ability: Anticipation.",
       "resources": {
@@ -57533,7 +57533,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxicroak",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/toxicroak.png",
     "system": {
       "biography": "Corebook Pokedex import #454. Ability: Anticipation.",
       "resources": {
@@ -57660,7 +57660,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Carnivine",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/carnivine.png",
     "system": {
       "biography": "Corebook Pokedex import #455. Ability: Levitate.",
       "resources": {
@@ -57787,7 +57787,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Finneon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/finneon.png",
     "system": {
       "biography": "Corebook Pokedex import #456. Ability: Swift Swim.",
       "resources": {
@@ -57914,7 +57914,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lumineon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lumineon.png",
     "system": {
       "biography": "Corebook Pokedex import #457. Ability: Swift Swim.",
       "resources": {
@@ -58041,7 +58041,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mantyke",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mantyke.png",
     "system": {
       "biography": "Corebook Pokedex import #458. Ability: Swift Swim.",
       "resources": {
@@ -58168,7 +58168,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snover",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/snover.png",
     "system": {
       "biography": "Corebook Pokedex import #459. Ability: Snow Warning.",
       "resources": {
@@ -58295,7 +58295,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Abomasnow",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/abomasnow.png",
     "system": {
       "biography": "Corebook Pokedex import #460. Ability: Snow Warning.",
       "resources": {
@@ -58422,7 +58422,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weavile",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/weavile.png",
     "system": {
       "biography": "Corebook Pokedex import #461. Ability: Pressure.",
       "resources": {
@@ -58549,7 +58549,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magnezone",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magnezone.png",
     "system": {
       "biography": "Corebook Pokedex import #462. Ability: Magnet Pull.",
       "resources": {
@@ -58676,7 +58676,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lickilicky",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lickilicky.png",
     "system": {
       "biography": "Corebook Pokedex import #463. Ability: Own Tempo.",
       "resources": {
@@ -58803,7 +58803,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rhyperior",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rhyperior.png",
     "system": {
       "biography": "Corebook Pokedex import #464. Ability: Lightning Rod.",
       "resources": {
@@ -58930,7 +58930,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tangrowth",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tangrowth.png",
     "system": {
       "biography": "Corebook Pokedex import #465. Ability: Chlorophyll.",
       "resources": {
@@ -59057,7 +59057,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electivire",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/electivire.png",
     "system": {
       "biography": "Corebook Pokedex import #466. Ability: Motor Drive.",
       "resources": {
@@ -59184,7 +59184,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magmortar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magmortar.png",
     "system": {
       "biography": "Corebook Pokedex import #467. Ability: Flame Body.",
       "resources": {
@@ -59311,7 +59311,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Togekiss",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/togekiss.png",
     "system": {
       "biography": "Corebook Pokedex import #468. Ability: Hustle.",
       "resources": {
@@ -59438,7 +59438,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yanmega",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/yanmega.png",
     "system": {
       "biography": "Corebook Pokedex import #469. Ability: Speed Boost.",
       "resources": {
@@ -59565,7 +59565,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leafeon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/leafeon.png",
     "system": {
       "biography": "Corebook Pokedex import #470. Ability: Leaf Guard.",
       "resources": {
@@ -59692,7 +59692,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Glaceon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/glaceon.png",
     "system": {
       "biography": "Corebook Pokedex import #471. Ability: Snow Cloak.",
       "resources": {
@@ -59819,7 +59819,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gliscor",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gliscor.png",
     "system": {
       "biography": "Corebook Pokedex import #472. Ability: Hyper Cutter.",
       "resources": {
@@ -59946,7 +59946,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mamoswine",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mamoswine.png",
     "system": {
       "biography": "Corebook Pokedex import #473. Ability: Oblivious.",
       "resources": {
@@ -60073,7 +60073,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Porygon-Z",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/porygon-z.png",
     "system": {
       "biography": "Corebook Pokedex import #474. Ability: Adaptability.",
       "resources": {
@@ -60200,7 +60200,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gallade",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gallade.png",
     "system": {
       "biography": "Corebook Pokedex import #475. Ability: Steadfast.",
       "resources": {
@@ -60327,7 +60327,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Probopass",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/probopass.png",
     "system": {
       "biography": "Corebook Pokedex import #476. Ability: Sturdy.",
       "resources": {
@@ -60454,7 +60454,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dusknoir",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dusknoir.png",
     "system": {
       "biography": "Corebook Pokedex import #477. Ability: Pressure.",
       "resources": {
@@ -60581,7 +60581,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Froslass",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/froslass.png",
     "system": {
       "biography": "Corebook Pokedex import #478. Ability: Snow Cloak.",
       "resources": {
@@ -60708,7 +60708,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rotom",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rotom.png",
     "system": {
       "biography": "Corebook Pokedex import #479. Ability: Levitate.",
       "resources": {
@@ -60835,7 +60835,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Uxie",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/uxie.png",
     "system": {
       "biography": "Corebook Pokedex import #480. Ability: Levitate.",
       "resources": {
@@ -60962,7 +60962,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mesprit",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mesprit.png",
     "system": {
       "biography": "Corebook Pokedex import #481. Ability: Levitate.",
       "resources": {
@@ -61089,7 +61089,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Azelf",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/azelf.png",
     "system": {
       "biography": "Corebook Pokedex import #482. Ability: Levitate.",
       "resources": {
@@ -61216,7 +61216,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dialga",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dialga.png",
     "system": {
       "biography": "Corebook Pokedex import #483. Ability: Pressure.",
       "resources": {
@@ -61343,7 +61343,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Palkia",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/palkia.png",
     "system": {
       "biography": "Corebook Pokedex import #484. Ability: Pressure.",
       "resources": {
@@ -61470,7 +61470,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heatran",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/heatran.png",
     "system": {
       "biography": "Corebook Pokedex import #485. Ability: Flash Fire.",
       "resources": {
@@ -61597,7 +61597,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Regigigas",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/regigigas.png",
     "system": {
       "biography": "Corebook Pokedex import #486. Ability: Slow Start.",
       "resources": {
@@ -61724,7 +61724,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Giratina",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/giratina.png",
     "system": {
       "biography": "Corebook Pokedex import #487. Ability: Pressure.",
       "resources": {
@@ -61851,7 +61851,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cresselia",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cresselia.png",
     "system": {
       "biography": "Corebook Pokedex import #488. Ability: Levitate.",
       "resources": {
@@ -61978,7 +61978,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Phione",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/phione.png",
     "system": {
       "biography": "Corebook Pokedex import #489. Ability: Hydration.",
       "resources": {
@@ -62105,7 +62105,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Manaphy",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/manaphy.png",
     "system": {
       "biography": "Corebook Pokedex import #490. Ability: Hydration.",
       "resources": {
@@ -62232,7 +62232,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darkrai",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/darkrai.png",
     "system": {
       "biography": "Corebook Pokedex import #491. Ability: Bad Dreams.",
       "resources": {
@@ -62359,7 +62359,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shaymin",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shaymin.png",
     "system": {
       "biography": "Corebook Pokedex import #492. Ability: Natural Cure.",
       "resources": {
@@ -62486,7 +62486,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arceus",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/arceus.png",
     "system": {
       "biography": "Corebook Pokedex import #493. Ability: Multitype.",
       "resources": {
@@ -62613,7 +62613,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Victini",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/victini.png",
     "system": {
       "biography": "Corebook Pokedex import #494. Ability: Victory Star.",
       "resources": {
@@ -62740,7 +62740,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snivy",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/snivy.png",
     "system": {
       "biography": "Corebook Pokedex import #495. Ability: Overgrow.",
       "resources": {
@@ -62867,7 +62867,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Servine",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/servine.png",
     "system": {
       "biography": "Corebook Pokedex import #496. Ability: Overgrow.",
       "resources": {
@@ -62994,7 +62994,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Serperior",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/serperior.png",
     "system": {
       "biography": "Corebook Pokedex import #497. Ability: Overgrow.",
       "resources": {
@@ -63121,7 +63121,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tepig",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tepig.png",
     "system": {
       "biography": "Corebook Pokedex import #498. Ability: Blaze.",
       "resources": {
@@ -63248,7 +63248,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pignite",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pignite.png",
     "system": {
       "biography": "Corebook Pokedex import #499. Ability: Blaze.",
       "resources": {
@@ -63375,7 +63375,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Emboar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/emboar.png",
     "system": {
       "biography": "Corebook Pokedex import #500. Ability: Blaze.",
       "resources": {
@@ -63502,7 +63502,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Oshawott",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/oshawott.png",
     "system": {
       "biography": "Corebook Pokedex import #501. Ability: Torrent.",
       "resources": {
@@ -63629,7 +63629,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dewott",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dewott.png",
     "system": {
       "biography": "Corebook Pokedex import #502. Ability: Torrent.",
       "resources": {
@@ -63756,7 +63756,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Samurott",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/samurott.png",
     "system": {
       "biography": "Corebook Pokedex import #503. Ability: Torrent.",
       "resources": {
@@ -63883,7 +63883,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Patrat",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/patrat.png",
     "system": {
       "biography": "Corebook Pokedex import #504. Ability: Run Away.",
       "resources": {
@@ -64010,7 +64010,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Watchog",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/watchog.png",
     "system": {
       "biography": "Corebook Pokedex import #505. Ability: Illuminate.",
       "resources": {
@@ -64137,7 +64137,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lillipup",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lillipup.png",
     "system": {
       "biography": "Corebook Pokedex import #506. Ability: Vital Spirit.",
       "resources": {
@@ -64264,7 +64264,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Herdier",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/herdier.png",
     "system": {
       "biography": "Corebook Pokedex import #507. Ability: Intimidate.",
       "resources": {
@@ -64391,7 +64391,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stoutland",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stoutland.png",
     "system": {
       "biography": "Corebook Pokedex import #508. Ability: Intimidate.",
       "resources": {
@@ -64518,7 +64518,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Purrloin",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/purrloin.png",
     "system": {
       "biography": "Corebook Pokedex import #509. Ability: Limber.",
       "resources": {
@@ -64645,7 +64645,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Liepard",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/liepard.png",
     "system": {
       "biography": "Corebook Pokedex import #510. Ability: Limber.",
       "resources": {
@@ -64772,7 +64772,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pansage",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pansage.png",
     "system": {
       "biography": "Corebook Pokedex import #511. Ability: Gluttony.",
       "resources": {
@@ -64899,7 +64899,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Simisage",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/simisage.png",
     "system": {
       "biography": "Corebook Pokedex import #512. Ability: Gluttony.",
       "resources": {
@@ -65026,7 +65026,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pansear",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pansear.png",
     "system": {
       "biography": "Corebook Pokedex import #513. Ability: Gluttony.",
       "resources": {
@@ -65153,7 +65153,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Simisear",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/simisear.png",
     "system": {
       "biography": "Corebook Pokedex import #514. Ability: Gluttony.",
       "resources": {
@@ -65280,7 +65280,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Panpour",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/panpour.png",
     "system": {
       "biography": "Corebook Pokedex import #515. Ability: Gluttony.",
       "resources": {
@@ -65407,7 +65407,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Simipour",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/simipour.png",
     "system": {
       "biography": "Corebook Pokedex import #516. Ability: Gluttony.",
       "resources": {
@@ -65534,7 +65534,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Munna",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/munna.png",
     "system": {
       "biography": "Corebook Pokedex import #517. Ability: Forewarn.",
       "resources": {
@@ -65661,7 +65661,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Musharna",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/musharna.png",
     "system": {
       "biography": "Corebook Pokedex import #518. Ability: Forewarn.",
       "resources": {
@@ -65788,7 +65788,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pidove",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pidove.png",
     "system": {
       "biography": "Corebook Pokedex import #519. Ability: Big Pecks.",
       "resources": {
@@ -65915,7 +65915,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tranquill",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tranquill.png",
     "system": {
       "biography": "Corebook Pokedex import #520. Ability: Big Pecks.",
       "resources": {
@@ -66042,7 +66042,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Unfezant",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/unfezant.png",
     "system": {
       "biography": "Corebook Pokedex import #521. Ability: Big Pecks.",
       "resources": {
@@ -66169,7 +66169,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blitzle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blitzle.png",
     "system": {
       "biography": "Corebook Pokedex import #522. Ability: Lightning Rod.",
       "resources": {
@@ -66296,7 +66296,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zebstrika",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zebstrika.png",
     "system": {
       "biography": "Corebook Pokedex import #523. Ability: Lightning Rod.",
       "resources": {
@@ -66423,7 +66423,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Roggenrola",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/roggenrola.png",
     "system": {
       "biography": "Corebook Pokedex import #524. Ability: Sturdy.",
       "resources": {
@@ -66550,7 +66550,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Boldore",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/boldore.png",
     "system": {
       "biography": "Corebook Pokedex import #525. Ability: Sturdy.",
       "resources": {
@@ -66677,7 +66677,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gigalith",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gigalith.png",
     "system": {
       "biography": "Corebook Pokedex import #526. Ability: Sturdy.",
       "resources": {
@@ -66804,7 +66804,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Woobat",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/woobat.png",
     "system": {
       "biography": "Corebook Pokedex import #527. Ability: Unaware.",
       "resources": {
@@ -66931,7 +66931,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swoobat",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swoobat.png",
     "system": {
       "biography": "Corebook Pokedex import #528. Ability: Unaware.",
       "resources": {
@@ -67058,7 +67058,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drilbur",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drilbur.png",
     "system": {
       "biography": "Corebook Pokedex import #529. Ability: Sand Rush.",
       "resources": {
@@ -67185,7 +67185,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Excadrill",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/excadrill.png",
     "system": {
       "biography": "Corebook Pokedex import #530. Ability: Sand Rush.",
       "resources": {
@@ -67312,7 +67312,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Audino",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/audino.png",
     "system": {
       "biography": "Corebook Pokedex import #531. Ability: Healer.",
       "resources": {
@@ -67439,7 +67439,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Timburr",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/timburr.png",
     "system": {
       "biography": "Corebook Pokedex import #532. Ability: Guts.",
       "resources": {
@@ -67566,7 +67566,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gurdurr",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gurdurr.png",
     "system": {
       "biography": "Corebook Pokedex import #533. Ability: Guts.",
       "resources": {
@@ -67693,7 +67693,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Conkeldurr",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/conkeldurr.png",
     "system": {
       "biography": "Corebook Pokedex import #534. Ability: Guts.",
       "resources": {
@@ -67820,7 +67820,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tympole",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tympole.png",
     "system": {
       "biography": "Corebook Pokedex import #535. Ability: Swift Swim.",
       "resources": {
@@ -67947,7 +67947,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Palpitoad",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/palpitoad.png",
     "system": {
       "biography": "Corebook Pokedex import #536. Ability: Swift Swim.",
       "resources": {
@@ -68074,7 +68074,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seismitoad",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/seismitoad.png",
     "system": {
       "biography": "Corebook Pokedex import #537. Ability: Swift Swim.",
       "resources": {
@@ -68201,7 +68201,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Throh",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/throh.png",
     "system": {
       "biography": "Corebook Pokedex import #538. Ability: Guts.",
       "resources": {
@@ -68328,7 +68328,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sawk",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sawk.png",
     "system": {
       "biography": "Corebook Pokedex import #539. Ability: Sturdy.",
       "resources": {
@@ -68455,7 +68455,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sewaddle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sewaddle.png",
     "system": {
       "biography": "Corebook Pokedex import #540. Ability: Swarm.",
       "resources": {
@@ -68582,7 +68582,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swadloon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swadloon.png",
     "system": {
       "biography": "Corebook Pokedex import #541. Ability: Leaf Guard.",
       "resources": {
@@ -68709,7 +68709,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leavanny",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/leavanny.png",
     "system": {
       "biography": "Corebook Pokedex import #542. Ability: Swarm.",
       "resources": {
@@ -68836,7 +68836,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venipede",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/venipede.png",
     "system": {
       "biography": "Corebook Pokedex import #543. Ability: Poison Point.",
       "resources": {
@@ -68963,7 +68963,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whirlipede",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/whirlipede.png",
     "system": {
       "biography": "Corebook Pokedex import #544. Ability: Poison Point.",
       "resources": {
@@ -69090,7 +69090,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scolipede",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scolipede.png",
     "system": {
       "biography": "Corebook Pokedex import #545. Ability: Poison Point.",
       "resources": {
@@ -69217,7 +69217,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cottonee",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cottonee.png",
     "system": {
       "biography": "Corebook Pokedex import #546. Ability: Prankster.",
       "resources": {
@@ -69344,7 +69344,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whimsicott",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/whimsicott.png",
     "system": {
       "biography": "Corebook Pokedex import #547. Ability: Prankster.",
       "resources": {
@@ -69471,7 +69471,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Petilil",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/petilil.png",
     "system": {
       "biography": "Corebook Pokedex import #548. Ability: Chlorophyll.",
       "resources": {
@@ -69598,7 +69598,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lilligant",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lilligant.png",
     "system": {
       "biography": "Corebook Pokedex import #549. Ability: Chlorophyll.",
       "resources": {
@@ -69725,7 +69725,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Basculin",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/basculin.png",
     "system": {
       "biography": "Corebook Pokedex import #550. Ability: Reckless.",
       "resources": {
@@ -69852,7 +69852,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandile",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sandile.png",
     "system": {
       "biography": "Corebook Pokedex import #551. Ability: Intimidate.",
       "resources": {
@@ -69979,7 +69979,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Krokorok",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/krokorok.png",
     "system": {
       "biography": "Corebook Pokedex import #552. Ability: Intimidate.",
       "resources": {
@@ -70106,7 +70106,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Krookodile",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/krookodile.png",
     "system": {
       "biography": "Corebook Pokedex import #553. Ability: Intimidate.",
       "resources": {
@@ -70233,7 +70233,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darumaka",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/darumaka.png",
     "system": {
       "biography": "Corebook Pokedex import #554. Ability: Hustle.",
       "resources": {
@@ -70360,7 +70360,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darmanitan",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/darmanitan.png",
     "system": {
       "biography": "Corebook Pokedex import #555. Ability: Sheer Force.",
       "resources": {
@@ -70487,7 +70487,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Maractus",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/maractus.png",
     "system": {
       "biography": "Corebook Pokedex import #556. Ability: Water Absorb.",
       "resources": {
@@ -70614,7 +70614,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dwebble",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dwebble.png",
     "system": {
       "biography": "Corebook Pokedex import #557. Ability: Sturdy.",
       "resources": {
@@ -70741,7 +70741,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crustle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/crustle.png",
     "system": {
       "biography": "Corebook Pokedex import #558. Ability: Sturdy.",
       "resources": {
@@ -70868,7 +70868,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scraggy",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scraggy.png",
     "system": {
       "biography": "Corebook Pokedex import #559. Ability: Shed Skin.",
       "resources": {
@@ -70995,7 +70995,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scrafty",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scrafty.png",
     "system": {
       "biography": "Corebook Pokedex import #560. Ability: Shed Skin.",
       "resources": {
@@ -71122,7 +71122,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sigilyph",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sigilyph.png",
     "system": {
       "biography": "Corebook Pokedex import #561. Ability: Wonder Skin.",
       "resources": {
@@ -71249,7 +71249,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yamask",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/yamask.png",
     "system": {
       "biography": "Corebook Pokedex import #562. Ability: Mummy.",
       "resources": {
@@ -71376,7 +71376,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cofagrigus",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cofagrigus.png",
     "system": {
       "biography": "Corebook Pokedex import #563. Ability: Mummy.",
       "resources": {
@@ -71503,7 +71503,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tirtouga",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tirtouga.png",
     "system": {
       "biography": "Corebook Pokedex import #564. Ability: Solid Rock.",
       "resources": {
@@ -71630,7 +71630,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Carracosta",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/carracosta.png",
     "system": {
       "biography": "Corebook Pokedex import #565. Ability: Solid Rock.",
       "resources": {
@@ -71757,7 +71757,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Archen",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/archen.png",
     "system": {
       "biography": "Corebook Pokedex import #566. Ability: Defeatist.",
       "resources": {
@@ -71884,7 +71884,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Archeops",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/archeops.png",
     "system": {
       "biography": "Corebook Pokedex import #567. Ability: Defeatist.",
       "resources": {
@@ -72011,7 +72011,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trubbish",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/trubbish.png",
     "system": {
       "biography": "Corebook Pokedex import #568. Ability: Stench.",
       "resources": {
@@ -72138,7 +72138,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Garbodor",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/garbodor.png",
     "system": {
       "biography": "Corebook Pokedex import #569. Ability: Stench.",
       "resources": {
@@ -72265,7 +72265,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zorua",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zorua.png",
     "system": {
       "biography": "Corebook Pokedex import #570. Ability: Illusion.",
       "resources": {
@@ -72392,7 +72392,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zoroark",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zoroark.png",
     "system": {
       "biography": "Corebook Pokedex import #571. Ability: Illusion.",
       "resources": {
@@ -72519,7 +72519,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Minccino",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/minccino.png",
     "system": {
       "biography": "Corebook Pokedex import #572. Ability: Cute Charm.",
       "resources": {
@@ -72646,7 +72646,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cinccino",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cinccino.png",
     "system": {
       "biography": "Corebook Pokedex import #573. Ability: Cute Charm.",
       "resources": {
@@ -72773,7 +72773,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gothita",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gothita.png",
     "system": {
       "biography": "Corebook Pokedex import #574. Ability: Frisk.",
       "resources": {
@@ -72900,7 +72900,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gothorita",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gothorita.png",
     "system": {
       "biography": "Corebook Pokedex import #575. Ability: Frisk.",
       "resources": {
@@ -73027,7 +73027,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gothitelle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gothitelle.png",
     "system": {
       "biography": "Corebook Pokedex import #576. Ability: Frisk.",
       "resources": {
@@ -73154,7 +73154,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Solosis",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/solosis.png",
     "system": {
       "biography": "Corebook Pokedex import #577. Ability: Overcoat.",
       "resources": {
@@ -73281,7 +73281,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Duosion",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/duosion.png",
     "system": {
       "biography": "Corebook Pokedex import #578. Ability: Overcoat.",
       "resources": {
@@ -73408,7 +73408,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Reuniclus",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/reuniclus.png",
     "system": {
       "biography": "Corebook Pokedex import #579. Ability: Overcoat.",
       "resources": {
@@ -73535,7 +73535,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ducklett",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ducklett.png",
     "system": {
       "biography": "Corebook Pokedex import #580. Ability: Keen Eye.",
       "resources": {
@@ -73662,7 +73662,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swanna",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swanna.png",
     "system": {
       "biography": "Corebook Pokedex import #581. Ability: Keen Eye.",
       "resources": {
@@ -73789,7 +73789,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vanillite",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vanillite.png",
     "system": {
       "biography": "Corebook Pokedex import #582. Ability: Ice Body.",
       "resources": {
@@ -73916,7 +73916,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vanillish",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vanillish.png",
     "system": {
       "biography": "Corebook Pokedex import #583. Ability: Ice Body.",
       "resources": {
@@ -74043,7 +74043,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vanilluxe",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vanilluxe.png",
     "system": {
       "biography": "Corebook Pokedex import #584. Ability: Ice Body.",
       "resources": {
@@ -74170,7 +74170,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Deerling",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/deerling.png",
     "system": {
       "biography": "Corebook Pokedex import #585. Ability: Chlorophyll.",
       "resources": {
@@ -74297,7 +74297,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sawsbuck",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sawsbuck.png",
     "system": {
       "biography": "Corebook Pokedex import #586. Ability: Chlorophyll.",
       "resources": {
@@ -74424,7 +74424,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Emolga",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/emolga.png",
     "system": {
       "biography": "Corebook Pokedex import #587. Ability: Static.",
       "resources": {
@@ -74551,7 +74551,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Karrablast",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/karrablast.png",
     "system": {
       "biography": "Corebook Pokedex import #588. Ability: Swarm.",
       "resources": {
@@ -74678,7 +74678,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Escavalier",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/escavalier.png",
     "system": {
       "biography": "Corebook Pokedex import #589. Ability: Swarm.",
       "resources": {
@@ -74805,7 +74805,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Foongus",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/foongus.png",
     "system": {
       "biography": "Corebook Pokedex import #590. Ability: Effect Spore.",
       "resources": {
@@ -74932,7 +74932,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Amoonguss",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/amoonguss.png",
     "system": {
       "biography": "Corebook Pokedex import #591. Ability: Effect Spore.",
       "resources": {
@@ -75059,7 +75059,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Frillish",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/frillish.png",
     "system": {
       "biography": "Corebook Pokedex import #592. Ability: Water Absorb.",
       "resources": {
@@ -75186,7 +75186,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jellicent",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/jellicent.png",
     "system": {
       "biography": "Corebook Pokedex import #593. Ability: Water Absorb.",
       "resources": {
@@ -75313,7 +75313,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Alomomola",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/alomomola.png",
     "system": {
       "biography": "Corebook Pokedex import #594. Ability: Healer.",
       "resources": {
@@ -75440,7 +75440,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Joltik",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/joltik.png",
     "system": {
       "biography": "Corebook Pokedex import #595. Ability: Compound Eyes.",
       "resources": {
@@ -75567,7 +75567,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Galvantula",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/galvantula.png",
     "system": {
       "biography": "Corebook Pokedex import #596. Ability: Compound Eyes.",
       "resources": {
@@ -75694,7 +75694,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ferroseed",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ferroseed.png",
     "system": {
       "biography": "Corebook Pokedex import #597. Ability: Iron Barbs.",
       "resources": {
@@ -75821,7 +75821,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ferrothorn",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ferrothorn.png",
     "system": {
       "biography": "Corebook Pokedex import #598. Ability: Iron Barbs.",
       "resources": {
@@ -75948,7 +75948,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Klink",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/klink.png",
     "system": {
       "biography": "Corebook Pokedex import #599. Ability: Plus.",
       "resources": {
@@ -76075,7 +76075,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Klang",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/klang.png",
     "system": {
       "biography": "Corebook Pokedex import #600. Ability: Plus.",
       "resources": {
@@ -76202,7 +76202,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Klinklang",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/klinklang.png",
     "system": {
       "biography": "Corebook Pokedex import #601. Ability: Plus.",
       "resources": {
@@ -76329,7 +76329,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tynamo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tynamo.png",
     "system": {
       "biography": "Corebook Pokedex import #602. Ability: Levitate.",
       "resources": {
@@ -76456,7 +76456,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eelektrik",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/eelektrik.png",
     "system": {
       "biography": "Corebook Pokedex import #603. Ability: Levitate.",
       "resources": {
@@ -76583,7 +76583,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eelektross",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/eelektross.png",
     "system": {
       "biography": "Corebook Pokedex import #604. Ability: Levitate.",
       "resources": {
@@ -76710,7 +76710,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Elgyem",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/elgyem.png",
     "system": {
       "biography": "Corebook Pokedex import #605. Ability: Telepathy.",
       "resources": {
@@ -76837,7 +76837,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beheeyem",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/beheeyem.png",
     "system": {
       "biography": "Corebook Pokedex import #606. Ability: Telepathy.",
       "resources": {
@@ -76964,7 +76964,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Litwick",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/litwick.png",
     "system": {
       "biography": "Corebook Pokedex import #607. Ability: Flash Fire.",
       "resources": {
@@ -77091,7 +77091,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lampent",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lampent.png",
     "system": {
       "biography": "Corebook Pokedex import #608. Ability: Flash Fire.",
       "resources": {
@@ -77218,7 +77218,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chandelure",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chandelure.png",
     "system": {
       "biography": "Corebook Pokedex import #609. Ability: Flash Fire.",
       "resources": {
@@ -77345,7 +77345,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Axew",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/axew.png",
     "system": {
       "biography": "Corebook Pokedex import #610. Ability: Rivalry.",
       "resources": {
@@ -77472,7 +77472,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fraxure",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/fraxure.png",
     "system": {
       "biography": "Corebook Pokedex import #611. Ability: Rivalry.",
       "resources": {
@@ -77599,7 +77599,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Haxorus",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/haxorus.png",
     "system": {
       "biography": "Corebook Pokedex import #612. Ability: Rivalry.",
       "resources": {
@@ -77726,7 +77726,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cubchoo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cubchoo.png",
     "system": {
       "biography": "Corebook Pokedex import #613. Ability: Snow Cloak.",
       "resources": {
@@ -77853,7 +77853,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beartic",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/beartic.png",
     "system": {
       "biography": "Corebook Pokedex import #614. Ability: Snow Cloak.",
       "resources": {
@@ -77980,7 +77980,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cryogonal",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cryogonal.png",
     "system": {
       "biography": "Corebook Pokedex import #615. Ability: Levitate.",
       "resources": {
@@ -78107,7 +78107,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shelmet",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shelmet.png",
     "system": {
       "biography": "Corebook Pokedex import #616. Ability: Hydration.",
       "resources": {
@@ -78234,7 +78234,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Accelgor",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/accelgor.png",
     "system": {
       "biography": "Corebook Pokedex import #617. Ability: Hydration.",
       "resources": {
@@ -78361,7 +78361,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stunfisk",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stunfisk.png",
     "system": {
       "biography": "Corebook Pokedex import #618. Ability: Static.",
       "resources": {
@@ -78488,7 +78488,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mienfoo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mienfoo.png",
     "system": {
       "biography": "Corebook Pokedex import #619. Ability: Inner Focus.",
       "resources": {
@@ -78615,7 +78615,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mienshao",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mienshao.png",
     "system": {
       "biography": "Corebook Pokedex import #620. Ability: Inner Focus.",
       "resources": {
@@ -78742,7 +78742,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Druddigon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/druddigon.png",
     "system": {
       "biography": "Corebook Pokedex import #621. Ability: Rough Skin.",
       "resources": {
@@ -78869,7 +78869,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golett",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golett.png",
     "system": {
       "biography": "Corebook Pokedex import #622. Ability: Iron Fist.",
       "resources": {
@@ -78996,7 +78996,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golurk",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golurk.png",
     "system": {
       "biography": "Corebook Pokedex import #623. Ability: Iron Fist.",
       "resources": {
@@ -79123,7 +79123,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pawniard",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pawniard.png",
     "system": {
       "biography": "Corebook Pokedex import #624. Ability: Defiant.",
       "resources": {
@@ -79250,7 +79250,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bisharp",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bisharp.png",
     "system": {
       "biography": "Corebook Pokedex import #625. Ability: Defiant.",
       "resources": {
@@ -79377,7 +79377,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bouffalant",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bouffalant.png",
     "system": {
       "biography": "Corebook Pokedex import #626. Ability: Reckless.",
       "resources": {
@@ -79504,7 +79504,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rufflet",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rufflet.png",
     "system": {
       "biography": "Corebook Pokedex import #627. Ability: Keen Eye.",
       "resources": {
@@ -79631,7 +79631,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Braviary",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/braviary.png",
     "system": {
       "biography": "Corebook Pokedex import #628. Ability: Keen Eye.",
       "resources": {
@@ -79758,7 +79758,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vullaby",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vullaby.png",
     "system": {
       "biography": "Corebook Pokedex import #629. Ability: Big Pecks.",
       "resources": {
@@ -79885,7 +79885,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mandibuzz",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mandibuzz.png",
     "system": {
       "biography": "Corebook Pokedex import #630. Ability: Big Pecks.",
       "resources": {
@@ -80012,7 +80012,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heatmor",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/heatmor.png",
     "system": {
       "biography": "Corebook Pokedex import #631. Ability: Gluttony.",
       "resources": {
@@ -80139,7 +80139,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Durant",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/durant.png",
     "system": {
       "biography": "Corebook Pokedex import #632. Ability: Swarm.",
       "resources": {
@@ -80266,7 +80266,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Deino",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/deino.png",
     "system": {
       "biography": "Corebook Pokedex import #633. Ability: Hustle.",
       "resources": {
@@ -80393,7 +80393,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zweilous",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zweilous.png",
     "system": {
       "biography": "Corebook Pokedex import #634. Ability: Hustle.",
       "resources": {
@@ -80520,7 +80520,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hydreigon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hydreigon.png",
     "system": {
       "biography": "Corebook Pokedex import #635. Ability: Levitate.",
       "resources": {
@@ -80647,7 +80647,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Larvesta",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/larvesta.png",
     "system": {
       "biography": "Corebook Pokedex import #636. Ability: Flame Body.",
       "resources": {
@@ -80774,7 +80774,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Volcarona",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/volcarona.png",
     "system": {
       "biography": "Corebook Pokedex import #637. Ability: Flame Body.",
       "resources": {
@@ -80901,7 +80901,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cobalion",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cobalion.png",
     "system": {
       "biography": "Corebook Pokedex import #638. Ability: Justified.",
       "resources": {
@@ -81028,7 +81028,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Terrakion",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/terrakion.png",
     "system": {
       "biography": "Corebook Pokedex import #639. Ability: Justified.",
       "resources": {
@@ -81155,7 +81155,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Virizion",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/virizion.png",
     "system": {
       "biography": "Corebook Pokedex import #640. Ability: Justified.",
       "resources": {
@@ -81282,7 +81282,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tornadus",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tornadus.png",
     "system": {
       "biography": "Corebook Pokedex import #641. Ability: Prankster.",
       "resources": {
@@ -81409,7 +81409,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thundurus",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/thundurus.png",
     "system": {
       "biography": "Corebook Pokedex import #642. Ability: Prankster.",
       "resources": {
@@ -81536,7 +81536,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Reshiram",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/reshiram.png",
     "system": {
       "biography": "Corebook Pokedex import #643. Ability: Turboblaze.",
       "resources": {
@@ -81663,7 +81663,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zekrom",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zekrom.png",
     "system": {
       "biography": "Corebook Pokedex import #644. Ability: Teravolt.",
       "resources": {
@@ -81790,7 +81790,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Landorus",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/landorus.png",
     "system": {
       "biography": "Corebook Pokedex import #645. Ability: Sand Force.",
       "resources": {
@@ -81917,7 +81917,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kyurem",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kyurem.png",
     "system": {
       "biography": "Corebook Pokedex import #646. Ability: Pressure.",
       "resources": {
@@ -82044,7 +82044,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Keldeo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/keldeo.png",
     "system": {
       "biography": "Corebook Pokedex import #647. Ability: Justified.",
       "resources": {
@@ -82171,7 +82171,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meloetta",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meloetta.png",
     "system": {
       "biography": "Corebook Pokedex import #648. Ability: Serene Grace.",
       "resources": {
@@ -82298,7 +82298,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Genesect",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/genesect.png",
     "system": {
       "biography": "Corebook Pokedex import #649. Ability: Download.",
       "resources": {
@@ -82425,7 +82425,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chespin",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chespin.png",
     "system": {
       "biography": "Corebook Pokedex import #650. Ability: Overgrow.",
       "resources": {
@@ -82552,7 +82552,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quilladin",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/quilladin.png",
     "system": {
       "biography": "Corebook Pokedex import #651. Ability: Overgrow.",
       "resources": {
@@ -82679,7 +82679,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chesnaught",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chesnaught.png",
     "system": {
       "biography": "Corebook Pokedex import #652. Ability: Overgrow.",
       "resources": {
@@ -82806,7 +82806,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fennekin",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/fennekin.png",
     "system": {
       "biography": "Corebook Pokedex import #653. Ability: Blaze.",
       "resources": {
@@ -82933,7 +82933,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Braixen",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/braixen.png",
     "system": {
       "biography": "Corebook Pokedex import #654. Ability: Blaze.",
       "resources": {
@@ -83060,7 +83060,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Delphox",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/delphox.png",
     "system": {
       "biography": "Corebook Pokedex import #655. Ability: Blaze.",
       "resources": {
@@ -83187,7 +83187,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Froakie",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/froakie.png",
     "system": {
       "biography": "Corebook Pokedex import #656. Ability: Torrent.",
       "resources": {
@@ -83314,7 +83314,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Frogadier",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/frogadier.png",
     "system": {
       "biography": "Corebook Pokedex import #657. Ability: Torrent.",
       "resources": {
@@ -83441,7 +83441,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Greninja",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/greninja.png",
     "system": {
       "biography": "Corebook Pokedex import #658. Ability: Torrent.",
       "resources": {
@@ -83568,7 +83568,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bunnelby",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bunnelby.png",
     "system": {
       "biography": "Corebook Pokedex import #659. Ability: Pickup.",
       "resources": {
@@ -83695,7 +83695,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Diggersby",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/diggersby.png",
     "system": {
       "biography": "Corebook Pokedex import #660. Ability: Pickup.",
       "resources": {
@@ -83822,7 +83822,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fletchling",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/fletchling.png",
     "system": {
       "biography": "Corebook Pokedex import #661. Ability: Big Pecks.",
       "resources": {
@@ -83949,7 +83949,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fletchinder",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/fletchinder.png",
     "system": {
       "biography": "Corebook Pokedex import #662. Ability: Flame Body.",
       "resources": {
@@ -84076,7 +84076,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Talonflame",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/talonflame.png",
     "system": {
       "biography": "Corebook Pokedex import #663. Ability: Flame Body.",
       "resources": {
@@ -84203,7 +84203,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scatterbug",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scatterbug.png",
     "system": {
       "biography": "Corebook Pokedex import #664. Ability: Shield Dust.",
       "resources": {
@@ -84330,7 +84330,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spewpa",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spewpa.png",
     "system": {
       "biography": "Corebook Pokedex import #665. Ability: Shed Skin.",
       "resources": {
@@ -84457,7 +84457,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vivillon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vivillon.png",
     "system": {
       "biography": "Corebook Pokedex import #666. Ability: Shield Dust.",
       "resources": {
@@ -84584,7 +84584,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Litleo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/litleo.png",
     "system": {
       "biography": "Corebook Pokedex import #667. Ability: Rivalry.",
       "resources": {
@@ -84711,7 +84711,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pyroar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pyroar.png",
     "system": {
       "biography": "Corebook Pokedex import #668. Ability: Rivalry.",
       "resources": {
@@ -84838,7 +84838,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flab\u00e9b\u00e9",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/flabebe.png",
     "system": {
       "biography": "Corebook Pokedex import #669. Ability: Flower Veil.",
       "resources": {
@@ -84965,7 +84965,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Floette",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/floette.png",
     "system": {
       "biography": "Corebook Pokedex import #670. Ability: Flower Veil.",
       "resources": {
@@ -85092,7 +85092,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Florges",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/florges.png",
     "system": {
       "biography": "Corebook Pokedex import #671. Ability: Flower Veil.",
       "resources": {
@@ -85219,7 +85219,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skiddo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skiddo.png",
     "system": {
       "biography": "Corebook Pokedex import #672. Ability: Sap Sipper.",
       "resources": {
@@ -85346,7 +85346,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gogoat",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gogoat.png",
     "system": {
       "biography": "Corebook Pokedex import #673. Ability: Sap Sipper.",
       "resources": {
@@ -85473,7 +85473,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pancham",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pancham.png",
     "system": {
       "biography": "Corebook Pokedex import #674. Ability: Iron Fist.",
       "resources": {
@@ -85600,7 +85600,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pangoro",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pangoro.png",
     "system": {
       "biography": "Corebook Pokedex import #675. Ability: Iron Fist.",
       "resources": {
@@ -85727,7 +85727,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Furfrou",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/furfrou.png",
     "system": {
       "biography": "Corebook Pokedex import #676. Ability: Fur Coat.",
       "resources": {
@@ -85854,7 +85854,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Espurr",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/espurr.png",
     "system": {
       "biography": "Corebook Pokedex import #677. Ability: Keen Eye.",
       "resources": {
@@ -85981,7 +85981,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meowstic",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meowstic.png",
     "system": {
       "biography": "Corebook Pokedex import #678. Ability: Keen Eye.",
       "resources": {
@@ -86108,7 +86108,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Honedge",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/honedge.png",
     "system": {
       "biography": "Corebook Pokedex import #679. Ability: No Guard.",
       "resources": {
@@ -86235,7 +86235,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Doublade",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/doublade.png",
     "system": {
       "biography": "Corebook Pokedex import #680. Ability: No Guard.",
       "resources": {
@@ -86362,7 +86362,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aegislash",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aegislash.png",
     "system": {
       "biography": "Corebook Pokedex import #681. Ability: Stance Change.",
       "resources": {
@@ -86489,7 +86489,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spritzee",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/spritzee.png",
     "system": {
       "biography": "Corebook Pokedex import #682. Ability: Healer.",
       "resources": {
@@ -86616,7 +86616,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aromatisse",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aromatisse.png",
     "system": {
       "biography": "Corebook Pokedex import #683. Ability: Healer.",
       "resources": {
@@ -86743,7 +86743,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swirlix",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swirlix.png",
     "system": {
       "biography": "Corebook Pokedex import #684. Ability: Sweet Veil.",
       "resources": {
@@ -86870,7 +86870,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slurpuff",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slurpuff.png",
     "system": {
       "biography": "Corebook Pokedex import #685. Ability: Sweet Veil.",
       "resources": {
@@ -86997,7 +86997,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Inkay",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/inkay.png",
     "system": {
       "biography": "Corebook Pokedex import #686. Ability: Contrary.",
       "resources": {
@@ -87124,7 +87124,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Malamar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/malamar.png",
     "system": {
       "biography": "Corebook Pokedex import #687. Ability: Contrary.",
       "resources": {
@@ -87251,7 +87251,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Binacle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/binacle.png",
     "system": {
       "biography": "Corebook Pokedex import #688. Ability: Tough Claws.",
       "resources": {
@@ -87378,7 +87378,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Barbaracle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/barbaracle.png",
     "system": {
       "biography": "Corebook Pokedex import #689. Ability: Tough Claws.",
       "resources": {
@@ -87505,7 +87505,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skrelp",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skrelp.png",
     "system": {
       "biography": "Corebook Pokedex import #690. Ability: Poison Point.",
       "resources": {
@@ -87632,7 +87632,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragalge",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dragalge.png",
     "system": {
       "biography": "Corebook Pokedex import #691. Ability: Poison Point.",
       "resources": {
@@ -87759,7 +87759,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clauncher",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/clauncher.png",
     "system": {
       "biography": "Corebook Pokedex import #692. Ability: Mega Launcher.",
       "resources": {
@@ -87886,7 +87886,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clawitzer",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/clawitzer.png",
     "system": {
       "biography": "Corebook Pokedex import #693. Ability: Mega Launcher.",
       "resources": {
@@ -88013,7 +88013,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Helioptile",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/helioptile.png",
     "system": {
       "biography": "Corebook Pokedex import #694. Ability: Dry Skin.",
       "resources": {
@@ -88140,7 +88140,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heliolisk",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/heliolisk.png",
     "system": {
       "biography": "Corebook Pokedex import #695. Ability: Dry Skin.",
       "resources": {
@@ -88267,7 +88267,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tyrunt",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tyrunt.png",
     "system": {
       "biography": "Corebook Pokedex import #696. Ability: Strong Jaw.",
       "resources": {
@@ -88394,7 +88394,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tyrantrum",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tyrantrum.png",
     "system": {
       "biography": "Corebook Pokedex import #697. Ability: Strong Jaw.",
       "resources": {
@@ -88521,7 +88521,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Amaura",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/amaura.png",
     "system": {
       "biography": "Corebook Pokedex import #698. Ability: Refrigerate.",
       "resources": {
@@ -88648,7 +88648,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aurorus",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aurorus.png",
     "system": {
       "biography": "Corebook Pokedex import #699. Ability: Refrigerate.",
       "resources": {
@@ -88775,7 +88775,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sylveon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sylveon.png",
     "system": {
       "biography": "Corebook Pokedex import #700. Ability: Cute Charm.",
       "resources": {
@@ -88902,7 +88902,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hawlucha",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hawlucha.png",
     "system": {
       "biography": "Corebook Pokedex import #701. Ability: Limber.",
       "resources": {
@@ -89029,7 +89029,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dedenne",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dedenne.png",
     "system": {
       "biography": "Corebook Pokedex import #702. Ability: Cheek Pouch.",
       "resources": {
@@ -89156,7 +89156,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Carbink",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/carbink.png",
     "system": {
       "biography": "Corebook Pokedex import #703. Ability: Clear Body.",
       "resources": {
@@ -89283,7 +89283,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Goomy",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/goomy.png",
     "system": {
       "biography": "Corebook Pokedex import #704. Ability: Sap Sipper.",
       "resources": {
@@ -89410,7 +89410,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sliggoo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sliggoo.png",
     "system": {
       "biography": "Corebook Pokedex import #705. Ability: Sap Sipper.",
       "resources": {
@@ -89537,7 +89537,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Goodra",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/goodra.png",
     "system": {
       "biography": "Corebook Pokedex import #706. Ability: Sap Sipper.",
       "resources": {
@@ -89664,7 +89664,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Klefki",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/klefki.png",
     "system": {
       "biography": "Corebook Pokedex import #707. Ability: Prankster.",
       "resources": {
@@ -89791,7 +89791,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Phantump",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/phantump.png",
     "system": {
       "biography": "Corebook Pokedex import #708. Ability: Natural Cure.",
       "resources": {
@@ -89918,7 +89918,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trevenant",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/trevenant.png",
     "system": {
       "biography": "Corebook Pokedex import #709. Ability: Natural Cure.",
       "resources": {
@@ -90045,7 +90045,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pumpkaboo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pumpkaboo.png",
     "system": {
       "biography": "Corebook Pokedex import #710. Ability: Pickup.",
       "resources": {
@@ -90172,7 +90172,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gourgeist",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gourgeist.png",
     "system": {
       "biography": "Corebook Pokedex import #711. Ability: Pickup.",
       "resources": {
@@ -90299,7 +90299,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bergmite",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bergmite.png",
     "system": {
       "biography": "Corebook Pokedex import #712. Ability: Own Tempo.",
       "resources": {
@@ -90426,7 +90426,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Avalugg",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/avalugg.png",
     "system": {
       "biography": "Corebook Pokedex import #713. Ability: Own Tempo.",
       "resources": {
@@ -90553,7 +90553,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Noibat",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/noibat.png",
     "system": {
       "biography": "Corebook Pokedex import #714. Ability: Frisk.",
       "resources": {
@@ -90680,7 +90680,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Noivern",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/noivern.png",
     "system": {
       "biography": "Corebook Pokedex import #715. Ability: Frisk.",
       "resources": {
@@ -90807,7 +90807,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Xerneas",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/xerneas.png",
     "system": {
       "biography": "Corebook Pokedex import #716. Ability: Fairy Aura.",
       "resources": {
@@ -90934,7 +90934,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yveltal",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/yveltal.png",
     "system": {
       "biography": "Corebook Pokedex import #717. Ability: Dark Aura.",
       "resources": {
@@ -91061,7 +91061,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zygarde",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zygarde-50.png",
     "system": {
       "biography": "Corebook Pokedex import #718. Ability: Aura Break.",
       "resources": {
@@ -91188,7 +91188,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Diancie",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/diancie.png",
     "system": {
       "biography": "Corebook Pokedex import #719. Ability: Clear Body.",
       "resources": {
@@ -91315,7 +91315,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hoopa",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hoopa.png",
     "system": {
       "biography": "Corebook Pokedex import #720. Ability: Magician.",
       "resources": {
@@ -91442,7 +91442,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Volcanion",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/volcanion.png",
     "system": {
       "biography": "Corebook Pokedex import #721. Ability: Water Absorb.",
       "resources": {
@@ -91569,7 +91569,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rowlet",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rowlet.png",
     "system": {
       "biography": "Corebook Pokedex import #722. Ability: Overgrow.",
       "resources": {
@@ -91696,7 +91696,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dartrix",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dartrix.png",
     "system": {
       "biography": "Corebook Pokedex import #723. Ability: Overgrow.",
       "resources": {
@@ -91823,7 +91823,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Decidueye",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/decidueye.png",
     "system": {
       "biography": "Corebook Pokedex import #724. Ability: Overgrow.",
       "resources": {
@@ -91950,7 +91950,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Litten",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/litten.png",
     "system": {
       "biography": "Corebook Pokedex import #725. Ability: Blaze.",
       "resources": {
@@ -92077,7 +92077,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Torracat",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/torracat.png",
     "system": {
       "biography": "Corebook Pokedex import #726. Ability: Blaze.",
       "resources": {
@@ -92204,7 +92204,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Incineroar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/incineroar.png",
     "system": {
       "biography": "Corebook Pokedex import #727. Ability: Blaze.",
       "resources": {
@@ -92331,7 +92331,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Popplio",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/popplio.png",
     "system": {
       "biography": "Corebook Pokedex import #728. Ability: Torrent.",
       "resources": {
@@ -92458,7 +92458,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Brionne",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/brionne.png",
     "system": {
       "biography": "Corebook Pokedex import #729. Ability: Torrent.",
       "resources": {
@@ -92585,7 +92585,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Primarina",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/primarina.png",
     "system": {
       "biography": "Corebook Pokedex import #730. Ability: Torrent.",
       "resources": {
@@ -92712,7 +92712,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pikipek",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pikipek.png",
     "system": {
       "biography": "Corebook Pokedex import #731. Ability: Keen Eye.",
       "resources": {
@@ -92839,7 +92839,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trumbeak",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/trumbeak.png",
     "system": {
       "biography": "Corebook Pokedex import #732. Ability: Keen Eye.",
       "resources": {
@@ -92966,7 +92966,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toucannon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/toucannon.png",
     "system": {
       "biography": "Corebook Pokedex import #733. Ability: Keen Eye.",
       "resources": {
@@ -93093,7 +93093,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yungoos",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/yungoos.png",
     "system": {
       "biography": "Corebook Pokedex import #734. Ability: Stakeout.",
       "resources": {
@@ -93220,7 +93220,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gumshoos",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gumshoos.png",
     "system": {
       "biography": "Corebook Pokedex import #735. Ability: Stakeout.",
       "resources": {
@@ -93347,7 +93347,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grubbin",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grubbin.png",
     "system": {
       "biography": "Corebook Pokedex import #736. Ability: Swarm.",
       "resources": {
@@ -93474,7 +93474,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charjabug",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/charjabug.png",
     "system": {
       "biography": "Corebook Pokedex import #737. Ability: Battery.",
       "resources": {
@@ -93601,7 +93601,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vikavolt",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vikavolt.png",
     "system": {
       "biography": "Corebook Pokedex import #738. Ability: Levitate.",
       "resources": {
@@ -93728,7 +93728,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crabrawler",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/crabrawler.png",
     "system": {
       "biography": "Corebook Pokedex import #739. Ability: Hyper Cutter.",
       "resources": {
@@ -93855,7 +93855,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crabominable",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/crabominable.png",
     "system": {
       "biography": "Corebook Pokedex import #740. Ability: Hyper Cutter.",
       "resources": {
@@ -93982,7 +93982,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Oricorio",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/oricorio.png",
     "system": {
       "biography": "Corebook Pokedex import #741. Ability: Dancer.",
       "resources": {
@@ -94109,7 +94109,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cutiefly",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cutiefly.png",
     "system": {
       "biography": "Corebook Pokedex import #742. Ability: Honey Gather.",
       "resources": {
@@ -94236,7 +94236,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ribombee",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ribombee.png",
     "system": {
       "biography": "Corebook Pokedex import #743. Ability: Honey Gather.",
       "resources": {
@@ -94363,7 +94363,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rockruff",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rockruff.png",
     "system": {
       "biography": "Corebook Pokedex import #744. Ability: Keen Eye.",
       "resources": {
@@ -94490,7 +94490,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lycanroc",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lycanroc-midday.png",
     "system": {
       "biography": "Corebook Pokedex import #745. Ability: Keen Eye.",
       "resources": {
@@ -94617,7 +94617,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wishiwashi",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wishiwashi.png",
     "system": {
       "biography": "Corebook Pokedex import #746. Ability: Schooling.",
       "resources": {
@@ -94744,7 +94744,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mareanie",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mareanie.png",
     "system": {
       "biography": "Corebook Pokedex import #747. Ability: Merciless.",
       "resources": {
@@ -94871,7 +94871,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxapex",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/toxapex.png",
     "system": {
       "biography": "Corebook Pokedex import #748. Ability: Merciless.",
       "resources": {
@@ -94998,7 +94998,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mudbray",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mudbray.png",
     "system": {
       "biography": "Corebook Pokedex import #749. Ability: Own Tempo.",
       "resources": {
@@ -95125,7 +95125,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mudsdale",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mudsdale.png",
     "system": {
       "biography": "Corebook Pokedex import #750. Ability: Own Tempo.",
       "resources": {
@@ -95252,7 +95252,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dewpider",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dewpider.png",
     "system": {
       "biography": "Corebook Pokedex import #751. Ability: Water Bubble.",
       "resources": {
@@ -95379,7 +95379,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Araquanid",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/araquanid.png",
     "system": {
       "biography": "Corebook Pokedex import #752. Ability: Water Bubble.",
       "resources": {
@@ -95506,7 +95506,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fomantis",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/fomantis.png",
     "system": {
       "biography": "Corebook Pokedex import #753. Ability: Leaf Guard.",
       "resources": {
@@ -95633,7 +95633,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lurantis",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lurantis.png",
     "system": {
       "biography": "Corebook Pokedex import #754. Ability: Leaf Guard.",
       "resources": {
@@ -95760,7 +95760,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Morelull",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/morelull.png",
     "system": {
       "biography": "Corebook Pokedex import #755. Ability: Illuminate.",
       "resources": {
@@ -95887,7 +95887,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shiinotic",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/shiinotic.png",
     "system": {
       "biography": "Corebook Pokedex import #756. Ability: Illuminate.",
       "resources": {
@@ -96014,7 +96014,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Salandit",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/salandit.png",
     "system": {
       "biography": "Corebook Pokedex import #757. Ability: Corrosion.",
       "resources": {
@@ -96141,7 +96141,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Salazzle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/salazzle.png",
     "system": {
       "biography": "Corebook Pokedex import #758. Ability: Corrosion.",
       "resources": {
@@ -96268,7 +96268,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stufful",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stufful.png",
     "system": {
       "biography": "Corebook Pokedex import #759. Ability: Fluffy.",
       "resources": {
@@ -96395,7 +96395,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bewear",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bewear.png",
     "system": {
       "biography": "Corebook Pokedex import #760. Ability: Fluffy.",
       "resources": {
@@ -96522,7 +96522,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bounsweet",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bounsweet.png",
     "system": {
       "biography": "Corebook Pokedex import #761. Ability: Leaf Guard.",
       "resources": {
@@ -96649,7 +96649,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Steenee",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/steenee.png",
     "system": {
       "biography": "Corebook Pokedex import #762. Ability: Leaf Guard.",
       "resources": {
@@ -96776,7 +96776,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tsareena",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tsareena.png",
     "system": {
       "biography": "Corebook Pokedex import #763. Ability: Leaf Guard.",
       "resources": {
@@ -96903,7 +96903,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Comfey",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/comfey.png",
     "system": {
       "biography": "Corebook Pokedex import #764. Ability: Flower Veil.",
       "resources": {
@@ -97030,7 +97030,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Oranguru",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/oranguru.png",
     "system": {
       "biography": "Corebook Pokedex import #765. Ability: Inner Focus.",
       "resources": {
@@ -97157,7 +97157,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Passimian",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/passimian.png",
     "system": {
       "biography": "Corebook Pokedex import #766. Ability: Receiver.",
       "resources": {
@@ -97284,7 +97284,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wimpod",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wimpod.png",
     "system": {
       "biography": "Corebook Pokedex import #767. Ability: Wimp Out.",
       "resources": {
@@ -97411,7 +97411,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golisopod",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golisopod.png",
     "system": {
       "biography": "Corebook Pokedex import #768. Ability: Emergency Exit.",
       "resources": {
@@ -97538,7 +97538,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandygast",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sandygast.png",
     "system": {
       "biography": "Corebook Pokedex import #769. Ability: Water Compaction.",
       "resources": {
@@ -97665,7 +97665,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Palossand",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/palossand.png",
     "system": {
       "biography": "Corebook Pokedex import #770. Ability: Water Compaction.",
       "resources": {
@@ -97792,7 +97792,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pyukumuku",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pyukumuku.png",
     "system": {
       "biography": "Corebook Pokedex import #771. Ability: Innards Out.",
       "resources": {
@@ -97919,7 +97919,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Type: Null",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/type-null.png",
     "system": {
       "biography": "Corebook Pokedex import #772. Ability: Battle Armor.",
       "resources": {
@@ -98046,7 +98046,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Silvally",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/silvally.png",
     "system": {
       "biography": "Corebook Pokedex import #773. Ability: RKS System.",
       "resources": {
@@ -98173,7 +98173,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Minior",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/minior.png",
     "system": {
       "biography": "Corebook Pokedex import #774. Ability: Shields Down.",
       "resources": {
@@ -98300,7 +98300,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Komala",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/komala.png",
     "system": {
       "biography": "Corebook Pokedex import #775. Ability: Comatose.",
       "resources": {
@@ -98427,7 +98427,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Turtonator",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/turtonator.png",
     "system": {
       "biography": "Corebook Pokedex import #776. Ability: Shell Armor.",
       "resources": {
@@ -98554,7 +98554,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Togedemaru",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/togedemaru.png",
     "system": {
       "biography": "Corebook Pokedex import #777. Ability: Iron Barbs.",
       "resources": {
@@ -98681,7 +98681,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mimikyu",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mimikyu.png",
     "system": {
       "biography": "Corebook Pokedex import #778. Ability: Disguise.",
       "resources": {
@@ -98808,7 +98808,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bruxish",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/bruxish.png",
     "system": {
       "biography": "Corebook Pokedex import #779. Ability: Dazzling.",
       "resources": {
@@ -98935,7 +98935,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drampa",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drampa.png",
     "system": {
       "biography": "Corebook Pokedex import #780. Ability: Berserk.",
       "resources": {
@@ -99062,7 +99062,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dhelmise",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dhelmise.png",
     "system": {
       "biography": "Corebook Pokedex import #781. Ability: Steelworker.",
       "resources": {
@@ -99189,7 +99189,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jangmo-o",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/jangmo-o.png",
     "system": {
       "biography": "Corebook Pokedex import #782. Ability: Bulletproof.",
       "resources": {
@@ -99316,7 +99316,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hakamo-o",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hakamo-o.png",
     "system": {
       "biography": "Corebook Pokedex import #783. Ability: Bulletproof.",
       "resources": {
@@ -99443,7 +99443,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kommo-o",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kommo-o.png",
     "system": {
       "biography": "Corebook Pokedex import #784. Ability: Bulletproof.",
       "resources": {
@@ -99570,7 +99570,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tapu Koko",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tapu-koko.png",
     "system": {
       "biography": "Corebook Pokedex import #785. Ability: Electric Surge.",
       "resources": {
@@ -99697,7 +99697,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tapu Lele",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tapu-lele.png",
     "system": {
       "biography": "Corebook Pokedex import #786. Ability: Psychic Surge.",
       "resources": {
@@ -99824,7 +99824,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tapu Bulu",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tapu-bulu.png",
     "system": {
       "biography": "Corebook Pokedex import #787. Ability: Grassy Surge.",
       "resources": {
@@ -99951,7 +99951,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tapu Fini",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tapu-fini.png",
     "system": {
       "biography": "Corebook Pokedex import #788. Ability: Misty Surge.",
       "resources": {
@@ -100078,7 +100078,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cosmog",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cosmog.png",
     "system": {
       "biography": "Corebook Pokedex import #789. Ability: Unaware.",
       "resources": {
@@ -100205,7 +100205,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cosmoem",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cosmoem.png",
     "system": {
       "biography": "Corebook Pokedex import #790. Ability: Sturdy.",
       "resources": {
@@ -100332,7 +100332,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Solgaleo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/solgaleo.png",
     "system": {
       "biography": "Corebook Pokedex import #791. Ability: Full Metal Body.",
       "resources": {
@@ -100459,7 +100459,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lunala",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lunala.png",
     "system": {
       "biography": "Corebook Pokedex import #792. Ability: Shadow Shield.",
       "resources": {
@@ -100586,7 +100586,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nihilego",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nihilego.png",
     "system": {
       "biography": "Corebook Pokedex import #793. Ability: Beast Boost.",
       "resources": {
@@ -100713,7 +100713,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Buzzwole",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/buzzwole.png",
     "system": {
       "biography": "Corebook Pokedex import #794. Ability: Beast Boost.",
       "resources": {
@@ -100840,7 +100840,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pheromosa",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pheromosa.png",
     "system": {
       "biography": "Corebook Pokedex import #795. Ability: Beast Boost.",
       "resources": {
@@ -100967,7 +100967,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Xurkitree",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/xurkitree.png",
     "system": {
       "biography": "Corebook Pokedex import #796. Ability: Beast Boost.",
       "resources": {
@@ -101094,7 +101094,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Celesteela",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/celesteela.png",
     "system": {
       "biography": "Corebook Pokedex import #797. Ability: Beast Boost.",
       "resources": {
@@ -101221,7 +101221,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kartana",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kartana.png",
     "system": {
       "biography": "Corebook Pokedex import #798. Ability: Beast Boost.",
       "resources": {
@@ -101348,7 +101348,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Guzzlord",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/guzzlord.png",
     "system": {
       "biography": "Corebook Pokedex import #799. Ability: Beast Boost.",
       "resources": {
@@ -101475,7 +101475,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Necrozma",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/necrozma.png",
     "system": {
       "biography": "Corebook Pokedex import #800. Ability: Prism Armor.",
       "resources": {
@@ -101602,7 +101602,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magearna",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magearna.png",
     "system": {
       "biography": "Corebook Pokedex import #801. Ability: Soul-Heart.",
       "resources": {
@@ -101729,7 +101729,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Marshadow",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/marshadow.png",
     "system": {
       "biography": "Corebook Pokedex import #802. Ability: Technician.",
       "resources": {
@@ -101856,7 +101856,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poipole",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/poipole.png",
     "system": {
       "biography": "Corebook Pokedex import #803. Ability: Beast Boost.",
       "resources": {
@@ -101983,7 +101983,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Naganadel",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/naganadel.png",
     "system": {
       "biography": "Corebook Pokedex import #804. Ability: Beast Boost.",
       "resources": {
@@ -102110,7 +102110,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stakataka",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stakataka.png",
     "system": {
       "biography": "Corebook Pokedex import #805. Ability: Beast Boost.",
       "resources": {
@@ -102237,7 +102237,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blacephalon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blacephalon.png",
     "system": {
       "biography": "Corebook Pokedex import #806. Ability: Beast Boost.",
       "resources": {
@@ -102364,7 +102364,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zeraora",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zeraora.png",
     "system": {
       "biography": "Corebook Pokedex import #807. Ability: Volt Absorb.",
       "resources": {
@@ -102491,7 +102491,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meltan",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meltan.png",
     "system": {
       "biography": "Corebook Pokedex import #808. Ability: Magnet Pull.",
       "resources": {
@@ -102618,7 +102618,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Melmetal",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/melmetal.png",
     "system": {
       "biography": "Corebook Pokedex import #809. Ability: Iron Fist.",
       "resources": {
@@ -102745,7 +102745,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grookey",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grookey.png",
     "system": {
       "biography": "Corebook Pokedex import #810. Ability: Overgrow.",
       "resources": {
@@ -102872,7 +102872,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thwackey",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/thwackey.png",
     "system": {
       "biography": "Corebook Pokedex import #811. Ability: Overgrow.",
       "resources": {
@@ -102999,7 +102999,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rillaboom",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rillaboom.png",
     "system": {
       "biography": "Corebook Pokedex import #812. Ability: Overgrow.",
       "resources": {
@@ -103126,7 +103126,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scorbunny",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scorbunny.png",
     "system": {
       "biography": "Corebook Pokedex import #813. Ability: Blaze.",
       "resources": {
@@ -103253,7 +103253,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raboot",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raboot.png",
     "system": {
       "biography": "Corebook Pokedex import #814. Ability: Blaze.",
       "resources": {
@@ -103380,7 +103380,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cinderace",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cinderace.png",
     "system": {
       "biography": "Corebook Pokedex import #815. Ability: Blaze.",
       "resources": {
@@ -103507,7 +103507,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sobble",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sobble.png",
     "system": {
       "biography": "Corebook Pokedex import #816. Ability: Torrent.",
       "resources": {
@@ -103634,7 +103634,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drizzile",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drizzile.png",
     "system": {
       "biography": "Corebook Pokedex import #817. Ability: Torrent.",
       "resources": {
@@ -103761,7 +103761,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Inteleon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/inteleon.png",
     "system": {
       "biography": "Corebook Pokedex import #818. Ability: Torrent.",
       "resources": {
@@ -103888,7 +103888,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skwovet",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skwovet.png",
     "system": {
       "biography": "Corebook Pokedex import #819. Ability: Cheek Pouch.",
       "resources": {
@@ -104015,7 +104015,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Greedent",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/greedent.png",
     "system": {
       "biography": "Corebook Pokedex import #820. Ability: Cheek Pouch.",
       "resources": {
@@ -104142,7 +104142,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rookidee",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rookidee.png",
     "system": {
       "biography": "Corebook Pokedex import #821. Ability: Keen Eye.",
       "resources": {
@@ -104269,7 +104269,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corvisquire",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/corvisquire.png",
     "system": {
       "biography": "Corebook Pokedex import #822. Ability: Keen Eye.",
       "resources": {
@@ -104396,7 +104396,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corviknight",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/corviknight.png",
     "system": {
       "biography": "Corebook Pokedex import #823. Ability: Pressure.",
       "resources": {
@@ -104523,7 +104523,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blipbug",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blipbug.png",
     "system": {
       "biography": "Corebook Pokedex import #824. Ability: Swarm.",
       "resources": {
@@ -104650,7 +104650,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dottler",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dottler.png",
     "system": {
       "biography": "Corebook Pokedex import #825. Ability: Swarm.",
       "resources": {
@@ -104777,7 +104777,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Orbeetle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/orbeetle.png",
     "system": {
       "biography": "Corebook Pokedex import #826. Ability: Swarm.",
       "resources": {
@@ -104904,7 +104904,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nickit",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/nickit.png",
     "system": {
       "biography": "Corebook Pokedex import #827. Ability: Run Away.",
       "resources": {
@@ -105031,7 +105031,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thievul",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/thievul.png",
     "system": {
       "biography": "Corebook Pokedex import #828. Ability: Run Away.",
       "resources": {
@@ -105158,7 +105158,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gossifleur",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gossifleur.png",
     "system": {
       "biography": "Corebook Pokedex import #829. Ability: Cotton Down.",
       "resources": {
@@ -105285,7 +105285,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eldegoss",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/eldegoss.png",
     "system": {
       "biography": "Corebook Pokedex import #830. Ability: Cotton Down.",
       "resources": {
@@ -105412,7 +105412,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wooloo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/wooloo.png",
     "system": {
       "biography": "Corebook Pokedex import #831. Ability: Fluffy.",
       "resources": {
@@ -105539,7 +105539,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dubwool",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dubwool.png",
     "system": {
       "biography": "Corebook Pokedex import #832. Ability: Fluffy.",
       "resources": {
@@ -105666,7 +105666,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chewtle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chewtle.png",
     "system": {
       "biography": "Corebook Pokedex import #833. Ability: Strong Jaw.",
       "resources": {
@@ -105793,7 +105793,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drednaw",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drednaw.png",
     "system": {
       "biography": "Corebook Pokedex import #834. Ability: Strong Jaw.",
       "resources": {
@@ -105920,7 +105920,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yamper",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/yamper.png",
     "system": {
       "biography": "Corebook Pokedex import #835. Ability: Ball Fetch.",
       "resources": {
@@ -106047,7 +106047,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Boltund",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/boltund.png",
     "system": {
       "biography": "Corebook Pokedex import #836. Ability: Strong Jaw.",
       "resources": {
@@ -106174,7 +106174,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rolycoly",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rolycoly.png",
     "system": {
       "biography": "Corebook Pokedex import #837. Ability: Steam Engine.",
       "resources": {
@@ -106301,7 +106301,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Carkol",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/carkol.png",
     "system": {
       "biography": "Corebook Pokedex import #838. Ability: Steam Engine.",
       "resources": {
@@ -106428,7 +106428,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Coalossal",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/coalossal.png",
     "system": {
       "biography": "Corebook Pokedex import #839. Ability: Steam Engine.",
       "resources": {
@@ -106555,7 +106555,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Applin",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/applin.png",
     "system": {
       "biography": "Corebook Pokedex import #840. Ability: Ripen.",
       "resources": {
@@ -106682,7 +106682,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flapple",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/flapple.png",
     "system": {
       "biography": "Corebook Pokedex import #841. Ability: Ripen.",
       "resources": {
@@ -106809,7 +106809,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Appletun",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/appletun.png",
     "system": {
       "biography": "Corebook Pokedex import #842. Ability: Ripen.",
       "resources": {
@@ -106936,7 +106936,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Silicobra",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/silicobra.png",
     "system": {
       "biography": "Corebook Pokedex import #843. Ability: Sand Spit.",
       "resources": {
@@ -107063,7 +107063,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandaconda",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sandaconda.png",
     "system": {
       "biography": "Corebook Pokedex import #844. Ability: Sand Spit.",
       "resources": {
@@ -107190,7 +107190,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cramorant",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cramorant.png",
     "system": {
       "biography": "Corebook Pokedex import #845. Ability: Gulp Missile.",
       "resources": {
@@ -107317,7 +107317,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arrokuda",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/arrokuda.png",
     "system": {
       "biography": "Corebook Pokedex import #846. Ability: Swift Swim.",
       "resources": {
@@ -107444,7 +107444,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Barraskewda",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/barraskewda.png",
     "system": {
       "biography": "Corebook Pokedex import #847. Ability: Swift Swim.",
       "resources": {
@@ -107571,7 +107571,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxel",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/toxel.png",
     "system": {
       "biography": "Corebook Pokedex import #848. Ability: Rattled.",
       "resources": {
@@ -107698,7 +107698,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxtricity",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/toxtricity.png",
     "system": {
       "biography": "Corebook Pokedex import #849. Ability: Punk Rock.",
       "resources": {
@@ -107825,7 +107825,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sizzlipede",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sizzlipede.png",
     "system": {
       "biography": "Corebook Pokedex import #850. Ability: Flash Fire.",
       "resources": {
@@ -107952,7 +107952,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Centiskorch",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/centiskorch.png",
     "system": {
       "biography": "Corebook Pokedex import #851. Ability: Flash Fire.",
       "resources": {
@@ -108079,7 +108079,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clobbopus",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/clobbopus.png",
     "system": {
       "biography": "Corebook Pokedex import #852. Ability: Limber.",
       "resources": {
@@ -108206,7 +108206,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grapploct",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grapploct.png",
     "system": {
       "biography": "Corebook Pokedex import #853. Ability: Limber.",
       "resources": {
@@ -108333,7 +108333,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sinistea",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sinistea.png",
     "system": {
       "biography": "Corebook Pokedex import #854. Ability: Weak Armor.",
       "resources": {
@@ -108460,7 +108460,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Polteageist",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/polteageist.png",
     "system": {
       "biography": "Corebook Pokedex import #855. Ability: Weak Armor.",
       "resources": {
@@ -108587,7 +108587,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hatenna",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hatenna.png",
     "system": {
       "biography": "Corebook Pokedex import #856. Ability: Healer.",
       "resources": {
@@ -108714,7 +108714,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hattrem",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hattrem.png",
     "system": {
       "biography": "Corebook Pokedex import #857. Ability: Healer.",
       "resources": {
@@ -108841,7 +108841,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hatterene",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hatterene.png",
     "system": {
       "biography": "Corebook Pokedex import #858. Ability: Healer.",
       "resources": {
@@ -108968,7 +108968,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Impidimp",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/impidimp.png",
     "system": {
       "biography": "Corebook Pokedex import #859. Ability: Prankster.",
       "resources": {
@@ -109095,7 +109095,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Morgrem",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/morgrem.png",
     "system": {
       "biography": "Corebook Pokedex import #860. Ability: Prankster.",
       "resources": {
@@ -109222,7 +109222,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grimmsnarl",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grimmsnarl.png",
     "system": {
       "biography": "Corebook Pokedex import #861. Ability: Prankster.",
       "resources": {
@@ -109349,7 +109349,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Obstagoon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/obstagoon.png",
     "system": {
       "biography": "Corebook Pokedex import #862. Ability: Reckless.",
       "resources": {
@@ -109476,7 +109476,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Perrserker",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/perrserker.png",
     "system": {
       "biography": "Corebook Pokedex import #863. Ability: Battle Armor.",
       "resources": {
@@ -109603,7 +109603,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cursola",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cursola.png",
     "system": {
       "biography": "Corebook Pokedex import #864. Ability: Weak Armor.",
       "resources": {
@@ -109730,7 +109730,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sirfetch\u2019d",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sirfetchd.png",
     "system": {
       "biography": "Corebook Pokedex import #865. Ability: Steadfast.",
       "resources": {
@@ -109857,7 +109857,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mr. Rime",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mr-rime.png",
     "system": {
       "biography": "Corebook Pokedex import #866. Ability: Tangled Feet.",
       "resources": {
@@ -109984,7 +109984,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Runerigus",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/runerigus.png",
     "system": {
       "biography": "Corebook Pokedex import #867. Ability: Wandering Spirit.",
       "resources": {
@@ -110111,7 +110111,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Milcery",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/milcery.png",
     "system": {
       "biography": "Corebook Pokedex import #868. Ability: Sweet Veil.",
       "resources": {
@@ -110238,7 +110238,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Alcremie",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/alcremie.png",
     "system": {
       "biography": "Corebook Pokedex import #869. Ability: Sweet Veil.",
       "resources": {
@@ -110365,7 +110365,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Falinks",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/falinks.png",
     "system": {
       "biography": "Corebook Pokedex import #870. Ability: Battle Armor.",
       "resources": {
@@ -110492,7 +110492,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pincurchin",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pincurchin.png",
     "system": {
       "biography": "Corebook Pokedex import #871. Ability: Lightning Rod.",
       "resources": {
@@ -110619,7 +110619,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snom",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/snom.png",
     "system": {
       "biography": "Corebook Pokedex import #872. Ability: Shield Dust.",
       "resources": {
@@ -110746,7 +110746,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Frosmoth",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/frosmoth.png",
     "system": {
       "biography": "Corebook Pokedex import #873. Ability: Shield Dust.",
       "resources": {
@@ -110873,7 +110873,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stonjourner",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stonjourner.png",
     "system": {
       "biography": "Corebook Pokedex import #874. Ability: Power Spot.",
       "resources": {
@@ -111000,7 +111000,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eiscue",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/eiscue.png",
     "system": {
       "biography": "Corebook Pokedex import #875. Ability: Ice Face.",
       "resources": {
@@ -111127,7 +111127,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Indeedee",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/indeedee.png",
     "system": {
       "biography": "Corebook Pokedex import #876. Ability: Inner Focus.",
       "resources": {
@@ -111254,7 +111254,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Morpeko",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/morpeko.png",
     "system": {
       "biography": "Corebook Pokedex import #877. Ability: Hunger Switch.",
       "resources": {
@@ -111381,7 +111381,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cufant",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/cufant.png",
     "system": {
       "biography": "Corebook Pokedex import #878. Ability: Sheer Force.",
       "resources": {
@@ -111508,7 +111508,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Copperajah",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/copperajah.png",
     "system": {
       "biography": "Corebook Pokedex import #879. Ability: Sheer Force.",
       "resources": {
@@ -111635,7 +111635,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dracozolt",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dracozolt.png",
     "system": {
       "biography": "Corebook Pokedex import #880. Ability: Volt Absorb.",
       "resources": {
@@ -111762,7 +111762,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arctozolt",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/arctozolt.png",
     "system": {
       "biography": "Corebook Pokedex import #881. Ability: Volt Absorb.",
       "resources": {
@@ -111889,7 +111889,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dracovish",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dracovish.png",
     "system": {
       "biography": "Corebook Pokedex import #882. Ability: Water Absorb.",
       "resources": {
@@ -112016,7 +112016,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arctovish",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/arctovish.png",
     "system": {
       "biography": "Corebook Pokedex import #883. Ability: Water Absorb.",
       "resources": {
@@ -112143,7 +112143,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Duraludon",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/duraludon.png",
     "system": {
       "biography": "Corebook Pokedex import #884. Ability: Light Metal.",
       "resources": {
@@ -112270,7 +112270,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dreepy",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dreepy.png",
     "system": {
       "biography": "Corebook Pokedex import #885. Ability: Clear Body.",
       "resources": {
@@ -112397,7 +112397,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drakloak",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drakloak.png",
     "system": {
       "biography": "Corebook Pokedex import #886. Ability: Clear Body.",
       "resources": {
@@ -112524,7 +112524,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragapult",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dragapult.png",
     "system": {
       "biography": "Corebook Pokedex import #887. Ability: Clear Body.",
       "resources": {
@@ -112651,7 +112651,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zacian",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zacian.png",
     "system": {
       "biography": "Corebook Pokedex import #888. Ability: Intrepid Sword.",
       "resources": {
@@ -112778,7 +112778,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zamazenta",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zamazenta.png",
     "system": {
       "biography": "Corebook Pokedex import #889. Ability: Dauntless Shield.",
       "resources": {
@@ -112905,7 +112905,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eternatus",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/eternatus.png",
     "system": {
       "biography": "Corebook Pokedex import #890. Ability: Pressure.",
       "resources": {
@@ -113032,7 +113032,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Venusaur",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/venusaur-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #003. Habitat: grassland. Ability: Thick Fat.",
       "resources": {
@@ -113159,7 +113159,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Charizard X",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/charizard-mega-x.png",
     "system": {
       "biography": "Corebook Pokedex import #006. Habitat: mountain. Ability: Tough Claws.",
       "resources": {
@@ -113286,7 +113286,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Charizard Y",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/charizard-mega-y.png",
     "system": {
       "biography": "Corebook Pokedex import #006. Habitat: mountain. Ability: Drought.",
       "resources": {
@@ -113413,7 +113413,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Blastoise",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blastoise-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #009. Habitat: water's edge. Ability: Mega Launcher.",
       "resources": {
@@ -113540,7 +113540,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Alakazam",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/alakazam-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #065. Habitat: urban. Ability: Trace.",
       "resources": {
@@ -113667,7 +113667,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Gengar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gengar-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #094. Habitat: cave. Ability: Shadow Tag.",
       "resources": {
@@ -113794,7 +113794,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Kangaskhan",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kangaskhan-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #115. Habitat: grassland. Ability: Parental Bond.",
       "resources": {
@@ -113921,7 +113921,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Pinsir",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pinsir-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #127. Habitat: forest. Ability: Aerilate.",
       "resources": {
@@ -114048,7 +114048,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Gyarados",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gyarados-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #130. Habitat: water's edge. Ability: Mold Breaker.",
       "resources": {
@@ -114175,7 +114175,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Aerodactyl",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aerodactyl-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #142. Habitat: mountain. Ability: Tough Claws.",
       "resources": {
@@ -114302,7 +114302,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Mewtwo X",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mewtwo-mega-x.png",
     "system": {
       "biography": "Corebook Pokedex import #150. Habitat: rare. Ability: Steadfast.",
       "resources": {
@@ -114429,7 +114429,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Mewtwo Y",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mewtwo-mega-y.png",
     "system": {
       "biography": "Corebook Pokedex import #150. Habitat: rare. Ability: Insomnia.",
       "resources": {
@@ -114556,7 +114556,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Ampharos",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ampharos-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #181. Habitat: grassland. Ability: Mold Breaker.",
       "resources": {
@@ -114683,7 +114683,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Scizor",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scizor-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #212. Habitat: grassland. Ability: Technician.",
       "resources": {
@@ -114810,7 +114810,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Heracross",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/heracross-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #214. Habitat: forest. Ability: Skill Link.",
       "resources": {
@@ -114937,7 +114937,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Houndoom",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/houndoom-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #229. Habitat: rough terrain. Ability: Solar Power.",
       "resources": {
@@ -115064,7 +115064,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Tyranitar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/tyranitar-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #248. Habitat: mountain. Ability: Sand Stream.",
       "resources": {
@@ -115191,7 +115191,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Blaziken",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/blaziken-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #257. Habitat: grassland. Ability: Speed Boost.",
       "resources": {
@@ -115318,7 +115318,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Gardevoir",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gardevoir-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #282. Habitat: urban. Ability: Pixilate.",
       "resources": {
@@ -115445,7 +115445,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Mawile",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mawile-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #303. Habitat: cave. Ability: Huge Power.",
       "resources": {
@@ -115572,7 +115572,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Aggron",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/aggron-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #306. Habitat: mountain. Ability: Filter.",
       "resources": {
@@ -115699,7 +115699,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Medicham",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/medicham-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #308. Habitat: mountain. Ability: Pure Power.",
       "resources": {
@@ -115826,7 +115826,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Manectric",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/manectric-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #310. Habitat: grassland. Ability: Intimidate.",
       "resources": {
@@ -115953,7 +115953,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Banette",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/banette-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #354. Habitat: urban. Ability: Prankster.",
       "resources": {
@@ -116080,7 +116080,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Absol",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/absol-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #359. Habitat: mountain. Ability: Magic Bounce.",
       "resources": {
@@ -116207,7 +116207,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Garchomp",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/garchomp-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #445. Ability: Sand Force.",
       "resources": {
@@ -116334,7 +116334,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Lucario",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lucario-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #448. Ability: Adaptability.",
       "resources": {
@@ -116461,7 +116461,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Abomasnow",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/abomasnow-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #460. Ability: Snow Warning.",
       "resources": {
@@ -116588,7 +116588,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Latias",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/latias-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #380. Habitat: water's edge. Ability: Levitate.",
       "resources": {
@@ -116715,7 +116715,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Latios",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/latios-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #381. Habitat: water's edge. Ability: Levitate.",
       "resources": {
@@ -116842,7 +116842,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Swampert",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/swampert-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #260. Habitat: water's edge. Ability: Swift Swim.",
       "resources": {
@@ -116969,7 +116969,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Sceptile",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sceptile-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #254. Habitat: forest. Ability: Lightning Rod.",
       "resources": {
@@ -117096,7 +117096,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Sableye",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sableye-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #302. Habitat: cave. Ability: Magic Bounce.",
       "resources": {
@@ -117223,7 +117223,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Altaria",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/altaria-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #334. Habitat: forest. Ability: Pixilate.",
       "resources": {
@@ -117350,7 +117350,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Gallade",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/gallade-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #475. Ability: Inner Focus.",
       "resources": {
@@ -117477,7 +117477,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Audino",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/audino-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #531. Ability: Healer.",
       "resources": {
@@ -117604,7 +117604,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Sharpedo",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sharpedo-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #319. Habitat: sea. Ability: Strong Jaw.",
       "resources": {
@@ -117731,7 +117731,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Slowbro",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slowbro-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #080. Habitat: water's edge. Ability: Shell Armor.",
       "resources": {
@@ -117858,7 +117858,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Steelix",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/steelix-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #208. Habitat: cave. Ability: Sand Force.",
       "resources": {
@@ -117985,7 +117985,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Pidgeot",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pidgeot-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #018. Habitat: forest. Ability: No Guard.",
       "resources": {
@@ -118112,7 +118112,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Glalie",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/glalie-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #362. Habitat: cave. Ability: Refrigerate.",
       "resources": {
@@ -118239,7 +118239,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Diancie",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/diancie-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #719. Ability: Magic Bounce.",
       "resources": {
@@ -118366,7 +118366,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Metagross",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/metagross-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #376. Habitat: rough terrain. Ability: Tough Claws.",
       "resources": {
@@ -118493,7 +118493,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kyogre (Primal)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/kyogre-primal.png",
     "system": {
       "biography": "Corebook Pokedex import #382. Habitat: sea. Ability: Primordial Sea.",
       "resources": {
@@ -118620,7 +118620,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Groudon (Primal)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/groudon-primal.png",
     "system": {
       "biography": "Corebook Pokedex import #383. Habitat: rough terrain. Ability: Desolate Land.",
       "resources": {
@@ -118747,7 +118747,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Rayquaza",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rayquaza-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #384. Habitat: rare. Ability: Delta Stream.",
       "resources": {
@@ -118874,7 +118874,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Camerupt",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/camerupt-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #323. Habitat: mountain. Ability: Sheer Force.",
       "resources": {
@@ -119001,7 +119001,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Lopunny",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lopunny-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #428. Ability: Scrappy.",
       "resources": {
@@ -119128,7 +119128,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Salamence",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/salamence-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #373. Habitat: rough terrain. Ability: Aerilate.",
       "resources": {
@@ -119255,7 +119255,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Beedrill",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/beedrill-mega.png",
     "system": {
       "biography": "Corebook Pokedex import #015. Habitat: forest. Ability: Adaptability.",
       "resources": {
@@ -119382,7 +119382,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rattata (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rattata-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #019. Habitat: grassland. Ability: Gluttony.",
       "resources": {
@@ -119509,7 +119509,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raticate (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raticate-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #020. Habitat: grassland. Ability: Gluttony.",
       "resources": {
@@ -119636,7 +119636,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raticate (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raticate.png",
     "system": {
       "biography": "Corebook Pokedex import #020. Habitat: grassland. Ability: Gluttony.",
       "resources": {
@@ -119763,7 +119763,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pikachu Alola Cap",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pikachu.png",
     "system": {
       "biography": "Corebook Pokedex import #025. Habitat: forest. Ability: Static.",
       "resources": {
@@ -119890,7 +119890,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raichu (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raichu-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #026. Habitat: forest. Ability: Surge Surfer.",
       "resources": {
@@ -120017,7 +120017,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandshrew (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sandshrew-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #027. Habitat: rough terrain. Ability: Snow Cloak.",
       "resources": {
@@ -120144,7 +120144,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandslash (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/sandslash-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #028. Habitat: rough terrain. Ability: Snow Cloak.",
       "resources": {
@@ -120271,7 +120271,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vulpix (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/vulpix-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #037. Habitat: grassland. Ability: Snow Cloak.",
       "resources": {
@@ -120398,7 +120398,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ninetales (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ninetales-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #038. Habitat: grassland. Ability: Snow Cloak.",
       "resources": {
@@ -120525,7 +120525,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Diglett (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/diglett-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #050. Habitat: cave. Ability: Sand Veil.",
       "resources": {
@@ -120652,7 +120652,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dugtrio (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dugtrio-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #051. Habitat: cave. Ability: Sand Veil.",
       "resources": {
@@ -120779,7 +120779,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meowth (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meowth-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #052. Habitat: urban. Ability: Pickup.",
       "resources": {
@@ -120906,7 +120906,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Persian (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/persian-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #053. Habitat: urban. Ability: Fur Coat.",
       "resources": {
@@ -121033,7 +121033,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Geodude (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/geodude-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #074. Habitat: mountain. Ability: Magnet Pull.",
       "resources": {
@@ -121160,7 +121160,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Graveler (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/graveler-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #075. Habitat: mountain. Ability: Magnet Pull.",
       "resources": {
@@ -121287,7 +121287,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golem (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golem-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #076. Habitat: mountain. Ability: Magnet Pull.",
       "resources": {
@@ -121414,7 +121414,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grimer (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/grimer-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #088. Habitat: urban. Ability: Poison Touch.",
       "resources": {
@@ -121541,7 +121541,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Muk (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/muk-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #089. Habitat: urban. Ability: Poison Touch.",
       "resources": {
@@ -121668,7 +121668,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Exeggutor (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/exeggutor-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #103. Habitat: forest. Ability: Frisk.",
       "resources": {
@@ -121795,7 +121795,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Marowak (Alola)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/marowak-alola.png",
     "system": {
       "biography": "Corebook Pokedex import #105. Habitat: mountain. Ability: Cursed Body.",
       "resources": {
@@ -121922,7 +121922,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meowth (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meowth-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #052. Habitat: urban. Ability: Pickup.",
       "resources": {
@@ -122049,7 +122049,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ponyta (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/ponyta-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #077. Habitat: grassland. Ability: Run Away.",
       "resources": {
@@ -122176,7 +122176,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rapidash (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/rapidash-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #078. Habitat: grassland. Ability: Run Away.",
       "resources": {
@@ -122303,7 +122303,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowpoke (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slowpoke-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #079. Habitat: water's edge. Ability: Gluttony.",
       "resources": {
@@ -122430,7 +122430,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowbro (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slowbro-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #080. Habitat: water's edge. Ability: Quick Draw.",
       "resources": {
@@ -122557,7 +122557,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Farfetch\u2019d (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/farfetchd-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #083. Habitat: grassland. Ability: Steadfast.",
       "resources": {
@@ -122684,7 +122684,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weezing (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/weezing-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #110. Habitat: urban. Ability: Levitate.",
       "resources": {
@@ -122811,7 +122811,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mr. Mime (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/mr-mime-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #122. Habitat: urban. Ability: Vital Spirit.",
       "resources": {
@@ -122938,7 +122938,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Articuno (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/articuno-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #144. Habitat: rare. Ability: Competitive.",
       "resources": {
@@ -123065,7 +123065,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zapdos (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zapdos-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #145. Habitat: rare. Ability: Defiant.",
       "resources": {
@@ -123192,7 +123192,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Moltres (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/moltres-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #146. Habitat: rare. Ability: Berserk.",
       "resources": {
@@ -123319,7 +123319,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowking (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/slowking-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #199. Habitat: water's edge. Ability: Curious Medicine.",
       "resources": {
@@ -123446,7 +123446,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corsola (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/corsola-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #222. Habitat: sea. Ability: Weak Armor.",
       "resources": {
@@ -123573,7 +123573,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zigzagoon (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zigzagoon-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #263. Habitat: grassland. Ability: Pickup.",
       "resources": {
@@ -123700,7 +123700,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Linoone (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/linoone-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #264. Habitat: grassland. Ability: Pickup.",
       "resources": {
@@ -123827,7 +123827,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darumaka (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/darumaka-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #554. Ability: Hustle.",
       "resources": {
@@ -123954,7 +123954,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darmanitan Galar Standard",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/darmanitan.png",
     "system": {
       "biography": "Corebook Pokedex import #555. Ability: Gorilla Tactics.",
       "resources": {
@@ -124081,7 +124081,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darmanitan Galar Zen",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/darmanitan-galar-zen.png",
     "system": {
       "biography": "Corebook Pokedex import #555. Ability: Gorilla Tactics.",
       "resources": {
@@ -124208,7 +124208,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yamask (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/yamask-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #562. Ability: Wandering Spirit.",
       "resources": {
@@ -124335,7 +124335,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stunfisk (Galar)",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/stunfisk-galar.png",
     "system": {
       "biography": "Corebook Pokedex import #618. Ability: Mimicry.",
       "resources": {
@@ -124462,7 +124462,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Clefable",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/clefable.png",
     "system": {
       "biography": "Corebook Pokedex import #036. Habitat: mountain.",
       "resources": {
@@ -124589,7 +124589,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Victreebel",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/victreebel.png",
     "system": {
       "biography": "Corebook Pokedex import #071. Habitat: forest.",
       "resources": {
@@ -124716,7 +124716,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Starmie",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/starmie.png",
     "system": {
       "biography": "Corebook Pokedex import #121. Habitat: sea.",
       "resources": {
@@ -124843,7 +124843,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Dragonite",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dragonite.png",
     "system": {
       "biography": "Corebook Pokedex import #149. Habitat: water's edge.",
       "resources": {
@@ -124970,7 +124970,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Meganium",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meganium.png",
     "system": {
       "biography": "Corebook Pokedex import #154. Habitat: grassland.",
       "resources": {
@@ -125097,7 +125097,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Feraligatr",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/feraligatr.png",
     "system": {
       "biography": "Corebook Pokedex import #160. Habitat: water's edge.",
       "resources": {
@@ -125224,7 +125224,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Skarmory",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/skarmory.png",
     "system": {
       "biography": "Corebook Pokedex import #227. Habitat: rough terrain.",
       "resources": {
@@ -125351,7 +125351,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Froslass",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/froslass.png",
     "system": {
       "biography": "Corebook Pokedex import #478.",
       "resources": {
@@ -125478,7 +125478,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Emboar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/emboar.png",
     "system": {
       "biography": "Corebook Pokedex import #500.",
       "resources": {
@@ -125605,7 +125605,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Excadrill",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/excadrill.png",
     "system": {
       "biography": "Corebook Pokedex import #530.",
       "resources": {
@@ -125732,7 +125732,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Scolipede",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scolipede.png",
     "system": {
       "biography": "Corebook Pokedex import #545.",
       "resources": {
@@ -125859,7 +125859,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Scrafty",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/scrafty.png",
     "system": {
       "biography": "Corebook Pokedex import #560.",
       "resources": {
@@ -125986,7 +125986,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Eelektross",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/eelektross.png",
     "system": {
       "biography": "Corebook Pokedex import #604.",
       "resources": {
@@ -126113,7 +126113,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Chandelure",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chandelure.png",
     "system": {
       "biography": "Corebook Pokedex import #609.",
       "resources": {
@@ -126240,7 +126240,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Chesnaught",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chesnaught.png",
     "system": {
       "biography": "Corebook Pokedex import #652.",
       "resources": {
@@ -126367,7 +126367,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Delphox",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/delphox.png",
     "system": {
       "biography": "Corebook Pokedex import #655.",
       "resources": {
@@ -126494,7 +126494,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Greninja",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/greninja.png",
     "system": {
       "biography": "Corebook Pokedex import #658.",
       "resources": {
@@ -126621,7 +126621,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Pyroar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/pyroar.png",
     "system": {
       "biography": "Corebook Pokedex import #668.",
       "resources": {
@@ -126748,7 +126748,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Floette",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/floette.png",
     "system": {
       "biography": "Corebook Pokedex import #670.",
       "resources": {
@@ -126875,7 +126875,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Malamar",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/malamar.png",
     "system": {
       "biography": "Corebook Pokedex import #687.",
       "resources": {
@@ -127002,7 +127002,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Barbaracle",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/barbaracle.png",
     "system": {
       "biography": "Corebook Pokedex import #689.",
       "resources": {
@@ -127129,7 +127129,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Dragalge",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/dragalge.png",
     "system": {
       "biography": "Corebook Pokedex import #691.",
       "resources": {
@@ -127256,7 +127256,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Hawlucha",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/hawlucha.png",
     "system": {
       "biography": "Corebook Pokedex import #701.",
       "resources": {
@@ -127383,7 +127383,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Zygarde",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zygarde.png",
     "system": {
       "biography": "Corebook Pokedex import #718.",
       "resources": {
@@ -127510,7 +127510,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Drampa",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/drampa.png",
     "system": {
       "biography": "Corebook Pokedex import #780.",
       "resources": {
@@ -127637,7 +127637,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Falinks",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/falinks.png",
     "system": {
       "biography": "Corebook Pokedex import #870.",
       "resources": {
@@ -127764,7 +127764,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Raichu X",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raichu.png",
     "system": {
       "biography": "Corebook Pokedex import #026. Habitat: forest.",
       "resources": {
@@ -127891,7 +127891,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Raichu Y",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/raichu.png",
     "system": {
       "biography": "Corebook Pokedex import #026. Habitat: forest.",
       "resources": {
@@ -128018,7 +128018,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Chimecho",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/chimecho.png",
     "system": {
       "biography": "Corebook Pokedex import #358. Habitat: grassland.",
       "resources": {
@@ -128145,7 +128145,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Absol Mega Z",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/absol.png",
     "system": {
       "biography": "Corebook Pokedex import #359. Habitat: mountain.",
       "resources": {
@@ -128272,7 +128272,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Staraptor",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/staraptor.png",
     "system": {
       "biography": "Corebook Pokedex import #398.",
       "resources": {
@@ -128399,7 +128399,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Garchomp Mega Z",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/garchomp.png",
     "system": {
       "biography": "Corebook Pokedex import #445.",
       "resources": {
@@ -128526,7 +128526,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lucario Mega Z",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/lucario.png",
     "system": {
       "biography": "Corebook Pokedex import #448.",
       "resources": {
@@ -128653,7 +128653,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Heatran",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/heatran.png",
     "system": {
       "biography": "Corebook Pokedex import #485.",
       "resources": {
@@ -128780,7 +128780,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Darkrai",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/darkrai.png",
     "system": {
       "biography": "Corebook Pokedex import #491.",
       "resources": {
@@ -128907,7 +128907,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Golurk",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golurk.png",
     "system": {
       "biography": "Corebook Pokedex import #623.",
       "resources": {
@@ -129034,7 +129034,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Meowstic",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/meowstic.png",
     "system": {
       "biography": "Corebook Pokedex import #678.",
       "resources": {
@@ -129161,7 +129161,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Crabominable",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/crabominable.png",
     "system": {
       "biography": "Corebook Pokedex import #740.",
       "resources": {
@@ -129288,7 +129288,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Golisopod",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/golisopod.png",
     "system": {
       "biography": "Corebook Pokedex import #768.",
       "resources": {
@@ -129415,7 +129415,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Magearna",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magearna.png",
     "system": {
       "biography": "Corebook Pokedex import #801.",
       "resources": {
@@ -129542,7 +129542,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Magearna",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/magearna.png",
     "system": {
       "biography": "Corebook Pokedex import #801.",
       "resources": {
@@ -129669,7 +129669,7 @@ export const POKEMON_ACTOR_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Zeraora",
     "type": "pokemon",
-    "img": "icons/svg/mystery-man.svg",
+    "img": "systems/pok-role-module/assets/pokemon/book/book/zeraora.png",
     "system": {
       "biography": "Corebook Pokedex import #807.",
       "resources": {

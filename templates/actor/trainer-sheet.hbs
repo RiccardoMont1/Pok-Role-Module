@@ -496,6 +496,20 @@
 
   <section class="sheet-section trainer-conditions-panel">
     <h2>{{localize "POKROLE.Trainer.ActiveEffects"}}</h2>
+    <div class="condition-chip-grid">
+      {{#each conditionChips as |condition|}}
+      <label class="condition-chip {{#if condition.active}}is-active{{/if}}">
+        <input
+          type="checkbox"
+          name="{{condition.fieldPath}}"
+          data-dtype="Boolean"
+          {{checked condition.active}}
+        />
+        <img src="{{condition.icon}}" alt="{{localize condition.labelPath}}" />
+        <span>{{localize condition.labelPath}}</span>
+      </label>
+      {{/each}}
+    </div>
     <textarea
       name="system.activeEffects"
       rows="4"

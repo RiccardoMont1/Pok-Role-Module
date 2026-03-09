@@ -25,9 +25,11 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
   - Item seeds include all listed Corebook items from `Trainer's Basics`, `Healing Items`, `Items for Pokemon Care`, `Evolutionary Items`, and `Held Items` (p.76-85, 107 total item entries).
   - `Moves` compendium is rebuilt from Corebook pages `346-430` (771 move items).
   - Every move entry includes description text and a `Corebook p.X` reference in the move description field.
+  - Move icons are auto-assigned by move type (`assets/types/*.svg`).
   - `Abilities` compendium is rebuilt from Corebook pages `434-471` (257 ability items), each with effect text and `Corebook p.X` in description.
   - `Pokedex` compendium is fully seeded with `#001-#890` plus supported regional/mega/primal forms (1022 pokedex items).
   - `Pokemon Actors` compendium is seeded from the same roster as playable `Actor` entries (`type: pokemon`) with prefilled stats, tier, typing, abilities, size, and weight.
+  - `Pokedex` and `Pokemon Actors` entries auto-bind artwork from `assets/pokemon/book/book/*.png` (identifier/form-aware fallback matching).
   - Manual GM-only seed command remains available in browser console for maintenance/debug:
     - `await game.pokrole.seedCompendia()`
     - `await game.pokrole.seedCompendia({ force: true })` (rebuild from seed data)
@@ -36,6 +38,8 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
   - Trainer sheet
   - Pokemon sheet
   - Pokemon `Settings` tab for per-actor track maximums (saved on that actor only)
+  - Ailment quick toggles (Sleep, Burn, Frozen, Paralyzed, Poisoned, Fainted) on Trainer and Pokemon sheets, with icon chips
+  - Pokemon matchup panel rendered with multiplier icons (`1/2`, `1/4`, `x2`, `x4`, `x0`) plus type icons
   - Move item sheet
   - Gear item sheet
   - Playable reference item sheets: `ability`, `weather`, `status`, `pokedex`
@@ -106,6 +110,7 @@ Important: do not use the GitHub `.../blob/...` URL, because Foundry expects raw
 - `system.json`: Foundry system manifest
 - `pok-role-module.mjs`: system bootstrap
 - `module/`: data models, documents, sheets
+- `assets/`: static assets (Pokeball pattern, move type icons, ailments, generic icon set)
 - `module/seeds/generated/`: generated datasets for `moves`, `abilities`, `pokedex`, and `pokemon actor` compendia
 - `packs/`: compendium pack databases (v13 LevelDB folders)
 - `templates/`: handlebars sheets/chat card
@@ -113,6 +118,9 @@ Important: do not use the GitHub `.../blob/...` URL, because Foundry expects raw
 - `lang/`: localization files
 - `tools/build_compendium_seeds.py`: regenerates `moves`, `abilities`, `pokedex`, and `pokemon actor` seed modules
 - `tools/build_static_compendia.mjs`: compiles hard-coded seed data into static `packs/*` LevelDB compendia
+
+Asset source:
+- `assets/types`, `assets/ailments`, `assets/icons` are sourced from `Pokerole-Software-Development/foundry-pokerole` (`images/` at commit `2aa9834587ff02a91789fb2ff61e8472d18d31c6`).
 
 ## Compendia Usage
 
