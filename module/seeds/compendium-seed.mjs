@@ -4,7 +4,7 @@ import { POKEDEX_COMPENDIUM_ENTRIES } from "./generated/pokedex-seeds.mjs";
 import { ABILITY_COMPENDIUM_ENTRIES } from "./generated/ability-seeds.mjs";
 import { POKEMON_ACTOR_COMPENDIUM_ENTRIES } from "./generated/pokemon-actor-seeds.mjs";
 
-export const COMPENDIUM_SEED_VERSION = "2026-03-09-corebook-moves-abilities-pokemon-actors-v3";
+export const COMPENDIUM_SEED_VERSION = "2026-03-09-corebook-moves-abilities-pokemon-actors-v4";
 const VALID_ITEM_TYPES = new Set(["move", "gear", "ability", "weather", "status", "pokedex"]);
 const VALID_ACTOR_TYPES = new Set(["trainer", "pokemon"]);
 

@@ -47,7 +47,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/venusaur.png",
     "system": {
       "dexNumber": 3,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "grass",
       "secondaryType": "poison",
       "habitats": "grassland",
@@ -110,7 +110,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/charizard.png",
     "system": {
       "dexNumber": 6,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "flying",
       "habitats": "mountain",
@@ -173,7 +173,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/blastoise.png",
     "system": {
       "dexNumber": 9,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "water's edge",
@@ -215,7 +215,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/metapod.png",
     "system": {
       "dexNumber": 11,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "bug",
       "secondaryType": "none",
       "habitats": "forest",
@@ -278,7 +278,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/kakuna.png",
     "system": {
       "dexNumber": 14,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "bug",
       "secondaryType": "poison",
       "habitats": "forest",
@@ -341,7 +341,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/pidgeotto.png",
     "system": {
       "dexNumber": 17,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "normal",
       "secondaryType": "flying",
       "habitats": "forest",
@@ -446,7 +446,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/fearow.png",
     "system": {
       "dexNumber": 22,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "normal",
       "secondaryType": "flying",
       "habitats": "rough terrain",
@@ -467,7 +467,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/ekans.png",
     "system": {
       "dexNumber": 23,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "poison",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -488,7 +488,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/arbok.png",
     "system": {
       "dexNumber": 24,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "poison",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -530,7 +530,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/raichu.png",
     "system": {
       "dexNumber": 26,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "forest",
@@ -551,7 +551,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/sandshrew.png",
     "system": {
       "dexNumber": 27,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "ground",
       "secondaryType": "none",
       "habitats": "rough terrain",
@@ -572,7 +572,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/sandslash.png",
     "system": {
       "dexNumber": 28,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "ground",
       "secondaryType": "none",
       "habitats": "rough terrain",
@@ -614,7 +614,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/nidorina.png",
     "system": {
       "dexNumber": 30,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "poison",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -677,7 +677,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/nidorino.png",
     "system": {
       "dexNumber": 33,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "poison",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -761,7 +761,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/vulpix.png",
     "system": {
       "dexNumber": 37,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "fire",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -782,7 +782,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/ninetales.png",
     "system": {
       "dexNumber": 38,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -803,7 +803,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/jigglypuff.png",
     "system": {
       "dexNumber": 39,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "normal",
       "secondaryType": "fairy",
       "habitats": "grassland",
@@ -950,7 +950,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/paras.png",
     "system": {
       "dexNumber": 46,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "bug",
       "secondaryType": "grass",
       "habitats": "forest",
@@ -1013,7 +1013,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/venomoth.png",
     "system": {
       "dexNumber": 49,
-      "rank": "amateur",
+      "rank": "master",
       "primaryType": "bug",
       "secondaryType": "poison",
       "habitats": "forest",
@@ -1034,7 +1034,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/diglett.png",
     "system": {
       "dexNumber": 50,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "ground",
       "secondaryType": "none",
       "habitats": "cave",
@@ -1055,7 +1055,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/dugtrio.png",
     "system": {
       "dexNumber": 51,
-      "rank": "amateur",
+      "rank": "master",
       "primaryType": "ground",
       "secondaryType": "none",
       "habitats": "cave",
@@ -1097,7 +1097,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/persian.png",
     "system": {
       "dexNumber": 53,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "urban",
@@ -1181,7 +1181,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/primeape.png",
     "system": {
       "dexNumber": 57,
-      "rank": "amateur",
+      "rank": "master",
       "primaryType": "fighting",
       "secondaryType": "none",
       "habitats": "mountain",
@@ -1223,7 +1223,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/arcanine.png",
     "system": {
       "dexNumber": 59,
-      "rank": "pro",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -1286,7 +1286,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/poliwrath.png",
     "system": {
       "dexNumber": 62,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "fighting",
       "habitats": "water's edge",
@@ -1307,7 +1307,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/abra.png",
     "system": {
       "dexNumber": 63,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "urban",
@@ -1328,7 +1328,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/kadabra.png",
     "system": {
       "dexNumber": 64,
-      "rank": "amateur",
+      "rank": "master",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "urban",
@@ -1349,7 +1349,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/alakazam.png",
     "system": {
       "dexNumber": 65,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "urban",
@@ -1391,7 +1391,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/machoke.png",
     "system": {
       "dexNumber": 67,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "fighting",
       "secondaryType": "none",
       "habitats": "mountain",
@@ -1412,7 +1412,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/machamp.png",
     "system": {
       "dexNumber": 68,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fighting",
       "secondaryType": "none",
       "habitats": "mountain",
@@ -1475,7 +1475,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/victreebel.png",
     "system": {
       "dexNumber": 71,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "grass",
       "secondaryType": "poison",
       "habitats": "forest",
@@ -1496,7 +1496,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/tentacool.png",
     "system": {
       "dexNumber": 72,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "water",
       "secondaryType": "poison",
       "habitats": "sea",
@@ -1517,7 +1517,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/tentacruel.png",
     "system": {
       "dexNumber": 73,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "poison",
       "habitats": "sea",
@@ -1538,7 +1538,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/geodude.png",
     "system": {
       "dexNumber": 74,
-      "rank": "starter",
+      "rank": "amateur",
       "primaryType": "rock",
       "secondaryType": "ground",
       "habitats": "mountain",
@@ -1559,7 +1559,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/graveler.png",
     "system": {
       "dexNumber": 75,
-      "rank": "amateur",
+      "rank": "master",
       "primaryType": "rock",
       "secondaryType": "ground",
       "habitats": "mountain",
@@ -1580,7 +1580,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/golem.png",
     "system": {
       "dexNumber": 76,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "rock",
       "secondaryType": "ground",
       "habitats": "mountain",
@@ -1601,7 +1601,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/ponyta.png",
     "system": {
       "dexNumber": 77,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "fire",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -1622,7 +1622,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/rapidash.png",
     "system": {
       "dexNumber": 78,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -1706,7 +1706,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/magneton.png",
     "system": {
       "dexNumber": 82,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "electric",
       "secondaryType": "steel",
       "habitats": "rough terrain",
@@ -1727,7 +1727,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/farfetchd.png",
     "system": {
       "dexNumber": 83,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "normal",
       "secondaryType": "flying",
       "habitats": "grassland",
@@ -1811,7 +1811,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/dewgong.png",
     "system": {
       "dexNumber": 87,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "water",
       "secondaryType": "ice",
       "habitats": "sea",
@@ -1832,7 +1832,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/grimer.png",
     "system": {
       "dexNumber": 88,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "poison",
       "secondaryType": "none",
       "habitats": "urban",
@@ -1853,7 +1853,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/muk.png",
     "system": {
       "dexNumber": 89,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "poison",
       "secondaryType": "none",
       "habitats": "urban",
@@ -1874,7 +1874,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/shellder.png",
     "system": {
       "dexNumber": 90,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "sea",
@@ -1895,7 +1895,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/cloyster.png",
     "system": {
       "dexNumber": 91,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "ice",
       "habitats": "sea",
@@ -1916,7 +1916,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/gastly.png",
     "system": {
       "dexNumber": 92,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "ghost",
       "secondaryType": "poison",
       "habitats": "cave",
@@ -1937,7 +1937,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/haunter.png",
     "system": {
       "dexNumber": 93,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "ghost",
       "secondaryType": "poison",
       "habitats": "cave",
@@ -1958,7 +1958,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/gengar.png",
     "system": {
       "dexNumber": 94,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ghost",
       "secondaryType": "poison",
       "habitats": "cave",
@@ -1979,7 +1979,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/onix.png",
     "system": {
       "dexNumber": 95,
-      "rank": "amateur",
+      "rank": "master",
       "primaryType": "rock",
       "secondaryType": "ground",
       "habitats": "cave",
@@ -2000,7 +2000,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/drowzee.png",
     "system": {
       "dexNumber": 96,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -2042,7 +2042,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/krabby.png",
     "system": {
       "dexNumber": 98,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "water's edge",
@@ -2084,7 +2084,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/voltorb.png",
     "system": {
       "dexNumber": 100,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "urban",
@@ -2105,7 +2105,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/electrode.png",
     "system": {
       "dexNumber": 101,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "urban",
@@ -2168,7 +2168,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/cubone.png",
     "system": {
       "dexNumber": 104,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "ground",
       "secondaryType": "none",
       "habitats": "mountain",
@@ -2189,7 +2189,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/marowak.png",
     "system": {
       "dexNumber": 105,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "ground",
       "secondaryType": "none",
       "habitats": "mountain",
@@ -2210,7 +2210,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/hitmonlee.png",
     "system": {
       "dexNumber": 106,
-      "rank": "amateur",
+      "rank": "master",
       "primaryType": "fighting",
       "secondaryType": "none",
       "habitats": "urban",
@@ -2231,7 +2231,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/hitmonchan.png",
     "system": {
       "dexNumber": 107,
-      "rank": "amateur",
+      "rank": "master",
       "primaryType": "fighting",
       "secondaryType": "none",
       "habitats": "urban",
@@ -2273,7 +2273,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/koffing.png",
     "system": {
       "dexNumber": 109,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "poison",
       "secondaryType": "none",
       "habitats": "urban",
@@ -2315,7 +2315,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/rhyhorn.png",
     "system": {
       "dexNumber": 111,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "ground",
       "secondaryType": "rock",
       "habitats": "rough terrain",
@@ -2357,7 +2357,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/chansey.png",
     "system": {
       "dexNumber": 113,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "urban",
@@ -2378,7 +2378,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/tangela.png",
     "system": {
       "dexNumber": 114,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -2420,7 +2420,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/horsea.png",
     "system": {
       "dexNumber": 116,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "sea",
@@ -2441,7 +2441,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/seadra.png",
     "system": {
       "dexNumber": 117,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "sea",
@@ -2483,7 +2483,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/seaking.png",
     "system": {
       "dexNumber": 119,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "water's edge",
@@ -2546,7 +2546,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/mr-mime.png",
     "system": {
       "dexNumber": 122,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "psychic",
       "secondaryType": "fairy",
       "habitats": "urban",
@@ -2588,7 +2588,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/jynx.png",
     "system": {
       "dexNumber": 124,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "ice",
       "secondaryType": "psychic",
       "habitats": "urban",
@@ -2672,7 +2672,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/tauros.png",
     "system": {
       "dexNumber": 128,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -2714,7 +2714,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/gyarados.png",
     "system": {
       "dexNumber": 130,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "flying",
       "habitats": "water's edge",
@@ -2756,7 +2756,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/ditto.png",
     "system": {
       "dexNumber": 132,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "urban",
@@ -2861,7 +2861,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/porygon.png",
     "system": {
       "dexNumber": 137,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "urban",
@@ -2882,7 +2882,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/omanyte.png",
     "system": {
       "dexNumber": 138,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "rock",
       "secondaryType": "water",
       "habitats": "sea",
@@ -2903,7 +2903,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/omastar.png",
     "system": {
       "dexNumber": 139,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "rock",
       "secondaryType": "water",
       "habitats": "sea",
@@ -2924,7 +2924,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/kabuto.png",
     "system": {
       "dexNumber": 140,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "rock",
       "secondaryType": "water",
       "habitats": "sea",
@@ -2945,7 +2945,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/kabutops.png",
     "system": {
       "dexNumber": 141,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "rock",
       "secondaryType": "water",
       "habitats": "sea",
@@ -2966,7 +2966,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/aerodactyl.png",
     "system": {
       "dexNumber": 142,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "rock",
       "secondaryType": "flying",
       "habitats": "mountain",
@@ -2987,7 +2987,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/snorlax.png",
     "system": {
       "dexNumber": 143,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "mountain",
@@ -3071,7 +3071,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/dratini.png",
     "system": {
       "dexNumber": 147,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "dragon",
       "secondaryType": "none",
       "habitats": "water's edge",
@@ -3092,7 +3092,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/dragonair.png",
     "system": {
       "dexNumber": 148,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "dragon",
       "secondaryType": "none",
       "habitats": "water's edge",
@@ -3113,7 +3113,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/dragonite.png",
     "system": {
       "dexNumber": 149,
-      "rank": "pro",
+      "rank": "master",
       "primaryType": "dragon",
       "secondaryType": "flying",
       "habitats": "water's edge",
@@ -3134,7 +3134,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/mewtwo.png",
     "system": {
       "dexNumber": 150,
-      "rank": "master",
+      "rank": "pro",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "rare",
@@ -3218,7 +3218,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/meganium.png",
     "system": {
       "dexNumber": 154,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -3281,7 +3281,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/typhlosion.png",
     "system": {
       "dexNumber": 157,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -3344,7 +3344,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/feraligatr.png",
     "system": {
       "dexNumber": 160,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "water's edge",
@@ -3428,7 +3428,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/noctowl.png",
     "system": {
       "dexNumber": 164,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "normal",
       "secondaryType": "flying",
       "habitats": "forest",
@@ -3470,7 +3470,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/ledian.png",
     "system": {
       "dexNumber": 166,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "bug",
       "secondaryType": "flying",
       "habitats": "forest",
@@ -3512,7 +3512,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/ariados.png",
     "system": {
       "dexNumber": 168,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "bug",
       "secondaryType": "poison",
       "habitats": "forest",
@@ -3533,7 +3533,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/crobat.png",
     "system": {
       "dexNumber": 169,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "poison",
       "secondaryType": "flying",
       "habitats": "cave",
@@ -3575,7 +3575,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/lanturn.png",
     "system": {
       "dexNumber": 171,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "water",
       "secondaryType": "electric",
       "habitats": "sea",
@@ -3680,7 +3680,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/togetic.png",
     "system": {
       "dexNumber": 176,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "fairy",
       "secondaryType": "flying",
       "habitats": "forest",
@@ -3764,7 +3764,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/flaaffy.png",
     "system": {
       "dexNumber": 180,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -3827,7 +3827,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/marill.png",
     "system": {
       "dexNumber": 183,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "water",
       "secondaryType": "fairy",
       "habitats": "water's edge",
@@ -3848,7 +3848,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/azumarill.png",
     "system": {
       "dexNumber": 184,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "water",
       "secondaryType": "fairy",
       "habitats": "water's edge",
@@ -3869,7 +3869,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/sudowoodo.png",
     "system": {
       "dexNumber": 185,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "rock",
       "secondaryType": "none",
       "habitats": "forest",
@@ -3890,7 +3890,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/politoed.png",
     "system": {
       "dexNumber": 186,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "water's edge",
@@ -3932,7 +3932,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/skiploom.png",
     "system": {
       "dexNumber": 188,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "grass",
       "secondaryType": "flying",
       "habitats": "grassland",
@@ -3953,7 +3953,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/jumpluff.png",
     "system": {
       "dexNumber": 189,
-      "rank": "amateur",
+      "rank": "master",
       "primaryType": "grass",
       "secondaryType": "flying",
       "habitats": "grassland",
@@ -4016,7 +4016,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/sunflora.png",
     "system": {
       "dexNumber": 192,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -4079,7 +4079,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/quagsire.png",
     "system": {
       "dexNumber": 195,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "water",
       "secondaryType": "ground",
       "habitats": "water's edge",
@@ -4142,7 +4142,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/murkrow.png",
     "system": {
       "dexNumber": 198,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "dark",
       "secondaryType": "flying",
       "habitats": "forest",
@@ -4184,7 +4184,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/misdreavus.png",
     "system": {
       "dexNumber": 200,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "ghost",
       "secondaryType": "none",
       "habitats": "cave",
@@ -4205,7 +4205,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/unown.png",
     "system": {
       "dexNumber": 201,
-      "rank": "beginner",
+      "rank": "starter",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "rare",
@@ -4226,7 +4226,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/wobbuffet.png",
     "system": {
       "dexNumber": 202,
-      "rank": "amateur",
+      "rank": "master",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "cave",
@@ -4352,7 +4352,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/steelix.png",
     "system": {
       "dexNumber": 208,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "steel",
       "secondaryType": "ground",
       "habitats": "cave",
@@ -4394,7 +4394,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/granbull.png",
     "system": {
       "dexNumber": 210,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "fairy",
       "secondaryType": "none",
       "habitats": "urban",
@@ -4436,7 +4436,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/scizor.png",
     "system": {
       "dexNumber": 212,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "bug",
       "secondaryType": "steel",
       "habitats": "grassland",
@@ -4583,7 +4583,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/magcargo.png",
     "system": {
       "dexNumber": 219,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "fire",
       "secondaryType": "rock",
       "habitats": "mountain",
@@ -4625,7 +4625,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/piloswine.png",
     "system": {
       "dexNumber": 221,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "ice",
       "secondaryType": "ground",
       "habitats": "cave",
@@ -4646,7 +4646,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/corsola.png",
     "system": {
       "dexNumber": 222,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "water",
       "secondaryType": "rock",
       "habitats": "sea",
@@ -4667,7 +4667,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/remoraid.png",
     "system": {
       "dexNumber": 223,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "sea",
@@ -4751,7 +4751,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/skarmory.png",
     "system": {
       "dexNumber": 227,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "steel",
       "secondaryType": "flying",
       "habitats": "rough terrain",
@@ -4793,7 +4793,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/houndoom.png",
     "system": {
       "dexNumber": 229,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "dark",
       "secondaryType": "fire",
       "habitats": "rough terrain",
@@ -4814,7 +4814,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/kingdra.png",
     "system": {
       "dexNumber": 230,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "dragon",
       "habitats": "sea",
@@ -4835,7 +4835,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/phanpy.png",
     "system": {
       "dexNumber": 231,
-      "rank": "beginner",
+      "rank": "starter",
       "primaryType": "ground",
       "secondaryType": "none",
       "habitats": "rough terrain",
@@ -4856,7 +4856,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/donphan.png",
     "system": {
       "dexNumber": 232,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ground",
       "secondaryType": "none",
       "habitats": "rough terrain",
@@ -4898,7 +4898,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/stantler.png",
     "system": {
       "dexNumber": 234,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "forest",
@@ -4919,7 +4919,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/smeargle.png",
     "system": {
       "dexNumber": 235,
-      "rank": "starter",
+      "rank": "ace",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "urban",
@@ -4961,7 +4961,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/hitmontop.png",
     "system": {
       "dexNumber": 237,
-      "rank": "amateur",
+      "rank": "master",
       "primaryType": "fighting",
       "secondaryType": "none",
       "habitats": "urban",
@@ -5150,7 +5150,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/larvitar.png",
     "system": {
       "dexNumber": 246,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "rock",
       "secondaryType": "ground",
       "habitats": "mountain",
@@ -5192,7 +5192,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/tyranitar.png",
     "system": {
       "dexNumber": 248,
-      "rank": "pro",
+      "rank": "master",
       "primaryType": "rock",
       "secondaryType": "dark",
       "habitats": "mountain",
@@ -5213,7 +5213,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/lugia.png",
     "system": {
       "dexNumber": 249,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "psychic",
       "secondaryType": "flying",
       "habitats": "rare",
@@ -5234,7 +5234,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/ho-oh.png",
     "system": {
       "dexNumber": 250,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "fire",
       "secondaryType": "flying",
       "habitats": "rare",
@@ -5318,7 +5318,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/sceptile.png",
     "system": {
       "dexNumber": 254,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "forest",
@@ -5381,7 +5381,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/blaziken.png",
     "system": {
       "dexNumber": 257,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "fighting",
       "habitats": "grassland",
@@ -5444,7 +5444,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/swampert.png",
     "system": {
       "dexNumber": 260,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "ground",
       "habitats": "water's edge",
@@ -5465,7 +5465,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/poochyena.png",
     "system": {
       "dexNumber": 261,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "dark",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -5486,7 +5486,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/mightyena.png",
     "system": {
       "dexNumber": 262,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "dark",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -5507,7 +5507,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/zigzagoon.png",
     "system": {
       "dexNumber": 263,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -5570,7 +5570,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/silcoon.png",
     "system": {
       "dexNumber": 266,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "bug",
       "secondaryType": "none",
       "habitats": "forest",
@@ -5612,7 +5612,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/cascoon.png",
     "system": {
       "dexNumber": 268,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "bug",
       "secondaryType": "none",
       "habitats": "forest",
@@ -5654,7 +5654,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/lotad.png",
     "system": {
       "dexNumber": 270,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "water",
       "secondaryType": "grass",
       "habitats": "water's edge",
@@ -5675,7 +5675,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/lombre.png",
     "system": {
       "dexNumber": 271,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "water",
       "secondaryType": "grass",
       "habitats": "water's edge",
@@ -5738,7 +5738,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/nuzleaf.png",
     "system": {
       "dexNumber": 274,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "grass",
       "secondaryType": "dark",
       "habitats": "forest",
@@ -5780,7 +5780,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/taillow.png",
     "system": {
       "dexNumber": 276,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "normal",
       "secondaryType": "flying",
       "habitats": "grassland",
@@ -5801,7 +5801,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/swellow.png",
     "system": {
       "dexNumber": 277,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "normal",
       "secondaryType": "flying",
       "habitats": "grassland",
@@ -5822,7 +5822,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/wingull.png",
     "system": {
       "dexNumber": 278,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "water",
       "secondaryType": "flying",
       "habitats": "sea",
@@ -5843,7 +5843,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/pelipper.png",
     "system": {
       "dexNumber": 279,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "water",
       "secondaryType": "flying",
       "habitats": "sea",
@@ -5864,7 +5864,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/ralts.png",
     "system": {
       "dexNumber": 280,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "psychic",
       "secondaryType": "fairy",
       "habitats": "urban",
@@ -5885,7 +5885,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/kirlia.png",
     "system": {
       "dexNumber": 281,
-      "rank": "starter",
+      "rank": "amateur",
       "primaryType": "psychic",
       "secondaryType": "fairy",
       "habitats": "urban",
@@ -5906,7 +5906,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/gardevoir.png",
     "system": {
       "dexNumber": 282,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "psychic",
       "secondaryType": "fairy",
       "habitats": "urban",
@@ -6011,7 +6011,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/slakoth.png",
     "system": {
       "dexNumber": 287,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "forest",
@@ -6032,7 +6032,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/vigoroth.png",
     "system": {
       "dexNumber": 288,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "forest",
@@ -6074,7 +6074,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/nincada.png",
     "system": {
       "dexNumber": 290,
-      "rank": "starter",
+      "rank": "amateur",
       "primaryType": "bug",
       "secondaryType": "ground",
       "habitats": "forest",
@@ -6095,7 +6095,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/ninjask.png",
     "system": {
       "dexNumber": 291,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "bug",
       "secondaryType": "flying",
       "habitats": "forest",
@@ -6116,7 +6116,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/shedinja.png",
     "system": {
       "dexNumber": 292,
-      "rank": "starter",
+      "rank": "ace",
       "primaryType": "bug",
       "secondaryType": "ghost",
       "habitats": "forest",
@@ -6158,7 +6158,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/loudred.png",
     "system": {
       "dexNumber": 294,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "cave",
@@ -6179,7 +6179,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/exploud.png",
     "system": {
       "dexNumber": 295,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "cave",
@@ -6200,7 +6200,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/makuhita.png",
     "system": {
       "dexNumber": 296,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "fighting",
       "secondaryType": "none",
       "habitats": "mountain",
@@ -6221,7 +6221,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/hariyama.png",
     "system": {
       "dexNumber": 297,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fighting",
       "secondaryType": "none",
       "habitats": "mountain",
@@ -6263,7 +6263,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/nosepass.png",
     "system": {
       "dexNumber": 299,
-      "rank": "beginner",
+      "rank": "ace",
       "primaryType": "rock",
       "secondaryType": "none",
       "habitats": "cave",
@@ -6326,7 +6326,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/sableye.png",
     "system": {
       "dexNumber": 302,
-      "rank": "beginner",
+      "rank": "ace",
       "primaryType": "dark",
       "secondaryType": "ghost",
       "habitats": "cave",
@@ -6347,7 +6347,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/mawile.png",
     "system": {
       "dexNumber": 303,
-      "rank": "beginner",
+      "rank": "ace",
       "primaryType": "steel",
       "secondaryType": "fairy",
       "habitats": "cave",
@@ -6368,7 +6368,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/aron.png",
     "system": {
       "dexNumber": 304,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "steel",
       "secondaryType": "rock",
       "habitats": "mountain",
@@ -6389,7 +6389,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/lairon.png",
     "system": {
       "dexNumber": 305,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "steel",
       "secondaryType": "rock",
       "habitats": "mountain",
@@ -6410,7 +6410,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/aggron.png",
     "system": {
       "dexNumber": 306,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "steel",
       "secondaryType": "rock",
       "habitats": "mountain",
@@ -6431,7 +6431,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/meditite.png",
     "system": {
       "dexNumber": 307,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "fighting",
       "secondaryType": "psychic",
       "habitats": "mountain",
@@ -6452,7 +6452,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/medicham.png",
     "system": {
       "dexNumber": 308,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "fighting",
       "secondaryType": "psychic",
       "habitats": "mountain",
@@ -6473,7 +6473,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/electrike.png",
     "system": {
       "dexNumber": 309,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -6515,7 +6515,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/plusle.png",
     "system": {
       "dexNumber": 311,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -6536,7 +6536,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/minun.png",
     "system": {
       "dexNumber": 312,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -6599,7 +6599,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/roselia.png",
     "system": {
       "dexNumber": 315,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "grass",
       "secondaryType": "poison",
       "habitats": "grassland",
@@ -6662,7 +6662,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/carvanha.png",
     "system": {
       "dexNumber": 318,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "water",
       "secondaryType": "dark",
       "habitats": "sea",
@@ -6683,7 +6683,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/sharpedo.png",
     "system": {
       "dexNumber": 319,
-      "rank": "amateur",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "dark",
       "habitats": "sea",
@@ -6725,7 +6725,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/wailord.png",
     "system": {
       "dexNumber": 321,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "sea",
@@ -6767,7 +6767,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/camerupt.png",
     "system": {
       "dexNumber": 323,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "fire",
       "secondaryType": "ground",
       "habitats": "mountain",
@@ -6830,7 +6830,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/grumpig.png",
     "system": {
       "dexNumber": 326,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "mountain",
@@ -6872,7 +6872,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/trapinch.png",
     "system": {
       "dexNumber": 328,
-      "rank": "starter",
+      "rank": "amateur",
       "primaryType": "ground",
       "secondaryType": "none",
       "habitats": "rough terrain",
@@ -6893,7 +6893,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/vibrava.png",
     "system": {
       "dexNumber": 329,
-      "rank": "beginner",
+      "rank": "ace",
       "primaryType": "ground",
       "secondaryType": "dragon",
       "habitats": "rough terrain",
@@ -6914,7 +6914,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/flygon.png",
     "system": {
       "dexNumber": 330,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ground",
       "secondaryType": "dragon",
       "habitats": "rough terrain",
@@ -6977,7 +6977,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/swablu.png",
     "system": {
       "dexNumber": 333,
-      "rank": "beginner",
+      "rank": "starter",
       "primaryType": "normal",
       "secondaryType": "flying",
       "habitats": "forest",
@@ -6998,7 +6998,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/altaria.png",
     "system": {
       "dexNumber": 334,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "dragon",
       "secondaryType": "flying",
       "habitats": "forest",
@@ -7019,7 +7019,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/zangoose.png",
     "system": {
       "dexNumber": 335,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -7040,7 +7040,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/seviper.png",
     "system": {
       "dexNumber": 336,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "poison",
       "secondaryType": "none",
       "habitats": "grassland",
@@ -7061,7 +7061,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/lunatone.png",
     "system": {
       "dexNumber": 337,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "rock",
       "secondaryType": "psychic",
       "habitats": "cave",
@@ -7082,7 +7082,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/solrock.png",
     "system": {
       "dexNumber": 338,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "rock",
       "secondaryType": "psychic",
       "habitats": "cave",
@@ -7166,7 +7166,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/crawdaunt.png",
     "system": {
       "dexNumber": 342,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "dark",
       "habitats": "water's edge",
@@ -7187,7 +7187,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/baltoy.png",
     "system": {
       "dexNumber": 343,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "ground",
       "secondaryType": "psychic",
       "habitats": "rough terrain",
@@ -7334,7 +7334,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/milotic.png",
     "system": {
       "dexNumber": 350,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "water's edge",
@@ -7397,7 +7397,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/shuppet.png",
     "system": {
       "dexNumber": 353,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "ghost",
       "secondaryType": "none",
       "habitats": "urban",
@@ -7418,7 +7418,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/banette.png",
     "system": {
       "dexNumber": 354,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "ghost",
       "secondaryType": "none",
       "habitats": "urban",
@@ -7439,7 +7439,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/duskull.png",
     "system": {
       "dexNumber": 355,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "ghost",
       "secondaryType": "none",
       "habitats": "forest",
@@ -7460,7 +7460,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/dusclops.png",
     "system": {
       "dexNumber": 356,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "ghost",
       "secondaryType": "none",
       "habitats": "forest",
@@ -7565,7 +7565,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/snorunt.png",
     "system": {
       "dexNumber": 361,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "ice",
       "secondaryType": "none",
       "habitats": "cave",
@@ -7607,7 +7607,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/spheal.png",
     "system": {
       "dexNumber": 363,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "ice",
       "secondaryType": "water",
       "habitats": "sea",
@@ -7649,7 +7649,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/walrein.png",
     "system": {
       "dexNumber": 365,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ice",
       "secondaryType": "water",
       "habitats": "sea",
@@ -7670,7 +7670,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/clamperl.png",
     "system": {
       "dexNumber": 366,
-      "rank": "beginner",
+      "rank": "starter",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "sea",
@@ -7691,7 +7691,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/huntail.png",
     "system": {
       "dexNumber": 367,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "sea",
@@ -7712,7 +7712,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/gorebyss.png",
     "system": {
       "dexNumber": 368,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "sea",
@@ -7733,7 +7733,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/relicanth.png",
     "system": {
       "dexNumber": 369,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "water",
       "secondaryType": "rock",
       "habitats": "sea",
@@ -7754,7 +7754,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/luvdisc.png",
     "system": {
       "dexNumber": 370,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "sea",
@@ -7775,7 +7775,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/bagon.png",
     "system": {
       "dexNumber": 371,
-      "rank": "starter",
+      "rank": "amateur",
       "primaryType": "dragon",
       "secondaryType": "none",
       "habitats": "rough terrain",
@@ -7796,7 +7796,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/shelgon.png",
     "system": {
       "dexNumber": 372,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "dragon",
       "secondaryType": "none",
       "habitats": "rough terrain",
@@ -7817,7 +7817,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/salamence.png",
     "system": {
       "dexNumber": 373,
-      "rank": "pro",
+      "rank": "master",
       "primaryType": "dragon",
       "secondaryType": "flying",
       "habitats": "rough terrain",
@@ -7859,7 +7859,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/metang.png",
     "system": {
       "dexNumber": 375,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "steel",
       "secondaryType": "psychic",
       "habitats": "rough terrain",
@@ -7880,7 +7880,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/metagross.png",
     "system": {
       "dexNumber": 376,
-      "rank": "pro",
+      "rank": "master",
       "primaryType": "steel",
       "secondaryType": "psychic",
       "habitats": "rough terrain",
@@ -8006,7 +8006,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/kyogre.png",
     "system": {
       "dexNumber": 382,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "sea",
@@ -8027,7 +8027,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/groudon.png",
     "system": {
       "dexNumber": 383,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "ground",
       "secondaryType": "none",
       "habitats": "rough terrain",
@@ -8048,7 +8048,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/rayquaza.png",
     "system": {
       "dexNumber": 384,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "dragon",
       "secondaryType": "flying",
       "habitats": "rare",
@@ -8153,7 +8153,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/torterra.png",
     "system": {
       "dexNumber": 389,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "grass",
       "secondaryType": "ground",
       "habitats": "",
@@ -8216,7 +8216,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/infernape.png",
     "system": {
       "dexNumber": 392,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "fighting",
       "habitats": "",
@@ -8279,7 +8279,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/empoleon.png",
     "system": {
       "dexNumber": 395,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "steel",
       "habitats": "",
@@ -8321,7 +8321,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/staravia.png",
     "system": {
       "dexNumber": 397,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "normal",
       "secondaryType": "flying",
       "habitats": "",
@@ -8342,7 +8342,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/staraptor.png",
     "system": {
       "dexNumber": 398,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "normal",
       "secondaryType": "flying",
       "habitats": "",
@@ -8447,7 +8447,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/shinx.png",
     "system": {
       "dexNumber": 403,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "",
@@ -8468,7 +8468,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/luxio.png",
     "system": {
       "dexNumber": 404,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "",
@@ -8489,7 +8489,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/luxray.png",
     "system": {
       "dexNumber": 405,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "",
@@ -8531,7 +8531,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/roserade.png",
     "system": {
       "dexNumber": 407,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "grass",
       "secondaryType": "poison",
       "habitats": "",
@@ -8552,7 +8552,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/cranidos.png",
     "system": {
       "dexNumber": 408,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "rock",
       "secondaryType": "none",
       "habitats": "",
@@ -8573,7 +8573,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/rampardos.png",
     "system": {
       "dexNumber": 409,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "rock",
       "secondaryType": "none",
       "habitats": "",
@@ -8594,7 +8594,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/shieldon.png",
     "system": {
       "dexNumber": 410,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "rock",
       "secondaryType": "steel",
       "habitats": "",
@@ -8720,7 +8720,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/vespiquen.png",
     "system": {
       "dexNumber": 416,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "bug",
       "secondaryType": "flying",
       "habitats": "",
@@ -8741,7 +8741,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/pachirisu.png",
     "system": {
       "dexNumber": 417,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "",
@@ -8909,7 +8909,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/drifloon.png",
     "system": {
       "dexNumber": 425,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "ghost",
       "secondaryType": "flying",
       "habitats": "",
@@ -8930,7 +8930,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/drifblim.png",
     "system": {
       "dexNumber": 426,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ghost",
       "secondaryType": "flying",
       "habitats": "",
@@ -8951,7 +8951,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/buneary.png",
     "system": {
       "dexNumber": 427,
-      "rank": "beginner",
+      "rank": "starter",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -8972,7 +8972,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/lopunny.png",
     "system": {
       "dexNumber": 428,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -8993,7 +8993,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/mismagius.png",
     "system": {
       "dexNumber": 429,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ghost",
       "secondaryType": "none",
       "habitats": "",
@@ -9014,7 +9014,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/honchkrow.png",
     "system": {
       "dexNumber": 430,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "dark",
       "secondaryType": "flying",
       "habitats": "",
@@ -9035,7 +9035,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/glameow.png",
     "system": {
       "dexNumber": 431,
-      "rank": "beginner",
+      "rank": "starter",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -9056,7 +9056,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/purugly.png",
     "system": {
       "dexNumber": 432,
-      "rank": "amateur",
+      "rank": "master",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -9140,7 +9140,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/bronzor.png",
     "system": {
       "dexNumber": 436,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "steel",
       "secondaryType": "psychic",
       "habitats": "",
@@ -9203,7 +9203,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/mime-jr.png",
     "system": {
       "dexNumber": 439,
-      "rank": "beginner",
+      "rank": "starter",
       "primaryType": "psychic",
       "secondaryType": "fairy",
       "habitats": "",
@@ -9266,7 +9266,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/spiritomb.png",
     "system": {
       "dexNumber": 442,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ghost",
       "secondaryType": "dark",
       "habitats": "",
@@ -9287,7 +9287,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/gible.png",
     "system": {
       "dexNumber": 443,
-      "rank": "starter",
+      "rank": "amateur",
       "primaryType": "dragon",
       "secondaryType": "ground",
       "habitats": "",
@@ -9308,7 +9308,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/gabite.png",
     "system": {
       "dexNumber": 444,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "dragon",
       "secondaryType": "ground",
       "habitats": "",
@@ -9329,7 +9329,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/garchomp.png",
     "system": {
       "dexNumber": 445,
-      "rank": "pro",
+      "rank": "master",
       "primaryType": "dragon",
       "secondaryType": "ground",
       "habitats": "",
@@ -9350,7 +9350,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/munchlax.png",
     "system": {
       "dexNumber": 446,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -9371,7 +9371,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/riolu.png",
     "system": {
       "dexNumber": 447,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "fighting",
       "secondaryType": "none",
       "habitats": "",
@@ -9392,7 +9392,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/lucario.png",
     "system": {
       "dexNumber": 448,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fighting",
       "secondaryType": "steel",
       "habitats": "",
@@ -9434,7 +9434,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/hippowdon.png",
     "system": {
       "dexNumber": 450,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ground",
       "secondaryType": "none",
       "habitats": "",
@@ -9476,7 +9476,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/drapion.png",
     "system": {
       "dexNumber": 452,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "poison",
       "secondaryType": "dark",
       "habitats": "",
@@ -9497,7 +9497,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/croagunk.png",
     "system": {
       "dexNumber": 453,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "poison",
       "secondaryType": "fighting",
       "habitats": "",
@@ -9539,7 +9539,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/carnivine.png",
     "system": {
       "dexNumber": 455,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "",
@@ -9581,7 +9581,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/lumineon.png",
     "system": {
       "dexNumber": 457,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "",
@@ -9623,7 +9623,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/snover.png",
     "system": {
       "dexNumber": 459,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "grass",
       "secondaryType": "ice",
       "habitats": "",
@@ -9644,7 +9644,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/abomasnow.png",
     "system": {
       "dexNumber": 460,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "grass",
       "secondaryType": "ice",
       "habitats": "",
@@ -9665,7 +9665,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/weavile.png",
     "system": {
       "dexNumber": 461,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "dark",
       "secondaryType": "ice",
       "habitats": "",
@@ -9686,7 +9686,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/magnezone.png",
     "system": {
       "dexNumber": 462,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "electric",
       "secondaryType": "steel",
       "habitats": "",
@@ -9707,7 +9707,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/lickilicky.png",
     "system": {
       "dexNumber": 463,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -9728,7 +9728,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/rhyperior.png",
     "system": {
       "dexNumber": 464,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ground",
       "secondaryType": "rock",
       "habitats": "",
@@ -9749,7 +9749,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/tangrowth.png",
     "system": {
       "dexNumber": 465,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "",
@@ -9770,7 +9770,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/electivire.png",
     "system": {
       "dexNumber": 466,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "",
@@ -9791,7 +9791,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/magmortar.png",
     "system": {
       "dexNumber": 467,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "none",
       "habitats": "",
@@ -9812,7 +9812,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/togekiss.png",
     "system": {
       "dexNumber": 468,
-      "rank": "pro",
+      "rank": "master",
       "primaryType": "fairy",
       "secondaryType": "flying",
       "habitats": "",
@@ -9833,7 +9833,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/yanmega.png",
     "system": {
       "dexNumber": 469,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "bug",
       "secondaryType": "flying",
       "habitats": "",
@@ -9854,7 +9854,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/leafeon.png",
     "system": {
       "dexNumber": 470,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "",
@@ -9875,7 +9875,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/glaceon.png",
     "system": {
       "dexNumber": 471,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "ice",
       "secondaryType": "none",
       "habitats": "",
@@ -9896,7 +9896,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/gliscor.png",
     "system": {
       "dexNumber": 472,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ground",
       "secondaryType": "flying",
       "habitats": "",
@@ -9917,7 +9917,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/mamoswine.png",
     "system": {
       "dexNumber": 473,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ice",
       "secondaryType": "ground",
       "habitats": "",
@@ -9938,7 +9938,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/porygon-z.png",
     "system": {
       "dexNumber": 474,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -9959,7 +9959,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/gallade.png",
     "system": {
       "dexNumber": 475,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "psychic",
       "secondaryType": "fighting",
       "habitats": "",
@@ -9980,7 +9980,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/probopass.png",
     "system": {
       "dexNumber": 476,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "rock",
       "secondaryType": "steel",
       "habitats": "",
@@ -10001,7 +10001,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/dusknoir.png",
     "system": {
       "dexNumber": 477,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ghost",
       "secondaryType": "none",
       "habitats": "",
@@ -10022,7 +10022,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/froslass.png",
     "system": {
       "dexNumber": 478,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ice",
       "secondaryType": "ghost",
       "habitats": "",
@@ -10043,7 +10043,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/rotom.png",
     "system": {
       "dexNumber": 479,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "electric",
       "secondaryType": "ghost",
       "habitats": "",
@@ -10064,7 +10064,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/uxie.png",
     "system": {
       "dexNumber": 480,
-      "rank": "pro",
+      "rank": "champion",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "",
@@ -10085,7 +10085,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/mesprit.png",
     "system": {
       "dexNumber": 481,
-      "rank": "pro",
+      "rank": "champion",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "",
@@ -10106,7 +10106,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/azelf.png",
     "system": {
       "dexNumber": 482,
-      "rank": "pro",
+      "rank": "champion",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "",
@@ -10127,7 +10127,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/dialga.png",
     "system": {
       "dexNumber": 483,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "steel",
       "secondaryType": "dragon",
       "habitats": "",
@@ -10148,7 +10148,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/palkia.png",
     "system": {
       "dexNumber": 484,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "water",
       "secondaryType": "dragon",
       "habitats": "",
@@ -10190,7 +10190,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/regigigas.png",
     "system": {
       "dexNumber": 486,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -10211,7 +10211,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/giratina.png",
     "system": {
       "dexNumber": 487,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "ghost",
       "secondaryType": "dragon",
       "habitats": "",
@@ -10253,7 +10253,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/phione.png",
     "system": {
       "dexNumber": 489,
-      "rank": "ace",
+      "rank": "starter",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "",
@@ -10421,7 +10421,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/serperior.png",
     "system": {
       "dexNumber": 497,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "",
@@ -10484,7 +10484,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/emboar.png",
     "system": {
       "dexNumber": 500,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "fighting",
       "habitats": "",
@@ -10547,7 +10547,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/samurott.png",
     "system": {
       "dexNumber": 503,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "",
@@ -10631,7 +10631,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/herdier.png",
     "system": {
       "dexNumber": 507,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -10694,7 +10694,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/liepard.png",
     "system": {
       "dexNumber": 510,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "dark",
       "secondaryType": "none",
       "habitats": "",
@@ -10736,7 +10736,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/simisage.png",
     "system": {
       "dexNumber": 512,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "",
@@ -10778,7 +10778,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/simisear.png",
     "system": {
       "dexNumber": 514,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "none",
       "habitats": "",
@@ -10820,7 +10820,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/simipour.png",
     "system": {
       "dexNumber": 516,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "",
@@ -10841,7 +10841,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/munna.png",
     "system": {
       "dexNumber": 517,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "",
@@ -10904,7 +10904,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/tranquill.png",
     "system": {
       "dexNumber": 520,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "normal",
       "secondaryType": "flying",
       "habitats": "",
@@ -10946,7 +10946,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/blitzle.png",
     "system": {
       "dexNumber": 522,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "",
@@ -10967,7 +10967,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/zebstrika.png",
     "system": {
       "dexNumber": 523,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "",
@@ -10988,7 +10988,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/roggenrola.png",
     "system": {
       "dexNumber": 524,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "rock",
       "secondaryType": "none",
       "habitats": "",
@@ -11030,7 +11030,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/gigalith.png",
     "system": {
       "dexNumber": 526,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "rock",
       "secondaryType": "none",
       "habitats": "",
@@ -11072,7 +11072,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/swoobat.png",
     "system": {
       "dexNumber": 528,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "psychic",
       "secondaryType": "flying",
       "habitats": "",
@@ -11114,7 +11114,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/excadrill.png",
     "system": {
       "dexNumber": 530,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ground",
       "secondaryType": "steel",
       "habitats": "",
@@ -11177,7 +11177,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/gurdurr.png",
     "system": {
       "dexNumber": 533,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "fighting",
       "secondaryType": "none",
       "habitats": "",
@@ -11198,7 +11198,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/conkeldurr.png",
     "system": {
       "dexNumber": 534,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fighting",
       "secondaryType": "none",
       "habitats": "",
@@ -11261,7 +11261,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/seismitoad.png",
     "system": {
       "dexNumber": 537,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "ground",
       "habitats": "",
@@ -11324,7 +11324,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/sewaddle.png",
     "system": {
       "dexNumber": 540,
-      "rank": "beginner",
+      "rank": "starter",
       "primaryType": "bug",
       "secondaryType": "grass",
       "habitats": "",
@@ -11387,7 +11387,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/venipede.png",
     "system": {
       "dexNumber": 543,
-      "rank": "starter",
+      "rank": "amateur",
       "primaryType": "bug",
       "secondaryType": "poison",
       "habitats": "",
@@ -11408,7 +11408,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/whirlipede.png",
     "system": {
       "dexNumber": 544,
-      "rank": "beginner",
+      "rank": "ace",
       "primaryType": "bug",
       "secondaryType": "poison",
       "habitats": "",
@@ -11429,7 +11429,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/scolipede.png",
     "system": {
       "dexNumber": 545,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "bug",
       "secondaryType": "poison",
       "habitats": "",
@@ -11450,7 +11450,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/cottonee.png",
     "system": {
       "dexNumber": 546,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "grass",
       "secondaryType": "fairy",
       "habitats": "",
@@ -11492,7 +11492,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/petilil.png",
     "system": {
       "dexNumber": 548,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "",
@@ -11555,7 +11555,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/sandile.png",
     "system": {
       "dexNumber": 551,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "ground",
       "secondaryType": "dark",
       "habitats": "",
@@ -11576,7 +11576,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/krokorok.png",
     "system": {
       "dexNumber": 552,
-      "rank": "beginner",
+      "rank": "ace",
       "primaryType": "ground",
       "secondaryType": "dark",
       "habitats": "",
@@ -11597,7 +11597,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/krookodile.png",
     "system": {
       "dexNumber": 553,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ground",
       "secondaryType": "dark",
       "habitats": "",
@@ -11660,7 +11660,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/maractus.png",
     "system": {
       "dexNumber": 556,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "",
@@ -11702,7 +11702,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/crustle.png",
     "system": {
       "dexNumber": 558,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "bug",
       "secondaryType": "rock",
       "habitats": "",
@@ -11744,7 +11744,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/scrafty.png",
     "system": {
       "dexNumber": 560,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "dark",
       "secondaryType": "fighting",
       "habitats": "",
@@ -11765,7 +11765,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/sigilyph.png",
     "system": {
       "dexNumber": 561,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "psychic",
       "secondaryType": "flying",
       "habitats": "",
@@ -11786,7 +11786,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/yamask.png",
     "system": {
       "dexNumber": 562,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "ghost",
       "secondaryType": "none",
       "habitats": "",
@@ -11807,7 +11807,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/cofagrigus.png",
     "system": {
       "dexNumber": 563,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ghost",
       "secondaryType": "none",
       "habitats": "",
@@ -11828,7 +11828,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/tirtouga.png",
     "system": {
       "dexNumber": 564,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "water",
       "secondaryType": "rock",
       "habitats": "",
@@ -11849,7 +11849,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/carracosta.png",
     "system": {
       "dexNumber": 565,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "rock",
       "habitats": "",
@@ -11891,7 +11891,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/archeops.png",
     "system": {
       "dexNumber": 567,
-      "rank": "pro",
+      "rank": "master",
       "primaryType": "rock",
       "secondaryType": "flying",
       "habitats": "",
@@ -11975,7 +11975,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/zoroark.png",
     "system": {
       "dexNumber": 571,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "dark",
       "secondaryType": "none",
       "habitats": "",
@@ -11996,7 +11996,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/minccino.png",
     "system": {
       "dexNumber": 572,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -12038,7 +12038,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/gothita.png",
     "system": {
       "dexNumber": 574,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "",
@@ -12080,7 +12080,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/gothitelle.png",
     "system": {
       "dexNumber": 576,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "",
@@ -12122,7 +12122,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/duosion.png",
     "system": {
       "dexNumber": 578,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "",
@@ -12143,7 +12143,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/reuniclus.png",
     "system": {
       "dexNumber": 579,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "",
@@ -12206,7 +12206,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/vanillite.png",
     "system": {
       "dexNumber": 582,
-      "rank": "beginner",
+      "rank": "starter",
       "primaryType": "ice",
       "secondaryType": "none",
       "habitats": "",
@@ -12248,7 +12248,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/vanilluxe.png",
     "system": {
       "dexNumber": 584,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ice",
       "secondaryType": "none",
       "habitats": "",
@@ -12311,7 +12311,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/emolga.png",
     "system": {
       "dexNumber": 587,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "electric",
       "secondaryType": "flying",
       "habitats": "",
@@ -12374,7 +12374,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/foongus.png",
     "system": {
       "dexNumber": 590,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "grass",
       "secondaryType": "poison",
       "habitats": "",
@@ -12416,7 +12416,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/frillish.png",
     "system": {
       "dexNumber": 592,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "water",
       "secondaryType": "ghost",
       "habitats": "",
@@ -12437,7 +12437,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/jellicent.png",
     "system": {
       "dexNumber": 593,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "ghost",
       "habitats": "",
@@ -12479,7 +12479,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/joltik.png",
     "system": {
       "dexNumber": 595,
-      "rank": "beginner",
+      "rank": "starter",
       "primaryType": "bug",
       "secondaryType": "electric",
       "habitats": "",
@@ -12563,7 +12563,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/klink.png",
     "system": {
       "dexNumber": 599,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "steel",
       "secondaryType": "none",
       "habitats": "",
@@ -12605,7 +12605,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/klinklang.png",
     "system": {
       "dexNumber": 601,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "steel",
       "secondaryType": "none",
       "habitats": "",
@@ -12668,7 +12668,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/eelektross.png",
     "system": {
       "dexNumber": 604,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "",
@@ -12689,7 +12689,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/elgyem.png",
     "system": {
       "dexNumber": 605,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "",
@@ -12710,7 +12710,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/beheeyem.png",
     "system": {
       "dexNumber": 606,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "",
@@ -12731,7 +12731,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/litwick.png",
     "system": {
       "dexNumber": 607,
-      "rank": "starter",
+      "rank": "amateur",
       "primaryType": "ghost",
       "secondaryType": "fire",
       "habitats": "",
@@ -12752,7 +12752,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/lampent.png",
     "system": {
       "dexNumber": 608,
-      "rank": "beginner",
+      "rank": "ace",
       "primaryType": "ghost",
       "secondaryType": "fire",
       "habitats": "",
@@ -12773,7 +12773,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/chandelure.png",
     "system": {
       "dexNumber": 609,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ghost",
       "secondaryType": "fire",
       "habitats": "",
@@ -12794,7 +12794,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/axew.png",
     "system": {
       "dexNumber": 610,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "dragon",
       "secondaryType": "none",
       "habitats": "",
@@ -12815,7 +12815,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/fraxure.png",
     "system": {
       "dexNumber": 611,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "dragon",
       "secondaryType": "none",
       "habitats": "",
@@ -12836,7 +12836,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/haxorus.png",
     "system": {
       "dexNumber": 612,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "dragon",
       "secondaryType": "none",
       "habitats": "",
@@ -12878,7 +12878,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/beartic.png",
     "system": {
       "dexNumber": 614,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ice",
       "secondaryType": "none",
       "habitats": "",
@@ -12899,7 +12899,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/cryogonal.png",
     "system": {
       "dexNumber": 615,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ice",
       "secondaryType": "none",
       "habitats": "",
@@ -13025,7 +13025,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/druddigon.png",
     "system": {
       "dexNumber": 621,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "dragon",
       "secondaryType": "none",
       "habitats": "",
@@ -13046,7 +13046,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/golett.png",
     "system": {
       "dexNumber": 622,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "ground",
       "secondaryType": "ghost",
       "habitats": "",
@@ -13067,7 +13067,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/golurk.png",
     "system": {
       "dexNumber": 623,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ground",
       "secondaryType": "ghost",
       "habitats": "",
@@ -13088,7 +13088,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/pawniard.png",
     "system": {
       "dexNumber": 624,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "dark",
       "secondaryType": "steel",
       "habitats": "",
@@ -13109,7 +13109,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/bisharp.png",
     "system": {
       "dexNumber": 625,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "dark",
       "secondaryType": "steel",
       "habitats": "",
@@ -13130,7 +13130,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/bouffalant.png",
     "system": {
       "dexNumber": 626,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -13172,7 +13172,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/braviary.png",
     "system": {
       "dexNumber": 628,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "normal",
       "secondaryType": "flying",
       "habitats": "",
@@ -13214,7 +13214,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/mandibuzz.png",
     "system": {
       "dexNumber": 630,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "dark",
       "secondaryType": "flying",
       "habitats": "",
@@ -13277,7 +13277,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/deino.png",
     "system": {
       "dexNumber": 633,
-      "rank": "starter",
+      "rank": "amateur",
       "primaryType": "dark",
       "secondaryType": "dragon",
       "habitats": "",
@@ -13298,7 +13298,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/zweilous.png",
     "system": {
       "dexNumber": 634,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "dark",
       "secondaryType": "dragon",
       "habitats": "",
@@ -13319,7 +13319,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/hydreigon.png",
     "system": {
       "dexNumber": 635,
-      "rank": "pro",
+      "rank": "master",
       "primaryType": "dark",
       "secondaryType": "dragon",
       "habitats": "",
@@ -13340,7 +13340,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/larvesta.png",
     "system": {
       "dexNumber": 636,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "bug",
       "secondaryType": "fire",
       "habitats": "",
@@ -13361,7 +13361,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/volcarona.png",
     "system": {
       "dexNumber": 637,
-      "rank": "pro",
+      "rank": "master",
       "primaryType": "bug",
       "secondaryType": "fire",
       "habitats": "",
@@ -13487,7 +13487,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/reshiram.png",
     "system": {
       "dexNumber": 643,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "dragon",
       "secondaryType": "fire",
       "habitats": "",
@@ -13508,7 +13508,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/zekrom.png",
     "system": {
       "dexNumber": 644,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "dragon",
       "secondaryType": "electric",
       "habitats": "",
@@ -13550,7 +13550,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/kyurem.png",
     "system": {
       "dexNumber": 646,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "dragon",
       "secondaryType": "ice",
       "habitats": "",
@@ -13676,7 +13676,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/chesnaught.png",
     "system": {
       "dexNumber": 652,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "grass",
       "secondaryType": "fighting",
       "habitats": "",
@@ -13739,7 +13739,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/delphox.png",
     "system": {
       "dexNumber": 655,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "psychic",
       "habitats": "",
@@ -13802,7 +13802,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/greninja.png",
     "system": {
       "dexNumber": 658,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "dark",
       "habitats": "",
@@ -13907,7 +13907,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/talonflame.png",
     "system": {
       "dexNumber": 663,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "flying",
       "habitats": "",
@@ -13949,7 +13949,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/spewpa.png",
     "system": {
       "dexNumber": 665,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "bug",
       "secondaryType": "none",
       "habitats": "",
@@ -13991,7 +13991,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/litleo.png",
     "system": {
       "dexNumber": 667,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "fire",
       "secondaryType": "normal",
       "habitats": "",
@@ -14012,7 +14012,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/pyroar.png",
     "system": {
       "dexNumber": 668,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "normal",
       "habitats": "",
@@ -14033,7 +14033,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/flabebe.png",
     "system": {
       "dexNumber": 669,
-      "rank": "beginner",
+      "rank": "starter",
       "primaryType": "fairy",
       "secondaryType": "none",
       "habitats": "",
@@ -14075,7 +14075,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/florges.png",
     "system": {
       "dexNumber": 671,
-      "rank": "pro",
+      "rank": "master",
       "primaryType": "fairy",
       "secondaryType": "none",
       "habitats": "",
@@ -14159,7 +14159,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/pangoro.png",
     "system": {
       "dexNumber": 675,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fighting",
       "secondaryType": "dark",
       "habitats": "",
@@ -14243,7 +14243,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/honedge.png",
     "system": {
       "dexNumber": 679,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "steel",
       "secondaryType": "ghost",
       "habitats": "",
@@ -14264,7 +14264,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/doublade.png",
     "system": {
       "dexNumber": 680,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "steel",
       "secondaryType": "ghost",
       "habitats": "",
@@ -14285,7 +14285,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/aegislash.png",
     "system": {
       "dexNumber": 681,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "steel",
       "secondaryType": "ghost",
       "habitats": "",
@@ -14390,7 +14390,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/inkay.png",
     "system": {
       "dexNumber": 686,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "dark",
       "secondaryType": "psychic",
       "habitats": "",
@@ -14453,7 +14453,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/barbaracle.png",
     "system": {
       "dexNumber": 689,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "rock",
       "secondaryType": "water",
       "habitats": "",
@@ -14474,7 +14474,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/skrelp.png",
     "system": {
       "dexNumber": 690,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "poison",
       "secondaryType": "water",
       "habitats": "",
@@ -14495,7 +14495,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/dragalge.png",
     "system": {
       "dexNumber": 691,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "poison",
       "secondaryType": "dragon",
       "habitats": "",
@@ -14558,7 +14558,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/helioptile.png",
     "system": {
       "dexNumber": 694,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "electric",
       "secondaryType": "normal",
       "habitats": "",
@@ -14600,7 +14600,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/tyrunt.png",
     "system": {
       "dexNumber": 696,
-      "rank": "beginner",
+      "rank": "ace",
       "primaryType": "rock",
       "secondaryType": "dragon",
       "habitats": "",
@@ -14621,7 +14621,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/tyrantrum.png",
     "system": {
       "dexNumber": 697,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "rock",
       "secondaryType": "dragon",
       "habitats": "",
@@ -14684,7 +14684,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/sylveon.png",
     "system": {
       "dexNumber": 700,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "fairy",
       "secondaryType": "none",
       "habitats": "",
@@ -14726,7 +14726,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/dedenne.png",
     "system": {
       "dexNumber": 702,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "electric",
       "secondaryType": "fairy",
       "habitats": "",
@@ -14747,7 +14747,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/carbink.png",
     "system": {
       "dexNumber": 703,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "rock",
       "secondaryType": "fairy",
       "habitats": "",
@@ -14789,7 +14789,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/sliggoo.png",
     "system": {
       "dexNumber": 705,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "dragon",
       "secondaryType": "none",
       "habitats": "",
@@ -14810,7 +14810,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/goodra.png",
     "system": {
       "dexNumber": 706,
-      "rank": "pro",
+      "rank": "ace",
       "primaryType": "dragon",
       "secondaryType": "none",
       "habitats": "",
@@ -14831,7 +14831,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/klefki.png",
     "system": {
       "dexNumber": 707,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "steel",
       "secondaryType": "fairy",
       "habitats": "",
@@ -14957,7 +14957,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/avalugg.png",
     "system": {
       "dexNumber": 713,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ice",
       "secondaryType": "none",
       "habitats": "",
@@ -14978,7 +14978,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/noibat.png",
     "system": {
       "dexNumber": 714,
-      "rank": "starter",
+      "rank": "amateur",
       "primaryType": "flying",
       "secondaryType": "dragon",
       "habitats": "",
@@ -14999,7 +14999,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/noivern.png",
     "system": {
       "dexNumber": 715,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "flying",
       "secondaryType": "dragon",
       "habitats": "",
@@ -15020,7 +15020,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/xerneas.png",
     "system": {
       "dexNumber": 716,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "fairy",
       "secondaryType": "none",
       "habitats": "",
@@ -15041,7 +15041,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/yveltal.png",
     "system": {
       "dexNumber": 717,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "dark",
       "secondaryType": "flying",
       "habitats": "",
@@ -15188,7 +15188,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/decidueye.png",
     "system": {
       "dexNumber": 724,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "grass",
       "secondaryType": "ghost",
       "habitats": "",
@@ -15251,7 +15251,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/incineroar.png",
     "system": {
       "dexNumber": 727,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "dark",
       "habitats": "",
@@ -15314,7 +15314,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/primarina.png",
     "system": {
       "dexNumber": 730,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "fairy",
       "habitats": "",
@@ -15356,7 +15356,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/trumbeak.png",
     "system": {
       "dexNumber": 732,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "normal",
       "secondaryType": "flying",
       "habitats": "",
@@ -15377,7 +15377,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/toucannon.png",
     "system": {
       "dexNumber": 733,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "normal",
       "secondaryType": "flying",
       "habitats": "",
@@ -15398,7 +15398,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/yungoos.png",
     "system": {
       "dexNumber": 734,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -15419,7 +15419,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/gumshoos.png",
     "system": {
       "dexNumber": 735,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -15440,7 +15440,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/grubbin.png",
     "system": {
       "dexNumber": 736,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "bug",
       "secondaryType": "none",
       "habitats": "",
@@ -15482,7 +15482,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/vikavolt.png",
     "system": {
       "dexNumber": 738,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "bug",
       "secondaryType": "electric",
       "habitats": "",
@@ -15503,7 +15503,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/crabrawler.png",
     "system": {
       "dexNumber": 739,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "fighting",
       "secondaryType": "none",
       "habitats": "",
@@ -15524,7 +15524,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/crabominable.png",
     "system": {
       "dexNumber": 740,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fighting",
       "secondaryType": "ice",
       "habitats": "",
@@ -15566,7 +15566,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/cutiefly.png",
     "system": {
       "dexNumber": 742,
-      "rank": "beginner",
+      "rank": "starter",
       "primaryType": "bug",
       "secondaryType": "fairy",
       "habitats": "",
@@ -15587,7 +15587,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/ribombee.png",
     "system": {
       "dexNumber": 743,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "bug",
       "secondaryType": "fairy",
       "habitats": "",
@@ -15608,7 +15608,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/rockruff.png",
     "system": {
       "dexNumber": 744,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "rock",
       "secondaryType": "none",
       "habitats": "",
@@ -15692,7 +15692,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/toxapex.png",
     "system": {
       "dexNumber": 748,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "poison",
       "secondaryType": "water",
       "habitats": "",
@@ -15713,7 +15713,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/mudbray.png",
     "system": {
       "dexNumber": 749,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "ground",
       "secondaryType": "none",
       "habitats": "",
@@ -15734,7 +15734,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/mudsdale.png",
     "system": {
       "dexNumber": 750,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ground",
       "secondaryType": "none",
       "habitats": "",
@@ -15755,7 +15755,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/dewpider.png",
     "system": {
       "dexNumber": 751,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "water",
       "secondaryType": "bug",
       "habitats": "",
@@ -15776,7 +15776,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/araquanid.png",
     "system": {
       "dexNumber": 752,
-      "rank": "amateur",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "bug",
       "habitats": "",
@@ -15797,7 +15797,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/fomantis.png",
     "system": {
       "dexNumber": 753,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "",
@@ -15860,7 +15860,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/shiinotic.png",
     "system": {
       "dexNumber": 756,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "grass",
       "secondaryType": "fairy",
       "habitats": "",
@@ -15944,7 +15944,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/bewear.png",
     "system": {
       "dexNumber": 760,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "normal",
       "secondaryType": "fighting",
       "habitats": "",
@@ -15986,7 +15986,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/steenee.png",
     "system": {
       "dexNumber": 762,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "",
@@ -16007,7 +16007,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/tsareena.png",
     "system": {
       "dexNumber": 763,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "",
@@ -16028,7 +16028,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/comfey.png",
     "system": {
       "dexNumber": 764,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "fairy",
       "secondaryType": "none",
       "habitats": "",
@@ -16112,7 +16112,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/golisopod.png",
     "system": {
       "dexNumber": 768,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "bug",
       "secondaryType": "water",
       "habitats": "",
@@ -16133,7 +16133,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/sandygast.png",
     "system": {
       "dexNumber": 769,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "ghost",
       "secondaryType": "ground",
       "habitats": "",
@@ -16154,7 +16154,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/palossand.png",
     "system": {
       "dexNumber": 770,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ghost",
       "secondaryType": "ground",
       "habitats": "",
@@ -16217,7 +16217,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/silvally.png",
     "system": {
       "dexNumber": 773,
-      "rank": "pro",
+      "rank": "ace",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -16238,7 +16238,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/minior.png",
     "system": {
       "dexNumber": 774,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "rock",
       "secondaryType": "flying",
       "habitats": "",
@@ -16259,7 +16259,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/komala.png",
     "system": {
       "dexNumber": 775,
-      "rank": "ace",
+      "rank": "beginner",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -16280,7 +16280,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/turtonator.png",
     "system": {
       "dexNumber": 776,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "dragon",
       "habitats": "",
@@ -16301,7 +16301,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/togedemaru.png",
     "system": {
       "dexNumber": 777,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "electric",
       "secondaryType": "steel",
       "habitats": "",
@@ -16322,7 +16322,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/mimikyu.png",
     "system": {
       "dexNumber": 778,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ghost",
       "secondaryType": "fairy",
       "habitats": "",
@@ -16385,7 +16385,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/dhelmise.png",
     "system": {
       "dexNumber": 781,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ghost",
       "secondaryType": "grass",
       "habitats": "",
@@ -16406,7 +16406,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/jangmo-o.png",
     "system": {
       "dexNumber": 782,
-      "rank": "starter",
+      "rank": "amateur",
       "primaryType": "dragon",
       "secondaryType": "none",
       "habitats": "",
@@ -16427,7 +16427,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/hakamo-o.png",
     "system": {
       "dexNumber": 783,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "dragon",
       "secondaryType": "fighting",
       "habitats": "",
@@ -16448,7 +16448,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/kommo-o.png",
     "system": {
       "dexNumber": 784,
-      "rank": "pro",
+      "rank": "master",
       "primaryType": "dragon",
       "secondaryType": "fighting",
       "habitats": "",
@@ -16595,7 +16595,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/solgaleo.png",
     "system": {
       "dexNumber": 791,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "psychic",
       "secondaryType": "steel",
       "habitats": "",
@@ -16616,7 +16616,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/lunala.png",
     "system": {
       "dexNumber": 792,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "psychic",
       "secondaryType": "ghost",
       "habitats": "",
@@ -16868,7 +16868,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/naganadel.png",
     "system": {
       "dexNumber": 804,
-      "rank": "ace",
+      "rank": "pro",
       "primaryType": "poison",
       "secondaryType": "dragon",
       "habitats": "",
@@ -16952,7 +16952,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/meltan.png",
     "system": {
       "dexNumber": 808,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "steel",
       "secondaryType": "none",
       "habitats": "",
@@ -17036,7 +17036,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/rillaboom.png",
     "system": {
       "dexNumber": 812,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "",
@@ -17099,7 +17099,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/cinderace.png",
     "system": {
       "dexNumber": 815,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "none",
       "habitats": "",
@@ -17162,7 +17162,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/inteleon.png",
     "system": {
       "dexNumber": 818,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "",
@@ -17225,7 +17225,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/rookidee.png",
     "system": {
       "dexNumber": 821,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "flying",
       "secondaryType": "none",
       "habitats": "",
@@ -17246,7 +17246,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/corvisquire.png",
     "system": {
       "dexNumber": 822,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "flying",
       "secondaryType": "none",
       "habitats": "",
@@ -17267,7 +17267,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/corviknight.png",
     "system": {
       "dexNumber": 823,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "flying",
       "secondaryType": "steel",
       "habitats": "",
@@ -17351,7 +17351,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/nickit.png",
     "system": {
       "dexNumber": 827,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "dark",
       "secondaryType": "none",
       "habitats": "",
@@ -17372,7 +17372,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/thievul.png",
     "system": {
       "dexNumber": 828,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "dark",
       "secondaryType": "none",
       "habitats": "",
@@ -17393,7 +17393,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/gossifleur.png",
     "system": {
       "dexNumber": 829,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "",
@@ -17414,7 +17414,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/eldegoss.png",
     "system": {
       "dexNumber": 830,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "grass",
       "secondaryType": "none",
       "habitats": "",
@@ -17435,7 +17435,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/wooloo.png",
     "system": {
       "dexNumber": 831,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -17456,7 +17456,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/dubwool.png",
     "system": {
       "dexNumber": 832,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "normal",
       "secondaryType": "none",
       "habitats": "",
@@ -17477,7 +17477,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/chewtle.png",
     "system": {
       "dexNumber": 833,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "",
@@ -17519,7 +17519,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/yamper.png",
     "system": {
       "dexNumber": 835,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "electric",
       "secondaryType": "none",
       "habitats": "",
@@ -17561,7 +17561,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/rolycoly.png",
     "system": {
       "dexNumber": 837,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "rock",
       "secondaryType": "none",
       "habitats": "",
@@ -17603,7 +17603,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/coalossal.png",
     "system": {
       "dexNumber": 839,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "rock",
       "secondaryType": "fire",
       "habitats": "",
@@ -17729,7 +17729,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/cramorant.png",
     "system": {
       "dexNumber": 845,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "flying",
       "secondaryType": "water",
       "habitats": "",
@@ -17750,7 +17750,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/arrokuda.png",
     "system": {
       "dexNumber": 846,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "water",
       "secondaryType": "none",
       "habitats": "",
@@ -17792,7 +17792,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/toxel.png",
     "system": {
       "dexNumber": 848,
-      "rank": "starter",
+      "rank": "amateur",
       "primaryType": "electric",
       "secondaryType": "poison",
       "habitats": "",
@@ -17834,7 +17834,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/sizzlipede.png",
     "system": {
       "dexNumber": 850,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "fire",
       "secondaryType": "bug",
       "habitats": "",
@@ -17855,7 +17855,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/centiskorch.png",
     "system": {
       "dexNumber": 851,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "fire",
       "secondaryType": "bug",
       "habitats": "",
@@ -17960,7 +17960,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/hatenna.png",
     "system": {
       "dexNumber": 856,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "",
@@ -17981,7 +17981,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/hattrem.png",
     "system": {
       "dexNumber": 857,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "psychic",
       "secondaryType": "none",
       "habitats": "",
@@ -18002,7 +18002,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/hatterene.png",
     "system": {
       "dexNumber": 858,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "psychic",
       "secondaryType": "fairy",
       "habitats": "",
@@ -18023,7 +18023,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/impidimp.png",
     "system": {
       "dexNumber": 859,
-      "rank": "starter",
+      "rank": "beginner",
       "primaryType": "dark",
       "secondaryType": "fairy",
       "habitats": "",
@@ -18044,7 +18044,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/morgrem.png",
     "system": {
       "dexNumber": 860,
-      "rank": "beginner",
+      "rank": "amateur",
       "primaryType": "dark",
       "secondaryType": "fairy",
       "habitats": "",
@@ -18065,7 +18065,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/grimmsnarl.png",
     "system": {
       "dexNumber": 861,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "dark",
       "secondaryType": "fairy",
       "habitats": "",
@@ -18086,7 +18086,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/obstagoon.png",
     "system": {
       "dexNumber": 862,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "dark",
       "secondaryType": "normal",
       "habitats": "",
@@ -18107,7 +18107,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/perrserker.png",
     "system": {
       "dexNumber": 863,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "steel",
       "secondaryType": "none",
       "habitats": "",
@@ -18191,7 +18191,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/runerigus.png",
     "system": {
       "dexNumber": 867,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ground",
       "secondaryType": "ghost",
       "habitats": "",
@@ -18233,7 +18233,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/alcremie.png",
     "system": {
       "dexNumber": 869,
-      "rank": "ace",
+      "rank": "amateur",
       "primaryType": "fairy",
       "secondaryType": "none",
       "habitats": "",
@@ -18317,7 +18317,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/frosmoth.png",
     "system": {
       "dexNumber": 873,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "ice",
       "secondaryType": "bug",
       "habitats": "",
@@ -18401,7 +18401,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/morpeko.png",
     "system": {
       "dexNumber": 877,
-      "rank": "amateur",
+      "rank": "beginner",
       "primaryType": "electric",
       "secondaryType": "dark",
       "habitats": "",
@@ -18548,7 +18548,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/duraludon.png",
     "system": {
       "dexNumber": 884,
-      "rank": "ace",
+      "rank": "master",
       "primaryType": "steel",
       "secondaryType": "dragon",
       "habitats": "",
@@ -18569,7 +18569,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/dreepy.png",
     "system": {
       "dexNumber": 885,
-      "rank": "starter",
+      "rank": "amateur",
       "primaryType": "dragon",
       "secondaryType": "ghost",
       "habitats": "",
@@ -18590,7 +18590,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/drakloak.png",
     "system": {
       "dexNumber": 886,
-      "rank": "amateur",
+      "rank": "ace",
       "primaryType": "dragon",
       "secondaryType": "ghost",
       "habitats": "",
@@ -18611,7 +18611,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/dragapult.png",
     "system": {
       "dexNumber": 887,
-      "rank": "pro",
+      "rank": "master",
       "primaryType": "dragon",
       "secondaryType": "ghost",
       "habitats": "",
@@ -18632,7 +18632,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/zacian.png",
     "system": {
       "dexNumber": 888,
-      "rank": "master",
+      "rank": "pro",
       "primaryType": "fairy",
       "secondaryType": "none",
       "habitats": "",
@@ -18653,7 +18653,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/zamazenta.png",
     "system": {
       "dexNumber": 889,
-      "rank": "master",
+      "rank": "pro",
       "primaryType": "fighting",
       "secondaryType": "none",
       "habitats": "",
@@ -18674,7 +18674,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "systems/pok-role-module/assets/pokemon/book/book/eternatus.png",
     "system": {
       "dexNumber": 890,
-      "rank": "master",
+      "rank": "champion",
       "primaryType": "poison",
       "secondaryType": "dragon",
       "habitats": "",

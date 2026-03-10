@@ -1,6 +1,12 @@
 import {
   COMBAT_FLAG_KEYS,
   MOVE_CATEGORY_LABEL_BY_KEY,
+  MOVE_SECONDARY_CONDITION_KEYS,
+  MOVE_SECONDARY_EFFECT_TYPE_KEYS,
+  MOVE_SECONDARY_STAT_KEYS,
+  MOVE_SECONDARY_TARGET_KEYS,
+  MOVE_SECONDARY_TRIGGER_KEYS,
+  MOVE_TARGET_KEYS,
   POKROLE,
   SOCIAL_ATTRIBUTE_KEYS,
   TRAIT_LABEL_BY_KEY,
@@ -36,6 +42,53 @@ function getCurrentCombatRoundKey() {
   if (!combat) return null;
   return `${combat.id}:${combat.round ?? 0}`;
 }
+
+const LEGACY_MOVE_TARGET_MAP = Object.freeze({
+  foe: "foe",
+  "random foe": "random-foe",
+  "all foes": "all-foes",
+  self: "self",
+  user: "self",
+  ally: "ally",
+  "one ally": "ally",
+  "all allies": "all-allies",
+  "user and allies": "all-allies",
+  area: "area",
+  battlefield: "battlefield",
+  "foe's battlefield": "foe-battlefield",
+  "ally's battlefield": "ally-battlefield",
+  "battlefield and area": "battlefield-area",
+  "battlefield (foes)": "foe-battlefield"
+});
+
+const LEGACY_EFFECT_STAT_MAP = Object.freeze({
+  def: "defense",
+  defense: "defense",
+  spdef: "specialDefense",
+  "sp def": "specialDefense",
+  "special defense": "specialDefense",
+  spec: "special",
+  dex: "dexterity",
+  attack: "strength",
+  "special attack": "special",
+  speed: "dexterity",
+  accuracy: "accuracy",
+  evasion: "evasion",
+  clash: "clash"
+});
+
+const CONDITION_ALIASES = Object.freeze({
+  burn1: "burn",
+  burn2: "burn",
+  burn3: "burn",
+  paralysis: "paralyzed",
+  poison: "poisoned",
+  badlypoisoned: "badly-poisoned",
+  badly_poisoned: "badly-poisoned",
+  freeze: "frozen",
+  frozen: "frozen",
+  confused: "confused"
+});
 
 export class PokRoleActor extends Actor {
   getRollData() {
@@ -406,7 +459,10 @@ export class PokRoleActor extends Actor {
       })
     });
 
-    const targetActor = getTargetActorFromUserSelection();
+    const moveTargetKey = this._normalizeMoveTargetKey(move.system?.target);
+    const selectedTargetActors = this._getSelectedTargetActors();
+    const targetActors = this._resolveActorsForMoveTarget(moveTargetKey, selectedTargetActors);
+    const targetActor = targetActors[0] ?? null;
     const moveType = move.system.type || "normal";
     const category = move.system.category || "physical";
     const isDamagingMove = category !== "support";
@@ -423,7 +479,14 @@ export class PokRoleActor extends Actor {
       label: "POKROLE.Chat.Reaction.None"
     };
 
-    if (hit && isDamagingMove && targetActor) {
+    const canUseDefensiveReaction =
+      hit &&
+      isDamagingMove &&
+      targetActor &&
+      targetActor !== this &&
+      targetActors.length === 1;
+
+    if (canUseDefensiveReaction) {
       reaction = await this._resolveDefensiveReaction({
         targetActor,
         move,
@@ -453,56 +516,62 @@ export class PokRoleActor extends Actor {
     let stabDice = 0;
     let criticalDice = critical ? 2 : 0;
     let damageAttributeLabel = this.localizeTrait("none");
+    const damageTargetResults = [];
 
     if (hit && isDamagingMove && !reaction.clashResolved) {
-      const damageAttributeKey = this._resolveDamageAttributeKey(move);
-      damageAttributeLabel = this.localizeTrait(damageAttributeKey);
-      const damageAttributeValue = Math.max(this.getTraitValue(damageAttributeKey), 0);
-      const power = Math.max(toNumber(move.system.power, 0), 0);
-      const damagePainPenalty = damageAttributeKey === "vitality" ? 0 : painPenalty;
+      const damageTargets = this._resolveDamageTargets(moveTargetKey, targetActors);
+      const targetsToDamage = damageTargets.length > 0 ? damageTargets : targetActor ? [targetActor] : [];
 
-      stabDice = this.hasType(moveType) ? 1 : 0;
-      defense = targetActor ? this._getTargetDefense(targetActor, category) : 0;
-      poolBeforeDefense = damageAttributeValue + power + stabDice + criticalDice - damagePainPenalty;
-      damagePool = Math.max(poolBeforeDefense - defense, 0);
-
-      if (targetActor) {
-        typeInteraction = this._evaluateTypeInteraction(moveType, targetActor);
-      }
-
-      if (damagePool > 0) {
-        damageRoll = await new Roll(successPoolFormula(damagePool)).evaluate({ async: true });
-        damageSuccesses = toNumber(damageRoll.total, 0);
-        await damageRoll.toMessage({
-          speaker: ChatMessage.getSpeaker({ actor: this }),
-          flavor: game.i18n.format("POKROLE.Chat.MoveDamageFlavor", {
-            actor: this.name,
-            move: move.name
-          })
+      for (const actorTarget of targetsToDamage) {
+        const damageResult = await this._resolveMoveDamageAgainstTarget({
+          move,
+          targetActor: actorTarget,
+          painPenalty,
+          critical,
+          isHoldingBackHalf
         });
+        damageTargetResults.push(damageResult);
       }
 
-      const baseDamage = Math.max(damageSuccesses, 1);
-      if (typeInteraction.immune) {
-        finalDamage = 0;
-      } else {
-        const weaknessBonus =
-          damageSuccesses >= 1 ? typeInteraction.weaknessBonus : 0;
-        const resolvedDamage = Math.max(
-          baseDamage + weaknessBonus - typeInteraction.resistancePenalty,
-          1
-        );
-        finalDamage = isHoldingBackHalf
-          ? Math.max(Math.floor(resolvedDamage / 2), 1)
-          : resolvedDamage;
-      }
-
-      if (targetActor && finalDamage > 0) {
-        const hpChange = await this._safeApplyDamage(targetActor, finalDamage);
-        hpBefore = hpChange?.hpBefore ?? null;
-        hpAfter = hpChange?.hpAfter ?? null;
+      const firstDamageResult = damageTargetResults[0];
+      if (firstDamageResult) {
+        damageRoll = firstDamageResult.damageRoll;
+        damageSuccesses = firstDamageResult.damageSuccesses;
+        finalDamage = firstDamageResult.finalDamage;
+        hpBefore = firstDamageResult.hpBefore;
+        hpAfter = firstDamageResult.hpAfter;
+        defense = firstDamageResult.defense;
+        poolBeforeDefense = firstDamageResult.poolBeforeDefense;
+        damagePool = firstDamageResult.damagePool;
+        typeInteraction = firstDamageResult.typeInteraction;
+        stabDice = firstDamageResult.stabDice;
+        criticalDice = firstDamageResult.criticalDice;
+        damageAttributeLabel = firstDamageResult.damageAttributeLabel;
       }
     }
+
+    const secondaryEffects = this._collectMoveSecondaryEffects(move);
+    const moveSecondaryEffectResults = await this._applyMoveSecondaryEffects({
+      move,
+      moveTargetKey,
+      secondaryEffects,
+      targetActors,
+      hit,
+      isDamagingMove,
+      finalDamage
+    });
+    const abilitySecondaryEffectResults = await this._applyAbilityAutomationEffects({
+      move,
+      moveTargetKey,
+      targetActors,
+      hit,
+      isDamagingMove,
+      finalDamage
+    });
+    const secondaryEffectResults = [
+      ...moveSecondaryEffectResults,
+      ...abilitySecondaryEffectResults
+    ];
 
     const summaryHtml = await renderTemplate(
       "systems/pok-role-module/templates/chat/move-roll.hbs",
@@ -510,6 +579,7 @@ export class PokRoleActor extends Actor {
         actorName: this.name,
         moveName: move.name,
         moveTypeLabel: this.localizeTrait(moveType),
+        moveTargetLabel: this._localizeMoveTarget(moveTargetKey),
         categoryLabel: game.i18n.localize(
           MOVE_CATEGORY_LABEL_BY_KEY[category] ?? "POKROLE.Common.Unknown"
         ),
@@ -549,6 +619,15 @@ export class PokRoleActor extends Actor {
         typeLabel: game.i18n.localize(typeInteraction.label),
         finalDamage,
         targetName: targetActor?.name ?? game.i18n.localize("POKROLE.Chat.NoTarget"),
+        additionalTargetResults: damageTargetResults.slice(1).map((entry) => ({
+          targetName: entry.targetName,
+          finalDamage: entry.finalDamage,
+          hpBefore: entry.hpBefore,
+          hpAfter: entry.hpAfter,
+          hasHpUpdate: entry.hpBefore !== null && entry.hpAfter !== null
+        })),
+        secondaryEffectResults,
+        hasSecondaryEffects: secondaryEffectResults.length > 0,
         hasHpUpdate: hpAfter !== null && hpBefore !== null,
         hpBefore,
         hpAfter
@@ -566,7 +645,9 @@ export class PokRoleActor extends Actor {
       hit,
       critical,
       reaction,
-      finalDamage
+      finalDamage,
+      secondaryEffectResults,
+      damageTargetResults
     };
 
     if (options.advanceAction !== false) {
@@ -574,6 +655,956 @@ export class PokRoleActor extends Actor {
     }
 
     return result;
+  }
+
+  _normalizeMoveTargetKey(targetKey) {
+    const normalized = `${targetKey ?? "foe"}`.trim().toLowerCase();
+    if (MOVE_TARGET_KEYS.includes(normalized)) return normalized;
+    return LEGACY_MOVE_TARGET_MAP[normalized] ?? "foe";
+  }
+
+  _localizeMoveTarget(targetKey) {
+    const normalized = this._normalizeMoveTargetKey(targetKey);
+    const labelByTarget = {
+      foe: "POKROLE.Move.TargetValues.Foe",
+      "random-foe": "POKROLE.Move.TargetValues.RandomFoe",
+      "all-foes": "POKROLE.Move.TargetValues.AllFoes",
+      self: "POKROLE.Move.TargetValues.Self",
+      ally: "POKROLE.Move.TargetValues.Ally",
+      "all-allies": "POKROLE.Move.TargetValues.AllAllies",
+      area: "POKROLE.Move.TargetValues.Area",
+      battlefield: "POKROLE.Move.TargetValues.Battlefield",
+      "foe-battlefield": "POKROLE.Move.TargetValues.FoeBattlefield",
+      "ally-battlefield": "POKROLE.Move.TargetValues.AllyBattlefield",
+      "battlefield-area": "POKROLE.Move.TargetValues.BattlefieldArea"
+    };
+    return game.i18n.localize(labelByTarget[normalized] ?? "POKROLE.Common.Unknown");
+  }
+
+  _getSelectedTargetActors() {
+    return [...(game.user?.targets ?? [])].map((token) => token.actor).filter(Boolean);
+  }
+
+  _resolveActorsForMoveTarget(moveTargetKey, selectedTargetActors = []) {
+    const normalizedTarget = this._normalizeMoveTargetKey(moveTargetKey);
+    const uniqueActors = new Map();
+    const addActor = (actor) => {
+      if (!actor) return;
+      const actorKey = actor.id ?? actor.uuid ?? actor.name;
+      if (!uniqueActors.has(actorKey)) uniqueActors.set(actorKey, actor);
+    };
+
+    if (normalizedTarget === "self") {
+      addActor(this);
+      return [...uniqueActors.values()];
+    }
+
+    if (normalizedTarget === "all-allies") {
+      addActor(this);
+      for (const actor of selectedTargetActors) addActor(actor);
+      return [...uniqueActors.values()];
+    }
+
+    if (normalizedTarget === "ally") {
+      if (selectedTargetActors.length > 0) addActor(selectedTargetActors[0]);
+      else addActor(this);
+      return [...uniqueActors.values()];
+    }
+
+    for (const actor of selectedTargetActors) addActor(actor);
+    return [...uniqueActors.values()];
+  }
+
+  _resolveDamageTargets(moveTargetKey, targetActors) {
+    const normalizedTarget = this._normalizeMoveTargetKey(moveTargetKey);
+    if (!Array.isArray(targetActors) || targetActors.length === 0) {
+      if (normalizedTarget === "self") return [this];
+      return [];
+    }
+
+    if (["all-foes", "area", "battlefield-area"].includes(normalizedTarget)) {
+      return targetActors;
+    }
+    return [targetActors[0]];
+  }
+
+  async _resolveMoveDamageAgainstTarget({
+    move,
+    targetActor,
+    painPenalty,
+    critical,
+    isHoldingBackHalf
+  }) {
+    const category = move.system.category || "physical";
+    const moveType = move.system.type || "normal";
+    const damageAttributeKey = this._resolveDamageAttributeKey(move);
+    const damageAttributeLabel = this.localizeTrait(damageAttributeKey);
+    const damageAttributeValue = Math.max(this.getTraitValue(damageAttributeKey), 0);
+    const power = Math.max(toNumber(move.system.power, 0), 0);
+    const damagePainPenalty = damageAttributeKey === "vitality" ? 0 : painPenalty;
+    const criticalDice = critical ? 2 : 0;
+    const stabDice = this.hasType(moveType) ? 1 : 0;
+    const defense = targetActor ? this._getTargetDefense(targetActor, category) : 0;
+    const poolBeforeDefense = damageAttributeValue + power + stabDice + criticalDice - damagePainPenalty;
+    const damagePool = Math.max(poolBeforeDefense - defense, 0);
+    const typeInteraction = targetActor
+      ? this._evaluateTypeInteraction(moveType, targetActor)
+      : {
+          immune: false,
+          weaknessBonus: 0,
+          resistancePenalty: 0,
+          label: "POKROLE.Chat.TypeEffect.Neutral"
+        };
+
+    let damageRoll = null;
+    let damageSuccesses = 0;
+    if (damagePool > 0) {
+      damageRoll = await new Roll(successPoolFormula(damagePool)).evaluate({ async: true });
+      damageSuccesses = toNumber(damageRoll.total, 0);
+      await damageRoll.toMessage({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        flavor: `${game.i18n.format("POKROLE.Chat.MoveDamageFlavor", {
+          actor: this.name,
+          move: move.name
+        })} (${targetActor?.name ?? game.i18n.localize("POKROLE.Chat.NoTarget")})`
+      });
+    }
+
+    const baseDamage = Math.max(damageSuccesses, 1);
+    let finalDamage = 0;
+    if (!typeInteraction.immune) {
+      const weaknessBonus = damageSuccesses >= 1 ? typeInteraction.weaknessBonus : 0;
+      const resolvedDamage = Math.max(
+        baseDamage + weaknessBonus - typeInteraction.resistancePenalty,
+        1
+      );
+      finalDamage = isHoldingBackHalf
+        ? Math.max(Math.floor(resolvedDamage / 2), 1)
+        : resolvedDamage;
+    }
+
+    let hpBefore = null;
+    let hpAfter = null;
+    if (targetActor && finalDamage > 0) {
+      const hpChange = await this._safeApplyDamage(targetActor, finalDamage);
+      hpBefore = hpChange?.hpBefore ?? null;
+      hpAfter = hpChange?.hpAfter ?? null;
+    }
+
+    return {
+      targetActor,
+      targetName: targetActor?.name ?? game.i18n.localize("POKROLE.Chat.NoTarget"),
+      damageRoll,
+      damageSuccesses,
+      finalDamage,
+      hpBefore,
+      hpAfter,
+      defense,
+      poolBeforeDefense,
+      damagePool,
+      typeInteraction,
+      stabDice,
+      criticalDice,
+      damageAttributeLabel
+    };
+  }
+
+  _collectMoveSecondaryEffects(move) {
+    const explicitEffects = this._normalizeSecondaryEffectDefinitions(move.system?.secondaryEffects);
+    if (explicitEffects.length > 0) return explicitEffects;
+
+    const legacyEffects = this._convertLegacyEffectGroupsToSecondaryEffects(
+      move.system?.effectGroups,
+      move.system?.target
+    );
+    if (legacyEffects.length > 0) return legacyEffects;
+
+    return this._inferSecondaryEffectsFromDescription(move.system?.description, move.system?.target);
+  }
+
+  _normalizeSecondaryEffectDefinitions(effectList) {
+    const rawList = Array.isArray(effectList)
+      ? effectList
+      : effectList && typeof effectList === "object"
+        ? Object.values(effectList)
+        : [];
+    return rawList.map((effect) => this._normalizeSecondaryEffectDefinition(effect));
+  }
+
+  _normalizeSecondaryEffectDefinition(effect) {
+    const rawEffect = effect && typeof effect === "object" ? effect : {};
+    const trigger = MOVE_SECONDARY_TRIGGER_KEYS.includes(rawEffect.trigger)
+      ? rawEffect.trigger
+      : "on-hit";
+    const target = MOVE_SECONDARY_TARGET_KEYS.includes(rawEffect.target)
+      ? rawEffect.target
+      : "target";
+    const effectType = MOVE_SECONDARY_EFFECT_TYPE_KEYS.includes(rawEffect.effectType)
+      ? rawEffect.effectType
+      : "condition";
+    const condition = this._normalizeConditionKey(rawEffect.condition);
+    const stat = this._normalizeSecondaryStatKey(rawEffect.stat);
+    const chance = clamp(Math.floor(toNumber(rawEffect.chance, 100)), 0, 100);
+    const amount = clamp(Math.floor(toNumber(rawEffect.amount, 0)), -99, 99);
+
+    return {
+      label: `${rawEffect.label ?? ""}`.trim(),
+      trigger,
+      chance,
+      target,
+      effectType,
+      condition,
+      stat,
+      amount,
+      notes: `${rawEffect.notes ?? ""}`.trim()
+    };
+  }
+
+  _normalizeConditionKey(conditionKey) {
+    const normalized = `${conditionKey ?? ""}`
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9-]+/g, "");
+    const alias = CONDITION_ALIASES[normalized] ?? normalized;
+    if (MOVE_SECONDARY_CONDITION_KEYS.includes(alias)) return alias;
+    if (alias.includes("paraly")) return "paralyzed";
+    if (alias.includes("poison")) return "poisoned";
+    if (alias.includes("sleep")) return "sleep";
+    if (alias.includes("burn")) return "burn";
+    if (alias.includes("freez")) return "frozen";
+    if (alias.includes("confus")) return "confused";
+    if (alias.includes("flinch")) return "flinch";
+    if (alias.includes("disable")) return "disabled";
+    if (alias.includes("infatuat")) return "infatuated";
+    if (alias.includes("faint")) return "fainted";
+    return "none";
+  }
+
+  _normalizeSecondaryStatKey(statKey) {
+    const normalized = `${statKey ?? ""}`
+      .trim()
+      .toLowerCase()
+      .replace(/[_\s]+/g, "")
+      .replace(/[^a-z0-9]+/g, "");
+    const mapped = LEGACY_EFFECT_STAT_MAP[normalized] ?? normalized;
+    if (MOVE_SECONDARY_STAT_KEYS.includes(mapped)) return mapped;
+    if (mapped.includes("specialdef")) return "specialDefense";
+    if (mapped.includes("def")) return "defense";
+    if (mapped.includes("attack")) return "strength";
+    if (mapped.includes("speed")) return "dexterity";
+    if (mapped.includes("accuracy")) return "accuracy";
+    if (mapped.includes("evasion")) return "evasion";
+    if (mapped.includes("clash")) return "clash";
+    if (mapped.includes("special")) return "special";
+    return "none";
+  }
+
+  _convertLegacyEffectGroupsToSecondaryEffects(effectGroups, moveTargetKey) {
+    if (!Array.isArray(effectGroups) || effectGroups.length === 0) return [];
+    const normalizedMoveTarget = this._normalizeMoveTargetKey(moveTargetKey);
+    const secondaryEffects = [];
+
+    for (const group of effectGroups) {
+      if (!group || typeof group !== "object") continue;
+      let chance = 100;
+      const conditionType = `${group.condition?.type ?? "none"}`.trim().toLowerCase();
+      if (conditionType === "chancedice") {
+        const chanceDice = Math.max(toNumber(group.condition?.amount, 1), 1);
+        chance = clamp(Math.round((1 - Math.pow(2 / 3, chanceDice)) * 100), 1, 100);
+      }
+
+      const effects = Array.isArray(group.effects) ? group.effects : [];
+      for (const effect of effects) {
+        if (!effect || typeof effect !== "object") continue;
+        const type = `${effect.type ?? "custom"}`.trim().toLowerCase();
+        const target =
+          effect.affects === "user"
+            ? "self"
+            : ["all-foes", "area", "battlefield-area"].includes(normalizedMoveTarget)
+              ? "all-targets"
+              : "target";
+        secondaryEffects.push(
+          this._normalizeSecondaryEffectDefinition({
+            label: "",
+            trigger: "on-hit",
+            chance,
+            target,
+            effectType:
+              type === "ailment"
+                ? "condition"
+                : type === "statchange"
+                  ? "stat"
+                  : "custom",
+            condition: effect.ailment ?? "none",
+            stat: effect.stat ?? "none",
+            amount: toNumber(effect.amount, 0),
+            notes: ""
+          })
+        );
+      }
+    }
+
+    return secondaryEffects;
+  }
+
+  _inferSecondaryEffectsFromDescription(description, moveTargetKey) {
+    const descriptionText = `${description ?? ""}`.replace(/\s+/g, " ").trim();
+    if (!descriptionText) return [];
+    const lowerDescription = descriptionText.toLowerCase();
+    const inferredEffects = [];
+    const signatures = new Set();
+    const defaultTarget =
+      this._normalizeMoveTargetKey(moveTargetKey) === "self" ? "self" : "target";
+
+    const addEffect = (effect) => {
+      const normalized = this._normalizeSecondaryEffectDefinition(effect);
+      const signature = JSON.stringify([
+        normalized.trigger,
+        normalized.chance,
+        normalized.target,
+        normalized.effectType,
+        normalized.condition,
+        normalized.stat,
+        normalized.amount
+      ]);
+      if (signatures.has(signature)) return;
+      signatures.add(signature);
+      inferredEffects.push(normalized);
+    };
+
+    const mechanicPattern = /\{mechanic:([a-z-]+)\}/gi;
+    let mechanicMatch = mechanicPattern.exec(descriptionText);
+    while (mechanicMatch) {
+      const conditionKey = this._normalizeConditionKey(mechanicMatch[1]);
+      if (conditionKey !== "none") {
+        const chance = this._extractChanceBeforeIndex(lowerDescription, mechanicMatch.index);
+        addEffect({
+          label: "",
+          trigger: "on-hit",
+          chance,
+          target: defaultTarget,
+          effectType: "condition",
+          condition: conditionKey,
+          stat: "none",
+          amount: 0,
+          notes: ""
+        });
+      }
+      mechanicMatch = mechanicPattern.exec(descriptionText);
+    }
+
+    const statusMatchers = [
+      { condition: "burn", regex: /(\d{1,3})%\s+chance[^.]*\bburn/i },
+      { condition: "frozen", regex: /(\d{1,3})%\s+chance[^.]*\bfreez/i },
+      { condition: "paralyzed", regex: /(\d{1,3})%\s+chance[^.]*\bparaly/i },
+      { condition: "poisoned", regex: /(\d{1,3})%\s+chance[^.]*\bpoison/i },
+      { condition: "sleep", regex: /(\d{1,3})%\s+chance[^.]*\bsleep/i },
+      { condition: "confused", regex: /(\d{1,3})%\s+chance[^.]*\bconfus/i },
+      { condition: "flinch", regex: /(\d{1,3})%\s+chance[^.]*\bflinch/i }
+    ];
+    for (const matcher of statusMatchers) {
+      const match = matcher.regex.exec(descriptionText);
+      if (!match) continue;
+      addEffect({
+        label: "",
+        trigger: "on-hit",
+        chance: clamp(toNumber(match[1], 100), 0, 100),
+        target: defaultTarget,
+        effectType: "condition",
+        condition: matcher.condition,
+        stat: "none",
+        amount: 0,
+        notes: ""
+      });
+    }
+
+    const stageRegex =
+      /(?:(\d{1,3})%\s+chance\s+to\s+)?(raise|raises|increase|increases|lower|lowers|decrease|decreases)\s+(?:the\s+)?(user|target|foe|ally|its|their)(?:'s)?\s+([a-z\/\.\s-]+?)\s+by\s+(one|two|three|four|five|six|\d+)\s+stages?/gi;
+    let stageMatch = stageRegex.exec(descriptionText);
+    while (stageMatch) {
+      const chance = stageMatch[1] ? clamp(toNumber(stageMatch[1], 100), 0, 100) : 100;
+      const directionWord = `${stageMatch[2] ?? ""}`.toLowerCase();
+      const targetWord = `${stageMatch[3] ?? ""}`.toLowerCase();
+      const statWord = `${stageMatch[4] ?? ""}`.toLowerCase();
+      const amount = this._parseStageAmount(stageMatch[5], directionWord);
+      const target = ["user", "its", "their"].includes(targetWord) ? "self" : "target";
+      const stat = this._normalizeSecondaryStatKey(statWord);
+      if (stat !== "none" && amount !== 0) {
+        addEffect({
+          label: "",
+          trigger: "on-hit",
+          chance,
+          target,
+          effectType: "stat",
+          condition: "none",
+          stat,
+          amount,
+          notes: ""
+        });
+      }
+      stageMatch = stageRegex.exec(descriptionText);
+    }
+
+    const halfHealRegex =
+      /heals?\s+(?:the\s+)?(user|itself|self|target|ally)?[^.]*half[^.]*max hp/i;
+    const halfHealMatch = halfHealRegex.exec(descriptionText);
+    if (halfHealMatch) {
+      const targetWord = `${halfHealMatch[1] ?? ""}`.toLowerCase();
+      const target = ["user", "itself", "self"].includes(targetWord) ? "self" : "target";
+      addEffect({
+        label: "",
+        trigger: "on-hit",
+        chance: 100,
+        target,
+        effectType: "heal",
+        condition: "none",
+        stat: "none",
+        amount: -50,
+        notes: ""
+      });
+    }
+
+    const fractionDamageRegex = /(\d+)\s*\/\s*(\d+)\s+(?:of\s+)?(?:the\s+)?target'?s?\s+max hp/i;
+    const fractionDamageMatch = fractionDamageRegex.exec(descriptionText);
+    if (fractionDamageMatch) {
+      const numerator = Math.max(toNumber(fractionDamageMatch[1], 0), 0);
+      const denominator = Math.max(toNumber(fractionDamageMatch[2], 1), 1);
+      if (numerator > 0) {
+        const percent = clamp(Math.round((numerator / denominator) * 100), 1, 100);
+        addEffect({
+          label: "",
+          trigger: "on-hit",
+          chance: 100,
+          target: defaultTarget,
+          effectType: "damage",
+          condition: "none",
+          stat: "none",
+          amount: -percent,
+          notes: ""
+        });
+      }
+    }
+
+    return inferredEffects;
+  }
+
+  _extractChanceBeforeIndex(text, index) {
+    const start = Math.max(index - 140, 0);
+    const window = text.slice(start, index + 1);
+    const pattern = /(\d{1,3})%\s+chance/gi;
+    let chance = null;
+    let match = pattern.exec(window);
+    while (match) {
+      chance = clamp(toNumber(match[1], 100), 0, 100);
+      match = pattern.exec(window);
+    }
+    return chance ?? 100;
+  }
+
+  _parseStageAmount(value, directionWord) {
+    const text = `${value ?? ""}`.trim().toLowerCase();
+    const numberMap = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6 };
+    const numericValue = numberMap[text] ?? toNumber(text, 0);
+    const sign = ["lower", "lowers", "decrease", "decreases"].includes(directionWord) ? -1 : 1;
+    return clamp(sign * Math.max(Math.floor(numericValue), 0), -6, 6);
+  }
+
+  async _applyMoveSecondaryEffects({
+    move,
+    moveTargetKey,
+    secondaryEffects,
+    targetActors,
+    hit,
+    isDamagingMove,
+    finalDamage
+  }) {
+    if (!Array.isArray(secondaryEffects) || secondaryEffects.length === 0) {
+      return [];
+    }
+
+    const results = [];
+    for (const effect of secondaryEffects) {
+      if (!this._secondaryTriggerMatches(effect.trigger, { hit, isDamagingMove, finalDamage })) {
+        continue;
+      }
+
+      let chanceRollTotal = null;
+      let chanceSucceeded = true;
+      if (effect.chance < 100) {
+        const chanceRoll = await new Roll("1d100").evaluate({ async: true });
+        chanceRollTotal = toNumber(chanceRoll.total, 101);
+        chanceSucceeded = chanceRollTotal <= effect.chance;
+      }
+
+      if (!chanceSucceeded) {
+        results.push({
+          label: this._formatSecondaryEffectLabel(effect),
+          targetName: game.i18n.localize("POKROLE.Common.None"),
+          applied: false,
+          detail: game.i18n.format("POKROLE.Chat.SecondaryEffectChanceFailed", {
+            roll: chanceRollTotal,
+            chance: effect.chance
+          })
+        });
+        continue;
+      }
+
+      const effectTargets = this._resolveActorsForSecondaryTarget(effect.target, {
+        moveTargetKey,
+        targetActors
+      });
+      if (!effectTargets.length) {
+        results.push({
+          label: this._formatSecondaryEffectLabel(effect),
+          targetName: game.i18n.localize("POKROLE.Chat.NoTarget"),
+          applied: false,
+          detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectNoTarget")
+        });
+        continue;
+      }
+
+      for (const targetActor of effectTargets) {
+        const applyResult = await this._applySecondaryEffectToActor(effect, targetActor, move);
+        results.push({
+          label: this._formatSecondaryEffectLabel(effect),
+          targetName: targetActor.name,
+          applied: applyResult.applied,
+          detail: applyResult.detail
+        });
+      }
+    }
+
+    return results;
+  }
+
+  async _applyAbilityAutomationEffects({
+    move,
+    moveTargetKey,
+    targetActors,
+    hit,
+    isDamagingMove,
+    finalDamage
+  }) {
+    const abilityItems = this.items.filter((item) => item.type === "ability");
+    if (!abilityItems.length) return [];
+
+    const results = [];
+    for (const abilityItem of abilityItems) {
+      const triggerText = `${abilityItem.system?.trigger ?? ""}`.trim().toLowerCase();
+      const triggerAllows =
+        !triggerText ||
+        triggerText.includes("always") ||
+        (hit && triggerText.includes("hit")) ||
+        (!hit && triggerText.includes("miss"));
+      if (!triggerAllows) continue;
+
+      const payloadEffects = this._parseAbilityAutomationPayload(abilityItem.system?.effect);
+      if (!payloadEffects.length) continue;
+
+      const normalizedEffects = payloadEffects.map((effect) =>
+        this._normalizeSecondaryEffectDefinition({
+          ...effect,
+          label: `${effect?.label ?? ""}`.trim() || abilityItem.name
+        })
+      );
+
+      const effectResults = await this._applyMoveSecondaryEffects({
+        move,
+        moveTargetKey,
+        secondaryEffects: normalizedEffects,
+        targetActors,
+        hit,
+        isDamagingMove,
+        finalDamage
+      });
+      results.push(...effectResults);
+    }
+
+    return results;
+  }
+
+  _parseAbilityAutomationPayload(effectText) {
+    const text = `${effectText ?? ""}`.trim();
+    if (!text) return [];
+    if (!(text.startsWith("{") || text.startsWith("["))) {
+      return [];
+    }
+
+    try {
+      const parsed = JSON.parse(text);
+      if (Array.isArray(parsed)) return parsed;
+      if (parsed && typeof parsed === "object") return [parsed];
+    } catch (error) {
+      console.warn(`${POKROLE.ID} | Invalid ability automation JSON payload`, error);
+    }
+    return [];
+  }
+
+  _secondaryTriggerMatches(trigger, { hit, isDamagingMove, finalDamage }) {
+    switch (`${trigger ?? "on-hit"}`.toLowerCase()) {
+      case "always":
+        return true;
+      case "on-miss":
+        return !hit;
+      case "on-hit-damage":
+        return hit && isDamagingMove && toNumber(finalDamage, 0) > 0;
+      case "on-hit":
+      default:
+        return hit;
+    }
+  }
+
+  _resolveActorsForSecondaryTarget(targetMode, context) {
+    const { moveTargetKey, targetActors } = context;
+    const normalizedTarget =
+      MOVE_SECONDARY_TARGET_KEYS.includes(targetMode) ? targetMode : "target";
+    const uniqueActors = new Map();
+    const addActor = (actor) => {
+      if (!actor) return;
+      const key = actor.id ?? actor.uuid ?? actor.name;
+      if (!uniqueActors.has(key)) uniqueActors.set(key, actor);
+    };
+
+    switch (normalizedTarget) {
+      case "self":
+        addActor(this);
+        break;
+      case "all-targets":
+      case "all-foes":
+        for (const actor of targetActors ?? []) addActor(actor);
+        break;
+      case "all-allies":
+        addActor(this);
+        for (const actor of targetActors ?? []) addActor(actor);
+        break;
+      case "target":
+      default:
+        if ((targetActors ?? []).length > 0) {
+          addActor(targetActors[0]);
+        } else if (this._normalizeMoveTargetKey(moveTargetKey) === "self") {
+          addActor(this);
+        }
+        break;
+    }
+
+    return [...uniqueActors.values()];
+  }
+
+  _formatSecondaryEffectLabel(effect) {
+    if (effect.label) return effect.label;
+
+    const effectTypeLabel = game.i18n.localize(
+      `POKROLE.Move.Secondary.Type.${this._toSecondaryTypeLabelSuffix(effect.effectType)}`
+    );
+    if (effect.effectType === "condition" && effect.condition !== "none") {
+      return `${effectTypeLabel}: ${this._localizeConditionName(effect.condition)}`;
+    }
+    if (
+      (effect.effectType === "stat" || effect.effectType === "combat-stat") &&
+      effect.stat !== "none" &&
+      effect.amount !== 0
+    ) {
+      const amountText = effect.amount > 0 ? `+${effect.amount}` : `${effect.amount}`;
+      return `${effectTypeLabel}: ${this._localizeSecondaryStatName(effect.stat)} ${amountText}`;
+    }
+    if (["damage", "heal", "will"].includes(effect.effectType)) {
+      return `${effectTypeLabel}: ${effect.amount}`;
+    }
+    return effectTypeLabel;
+  }
+
+  _toSecondaryTypeLabelSuffix(effectType) {
+    const suffixByType = {
+      condition: "Condition",
+      stat: "Stat",
+      "combat-stat": "CombatStat",
+      damage: "Damage",
+      heal: "Heal",
+      will: "Will",
+      custom: "Custom"
+    };
+    return suffixByType[effectType] ?? "Custom";
+  }
+
+  _localizeConditionName(conditionKey) {
+    const knownConditionLabels = {
+      sleep: "POKROLE.Conditions.Sleep",
+      burn: "POKROLE.Conditions.Burn",
+      frozen: "POKROLE.Conditions.Frozen",
+      paralyzed: "POKROLE.Conditions.Paralyzed",
+      poisoned: "POKROLE.Conditions.Poisoned",
+      fainted: "POKROLE.Conditions.Fainted",
+      confused: "POKROLE.Move.Secondary.Condition.Confused",
+      flinch: "POKROLE.Move.Secondary.Condition.Flinch",
+      disabled: "POKROLE.Move.Secondary.Condition.Disabled",
+      infatuated: "POKROLE.Move.Secondary.Condition.Infatuated",
+      "badly-poisoned": "POKROLE.Move.Secondary.Condition.BadlyPoisoned"
+    };
+    return game.i18n.localize(knownConditionLabels[conditionKey] ?? "POKROLE.Common.Unknown");
+  }
+
+  _localizeSecondaryStatName(statKey) {
+    const combatStatLabels = {
+      accuracy: "POKROLE.Pokemon.Accuracy",
+      damage: "POKROLE.Pokemon.Damage",
+      evasion: "POKROLE.Pokemon.Evasion",
+      clash: "POKROLE.Pokemon.Clash",
+      defense: "POKROLE.Combat.Defense",
+      specialDefense: "POKROLE.Combat.SpecialDefense"
+    };
+    if (combatStatLabels[statKey]) {
+      return game.i18n.localize(combatStatLabels[statKey]);
+    }
+    return this.localizeTrait(statKey);
+  }
+
+  async _applySecondaryEffectToActor(effect, targetActor) {
+    switch (effect.effectType) {
+      case "condition":
+        return this._applyConditionEffectToActor(effect, targetActor);
+      case "stat":
+        return this._applyStatEffectToActor(effect, targetActor);
+      case "combat-stat":
+        return this._applyCombatStatEffectToActor(effect, targetActor);
+      case "damage": {
+        const damageValue = this._resolveEffectAmountValue(
+          toNumber(targetActor.system?.resources?.hp?.max, 1),
+          effect.amount
+        );
+        if (damageValue <= 0) {
+          return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
+        }
+        const hpChange = await this._safeApplyDamage(targetActor, damageValue);
+        if (!hpChange) {
+          return { applied: false, detail: game.i18n.localize("POKROLE.Errors.HPUpdateFailed") };
+        }
+        return {
+          applied: true,
+          detail: game.i18n.format("POKROLE.Chat.SecondaryEffectHpChange", {
+            before: hpChange.hpBefore,
+            after: hpChange.hpAfter
+          })
+        };
+      }
+      case "heal": {
+        const healValue = this._resolveEffectAmountValue(
+          toNumber(targetActor.system?.resources?.hp?.max, 1),
+          effect.amount
+        );
+        if (healValue <= 0) {
+          return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
+        }
+        const hpChange = await this._safeApplyHeal(targetActor, healValue);
+        if (!hpChange) {
+          return { applied: false, detail: game.i18n.localize("POKROLE.Errors.HPUpdateFailed") };
+        }
+        return {
+          applied: true,
+          detail: game.i18n.format("POKROLE.Chat.SecondaryEffectHpChange", {
+            before: hpChange.hpBefore,
+            after: hpChange.hpAfter
+          })
+        };
+      }
+      case "will":
+        return this._applyWillEffectToActor(effect, targetActor);
+      case "custom":
+      default:
+        return {
+          applied: true,
+          detail: effect.notes || game.i18n.localize("POKROLE.Chat.SecondaryEffectApplied")
+        };
+    }
+  }
+
+  _resolveEffectAmountValue(maxValue, amount) {
+    const numericAmount = toNumber(amount, 0);
+    if (numericAmount === 0) return 0;
+    if (numericAmount > 0) return Math.floor(numericAmount);
+    return Math.max(Math.floor((Math.max(maxValue, 1) * Math.abs(numericAmount)) / 100), 1);
+  }
+
+  async _applyConditionEffectToActor(effect, targetActor) {
+    const conditionKey = this._normalizeConditionKey(effect.condition);
+    if (conditionKey === "none") {
+      return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
+    }
+
+    const conditionFieldByKey = {
+      sleep: "sleep",
+      burn: "burn",
+      frozen: "frozen",
+      paralyzed: "paralyzed",
+      poisoned: "poisoned",
+      fainted: "fainted"
+    };
+    const systemConditionField = conditionFieldByKey[conditionKey];
+    if (systemConditionField) {
+      const alreadyActive = Boolean(targetActor.system.conditions?.[systemConditionField]);
+      if (alreadyActive) {
+        return {
+          applied: false,
+          detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectAlreadyActive")
+        };
+      }
+      await targetActor.update({ [`system.conditions.${systemConditionField}`]: true });
+      return { applied: true, detail: this._localizeConditionName(conditionKey) };
+    }
+
+    await targetActor.setFlag(POKROLE.ID, `automation.conditions.${conditionKey}`, true);
+    return {
+      applied: true,
+      detail: `${this._localizeConditionName(conditionKey)} (${game.i18n.localize(
+        "POKROLE.Chat.SecondaryEffectTracked"
+      )})`
+    };
+  }
+
+  async _applyStatEffectToActor(effect, targetActor) {
+    const amount = Math.floor(toNumber(effect.amount, 0));
+    if (amount === 0) {
+      return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
+    }
+
+    const statKey = this._normalizeSecondaryStatKey(effect.stat);
+    if (statKey === "none") {
+      return { applied: false, detail: game.i18n.localize("POKROLE.Common.Unknown") };
+    }
+
+    if (["accuracy", "damage", "evasion", "clash"].includes(statKey)) {
+      return this._applyCombatStatEffectToActor(
+        { ...effect, effectType: "combat-stat", stat: statKey, amount },
+        targetActor
+      );
+    }
+
+    let resolvedKey = statKey;
+    if (statKey === "defense") resolvedKey = "vitality";
+    if (statKey === "specialDefense") resolvedKey = "insight";
+
+    if (Object.prototype.hasOwnProperty.call(targetActor.system.attributes ?? {}, resolvedKey)) {
+      const currentValue = toNumber(targetActor.system.attributes?.[resolvedKey], 0);
+      const maxValue = this._resolveAttributeMaximum(targetActor, resolvedKey);
+      const nextValue = clamp(currentValue + amount, 0, maxValue);
+      if (nextValue === currentValue) {
+        return {
+          applied: false,
+          detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectNoStatChange")
+        };
+      }
+      await targetActor.update({ [`system.attributes.${resolvedKey}`]: nextValue });
+      return {
+        applied: true,
+        detail: `${this.localizeTrait(resolvedKey)} ${currentValue} -> ${nextValue}`
+      };
+    }
+
+    if (Object.prototype.hasOwnProperty.call(targetActor.system.skills ?? {}, resolvedKey)) {
+      const currentValue = toNumber(targetActor.system.skills?.[resolvedKey], 0);
+      const nextValue = clamp(currentValue + amount, 0, 5);
+      if (nextValue === currentValue) {
+        return {
+          applied: false,
+          detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectNoStatChange")
+        };
+      }
+      await targetActor.update({ [`system.skills.${resolvedKey}`]: nextValue });
+      return {
+        applied: true,
+        detail: `${this.localizeTrait(resolvedKey)} ${currentValue} -> ${nextValue}`
+      };
+    }
+
+    return { applied: false, detail: game.i18n.localize("POKROLE.Common.Unknown") };
+  }
+
+  _resolveAttributeMaximum(targetActor, attributeKey) {
+    const isCoreAttribute = ["strength", "dexterity", "vitality", "special", "insight"].includes(
+      attributeKey
+    );
+    if (targetActor.type === "pokemon" && isCoreAttribute) {
+      return clamp(
+        toNumber(targetActor.system.sheetSettings?.trackMax?.attributes?.[attributeKey], 12),
+        1,
+        12
+      );
+    }
+    return 5;
+  }
+
+  async _applyCombatStatEffectToActor(effect, targetActor) {
+    const amount = Math.floor(toNumber(effect.amount, 0));
+    if (amount === 0) {
+      return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
+    }
+
+    const validCombatStats = ["accuracy", "damage", "evasion", "clash"];
+    const statKey = `${effect.stat ?? ""}`.trim();
+    if (!validCombatStats.includes(statKey)) {
+      return { applied: false, detail: game.i18n.localize("POKROLE.Common.Unknown") };
+    }
+
+    const path = `system.combatProfile.${statKey}`;
+    const currentValue = toNumber(targetActor.system.combatProfile?.[statKey], 0);
+    const nextValue = clamp(currentValue + amount, 0, 99);
+    if (nextValue === currentValue) {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectNoStatChange")
+      };
+    }
+    await targetActor.update({ [path]: nextValue });
+    return {
+      applied: true,
+      detail: `${this._localizeSecondaryStatName(statKey)} ${currentValue} -> ${nextValue}`
+    };
+  }
+
+  async _applyWillEffectToActor(effect, targetActor) {
+    const maxWill = Math.max(toNumber(targetActor.system.resources?.will?.max, 1), 1);
+    const amount = Math.floor(toNumber(effect.amount, 0));
+    if (amount === 0) {
+      return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
+    }
+
+    const currentWill = Math.max(toNumber(targetActor.system.resources?.will?.value, 0), 0);
+    const nextWill = clamp(currentWill + amount, 0, maxWill);
+    if (nextWill === currentWill) {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectNoStatChange")
+      };
+    }
+    await targetActor.update({ "system.resources.will.value": nextWill });
+    return {
+      applied: true,
+      detail: `${currentWill} -> ${nextWill}`
+    };
+  }
+
+  async _safeApplyHeal(targetActor, healAmount) {
+    const normalizedHeal = Math.max(toNumber(healAmount, 0), 0);
+    if (!targetActor || normalizedHeal <= 0) {
+      return null;
+    }
+
+    const hpValue = Math.max(toNumber(targetActor.system.resources?.hp?.value, 0), 0);
+    const hpMax = Math.max(toNumber(targetActor.system.resources?.hp?.max, 1), 1);
+    const hpAfter = Math.min(hpValue + normalizedHeal, hpMax);
+    if (hpAfter === hpValue) {
+      return { hpBefore: hpValue, hpAfter };
+    }
+    try {
+      await targetActor.update({ "system.resources.hp.value": hpAfter });
+    } catch (error) {
+      console.error(`${POKROLE.ID} | Failed to apply heal`, error);
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.HPUpdateFailed"));
+    }
+
+    return {
+      hpBefore: hpValue,
+      hpAfter
+    };
   }
 
   async useGearItem(itemId, options = {}) {

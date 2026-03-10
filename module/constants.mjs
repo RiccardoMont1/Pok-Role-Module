@@ -124,6 +124,86 @@ export const MOVE_CATEGORY_LABEL_BY_KEY = Object.freeze({
   support: "POKROLE.Move.Category.Support"
 });
 
+export const MOVE_TARGET_KEYS = Object.freeze([
+  "foe",
+  "random-foe",
+  "all-foes",
+  "self",
+  "ally",
+  "all-allies",
+  "area",
+  "battlefield",
+  "foe-battlefield",
+  "ally-battlefield",
+  "battlefield-area"
+]);
+
+export const MOVE_TARGET_LABEL_BY_KEY = Object.freeze({
+  foe: "POKROLE.Move.TargetValues.Foe",
+  "random-foe": "POKROLE.Move.TargetValues.RandomFoe",
+  "all-foes": "POKROLE.Move.TargetValues.AllFoes",
+  self: "POKROLE.Move.TargetValues.Self",
+  ally: "POKROLE.Move.TargetValues.Ally",
+  "all-allies": "POKROLE.Move.TargetValues.AllAllies",
+  area: "POKROLE.Move.TargetValues.Area",
+  battlefield: "POKROLE.Move.TargetValues.Battlefield",
+  "foe-battlefield": "POKROLE.Move.TargetValues.FoeBattlefield",
+  "ally-battlefield": "POKROLE.Move.TargetValues.AllyBattlefield",
+  "battlefield-area": "POKROLE.Move.TargetValues.BattlefieldArea"
+});
+
+export const MOVE_SECONDARY_TRIGGER_KEYS = Object.freeze([
+  "on-hit",
+  "on-hit-damage",
+  "on-miss",
+  "always"
+]);
+
+export const MOVE_SECONDARY_TARGET_KEYS = Object.freeze([
+  "target",
+  "self",
+  "all-targets",
+  "all-allies",
+  "all-foes"
+]);
+
+export const MOVE_SECONDARY_EFFECT_TYPE_KEYS = Object.freeze([
+  "condition",
+  "stat",
+  "combat-stat",
+  "damage",
+  "heal",
+  "will",
+  "custom"
+]);
+
+export const MOVE_SECONDARY_CONDITION_KEYS = Object.freeze([
+  "none",
+  "sleep",
+  "burn",
+  "frozen",
+  "paralyzed",
+  "poisoned",
+  "fainted",
+  "confused",
+  "flinch",
+  "disabled",
+  "infatuated",
+  "badly-poisoned"
+]);
+
+export const MOVE_SECONDARY_STAT_KEYS = Object.freeze([
+  "none",
+  ...ATTRIBUTE_DEFINITIONS.map((attribute) => attribute.key),
+  ...SKILL_DEFINITIONS.map((skill) => skill.key),
+  "defense",
+  "specialDefense",
+  "accuracy",
+  "damage",
+  "evasion",
+  "clash"
+]);
+
 export const MOVE_TYPE_KEYS = Object.freeze([
   "normal",
   "bug",

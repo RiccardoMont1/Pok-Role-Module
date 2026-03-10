@@ -33,6 +33,12 @@
         </select>
       </label>
       <label>
+        <span>{{localize "POKROLE.Move.Target"}}</span>
+        <select name="system.target">
+          {{selectOptions targetOptions selected=system.target localize=true}}
+        </select>
+      </label>
+      <label>
         <span>{{localize "POKROLE.Move.ActionTag"}}</span>
         <select name="system.actionTag">
           {{selectOptions actionTagOptions selected=system.actionTag localize=true}}
@@ -127,6 +133,103 @@
         <span>{{localize "POKROLE.Move.IsUsable"}}</span>
       </label>
     </div>
+  </section>
+
+  <section class="sheet-section">
+    <div class="section-title-row">
+      <h2>{{localize "POKROLE.Move.Secondary.Title"}}</h2>
+      <button type="button" data-action="add-secondary-effect">
+        <i class="fas fa-plus"></i>
+        {{localize "POKROLE.Move.Secondary.Add"}}
+      </button>
+    </div>
+    {{#if secondaryEffects.length}}
+    <div class="move-secondary-effect-list">
+      {{#each secondaryEffects as |effect|}}
+      <div class="move-secondary-effect-row">
+        <label>
+          <span>{{localize "POKROLE.Move.Secondary.Label"}}</span>
+          <input
+            type="text"
+            name="system.secondaryEffects.{{effect.index}}.label"
+            value="{{effect.label}}"
+          />
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Move.Secondary.Trigger.Label"}}</span>
+          <select name="system.secondaryEffects.{{effect.index}}.trigger">
+            {{selectOptions ../secondaryTriggerOptions selected=effect.trigger localize=true}}
+          </select>
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Move.Secondary.Chance"}}</span>
+          <input
+            type="number"
+            name="system.secondaryEffects.{{effect.index}}.chance"
+            value="{{effect.chance}}"
+            min="0"
+            max="100"
+            data-dtype="Number"
+          />
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Move.Secondary.Target.Label"}}</span>
+          <select name="system.secondaryEffects.{{effect.index}}.target">
+            {{selectOptions ../secondaryTargetOptions selected=effect.target localize=true}}
+          </select>
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Move.Secondary.Type.Label"}}</span>
+          <select name="system.secondaryEffects.{{effect.index}}.effectType">
+            {{selectOptions ../secondaryEffectTypeOptions selected=effect.effectType localize=true}}
+          </select>
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Move.Secondary.Condition.Label"}}</span>
+          <select name="system.secondaryEffects.{{effect.index}}.condition">
+            {{selectOptions ../secondaryConditionOptions selected=effect.condition localize=true}}
+          </select>
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Move.Secondary.Stat.Label"}}</span>
+          <select name="system.secondaryEffects.{{effect.index}}.stat">
+            {{selectOptions ../secondaryStatOptions selected=effect.stat localize=true}}
+          </select>
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Move.Secondary.Amount"}}</span>
+          <input
+            type="number"
+            name="system.secondaryEffects.{{effect.index}}.amount"
+            value="{{effect.amount}}"
+            min="-99"
+            max="99"
+            data-dtype="Number"
+          />
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Move.Secondary.Notes"}}</span>
+          <input
+            type="text"
+            name="system.secondaryEffects.{{effect.index}}.notes"
+            value="{{effect.notes}}"
+          />
+        </label>
+        <button
+          type="button"
+          class="icon-button danger"
+          data-action="remove-secondary-effect"
+          data-secondary-index="{{effect.index}}"
+          title="{{localize 'POKROLE.Actions.Delete'}}"
+        >
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+      {{/each}}
+    </div>
+    {{else}}
+    <p class="empty-state">{{localize "POKROLE.Move.Secondary.Empty"}}</p>
+    {{/if}}
   </section>
 
   <section class="sheet-section">

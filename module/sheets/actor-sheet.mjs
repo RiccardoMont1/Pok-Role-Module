@@ -2,6 +2,7 @@ import {
   ATTRIBUTE_DEFINITIONS,
   CORE_ATTRIBUTE_DEFINITIONS,
   MOVE_CATEGORY_LABEL_BY_KEY,
+  MOVE_TARGET_LABEL_BY_KEY,
   MOVE_TYPE_LABEL_BY_KEY,
   POKEMON_TIER_KEYS,
   POKEMON_TIER_LABEL_BY_KEY,
@@ -202,8 +203,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         "clever",
         "allure"
       ], trackMax.attributes, 1);
-      context.pokemonSkillRows = this._buildSkillRows(pokemonSkillKeys, trackMax.skills, 1);
-      context.pokemonExtraTrack = this._buildTrack(this.actor.system.extra, trackMax.extra, 1);
+      context.pokemonSkillRows = this._buildSkillRows(pokemonSkillKeys, trackMax.skills, 0);
+      context.pokemonExtraTrack = this._buildTrack(this.actor.system.extra, trackMax.extra, 0);
       context.pokemonMatchups = this._buildPokemonMatchups();
       context.pokemonTrackSettingCoreAttributes = context.pokemonPhysicalMentalRows.map((row) => ({
         key: row.key,
@@ -376,6 +377,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         system: {
           type: "normal",
           category: "physical",
+          target: "foe",
           accuracyAttribute: "dexterity",
           accuracySkill: "brawl",
           reducedAccuracy: 0,
@@ -386,7 +388,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           neverFail: false,
           lethal: false,
           actionTag: "1A",
-          isUsable: canMarkUsable
+          isUsable: canMarkUsable,
+          secondaryEffects: []
         }
       }
     ]);
@@ -628,6 +631,14 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const actionTagLabel = game.i18n.localize(
       `POKROLE.Move.ActionTagValues.${actionTag}`
     );
+    const targetKey = this._normalizeMoveTarget(move.system?.target);
+    const targetLabel = game.i18n.localize(
+      MOVE_TARGET_LABEL_BY_KEY[targetKey] ?? "POKROLE.Common.Unknown"
+    );
+    const secondaryEffects = Array.isArray(move.system?.secondaryEffects)
+      ? move.system.secondaryEffects
+      : [];
+    const secondarySummary = this._summarizeMoveSecondaryEffects(secondaryEffects);
 
     return {
       id: move.id,
@@ -637,10 +648,13 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       actionTag,
       actionTagShort: actionTag,
       actionTagLabel,
+      targetKey,
+      targetLabel,
       categoryLabel,
       typeLabel,
       accuracySummary,
       damageSummary,
+      secondarySummary,
       flagsSummary:
         flags.length > 0
           ? flags.join(", ")
@@ -731,6 +745,50 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const normalized = `${actionTag ?? "1A"}`.trim().toUpperCase();
     if (normalized === "2A" || normalized === "5A") return normalized;
     return "1A";
+  }
+
+  _normalizeMoveTarget(targetKey) {
+    const normalized = `${targetKey ?? "foe"}`.trim().toLowerCase();
+    if (MOVE_TARGET_LABEL_BY_KEY[normalized]) return normalized;
+    return "foe";
+  }
+
+  _summarizeMoveSecondaryEffects(secondaryEffects) {
+    if (!Array.isArray(secondaryEffects) || secondaryEffects.length === 0) {
+      return game.i18n.localize("POKROLE.Common.None");
+    }
+    const entries = secondaryEffects
+      .slice(0, 2)
+      .map((effect) => {
+        const label = `${effect?.label ?? ""}`.trim();
+        if (label) return label;
+        const effectType = `${effect?.effectType ?? "custom"}`.trim();
+        const chance = Number(effect?.chance ?? 100);
+        const suffixByType = {
+          condition: "Condition",
+          stat: "Stat",
+          "combat-stat": "CombatStat",
+          damage: "Damage",
+          heal: "Heal",
+          will: "Will",
+          custom: "Custom"
+        };
+        const typeLabel = game.i18n.localize(
+          `POKROLE.Move.Secondary.Type.${suffixByType[effectType] ?? "Custom"}`
+        );
+        if (Number.isFinite(chance) && chance >= 0 && chance < 100) {
+          return `${typeLabel} (${chance}%)`;
+        }
+        return typeLabel;
+      })
+      .filter((entry) => entry);
+    if (!entries.length) {
+      return game.i18n.localize("POKROLE.Common.None");
+    }
+    if (secondaryEffects.length > 2) {
+      entries.push(`+${secondaryEffects.length - 2}`);
+    }
+    return entries.join(" | ");
   }
 
   _buildAttributeRows(attributeKeys, trackMaxByKey = null, minValue = 0) {

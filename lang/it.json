@@ -180,12 +180,26 @@
       "Empty": "Nessuna mossa. Aggiungine una per iniziare.",
       "NoStat": "Nessuna Stat",
       "Type": "Tipo",
+      "Target": "Bersaglio",
       "ActionTag": "Costo Azione",
       "ActionTagShort": "Tag",
       "ActionTagValues": {
         "1A": "1 Azione",
         "2A": "2 Azioni",
         "5A": "5 Azioni"
+      },
+      "TargetValues": {
+        "Foe": "Nemico",
+        "RandomFoe": "Nemico Casuale",
+        "AllFoes": "Tutti i Nemici",
+        "Self": "Se stesso",
+        "Ally": "Alleato",
+        "AllAllies": "Utente e Alleati",
+        "Area": "Area",
+        "Battlefield": "Campo",
+        "FoeBattlefield": "Campo Nemico",
+        "AllyBattlefield": "Campo Alleato",
+        "BattlefieldArea": "Campo e Area"
       },
       "Category": {
         "Label": "Categoria",
@@ -209,6 +223,51 @@
       "Lethal": "Letale",
       "IsUsable": "Mostra come mossa utilizzabile",
       "SupportNoDamage": "Supporto (nessun danno diretto)",
+      "Secondary": {
+        "Title": "Effetti Secondari",
+        "Add": "Aggiungi Effetto",
+        "Empty": "Nessun effetto secondario configurato.",
+        "Label": "Etichetta",
+        "Chance": "Probabilita (%)",
+        "Amount": "Valore",
+        "Notes": "Note",
+        "Trigger": {
+          "Label": "Innesco",
+          "OnHit": "Su Colpo",
+          "OnHitDamage": "Su Colpo (con Danno)",
+          "OnMiss": "Su Mancato",
+          "Always": "Sempre"
+        },
+        "Target": {
+          "Label": "Bersaglio Effetto",
+          "Target": "Bersaglio",
+          "Self": "Se stesso",
+          "AllTargets": "Tutti i Bersagli",
+          "AllAllies": "Tutti gli Alleati",
+          "AllFoes": "Tutti i Nemici"
+        },
+        "Type": {
+          "Label": "Tipo Effetto",
+          "Condition": "Condizione",
+          "Stat": "Cambio Stat",
+          "CombatStat": "Stat Combattimento",
+          "Damage": "Danno",
+          "Heal": "Cura",
+          "Will": "Volonta",
+          "Custom": "Personalizzato"
+        },
+        "Condition": {
+          "Label": "Condizione",
+          "Confused": "Confusione",
+          "Flinch": "Tentennamento",
+          "Disabled": "Disabilitato",
+          "Infatuated": "Infatuato",
+          "BadlyPoisoned": "Gravemente Avvelenato"
+        },
+        "Stat": {
+          "Label": "Stat Coinvolta"
+        }
+      },
       "DescriptionPlaceholder": "Effetti, regole bersaglio e casi particolari."
     },
     "Gear": {
@@ -398,11 +457,20 @@
       "DamageSuccesses": "Successi Danno",
       "CriticalBonusDice": "Dadi bonus Critico",
       "FinalDamage": "Danno finale",
+      "AdditionalTargets": "Bersagli aggiuntivi",
       "TargetHP": "PS Bersaglio",
       "GearUsed": "Oggetto Usato",
       "GearLethalHealNote": "Danno letale ridotto di {value}.",
       "GearAwarenessNote": "Coscienza ripristinata.",
       "GearStatusNote": "Cura stati: {value}.",
+      "SecondaryEffectApplied": "Applicato",
+      "SecondaryEffectFailed": "Fallito",
+      "SecondaryEffectChanceFailed": "Probabilita fallita ({roll} > {chance})",
+      "SecondaryEffectNoTarget": "Nessun bersaglio valido",
+      "SecondaryEffectHpChange": "PS {before} -> {after}",
+      "SecondaryEffectAlreadyActive": "Gia attivo",
+      "SecondaryEffectTracked": "tracciato come condizione extra",
+      "SecondaryEffectNoStatChange": "Nessun cambio statistica",
       "HoldingBack": {
         "Label": "Holding Back",
         "None": "Nessun contenimento",

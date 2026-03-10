@@ -106,6 +106,125 @@ MANUAL_MOVE_OVERRIDES = {
     "fusion-flare": {"page": 371, "type": "fire", "power": 4},
     "strength": {"page": 403, "type": "normal", "power": 3}
 }
+UPSTREAM_POKEDEX_DB_CANDIDATES = [
+    ROOT / "_upstream" / "foundry-pokerole" / "packs" / "pokedex.db",
+    ROOT / "tools" / "sources" / "pokerole-pokedex.db"
+]
+UPSTREAM_RANK_TO_TIER = {
+    "starter": "starter",
+    "rookie": "beginner",
+    "standard": "amateur",
+    "advanced": "ace",
+    "ace": "pro",
+    "expert": "master",
+    "master": "champion",
+    "champion": "champion"
+}
+RANK_PRIORITY = {
+    "starter": 0,
+    "beginner": 1,
+    "amateur": 2,
+    "ace": 3,
+    "pro": 4,
+    "master": 5,
+    "champion": 6
+}
+VALID_ATTRIBUTE_KEYS = {
+    "strength",
+    "dexterity",
+    "vitality",
+    "special",
+    "insight",
+    "tough",
+    "beauty",
+    "cool",
+    "cute",
+    "clever",
+    "allure"
+}
+VALID_SKILL_KEYS = set(POKROLE_SKILL_KEYS)
+UPSTREAM_SKILL_MAP = {
+    "alert": "alert",
+    "athletic": "athletic",
+    "brawl": "brawl",
+    "channel": "channel",
+    "clash": "clash",
+    "evasion": "evasion",
+    "intimidate": "intimidate",
+    "nature": "nature",
+    "perform": "perform",
+    "stealth": "stealth",
+    "etiquette": "etiquette",
+    "medicine": "medicine",
+    # v3 Charm has no dedicated v2 skill field in this system schema.
+    "charm": "perform"
+}
+UPSTREAM_MOVE_TARGET_MAP = {
+    "foe": "foe",
+    "random foe": "random-foe",
+    "all foes": "all-foes",
+    "self": "self",
+    "user": "self",
+    "ally": "ally",
+    "one ally": "ally",
+    "all allies": "all-allies",
+    "user and allies": "all-allies",
+    "area": "area",
+    "battlefield": "battlefield",
+    "foe's battlefield": "foe-battlefield",
+    "ally's battlefield": "ally-battlefield",
+    "battlefield and area": "battlefield-area",
+    "battlefield (foes)": "foe-battlefield"
+}
+UPSTREAM_EFFECT_STAT_MAP = {
+    "def": "defense",
+    "defense": "defense",
+    "spdef": "specialDefense",
+    "spdefense": "specialDefense",
+    "specialdefense": "specialDefense",
+    "spec": "special",
+    "dex": "dexterity",
+    "attack": "strength",
+    "specialattack": "special",
+    "speed": "dexterity",
+    "accuracy": "accuracy",
+    "evasion": "evasion",
+    "clash": "clash"
+}
+UPSTREAM_EFFECT_CONDITION_MAP = {
+    "burn1": "burn",
+    "burn2": "burn",
+    "burn3": "burn",
+    "paralysis": "paralyzed",
+    "poison": "poisoned",
+    "badlypoisoned": "badly-poisoned",
+    "freeze": "frozen",
+    "frozen": "frozen",
+    "sleep": "sleep",
+    "flinch": "flinch",
+    "confused": "confused",
+    "disabled": "disabled",
+    "infatuated": "infatuated",
+    "fainted": "fainted"
+}
+MOVE_OBJECT_KEYS = (
+    "type",
+    "category",
+    "target",
+    "actionTag",
+    "accuracyAttribute",
+    "accuracySkill",
+    "power",
+    "reducedAccuracy",
+    "damageAttribute",
+    "priority",
+    "highCritical",
+    "neverFail",
+    "lethal",
+    "isUsable",
+    "secondaryEffects",
+    "description"
+)
 
 _POKEMON_IMAGE_STEMS = None
 
@@ -217,6 +336,376 @@ def rank_from_bst(bst):
     if bst <= 700:
         return "master"
     return "champion"
+
+
+def find_upstream_pokedex_db_path():
+    for candidate in UPSTREAM_POKEDEX_DB_CANDIDATES:
+        if candidate.exists():
+            return candidate
+    return None
+
+
+def normalize_name_key(value):
+    text = (value or "").lower()
+    text = re.sub(r"[^a-z0-9]+", "", text)
+    return text
+
+
+def parse_freeze_payload(module_path):
+    if not module_path.exists():
+        return []
+    text = module_path.read_text(encoding="utf-8")
+    match = re.search(r"Object\.freeze\((.*)\);\s*$", text, flags=re.DOTALL)
+    if not match:
+        return []
+    payload = match.group(1).strip()
+    if not payload:
+        return []
+    return json.loads(payload)
+
+
+def load_move_seed_lookup():
+    move_seed_path = OUT_DIR / "move-seeds.mjs"
+    move_entries = parse_freeze_payload(move_seed_path)
+    lookup = {}
+    for entry in move_entries:
+        key = normalize_name_key(entry.get("name", ""))
+        if not key:
+            continue
+        lookup[key] = entry
+    return lookup
+
+
+def map_upstream_rank_to_tier(rank_value):
+    rank_key = slugify(str(rank_value or ""))
+    return UPSTREAM_RANK_TO_TIER.get(rank_key, "")
+
+
+def rank_sort_key(rank_key):
+    return RANK_PRIORITY.get(rank_key, 999)
+
+
+def parse_number(value, fallback=0):
+    try:
+        numeric = float(value)
+    except (TypeError, ValueError):
+        return fallback
+    if numeric.is_integer():
+        return int(numeric)
+    return numeric
+
+
+def parse_metric_value(value, suffix):
+    numeric = parse_number(value, None)
+    if numeric is None:
+        return ""
+    if isinstance(numeric, float):
+        return f"{numeric:.1f} {suffix}"
+    return f"{numeric} {suffix}"
+
+
+def parse_priority_from_effect(effect_text):
+    text = f"{effect_text or ''}"
+    match = re.search(r"priority\s*([+-]?\d+)", text, flags=re.IGNORECASE)
+    if not match:
+        return 0
+    return clamp(parse_number(match.group(1), 0), -3, 5)
+
+
+def infer_action_tag(effect_text, attributes):
+    text = f"{effect_text or ''}".lower()
+    if attributes.get("successiveActions"):
+        return "5A"
+    if any(token in text for token in ("successive actions", "triple action", "quadruple action", "quintuple action", "5 action", "five action")):
+        return "5A"
+    if attributes.get("doubleAction"):
+        return "2A"
+    if "double action" in text:
+        return "2A"
+    return "1A"
+
+
+def normalize_upstream_move_type(type_value):
+    type_key = slugify(str(type_value or ""))
+    if type_key == "varies":
+        return "none"
+    if type_key in VALID_TYPE_KEYS:
+        return type_key
+    if type_key == "none":
+        return "none"
+    return "normal"
+
+
+def normalize_upstream_move_category(category_value):
+    category_key = slugify(str(category_value or ""))
+    if category_key in {"physical", "special", "support"}:
+        return category_key
+    if category_key == "physical-special":
+        return "physical"
+    return "support"
+
+
+def normalize_accuracy_attribute(category_key, attr_value):
+    attr_key = slugify(str(attr_value or ""))
+    if attr_key == "will":
+        attr_key = "insight"
+    if attr_key in VALID_ATTRIBUTE_KEYS:
+        return attr_key
+    if category_key == "special":
+        return "special"
+    if category_key == "physical":
+        return "dexterity"
+    return "insight"
+
+
+def normalize_accuracy_skill(category_key, skill_value):
+    skill_key = slugify(str(skill_value or ""))
+    mapped = UPSTREAM_SKILL_MAP.get(skill_key, skill_key)
+    if mapped in VALID_SKILL_KEYS:
+        return mapped
+    if category_key == "special":
+        return "channel"
+    if category_key == "physical":
+        return "brawl"
+    return "alert"
+
+
+def normalize_damage_attribute(category_key, dmg_value):
+    damage_key = slugify(str(dmg_value or ""))
+    if category_key == "support":
+        return "none"
+    if damage_key in {"strength", "dexterity", "vitality", "special", "insight"}:
+        return damage_key
+    return "auto"
+
+
+def normalize_upstream_move_target(target_value):
+    target_key = str(target_value or "").strip().lower()
+    if target_key in UPSTREAM_MOVE_TARGET_MAP:
+        return UPSTREAM_MOVE_TARGET_MAP[target_key]
+    return "foe"
+
+
+def normalize_upstream_effect_stat(stat_value):
+    normalized = re.sub(r"[^a-z0-9]+", "", str(stat_value or "").lower())
+    mapped = UPSTREAM_EFFECT_STAT_MAP.get(normalized, normalized)
+    if mapped in {
+        "strength",
+        "dexterity",
+        "vitality",
+        "special",
+        "insight",
+        "tough",
+        "beauty",
+        "cool",
+        "cute",
+        "clever",
+        "allure",
+        "alert",
+        "athletic",
+        "brawl",
+        "channel",
+        "clash",
+        "crafts",
+        "empathy",
+        "etiquette",
+        "evasion",
+        "intimidate",
+        "lore",
+        "medicine",
+        "nature",
+        "perform",
+        "science",
+        "stealth",
+        "throw",
+        "weapons",
+        "defense",
+        "specialDefense",
+        "accuracy",
+        "damage"
+    }:
+        return mapped
+    return "none"
+
+
+def normalize_upstream_effect_condition(condition_value):
+    normalized = re.sub(r"[^a-z0-9-]+", "", str(condition_value or "").lower())
+    mapped = UPSTREAM_EFFECT_CONDITION_MAP.get(normalized, normalized)
+    if mapped in {
+        "none",
+        "sleep",
+        "burn",
+        "frozen",
+        "paralyzed",
+        "poisoned",
+        "fainted",
+        "confused",
+        "flinch",
+        "disabled",
+        "infatuated",
+        "badly-poisoned"
+    }:
+        return mapped
+    return "none"
+
+
+def chance_from_chance_dice(amount):
+    dice = max(parse_number(amount, 1), 1)
+    chance = round((1 - pow(2 / 3, dice)) * 100)
+    return clamp(chance, 1, 100)
+
+
+def convert_upstream_effect_groups(effect_groups, move_target):
+    if not effect_groups:
+        return []
+
+    default_target = "all-targets" if move_target in {"all-foes", "area", "battlefield-area"} else "target"
+    converted = []
+    for group in effect_groups:
+        condition = group.get("condition", {}) if isinstance(group, dict) else {}
+        condition_type = str(condition.get("type", "none")).strip().lower()
+        chance = 100
+        if condition_type == "chancedice":
+            chance = chance_from_chance_dice(condition.get("amount"))
+
+        effects = group.get("effects", []) if isinstance(group, dict) else []
+        for effect in effects:
+            if not isinstance(effect, dict):
+                continue
+            effect_type_raw = str(effect.get("type", "custom")).strip().lower()
+            effect_type = "custom"
+            if effect_type_raw == "ailment":
+                effect_type = "condition"
+            elif effect_type_raw == "statchange":
+                effect_type = "stat"
+
+            converted.append({
+                "label": "",
+                "trigger": "on-hit",
+                "chance": chance,
+                "target": "self" if effect.get("affects") == "user" else default_target,
+                "effectType": effect_type,
+                "condition": normalize_upstream_effect_condition(effect.get("ailment")),
+                "stat": normalize_upstream_effect_stat(effect.get("stat")),
+                "amount": clamp(parse_number(effect.get("amount"), 0), -99, 99),
+                "notes": ""
+            })
+    return converted
+
+
+def build_fallback_move_system(upstream_move):
+    move_system = upstream_move.get("system", {})
+    move_attributes = move_system.get("attributes", {})
+    category_key = normalize_upstream_move_category(move_system.get("category"))
+    move_type_key = normalize_upstream_move_type(move_system.get("type"))
+    reduced_accuracy = clamp(parse_number(move_attributes.get("accuracyReduction"), 0), 0, 6)
+    power = max(parse_number(move_system.get("power"), 0), 0)
+    description_fragments = [
+        clean_text(move_system.get("description", "")),
+        clean_text(move_system.get("effect", "")),
+        clean_text(move_system.get("source", ""))
+    ]
+    description = " ".join(part for part in description_fragments if part)
+    if not description:
+        description = "Corebook move entry."
+    target_key = normalize_upstream_move_target(move_system.get("target"))
+    secondary_effects = convert_upstream_effect_groups(move_system.get("effectGroups", []), target_key)
+    return {
+        "type": move_type_key,
+        "category": category_key,
+        "target": target_key,
+        "actionTag": infer_action_tag(move_system.get("effect"), move_attributes),
+        "accuracyAttribute": normalize_accuracy_attribute(category_key, move_system.get("accAttr1")),
+        "accuracySkill": normalize_accuracy_skill(category_key, move_system.get("accSkill1")),
+        "power": power,
+        "reducedAccuracy": reduced_accuracy,
+        "damageAttribute": normalize_damage_attribute(category_key, move_system.get("dmgMod1")),
+        "priority": parse_priority_from_effect(move_system.get("effect", "")),
+        "highCritical": bool(move_attributes.get("highCritical", False)),
+        "neverFail": bool(move_attributes.get("neverFail", False)),
+        "lethal": bool(move_attributes.get("lethal", False)),
+        "isUsable": False,
+        "secondaryEffects": secondary_effects,
+        "description": description
+    }
+
+
+def build_actor_move_entry(upstream_move, move_lookup):
+    move_name = f"{upstream_move.get('name', '')}".strip()
+    normalized_name = normalize_name_key(move_name)
+    source_entry = move_lookup.get(normalized_name)
+    if source_entry:
+        source_system = source_entry.get("system", {})
+        mapped_system = {
+            key: source_system.get(key)
+            for key in MOVE_OBJECT_KEYS
+            if key in source_system
+        }
+    else:
+        mapped_system = build_fallback_move_system(upstream_move)
+
+    if mapped_system.get("type") not in TYPE_FALLBACKS and mapped_system.get("type") not in VALID_TYPE_KEYS and mapped_system.get("type") != "none":
+        mapped_system["type"] = normalize_upstream_move_type(upstream_move.get("system", {}).get("type"))
+
+    upstream_system = upstream_move.get("system", {})
+    if not mapped_system.get("target"):
+        mapped_system["target"] = normalize_upstream_move_target(upstream_system.get("target"))
+    if "secondaryEffects" not in mapped_system:
+        mapped_system["secondaryEffects"] = convert_upstream_effect_groups(
+            upstream_system.get("effectGroups", []),
+            mapped_system.get("target", "foe")
+        )
+
+    mapped_system["isUsable"] = False
+    move_type_key = mapped_system.get("type", "none")
+    image_path = move_type_icon_path(move_type_key)
+
+    return {
+        "name": move_name or "Move",
+        "type": "move",
+        "img": image_path,
+        "system": mapped_system
+    }
+
+
+def load_upstream_suggested_rank_lookup():
+    upstream_path = find_upstream_pokedex_db_path()
+    if not upstream_path:
+        return {}
+
+    rank_lookup = {}
+    with upstream_path.open("r", encoding="utf-8") as handle:
+        for raw_line in handle:
+            line = raw_line.strip()
+            if not line:
+                continue
+            try:
+                actor = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if actor.get("type") != "pokemon":
+                continue
+
+            system = actor.get("system", {})
+            rank_key = (
+                map_upstream_rank_to_tier(system.get("recommendedRank"))
+                or map_upstream_rank_to_tier(system.get("rank"))
+                or ""
+            )
+            if not rank_key:
+                continue
+
+            name_key = normalize_name_key(actor.get("name", ""))
+            if name_key and name_key not in rank_lookup:
+                rank_lookup[name_key] = rank_key
+
+            dex_number = parse_number(system.get("pokedexId"), 0)
+            if isinstance(dex_number, float):
+                dex_number = int(round(dex_number))
+            if isinstance(dex_number, int) and dex_number > 0 and name_key:
+                rank_lookup[f"{dex_number}:{name_key}"] = rank_key
+
+    return rank_lookup
 
 
 def scale_actor_attribute(base_stat):
@@ -749,6 +1238,7 @@ def build_moves():
             "system": {
                 "type": type_key,
                 "category": category,
+                "target": "foe",
                 "actionTag": action_tag,
                 "accuracyAttribute": accuracy_attribute,
                 "accuracySkill": accuracy_skill,
@@ -760,6 +1250,7 @@ def build_moves():
                 "neverFail": accuracy_percent is None,
                 "lethal": category != "support" and power >= 6,
                 "isUsable": True,
+                "secondaryEffects": [],
                 "description": description
             },
             "flags": {
@@ -940,6 +1431,7 @@ def build_pokedex():
     species_rows = [row for row in species if int(row["id"]) <= 890]
     species_rows.sort(key=lambda row: int(row["id"]))
     species_row_by_id = {int(row["id"]): row for row in species_rows}
+    upstream_rank_lookup = load_upstream_suggested_rank_lookup()
 
     def get_types_for_pokemon(pokemon_id):
         rows = sorted(type_rows_by_pokemon.get(pokemon_id, []), key=lambda item: item[0])
@@ -961,7 +1453,12 @@ def build_pokedex():
     def build_entry(species_id, pokemon_id, name, seed_suffix, species_identifier, pokemon_identifier):
         primary, secondary = get_types_for_pokemon(pokemon_id)
         bst = bst_by_pokemon.get(pokemon_id, 350)
-        rank = rank_from_bst(bst)
+        name_key = normalize_name_key(name)
+        rank = (
+            upstream_rank_lookup.get(f"{species_id}:{name_key}")
+            or upstream_rank_lookup.get(name_key)
+            or rank_from_bst(bst)
+        )
         pokemon_img = pokemon_image_path(
             pokemon_identifier,
             species_identifier,
@@ -1059,7 +1556,7 @@ def build_pokedex():
     return list(unique_entries.values())
 
 
-def build_pokemon_actors():
+def build_pokemon_actors_from_pokeapi():
     species = load_csv("pokemon_species.csv")
     species_names = load_csv("pokemon_species_names.csv")
     pokemon = load_csv("pokemon.csv")
@@ -1192,15 +1689,15 @@ def build_pokemon_actors():
         attributes = {key: 1 for key in POKROLE_ATTRIBUTE_KEYS}
         attributes.update(core_attributes)
 
-        skills = {key: 1 for key in POKROLE_SKILL_KEYS}
+        skills = {key: 0 for key in POKROLE_SKILL_KEYS}
         skills.update({
-            "brawl": max(1, scale_actor_skill(core_attributes["strength"])),
-            "channel": max(1, scale_actor_skill(core_attributes["special"])),
-            "clash": max(1, scale_actor_skill(core_attributes["vitality"])),
-            "evasion": max(1, scale_actor_skill(core_attributes["dexterity"])),
-            "alert": max(1, scale_actor_skill(core_attributes["insight"])),
-            "athletic": max(1, scale_actor_skill(core_attributes["vitality"])),
-            "nature": max(1, scale_actor_skill(core_attributes["insight"]))
+            "brawl": max(0, scale_actor_skill(core_attributes["strength"])),
+            "channel": max(0, scale_actor_skill(core_attributes["special"])),
+            "clash": max(0, scale_actor_skill(core_attributes["vitality"])),
+            "evasion": max(0, scale_actor_skill(core_attributes["dexterity"])),
+            "alert": max(0, scale_actor_skill(core_attributes["insight"])),
+            "athletic": max(0, scale_actor_skill(core_attributes["vitality"])),
+            "nature": max(0, scale_actor_skill(core_attributes["insight"]))
         })
 
         hp_max = clamp(5 + core_attributes["vitality"], 6, 24)
@@ -1258,7 +1755,7 @@ def build_pokemon_actors():
                 "happiness": 2,
                 "battles": 0,
                 "victories": 0,
-                "extra": 1,
+                "extra": 0,
                 "manualCoreBase": core_attributes,
                 "sheetSettings": {
                     "trackMax": {
@@ -1346,11 +1843,228 @@ def build_pokemon_actors():
     return list(unique_entries.values())
 
 
+def build_pokemon_actors(move_seed_entries=None):
+    upstream_path = find_upstream_pokedex_db_path()
+    if not upstream_path:
+        print("Upstream pokedex.db not found. Falling back to PokeAPI-derived actor seeds.")
+        return build_pokemon_actors_from_pokeapi()
+
+    move_lookup = {}
+    for entry in move_seed_entries or []:
+        normalized = normalize_name_key(entry.get("name", ""))
+        if normalized:
+            move_lookup[normalized] = entry
+    if not move_lookup:
+        move_lookup = load_move_seed_lookup()
+
+    entries = []
+    running_index = 1
+    with upstream_path.open("r", encoding="utf-8") as handle:
+        for raw_line in handle:
+            line = raw_line.strip()
+            if not line:
+                continue
+            try:
+                actor = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+
+            if actor.get("type") != "pokemon":
+                continue
+
+            system = actor.get("system", {})
+            name = clean_text(actor.get("name")) or "Pokemon"
+            dex_number = parse_number(system.get("pokedexId"), running_index)
+            if not isinstance(dex_number, int):
+                dex_number = int(round(dex_number))
+            dex_number = max(dex_number, 1)
+
+            rank_key = (
+                map_upstream_rank_to_tier(system.get("recommendedRank"))
+                or map_upstream_rank_to_tier(system.get("rank"))
+                or "starter"
+            )
+
+            attributes = {key: 1 for key in POKROLE_ATTRIBUTE_KEYS}
+            core_base = {}
+            core_max = {}
+            upstream_attributes = system.get("attributes", {})
+            for key in ("strength", "dexterity", "vitality", "special", "insight"):
+                record = upstream_attributes.get(key, {})
+                value = clamp(parse_number(record.get("value"), 1), 1, 12)
+                max_value = clamp(parse_number(record.get("max"), 12), 1, 12)
+                attributes[key] = value
+                core_base[key] = value
+                core_max[key] = max_value
+
+            upstream_social = system.get("social", {})
+            for key in ("tough", "beauty", "cool", "cute", "clever"):
+                record = upstream_social.get(key, {})
+                attributes[key] = clamp(parse_number(record.get("value"), 1), 0, 5)
+            attributes["allure"] = 1
+
+            skills = {key: 0 for key in POKROLE_SKILL_KEYS}
+
+            hp_record = system.get("hp", {})
+            will_record = system.get("will", {})
+            hp_max = max(parse_number(hp_record.get("max", hp_record.get("value", 5)), 5), 1)
+            will_max = max(parse_number(will_record.get("max", will_record.get("value", 3)), 3), 1)
+
+            type_primary = normalize_upstream_move_type(system.get("type1"))
+            if type_primary == "none":
+                type_primary = "normal"
+            type_secondary = normalize_upstream_move_type(system.get("type2"))
+            if type_secondary not in VALID_TYPE_KEYS:
+                type_secondary = "none"
+
+            personality = clean_text(system.get("personality", ""))
+            if personality:
+                personality = personality[0].upper() + personality[1:]
+
+            extra_data = system.get("extra", {})
+            happiness_value = clamp(parse_number(extra_data.get("happiness", {}).get("value"), 2), 0, 5)
+            loyalty_value = clamp(parse_number(extra_data.get("loyalty", {}).get("value"), 2), 0, 5)
+
+            biography_parts = [f"Corebook Pokedex import #{dex_number:03d}."]
+            category_text = clean_text(system.get("pokedexCategory", ""))
+            if category_text:
+                biography_parts.append(f"Category: {category_text}.")
+            description_text = clean_text(system.get("pokedexDescription", ""))
+            if description_text:
+                biography_parts.append(description_text)
+
+            ability_names = []
+            move_documents = []
+            move_seen = set()
+            learnset_by_rank = {tier_key: [] for tier_key in POKEMON_TIER_KEYS}
+
+            for embedded in actor.get("items", []):
+                item_type = embedded.get("type")
+                if item_type == "ability":
+                    ability_name = clean_text(embedded.get("name", ""))
+                    if ability_name and ability_name not in ability_names:
+                        ability_names.append(ability_name)
+                    continue
+                if item_type != "move":
+                    continue
+
+                move_name = clean_text(embedded.get("name", ""))
+                if not move_name:
+                    continue
+
+                rank_from_move = map_upstream_rank_to_tier(
+                    embedded.get("system", {}).get("rank")
+                )
+                if rank_from_move and move_name not in learnset_by_rank[rank_from_move]:
+                    learnset_by_rank[rank_from_move].append(move_name)
+
+                normalized_move_name = normalize_name_key(move_name)
+                if normalized_move_name in move_seen:
+                    continue
+                move_seen.add(normalized_move_name)
+                move_documents.append(
+                    (
+                        rank_sort_key(rank_from_move),
+                        move_name.lower(),
+                        build_actor_move_entry(embedded, move_lookup)
+                    )
+                )
+
+            if ability_names:
+                biography_parts.append(f"Abilities: {', '.join(ability_names)}.")
+
+            move_documents.sort(key=lambda item: (item[0], item[1]))
+
+            image_path = pokemon_image_path(name) or "icons/svg/mystery-man.svg"
+
+            seed_id = f"actor-pokemon-{dex_number:03d}-{slugify(name)}"
+            entries.append({
+                "name": name,
+                "type": "pokemon",
+                "img": image_path,
+                "system": {
+                    "biography": " ".join(part for part in biography_parts if part),
+                    "resources": {
+                        "hp": {
+                            "value": hp_max,
+                            "max": hp_max
+                        },
+                        "will": {
+                            "value": will_max,
+                            "max": will_max
+                        }
+                    },
+                    "attributes": attributes,
+                    "skills": skills,
+                    "combat": {
+                        "actionNumber": 1,
+                        "initiative": core_base["dexterity"]
+                    },
+                    "species": clean_text(system.get("species", "")) or name,
+                    "ability": ability_names[0] if ability_names else "",
+                    "nature": personality,
+                    "battleItem": "",
+                    "accessory": "",
+                    "size": parse_metric_value(system.get("height"), "m"),
+                    "weight": parse_metric_value(system.get("weight"), "kg"),
+                    "types": {
+                        "primary": type_primary,
+                        "secondary": type_secondary
+                    },
+                    "tier": rank_key,
+                    "evolutionTime": "medium",
+                    "confidence": 2,
+                    "loyalty": loyalty_value,
+                    "happiness": happiness_value,
+                    "battles": max(parse_number(system.get("battles"), 0), 0),
+                    "victories": 0,
+                    "extra": 0,
+                    "manualCoreBase": core_base,
+                    "sheetSettings": {
+                        "trackMax": {
+                            "attributes": core_max
+                        }
+                    },
+                    "learnsetByRank": {
+                        key: ", ".join(learnset_by_rank[key])
+                        for key in POKEMON_TIER_KEYS
+                    },
+                    "combatProfile": {
+                        "accuracy": core_base["dexterity"],
+                        "damage": core_base["strength"],
+                        "evasion": core_base["dexterity"],
+                        "clash": core_base["vitality"]
+                    }
+                },
+                "items": [payload for _, _, payload in move_documents],
+                "prototypeToken": {
+                    "name": name,
+                    "randomImg": False
+                },
+                "flags": {
+                    "pok-role-module": {
+                        "seedId": seed_id
+                    }
+                }
+            })
+            running_index += 1
+
+    unique_entries = {}
+    for entry in entries:
+        unique_entries[entry["flags"]["pok-role-module"]["seedId"]] = entry
+
+    print(
+        f"Generated pokemon actor entries from upstream file: {upstream_path} "
+        f"({len(unique_entries)} actors)"
+    )
+    return list(unique_entries.values())
+
+
 def main():
     moves = build_moves()
     ability_entries = build_abilities()
     pokedex = build_pokedex()
-    pokemon_actor_entries = build_pokemon_actors()
+    pokemon_actor_entries = build_pokemon_actors(move_seed_entries=moves)
     write_module(OUT_DIR / "move-seeds.mjs", "MOVE_COMPENDIUM_ENTRIES", moves)
     write_module(OUT_DIR / "ability-seeds.mjs", "ABILITY_COMPENDIUM_ENTRIES", ability_entries)
     write_module(OUT_DIR / "pokedex-seeds.mjs", "POKEDEX_COMPENDIUM_ENTRIES", pokedex)

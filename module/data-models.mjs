@@ -1,6 +1,12 @@
 import {
   ATTRIBUTE_DEFINITIONS,
   CORE_ATTRIBUTE_DEFINITIONS,
+  MOVE_SECONDARY_CONDITION_KEYS,
+  MOVE_SECONDARY_EFFECT_TYPE_KEYS,
+  MOVE_SECONDARY_STAT_KEYS,
+  MOVE_SECONDARY_TARGET_KEYS,
+  MOVE_SECONDARY_TRIGGER_KEYS,
+  MOVE_TARGET_KEYS,
   MOVE_TYPE_KEYS,
   POKEMON_TIER_KEYS,
   SKILL_DEFINITIONS,
@@ -130,7 +136,7 @@ export class PokemonDataModel extends BaseCharacterDataModel {
     return {
       ...base,
       attributes: new SchemaField(pokemonAttributeSchema()),
-      skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 1, { min: 1, max: 5 })),
+      skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 0, { min: 0, max: 5 })),
       species: trimmedStringField(""),
       ability: trimmedStringField(""),
       nature: trimmedStringField(""),
@@ -169,7 +175,7 @@ export class PokemonDataModel extends BaseCharacterDataModel {
       happiness: integerField(2, { min: 0, max: 5 }),
       battles: integerField(0, { min: 0 }),
       victories: integerField(0, { min: 0 }),
-      extra: integerField(1, { min: 1, max: 5 }),
+      extra: integerField(0, { min: 0, max: 5 }),
       manualCoreBase: new SchemaField(
         valueSchema(CORE_ATTRIBUTE_DEFINITIONS, 1, { min: 1, max: 12 })
       ),
@@ -214,6 +220,12 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
         initial: "physical",
         choices: ["physical", "special", "support"]
       }),
+      target: new StringField({
+        required: true,
+        blank: false,
+        initial: "foe",
+        choices: MOVE_TARGET_KEYS
+      }),
       actionTag: new StringField({
         required: true,
         blank: false,
@@ -245,6 +257,48 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
       neverFail: new BooleanField({ required: true, initial: false }),
       lethal: new BooleanField({ required: true, initial: false }),
       isUsable: new BooleanField({ required: true, initial: true }),
+      secondaryEffects: new ArrayField(
+        new SchemaField({
+          label: trimmedStringField(""),
+          trigger: new StringField({
+            required: true,
+            blank: false,
+            initial: "on-hit",
+            choices: MOVE_SECONDARY_TRIGGER_KEYS
+          }),
+          chance: integerField(100, { min: 0, max: 100 }),
+          target: new StringField({
+            required: true,
+            blank: false,
+            initial: "target",
+            choices: MOVE_SECONDARY_TARGET_KEYS
+          }),
+          effectType: new StringField({
+            required: true,
+            blank: false,
+            initial: "condition",
+            choices: MOVE_SECONDARY_EFFECT_TYPE_KEYS
+          }),
+          condition: new StringField({
+            required: true,
+            blank: false,
+            initial: "none",
+            choices: MOVE_SECONDARY_CONDITION_KEYS
+          }),
+          stat: new StringField({
+            required: true,
+            blank: false,
+            initial: "none",
+            choices: MOVE_SECONDARY_STAT_KEYS
+          }),
+          amount: integerField(0, { min: -99, max: 99 }),
+          notes: trimmedStringField("")
+        }),
+        {
+          required: true,
+          initial: () => []
+        }
+      ),
       description: trimmedStringField("")
     };
   }

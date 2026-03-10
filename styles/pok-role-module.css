@@ -404,6 +404,33 @@
   height: 15px;
 }
 
+.move-sheet .move-secondary-effect-list {
+  display: grid;
+  gap: 8px;
+}
+
+.move-sheet .move-secondary-effect-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  gap: 8px;
+  align-items: end;
+  border: 1px solid #a3abba;
+  border-radius: 10px;
+  background: #f3f5f9;
+  padding: 8px;
+}
+
+.move-sheet .move-secondary-effect-row > .icon-button {
+  align-self: center;
+  justify-self: end;
+}
+
+@media (max-width: 880px) {
+  .move-sheet .move-secondary-effect-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .trainer-sheet {
   background-color: #1f2a3a;
   border: none;

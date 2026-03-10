@@ -28,7 +28,9 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
   - Move icons are auto-assigned by move type (`assets/types/*.svg`).
   - `Abilities` compendium is rebuilt from Corebook pages `434-471` (257 ability items), each with effect text and `Corebook p.X` in description.
   - `Pokedex` compendium is fully seeded with `#001-#890` plus supported regional/mega/primal forms (1022 pokedex items).
-  - `Pokemon Actors` compendium is seeded from the same roster as playable `Actor` entries (`type: pokemon`) with prefilled stats, tier, typing, abilities, size, and weight.
+  - `Pokemon Actors` compendium is seeded as playable `Actor` entries (`type: pokemon`) from Corebook-aligned Pokédex data (HP/WILL, suggested rank, attributes, typing, learnset).
+  - Pokemon actor moves are embedded by default and grouped into `learnsetByRank`; all imported moves start as `isUsable: false` (learned-only until selected).
+  - Rank mapping used for imported Corebook-v3 data to this system tiers: `starter->starter`, `rookie->beginner`, `standard->amateur`, `advanced->ace`, `ace->pro`, `expert->master`, `master/champion->champion`.
   - `Pokedex` and `Pokemon Actors` entries auto-bind artwork from `assets/pokemon/book/book/*.png` (identifier/form-aware fallback matching).
   - Manual GM-only seed command remains available in browser console for maintenance/debug:
     - `await game.pokrole.seedCompendia()`
@@ -38,11 +40,13 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
   - Trainer sheet
   - Pokemon sheet
   - Pokemon `Settings` tab for per-actor track maximums (saved on that actor only)
-  - Pokemon attribute cap rules: `Strength/Dexterity/Vitality/Special/Insight` configurable up to `12`; social attributes, skills, and `Extra` fixed to `1-5`
+  - Pokemon attribute cap rules: `Strength/Dexterity/Vitality/Special/Insight` configurable per actor (up to `12`); social attributes fixed `0-5`, skills and `Extra` fixed `0-5`
   - Pokemon settings include per-actor `manual core base` fields and `learnable moves by rank` notes
   - Ailment quick toggles (Sleep, Burn, Frozen, Paralyzed, Poisoned, Fainted) on Trainer and Pokemon sheets, with icon chips
   - Pokemon matchup panel rendered with multiplier icons (`1/2`, `1/4`, `x2`, `x4`, `x0`) plus type icons
   - Move item sheet
+    - `Target` field (manual move-card target definitions)
+    - `Secondary Effects` editor (trigger/chance/target/type/stat/condition/amount)
   - Gear item sheet
   - Playable reference item sheets: `ability`, `weather`, `status`, `pokedex`
 - Pokemon progression:
@@ -68,6 +72,8 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
     - Accuracy pool = `Accuracy Attribute + Accuracy Skill`
     - Reduced Accuracy + Pain penalization remove successes
     - Required successes are automatically taken from current `Action Number`
+  - Move target definitions (p.347-348):
+    - supports `Foe`, `Random Foe`, `All Foes`, `Self`, `Ally`, `User and Allies`, `Area`, `Battlefield`, `Foe's Battlefield`, `Ally's Battlefield`, `Battlefield and Area`
   - Defensive reaction flow (Step 2.5):
     - prompts optional target reaction on hit
     - Evasion/Clash once per round each
@@ -91,7 +97,14 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
     - Weakness: `+1` damage per weakness (only if damage roll has at least 1 success)
     - Resistance: `-1` damage per resistance
     - Immunity: `0` damage
-  - Automatic HP subtraction on selected single target token
+  - Automatic HP subtraction on selected target token(s) based on move target mode
+  - Secondary effects automation:
+    - executes configured secondary effects after move resolution (conditions, stat changes, combat-profile changes, HP heal/damage, Will change, custom notes)
+    - supports chance-based effects (`0-100%`) and trigger modes (`on-hit`, `on-hit-damage`, `on-miss`, `always`)
+    - supports multi-target secondary effects (`target`, `self`, `all-targets`, `all-allies`, `all-foes`)
+    - fallback inference from move description text for common patterns (status chance, stat stage up/down, half-max HP heal, fraction-of-max HP damage)
+    - legacy upstream `effectGroups` are converted into this format during seed generation/import
+    - optional ability automation hook: embedded `ability` items can run the same effect engine when `system.effect` contains JSON effect payload(s)
 
 ## Install (local dev)
 
@@ -161,8 +174,9 @@ Compendium grouping and rules mapping (PokeRole 2.0 PDF):
 
 ## Current Limits
 
-- Chance Dice effects are not auto-resolved yet.
-- Status condition application and durations are not fully automated yet.
+- Chance Dice from legacy move data are approximated to a percentage and resolved as `% chance` (not as explicit chance-dice rolls).
+- Status condition durations/turn countdowns are not fully automated yet.
+- Extra conditions not present in `system.conditions` (for example `Flinch`, `Disabled`, `Infatuated`) are tracked as actor flags.
 - Priority/Low Priority does not reorder combat turns automatically yet.
 - Shield-chain penalty (`-2` each consecutive round) is not auto-tracked yet.
 - Rampage specialized move logic is not fully automated yet.

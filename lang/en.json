@@ -180,12 +180,26 @@
       "Empty": "No moves yet. Add one to start rolling.",
       "NoStat": "No Stat",
       "Type": "Type",
+      "Target": "Target",
       "ActionTag": "Action Cost",
       "ActionTagShort": "Tag",
       "ActionTagValues": {
         "1A": "1 Action",
         "2A": "2 Actions",
         "5A": "5 Actions"
+      },
+      "TargetValues": {
+        "Foe": "Foe",
+        "RandomFoe": "Random Foe",
+        "AllFoes": "All Foes",
+        "Self": "Self",
+        "Ally": "Ally",
+        "AllAllies": "User and Allies",
+        "Area": "Area",
+        "Battlefield": "Battlefield",
+        "FoeBattlefield": "Foe's Battlefield",
+        "AllyBattlefield": "Ally's Battlefield",
+        "BattlefieldArea": "Battlefield and Area"
       },
       "Category": {
         "Label": "Category",
@@ -209,6 +223,51 @@
       "Lethal": "Lethal",
       "IsUsable": "Show as usable move",
       "SupportNoDamage": "Support (no direct damage)",
+      "Secondary": {
+        "Title": "Secondary Effects",
+        "Add": "Add Effect",
+        "Empty": "No secondary effects configured.",
+        "Label": "Label",
+        "Chance": "Chance (%)",
+        "Amount": "Amount",
+        "Notes": "Notes",
+        "Trigger": {
+          "Label": "Trigger",
+          "OnHit": "On Hit",
+          "OnHitDamage": "On Hit (Damage)",
+          "OnMiss": "On Miss",
+          "Always": "Always"
+        },
+        "Target": {
+          "Label": "Effect Target",
+          "Target": "Target",
+          "Self": "Self",
+          "AllTargets": "All Targets",
+          "AllAllies": "All Allies",
+          "AllFoes": "All Foes"
+        },
+        "Type": {
+          "Label": "Effect Type",
+          "Condition": "Condition",
+          "Stat": "Stat Change",
+          "CombatStat": "Combat Stat",
+          "Damage": "Damage",
+          "Heal": "Heal",
+          "Will": "Will",
+          "Custom": "Custom"
+        },
+        "Condition": {
+          "Label": "Condition",
+          "Confused": "Confused",
+          "Flinch": "Flinch",
+          "Disabled": "Disabled",
+          "Infatuated": "Infatuated",
+          "BadlyPoisoned": "Badly Poisoned"
+        },
+        "Stat": {
+          "Label": "Affected Stat"
+        }
+      },
       "DescriptionPlaceholder": "Effects, target rules and edge cases."
     },
     "Gear": {
@@ -398,11 +457,20 @@
       "DamageSuccesses": "Damage successes",
       "CriticalBonusDice": "Critical bonus dice",
       "FinalDamage": "Final damage",
+      "AdditionalTargets": "Additional targets",
       "TargetHP": "Target HP",
       "GearUsed": "Item Used",
       "GearLethalHealNote": "Lethal damage reduced by {value}.",
       "GearAwarenessNote": "Awareness restored.",
       "GearStatusNote": "Status recovery: {value}.",
+      "SecondaryEffectApplied": "Applied",
+      "SecondaryEffectFailed": "Failed",
+      "SecondaryEffectChanceFailed": "Chance failed ({roll} > {chance})",
+      "SecondaryEffectNoTarget": "No valid target",
+      "SecondaryEffectHpChange": "HP {before} -> {after}",
+      "SecondaryEffectAlreadyActive": "Already active",
+      "SecondaryEffectTracked": "tracked as extra condition",
+      "SecondaryEffectNoStatChange": "No stat change",
       "HoldingBack": {
         "Label": "Holding Back",
         "None": "No Holding Back",

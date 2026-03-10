@@ -1,9 +1,17 @@
 import {
   ATTRIBUTE_DEFINITIONS,
   MOVE_CATEGORY_LABEL_BY_KEY,
+  MOVE_SECONDARY_CONDITION_KEYS,
+  MOVE_SECONDARY_EFFECT_TYPE_KEYS,
+  MOVE_SECONDARY_STAT_KEYS,
+  MOVE_SECONDARY_TARGET_KEYS,
+  MOVE_SECONDARY_TRIGGER_KEYS,
+  MOVE_TARGET_LABEL_BY_KEY,
+  MOVE_TARGET_KEYS,
   MOVE_TYPE_LABEL_BY_KEY,
   POKEMON_TIER_LABEL_BY_KEY,
   SKILL_DEFINITIONS,
+  TRAIT_LABEL_BY_KEY,
   TYPE_OPTIONS
 } from "../constants.mjs";
 import { getMoveTypeIcon } from "../move-type-icons.mjs";
@@ -136,6 +144,12 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       "2A": "POKROLE.Move.ActionTagValues.2A",
       "5A": "POKROLE.Move.ActionTagValues.5A"
     };
+    context.targetOptions = Object.fromEntries(
+      MOVE_TARGET_KEYS.map((targetKey) => [
+        targetKey,
+        MOVE_TARGET_LABEL_BY_KEY[targetKey] ?? "POKROLE.Common.Unknown"
+      ])
+    );
     context.typeOptions = typeOptions;
     context.accuracyAttributeOptions = Object.fromEntries(
       ATTRIBUTE_DEFINITIONS.map((attribute) => [attribute.key, attribute.label])
@@ -152,6 +166,38 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       insight: "POKROLE.Attributes.Insight",
       none: "POKROLE.Move.NoStat"
     };
+    context.secondaryEffects = this._getMoveSecondaryEffectsForDisplay();
+    context.secondaryTriggerOptions = {
+      "on-hit": "POKROLE.Move.Secondary.Trigger.OnHit",
+      "on-hit-damage": "POKROLE.Move.Secondary.Trigger.OnHitDamage",
+      "on-miss": "POKROLE.Move.Secondary.Trigger.OnMiss",
+      always: "POKROLE.Move.Secondary.Trigger.Always"
+    };
+    context.secondaryTargetOptions = {
+      target: "POKROLE.Move.Secondary.Target.Target",
+      self: "POKROLE.Move.Secondary.Target.Self",
+      "all-targets": "POKROLE.Move.Secondary.Target.AllTargets",
+      "all-allies": "POKROLE.Move.Secondary.Target.AllAllies",
+      "all-foes": "POKROLE.Move.Secondary.Target.AllFoes"
+    };
+    context.secondaryEffectTypeOptions = {
+      condition: "POKROLE.Move.Secondary.Type.Condition",
+      stat: "POKROLE.Move.Secondary.Type.Stat",
+      "combat-stat": "POKROLE.Move.Secondary.Type.CombatStat",
+      damage: "POKROLE.Move.Secondary.Type.Damage",
+      heal: "POKROLE.Move.Secondary.Type.Heal",
+      will: "POKROLE.Move.Secondary.Type.Will",
+      custom: "POKROLE.Move.Secondary.Type.Custom"
+    };
+    context.secondaryConditionOptions = Object.fromEntries(
+      MOVE_SECONDARY_CONDITION_KEYS.map((conditionKey) => [
+        conditionKey,
+        this._getSecondaryConditionLabelPath(conditionKey)
+      ])
+    );
+    context.secondaryStatOptions = Object.fromEntries(
+      MOVE_SECONDARY_STAT_KEYS.map((statKey) => [statKey, this._getSecondaryStatLabelPath(statKey)])
+    );
     return context;
   }
 
@@ -165,13 +211,156 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       const imageElement = html.find(".profile-img");
       imageElement.attr("src", iconPath);
     });
+    html.find("[data-action='add-secondary-effect']").on("click", (event) =>
+      this._onAddSecondaryEffect(event)
+    );
+    html.find("[data-action='remove-secondary-effect']").on("click", (event) =>
+      this._onRemoveSecondaryEffect(event)
+    );
   }
 
   async _updateObject(event, formData) {
     if (this.item.type === "move") {
       const typeKey = formData["system.type"] || this.item.system?.type || "none";
       formData.img = getMoveTypeIcon(typeKey);
+
+      const expanded = foundry.utils.expandObject(formData);
+      const moveSystem = expanded.system ?? {};
+      const secondaryEffects = this._normalizeSecondaryEffects(moveSystem.secondaryEffects);
+      for (const key of Object.keys(formData)) {
+        if (key.startsWith("system.secondaryEffects.")) {
+          delete formData[key];
+        }
+      }
+      formData["system.target"] = this._normalizeMoveTarget(moveSystem.target);
+      formData["system.secondaryEffects"] = secondaryEffects;
     }
     return super._updateObject(event, formData);
+  }
+
+  _getMoveSecondaryEffectsForDisplay() {
+    const rawEffects = Array.isArray(this.item.system?.secondaryEffects)
+      ? this.item.system.secondaryEffects
+      : [];
+    return rawEffects.map((effect, index) => ({
+      index,
+      ...this._normalizeSecondaryEffect(effect)
+    }));
+  }
+
+  _createDefaultSecondaryEffect() {
+    return {
+      label: "",
+      trigger: "on-hit",
+      chance: 100,
+      target: "target",
+      effectType: "condition",
+      condition: "none",
+      stat: "none",
+      amount: 0,
+      notes: ""
+    };
+  }
+
+  _normalizeMoveTarget(value) {
+    if (MOVE_TARGET_KEYS.includes(value)) return value;
+    return "foe";
+  }
+
+  _normalizeSecondaryEffects(value) {
+    const rawList = Array.isArray(value)
+      ? value
+      : value && typeof value === "object"
+        ? Object.values(value)
+        : [];
+    return rawList.map((effect) => this._normalizeSecondaryEffect(effect));
+  }
+
+  _normalizeSecondaryEffect(effect) {
+    const normalizedEffect = effect && typeof effect === "object" ? effect : {};
+    const trigger = MOVE_SECONDARY_TRIGGER_KEYS.includes(normalizedEffect.trigger)
+      ? normalizedEffect.trigger
+      : "on-hit";
+    const target = MOVE_SECONDARY_TARGET_KEYS.includes(normalizedEffect.target)
+      ? normalizedEffect.target
+      : "target";
+    const effectType = MOVE_SECONDARY_EFFECT_TYPE_KEYS.includes(normalizedEffect.effectType)
+      ? normalizedEffect.effectType
+      : "condition";
+    const condition = MOVE_SECONDARY_CONDITION_KEYS.includes(normalizedEffect.condition)
+      ? normalizedEffect.condition
+      : "none";
+    const stat = MOVE_SECONDARY_STAT_KEYS.includes(normalizedEffect.stat)
+      ? normalizedEffect.stat
+      : "none";
+
+    const chance = Number(normalizedEffect.chance);
+    const amount = Number(normalizedEffect.amount);
+
+    return {
+      label: `${normalizedEffect.label ?? ""}`.trim(),
+      trigger,
+      chance: Number.isFinite(chance) ? Math.min(Math.max(Math.floor(chance), 0), 100) : 100,
+      target,
+      effectType,
+      condition,
+      stat,
+      amount: Number.isFinite(amount) ? Math.min(Math.max(Math.floor(amount), -99), 99) : 0,
+      notes: `${normalizedEffect.notes ?? ""}`.trim()
+    };
+  }
+
+  async _onAddSecondaryEffect(event) {
+    event.preventDefault();
+    if (!this.isEditable || this.item.type !== "move") return;
+    const current = this._normalizeSecondaryEffects(this.item.system?.secondaryEffects);
+    current.push(this._createDefaultSecondaryEffect());
+    await this.item.update({ "system.secondaryEffects": current });
+    this.render(false);
+  }
+
+  async _onRemoveSecondaryEffect(event) {
+    event.preventDefault();
+    if (!this.isEditable || this.item.type !== "move") return;
+
+    const index = Number(event.currentTarget.dataset.secondaryIndex);
+    if (!Number.isInteger(index) || index < 0) return;
+
+    const current = this._normalizeSecondaryEffects(this.item.system?.secondaryEffects);
+    if (index >= current.length) return;
+    current.splice(index, 1);
+    await this.item.update({ "system.secondaryEffects": current });
+    this.render(false);
+  }
+
+  _getSecondaryConditionLabelPath(conditionKey) {
+    const labelByCondition = {
+      none: "POKROLE.Common.None",
+      sleep: "POKROLE.Conditions.Sleep",
+      burn: "POKROLE.Conditions.Burn",
+      frozen: "POKROLE.Conditions.Frozen",
+      paralyzed: "POKROLE.Conditions.Paralyzed",
+      poisoned: "POKROLE.Conditions.Poisoned",
+      fainted: "POKROLE.Conditions.Fainted",
+      confused: "POKROLE.Move.Secondary.Condition.Confused",
+      flinch: "POKROLE.Move.Secondary.Condition.Flinch",
+      disabled: "POKROLE.Move.Secondary.Condition.Disabled",
+      infatuated: "POKROLE.Move.Secondary.Condition.Infatuated",
+      "badly-poisoned": "POKROLE.Move.Secondary.Condition.BadlyPoisoned"
+    };
+    return labelByCondition[conditionKey] ?? "POKROLE.Common.Unknown";
+  }
+
+  _getSecondaryStatLabelPath(statKey) {
+    const labelByStat = {
+      none: "POKROLE.Common.None",
+      defense: "POKROLE.Combat.Defense",
+      specialDefense: "POKROLE.Combat.SpecialDefense",
+      accuracy: "POKROLE.Pokemon.Accuracy",
+      damage: "POKROLE.Pokemon.Damage",
+      evasion: "POKROLE.Pokemon.Evasion",
+      clash: "POKROLE.Pokemon.Clash"
+    };
+    return labelByStat[statKey] ?? TRAIT_LABEL_BY_KEY[statKey] ?? "POKROLE.Common.Unknown";
   }
 }
