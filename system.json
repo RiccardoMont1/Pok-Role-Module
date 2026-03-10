@@ -1,8 +1,8 @@
 {
   "id": "pok-role-system",
-  "title": "Poke Role System",
+  "title": "Pok� Role System",
   "description": "MVP Foundry VTT v13 system scaffold for PokeRole 2.0 inspired campaigns.",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -25,7 +25,7 @@
     {
       "name": "trainer-items",
       "label": "Trainer Items",
-      "system": "pok-role-module",
+      "system": "pok-role-system",
       "path": "packs/trainer-items",
       "type": "Item",
       "private": false
@@ -33,7 +33,7 @@
     {
       "name": "healing-items",
       "label": "Healing Items",
-      "system": "pok-role-module",
+      "system": "pok-role-system",
       "path": "packs/healing-items",
       "type": "Item",
       "private": false
@@ -41,7 +41,7 @@
     {
       "name": "pokemon-care-items",
       "label": "Pokemon Care Items",
-      "system": "pok-role-module",
+      "system": "pok-role-system",
       "path": "packs/pokemon-care-items",
       "type": "Item",
       "private": false
@@ -49,7 +49,7 @@
     {
       "name": "evolutionary-items",
       "label": "Evolutionary Items",
-      "system": "pok-role-module",
+      "system": "pok-role-system",
       "path": "packs/evolutionary-items",
       "type": "Item",
       "private": false
@@ -57,7 +57,7 @@
     {
       "name": "held-items",
       "label": "Held Items",
-      "system": "pok-role-module",
+      "system": "pok-role-system",
       "path": "packs/held-items",
       "type": "Item",
       "private": false
@@ -65,7 +65,7 @@
     {
       "name": "moves",
       "label": "Moves",
-      "system": "pok-role-module",
+      "system": "pok-role-system",
       "path": "packs/moves",
       "type": "Item",
       "private": false
@@ -73,7 +73,7 @@
     {
       "name": "pokedex",
       "label": "Pokedex",
-      "system": "pok-role-module",
+      "system": "pok-role-system",
       "path": "packs/pokedex",
       "type": "Item",
       "private": false
@@ -81,7 +81,7 @@
     {
       "name": "pokemon-actors",
       "label": "Pokemon Actors",
-      "system": "pok-role-module",
+      "system": "pok-role-system",
       "path": "packs/pokemon-actors",
       "type": "Actor",
       "private": false
@@ -89,7 +89,7 @@
     {
       "name": "weather-conditions",
       "label": "Weather Conditions",
-      "system": "pok-role-module",
+      "system": "pok-role-system",
       "path": "packs/weather-conditions",
       "type": "Item",
       "private": false
@@ -97,7 +97,7 @@
     {
       "name": "pokemon-status",
       "label": "Pokemon Status",
-      "system": "pok-role-module",
+      "system": "pok-role-system",
       "path": "packs/pokemon-status",
       "type": "Item",
       "private": false
@@ -105,7 +105,7 @@
     {
       "name": "abilities",
       "label": "Abilities",
-      "system": "pok-role-module",
+      "system": "pok-role-system",
       "path": "packs/abilities",
       "type": "Item",
       "private": false

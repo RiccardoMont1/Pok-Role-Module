@@ -1,6 +1,6 @@
-import { MOVE_TYPE_KEYS } from "./constants.mjs";
+import { MOVE_TYPE_KEYS, getSystemAssetPath } from "./constants.mjs";
 
-const TYPE_ICON_ROOT = "systems/pok-role-module/assets/types";
+const TYPE_ICON_ROOT = getSystemAssetPath("assets/types");
 const TYPE_ICON_EXT = ".svg";
 const FALLBACK_TYPE = "none";
 

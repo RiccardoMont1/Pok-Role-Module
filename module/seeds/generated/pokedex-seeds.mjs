@@ -2,7 +2,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bulbasaur",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bulbasaur.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bulbasaur.png",
     "system": {
       "dexNumber": 1,
       "rank": "beginner",
@@ -15,7 +15,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-001-bulbasaur"
       }
     }
@@ -23,7 +23,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ivysaur",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ivysaur.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ivysaur.png",
     "system": {
       "dexNumber": 2,
       "rank": "amateur",
@@ -36,7 +36,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-002-ivysaur"
       }
     }
@@ -44,7 +44,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venusaur",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/venusaur.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/venusaur.png",
     "system": {
       "dexNumber": 3,
       "rank": "master",
@@ -57,7 +57,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-003-venusaur"
       }
     }
@@ -65,7 +65,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charmander",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/charmander.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/charmander.png",
     "system": {
       "dexNumber": 4,
       "rank": "beginner",
@@ -78,7 +78,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-004-charmander"
       }
     }
@@ -86,7 +86,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charmeleon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/charmeleon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/charmeleon.png",
     "system": {
       "dexNumber": 5,
       "rank": "amateur",
@@ -99,7 +99,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-005-charmeleon"
       }
     }
@@ -107,7 +107,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charizard",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/charizard.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/charizard.png",
     "system": {
       "dexNumber": 6,
       "rank": "master",
@@ -120,7 +120,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-006-charizard"
       }
     }
@@ -128,7 +128,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Squirtle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/squirtle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/squirtle.png",
     "system": {
       "dexNumber": 7,
       "rank": "beginner",
@@ -141,7 +141,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-007-squirtle"
       }
     }
@@ -149,7 +149,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wartortle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/wartortle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/wartortle.png",
     "system": {
       "dexNumber": 8,
       "rank": "amateur",
@@ -162,7 +162,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-008-wartortle"
       }
     }
@@ -170,7 +170,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blastoise",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/blastoise.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/blastoise.png",
     "system": {
       "dexNumber": 9,
       "rank": "master",
@@ -183,7 +183,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-009-blastoise"
       }
     }
@@ -191,7 +191,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Caterpie",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/caterpie.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/caterpie.png",
     "system": {
       "dexNumber": 10,
       "rank": "starter",
@@ -204,7 +204,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-010-caterpie"
       }
     }
@@ -212,7 +212,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metapod",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/metapod.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/metapod.png",
     "system": {
       "dexNumber": 11,
       "rank": "beginner",
@@ -225,7 +225,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-011-metapod"
       }
     }
@@ -233,7 +233,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Butterfree",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/butterfree.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/butterfree.png",
     "system": {
       "dexNumber": 12,
       "rank": "amateur",
@@ -246,7 +246,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-012-butterfree"
       }
     }
@@ -254,7 +254,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weedle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/weedle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/weedle.png",
     "system": {
       "dexNumber": 13,
       "rank": "starter",
@@ -267,7 +267,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-013-weedle"
       }
     }
@@ -275,7 +275,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kakuna",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kakuna.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kakuna.png",
     "system": {
       "dexNumber": 14,
       "rank": "beginner",
@@ -288,7 +288,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-014-kakuna"
       }
     }
@@ -296,7 +296,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beedrill",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/beedrill.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/beedrill.png",
     "system": {
       "dexNumber": 15,
       "rank": "amateur",
@@ -309,7 +309,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-015-beedrill"
       }
     }
@@ -317,7 +317,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pidgey",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pidgey.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pidgey.png",
     "system": {
       "dexNumber": 16,
       "rank": "starter",
@@ -330,7 +330,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-016-pidgey"
       }
     }
@@ -338,7 +338,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pidgeotto",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pidgeotto.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pidgeotto.png",
     "system": {
       "dexNumber": 17,
       "rank": "amateur",
@@ -351,7 +351,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-017-pidgeotto"
       }
     }
@@ -359,7 +359,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pidgeot",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pidgeot.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pidgeot.png",
     "system": {
       "dexNumber": 18,
       "rank": "ace",
@@ -372,7 +372,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-018-pidgeot"
       }
     }
@@ -380,7 +380,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rattata",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rattata.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rattata.png",
     "system": {
       "dexNumber": 19,
       "rank": "starter",
@@ -393,7 +393,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-019-rattata"
       }
     }
@@ -401,7 +401,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raticate",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/raticate.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/raticate.png",
     "system": {
       "dexNumber": 20,
       "rank": "amateur",
@@ -414,7 +414,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-020-raticate"
       }
     }
@@ -422,7 +422,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spearow",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/spearow.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/spearow.png",
     "system": {
       "dexNumber": 21,
       "rank": "starter",
@@ -435,7 +435,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-021-spearow"
       }
     }
@@ -443,7 +443,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fearow",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/fearow.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/fearow.png",
     "system": {
       "dexNumber": 22,
       "rank": "ace",
@@ -456,7 +456,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-022-fearow"
       }
     }
@@ -464,7 +464,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ekans",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ekans.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ekans.png",
     "system": {
       "dexNumber": 23,
       "rank": "beginner",
@@ -477,7 +477,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-023-ekans"
       }
     }
@@ -485,7 +485,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arbok",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/arbok.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/arbok.png",
     "system": {
       "dexNumber": 24,
       "rank": "ace",
@@ -498,7 +498,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-024-arbok"
       }
     }
@@ -506,7 +506,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pikachu",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pikachu.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pikachu.png",
     "system": {
       "dexNumber": 25,
       "rank": "beginner",
@@ -519,7 +519,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-025-pikachu"
       }
     }
@@ -527,7 +527,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raichu",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/raichu.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/raichu.png",
     "system": {
       "dexNumber": 26,
       "rank": "master",
@@ -540,7 +540,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-026-raichu"
       }
     }
@@ -548,7 +548,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandshrew",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sandshrew.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sandshrew.png",
     "system": {
       "dexNumber": 27,
       "rank": "beginner",
@@ -561,7 +561,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-027-sandshrew"
       }
     }
@@ -569,7 +569,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandslash",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sandslash.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sandslash.png",
     "system": {
       "dexNumber": 28,
       "rank": "ace",
@@ -582,7 +582,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-028-sandslash"
       }
     }
@@ -590,7 +590,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidoran\u2640",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/nidoran-f.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/nidoran-f.png",
     "system": {
       "dexNumber": 29,
       "rank": "starter",
@@ -603,7 +603,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-029-nidoran-f"
       }
     }
@@ -611,7 +611,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidorina",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/nidorina.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/nidorina.png",
     "system": {
       "dexNumber": 30,
       "rank": "amateur",
@@ -624,7 +624,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-030-nidorina"
       }
     }
@@ -632,7 +632,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidoqueen",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/nidoqueen.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/nidoqueen.png",
     "system": {
       "dexNumber": 31,
       "rank": "ace",
@@ -645,7 +645,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-031-nidoqueen"
       }
     }
@@ -653,7 +653,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidoran\u2642",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/nidoran-m.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/nidoran-m.png",
     "system": {
       "dexNumber": 32,
       "rank": "starter",
@@ -666,7 +666,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-032-nidoran-m"
       }
     }
@@ -674,7 +674,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidorino",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/nidorino.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/nidorino.png",
     "system": {
       "dexNumber": 33,
       "rank": "amateur",
@@ -687,7 +687,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-033-nidorino"
       }
     }
@@ -695,7 +695,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nidoking",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/nidoking.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/nidoking.png",
     "system": {
       "dexNumber": 34,
       "rank": "ace",
@@ -708,7 +708,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-034-nidoking"
       }
     }
@@ -716,7 +716,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clefairy",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/clefairy.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/clefairy.png",
     "system": {
       "dexNumber": 35,
       "rank": "beginner",
@@ -729,7 +729,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-035-clefairy"
       }
     }
@@ -737,7 +737,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clefable",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/clefable.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/clefable.png",
     "system": {
       "dexNumber": 36,
       "rank": "ace",
@@ -750,7 +750,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-036-clefable"
       }
     }
@@ -758,7 +758,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vulpix",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/vulpix.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/vulpix.png",
     "system": {
       "dexNumber": 37,
       "rank": "beginner",
@@ -771,7 +771,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-037-vulpix"
       }
     }
@@ -779,7 +779,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ninetales",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ninetales.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ninetales.png",
     "system": {
       "dexNumber": 38,
       "rank": "master",
@@ -792,7 +792,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-038-ninetales"
       }
     }
@@ -800,7 +800,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jigglypuff",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/jigglypuff.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/jigglypuff.png",
     "system": {
       "dexNumber": 39,
       "rank": "beginner",
@@ -813,7 +813,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-039-jigglypuff"
       }
     }
@@ -821,7 +821,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wigglytuff",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/wigglytuff.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/wigglytuff.png",
     "system": {
       "dexNumber": 40,
       "rank": "amateur",
@@ -834,7 +834,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-040-wigglytuff"
       }
     }
@@ -842,7 +842,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zubat",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zubat.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zubat.png",
     "system": {
       "dexNumber": 41,
       "rank": "starter",
@@ -855,7 +855,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-041-zubat"
       }
     }
@@ -863,7 +863,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golbat",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/golbat.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/golbat.png",
     "system": {
       "dexNumber": 42,
       "rank": "amateur",
@@ -876,7 +876,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-042-golbat"
       }
     }
@@ -884,7 +884,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Oddish",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/oddish.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/oddish.png",
     "system": {
       "dexNumber": 43,
       "rank": "beginner",
@@ -897,7 +897,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-043-oddish"
       }
     }
@@ -905,7 +905,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gloom",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gloom.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gloom.png",
     "system": {
       "dexNumber": 44,
       "rank": "amateur",
@@ -918,7 +918,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-044-gloom"
       }
     }
@@ -926,7 +926,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vileplume",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/vileplume.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/vileplume.png",
     "system": {
       "dexNumber": 45,
       "rank": "ace",
@@ -939,7 +939,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-045-vileplume"
       }
     }
@@ -947,7 +947,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Paras",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/paras.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/paras.png",
     "system": {
       "dexNumber": 46,
       "rank": "beginner",
@@ -960,7 +960,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-046-paras"
       }
     }
@@ -968,7 +968,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Parasect",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/parasect.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/parasect.png",
     "system": {
       "dexNumber": 47,
       "rank": "amateur",
@@ -981,7 +981,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-047-parasect"
       }
     }
@@ -989,7 +989,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venonat",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/venonat.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/venonat.png",
     "system": {
       "dexNumber": 48,
       "rank": "beginner",
@@ -1002,7 +1002,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-048-venonat"
       }
     }
@@ -1010,7 +1010,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venomoth",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/venomoth.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/venomoth.png",
     "system": {
       "dexNumber": 49,
       "rank": "master",
@@ -1023,7 +1023,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-049-venomoth"
       }
     }
@@ -1031,7 +1031,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Diglett",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/diglett.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/diglett.png",
     "system": {
       "dexNumber": 50,
       "rank": "beginner",
@@ -1044,7 +1044,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-050-diglett"
       }
     }
@@ -1052,7 +1052,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dugtrio",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dugtrio.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dugtrio.png",
     "system": {
       "dexNumber": 51,
       "rank": "master",
@@ -1065,7 +1065,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-051-dugtrio"
       }
     }
@@ -1073,7 +1073,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meowth",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/meowth.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/meowth.png",
     "system": {
       "dexNumber": 52,
       "rank": "starter",
@@ -1086,7 +1086,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-052-meowth"
       }
     }
@@ -1094,7 +1094,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Persian",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/persian.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/persian.png",
     "system": {
       "dexNumber": 53,
       "rank": "ace",
@@ -1107,7 +1107,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-053-persian"
       }
     }
@@ -1115,7 +1115,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psyduck",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/psyduck.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/psyduck.png",
     "system": {
       "dexNumber": 54,
       "rank": "beginner",
@@ -1128,7 +1128,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-054-psyduck"
       }
     }
@@ -1136,7 +1136,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golduck",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/golduck.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/golduck.png",
     "system": {
       "dexNumber": 55,
       "rank": "ace",
@@ -1149,7 +1149,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-055-golduck"
       }
     }
@@ -1157,7 +1157,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mankey",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mankey.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mankey.png",
     "system": {
       "dexNumber": 56,
       "rank": "beginner",
@@ -1170,7 +1170,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-056-mankey"
       }
     }
@@ -1178,7 +1178,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Primeape",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/primeape.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/primeape.png",
     "system": {
       "dexNumber": 57,
       "rank": "master",
@@ -1191,7 +1191,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-057-primeape"
       }
     }
@@ -1199,7 +1199,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Growlithe",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/growlithe.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/growlithe.png",
     "system": {
       "dexNumber": 58,
       "rank": "beginner",
@@ -1212,7 +1212,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-058-growlithe"
       }
     }
@@ -1220,7 +1220,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arcanine",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/arcanine.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/arcanine.png",
     "system": {
       "dexNumber": 59,
       "rank": "master",
@@ -1233,7 +1233,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-059-arcanine"
       }
     }
@@ -1241,7 +1241,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poliwag",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/poliwag.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/poliwag.png",
     "system": {
       "dexNumber": 60,
       "rank": "starter",
@@ -1254,7 +1254,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-060-poliwag"
       }
     }
@@ -1262,7 +1262,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poliwhirl",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/poliwhirl.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/poliwhirl.png",
     "system": {
       "dexNumber": 61,
       "rank": "amateur",
@@ -1275,7 +1275,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-061-poliwhirl"
       }
     }
@@ -1283,7 +1283,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poliwrath",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/poliwrath.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/poliwrath.png",
     "system": {
       "dexNumber": 62,
       "rank": "master",
@@ -1296,7 +1296,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-062-poliwrath"
       }
     }
@@ -1304,7 +1304,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Abra",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/abra.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/abra.png",
     "system": {
       "dexNumber": 63,
       "rank": "amateur",
@@ -1317,7 +1317,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-063-abra"
       }
     }
@@ -1325,7 +1325,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kadabra",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kadabra.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kadabra.png",
     "system": {
       "dexNumber": 64,
       "rank": "master",
@@ -1338,7 +1338,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-064-kadabra"
       }
     }
@@ -1346,7 +1346,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Alakazam",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/alakazam.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/alakazam.png",
     "system": {
       "dexNumber": 65,
       "rank": "master",
@@ -1359,7 +1359,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-065-alakazam"
       }
     }
@@ -1367,7 +1367,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Machop",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/machop.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/machop.png",
     "system": {
       "dexNumber": 66,
       "rank": "beginner",
@@ -1380,7 +1380,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-066-machop"
       }
     }
@@ -1388,7 +1388,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Machoke",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/machoke.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/machoke.png",
     "system": {
       "dexNumber": 67,
       "rank": "ace",
@@ -1401,7 +1401,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-067-machoke"
       }
     }
@@ -1409,7 +1409,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Machamp",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/machamp.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/machamp.png",
     "system": {
       "dexNumber": 68,
       "rank": "master",
@@ -1422,7 +1422,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-068-machamp"
       }
     }
@@ -1430,7 +1430,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bellsprout",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bellsprout.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bellsprout.png",
     "system": {
       "dexNumber": 69,
       "rank": "starter",
@@ -1443,7 +1443,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-069-bellsprout"
       }
     }
@@ -1451,7 +1451,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weepinbell",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/weepinbell.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/weepinbell.png",
     "system": {
       "dexNumber": 70,
       "rank": "amateur",
@@ -1464,7 +1464,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-070-weepinbell"
       }
     }
@@ -1472,7 +1472,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Victreebel",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/victreebel.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/victreebel.png",
     "system": {
       "dexNumber": 71,
       "rank": "master",
@@ -1485,7 +1485,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-071-victreebel"
       }
     }
@@ -1493,7 +1493,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tentacool",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tentacool.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tentacool.png",
     "system": {
       "dexNumber": 72,
       "rank": "amateur",
@@ -1506,7 +1506,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-072-tentacool"
       }
     }
@@ -1514,7 +1514,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tentacruel",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tentacruel.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tentacruel.png",
     "system": {
       "dexNumber": 73,
       "rank": "master",
@@ -1527,7 +1527,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-073-tentacruel"
       }
     }
@@ -1535,7 +1535,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Geodude",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/geodude.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/geodude.png",
     "system": {
       "dexNumber": 74,
       "rank": "amateur",
@@ -1548,7 +1548,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-074-geodude"
       }
     }
@@ -1556,7 +1556,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Graveler",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/graveler.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/graveler.png",
     "system": {
       "dexNumber": 75,
       "rank": "master",
@@ -1569,7 +1569,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-075-graveler"
       }
     }
@@ -1577,7 +1577,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golem",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/golem.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/golem.png",
     "system": {
       "dexNumber": 76,
       "rank": "master",
@@ -1590,7 +1590,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-076-golem"
       }
     }
@@ -1598,7 +1598,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ponyta",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ponyta.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ponyta.png",
     "system": {
       "dexNumber": 77,
       "rank": "beginner",
@@ -1611,7 +1611,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-077-ponyta"
       }
     }
@@ -1619,7 +1619,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rapidash",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rapidash.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rapidash.png",
     "system": {
       "dexNumber": 78,
       "rank": "master",
@@ -1632,7 +1632,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-078-rapidash"
       }
     }
@@ -1640,7 +1640,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowpoke",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/slowpoke.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/slowpoke.png",
     "system": {
       "dexNumber": 79,
       "rank": "beginner",
@@ -1653,7 +1653,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-079-slowpoke"
       }
     }
@@ -1661,7 +1661,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowbro",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/slowbro.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/slowbro.png",
     "system": {
       "dexNumber": 80,
       "rank": "ace",
@@ -1674,7 +1674,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-080-slowbro"
       }
     }
@@ -1682,7 +1682,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magnemite",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/magnemite.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/magnemite.png",
     "system": {
       "dexNumber": 81,
       "rank": "beginner",
@@ -1695,7 +1695,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-081-magnemite"
       }
     }
@@ -1703,7 +1703,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magneton",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/magneton.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/magneton.png",
     "system": {
       "dexNumber": 82,
       "rank": "amateur",
@@ -1716,7 +1716,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-082-magneton"
       }
     }
@@ -1724,7 +1724,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Farfetch\u2019d",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/farfetchd.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/farfetchd.png",
     "system": {
       "dexNumber": 83,
       "rank": "amateur",
@@ -1737,7 +1737,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-083-farfetchd"
       }
     }
@@ -1745,7 +1745,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Doduo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/doduo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/doduo.png",
     "system": {
       "dexNumber": 84,
       "rank": "beginner",
@@ -1758,7 +1758,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-084-doduo"
       }
     }
@@ -1766,7 +1766,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dodrio",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dodrio.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dodrio.png",
     "system": {
       "dexNumber": 85,
       "rank": "ace",
@@ -1779,7 +1779,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-085-dodrio"
       }
     }
@@ -1787,7 +1787,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seel",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/seel.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/seel.png",
     "system": {
       "dexNumber": 86,
       "rank": "beginner",
@@ -1800,7 +1800,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-086-seel"
       }
     }
@@ -1808,7 +1808,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dewgong",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dewgong.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dewgong.png",
     "system": {
       "dexNumber": 87,
       "rank": "amateur",
@@ -1821,7 +1821,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-087-dewgong"
       }
     }
@@ -1829,7 +1829,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grimer",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/grimer.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/grimer.png",
     "system": {
       "dexNumber": 88,
       "rank": "amateur",
@@ -1842,7 +1842,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-088-grimer"
       }
     }
@@ -1850,7 +1850,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Muk",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/muk.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/muk.png",
     "system": {
       "dexNumber": 89,
       "rank": "master",
@@ -1863,7 +1863,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-089-muk"
       }
     }
@@ -1871,7 +1871,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shellder",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/shellder.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/shellder.png",
     "system": {
       "dexNumber": 90,
       "rank": "amateur",
@@ -1884,7 +1884,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-090-shellder"
       }
     }
@@ -1892,7 +1892,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cloyster",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cloyster.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cloyster.png",
     "system": {
       "dexNumber": 91,
       "rank": "master",
@@ -1905,7 +1905,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-091-cloyster"
       }
     }
@@ -1913,7 +1913,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gastly",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gastly.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gastly.png",
     "system": {
       "dexNumber": 92,
       "rank": "amateur",
@@ -1926,7 +1926,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-092-gastly"
       }
     }
@@ -1934,7 +1934,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Haunter",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/haunter.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/haunter.png",
     "system": {
       "dexNumber": 93,
       "rank": "ace",
@@ -1947,7 +1947,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-093-haunter"
       }
     }
@@ -1955,7 +1955,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gengar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gengar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gengar.png",
     "system": {
       "dexNumber": 94,
       "rank": "master",
@@ -1968,7 +1968,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-094-gengar"
       }
     }
@@ -1976,7 +1976,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Onix",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/onix.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/onix.png",
     "system": {
       "dexNumber": 95,
       "rank": "master",
@@ -1989,7 +1989,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-095-onix"
       }
     }
@@ -1997,7 +1997,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drowzee",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/drowzee.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/drowzee.png",
     "system": {
       "dexNumber": 96,
       "rank": "amateur",
@@ -2010,7 +2010,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-096-drowzee"
       }
     }
@@ -2018,7 +2018,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hypno",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hypno.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hypno.png",
     "system": {
       "dexNumber": 97,
       "rank": "ace",
@@ -2031,7 +2031,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-097-hypno"
       }
     }
@@ -2039,7 +2039,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Krabby",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/krabby.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/krabby.png",
     "system": {
       "dexNumber": 98,
       "rank": "amateur",
@@ -2052,7 +2052,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-098-krabby"
       }
     }
@@ -2060,7 +2060,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kingler",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kingler.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kingler.png",
     "system": {
       "dexNumber": 99,
       "rank": "ace",
@@ -2073,7 +2073,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-099-kingler"
       }
     }
@@ -2081,7 +2081,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Voltorb",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/voltorb.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/voltorb.png",
     "system": {
       "dexNumber": 100,
       "rank": "amateur",
@@ -2094,7 +2094,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-100-voltorb"
       }
     }
@@ -2102,7 +2102,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electrode",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/electrode.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/electrode.png",
     "system": {
       "dexNumber": 101,
       "rank": "master",
@@ -2115,7 +2115,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-101-electrode"
       }
     }
@@ -2123,7 +2123,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Exeggcute",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/exeggcute.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/exeggcute.png",
     "system": {
       "dexNumber": 102,
       "rank": "beginner",
@@ -2136,7 +2136,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-102-exeggcute"
       }
     }
@@ -2144,7 +2144,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Exeggutor",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/exeggutor.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/exeggutor.png",
     "system": {
       "dexNumber": 103,
       "rank": "ace",
@@ -2157,7 +2157,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-103-exeggutor"
       }
     }
@@ -2165,7 +2165,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cubone",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cubone.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cubone.png",
     "system": {
       "dexNumber": 104,
       "rank": "amateur",
@@ -2178,7 +2178,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-104-cubone"
       }
     }
@@ -2186,7 +2186,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Marowak",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/marowak.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/marowak.png",
     "system": {
       "dexNumber": 105,
       "rank": "ace",
@@ -2199,7 +2199,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-105-marowak"
       }
     }
@@ -2207,7 +2207,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hitmonlee",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hitmonlee.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hitmonlee.png",
     "system": {
       "dexNumber": 106,
       "rank": "master",
@@ -2220,7 +2220,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-106-hitmonlee"
       }
     }
@@ -2228,7 +2228,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hitmonchan",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hitmonchan.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hitmonchan.png",
     "system": {
       "dexNumber": 107,
       "rank": "master",
@@ -2241,7 +2241,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-107-hitmonchan"
       }
     }
@@ -2249,7 +2249,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lickitung",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lickitung.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lickitung.png",
     "system": {
       "dexNumber": 108,
       "rank": "amateur",
@@ -2262,7 +2262,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-108-lickitung"
       }
     }
@@ -2270,7 +2270,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Koffing",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/koffing.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/koffing.png",
     "system": {
       "dexNumber": 109,
       "rank": "amateur",
@@ -2283,7 +2283,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-109-koffing"
       }
     }
@@ -2291,7 +2291,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weezing",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/weezing.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/weezing.png",
     "system": {
       "dexNumber": 110,
       "rank": "ace",
@@ -2304,7 +2304,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-110-weezing"
       }
     }
@@ -2312,7 +2312,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rhyhorn",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rhyhorn.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rhyhorn.png",
     "system": {
       "dexNumber": 111,
       "rank": "amateur",
@@ -2325,7 +2325,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-111-rhyhorn"
       }
     }
@@ -2333,7 +2333,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rhydon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rhydon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rhydon.png",
     "system": {
       "dexNumber": 112,
       "rank": "ace",
@@ -2346,7 +2346,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-112-rhydon"
       }
     }
@@ -2354,7 +2354,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chansey",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/chansey.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/chansey.png",
     "system": {
       "dexNumber": 113,
       "rank": "beginner",
@@ -2367,7 +2367,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-113-chansey"
       }
     }
@@ -2375,7 +2375,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tangela",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tangela.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tangela.png",
     "system": {
       "dexNumber": 114,
       "rank": "ace",
@@ -2388,7 +2388,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-114-tangela"
       }
     }
@@ -2396,7 +2396,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kangaskhan",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kangaskhan.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kangaskhan.png",
     "system": {
       "dexNumber": 115,
       "rank": "ace",
@@ -2409,7 +2409,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-115-kangaskhan"
       }
     }
@@ -2417,7 +2417,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Horsea",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/horsea.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/horsea.png",
     "system": {
       "dexNumber": 116,
       "rank": "beginner",
@@ -2430,7 +2430,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-116-horsea"
       }
     }
@@ -2438,7 +2438,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seadra",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/seadra.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/seadra.png",
     "system": {
       "dexNumber": 117,
       "rank": "ace",
@@ -2451,7 +2451,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-117-seadra"
       }
     }
@@ -2459,7 +2459,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Goldeen",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/goldeen.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/goldeen.png",
     "system": {
       "dexNumber": 118,
       "rank": "beginner",
@@ -2472,7 +2472,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-118-goldeen"
       }
     }
@@ -2480,7 +2480,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seaking",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/seaking.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/seaking.png",
     "system": {
       "dexNumber": 119,
       "rank": "ace",
@@ -2493,7 +2493,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-119-seaking"
       }
     }
@@ -2501,7 +2501,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Staryu",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/staryu.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/staryu.png",
     "system": {
       "dexNumber": 120,
       "rank": "beginner",
@@ -2514,7 +2514,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-120-staryu"
       }
     }
@@ -2522,7 +2522,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Starmie",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/starmie.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/starmie.png",
     "system": {
       "dexNumber": 121,
       "rank": "ace",
@@ -2535,7 +2535,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-121-starmie"
       }
     }
@@ -2543,7 +2543,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mr. Mime",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mr-mime.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mr-mime.png",
     "system": {
       "dexNumber": 122,
       "rank": "ace",
@@ -2556,7 +2556,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-122-mr-mime"
       }
     }
@@ -2564,7 +2564,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scyther",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/scyther.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/scyther.png",
     "system": {
       "dexNumber": 123,
       "rank": "ace",
@@ -2577,7 +2577,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-123-scyther"
       }
     }
@@ -2585,7 +2585,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jynx",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/jynx.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/jynx.png",
     "system": {
       "dexNumber": 124,
       "rank": "ace",
@@ -2598,7 +2598,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-124-jynx"
       }
     }
@@ -2606,7 +2606,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electabuzz",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/electabuzz.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/electabuzz.png",
     "system": {
       "dexNumber": 125,
       "rank": "ace",
@@ -2619,7 +2619,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-125-electabuzz"
       }
     }
@@ -2627,7 +2627,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magmar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/magmar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/magmar.png",
     "system": {
       "dexNumber": 126,
       "rank": "ace",
@@ -2640,7 +2640,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-126-magmar"
       }
     }
@@ -2648,7 +2648,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pinsir",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pinsir.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pinsir.png",
     "system": {
       "dexNumber": 127,
       "rank": "ace",
@@ -2661,7 +2661,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-127-pinsir"
       }
     }
@@ -2669,7 +2669,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tauros",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tauros.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tauros.png",
     "system": {
       "dexNumber": 128,
       "rank": "master",
@@ -2682,7 +2682,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-128-tauros"
       }
     }
@@ -2690,7 +2690,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magikarp",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/magikarp.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/magikarp.png",
     "system": {
       "dexNumber": 129,
       "rank": "starter",
@@ -2703,7 +2703,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-129-magikarp"
       }
     }
@@ -2711,7 +2711,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gyarados",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gyarados.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gyarados.png",
     "system": {
       "dexNumber": 130,
       "rank": "master",
@@ -2724,7 +2724,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-130-gyarados"
       }
     }
@@ -2732,7 +2732,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lapras",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lapras.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lapras.png",
     "system": {
       "dexNumber": 131,
       "rank": "ace",
@@ -2745,7 +2745,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-131-lapras"
       }
     }
@@ -2753,7 +2753,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ditto",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ditto.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ditto.png",
     "system": {
       "dexNumber": 132,
       "rank": "beginner",
@@ -2766,7 +2766,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-132-ditto"
       }
     }
@@ -2774,7 +2774,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eevee",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/eevee.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/eevee.png",
     "system": {
       "dexNumber": 133,
       "rank": "beginner",
@@ -2787,7 +2787,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-133-eevee"
       }
     }
@@ -2795,7 +2795,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vaporeon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/vaporeon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/vaporeon.png",
     "system": {
       "dexNumber": 134,
       "rank": "ace",
@@ -2808,7 +2808,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-134-vaporeon"
       }
     }
@@ -2816,7 +2816,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jolteon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/jolteon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/jolteon.png",
     "system": {
       "dexNumber": 135,
       "rank": "ace",
@@ -2829,7 +2829,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-135-jolteon"
       }
     }
@@ -2837,7 +2837,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flareon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/flareon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/flareon.png",
     "system": {
       "dexNumber": 136,
       "rank": "ace",
@@ -2850,7 +2850,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-136-flareon"
       }
     }
@@ -2858,7 +2858,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Porygon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/porygon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/porygon.png",
     "system": {
       "dexNumber": 137,
       "rank": "beginner",
@@ -2871,7 +2871,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-137-porygon"
       }
     }
@@ -2879,7 +2879,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Omanyte",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/omanyte.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/omanyte.png",
     "system": {
       "dexNumber": 138,
       "rank": "amateur",
@@ -2892,7 +2892,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-138-omanyte"
       }
     }
@@ -2900,7 +2900,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Omastar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/omastar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/omastar.png",
     "system": {
       "dexNumber": 139,
       "rank": "master",
@@ -2913,7 +2913,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-139-omastar"
       }
     }
@@ -2921,7 +2921,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kabuto",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kabuto.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kabuto.png",
     "system": {
       "dexNumber": 140,
       "rank": "amateur",
@@ -2934,7 +2934,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-140-kabuto"
       }
     }
@@ -2942,7 +2942,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kabutops",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kabutops.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kabutops.png",
     "system": {
       "dexNumber": 141,
       "rank": "master",
@@ -2955,7 +2955,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-141-kabutops"
       }
     }
@@ -2963,7 +2963,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aerodactyl",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/aerodactyl.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/aerodactyl.png",
     "system": {
       "dexNumber": 142,
       "rank": "master",
@@ -2976,7 +2976,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-142-aerodactyl"
       }
     }
@@ -2984,7 +2984,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snorlax",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/snorlax.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/snorlax.png",
     "system": {
       "dexNumber": 143,
       "rank": "master",
@@ -2997,7 +2997,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-143-snorlax"
       }
     }
@@ -3005,7 +3005,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Articuno",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/articuno.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/articuno.png",
     "system": {
       "dexNumber": 144,
       "rank": "pro",
@@ -3018,7 +3018,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-144-articuno"
       }
     }
@@ -3026,7 +3026,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zapdos",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zapdos.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zapdos.png",
     "system": {
       "dexNumber": 145,
       "rank": "pro",
@@ -3039,7 +3039,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-145-zapdos"
       }
     }
@@ -3047,7 +3047,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Moltres",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/moltres.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/moltres.png",
     "system": {
       "dexNumber": 146,
       "rank": "pro",
@@ -3060,7 +3060,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-146-moltres"
       }
     }
@@ -3068,7 +3068,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dratini",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dratini.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dratini.png",
     "system": {
       "dexNumber": 147,
       "rank": "beginner",
@@ -3081,7 +3081,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-147-dratini"
       }
     }
@@ -3089,7 +3089,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragonair",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dragonair.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dragonair.png",
     "system": {
       "dexNumber": 148,
       "rank": "ace",
@@ -3102,7 +3102,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-148-dragonair"
       }
     }
@@ -3110,7 +3110,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragonite",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dragonite.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dragonite.png",
     "system": {
       "dexNumber": 149,
       "rank": "master",
@@ -3123,7 +3123,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-149-dragonite"
       }
     }
@@ -3131,7 +3131,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mewtwo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mewtwo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mewtwo.png",
     "system": {
       "dexNumber": 150,
       "rank": "pro",
@@ -3144,7 +3144,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-150-mewtwo"
       }
     }
@@ -3152,7 +3152,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mew",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mew.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mew.png",
     "system": {
       "dexNumber": 151,
       "rank": "pro",
@@ -3165,7 +3165,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-151-mew"
       }
     }
@@ -3173,7 +3173,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chikorita",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/chikorita.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/chikorita.png",
     "system": {
       "dexNumber": 152,
       "rank": "beginner",
@@ -3186,7 +3186,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-152-chikorita"
       }
     }
@@ -3194,7 +3194,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bayleef",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bayleef.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bayleef.png",
     "system": {
       "dexNumber": 153,
       "rank": "amateur",
@@ -3207,7 +3207,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-153-bayleef"
       }
     }
@@ -3215,7 +3215,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meganium",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/meganium.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/meganium.png",
     "system": {
       "dexNumber": 154,
       "rank": "master",
@@ -3228,7 +3228,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-154-meganium"
       }
     }
@@ -3236,7 +3236,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cyndaquil",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cyndaquil.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cyndaquil.png",
     "system": {
       "dexNumber": 155,
       "rank": "beginner",
@@ -3249,7 +3249,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-155-cyndaquil"
       }
     }
@@ -3257,7 +3257,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quilava",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/quilava.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/quilava.png",
     "system": {
       "dexNumber": 156,
       "rank": "amateur",
@@ -3270,7 +3270,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-156-quilava"
       }
     }
@@ -3278,7 +3278,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Typhlosion",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/typhlosion.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/typhlosion.png",
     "system": {
       "dexNumber": 157,
       "rank": "master",
@@ -3291,7 +3291,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-157-typhlosion"
       }
     }
@@ -3299,7 +3299,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Totodile",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/totodile.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/totodile.png",
     "system": {
       "dexNumber": 158,
       "rank": "beginner",
@@ -3312,7 +3312,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-158-totodile"
       }
     }
@@ -3320,7 +3320,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Croconaw",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/croconaw.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/croconaw.png",
     "system": {
       "dexNumber": 159,
       "rank": "amateur",
@@ -3333,7 +3333,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-159-croconaw"
       }
     }
@@ -3341,7 +3341,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Feraligatr",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/feraligatr.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/feraligatr.png",
     "system": {
       "dexNumber": 160,
       "rank": "master",
@@ -3354,7 +3354,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-160-feraligatr"
       }
     }
@@ -3362,7 +3362,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sentret",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sentret.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sentret.png",
     "system": {
       "dexNumber": 161,
       "rank": "starter",
@@ -3375,7 +3375,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-161-sentret"
       }
     }
@@ -3383,7 +3383,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Furret",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/furret.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/furret.png",
     "system": {
       "dexNumber": 162,
       "rank": "amateur",
@@ -3396,7 +3396,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-162-furret"
       }
     }
@@ -3404,7 +3404,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hoothoot",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hoothoot.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hoothoot.png",
     "system": {
       "dexNumber": 163,
       "rank": "starter",
@@ -3417,7 +3417,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-163-hoothoot"
       }
     }
@@ -3425,7 +3425,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Noctowl",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/noctowl.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/noctowl.png",
     "system": {
       "dexNumber": 164,
       "rank": "ace",
@@ -3438,7 +3438,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-164-noctowl"
       }
     }
@@ -3446,7 +3446,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ledyba",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ledyba.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ledyba.png",
     "system": {
       "dexNumber": 165,
       "rank": "starter",
@@ -3459,7 +3459,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-165-ledyba"
       }
     }
@@ -3467,7 +3467,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ledian",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ledian.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ledian.png",
     "system": {
       "dexNumber": 166,
       "rank": "ace",
@@ -3480,7 +3480,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-166-ledian"
       }
     }
@@ -3488,7 +3488,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spinarak",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/spinarak.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/spinarak.png",
     "system": {
       "dexNumber": 167,
       "rank": "starter",
@@ -3501,7 +3501,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-167-spinarak"
       }
     }
@@ -3509,7 +3509,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ariados",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ariados.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ariados.png",
     "system": {
       "dexNumber": 168,
       "rank": "ace",
@@ -3522,7 +3522,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-168-ariados"
       }
     }
@@ -3530,7 +3530,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crobat",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/crobat.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/crobat.png",
     "system": {
       "dexNumber": 169,
       "rank": "master",
@@ -3543,7 +3543,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-169-crobat"
       }
     }
@@ -3551,7 +3551,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chinchou",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/chinchou.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/chinchou.png",
     "system": {
       "dexNumber": 170,
       "rank": "beginner",
@@ -3564,7 +3564,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-170-chinchou"
       }
     }
@@ -3572,7 +3572,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lanturn",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lanturn.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lanturn.png",
     "system": {
       "dexNumber": 171,
       "rank": "ace",
@@ -3585,7 +3585,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-171-lanturn"
       }
     }
@@ -3593,7 +3593,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pichu",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pichu.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pichu.png",
     "system": {
       "dexNumber": 172,
       "rank": "starter",
@@ -3606,7 +3606,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-172-pichu"
       }
     }
@@ -3614,7 +3614,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cleffa",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cleffa.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cleffa.png",
     "system": {
       "dexNumber": 173,
       "rank": "starter",
@@ -3627,7 +3627,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-173-cleffa"
       }
     }
@@ -3635,7 +3635,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Igglybuff",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/igglybuff.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/igglybuff.png",
     "system": {
       "dexNumber": 174,
       "rank": "starter",
@@ -3648,7 +3648,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-174-igglybuff"
       }
     }
@@ -3656,7 +3656,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Togepi",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/togepi.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/togepi.png",
     "system": {
       "dexNumber": 175,
       "rank": "starter",
@@ -3669,7 +3669,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-175-togepi"
       }
     }
@@ -3677,7 +3677,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Togetic",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/togetic.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/togetic.png",
     "system": {
       "dexNumber": 176,
       "rank": "ace",
@@ -3690,7 +3690,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-176-togetic"
       }
     }
@@ -3698,7 +3698,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Natu",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/natu.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/natu.png",
     "system": {
       "dexNumber": 177,
       "rank": "beginner",
@@ -3711,7 +3711,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-177-natu"
       }
     }
@@ -3719,7 +3719,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Xatu",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/xatu.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/xatu.png",
     "system": {
       "dexNumber": 178,
       "rank": "ace",
@@ -3732,7 +3732,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-178-xatu"
       }
     }
@@ -3740,7 +3740,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mareep",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mareep.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mareep.png",
     "system": {
       "dexNumber": 179,
       "rank": "starter",
@@ -3753,7 +3753,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-179-mareep"
       }
     }
@@ -3761,7 +3761,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flaaffy",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/flaaffy.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/flaaffy.png",
     "system": {
       "dexNumber": 180,
       "rank": "amateur",
@@ -3774,7 +3774,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-180-flaaffy"
       }
     }
@@ -3782,7 +3782,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ampharos",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ampharos.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ampharos.png",
     "system": {
       "dexNumber": 181,
       "rank": "ace",
@@ -3795,7 +3795,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-181-ampharos"
       }
     }
@@ -3803,7 +3803,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bellossom",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bellossom.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bellossom.png",
     "system": {
       "dexNumber": 182,
       "rank": "ace",
@@ -3816,7 +3816,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-182-bellossom"
       }
     }
@@ -3824,7 +3824,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Marill",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/marill.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/marill.png",
     "system": {
       "dexNumber": 183,
       "rank": "beginner",
@@ -3837,7 +3837,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-183-marill"
       }
     }
@@ -3845,7 +3845,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Azumarill",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/azumarill.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/azumarill.png",
     "system": {
       "dexNumber": 184,
       "rank": "ace",
@@ -3858,7 +3858,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-184-azumarill"
       }
     }
@@ -3866,7 +3866,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sudowoodo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sudowoodo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sudowoodo.png",
     "system": {
       "dexNumber": 185,
       "rank": "ace",
@@ -3879,7 +3879,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-185-sudowoodo"
       }
     }
@@ -3887,7 +3887,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Politoed",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/politoed.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/politoed.png",
     "system": {
       "dexNumber": 186,
       "rank": "master",
@@ -3900,7 +3900,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-186-politoed"
       }
     }
@@ -3908,7 +3908,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hoppip",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hoppip.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hoppip.png",
     "system": {
       "dexNumber": 187,
       "rank": "starter",
@@ -3921,7 +3921,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-187-hoppip"
       }
     }
@@ -3929,7 +3929,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skiploom",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/skiploom.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/skiploom.png",
     "system": {
       "dexNumber": 188,
       "rank": "amateur",
@@ -3942,7 +3942,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-188-skiploom"
       }
     }
@@ -3950,7 +3950,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jumpluff",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/jumpluff.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/jumpluff.png",
     "system": {
       "dexNumber": 189,
       "rank": "master",
@@ -3963,7 +3963,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-189-jumpluff"
       }
     }
@@ -3971,7 +3971,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aipom",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/aipom.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/aipom.png",
     "system": {
       "dexNumber": 190,
       "rank": "beginner",
@@ -3984,7 +3984,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-190-aipom"
       }
     }
@@ -3992,7 +3992,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sunkern",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sunkern.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sunkern.png",
     "system": {
       "dexNumber": 191,
       "rank": "starter",
@@ -4005,7 +4005,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-191-sunkern"
       }
     }
@@ -4013,7 +4013,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sunflora",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sunflora.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sunflora.png",
     "system": {
       "dexNumber": 192,
       "rank": "ace",
@@ -4026,7 +4026,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-192-sunflora"
       }
     }
@@ -4034,7 +4034,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yanma",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/yanma.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/yanma.png",
     "system": {
       "dexNumber": 193,
       "rank": "amateur",
@@ -4047,7 +4047,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-193-yanma"
       }
     }
@@ -4055,7 +4055,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wooper",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/wooper.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/wooper.png",
     "system": {
       "dexNumber": 194,
       "rank": "starter",
@@ -4068,7 +4068,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-194-wooper"
       }
     }
@@ -4076,7 +4076,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quagsire",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/quagsire.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/quagsire.png",
     "system": {
       "dexNumber": 195,
       "rank": "ace",
@@ -4089,7 +4089,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-195-quagsire"
       }
     }
@@ -4097,7 +4097,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Espeon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/espeon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/espeon.png",
     "system": {
       "dexNumber": 196,
       "rank": "ace",
@@ -4110,7 +4110,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-196-espeon"
       }
     }
@@ -4118,7 +4118,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Umbreon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/umbreon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/umbreon.png",
     "system": {
       "dexNumber": 197,
       "rank": "ace",
@@ -4131,7 +4131,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-197-umbreon"
       }
     }
@@ -4139,7 +4139,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Murkrow",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/murkrow.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/murkrow.png",
     "system": {
       "dexNumber": 198,
       "rank": "beginner",
@@ -4152,7 +4152,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-198-murkrow"
       }
     }
@@ -4160,7 +4160,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowking",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/slowking.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/slowking.png",
     "system": {
       "dexNumber": 199,
       "rank": "ace",
@@ -4173,7 +4173,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-199-slowking"
       }
     }
@@ -4181,7 +4181,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Misdreavus",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/misdreavus.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/misdreavus.png",
     "system": {
       "dexNumber": 200,
       "rank": "beginner",
@@ -4194,7 +4194,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-200-misdreavus"
       }
     }
@@ -4202,7 +4202,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Unown",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/unown.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/unown.png",
     "system": {
       "dexNumber": 201,
       "rank": "starter",
@@ -4215,7 +4215,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-201-unown"
       }
     }
@@ -4223,7 +4223,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wobbuffet",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/wobbuffet.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/wobbuffet.png",
     "system": {
       "dexNumber": 202,
       "rank": "master",
@@ -4236,7 +4236,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-202-wobbuffet"
       }
     }
@@ -4244,7 +4244,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Girafarig",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/girafarig.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/girafarig.png",
     "system": {
       "dexNumber": 203,
       "rank": "amateur",
@@ -4257,7 +4257,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-203-girafarig"
       }
     }
@@ -4265,7 +4265,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pineco",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pineco.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pineco.png",
     "system": {
       "dexNumber": 204,
       "rank": "starter",
@@ -4278,7 +4278,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-204-pineco"
       }
     }
@@ -4286,7 +4286,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Forretress",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/forretress.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/forretress.png",
     "system": {
       "dexNumber": 205,
       "rank": "ace",
@@ -4299,7 +4299,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-205-forretress"
       }
     }
@@ -4307,7 +4307,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dunsparce",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dunsparce.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dunsparce.png",
     "system": {
       "dexNumber": 206,
       "rank": "amateur",
@@ -4320,7 +4320,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-206-dunsparce"
       }
     }
@@ -4328,7 +4328,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gligar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gligar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gligar.png",
     "system": {
       "dexNumber": 207,
       "rank": "amateur",
@@ -4341,7 +4341,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-207-gligar"
       }
     }
@@ -4349,7 +4349,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Steelix",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/steelix.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/steelix.png",
     "system": {
       "dexNumber": 208,
       "rank": "master",
@@ -4362,7 +4362,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-208-steelix"
       }
     }
@@ -4370,7 +4370,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snubbull",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/snubbull.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/snubbull.png",
     "system": {
       "dexNumber": 209,
       "rank": "starter",
@@ -4383,7 +4383,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-209-snubbull"
       }
     }
@@ -4391,7 +4391,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Granbull",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/granbull.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/granbull.png",
     "system": {
       "dexNumber": 210,
       "rank": "ace",
@@ -4404,7 +4404,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-210-granbull"
       }
     }
@@ -4412,7 +4412,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Qwilfish",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/qwilfish.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/qwilfish.png",
     "system": {
       "dexNumber": 211,
       "rank": "amateur",
@@ -4425,7 +4425,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-211-qwilfish"
       }
     }
@@ -4433,7 +4433,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scizor",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/scizor.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/scizor.png",
     "system": {
       "dexNumber": 212,
       "rank": "master",
@@ -4446,7 +4446,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-212-scizor"
       }
     }
@@ -4454,7 +4454,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shuckle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/shuckle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/shuckle.png",
     "system": {
       "dexNumber": 213,
       "rank": "ace",
@@ -4467,7 +4467,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-213-shuckle"
       }
     }
@@ -4475,7 +4475,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heracross",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/heracross.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/heracross.png",
     "system": {
       "dexNumber": 214,
       "rank": "ace",
@@ -4488,7 +4488,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-214-heracross"
       }
     }
@@ -4496,7 +4496,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sneasel",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sneasel.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sneasel.png",
     "system": {
       "dexNumber": 215,
       "rank": "amateur",
@@ -4509,7 +4509,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-215-sneasel"
       }
     }
@@ -4517,7 +4517,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Teddiursa",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/teddiursa.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/teddiursa.png",
     "system": {
       "dexNumber": 216,
       "rank": "beginner",
@@ -4530,7 +4530,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-216-teddiursa"
       }
     }
@@ -4538,7 +4538,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ursaring",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ursaring.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ursaring.png",
     "system": {
       "dexNumber": 217,
       "rank": "ace",
@@ -4551,7 +4551,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-217-ursaring"
       }
     }
@@ -4559,7 +4559,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slugma",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/slugma.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/slugma.png",
     "system": {
       "dexNumber": 218,
       "rank": "starter",
@@ -4572,7 +4572,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-218-slugma"
       }
     }
@@ -4580,7 +4580,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magcargo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/magcargo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/magcargo.png",
     "system": {
       "dexNumber": 219,
       "rank": "ace",
@@ -4593,7 +4593,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-219-magcargo"
       }
     }
@@ -4601,7 +4601,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swinub",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/swinub.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/swinub.png",
     "system": {
       "dexNumber": 220,
       "rank": "starter",
@@ -4614,7 +4614,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-220-swinub"
       }
     }
@@ -4622,7 +4622,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Piloswine",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/piloswine.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/piloswine.png",
     "system": {
       "dexNumber": 221,
       "rank": "ace",
@@ -4635,7 +4635,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-221-piloswine"
       }
     }
@@ -4643,7 +4643,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corsola",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/corsola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/corsola.png",
     "system": {
       "dexNumber": 222,
       "rank": "ace",
@@ -4656,7 +4656,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-222-corsola"
       }
     }
@@ -4664,7 +4664,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Remoraid",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/remoraid.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/remoraid.png",
     "system": {
       "dexNumber": 223,
       "rank": "beginner",
@@ -4677,7 +4677,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-223-remoraid"
       }
     }
@@ -4685,7 +4685,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Octillery",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/octillery.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/octillery.png",
     "system": {
       "dexNumber": 224,
       "rank": "ace",
@@ -4698,7 +4698,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-224-octillery"
       }
     }
@@ -4706,7 +4706,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Delibird",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/delibird.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/delibird.png",
     "system": {
       "dexNumber": 225,
       "rank": "beginner",
@@ -4719,7 +4719,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-225-delibird"
       }
     }
@@ -4727,7 +4727,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mantine",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mantine.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mantine.png",
     "system": {
       "dexNumber": 226,
       "rank": "ace",
@@ -4740,7 +4740,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-226-mantine"
       }
     }
@@ -4748,7 +4748,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skarmory",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/skarmory.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/skarmory.png",
     "system": {
       "dexNumber": 227,
       "rank": "master",
@@ -4761,7 +4761,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-227-skarmory"
       }
     }
@@ -4769,7 +4769,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Houndour",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/houndour.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/houndour.png",
     "system": {
       "dexNumber": 228,
       "rank": "beginner",
@@ -4782,7 +4782,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-228-houndour"
       }
     }
@@ -4790,7 +4790,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Houndoom",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/houndoom.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/houndoom.png",
     "system": {
       "dexNumber": 229,
       "rank": "master",
@@ -4803,7 +4803,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-229-houndoom"
       }
     }
@@ -4811,7 +4811,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kingdra",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kingdra.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kingdra.png",
     "system": {
       "dexNumber": 230,
       "rank": "master",
@@ -4824,7 +4824,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-230-kingdra"
       }
     }
@@ -4832,7 +4832,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Phanpy",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/phanpy.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/phanpy.png",
     "system": {
       "dexNumber": 231,
       "rank": "starter",
@@ -4845,7 +4845,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-231-phanpy"
       }
     }
@@ -4853,7 +4853,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Donphan",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/donphan.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/donphan.png",
     "system": {
       "dexNumber": 232,
       "rank": "master",
@@ -4866,7 +4866,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-232-donphan"
       }
     }
@@ -4874,7 +4874,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Porygon2",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/porygon2.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/porygon2.png",
     "system": {
       "dexNumber": 233,
       "rank": "ace",
@@ -4887,7 +4887,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-233-porygon2"
       }
     }
@@ -4895,7 +4895,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stantler",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/stantler.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/stantler.png",
     "system": {
       "dexNumber": 234,
       "rank": "amateur",
@@ -4908,7 +4908,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-234-stantler"
       }
     }
@@ -4916,7 +4916,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smeargle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/smeargle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/smeargle.png",
     "system": {
       "dexNumber": 235,
       "rank": "ace",
@@ -4929,7 +4929,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-235-smeargle"
       }
     }
@@ -4937,7 +4937,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tyrogue",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tyrogue.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tyrogue.png",
     "system": {
       "dexNumber": 236,
       "rank": "starter",
@@ -4950,7 +4950,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-236-tyrogue"
       }
     }
@@ -4958,7 +4958,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hitmontop",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hitmontop.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hitmontop.png",
     "system": {
       "dexNumber": 237,
       "rank": "master",
@@ -4971,7 +4971,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-237-hitmontop"
       }
     }
@@ -4979,7 +4979,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smoochum",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/smoochum.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/smoochum.png",
     "system": {
       "dexNumber": 238,
       "rank": "beginner",
@@ -4992,7 +4992,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-238-smoochum"
       }
     }
@@ -5000,7 +5000,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Elekid",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/elekid.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/elekid.png",
     "system": {
       "dexNumber": 239,
       "rank": "beginner",
@@ -5013,7 +5013,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-239-elekid"
       }
     }
@@ -5021,7 +5021,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magby",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/magby.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/magby.png",
     "system": {
       "dexNumber": 240,
       "rank": "beginner",
@@ -5034,7 +5034,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-240-magby"
       }
     }
@@ -5042,7 +5042,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Miltank",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/miltank.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/miltank.png",
     "system": {
       "dexNumber": 241,
       "rank": "ace",
@@ -5055,7 +5055,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-241-miltank"
       }
     }
@@ -5063,7 +5063,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blissey",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/blissey.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/blissey.png",
     "system": {
       "dexNumber": 242,
       "rank": "ace",
@@ -5076,7 +5076,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-242-blissey"
       }
     }
@@ -5084,7 +5084,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raikou",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/raikou.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/raikou.png",
     "system": {
       "dexNumber": 243,
       "rank": "pro",
@@ -5097,7 +5097,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-243-raikou"
       }
     }
@@ -5105,7 +5105,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Entei",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/entei.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/entei.png",
     "system": {
       "dexNumber": 244,
       "rank": "pro",
@@ -5118,7 +5118,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-244-entei"
       }
     }
@@ -5126,7 +5126,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Suicune",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/suicune.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/suicune.png",
     "system": {
       "dexNumber": 245,
       "rank": "pro",
@@ -5139,7 +5139,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-245-suicune"
       }
     }
@@ -5147,7 +5147,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Larvitar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/larvitar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/larvitar.png",
     "system": {
       "dexNumber": 246,
       "rank": "beginner",
@@ -5160,7 +5160,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-246-larvitar"
       }
     }
@@ -5168,7 +5168,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pupitar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pupitar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pupitar.png",
     "system": {
       "dexNumber": 247,
       "rank": "amateur",
@@ -5181,7 +5181,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-247-pupitar"
       }
     }
@@ -5189,7 +5189,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tyranitar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tyranitar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tyranitar.png",
     "system": {
       "dexNumber": 248,
       "rank": "master",
@@ -5202,7 +5202,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-248-tyranitar"
       }
     }
@@ -5210,7 +5210,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lugia",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lugia.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lugia.png",
     "system": {
       "dexNumber": 249,
       "rank": "champion",
@@ -5223,7 +5223,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-249-lugia"
       }
     }
@@ -5231,7 +5231,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ho-Oh",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ho-oh.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ho-oh.png",
     "system": {
       "dexNumber": 250,
       "rank": "champion",
@@ -5244,7 +5244,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-250-ho-oh"
       }
     }
@@ -5252,7 +5252,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Celebi",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/celebi.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/celebi.png",
     "system": {
       "dexNumber": 251,
       "rank": "pro",
@@ -5265,7 +5265,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-251-celebi"
       }
     }
@@ -5273,7 +5273,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Treecko",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/treecko.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/treecko.png",
     "system": {
       "dexNumber": 252,
       "rank": "beginner",
@@ -5286,7 +5286,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-252-treecko"
       }
     }
@@ -5294,7 +5294,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grovyle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/grovyle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/grovyle.png",
     "system": {
       "dexNumber": 253,
       "rank": "amateur",
@@ -5307,7 +5307,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-253-grovyle"
       }
     }
@@ -5315,7 +5315,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sceptile",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sceptile.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sceptile.png",
     "system": {
       "dexNumber": 254,
       "rank": "master",
@@ -5328,7 +5328,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-254-sceptile"
       }
     }
@@ -5336,7 +5336,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Torchic",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/torchic.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/torchic.png",
     "system": {
       "dexNumber": 255,
       "rank": "beginner",
@@ -5349,7 +5349,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-255-torchic"
       }
     }
@@ -5357,7 +5357,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Combusken",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/combusken.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/combusken.png",
     "system": {
       "dexNumber": 256,
       "rank": "amateur",
@@ -5370,7 +5370,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-256-combusken"
       }
     }
@@ -5378,7 +5378,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blaziken",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/blaziken.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/blaziken.png",
     "system": {
       "dexNumber": 257,
       "rank": "master",
@@ -5391,7 +5391,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-257-blaziken"
       }
     }
@@ -5399,7 +5399,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mudkip",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mudkip.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mudkip.png",
     "system": {
       "dexNumber": 258,
       "rank": "beginner",
@@ -5412,7 +5412,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-258-mudkip"
       }
     }
@@ -5420,7 +5420,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Marshtomp",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/marshtomp.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/marshtomp.png",
     "system": {
       "dexNumber": 259,
       "rank": "amateur",
@@ -5433,7 +5433,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-259-marshtomp"
       }
     }
@@ -5441,7 +5441,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swampert",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/swampert.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/swampert.png",
     "system": {
       "dexNumber": 260,
       "rank": "master",
@@ -5454,7 +5454,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-260-swampert"
       }
     }
@@ -5462,7 +5462,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poochyena",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/poochyena.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/poochyena.png",
     "system": {
       "dexNumber": 261,
       "rank": "beginner",
@@ -5475,7 +5475,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-261-poochyena"
       }
     }
@@ -5483,7 +5483,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mightyena",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mightyena.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mightyena.png",
     "system": {
       "dexNumber": 262,
       "rank": "ace",
@@ -5496,7 +5496,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-262-mightyena"
       }
     }
@@ -5504,7 +5504,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zigzagoon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zigzagoon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zigzagoon.png",
     "system": {
       "dexNumber": 263,
       "rank": "beginner",
@@ -5517,7 +5517,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-263-zigzagoon"
       }
     }
@@ -5525,7 +5525,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Linoone",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/linoone.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/linoone.png",
     "system": {
       "dexNumber": 264,
       "rank": "amateur",
@@ -5538,7 +5538,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-264-linoone"
       }
     }
@@ -5546,7 +5546,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wurmple",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/wurmple.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/wurmple.png",
     "system": {
       "dexNumber": 265,
       "rank": "starter",
@@ -5559,7 +5559,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-265-wurmple"
       }
     }
@@ -5567,7 +5567,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Silcoon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/silcoon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/silcoon.png",
     "system": {
       "dexNumber": 266,
       "rank": "beginner",
@@ -5580,7 +5580,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-266-silcoon"
       }
     }
@@ -5588,7 +5588,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beautifly",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/beautifly.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/beautifly.png",
     "system": {
       "dexNumber": 267,
       "rank": "amateur",
@@ -5601,7 +5601,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-267-beautifly"
       }
     }
@@ -5609,7 +5609,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cascoon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cascoon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cascoon.png",
     "system": {
       "dexNumber": 268,
       "rank": "beginner",
@@ -5622,7 +5622,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-268-cascoon"
       }
     }
@@ -5630,7 +5630,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dustox",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dustox.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dustox.png",
     "system": {
       "dexNumber": 269,
       "rank": "amateur",
@@ -5643,7 +5643,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-269-dustox"
       }
     }
@@ -5651,7 +5651,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lotad",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lotad.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lotad.png",
     "system": {
       "dexNumber": 270,
       "rank": "beginner",
@@ -5664,7 +5664,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-270-lotad"
       }
     }
@@ -5672,7 +5672,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lombre",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lombre.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lombre.png",
     "system": {
       "dexNumber": 271,
       "rank": "amateur",
@@ -5685,7 +5685,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-271-lombre"
       }
     }
@@ -5693,7 +5693,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ludicolo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ludicolo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ludicolo.png",
     "system": {
       "dexNumber": 272,
       "rank": "ace",
@@ -5706,7 +5706,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-272-ludicolo"
       }
     }
@@ -5714,7 +5714,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seedot",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/seedot.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/seedot.png",
     "system": {
       "dexNumber": 273,
       "rank": "starter",
@@ -5727,7 +5727,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-273-seedot"
       }
     }
@@ -5735,7 +5735,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nuzleaf",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/nuzleaf.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/nuzleaf.png",
     "system": {
       "dexNumber": 274,
       "rank": "amateur",
@@ -5748,7 +5748,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-274-nuzleaf"
       }
     }
@@ -5756,7 +5756,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shiftry",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/shiftry.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/shiftry.png",
     "system": {
       "dexNumber": 275,
       "rank": "ace",
@@ -5769,7 +5769,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-275-shiftry"
       }
     }
@@ -5777,7 +5777,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Taillow",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/taillow.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/taillow.png",
     "system": {
       "dexNumber": 276,
       "rank": "beginner",
@@ -5790,7 +5790,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-276-taillow"
       }
     }
@@ -5798,7 +5798,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swellow",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/swellow.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/swellow.png",
     "system": {
       "dexNumber": 277,
       "rank": "ace",
@@ -5811,7 +5811,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-277-swellow"
       }
     }
@@ -5819,7 +5819,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wingull",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/wingull.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/wingull.png",
     "system": {
       "dexNumber": 278,
       "rank": "beginner",
@@ -5832,7 +5832,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-278-wingull"
       }
     }
@@ -5840,7 +5840,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pelipper",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pelipper.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pelipper.png",
     "system": {
       "dexNumber": 279,
       "rank": "ace",
@@ -5853,7 +5853,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-279-pelipper"
       }
     }
@@ -5861,7 +5861,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ralts",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ralts.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ralts.png",
     "system": {
       "dexNumber": 280,
       "rank": "beginner",
@@ -5874,7 +5874,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-280-ralts"
       }
     }
@@ -5882,7 +5882,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kirlia",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kirlia.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kirlia.png",
     "system": {
       "dexNumber": 281,
       "rank": "amateur",
@@ -5895,7 +5895,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-281-kirlia"
       }
     }
@@ -5903,7 +5903,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gardevoir",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gardevoir.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gardevoir.png",
     "system": {
       "dexNumber": 282,
       "rank": "master",
@@ -5916,7 +5916,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-282-gardevoir"
       }
     }
@@ -5924,7 +5924,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Surskit",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/surskit.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/surskit.png",
     "system": {
       "dexNumber": 283,
       "rank": "starter",
@@ -5937,7 +5937,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-283-surskit"
       }
     }
@@ -5945,7 +5945,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Masquerain",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/masquerain.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/masquerain.png",
     "system": {
       "dexNumber": 284,
       "rank": "amateur",
@@ -5958,7 +5958,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-284-masquerain"
       }
     }
@@ -5966,7 +5966,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shroomish",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/shroomish.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/shroomish.png",
     "system": {
       "dexNumber": 285,
       "rank": "starter",
@@ -5979,7 +5979,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-285-shroomish"
       }
     }
@@ -5987,7 +5987,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Breloom",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/breloom.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/breloom.png",
     "system": {
       "dexNumber": 286,
       "rank": "amateur",
@@ -6000,7 +6000,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-286-breloom"
       }
     }
@@ -6008,7 +6008,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slakoth",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/slakoth.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/slakoth.png",
     "system": {
       "dexNumber": 287,
       "rank": "beginner",
@@ -6021,7 +6021,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-287-slakoth"
       }
     }
@@ -6029,7 +6029,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vigoroth",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/vigoroth.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/vigoroth.png",
     "system": {
       "dexNumber": 288,
       "rank": "ace",
@@ -6042,7 +6042,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-288-vigoroth"
       }
     }
@@ -6050,7 +6050,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slaking",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/slaking.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/slaking.png",
     "system": {
       "dexNumber": 289,
       "rank": "master",
@@ -6063,7 +6063,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-289-slaking"
       }
     }
@@ -6071,7 +6071,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nincada",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/nincada.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/nincada.png",
     "system": {
       "dexNumber": 290,
       "rank": "amateur",
@@ -6084,7 +6084,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-290-nincada"
       }
     }
@@ -6092,7 +6092,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ninjask",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ninjask.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ninjask.png",
     "system": {
       "dexNumber": 291,
       "rank": "ace",
@@ -6105,7 +6105,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-291-ninjask"
       }
     }
@@ -6113,7 +6113,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shedinja",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/shedinja.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/shedinja.png",
     "system": {
       "dexNumber": 292,
       "rank": "ace",
@@ -6126,7 +6126,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-292-shedinja"
       }
     }
@@ -6134,7 +6134,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whismur",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/whismur.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/whismur.png",
     "system": {
       "dexNumber": 293,
       "rank": "starter",
@@ -6147,7 +6147,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-293-whismur"
       }
     }
@@ -6155,7 +6155,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Loudred",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/loudred.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/loudred.png",
     "system": {
       "dexNumber": 294,
       "rank": "amateur",
@@ -6168,7 +6168,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-294-loudred"
       }
     }
@@ -6176,7 +6176,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Exploud",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/exploud.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/exploud.png",
     "system": {
       "dexNumber": 295,
       "rank": "master",
@@ -6189,7 +6189,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-295-exploud"
       }
     }
@@ -6197,7 +6197,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Makuhita",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/makuhita.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/makuhita.png",
     "system": {
       "dexNumber": 296,
       "rank": "beginner",
@@ -6210,7 +6210,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-296-makuhita"
       }
     }
@@ -6218,7 +6218,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hariyama",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hariyama.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hariyama.png",
     "system": {
       "dexNumber": 297,
       "rank": "master",
@@ -6231,7 +6231,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-297-hariyama"
       }
     }
@@ -6239,7 +6239,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Azurill",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/azurill.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/azurill.png",
     "system": {
       "dexNumber": 298,
       "rank": "starter",
@@ -6252,7 +6252,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-298-azurill"
       }
     }
@@ -6260,7 +6260,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nosepass",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/nosepass.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/nosepass.png",
     "system": {
       "dexNumber": 299,
       "rank": "ace",
@@ -6273,7 +6273,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-299-nosepass"
       }
     }
@@ -6281,7 +6281,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skitty",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/skitty.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/skitty.png",
     "system": {
       "dexNumber": 300,
       "rank": "starter",
@@ -6294,7 +6294,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-300-skitty"
       }
     }
@@ -6302,7 +6302,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Delcatty",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/delcatty.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/delcatty.png",
     "system": {
       "dexNumber": 301,
       "rank": "amateur",
@@ -6315,7 +6315,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-301-delcatty"
       }
     }
@@ -6323,7 +6323,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sableye",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sableye.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sableye.png",
     "system": {
       "dexNumber": 302,
       "rank": "ace",
@@ -6336,7 +6336,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-302-sableye"
       }
     }
@@ -6344,7 +6344,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mawile",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mawile.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mawile.png",
     "system": {
       "dexNumber": 303,
       "rank": "ace",
@@ -6357,7 +6357,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-303-mawile"
       }
     }
@@ -6365,7 +6365,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aron",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/aron.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/aron.png",
     "system": {
       "dexNumber": 304,
       "rank": "amateur",
@@ -6378,7 +6378,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-304-aron"
       }
     }
@@ -6386,7 +6386,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lairon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lairon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lairon.png",
     "system": {
       "dexNumber": 305,
       "rank": "ace",
@@ -6399,7 +6399,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-305-lairon"
       }
     }
@@ -6407,7 +6407,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aggron",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/aggron.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/aggron.png",
     "system": {
       "dexNumber": 306,
       "rank": "master",
@@ -6420,7 +6420,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-306-aggron"
       }
     }
@@ -6428,7 +6428,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meditite",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/meditite.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/meditite.png",
     "system": {
       "dexNumber": 307,
       "rank": "beginner",
@@ -6441,7 +6441,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-307-meditite"
       }
     }
@@ -6449,7 +6449,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Medicham",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/medicham.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/medicham.png",
     "system": {
       "dexNumber": 308,
       "rank": "ace",
@@ -6462,7 +6462,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-308-medicham"
       }
     }
@@ -6470,7 +6470,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electrike",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/electrike.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/electrike.png",
     "system": {
       "dexNumber": 309,
       "rank": "beginner",
@@ -6483,7 +6483,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-309-electrike"
       }
     }
@@ -6491,7 +6491,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Manectric",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/manectric.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/manectric.png",
     "system": {
       "dexNumber": 310,
       "rank": "ace",
@@ -6504,7 +6504,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-310-manectric"
       }
     }
@@ -6512,7 +6512,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Plusle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/plusle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/plusle.png",
     "system": {
       "dexNumber": 311,
       "rank": "beginner",
@@ -6525,7 +6525,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-311-plusle"
       }
     }
@@ -6533,7 +6533,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Minun",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/minun.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/minun.png",
     "system": {
       "dexNumber": 312,
       "rank": "beginner",
@@ -6546,7 +6546,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-312-minun"
       }
     }
@@ -6554,7 +6554,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Volbeat",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/volbeat.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/volbeat.png",
     "system": {
       "dexNumber": 313,
       "rank": "amateur",
@@ -6567,7 +6567,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-313-volbeat"
       }
     }
@@ -6575,7 +6575,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Illumise",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/illumise.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/illumise.png",
     "system": {
       "dexNumber": 314,
       "rank": "amateur",
@@ -6588,7 +6588,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-314-illumise"
       }
     }
@@ -6596,7 +6596,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Roselia",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/roselia.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/roselia.png",
     "system": {
       "dexNumber": 315,
       "rank": "beginner",
@@ -6609,7 +6609,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-315-roselia"
       }
     }
@@ -6617,7 +6617,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gulpin",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gulpin.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gulpin.png",
     "system": {
       "dexNumber": 316,
       "rank": "beginner",
@@ -6630,7 +6630,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-316-gulpin"
       }
     }
@@ -6638,7 +6638,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swalot",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/swalot.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/swalot.png",
     "system": {
       "dexNumber": 317,
       "rank": "ace",
@@ -6651,7 +6651,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-317-swalot"
       }
     }
@@ -6659,7 +6659,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Carvanha",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/carvanha.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/carvanha.png",
     "system": {
       "dexNumber": 318,
       "rank": "amateur",
@@ -6672,7 +6672,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-318-carvanha"
       }
     }
@@ -6680,7 +6680,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sharpedo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sharpedo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sharpedo.png",
     "system": {
       "dexNumber": 319,
       "rank": "master",
@@ -6693,7 +6693,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-319-sharpedo"
       }
     }
@@ -6701,7 +6701,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wailmer",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/wailmer.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/wailmer.png",
     "system": {
       "dexNumber": 320,
       "rank": "amateur",
@@ -6714,7 +6714,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-320-wailmer"
       }
     }
@@ -6722,7 +6722,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wailord",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/wailord.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/wailord.png",
     "system": {
       "dexNumber": 321,
       "rank": "master",
@@ -6735,7 +6735,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-321-wailord"
       }
     }
@@ -6743,7 +6743,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Numel",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/numel.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/numel.png",
     "system": {
       "dexNumber": 322,
       "rank": "beginner",
@@ -6756,7 +6756,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-322-numel"
       }
     }
@@ -6764,7 +6764,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Camerupt",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/camerupt.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/camerupt.png",
     "system": {
       "dexNumber": 323,
       "rank": "ace",
@@ -6777,7 +6777,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-323-camerupt"
       }
     }
@@ -6785,7 +6785,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Torkoal",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/torkoal.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/torkoal.png",
     "system": {
       "dexNumber": 324,
       "rank": "ace",
@@ -6798,7 +6798,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-324-torkoal"
       }
     }
@@ -6806,7 +6806,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spoink",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/spoink.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/spoink.png",
     "system": {
       "dexNumber": 325,
       "rank": "beginner",
@@ -6819,7 +6819,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-325-spoink"
       }
     }
@@ -6827,7 +6827,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grumpig",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/grumpig.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/grumpig.png",
     "system": {
       "dexNumber": 326,
       "rank": "amateur",
@@ -6840,7 +6840,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-326-grumpig"
       }
     }
@@ -6848,7 +6848,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spinda",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/spinda.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/spinda.png",
     "system": {
       "dexNumber": 327,
       "rank": "beginner",
@@ -6861,7 +6861,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-327-spinda"
       }
     }
@@ -6869,7 +6869,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trapinch",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/trapinch.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/trapinch.png",
     "system": {
       "dexNumber": 328,
       "rank": "amateur",
@@ -6882,7 +6882,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-328-trapinch"
       }
     }
@@ -6890,7 +6890,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vibrava",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/vibrava.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/vibrava.png",
     "system": {
       "dexNumber": 329,
       "rank": "ace",
@@ -6903,7 +6903,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-329-vibrava"
       }
     }
@@ -6911,7 +6911,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flygon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/flygon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/flygon.png",
     "system": {
       "dexNumber": 330,
       "rank": "master",
@@ -6924,7 +6924,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-330-flygon"
       }
     }
@@ -6932,7 +6932,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cacnea",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cacnea.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cacnea.png",
     "system": {
       "dexNumber": 331,
       "rank": "beginner",
@@ -6945,7 +6945,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-331-cacnea"
       }
     }
@@ -6953,7 +6953,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cacturne",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cacturne.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cacturne.png",
     "system": {
       "dexNumber": 332,
       "rank": "ace",
@@ -6966,7 +6966,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-332-cacturne"
       }
     }
@@ -6974,7 +6974,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swablu",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/swablu.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/swablu.png",
     "system": {
       "dexNumber": 333,
       "rank": "starter",
@@ -6987,7 +6987,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-333-swablu"
       }
     }
@@ -6995,7 +6995,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Altaria",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/altaria.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/altaria.png",
     "system": {
       "dexNumber": 334,
       "rank": "master",
@@ -7008,7 +7008,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-334-altaria"
       }
     }
@@ -7016,7 +7016,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zangoose",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zangoose.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zangoose.png",
     "system": {
       "dexNumber": 335,
       "rank": "ace",
@@ -7029,7 +7029,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-335-zangoose"
       }
     }
@@ -7037,7 +7037,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seviper",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/seviper.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/seviper.png",
     "system": {
       "dexNumber": 336,
       "rank": "ace",
@@ -7050,7 +7050,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-336-seviper"
       }
     }
@@ -7058,7 +7058,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lunatone",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lunatone.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lunatone.png",
     "system": {
       "dexNumber": 337,
       "rank": "ace",
@@ -7071,7 +7071,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-337-lunatone"
       }
     }
@@ -7079,7 +7079,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Solrock",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/solrock.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/solrock.png",
     "system": {
       "dexNumber": 338,
       "rank": "ace",
@@ -7092,7 +7092,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-338-solrock"
       }
     }
@@ -7100,7 +7100,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Barboach",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/barboach.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/barboach.png",
     "system": {
       "dexNumber": 339,
       "rank": "starter",
@@ -7113,7 +7113,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-339-barboach"
       }
     }
@@ -7121,7 +7121,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whiscash",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/whiscash.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/whiscash.png",
     "system": {
       "dexNumber": 340,
       "rank": "ace",
@@ -7134,7 +7134,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-340-whiscash"
       }
     }
@@ -7142,7 +7142,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corphish",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/corphish.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/corphish.png",
     "system": {
       "dexNumber": 341,
       "rank": "beginner",
@@ -7155,7 +7155,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-341-corphish"
       }
     }
@@ -7163,7 +7163,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crawdaunt",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/crawdaunt.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/crawdaunt.png",
     "system": {
       "dexNumber": 342,
       "rank": "master",
@@ -7176,7 +7176,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-342-crawdaunt"
       }
     }
@@ -7184,7 +7184,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Baltoy",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/baltoy.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/baltoy.png",
     "system": {
       "dexNumber": 343,
       "rank": "beginner",
@@ -7197,7 +7197,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-343-baltoy"
       }
     }
@@ -7205,7 +7205,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Claydol",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/claydol.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/claydol.png",
     "system": {
       "dexNumber": 344,
       "rank": "ace",
@@ -7218,7 +7218,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-344-claydol"
       }
     }
@@ -7226,7 +7226,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lileep",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lileep.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lileep.png",
     "system": {
       "dexNumber": 345,
       "rank": "beginner",
@@ -7239,7 +7239,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-345-lileep"
       }
     }
@@ -7247,7 +7247,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cradily",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cradily.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cradily.png",
     "system": {
       "dexNumber": 346,
       "rank": "ace",
@@ -7260,7 +7260,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-346-cradily"
       }
     }
@@ -7268,7 +7268,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Anorith",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/anorith.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/anorith.png",
     "system": {
       "dexNumber": 347,
       "rank": "beginner",
@@ -7281,7 +7281,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-347-anorith"
       }
     }
@@ -7289,7 +7289,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Armaldo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/armaldo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/armaldo.png",
     "system": {
       "dexNumber": 348,
       "rank": "ace",
@@ -7302,7 +7302,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-348-armaldo"
       }
     }
@@ -7310,7 +7310,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Feebas",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/feebas.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/feebas.png",
     "system": {
       "dexNumber": 349,
       "rank": "starter",
@@ -7323,7 +7323,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-349-feebas"
       }
     }
@@ -7331,7 +7331,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Milotic",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/milotic.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/milotic.png",
     "system": {
       "dexNumber": 350,
       "rank": "master",
@@ -7344,7 +7344,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-350-milotic"
       }
     }
@@ -7352,7 +7352,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Castform",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/castform.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/castform.png",
     "system": {
       "dexNumber": 351,
       "rank": "amateur",
@@ -7365,7 +7365,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-351-castform"
       }
     }
@@ -7373,7 +7373,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kecleon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kecleon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kecleon.png",
     "system": {
       "dexNumber": 352,
       "rank": "amateur",
@@ -7386,7 +7386,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-352-kecleon"
       }
     }
@@ -7394,7 +7394,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shuppet",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/shuppet.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/shuppet.png",
     "system": {
       "dexNumber": 353,
       "rank": "beginner",
@@ -7407,7 +7407,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-353-shuppet"
       }
     }
@@ -7415,7 +7415,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Banette",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/banette.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/banette.png",
     "system": {
       "dexNumber": 354,
       "rank": "ace",
@@ -7428,7 +7428,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-354-banette"
       }
     }
@@ -7436,7 +7436,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Duskull",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/duskull.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/duskull.png",
     "system": {
       "dexNumber": 355,
       "rank": "beginner",
@@ -7449,7 +7449,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-355-duskull"
       }
     }
@@ -7457,7 +7457,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dusclops",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dusclops.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dusclops.png",
     "system": {
       "dexNumber": 356,
       "rank": "ace",
@@ -7470,7 +7470,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-356-dusclops"
       }
     }
@@ -7478,7 +7478,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tropius",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tropius.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tropius.png",
     "system": {
       "dexNumber": 357,
       "rank": "amateur",
@@ -7491,7 +7491,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-357-tropius"
       }
     }
@@ -7499,7 +7499,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chimecho",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/chimecho.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/chimecho.png",
     "system": {
       "dexNumber": 358,
       "rank": "amateur",
@@ -7512,7 +7512,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-358-chimecho"
       }
     }
@@ -7520,7 +7520,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Absol",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/absol.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/absol.png",
     "system": {
       "dexNumber": 359,
       "rank": "ace",
@@ -7533,7 +7533,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-359-absol"
       }
     }
@@ -7541,7 +7541,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wynaut",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/wynaut.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/wynaut.png",
     "system": {
       "dexNumber": 360,
       "rank": "starter",
@@ -7554,7 +7554,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-360-wynaut"
       }
     }
@@ -7562,7 +7562,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snorunt",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/snorunt.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/snorunt.png",
     "system": {
       "dexNumber": 361,
       "rank": "beginner",
@@ -7575,7 +7575,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-361-snorunt"
       }
     }
@@ -7583,7 +7583,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Glalie",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/glalie.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/glalie.png",
     "system": {
       "dexNumber": 362,
       "rank": "ace",
@@ -7596,7 +7596,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-362-glalie"
       }
     }
@@ -7604,7 +7604,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spheal",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/spheal.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/spheal.png",
     "system": {
       "dexNumber": 363,
       "rank": "beginner",
@@ -7617,7 +7617,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-363-spheal"
       }
     }
@@ -7625,7 +7625,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sealeo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sealeo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sealeo.png",
     "system": {
       "dexNumber": 364,
       "rank": "amateur",
@@ -7638,7 +7638,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-364-sealeo"
       }
     }
@@ -7646,7 +7646,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Walrein",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/walrein.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/walrein.png",
     "system": {
       "dexNumber": 365,
       "rank": "master",
@@ -7659,7 +7659,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-365-walrein"
       }
     }
@@ -7667,7 +7667,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clamperl",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/clamperl.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/clamperl.png",
     "system": {
       "dexNumber": 366,
       "rank": "starter",
@@ -7680,7 +7680,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-366-clamperl"
       }
     }
@@ -7688,7 +7688,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Huntail",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/huntail.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/huntail.png",
     "system": {
       "dexNumber": 367,
       "rank": "amateur",
@@ -7701,7 +7701,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-367-huntail"
       }
     }
@@ -7709,7 +7709,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gorebyss",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gorebyss.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gorebyss.png",
     "system": {
       "dexNumber": 368,
       "rank": "amateur",
@@ -7722,7 +7722,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-368-gorebyss"
       }
     }
@@ -7730,7 +7730,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Relicanth",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/relicanth.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/relicanth.png",
     "system": {
       "dexNumber": 369,
       "rank": "amateur",
@@ -7743,7 +7743,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-369-relicanth"
       }
     }
@@ -7751,7 +7751,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Luvdisc",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/luvdisc.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/luvdisc.png",
     "system": {
       "dexNumber": 370,
       "rank": "amateur",
@@ -7764,7 +7764,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-370-luvdisc"
       }
     }
@@ -7772,7 +7772,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bagon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bagon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bagon.png",
     "system": {
       "dexNumber": 371,
       "rank": "amateur",
@@ -7785,7 +7785,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-371-bagon"
       }
     }
@@ -7793,7 +7793,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shelgon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/shelgon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/shelgon.png",
     "system": {
       "dexNumber": 372,
       "rank": "ace",
@@ -7806,7 +7806,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-372-shelgon"
       }
     }
@@ -7814,7 +7814,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Salamence",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/salamence.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/salamence.png",
     "system": {
       "dexNumber": 373,
       "rank": "master",
@@ -7827,7 +7827,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-373-salamence"
       }
     }
@@ -7835,7 +7835,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beldum",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/beldum.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/beldum.png",
     "system": {
       "dexNumber": 374,
       "rank": "starter",
@@ -7848,7 +7848,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-374-beldum"
       }
     }
@@ -7856,7 +7856,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metang",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/metang.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/metang.png",
     "system": {
       "dexNumber": 375,
       "rank": "ace",
@@ -7869,7 +7869,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-375-metang"
       }
     }
@@ -7877,7 +7877,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metagross",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/metagross.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/metagross.png",
     "system": {
       "dexNumber": 376,
       "rank": "master",
@@ -7890,7 +7890,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-376-metagross"
       }
     }
@@ -7898,7 +7898,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Regirock",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/regirock.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/regirock.png",
     "system": {
       "dexNumber": 377,
       "rank": "pro",
@@ -7911,7 +7911,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-377-regirock"
       }
     }
@@ -7919,7 +7919,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Regice",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/regice.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/regice.png",
     "system": {
       "dexNumber": 378,
       "rank": "pro",
@@ -7932,7 +7932,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-378-regice"
       }
     }
@@ -7940,7 +7940,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Registeel",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/registeel.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/registeel.png",
     "system": {
       "dexNumber": 379,
       "rank": "pro",
@@ -7953,7 +7953,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-379-registeel"
       }
     }
@@ -7961,7 +7961,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Latias",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/latias.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/latias.png",
     "system": {
       "dexNumber": 380,
       "rank": "pro",
@@ -7974,7 +7974,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-380-latias"
       }
     }
@@ -7982,7 +7982,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Latios",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/latios.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/latios.png",
     "system": {
       "dexNumber": 381,
       "rank": "pro",
@@ -7995,7 +7995,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-381-latios"
       }
     }
@@ -8003,7 +8003,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kyogre",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kyogre.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kyogre.png",
     "system": {
       "dexNumber": 382,
       "rank": "champion",
@@ -8016,7 +8016,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-382-kyogre"
       }
     }
@@ -8024,7 +8024,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Groudon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/groudon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/groudon.png",
     "system": {
       "dexNumber": 383,
       "rank": "champion",
@@ -8037,7 +8037,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-383-groudon"
       }
     }
@@ -8045,7 +8045,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rayquaza",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rayquaza.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rayquaza.png",
     "system": {
       "dexNumber": 384,
       "rank": "champion",
@@ -8058,7 +8058,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-384-rayquaza"
       }
     }
@@ -8066,7 +8066,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jirachi",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/jirachi.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/jirachi.png",
     "system": {
       "dexNumber": 385,
       "rank": "pro",
@@ -8079,7 +8079,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-385-jirachi"
       }
     }
@@ -8087,7 +8087,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Deoxys",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/deoxys.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/deoxys.png",
     "system": {
       "dexNumber": 386,
       "rank": "pro",
@@ -8100,7 +8100,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-386-deoxys"
       }
     }
@@ -8108,7 +8108,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Turtwig",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/turtwig.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/turtwig.png",
     "system": {
       "dexNumber": 387,
       "rank": "beginner",
@@ -8121,7 +8121,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-387-turtwig"
       }
     }
@@ -8129,7 +8129,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grotle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/grotle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/grotle.png",
     "system": {
       "dexNumber": 388,
       "rank": "amateur",
@@ -8142,7 +8142,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-388-grotle"
       }
     }
@@ -8150,7 +8150,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Torterra",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/torterra.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/torterra.png",
     "system": {
       "dexNumber": 389,
       "rank": "master",
@@ -8163,7 +8163,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-389-torterra"
       }
     }
@@ -8171,7 +8171,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chimchar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/chimchar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/chimchar.png",
     "system": {
       "dexNumber": 390,
       "rank": "beginner",
@@ -8184,7 +8184,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-390-chimchar"
       }
     }
@@ -8192,7 +8192,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Monferno",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/monferno.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/monferno.png",
     "system": {
       "dexNumber": 391,
       "rank": "amateur",
@@ -8205,7 +8205,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-391-monferno"
       }
     }
@@ -8213,7 +8213,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Infernape",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/infernape.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/infernape.png",
     "system": {
       "dexNumber": 392,
       "rank": "master",
@@ -8226,7 +8226,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-392-infernape"
       }
     }
@@ -8234,7 +8234,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Piplup",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/piplup.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/piplup.png",
     "system": {
       "dexNumber": 393,
       "rank": "beginner",
@@ -8247,7 +8247,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-393-piplup"
       }
     }
@@ -8255,7 +8255,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Prinplup",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/prinplup.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/prinplup.png",
     "system": {
       "dexNumber": 394,
       "rank": "amateur",
@@ -8268,7 +8268,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-394-prinplup"
       }
     }
@@ -8276,7 +8276,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Empoleon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/empoleon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/empoleon.png",
     "system": {
       "dexNumber": 395,
       "rank": "master",
@@ -8289,7 +8289,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-395-empoleon"
       }
     }
@@ -8297,7 +8297,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Starly",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/starly.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/starly.png",
     "system": {
       "dexNumber": 396,
       "rank": "starter",
@@ -8310,7 +8310,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-396-starly"
       }
     }
@@ -8318,7 +8318,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Staravia",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/staravia.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/staravia.png",
     "system": {
       "dexNumber": 397,
       "rank": "amateur",
@@ -8331,7 +8331,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-397-staravia"
       }
     }
@@ -8339,7 +8339,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Staraptor",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/staraptor.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/staraptor.png",
     "system": {
       "dexNumber": 398,
       "rank": "master",
@@ -8352,7 +8352,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-398-staraptor"
       }
     }
@@ -8360,7 +8360,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bidoof",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bidoof.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bidoof.png",
     "system": {
       "dexNumber": 399,
       "rank": "starter",
@@ -8373,7 +8373,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-399-bidoof"
       }
     }
@@ -8381,7 +8381,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bibarel",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bibarel.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bibarel.png",
     "system": {
       "dexNumber": 400,
       "rank": "amateur",
@@ -8394,7 +8394,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-400-bibarel"
       }
     }
@@ -8402,7 +8402,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kricketot",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kricketot.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kricketot.png",
     "system": {
       "dexNumber": 401,
       "rank": "starter",
@@ -8415,7 +8415,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-401-kricketot"
       }
     }
@@ -8423,7 +8423,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kricketune",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kricketune.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kricketune.png",
     "system": {
       "dexNumber": 402,
       "rank": "amateur",
@@ -8436,7 +8436,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-402-kricketune"
       }
     }
@@ -8444,7 +8444,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shinx",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/shinx.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/shinx.png",
     "system": {
       "dexNumber": 403,
       "rank": "beginner",
@@ -8457,7 +8457,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-403-shinx"
       }
     }
@@ -8465,7 +8465,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Luxio",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/luxio.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/luxio.png",
     "system": {
       "dexNumber": 404,
       "rank": "amateur",
@@ -8478,7 +8478,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-404-luxio"
       }
     }
@@ -8486,7 +8486,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Luxray",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/luxray.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/luxray.png",
     "system": {
       "dexNumber": 405,
       "rank": "master",
@@ -8499,7 +8499,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-405-luxray"
       }
     }
@@ -8507,7 +8507,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Budew",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/budew.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/budew.png",
     "system": {
       "dexNumber": 406,
       "rank": "starter",
@@ -8520,7 +8520,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-406-budew"
       }
     }
@@ -8528,7 +8528,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Roserade",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/roserade.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/roserade.png",
     "system": {
       "dexNumber": 407,
       "rank": "master",
@@ -8541,7 +8541,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-407-roserade"
       }
     }
@@ -8549,7 +8549,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cranidos",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cranidos.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cranidos.png",
     "system": {
       "dexNumber": 408,
       "rank": "amateur",
@@ -8562,7 +8562,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-408-cranidos"
       }
     }
@@ -8570,7 +8570,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rampardos",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rampardos.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rampardos.png",
     "system": {
       "dexNumber": 409,
       "rank": "master",
@@ -8583,7 +8583,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-409-rampardos"
       }
     }
@@ -8591,7 +8591,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shieldon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/shieldon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/shieldon.png",
     "system": {
       "dexNumber": 410,
       "rank": "amateur",
@@ -8604,7 +8604,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-410-shieldon"
       }
     }
@@ -8612,7 +8612,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bastiodon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bastiodon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bastiodon.png",
     "system": {
       "dexNumber": 411,
       "rank": "ace",
@@ -8625,7 +8625,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-411-bastiodon"
       }
     }
@@ -8633,7 +8633,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Burmy",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/burmy.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/burmy.png",
     "system": {
       "dexNumber": 412,
       "rank": "starter",
@@ -8646,7 +8646,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-412-burmy"
       }
     }
@@ -8654,7 +8654,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wormadam",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/wormadam.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/wormadam.png",
     "system": {
       "dexNumber": 413,
       "rank": "amateur",
@@ -8667,7 +8667,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-413-wormadam"
       }
     }
@@ -8675,7 +8675,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mothim",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mothim.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mothim.png",
     "system": {
       "dexNumber": 414,
       "rank": "amateur",
@@ -8688,7 +8688,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-414-mothim"
       }
     }
@@ -8696,7 +8696,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Combee",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/combee.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/combee.png",
     "system": {
       "dexNumber": 415,
       "rank": "starter",
@@ -8709,7 +8709,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-415-combee"
       }
     }
@@ -8717,7 +8717,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vespiquen",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/vespiquen.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/vespiquen.png",
     "system": {
       "dexNumber": 416,
       "rank": "master",
@@ -8730,7 +8730,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-416-vespiquen"
       }
     }
@@ -8738,7 +8738,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pachirisu",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pachirisu.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pachirisu.png",
     "system": {
       "dexNumber": 417,
       "rank": "beginner",
@@ -8751,7 +8751,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-417-pachirisu"
       }
     }
@@ -8759,7 +8759,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Buizel",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/buizel.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/buizel.png",
     "system": {
       "dexNumber": 418,
       "rank": "beginner",
@@ -8772,7 +8772,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-418-buizel"
       }
     }
@@ -8780,7 +8780,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Floatzel",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/floatzel.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/floatzel.png",
     "system": {
       "dexNumber": 419,
       "rank": "ace",
@@ -8793,7 +8793,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-419-floatzel"
       }
     }
@@ -8801,7 +8801,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cherubi",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cherubi.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cherubi.png",
     "system": {
       "dexNumber": 420,
       "rank": "starter",
@@ -8814,7 +8814,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-420-cherubi"
       }
     }
@@ -8822,7 +8822,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cherrim",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cherrim.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cherrim.png",
     "system": {
       "dexNumber": 421,
       "rank": "amateur",
@@ -8835,7 +8835,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-421-cherrim"
       }
     }
@@ -8843,7 +8843,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shellos",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/shellos.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/shellos.png",
     "system": {
       "dexNumber": 422,
       "rank": "beginner",
@@ -8856,7 +8856,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-422-shellos"
       }
     }
@@ -8864,7 +8864,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gastrodon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gastrodon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gastrodon.png",
     "system": {
       "dexNumber": 423,
       "rank": "ace",
@@ -8877,7 +8877,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-423-gastrodon"
       }
     }
@@ -8885,7 +8885,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ambipom",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ambipom.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ambipom.png",
     "system": {
       "dexNumber": 424,
       "rank": "ace",
@@ -8898,7 +8898,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-424-ambipom"
       }
     }
@@ -8906,7 +8906,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drifloon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/drifloon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/drifloon.png",
     "system": {
       "dexNumber": 425,
       "rank": "amateur",
@@ -8919,7 +8919,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-425-drifloon"
       }
     }
@@ -8927,7 +8927,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drifblim",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/drifblim.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/drifblim.png",
     "system": {
       "dexNumber": 426,
       "rank": "master",
@@ -8940,7 +8940,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-426-drifblim"
       }
     }
@@ -8948,7 +8948,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Buneary",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/buneary.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/buneary.png",
     "system": {
       "dexNumber": 427,
       "rank": "starter",
@@ -8961,7 +8961,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-427-buneary"
       }
     }
@@ -8969,7 +8969,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lopunny",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lopunny.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lopunny.png",
     "system": {
       "dexNumber": 428,
       "rank": "amateur",
@@ -8982,7 +8982,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-428-lopunny"
       }
     }
@@ -8990,7 +8990,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mismagius",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mismagius.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mismagius.png",
     "system": {
       "dexNumber": 429,
       "rank": "master",
@@ -9003,7 +9003,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-429-mismagius"
       }
     }
@@ -9011,7 +9011,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Honchkrow",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/honchkrow.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/honchkrow.png",
     "system": {
       "dexNumber": 430,
       "rank": "master",
@@ -9024,7 +9024,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-430-honchkrow"
       }
     }
@@ -9032,7 +9032,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Glameow",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/glameow.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/glameow.png",
     "system": {
       "dexNumber": 431,
       "rank": "starter",
@@ -9045,7 +9045,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-431-glameow"
       }
     }
@@ -9053,7 +9053,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Purugly",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/purugly.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/purugly.png",
     "system": {
       "dexNumber": 432,
       "rank": "master",
@@ -9066,7 +9066,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-432-purugly"
       }
     }
@@ -9074,7 +9074,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chingling",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/chingling.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/chingling.png",
     "system": {
       "dexNumber": 433,
       "rank": "starter",
@@ -9087,7 +9087,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-433-chingling"
       }
     }
@@ -9095,7 +9095,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stunky",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/stunky.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/stunky.png",
     "system": {
       "dexNumber": 434,
       "rank": "beginner",
@@ -9108,7 +9108,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-434-stunky"
       }
     }
@@ -9116,7 +9116,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skuntank",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/skuntank.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/skuntank.png",
     "system": {
       "dexNumber": 435,
       "rank": "ace",
@@ -9129,7 +9129,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-435-skuntank"
       }
     }
@@ -9137,7 +9137,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bronzor",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bronzor.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bronzor.png",
     "system": {
       "dexNumber": 436,
       "rank": "beginner",
@@ -9150,7 +9150,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-436-bronzor"
       }
     }
@@ -9158,7 +9158,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bronzong",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bronzong.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bronzong.png",
     "system": {
       "dexNumber": 437,
       "rank": "ace",
@@ -9171,7 +9171,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-437-bronzong"
       }
     }
@@ -9179,7 +9179,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bonsly",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bonsly.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bonsly.png",
     "system": {
       "dexNumber": 438,
       "rank": "starter",
@@ -9192,7 +9192,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-438-bonsly"
       }
     }
@@ -9200,7 +9200,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mime Jr.",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mime-jr.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mime-jr.png",
     "system": {
       "dexNumber": 439,
       "rank": "starter",
@@ -9213,7 +9213,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-439-mime-jr"
       }
     }
@@ -9221,7 +9221,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Happiny",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/happiny.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/happiny.png",
     "system": {
       "dexNumber": 440,
       "rank": "starter",
@@ -9234,7 +9234,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-440-happiny"
       }
     }
@@ -9242,7 +9242,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chatot",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/chatot.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/chatot.png",
     "system": {
       "dexNumber": 441,
       "rank": "amateur",
@@ -9255,7 +9255,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-441-chatot"
       }
     }
@@ -9263,7 +9263,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spiritomb",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/spiritomb.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/spiritomb.png",
     "system": {
       "dexNumber": 442,
       "rank": "master",
@@ -9276,7 +9276,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-442-spiritomb"
       }
     }
@@ -9284,7 +9284,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gible",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gible.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gible.png",
     "system": {
       "dexNumber": 443,
       "rank": "amateur",
@@ -9297,7 +9297,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-443-gible"
       }
     }
@@ -9305,7 +9305,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gabite",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gabite.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gabite.png",
     "system": {
       "dexNumber": 444,
       "rank": "ace",
@@ -9318,7 +9318,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-444-gabite"
       }
     }
@@ -9326,7 +9326,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Garchomp",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/garchomp.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/garchomp.png",
     "system": {
       "dexNumber": 445,
       "rank": "master",
@@ -9339,7 +9339,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-445-garchomp"
       }
     }
@@ -9347,7 +9347,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Munchlax",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/munchlax.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/munchlax.png",
     "system": {
       "dexNumber": 446,
       "rank": "beginner",
@@ -9360,7 +9360,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-446-munchlax"
       }
     }
@@ -9368,7 +9368,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Riolu",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/riolu.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/riolu.png",
     "system": {
       "dexNumber": 447,
       "rank": "beginner",
@@ -9381,7 +9381,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-447-riolu"
       }
     }
@@ -9389,7 +9389,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lucario",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lucario.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lucario.png",
     "system": {
       "dexNumber": 448,
       "rank": "master",
@@ -9402,7 +9402,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-448-lucario"
       }
     }
@@ -9410,7 +9410,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hippopotas",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hippopotas.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hippopotas.png",
     "system": {
       "dexNumber": 449,
       "rank": "beginner",
@@ -9423,7 +9423,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-449-hippopotas"
       }
     }
@@ -9431,7 +9431,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hippowdon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hippowdon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hippowdon.png",
     "system": {
       "dexNumber": 450,
       "rank": "master",
@@ -9444,7 +9444,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-450-hippowdon"
       }
     }
@@ -9452,7 +9452,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skorupi",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/skorupi.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/skorupi.png",
     "system": {
       "dexNumber": 451,
       "rank": "beginner",
@@ -9465,7 +9465,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-451-skorupi"
       }
     }
@@ -9473,7 +9473,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drapion",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/drapion.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/drapion.png",
     "system": {
       "dexNumber": 452,
       "rank": "master",
@@ -9486,7 +9486,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-452-drapion"
       }
     }
@@ -9494,7 +9494,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Croagunk",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/croagunk.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/croagunk.png",
     "system": {
       "dexNumber": 453,
       "rank": "beginner",
@@ -9507,7 +9507,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-453-croagunk"
       }
     }
@@ -9515,7 +9515,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxicroak",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/toxicroak.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/toxicroak.png",
     "system": {
       "dexNumber": 454,
       "rank": "ace",
@@ -9528,7 +9528,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-454-toxicroak"
       }
     }
@@ -9536,7 +9536,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Carnivine",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/carnivine.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/carnivine.png",
     "system": {
       "dexNumber": 455,
       "rank": "ace",
@@ -9549,7 +9549,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-455-carnivine"
       }
     }
@@ -9557,7 +9557,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Finneon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/finneon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/finneon.png",
     "system": {
       "dexNumber": 456,
       "rank": "beginner",
@@ -9570,7 +9570,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-456-finneon"
       }
     }
@@ -9578,7 +9578,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lumineon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lumineon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lumineon.png",
     "system": {
       "dexNumber": 457,
       "rank": "ace",
@@ -9591,7 +9591,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-457-lumineon"
       }
     }
@@ -9599,7 +9599,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mantyke",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mantyke.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mantyke.png",
     "system": {
       "dexNumber": 458,
       "rank": "beginner",
@@ -9612,7 +9612,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-458-mantyke"
       }
     }
@@ -9620,7 +9620,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snover",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/snover.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/snover.png",
     "system": {
       "dexNumber": 459,
       "rank": "amateur",
@@ -9633,7 +9633,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-459-snover"
       }
     }
@@ -9641,7 +9641,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Abomasnow",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/abomasnow.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/abomasnow.png",
     "system": {
       "dexNumber": 460,
       "rank": "master",
@@ -9654,7 +9654,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-460-abomasnow"
       }
     }
@@ -9662,7 +9662,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weavile",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/weavile.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/weavile.png",
     "system": {
       "dexNumber": 461,
       "rank": "master",
@@ -9675,7 +9675,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-461-weavile"
       }
     }
@@ -9683,7 +9683,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magnezone",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/magnezone.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/magnezone.png",
     "system": {
       "dexNumber": 462,
       "rank": "master",
@@ -9696,7 +9696,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-462-magnezone"
       }
     }
@@ -9704,7 +9704,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lickilicky",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lickilicky.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lickilicky.png",
     "system": {
       "dexNumber": 463,
       "rank": "master",
@@ -9717,7 +9717,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-463-lickilicky"
       }
     }
@@ -9725,7 +9725,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rhyperior",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rhyperior.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rhyperior.png",
     "system": {
       "dexNumber": 464,
       "rank": "master",
@@ -9738,7 +9738,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-464-rhyperior"
       }
     }
@@ -9746,7 +9746,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tangrowth",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tangrowth.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tangrowth.png",
     "system": {
       "dexNumber": 465,
       "rank": "master",
@@ -9759,7 +9759,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-465-tangrowth"
       }
     }
@@ -9767,7 +9767,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electivire",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/electivire.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/electivire.png",
     "system": {
       "dexNumber": 466,
       "rank": "master",
@@ -9780,7 +9780,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-466-electivire"
       }
     }
@@ -9788,7 +9788,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magmortar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/magmortar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/magmortar.png",
     "system": {
       "dexNumber": 467,
       "rank": "master",
@@ -9801,7 +9801,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-467-magmortar"
       }
     }
@@ -9809,7 +9809,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Togekiss",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/togekiss.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/togekiss.png",
     "system": {
       "dexNumber": 468,
       "rank": "master",
@@ -9822,7 +9822,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-468-togekiss"
       }
     }
@@ -9830,7 +9830,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yanmega",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/yanmega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/yanmega.png",
     "system": {
       "dexNumber": 469,
       "rank": "master",
@@ -9843,7 +9843,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-469-yanmega"
       }
     }
@@ -9851,7 +9851,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leafeon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/leafeon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/leafeon.png",
     "system": {
       "dexNumber": 470,
       "rank": "amateur",
@@ -9864,7 +9864,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-470-leafeon"
       }
     }
@@ -9872,7 +9872,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Glaceon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/glaceon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/glaceon.png",
     "system": {
       "dexNumber": 471,
       "rank": "amateur",
@@ -9885,7 +9885,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-471-glaceon"
       }
     }
@@ -9893,7 +9893,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gliscor",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gliscor.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gliscor.png",
     "system": {
       "dexNumber": 472,
       "rank": "master",
@@ -9906,7 +9906,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-472-gliscor"
       }
     }
@@ -9914,7 +9914,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mamoswine",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mamoswine.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mamoswine.png",
     "system": {
       "dexNumber": 473,
       "rank": "master",
@@ -9927,7 +9927,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-473-mamoswine"
       }
     }
@@ -9935,7 +9935,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Porygon-Z",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/porygon-z.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/porygon-z.png",
     "system": {
       "dexNumber": 474,
       "rank": "master",
@@ -9948,7 +9948,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-474-porygon-z"
       }
     }
@@ -9956,7 +9956,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gallade",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gallade.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gallade.png",
     "system": {
       "dexNumber": 475,
       "rank": "master",
@@ -9969,7 +9969,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-475-gallade"
       }
     }
@@ -9977,7 +9977,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Probopass",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/probopass.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/probopass.png",
     "system": {
       "dexNumber": 476,
       "rank": "master",
@@ -9990,7 +9990,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-476-probopass"
       }
     }
@@ -9998,7 +9998,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dusknoir",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dusknoir.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dusknoir.png",
     "system": {
       "dexNumber": 477,
       "rank": "master",
@@ -10011,7 +10011,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-477-dusknoir"
       }
     }
@@ -10019,7 +10019,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Froslass",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/froslass.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/froslass.png",
     "system": {
       "dexNumber": 478,
       "rank": "master",
@@ -10032,7 +10032,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-478-froslass"
       }
     }
@@ -10040,7 +10040,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rotom",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rotom.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rotom.png",
     "system": {
       "dexNumber": 479,
       "rank": "ace",
@@ -10053,7 +10053,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-479-rotom"
       }
     }
@@ -10061,7 +10061,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Uxie",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/uxie.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/uxie.png",
     "system": {
       "dexNumber": 480,
       "rank": "champion",
@@ -10074,7 +10074,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-480-uxie"
       }
     }
@@ -10082,7 +10082,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mesprit",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mesprit.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mesprit.png",
     "system": {
       "dexNumber": 481,
       "rank": "champion",
@@ -10095,7 +10095,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-481-mesprit"
       }
     }
@@ -10103,7 +10103,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Azelf",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/azelf.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/azelf.png",
     "system": {
       "dexNumber": 482,
       "rank": "champion",
@@ -10116,7 +10116,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-482-azelf"
       }
     }
@@ -10124,7 +10124,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dialga",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dialga.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dialga.png",
     "system": {
       "dexNumber": 483,
       "rank": "champion",
@@ -10137,7 +10137,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-483-dialga"
       }
     }
@@ -10145,7 +10145,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Palkia",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/palkia.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/palkia.png",
     "system": {
       "dexNumber": 484,
       "rank": "champion",
@@ -10158,7 +10158,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-484-palkia"
       }
     }
@@ -10166,7 +10166,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heatran",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/heatran.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/heatran.png",
     "system": {
       "dexNumber": 485,
       "rank": "pro",
@@ -10179,7 +10179,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-485-heatran"
       }
     }
@@ -10187,7 +10187,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Regigigas",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/regigigas.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/regigigas.png",
     "system": {
       "dexNumber": 486,
       "rank": "champion",
@@ -10200,7 +10200,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-486-regigigas"
       }
     }
@@ -10208,7 +10208,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Giratina",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/giratina.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/giratina.png",
     "system": {
       "dexNumber": 487,
       "rank": "champion",
@@ -10221,7 +10221,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-487-giratina"
       }
     }
@@ -10229,7 +10229,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cresselia",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cresselia.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cresselia.png",
     "system": {
       "dexNumber": 488,
       "rank": "pro",
@@ -10242,7 +10242,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-488-cresselia"
       }
     }
@@ -10250,7 +10250,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Phione",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/phione.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/phione.png",
     "system": {
       "dexNumber": 489,
       "rank": "starter",
@@ -10263,7 +10263,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-489-phione"
       }
     }
@@ -10271,7 +10271,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Manaphy",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/manaphy.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/manaphy.png",
     "system": {
       "dexNumber": 490,
       "rank": "pro",
@@ -10284,7 +10284,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-490-manaphy"
       }
     }
@@ -10292,7 +10292,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darkrai",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/darkrai.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/darkrai.png",
     "system": {
       "dexNumber": 491,
       "rank": "pro",
@@ -10305,7 +10305,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-491-darkrai"
       }
     }
@@ -10313,7 +10313,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shaymin",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/shaymin.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/shaymin.png",
     "system": {
       "dexNumber": 492,
       "rank": "pro",
@@ -10326,7 +10326,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-492-shaymin"
       }
     }
@@ -10334,7 +10334,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arceus",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/arceus.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/arceus.png",
     "system": {
       "dexNumber": 493,
       "rank": "champion",
@@ -10347,7 +10347,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-493-arceus"
       }
     }
@@ -10355,7 +10355,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Victini",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/victini.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/victini.png",
     "system": {
       "dexNumber": 494,
       "rank": "pro",
@@ -10368,7 +10368,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-494-victini"
       }
     }
@@ -10376,7 +10376,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snivy",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/snivy.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/snivy.png",
     "system": {
       "dexNumber": 495,
       "rank": "beginner",
@@ -10389,7 +10389,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-495-snivy"
       }
     }
@@ -10397,7 +10397,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Servine",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/servine.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/servine.png",
     "system": {
       "dexNumber": 496,
       "rank": "amateur",
@@ -10410,7 +10410,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-496-servine"
       }
     }
@@ -10418,7 +10418,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Serperior",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/serperior.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/serperior.png",
     "system": {
       "dexNumber": 497,
       "rank": "master",
@@ -10431,7 +10431,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-497-serperior"
       }
     }
@@ -10439,7 +10439,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tepig",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tepig.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tepig.png",
     "system": {
       "dexNumber": 498,
       "rank": "beginner",
@@ -10452,7 +10452,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-498-tepig"
       }
     }
@@ -10460,7 +10460,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pignite",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pignite.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pignite.png",
     "system": {
       "dexNumber": 499,
       "rank": "amateur",
@@ -10473,7 +10473,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-499-pignite"
       }
     }
@@ -10481,7 +10481,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Emboar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/emboar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/emboar.png",
     "system": {
       "dexNumber": 500,
       "rank": "master",
@@ -10494,7 +10494,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-500-emboar"
       }
     }
@@ -10502,7 +10502,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Oshawott",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/oshawott.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/oshawott.png",
     "system": {
       "dexNumber": 501,
       "rank": "beginner",
@@ -10515,7 +10515,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-501-oshawott"
       }
     }
@@ -10523,7 +10523,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dewott",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dewott.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dewott.png",
     "system": {
       "dexNumber": 502,
       "rank": "amateur",
@@ -10536,7 +10536,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-502-dewott"
       }
     }
@@ -10544,7 +10544,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Samurott",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/samurott.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/samurott.png",
     "system": {
       "dexNumber": 503,
       "rank": "master",
@@ -10557,7 +10557,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-503-samurott"
       }
     }
@@ -10565,7 +10565,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Patrat",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/patrat.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/patrat.png",
     "system": {
       "dexNumber": 504,
       "rank": "starter",
@@ -10578,7 +10578,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-504-patrat"
       }
     }
@@ -10586,7 +10586,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Watchog",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/watchog.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/watchog.png",
     "system": {
       "dexNumber": 505,
       "rank": "amateur",
@@ -10599,7 +10599,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-505-watchog"
       }
     }
@@ -10607,7 +10607,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lillipup",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lillipup.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lillipup.png",
     "system": {
       "dexNumber": 506,
       "rank": "starter",
@@ -10620,7 +10620,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-506-lillipup"
       }
     }
@@ -10628,7 +10628,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Herdier",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/herdier.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/herdier.png",
     "system": {
       "dexNumber": 507,
       "rank": "amateur",
@@ -10641,7 +10641,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-507-herdier"
       }
     }
@@ -10649,7 +10649,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stoutland",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/stoutland.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/stoutland.png",
     "system": {
       "dexNumber": 508,
       "rank": "ace",
@@ -10662,7 +10662,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-508-stoutland"
       }
     }
@@ -10670,7 +10670,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Purrloin",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/purrloin.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/purrloin.png",
     "system": {
       "dexNumber": 509,
       "rank": "starter",
@@ -10683,7 +10683,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-509-purrloin"
       }
     }
@@ -10691,7 +10691,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Liepard",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/liepard.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/liepard.png",
     "system": {
       "dexNumber": 510,
       "rank": "ace",
@@ -10704,7 +10704,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-510-liepard"
       }
     }
@@ -10712,7 +10712,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pansage",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pansage.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pansage.png",
     "system": {
       "dexNumber": 511,
       "rank": "beginner",
@@ -10725,7 +10725,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-511-pansage"
       }
     }
@@ -10733,7 +10733,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Simisage",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/simisage.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/simisage.png",
     "system": {
       "dexNumber": 512,
       "rank": "master",
@@ -10746,7 +10746,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-512-simisage"
       }
     }
@@ -10754,7 +10754,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pansear",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pansear.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pansear.png",
     "system": {
       "dexNumber": 513,
       "rank": "beginner",
@@ -10767,7 +10767,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-513-pansear"
       }
     }
@@ -10775,7 +10775,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Simisear",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/simisear.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/simisear.png",
     "system": {
       "dexNumber": 514,
       "rank": "master",
@@ -10788,7 +10788,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-514-simisear"
       }
     }
@@ -10796,7 +10796,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Panpour",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/panpour.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/panpour.png",
     "system": {
       "dexNumber": 515,
       "rank": "beginner",
@@ -10809,7 +10809,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-515-panpour"
       }
     }
@@ -10817,7 +10817,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Simipour",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/simipour.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/simipour.png",
     "system": {
       "dexNumber": 516,
       "rank": "master",
@@ -10830,7 +10830,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-516-simipour"
       }
     }
@@ -10838,7 +10838,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Munna",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/munna.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/munna.png",
     "system": {
       "dexNumber": 517,
       "rank": "beginner",
@@ -10851,7 +10851,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-517-munna"
       }
     }
@@ -10859,7 +10859,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Musharna",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/musharna.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/musharna.png",
     "system": {
       "dexNumber": 518,
       "rank": "ace",
@@ -10872,7 +10872,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-518-musharna"
       }
     }
@@ -10880,7 +10880,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pidove",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pidove.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pidove.png",
     "system": {
       "dexNumber": 519,
       "rank": "starter",
@@ -10893,7 +10893,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-519-pidove"
       }
     }
@@ -10901,7 +10901,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tranquill",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tranquill.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tranquill.png",
     "system": {
       "dexNumber": 520,
       "rank": "amateur",
@@ -10914,7 +10914,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-520-tranquill"
       }
     }
@@ -10922,7 +10922,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Unfezant",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/unfezant.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/unfezant.png",
     "system": {
       "dexNumber": 521,
       "rank": "ace",
@@ -10935,7 +10935,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-521-unfezant"
       }
     }
@@ -10943,7 +10943,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blitzle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/blitzle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/blitzle.png",
     "system": {
       "dexNumber": 522,
       "rank": "beginner",
@@ -10956,7 +10956,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-522-blitzle"
       }
     }
@@ -10964,7 +10964,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zebstrika",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zebstrika.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zebstrika.png",
     "system": {
       "dexNumber": 523,
       "rank": "master",
@@ -10977,7 +10977,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-523-zebstrika"
       }
     }
@@ -10985,7 +10985,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Roggenrola",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/roggenrola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/roggenrola.png",
     "system": {
       "dexNumber": 524,
       "rank": "beginner",
@@ -10998,7 +10998,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-524-roggenrola"
       }
     }
@@ -11006,7 +11006,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Boldore",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/boldore.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/boldore.png",
     "system": {
       "dexNumber": 525,
       "rank": "amateur",
@@ -11019,7 +11019,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-525-boldore"
       }
     }
@@ -11027,7 +11027,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gigalith",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gigalith.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gigalith.png",
     "system": {
       "dexNumber": 526,
       "rank": "master",
@@ -11040,7 +11040,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-526-gigalith"
       }
     }
@@ -11048,7 +11048,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Woobat",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/woobat.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/woobat.png",
     "system": {
       "dexNumber": 527,
       "rank": "beginner",
@@ -11061,7 +11061,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-527-woobat"
       }
     }
@@ -11069,7 +11069,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swoobat",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/swoobat.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/swoobat.png",
     "system": {
       "dexNumber": 528,
       "rank": "ace",
@@ -11082,7 +11082,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-528-swoobat"
       }
     }
@@ -11090,7 +11090,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drilbur",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/drilbur.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/drilbur.png",
     "system": {
       "dexNumber": 529,
       "rank": "beginner",
@@ -11103,7 +11103,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-529-drilbur"
       }
     }
@@ -11111,7 +11111,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Excadrill",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/excadrill.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/excadrill.png",
     "system": {
       "dexNumber": 530,
       "rank": "master",
@@ -11124,7 +11124,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-530-excadrill"
       }
     }
@@ -11132,7 +11132,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Audino",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/audino.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/audino.png",
     "system": {
       "dexNumber": 531,
       "rank": "amateur",
@@ -11145,7 +11145,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-531-audino"
       }
     }
@@ -11153,7 +11153,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Timburr",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/timburr.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/timburr.png",
     "system": {
       "dexNumber": 532,
       "rank": "beginner",
@@ -11166,7 +11166,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-532-timburr"
       }
     }
@@ -11174,7 +11174,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gurdurr",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gurdurr.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gurdurr.png",
     "system": {
       "dexNumber": 533,
       "rank": "ace",
@@ -11187,7 +11187,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-533-gurdurr"
       }
     }
@@ -11195,7 +11195,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Conkeldurr",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/conkeldurr.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/conkeldurr.png",
     "system": {
       "dexNumber": 534,
       "rank": "master",
@@ -11208,7 +11208,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-534-conkeldurr"
       }
     }
@@ -11216,7 +11216,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tympole",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tympole.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tympole.png",
     "system": {
       "dexNumber": 535,
       "rank": "starter",
@@ -11229,7 +11229,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-535-tympole"
       }
     }
@@ -11237,7 +11237,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Palpitoad",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/palpitoad.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/palpitoad.png",
     "system": {
       "dexNumber": 536,
       "rank": "amateur",
@@ -11250,7 +11250,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-536-palpitoad"
       }
     }
@@ -11258,7 +11258,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seismitoad",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/seismitoad.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/seismitoad.png",
     "system": {
       "dexNumber": 537,
       "rank": "master",
@@ -11271,7 +11271,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-537-seismitoad"
       }
     }
@@ -11279,7 +11279,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Throh",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/throh.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/throh.png",
     "system": {
       "dexNumber": 538,
       "rank": "ace",
@@ -11292,7 +11292,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-538-throh"
       }
     }
@@ -11300,7 +11300,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sawk",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sawk.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sawk.png",
     "system": {
       "dexNumber": 539,
       "rank": "ace",
@@ -11313,7 +11313,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-539-sawk"
       }
     }
@@ -11321,7 +11321,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sewaddle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sewaddle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sewaddle.png",
     "system": {
       "dexNumber": 540,
       "rank": "starter",
@@ -11334,7 +11334,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-540-sewaddle"
       }
     }
@@ -11342,7 +11342,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swadloon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/swadloon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/swadloon.png",
     "system": {
       "dexNumber": 541,
       "rank": "beginner",
@@ -11355,7 +11355,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-541-swadloon"
       }
     }
@@ -11363,7 +11363,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leavanny",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/leavanny.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/leavanny.png",
     "system": {
       "dexNumber": 542,
       "rank": "ace",
@@ -11376,7 +11376,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-542-leavanny"
       }
     }
@@ -11384,7 +11384,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venipede",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/venipede.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/venipede.png",
     "system": {
       "dexNumber": 543,
       "rank": "amateur",
@@ -11397,7 +11397,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-543-venipede"
       }
     }
@@ -11405,7 +11405,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whirlipede",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/whirlipede.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/whirlipede.png",
     "system": {
       "dexNumber": 544,
       "rank": "ace",
@@ -11418,7 +11418,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-544-whirlipede"
       }
     }
@@ -11426,7 +11426,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scolipede",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/scolipede.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/scolipede.png",
     "system": {
       "dexNumber": 545,
       "rank": "master",
@@ -11439,7 +11439,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-545-scolipede"
       }
     }
@@ -11447,7 +11447,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cottonee",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cottonee.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cottonee.png",
     "system": {
       "dexNumber": 546,
       "rank": "beginner",
@@ -11460,7 +11460,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-546-cottonee"
       }
     }
@@ -11468,7 +11468,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whimsicott",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/whimsicott.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/whimsicott.png",
     "system": {
       "dexNumber": 547,
       "rank": "ace",
@@ -11481,7 +11481,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-547-whimsicott"
       }
     }
@@ -11489,7 +11489,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Petilil",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/petilil.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/petilil.png",
     "system": {
       "dexNumber": 548,
       "rank": "beginner",
@@ -11502,7 +11502,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-548-petilil"
       }
     }
@@ -11510,7 +11510,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lilligant",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lilligant.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lilligant.png",
     "system": {
       "dexNumber": 549,
       "rank": "ace",
@@ -11523,7 +11523,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-549-lilligant"
       }
     }
@@ -11531,7 +11531,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Basculin",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/basculin.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/basculin.png",
     "system": {
       "dexNumber": 550,
       "rank": "amateur",
@@ -11544,7 +11544,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-550-basculin"
       }
     }
@@ -11552,7 +11552,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandile",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sandile.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sandile.png",
     "system": {
       "dexNumber": 551,
       "rank": "beginner",
@@ -11565,7 +11565,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-551-sandile"
       }
     }
@@ -11573,7 +11573,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Krokorok",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/krokorok.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/krokorok.png",
     "system": {
       "dexNumber": 552,
       "rank": "ace",
@@ -11586,7 +11586,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-552-krokorok"
       }
     }
@@ -11594,7 +11594,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Krookodile",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/krookodile.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/krookodile.png",
     "system": {
       "dexNumber": 553,
       "rank": "master",
@@ -11607,7 +11607,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-553-krookodile"
       }
     }
@@ -11615,7 +11615,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darumaka",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/darumaka.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/darumaka.png",
     "system": {
       "dexNumber": 554,
       "rank": "beginner",
@@ -11628,7 +11628,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-554-darumaka"
       }
     }
@@ -11636,7 +11636,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darmanitan",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/darmanitan.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/darmanitan.png",
     "system": {
       "dexNumber": 555,
       "rank": "ace",
@@ -11649,7 +11649,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-555-darmanitan"
       }
     }
@@ -11657,7 +11657,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Maractus",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/maractus.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/maractus.png",
     "system": {
       "dexNumber": 556,
       "rank": "amateur",
@@ -11670,7 +11670,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-556-maractus"
       }
     }
@@ -11678,7 +11678,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dwebble",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dwebble.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dwebble.png",
     "system": {
       "dexNumber": 557,
       "rank": "beginner",
@@ -11691,7 +11691,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-557-dwebble"
       }
     }
@@ -11699,7 +11699,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crustle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/crustle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/crustle.png",
     "system": {
       "dexNumber": 558,
       "rank": "master",
@@ -11712,7 +11712,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-558-crustle"
       }
     }
@@ -11720,7 +11720,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scraggy",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/scraggy.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/scraggy.png",
     "system": {
       "dexNumber": 559,
       "rank": "beginner",
@@ -11733,7 +11733,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-559-scraggy"
       }
     }
@@ -11741,7 +11741,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scrafty",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/scrafty.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/scrafty.png",
     "system": {
       "dexNumber": 560,
       "rank": "master",
@@ -11754,7 +11754,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-560-scrafty"
       }
     }
@@ -11762,7 +11762,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sigilyph",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sigilyph.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sigilyph.png",
     "system": {
       "dexNumber": 561,
       "rank": "master",
@@ -11775,7 +11775,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-561-sigilyph"
       }
     }
@@ -11783,7 +11783,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yamask",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/yamask.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/yamask.png",
     "system": {
       "dexNumber": 562,
       "rank": "amateur",
@@ -11796,7 +11796,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-562-yamask"
       }
     }
@@ -11804,7 +11804,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cofagrigus",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cofagrigus.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cofagrigus.png",
     "system": {
       "dexNumber": 563,
       "rank": "master",
@@ -11817,7 +11817,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-563-cofagrigus"
       }
     }
@@ -11825,7 +11825,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tirtouga",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tirtouga.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tirtouga.png",
     "system": {
       "dexNumber": 564,
       "rank": "amateur",
@@ -11838,7 +11838,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-564-tirtouga"
       }
     }
@@ -11846,7 +11846,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Carracosta",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/carracosta.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/carracosta.png",
     "system": {
       "dexNumber": 565,
       "rank": "master",
@@ -11859,7 +11859,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-565-carracosta"
       }
     }
@@ -11867,7 +11867,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Archen",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/archen.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/archen.png",
     "system": {
       "dexNumber": 566,
       "rank": "amateur",
@@ -11880,7 +11880,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-566-archen"
       }
     }
@@ -11888,7 +11888,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Archeops",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/archeops.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/archeops.png",
     "system": {
       "dexNumber": 567,
       "rank": "master",
@@ -11901,7 +11901,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-567-archeops"
       }
     }
@@ -11909,7 +11909,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trubbish",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/trubbish.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/trubbish.png",
     "system": {
       "dexNumber": 568,
       "rank": "beginner",
@@ -11922,7 +11922,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-568-trubbish"
       }
     }
@@ -11930,7 +11930,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Garbodor",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/garbodor.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/garbodor.png",
     "system": {
       "dexNumber": 569,
       "rank": "ace",
@@ -11943,7 +11943,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-569-garbodor"
       }
     }
@@ -11951,7 +11951,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zorua",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zorua.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zorua.png",
     "system": {
       "dexNumber": 570,
       "rank": "beginner",
@@ -11964,7 +11964,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-570-zorua"
       }
     }
@@ -11972,7 +11972,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zoroark",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zoroark.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zoroark.png",
     "system": {
       "dexNumber": 571,
       "rank": "master",
@@ -11985,7 +11985,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-571-zoroark"
       }
     }
@@ -11993,7 +11993,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Minccino",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/minccino.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/minccino.png",
     "system": {
       "dexNumber": 572,
       "rank": "beginner",
@@ -12006,7 +12006,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-572-minccino"
       }
     }
@@ -12014,7 +12014,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cinccino",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cinccino.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cinccino.png",
     "system": {
       "dexNumber": 573,
       "rank": "ace",
@@ -12027,7 +12027,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-573-cinccino"
       }
     }
@@ -12035,7 +12035,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gothita",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gothita.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gothita.png",
     "system": {
       "dexNumber": 574,
       "rank": "beginner",
@@ -12048,7 +12048,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-574-gothita"
       }
     }
@@ -12056,7 +12056,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gothorita",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gothorita.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gothorita.png",
     "system": {
       "dexNumber": 575,
       "rank": "amateur",
@@ -12069,7 +12069,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-575-gothorita"
       }
     }
@@ -12077,7 +12077,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gothitelle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gothitelle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gothitelle.png",
     "system": {
       "dexNumber": 576,
       "rank": "master",
@@ -12090,7 +12090,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-576-gothitelle"
       }
     }
@@ -12098,7 +12098,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Solosis",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/solosis.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/solosis.png",
     "system": {
       "dexNumber": 577,
       "rank": "starter",
@@ -12111,7 +12111,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-577-solosis"
       }
     }
@@ -12119,7 +12119,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Duosion",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/duosion.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/duosion.png",
     "system": {
       "dexNumber": 578,
       "rank": "amateur",
@@ -12132,7 +12132,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-578-duosion"
       }
     }
@@ -12140,7 +12140,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Reuniclus",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/reuniclus.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/reuniclus.png",
     "system": {
       "dexNumber": 579,
       "rank": "master",
@@ -12153,7 +12153,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-579-reuniclus"
       }
     }
@@ -12161,7 +12161,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ducklett",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ducklett.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ducklett.png",
     "system": {
       "dexNumber": 580,
       "rank": "beginner",
@@ -12174,7 +12174,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-580-ducklett"
       }
     }
@@ -12182,7 +12182,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swanna",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/swanna.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/swanna.png",
     "system": {
       "dexNumber": 581,
       "rank": "ace",
@@ -12195,7 +12195,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-581-swanna"
       }
     }
@@ -12203,7 +12203,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vanillite",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/vanillite.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/vanillite.png",
     "system": {
       "dexNumber": 582,
       "rank": "starter",
@@ -12216,7 +12216,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-582-vanillite"
       }
     }
@@ -12224,7 +12224,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vanillish",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/vanillish.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/vanillish.png",
     "system": {
       "dexNumber": 583,
       "rank": "amateur",
@@ -12237,7 +12237,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-583-vanillish"
       }
     }
@@ -12245,7 +12245,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vanilluxe",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/vanilluxe.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/vanilluxe.png",
     "system": {
       "dexNumber": 584,
       "rank": "master",
@@ -12258,7 +12258,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-584-vanilluxe"
       }
     }
@@ -12266,7 +12266,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Deerling",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/deerling.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/deerling.png",
     "system": {
       "dexNumber": 585,
       "rank": "beginner",
@@ -12279,7 +12279,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-585-deerling"
       }
     }
@@ -12287,7 +12287,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sawsbuck",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sawsbuck.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sawsbuck.png",
     "system": {
       "dexNumber": 586,
       "rank": "ace",
@@ -12300,7 +12300,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-586-sawsbuck"
       }
     }
@@ -12308,7 +12308,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Emolga",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/emolga.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/emolga.png",
     "system": {
       "dexNumber": 587,
       "rank": "beginner",
@@ -12321,7 +12321,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-587-emolga"
       }
     }
@@ -12329,7 +12329,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Karrablast",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/karrablast.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/karrablast.png",
     "system": {
       "dexNumber": 588,
       "rank": "beginner",
@@ -12342,7 +12342,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-588-karrablast"
       }
     }
@@ -12350,7 +12350,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Escavalier",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/escavalier.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/escavalier.png",
     "system": {
       "dexNumber": 589,
       "rank": "ace",
@@ -12363,7 +12363,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-589-escavalier"
       }
     }
@@ -12371,7 +12371,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Foongus",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/foongus.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/foongus.png",
     "system": {
       "dexNumber": 590,
       "rank": "beginner",
@@ -12384,7 +12384,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-590-foongus"
       }
     }
@@ -12392,7 +12392,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Amoonguss",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/amoonguss.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/amoonguss.png",
     "system": {
       "dexNumber": 591,
       "rank": "ace",
@@ -12405,7 +12405,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-591-amoonguss"
       }
     }
@@ -12413,7 +12413,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Frillish",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/frillish.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/frillish.png",
     "system": {
       "dexNumber": 592,
       "rank": "amateur",
@@ -12426,7 +12426,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-592-frillish"
       }
     }
@@ -12434,7 +12434,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jellicent",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/jellicent.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/jellicent.png",
     "system": {
       "dexNumber": 593,
       "rank": "master",
@@ -12447,7 +12447,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-593-jellicent"
       }
     }
@@ -12455,7 +12455,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Alomomola",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/alomomola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/alomomola.png",
     "system": {
       "dexNumber": 594,
       "rank": "ace",
@@ -12468,7 +12468,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-594-alomomola"
       }
     }
@@ -12476,7 +12476,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Joltik",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/joltik.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/joltik.png",
     "system": {
       "dexNumber": 595,
       "rank": "starter",
@@ -12489,7 +12489,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-595-joltik"
       }
     }
@@ -12497,7 +12497,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Galvantula",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/galvantula.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/galvantula.png",
     "system": {
       "dexNumber": 596,
       "rank": "ace",
@@ -12510,7 +12510,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-596-galvantula"
       }
     }
@@ -12518,7 +12518,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ferroseed",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ferroseed.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ferroseed.png",
     "system": {
       "dexNumber": 597,
       "rank": "beginner",
@@ -12531,7 +12531,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-597-ferroseed"
       }
     }
@@ -12539,7 +12539,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ferrothorn",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ferrothorn.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ferrothorn.png",
     "system": {
       "dexNumber": 598,
       "rank": "ace",
@@ -12552,7 +12552,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-598-ferrothorn"
       }
     }
@@ -12560,7 +12560,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Klink",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/klink.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/klink.png",
     "system": {
       "dexNumber": 599,
       "rank": "beginner",
@@ -12573,7 +12573,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-599-klink"
       }
     }
@@ -12581,7 +12581,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Klang",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/klang.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/klang.png",
     "system": {
       "dexNumber": 600,
       "rank": "amateur",
@@ -12594,7 +12594,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-600-klang"
       }
     }
@@ -12602,7 +12602,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Klinklang",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/klinklang.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/klinklang.png",
     "system": {
       "dexNumber": 601,
       "rank": "master",
@@ -12615,7 +12615,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-601-klinklang"
       }
     }
@@ -12623,7 +12623,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tynamo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tynamo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tynamo.png",
     "system": {
       "dexNumber": 602,
       "rank": "starter",
@@ -12636,7 +12636,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-602-tynamo"
       }
     }
@@ -12644,7 +12644,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eelektrik",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/eelektrik.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/eelektrik.png",
     "system": {
       "dexNumber": 603,
       "rank": "amateur",
@@ -12657,7 +12657,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-603-eelektrik"
       }
     }
@@ -12665,7 +12665,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eelektross",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/eelektross.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/eelektross.png",
     "system": {
       "dexNumber": 604,
       "rank": "master",
@@ -12678,7 +12678,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-604-eelektross"
       }
     }
@@ -12686,7 +12686,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Elgyem",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/elgyem.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/elgyem.png",
     "system": {
       "dexNumber": 605,
       "rank": "amateur",
@@ -12699,7 +12699,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-605-elgyem"
       }
     }
@@ -12707,7 +12707,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beheeyem",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/beheeyem.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/beheeyem.png",
     "system": {
       "dexNumber": 606,
       "rank": "master",
@@ -12720,7 +12720,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-606-beheeyem"
       }
     }
@@ -12728,7 +12728,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Litwick",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/litwick.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/litwick.png",
     "system": {
       "dexNumber": 607,
       "rank": "amateur",
@@ -12741,7 +12741,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-607-litwick"
       }
     }
@@ -12749,7 +12749,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lampent",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lampent.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lampent.png",
     "system": {
       "dexNumber": 608,
       "rank": "ace",
@@ -12762,7 +12762,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-608-lampent"
       }
     }
@@ -12770,7 +12770,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chandelure",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/chandelure.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/chandelure.png",
     "system": {
       "dexNumber": 609,
       "rank": "master",
@@ -12783,7 +12783,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-609-chandelure"
       }
     }
@@ -12791,7 +12791,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Axew",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/axew.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/axew.png",
     "system": {
       "dexNumber": 610,
       "rank": "amateur",
@@ -12804,7 +12804,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-610-axew"
       }
     }
@@ -12812,7 +12812,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fraxure",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/fraxure.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/fraxure.png",
     "system": {
       "dexNumber": 611,
       "rank": "ace",
@@ -12825,7 +12825,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-611-fraxure"
       }
     }
@@ -12833,7 +12833,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Haxorus",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/haxorus.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/haxorus.png",
     "system": {
       "dexNumber": 612,
       "rank": "master",
@@ -12846,7 +12846,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-612-haxorus"
       }
     }
@@ -12854,7 +12854,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cubchoo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cubchoo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cubchoo.png",
     "system": {
       "dexNumber": 613,
       "rank": "beginner",
@@ -12867,7 +12867,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-613-cubchoo"
       }
     }
@@ -12875,7 +12875,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beartic",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/beartic.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/beartic.png",
     "system": {
       "dexNumber": 614,
       "rank": "master",
@@ -12888,7 +12888,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-614-beartic"
       }
     }
@@ -12896,7 +12896,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cryogonal",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cryogonal.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cryogonal.png",
     "system": {
       "dexNumber": 615,
       "rank": "master",
@@ -12909,7 +12909,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-615-cryogonal"
       }
     }
@@ -12917,7 +12917,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shelmet",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/shelmet.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/shelmet.png",
     "system": {
       "dexNumber": 616,
       "rank": "beginner",
@@ -12930,7 +12930,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-616-shelmet"
       }
     }
@@ -12938,7 +12938,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Accelgor",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/accelgor.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/accelgor.png",
     "system": {
       "dexNumber": 617,
       "rank": "ace",
@@ -12951,7 +12951,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-617-accelgor"
       }
     }
@@ -12959,7 +12959,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stunfisk",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/stunfisk.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/stunfisk.png",
     "system": {
       "dexNumber": 618,
       "rank": "ace",
@@ -12972,7 +12972,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-618-stunfisk"
       }
     }
@@ -12980,7 +12980,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mienfoo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mienfoo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mienfoo.png",
     "system": {
       "dexNumber": 619,
       "rank": "beginner",
@@ -12993,7 +12993,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-619-mienfoo"
       }
     }
@@ -13001,7 +13001,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mienshao",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mienshao.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mienshao.png",
     "system": {
       "dexNumber": 620,
       "rank": "ace",
@@ -13014,7 +13014,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-620-mienshao"
       }
     }
@@ -13022,7 +13022,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Druddigon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/druddigon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/druddigon.png",
     "system": {
       "dexNumber": 621,
       "rank": "master",
@@ -13035,7 +13035,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-621-druddigon"
       }
     }
@@ -13043,7 +13043,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golett",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/golett.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/golett.png",
     "system": {
       "dexNumber": 622,
       "rank": "amateur",
@@ -13056,7 +13056,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-622-golett"
       }
     }
@@ -13064,7 +13064,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golurk",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/golurk.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/golurk.png",
     "system": {
       "dexNumber": 623,
       "rank": "master",
@@ -13077,7 +13077,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-623-golurk"
       }
     }
@@ -13085,7 +13085,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pawniard",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pawniard.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pawniard.png",
     "system": {
       "dexNumber": 624,
       "rank": "amateur",
@@ -13098,7 +13098,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-624-pawniard"
       }
     }
@@ -13106,7 +13106,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bisharp",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bisharp.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bisharp.png",
     "system": {
       "dexNumber": 625,
       "rank": "master",
@@ -13119,7 +13119,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-625-bisharp"
       }
     }
@@ -13127,7 +13127,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bouffalant",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bouffalant.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bouffalant.png",
     "system": {
       "dexNumber": 626,
       "rank": "master",
@@ -13140,7 +13140,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-626-bouffalant"
       }
     }
@@ -13148,7 +13148,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rufflet",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rufflet.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rufflet.png",
     "system": {
       "dexNumber": 627,
       "rank": "beginner",
@@ -13161,7 +13161,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-627-rufflet"
       }
     }
@@ -13169,7 +13169,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Braviary",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/braviary.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/braviary.png",
     "system": {
       "dexNumber": 628,
       "rank": "master",
@@ -13182,7 +13182,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-628-braviary"
       }
     }
@@ -13190,7 +13190,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vullaby",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/vullaby.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/vullaby.png",
     "system": {
       "dexNumber": 629,
       "rank": "beginner",
@@ -13203,7 +13203,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-629-vullaby"
       }
     }
@@ -13211,7 +13211,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mandibuzz",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mandibuzz.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mandibuzz.png",
     "system": {
       "dexNumber": 630,
       "rank": "master",
@@ -13224,7 +13224,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-630-mandibuzz"
       }
     }
@@ -13232,7 +13232,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heatmor",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/heatmor.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/heatmor.png",
     "system": {
       "dexNumber": 631,
       "rank": "ace",
@@ -13245,7 +13245,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-631-heatmor"
       }
     }
@@ -13253,7 +13253,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Durant",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/durant.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/durant.png",
     "system": {
       "dexNumber": 632,
       "rank": "ace",
@@ -13266,7 +13266,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-632-durant"
       }
     }
@@ -13274,7 +13274,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Deino",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/deino.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/deino.png",
     "system": {
       "dexNumber": 633,
       "rank": "amateur",
@@ -13287,7 +13287,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-633-deino"
       }
     }
@@ -13295,7 +13295,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zweilous",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zweilous.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zweilous.png",
     "system": {
       "dexNumber": 634,
       "rank": "ace",
@@ -13308,7 +13308,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-634-zweilous"
       }
     }
@@ -13316,7 +13316,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hydreigon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hydreigon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hydreigon.png",
     "system": {
       "dexNumber": 635,
       "rank": "master",
@@ -13329,7 +13329,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-635-hydreigon"
       }
     }
@@ -13337,7 +13337,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Larvesta",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/larvesta.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/larvesta.png",
     "system": {
       "dexNumber": 636,
       "rank": "amateur",
@@ -13350,7 +13350,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-636-larvesta"
       }
     }
@@ -13358,7 +13358,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Volcarona",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/volcarona.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/volcarona.png",
     "system": {
       "dexNumber": 637,
       "rank": "master",
@@ -13371,7 +13371,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-637-volcarona"
       }
     }
@@ -13379,7 +13379,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cobalion",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cobalion.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cobalion.png",
     "system": {
       "dexNumber": 638,
       "rank": "pro",
@@ -13392,7 +13392,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-638-cobalion"
       }
     }
@@ -13400,7 +13400,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Terrakion",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/terrakion.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/terrakion.png",
     "system": {
       "dexNumber": 639,
       "rank": "pro",
@@ -13413,7 +13413,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-639-terrakion"
       }
     }
@@ -13421,7 +13421,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Virizion",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/virizion.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/virizion.png",
     "system": {
       "dexNumber": 640,
       "rank": "pro",
@@ -13434,7 +13434,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-640-virizion"
       }
     }
@@ -13442,7 +13442,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tornadus",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tornadus.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tornadus.png",
     "system": {
       "dexNumber": 641,
       "rank": "pro",
@@ -13455,7 +13455,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-641-tornadus"
       }
     }
@@ -13463,7 +13463,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thundurus",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/thundurus.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/thundurus.png",
     "system": {
       "dexNumber": 642,
       "rank": "pro",
@@ -13476,7 +13476,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-642-thundurus"
       }
     }
@@ -13484,7 +13484,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Reshiram",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/reshiram.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/reshiram.png",
     "system": {
       "dexNumber": 643,
       "rank": "champion",
@@ -13497,7 +13497,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-643-reshiram"
       }
     }
@@ -13505,7 +13505,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zekrom",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zekrom.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zekrom.png",
     "system": {
       "dexNumber": 644,
       "rank": "champion",
@@ -13518,7 +13518,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-644-zekrom"
       }
     }
@@ -13526,7 +13526,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Landorus",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/landorus.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/landorus.png",
     "system": {
       "dexNumber": 645,
       "rank": "pro",
@@ -13539,7 +13539,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-645-landorus"
       }
     }
@@ -13547,7 +13547,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kyurem",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kyurem.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kyurem.png",
     "system": {
       "dexNumber": 646,
       "rank": "champion",
@@ -13560,7 +13560,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-646-kyurem"
       }
     }
@@ -13568,7 +13568,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Keldeo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/keldeo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/keldeo.png",
     "system": {
       "dexNumber": 647,
       "rank": "pro",
@@ -13581,7 +13581,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-647-keldeo"
       }
     }
@@ -13589,7 +13589,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meloetta",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/meloetta.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/meloetta.png",
     "system": {
       "dexNumber": 648,
       "rank": "pro",
@@ -13602,7 +13602,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-648-meloetta"
       }
     }
@@ -13610,7 +13610,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Genesect",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/genesect.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/genesect.png",
     "system": {
       "dexNumber": 649,
       "rank": "pro",
@@ -13623,7 +13623,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-649-genesect"
       }
     }
@@ -13631,7 +13631,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chespin",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/chespin.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/chespin.png",
     "system": {
       "dexNumber": 650,
       "rank": "beginner",
@@ -13644,7 +13644,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-650-chespin"
       }
     }
@@ -13652,7 +13652,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quilladin",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/quilladin.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/quilladin.png",
     "system": {
       "dexNumber": 651,
       "rank": "amateur",
@@ -13665,7 +13665,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-651-quilladin"
       }
     }
@@ -13673,7 +13673,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chesnaught",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/chesnaught.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/chesnaught.png",
     "system": {
       "dexNumber": 652,
       "rank": "master",
@@ -13686,7 +13686,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-652-chesnaught"
       }
     }
@@ -13694,7 +13694,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fennekin",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/fennekin.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/fennekin.png",
     "system": {
       "dexNumber": 653,
       "rank": "beginner",
@@ -13707,7 +13707,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-653-fennekin"
       }
     }
@@ -13715,7 +13715,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Braixen",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/braixen.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/braixen.png",
     "system": {
       "dexNumber": 654,
       "rank": "amateur",
@@ -13728,7 +13728,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-654-braixen"
       }
     }
@@ -13736,7 +13736,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Delphox",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/delphox.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/delphox.png",
     "system": {
       "dexNumber": 655,
       "rank": "master",
@@ -13749,7 +13749,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-655-delphox"
       }
     }
@@ -13757,7 +13757,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Froakie",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/froakie.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/froakie.png",
     "system": {
       "dexNumber": 656,
       "rank": "beginner",
@@ -13770,7 +13770,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-656-froakie"
       }
     }
@@ -13778,7 +13778,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Frogadier",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/frogadier.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/frogadier.png",
     "system": {
       "dexNumber": 657,
       "rank": "amateur",
@@ -13791,7 +13791,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-657-frogadier"
       }
     }
@@ -13799,7 +13799,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Greninja",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/greninja.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/greninja.png",
     "system": {
       "dexNumber": 658,
       "rank": "master",
@@ -13812,7 +13812,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-658-greninja"
       }
     }
@@ -13820,7 +13820,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bunnelby",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bunnelby.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bunnelby.png",
     "system": {
       "dexNumber": 659,
       "rank": "starter",
@@ -13833,7 +13833,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-659-bunnelby"
       }
     }
@@ -13841,7 +13841,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Diggersby",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/diggersby.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/diggersby.png",
     "system": {
       "dexNumber": 660,
       "rank": "amateur",
@@ -13854,7 +13854,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-660-diggersby"
       }
     }
@@ -13862,7 +13862,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fletchling",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/fletchling.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/fletchling.png",
     "system": {
       "dexNumber": 661,
       "rank": "starter",
@@ -13875,7 +13875,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-661-fletchling"
       }
     }
@@ -13883,7 +13883,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fletchinder",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/fletchinder.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/fletchinder.png",
     "system": {
       "dexNumber": 662,
       "rank": "amateur",
@@ -13896,7 +13896,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-662-fletchinder"
       }
     }
@@ -13904,7 +13904,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Talonflame",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/talonflame.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/talonflame.png",
     "system": {
       "dexNumber": 663,
       "rank": "master",
@@ -13917,7 +13917,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-663-talonflame"
       }
     }
@@ -13925,7 +13925,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scatterbug",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/scatterbug.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/scatterbug.png",
     "system": {
       "dexNumber": 664,
       "rank": "starter",
@@ -13938,7 +13938,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-664-scatterbug"
       }
     }
@@ -13946,7 +13946,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spewpa",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/spewpa.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/spewpa.png",
     "system": {
       "dexNumber": 665,
       "rank": "beginner",
@@ -13959,7 +13959,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-665-spewpa"
       }
     }
@@ -13967,7 +13967,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vivillon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/vivillon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/vivillon.png",
     "system": {
       "dexNumber": 666,
       "rank": "amateur",
@@ -13980,7 +13980,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-666-vivillon"
       }
     }
@@ -13988,7 +13988,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Litleo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/litleo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/litleo.png",
     "system": {
       "dexNumber": 667,
       "rank": "amateur",
@@ -14001,7 +14001,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-667-litleo"
       }
     }
@@ -14009,7 +14009,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pyroar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pyroar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pyroar.png",
     "system": {
       "dexNumber": 668,
       "rank": "master",
@@ -14022,7 +14022,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-668-pyroar"
       }
     }
@@ -14030,7 +14030,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flab\u00e9b\u00e9",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/flabebe.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/flabebe.png",
     "system": {
       "dexNumber": 669,
       "rank": "starter",
@@ -14043,7 +14043,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-669-flabebe"
       }
     }
@@ -14051,7 +14051,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Floette",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/floette.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/floette.png",
     "system": {
       "dexNumber": 670,
       "rank": "beginner",
@@ -14064,7 +14064,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-670-floette"
       }
     }
@@ -14072,7 +14072,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Florges",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/florges.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/florges.png",
     "system": {
       "dexNumber": 671,
       "rank": "master",
@@ -14085,7 +14085,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-671-florges"
       }
     }
@@ -14093,7 +14093,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skiddo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/skiddo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/skiddo.png",
     "system": {
       "dexNumber": 672,
       "rank": "beginner",
@@ -14106,7 +14106,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-672-skiddo"
       }
     }
@@ -14114,7 +14114,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gogoat",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gogoat.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gogoat.png",
     "system": {
       "dexNumber": 673,
       "rank": "ace",
@@ -14127,7 +14127,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-673-gogoat"
       }
     }
@@ -14135,7 +14135,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pancham",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pancham.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pancham.png",
     "system": {
       "dexNumber": 674,
       "rank": "beginner",
@@ -14148,7 +14148,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-674-pancham"
       }
     }
@@ -14156,7 +14156,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pangoro",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pangoro.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pangoro.png",
     "system": {
       "dexNumber": 675,
       "rank": "master",
@@ -14169,7 +14169,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-675-pangoro"
       }
     }
@@ -14177,7 +14177,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Furfrou",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/furfrou.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/furfrou.png",
     "system": {
       "dexNumber": 676,
       "rank": "ace",
@@ -14190,7 +14190,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-676-furfrou"
       }
     }
@@ -14198,7 +14198,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Espurr",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/espurr.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/espurr.png",
     "system": {
       "dexNumber": 677,
       "rank": "beginner",
@@ -14211,7 +14211,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-677-espurr"
       }
     }
@@ -14219,7 +14219,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meowstic",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/meowstic.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/meowstic.png",
     "system": {
       "dexNumber": 678,
       "rank": "ace",
@@ -14232,7 +14232,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-678-meowstic"
       }
     }
@@ -14240,7 +14240,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Honedge",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/honedge.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/honedge.png",
     "system": {
       "dexNumber": 679,
       "rank": "amateur",
@@ -14253,7 +14253,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-679-honedge"
       }
     }
@@ -14261,7 +14261,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Doublade",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/doublade.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/doublade.png",
     "system": {
       "dexNumber": 680,
       "rank": "ace",
@@ -14274,7 +14274,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-680-doublade"
       }
     }
@@ -14282,7 +14282,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aegislash",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/aegislash.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/aegislash.png",
     "system": {
       "dexNumber": 681,
       "rank": "master",
@@ -14295,7 +14295,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-681-aegislash"
       }
     }
@@ -14303,7 +14303,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spritzee",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/spritzee.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/spritzee.png",
     "system": {
       "dexNumber": 682,
       "rank": "beginner",
@@ -14316,7 +14316,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-682-spritzee"
       }
     }
@@ -14324,7 +14324,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aromatisse",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/aromatisse.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/aromatisse.png",
     "system": {
       "dexNumber": 683,
       "rank": "ace",
@@ -14337,7 +14337,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-683-aromatisse"
       }
     }
@@ -14345,7 +14345,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swirlix",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/swirlix.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/swirlix.png",
     "system": {
       "dexNumber": 684,
       "rank": "beginner",
@@ -14358,7 +14358,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-684-swirlix"
       }
     }
@@ -14366,7 +14366,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slurpuff",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/slurpuff.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/slurpuff.png",
     "system": {
       "dexNumber": 685,
       "rank": "ace",
@@ -14379,7 +14379,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-685-slurpuff"
       }
     }
@@ -14387,7 +14387,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Inkay",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/inkay.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/inkay.png",
     "system": {
       "dexNumber": 686,
       "rank": "beginner",
@@ -14400,7 +14400,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-686-inkay"
       }
     }
@@ -14408,7 +14408,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Malamar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/malamar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/malamar.png",
     "system": {
       "dexNumber": 687,
       "rank": "ace",
@@ -14421,7 +14421,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-687-malamar"
       }
     }
@@ -14429,7 +14429,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Binacle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/binacle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/binacle.png",
     "system": {
       "dexNumber": 688,
       "rank": "beginner",
@@ -14442,7 +14442,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-688-binacle"
       }
     }
@@ -14450,7 +14450,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Barbaracle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/barbaracle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/barbaracle.png",
     "system": {
       "dexNumber": 689,
       "rank": "master",
@@ -14463,7 +14463,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-689-barbaracle"
       }
     }
@@ -14471,7 +14471,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skrelp",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/skrelp.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/skrelp.png",
     "system": {
       "dexNumber": 690,
       "rank": "amateur",
@@ -14484,7 +14484,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-690-skrelp"
       }
     }
@@ -14492,7 +14492,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragalge",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dragalge.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dragalge.png",
     "system": {
       "dexNumber": 691,
       "rank": "master",
@@ -14505,7 +14505,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-691-dragalge"
       }
     }
@@ -14513,7 +14513,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clauncher",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/clauncher.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/clauncher.png",
     "system": {
       "dexNumber": 692,
       "rank": "beginner",
@@ -14526,7 +14526,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-692-clauncher"
       }
     }
@@ -14534,7 +14534,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clawitzer",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/clawitzer.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/clawitzer.png",
     "system": {
       "dexNumber": 693,
       "rank": "ace",
@@ -14547,7 +14547,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-693-clawitzer"
       }
     }
@@ -14555,7 +14555,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Helioptile",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/helioptile.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/helioptile.png",
     "system": {
       "dexNumber": 694,
       "rank": "beginner",
@@ -14568,7 +14568,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-694-helioptile"
       }
     }
@@ -14576,7 +14576,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heliolisk",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/heliolisk.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/heliolisk.png",
     "system": {
       "dexNumber": 695,
       "rank": "ace",
@@ -14589,7 +14589,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-695-heliolisk"
       }
     }
@@ -14597,7 +14597,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tyrunt",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tyrunt.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tyrunt.png",
     "system": {
       "dexNumber": 696,
       "rank": "ace",
@@ -14610,7 +14610,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-696-tyrunt"
       }
     }
@@ -14618,7 +14618,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tyrantrum",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tyrantrum.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tyrantrum.png",
     "system": {
       "dexNumber": 697,
       "rank": "master",
@@ -14631,7 +14631,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-697-tyrantrum"
       }
     }
@@ -14639,7 +14639,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Amaura",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/amaura.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/amaura.png",
     "system": {
       "dexNumber": 698,
       "rank": "beginner",
@@ -14652,7 +14652,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-698-amaura"
       }
     }
@@ -14660,7 +14660,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aurorus",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/aurorus.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/aurorus.png",
     "system": {
       "dexNumber": 699,
       "rank": "ace",
@@ -14673,7 +14673,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-699-aurorus"
       }
     }
@@ -14681,7 +14681,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sylveon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sylveon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sylveon.png",
     "system": {
       "dexNumber": 700,
       "rank": "amateur",
@@ -14694,7 +14694,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-700-sylveon"
       }
     }
@@ -14702,7 +14702,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hawlucha",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hawlucha.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hawlucha.png",
     "system": {
       "dexNumber": 701,
       "rank": "ace",
@@ -14715,7 +14715,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-701-hawlucha"
       }
     }
@@ -14723,7 +14723,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dedenne",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dedenne.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dedenne.png",
     "system": {
       "dexNumber": 702,
       "rank": "beginner",
@@ -14736,7 +14736,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-702-dedenne"
       }
     }
@@ -14744,7 +14744,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Carbink",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/carbink.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/carbink.png",
     "system": {
       "dexNumber": 703,
       "rank": "amateur",
@@ -14757,7 +14757,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-703-carbink"
       }
     }
@@ -14765,7 +14765,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Goomy",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/goomy.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/goomy.png",
     "system": {
       "dexNumber": 704,
       "rank": "starter",
@@ -14778,7 +14778,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-704-goomy"
       }
     }
@@ -14786,7 +14786,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sliggoo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sliggoo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sliggoo.png",
     "system": {
       "dexNumber": 705,
       "rank": "beginner",
@@ -14799,7 +14799,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-705-sliggoo"
       }
     }
@@ -14807,7 +14807,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Goodra",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/goodra.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/goodra.png",
     "system": {
       "dexNumber": 706,
       "rank": "ace",
@@ -14820,7 +14820,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-706-goodra"
       }
     }
@@ -14828,7 +14828,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Klefki",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/klefki.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/klefki.png",
     "system": {
       "dexNumber": 707,
       "rank": "amateur",
@@ -14841,7 +14841,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-707-klefki"
       }
     }
@@ -14849,7 +14849,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Phantump",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/phantump.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/phantump.png",
     "system": {
       "dexNumber": 708,
       "rank": "beginner",
@@ -14862,7 +14862,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-708-phantump"
       }
     }
@@ -14870,7 +14870,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trevenant",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/trevenant.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/trevenant.png",
     "system": {
       "dexNumber": 709,
       "rank": "ace",
@@ -14883,7 +14883,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-709-trevenant"
       }
     }
@@ -14891,7 +14891,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pumpkaboo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pumpkaboo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pumpkaboo.png",
     "system": {
       "dexNumber": 710,
       "rank": "beginner",
@@ -14904,7 +14904,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-710-pumpkaboo"
       }
     }
@@ -14912,7 +14912,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gourgeist",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gourgeist.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gourgeist.png",
     "system": {
       "dexNumber": 711,
       "rank": "ace",
@@ -14925,7 +14925,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-711-gourgeist"
       }
     }
@@ -14933,7 +14933,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bergmite",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bergmite.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bergmite.png",
     "system": {
       "dexNumber": 712,
       "rank": "beginner",
@@ -14946,7 +14946,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-712-bergmite"
       }
     }
@@ -14954,7 +14954,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Avalugg",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/avalugg.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/avalugg.png",
     "system": {
       "dexNumber": 713,
       "rank": "master",
@@ -14967,7 +14967,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-713-avalugg"
       }
     }
@@ -14975,7 +14975,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Noibat",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/noibat.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/noibat.png",
     "system": {
       "dexNumber": 714,
       "rank": "amateur",
@@ -14988,7 +14988,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-714-noibat"
       }
     }
@@ -14996,7 +14996,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Noivern",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/noivern.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/noivern.png",
     "system": {
       "dexNumber": 715,
       "rank": "master",
@@ -15009,7 +15009,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-715-noivern"
       }
     }
@@ -15017,7 +15017,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Xerneas",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/xerneas.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/xerneas.png",
     "system": {
       "dexNumber": 716,
       "rank": "champion",
@@ -15030,7 +15030,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-716-xerneas"
       }
     }
@@ -15038,7 +15038,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yveltal",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/yveltal.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/yveltal.png",
     "system": {
       "dexNumber": 717,
       "rank": "champion",
@@ -15051,7 +15051,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-717-yveltal"
       }
     }
@@ -15059,7 +15059,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zygarde",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zygarde-50.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zygarde-50.png",
     "system": {
       "dexNumber": 718,
       "rank": "pro",
@@ -15072,7 +15072,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-718-zygarde"
       }
     }
@@ -15080,7 +15080,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Diancie",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/diancie.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/diancie.png",
     "system": {
       "dexNumber": 719,
       "rank": "pro",
@@ -15093,7 +15093,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-719-diancie"
       }
     }
@@ -15101,7 +15101,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hoopa",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hoopa.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hoopa.png",
     "system": {
       "dexNumber": 720,
       "rank": "pro",
@@ -15114,7 +15114,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-720-hoopa"
       }
     }
@@ -15122,7 +15122,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Volcanion",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/volcanion.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/volcanion.png",
     "system": {
       "dexNumber": 721,
       "rank": "pro",
@@ -15135,7 +15135,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-721-volcanion"
       }
     }
@@ -15143,7 +15143,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rowlet",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rowlet.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rowlet.png",
     "system": {
       "dexNumber": 722,
       "rank": "beginner",
@@ -15156,7 +15156,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-722-rowlet"
       }
     }
@@ -15164,7 +15164,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dartrix",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dartrix.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dartrix.png",
     "system": {
       "dexNumber": 723,
       "rank": "amateur",
@@ -15177,7 +15177,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-723-dartrix"
       }
     }
@@ -15185,7 +15185,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Decidueye",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/decidueye.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/decidueye.png",
     "system": {
       "dexNumber": 724,
       "rank": "master",
@@ -15198,7 +15198,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-724-decidueye"
       }
     }
@@ -15206,7 +15206,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Litten",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/litten.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/litten.png",
     "system": {
       "dexNumber": 725,
       "rank": "beginner",
@@ -15219,7 +15219,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-725-litten"
       }
     }
@@ -15227,7 +15227,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Torracat",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/torracat.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/torracat.png",
     "system": {
       "dexNumber": 726,
       "rank": "amateur",
@@ -15240,7 +15240,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-726-torracat"
       }
     }
@@ -15248,7 +15248,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Incineroar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/incineroar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/incineroar.png",
     "system": {
       "dexNumber": 727,
       "rank": "master",
@@ -15261,7 +15261,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-727-incineroar"
       }
     }
@@ -15269,7 +15269,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Popplio",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/popplio.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/popplio.png",
     "system": {
       "dexNumber": 728,
       "rank": "beginner",
@@ -15282,7 +15282,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-728-popplio"
       }
     }
@@ -15290,7 +15290,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Brionne",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/brionne.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/brionne.png",
     "system": {
       "dexNumber": 729,
       "rank": "amateur",
@@ -15303,7 +15303,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-729-brionne"
       }
     }
@@ -15311,7 +15311,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Primarina",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/primarina.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/primarina.png",
     "system": {
       "dexNumber": 730,
       "rank": "master",
@@ -15324,7 +15324,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-730-primarina"
       }
     }
@@ -15332,7 +15332,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pikipek",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pikipek.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pikipek.png",
     "system": {
       "dexNumber": 731,
       "rank": "starter",
@@ -15345,7 +15345,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-731-pikipek"
       }
     }
@@ -15353,7 +15353,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trumbeak",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/trumbeak.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/trumbeak.png",
     "system": {
       "dexNumber": 732,
       "rank": "amateur",
@@ -15366,7 +15366,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-732-trumbeak"
       }
     }
@@ -15374,7 +15374,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toucannon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/toucannon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/toucannon.png",
     "system": {
       "dexNumber": 733,
       "rank": "master",
@@ -15387,7 +15387,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-733-toucannon"
       }
     }
@@ -15395,7 +15395,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yungoos",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/yungoos.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/yungoos.png",
     "system": {
       "dexNumber": 734,
       "rank": "beginner",
@@ -15408,7 +15408,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-734-yungoos"
       }
     }
@@ -15416,7 +15416,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gumshoos",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gumshoos.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gumshoos.png",
     "system": {
       "dexNumber": 735,
       "rank": "ace",
@@ -15429,7 +15429,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-735-gumshoos"
       }
     }
@@ -15437,7 +15437,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grubbin",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/grubbin.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/grubbin.png",
     "system": {
       "dexNumber": 736,
       "rank": "beginner",
@@ -15450,7 +15450,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-736-grubbin"
       }
     }
@@ -15458,7 +15458,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charjabug",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/charjabug.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/charjabug.png",
     "system": {
       "dexNumber": 737,
       "rank": "amateur",
@@ -15471,7 +15471,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-737-charjabug"
       }
     }
@@ -15479,7 +15479,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vikavolt",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/vikavolt.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/vikavolt.png",
     "system": {
       "dexNumber": 738,
       "rank": "master",
@@ -15492,7 +15492,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-738-vikavolt"
       }
     }
@@ -15500,7 +15500,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crabrawler",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/crabrawler.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/crabrawler.png",
     "system": {
       "dexNumber": 739,
       "rank": "amateur",
@@ -15513,7 +15513,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-739-crabrawler"
       }
     }
@@ -15521,7 +15521,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crabominable",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/crabominable.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/crabominable.png",
     "system": {
       "dexNumber": 740,
       "rank": "master",
@@ -15534,7 +15534,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-740-crabominable"
       }
     }
@@ -15542,7 +15542,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Oricorio",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/oricorio.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/oricorio.png",
     "system": {
       "dexNumber": 741,
       "rank": "ace",
@@ -15555,7 +15555,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-741-oricorio"
       }
     }
@@ -15563,7 +15563,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cutiefly",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cutiefly.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cutiefly.png",
     "system": {
       "dexNumber": 742,
       "rank": "starter",
@@ -15576,7 +15576,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-742-cutiefly"
       }
     }
@@ -15584,7 +15584,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ribombee",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ribombee.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ribombee.png",
     "system": {
       "dexNumber": 743,
       "rank": "amateur",
@@ -15597,7 +15597,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-743-ribombee"
       }
     }
@@ -15605,7 +15605,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rockruff",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rockruff.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rockruff.png",
     "system": {
       "dexNumber": 744,
       "rank": "beginner",
@@ -15618,7 +15618,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-744-rockruff"
       }
     }
@@ -15626,7 +15626,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lycanroc",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lycanroc-midday.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lycanroc-midday.png",
     "system": {
       "dexNumber": 745,
       "rank": "ace",
@@ -15639,7 +15639,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-745-lycanroc"
       }
     }
@@ -15647,7 +15647,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wishiwashi",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/wishiwashi.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/wishiwashi.png",
     "system": {
       "dexNumber": 746,
       "rank": "starter",
@@ -15660,7 +15660,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-746-wishiwashi"
       }
     }
@@ -15668,7 +15668,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mareanie",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mareanie.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mareanie.png",
     "system": {
       "dexNumber": 747,
       "rank": "beginner",
@@ -15681,7 +15681,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-747-mareanie"
       }
     }
@@ -15689,7 +15689,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxapex",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/toxapex.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/toxapex.png",
     "system": {
       "dexNumber": 748,
       "rank": "master",
@@ -15702,7 +15702,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-748-toxapex"
       }
     }
@@ -15710,7 +15710,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mudbray",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mudbray.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mudbray.png",
     "system": {
       "dexNumber": 749,
       "rank": "beginner",
@@ -15723,7 +15723,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-749-mudbray"
       }
     }
@@ -15731,7 +15731,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mudsdale",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mudsdale.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mudsdale.png",
     "system": {
       "dexNumber": 750,
       "rank": "master",
@@ -15744,7 +15744,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-750-mudsdale"
       }
     }
@@ -15752,7 +15752,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dewpider",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dewpider.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dewpider.png",
     "system": {
       "dexNumber": 751,
       "rank": "beginner",
@@ -15765,7 +15765,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-751-dewpider"
       }
     }
@@ -15773,7 +15773,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Araquanid",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/araquanid.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/araquanid.png",
     "system": {
       "dexNumber": 752,
       "rank": "master",
@@ -15786,7 +15786,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-752-araquanid"
       }
     }
@@ -15794,7 +15794,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fomantis",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/fomantis.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/fomantis.png",
     "system": {
       "dexNumber": 753,
       "rank": "beginner",
@@ -15807,7 +15807,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-753-fomantis"
       }
     }
@@ -15815,7 +15815,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lurantis",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lurantis.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lurantis.png",
     "system": {
       "dexNumber": 754,
       "rank": "ace",
@@ -15828,7 +15828,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-754-lurantis"
       }
     }
@@ -15836,7 +15836,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Morelull",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/morelull.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/morelull.png",
     "system": {
       "dexNumber": 755,
       "rank": "starter",
@@ -15849,7 +15849,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-755-morelull"
       }
     }
@@ -15857,7 +15857,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shiinotic",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/shiinotic.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/shiinotic.png",
     "system": {
       "dexNumber": 756,
       "rank": "ace",
@@ -15870,7 +15870,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-756-shiinotic"
       }
     }
@@ -15878,7 +15878,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Salandit",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/salandit.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/salandit.png",
     "system": {
       "dexNumber": 757,
       "rank": "beginner",
@@ -15891,7 +15891,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-757-salandit"
       }
     }
@@ -15899,7 +15899,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Salazzle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/salazzle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/salazzle.png",
     "system": {
       "dexNumber": 758,
       "rank": "ace",
@@ -15912,7 +15912,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-758-salazzle"
       }
     }
@@ -15920,7 +15920,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stufful",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/stufful.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/stufful.png",
     "system": {
       "dexNumber": 759,
       "rank": "beginner",
@@ -15933,7 +15933,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-759-stufful"
       }
     }
@@ -15941,7 +15941,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bewear",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bewear.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bewear.png",
     "system": {
       "dexNumber": 760,
       "rank": "master",
@@ -15954,7 +15954,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-760-bewear"
       }
     }
@@ -15962,7 +15962,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bounsweet",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bounsweet.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bounsweet.png",
     "system": {
       "dexNumber": 761,
       "rank": "starter",
@@ -15975,7 +15975,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-761-bounsweet"
       }
     }
@@ -15983,7 +15983,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Steenee",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/steenee.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/steenee.png",
     "system": {
       "dexNumber": 762,
       "rank": "beginner",
@@ -15996,7 +15996,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-762-steenee"
       }
     }
@@ -16004,7 +16004,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tsareena",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tsareena.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tsareena.png",
     "system": {
       "dexNumber": 763,
       "rank": "master",
@@ -16017,7 +16017,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-763-tsareena"
       }
     }
@@ -16025,7 +16025,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Comfey",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/comfey.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/comfey.png",
     "system": {
       "dexNumber": 764,
       "rank": "amateur",
@@ -16038,7 +16038,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-764-comfey"
       }
     }
@@ -16046,7 +16046,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Oranguru",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/oranguru.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/oranguru.png",
     "system": {
       "dexNumber": 765,
       "rank": "ace",
@@ -16059,7 +16059,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-765-oranguru"
       }
     }
@@ -16067,7 +16067,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Passimian",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/passimian.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/passimian.png",
     "system": {
       "dexNumber": 766,
       "rank": "ace",
@@ -16080,7 +16080,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-766-passimian"
       }
     }
@@ -16088,7 +16088,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wimpod",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/wimpod.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/wimpod.png",
     "system": {
       "dexNumber": 767,
       "rank": "starter",
@@ -16101,7 +16101,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-767-wimpod"
       }
     }
@@ -16109,7 +16109,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golisopod",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/golisopod.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/golisopod.png",
     "system": {
       "dexNumber": 768,
       "rank": "master",
@@ -16122,7 +16122,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-768-golisopod"
       }
     }
@@ -16130,7 +16130,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandygast",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sandygast.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sandygast.png",
     "system": {
       "dexNumber": 769,
       "rank": "amateur",
@@ -16143,7 +16143,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-769-sandygast"
       }
     }
@@ -16151,7 +16151,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Palossand",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/palossand.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/palossand.png",
     "system": {
       "dexNumber": 770,
       "rank": "master",
@@ -16164,7 +16164,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-770-palossand"
       }
     }
@@ -16172,7 +16172,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pyukumuku",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pyukumuku.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pyukumuku.png",
     "system": {
       "dexNumber": 771,
       "rank": "amateur",
@@ -16185,7 +16185,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-771-pyukumuku"
       }
     }
@@ -16193,7 +16193,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Type: Null",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/type-null.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/type-null.png",
     "system": {
       "dexNumber": 772,
       "rank": "ace",
@@ -16206,7 +16206,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-772-type-null"
       }
     }
@@ -16214,7 +16214,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Silvally",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/silvally.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/silvally.png",
     "system": {
       "dexNumber": 773,
       "rank": "ace",
@@ -16227,7 +16227,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-773-silvally"
       }
     }
@@ -16235,7 +16235,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Minior",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/minior.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/minior.png",
     "system": {
       "dexNumber": 774,
       "rank": "ace",
@@ -16248,7 +16248,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-774-minior"
       }
     }
@@ -16256,7 +16256,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Komala",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/komala.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/komala.png",
     "system": {
       "dexNumber": 775,
       "rank": "beginner",
@@ -16269,7 +16269,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-775-komala"
       }
     }
@@ -16277,7 +16277,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Turtonator",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/turtonator.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/turtonator.png",
     "system": {
       "dexNumber": 776,
       "rank": "master",
@@ -16290,7 +16290,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-776-turtonator"
       }
     }
@@ -16298,7 +16298,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Togedemaru",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/togedemaru.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/togedemaru.png",
     "system": {
       "dexNumber": 777,
       "rank": "beginner",
@@ -16311,7 +16311,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-777-togedemaru"
       }
     }
@@ -16319,7 +16319,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mimikyu",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mimikyu.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mimikyu.png",
     "system": {
       "dexNumber": 778,
       "rank": "master",
@@ -16332,7 +16332,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-778-mimikyu"
       }
     }
@@ -16340,7 +16340,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bruxish",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/bruxish.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/bruxish.png",
     "system": {
       "dexNumber": 779,
       "rank": "ace",
@@ -16353,7 +16353,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-779-bruxish"
       }
     }
@@ -16361,7 +16361,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drampa",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/drampa.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/drampa.png",
     "system": {
       "dexNumber": 780,
       "rank": "ace",
@@ -16374,7 +16374,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-780-drampa"
       }
     }
@@ -16382,7 +16382,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dhelmise",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dhelmise.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dhelmise.png",
     "system": {
       "dexNumber": 781,
       "rank": "master",
@@ -16395,7 +16395,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-781-dhelmise"
       }
     }
@@ -16403,7 +16403,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jangmo-o",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/jangmo-o.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/jangmo-o.png",
     "system": {
       "dexNumber": 782,
       "rank": "amateur",
@@ -16416,7 +16416,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-782-jangmo-o"
       }
     }
@@ -16424,7 +16424,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hakamo-o",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hakamo-o.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hakamo-o.png",
     "system": {
       "dexNumber": 783,
       "rank": "ace",
@@ -16437,7 +16437,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-783-hakamo-o"
       }
     }
@@ -16445,7 +16445,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kommo-o",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kommo-o.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kommo-o.png",
     "system": {
       "dexNumber": 784,
       "rank": "master",
@@ -16458,7 +16458,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-784-kommo-o"
       }
     }
@@ -16466,7 +16466,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tapu Koko",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tapu-koko.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tapu-koko.png",
     "system": {
       "dexNumber": 785,
       "rank": "pro",
@@ -16479,7 +16479,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-785-tapu-koko"
       }
     }
@@ -16487,7 +16487,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tapu Lele",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tapu-lele.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tapu-lele.png",
     "system": {
       "dexNumber": 786,
       "rank": "pro",
@@ -16500,7 +16500,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-786-tapu-lele"
       }
     }
@@ -16508,7 +16508,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tapu Bulu",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tapu-bulu.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tapu-bulu.png",
     "system": {
       "dexNumber": 787,
       "rank": "pro",
@@ -16521,7 +16521,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-787-tapu-bulu"
       }
     }
@@ -16529,7 +16529,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tapu Fini",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tapu-fini.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tapu-fini.png",
     "system": {
       "dexNumber": 788,
       "rank": "pro",
@@ -16542,7 +16542,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-788-tapu-fini"
       }
     }
@@ -16550,7 +16550,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cosmog",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cosmog.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cosmog.png",
     "system": {
       "dexNumber": 789,
       "rank": "starter",
@@ -16563,7 +16563,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-789-cosmog"
       }
     }
@@ -16571,7 +16571,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cosmoem",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cosmoem.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cosmoem.png",
     "system": {
       "dexNumber": 790,
       "rank": "amateur",
@@ -16584,7 +16584,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-790-cosmoem"
       }
     }
@@ -16592,7 +16592,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Solgaleo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/solgaleo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/solgaleo.png",
     "system": {
       "dexNumber": 791,
       "rank": "champion",
@@ -16605,7 +16605,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-791-solgaleo"
       }
     }
@@ -16613,7 +16613,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lunala",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lunala.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lunala.png",
     "system": {
       "dexNumber": 792,
       "rank": "champion",
@@ -16626,7 +16626,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-792-lunala"
       }
     }
@@ -16634,7 +16634,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nihilego",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/nihilego.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/nihilego.png",
     "system": {
       "dexNumber": 793,
       "rank": "pro",
@@ -16647,7 +16647,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-793-nihilego"
       }
     }
@@ -16655,7 +16655,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Buzzwole",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/buzzwole.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/buzzwole.png",
     "system": {
       "dexNumber": 794,
       "rank": "pro",
@@ -16668,7 +16668,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-794-buzzwole"
       }
     }
@@ -16676,7 +16676,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pheromosa",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pheromosa.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pheromosa.png",
     "system": {
       "dexNumber": 795,
       "rank": "pro",
@@ -16689,7 +16689,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-795-pheromosa"
       }
     }
@@ -16697,7 +16697,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Xurkitree",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/xurkitree.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/xurkitree.png",
     "system": {
       "dexNumber": 796,
       "rank": "pro",
@@ -16710,7 +16710,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-796-xurkitree"
       }
     }
@@ -16718,7 +16718,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Celesteela",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/celesteela.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/celesteela.png",
     "system": {
       "dexNumber": 797,
       "rank": "pro",
@@ -16731,7 +16731,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-797-celesteela"
       }
     }
@@ -16739,7 +16739,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kartana",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kartana.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kartana.png",
     "system": {
       "dexNumber": 798,
       "rank": "pro",
@@ -16752,7 +16752,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-798-kartana"
       }
     }
@@ -16760,7 +16760,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Guzzlord",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/guzzlord.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/guzzlord.png",
     "system": {
       "dexNumber": 799,
       "rank": "pro",
@@ -16773,7 +16773,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-799-guzzlord"
       }
     }
@@ -16781,7 +16781,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Necrozma",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/necrozma.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/necrozma.png",
     "system": {
       "dexNumber": 800,
       "rank": "pro",
@@ -16794,7 +16794,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-800-necrozma"
       }
     }
@@ -16802,7 +16802,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magearna",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/magearna.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/magearna.png",
     "system": {
       "dexNumber": 801,
       "rank": "pro",
@@ -16815,7 +16815,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-801-magearna"
       }
     }
@@ -16823,7 +16823,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Marshadow",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/marshadow.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/marshadow.png",
     "system": {
       "dexNumber": 802,
       "rank": "pro",
@@ -16836,7 +16836,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-802-marshadow"
       }
     }
@@ -16844,7 +16844,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poipole",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/poipole.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/poipole.png",
     "system": {
       "dexNumber": 803,
       "rank": "amateur",
@@ -16857,7 +16857,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-803-poipole"
       }
     }
@@ -16865,7 +16865,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Naganadel",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/naganadel.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/naganadel.png",
     "system": {
       "dexNumber": 804,
       "rank": "pro",
@@ -16878,7 +16878,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-804-naganadel"
       }
     }
@@ -16886,7 +16886,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stakataka",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/stakataka.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/stakataka.png",
     "system": {
       "dexNumber": 805,
       "rank": "pro",
@@ -16899,7 +16899,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-805-stakataka"
       }
     }
@@ -16907,7 +16907,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blacephalon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/blacephalon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/blacephalon.png",
     "system": {
       "dexNumber": 806,
       "rank": "pro",
@@ -16920,7 +16920,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-806-blacephalon"
       }
     }
@@ -16928,7 +16928,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zeraora",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zeraora.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zeraora.png",
     "system": {
       "dexNumber": 807,
       "rank": "pro",
@@ -16941,7 +16941,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-807-zeraora"
       }
     }
@@ -16949,7 +16949,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meltan",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/meltan.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/meltan.png",
     "system": {
       "dexNumber": 808,
       "rank": "beginner",
@@ -16962,7 +16962,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-808-meltan"
       }
     }
@@ -16970,7 +16970,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Melmetal",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/melmetal.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/melmetal.png",
     "system": {
       "dexNumber": 809,
       "rank": "pro",
@@ -16983,7 +16983,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-809-melmetal"
       }
     }
@@ -16991,7 +16991,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grookey",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/grookey.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/grookey.png",
     "system": {
       "dexNumber": 810,
       "rank": "beginner",
@@ -17004,7 +17004,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-810-grookey"
       }
     }
@@ -17012,7 +17012,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thwackey",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/thwackey.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/thwackey.png",
     "system": {
       "dexNumber": 811,
       "rank": "amateur",
@@ -17025,7 +17025,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-811-thwackey"
       }
     }
@@ -17033,7 +17033,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rillaboom",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rillaboom.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rillaboom.png",
     "system": {
       "dexNumber": 812,
       "rank": "master",
@@ -17046,7 +17046,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-812-rillaboom"
       }
     }
@@ -17054,7 +17054,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scorbunny",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/scorbunny.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/scorbunny.png",
     "system": {
       "dexNumber": 813,
       "rank": "beginner",
@@ -17067,7 +17067,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-813-scorbunny"
       }
     }
@@ -17075,7 +17075,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raboot",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/raboot.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/raboot.png",
     "system": {
       "dexNumber": 814,
       "rank": "amateur",
@@ -17088,7 +17088,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-814-raboot"
       }
     }
@@ -17096,7 +17096,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cinderace",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cinderace.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cinderace.png",
     "system": {
       "dexNumber": 815,
       "rank": "master",
@@ -17109,7 +17109,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-815-cinderace"
       }
     }
@@ -17117,7 +17117,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sobble",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sobble.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sobble.png",
     "system": {
       "dexNumber": 816,
       "rank": "beginner",
@@ -17130,7 +17130,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-816-sobble"
       }
     }
@@ -17138,7 +17138,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drizzile",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/drizzile.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/drizzile.png",
     "system": {
       "dexNumber": 817,
       "rank": "amateur",
@@ -17151,7 +17151,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-817-drizzile"
       }
     }
@@ -17159,7 +17159,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Inteleon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/inteleon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/inteleon.png",
     "system": {
       "dexNumber": 818,
       "rank": "master",
@@ -17172,7 +17172,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-818-inteleon"
       }
     }
@@ -17180,7 +17180,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skwovet",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/skwovet.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/skwovet.png",
     "system": {
       "dexNumber": 819,
       "rank": "starter",
@@ -17193,7 +17193,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-819-skwovet"
       }
     }
@@ -17201,7 +17201,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Greedent",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/greedent.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/greedent.png",
     "system": {
       "dexNumber": 820,
       "rank": "amateur",
@@ -17214,7 +17214,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-820-greedent"
       }
     }
@@ -17222,7 +17222,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rookidee",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rookidee.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rookidee.png",
     "system": {
       "dexNumber": 821,
       "rank": "beginner",
@@ -17235,7 +17235,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-821-rookidee"
       }
     }
@@ -17243,7 +17243,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corvisquire",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/corvisquire.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/corvisquire.png",
     "system": {
       "dexNumber": 822,
       "rank": "amateur",
@@ -17256,7 +17256,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-822-corvisquire"
       }
     }
@@ -17264,7 +17264,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corviknight",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/corviknight.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/corviknight.png",
     "system": {
       "dexNumber": 823,
       "rank": "master",
@@ -17277,7 +17277,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-823-corviknight"
       }
     }
@@ -17285,7 +17285,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blipbug",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/blipbug.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/blipbug.png",
     "system": {
       "dexNumber": 824,
       "rank": "starter",
@@ -17298,7 +17298,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-824-blipbug"
       }
     }
@@ -17306,7 +17306,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dottler",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dottler.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dottler.png",
     "system": {
       "dexNumber": 825,
       "rank": "beginner",
@@ -17319,7 +17319,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-825-dottler"
       }
     }
@@ -17327,7 +17327,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Orbeetle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/orbeetle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/orbeetle.png",
     "system": {
       "dexNumber": 826,
       "rank": "ace",
@@ -17340,7 +17340,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-826-orbeetle"
       }
     }
@@ -17348,7 +17348,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nickit",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/nickit.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/nickit.png",
     "system": {
       "dexNumber": 827,
       "rank": "beginner",
@@ -17361,7 +17361,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-827-nickit"
       }
     }
@@ -17369,7 +17369,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thievul",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/thievul.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/thievul.png",
     "system": {
       "dexNumber": 828,
       "rank": "ace",
@@ -17382,7 +17382,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-828-thievul"
       }
     }
@@ -17390,7 +17390,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gossifleur",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gossifleur.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gossifleur.png",
     "system": {
       "dexNumber": 829,
       "rank": "beginner",
@@ -17403,7 +17403,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-829-gossifleur"
       }
     }
@@ -17411,7 +17411,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eldegoss",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/eldegoss.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/eldegoss.png",
     "system": {
       "dexNumber": 830,
       "rank": "ace",
@@ -17424,7 +17424,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-830-eldegoss"
       }
     }
@@ -17432,7 +17432,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wooloo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/wooloo.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/wooloo.png",
     "system": {
       "dexNumber": 831,
       "rank": "beginner",
@@ -17445,7 +17445,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-831-wooloo"
       }
     }
@@ -17453,7 +17453,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dubwool",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dubwool.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dubwool.png",
     "system": {
       "dexNumber": 832,
       "rank": "amateur",
@@ -17466,7 +17466,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-832-dubwool"
       }
     }
@@ -17474,7 +17474,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chewtle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/chewtle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/chewtle.png",
     "system": {
       "dexNumber": 833,
       "rank": "beginner",
@@ -17487,7 +17487,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-833-chewtle"
       }
     }
@@ -17495,7 +17495,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drednaw",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/drednaw.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/drednaw.png",
     "system": {
       "dexNumber": 834,
       "rank": "ace",
@@ -17508,7 +17508,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-834-drednaw"
       }
     }
@@ -17516,7 +17516,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yamper",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/yamper.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/yamper.png",
     "system": {
       "dexNumber": 835,
       "rank": "beginner",
@@ -17529,7 +17529,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-835-yamper"
       }
     }
@@ -17537,7 +17537,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Boltund",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/boltund.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/boltund.png",
     "system": {
       "dexNumber": 836,
       "rank": "ace",
@@ -17550,7 +17550,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-836-boltund"
       }
     }
@@ -17558,7 +17558,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rolycoly",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rolycoly.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rolycoly.png",
     "system": {
       "dexNumber": 837,
       "rank": "beginner",
@@ -17571,7 +17571,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-837-rolycoly"
       }
     }
@@ -17579,7 +17579,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Carkol",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/carkol.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/carkol.png",
     "system": {
       "dexNumber": 838,
       "rank": "amateur",
@@ -17592,7 +17592,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-838-carkol"
       }
     }
@@ -17600,7 +17600,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Coalossal",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/coalossal.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/coalossal.png",
     "system": {
       "dexNumber": 839,
       "rank": "master",
@@ -17613,7 +17613,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-839-coalossal"
       }
     }
@@ -17621,7 +17621,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Applin",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/applin.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/applin.png",
     "system": {
       "dexNumber": 840,
       "rank": "starter",
@@ -17634,7 +17634,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-840-applin"
       }
     }
@@ -17642,7 +17642,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flapple",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/flapple.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/flapple.png",
     "system": {
       "dexNumber": 841,
       "rank": "ace",
@@ -17655,7 +17655,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-841-flapple"
       }
     }
@@ -17663,7 +17663,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Appletun",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/appletun.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/appletun.png",
     "system": {
       "dexNumber": 842,
       "rank": "ace",
@@ -17676,7 +17676,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-842-appletun"
       }
     }
@@ -17684,7 +17684,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Silicobra",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/silicobra.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/silicobra.png",
     "system": {
       "dexNumber": 843,
       "rank": "beginner",
@@ -17697,7 +17697,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-843-silicobra"
       }
     }
@@ -17705,7 +17705,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandaconda",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sandaconda.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sandaconda.png",
     "system": {
       "dexNumber": 844,
       "rank": "ace",
@@ -17718,7 +17718,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-844-sandaconda"
       }
     }
@@ -17726,7 +17726,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cramorant",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cramorant.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cramorant.png",
     "system": {
       "dexNumber": 845,
       "rank": "amateur",
@@ -17739,7 +17739,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-845-cramorant"
       }
     }
@@ -17747,7 +17747,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arrokuda",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/arrokuda.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/arrokuda.png",
     "system": {
       "dexNumber": 846,
       "rank": "beginner",
@@ -17760,7 +17760,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-846-arrokuda"
       }
     }
@@ -17768,7 +17768,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Barraskewda",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/barraskewda.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/barraskewda.png",
     "system": {
       "dexNumber": 847,
       "rank": "ace",
@@ -17781,7 +17781,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-847-barraskewda"
       }
     }
@@ -17789,7 +17789,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxel",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/toxel.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/toxel.png",
     "system": {
       "dexNumber": 848,
       "rank": "amateur",
@@ -17802,7 +17802,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-848-toxel"
       }
     }
@@ -17810,7 +17810,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxtricity",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/toxtricity.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/toxtricity.png",
     "system": {
       "dexNumber": 849,
       "rank": "ace",
@@ -17823,7 +17823,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-849-toxtricity"
       }
     }
@@ -17831,7 +17831,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sizzlipede",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sizzlipede.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sizzlipede.png",
     "system": {
       "dexNumber": 850,
       "rank": "amateur",
@@ -17844,7 +17844,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-850-sizzlipede"
       }
     }
@@ -17852,7 +17852,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Centiskorch",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/centiskorch.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/centiskorch.png",
     "system": {
       "dexNumber": 851,
       "rank": "master",
@@ -17865,7 +17865,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-851-centiskorch"
       }
     }
@@ -17873,7 +17873,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clobbopus",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/clobbopus.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/clobbopus.png",
     "system": {
       "dexNumber": 852,
       "rank": "beginner",
@@ -17886,7 +17886,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-852-clobbopus"
       }
     }
@@ -17894,7 +17894,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grapploct",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/grapploct.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/grapploct.png",
     "system": {
       "dexNumber": 853,
       "rank": "ace",
@@ -17907,7 +17907,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-853-grapploct"
       }
     }
@@ -17915,7 +17915,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sinistea",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sinistea.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sinistea.png",
     "system": {
       "dexNumber": 854,
       "rank": "beginner",
@@ -17928,7 +17928,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-854-sinistea"
       }
     }
@@ -17936,7 +17936,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Polteageist",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/polteageist.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/polteageist.png",
     "system": {
       "dexNumber": 855,
       "rank": "ace",
@@ -17949,7 +17949,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-855-polteageist"
       }
     }
@@ -17957,7 +17957,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hatenna",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hatenna.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hatenna.png",
     "system": {
       "dexNumber": 856,
       "rank": "beginner",
@@ -17970,7 +17970,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-856-hatenna"
       }
     }
@@ -17978,7 +17978,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hattrem",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hattrem.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hattrem.png",
     "system": {
       "dexNumber": 857,
       "rank": "amateur",
@@ -17991,7 +17991,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-857-hattrem"
       }
     }
@@ -17999,7 +17999,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hatterene",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hatterene.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hatterene.png",
     "system": {
       "dexNumber": 858,
       "rank": "master",
@@ -18012,7 +18012,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-858-hatterene"
       }
     }
@@ -18020,7 +18020,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Impidimp",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/impidimp.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/impidimp.png",
     "system": {
       "dexNumber": 859,
       "rank": "beginner",
@@ -18033,7 +18033,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-859-impidimp"
       }
     }
@@ -18041,7 +18041,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Morgrem",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/morgrem.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/morgrem.png",
     "system": {
       "dexNumber": 860,
       "rank": "amateur",
@@ -18054,7 +18054,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-860-morgrem"
       }
     }
@@ -18062,7 +18062,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grimmsnarl",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/grimmsnarl.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/grimmsnarl.png",
     "system": {
       "dexNumber": 861,
       "rank": "master",
@@ -18075,7 +18075,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-861-grimmsnarl"
       }
     }
@@ -18083,7 +18083,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Obstagoon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/obstagoon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/obstagoon.png",
     "system": {
       "dexNumber": 862,
       "rank": "master",
@@ -18096,7 +18096,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-862-obstagoon"
       }
     }
@@ -18104,7 +18104,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Perrserker",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/perrserker.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/perrserker.png",
     "system": {
       "dexNumber": 863,
       "rank": "ace",
@@ -18117,7 +18117,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-863-perrserker"
       }
     }
@@ -18125,7 +18125,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cursola",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cursola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cursola.png",
     "system": {
       "dexNumber": 864,
       "rank": "ace",
@@ -18138,7 +18138,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-864-cursola"
       }
     }
@@ -18146,7 +18146,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sirfetch\u2019d",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sirfetchd.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sirfetchd.png",
     "system": {
       "dexNumber": 865,
       "rank": "ace",
@@ -18159,7 +18159,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-865-sirfetchd"
       }
     }
@@ -18167,7 +18167,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mr. Rime",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mr-rime.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mr-rime.png",
     "system": {
       "dexNumber": 866,
       "rank": "ace",
@@ -18180,7 +18180,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-866-mr-rime"
       }
     }
@@ -18188,7 +18188,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Runerigus",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/runerigus.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/runerigus.png",
     "system": {
       "dexNumber": 867,
       "rank": "master",
@@ -18201,7 +18201,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-867-runerigus"
       }
     }
@@ -18209,7 +18209,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Milcery",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/milcery.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/milcery.png",
     "system": {
       "dexNumber": 868,
       "rank": "starter",
@@ -18222,7 +18222,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-868-milcery"
       }
     }
@@ -18230,7 +18230,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Alcremie",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/alcremie.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/alcremie.png",
     "system": {
       "dexNumber": 869,
       "rank": "amateur",
@@ -18243,7 +18243,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-869-alcremie"
       }
     }
@@ -18251,7 +18251,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Falinks",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/falinks.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/falinks.png",
     "system": {
       "dexNumber": 870,
       "rank": "ace",
@@ -18264,7 +18264,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-870-falinks"
       }
     }
@@ -18272,7 +18272,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pincurchin",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pincurchin.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pincurchin.png",
     "system": {
       "dexNumber": 871,
       "rank": "amateur",
@@ -18285,7 +18285,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-871-pincurchin"
       }
     }
@@ -18293,7 +18293,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snom",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/snom.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/snom.png",
     "system": {
       "dexNumber": 872,
       "rank": "starter",
@@ -18306,7 +18306,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-872-snom"
       }
     }
@@ -18314,7 +18314,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Frosmoth",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/frosmoth.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/frosmoth.png",
     "system": {
       "dexNumber": 873,
       "rank": "master",
@@ -18327,7 +18327,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-873-frosmoth"
       }
     }
@@ -18335,7 +18335,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stonjourner",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/stonjourner.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/stonjourner.png",
     "system": {
       "dexNumber": 874,
       "rank": "ace",
@@ -18348,7 +18348,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-874-stonjourner"
       }
     }
@@ -18356,7 +18356,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eiscue",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/eiscue.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/eiscue.png",
     "system": {
       "dexNumber": 875,
       "rank": "ace",
@@ -18369,7 +18369,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-875-eiscue"
       }
     }
@@ -18377,7 +18377,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Indeedee",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/indeedee.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/indeedee.png",
     "system": {
       "dexNumber": 876,
       "rank": "ace",
@@ -18390,7 +18390,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-876-indeedee"
       }
     }
@@ -18398,7 +18398,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Morpeko",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/morpeko.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/morpeko.png",
     "system": {
       "dexNumber": 877,
       "rank": "beginner",
@@ -18411,7 +18411,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-877-morpeko"
       }
     }
@@ -18419,7 +18419,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cufant",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/cufant.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/cufant.png",
     "system": {
       "dexNumber": 878,
       "rank": "beginner",
@@ -18432,7 +18432,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-878-cufant"
       }
     }
@@ -18440,7 +18440,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Copperajah",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/copperajah.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/copperajah.png",
     "system": {
       "dexNumber": 879,
       "rank": "ace",
@@ -18453,7 +18453,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-879-copperajah"
       }
     }
@@ -18461,7 +18461,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dracozolt",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dracozolt.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dracozolt.png",
     "system": {
       "dexNumber": 880,
       "rank": "ace",
@@ -18474,7 +18474,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-880-dracozolt"
       }
     }
@@ -18482,7 +18482,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arctozolt",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/arctozolt.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/arctozolt.png",
     "system": {
       "dexNumber": 881,
       "rank": "ace",
@@ -18495,7 +18495,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-881-arctozolt"
       }
     }
@@ -18503,7 +18503,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dracovish",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dracovish.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dracovish.png",
     "system": {
       "dexNumber": 882,
       "rank": "ace",
@@ -18516,7 +18516,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-882-dracovish"
       }
     }
@@ -18524,7 +18524,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arctovish",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/arctovish.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/arctovish.png",
     "system": {
       "dexNumber": 883,
       "rank": "ace",
@@ -18537,7 +18537,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-883-arctovish"
       }
     }
@@ -18545,7 +18545,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Duraludon",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/duraludon.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/duraludon.png",
     "system": {
       "dexNumber": 884,
       "rank": "master",
@@ -18558,7 +18558,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-884-duraludon"
       }
     }
@@ -18566,7 +18566,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dreepy",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dreepy.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dreepy.png",
     "system": {
       "dexNumber": 885,
       "rank": "amateur",
@@ -18579,7 +18579,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-885-dreepy"
       }
     }
@@ -18587,7 +18587,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drakloak",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/drakloak.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/drakloak.png",
     "system": {
       "dexNumber": 886,
       "rank": "ace",
@@ -18600,7 +18600,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-886-drakloak"
       }
     }
@@ -18608,7 +18608,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragapult",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dragapult.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dragapult.png",
     "system": {
       "dexNumber": 887,
       "rank": "master",
@@ -18621,7 +18621,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-887-dragapult"
       }
     }
@@ -18629,7 +18629,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zacian",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zacian.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zacian.png",
     "system": {
       "dexNumber": 888,
       "rank": "pro",
@@ -18642,7 +18642,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-888-zacian"
       }
     }
@@ -18650,7 +18650,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zamazenta",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zamazenta.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zamazenta.png",
     "system": {
       "dexNumber": 889,
       "rank": "pro",
@@ -18663,7 +18663,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-889-zamazenta"
       }
     }
@@ -18671,7 +18671,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eternatus",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/eternatus.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/eternatus.png",
     "system": {
       "dexNumber": 890,
       "rank": "champion",
@@ -18684,7 +18684,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-890-eternatus"
       }
     }
@@ -18692,7 +18692,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Venusaur",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/venusaur-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/venusaur-mega.png",
     "system": {
       "dexNumber": 3,
       "rank": "master",
@@ -18705,7 +18705,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-003-venusaur-mega"
       }
     }
@@ -18713,7 +18713,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Charizard X",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/charizard-mega-x.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/charizard-mega-x.png",
     "system": {
       "dexNumber": 6,
       "rank": "master",
@@ -18726,7 +18726,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-006-charizard-mega-x"
       }
     }
@@ -18734,7 +18734,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Charizard Y",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/charizard-mega-y.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/charizard-mega-y.png",
     "system": {
       "dexNumber": 6,
       "rank": "master",
@@ -18747,7 +18747,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-006-charizard-mega-y"
       }
     }
@@ -18755,7 +18755,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Blastoise",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/blastoise-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/blastoise-mega.png",
     "system": {
       "dexNumber": 9,
       "rank": "master",
@@ -18768,7 +18768,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-009-blastoise-mega"
       }
     }
@@ -18776,7 +18776,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Alakazam",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/alakazam-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/alakazam-mega.png",
     "system": {
       "dexNumber": 65,
       "rank": "pro",
@@ -18789,7 +18789,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-065-alakazam-mega"
       }
     }
@@ -18797,7 +18797,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Gengar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gengar-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gengar-mega.png",
     "system": {
       "dexNumber": 94,
       "rank": "pro",
@@ -18810,7 +18810,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-094-gengar-mega"
       }
     }
@@ -18818,7 +18818,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Kangaskhan",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kangaskhan-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kangaskhan-mega.png",
     "system": {
       "dexNumber": 115,
       "rank": "pro",
@@ -18831,7 +18831,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-115-kangaskhan-mega"
       }
     }
@@ -18839,7 +18839,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Pinsir",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pinsir-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pinsir-mega.png",
     "system": {
       "dexNumber": 127,
       "rank": "pro",
@@ -18852,7 +18852,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-127-pinsir-mega"
       }
     }
@@ -18860,7 +18860,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Gyarados",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gyarados-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gyarados-mega.png",
     "system": {
       "dexNumber": 130,
       "rank": "master",
@@ -18873,7 +18873,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-130-gyarados-mega"
       }
     }
@@ -18881,7 +18881,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Aerodactyl",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/aerodactyl-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/aerodactyl-mega.png",
     "system": {
       "dexNumber": 142,
       "rank": "pro",
@@ -18894,7 +18894,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-142-aerodactyl-mega"
       }
     }
@@ -18902,7 +18902,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Mewtwo X",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mewtwo-mega-x.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mewtwo-mega-x.png",
     "system": {
       "dexNumber": 150,
       "rank": "champion",
@@ -18915,7 +18915,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-150-mewtwo-mega-x"
       }
     }
@@ -18923,7 +18923,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Mewtwo Y",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mewtwo-mega-y.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mewtwo-mega-y.png",
     "system": {
       "dexNumber": 150,
       "rank": "champion",
@@ -18936,7 +18936,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-150-mewtwo-mega-y"
       }
     }
@@ -18944,7 +18944,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Ampharos",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ampharos-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ampharos-mega.png",
     "system": {
       "dexNumber": 181,
       "rank": "pro",
@@ -18957,7 +18957,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-181-ampharos-mega"
       }
     }
@@ -18965,7 +18965,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Scizor",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/scizor-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/scizor-mega.png",
     "system": {
       "dexNumber": 212,
       "rank": "pro",
@@ -18978,7 +18978,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-212-scizor-mega"
       }
     }
@@ -18986,7 +18986,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Heracross",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/heracross-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/heracross-mega.png",
     "system": {
       "dexNumber": 214,
       "rank": "pro",
@@ -18999,7 +18999,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-214-heracross-mega"
       }
     }
@@ -19007,7 +19007,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Houndoom",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/houndoom-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/houndoom-mega.png",
     "system": {
       "dexNumber": 229,
       "rank": "pro",
@@ -19020,7 +19020,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-229-houndoom-mega"
       }
     }
@@ -19028,7 +19028,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Tyranitar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/tyranitar-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/tyranitar-mega.png",
     "system": {
       "dexNumber": 248,
       "rank": "master",
@@ -19041,7 +19041,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-248-tyranitar-mega"
       }
     }
@@ -19049,7 +19049,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Blaziken",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/blaziken-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/blaziken-mega.png",
     "system": {
       "dexNumber": 257,
       "rank": "master",
@@ -19062,7 +19062,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-257-blaziken-mega"
       }
     }
@@ -19070,7 +19070,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Gardevoir",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gardevoir-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gardevoir-mega.png",
     "system": {
       "dexNumber": 282,
       "rank": "pro",
@@ -19083,7 +19083,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-282-gardevoir-mega"
       }
     }
@@ -19091,7 +19091,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Mawile",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mawile-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mawile-mega.png",
     "system": {
       "dexNumber": 303,
       "rank": "ace",
@@ -19104,7 +19104,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-303-mawile-mega"
       }
     }
@@ -19112,7 +19112,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Aggron",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/aggron-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/aggron-mega.png",
     "system": {
       "dexNumber": 306,
       "rank": "master",
@@ -19125,7 +19125,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-306-aggron-mega"
       }
     }
@@ -19133,7 +19133,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Medicham",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/medicham-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/medicham-mega.png",
     "system": {
       "dexNumber": 308,
       "rank": "ace",
@@ -19146,7 +19146,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-308-medicham-mega"
       }
     }
@@ -19154,7 +19154,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Manectric",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/manectric-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/manectric-mega.png",
     "system": {
       "dexNumber": 310,
       "rank": "pro",
@@ -19167,7 +19167,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-310-manectric-mega"
       }
     }
@@ -19175,7 +19175,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Banette",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/banette-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/banette-mega.png",
     "system": {
       "dexNumber": 354,
       "rank": "pro",
@@ -19188,7 +19188,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-354-banette-mega"
       }
     }
@@ -19196,7 +19196,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Absol",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/absol-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/absol-mega.png",
     "system": {
       "dexNumber": 359,
       "rank": "pro",
@@ -19209,7 +19209,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-359-absol-mega"
       }
     }
@@ -19217,7 +19217,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Garchomp",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/garchomp-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/garchomp-mega.png",
     "system": {
       "dexNumber": 445,
       "rank": "master",
@@ -19230,7 +19230,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-445-garchomp-mega"
       }
     }
@@ -19238,7 +19238,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Lucario",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lucario-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lucario-mega.png",
     "system": {
       "dexNumber": 448,
       "rank": "master",
@@ -19251,7 +19251,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-448-lucario-mega"
       }
     }
@@ -19259,7 +19259,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Abomasnow",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/abomasnow-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/abomasnow-mega.png",
     "system": {
       "dexNumber": 460,
       "rank": "pro",
@@ -19272,7 +19272,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-460-abomasnow-mega"
       }
     }
@@ -19280,7 +19280,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Latias",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/latias-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/latias-mega.png",
     "system": {
       "dexNumber": 380,
       "rank": "master",
@@ -19293,7 +19293,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-380-latias-mega"
       }
     }
@@ -19301,7 +19301,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Latios",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/latios-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/latios-mega.png",
     "system": {
       "dexNumber": 381,
       "rank": "master",
@@ -19314,7 +19314,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-381-latios-mega"
       }
     }
@@ -19322,7 +19322,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Swampert",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/swampert-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/swampert-mega.png",
     "system": {
       "dexNumber": 260,
       "rank": "master",
@@ -19335,7 +19335,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-260-swampert-mega"
       }
     }
@@ -19343,7 +19343,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Sceptile",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sceptile-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sceptile-mega.png",
     "system": {
       "dexNumber": 254,
       "rank": "master",
@@ -19356,7 +19356,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-254-sceptile-mega"
       }
     }
@@ -19364,7 +19364,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Sableye",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sableye-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sableye-mega.png",
     "system": {
       "dexNumber": 302,
       "rank": "ace",
@@ -19377,7 +19377,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-302-sableye-mega"
       }
     }
@@ -19385,7 +19385,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Altaria",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/altaria-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/altaria-mega.png",
     "system": {
       "dexNumber": 334,
       "rank": "pro",
@@ -19398,7 +19398,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-334-altaria-mega"
       }
     }
@@ -19406,7 +19406,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Gallade",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/gallade-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/gallade-mega.png",
     "system": {
       "dexNumber": 475,
       "rank": "pro",
@@ -19419,7 +19419,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-475-gallade-mega"
       }
     }
@@ -19427,7 +19427,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Audino",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/audino-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/audino-mega.png",
     "system": {
       "dexNumber": 531,
       "rank": "pro",
@@ -19440,7 +19440,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-531-audino-mega"
       }
     }
@@ -19448,7 +19448,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Sharpedo",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sharpedo-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sharpedo-mega.png",
     "system": {
       "dexNumber": 319,
       "rank": "pro",
@@ -19461,7 +19461,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-319-sharpedo-mega"
       }
     }
@@ -19469,7 +19469,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Slowbro",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/slowbro-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/slowbro-mega.png",
     "system": {
       "dexNumber": 80,
       "rank": "pro",
@@ -19482,7 +19482,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-080-slowbro-mega"
       }
     }
@@ -19490,7 +19490,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Steelix",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/steelix-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/steelix-mega.png",
     "system": {
       "dexNumber": 208,
       "rank": "pro",
@@ -19503,7 +19503,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-208-steelix-mega"
       }
     }
@@ -19511,7 +19511,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Pidgeot",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pidgeot-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pidgeot-mega.png",
     "system": {
       "dexNumber": 18,
       "rank": "pro",
@@ -19524,7 +19524,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-018-pidgeot-mega"
       }
     }
@@ -19532,7 +19532,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Glalie",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/glalie-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/glalie-mega.png",
     "system": {
       "dexNumber": 362,
       "rank": "pro",
@@ -19545,7 +19545,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-362-glalie-mega"
       }
     }
@@ -19553,7 +19553,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Diancie",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/diancie-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/diancie-mega.png",
     "system": {
       "dexNumber": 719,
       "rank": "master",
@@ -19566,7 +19566,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-719-diancie-mega"
       }
     }
@@ -19574,7 +19574,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Metagross",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/metagross-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/metagross-mega.png",
     "system": {
       "dexNumber": 376,
       "rank": "master",
@@ -19587,7 +19587,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-376-metagross-mega"
       }
     }
@@ -19595,7 +19595,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kyogre (Primal)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/kyogre-primal.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/kyogre-primal.png",
     "system": {
       "dexNumber": 382,
       "rank": "champion",
@@ -19608,7 +19608,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-382-kyogre-primal"
       }
     }
@@ -19616,7 +19616,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Groudon (Primal)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/groudon-primal.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/groudon-primal.png",
     "system": {
       "dexNumber": 383,
       "rank": "champion",
@@ -19629,7 +19629,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-383-groudon-primal"
       }
     }
@@ -19637,7 +19637,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Rayquaza",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rayquaza-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rayquaza-mega.png",
     "system": {
       "dexNumber": 384,
       "rank": "champion",
@@ -19650,7 +19650,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-384-rayquaza-mega"
       }
     }
@@ -19658,7 +19658,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Camerupt",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/camerupt-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/camerupt-mega.png",
     "system": {
       "dexNumber": 323,
       "rank": "pro",
@@ -19671,7 +19671,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-323-camerupt-mega"
       }
     }
@@ -19679,7 +19679,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Lopunny",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lopunny-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lopunny-mega.png",
     "system": {
       "dexNumber": 428,
       "rank": "pro",
@@ -19692,7 +19692,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-428-lopunny-mega"
       }
     }
@@ -19700,7 +19700,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Salamence",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/salamence-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/salamence-mega.png",
     "system": {
       "dexNumber": 373,
       "rank": "master",
@@ -19713,7 +19713,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-373-salamence-mega"
       }
     }
@@ -19721,7 +19721,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Beedrill",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/beedrill-mega.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/beedrill-mega.png",
     "system": {
       "dexNumber": 15,
       "rank": "ace",
@@ -19734,7 +19734,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-015-beedrill-mega"
       }
     }
@@ -19742,7 +19742,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rattata (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rattata-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rattata-alola.png",
     "system": {
       "dexNumber": 19,
       "rank": "starter",
@@ -19755,7 +19755,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-019-rattata-alola"
       }
     }
@@ -19763,7 +19763,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raticate (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/raticate-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/raticate-alola.png",
     "system": {
       "dexNumber": 20,
       "rank": "amateur",
@@ -19776,7 +19776,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-020-raticate-alola"
       }
     }
@@ -19784,7 +19784,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raticate (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/raticate.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/raticate.png",
     "system": {
       "dexNumber": 20,
       "rank": "amateur",
@@ -19797,7 +19797,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-020-raticate-totem-alola"
       }
     }
@@ -19805,7 +19805,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pikachu Alola Cap",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pikachu.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pikachu.png",
     "system": {
       "dexNumber": 25,
       "rank": "beginner",
@@ -19818,7 +19818,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-025-pikachu-alola-cap"
       }
     }
@@ -19826,7 +19826,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raichu (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/raichu-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/raichu-alola.png",
     "system": {
       "dexNumber": 26,
       "rank": "ace",
@@ -19839,7 +19839,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-026-raichu-alola"
       }
     }
@@ -19847,7 +19847,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandshrew (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sandshrew-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sandshrew-alola.png",
     "system": {
       "dexNumber": 27,
       "rank": "starter",
@@ -19860,7 +19860,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-027-sandshrew-alola"
       }
     }
@@ -19868,7 +19868,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandslash (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/sandslash-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/sandslash-alola.png",
     "system": {
       "dexNumber": 28,
       "rank": "amateur",
@@ -19881,7 +19881,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-028-sandslash-alola"
       }
     }
@@ -19889,7 +19889,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vulpix (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/vulpix-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/vulpix-alola.png",
     "system": {
       "dexNumber": 37,
       "rank": "starter",
@@ -19902,7 +19902,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-037-vulpix-alola"
       }
     }
@@ -19910,7 +19910,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ninetales (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ninetales-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ninetales-alola.png",
     "system": {
       "dexNumber": 38,
       "rank": "ace",
@@ -19923,7 +19923,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-038-ninetales-alola"
       }
     }
@@ -19931,7 +19931,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Diglett (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/diglett-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/diglett-alola.png",
     "system": {
       "dexNumber": 50,
       "rank": "starter",
@@ -19944,7 +19944,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-050-diglett-alola"
       }
     }
@@ -19952,7 +19952,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dugtrio (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dugtrio-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dugtrio-alola.png",
     "system": {
       "dexNumber": 51,
       "rank": "amateur",
@@ -19965,7 +19965,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-051-dugtrio-alola"
       }
     }
@@ -19973,7 +19973,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meowth (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/meowth-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/meowth-alola.png",
     "system": {
       "dexNumber": 52,
       "rank": "starter",
@@ -19986,7 +19986,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-052-meowth-alola"
       }
     }
@@ -19994,7 +19994,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Persian (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/persian-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/persian-alola.png",
     "system": {
       "dexNumber": 53,
       "rank": "amateur",
@@ -20007,7 +20007,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-053-persian-alola"
       }
     }
@@ -20015,7 +20015,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Geodude (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/geodude-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/geodude-alola.png",
     "system": {
       "dexNumber": 74,
       "rank": "starter",
@@ -20028,7 +20028,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-074-geodude-alola"
       }
     }
@@ -20036,7 +20036,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Graveler (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/graveler-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/graveler-alola.png",
     "system": {
       "dexNumber": 75,
       "rank": "amateur",
@@ -20049,7 +20049,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-075-graveler-alola"
       }
     }
@@ -20057,7 +20057,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Golem (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/golem-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/golem-alola.png",
     "system": {
       "dexNumber": 76,
       "rank": "ace",
@@ -20070,7 +20070,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-076-golem-alola"
       }
     }
@@ -20078,7 +20078,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grimer (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/grimer-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/grimer-alola.png",
     "system": {
       "dexNumber": 88,
       "rank": "beginner",
@@ -20091,7 +20091,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-088-grimer-alola"
       }
     }
@@ -20099,7 +20099,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Muk (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/muk-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/muk-alola.png",
     "system": {
       "dexNumber": 89,
       "rank": "ace",
@@ -20112,7 +20112,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-089-muk-alola"
       }
     }
@@ -20120,7 +20120,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Exeggutor (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/exeggutor-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/exeggutor-alola.png",
     "system": {
       "dexNumber": 103,
       "rank": "ace",
@@ -20133,7 +20133,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-103-exeggutor-alola"
       }
     }
@@ -20141,7 +20141,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Marowak (Alola)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/marowak-alola.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/marowak-alola.png",
     "system": {
       "dexNumber": 105,
       "rank": "amateur",
@@ -20154,7 +20154,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-105-marowak-alola"
       }
     }
@@ -20162,7 +20162,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meowth (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/meowth-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/meowth-galar.png",
     "system": {
       "dexNumber": 52,
       "rank": "starter",
@@ -20175,7 +20175,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-052-meowth-galar"
       }
     }
@@ -20183,7 +20183,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ponyta (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/ponyta-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/ponyta-galar.png",
     "system": {
       "dexNumber": 77,
       "rank": "amateur",
@@ -20196,7 +20196,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-077-ponyta-galar"
       }
     }
@@ -20204,7 +20204,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rapidash (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/rapidash-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/rapidash-galar.png",
     "system": {
       "dexNumber": 78,
       "rank": "ace",
@@ -20217,7 +20217,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-078-rapidash-galar"
       }
     }
@@ -20225,7 +20225,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowpoke (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/slowpoke-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/slowpoke-galar.png",
     "system": {
       "dexNumber": 79,
       "rank": "beginner",
@@ -20238,7 +20238,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-079-slowpoke-galar"
       }
     }
@@ -20246,7 +20246,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowbro (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/slowbro-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/slowbro-galar.png",
     "system": {
       "dexNumber": 80,
       "rank": "ace",
@@ -20259,7 +20259,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-080-slowbro-galar"
       }
     }
@@ -20267,7 +20267,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Farfetch\u2019d (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/farfetchd-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/farfetchd-galar.png",
     "system": {
       "dexNumber": 83,
       "rank": "beginner",
@@ -20280,7 +20280,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-083-farfetchd-galar"
       }
     }
@@ -20288,7 +20288,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weezing (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/weezing-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/weezing-galar.png",
     "system": {
       "dexNumber": 110,
       "rank": "ace",
@@ -20301,7 +20301,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-110-weezing-galar"
       }
     }
@@ -20309,7 +20309,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mr. Mime (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/mr-mime-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/mr-mime-galar.png",
     "system": {
       "dexNumber": 122,
       "rank": "amateur",
@@ -20322,7 +20322,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-122-mr-mime-galar"
       }
     }
@@ -20330,7 +20330,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Articuno (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/articuno-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/articuno-galar.png",
     "system": {
       "dexNumber": 144,
       "rank": "pro",
@@ -20343,7 +20343,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-144-articuno-galar"
       }
     }
@@ -20351,7 +20351,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zapdos (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zapdos-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zapdos-galar.png",
     "system": {
       "dexNumber": 145,
       "rank": "pro",
@@ -20364,7 +20364,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-145-zapdos-galar"
       }
     }
@@ -20372,7 +20372,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Moltres (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/moltres-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/moltres-galar.png",
     "system": {
       "dexNumber": 146,
       "rank": "pro",
@@ -20385,7 +20385,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-146-moltres-galar"
       }
     }
@@ -20393,7 +20393,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slowking (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/slowking-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/slowking-galar.png",
     "system": {
       "dexNumber": 199,
       "rank": "ace",
@@ -20406,7 +20406,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-199-slowking-galar"
       }
     }
@@ -20414,7 +20414,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corsola (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/corsola-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/corsola-galar.png",
     "system": {
       "dexNumber": 222,
       "rank": "amateur",
@@ -20427,7 +20427,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-222-corsola-galar"
       }
     }
@@ -20435,7 +20435,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zigzagoon (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zigzagoon-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zigzagoon-galar.png",
     "system": {
       "dexNumber": 263,
       "rank": "starter",
@@ -20448,7 +20448,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-263-zigzagoon-galar"
       }
     }
@@ -20456,7 +20456,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Linoone (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/linoone-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/linoone-galar.png",
     "system": {
       "dexNumber": 264,
       "rank": "amateur",
@@ -20469,7 +20469,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-264-linoone-galar"
       }
     }
@@ -20477,7 +20477,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darumaka (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/darumaka-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/darumaka-galar.png",
     "system": {
       "dexNumber": 554,
       "rank": "beginner",
@@ -20490,7 +20490,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-554-darumaka-galar"
       }
     }
@@ -20498,7 +20498,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darmanitan Galar Standard",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/darmanitan.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/darmanitan.png",
     "system": {
       "dexNumber": 555,
       "rank": "ace",
@@ -20511,7 +20511,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-555-darmanitan-galar-standard"
       }
     }
@@ -20519,7 +20519,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darmanitan Galar Zen",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/darmanitan-galar-zen.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/darmanitan-galar-zen.png",
     "system": {
       "dexNumber": 555,
       "rank": "ace",
@@ -20532,7 +20532,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-555-darmanitan-galar-zen"
       }
     }
@@ -20540,7 +20540,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yamask (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/yamask-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/yamask-galar.png",
     "system": {
       "dexNumber": 562,
       "rank": "beginner",
@@ -20553,7 +20553,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-562-yamask-galar"
       }
     }
@@ -20561,7 +20561,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stunfisk (Galar)",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/stunfisk-galar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/stunfisk-galar.png",
     "system": {
       "dexNumber": 618,
       "rank": "ace",
@@ -20574,7 +20574,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-618-stunfisk-galar"
       }
     }
@@ -20582,7 +20582,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Clefable",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/clefable.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/clefable.png",
     "system": {
       "dexNumber": 36,
       "rank": "pro",
@@ -20595,7 +20595,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-036-clefable-mega"
       }
     }
@@ -20603,7 +20603,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Victreebel",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/victreebel.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/victreebel.png",
     "system": {
       "dexNumber": 71,
       "rank": "pro",
@@ -20616,7 +20616,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-071-victreebel-mega"
       }
     }
@@ -20624,7 +20624,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Starmie",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/starmie.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/starmie.png",
     "system": {
       "dexNumber": 121,
       "rank": "master",
@@ -20637,7 +20637,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-121-starmie-mega"
       }
     }
@@ -20645,7 +20645,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Dragonite",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dragonite.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dragonite.png",
     "system": {
       "dexNumber": 149,
       "rank": "master",
@@ -20658,7 +20658,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-149-dragonite-mega"
       }
     }
@@ -20666,7 +20666,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Meganium",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/meganium.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/meganium.png",
     "system": {
       "dexNumber": 154,
       "rank": "master",
@@ -20679,7 +20679,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-154-meganium-mega"
       }
     }
@@ -20687,7 +20687,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Feraligatr",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/feraligatr.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/feraligatr.png",
     "system": {
       "dexNumber": 160,
       "rank": "master",
@@ -20700,7 +20700,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-160-feraligatr-mega"
       }
     }
@@ -20708,7 +20708,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Skarmory",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/skarmory.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/skarmory.png",
     "system": {
       "dexNumber": 227,
       "rank": "pro",
@@ -20721,7 +20721,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-227-skarmory-mega"
       }
     }
@@ -20729,7 +20729,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Froslass",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/froslass.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/froslass.png",
     "system": {
       "dexNumber": 478,
       "rank": "pro",
@@ -20742,7 +20742,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-478-froslass-mega"
       }
     }
@@ -20750,7 +20750,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Emboar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/emboar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/emboar.png",
     "system": {
       "dexNumber": 500,
       "rank": "master",
@@ -20763,7 +20763,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-500-emboar-mega"
       }
     }
@@ -20771,7 +20771,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Excadrill",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/excadrill.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/excadrill.png",
     "system": {
       "dexNumber": 530,
       "rank": "pro",
@@ -20784,7 +20784,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-530-excadrill-mega"
       }
     }
@@ -20792,7 +20792,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Scolipede",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/scolipede.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/scolipede.png",
     "system": {
       "dexNumber": 545,
       "rank": "pro",
@@ -20805,7 +20805,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-545-scolipede-mega"
       }
     }
@@ -20813,7 +20813,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Scrafty",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/scrafty.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/scrafty.png",
     "system": {
       "dexNumber": 560,
       "rank": "pro",
@@ -20826,7 +20826,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-560-scrafty-mega"
       }
     }
@@ -20834,7 +20834,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Eelektross",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/eelektross.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/eelektross.png",
     "system": {
       "dexNumber": 604,
       "rank": "pro",
@@ -20847,7 +20847,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-604-eelektross-mega"
       }
     }
@@ -20855,7 +20855,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Chandelure",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/chandelure.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/chandelure.png",
     "system": {
       "dexNumber": 609,
       "rank": "pro",
@@ -20868,7 +20868,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-609-chandelure-mega"
       }
     }
@@ -20876,7 +20876,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Chesnaught",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/chesnaught.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/chesnaught.png",
     "system": {
       "dexNumber": 652,
       "rank": "master",
@@ -20889,7 +20889,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-652-chesnaught-mega"
       }
     }
@@ -20897,7 +20897,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Delphox",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/delphox.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/delphox.png",
     "system": {
       "dexNumber": 655,
       "rank": "master",
@@ -20910,7 +20910,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-655-delphox-mega"
       }
     }
@@ -20918,7 +20918,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Greninja",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/greninja.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/greninja.png",
     "system": {
       "dexNumber": 658,
       "rank": "master",
@@ -20931,7 +20931,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-658-greninja-mega"
       }
     }
@@ -20939,7 +20939,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Pyroar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/pyroar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/pyroar.png",
     "system": {
       "dexNumber": 668,
       "rank": "pro",
@@ -20952,7 +20952,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-668-pyroar-mega"
       }
     }
@@ -20960,7 +20960,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Floette",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/floette.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/floette.png",
     "system": {
       "dexNumber": 670,
       "rank": "master",
@@ -20973,7 +20973,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-670-floette-mega"
       }
     }
@@ -20981,7 +20981,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Malamar",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/malamar.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/malamar.png",
     "system": {
       "dexNumber": 687,
       "rank": "pro",
@@ -20994,7 +20994,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-687-malamar-mega"
       }
     }
@@ -21002,7 +21002,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Barbaracle",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/barbaracle.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/barbaracle.png",
     "system": {
       "dexNumber": 689,
       "rank": "pro",
@@ -21015,7 +21015,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-689-barbaracle-mega"
       }
     }
@@ -21023,7 +21023,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Dragalge",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/dragalge.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/dragalge.png",
     "system": {
       "dexNumber": 691,
       "rank": "pro",
@@ -21036,7 +21036,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-691-dragalge-mega"
       }
     }
@@ -21044,7 +21044,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Hawlucha",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/hawlucha.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/hawlucha.png",
     "system": {
       "dexNumber": 701,
       "rank": "pro",
@@ -21057,7 +21057,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-701-hawlucha-mega"
       }
     }
@@ -21065,7 +21065,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Zygarde",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zygarde.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zygarde.png",
     "system": {
       "dexNumber": 718,
       "rank": "champion",
@@ -21078,7 +21078,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-718-zygarde-mega"
       }
     }
@@ -21086,7 +21086,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Drampa",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/drampa.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/drampa.png",
     "system": {
       "dexNumber": 780,
       "rank": "pro",
@@ -21099,7 +21099,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-780-drampa-mega"
       }
     }
@@ -21107,7 +21107,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Falinks",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/falinks.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/falinks.png",
     "system": {
       "dexNumber": 870,
       "rank": "pro",
@@ -21120,7 +21120,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-870-falinks-mega"
       }
     }
@@ -21128,7 +21128,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Raichu X",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/raichu.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/raichu.png",
     "system": {
       "dexNumber": 26,
       "rank": "pro",
@@ -21141,7 +21141,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-026-raichu-mega-x"
       }
     }
@@ -21149,7 +21149,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Raichu Y",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/raichu.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/raichu.png",
     "system": {
       "dexNumber": 26,
       "rank": "pro",
@@ -21162,7 +21162,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-026-raichu-mega-y"
       }
     }
@@ -21170,7 +21170,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Chimecho",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/chimecho.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/chimecho.png",
     "system": {
       "dexNumber": 358,
       "rank": "pro",
@@ -21183,7 +21183,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-358-chimecho-mega"
       }
     }
@@ -21191,7 +21191,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Absol Mega Z",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/absol.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/absol.png",
     "system": {
       "dexNumber": 359,
       "rank": "pro",
@@ -21204,7 +21204,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-359-absol-mega-z"
       }
     }
@@ -21212,7 +21212,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Staraptor",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/staraptor.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/staraptor.png",
     "system": {
       "dexNumber": 398,
       "rank": "pro",
@@ -21225,7 +21225,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-398-staraptor-mega"
       }
     }
@@ -21233,7 +21233,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Garchomp Mega Z",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/garchomp.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/garchomp.png",
     "system": {
       "dexNumber": 445,
       "rank": "master",
@@ -21246,7 +21246,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-445-garchomp-mega-z"
       }
     }
@@ -21254,7 +21254,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lucario Mega Z",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/lucario.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/lucario.png",
     "system": {
       "dexNumber": 448,
       "rank": "master",
@@ -21267,7 +21267,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-448-lucario-mega-z"
       }
     }
@@ -21275,7 +21275,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Heatran",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/heatran.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/heatran.png",
     "system": {
       "dexNumber": 485,
       "rank": "master",
@@ -21288,7 +21288,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-485-heatran-mega"
       }
     }
@@ -21296,7 +21296,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Darkrai",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/darkrai.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/darkrai.png",
     "system": {
       "dexNumber": 491,
       "rank": "master",
@@ -21309,7 +21309,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-491-darkrai-mega"
       }
     }
@@ -21317,7 +21317,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Golurk",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/golurk.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/golurk.png",
     "system": {
       "dexNumber": 623,
       "rank": "pro",
@@ -21330,7 +21330,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-623-golurk-mega"
       }
     }
@@ -21338,7 +21338,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Meowstic",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/meowstic.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/meowstic.png",
     "system": {
       "dexNumber": 678,
       "rank": "pro",
@@ -21351,7 +21351,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-678-meowstic-mega"
       }
     }
@@ -21359,7 +21359,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Crabominable",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/crabominable.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/crabominable.png",
     "system": {
       "dexNumber": 740,
       "rank": "pro",
@@ -21372,7 +21372,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-740-crabominable-mega"
       }
     }
@@ -21380,7 +21380,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Golisopod",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/golisopod.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/golisopod.png",
     "system": {
       "dexNumber": 768,
       "rank": "master",
@@ -21393,7 +21393,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-768-golisopod-mega"
       }
     }
@@ -21401,7 +21401,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Magearna",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/magearna.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/magearna.png",
     "system": {
       "dexNumber": 801,
       "rank": "master",
@@ -21414,7 +21414,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-801-magearna-mega"
       }
     }
@@ -21422,7 +21422,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Magearna",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/magearna.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/magearna.png",
     "system": {
       "dexNumber": 801,
       "rank": "master",
@@ -21435,7 +21435,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-801-magearna-original-mega"
       }
     }
@@ -21443,7 +21443,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Zeraora",
     "type": "pokedex",
-    "img": "systems/pok-role-module/assets/pokemon/book/book/zeraora.png",
+    "img": "systems/pok-role-system/assets/pokemon/book/book/zeraora.png",
     "system": {
       "dexNumber": 807,
       "rank": "master",
@@ -21456,7 +21456,7 @@ export const POKEDEX_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "pokedex-807-zeraora-mega"
       }
     }

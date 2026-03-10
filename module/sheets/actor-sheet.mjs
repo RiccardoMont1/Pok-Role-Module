@@ -1,6 +1,7 @@
 import {
   ATTRIBUTE_DEFINITIONS,
   CORE_ATTRIBUTE_DEFINITIONS,
+  getSystemAssetPath,
   MOVE_CATEGORY_LABEL_BY_KEY,
   MOVE_TARGET_LABEL_BY_KEY,
   MOVE_TYPE_LABEL_BY_KEY,
@@ -16,8 +17,8 @@ import {
 import { getMoveTypeIcon } from "../move-type-icons.mjs";
 
 const TEMPLATE_BY_TYPE = Object.freeze({
-  trainer: "systems/pok-role-module/templates/actor/trainer-sheet.hbs",
-  pokemon: "systems/pok-role-module/templates/actor/pokemon-sheet.hbs"
+  trainer: getSystemAssetPath("templates/actor/trainer-sheet.hbs"),
+  pokemon: getSystemAssetPath("templates/actor/pokemon-sheet.hbs")
 });
 const CORE_ATTRIBUTE_KEYS = Object.freeze(
   CORE_ATTRIBUTE_DEFINITIONS.map((attribute) => attribute.key)
@@ -28,32 +29,32 @@ const AILMENT_DEFINITIONS = Object.freeze([
   {
     key: "sleep",
     labelPath: "POKROLE.Conditions.Sleep",
-    icon: "systems/pok-role-module/assets/ailments/asleep.svg"
+    icon: getSystemAssetPath("assets/ailments/asleep.svg")
   },
   {
     key: "burn",
     labelPath: "POKROLE.Conditions.Burn",
-    icon: "systems/pok-role-module/assets/ailments/burn.svg"
+    icon: getSystemAssetPath("assets/ailments/burn.svg")
   },
   {
     key: "frozen",
     labelPath: "POKROLE.Conditions.Frozen",
-    icon: "systems/pok-role-module/assets/ailments/frozen.svg"
+    icon: getSystemAssetPath("assets/ailments/frozen.svg")
   },
   {
     key: "paralyzed",
     labelPath: "POKROLE.Conditions.Paralyzed",
-    icon: "systems/pok-role-module/assets/ailments/paralyzed.svg"
+    icon: getSystemAssetPath("assets/ailments/paralyzed.svg")
   },
   {
     key: "poisoned",
     labelPath: "POKROLE.Conditions.Poisoned",
-    icon: "systems/pok-role-module/assets/ailments/poisoned.svg"
+    icon: getSystemAssetPath("assets/ailments/poisoned.svg")
   },
   {
     key: "fainted",
     labelPath: "POKROLE.Conditions.Fainted",
-    icon: "systems/pok-role-module/assets/ailments/fainted.svg"
+    icon: getSystemAssetPath("assets/ailments/fainted.svg")
   }
 ]);
 
@@ -62,31 +63,31 @@ const MATCHUP_GROUP_DEFINITIONS = Object.freeze([
     key: "resistHalf",
     labelPath: "POKROLE.Pokemon.ResistancesHalf",
     multiplier: 0.5,
-    multiplierIcon: "systems/pok-role-module/assets/icons/matchups/1-2.svg"
+    multiplierIcon: getSystemAssetPath("assets/icons/matchups/1-2.svg")
   },
   {
     key: "resistQuarter",
     labelPath: "POKROLE.Pokemon.ResistancesQuarter",
     multiplier: 0.25,
-    multiplierIcon: "systems/pok-role-module/assets/icons/matchups/1-4.svg"
+    multiplierIcon: getSystemAssetPath("assets/icons/matchups/1-4.svg")
   },
   {
     key: "weakDouble",
     labelPath: "POKROLE.Pokemon.VulnerabilitiesDouble",
     multiplier: 2,
-    multiplierIcon: "systems/pok-role-module/assets/icons/matchups/X2.svg"
+    multiplierIcon: getSystemAssetPath("assets/icons/matchups/X2.svg")
   },
   {
     key: "weakQuad",
     labelPath: "POKROLE.Pokemon.VulnerabilitiesQuad",
     multiplier: 4,
-    multiplierIcon: "systems/pok-role-module/assets/icons/matchups/X4.svg"
+    multiplierIcon: getSystemAssetPath("assets/icons/matchups/X4.svg")
   },
   {
     key: "immune",
     labelPath: "POKROLE.Pokemon.Immunities",
     multiplier: 0,
-    multiplierIcon: "systems/pok-role-module/assets/icons/matchups/X0.svg"
+    multiplierIcon: getSystemAssetPath("assets/icons/matchups/X0.svg")
   }
 ]);
 

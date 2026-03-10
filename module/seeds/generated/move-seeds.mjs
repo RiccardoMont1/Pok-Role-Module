@@ -2,7 +2,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pound",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -20,7 +20,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.398. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-pound"
       }
     }
@@ -28,7 +28,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Karate Chop",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -46,7 +46,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.367. Has an increased chance for a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-karate-chop"
       }
     }
@@ -54,7 +54,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Double Slap",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -72,7 +72,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.392. Hits 2-5 times in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-double-slap"
       }
     }
@@ -80,7 +80,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Comet Punch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -98,7 +98,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.390. Hits 2-5 times in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-comet-punch"
       }
     }
@@ -106,7 +106,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Punch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -124,7 +124,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.397. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mega-punch"
       }
     }
@@ -132,7 +132,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pay Day",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -150,7 +150,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.398. Scatters money on the ground worth five times the user\u2019s level."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-pay-day"
       }
     }
@@ -158,7 +158,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fire Punch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -176,7 +176,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.370. Has a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fire-punch"
       }
     }
@@ -184,7 +184,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ice Punch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -202,7 +202,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.388. Has a 10% chance to [freeze]{mechanic:freeze} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-ice-punch"
       }
     }
@@ -210,7 +210,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thunder Punch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -228,7 +228,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.361. Has a 10% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-thunder-punch"
       }
     }
@@ -236,7 +236,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scratch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -254,7 +254,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.400. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-scratch"
       }
     }
@@ -262,7 +262,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Guillotine",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -280,7 +280,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.394. Causes a one-hit KO."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-guillotine"
       }
     }
@@ -288,7 +288,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Razor Wind",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -306,7 +306,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.399. Requires a turn to charge before attacking."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-razor-wind"
       }
     }
@@ -314,7 +314,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swords Dance",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -332,7 +332,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.404. Raises the user\u2019s Attack by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-swords-dance"
       }
     }
@@ -340,7 +340,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cut",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -358,7 +358,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.391. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-cut"
       }
     }
@@ -366,7 +366,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gust",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "special",
@@ -384,7 +384,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.375. Inflicts regular damage and can hit Pok\u00e9mon in the air."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-gust"
       }
     }
@@ -392,7 +392,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wing Attack",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -410,7 +410,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.376. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-wing-attack"
       }
     }
@@ -418,7 +418,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whirlwind",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -436,7 +436,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.406. Immediately ends wild battles. Forces trainers to switch Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-whirlwind"
       }
     }
@@ -444,7 +444,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fly",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -462,7 +462,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.375. User flies high into the air, dodging all attacks, and hits next turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fly"
       }
     }
@@ -470,7 +470,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bind",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -488,7 +488,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.390. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bind"
       }
     }
@@ -496,7 +496,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -514,7 +514,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.402. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-slam"
       }
     }
@@ -522,7 +522,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vine Whip",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -540,7 +540,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.383. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-vine-whip"
       }
     }
@@ -548,7 +548,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stomp",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -566,7 +566,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.403. Has a 30% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-stomp"
       }
     }
@@ -574,7 +574,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Double Kick",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -592,7 +592,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.366. Hits twice in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-double-kick"
       }
     }
@@ -600,7 +600,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Kick",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -618,7 +618,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.397. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mega-kick"
       }
     }
@@ -626,7 +626,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jump Kick",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -644,7 +644,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.367. If the user misses, it takes half the damage it would have inflicted in recoil."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-jump-kick"
       }
     }
@@ -652,7 +652,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rolling Kick",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -670,7 +670,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.368. Has a 30% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rolling-kick"
       }
     }
@@ -678,7 +678,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sand Attack",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "support",
@@ -696,7 +696,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.385. Lowers the target\u2019s accuracy by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sand-attack"
       }
     }
@@ -704,7 +704,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Headbutt",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -722,7 +722,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.395. Has a 30% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-headbutt"
       }
     }
@@ -730,7 +730,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Horn Attack",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -748,7 +748,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.395. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-horn-attack"
       }
     }
@@ -756,7 +756,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fury Attack",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -774,7 +774,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.394. Hits 2-5 times in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fury-attack"
       }
     }
@@ -782,7 +782,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Horn Drill",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -800,7 +800,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.395. Causes a one-hit KO."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-horn-drill"
       }
     }
@@ -808,7 +808,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tackle",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -826,7 +826,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.404. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-tackle"
       }
     }
@@ -834,7 +834,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Body Slam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -852,7 +852,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.390. Has a 30% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-body-slam"
       }
     }
@@ -860,7 +860,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wrap",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -878,7 +878,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.406. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-wrap"
       }
     }
@@ -886,7 +886,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Take Down",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -904,7 +904,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.404. User receives 1/4 the damage it inflicts in recoil."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-take-down"
       }
     }
@@ -912,7 +912,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thrash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -930,7 +930,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.405. Hits every turn for 2-3 turns, then confuses the user."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-thrash"
       }
     }
@@ -938,7 +938,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Double-Edge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -956,7 +956,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.392. User receives 1/3 the damage inflicted in recoil."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-double-edge"
       }
     }
@@ -964,7 +964,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tail Whip",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -982,7 +982,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.404. Lowers the target\u2019s Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-tail-whip"
       }
     }
@@ -990,7 +990,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poison Sting",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -1008,7 +1008,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.408. Has a 30% chance to [poison]{mechanic:poison} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-poison-sting"
       }
     }
@@ -1016,7 +1016,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Twineedle",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -1034,7 +1034,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.351. Hits twice in the same turn. Has a 20% chance to poison the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-twineedle"
       }
     }
@@ -1042,7 +1042,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pin Missile",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -1060,7 +1060,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.350. Hits 2-5 times in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-pin-missile"
       }
     }
@@ -1068,7 +1068,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leer",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -1086,7 +1086,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.396. Lowers the target\u2019s Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-leer"
       }
     }
@@ -1094,7 +1094,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bite",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -1112,7 +1112,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.352. Has a 30% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bite"
       }
     }
@@ -1120,7 +1120,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Growl",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -1138,7 +1138,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.394. Lowers the target\u2019s Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-growl"
       }
     }
@@ -1146,7 +1146,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Roar",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -1164,7 +1164,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.400. Immediately ends wild battles. Forces trainers to switch Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-roar"
       }
     }
@@ -1172,7 +1172,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sing",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -1190,7 +1190,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.401. Puts the target to sleep."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sing"
       }
     }
@@ -1198,7 +1198,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Supersonic",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -1216,7 +1216,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.403. Confuses the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-supersonic"
       }
     }
@@ -1224,7 +1224,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sonic Boom",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -1242,7 +1242,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.402. Inflicts 20 points of damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sonic-boom"
       }
     }
@@ -1250,7 +1250,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Disable",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -1268,7 +1268,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.391. Disables the target\u2019s last used move for 1-8 turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-disable"
       }
     }
@@ -1276,7 +1276,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Acid",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -1294,7 +1294,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.406. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-acid"
       }
     }
@@ -1302,7 +1302,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ember",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -1320,7 +1320,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.370. Has a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-ember"
       }
     }
@@ -1328,7 +1328,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flamethrower",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -1346,7 +1346,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.371. Has a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-flamethrower"
       }
     }
@@ -1354,7 +1354,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mist",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "support",
@@ -1372,7 +1372,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.388. Protects the user\u2019s stats from being changed by enemy moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mist"
       }
     }
@@ -1380,7 +1380,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Water Gun",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -1398,7 +1398,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.423. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-water-gun"
       }
     }
@@ -1406,7 +1406,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hydro Pump",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -1424,7 +1424,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.422. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hydro-pump"
       }
     }
@@ -1432,7 +1432,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Surf",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -1450,7 +1450,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.423. Inflicts regular damage and can hit Dive users."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-surf"
       }
     }
@@ -1458,7 +1458,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ice Beam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -1476,7 +1476,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.387. Has a 10% chance to [freeze]{mechanic:freeze} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-ice-beam"
       }
     }
@@ -1484,7 +1484,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blizzard",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -1502,7 +1502,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.386. Has a 10% chance to freeze the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-blizzard"
       }
     }
@@ -1510,7 +1510,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psybeam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -1528,7 +1528,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.413. Has a 10% chance to confuse the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-psybeam"
       }
     }
@@ -1536,7 +1536,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bubble Beam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -1554,7 +1554,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.421. Has a 10% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bubble-beam"
       }
     }
@@ -1562,7 +1562,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aurora Beam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -1580,7 +1580,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.386. Has a 10% chance to lower the target\u2019s Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-aurora-beam"
       }
     }
@@ -1588,7 +1588,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hyper Beam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -1606,7 +1606,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.395. User foregoes its next turn to recharge."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hyper-beam"
       }
     }
@@ -1614,7 +1614,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Peck",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -1632,7 +1632,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.375. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-peck"
       }
     }
@@ -1640,7 +1640,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drill Peck",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -1658,7 +1658,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.374. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-drill-peck"
       }
     }
@@ -1666,7 +1666,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Submission",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -1684,7 +1684,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.369. User receives 1/4 the damage it inflicts in recoil."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-submission"
       }
     }
@@ -1692,7 +1692,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Low Kick",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -1710,7 +1710,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.367. Inflicts more damage to heavier targets, with a maximum of 120 power."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-low-kick"
       }
     }
@@ -1718,7 +1718,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Counter",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -1736,7 +1736,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.365. Inflicts twice the damage the user received from the last physical hit it took."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-counter"
       }
     }
@@ -1744,7 +1744,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seismic Toss",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -1762,7 +1762,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.368. Inflicts damage equal to the user\u2019s level."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-seismic-toss"
       }
     }
@@ -1770,7 +1770,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Strength",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -1788,7 +1788,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.403. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-strength"
       }
     }
@@ -1796,7 +1796,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Absorb",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -1814,7 +1814,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.378. Drains half the damage inflicted to heal the user."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-absorb"
       }
     }
@@ -1822,7 +1822,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mega Drain",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -1840,7 +1840,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.381. Drains half the damage inflicted to heal the user."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mega-drain"
       }
     }
@@ -1848,7 +1848,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leech Seed",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -1866,7 +1866,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.381. Seeds the target, stealing HP from it every turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-leech-seed"
       }
     }
@@ -1874,7 +1874,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Growth",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -1892,7 +1892,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.394. Raises the user\u2019s Attack and Special Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-growth"
       }
     }
@@ -1900,7 +1900,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Razor Leaf",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -1918,7 +1918,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.381. Has an increased chance for a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-razor-leaf"
       }
     }
@@ -1926,7 +1926,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Solar Beam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -1944,7 +1944,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.382. Requires a turn to charge before attacking."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-solar-beam"
       }
     }
@@ -1952,7 +1952,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poison Powder",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -1970,7 +1970,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.408. Poisons the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-poison-powder"
       }
     }
@@ -1978,7 +1978,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stun Spore",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -1996,7 +1996,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.383. Paralyzes the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-stun-spore"
       }
     }
@@ -2004,7 +2004,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sleep Powder",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -2022,7 +2022,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.382. Puts the target to sleep."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sleep-powder"
       }
     }
@@ -2030,7 +2030,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Petal Dance",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -2048,7 +2048,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.381. Hits every turn for 2-3 turns, then confuses the user."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-petal-dance"
       }
     }
@@ -2056,7 +2056,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "String Shot",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -2074,7 +2074,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.351. Lowers the target\u2019s Speed by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-string-shot"
       }
     }
@@ -2082,7 +2082,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Rage",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -2100,7 +2100,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.357. Inflicts 40 points of damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dragon-rage"
       }
     }
@@ -2108,7 +2108,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fire Spin",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -2126,7 +2126,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.371. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fire-spin"
       }
     }
@@ -2134,7 +2134,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thunder Shock",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -2152,7 +2152,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.361. Has a 10% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-thunder-shock"
       }
     }
@@ -2160,7 +2160,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thunderbolt",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -2178,7 +2178,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.346. Has a 10% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-thunderbolt"
       }
     }
@@ -2186,7 +2186,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thunder Wave",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -2204,7 +2204,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.361. Paralyzes the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-thunder-wave"
       }
     }
@@ -2212,7 +2212,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thunder",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -2230,7 +2230,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.361. Has a 30% chance to paralyze the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-thunder"
       }
     }
@@ -2238,7 +2238,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Throw",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -2256,7 +2256,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.417. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rock-throw"
       }
     }
@@ -2264,7 +2264,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Earthquake",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -2282,7 +2282,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.384. Inflicts regular damage and can hit Dig users."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-earthquake"
       }
     }
@@ -2290,7 +2290,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fissure",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -2308,7 +2308,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.384. Causes a one-hit KO."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fissure"
       }
     }
@@ -2316,7 +2316,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dig",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -2334,7 +2334,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.384. User digs underground, dodging all attacks, and hits next turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dig"
       }
     }
@@ -2342,7 +2342,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxic",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -2360,7 +2360,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.409. Badly poisons the target, inflicting more damage every turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-toxic"
       }
     }
@@ -2368,7 +2368,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Confusion",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -2386,7 +2386,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.410. Has a 10% chance to confuse the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-confusion"
       }
     }
@@ -2394,7 +2394,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psychic",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -2412,7 +2412,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.364. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-psychic"
       }
     }
@@ -2420,7 +2420,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hypnosis",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -2438,7 +2438,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.411. Puts the target to sleep."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hypnosis"
       }
     }
@@ -2446,7 +2446,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meditate",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -2464,7 +2464,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.412. Raises the user\u2019s Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-meditate"
       }
     }
@@ -2472,7 +2472,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Agility",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -2490,7 +2490,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.409. Raises the user\u2019s Speed by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-agility"
       }
     }
@@ -2498,7 +2498,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quick Attack",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -2516,7 +2516,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.399. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-quick-attack"
       }
     }
@@ -2524,7 +2524,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rage",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -2542,7 +2542,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.399. If the user is hit after using this move, its Attack rises by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rage"
       }
     }
@@ -2550,7 +2550,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Teleport",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -2568,7 +2568,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.415. Immediately ends wild battles. No effect otherwise."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-teleport"
       }
     }
@@ -2576,7 +2576,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Night Shade",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "special",
@@ -2594,7 +2594,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.377. Inflicts damage equal to the user\u2019s level."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-night-shade"
       }
     }
@@ -2602,7 +2602,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mimic",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2620,7 +2620,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.397. Copies the target\u2019s last used move."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mimic"
       }
     }
@@ -2628,7 +2628,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Screech",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2646,7 +2646,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.401. Lowers the target\u2019s Defense by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-screech"
       }
     }
@@ -2654,7 +2654,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Double Team",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2672,7 +2672,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.392. Raises the user\u2019s evasion by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-double-team"
       }
     }
@@ -2680,7 +2680,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Recover",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2698,7 +2698,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.399. Heals the user by half its max HP."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-recover"
       }
     }
@@ -2706,7 +2706,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Harden",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2724,7 +2724,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.395. Raises the user\u2019s Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-harden"
       }
     }
@@ -2732,7 +2732,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Minimize",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2750,7 +2750,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.397. Raises the user\u2019s evasion by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-minimize"
       }
     }
@@ -2758,7 +2758,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smokescreen",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2776,7 +2776,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.402. Lowers the target\u2019s accuracy by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-smokescreen"
       }
     }
@@ -2784,7 +2784,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Confuse Ray",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "support",
@@ -2802,7 +2802,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.376. Confuses the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-confuse-ray"
       }
     }
@@ -2810,7 +2810,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Withdraw",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "support",
@@ -2828,7 +2828,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.424. Raises the user\u2019s Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-withdraw"
       }
     }
@@ -2836,7 +2836,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Defense Curl",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2854,7 +2854,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.391. Raises user\u2019s Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-defense-curl"
       }
     }
@@ -2862,7 +2862,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Barrier",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -2880,7 +2880,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.410. Raises the user\u2019s Defense by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-barrier"
       }
     }
@@ -2888,7 +2888,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Light Screen",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -2906,7 +2906,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.412. Reduces damage from special attacks by 50% for five turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-light-screen"
       }
     }
@@ -2914,7 +2914,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Haze",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "support",
@@ -2932,7 +2932,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.387. Resets all Pok\u00e9mon\u2019s stats, accuracy, and evasion."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-haze"
       }
     }
@@ -2940,7 +2940,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Reflect",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -2958,7 +2958,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.414. Reduces damage from physical attacks by half."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-reflect"
       }
     }
@@ -2966,7 +2966,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Focus Energy",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -2984,7 +2984,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.393. Increases the user\u2019s chance to score a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-focus-energy"
       }
     }
@@ -2992,7 +2992,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bide",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3010,7 +3010,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.389. User waits for two turns, then hits back for twice the damage it took."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bide"
       }
     }
@@ -3018,7 +3018,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metronome",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -3036,7 +3036,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.397. Randomly selects and uses any move in the game."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-metronome"
       }
     }
@@ -3044,7 +3044,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mirror Move",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "support",
@@ -3062,7 +3062,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.375. Uses the target\u2019s last used move."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mirror-move"
       }
     }
@@ -3070,7 +3070,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Self-Destruct",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3088,7 +3088,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.401. User faints."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-self-destruct"
       }
     }
@@ -3096,7 +3096,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Egg Bomb",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3114,7 +3114,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.392. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-egg-bomb"
       }
     }
@@ -3122,7 +3122,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lick",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -3140,7 +3140,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.377. Has a 30% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-lick"
       }
     }
@@ -3148,7 +3148,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smog",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -3166,7 +3166,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.408. Has a 40% chance to [poison]{mechanic:poison} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-smog"
       }
     }
@@ -3174,7 +3174,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sludge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -3192,7 +3192,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.408. Has a 30% chance to [poison]{mechanic:poison} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sludge"
       }
     }
@@ -3200,7 +3200,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bone Club",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -3218,7 +3218,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.383. Has a 10% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bone-club"
       }
     }
@@ -3226,7 +3226,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fire Blast",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -3244,7 +3244,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.370. Has a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fire-blast"
       }
     }
@@ -3252,7 +3252,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Waterfall",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -3270,7 +3270,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.424. Has a 20% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-waterfall"
       }
     }
@@ -3278,7 +3278,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clamp",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -3296,7 +3296,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.421. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-clamp"
       }
     }
@@ -3304,7 +3304,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swift",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -3322,7 +3322,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.404. Never misses."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-swift"
       }
     }
@@ -3330,7 +3330,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skull Bash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3348,7 +3348,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.401. Raises the user\u2019s Defense by one stage. User charges for one turn before attacking."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-skull-bash"
       }
     }
@@ -3356,7 +3356,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spike Cannon",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3374,7 +3374,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.402. Hits 2-5 times in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-spike-cannon"
       }
     }
@@ -3382,7 +3382,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Constrict",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3400,7 +3400,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.390. Has a 10% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-constrict"
       }
     }
@@ -3408,7 +3408,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Amnesia",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -3426,7 +3426,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.409. Raises the user\u2019s Special Defense by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-amnesia"
       }
     }
@@ -3434,7 +3434,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Kinesis",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -3452,7 +3452,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.412. Lowers the target\u2019s accuracy by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-kinesis"
       }
     }
@@ -3460,7 +3460,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Soft-Boiled",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -3478,7 +3478,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.402. Heals the user by half its max HP."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-soft-boiled"
       }
     }
@@ -3486,7 +3486,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "High Jump Kick",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -3504,7 +3504,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.366. If the user misses, it takes half the damage it would have inflicted in recoil."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-high-jump-kick"
       }
     }
@@ -3512,7 +3512,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Glare",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -3530,7 +3530,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.394. Paralyzes the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-glare"
       }
     }
@@ -3538,7 +3538,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dream Eater",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -3556,7 +3556,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.410. Only works on sleeping Pok\u00e9mon. Drains half the damage inflicted to heal the user."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dream-eater"
       }
     }
@@ -3564,7 +3564,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poison Gas",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -3582,7 +3582,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.408. Poisons the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-poison-gas"
       }
     }
@@ -3590,7 +3590,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Barrage",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3608,7 +3608,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.389. Hits 2-5 times in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-barrage"
       }
     }
@@ -3616,7 +3616,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leech Life",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -3634,7 +3634,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.350. Drains half the damage inflicted to heal the user."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-leech-life"
       }
     }
@@ -3642,7 +3642,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lovely Kiss",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -3660,7 +3660,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.396. Puts the target to sleep."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-lovely-kiss"
       }
     }
@@ -3668,7 +3668,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sky Attack",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -3686,7 +3686,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.375. User charges for one turn before attacking. Has a 30% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sky-attack"
       }
     }
@@ -3694,7 +3694,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Transform",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -3712,7 +3712,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.405. User becomes a copy of the target until it leaves battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-transform"
       }
     }
@@ -3720,7 +3720,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bubble",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -3738,7 +3738,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.421. Has a 10% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bubble"
       }
     }
@@ -3746,7 +3746,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dizzy Punch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3764,7 +3764,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.392. Has a 20% chance to confuse the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dizzy-punch"
       }
     }
@@ -3772,7 +3772,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spore",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -3790,7 +3790,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.382. Puts the target to sleep."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-spore"
       }
     }
@@ -3798,7 +3798,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -3816,7 +3816,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.393. Lowers the target\u2019s accuracy by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-flash"
       }
     }
@@ -3824,7 +3824,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psywave",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -3842,7 +3842,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.414. Inflicts damage between 50% and 150% of the user\u2019s level."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-psywave"
       }
     }
@@ -3850,7 +3850,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Splash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -3868,7 +3868,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.403. Does nothing."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-splash"
       }
     }
@@ -3876,7 +3876,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Acid Armor",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -3894,7 +3894,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.407. Raises the user\u2019s Defense by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-acid-armor"
       }
     }
@@ -3902,7 +3902,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crabhammer",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -3920,7 +3920,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.421. Has an increased chance for a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-crabhammer"
       }
     }
@@ -3928,7 +3928,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Explosion",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3946,7 +3946,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.393. User faints."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-explosion"
       }
     }
@@ -3954,7 +3954,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fury Swipes",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -3972,7 +3972,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.394. Hits 2-5 times in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fury-swipes"
       }
     }
@@ -3980,7 +3980,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bonemerang",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -3998,7 +3998,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.384. Hits twice in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bonemerang"
       }
     }
@@ -4006,7 +4006,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rest",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -4024,7 +4024,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.414. User sleeps for two turns, completely healing itself."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rest"
       }
     }
@@ -4032,7 +4032,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Slide",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -4050,7 +4050,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.416. Has a 30% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rock-slide"
       }
     }
@@ -4058,7 +4058,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hyper Fang",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -4076,7 +4076,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.396. Has a 10% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hyper-fang"
       }
     }
@@ -4084,7 +4084,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sharpen",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4102,7 +4102,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.401. Raises the user\u2019s Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sharpen"
       }
     }
@@ -4110,7 +4110,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Conversion",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4128,7 +4128,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.391. User\u2019s type changes to the type of one of its moves at random."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-conversion"
       }
     }
@@ -4136,7 +4136,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tri Attack",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -4154,7 +4154,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.405. Has a 20% chance to [burn]{mechanic:burn}, [freeze]{mechanic:freeze}, or [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-tri-attack"
       }
     }
@@ -4162,7 +4162,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Super Fang",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -4180,7 +4180,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.403. Inflicts damage equal to half the target\u2019s HP."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-super-fang"
       }
     }
@@ -4188,7 +4188,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -4206,7 +4206,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.402. Has an increased chance for a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-slash"
       }
     }
@@ -4214,7 +4214,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Substitute",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4232,7 +4232,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.403. Transfers 1/4 of the user\u2019s max HP into a doll, protecting the user from further damage or status changes until it breaks."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-substitute"
       }
     }
@@ -4240,7 +4240,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Struggle",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -4258,7 +4258,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.424. User takes 1/4 its max HP in recoil."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-struggle"
       }
     }
@@ -4266,7 +4266,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sketch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4284,7 +4284,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.401. Permanently becomes the target\u2019s last used move."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sketch"
       }
     }
@@ -4292,7 +4292,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Triple Kick",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -4310,7 +4310,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.369. Hits three times, increasing power by 100% with each successful hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-triple-kick"
       }
     }
@@ -4318,7 +4318,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thief",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -4336,7 +4336,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.355. Takes the target\u2019s item."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-thief"
       }
     }
@@ -4344,7 +4344,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spider Web",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -4362,7 +4362,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.351. Prevents the target from leaving battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-spider-web"
       }
     }
@@ -4370,7 +4370,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mind Reader",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4388,7 +4388,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.397. Ensures that the user\u2019s next move will hit the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mind-reader"
       }
     }
@@ -4396,7 +4396,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nightmare",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "support",
@@ -4414,7 +4414,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.377. Target loses 1/4 its max HP every turn as long as it\u2019s asleep."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-nightmare"
       }
     }
@@ -4422,7 +4422,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flame Wheel",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -4440,7 +4440,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.371. Has a 10% chance to [burn]{mechanic:burn} the target. Lets frozen Pok\u00e9mon thaw themselves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-flame-wheel"
       }
     }
@@ -4448,7 +4448,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snore",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -4466,7 +4466,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.402. Has a 30% chance to make the target flinch. Only works if the user is sleeping."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-snore"
       }
     }
@@ -4474,7 +4474,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Curse",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "support",
@@ -4492,7 +4492,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.376. Ghosts pay half their max HP to hurt the target every turn. Others decrease Speed but raise Attack and Defense."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-curse"
       }
     }
@@ -4500,7 +4500,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flail",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -4518,7 +4518,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.393. Inflicts more damage when the user has less HP remaining, with a maximum of 200 power."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-flail"
       }
     }
@@ -4526,7 +4526,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Conversion 2",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4544,7 +4544,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.391. Changes the user\u2019s type to a random type either resistant or immune to the last move used against it."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-conversion-2"
       }
     }
@@ -4552,7 +4552,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aeroblast",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "special",
@@ -4570,7 +4570,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.373. Has an increased chance for a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-aeroblast"
       }
     }
@@ -4578,7 +4578,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cotton Spore",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -4596,7 +4596,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.379. Lowers the target\u2019s Speed by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-cotton-spore"
       }
     }
@@ -4604,7 +4604,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Reversal",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -4622,7 +4622,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.368. Inflicts more damage when the user has less HP remaining, with a maximum of 200 power."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-reversal"
       }
     }
@@ -4630,7 +4630,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spite",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "support",
@@ -4648,7 +4648,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.378. Lowers the PP of the target\u2019s last used move by 4."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-spite"
       }
     }
@@ -4656,7 +4656,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Powder Snow",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -4674,7 +4674,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.388. Has a 10% chance to [freeze]{mechanic:freeze} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-powder-snow"
       }
     }
@@ -4682,7 +4682,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Protect",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4700,7 +4700,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.399. Prevents any moves from hitting the user this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-protect"
       }
     }
@@ -4708,7 +4708,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mach Punch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -4726,7 +4726,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.367. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mach-punch"
       }
     }
@@ -4734,7 +4734,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scary Face",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4752,7 +4752,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.400. Lowers the target\u2019s Speed by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-scary-face"
       }
     }
@@ -4760,7 +4760,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Feint Attack",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -4778,7 +4778,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.353. Never misses."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-feint-attack"
       }
     }
@@ -4786,7 +4786,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sweet Kiss",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -4804,7 +4804,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.364. Confuses the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sweet-kiss"
       }
     }
@@ -4812,7 +4812,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Belly Drum",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4830,7 +4830,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.389. User pays half its max HP to max out its Attack."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-belly-drum"
       }
     }
@@ -4838,7 +4838,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sludge Bomb",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -4856,7 +4856,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.408. Has a 30% chance to [poison]{mechanic:poison} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sludge-bomb"
       }
     }
@@ -4864,7 +4864,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mud-Slap",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "special",
@@ -4882,7 +4882,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.385. Has a 100% chance to lower the target\u2019s accuracy by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mud-slap"
       }
     }
@@ -4890,7 +4890,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Octazooka",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -4908,7 +4908,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.422. Has a 50% chance to lower the target\u2019s accuracy by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-octazooka"
       }
     }
@@ -4916,7 +4916,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spikes",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "support",
@@ -4934,7 +4934,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.385. Scatters Spikes, hurting opposing Pok\u00e9mon that switch in."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-spikes"
       }
     }
@@ -4942,7 +4942,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zap Cannon",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -4960,7 +4960,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.361. Has a 100% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-zap-cannon"
       }
     }
@@ -4968,7 +4968,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Foresight",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -4986,7 +4986,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.394. Forces the target to have no Evade, and allows it to be hit by Normal and Fighting moves even if it\u2019s a Ghost."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-foresight"
       }
     }
@@ -4994,7 +4994,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Destiny Bond",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "support",
@@ -5012,7 +5012,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.376. If the user faints this turn, the target automatically will, too."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-destiny-bond"
       }
     }
@@ -5020,7 +5020,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Perish Song",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5038,7 +5038,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.398. User and target both faint after three turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-perish-song"
       }
     }
@@ -5046,7 +5046,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Icy Wind",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -5064,7 +5064,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.388. Has a 100% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-icy-wind"
       }
     }
@@ -5072,7 +5072,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Detect",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "support",
@@ -5090,7 +5090,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.365. Prevents any moves from hitting the user this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-detect"
       }
     }
@@ -5098,7 +5098,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bone Rush",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -5116,7 +5116,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.383. Hits 2-5 times in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bone-rush"
       }
     }
@@ -5124,7 +5124,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lock-On",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5142,7 +5142,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.396. Ensures that the user\u2019s next move will hit the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-lock-on"
       }
     }
@@ -5150,7 +5150,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Outrage",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -5168,7 +5168,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.358. Hits every turn for 2-3 turns, then confuses the user."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-outrage"
       }
     }
@@ -5176,7 +5176,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sandstorm",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "support",
@@ -5194,7 +5194,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.417. Changes the weather to a sandstorm for five turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sandstorm"
       }
     }
@@ -5202,7 +5202,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Giga Drain",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -5220,7 +5220,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.380. Drains half the damage inflicted to heal the user."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-giga-drain"
       }
     }
@@ -5228,7 +5228,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Endure",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5246,7 +5246,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.392. Prevents the user\u2019s HP from lowering below 1 this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-endure"
       }
     }
@@ -5254,7 +5254,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charm",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -5272,7 +5272,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.362. Lowers the target\u2019s Attack by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-charm"
       }
     }
@@ -5280,7 +5280,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rollout",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -5298,7 +5298,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.417. Power doubles every turn this move is used in succession after the first, resetting after five turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rollout"
       }
     }
@@ -5306,7 +5306,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "False Swipe",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -5324,7 +5324,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.393. Cannot lower the target\u2019s HP below 1."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-false-swipe"
       }
     }
@@ -5332,7 +5332,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swagger",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5350,7 +5350,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.403. Raises the target\u2019s Attack by two stages and confuses the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-swagger"
       }
     }
@@ -5358,7 +5358,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Milk Drink",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5376,7 +5376,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.397. Heals the user by half its max HP."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-milk-drink"
       }
     }
@@ -5384,7 +5384,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spark",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -5402,7 +5402,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.360. Has a 30% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-spark"
       }
     }
@@ -5410,7 +5410,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fury Cutter",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -5428,7 +5428,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.349. Power doubles every turn this move is used in succession after the first, maxing out after five turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fury-cutter"
       }
     }
@@ -5436,7 +5436,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Steel Wing",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -5454,7 +5454,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.420. Has a 10% chance to raise the user\u2019s Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-steel-wing"
       }
     }
@@ -5462,7 +5462,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mean Look",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5480,7 +5480,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.397. Prevents the target from leaving battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mean-look"
       }
     }
@@ -5488,7 +5488,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Attract",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5506,7 +5506,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.389. Target falls in love if it has the opposite gender, and has a 50% chance to refuse attacking the user."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-attract"
       }
     }
@@ -5514,7 +5514,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sleep Talk",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5532,7 +5532,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.402. Randomly uses one of the user\u2019s other three moves. Only works if the user is sleeping."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sleep-talk"
       }
     }
@@ -5540,7 +5540,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heal Bell",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5558,7 +5558,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.395. Cures the entire party of major status effects."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-heal-bell"
       }
     }
@@ -5566,7 +5566,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Return",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -5584,7 +5584,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.400. Power increases with happiness, up to a maximum of 102."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-return"
       }
     }
@@ -5592,7 +5592,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Present",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -5610,7 +5610,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.398. Randomly inflicts damage with power from 40 to 120 or heals the target for 1/4 its max HP."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-present"
       }
     }
@@ -5618,7 +5618,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Frustration",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -5636,7 +5636,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.394. Power increases as happiness decreases, up to a maximum of 102."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-frustration"
       }
     }
@@ -5644,7 +5644,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Safeguard",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5662,7 +5662,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.400. Protects the user\u2019s field from major status ailments and confusion for five turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-safeguard"
       }
     }
@@ -5670,7 +5670,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pain Split",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5688,7 +5688,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.398. Sets the user\u2019s and targets\u2019s HP to the average of their current HP."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-pain-split"
       }
     }
@@ -5696,7 +5696,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sacred Fire",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -5714,7 +5714,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.372. Has a 50% chance to [burn]{mechanic:burn} the target. Lets frozen Pok\u00e9mon thaw themselves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sacred-fire"
       }
     }
@@ -5722,7 +5722,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magnitude",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -5740,7 +5740,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.384. Power varies randomly from 10 to 150."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-magnitude"
       }
     }
@@ -5748,7 +5748,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dynamic Punch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -5766,7 +5766,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.366. Has a 100% chance to confuse the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dynamic-punch"
       }
     }
@@ -5774,7 +5774,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Megahorn",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -5792,7 +5792,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.350. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-megahorn"
       }
     }
@@ -5800,7 +5800,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Breath",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -5818,7 +5818,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.356. Has a 30% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dragon-breath"
       }
     }
@@ -5826,7 +5826,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Baton Pass",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5844,7 +5844,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.389. Allows the trainer to switch out the user and pass effects along to its replacement."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-baton-pass"
       }
     }
@@ -5852,7 +5852,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Encore",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5870,7 +5870,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.392. Forces the target to repeat its last used move every turn for 2 to 6 turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-encore"
       }
     }
@@ -5878,7 +5878,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pursuit",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -5896,7 +5896,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.355. Has double power against, and can hit, Pok\u00e9mon attempting to switch out."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-pursuit"
       }
     }
@@ -5904,7 +5904,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rapid Spin",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -5922,7 +5922,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.399. Frees the user from binding moves, removes Leech Seed, and blows away Spikes."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rapid-spin"
       }
     }
@@ -5930,7 +5930,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sweet Scent",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -5948,7 +5948,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.404. Lowers the target\u2019s evasion by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sweet-scent"
       }
     }
@@ -5956,7 +5956,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Iron Tail",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -5974,7 +5974,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.419. Has a 30% chance to lower the target\u2019s Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-iron-tail"
       }
     }
@@ -5982,7 +5982,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metal Claw",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -6000,7 +6000,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.420. Has a 10% chance to raise the user\u2019s Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-metal-claw"
       }
     }
@@ -6008,7 +6008,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vital Throw",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -6026,7 +6026,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.369. Never misses."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-vital-throw"
       }
     }
@@ -6034,7 +6034,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Morning Sun",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -6052,7 +6052,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.397. Heals the user by half its max HP. Affected by weather."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-morning-sun"
       }
     }
@@ -6060,7 +6060,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Synthesis",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -6078,7 +6078,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.383. Heals the user by half its max HP. Affected by weather."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-synthesis"
       }
     }
@@ -6086,7 +6086,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Moonlight",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -6104,7 +6104,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.364. Heals the user by half its max HP. Affected by weather."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-moonlight"
       }
     }
@@ -6112,7 +6112,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hidden Power",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -6130,7 +6130,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.395. Power and type depend upon user\u2019s IVs. Power can range from 30 to 70."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hidden-power"
       }
     }
@@ -6138,7 +6138,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cross Chop",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -6156,7 +6156,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.365. Has an increased chance for a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-cross-chop"
       }
     }
@@ -6164,7 +6164,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Twister",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -6182,7 +6182,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.358. Has a 20% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-twister"
       }
     }
@@ -6190,7 +6190,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rain Dance",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "support",
@@ -6208,7 +6208,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.422. Changes the weather to rain for five turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rain-dance"
       }
     }
@@ -6216,7 +6216,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sunny Day",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "support",
@@ -6234,7 +6234,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.373. Changes the weather to sunny for five turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sunny-day"
       }
     }
@@ -6242,7 +6242,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crunch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -6260,7 +6260,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.352. Has a 20% chance to lower the target\u2019s Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-crunch"
       }
     }
@@ -6268,7 +6268,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mirror Coat",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -6286,7 +6286,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.412. Inflicts twice the damage the user received from the last special hit it took."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mirror-coat"
       }
     }
@@ -6294,7 +6294,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psych Up",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -6312,7 +6312,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.399. Discards the user\u2019s stat changes and copies the target\u2019s."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-psych-up"
       }
     }
@@ -6320,7 +6320,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Extreme Speed",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -6338,7 +6338,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.393. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-extreme-speed"
       }
     }
@@ -6346,7 +6346,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ancient Power",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "special",
@@ -6364,7 +6364,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.416. Has a 10% chance to raise all of the user\u2019s stats by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-ancient-power"
       }
     }
@@ -6372,7 +6372,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shadow Ball",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "special",
@@ -6390,7 +6390,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.377. Has a 20% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-shadow-ball"
       }
     }
@@ -6398,7 +6398,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Future Sight",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -6416,7 +6416,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.410. Hits the target two turns later."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-future-sight"
       }
     }
@@ -6424,7 +6424,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Smash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -6442,7 +6442,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.368. Has a 50% chance to lower the target\u2019s Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rock-smash"
       }
     }
@@ -6450,7 +6450,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Whirlpool",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -6468,7 +6468,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.424. Prevents the target from leaving battle and inflicts 1/16 its max HP in damage for 2-5 turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-whirlpool"
       }
     }
@@ -6476,7 +6476,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beat Up",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -6494,7 +6494,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.352. Hits once for every conscious Pok\u00e9mon the trainer has."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-beat-up"
       }
     }
@@ -6502,7 +6502,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fake Out",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -6520,7 +6520,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.393. Can only be used as the first move after the user enters battle. Causes the target to flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fake-out"
       }
     }
@@ -6528,7 +6528,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Uproar",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -6546,7 +6546,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.405. Forced to use this move for several turns. Pok\u00e9mon cannot fall asleep in that time."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-uproar"
       }
     }
@@ -6554,7 +6554,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stockpile",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -6572,7 +6572,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.403. Stores energy up to three times for use with Spit Up and Swallow."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-stockpile"
       }
     }
@@ -6580,7 +6580,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spit Up",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -6598,7 +6598,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.402. Power is 100 times the amount of energy Stockpiled."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-spit-up"
       }
     }
@@ -6606,7 +6606,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Swallow",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -6624,7 +6624,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.404. Recovers 1/4 HP after one Stockpile, 1/2 HP after two Stockpiles, or full HP after three Stockpiles."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-swallow"
       }
     }
@@ -6632,7 +6632,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heat Wave",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -6650,7 +6650,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.371. Has a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-heat-wave"
       }
     }
@@ -6658,7 +6658,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hail",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "support",
@@ -6676,7 +6676,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.387. Changes the weather to a hailstorm for five turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hail"
       }
     }
@@ -6684,7 +6684,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Torment",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -6702,7 +6702,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.356. Prevents the target from using the same move twice in a row."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-torment"
       }
     }
@@ -6710,7 +6710,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flatter",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -6728,7 +6728,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.353. Raises the target\u2019s Special Attack by one stage and confuses the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-flatter"
       }
     }
@@ -6736,7 +6736,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Will-O-Wisp",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "support",
@@ -6754,7 +6754,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.373. Burns the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-will-o-wisp"
       }
     }
@@ -6762,7 +6762,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Memento",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -6780,7 +6780,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.354. Lowers the target\u2019s Attack and Special Attack by two stages. User faints."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-memento"
       }
     }
@@ -6788,7 +6788,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Facade",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -6806,7 +6806,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.393. Power doubles if user is burned, paralyzed, or poisoned."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-facade"
       }
     }
@@ -6814,7 +6814,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Focus Punch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -6832,7 +6832,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.366. If the user takes damage before attacking, the attack is canceled."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-focus-punch"
       }
     }
@@ -6840,7 +6840,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smelling Salts",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -6858,7 +6858,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.402. If the target is paralyzed, inflicts double damage and cures the paralysis."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-smelling-salts"
       }
     }
@@ -6866,7 +6866,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Follow Me",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -6884,7 +6884,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.394. Redirects the target\u2019s single-target effects to the user for this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-follow-me"
       }
     }
@@ -6892,7 +6892,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nature Power",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -6910,7 +6910,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.398. Uses a move which depends upon the terrain."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-nature-power"
       }
     }
@@ -6918,7 +6918,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -6936,7 +6936,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.359. Raises the user\u2019s Special Defense by one stage. User\u2019s Electric moves have doubled power next turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-charge"
       }
     }
@@ -6944,7 +6944,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Taunt",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -6962,7 +6962,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.355. For the next few turns, the target can only use damaging moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-taunt"
       }
     }
@@ -6970,7 +6970,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Helping Hand",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -6988,7 +6988,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.395. Ally\u2019s next move inflicts half more damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-helping-hand"
       }
     }
@@ -6996,7 +6996,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trick",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -7014,7 +7014,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.415. User and target swap items."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-trick"
       }
     }
@@ -7022,7 +7022,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Role Play",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -7040,7 +7040,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.414. Copies the target\u2019s ability."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-role-play"
       }
     }
@@ -7048,7 +7048,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wish",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -7066,7 +7066,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.406. User will recover half its max HP at the end of the next turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-wish"
       }
     }
@@ -7074,7 +7074,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Assist",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -7092,7 +7092,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.389. Randomly selects and uses one of the trainer\u2019s other Pok\u00e9mon\u2019s moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-assist"
       }
     }
@@ -7100,7 +7100,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ingrain",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -7118,7 +7118,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.380. Prevents the user from leaving battle. User regains 1/16 of its max HP every turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-ingrain"
       }
     }
@@ -7126,7 +7126,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Superpower",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -7144,7 +7144,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.369. Lowers the user\u2019s Attack and Defense by one stage after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-superpower"
       }
     }
@@ -7152,7 +7152,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magic Coat",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -7170,7 +7170,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.412. Reflects back the first effect move used on the user this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-magic-coat"
       }
     }
@@ -7178,7 +7178,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Recycle",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -7196,7 +7196,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.399. User recovers the item it last used up."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-recycle"
       }
     }
@@ -7204,7 +7204,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Revenge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -7222,7 +7222,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.368. Inflicts double damage if the user takes damage before attacking this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-revenge"
       }
     }
@@ -7230,7 +7230,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Brick Break",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -7248,7 +7248,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.365. Destroys Reflect and Light Screen."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-brick-break"
       }
     }
@@ -7256,7 +7256,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Yawn",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -7274,7 +7274,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.406. Target sleeps at the end of the next turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-yawn"
       }
     }
@@ -7282,7 +7282,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Knock Off",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -7300,7 +7300,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.354. Target drops its held item."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-knock-off"
       }
     }
@@ -7308,7 +7308,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Endeavor",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -7326,7 +7326,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.392. Lowers the target\u2019s HP to equal the user\u2019s."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-endeavor"
       }
     }
@@ -7334,7 +7334,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eruption",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -7352,7 +7352,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.370. Inflicts more damage when the user has more HP remaining, with a maximum of 150 power."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-eruption"
       }
     }
@@ -7360,7 +7360,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Skill Swap",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -7378,7 +7378,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.414. User and target swap abilities."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-skill-swap"
       }
     }
@@ -7386,7 +7386,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Imprison",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -7404,7 +7404,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.411. Prevents the target from using any moves that the user also knows."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-imprison"
       }
     }
@@ -7412,7 +7412,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Refresh",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -7430,7 +7430,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.399. Cleanses the user of a burn, paralysis, or poison."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-refresh"
       }
     }
@@ -7438,7 +7438,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grudge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "support",
@@ -7456,7 +7456,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.376. If the user faints this turn, the PP of the move that fainted it drops to 0."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-grudge"
       }
     }
@@ -7464,7 +7464,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snatch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -7482,7 +7482,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.355. Steals the target\u2019s move, if it\u2019s self-targeted."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-snatch"
       }
     }
@@ -7490,7 +7490,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Secret Power",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -7508,7 +7508,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.401. Has a 30% chance to inflict a status effect which depends upon the terrain."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-secret-power"
       }
     }
@@ -7516,7 +7516,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dive",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -7534,7 +7534,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.422. User dives underwater, dodging all attacks, and hits next turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dive"
       }
     }
@@ -7542,7 +7542,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Arm Thrust",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -7560,7 +7560,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.365. Hits 2-5 times in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-arm-thrust"
       }
     }
@@ -7568,7 +7568,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Camouflage",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -7586,7 +7586,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.390. User\u2019s type changes to match the terrain."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-camouflage"
       }
     }
@@ -7594,7 +7594,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tail Glow",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -7612,7 +7612,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.351. Raises the user\u2019s Special Attack by three stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-tail-glow"
       }
     }
@@ -7620,7 +7620,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Luster Purge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -7638,7 +7638,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.412. Has a 50% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-luster-purge"
       }
     }
@@ -7646,7 +7646,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mist Ball",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -7664,7 +7664,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.413. Has a 50% chance to lower the target\u2019s Special Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mist-ball"
       }
     }
@@ -7672,7 +7672,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Feather Dance",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "support",
@@ -7690,7 +7690,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.374. Lowers the target\u2019s Attack by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-feather-dance"
       }
     }
@@ -7698,7 +7698,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Teeter Dance",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "support",
@@ -7716,7 +7716,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.405. Confuses the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-teeter-dance"
       }
     }
@@ -7724,7 +7724,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blaze Kick",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -7742,7 +7742,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.369. Has an increased chance for a critical hit and a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-blaze-kick"
       }
     }
@@ -7750,7 +7750,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mud Sport",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "support",
@@ -7768,7 +7768,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.385. Halves all Electric-type damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mud-sport"
       }
     }
@@ -7776,7 +7776,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ice Ball",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -7794,7 +7794,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.387. Power doubles every turn this move is used in succession after the first, resetting after five turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-ice-ball"
       }
     }
@@ -7802,7 +7802,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Needle Arm",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -7820,7 +7820,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.381. Has a 30% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-needle-arm"
       }
     }
@@ -7828,7 +7828,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Slack Off",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -7846,7 +7846,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.401. Heals the user by half its max HP."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-slack-off"
       }
     }
@@ -7854,7 +7854,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hyper Voice",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -7872,7 +7872,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.396. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hyper-voice"
       }
     }
@@ -7880,7 +7880,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poison Fang",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -7898,7 +7898,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.407. Has a 50% chance to badly poison the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-poison-fang"
       }
     }
@@ -7906,7 +7906,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crush Claw",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -7924,7 +7924,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.391. Has a 50% chance to lower the target\u2019s Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-crush-claw"
       }
     }
@@ -7932,7 +7932,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blast Burn",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -7950,7 +7950,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.369. User foregoes its next turn to recharge."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-blast-burn"
       }
     }
@@ -7958,7 +7958,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hydro Cannon",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -7976,7 +7976,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.422. User foregoes its next turn to recharge."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hydro-cannon"
       }
     }
@@ -7984,7 +7984,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meteor Mash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -8002,7 +8002,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.420. Has a 20% chance to raise the user\u2019s Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-meteor-mash"
       }
     }
@@ -8010,7 +8010,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Astonish",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -8028,7 +8028,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.376. Has a 30% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-astonish"
       }
     }
@@ -8036,7 +8036,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Weather Ball",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -8054,7 +8054,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.406. If there be weather, this move has doubled power and the weather\u2019s type."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-weather-ball"
       }
     }
@@ -8062,7 +8062,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aromatherapy",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -8080,7 +8080,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.379. Cures the entire party of major status effects."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-aromatherapy"
       }
     }
@@ -8088,7 +8088,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fake Tears",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -8106,7 +8106,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.353. Lowers the target\u2019s Special Defense by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fake-tears"
       }
     }
@@ -8114,7 +8114,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Air Cutter",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "special",
@@ -8132,7 +8132,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.373. Has an increased chance for a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-air-cutter"
       }
     }
@@ -8140,7 +8140,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Overheat",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -8158,7 +8158,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.372. Lowers the user\u2019s Special Attack by two stages after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-overheat"
       }
     }
@@ -8166,7 +8166,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Odor Sleuth",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -8184,7 +8184,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.398. Forces the target to have no Evade, and allows it to be hit by Normal and Fighting moves even if it\u2019s a Ghost."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-odor-sleuth"
       }
     }
@@ -8192,7 +8192,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Tomb",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -8210,7 +8210,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.417. Has a 100% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rock-tomb"
       }
     }
@@ -8218,7 +8218,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Silver Wind",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "special",
@@ -8236,7 +8236,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.351. Has a 10% chance to raise all of the user\u2019s stats by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-silver-wind"
       }
     }
@@ -8244,7 +8244,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metal Sound",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "support",
@@ -8262,7 +8262,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.420. Lowers the target\u2019s Special Defense by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-metal-sound"
       }
     }
@@ -8270,7 +8270,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grass Whistle",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -8288,7 +8288,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.380. Puts the target to sleep."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-grass-whistle"
       }
     }
@@ -8296,7 +8296,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tickle",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -8314,7 +8314,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.405. Lowers the target\u2019s Attack and Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-tickle"
       }
     }
@@ -8322,7 +8322,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cosmic Power",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -8340,7 +8340,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.410. Raises the user\u2019s Defense and Special Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-cosmic-power"
       }
     }
@@ -8348,7 +8348,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Water Spout",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -8366,7 +8366,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.424. Inflicts more damage when the user has more HP remaining, with a maximum of 150 power."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-water-spout"
       }
     }
@@ -8374,7 +8374,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Signal Beam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "special",
@@ -8392,7 +8392,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.350. Has a 10% chance to confuse the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-signal-beam"
       }
     }
@@ -8400,7 +8400,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shadow Punch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -8418,7 +8418,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.378. Never misses."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-shadow-punch"
       }
     }
@@ -8426,7 +8426,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Extrasensory",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -8444,7 +8444,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.410. Has a 10% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-extrasensory"
       }
     }
@@ -8452,7 +8452,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sky Uppercut",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -8470,7 +8470,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.368. Inflicts regular damage and can hit Bounce and Fly users."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sky-uppercut"
       }
     }
@@ -8478,7 +8478,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sand Tomb",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -8496,7 +8496,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.385. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sand-tomb"
       }
     }
@@ -8504,7 +8504,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sheer Cold",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -8522,7 +8522,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.388. Causes a one-hit KO."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sheer-cold"
       }
     }
@@ -8530,7 +8530,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Muddy Water",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -8548,7 +8548,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.422. Has a 30% chance to lower the target\u2019s accuracy by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-muddy-water"
       }
     }
@@ -8556,7 +8556,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bullet Seed",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -8574,7 +8574,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.379. Hits 2-5 times in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bullet-seed"
       }
     }
@@ -8582,7 +8582,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aerial Ace",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -8600,7 +8600,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.373. Never misses."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-aerial-ace"
       }
     }
@@ -8608,7 +8608,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Icicle Spear",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -8626,7 +8626,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.388. Hits 2-5 times in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-icicle-spear"
       }
     }
@@ -8634,7 +8634,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Iron Defense",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "support",
@@ -8652,7 +8652,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.419. Raises the user\u2019s Defense by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-iron-defense"
       }
     }
@@ -8660,7 +8660,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Block",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -8678,7 +8678,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.390. Prevents the target from leaving battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-block"
       }
     }
@@ -8686,7 +8686,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Howl",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -8704,7 +8704,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.395. Raises the user\u2019s Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-howl"
       }
     }
@@ -8712,7 +8712,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Claw",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -8730,7 +8730,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.357. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dragon-claw"
       }
     }
@@ -8738,7 +8738,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Frenzy Plant",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -8756,7 +8756,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.379. User foregoes its next turn to recharge."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-frenzy-plant"
       }
     }
@@ -8764,7 +8764,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bulk Up",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "support",
@@ -8782,7 +8782,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.365. Raises the user\u2019s Attack and Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bulk-up"
       }
     }
@@ -8790,7 +8790,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bounce",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -8808,7 +8808,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.374. User bounces high into the air, dodging all attacks, and hits next turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bounce"
       }
     }
@@ -8816,7 +8816,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mud Shot",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "special",
@@ -8834,7 +8834,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.385. Has a 100% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mud-shot"
       }
     }
@@ -8842,7 +8842,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poison Tail",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -8860,7 +8860,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.408. Has an increased chance for a critical hit and a 10% chance to poison the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-poison-tail"
       }
     }
@@ -8868,7 +8868,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Covet",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -8886,7 +8886,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.391. Takes the target\u2019s item."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-covet"
       }
     }
@@ -8894,7 +8894,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Volt Tackle",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -8912,7 +8912,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.361. User takes 1/3 the damage inflicted in recoil. Has a 10% chance to paralyze the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-volt-tackle"
       }
     }
@@ -8920,7 +8920,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magical Leaf",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -8938,7 +8938,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.381. Never misses."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-magical-leaf"
       }
     }
@@ -8946,7 +8946,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Water Sport",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "support",
@@ -8964,7 +8964,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.424. Halves all Fire-type damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-water-sport"
       }
     }
@@ -8972,7 +8972,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Calm Mind",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -8990,7 +8990,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.410. Raises the user\u2019s Special Attack and Special Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-calm-mind"
       }
     }
@@ -8998,7 +8998,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leaf Blade",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -9016,7 +9016,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.380. Has an increased chance for a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-leaf-blade"
       }
     }
@@ -9024,7 +9024,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Dance",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "support",
@@ -9042,7 +9042,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.357. Raises the user\u2019s Attack and Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dragon-dance"
       }
     }
@@ -9050,7 +9050,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Blast",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -9068,7 +9068,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.416. Hits 2-5 times in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rock-blast"
       }
     }
@@ -9076,7 +9076,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shock Wave",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -9094,7 +9094,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.360. Never misses."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-shock-wave"
       }
     }
@@ -9102,7 +9102,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Water Pulse",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -9120,7 +9120,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.424. Has a 20% chance to confuse the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-water-pulse"
       }
     }
@@ -9128,7 +9128,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Doom Desire",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "special",
@@ -9146,7 +9146,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.418. Hits the target two turns later."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-doom-desire"
       }
     }
@@ -9154,7 +9154,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psycho Boost",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -9172,7 +9172,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.414. Lowers the user\u2019s Special Attack by two stages after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-psycho-boost"
       }
     }
@@ -9180,7 +9180,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Roost",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "support",
@@ -9198,7 +9198,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.375. Heals the user by half its max HP."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-roost"
       }
     }
@@ -9206,7 +9206,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gravity",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9224,7 +9224,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.410. Disables moves and immunities that involve flying or levitating for five turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-gravity"
       }
     }
@@ -9232,7 +9232,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Miracle Eye",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9250,7 +9250,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.412. Forces the target to have no evasion, and allows it to be hit by Psychic moves even if it\u2019s Dark."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-miracle-eye"
       }
     }
@@ -9258,7 +9258,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wake-Up Slap",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -9276,7 +9276,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.369. If the target is asleep, has double power and wakes it up."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-wake-up-slap"
       }
     }
@@ -9284,7 +9284,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hammer Arm",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -9302,7 +9302,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.366. Lowers user\u2019s Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hammer-arm"
       }
     }
@@ -9310,7 +9310,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gyro Ball",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -9328,7 +9328,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.419. Power raises when the user has lower Speed, up to a maximum of 150."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-gyro-ball"
       }
     }
@@ -9336,7 +9336,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Healing Wish",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9354,7 +9354,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.411. User faints. Its replacement has its HP fully restored and any major status effect removed."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-healing-wish"
       }
     }
@@ -9362,7 +9362,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Brine",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -9380,7 +9380,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.421. Has double power against Pok\u00e9mon that have less than half their max HP remaining."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-brine"
       }
     }
@@ -9388,7 +9388,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Natural Gift",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -9406,7 +9406,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.398. Power and type depend on the held berry."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-natural-gift"
       }
     }
@@ -9414,7 +9414,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Feint",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -9432,7 +9432,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.393. Hits through Protect and Detect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-feint"
       }
     }
@@ -9440,7 +9440,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pluck",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -9458,7 +9458,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.375. If target has a berry, inflicts double damage and uses the berry."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-pluck"
       }
     }
@@ -9466,7 +9466,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tailwind",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "support",
@@ -9484,7 +9484,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.376. For three turns, friendly Pok\u00e9mon have doubled Speed."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-tailwind"
       }
     }
@@ -9492,7 +9492,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Metal Burst",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -9510,7 +9510,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.419. Strikes back at the last Pok\u00e9mon to hit the user this turn with 1.5\u00d7 the damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-metal-burst"
       }
     }
@@ -9518,7 +9518,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "U-turn",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -9536,7 +9536,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.351. User must switch out after attacking."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-u-turn"
       }
     }
@@ -9544,7 +9544,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Close Combat",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -9562,7 +9562,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.365. Lowers the user\u2019s Defense and Special Defense by one stage after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-close-combat"
       }
     }
@@ -9570,7 +9570,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Payback",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -9588,7 +9588,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.354. Power is doubled if the target has already moved this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-payback"
       }
     }
@@ -9596,7 +9596,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Assurance",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -9614,7 +9614,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.352. Power is doubled if the target has already received damage this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-assurance"
       }
     }
@@ -9622,7 +9622,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Embargo",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -9640,7 +9640,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.353. Target cannot use held items."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-embargo"
       }
     }
@@ -9648,7 +9648,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fling",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -9666,7 +9666,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.353. Throws held item at the target; power depends on the item."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fling"
       }
     }
@@ -9674,7 +9674,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psycho Shift",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9692,7 +9692,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.414. Transfers the user\u2019s major status effect to the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-psycho-shift"
       }
     }
@@ -9700,7 +9700,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trump Card",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -9718,7 +9718,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.405. Power increases when this move has less PP, up to a maximum of 200."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-trump-card"
       }
     }
@@ -9726,7 +9726,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heal Block",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9744,7 +9744,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.411. Prevents target from restoring its HP for five turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-heal-block"
       }
     }
@@ -9752,7 +9752,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wring Out",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -9770,7 +9770,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.406. Power increases against targets with more HP remaining, up to a maximum of 121 power."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-wring-out"
       }
     }
@@ -9778,7 +9778,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Power Trick",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9796,7 +9796,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.413. User swaps Attack and Defense."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-power-trick"
       }
     }
@@ -9804,7 +9804,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gastro Acid",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -9822,7 +9822,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.407. Nullifies target\u2019s ability until it leaves battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-gastro-acid"
       }
     }
@@ -9830,7 +9830,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lucky Chant",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -9848,7 +9848,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.396. Prevents the target from scoring critical hits for five turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-lucky-chant"
       }
     }
@@ -9856,7 +9856,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Me First",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -9874,7 +9874,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.396. Uses the target\u2019s move against it before it attacks, with power increased by half."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-me-first"
       }
     }
@@ -9882,7 +9882,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Copycat",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -9900,7 +9900,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.391. Uses the target\u2019s last used move."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-copycat"
       }
     }
@@ -9908,7 +9908,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Power Swap",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9926,7 +9926,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.413. User swaps Attack and Special Attack changes with the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-power-swap"
       }
     }
@@ -9934,7 +9934,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Guard Swap",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -9952,7 +9952,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.411. User swaps Defense and Special Defense changes with the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-guard-swap"
       }
     }
@@ -9960,7 +9960,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Punishment",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -9978,7 +9978,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.355. Power increases against targets with more raised stats, up to a maximum of 200."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-punishment"
       }
     }
@@ -9986,7 +9986,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Last Resort",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -10004,7 +10004,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.396. Can only be used after all of the user\u2019s other moves have been used."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-last-resort"
       }
     }
@@ -10012,7 +10012,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Worry Seed",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -10030,7 +10030,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.383. Changes the target\u2019s ability to Insomnia."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-worry-seed"
       }
     }
@@ -10038,7 +10038,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sucker Punch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -10056,7 +10056,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.355. Only works if the target is about to use a damaging move."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sucker-punch"
       }
     }
@@ -10064,7 +10064,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxic Spikes",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -10082,7 +10082,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.409. Scatters poisoned spikes, poisoning opposing Pok\u00e9mon that switch in."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-toxic-spikes"
       }
     }
@@ -10090,7 +10090,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heart Swap",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -10108,7 +10108,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.411. User and target swap stat changes."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-heart-swap"
       }
     }
@@ -10116,7 +10116,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aqua Ring",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "support",
@@ -10134,7 +10134,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.421. Restores 1/16 of the user\u2019s max HP each turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-aqua-ring"
       }
     }
@@ -10142,7 +10142,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magnet Rise",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -10160,7 +10160,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.360. User is immune to Ground moves and effects for five turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-magnet-rise"
       }
     }
@@ -10168,7 +10168,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flare Blitz",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -10186,7 +10186,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.371. User takes 1/3 the damage inflicted in recoil. Has a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-flare-blitz"
       }
     }
@@ -10194,7 +10194,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Force Palm",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -10212,7 +10212,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.366. Has a 30% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-force-palm"
       }
     }
@@ -10220,7 +10220,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aura Sphere",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -10238,7 +10238,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.365. Never misses."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-aura-sphere"
       }
     }
@@ -10246,7 +10246,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Polish",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "support",
@@ -10264,7 +10264,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.416. Raises the user\u2019s Speed by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rock-polish"
       }
     }
@@ -10272,7 +10272,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Poison Jab",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -10290,7 +10290,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.408. Has a 30% chance to [poison]{mechanic:poison} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-poison-jab"
       }
     }
@@ -10298,7 +10298,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dark Pulse",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "special",
@@ -10316,7 +10316,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.352. Has a 20% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dark-pulse"
       }
     }
@@ -10324,7 +10324,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Night Slash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -10342,7 +10342,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.354. Has an increased chance for a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-night-slash"
       }
     }
@@ -10350,7 +10350,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aqua Tail",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -10368,7 +10368,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.421. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-aqua-tail"
       }
     }
@@ -10376,7 +10376,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seed Bomb",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -10394,7 +10394,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.382. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-seed-bomb"
       }
     }
@@ -10402,7 +10402,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Air Slash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -10420,7 +10420,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.374. Has a 30% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-air-slash"
       }
     }
@@ -10428,7 +10428,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "X-Scissor",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -10446,7 +10446,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.351. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-x-scissor"
       }
     }
@@ -10454,7 +10454,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bug Buzz",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "special",
@@ -10472,7 +10472,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.349. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bug-buzz"
       }
     }
@@ -10480,7 +10480,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Pulse",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -10498,7 +10498,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.357. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dragon-pulse"
       }
     }
@@ -10506,7 +10506,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Rush",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -10524,7 +10524,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.357. Has a 20% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dragon-rush"
       }
     }
@@ -10532,7 +10532,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Power Gem",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "special",
@@ -10550,7 +10550,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.416. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-power-gem"
       }
     }
@@ -10558,7 +10558,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drain Punch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -10576,7 +10576,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.366. Drains half the damage inflicted to heal the user."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-drain-punch"
       }
     }
@@ -10584,7 +10584,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Vacuum Wave",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -10602,7 +10602,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.369. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-vacuum-wave"
       }
     }
@@ -10610,7 +10610,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Focus Blast",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -10628,7 +10628,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.366. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-focus-blast"
       }
     }
@@ -10636,7 +10636,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Energy Ball",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -10654,7 +10654,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.379. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-energy-ball"
       }
     }
@@ -10662,7 +10662,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Brave Bird",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -10680,7 +10680,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.374. User receives 1/3 the damage inflicted in recoil."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-brave-bird"
       }
     }
@@ -10688,7 +10688,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Earth Power",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "special",
@@ -10706,7 +10706,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.384. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-earth-power"
       }
     }
@@ -10714,7 +10714,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Switcheroo",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -10732,7 +10732,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.355. User and target swap items."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-switcheroo"
       }
     }
@@ -10740,7 +10740,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Giga Impact",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -10758,7 +10758,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.394. User foregoes its next turn to recharge."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-giga-impact"
       }
     }
@@ -10766,7 +10766,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nasty Plot",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -10784,7 +10784,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.354. Raises the user\u2019s Special Attack by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-nasty-plot"
       }
     }
@@ -10792,7 +10792,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bullet Punch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -10810,7 +10810,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.418. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bullet-punch"
       }
     }
@@ -10818,7 +10818,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Avalanche",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -10836,7 +10836,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.386. Inflicts double damage if the user takes damage before attacking this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-avalanche"
       }
     }
@@ -10844,7 +10844,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ice Shard",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -10862,7 +10862,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.388. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-ice-shard"
       }
     }
@@ -10870,7 +10870,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shadow Claw",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -10888,7 +10888,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.377. Has an increased chance for a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-shadow-claw"
       }
     }
@@ -10896,7 +10896,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thunder Fang",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -10914,7 +10914,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.361. Has a 10% chance to paralyze the target and a 10% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-thunder-fang"
       }
     }
@@ -10922,7 +10922,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ice Fang",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -10940,7 +10940,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.387. Has a 10% chance to freeze the target and a 10% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-ice-fang"
       }
     }
@@ -10948,7 +10948,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fire Fang",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -10966,7 +10966,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.370. Has a 10% chance to [burn]{mechanic:burn} the target and a 10% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fire-fang"
       }
     }
@@ -10974,7 +10974,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shadow Sneak",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -10992,7 +10992,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.378. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-shadow-sneak"
       }
     }
@@ -11000,7 +11000,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mud Bomb",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "special",
@@ -11018,7 +11018,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.385. Has a 30% chance to lower the target\u2019s accuracy by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mud-bomb"
       }
     }
@@ -11026,7 +11026,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psycho Cut",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "physical",
@@ -11044,7 +11044,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.414. Has an increased chance for a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-psycho-cut"
       }
     }
@@ -11052,7 +11052,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zen Headbutt",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "physical",
@@ -11070,7 +11070,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.415. Has a 20% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-zen-headbutt"
       }
     }
@@ -11078,7 +11078,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mirror Shot",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "special",
@@ -11096,7 +11096,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.420. Has a 30% chance to lower the target\u2019s accuracy by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mirror-shot"
       }
     }
@@ -11104,7 +11104,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flash Cannon",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "special",
@@ -11122,7 +11122,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.418. Has a 10% chance to lower the target\u2019s Special Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-flash-cannon"
       }
     }
@@ -11130,7 +11130,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Climb",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -11148,7 +11148,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.400. Has a 20% chance to confuse the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rock-climb"
       }
     }
@@ -11156,7 +11156,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Defog",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "support",
@@ -11174,7 +11174,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.374. Lowers the target\u2019s evasion by one stage. Removes field effects from the enemy field."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-defog"
       }
     }
@@ -11182,7 +11182,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trick Room",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -11200,7 +11200,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.415. For five turns, slower Pok\u00e9mon will act before faster Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-trick-room"
       }
     }
@@ -11208,7 +11208,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Draco Meteor",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -11226,7 +11226,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.356. Lowers the user\u2019s Special Attack by two stages after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-draco-meteor"
       }
     }
@@ -11234,7 +11234,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Discharge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -11252,7 +11252,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.359. Has a 30% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-discharge"
       }
     }
@@ -11260,7 +11260,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lava Plume",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -11278,7 +11278,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.372. Has a 30% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-lava-plume"
       }
     }
@@ -11286,7 +11286,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leaf Storm",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -11304,7 +11304,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.380. Lowers the user\u2019s Special Attack by two stages after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-leaf-storm"
       }
     }
@@ -11312,7 +11312,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Power Whip",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -11330,7 +11330,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.381. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-power-whip"
       }
     }
@@ -11338,7 +11338,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rock Wrecker",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -11356,7 +11356,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.417. User foregoes its next turn to recharge."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rock-wrecker"
       }
     }
@@ -11364,7 +11364,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cross Poison",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -11382,7 +11382,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.407. Has an increased chance for a critical hit and a 10% chance to poison the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-cross-poison"
       }
     }
@@ -11390,7 +11390,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gunk Shot",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -11408,7 +11408,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.407. Has a 30% chance to [poison]{mechanic:poison} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-gunk-shot"
       }
     }
@@ -11416,7 +11416,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Iron Head",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -11434,7 +11434,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.419. Has a 30% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-iron-head"
       }
     }
@@ -11442,7 +11442,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magnet Bomb",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -11460,7 +11460,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.419. Never misses."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-magnet-bomb"
       }
     }
@@ -11468,7 +11468,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stone Edge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -11486,7 +11486,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.417. Has an increased chance for a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-stone-edge"
       }
     }
@@ -11494,7 +11494,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Captivate",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -11512,7 +11512,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.390. Lowers the target\u2019s Special Attack by two stages if it\u2019s the opposite gender."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-captivate"
       }
     }
@@ -11520,7 +11520,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stealth Rock",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "support",
@@ -11538,7 +11538,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.417. Causes damage when opposing Pok\u00e9mon switch in."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-stealth-rock"
       }
     }
@@ -11546,7 +11546,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grass Knot",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -11564,7 +11564,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.380. Inflicts more damage to heavier targets, with a maximum of 120 power."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-grass-knot"
       }
     }
@@ -11572,7 +11572,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chatter",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "special",
@@ -11590,7 +11590,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.374. Has a higher chance to confuse the target when the recorded sound is louder."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-chatter"
       }
     }
@@ -11598,7 +11598,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Judgment",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -11616,7 +11616,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.396. If the user is holding a appropriate plate or drive, the damage inflicted will match it."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-judgment"
       }
     }
@@ -11624,7 +11624,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bug Bite",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -11642,7 +11642,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.349. If target has a berry, inflicts double damage and uses the berry."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bug-bite"
       }
     }
@@ -11650,7 +11650,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Charge Beam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -11668,7 +11668,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.359. Has a 70% chance to raise the user\u2019s Special Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-charge-beam"
       }
     }
@@ -11676,7 +11676,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wood Hammer",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -11694,7 +11694,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.383. User receives 1/3 the damage inflicted in recoil."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-wood-hammer"
       }
     }
@@ -11702,7 +11702,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aqua Jet",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -11720,7 +11720,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.421. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-aqua-jet"
       }
     }
@@ -11728,7 +11728,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Attack Order",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -11746,7 +11746,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.349. Has an increased chance for a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-attack-order"
       }
     }
@@ -11754,7 +11754,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Defend Order",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -11772,7 +11772,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.349. Raises the user\u2019s Defense and Special Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-defend-order"
       }
     }
@@ -11780,7 +11780,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heal Order",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -11798,7 +11798,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.349. Heals the user by half its max HP."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-heal-order"
       }
     }
@@ -11806,7 +11806,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Head Smash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -11824,7 +11824,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.416. User receives 1/2 the damage inflicted in recoil."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-head-smash"
       }
     }
@@ -11832,7 +11832,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Double Hit",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -11850,7 +11850,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.392. Hits twice in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-double-hit"
       }
     }
@@ -11858,7 +11858,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Roar of Time",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -11876,7 +11876,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.358. User foregoes its next turn to recharge."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-roar-of-time"
       }
     }
@@ -11884,7 +11884,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spacial Rend",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -11902,7 +11902,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.358. Has an increased chance for a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-spacial-rend"
       }
     }
@@ -11910,7 +11910,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lunar Dance",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -11928,7 +11928,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.412. User faints, and its replacement is fully healed."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-lunar-dance"
       }
     }
@@ -11936,7 +11936,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crush Grip",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -11954,7 +11954,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.391. Power increases against targets with more HP remaining, up to a maximum of 121 power."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-crush-grip"
       }
     }
@@ -11962,7 +11962,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magma Storm",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -11980,7 +11980,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.372. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-magma-storm"
       }
     }
@@ -11988,7 +11988,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dark Void",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -12006,7 +12006,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.352. Puts the target to sleep."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dark-void"
       }
     }
@@ -12014,7 +12014,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Seed Flare",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -12032,7 +12032,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.382. Has a 40% chance to lower the target\u2019s Special Defense by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-seed-flare"
       }
     }
@@ -12040,7 +12040,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ominous Wind",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "special",
@@ -12058,7 +12058,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.377. Has a 10% chance to raise all of the user\u2019s stats by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-ominous-wind"
       }
     }
@@ -12066,7 +12066,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shadow Force",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -12084,7 +12084,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.378. User vanishes, dodging all attacks, and hits next turn. Hits through Protect and Detect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-shadow-force"
       }
     }
@@ -12092,7 +12092,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hone Claws",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -12110,7 +12110,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.353. Raises the user\u2019s Attack and accuracy by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hone-claws"
       }
     }
@@ -12118,7 +12118,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wide Guard",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "support",
@@ -12136,7 +12136,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.417. Prevents any multi-target moves from hitting friendly Pok\u00e9mon this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-wide-guard"
       }
     }
@@ -12144,7 +12144,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Guard Split",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -12162,7 +12162,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.410. Averages Defense and Special Defense with the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-guard-split"
       }
     }
@@ -12170,7 +12170,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Power Split",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -12188,7 +12188,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.413. Averages Attack and Special Attack with the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-power-split"
       }
     }
@@ -12196,7 +12196,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wonder Room",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -12214,7 +12214,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.415. All Pok\u00e9mon\u2019s Defense and Special Defense are swapped for 5 turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-wonder-room"
       }
     }
@@ -12222,7 +12222,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psyshock",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -12240,7 +12240,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.414. Inflicts damage based on the target\u2019s Defense, not Special Defense."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-psyshock"
       }
     }
@@ -12248,7 +12248,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venoshock",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -12266,7 +12266,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.409. Inflicts double damage if the target is Poisoned."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-venoshock"
       }
     }
@@ -12274,7 +12274,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Autotomize",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "support",
@@ -12292,7 +12292,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.418. Raises the user\u2019s Speed by two stages and halves the user\u2019s weight."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-autotomize"
       }
     }
@@ -12300,7 +12300,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rage Powder",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -12318,7 +12318,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.350. Redirects the target\u2019s single-target effects to the user for this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rage-powder"
       }
     }
@@ -12326,7 +12326,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Telekinesis",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -12344,7 +12344,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.415. Moves have 100% accuracy against the target for three turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-telekinesis"
       }
     }
@@ -12352,7 +12352,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magic Room",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -12370,7 +12370,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.412. Negates held items for five turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-magic-room"
       }
     }
@@ -12378,7 +12378,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smack Down",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -12396,7 +12396,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.417. Removes any immunity to Ground damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-smack-down"
       }
     }
@@ -12404,7 +12404,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Storm Throw",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -12422,7 +12422,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.368. Always scores a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-storm-throw"
       }
     }
@@ -12430,7 +12430,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flame Burst",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -12448,7 +12448,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.371. Deals splash damage to Pok\u00e9mon next to the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-flame-burst"
       }
     }
@@ -12456,7 +12456,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sludge Wave",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -12474,7 +12474,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.408. Has a 10% chance to [poison]{mechanic:poison} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sludge-wave"
       }
     }
@@ -12482,7 +12482,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quiver Dance",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -12500,7 +12500,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.350. Raises the user\u2019s Special Attack, Special Defense, and Speed by one stage each."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-quiver-dance"
       }
     }
@@ -12508,7 +12508,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heavy Slam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -12526,7 +12526,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.419. Power is higher when the user weighs more than the target, up to a maximum of 120."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-heavy-slam"
       }
     }
@@ -12534,7 +12534,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Synchronoise",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -12552,7 +12552,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.415. Hits any Pok\u00e9mon that shares a type with the user."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-synchronoise"
       }
     }
@@ -12560,7 +12560,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electro Ball",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -12578,7 +12578,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.359. Power is higher when the user has greater Speed than the target, up to a maximum of 150."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-electro-ball"
       }
     }
@@ -12586,7 +12586,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Soak",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "support",
@@ -12604,7 +12604,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.423. Changes the target\u2019s type to Water."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-soak"
       }
     }
@@ -12612,7 +12612,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flame Charge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -12630,7 +12630,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.371. Inflicts regular damage. Raises the user\u2019s Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-flame-charge"
       }
     }
@@ -12638,7 +12638,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Coil",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -12656,7 +12656,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.407. Raises the user\u2019s Attack, Defense, and accuracy by one stage each."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-coil"
       }
     }
@@ -12664,7 +12664,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Low Sweep",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -12682,7 +12682,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.367. Lowers the target\u2019s Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-low-sweep"
       }
     }
@@ -12690,7 +12690,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Acid Spray",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -12708,7 +12708,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.407. Lowers the target\u2019s Special Defense by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-acid-spray"
       }
     }
@@ -12716,7 +12716,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Foul Play",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -12734,7 +12734,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.353. Calculates damage with the target\u2019s attacking stat."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-foul-play"
       }
     }
@@ -12742,7 +12742,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Simple Beam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -12760,7 +12760,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.401. Changes the target\u2019s ability to Simple."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-simple-beam"
       }
     }
@@ -12768,7 +12768,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Entrainment",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -12786,7 +12786,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.393. Copies the user\u2019s ability onto the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-entrainment"
       }
     }
@@ -12794,7 +12794,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "After You",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -12812,7 +12812,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.389. Makes the target act next this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-after-you"
       }
     }
@@ -12820,7 +12820,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Round",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -12838,7 +12838,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.358. Has double power if it\u2019s used more than once per turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-round"
       }
     }
@@ -12846,7 +12846,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Echoed Voice",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -12864,7 +12864,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.392. Power increases by 100% for each consecutive use by any friendly Pok\u00e9mon, to a maximum of 200."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-echoed-voice"
       }
     }
@@ -12872,7 +12872,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Chip Away",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -12890,7 +12890,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.390. Ignores the target\u2019s stat modifiers."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-chip-away"
       }
     }
@@ -12898,7 +12898,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clear Smog",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -12916,7 +12916,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.407. Removes all of the target\u2019s stat modifiers."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-clear-smog"
       }
     }
@@ -12924,7 +12924,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stored Power",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -12942,7 +12942,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.415. Power is higher the more the user\u2019s stats have been raised, to a maximum of 31\u00d7."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-stored-power"
       }
     }
@@ -12950,7 +12950,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quick Guard",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "support",
@@ -12968,7 +12968,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.368. Prevents any priority moves from hitting friendly Pok\u00e9mon this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-quick-guard"
       }
     }
@@ -12976,7 +12976,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ally Switch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -12994,7 +12994,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.409. User switches places with the friendly Pok\u00e9mon opposite it."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-ally-switch"
       }
     }
@@ -13002,7 +13002,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Scald",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -13020,7 +13020,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.423. Has a 30% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-scald"
       }
     }
@@ -13028,7 +13028,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shell Smash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -13046,7 +13046,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.401. Raises user\u2019s Attack, Special Attack, and Speed by two stages. Lower user\u2019s Defense and Special Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-shell-smash"
       }
     }
@@ -13054,7 +13054,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heal Pulse",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -13072,7 +13072,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.411. Heals the target for half its max HP."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-heal-pulse"
       }
     }
@@ -13080,7 +13080,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hex",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "special",
@@ -13098,7 +13098,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.377. Has double power if the target has a major status ailment."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hex"
       }
     }
@@ -13106,7 +13106,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sky Drop",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -13124,7 +13124,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.375. Carries the target high into the air, dodging all attacks against either, and drops it next turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sky-drop"
       }
     }
@@ -13132,7 +13132,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shift Gear",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "support",
@@ -13150,7 +13150,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.420. Raises the user\u2019s Attack by one stage and its Speed by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-shift-gear"
       }
     }
@@ -13158,7 +13158,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Circle Throw",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -13176,7 +13176,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.365. Ends wild battles. Forces trainers to switch Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-circle-throw"
       }
     }
@@ -13184,7 +13184,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Incinerate",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -13202,7 +13202,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.371. Destroys the target\u2019s held berry."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-incinerate"
       }
     }
@@ -13210,7 +13210,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Quash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -13228,7 +13228,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.355. Makes the target act last this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-quash"
       }
     }
@@ -13236,7 +13236,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Acrobatics",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -13254,7 +13254,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.373. Has double power if the user has no held item."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-acrobatics"
       }
     }
@@ -13262,7 +13262,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Reflect Type",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -13280,7 +13280,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.399. User becomes the target\u2019s type."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-reflect-type"
       }
     }
@@ -13288,7 +13288,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Retaliate",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -13306,7 +13306,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.400. Has double power if a friendly Pok\u00e9mon fainted last turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-retaliate"
       }
     }
@@ -13314,7 +13314,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Final Gambit",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -13332,7 +13332,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.366. Inflicts damage equal to the user\u2019s remaining HP. User faints."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-final-gambit"
       }
     }
@@ -13340,7 +13340,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bestow",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -13358,7 +13358,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.389. Gives the user\u2019s held item to the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bestow"
       }
     }
@@ -13366,7 +13366,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Inferno",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -13384,7 +13384,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.372. Has a 100% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-inferno"
       }
     }
@@ -13392,7 +13392,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Water Pledge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -13410,7 +13410,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.423. With [Grass Pledge]{move:grass-pledge}, halves opposing Pok\u00e9mon\u2019s Speed for four turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-water-pledge"
       }
     }
@@ -13418,7 +13418,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fire Pledge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -13436,7 +13436,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.370. With [Water Pledge]{move:water-pledge}, doubles the effect chance of friendly Pok\u00e9mon\u2019s moves for four turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fire-pledge"
       }
     }
@@ -13444,7 +13444,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grass Pledge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -13462,7 +13462,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.380. With [Fire Pledge]{move:fire-pledge}, damages opposing Pok\u00e9mon for 1/8 their max HP every turn for four turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-grass-pledge"
       }
     }
@@ -13470,7 +13470,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Volt Switch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -13488,7 +13488,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.361. User must switch out after attacking."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-volt-switch"
       }
     }
@@ -13496,7 +13496,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Struggle Bug",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "special",
@@ -13514,7 +13514,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.351. Has a 100% chance to lower the target\u2019s Special Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-struggle-bug"
       }
     }
@@ -13522,7 +13522,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bulldoze",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -13540,7 +13540,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.384. Has a 100% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bulldoze"
       }
     }
@@ -13548,7 +13548,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Frost Breath",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -13566,7 +13566,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.387. Always scores a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-frost-breath"
       }
     }
@@ -13574,7 +13574,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Tail",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -13592,7 +13592,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.357. Ends wild battles. Forces trainers to switch Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dragon-tail"
       }
     }
@@ -13600,7 +13600,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Work Up",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -13618,7 +13618,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.406. Raises the user\u2019s Attack and Special Attack by one stage each."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-work-up"
       }
     }
@@ -13626,7 +13626,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electroweb",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -13644,7 +13644,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.359. Lowers the target\u2019s Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-electroweb"
       }
     }
@@ -13652,7 +13652,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Wild Charge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -13670,7 +13670,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.361. User receives 1/4 the damage it inflicts in recoil."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-wild-charge"
       }
     }
@@ -13678,7 +13678,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drill Run",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -13696,7 +13696,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.384. Has an increased chance for a critical hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-drill-run"
       }
     }
@@ -13704,7 +13704,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dual Chop",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -13722,7 +13722,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.357. Hits twice in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dual-chop"
       }
     }
@@ -13730,7 +13730,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heart Stamp",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "physical",
@@ -13748,7 +13748,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.411. Has a 30% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-heart-stamp"
       }
     }
@@ -13756,7 +13756,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Horn Leech",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -13774,7 +13774,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.380. Drains half the damage inflicted to heal the user."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-horn-leech"
       }
     }
@@ -13782,7 +13782,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sacred Sword",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -13800,7 +13800,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.368. Ignores the target\u2019s stat modifiers."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sacred-sword"
       }
     }
@@ -13808,7 +13808,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Razor Shell",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -13826,7 +13826,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.423. Has a 50% chance to lower the target\u2019s Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-razor-shell"
       }
     }
@@ -13834,7 +13834,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Heat Crash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -13852,7 +13852,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.371. Power is higher when the user weighs more than the target, up to a maximum of 120."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-heat-crash"
       }
     }
@@ -13860,7 +13860,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leaf Tornado",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -13878,7 +13878,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.381. Has a 50% chance to lower the target\u2019s accuracy by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-leaf-tornado"
       }
     }
@@ -13886,7 +13886,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Steamroller",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -13904,7 +13904,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.351. Has a 30% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-steamroller"
       }
     }
@@ -13912,7 +13912,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Cotton Guard",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -13930,7 +13930,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.379. Raises the user\u2019s Defense by three stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-cotton-guard"
       }
     }
@@ -13938,7 +13938,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Night Daze",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "special",
@@ -13956,7 +13956,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.354. Has a 40% chance to lower the target\u2019s accuracy by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-night-daze"
       }
     }
@@ -13964,7 +13964,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psystrike",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -13982,7 +13982,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.414. Inflicts damage based on the target\u2019s Defense, not Special Defense."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-psystrike"
       }
     }
@@ -13990,7 +13990,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tail Slap",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -14008,7 +14008,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.404. Hits 2-5 times in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-tail-slap"
       }
     }
@@ -14016,7 +14016,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hurricane",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "special",
@@ -14034,7 +14034,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.375. Has a 30% chance to confuse the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hurricane"
       }
     }
@@ -14042,7 +14042,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Head Charge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -14060,7 +14060,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.395. User receives 1/4 the damage it inflicts in recoil."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-head-charge"
       }
     }
@@ -14068,7 +14068,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gear Grind",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -14086,7 +14086,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.419. Hits twice in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-gear-grind"
       }
     }
@@ -14094,7 +14094,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Searing Shot",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -14112,7 +14112,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.372. Has a 30% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-searing-shot"
       }
     }
@@ -14120,7 +14120,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Techno Blast",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -14138,7 +14138,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.405. If the user is holding a appropriate plate or drive, the damage inflicted will match it."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-techno-blast"
       }
     }
@@ -14146,7 +14146,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Relic Song",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -14164,7 +14164,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.400. Has a 10% chance to put the target to sleep."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-relic-song"
       }
     }
@@ -14172,7 +14172,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Secret Sword",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -14190,7 +14190,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.368. Inflicts damage based on the target\u2019s Defense, not Special Defense."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-secret-sword"
       }
     }
@@ -14198,7 +14198,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Glaciate",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -14216,7 +14216,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.387. Lowers the target\u2019s Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-glaciate"
       }
     }
@@ -14224,7 +14224,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bolt Strike",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -14242,7 +14242,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.358. Has a 20% chance to [paralyze]{mechanic:paralysis} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bolt-strike"
       }
     }
@@ -14250,7 +14250,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Blue Flare",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -14268,7 +14268,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.370. Has a 20% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-blue-flare"
       }
     }
@@ -14276,7 +14276,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fiery Dance",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -14294,7 +14294,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.370. Has a 50% chance to raise the user\u2019s Special Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fiery-dance"
       }
     }
@@ -14302,7 +14302,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Freeze Shock",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -14320,7 +14320,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.387. Requires a turn to charge before attacking. Has a 30% chance to paralyze the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-freeze-shock"
       }
     }
@@ -14328,7 +14328,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ice Burn",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -14346,7 +14346,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.387. Requires a turn to charge before attacking. Has a 30% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-ice-burn"
       }
     }
@@ -14354,7 +14354,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snarl",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "special",
@@ -14372,7 +14372,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.355. Has a 100% chance to lower the target\u2019s Special Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-snarl"
       }
     }
@@ -14380,7 +14380,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Icicle Crash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -14398,7 +14398,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.388. Has a 30% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-icicle-crash"
       }
     }
@@ -14406,7 +14406,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "V-create",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -14424,7 +14424,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.373. Lowers the user\u2019s Defense, Special Defense, and Speed by one stage each."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-v-create"
       }
     }
@@ -14432,7 +14432,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fusion Flare",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -14450,7 +14450,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.371. With [Fusion Bolt]{move:fusion-bolt}, inflicts double damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fusion-flare"
       }
     }
@@ -14458,7 +14458,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fusion Bolt",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -14476,7 +14476,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.359. With [Fusion Flare]{move:fusion-flare}, inflicts double damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fusion-bolt"
       }
     }
@@ -14484,7 +14484,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flying Press",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -14502,7 +14502,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.366. Deals both []{type:fighting} and []{type:flying}-type damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-flying-press"
       }
     }
@@ -14510,7 +14510,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mat Block",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "support",
@@ -14528,7 +14528,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.367. Protects all friendly Pok\u00e9mon from damaging moves. Only works on the first turn after the user is sent out."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mat-block"
       }
     }
@@ -14536,7 +14536,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Belch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -14554,7 +14554,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.407. Can only be used after the user has eaten a berry."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-belch"
       }
     }
@@ -14562,7 +14562,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Rototiller",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "support",
@@ -14580,7 +14580,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.385. Raises the Attack and Special Attack of all []{type:grass} Pok\u00e9mon in battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-rototiller"
       }
     }
@@ -14588,7 +14588,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sticky Web",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -14606,7 +14606,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.351. Covers the opposing field, lowering opponents\u2019 Speed by one stage upon switching in."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sticky-web"
       }
     }
@@ -14614,7 +14614,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fell Stinger",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -14632,7 +14632,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.349. Raises the user\u2019s Attack by two stages if it KOs the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fell-stinger"
       }
     }
@@ -14640,7 +14640,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Phantom Force",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -14658,7 +14658,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.377. User vanishes, dodging all attacks, and hits next turn. Hits through Protect and Detect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-phantom-force"
       }
     }
@@ -14666,7 +14666,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trick-or-Treat",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "support",
@@ -14684,7 +14684,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.378. Adds []{type:ghost} to the target\u2019s types."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-trick-or-treat"
       }
     }
@@ -14692,7 +14692,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Noble Roar",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -14710,7 +14710,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.398. Lowers the target\u2019s Attack and Special Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-noble-roar"
       }
     }
@@ -14718,7 +14718,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ion Deluge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -14736,7 +14736,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.360. Changes all []{type:normal} moves to []{type:electric} moves for the rest of the turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-ion-deluge"
       }
     }
@@ -14744,7 +14744,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Parabolic Charge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -14762,7 +14762,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.360. Heals the user for half the total damage dealt to all targets."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-parabolic-charge"
       }
     }
@@ -14770,7 +14770,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Forest\u2019s Curse",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -14788,7 +14788,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.379. Adds []{type:grass} to the target\u2019s types."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-forests-curse"
       }
     }
@@ -14796,7 +14796,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Petal Blizzard",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -14814,7 +14814,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.381. Inflicts regular damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-petal-blizzard"
       }
     }
@@ -14822,7 +14822,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Freeze-Dry",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -14840,7 +14840,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.386. Super-effective against []{type:water}."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-freeze-dry"
       }
     }
@@ -14848,7 +14848,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Disarming Voice",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -14866,7 +14866,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.363. Never misses."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-disarming-voice"
       }
     }
@@ -14874,7 +14874,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Parting Shot",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -14892,7 +14892,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.354. Lowers all targets\u2019 Attack and Special Attack by one stage. Makes the user switch out."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-parting-shot"
       }
     }
@@ -14900,7 +14900,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Topsy-Turvy",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -14918,7 +14918,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.356. Inverts the target\u2019s stat modifiers."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-topsy-turvy"
       }
     }
@@ -14926,7 +14926,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Draining Kiss",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -14944,7 +14944,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.363. Drains 75% of the damage inflicted to heal the user."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-draining-kiss"
       }
     }
@@ -14952,7 +14952,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Crafty Shield",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -14970,7 +14970,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.362. Protects all friendly Pok\u00e9mon from non-damaging moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-crafty-shield"
       }
     }
@@ -14978,7 +14978,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Flower Shield",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -14996,7 +14996,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.363. Raises the Defense of all []{type:grass} Pok\u00e9mon in battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-flower-shield"
       }
     }
@@ -15004,7 +15004,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grassy Terrain",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -15022,7 +15022,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.380. For five turns, heals all Pok\u00e9mon on the ground for 1/16 max HP each turn and strengthens their []{type:grass} moves to 1.5\u00d7 their power."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-grassy-terrain"
       }
     }
@@ -15030,7 +15030,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Misty Terrain",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -15048,7 +15048,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.363. For five turns, protects all Pok\u00e9mon on the ground from major status ailments and confusion, and halves the power of incoming []{type:dragon} moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-misty-terrain"
       }
     }
@@ -15056,7 +15056,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electrify",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -15074,7 +15074,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.359. Changes the target\u2019s move\u2019s type to []{type:electric} if it hasn\u2019t moved yet this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-electrify"
       }
     }
@@ -15082,7 +15082,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Play Rough",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "physical",
@@ -15100,7 +15100,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.364. Has a 10% chance to lower the target\u2019s Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-play-rough"
       }
     }
@@ -15108,7 +15108,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fairy Wind",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -15126,7 +15126,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.363. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fairy-wind"
       }
     }
@@ -15134,7 +15134,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Moonblast",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -15152,7 +15152,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.364. Has a 30% chance to lower the target\u2019s Special Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-moonblast"
       }
     }
@@ -15160,7 +15160,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Boomburst",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -15178,7 +15178,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.390. Inflicts regular damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-boomburst"
       }
     }
@@ -15186,7 +15186,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fairy Lock",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -15204,7 +15204,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.363. Prevents all Pok\u00e9mon from fleeing or switching out during the next turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fairy-lock"
       }
     }
@@ -15212,7 +15212,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "King\u2019s Shield",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "support",
@@ -15230,7 +15230,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.419. Blocks damaging attacks and lowers attacking Pok\u00e9mon\u2019s Attack by two stages on contact. Switches Aegislash to Shield Forme."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-kings-shield"
       }
     }
@@ -15238,7 +15238,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Play Nice",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -15256,7 +15256,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.398. Lowers the target\u2019s Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-play-nice"
       }
     }
@@ -15264,7 +15264,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Confide",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -15282,7 +15282,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.390. Lowers the target\u2019s Special Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-confide"
       }
     }
@@ -15290,7 +15290,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Diamond Storm",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -15308,7 +15308,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.416. Has a 50% chance to raise the user\u2019s Defense by two stages for each target hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-diamond-storm"
       }
     }
@@ -15316,7 +15316,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Steam Eruption",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -15334,7 +15334,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.423. Has a 30% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-steam-eruption"
       }
     }
@@ -15342,7 +15342,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hyperspace Hole",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -15360,7 +15360,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.411. Ignores and destroys protection effects."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hyperspace-hole"
       }
     }
@@ -15368,7 +15368,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Water Shuriken",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -15386,7 +15386,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.424. Hits 2\u20135 times."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-water-shuriken"
       }
     }
@@ -15394,7 +15394,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mystical Fire",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -15412,7 +15412,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.372. Has a 100% chance to lower the target\u2019s Special Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mystical-fire"
       }
     }
@@ -15420,7 +15420,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spiky Shield",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -15438,7 +15438,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.382. Blocks damaging attacks and damages attacking Pok\u00e9mon for 1/8 their max HP."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-spiky-shield"
       }
     }
@@ -15446,7 +15446,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aromatic Mist",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -15464,7 +15464,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.362. Raises a selected ally\u2019s Special Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-aromatic-mist"
       }
     }
@@ -15472,7 +15472,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eerie Impulse",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -15490,7 +15490,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.359. Lowers the target\u2019s Special Attack by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-eerie-impulse"
       }
     }
@@ -15498,7 +15498,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Venom Drench",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -15516,7 +15516,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.409. Lowers the target\u2019s Attack, Special Attack, and Speed by one stage if it is poisoned."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-venom-drench"
       }
     }
@@ -15524,7 +15524,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Powder",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "support",
@@ -15542,7 +15542,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.350. Explodes if the target uses a []{type:fire} move this turn, damaging it for 1/4 its max HP and preventing the move."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-powder"
       }
     }
@@ -15550,7 +15550,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Geomancy",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -15568,7 +15568,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.363. Takes one turn to charge, then raises the user\u2019s Special Attack, Special Defense, and Speed by two stages."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-geomancy"
       }
     }
@@ -15576,7 +15576,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magnetic Flux",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -15594,7 +15594,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.360. Raises the Defense and Special Defense of all friendly Pok\u00e9mon with []{ability:plus} or []{ability:minus} by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-magnetic-flux"
       }
     }
@@ -15602,7 +15602,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Electric Terrain",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "support",
@@ -15620,7 +15620,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.359. For five turns, prevents all Pok\u00e9mon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5\u00d7 their power."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-electric-terrain"
       }
     }
@@ -15628,7 +15628,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dazzling Gleam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -15646,7 +15646,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.362. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dazzling-gleam"
       }
     }
@@ -15654,7 +15654,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Baby-Doll Eyes",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -15672,7 +15672,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.362. Lowers the target\u2019s Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-baby-doll-eyes"
       }
     }
@@ -15680,7 +15680,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nuzzle",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -15698,7 +15698,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.360. Has a 100% chance to paralyze the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-nuzzle"
       }
     }
@@ -15706,7 +15706,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Infestation",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "special",
@@ -15724,7 +15724,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.350. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-infestation"
       }
     }
@@ -15732,7 +15732,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Power-Up Punch",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -15750,7 +15750,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.367. Raises the user\u2019s Attack by one stage after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-power-up-punch"
       }
     }
@@ -15758,7 +15758,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Oblivion Wing",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "special",
@@ -15776,7 +15776,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.375. Drains 75% of the damage inflicted to heal the user."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-oblivion-wing"
       }
     }
@@ -15784,7 +15784,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thousand Arrows",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -15802,7 +15802,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.386. Grounds the target, and hits even Flying-type or levitating Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-thousand-arrows"
       }
     }
@@ -15810,7 +15810,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Thousand Waves",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -15828,7 +15828,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.386. Prevents the target from leaving battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-thousand-waves"
       }
     }
@@ -15836,7 +15836,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Land\u2019s Wrath",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -15854,7 +15854,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.384. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-lands-wrath"
       }
     }
@@ -15862,7 +15862,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Light of Ruin",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -15880,7 +15880,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.363. User receives 1/2 the damage inflicted in recoil."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-light-of-ruin"
       }
     }
@@ -15888,7 +15888,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Origin Pulse",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -15906,7 +15906,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.422. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-origin-pulse"
       }
     }
@@ -15914,7 +15914,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Precipice Blades",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -15932,7 +15932,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.385. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-precipice-blades"
       }
     }
@@ -15940,7 +15940,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Ascent",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -15958,7 +15958,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.374. Lowers the user\u2019s Defense and Special Defense by one stage after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dragon-ascent"
       }
     }
@@ -15966,7 +15966,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hyperspace Fury",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -15984,7 +15984,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.353. Ignores and destroys protection effects."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hyperspace-fury"
       }
     }
@@ -15992,7 +15992,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Breakneck Blitz",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -16010,7 +16010,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-breakneck-blitz-physical"
       }
     }
@@ -16018,7 +16018,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Breakneck Blitz",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -16036,7 +16036,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-breakneck-blitz-special"
       }
     }
@@ -16044,7 +16044,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "All-Out Pummeling",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -16062,7 +16062,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-all-out-pummeling-physical"
       }
     }
@@ -16070,7 +16070,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "All-Out Pummeling",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -16088,7 +16088,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-all-out-pummeling-special"
       }
     }
@@ -16096,7 +16096,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Supersonic Skystrike",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -16114,7 +16114,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-supersonic-skystrike-physical"
       }
     }
@@ -16122,7 +16122,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Supersonic Skystrike",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "special",
@@ -16140,7 +16140,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-supersonic-skystrike-special"
       }
     }
@@ -16148,7 +16148,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Acid Downpour",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -16166,7 +16166,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-acid-downpour-physical"
       }
     }
@@ -16174,7 +16174,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Acid Downpour",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "special",
@@ -16192,7 +16192,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-acid-downpour-special"
       }
     }
@@ -16200,7 +16200,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tectonic Rage",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -16218,7 +16218,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-tectonic-rage-physical"
       }
     }
@@ -16226,7 +16226,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tectonic Rage",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "special",
@@ -16244,7 +16244,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-tectonic-rage-special"
       }
     }
@@ -16252,7 +16252,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Continental Crush",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -16270,7 +16270,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-continental-crush-physical"
       }
     }
@@ -16278,7 +16278,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Continental Crush",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "special",
@@ -16296,7 +16296,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-continental-crush-special"
       }
     }
@@ -16304,7 +16304,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Savage Spin-Out",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -16322,7 +16322,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.428. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-savage-spin-out-physical"
       }
     }
@@ -16330,7 +16330,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Savage Spin-Out",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "special",
@@ -16348,7 +16348,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.428. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-savage-spin-out-special"
       }
     }
@@ -16356,7 +16356,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Never-Ending Nightmare",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -16374,7 +16374,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-never-ending-nightmare-physical"
       }
     }
@@ -16382,7 +16382,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Never-Ending Nightmare",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "special",
@@ -16400,7 +16400,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-never-ending-nightmare-special"
       }
     }
@@ -16408,7 +16408,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corkscrew Crash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -16426,7 +16426,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-corkscrew-crash-physical"
       }
     }
@@ -16434,7 +16434,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Corkscrew Crash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "special",
@@ -16452,7 +16452,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-corkscrew-crash-special"
       }
     }
@@ -16460,7 +16460,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Inferno Overdrive",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -16478,7 +16478,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-inferno-overdrive-physical"
       }
     }
@@ -16486,7 +16486,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Inferno Overdrive",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -16504,7 +16504,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-inferno-overdrive-special"
       }
     }
@@ -16512,7 +16512,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hydro Vortex",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -16530,7 +16530,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hydro-vortex-physical"
       }
     }
@@ -16538,7 +16538,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Hydro Vortex",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -16556,7 +16556,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-hydro-vortex-special"
       }
     }
@@ -16564,7 +16564,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bloom Doom",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -16582,7 +16582,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bloom-doom-physical"
       }
     }
@@ -16590,7 +16590,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bloom Doom",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -16608,7 +16608,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bloom-doom-special"
       }
     }
@@ -16616,7 +16616,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gigavolt Havoc",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -16634,7 +16634,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-gigavolt-havoc-physical"
       }
     }
@@ -16642,7 +16642,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gigavolt Havoc",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -16660,7 +16660,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-gigavolt-havoc-special"
       }
     }
@@ -16668,7 +16668,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shattered Psyche",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "physical",
@@ -16686,7 +16686,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-shattered-psyche-physical"
       }
     }
@@ -16694,7 +16694,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shattered Psyche",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -16712,7 +16712,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-shattered-psyche-special"
       }
     }
@@ -16720,7 +16720,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Subzero Slammer",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -16738,7 +16738,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-subzero-slammer-physical"
       }
     }
@@ -16746,7 +16746,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Subzero Slammer",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -16764,7 +16764,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.430. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-subzero-slammer-special"
       }
     }
@@ -16772,7 +16772,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Devastating Drake",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -16790,7 +16790,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-devastating-drake-physical"
       }
     }
@@ -16798,7 +16798,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Devastating Drake",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -16816,7 +16816,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-devastating-drake-special"
       }
     }
@@ -16824,7 +16824,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Black Hole Eclipse",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -16842,7 +16842,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-black-hole-eclipse-physical"
       }
     }
@@ -16850,7 +16850,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Black Hole Eclipse",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "special",
@@ -16868,7 +16868,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-black-hole-eclipse-special"
       }
     }
@@ -16876,7 +16876,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Twinkle Tackle",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "physical",
@@ -16894,7 +16894,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-twinkle-tackle-physical"
       }
     }
@@ -16902,7 +16902,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Twinkle Tackle",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -16920,7 +16920,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.429. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-twinkle-tackle-special"
       }
     }
@@ -16928,7 +16928,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shore Up",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "support",
@@ -16946,7 +16946,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.385. Heals the user for \u00bd its max HP, or \u2154 during a sandstorm."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-shore-up"
       }
     }
@@ -16954,7 +16954,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "First Impression",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -16972,7 +16972,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.349. Can only be used as the first move after the user enters battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-first-impression"
       }
     }
@@ -16980,7 +16980,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Baneful Bunker",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -16998,7 +16998,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.407. Grants the user protection for the rest of the turn and poisons any Pok\u00e9mon that tries to use a contact move on it."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-baneful-bunker"
       }
     }
@@ -17006,7 +17006,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spirit Shackle",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -17024,7 +17024,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.378. Traps the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-spirit-shackle"
       }
     }
@@ -17032,7 +17032,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Darkest Lariat",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -17050,7 +17050,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.353. Ignores the target\u2019s stat modifiers."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-darkest-lariat"
       }
     }
@@ -17058,7 +17058,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sparkling Aria",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -17076,7 +17076,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.423. Cures the target of burns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sparkling-aria"
       }
     }
@@ -17084,7 +17084,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Ice Hammer",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -17102,7 +17102,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.388. Lowers user\u2019s Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-ice-hammer"
       }
     }
@@ -17110,7 +17110,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Floral Healing",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -17128,7 +17128,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.363. Heals the target for \u00bd its max HP, or \u2154 on Grassy Terrain."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-floral-healing"
       }
     }
@@ -17136,7 +17136,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "High Horsepower",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -17154,7 +17154,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.384. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-high-horsepower"
       }
     }
@@ -17162,7 +17162,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Strength Sap",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "support",
@@ -17180,7 +17180,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.382. Heals the user by the target\u2019s current Attack stat and lowers the target\u2019s Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-strength-sap"
       }
     }
@@ -17188,7 +17188,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Solar Blade",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -17206,7 +17206,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.382. Requires a turn to charge before attacking."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-solar-blade"
       }
     }
@@ -17214,7 +17214,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Leafage",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -17232,7 +17232,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.381. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-leafage"
       }
     }
@@ -17240,7 +17240,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spotlight",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -17258,7 +17258,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.403. Forces the target\u2019s opponents to aim at the target for the rest of the turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-spotlight"
       }
     }
@@ -17266,7 +17266,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Toxic Thread",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -17284,7 +17284,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.409. Poisons the target and lowers its Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-toxic-thread"
       }
     }
@@ -17292,7 +17292,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Laser Focus",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -17310,7 +17310,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.396. Guarantees a critical hit with the user\u2019s next move."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-laser-focus"
       }
     }
@@ -17318,7 +17318,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Gear Up",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "support",
@@ -17336,7 +17336,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.419. Raises the Attack and Special Attack of all friendly Pok\u00e9mon with []{ability:plus} or []{ability:minus} by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-gear-up"
       }
     }
@@ -17344,7 +17344,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Throat Chop",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -17362,7 +17362,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.355. Prevents the target from using sound-based moves for two turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-throat-chop"
       }
     }
@@ -17370,7 +17370,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pollen Puff",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "special",
@@ -17388,7 +17388,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.350. Damages opponents, but heals allies for 50% of their max HP."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-pollen-puff"
       }
     }
@@ -17396,7 +17396,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Anchor Shot",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -17414,7 +17414,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.418. Traps the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-anchor-shot"
       }
     }
@@ -17422,7 +17422,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psychic Terrain",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -17440,7 +17440,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.413. Protects Pok\u00e9mon on the ground from priority moves and increases the power of their Psychic moves by 50%."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-psychic-terrain"
       }
     }
@@ -17448,7 +17448,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Lunge",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -17466,7 +17466,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.350. Lowers the target\u2019s Attack by one stage after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-lunge"
       }
     }
@@ -17474,7 +17474,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fire Lash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -17492,7 +17492,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.370. Lowers the target\u2019s Defense by one stage after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fire-lash"
       }
     }
@@ -17500,7 +17500,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Power Trip",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -17518,7 +17518,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.354. Power is higher the more the user\u2019s stats have been raised, to a maximum of 31\u00d7."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-power-trip"
       }
     }
@@ -17526,7 +17526,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Burn Up",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -17544,7 +17544,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.370. Removes the user\u2019s []{type:fire} type after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-burn-up"
       }
     }
@@ -17552,7 +17552,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Speed Swap",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -17570,7 +17570,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.415. Exchanges the user\u2019s Speed with the target\u2019s."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-speed-swap"
       }
     }
@@ -17578,7 +17578,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Smart Strike",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -17596,7 +17596,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.420. Never misses."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-smart-strike"
       }
     }
@@ -17604,7 +17604,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Purify",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "support",
@@ -17622,7 +17622,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.408. Cures the target of a major status ailment and heals the user for 50% of its max HP."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-purify"
       }
     }
@@ -17630,7 +17630,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Revelation Dance",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "special",
@@ -17648,7 +17648,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.400. Has the same type as the user."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-revelation-dance"
       }
     }
@@ -17656,7 +17656,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Core Enforcer",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -17674,7 +17674,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.356. Nullifies the target\u2019s ability if it moves earlier."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-core-enforcer"
       }
     }
@@ -17682,7 +17682,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Trop Kick",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -17700,7 +17700,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.383. Lowers the target\u2019s Attack by one stage after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-trop-kick"
       }
     }
@@ -17708,7 +17708,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Instruct",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -17726,7 +17726,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.411. Forces the target to repeat its last used move."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-instruct"
       }
     }
@@ -17734,7 +17734,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Beak Blast",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -17752,7 +17752,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.374. Inflicts a burn on any Pok\u00e9mon that makes contact before the attack."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-beak-blast"
       }
     }
@@ -17760,7 +17760,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clanging Scales",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -17778,7 +17778,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.356. Lowers the user\u2019s Defense by one stage after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-clanging-scales"
       }
     }
@@ -17786,7 +17786,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Hammer",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -17804,7 +17804,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.357. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dragon-hammer"
       }
     }
@@ -17812,7 +17812,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Brutal Swing",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -17830,7 +17830,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.352. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-brutal-swing"
       }
     }
@@ -17838,7 +17838,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aurora Veil",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "support",
@@ -17856,7 +17856,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.386. Reduces damage five turns, but must be used during hail."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-aurora-veil"
       }
     }
@@ -17864,7 +17864,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shell Trap",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -17882,7 +17882,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.372. Only inflicts damage if the user was hit by a physical move this turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-shell-trap"
       }
     }
@@ -17890,7 +17890,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fleur Cannon",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -17908,7 +17908,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.363. Lowers the user\u2019s Special Attack by two stages after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fleur-cannon"
       }
     }
@@ -17916,7 +17916,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Psychic Fangs",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "physical",
@@ -17934,7 +17934,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.413. Destroys Reflect and Light Screen."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-psychic-fangs"
       }
     }
@@ -17942,7 +17942,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stomping Tantrum",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -17960,7 +17960,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.386. Has double power if the user\u2019s last move failed."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-stomping-tantrum"
       }
     }
@@ -17968,7 +17968,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Shadow Bone",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -17986,7 +17986,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.377. Has a 20% chance to lower the target\u2019s Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-shadow-bone"
       }
     }
@@ -17994,7 +17994,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Accelerock",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -18012,7 +18012,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.416. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-accelerock"
       }
     }
@@ -18020,7 +18020,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Liquidation",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -18038,7 +18038,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.422. Has a 20% chance to lower the target\u2019s Defense by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-liquidation"
       }
     }
@@ -18046,7 +18046,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Prismatic Laser",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -18064,7 +18064,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.413. User foregoes its next turn to recharge."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-prismatic-laser"
       }
     }
@@ -18072,7 +18072,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spectral Thief",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -18090,7 +18090,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.378. Steals the target\u2019s stat increases, then inflicts damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-spectral-thief"
       }
     }
@@ -18098,7 +18098,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sunsteel Strike",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -18116,7 +18116,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.420. Cannot be disrupted by abilities."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sunsteel-strike"
       }
     }
@@ -18124,7 +18124,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Moongeist Beam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "special",
@@ -18142,7 +18142,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.377. Cannot be disrupted by abilities."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-moongeist-beam"
       }
     }
@@ -18150,7 +18150,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tearful Look",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -18168,7 +18168,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.404. Lowers the target\u2019s Attack and Special Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-tearful-look"
       }
     }
@@ -18176,7 +18176,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zing Zap",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -18194,7 +18194,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.362. Has a 30% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-zing-zap"
       }
     }
@@ -18202,7 +18202,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Nature\u2019s Madness",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -18220,7 +18220,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.364. Inflicts damage equal to half the target\u2019s HP."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-natures-madness"
       }
     }
@@ -18228,7 +18228,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Multi-Attack",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -18246,7 +18246,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.397. If the user is holding a appropriate plate or drive, the damage inflicted will match it."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-multi-attack"
       }
     }
@@ -18254,7 +18254,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Mind Blown",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "special",
@@ -18272,7 +18272,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.372. Inflicts damage, and the user takes damage equal to half of its max HP, rounded up."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-mind-blown"
       }
     }
@@ -18280,7 +18280,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Plasma Fists",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -18298,7 +18298,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.360. After inflicting damage, causes all Normal-type moves to become Electric-type for the remainder of the turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-plasma-fists"
       }
     }
@@ -18306,7 +18306,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Photon Geyser",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -18324,7 +18324,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.413. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-photon-geyser"
       }
     }
@@ -18332,7 +18332,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Zippy Zap",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "physical",
@@ -18350,7 +18350,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.362. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-zippy-zap"
       }
     }
@@ -18358,7 +18358,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Splishy Splash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -18376,7 +18376,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.423. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-splishy-splash"
       }
     }
@@ -18384,7 +18384,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Floaty Fall",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -18402,7 +18402,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.374. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-floaty-fall"
       }
     }
@@ -18410,7 +18410,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pika Papow",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -18428,7 +18428,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.360. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-pika-papow"
       }
     }
@@ -18436,7 +18436,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bouncy Bubble",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -18454,7 +18454,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.421. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bouncy-bubble"
       }
     }
@@ -18462,7 +18462,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Buzzy Buzz",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -18480,7 +18480,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.359. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-buzzy-buzz"
       }
     }
@@ -18488,7 +18488,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sizzly Slide",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -18506,7 +18506,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.373. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sizzly-slide"
       }
     }
@@ -18514,7 +18514,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Glitzy Glow",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "special",
@@ -18532,7 +18532,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.410. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-glitzy-glow"
       }
     }
@@ -18540,7 +18540,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Baddy Bad",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "special",
@@ -18558,7 +18558,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.352. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-baddy-bad"
       }
     }
@@ -18566,7 +18566,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sappy Seed",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -18584,7 +18584,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.382. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sappy-seed"
       }
     }
@@ -18592,7 +18592,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Freezy Frost",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "special",
@@ -18610,7 +18610,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.387. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-freezy-frost"
       }
     }
@@ -18618,7 +18618,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Sparkly Swirl",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "special",
@@ -18636,7 +18636,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.364. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-sparkly-swirl"
       }
     }
@@ -18644,7 +18644,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Veevee Volley",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -18662,7 +18662,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.405. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-veevee-volley"
       }
     }
@@ -18670,7 +18670,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Double Iron Bash",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -18688,7 +18688,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.418. Hits twice in one turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-double-iron-bash"
       }
     }
@@ -18696,7 +18696,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dynamax Cannon",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -18714,7 +18714,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.357. Sets [Light Screen]{move:light-screen} on the user\u2019s side of the field after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dynamax-cannon"
       }
     }
@@ -18722,7 +18722,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snipe Shot",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "special",
@@ -18740,7 +18740,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.423. Sets [Reflect]{move:reflect} on the user\u2019s side of the field after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-snipe-shot"
       }
     }
@@ -18748,7 +18748,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Jaw Lock",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -18766,7 +18766,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.354. Seeds the target after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-jaw-lock"
       }
     }
@@ -18774,7 +18774,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Stuff Cheeks",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -18792,7 +18792,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.403. Cures the entire party of major status effects after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-stuff-cheeks"
       }
     }
@@ -18800,7 +18800,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "No Retreat",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "support",
@@ -18818,7 +18818,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.367. Hits twice in one turn, with a 100% chance to make the target flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-no-retreat"
       }
     }
@@ -18826,7 +18826,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Tar Shot",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "support",
@@ -18844,7 +18844,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.417. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-tar-shot"
       }
     }
@@ -18852,7 +18852,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Magic Powder",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "support",
@@ -18870,7 +18870,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.412. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-magic-powder"
       }
     }
@@ -18878,7 +18878,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Dragon Darts",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -18896,7 +18896,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.357. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-dragon-darts"
       }
     }
@@ -18904,7 +18904,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Teatime",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -18922,7 +18922,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.404. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-teatime"
       }
     }
@@ -18930,7 +18930,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Octolock",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "support",
@@ -18948,7 +18948,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.367. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-octolock"
       }
     }
@@ -18956,7 +18956,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Bolt Beak",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -18974,7 +18974,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.358. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-bolt-beak"
       }
     }
@@ -18982,7 +18982,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Fishious Rend",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -19000,7 +19000,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.422. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-fishious-rend"
       }
     }
@@ -19008,7 +19008,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Court Change",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "support",
@@ -19026,7 +19026,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.391. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-court-change"
       }
     }
@@ -19034,7 +19034,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Flare",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -19052,7 +19052,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-flare"
       }
     }
@@ -19060,7 +19060,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Flutterby",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/bug.svg",
+    "img": "systems/pok-role-system/assets/types/bug.svg",
     "system": {
       "type": "bug",
       "category": "physical",
@@ -19078,7 +19078,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.425. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-flutterby"
       }
     }
@@ -19086,7 +19086,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Lightning",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -19104,7 +19104,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-lightning"
       }
     }
@@ -19112,7 +19112,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Strike",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/normal.svg",
+    "img": "systems/pok-role-system/assets/types/normal.svg",
     "system": {
       "type": "normal",
       "category": "physical",
@@ -19130,7 +19130,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-strike"
       }
     }
@@ -19138,7 +19138,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Knuckle",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -19156,7 +19156,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-knuckle"
       }
     }
@@ -19164,7 +19164,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Phantasm",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ghost.svg",
+    "img": "systems/pok-role-system/assets/types/ghost.svg",
     "system": {
       "type": "ghost",
       "category": "physical",
@@ -19182,7 +19182,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-phantasm"
       }
     }
@@ -19190,7 +19190,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Hailstorm",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ice.svg",
+    "img": "systems/pok-role-system/assets/types/ice.svg",
     "system": {
       "type": "ice",
       "category": "physical",
@@ -19208,7 +19208,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-hailstorm"
       }
     }
@@ -19216,7 +19216,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Ooze",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/poison.svg",
+    "img": "systems/pok-role-system/assets/types/poison.svg",
     "system": {
       "type": "poison",
       "category": "physical",
@@ -19234,7 +19234,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-ooze"
       }
     }
@@ -19242,7 +19242,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Geyser",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "physical",
@@ -19260,7 +19260,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.428. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-geyser"
       }
     }
@@ -19268,7 +19268,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Airstream",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/flying.svg",
+    "img": "systems/pok-role-system/assets/types/flying.svg",
     "system": {
       "type": "flying",
       "category": "physical",
@@ -19286,7 +19286,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-airstream"
       }
     }
@@ -19294,7 +19294,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Starfall",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "physical",
@@ -19312,7 +19312,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-starfall"
       }
     }
@@ -19320,7 +19320,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Wyrmwind",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -19338,7 +19338,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-wyrmwind"
       }
     }
@@ -19346,7 +19346,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Mindstorm",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/psychic.svg",
+    "img": "systems/pok-role-system/assets/types/psychic.svg",
     "system": {
       "type": "psychic",
       "category": "physical",
@@ -19364,7 +19364,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-mindstorm"
       }
     }
@@ -19372,7 +19372,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Rockfall",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/rock.svg",
+    "img": "systems/pok-role-system/assets/types/rock.svg",
     "system": {
       "type": "rock",
       "category": "physical",
@@ -19390,7 +19390,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-rockfall"
       }
     }
@@ -19398,7 +19398,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Quake",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/ground.svg",
+    "img": "systems/pok-role-system/assets/types/ground.svg",
     "system": {
       "type": "ground",
       "category": "physical",
@@ -19416,7 +19416,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-quake"
       }
     }
@@ -19424,7 +19424,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Darkness",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -19442,7 +19442,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.426. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-darkness"
       }
     }
@@ -19450,7 +19450,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Overgrowth",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -19468,7 +19468,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-overgrowth"
       }
     }
@@ -19476,7 +19476,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Max Steelspike",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "physical",
@@ -19494,7 +19494,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.427. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-max-steelspike"
       }
     }
@@ -19502,7 +19502,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Clangorous Soul",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "support",
@@ -19520,7 +19520,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.356. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-clangorous-soul"
       }
     }
@@ -19528,7 +19528,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Body Press",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -19546,7 +19546,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.365. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-body-press"
       }
     }
@@ -19554,7 +19554,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Decorate",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "support",
@@ -19572,7 +19572,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.362. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-decorate"
       }
     }
@@ -19580,7 +19580,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Drum Beating",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -19598,7 +19598,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.379. Has a 100% chance to lower the target\u2019s Speed by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-drum-beating"
       }
     }
@@ -19606,7 +19606,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Snap Trap",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -19624,7 +19624,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.382. Prevents the target from fleeing and inflicts damage for 2-5 turns."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-snap-trap"
       }
     }
@@ -19632,7 +19632,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Pyro Ball",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fire.svg",
+    "img": "systems/pok-role-system/assets/types/fire.svg",
     "system": {
       "type": "fire",
       "category": "physical",
@@ -19650,7 +19650,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.372. Has a 10% chance to [burn]{mechanic:burn} the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-pyro-ball"
       }
     }
@@ -19658,7 +19658,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Aura Wheel",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "physical",
@@ -19676,7 +19676,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.358. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-aura-wheel"
       }
     }
@@ -19684,7 +19684,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Breaking Swipe",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "physical",
@@ -19702,7 +19702,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.356. Lowers the target\u2019s Attack by one stage after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-breaking-swipe"
       }
     }
@@ -19710,7 +19710,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Branch Poke",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -19728,7 +19728,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.379. Inflicts regular damage with no additional effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-branch-poke"
       }
     }
@@ -19736,7 +19736,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Overdrive",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/electric.svg",
+    "img": "systems/pok-role-system/assets/types/electric.svg",
     "system": {
       "type": "electric",
       "category": "special",
@@ -19754,7 +19754,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.360. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-overdrive"
       }
     }
@@ -19762,7 +19762,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Apple Acid",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "special",
@@ -19780,7 +19780,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.379. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-apple-acid"
       }
     }
@@ -19788,7 +19788,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Grav Apple",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/grass.svg",
+    "img": "systems/pok-role-system/assets/types/grass.svg",
     "system": {
       "type": "grass",
       "category": "physical",
@@ -19806,7 +19806,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.380. Lowers the target\u2019s Defense by one stage after inflicting damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-grav-apple"
       }
     }
@@ -19814,7 +19814,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Spirit Break",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fairy.svg",
+    "img": "systems/pok-role-system/assets/types/fairy.svg",
     "system": {
       "type": "fairy",
       "category": "physical",
@@ -19832,7 +19832,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.364. Has a 100% chance to lower the target\u2019s Special Attack by one stage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-spirit-break"
       }
     }
@@ -19840,7 +19840,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Strange Steam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "special",
@@ -19858,7 +19858,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.364. Has a 20% chance to confuse the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-strange-steam"
       }
     }
@@ -19866,7 +19866,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Life Dew",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/water.svg",
+    "img": "systems/pok-role-system/assets/types/water.svg",
     "system": {
       "type": "water",
       "category": "support",
@@ -19884,7 +19884,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.422. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-life-dew"
       }
     }
@@ -19892,7 +19892,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Obstruct",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "support",
@@ -19910,7 +19910,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.354. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-obstruct"
       }
     }
@@ -19918,7 +19918,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "False Surrender",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -19936,7 +19936,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.353. Never misses."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-false-surrender"
       }
     }
@@ -19944,7 +19944,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Meteor Assault",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/fighting.svg",
+    "img": "systems/pok-role-system/assets/types/fighting.svg",
     "system": {
       "type": "fighting",
       "category": "physical",
@@ -19962,7 +19962,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.367. User foregoes its next turn to recharge."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-meteor-assault"
       }
     }
@@ -19970,7 +19970,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Eternabeam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dragon.svg",
+    "img": "systems/pok-role-system/assets/types/dragon.svg",
     "system": {
       "type": "dragon",
       "category": "special",
@@ -19988,7 +19988,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.358. User foregoes its next turn to recharge."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-eternabeam"
       }
     }
@@ -19996,7 +19996,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Steel Beam",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/steel.svg",
+    "img": "systems/pok-role-system/assets/types/steel.svg",
     "system": {
       "type": "steel",
       "category": "special",
@@ -20014,7 +20014,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.420. Inflicts damage, and the user takes damage equal to half of its max HP, rounded up."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-steel-beam"
       }
     }
@@ -20022,7 +20022,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
   {
     "name": "Raging Fury",
     "type": "move",
-    "img": "systems/pok-role-module/assets/types/dark.svg",
+    "img": "systems/pok-role-system/assets/types/dark.svg",
     "system": {
       "type": "dark",
       "category": "physical",
@@ -20040,7 +20040,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.355. Move description available in the move section."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "move-raging-fury"
       }
     }

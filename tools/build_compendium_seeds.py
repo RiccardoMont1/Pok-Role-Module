@@ -12,7 +12,7 @@ OUT_DIR = ROOT / "module" / "seeds" / "generated"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 BASE = "https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv"
 POKEMON_IMAGE_DIR = ROOT / "assets" / "pokemon" / "book" / "book"
-POKEMON_IMAGE_ROOT = "systems/pok-role-module/assets/pokemon/book/book"
+POKEMON_IMAGE_ROOT = "systems/pok-role-system/assets/pokemon/book/book"
 VALID_TYPE_KEYS = {
     "normal", "bug", "dark", "dragon", "electric", "fairy", "fighting", "fire", "flying",
     "ghost", "grass", "ground", "ice", "poison", "psychic", "rock", "steel", "water"
@@ -21,7 +21,7 @@ TYPE_FALLBACKS = {
     "shadow": "ghost",
     "unknown": "normal"
 }
-MOVE_TYPE_ICON_ROOT = "systems/pok-role-module/assets/types"
+MOVE_TYPE_ICON_ROOT = "systems/pok-role-system/assets/types"
 POKROLE_ATTRIBUTE_KEYS = [
     "strength",
     "dexterity",
@@ -1254,7 +1254,7 @@ def build_moves():
                 "description": description
             },
             "flags": {
-                "pok-role-module": {
+                "pok-role-system": {
                     "seedId": f"move-{slugify(identifier)}"
                 }
             }
@@ -1357,7 +1357,7 @@ def build_abilities():
                 "description": description
             },
             "flags": {
-                "pok-role-module": {
+                "pok-role-system": {
                     "seedId": f"ability-{slugify(identifier)}"
                 }
             }
@@ -1488,7 +1488,7 @@ def build_pokedex():
                 "description": "Imported from the PokeRole Corebook Pokedex roster (#001-#890 and supported forms)."
             },
             "flags": {
-                "pok-role-module": {
+                "pok-role-system": {
                     "seedId": f"pokedex-{species_id:03d}-{seed_suffix}"
                 }
             }
@@ -1552,7 +1552,7 @@ def build_pokedex():
 
     unique_entries = {}
     for entry in entries:
-        unique_entries[entry["flags"]["pok-role-module"]["seedId"]] = entry
+        unique_entries[entry["flags"]["pok-role-system"]["seedId"]] = entry
     return list(unique_entries.values())
 
 
@@ -1775,7 +1775,7 @@ def build_pokemon_actors_from_pokeapi():
                 "randomImg": False
             },
             "flags": {
-                "pok-role-module": {
+                "pok-role-system": {
                     "seedId": f"actor-pokemon-{species_id:03d}-{seed_suffix}"
                 }
             }
@@ -1839,7 +1839,7 @@ def build_pokemon_actors_from_pokeapi():
 
     unique_entries = {}
     for entry in entries:
-        unique_entries[entry["flags"]["pok-role-module"]["seedId"]] = entry
+        unique_entries[entry["flags"]["pok-role-system"]["seedId"]] = entry
     return list(unique_entries.values())
 
 
@@ -2042,7 +2042,7 @@ def build_pokemon_actors(move_seed_entries=None):
                     "randomImg": False
                 },
                 "flags": {
-                    "pok-role-module": {
+                    "pok-role-system": {
                         "seedId": seed_id
                     }
                 }
@@ -2051,7 +2051,7 @@ def build_pokemon_actors(move_seed_entries=None):
 
     unique_entries = {}
     for entry in entries:
-        unique_entries[entry["flags"]["pok-role-module"]["seedId"]] = entry
+        unique_entries[entry["flags"]["pok-role-system"]["seedId"]] = entry
 
     print(
         f"Generated pokemon actor entries from upstream file: {upstream_path} "

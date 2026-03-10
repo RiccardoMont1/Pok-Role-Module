@@ -51,7 +51,7 @@ async function writePackSource(packName, documentType, entries) {
   for (const raw of entries) {
     index += 1;
     const entry = JSON.parse(JSON.stringify(raw));
-    const seedId = entry.flags?.["pok-role-module"]?.seedId;
+    const seedId = entry.flags?.["pok-role-system"]?.seedId;
     entry._id = entry._id || makeStableId(seedId, `${packName}-${index}`);
     const collectionName = getCollectionName(documentType);
     if (!collectionName) {

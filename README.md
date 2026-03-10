@@ -109,8 +109,8 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
 ## Install (local dev)
 
 1. Place this folder inside your Foundry `Data/systems/` directory.
-2. Ensure the folder name is `pok-role-module`.
-3. Start Foundry, create a world with system `Poke Role Module`.
+2. Ensure the folder name matches your system id (default: `pok-role-system`).
+3. Start Foundry, create a world with system `Pokè Role System`.
 
 ## Install (manifest URL)
 

@@ -7,6 +7,67 @@ import { POKEMON_ACTOR_COMPENDIUM_ENTRIES } from "./generated/pokemon-actor-seed
 export const COMPENDIUM_SEED_VERSION = "2026-03-09-corebook-moves-abilities-pokemon-actors-v4";
 const VALID_ITEM_TYPES = new Set(["move", "gear", "ability", "weather", "status", "pokedex"]);
 const VALID_ACTOR_TYPES = new Set(["trainer", "pokemon"]);
+const LEGACY_SYSTEM_FLAG_KEYS = Object.freeze(["pok-role-module", "pok-role-system"]);
+
+function getSystemRootPath() {
+  return `${game.system?.path ?? `systems/${POKROLE.ID}`}`.replace(/\/+$/, "");
+}
+
+function normalizeSystemPathInString(value) {
+  if (typeof value !== "string") return value;
+  return value.replace(/^systems\/[^/]+/i, getSystemRootPath());
+}
+
+function normalizeSeedValue(value) {
+  if (typeof value === "string") {
+    return normalizeSystemPathInString(value);
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((entry) => normalizeSeedValue(entry));
+  }
+
+  if (value && typeof value === "object") {
+    const normalizedEntries = Object.entries(value).map(([key, entryValue]) => [
+      key,
+      normalizeSeedValue(entryValue)
+    ]);
+    return Object.fromEntries(normalizedEntries);
+  }
+
+  return value;
+}
+
+function normalizeSeedFlags(flags) {
+  const normalizedFlags = flags && typeof flags === "object"
+    ? foundry.utils.deepClone(flags)
+    : {};
+
+  const legacySeedId = [POKROLE.ID, ...LEGACY_SYSTEM_FLAG_KEYS]
+    .map((flagKey) => normalizedFlags?.[flagKey]?.seedId)
+    .find((seedId) => typeof seedId === "string" && seedId.length > 0);
+
+  if (legacySeedId) {
+    normalizedFlags[POKROLE.ID] = {
+      ...(normalizedFlags[POKROLE.ID] ?? {}),
+      seedId: legacySeedId
+    };
+  }
+
+  for (const legacyKey of LEGACY_SYSTEM_FLAG_KEYS) {
+    if (legacyKey !== POKROLE.ID) {
+      delete normalizedFlags[legacyKey];
+    }
+  }
+
+  return normalizedFlags;
+}
+
+function normalizeSeedDocument(seed) {
+  const normalizedSeed = normalizeSeedValue(foundry.utils.deepClone(seed));
+  normalizedSeed.flags = normalizeSeedFlags(normalizedSeed.flags);
+  return normalizedSeed;
+}
 
 function baseStatus() {
   return {
@@ -871,7 +932,9 @@ export async function seedCompendia({ force = false, notify = true } = {}) {
 
   for (const pack of game.packs.values()) {
     if (pack.metadata?.packageName !== POKROLE.ID) continue;
-    const seeds = getSeedCollection(pack.metadata.name, pack.documentName);
+    const seeds = getSeedCollection(pack.metadata.name, pack.documentName).map((seed) =>
+      normalizeSeedDocument(seed)
+    );
     if (!seeds.length) continue;
 
     const shouldRelock = await ensureUnlocked(pack);

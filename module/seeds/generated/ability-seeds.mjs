@@ -12,7 +12,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.464. By releasing a stench when attacking, the Pok\u00e9mon may cause the target to flinch."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-stench"
       }
     }
@@ -30,7 +30,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.440. The Pok\u00e9mon makes it rain when it enters a battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-drizzle"
       }
     }
@@ -48,7 +48,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.463. The Pok\u00e9mon's Speed stat is boosted every turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-speed-boost"
       }
     }
@@ -66,7 +66,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.436. Hard armor protects the Pok\u00e9mon from critical hits."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-battle-armor"
       }
     }
@@ -84,7 +84,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.461. The Pok\u00e9mon cannot be knocked out by a single hit as long as its HP is full. One-hit KO moves will also fail to knock it out."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-sturdy"
       }
     }
@@ -102,7 +102,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.439. The Pok\u00e9mon dampens its surroundings, preventing all Pok\u00e9mon from using explosive moves such as Self-Destruct."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-damp"
       }
     }
@@ -120,7 +120,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.449. The Pok\u00e9mon's limber body prevents it from being paralyzed."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-limber"
       }
     }
@@ -138,7 +138,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.459. Boosts the Pok\u00e9mon's evasiveness in a sandstorm."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-sand-veil"
       }
     }
@@ -156,7 +156,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.464. The Pok\u00e9mon is charged with static electricity and may paralyze attackers that make direct contact with it."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-static"
       }
     }
@@ -174,7 +174,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.469. If hit by an Electric-type move, the Pok\u00e9mon has its HP restored instead of taking damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-volt-absorb"
       }
     }
@@ -192,7 +192,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.469. If hit by a Water-type move, the Pok\u00e9mon has its HP restored instead of taking damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-water-absorb"
       }
     }
@@ -210,7 +210,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.453. The Pok\u00e9mon is oblivious, keeping it from being infatuated, falling for taunts, or being affected by Intimidate."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-oblivious"
       }
     }
@@ -228,7 +228,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.437. Eliminates the effects of weather."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-cloud-nine"
       }
     }
@@ -246,7 +246,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.438. The Pok\u00e9mon's compound eyes boost its accuracy."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-compound-eyes"
       }
     }
@@ -264,7 +264,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.447. The Pok\u00e9mon is suffering from insomnia and cannot fall asleep."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-insomnia"
       }
     }
@@ -282,7 +282,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.437. The Pok\u00e9mon\u2019s type becomes the type of the move used on it."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-color-change"
       }
     }
@@ -300,7 +300,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.435. The Pok\u00e9mon's immune system prevents it from being poisoned."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-immunity"
       }
     }
@@ -318,7 +318,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.442. If hit by a Fire-type move, the Pok\u00e9mon absorbs the flames and uses them to power up its own Fire-type moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-flash-fire"
       }
     }
@@ -336,7 +336,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.461. Protective dust shields the Pok\u00e9mon from the additional effects of moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-shield-dust"
       }
     }
@@ -354,7 +354,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.454. The Pok\u00e9mon sticks to its own tempo, preventing it from becoming confused or being affected by Intimidate."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-own-tempo"
       }
     }
@@ -372,7 +372,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.465. The Pok\u00e9mon uses suction cups to stay in one spot. This protects it from moves and items that would force it to switch out."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-suction-cups"
       }
     }
@@ -390,7 +390,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.447. When the Pok\u00e9mon enters a battle, it intimidates opposing Pok\u00e9mon and makes them cower, lowering their Attack stats."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-intimidate"
       }
     }
@@ -408,7 +408,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.460. The Pok\u00e9mon steps on the opposing Pok\u00e9mon's shadows to prevent them from fleeing or switching out."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-shadow-tag"
       }
     }
@@ -426,7 +426,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.459. The Pok\u00e9mon's rough skin damages attackers that make direct contact with it."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-rough-skin"
       }
     }
@@ -444,7 +444,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.468. Its mysterious power only lets supereffective moves hit the Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-wonder-guard"
       }
     }
@@ -462,7 +462,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.449. By floating in the air, the Pok\u00e9mon receives full immunity to all Ground-type moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-levitate"
       }
     }
@@ -480,7 +480,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.441. Contact with the Pok\u00e9mon may inflict poison, sleep, or paralysis on the attacker."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-effect-spore"
       }
     }
@@ -498,7 +498,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.466. If the Pok\u00e9mon is burned, paralyzed, or poisoned by another Pok\u00e9mon, that Pok\u00e9mon will be inflicted with the same status condition."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-synchronize"
       }
     }
@@ -516,7 +516,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.437. Prevents other Pok\u00e9mon's moves or Abilities from lowering the Pok\u00e9mon's stats."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-clear-body"
       }
     }
@@ -534,7 +534,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.452. The Pok\u00e9mon's status conditions are cured when it switches out."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-natural-cure"
       }
     }
@@ -552,7 +552,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.449. The Pok\u00e9mon draws in all Electric-type moves. Instead of taking damage from them, its Sp. Atk stat is boosted."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-lightning-rod"
       }
     }
@@ -570,7 +570,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.460. Raises the likelihood of additional effects occurring when the Pok\u00e9mon uses its moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-serene-grace"
       }
     }
@@ -588,7 +588,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.466. Boosts the Pok\u00e9mon's Speed stat in rain."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-swift-swim"
       }
     }
@@ -606,7 +606,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.437. Boosts the Pok\u00e9mon's Speed stat in harsh sunlight."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-chlorophyll"
       }
     }
@@ -624,7 +624,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.446. By illuminating its surroundings, the Pok\u00e9mon prevents its accuracy from being lowered."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-illuminate"
       }
     }
@@ -642,7 +642,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.468. When it enters a battle, the Pok\u00e9mon copies an opposing Pok\u00e9mon's Ability."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-trace"
       }
     }
@@ -660,7 +660,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.445. Doubles the Pok\u00e9mon's Attack stat."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-huge-power"
       }
     }
@@ -678,7 +678,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.455. Contact with the Pok\u00e9mon may poison the attacker."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-poison-point"
       }
     }
@@ -696,7 +696,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.447. The Pok\u00e9mon's intense focus prevents it from flinching or being affected by Intimidate."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-inner-focus"
       }
     }
@@ -714,7 +714,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.450. The Pok\u00e9mon\u2019s hot magma coating prevents it from being frozen."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-magma-armor"
       }
     }
@@ -732,7 +732,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.470. The Pok\u00e9mon's water veil prevents it from being burned."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-water-veil"
       }
     }
@@ -750,7 +750,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.450. Prevents Steel-type Pok\u00e9mon from fleeing by pulling them in with magnetism."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-magnet-pull"
       }
     }
@@ -768,7 +768,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.463. Soundproofing gives the Pok\u00e9mon full immunity to all sound-based moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-soundproof"
       }
     }
@@ -786,7 +786,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.457. The Pok\u00e9mon gradually regains HP in rain."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-rain-dish"
       }
     }
@@ -804,7 +804,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.459. The Pok\u00e9mon summons a sandstorm when it enters a battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-sand-stream"
       }
     }
@@ -822,7 +822,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.454. Puts other Pok\u00e9mon under pressure, causing them to expend more PP to use their moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-pressure"
       }
     }
@@ -840,7 +840,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.467. The Pok\u00e9mon is protected by a layer of thick fat, which halves the damage taken from Fire- and Ice-type moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-thick-fat"
       }
     }
@@ -858,7 +858,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.441. The Pok\u00e9mon awakens from sleep twice as fast as other Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-early-bird"
       }
     }
@@ -876,7 +876,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.441. Contact with the Pok\u00e9mon may burn the attacker."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-flame-body"
       }
     }
@@ -894,7 +894,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.459. Enables a sure getaway from wild Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-run-away"
       }
     }
@@ -912,7 +912,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.448. The Pok\u00e9mon's keen eyes prevent its accuracy from being lowered."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-keen-eye"
       }
     }
@@ -930,7 +930,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.446. The Pok\u00e9mon's prized, mighty pincers prevent other Pok\u00e9mon from lowering its Attack stat."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-hyper-cutter"
       }
     }
@@ -948,7 +948,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.468. Each time the Pok\u00e9mon uses a move, it spends the next turn loafing around."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-truant"
       }
     }
@@ -966,7 +966,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.445. Boosts the Pok\u00e9mon's Attack stat but lowers its accuracy."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-hustle"
       }
     }
@@ -984,7 +984,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.438. The Pok\u00e9mon may infatuate attackers that make direct contact with it."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-cute-charm"
       }
     }
@@ -1002,7 +1002,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.451. Boosts the Sp. Atk stat of the Pok\u00e9mon if an ally with the Plus or Minus Ability is also in battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-plus"
       }
     }
@@ -1020,7 +1020,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.451. Boosts the Sp. Atk stat of the Pok\u00e9mon if an ally with the Plus or Minus Ability is also in battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-minus"
       }
     }
@@ -1038,7 +1038,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.442. The Pok\u00e9mon transforms with the weather to change its type to Water, Fire, or Ice."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-forecast"
       }
     }
@@ -1056,7 +1056,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.465. The Pok\u00e9mon's held items cling to its sticky body and cannot be removed by other Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-sticky-hold"
       }
     }
@@ -1074,7 +1074,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.461. The Pok\u00e9mon may cure its own status conditions by shedding its skin."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-shed-skin"
       }
     }
@@ -1092,7 +1092,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.444. It's so gutsy that having a status condition boosts the Pok\u00e9mon's Attack stat."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-guts"
       }
     }
@@ -1110,7 +1110,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.450. The Pok\u00e9mon's marvelous scales boost its Defense stat if it has a status condition."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-marvel-scale"
       }
     }
@@ -1128,7 +1128,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.449. The strong stench of the Pok\u00e9mon's oozed liquid damages attackers that use HP-draining moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-liquid-ooze"
       }
     }
@@ -1146,7 +1146,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.453. Powers up Grass-type moves when the Pok\u00e9mon's HP is low."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-overgrow"
       }
     }
@@ -1164,7 +1164,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.436. Powers up Fire-type moves when the Pok\u00e9mon's HP is low."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-blaze"
       }
     }
@@ -1182,7 +1182,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.467. Powers up Water-type moves when the Pok\u00e9mon's HP is low."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-torrent"
       }
     }
@@ -1200,7 +1200,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.466. Powers up Bug-type moves when the Pok\u00e9mon's HP is low."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-swarm"
       }
     }
@@ -1218,7 +1218,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.458. Protects the Pok\u00e9mon from recoil damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-rock-head"
       }
     }
@@ -1236,7 +1236,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.440. Turns the sunlight harsh when the Pok\u00e9mon enters a battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-drought"
       }
     }
@@ -1254,7 +1254,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.435. Prevents opposing Pok\u00e9mon from fleeing from battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-arena-trap"
       }
     }
@@ -1272,7 +1272,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.469. The Pok\u00e9mon is full of vitality, and that prevents it from falling asleep."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-vital-spirit"
       }
     }
@@ -1290,7 +1290,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.470. The Pok\u00e9mon is protected by its white smoke, which prevents other Pok\u00e9mon from lowering its stats."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-white-smoke"
       }
     }
@@ -1308,7 +1308,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.457. Using its pure power, the Pok\u00e9mon doubles its Attack stat."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-pure-power"
       }
     }
@@ -1326,7 +1326,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.461. A hard shell protects the Pok\u00e9mon from critical hits."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-shell-armor"
       }
     }
@@ -1344,7 +1344,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.434. Eliminates the effects of weather."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-air-lock"
       }
     }
@@ -1362,7 +1362,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.466. Boosts the Pok\u00e9mon's evasiveness if it is confused."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-tangled-feet"
       }
     }
@@ -1380,7 +1380,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.452. The Pok\u00e9mon takes no damage when hit by Electric-type moves. Instead, its Speed stat is boosted."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-motor-drive"
       }
     }
@@ -1398,7 +1398,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.458. The Pok\u00e9mon's competitive spirit makes it deal more damage to Pok\u00e9mon of the same gender, but less damage to Pok\u00e9mon of the opposite gender."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-rivalry"
       }
     }
@@ -1416,7 +1416,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.464. The Pok\u00e9mon's determination boosts its Speed stat every time it flinches."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-steadfast"
       }
     }
@@ -1434,7 +1434,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.462. Boosts the Pok\u00e9mon's evasiveness in snow."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-snow-cloak"
       }
     }
@@ -1452,7 +1452,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.443. If the Pok\u00e9mon is holding a Berry to be eaten when its HP is low, it will instead eat the Berry when its HP drops to half or less."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-gluttony"
       }
     }
@@ -1470,7 +1470,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.435. The Pok\u00e9mon is angered when it takes a critical hit, and that maxes its Attack stat."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-anger-point"
       }
     }
@@ -1488,7 +1488,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.468. Boosts the Speed stat if the Pok\u00e9mon's held item is used or lost."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-unburden"
       }
     }
@@ -1506,7 +1506,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.445. The Pok\u00e9mon's heatproof body halves the damage taken from Fire-type moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-heatproof"
       }
     }
@@ -1524,7 +1524,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.450. Doubles the effects of the Pok\u00e9mon's stat changes."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-simple"
       }
     }
@@ -1542,7 +1542,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.440. Restores the Pok\u00e9mon's HP in rain or when it is hit by Water-type moves. Reduces HP in harsh sunlight, and increases the damage received from Fire-type moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-dry-skin"
       }
     }
@@ -1560,7 +1560,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.440. The Pok\u00e9mon compares an opposing Pok\u00e9mon's Defense and Sp. Def stats before raising its own Attack or Sp. Atk stat\u2014whichever will be more effective."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-download"
       }
     }
@@ -1578,7 +1578,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.448. Powers up punching moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-iron-fist"
       }
     }
@@ -1596,7 +1596,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.455. If poisoned, the Pok\u00e9mon has its HP restored instead of taking damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-poison-heal"
       }
     }
@@ -1614,7 +1614,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.434. Powers up moves of the same type as the Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-adaptability"
       }
     }
@@ -1632,7 +1632,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.461. Maximizes the number of times multistrike moves hit."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-skill-link"
       }
     }
@@ -1650,7 +1650,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.440. Cures the Pok\u00e9mon's status conditions in rain."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-hydration"
       }
     }
@@ -1668,7 +1668,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.462. In harsh sunlight, the Pok\u00e9mon's Sp. Atk stat is boosted, but its HP decreases every turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-solar-power"
       }
     }
@@ -1686,7 +1686,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.457. Boosts the Speed stat if the Pok\u00e9mon has a status condition."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-quick-feet"
       }
     }
@@ -1704,7 +1704,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.453. All the Pok\u00e9mon\u2019s moves become Normal type. The power of those moves is boosted a little."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-normalize"
       }
     }
@@ -1722,7 +1722,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.462. If the Pok\u00e9mon's attack lands a critical hit, the attack is powered up even further."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-sniper"
       }
     }
@@ -1740,7 +1740,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.450. The Pok\u00e9mon only takes damage from attacks."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-magic-guard"
       }
     }
@@ -1758,7 +1758,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.453. The Pok\u00e9mon employs no-guard tactics to ensure incoming and outgoing attacks always land."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-no-guard"
       }
     }
@@ -1776,7 +1776,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.463. The Pok\u00e9mon is always the last to use its moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-stall"
       }
     }
@@ -1794,7 +1794,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.467. Powers up weak moves so the Pok\u00e9mon can deal more damage with them."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-technician"
       }
     }
@@ -1812,7 +1812,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.448. Prevents status conditions in harsh sunlight."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-leaf-guard"
       }
     }
@@ -1830,7 +1830,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.448. The Pok\u00e9mon can't use any held items."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-klutz"
       }
     }
@@ -1848,7 +1848,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.451. The Pok\u00e9mon's moves are unimpeded by the Ability of the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-mold-breaker"
       }
     }
@@ -1866,7 +1866,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.465. The Pok\u00e9mon is so lucky that the critical-hit ratios of its moves are boosted."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-super-luck"
       }
     }
@@ -1884,7 +1884,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.434. Damages the attacker if it knocks out the Pok\u00e9mon with a move that makes direct contact."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-aftermath"
       }
     }
@@ -1902,7 +1902,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.435. The Pok\u00e9mon can sense an opposing Pok\u00e9mon's dangerous moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-anticipation"
       }
     }
@@ -1920,7 +1920,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.442. When it enters a battle, the Pok\u00e9mon can tell one of the moves an opposing Pok\u00e9mon has."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-forewarn"
       }
     }
@@ -1938,7 +1938,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.468. When attacking, the Pok\u00e9mon ignores the target's stat changes."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-unaware"
       }
     }
@@ -1956,7 +1956,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.467. The Pok\u00e9mon can use \u201cnot very effective\u201d moves to deal regular damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-tinted-lens"
       }
     }
@@ -1974,7 +1974,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.441. Reduces the power of supereffective attacks that hit the Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-filter"
       }
     }
@@ -1992,7 +1992,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.462. For five turns, the Pok\u00e9mon's Attack and Speed stats are halved."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-slow-start"
       }
     }
@@ -2010,7 +2010,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.460. The Pok\u00e9mon can hit Ghost-type Pok\u00e9mon with Normal- and Fighting-type moves. It is also unaffected by Intimidate."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-scrappy"
       }
     }
@@ -2028,7 +2028,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.465. The Pok\u00e9mon draws in all Water-type moves. Instead of taking damage from them, its Sp. Atk stat is boosted."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-storm-drain"
       }
     }
@@ -2046,7 +2046,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.446. The Pok\u00e9mon gradually regains HP in snow."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-ice-body"
       }
     }
@@ -2064,7 +2064,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.462. Reduces the power of supereffective attacks that hit the Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-solid-rock"
       }
     }
@@ -2082,7 +2082,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.462. The Pok\u00e9mon makes it snow when it enters a battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-snow-warning"
       }
     }
@@ -2100,7 +2100,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.445. The Pok\u00e9mon may gather Honey after a battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-honey-gather"
       }
     }
@@ -2118,7 +2118,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.443. When it enters a battle, the Pok\u00e9mon can check an opposing Pok\u00e9mon's held item."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-frisk"
       }
     }
@@ -2136,7 +2136,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.444. Powers up moves that have recoil damage."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-reckless"
       }
     }
@@ -2154,7 +2154,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.452. Changes the Pok\u00e9mon's type to match the plate it holds."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-multitype"
       }
     }
@@ -2172,7 +2172,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.442. Boosts the Attack and Sp. Def stats of itself and allies in harsh sunlight."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-flower-gift"
       }
     }
@@ -2190,7 +2190,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.435. Damages opposing Pok\u00e9mon that are asleep."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-bad-dreams"
       }
     }
@@ -2208,7 +2208,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.454. The Pok\u00e9mon steals the held item from attackers that made direct contact with it."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-pickpocket"
       }
     }
@@ -2226,7 +2226,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.461. Removes any additional effects from the Pok\u00e9mon's moves, but increases the moves' power."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-sheer-force"
       }
     }
@@ -2244,7 +2244,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.438. Reverses any stat changes affecting the Pok\u00e9mon so that attempts to boost its stats instead lower them\u2014and attempts to lower its stats will boost them."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-contrary"
       }
     }
@@ -2262,7 +2262,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.469. Unnerves opposing Pok\u00e9mon and makes them unable to eat Berries."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-unnerve"
       }
     }
@@ -2280,7 +2280,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.439. If the Pok\u00e9mon has any stat lowered by an opposing Pok\u00e9mon, its Attack stat will be boosted sharply."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-defiant"
       }
     }
@@ -2298,7 +2298,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.439. Halves the Pok\u00e9mon\u2019s Attack and Sp. Atk stats when its HP becomes half or less."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-defeatist"
       }
     }
@@ -2316,7 +2316,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.438. May disable a move that has dealt damage to the Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-cursed-body"
       }
     }
@@ -2334,7 +2334,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.445. Sometimes cures the status conditions of the Pok\u00e9mon's allies."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-healer"
       }
     }
@@ -2352,7 +2352,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.443. Reduces damage dealt to allies."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-friend-guard"
       }
     }
@@ -2370,7 +2370,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.470. The Pok\u00e9mon's Defense stat is lowered when it takes damage from physical moves, but its Speed stat is sharply boosted."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-weak-armor"
       }
     }
@@ -2388,7 +2388,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.445. Doubles the Pok\u00e9mon's weight."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-heavy-metal"
       }
     }
@@ -2406,7 +2406,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.449. Halves the Pok\u00e9mon's weight."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-light-metal"
       }
     }
@@ -2424,7 +2424,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.452. Reduces the amount of damage the Pok\u00e9mon takes while its HP is full."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-multiscale"
       }
     }
@@ -2442,7 +2442,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.468. Powers up physical moves when the Pok\u00e9mon is poisoned."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-toxic-boost"
       }
     }
@@ -2460,7 +2460,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.442. Powers up special moves when the Pok\u00e9mon is burned."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-flare-boost"
       }
     }
@@ -2478,7 +2478,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.444. May create another Berry after one is used."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-harvest"
       }
     }
@@ -2496,7 +2496,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.467. The Pok\u00e9mon anticipates and dodges the attacks of its allies."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-telepathy"
       }
     }
@@ -2514,7 +2514,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.452. Every turn, one of the Pok\u00e9mon's stats will be boosted sharply but another stat will be lowered."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-moody"
       }
     }
@@ -2532,7 +2532,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.453. The Pok\u00e9mon takes no damage from sandstorms. It is also protected from the effects of powders and spores."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-overcoat"
       }
     }
@@ -2550,7 +2550,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.455. May poison a target when the Pok\u00e9mon makes contact."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-poison-touch"
       }
     }
@@ -2568,7 +2568,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.458. The Pok\u00e9mon has a little of its HP restored when withdrawn from battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-regenerator"
       }
     }
@@ -2586,7 +2586,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.436. Prevents the Pok\u00e9mon from having its Defense stat lowered."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-big-pecks"
       }
     }
@@ -2604,7 +2604,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.459. Boosts the Pok\u00e9mon's Speed stat in a sandstorm."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-sand-rush"
       }
     }
@@ -2622,7 +2622,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.470. Makes status moves more likely to miss the Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-wonder-skin"
       }
     }
@@ -2640,7 +2640,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.434. Boosts the power of the Pok\u00e9mon's move if it is the last to act that turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-analytic"
       }
     }
@@ -2658,7 +2658,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.446. The Pok\u00e9mon fools opponents by entering battle disguised as the last Pok\u00e9mon in its Trainer's party."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-illusion"
       }
     }
@@ -2676,7 +2676,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.447. The Pok\u00e9mon transforms itself into the Pok\u00e9mon it's facing."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-imposter"
       }
     }
@@ -2694,7 +2694,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.447. The Pok\u00e9mon's moves are unaffected by the target's barriers, substitutes, and the like."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-infiltrator"
       }
     }
@@ -2712,7 +2712,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.452. Contact with the Pok\u00e9mon changes the attacker\u2019s Ability to Mummy."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-mummy"
       }
     }
@@ -2730,7 +2730,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.452. When the Pok\u00e9mon knocks out a target, it shows moxie, which boosts its Attack stat."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-moxie"
       }
     }
@@ -2748,7 +2748,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.448. When the Pok\u00e9mon is hit by a Dark-type attack, its Attack stat is boosted by its sense of justice."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-justified"
       }
     }
@@ -2766,7 +2766,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.457. The Pok\u00e9mon gets scared when hit by a Dark-, Ghost-, or Bug-type attack or if intimidated, which boosts its Speed stat."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-rattled"
       }
     }
@@ -2784,7 +2784,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.450. The Pok\u00e9mon reflects status moves instead of getting hit by them."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-magic-bounce"
       }
     }
@@ -2802,7 +2802,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.460. The Pok\u00e9mon takes no damage when hit by Grass-type moves. Instead, its Attack stat is boosted."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-sap-sipper"
       }
     }
@@ -2820,7 +2820,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.456. Gives priority to the Pok\u00e9mon's status moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-prankster"
       }
     }
@@ -2838,7 +2838,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.459. Boosts the power of Rock-, Ground-, and Steel-type moves in a sandstorm."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-sand-force"
       }
     }
@@ -2856,7 +2856,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.448. Inflicts damage on the attacker upon contact with iron barbs."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-iron-barbs"
       }
     }
@@ -2874,7 +2874,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.471. Changes the Pok\u00e9mon\u2019s shape when HP is half or less."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-zen-mode"
       }
     }
@@ -2892,7 +2892,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.469. Boosts the accuracy of its allies and itself."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-victory-star"
       }
     }
@@ -2910,7 +2910,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.468. The Pok\u00e9mon's moves are unimpeded by the Ability of the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-turboblaze"
       }
     }
@@ -2928,7 +2928,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.467. The Pok\u00e9mon's moves are unimpeded by the Ability of the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-teravolt"
       }
     }
@@ -2946,7 +2946,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.435. Protects the Pok\u00e9mon and its allies from effects that prevent the use of moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-aroma-veil"
       }
     }
@@ -2964,7 +2964,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.442. Ally Grass-type Pok\u00e9mon are protected from status conditions and the lowering of their stats."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-flower-veil"
       }
     }
@@ -2982,7 +2982,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.437. The Pok\u00e9mon's HP is restored when it eats any Berry, in addition to the Berry's usual effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-cheek-pouch"
       }
     }
@@ -3000,7 +3000,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.456. Changes the Pok\u00e9mon's type to the type of the move it's about to use. This works only once each time the Pok\u00e9mon enters battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-protean"
       }
     }
@@ -3018,7 +3018,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.443. Halves the damage from physical moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-fur-coat"
       }
     }
@@ -3036,7 +3036,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.450. The Pok\u00e9mon steals the held item from any target it hits with a move."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-magician"
       }
     }
@@ -3054,7 +3054,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.437. Protects the Pok\u00e9mon from ball and bomb moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-bulletproof"
       }
     }
@@ -3072,7 +3072,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.438. Boosts the Pok\u00e9mon's Sp. Atk stat sharply when its stats are lowered by an opposing Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-competitive"
       }
     }
@@ -3090,7 +3090,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.465. The Pok\u00e9mon's strong jaw boosts the power of its biting moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-strong-jaw"
       }
     }
@@ -3108,7 +3108,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.458. Normal-type moves become Ice-type moves. The power of those moves is boosted a little."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-refrigerate"
       }
     }
@@ -3126,7 +3126,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.466. Prevents the Pok\u00e9mon and its allies from falling asleep."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-sweet-veil"
       }
     }
@@ -3144,7 +3144,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.464. The Pok\u00e9mon changes its form to Blade Forme when it uses an attack move and changes to Shield Forme when it uses King\u2019s Shield."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-stance-change"
       }
     }
@@ -3162,7 +3162,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.443. Gives priority to the Pok\u00e9mon's Flying-type moves while its HP is full."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-gale-wings"
       }
     }
@@ -3180,7 +3180,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.451. Powers up pulse moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-mega-launcher"
       }
     }
@@ -3198,7 +3198,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.444. Boosts the Pok\u00e9mon's Defense stat on Grassy Terrain."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-grass-pelt"
       }
     }
@@ -3216,7 +3216,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.466. The Pok\u00e9mon passes its held item to an ally that has used up an item."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-symbiosis"
       }
     }
@@ -3234,7 +3234,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.467. Powers up moves that make direct contact."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-tough-claws"
       }
     }
@@ -3252,7 +3252,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.454. Normal-type moves become Fairy-type moves. The power of those moves is boosted a little."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-pixilate"
       }
     }
@@ -3270,7 +3270,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.444. Contact with the Pok\u00e9mon lowers the attacker's Speed stat."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-gooey"
       }
     }
@@ -3288,7 +3288,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.434. Normal-type moves become Flying-type moves. The power of those moves is boosted a little."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-aerilate"
       }
     }
@@ -3306,7 +3306,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.454. Parent and child each attacks."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-parental-bond"
       }
     }
@@ -3324,7 +3324,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.435. Powers up each Pok\u00e9mon\u2019s Dark-type moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-dark-aura"
       }
     }
@@ -3342,7 +3342,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.435. Powers up each Pok\u00e9mon\u2019s Fairy-type moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-fairy-aura"
       }
     }
@@ -3360,7 +3360,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.435. The effects of \u201cAura\u201d Abilities are reversed to lower the power of affected moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-aura-break"
       }
     }
@@ -3378,7 +3378,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.456. The Pok\u00e9mon changes the weather to nullify Fire-type attacks."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-primordial-sea"
       }
     }
@@ -3396,7 +3396,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.440. The Pok\u00e9mon changes the weather to nullify Water-type attacks."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-desolate-land"
       }
     }
@@ -3414,7 +3414,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.440. The Pok\u00e9mon changes the weather to eliminate all of the Flying type\u2019s weaknesses."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-delta-stream"
       }
     }
@@ -3432,7 +3432,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.463. Boosts the Defense stat when the Pok\u00e9mon is hit by an attack."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-stamina"
       }
     }
@@ -3450,7 +3450,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.470. The Pok\u00e9mon cowardly switches out when its HP becomes half or less."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-wimp-out"
       }
     }
@@ -3468,7 +3468,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.441. The Pok\u00e9mon, sensing danger, switches out when its HP becomes half or less."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-emergency-exit"
       }
     }
@@ -3486,7 +3486,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.470. Boosts the Defense stat sharply when the Pok\u00e9mon is hit by a Water-type move."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-water-compaction"
       }
     }
@@ -3504,7 +3504,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.451. The Pok\u00e9mon's attacks become critical hits if the target is poisoned."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-merciless"
       }
     }
@@ -3522,7 +3522,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.461. When its HP drops to half or less, the Pok\u00e9mon's shell breaks and it becomes aggressive."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-shields-down"
       }
     }
@@ -3540,7 +3540,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.463. Doubles the damage dealt to a target that has just switched into battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-stakeout"
       }
     }
@@ -3558,7 +3558,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.469. Lowers the power of Fire-type moves that hit the Pok\u00e9mon and prevents it from being burned."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-water-bubble"
       }
     }
@@ -3576,7 +3576,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.464. Powers up Steel-type moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-steelworker"
       }
     }
@@ -3594,7 +3594,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.436. Boosts the Pok\u00e9mon's Sp. Atk stat when it takes a hit that causes its HP to drop to half or less."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-berserk"
       }
     }
@@ -3612,7 +3612,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.462. Boosts the Pok\u00e9mon's Speed stat in snow."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-slush-rush"
       }
     }
@@ -3630,7 +3630,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.450. The Pok\u00e9mon uses its moves without making contact with the target."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-long-reach"
       }
     }
@@ -3648,7 +3648,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.449. Sound-based moves become Water-type moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-liquid-voice"
       }
     }
@@ -3666,7 +3666,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.468. Gives priority to the Pok\u00e9mon's healing moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-triage"
       }
     }
@@ -3684,7 +3684,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.443. Normal-type moves become Electric-type moves. The power of those moves is boosted a little."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-galvanize"
       }
     }
@@ -3702,7 +3702,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.465. Doubles the Pok\u00e9mon's Speed stat on Electric Terrain."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-surge-surfer"
       }
     }
@@ -3720,7 +3720,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.460. When it has a lot of HP, the Pok\u00e9mon forms a powerful school. It stops schooling when its HP is low."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-schooling"
       }
     }
@@ -3738,7 +3738,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.440. Once per battle, the shroud that covers the Pok\u00e9mon can protect it from an attack."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-disguise"
       }
     }
@@ -3756,7 +3756,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.436. When the Pok\u00e9mon knocks out a target, its bond with its Trainer is strengthened, and its Attack, Sp. Atk, and Speed stats are boosted."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-battle-bond"
       }
     }
@@ -3774,7 +3774,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.455. Other Cells gather to aid when its HP becomes half or less. Then the Pok\u00e9mon changes its form to Complete Forme."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-power-construct"
       }
     }
@@ -3792,7 +3792,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.438. The Pok\u00e9mon can poison the target even if it's a Steel or Poison type."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-corrosion"
       }
     }
@@ -3810,7 +3810,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.437. The Pok\u00e9mon is always drowsing and will never wake up. It can attack while in its sleeping state."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-comatose"
       }
     }
@@ -3828,7 +3828,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.457. When the Pok\u00e9mon uses Surf or Dive, it will come back with prey. When it takes damage, it will spit out the prey to attack."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-queenly-majesty"
       }
     }
@@ -3846,7 +3846,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.447. Damages the attacker landing the finishing hit by the amount equal to its last HP."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-innards-out"
       }
     }
@@ -3864,7 +3864,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.439. Whenever a dance move is used in battle, the Pok\u00e9mon will copy the user to immediately perform that dance move itself."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-dancer"
       }
     }
@@ -3882,7 +3882,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.436. Powers up ally Pok\u00e9mon's special moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-battery"
       }
     }
@@ -3900,7 +3900,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.442. Halves the damage taken from moves that make direct contact, but doubles that of Fire-type moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-fluffy"
       }
     }
@@ -3918,7 +3918,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.439. The Pok\u00e9mon dazzles its opponents, making them unable to use priority moves against the Pok\u00e9mon or its allies."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-dazzling"
       }
     }
@@ -3936,7 +3936,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.463. Boosts the Pok\u00e9mon's Sp. Atk stat every time another Pok\u00e9mon faints."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-soul-heart"
       }
     }
@@ -3954,7 +3954,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.466. Contact with the Pok\u00e9mon lowers the attacker's Speed stat."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-tangling-hair"
       }
     }
@@ -3972,7 +3972,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.457. The Pok\u00e9mon copies the Ability of a defeated ally."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-receiver"
       }
     }
@@ -3990,7 +3990,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.455. The Pok\u00e9mon copies the Ability of a defeated ally."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-power-of-alchemy"
       }
     }
@@ -4008,7 +4008,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.436. The Pok\u00e9mon boosts its most proficient stat each time it knocks out a Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-beast-boost"
       }
     }
@@ -4026,7 +4026,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.458. Changes the Pok\u00e9mon\u2019s type to match the memory disc it holds."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-rks-system"
       }
     }
@@ -4044,7 +4044,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.441. Turns the ground into Electric Terrain when the Pok\u00e9mon enters a battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-electric-surge"
       }
     }
@@ -4062,7 +4062,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.456. Turns the ground into Psychic Terrain when the Pok\u00e9mon enters a battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-psychic-surge"
       }
     }
@@ -4080,7 +4080,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.451. Turns the ground into Misty Terrain when the Pok\u00e9mon enters a battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-misty-surge"
       }
     }
@@ -4098,7 +4098,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.444. Turns the ground into Grassy Terrain when the Pok\u00e9mon enters a battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-grassy-surge"
       }
     }
@@ -4116,7 +4116,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.443. Prevents other Pok\u00e9mon\u2019s moves or Abilities from lowering the Pok\u00e9mon\u2019s stats."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-full-metal-body"
       }
     }
@@ -4134,7 +4134,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.460. Reduces the amount of damage the Pok\u00e9mon takes while its HP is full."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-shadow-shield"
       }
     }
@@ -4152,7 +4152,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.456. Reduces the power of supereffective attacks taken."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-prism-armor"
       }
     }
@@ -4170,7 +4170,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.453. Powers up moves that are super effective."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-neuroforce"
       }
     }
@@ -4188,7 +4188,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.448. Boosts the Pok\u00e9mon\u2019s Attack stat the first time the Pok\u00e9mon enters a battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-intrepid-sword"
       }
     }
@@ -4206,7 +4206,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.439. Boosts the Pok\u00e9mon\u2019s Defense stat the first time the Pok\u00e9mon enters a battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-dauntless-shield"
       }
     }
@@ -4224,7 +4224,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.449. Changes the Pok\u00e9mon's type to the type of the move it's about to use. This works only once each time the Pok\u00e9mon enters battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-libero"
       }
     }
@@ -4242,7 +4242,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.435. If the Pok\u00e9mon is not holding an item, it will fetch the Pok\u00e9 Ball from the first failed throw of the battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-ball-fetch"
       }
     }
@@ -4260,7 +4260,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.438. When the Pok\u00e9mon is hit by an attack, it scatters cotton fluff around and lowers the Speed stat of all Pok\u00e9mon except itself."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-cotton-down"
       }
     }
@@ -4278,7 +4278,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.456. Ignores the effects of opposing Pok\u00e9mon's Abilities and moves that draw in moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-propeller-tail"
       }
     }
@@ -4296,7 +4296,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.451. Bounces back only the stat-lowering effects that the Pok\u00e9mon receives."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-mirror-armor"
       }
     }
@@ -4314,7 +4314,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.444. When the Pok\u00e9mon uses Surf or Dive, it will come back with prey. When it takes damage, it will spit out the prey to attack."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-gulp-missile"
       }
     }
@@ -4332,7 +4332,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.463. Ignores the effects of opposing Pok\u00e9mon's Abilities and moves that draw in moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-stalwart"
       }
     }
@@ -4350,7 +4350,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.464. Boosts the Speed stat drastically when the Pok\u00e9mon is hit by a Fire- or Water-type move."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-steam-engine"
       }
     }
@@ -4368,7 +4368,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.457. Boosts the power of sound-based moves. The Pok\u00e9mon also takes half the damage from these kinds of moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-punk-rock"
       }
     }
@@ -4386,7 +4386,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.459. The Pok\u00e9mon creates a sandstorm when it's hit by an attack."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-sand-spit"
       }
     }
@@ -4404,7 +4404,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.446. The Pok\u00e9mon is protected by ice scales, which halve the damage taken from special moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-ice-scales"
       }
     }
@@ -4422,7 +4422,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.458. Ripens Berries and doubles their effect."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-ripen"
       }
     }
@@ -4440,7 +4440,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.446. The Pok\u00e9mon's ice head can take a physical attack as a substitute, but the attack also changes the Pok\u00e9mon's appearance. The ice will be restored when it snows."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-ice-face"
       }
     }
@@ -4458,7 +4458,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.455. Just being next to the Pok\u00e9mon powers up moves."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-power-spot"
       }
     }
@@ -4476,7 +4476,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.451. Changes the Pok\u00e9mon\u2019s type depending on the terrain."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-mimicry"
       }
     }
@@ -4494,7 +4494,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.460. When the Pok\u00e9mon enters a battle, the effects of Light Screen, Reflect, and Aurora Veil are nullified for both opposing and ally Pok\u00e9mon."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-screen-cleaner"
       }
     }
@@ -4512,7 +4512,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.464. Powers up the Steel-type moves of the Pok\u00e9mon and its allies."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-steely-spirit"
       }
     }
@@ -4530,7 +4530,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.454. When hit by a move that makes direct contact, the Pok\u00e9mon and the attacker will faint after three turns unless they switch out of battle."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-perish-body"
       }
     }
@@ -4548,7 +4548,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.469. The Pok\u00e9mon exchanges Abilities with a Pok\u00e9mon that hits it with a move that makes direct contact."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-wandering-spirit"
       }
     }
@@ -4566,7 +4566,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.444. Boosts the Pok\u00e9mon\u2019s Attack stat but only allows the use of the first selected move."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-gorilla-tactics"
       }
     }
@@ -4584,7 +4584,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.453. While the Pok\u00e9mon is in the battle, the effects of all other Pok\u00e9mon's Abilities will be nullified or will not be triggered."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-neutralizing-gas"
       }
     }
@@ -4602,7 +4602,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.454. Protects the Pok\u00e9mon and its ally Pok\u00e9mon from being poisoned."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-pastel-veil"
       }
     }
@@ -4620,7 +4620,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "description": "Corebook p.445. The Pok\u00e9mon changes its form, alternating between its Full Belly Mode and Hangry Mode after the end of every turn."
     },
     "flags": {
-      "pok-role-module": {
+      "pok-role-system": {
         "seedId": "ability-hunger-switch"
       }
     }

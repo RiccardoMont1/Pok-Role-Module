@@ -445,7 +445,7 @@ def audit_moves(moves: List[dict], pages: Dict[int, PageData]) -> Tuple[List[dic
         rows.append({
             "status": status,
             "name": name,
-            "seed_id": move["flags"]["pok-role-module"]["seedId"],
+            "seed_id": move["flags"]["pok-role-system"]["seedId"],
             "ref_page": ref_page,
             "found_pages": ",".join(str(p) for p in pages_with_name),
             "found_on_ref_page": on_ref_page,
@@ -515,7 +515,7 @@ def audit_abilities(abilities: List[dict], pages: Dict[int, PageData]) -> Tuple[
         rows.append({
             "status": status,
             "name": name,
-            "seed_id": ability["flags"]["pok-role-module"]["seedId"],
+            "seed_id": ability["flags"]["pok-role-system"]["seedId"],
             "ref_page": ref_page,
             "found_pages": ",".join(str(p) for p in pages_with_name),
             "found_on_ref_page": on_ref_page,

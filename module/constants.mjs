@@ -1,9 +1,35 @@
+const DEFAULT_SYSTEM_ID = "pok-role-system";
+const DEFAULT_SYSTEM_TITLE = "Pokè Role System";
+
 export const POKROLE = Object.freeze({
-  ID: "pok-role-module",
-  TITLE: "Poke Role Module",
+  ID: globalThis.game?.system?.id ?? DEFAULT_SYSTEM_ID,
+  TITLE: globalThis.game?.system?.title ?? DEFAULT_SYSTEM_TITLE,
   SUCCESS_TARGET: 4,
   INITIATIVE_FORMULA: "1d6 + @dexterity + @alert"
 });
+
+function getSystemRootPath() {
+  const gamePath = `${globalThis.game?.system?.path ?? ""}`.trim();
+  if (gamePath) return gamePath.replace(/\/+$/, "");
+
+  try {
+    const importPath = `${new URL("../", import.meta.url).pathname ?? ""}`.trim();
+    if (importPath) {
+      return importPath.replace(/\/+$/, "").replace(/^\/(?=systems\/)/, "");
+    }
+  } catch (_error) {
+    // Fallback below
+  }
+
+  return `systems/${POKROLE.ID}`;
+}
+
+export function getSystemAssetPath(relativePath = "") {
+  const normalized = `${relativePath ?? ""}`.replace(/^\/+/, "");
+  const rootPath = getSystemRootPath();
+  if (!normalized) return rootPath;
+  return `${rootPath}/${normalized}`;
+}
 
 export const COMBAT_FLAG_KEYS = Object.freeze({
   LAST_EVASION_ROUND: "combat.lastEvasionRound",

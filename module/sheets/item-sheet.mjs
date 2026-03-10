@@ -1,5 +1,6 @@
 import {
   ATTRIBUTE_DEFINITIONS,
+  getSystemAssetPath,
   MOVE_CATEGORY_LABEL_BY_KEY,
   MOVE_SECONDARY_CONDITION_KEYS,
   MOVE_SECONDARY_DURATION_MODE_KEYS,
@@ -31,21 +32,21 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
 
   get template() {
     if (this.item.type === "gear") {
-      return "systems/pok-role-module/templates/item/gear-sheet.hbs";
+      return getSystemAssetPath("templates/item/gear-sheet.hbs");
     }
     if (this.item.type === "ability") {
-      return "systems/pok-role-module/templates/item/ability-sheet.hbs";
+      return getSystemAssetPath("templates/item/ability-sheet.hbs");
     }
     if (this.item.type === "weather") {
-      return "systems/pok-role-module/templates/item/weather-sheet.hbs";
+      return getSystemAssetPath("templates/item/weather-sheet.hbs");
     }
     if (this.item.type === "status") {
-      return "systems/pok-role-module/templates/item/status-sheet.hbs";
+      return getSystemAssetPath("templates/item/status-sheet.hbs");
     }
     if (this.item.type === "pokedex") {
-      return "systems/pok-role-module/templates/item/pokedex-sheet.hbs";
+      return getSystemAssetPath("templates/item/pokedex-sheet.hbs");
     }
-    return "systems/pok-role-module/templates/item/move-sheet.hbs";
+    return getSystemAssetPath("templates/item/move-sheet.hbs");
   }
 
   async getData(options = {}) {

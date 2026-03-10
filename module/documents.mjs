@@ -1,5 +1,6 @@
 import {
   COMBAT_FLAG_KEYS,
+  getSystemAssetPath,
   MOVE_CATEGORY_LABEL_BY_KEY,
   MOVE_SECONDARY_CONDITION_KEYS,
   MOVE_SECONDARY_DURATION_MODE_KEYS,
@@ -579,7 +580,7 @@ export class PokRoleActor extends Actor {
     ];
 
     const summaryHtml = await renderTemplate(
-      "systems/pok-role-module/templates/chat/move-roll.hbs",
+      getSystemAssetPath("templates/chat/move-roll.hbs"),
       {
         actorName: this.name,
         moveName: move.name,
