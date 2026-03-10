@@ -177,6 +177,12 @@ export const MOVE_SECONDARY_EFFECT_TYPE_KEYS = Object.freeze([
   "custom"
 ]);
 
+export const MOVE_SECONDARY_DURATION_MODE_KEYS = Object.freeze([
+  "manual",
+  "rounds",
+  "combat"
+]);
+
 export const MOVE_SECONDARY_CONDITION_KEYS = Object.freeze([
   "none",
   "sleep",

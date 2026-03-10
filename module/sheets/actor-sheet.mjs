@@ -4,6 +4,7 @@ import {
   MOVE_CATEGORY_LABEL_BY_KEY,
   MOVE_TARGET_LABEL_BY_KEY,
   MOVE_TYPE_LABEL_BY_KEY,
+  POKROLE,
   POKEMON_TIER_KEYS,
   POKEMON_TIER_LABEL_BY_KEY,
   SKILL_DEFINITIONS,
@@ -156,6 +157,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     );
     context.pokemonTierOptions = POKEMON_TIER_LABEL_BY_KEY;
     context.conditionChips = this._buildConditionChips();
+    context.temporaryEffects = this._buildTemporaryEffects();
     if (this.actor.type === "trainer") {
       context.trainerPhysicalMentalAttributes = this._buildAttributeRows([
         "strength",
@@ -296,6 +298,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     );
     html.find("[data-action='roll-evasion']").on("click", () => this.actor.rollEvasion());
     html.find("[data-action='set-track']").on("click", (event) => this._onSetTrack(event));
+    html.find("[data-action='remove-temporary-effect']").on("click", (event) =>
+      this._onRemoveTemporaryEffect(event)
+    );
     html.find("[data-action='add-extra-skill']").on("click", (event) =>
       this._onAddExtraSkill(event)
     );
@@ -589,6 +594,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
     nextValue = Math.min(Math.max(nextValue, min), max);
     await this.actor.update({ [field]: nextValue });
+  }
+
+  async _onRemoveTemporaryEffect(event) {
+    event.preventDefault();
+    if (!this.isEditable) return;
+
+    const effectId = `${event.currentTarget.dataset.effectId ?? ""}`.trim();
+    if (!effectId) return;
+    if (typeof this.actor.removeTemporaryEffect !== "function") return;
+
+    await this.actor.removeTemporaryEffect(effectId);
   }
 
   _prepareMoveData(move) {
@@ -932,5 +948,56 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       fieldPath: `system.conditions.${ailment.key}`,
       active: Boolean(this.actor.system.conditions?.[ailment.key])
     }));
+  }
+
+  _buildTemporaryEffects() {
+    const rawEntries = this.actor.getFlag(POKROLE.ID, "automation.temporaryEffects");
+    if (!Array.isArray(rawEntries)) return [];
+
+    return rawEntries
+      .filter((entry) => entry && typeof entry === "object")
+      .sort((left, right) => {
+        const leftTime = Number(left.createdAt ?? 0);
+        const rightTime = Number(right.createdAt ?? 0);
+        return rightTime - leftTime;
+      })
+      .map((entry) => {
+        const sourceMoveName = `${entry.sourceMoveName ?? ""}`.trim();
+        const sourceActorName = `${entry.sourceActorName ?? ""}`.trim();
+
+        let sourceLabel = game.i18n.localize("POKROLE.TemporaryEffects.SourceUnknown");
+        if (sourceMoveName && sourceActorName) {
+          sourceLabel = game.i18n.format("POKROLE.TemporaryEffects.SourceMoveActor", {
+            move: sourceMoveName,
+            actor: sourceActorName
+          });
+        } else if (sourceMoveName) {
+          sourceLabel = game.i18n.format("POKROLE.TemporaryEffects.SourceMove", {
+            move: sourceMoveName
+          });
+        }
+
+        const durationMode = `${entry.durationMode ?? "manual"}`.trim().toLowerCase();
+        let durationLabel = game.i18n.localize("POKROLE.TemporaryEffects.DurationManual");
+        if (durationMode === "combat") {
+          durationLabel = game.i18n.localize("POKROLE.TemporaryEffects.DurationCombat");
+        } else if (durationMode === "rounds") {
+          const rounds = Math.min(
+            Math.max(Math.floor(Number(entry.remainingRounds ?? 1) || 1), 1),
+            99
+          );
+          durationLabel = game.i18n.format("POKROLE.TemporaryEffects.DurationRoundsWithValue", {
+            rounds
+          });
+        }
+
+        return {
+          id: `${entry.id ?? ""}`.trim(),
+          label: `${entry.label ?? ""}`.trim() || game.i18n.localize("POKROLE.TemporaryEffects.Title"),
+          sourceLabel,
+          durationLabel
+        };
+      })
+      .filter((entry) => entry.id);
   }
 }

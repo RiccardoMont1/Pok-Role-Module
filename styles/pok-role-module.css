@@ -272,30 +272,293 @@
   background: linear-gradient(180deg, #f8b08f 0%, #ed8969 100%);
 }
 
+.pok-role-chat-card {
+  --chat-arcade-red-900: #6a1d1a;
+  --chat-arcade-red-700: #9f2d27;
+  --chat-arcade-red-500: #d44b39;
+  --chat-arcade-red-300: #f06a4e;
+  --chat-arcade-ink: #1f2d45;
+  --chat-arcade-panel: #f1f4fb;
+  --chat-arcade-border: #4e2532;
+  margin: 0;
+  border: 1px solid color-mix(in srgb, var(--chat-arcade-border) 72%, #111 28%);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #2a364e 0%, #1f293d 100%);
+  color: #e8edf9;
+  box-shadow: 0 8px 20px rgba(11, 15, 24, 0.35);
+  overflow: hidden;
+}
+
+.pok-role-chat-card.arcade-red {
+  border-color: #5f2122;
+  background:
+    radial-gradient(circle at 14% -12%, rgba(255, 173, 146, 0.26), transparent 36%),
+    linear-gradient(180deg, #3a1824 0%, #2d1220 44%, #250f1c 100%);
+  color: #f5f7fc;
+}
+
+.pok-role-chat-card .chat-card-header {
+  padding: 9px 10px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(
+      135deg,
+      var(--chat-arcade-red-700) 0%,
+      var(--chat-arcade-red-500) 58%,
+      var(--chat-arcade-red-300) 100%
+    );
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
 .pok-role-chat-card h3 {
   margin: 0 0 6px;
-  font-size: 1.1rem;
+  font-size: 1.02rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.pok-role-chat-card .chat-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 5px;
+}
+
+.pok-role-chat-card .chat-pill {
+  border: 1px solid rgba(36, 13, 13, 0.4);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.pok-role-chat-card .chat-meta-line {
+  font-size: 0.78rem;
+  opacity: 0.96;
+}
+
+.pok-role-chat-card .chat-card-section {
+  padding: 8px 10px;
+}
+
+.pok-role-chat-card .chat-card-section + .chat-card-section {
+  border-top: 1px dashed rgba(228, 236, 255, 0.22);
+}
+
+.pok-role-chat-card .chat-card-section h4 {
+  margin: 0 0 5px;
+  font-size: 0.78rem;
+  color: #ffd4cb;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .pok-role-chat-card p {
-  margin: 2px 0;
+  margin: 3px 0;
+  line-height: 1.3;
 }
 
 .pok-role-chat-card hr {
-  margin: 6px 0;
+  margin: 7px 0;
+}
+
+.pok-role-chat-card .chat-result-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 20px;
+  padding: 0 8px;
+  border-radius: 7px;
+  border: 1px solid #7386ad;
+  background: #dce4f8;
+  color: #273552;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.pok-role-chat-card .chat-result-badge.is-hit {
+  border-color: #5f9c57;
+  background: linear-gradient(180deg, #d7f3c5 0%, #b7e59f 100%);
+  color: #24401f;
+}
+
+.pok-role-chat-card .chat-result-badge.is-miss {
+  border-color: #9d4f56;
+  background: linear-gradient(180deg, #f9d2d1 0%, #e9acaa 100%);
+  color: #5f2629;
+}
+
+.pok-role-chat-card .chat-result-badge.is-critical {
+  border-color: #ba8928;
+  background: linear-gradient(180deg, #ffe6a8 0%, #ffd575 100%);
+  color: #5f4309;
+}
+
+.pok-role-chat-card .chat-list {
+  margin: 4px 0 2px;
+  padding-left: 18px;
+}
+
+.pok-role-chat-card .chat-list li {
+  margin: 2px 0;
+}
+
+.pok-role-chat-card .chat-secondary-label {
+  font-weight: 700;
+  color: #fbe2dc;
+}
+
+.pok-role-chat-card .chat-secondary-state {
+  font-weight: 700;
+}
+
+.pok-role-chat-card .chat-secondary-state.is-ok {
+  color: #baf0b5;
+}
+
+.pok-role-chat-card .chat-secondary-state.is-fail {
+  color: #ffb7af;
+}
+
+@media (max-width: 520px) {
+  .pok-role-chat-card .chat-card-header,
+  .pok-role-chat-card .chat-card-section {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+.window-app.pok-role-dialog,
+.dialog.pok-role-dialog {
+  border: 1px solid #3f4f6a;
+  border-radius: 12px;
+  box-shadow: 0 10px 26px rgba(7, 12, 22, 0.5);
+}
+
+.window-app.pok-role-dialog .window-content,
+.dialog.pok-role-dialog .window-content {
+  background: linear-gradient(180deg, #1d2736 0%, #161f2d 100%);
+  color: #d6e0f2;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.window-app.pok-role-dialog .dialog-content,
+.dialog.pok-role-dialog .dialog-content {
+  color: inherit;
+}
+
+.window-app.pok-role-dialog .dialog-buttons,
+.dialog.pok-role-dialog .dialog-buttons {
+  border-top: 1px solid #3c4a63;
+  padding-top: 8px;
+  gap: 6px;
+}
+
+.window-app.pok-role-dialog .dialog-buttons button,
+.dialog.pok-role-dialog .dialog-buttons button {
+  border: 1px solid #4d5f81;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #26324a 0%, #1b2538 100%);
+  color: #e6edf9;
+}
+
+.window-app.pok-role-dialog .dialog-buttons button:hover,
+.window-app.pok-role-dialog .dialog-buttons button:focus,
+.dialog.pok-role-dialog .dialog-buttons button:hover,
+.dialog.pok-role-dialog .dialog-buttons button:focus {
+  border-color: #d5694e;
+  box-shadow: 0 0 0 1px rgba(213, 105, 78, 0.25);
+}
+
+.pok-role-combined-roll,
+.pok-role-reaction-dialog,
+.pok-role-holding-back-dialog {
+  display: grid;
+  gap: 8px;
+}
+
+.pok-role-combined-roll .form-group,
+.pok-role-reaction-dialog .form-group {
+  margin: 0;
+}
+
+.pok-role-combined-roll input[type="text"],
+.pok-role-combined-roll input[type="number"],
+.pok-role-combined-roll select,
+.pok-role-reaction-dialog input[type="text"],
+.pok-role-reaction-dialog input[type="number"],
+.pok-role-reaction-dialog select,
+.pok-role-holding-back-dialog input[type="text"],
+.pok-role-holding-back-dialog input[type="number"],
+.pok-role-holding-back-dialog select {
+  width: 100%;
+  border: 1px solid #6c7992;
+  border-radius: 8px;
+  background: #dde4f0;
+  color: #26334a;
 }
 
 .pok-role-combined-roll fieldset,
 .pok-role-reaction-dialog fieldset {
-  border: 1px solid var(--color-border-light-primary);
-  border-radius: 6px;
-  padding: 6px 8px;
+  border: 1px solid #65738e;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin: 0;
+  background: rgba(27, 37, 56, 0.58);
 }
 
 .pok-role-combined-roll legend,
 .pok-role-reaction-dialog legend {
-  font-weight: 600;
+  font-weight: 700;
   padding: 0 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.pok-role-combined-roll .trait-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 10px;
+}
+
+.pok-role-combined-roll .trait-option,
+.pok-role-reaction-dialog .trait-option {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.pok-role-combined-roll .trait-option.compact,
+.pok-role-reaction-dialog .trait-option.compact {
+  min-height: 28px;
+}
+
+.pok-role-reaction-dialog .form-group.nested {
+  margin-left: 26px;
+}
+
+.pok-role-combined-roll .dialog-intro,
+.pok-role-reaction-dialog .dialog-intro,
+.pok-role-holding-back-dialog .dialog-intro {
+  margin: 0;
+  line-height: 1.35;
+  color: #e3eaf8;
+}
+
+@media (max-width: 560px) {
+  .pok-role-combined-roll .trait-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .move-sheet,
@@ -411,7 +674,7 @@
 
 .move-sheet .move-secondary-effect-row {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
   gap: 8px;
   align-items: end;
   border: 1px solid #a3abba;
@@ -1019,12 +1282,56 @@
   margin-bottom: 8px;
 }
 
-.trainer-sheet .trainer-conditions-panel textarea {
-  min-height: 96px;
-  border: 1px solid #778197;
-  border-radius: 8px;
-  background: #e6ebf4;
-  line-height: 1.35;
+.pok-role-sheet .temporary-effects-list {
+  display: grid;
+  gap: 6px;
+}
+
+.pok-role-sheet .temporary-effect-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  border-radius: 10px;
+  padding: 6px 8px;
+}
+
+.pok-role-sheet .temporary-effect-main {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.pok-role-sheet .temporary-effect-main strong {
+  font-size: 0.84rem;
+  line-height: 1.2;
+}
+
+.pok-role-sheet .temporary-effect-main small {
+  font-size: 0.72rem;
+  line-height: 1.2;
+}
+
+.pok-role-sheet .temporary-effect-remove {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+}
+
+.trainer-sheet .temporary-effect-row {
+  border: 1px solid #8d96aa;
+  background: #eff3fa;
+}
+
+.trainer-sheet .temporary-effect-main strong {
+  color: #2f3646;
+}
+
+.trainer-sheet .temporary-effect-main small {
+  color: #4b5365;
 }
 
 .trainer-sheet .trainer-bio-panel h2 {
@@ -1595,6 +1902,31 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+}
+
+.pokemon-sheet .pokemon-temporary-effects-section {
+  border: 4px solid var(--pk-outline);
+  border-radius: 20px;
+  background: #d24a30;
+}
+
+.pokemon-sheet .pokemon-temporary-effects-section h2 {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+}
+
+.pokemon-sheet .pokemon-temporary-effects-section .temporary-effect-row {
+  border: 3px solid var(--pk-outline);
+  background: #f6f8ff;
+}
+
+.pokemon-sheet .pokemon-temporary-effects-section .temporary-effect-main strong {
+  color: #2d313b;
+}
+
+.pokemon-sheet .pokemon-temporary-effects-section .temporary-effect-main small {
+  color: #5f6475;
 }
 
 .pokemon-sheet .pokemon-view-panel > .sheet-section:last-child {

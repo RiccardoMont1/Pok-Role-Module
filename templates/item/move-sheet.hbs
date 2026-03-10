@@ -185,6 +185,23 @@
           </select>
         </label>
         <label>
+          <span>{{localize "POKROLE.Move.Secondary.Duration.Mode.Label"}}</span>
+          <select name="system.secondaryEffects.{{effect.index}}.durationMode">
+            {{selectOptions ../secondaryDurationModeOptions selected=effect.durationMode localize=true}}
+          </select>
+        </label>
+        <label>
+          <span>{{localize "POKROLE.Move.Secondary.Duration.Rounds"}}</span>
+          <input
+            type="number"
+            name="system.secondaryEffects.{{effect.index}}.durationRounds"
+            value="{{effect.durationRounds}}"
+            min="1"
+            max="99"
+            data-dtype="Number"
+          />
+        </label>
+        <label>
           <span>{{localize "POKROLE.Move.Secondary.Condition.Label"}}</span>
           <select name="system.secondaryEffects.{{effect.index}}.condition">
             {{selectOptions ../secondaryConditionOptions selected=effect.condition localize=true}}

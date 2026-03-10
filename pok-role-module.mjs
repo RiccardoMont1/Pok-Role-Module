@@ -20,6 +20,16 @@ import { PokRoleActor, PokRoleItem } from "./module/documents.mjs";
 import { PokRoleActorSheet } from "./module/sheets/actor-sheet.mjs";
 import { PokRoleMoveSheet } from "./module/sheets/item-sheet.mjs";
 
+async function clearCombatScopedTemporaryEffects(combat) {
+  if (!combat) return;
+  const combatId = `${combat.id ?? ""}`.trim();
+  for (const combatant of combat.combatants ?? []) {
+    const actor = combatant.actor;
+    if (!actor || typeof actor.clearCombatTemporaryEffects !== "function") continue;
+    await actor.clearCombatTemporaryEffects(combatId);
+  }
+}
+
 Hooks.once("init", () => {
   console.log(`${POKROLE.ID} | Initializing ${POKROLE.TITLE}`);
 
@@ -87,6 +97,13 @@ Hooks.once("ready", async () => {
 });
 
 Hooks.on("updateCombat", async (combat, changed) => {
+  const hasCombatEnded =
+    Object.prototype.hasOwnProperty.call(changed, "active") && changed.active === false;
+  if (hasCombatEnded) {
+    await clearCombatScopedTemporaryEffects(combat);
+    return;
+  }
+
   const hasRoundChange = Object.prototype.hasOwnProperty.call(changed, "round");
   if (!hasRoundChange) return;
   if ((combat.round ?? 0) <= 0) return;
@@ -96,6 +113,10 @@ Hooks.on("updateCombat", async (combat, changed) => {
   for (const combatant of combat.combatants ?? []) {
     const actor = combatant.actor;
     if (!actor) continue;
+
+    if (typeof actor.advanceTemporaryEffectsRound === "function") {
+      await actor.advanceTemporaryEffectsRound(combat.id);
+    }
 
     if (typeof actor.resetTurnState === "function") {
       await actor.resetTurnState({ roundKey, resetInitiative: false });
@@ -113,4 +134,8 @@ Hooks.on("updateCombat", async (combat, changed) => {
   if (initiativeUpdates.length > 0) {
     await combat.updateEmbeddedDocuments("Combatant", initiativeUpdates);
   }
+});
+
+Hooks.on("deleteCombat", async (combat) => {
+  await clearCombatScopedTemporaryEffects(combat);
 });

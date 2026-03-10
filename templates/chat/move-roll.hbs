@@ -1,154 +1,85 @@
-<div class="pok-role-chat-card">
-  <h3>{{moveName}}</h3>
-  <p>
-    <strong>{{localize "POKROLE.Chat.Actor"}}:</strong>
-    {{actorName}}
-  </p>
-  <p>
-    <strong>{{localize "POKROLE.Move.Type"}}:</strong>
-    {{moveTypeLabel}}
-    |
-    <strong>{{localize "POKROLE.Move.Category.Label"}}:</strong>
-    {{categoryLabel}}
-    |
-    <strong>{{localize "POKROLE.Move.Target"}}:</strong>
-    {{moveTargetLabel}}
-  </p>
-  <hr />
-  <p>
-    <strong>{{localize "POKROLE.Chat.Accuracy"}}:</strong>
-    {{accuracyAttributeLabel}} + {{accuracySkillLabel}}
-  </p>
-  <p>
-    {{localize "POKROLE.Chat.RawSuccesses"}}: {{rawAccuracySuccesses}}
-    |
-    {{localize "POKROLE.Chat.RemovedSuccesses"}}: {{removedAccuracySuccesses}}
-    |
-    {{localize "POKROLE.Chat.NetSuccesses"}}: {{netAccuracySuccesses}}
-    |
-    {{localize "POKROLE.Chat.RequiredSuccesses"}}: {{requiredSuccesses}}
-  </p>
-  <p>
-    <strong>{{localize "POKROLE.Chat.Result"}}:</strong>
-    {{#if hit}}
-      {{localize "POKROLE.Common.Hit"}}
-    {{else}}
-      {{localize "POKROLE.Common.Miss"}}
+<div class="pok-role-chat-card arcade-red">
+  <header class="chat-card-header">
+    <h3>{{moveName}}</h3>
+    <div class="chat-pill-row">
+      <span class="chat-pill">{{moveTypeLabel}}</span>
+      <span class="chat-pill">{{categoryLabel}}</span>
+      <span class="chat-pill">{{moveTargetLabel}}</span>
+    </div>
+    <div class="chat-meta-line">
+      <strong>{{localize "POKROLE.Chat.Actor"}}:</strong> {{actorName}}
+    </div>
+  </header>
+
+  <section class="chat-card-section">
+    <p><strong>{{localize "POKROLE.Chat.Accuracy"}}:</strong> {{accuracyAttributeLabel}} + {{accuracySkillLabel}}</p>
+    <p>{{localize "POKROLE.Chat.RawSuccesses"}}: {{rawAccuracySuccesses}} | {{localize "POKROLE.Chat.RemovedSuccesses"}}: {{removedAccuracySuccesses}} | {{localize "POKROLE.Chat.NetSuccesses"}}: {{netAccuracySuccesses}} | {{localize "POKROLE.Chat.RequiredSuccesses"}}: {{requiredSuccesses}}</p>
+    <p>
+      <strong>{{localize "POKROLE.Chat.Result"}}:</strong>
+      <span class="chat-result-badge {{#if hit}}is-hit{{else}}is-miss{{/if}}">
+        {{#if hit}}{{localize "POKROLE.Common.Hit"}}{{else}}{{localize "POKROLE.Common.Miss"}}{{/if}}
+      </span>
+      {{#if critical}}<span class="chat-result-badge is-critical">{{localize "POKROLE.Chat.CriticalHit"}}</span>{{/if}}
+    </p>
+    {{#if holdingBackActive}}
+    <p><strong>{{localize "POKROLE.Chat.HoldingBack.Label"}}:</strong> {{holdingBackLabel}} {{#if holdingBackNonLethalApplied}}({{localize "POKROLE.Chat.HoldingBack.NonLethalNote"}}){{/if}}</p>
     {{/if}}
-    {{#if critical}}
-      ({{localize "POKROLE.Chat.CriticalHit"}})
-    {{/if}}
-  </p>
-  {{#if holdingBackActive}}
-  <p>
-    <strong>{{localize "POKROLE.Chat.HoldingBack.Label"}}:</strong>
-    {{holdingBackLabel}}
-    {{#if holdingBackNonLethalApplied}}
-      ({{localize "POKROLE.Chat.HoldingBack.NonLethalNote"}})
-    {{/if}}
-  </p>
-  {{/if}}
+  </section>
+
   {{#if reactionAttempted}}
-  <hr />
-  <p>
-    <strong>{{localize "POKROLE.Chat.Reaction.Label"}}:</strong>
-    {{reactionTypeLabel}}
-  </p>
-  <p>
-    {{localize "POKROLE.Chat.NetSuccesses"}}: {{reactionNetSuccesses}}
-    |
-    {{localize "POKROLE.Chat.Result"}}:
+  <section class="chat-card-section">
+    <h4>{{localize "POKROLE.Chat.Reaction.Label"}}</h4>
+    <p><strong>{{localize "POKROLE.Chat.Reaction.Label"}}:</strong> {{reactionTypeLabel}}</p>
+    <p>{{localize "POKROLE.Chat.NetSuccesses"}}: {{reactionNetSuccesses}} | {{localize "POKROLE.Chat.Result"}}: {{#if reactionSuccess}}{{localize "POKROLE.Common.Hit"}}{{else}}{{localize "POKROLE.Common.Miss"}}{{/if}}</p>
+    {{#if reactionClashMoveName}}
+    <p><strong>{{localize "POKROLE.Combat.ClashMove"}}:</strong> {{reactionClashMoveName}}</p>
+    {{/if}}
     {{#if reactionSuccess}}
-      {{localize "POKROLE.Common.Hit"}}
-    {{else}}
-      {{localize "POKROLE.Common.Miss"}}
+      {{#if reactionTargetDamage}}
+      <p><strong>{{localize "POKROLE.Chat.Reaction.ClashTargetDamage"}}:</strong> {{reactionTargetDamage}}</p>
+      {{/if}}
+      {{#if reactionAttackerDamage}}
+      <p><strong>{{localize "POKROLE.Chat.Reaction.ClashAttackerDamage"}}:</strong> {{reactionAttackerDamage}}</p>
+      {{/if}}
     {{/if}}
-  </p>
-  {{#if reactionClashMoveName}}
-  <p>
-    <strong>{{localize "POKROLE.Combat.ClashMove"}}:</strong>
-    {{reactionClashMoveName}}
-  </p>
+  </section>
   {{/if}}
-  {{#if reactionSuccess}}
-    {{#if reactionTargetDamage}}
-    <p>
-      <strong>{{localize "POKROLE.Chat.Reaction.ClashTargetDamage"}}:</strong>
-      {{reactionTargetDamage}}
-    </p>
-    {{/if}}
-    {{#if reactionAttackerDamage}}
-    <p>
-      <strong>{{localize "POKROLE.Chat.Reaction.ClashAttackerDamage"}}:</strong>
-      {{reactionAttackerDamage}}
-    </p>
-    {{/if}}
-  {{/if}}
-  {{/if}}
+
   {{#if showDamageSection}}
-  <hr />
-  <p>
-    <strong>{{localize "POKROLE.Chat.DamageSetup"}}:</strong>
-    {{localize "POKROLE.Chat.PoolBeforeDefense"}} {{poolBeforeDefense}} ,
-    {{localize "POKROLE.Chat.TargetDefense"}} {{defense}} ,
-    {{localize "POKROLE.Chat.FinalPool"}} {{damagePool}}
-  </p>
-  <p>
-    {{localize "POKROLE.Chat.DamageSuccesses"}}: {{damageSuccesses}}
-    |
-    STAB: +{{stabDice}}
-    |
-    {{localize "POKROLE.Chat.CriticalBonusDice"}}: +{{criticalDice}}
-  </p>
-  <p>
-    <strong>{{localize "POKROLE.Chat.TypeEffect.Label"}}:</strong>
-    {{typeLabel}}
-  </p>
-  <p>
-    <strong>{{localize "POKROLE.Chat.FinalDamage"}}:</strong>
-    {{finalDamage}}
-    {{#if targetName}}
-      ({{targetName}})
+  <section class="chat-card-section">
+    <h4>{{localize "POKROLE.Chat.DamageSetup"}}</h4>
+    <p>{{localize "POKROLE.Chat.PoolBeforeDefense"}} {{poolBeforeDefense}} | {{localize "POKROLE.Chat.TargetDefense"}} {{defense}} | {{localize "POKROLE.Chat.FinalPool"}} {{damagePool}}</p>
+    <p>{{localize "POKROLE.Chat.DamageSuccesses"}}: {{damageSuccesses}} | STAB: +{{stabDice}} | {{localize "POKROLE.Chat.CriticalBonusDice"}}: +{{criticalDice}}</p>
+    <p><strong>{{localize "POKROLE.Chat.TypeEffect.Label"}}:</strong> {{typeLabel}}</p>
+    <p><strong>{{localize "POKROLE.Chat.FinalDamage"}}:</strong> {{finalDamage}} {{#if targetName}}({{targetName}}){{/if}}</p>
+    {{#if hasHpUpdate}}
+    <p><strong>{{localize "POKROLE.Chat.TargetHP"}}:</strong> {{hpBefore}} -> {{hpAfter}}</p>
     {{/if}}
-  </p>
-  {{#if hasHpUpdate}}
-  <p>
-    <strong>{{localize "POKROLE.Chat.TargetHP"}}:</strong>
-    {{hpBefore}} -> {{hpAfter}}
-  </p>
+    {{#if additionalTargetResults.length}}
+    <p><strong>{{localize "POKROLE.Chat.AdditionalTargets"}}:</strong></p>
+    <ul class="chat-list">
+      {{#each additionalTargetResults as |targetResult|}}
+      <li>{{targetResult.targetName}}: {{localize "POKROLE.Chat.FinalDamage"}} {{targetResult.finalDamage}} {{#if targetResult.hasHpUpdate}}({{targetResult.hpBefore}} -> {{targetResult.hpAfter}}){{/if}}</li>
+      {{/each}}
+    </ul>
+    {{/if}}
+  </section>
   {{/if}}
-  {{#if additionalTargetResults.length}}
-  <p><strong>{{localize "POKROLE.Chat.AdditionalTargets"}}:</strong></p>
-  <ul>
-    {{#each additionalTargetResults as |targetResult|}}
-    <li>
-      {{targetResult.targetName}}: {{localize "POKROLE.Chat.FinalDamage"}} {{targetResult.finalDamage}}
-      {{#if targetResult.hasHpUpdate}}
-      ({{targetResult.hpBefore}} -> {{targetResult.hpAfter}})
-      {{/if}}
-    </li>
-    {{/each}}
-  </ul>
-  {{/if}}
-  {{/if}}
+
   {{#if hasSecondaryEffects}}
-  <hr />
-  <p><strong>{{localize "POKROLE.Move.Secondary.Title"}}:</strong></p>
-  <ul>
-    {{#each secondaryEffectResults as |effectResult|}}
-    <li>
-      {{effectResult.label}}
-      ({{effectResult.targetName}}):
-      {{#if effectResult.applied}}
-      {{localize "POKROLE.Chat.SecondaryEffectApplied"}}
-      {{else}}
-      {{localize "POKROLE.Chat.SecondaryEffectFailed"}}
-      {{/if}}
-      {{#if effectResult.detail}}
-      - {{effectResult.detail}}
-      {{/if}}
-    </li>
-    {{/each}}
-  </ul>
+  <section class="chat-card-section">
+    <h4>{{localize "POKROLE.Move.Secondary.Title"}}</h4>
+    <ul class="chat-list">
+      {{#each secondaryEffectResults as |effectResult|}}
+      <li>
+        <span class="chat-secondary-label">{{effectResult.label}} ({{effectResult.targetName}})</span>:
+        <span class="chat-secondary-state {{#if effectResult.applied}}is-ok{{else}}is-fail{{/if}}">
+          {{#if effectResult.applied}}{{localize "POKROLE.Chat.SecondaryEffectApplied"}}{{else}}{{localize "POKROLE.Chat.SecondaryEffectFailed"}}{{/if}}
+        </span>
+        {{#if effectResult.detail}} - {{effectResult.detail}}{{/if}}
+      </li>
+      {{/each}}
+    </ul>
+  </section>
   {{/if}}
 </div>

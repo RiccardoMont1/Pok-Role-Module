@@ -2,6 +2,7 @@ import {
   ATTRIBUTE_DEFINITIONS,
   MOVE_CATEGORY_LABEL_BY_KEY,
   MOVE_SECONDARY_CONDITION_KEYS,
+  MOVE_SECONDARY_DURATION_MODE_KEYS,
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
@@ -189,6 +190,11 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       will: "POKROLE.Move.Secondary.Type.Will",
       custom: "POKROLE.Move.Secondary.Type.Custom"
     };
+    context.secondaryDurationModeOptions = {
+      manual: "POKROLE.Move.Secondary.Duration.Mode.Manual",
+      rounds: "POKROLE.Move.Secondary.Duration.Mode.Rounds",
+      combat: "POKROLE.Move.Secondary.Duration.Mode.Combat"
+    };
     context.secondaryConditionOptions = Object.fromEntries(
       MOVE_SECONDARY_CONDITION_KEYS.map((conditionKey) => [
         conditionKey,
@@ -255,6 +261,8 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       chance: 100,
       target: "target",
       effectType: "condition",
+      durationMode: "manual",
+      durationRounds: 1,
       condition: "none",
       stat: "none",
       amount: 0,
@@ -287,6 +295,11 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     const effectType = MOVE_SECONDARY_EFFECT_TYPE_KEYS.includes(normalizedEffect.effectType)
       ? normalizedEffect.effectType
       : "condition";
+    const durationMode = MOVE_SECONDARY_DURATION_MODE_KEYS.includes(normalizedEffect.durationMode)
+      ? normalizedEffect.durationMode
+      : (effectType === "stat" || effectType === "combat-stat")
+        ? "combat"
+        : "manual";
     const condition = MOVE_SECONDARY_CONDITION_KEYS.includes(normalizedEffect.condition)
       ? normalizedEffect.condition
       : "none";
@@ -296,6 +309,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
 
     const chance = Number(normalizedEffect.chance);
     const amount = Number(normalizedEffect.amount);
+    const durationRounds = Number(normalizedEffect.durationRounds);
 
     return {
       label: `${normalizedEffect.label ?? ""}`.trim(),
@@ -303,6 +317,11 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       chance: Number.isFinite(chance) ? Math.min(Math.max(Math.floor(chance), 0), 100) : 100,
       target,
       effectType,
+      durationMode,
+      durationRounds:
+        Number.isFinite(durationRounds)
+          ? Math.min(Math.max(Math.floor(durationRounds), 1), 99)
+          : 1,
       condition,
       stat,
       amount: Number.isFinite(amount) ? Math.min(Math.max(Math.floor(amount), -99), 99) : 0,

@@ -2,6 +2,7 @@ import {
   COMBAT_FLAG_KEYS,
   MOVE_CATEGORY_LABEL_BY_KEY,
   MOVE_SECONDARY_CONDITION_KEYS,
+  MOVE_SECONDARY_DURATION_MODE_KEYS,
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
@@ -90,6 +91,8 @@ const CONDITION_ALIASES = Object.freeze({
   confused: "confused"
 });
 
+const TEMPORARY_EFFECTS_FLAG = "automation.temporaryEffects";
+
 export class PokRoleActor extends Actor {
   getRollData() {
     const rollData = super.getRollData();
@@ -145,11 +148,28 @@ export class PokRoleActor extends Actor {
       label: this.localizeTrait(key),
       value: this.getTraitValue(key)
     }));
+    const physicalMentalAttributes = attributes.filter(
+      (trait) => !SOCIAL_ATTRIBUTE_KEYS.includes(trait.key)
+    );
+    const socialAttributes = attributes.filter((trait) =>
+      SOCIAL_ATTRIBUTE_KEYS.includes(trait.key)
+    );
     const skills = Object.keys(this.system.skills ?? {}).map((key) => ({
       key,
       label: this.localizeTrait(key),
       value: this.getSkillValue(key)
     }));
+    const renderTraitOptions = (traits) =>
+      traits
+        .map(
+          (trait) => `
+            <label class="trait-option">
+              <input type="checkbox" name="trait" value="${trait.key}" />
+              <span>${trait.label} (${trait.value})</span>
+            </label>
+          `
+        )
+        .join("");
 
     const content = `
       <form class="pok-role-combined-roll">
@@ -165,41 +185,26 @@ export class PokRoleActor extends Actor {
           <label>${game.i18n.localize("POKROLE.CombinedRoll.RemovedSuccesses")}</label>
           <input type="number" name="manualRemovedSuccesses" min="0" value="0" />
         </div>
-        <div class="form-group">
-          <label style="display:flex;align-items:center;gap:8px;">
+        <label class="form-group trait-option compact">
             <input type="checkbox" name="applyPainPenalty" checked />
             <span>${game.i18n.localize("POKROLE.CombinedRoll.ApplyPainPenalty")}</span>
-          </label>
-        </div>
-        <hr />
+        </label>
         <fieldset>
-          <legend>${game.i18n.localize("POKROLE.Attributes.Title")}</legend>
-          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;">
-            ${attributes
-              .map(
-                (trait) => `
-                  <label style="display:flex;align-items:center;gap:6px;">
-                    <input type="checkbox" name="trait" value="${trait.key}" />
-                    <span>${trait.label} (${trait.value})</span>
-                  </label>
-                `
-              )
-              .join("")}
+          <legend>${game.i18n.localize("POKROLE.Attributes.PhysicalMental")}</legend>
+          <div class="trait-grid">
+            ${renderTraitOptions(physicalMentalAttributes)}
           </div>
         </fieldset>
-        <fieldset style="margin-top:8px;">
+        <fieldset>
+          <legend>${game.i18n.localize("POKROLE.Attributes.Social")}</legend>
+          <div class="trait-grid">
+            ${renderTraitOptions(socialAttributes)}
+          </div>
+        </fieldset>
+        <fieldset>
           <legend>${game.i18n.localize("POKROLE.Skills.Title")}</legend>
-          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;">
-            ${skills
-              .map(
-                (trait) => `
-                  <label style="display:flex;align-items:center;gap:6px;">
-                    <input type="checkbox" name="trait" value="${trait.key}" />
-                    <span>${trait.label} (${trait.value})</span>
-                  </label>
-                `
-              )
-              .join("")}
+          <div class="trait-grid">
+            ${renderTraitOptions(skills)}
           </div>
         </fieldset>
       </form>
@@ -223,7 +228,7 @@ export class PokRoleActor extends Actor {
         },
         default: "roll",
         close: () => resolve(null)
-      }).render(true);
+      }, { classes: ["pok-role-dialog", "pok-role-combined-dialog"] }).render(true);
     });
 
     if (!html) return null;
@@ -842,6 +847,8 @@ export class PokRoleActor extends Actor {
     const effectType = MOVE_SECONDARY_EFFECT_TYPE_KEYS.includes(rawEffect.effectType)
       ? rawEffect.effectType
       : "condition";
+    const durationMode = this._normalizeSecondaryDurationMode(rawEffect.durationMode, effectType);
+    const durationRounds = this._normalizeSecondaryDurationRounds(rawEffect.durationRounds);
     const condition = this._normalizeConditionKey(rawEffect.condition);
     const stat = this._normalizeSecondaryStatKey(rawEffect.stat);
     const chance = clamp(Math.floor(toNumber(rawEffect.chance, 100)), 0, 100);
@@ -853,11 +860,28 @@ export class PokRoleActor extends Actor {
       chance,
       target,
       effectType,
+      durationMode,
+      durationRounds,
       condition,
       stat,
       amount,
       notes: `${rawEffect.notes ?? ""}`.trim()
     };
+  }
+
+  _normalizeSecondaryDurationMode(durationMode, effectType = "custom") {
+    const normalized = `${durationMode ?? ""}`.trim().toLowerCase();
+    if (MOVE_SECONDARY_DURATION_MODE_KEYS.includes(normalized)) {
+      return normalized;
+    }
+    if (effectType === "stat" || effectType === "combat-stat") {
+      return "combat";
+    }
+    return "manual";
+  }
+
+  _normalizeSecondaryDurationRounds(durationRounds) {
+    return clamp(Math.floor(toNumber(durationRounds, 1)), 1, 99);
   }
 
   _normalizeConditionKey(conditionKey) {
@@ -1358,14 +1382,14 @@ export class PokRoleActor extends Actor {
     return this.localizeTrait(statKey);
   }
 
-  async _applySecondaryEffectToActor(effect, targetActor) {
+  async _applySecondaryEffectToActor(effect, targetActor, sourceMove = null) {
     switch (effect.effectType) {
       case "condition":
-        return this._applyConditionEffectToActor(effect, targetActor);
+        return this._applyConditionEffectToActor(effect, targetActor, sourceMove);
       case "stat":
-        return this._applyStatEffectToActor(effect, targetActor);
+        return this._applyStatEffectToActor(effect, targetActor, sourceMove);
       case "combat-stat":
-        return this._applyCombatStatEffectToActor(effect, targetActor);
+        return this._applyCombatStatEffectToActor(effect, targetActor, sourceMove);
       case "damage": {
         const damageValue = this._resolveEffectAmountValue(
           toNumber(targetActor.system?.resources?.hp?.max, 1),
@@ -1424,7 +1448,7 @@ export class PokRoleActor extends Actor {
     return Math.max(Math.floor((Math.max(maxValue, 1) * Math.abs(numericAmount)) / 100), 1);
   }
 
-  async _applyConditionEffectToActor(effect, targetActor) {
+  async _applyConditionEffectToActor(effect, targetActor, sourceMove = null) {
     const conditionKey = this._normalizeConditionKey(effect.condition);
     if (conditionKey === "none") {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
@@ -1448,7 +1472,21 @@ export class PokRoleActor extends Actor {
         };
       }
       await targetActor.update({ [`system.conditions.${systemConditionField}`]: true });
-      return { applied: true, detail: this._localizeConditionName(conditionKey) };
+      const trackedCondition = await this._trackTemporaryConditionEffect({
+        targetActor,
+        conditionPath: `system.conditions.${systemConditionField}`,
+        label: this._formatSecondaryEffectLabel(effect),
+        sourceMove,
+        durationMode: this._normalizeSecondaryDurationMode(effect.durationMode, "condition"),
+        durationRounds: this._normalizeSecondaryDurationRounds(effect.durationRounds)
+      });
+      return {
+        applied: true,
+        detail: `${this._localizeConditionName(conditionKey)} (${this._localizeTemporaryDuration(
+          trackedCondition?.durationMode,
+          trackedCondition?.durationRounds
+        )})`
+      };
     }
 
     await targetActor.setFlag(POKROLE.ID, `automation.conditions.${conditionKey}`, true);
@@ -1460,7 +1498,7 @@ export class PokRoleActor extends Actor {
     };
   }
 
-  async _applyStatEffectToActor(effect, targetActor) {
+  async _applyStatEffectToActor(effect, targetActor, sourceMove = null) {
     const amount = Math.floor(toNumber(effect.amount, 0));
     if (amount === 0) {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
@@ -1474,7 +1512,8 @@ export class PokRoleActor extends Actor {
     if (["accuracy", "damage", "evasion", "clash"].includes(statKey)) {
       return this._applyCombatStatEffectToActor(
         { ...effect, effectType: "combat-stat", stat: statKey, amount },
-        targetActor
+        targetActor,
+        sourceMove
       );
     }
 
@@ -1483,36 +1522,34 @@ export class PokRoleActor extends Actor {
     if (statKey === "specialDefense") resolvedKey = "insight";
 
     if (Object.prototype.hasOwnProperty.call(targetActor.system.attributes ?? {}, resolvedKey)) {
-      const currentValue = toNumber(targetActor.system.attributes?.[resolvedKey], 0);
       const maxValue = this._resolveAttributeMaximum(targetActor, resolvedKey);
-      const nextValue = clamp(currentValue + amount, 0, maxValue);
-      if (nextValue === currentValue) {
-        return {
-          applied: false,
-          detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectNoStatChange")
-        };
-      }
-      await targetActor.update({ [`system.attributes.${resolvedKey}`]: nextValue });
-      return {
-        applied: true,
-        detail: `${this.localizeTrait(resolvedKey)} ${currentValue} -> ${nextValue}`
-      };
+      return this._applyTemporaryTrackedModifier({
+        targetActor,
+        path: `system.attributes.${resolvedKey}`,
+        amount,
+        min: 0,
+        max: maxValue,
+        label: this._formatSecondaryEffectLabel(effect),
+        sourceMove,
+        detailLabel: this.localizeTrait(resolvedKey),
+        durationMode: effect.durationMode,
+        durationRounds: effect.durationRounds
+      });
     }
 
     if (Object.prototype.hasOwnProperty.call(targetActor.system.skills ?? {}, resolvedKey)) {
-      const currentValue = toNumber(targetActor.system.skills?.[resolvedKey], 0);
-      const nextValue = clamp(currentValue + amount, 0, 5);
-      if (nextValue === currentValue) {
-        return {
-          applied: false,
-          detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectNoStatChange")
-        };
-      }
-      await targetActor.update({ [`system.skills.${resolvedKey}`]: nextValue });
-      return {
-        applied: true,
-        detail: `${this.localizeTrait(resolvedKey)} ${currentValue} -> ${nextValue}`
-      };
+      return this._applyTemporaryTrackedModifier({
+        targetActor,
+        path: `system.skills.${resolvedKey}`,
+        amount,
+        min: 0,
+        max: 5,
+        label: this._formatSecondaryEffectLabel(effect),
+        sourceMove,
+        detailLabel: this.localizeTrait(resolvedKey),
+        durationMode: effect.durationMode,
+        durationRounds: effect.durationRounds
+      });
     }
 
     return { applied: false, detail: game.i18n.localize("POKROLE.Common.Unknown") };
@@ -1532,7 +1569,295 @@ export class PokRoleActor extends Actor {
     return 5;
   }
 
-  async _applyCombatStatEffectToActor(effect, targetActor) {
+  getTemporaryEffects() {
+    return this._getTemporaryEffectEntries(this);
+  }
+
+  async removeTemporaryEffect(effectId, options = {}) {
+    const normalizedEffectId = `${effectId ?? ""}`.trim();
+    if (!normalizedEffectId) return false;
+
+    const shouldRevert = options.revert !== false;
+    const currentEntries = this._getTemporaryEffectEntries(this);
+    const effectIndex = currentEntries.findIndex(
+      (entry) => `${entry?.id ?? ""}`.trim() === normalizedEffectId
+    );
+    if (effectIndex < 0) return false;
+
+    const [entryToRemove] = currentEntries.splice(effectIndex, 1);
+    if (shouldRevert) {
+      await this._revertTemporaryEffectEntry(entryToRemove);
+    }
+    await this._setTemporaryEffectEntries(this, currentEntries);
+    return true;
+  }
+
+  async clearCombatTemporaryEffects(combatId = null) {
+    const currentEntries = this._getTemporaryEffectEntries(this);
+    if (!currentEntries.length) return 0;
+
+    const normalizedCombatId = `${combatId ?? ""}`.trim();
+    const remainingEntries = [];
+    let clearedCount = 0;
+
+    for (const entry of currentEntries) {
+      const isCombatScoped = Boolean(entry?.expiresWithCombat);
+      const entryCombatId = `${entry?.combatId ?? ""}`.trim();
+      const matchesCombat =
+        !normalizedCombatId || !entryCombatId || entryCombatId === normalizedCombatId;
+      if (!isCombatScoped || !matchesCombat) {
+        remainingEntries.push(entry);
+        continue;
+      }
+
+      await this._revertTemporaryEffectEntry(entry);
+      clearedCount += 1;
+    }
+
+    if (clearedCount > 0 || remainingEntries.length !== currentEntries.length) {
+      await this._setTemporaryEffectEntries(this, remainingEntries);
+    }
+
+    return clearedCount;
+  }
+
+  async advanceTemporaryEffectsRound(combatId = null) {
+    const currentEntries = this._getTemporaryEffectEntries(this);
+    if (!currentEntries.length) return 0;
+
+    const normalizedCombatId = `${combatId ?? ""}`.trim();
+    const nextEntries = [];
+    let expiredCount = 0;
+    let changed = false;
+
+    for (const entry of currentEntries) {
+      const durationMode = `${entry?.durationMode ?? "manual"}`.trim().toLowerCase();
+      if (durationMode !== "rounds") {
+        nextEntries.push(entry);
+        continue;
+      }
+
+      const entryCombatId = `${entry?.combatId ?? ""}`.trim();
+      const matchesCombat =
+        !normalizedCombatId || !entryCombatId || entryCombatId === normalizedCombatId;
+      if (!matchesCombat) {
+        nextEntries.push(entry);
+        continue;
+      }
+
+      const remainingRounds = this._normalizeSecondaryDurationRounds(entry?.remainingRounds ?? 1);
+      const nextRounds = remainingRounds - 1;
+      if (nextRounds <= 0) {
+        await this._revertTemporaryEffectEntry(entry);
+        expiredCount += 1;
+        changed = true;
+        continue;
+      }
+
+      nextEntries.push({
+        ...entry,
+        remainingRounds: nextRounds
+      });
+      changed = changed || nextRounds !== remainingRounds;
+    }
+
+    if (changed || nextEntries.length !== currentEntries.length) {
+      await this._setTemporaryEffectEntries(this, nextEntries);
+    }
+
+    return expiredCount;
+  }
+
+  _getTemporaryEffectEntries(targetActor) {
+    const rawEntries = targetActor?.getFlag(POKROLE.ID, TEMPORARY_EFFECTS_FLAG);
+    if (!Array.isArray(rawEntries)) return [];
+    return rawEntries.filter((entry) => entry && typeof entry === "object");
+  }
+
+  async _setTemporaryEffectEntries(targetActor, entries) {
+    const normalizedEntries = Array.isArray(entries)
+      ? entries.filter((entry) => entry && typeof entry === "object")
+      : [];
+    await targetActor.setFlag(POKROLE.ID, TEMPORARY_EFFECTS_FLAG, normalizedEntries);
+  }
+
+  async _trackTemporaryConditionEffect({
+    targetActor,
+    conditionPath,
+    label = "",
+    sourceMove = null,
+    durationMode = "manual",
+    durationRounds = 1
+  }) {
+    if (!targetActor || !conditionPath) {
+      return { durationMode: "manual", durationRounds: 1 };
+    }
+
+    const normalizedRounds = this._normalizeSecondaryDurationRounds(durationRounds);
+    const requestedMode = this._normalizeSecondaryDurationMode(durationMode, "condition");
+    const combatId = game.combat?.id ?? null;
+    const combatRound = game.combat?.round ?? null;
+    const effectiveMode =
+      (requestedMode === "combat" || requestedMode === "rounds") && !combatId
+        ? "manual"
+        : requestedMode;
+    const isCombatScoped = effectiveMode === "combat" || effectiveMode === "rounds";
+
+    const effectEntries = this._getTemporaryEffectEntries(targetActor);
+    const effectId =
+      foundry.utils.randomID?.() ??
+      `${Date.now()}-${Math.floor(Math.random() * 1_000_000)}`;
+    effectEntries.push({
+      id: effectId,
+      label: `${label ?? ""}`.trim() || game.i18n.localize("POKROLE.TemporaryEffects.Title"),
+      effectType: "condition",
+      sourceMoveId: sourceMove?.id ?? null,
+      sourceMoveName: sourceMove?.name ?? "",
+      sourceActorId: this.id ?? null,
+      sourceActorName: this.name ?? "",
+      durationMode: effectiveMode,
+      remainingRounds: effectiveMode === "rounds" ? normalizedRounds : null,
+      expiresWithCombat: isCombatScoped,
+      combatId: isCombatScoped ? combatId : null,
+      appliedRound: isCombatScoped ? combatRound : null,
+      createdAt: Date.now(),
+      changes: [
+        {
+          kind: "boolean",
+          path: conditionPath,
+          previousValue: false
+        }
+      ]
+    });
+    await this._setTemporaryEffectEntries(targetActor, effectEntries);
+    return {
+      durationMode: effectiveMode,
+      durationRounds: normalizedRounds
+    };
+  }
+
+  async _applyTemporaryTrackedModifier({
+    targetActor,
+    path,
+    amount,
+    min = 0,
+    max = 99,
+    label = "",
+    sourceMove = null,
+    detailLabel = "",
+    durationMode = "combat",
+    durationRounds = 1
+  }) {
+    const numericAmount = Math.floor(toNumber(amount, 0));
+    if (!targetActor || !path || numericAmount === 0) {
+      return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
+    }
+
+    const currentValue = toNumber(foundry.utils.getProperty(targetActor, path), 0);
+    const nextValue = clamp(currentValue + numericAmount, min, max);
+    const appliedAmount = nextValue - currentValue;
+    if (appliedAmount === 0) {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectNoStatChange")
+      };
+    }
+
+    await targetActor.update({ [path]: nextValue });
+
+    const normalizedRounds = this._normalizeSecondaryDurationRounds(durationRounds);
+    const requestedMode = this._normalizeSecondaryDurationMode(durationMode, "stat");
+    const combatId = game.combat?.id ?? null;
+    const combatRound = game.combat?.round ?? null;
+    const effectiveMode =
+      (requestedMode === "combat" || requestedMode === "rounds") && !combatId
+        ? "manual"
+        : requestedMode;
+    const isCombatScoped = effectiveMode === "combat" || effectiveMode === "rounds";
+    const effectId =
+      foundry.utils.randomID?.() ??
+      `${Date.now()}-${Math.floor(Math.random() * 1_000_000)}`;
+    const effectEntries = this._getTemporaryEffectEntries(targetActor);
+    effectEntries.push({
+      id: effectId,
+      label: `${label ?? ""}`.trim() || game.i18n.localize("POKROLE.TemporaryEffects.Title"),
+      effectType: "modifier",
+      sourceMoveId: sourceMove?.id ?? null,
+      sourceMoveName: sourceMove?.name ?? "",
+      sourceActorId: this.id ?? null,
+      sourceActorName: this.name ?? "",
+      durationMode: effectiveMode,
+      remainingRounds: effectiveMode === "rounds" ? normalizedRounds : null,
+      expiresWithCombat: isCombatScoped,
+      combatId: isCombatScoped ? combatId : null,
+      appliedRound: isCombatScoped ? combatRound : null,
+      createdAt: Date.now(),
+      changes: [
+        {
+          path,
+          amountApplied: appliedAmount,
+          min,
+          max
+        }
+      ]
+    });
+    await this._setTemporaryEffectEntries(targetActor, effectEntries);
+
+    const durationLabel = this._localizeTemporaryDuration(effectiveMode, normalizedRounds);
+    return {
+      applied: true,
+      detail: `${detailLabel || path} ${currentValue} -> ${nextValue} (${durationLabel})`
+    };
+  }
+
+  _localizeTemporaryDuration(durationMode, rounds = 1) {
+    const normalizedMode = `${durationMode ?? "manual"}`.trim().toLowerCase();
+    if (normalizedMode === "combat") {
+      return game.i18n.localize("POKROLE.TemporaryEffects.DurationCombat");
+    }
+    if (normalizedMode === "rounds") {
+      const normalizedRounds = this._normalizeSecondaryDurationRounds(rounds);
+      return game.i18n.format("POKROLE.TemporaryEffects.DurationRoundsWithValue", {
+        rounds: normalizedRounds
+      });
+    }
+    return game.i18n.localize("POKROLE.TemporaryEffects.DurationManual");
+  }
+
+  async _revertTemporaryEffectEntry(entry) {
+    const effectChanges = Array.isArray(entry?.changes) ? entry.changes : [];
+    if (!effectChanges.length) return;
+
+    const updates = {};
+    for (const change of effectChanges) {
+      const path = `${change?.path ?? ""}`.trim();
+      if (!path.startsWith("system.")) continue;
+
+      const changeKind = `${change?.kind ?? "number"}`.trim().toLowerCase();
+      if (changeKind === "boolean") {
+        updates[path] = Boolean(change?.previousValue);
+        continue;
+      }
+
+      const amountApplied = toNumber(change?.amountApplied, 0);
+      if (amountApplied === 0) continue;
+
+      const minValue = Number(change?.min);
+      const maxValue = Number(change?.max);
+      const min = Number.isFinite(minValue) ? minValue : 0;
+      const max = Number.isFinite(maxValue) ? maxValue : 999;
+      const currentValue = toNumber(foundry.utils.getProperty(this, path), 0);
+      const nextValue = clamp(currentValue - amountApplied, min, max);
+      if (nextValue === currentValue) continue;
+      updates[path] = nextValue;
+    }
+
+    if (Object.keys(updates).length > 0) {
+      await this.update(updates);
+    }
+  }
+
+  async _applyCombatStatEffectToActor(effect, targetActor, sourceMove = null) {
     const amount = Math.floor(toNumber(effect.amount, 0));
     if (amount === 0) {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
@@ -1544,20 +1869,18 @@ export class PokRoleActor extends Actor {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.Unknown") };
     }
 
-    const path = `system.combatProfile.${statKey}`;
-    const currentValue = toNumber(targetActor.system.combatProfile?.[statKey], 0);
-    const nextValue = clamp(currentValue + amount, 0, 99);
-    if (nextValue === currentValue) {
-      return {
-        applied: false,
-        detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectNoStatChange")
-      };
-    }
-    await targetActor.update({ [path]: nextValue });
-    return {
-      applied: true,
-      detail: `${this._localizeSecondaryStatName(statKey)} ${currentValue} -> ${nextValue}`
-    };
+    return this._applyTemporaryTrackedModifier({
+      targetActor,
+      path: `system.combatProfile.${statKey}`,
+      amount,
+      min: 0,
+      max: 99,
+      label: this._formatSecondaryEffectLabel(effect),
+      sourceMove,
+      detailLabel: this._localizeSecondaryStatName(statKey),
+      durationMode: effect.durationMode,
+      durationRounds: effect.durationRounds
+    });
   }
 
   async _applyWillEffectToActor(effect, targetActor) {
@@ -1890,20 +2213,20 @@ export class PokRoleActor extends Actor {
 
     const content = `
       <form class="pok-role-reaction-dialog">
-        <p>
+        <p class="dialog-intro">
           ${game.i18n.format("POKROLE.Combat.ReactionPrompt", {
             target: targetActor.name,
             move: move.name
           })}
         </p>
-        <label style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+        <label class="trait-option compact">
           <input type="radio" name="reactionType" value="none" checked />
           <span>${game.i18n.localize("POKROLE.Chat.Reaction.None")}</span>
         </label>
         ${
           canUseEvasion
             ? `
-          <label style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+          <label class="trait-option compact">
             <input type="radio" name="reactionType" value="evasion" />
             <span>${game.i18n.localize("POKROLE.Chat.Reaction.UseEvasion")}</span>
           </label>
@@ -1913,11 +2236,11 @@ export class PokRoleActor extends Actor {
         ${
           canUseClash
             ? `
-          <label style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+          <label class="trait-option compact">
             <input type="radio" name="reactionType" value="clash" />
             <span>${game.i18n.localize("POKROLE.Chat.Reaction.UseClash")}</span>
           </label>
-          <div class="form-group" style="margin-left:22px;">
+          <div class="form-group nested">
             <label>${game.i18n.localize("POKROLE.Combat.ClashMove")}</label>
             <select name="clashMoveId">
               ${clashMoves
@@ -1949,7 +2272,7 @@ export class PokRoleActor extends Actor {
         },
         default: "confirm",
         close: () => resolve(null)
-      }).render(true);
+      }, { classes: ["pok-role-dialog", "pok-role-reaction-app"] }).render(true);
     });
 
     if (!html) return { type: "none" };
@@ -2002,13 +2325,17 @@ export class PokRoleActor extends Actor {
 
       new Dialog({
         title: game.i18n.localize("POKROLE.Combat.HoldingBackTitle"),
-        content: `<p>${game.i18n.format("POKROLE.Combat.HoldingBackPrompt", {
-          move: move.name
-        })}</p>`,
+        content: `
+          <div class="pok-role-holding-back-dialog">
+            <p class="dialog-intro">${game.i18n.format("POKROLE.Combat.HoldingBackPrompt", {
+              move: move.name
+            })}</p>
+          </div>
+        `,
         buttons,
         default: "normal",
         close: () => resolve("none")
-      }).render(true);
+      }, { classes: ["pok-role-dialog", "pok-role-holding-back-app"] }).render(true);
     });
   }
 

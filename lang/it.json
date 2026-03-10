@@ -67,6 +67,18 @@
       "Poisoned": "Avvelenato",
       "Fainted": "Svenuto"
     },
+    "TemporaryEffects": {
+      "Title": "Effetti Temporanei",
+      "None": "Nessun effetto temporaneo attivo.",
+      "DurationCombat": "Fino alla fine del combattimento",
+      "DurationRounds": "Round",
+      "DurationRoundsWithValue": "{rounds} round rimanenti",
+      "DurationManual": "Manuale (rimuovi quando risolto)",
+      "SourceMoveActor": "{move} di {actor}",
+      "SourceMove": "{move}",
+      "SourceUnknown": "Fonte sconosciuta",
+      "Remove": "Rimuovi effetto"
+    },
     "Pokemon": {
       "Species": "Specie",
       "SpeciesPlaceholder": "Pikachu, Charmander...",
@@ -231,6 +243,15 @@
         "Chance": "Probabilita (%)",
         "Amount": "Valore",
         "Notes": "Note",
+        "Duration": {
+          "Rounds": "Round",
+          "Mode": {
+            "Label": "Durata",
+            "Manual": "Manuale",
+            "Rounds": "Round",
+            "Combat": "Fino a fine combattimento"
+          }
+        },
         "Trigger": {
           "Label": "Innesco",
           "OnHit": "Su Colpo",

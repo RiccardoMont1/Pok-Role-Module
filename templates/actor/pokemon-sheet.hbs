@@ -578,6 +578,33 @@
       {{/if}}
     </section>
 
+    <section class="sheet-section pokemon-temporary-effects-section">
+      <h2>{{localize "POKROLE.TemporaryEffects.Title"}}</h2>
+      <div class="temporary-effects-list">
+        {{#if temporaryEffects.length}}
+        {{#each temporaryEffects as |effect|}}
+        <article class="temporary-effect-row">
+          <div class="temporary-effect-main">
+            <strong>{{effect.label}}</strong>
+            <small>{{effect.sourceLabel}} | {{effect.durationLabel}}</small>
+          </div>
+          <button
+            type="button"
+            class="icon-button danger temporary-effect-remove"
+            data-action="remove-temporary-effect"
+            data-effect-id="{{effect.id}}"
+            title="{{localize 'POKROLE.TemporaryEffects.Remove'}}"
+          >
+            <i class="fas fa-trash"></i>
+          </button>
+        </article>
+        {{/each}}
+        {{else}}
+        <p class="empty-state">{{localize "POKROLE.TemporaryEffects.None"}}</p>
+        {{/if}}
+      </div>
+    </section>
+
     <section class="sheet-section">
       <h2>{{localize "POKROLE.Common.Biography"}}</h2>
       <textarea
