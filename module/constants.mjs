@@ -1,5 +1,5 @@
 const DEFAULT_SYSTEM_ID = "pok-role-system";
-const DEFAULT_SYSTEM_TITLE = "Pokè Role System";
+const DEFAULT_SYSTEM_TITLE = "Pok\u00E9 Role System";
 
 export const POKROLE = Object.freeze({
   ID: globalThis.game?.system?.id ?? DEFAULT_SYSTEM_ID,
