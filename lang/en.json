@@ -286,6 +286,17 @@
             "Manual": "Manual",
             "Rounds": "Rounds",
             "Combat": "Until combat ends"
+          },
+          "Special": {
+            "Label": "Special Duration",
+            "TurnStart": "Until turn start",
+            "TurnEnd": "Until turn end",
+            "NextAction": "Expires on next action",
+            "NextAttack": "Expires on next attack roll",
+            "NextHit": "Expires on next successful hit",
+            "IsAttacked": "Expires when attacked",
+            "IsDamaged": "Expires when damaged",
+            "IsHit": "Expires when hit"
           }
         },
         "Trigger": {

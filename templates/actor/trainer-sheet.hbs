@@ -606,6 +606,16 @@
           <span>{{localize "POKROLE.Move.Secondary.Duration.Rounds"}}</span>
           <input type="number" value="{{effect.durationRounds}}" min="1" max="99" data-effect-field="durationRounds" />
         </label>
+        <label data-effect-visible="specialDuration" class="{{#unless effect.showDurationField}}is-hidden{{/unless}}">
+          <span>{{localize "POKROLE.Move.Secondary.Duration.Special.Label"}}</span>
+          <select data-effect-field="specialDuration" multiple size="4">
+            {{#each effect.specialDurationOptions as |option|}}
+            <option value="{{option.value}}" {{#if option.selected}}selected{{/if}}>
+              {{localize option.label}}
+            </option>
+            {{/each}}
+          </select>
+        </label>
         <label data-effect-visible="condition" class="{{#unless effect.showConditionField}}is-hidden{{/unless}}">
           <span>{{localize "POKROLE.Move.Secondary.Condition.Label"}}</span>
           <select data-effect-field="condition">

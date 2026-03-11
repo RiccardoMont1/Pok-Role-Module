@@ -4,11 +4,13 @@ import {
   MOVE_CATEGORY_LABEL_BY_KEY,
   MOVE_SECONDARY_CONDITION_KEYS,
   MOVE_SECONDARY_DURATION_MODE_KEYS,
+  MOVE_SECONDARY_SPECIAL_DURATION_KEYS,
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
   MOVE_SECONDARY_TRIGGER_KEYS,
   MOVE_TARGET_KEYS,
+  EFFECT_PASSIVE_TRIGGER_KEYS,
   POKROLE,
   SOCIAL_ATTRIBUTE_KEYS,
   TRAIT_LABEL_BY_KEY,
@@ -106,21 +108,6 @@ const CONDITION_FIELD_BY_KEY = Object.freeze({
   poisoned: "poisoned",
   fainted: "fainted"
 });
-const PASSIVE_TRIGGER_KEYS = Object.freeze([
-  "always",
-  "in-combat",
-  "out-of-combat",
-  "self-hp-half-or-less",
-  "self-hp-quarter-or-less",
-  "self-hp-below-threshold",
-  "target-hp-half-or-less",
-  "target-hp-quarter-or-less",
-  "target-hp-below-threshold",
-  "self-has-condition",
-  "self-missing-condition",
-  "target-has-condition",
-  "target-missing-condition"
-]);
 
 export class PokRoleActor extends Actor {
   getRollData() {
@@ -684,6 +671,36 @@ export class PokRoleActor extends Actor {
       damageTargetResults
     };
 
+    await this.processTemporaryEffectSpecialDuration("next-attack", {
+      combatId: game.combat?.id ?? null
+    });
+    if (hit) {
+      await this.processTemporaryEffectSpecialDuration("next-hit", {
+        combatId: game.combat?.id ?? null
+      });
+    }
+    if (hit) {
+      const hitTargets =
+        damageTargetResults.length > 0
+          ? damageTargetResults
+          : targetActors.map((actor) => ({ targetActor: actor, finalDamage: 0 }));
+      for (const targetEntry of hitTargets) {
+        const target = targetEntry?.targetActor ?? null;
+        if (!target || typeof target.processTemporaryEffectSpecialDuration !== "function") continue;
+        await target.processTemporaryEffectSpecialDuration("is-hit", {
+          combatId: game.combat?.id ?? null
+        });
+        await target.processTemporaryEffectSpecialDuration("is-attacked", {
+          combatId: game.combat?.id ?? null
+        });
+        if (toNumber(targetEntry?.finalDamage, 0) > 0) {
+          await target.processTemporaryEffectSpecialDuration("is-damaged", {
+            combatId: game.combat?.id ?? null
+          });
+        }
+      }
+    }
+
     if (options.advanceAction !== false) {
       await this._advanceActionCounter(actionNumber, roundKey);
     }
@@ -876,6 +893,7 @@ export class PokRoleActor extends Actor {
     const effectType = this._normalizeSecondaryEffectType(rawEffect.effectType);
     const durationMode = this._normalizeSecondaryDurationMode(rawEffect.durationMode, effectType);
     const durationRounds = this._normalizeSecondaryDurationRounds(rawEffect.durationRounds);
+    const specialDuration = this._normalizeSpecialDurationList(rawEffect.specialDuration);
     const condition = this._normalizeConditionKey(rawEffect.condition);
     const stat = this._normalizeSecondaryStatKey(rawEffect.stat);
     const chance = clamp(Math.floor(toNumber(rawEffect.chance, 100)), 0, 100);
@@ -889,6 +907,7 @@ export class PokRoleActor extends Actor {
       effectType,
       durationMode,
       durationRounds,
+      specialDuration,
       condition,
       stat,
       amount,
@@ -916,6 +935,24 @@ export class PokRoleActor extends Actor {
 
   _normalizeSecondaryDurationRounds(durationRounds) {
     return clamp(Math.floor(toNumber(durationRounds, 1)), 1, 99);
+  }
+
+  _normalizeSpecialDurationList(value) {
+    const rawValues = Array.isArray(value)
+      ? value
+      : typeof value === "string" && value.trim()
+        ? value.split(",")
+        : value && typeof value === "object"
+          ? Object.values(value)
+          : [];
+    const normalized = [];
+    for (const rawEntry of rawValues) {
+      const durationKey = `${rawEntry ?? ""}`.trim().toLowerCase();
+      if (!durationKey || durationKey === "none") continue;
+      if (!MOVE_SECONDARY_SPECIAL_DURATION_KEYS.includes(durationKey)) continue;
+      if (!normalized.includes(durationKey)) normalized.push(durationKey);
+    }
+    return normalized;
   }
 
   _normalizeConditionKey(conditionKey) {
@@ -1222,6 +1259,24 @@ export class PokRoleActor extends Actor {
       }
 
       for (const targetActor of effectTargets) {
+        const hasConditionalTrigger =
+          Boolean(effect?.passive) ||
+          `${effect?.passiveTrigger ?? ""}`.trim().length > 0;
+        if (hasConditionalTrigger) {
+          const triggerCheckEffect = {
+            ...effect,
+            passive: true
+          };
+          if (!this._checkPassiveTrigger(triggerCheckEffect, targetActor)) {
+            results.push({
+              label: this._formatSecondaryEffectLabel(effect),
+              targetName: targetActor.name,
+              applied: false,
+              detail: game.i18n.localize("POKROLE.Chat.PassiveTriggerNotMet")
+            });
+            continue;
+          }
+        }
         const applyResult = await this._applySecondaryEffectToActor(effect, targetActor, move);
         results.push({
           label: this._formatSecondaryEffectLabel(effect),
@@ -1513,13 +1568,15 @@ export class PokRoleActor extends Actor {
         label: this._formatSecondaryEffectLabel(effect),
         sourceMove,
         durationMode: this._normalizeSecondaryDurationMode(effect.durationMode, "condition"),
-        durationRounds: this._normalizeSecondaryDurationRounds(effect.durationRounds)
+        durationRounds: this._normalizeSecondaryDurationRounds(effect.durationRounds),
+        specialDuration: effect.specialDuration
       });
       return {
         applied: true,
         detail: `${this._localizeConditionName(conditionKey)} (${this._localizeTemporaryDuration(
           trackedCondition?.durationMode,
-          trackedCondition?.durationRounds
+          trackedCondition?.durationRounds,
+          trackedCondition?.specialDuration
         )})`
       };
     }
@@ -1533,7 +1590,8 @@ export class PokRoleActor extends Actor {
       label: this._formatSecondaryEffectLabel(effect),
       sourceMove,
       durationMode: this._normalizeSecondaryDurationMode(effect.durationMode, "condition"),
-      durationRounds: this._normalizeSecondaryDurationRounds(effect.durationRounds)
+      durationRounds: this._normalizeSecondaryDurationRounds(effect.durationRounds),
+      specialDuration: effect.specialDuration
     });
     return {
       applied: true,
@@ -1578,7 +1636,8 @@ export class PokRoleActor extends Actor {
         sourceMove,
         detailLabel: this.localizeTrait(resolvedKey),
         durationMode: effect.durationMode,
-        durationRounds: effect.durationRounds
+        durationRounds: effect.durationRounds,
+        specialDuration: effect.specialDuration
       });
     }
 
@@ -1593,7 +1652,8 @@ export class PokRoleActor extends Actor {
         sourceMove,
         detailLabel: this.localizeTrait(resolvedKey),
         durationMode: effect.durationMode,
-        durationRounds: effect.durationRounds
+        durationRounds: effect.durationRounds,
+        specialDuration: effect.specialDuration
       });
     }
 
@@ -1805,6 +1865,7 @@ export class PokRoleActor extends Actor {
       effectType: "condition",
       durationMode: "manual",
       durationRounds: 1,
+      specialDuration: [],
       condition: normalizedCondition,
       stat: "none",
       amount: 0,
@@ -1927,7 +1988,7 @@ export class PokRoleActor extends Actor {
     const normalizedBase = this._normalizeSecondaryEffectDefinition(effect);
     const normalizedId = `${effect?.id ?? foundry.utils.randomID?.() ?? `${Date.now()}`}`.trim();
     const passive = Boolean(effect?.passive ?? false);
-    const passiveTrigger = PASSIVE_TRIGGER_KEYS.includes(`${effect?.passiveTrigger ?? ""}`)
+    const passiveTrigger = EFFECT_PASSIVE_TRIGGER_KEYS.includes(`${effect?.passiveTrigger ?? ""}`)
       ? `${effect.passiveTrigger}`
       : "always";
     const passiveCondition = this._normalizeConditionKey(effect?.passiveCondition);
@@ -1965,7 +2026,7 @@ export class PokRoleActor extends Actor {
   _checkPassiveTrigger(effect, targetActor) {
     if (!effect.passive) return true;
 
-    const triggerKey = PASSIVE_TRIGGER_KEYS.includes(`${effect.passiveTrigger ?? ""}`)
+    const triggerKey = EFFECT_PASSIVE_TRIGGER_KEYS.includes(`${effect.passiveTrigger ?? ""}`)
       ? `${effect.passiveTrigger}`
       : "always";
     const normalizedCondition = this._normalizeConditionKey(effect?.passiveCondition);
@@ -2129,6 +2190,68 @@ export class PokRoleActor extends Actor {
     return expiredCount;
   }
 
+  async processTemporaryEffectSpecialDuration(eventKey, options = {}) {
+    const normalizedEventKey = `${eventKey ?? ""}`.trim().toLowerCase();
+    if (!normalizedEventKey) return 0;
+
+    const eventAliases = {
+      turnstart: "turn-start",
+      "turn-start": "turn-start",
+      turnend: "turn-end",
+      "turn-end": "turn-end",
+      nextaction: "next-action",
+      "next-action": "next-action",
+      nextattack: "next-attack",
+      "next-attack": "next-attack",
+      nexthit: "next-hit",
+      "next-hit": "next-hit",
+      isattacked: "is-attacked",
+      "is-attacked": "is-attacked",
+      isdamaged: "is-damaged",
+      "is-damaged": "is-damaged",
+      ishit: "is-hit",
+      "is-hit": "is-hit"
+    };
+    const resolvedEvent = eventAliases[normalizedEventKey] ?? normalizedEventKey;
+
+    const currentEntries = this._getTemporaryEffectEntries(this);
+    if (!currentEntries.length) return 0;
+    const normalizedCombatId = `${options.combatId ?? game.combat?.id ?? ""}`.trim();
+
+    const remainingEntries = [];
+    let removedCount = 0;
+
+    for (const entry of currentEntries) {
+      const specialDurationList = this._normalizeSpecialDurationList(entry?.specialDuration);
+      if (!specialDurationList.length || !specialDurationList.includes(resolvedEvent)) {
+        remainingEntries.push(entry);
+        continue;
+      }
+
+      const entryCombatId = `${entry?.combatId ?? ""}`.trim();
+      const requiresCombatMatch = ["turn-start", "turn-end"].includes(resolvedEvent);
+      const matchesCombat =
+        !requiresCombatMatch ||
+        !normalizedCombatId ||
+        !entryCombatId ||
+        entryCombatId === normalizedCombatId;
+      if (!matchesCombat) {
+        remainingEntries.push(entry);
+        continue;
+      }
+
+      await this._revertTemporaryEffectEntry(entry);
+      removedCount += 1;
+    }
+
+    if (removedCount > 0 || remainingEntries.length !== currentEntries.length) {
+      await this._setTemporaryEffectEntries(this, remainingEntries);
+      await this._synchronizeConditionFlagsFromTemporaryEffects(this);
+    }
+
+    return removedCount;
+  }
+
   _getTemporaryEffectEntries(targetActor) {
     const rawEntries = targetActor?.getFlag(POKROLE.ID, TEMPORARY_EFFECTS_FLAG);
     if (!Array.isArray(rawEntries)) return [];
@@ -2149,7 +2272,8 @@ export class PokRoleActor extends Actor {
     label = "",
     sourceMove = null,
     durationMode = "manual",
-    durationRounds = 1
+    durationRounds = 1,
+    specialDuration = []
   }) {
     if (!targetActor) {
       return { durationMode: "manual", durationRounds: 1 };
@@ -2157,6 +2281,7 @@ export class PokRoleActor extends Actor {
 
     const normalizedRounds = this._normalizeSecondaryDurationRounds(durationRounds);
     const requestedMode = this._normalizeSecondaryDurationMode(durationMode, "condition");
+    const normalizedSpecialDuration = this._normalizeSpecialDurationList(specialDuration);
     const combatId = game.combat?.id ?? null;
     const combatRound = game.combat?.round ?? null;
     const effectiveMode =
@@ -2179,6 +2304,7 @@ export class PokRoleActor extends Actor {
       sourceActorName: this.name ?? "",
       durationMode: effectiveMode,
       remainingRounds: effectiveMode === "rounds" ? normalizedRounds : null,
+      specialDuration: normalizedSpecialDuration,
       expiresWithCombat: isCombatScoped,
       combatId: isCombatScoped ? combatId : null,
       appliedRound: isCombatScoped ? combatRound : null,
@@ -2195,7 +2321,8 @@ export class PokRoleActor extends Actor {
     await this._setTemporaryEffectEntries(targetActor, effectEntries);
     return {
       durationMode: effectiveMode,
-      durationRounds: normalizedRounds
+      durationRounds: normalizedRounds,
+      specialDuration: normalizedSpecialDuration
     };
   }
 
@@ -2209,7 +2336,8 @@ export class PokRoleActor extends Actor {
     sourceMove = null,
     detailLabel = "",
     durationMode = "combat",
-    durationRounds = 1
+    durationRounds = 1,
+    specialDuration = []
   }) {
     const numericAmount = Math.floor(toNumber(amount, 0));
     if (!targetActor || !path || numericAmount === 0) {
@@ -2230,6 +2358,7 @@ export class PokRoleActor extends Actor {
 
     const normalizedRounds = this._normalizeSecondaryDurationRounds(durationRounds);
     const requestedMode = this._normalizeSecondaryDurationMode(durationMode, "stat");
+    const normalizedSpecialDuration = this._normalizeSpecialDurationList(specialDuration);
     const combatId = game.combat?.id ?? null;
     const combatRound = game.combat?.round ?? null;
     const effectiveMode =
@@ -2251,6 +2380,7 @@ export class PokRoleActor extends Actor {
       sourceActorName: this.name ?? "",
       durationMode: effectiveMode,
       remainingRounds: effectiveMode === "rounds" ? normalizedRounds : null,
+      specialDuration: normalizedSpecialDuration,
       expiresWithCombat: isCombatScoped,
       combatId: isCombatScoped ? combatId : null,
       appliedRound: isCombatScoped ? combatRound : null,
@@ -2266,25 +2396,52 @@ export class PokRoleActor extends Actor {
     });
     await this._setTemporaryEffectEntries(targetActor, effectEntries);
 
-    const durationLabel = this._localizeTemporaryDuration(effectiveMode, normalizedRounds);
+    const durationLabel = this._localizeTemporaryDuration(
+      effectiveMode,
+      normalizedRounds,
+      normalizedSpecialDuration
+    );
     return {
       applied: true,
       detail: `${detailLabel || path} ${currentValue} -> ${nextValue} (${durationLabel})`
     };
   }
 
-  _localizeTemporaryDuration(durationMode, rounds = 1) {
+  _localizeTemporaryDuration(durationMode, rounds = 1, specialDuration = []) {
     const normalizedMode = `${durationMode ?? "manual"}`.trim().toLowerCase();
+    const normalizedSpecialDuration = this._normalizeSpecialDurationList(specialDuration);
+    const specialDurationLabel = this._localizeSpecialDurationList(normalizedSpecialDuration);
     if (normalizedMode === "combat") {
-      return game.i18n.localize("POKROLE.TemporaryEffects.DurationCombat");
+      const baseLabel = game.i18n.localize("POKROLE.TemporaryEffects.DurationCombat");
+      return specialDurationLabel ? `${baseLabel} + ${specialDurationLabel}` : baseLabel;
     }
     if (normalizedMode === "rounds") {
       const normalizedRounds = this._normalizeSecondaryDurationRounds(rounds);
-      return game.i18n.format("POKROLE.TemporaryEffects.DurationRoundsWithValue", {
+      const baseLabel = game.i18n.format("POKROLE.TemporaryEffects.DurationRoundsWithValue", {
         rounds: normalizedRounds
       });
+      return specialDurationLabel ? `${baseLabel} + ${specialDurationLabel}` : baseLabel;
     }
-    return game.i18n.localize("POKROLE.TemporaryEffects.DurationManual");
+    const baseLabel = game.i18n.localize("POKROLE.TemporaryEffects.DurationManual");
+    return specialDurationLabel ? `${baseLabel} + ${specialDurationLabel}` : baseLabel;
+  }
+
+  _localizeSpecialDurationList(specialDurationList = []) {
+    if (!Array.isArray(specialDurationList) || specialDurationList.length === 0) return "";
+    const labelByKey = {
+      "turn-start": "POKROLE.Move.Secondary.Duration.Special.TurnStart",
+      "turn-end": "POKROLE.Move.Secondary.Duration.Special.TurnEnd",
+      "next-action": "POKROLE.Move.Secondary.Duration.Special.NextAction",
+      "next-attack": "POKROLE.Move.Secondary.Duration.Special.NextAttack",
+      "next-hit": "POKROLE.Move.Secondary.Duration.Special.NextHit",
+      "is-attacked": "POKROLE.Move.Secondary.Duration.Special.IsAttacked",
+      "is-damaged": "POKROLE.Move.Secondary.Duration.Special.IsDamaged",
+      "is-hit": "POKROLE.Move.Secondary.Duration.Special.IsHit"
+    };
+    const labels = specialDurationList.map((durationKey) =>
+      game.i18n.localize(labelByKey[durationKey] ?? "POKROLE.Common.Unknown")
+    );
+    return labels.join(", ");
   }
 
   async _revertTemporaryEffectEntry(entry) {
@@ -2342,7 +2499,8 @@ export class PokRoleActor extends Actor {
       sourceMove,
       detailLabel: this._localizeSecondaryStatName(statKey),
       durationMode: effect.durationMode,
-      durationRounds: effect.durationRounds
+      durationRounds: effect.durationRounds,
+      specialDuration: effect.specialDuration
     });
   }
 
@@ -2925,6 +3083,9 @@ export class PokRoleActor extends Actor {
     if (roundKey) {
       await this.setFlag(POKROLE.ID, COMBAT_FLAG_KEYS.LAST_ACTION_ROUND, roundKey);
     }
+    await this.processTemporaryEffectSpecialDuration("next-action", {
+      combatId: game.combat?.id ?? null
+    });
   }
 
   _canUseReactionThisRound(reactionType, roundKey) {

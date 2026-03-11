@@ -14,6 +14,7 @@ const ROOT_DIR = path.resolve(__dirname, "..");
 const MANIFEST_PATH = path.join(ROOT_DIR, "system.json");
 const TEMP_SOURCE_ROOT = path.join(ROOT_DIR, ".tmp-compendium-src");
 const PACKS_ROOT = path.join(ROOT_DIR, "packs");
+const LEGACY_SYSTEM_IDS = Object.freeze(["pok-role-module", "pok-role-system"]);
 
 function makeStableId(seedId, fallback) {
   const source = `${seedId ?? fallback ?? "seed"}`;
@@ -42,7 +43,85 @@ function getCollectionName(documentType) {
   return null;
 }
 
-async function writePackSource(packName, documentType, entries) {
+function normalizeSystemAssetPathString(value, packageId) {
+  if (typeof value !== "string") return value;
+  return value.replace(/systems\/[^/]+\/assets/gi, `systems/${packageId}/assets`);
+}
+
+function normalizeEntryValue(value, packageId) {
+  if (typeof value === "string") {
+    return normalizeSystemAssetPathString(value, packageId);
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((entry) => normalizeEntryValue(entry, packageId));
+  }
+
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, entryValue]) => [key, normalizeEntryValue(entryValue, packageId)])
+    );
+  }
+
+  return value;
+}
+
+function normalizeEntryFlags(flags, packageId) {
+  const normalizedFlags = flags && typeof flags === "object"
+    ? JSON.parse(JSON.stringify(flags))
+    : {};
+
+  const flagKeys = new Set([packageId, ...LEGACY_SYSTEM_IDS]);
+  const seedId = [...flagKeys]
+    .map((flagKey) => normalizedFlags?.[flagKey]?.seedId)
+    .find((value) => typeof value === "string" && value.length > 0);
+
+  if (seedId) {
+    normalizedFlags[packageId] = {
+      ...(normalizedFlags[packageId] ?? {}),
+      seedId
+    };
+  }
+
+  for (const legacyId of LEGACY_SYSTEM_IDS) {
+    if (legacyId !== packageId) {
+      delete normalizedFlags[legacyId];
+    }
+  }
+
+  return normalizedFlags;
+}
+
+function getSeedIdFromFlags(flags, packageId) {
+  const flagKeys = [packageId, ...LEGACY_SYSTEM_IDS];
+  for (const key of flagKeys) {
+    const seedId = flags?.[key]?.seedId;
+    if (typeof seedId === "string" && seedId.length > 0) {
+      return seedId;
+    }
+  }
+  return undefined;
+}
+
+function ensureEmbeddedDocumentKeys(document, collectionName, fallbackPrefix) {
+  if (!Array.isArray(document)) return;
+
+  let index = 0;
+  for (const embedded of document) {
+    if (!embedded || typeof embedded !== "object") continue;
+    index += 1;
+
+    const seedId = embedded.flags?.seedId ?? embedded.flags?.["pok-role-system"]?.seedId;
+    embedded._id = embedded._id || makeStableId(seedId, `${fallbackPrefix}-${collectionName}-${index}`);
+    embedded._key = embedded._key || `!${collectionName}!${embedded._id}`;
+
+    if (Array.isArray(embedded.effects)) {
+      ensureEmbeddedDocumentKeys(embedded.effects, "effects", `${fallbackPrefix}-${embedded._id}`);
+    }
+  }
+}
+
+async function writePackSource(packName, documentType, entries, packageId) {
   const sourceDir = path.join(TEMP_SOURCE_ROOT, packName);
   await fs.rm(sourceDir, { recursive: true, force: true });
   await fs.mkdir(sourceDir, { recursive: true });
@@ -50,8 +129,9 @@ async function writePackSource(packName, documentType, entries) {
   let index = 0;
   for (const raw of entries) {
     index += 1;
-    const entry = JSON.parse(JSON.stringify(raw));
-    const seedId = entry.flags?.["pok-role-system"]?.seedId;
+    const entry = normalizeEntryValue(JSON.parse(JSON.stringify(raw)), packageId);
+    entry.flags = normalizeEntryFlags(entry.flags, packageId);
+    const seedId = getSeedIdFromFlags(entry.flags, packageId);
     entry._id = entry._id || makeStableId(seedId, `${packName}-${index}`);
     const collectionName = getCollectionName(documentType);
     if (!collectionName) {
@@ -61,6 +141,11 @@ async function writePackSource(packName, documentType, entries) {
 
     if (documentType === "Actor" && !entry.type) {
       entry.type = "pokemon";
+    }
+
+    if (documentType === "Actor") {
+      ensureEmbeddedDocumentKeys(entry.items, "items", entry._id);
+      ensureEmbeddedDocumentKeys(entry.effects, "effects", entry._id);
     }
 
     const filename = `${String(index).padStart(4, "0")}-${sanitizeFilename(entry.name)}-${entry._id}.json`;
@@ -122,7 +207,7 @@ async function main() {
     const packName = pack.name;
     const packType = pack.type;
     const entries = getSeedEntries(packName, packType);
-    const sourceDir = await writePackSource(packName, packType, entries);
+    const sourceDir = await writePackSource(packName, packType, entries, packageId);
     const { destinationDir, npxCommand, args } = runPackCompile({
       packageId,
       packPath: pack.path,

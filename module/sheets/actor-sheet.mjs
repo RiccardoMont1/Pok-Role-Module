@@ -5,10 +5,12 @@ import {
   MOVE_CATEGORY_LABEL_BY_KEY,
   MOVE_SECONDARY_CONDITION_KEYS,
   MOVE_SECONDARY_DURATION_MODE_KEYS,
+  MOVE_SECONDARY_SPECIAL_DURATION_KEYS,
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
   MOVE_SECONDARY_TRIGGER_KEYS,
+  EFFECT_PASSIVE_TRIGGER_KEYS,
   MOVE_TARGET_LABEL_BY_KEY,
   MOVE_TYPE_LABEL_BY_KEY,
   POKROLE,
@@ -222,6 +224,16 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       manual: "POKROLE.Move.Secondary.Duration.Mode.Manual",
       rounds: "POKROLE.Move.Secondary.Duration.Mode.Rounds",
       combat: "POKROLE.Move.Secondary.Duration.Mode.Combat"
+    };
+    context.effectSpecialDurationOptions = {
+      "turn-start": "POKROLE.Move.Secondary.Duration.Special.TurnStart",
+      "turn-end": "POKROLE.Move.Secondary.Duration.Special.TurnEnd",
+      "next-action": "POKROLE.Move.Secondary.Duration.Special.NextAction",
+      "next-attack": "POKROLE.Move.Secondary.Duration.Special.NextAttack",
+      "next-hit": "POKROLE.Move.Secondary.Duration.Special.NextHit",
+      "is-attacked": "POKROLE.Move.Secondary.Duration.Special.IsAttacked",
+      "is-damaged": "POKROLE.Move.Secondary.Duration.Special.IsDamaged",
+      "is-hit": "POKROLE.Move.Secondary.Duration.Special.IsHit"
     };
     context.effectConditionOptions = Object.fromEntries(
       MOVE_SECONDARY_CONDITION_KEYS.map((conditionKey) => [
@@ -766,6 +778,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       effectType: "custom",
       durationMode: "manual",
       durationRounds: 1,
+      specialDuration: [],
       condition: "none",
       stat: "none",
       amount: 0,
@@ -1091,6 +1104,25 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     return rawEffects.map((effect) => {
       const effectType = this._normalizeSheetEffectType(effect.effectType);
       const passiveTrigger = `${effect?.passiveTrigger ?? "always"}`;
+      const specialDuration = this._normalizeSpecialDurationList(effect?.specialDuration);
+      const selectedSpecialDurationSet = new Set(specialDuration);
+      const specialDurationOptions = MOVE_SECONDARY_SPECIAL_DURATION_KEYS
+        .filter((durationKey) => durationKey !== "none")
+        .map((durationKey) => ({
+          value: durationKey,
+          selected: selectedSpecialDurationSet.has(durationKey),
+          label:
+            {
+              "turn-start": "POKROLE.Move.Secondary.Duration.Special.TurnStart",
+              "turn-end": "POKROLE.Move.Secondary.Duration.Special.TurnEnd",
+              "next-action": "POKROLE.Move.Secondary.Duration.Special.NextAction",
+              "next-attack": "POKROLE.Move.Secondary.Duration.Special.NextAttack",
+              "next-hit": "POKROLE.Move.Secondary.Duration.Special.NextHit",
+              "is-attacked": "POKROLE.Move.Secondary.Duration.Special.IsAttacked",
+              "is-damaged": "POKROLE.Move.Secondary.Duration.Special.IsDamaged",
+              "is-hit": "POKROLE.Move.Secondary.Duration.Special.IsHit"
+            }[durationKey] ?? "POKROLE.Common.Unknown"
+        }));
       const showPassiveConditionField = [
         "self-has-condition",
         "self-missing-condition",
@@ -1110,6 +1142,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       return {
         ...effect,
         effectType,
+        specialDuration,
+        specialDurationOptions,
         passiveTrigger,
         passiveCondition: `${effect?.passiveCondition ?? "none"}`,
         passiveThreshold: Number(effect?.passiveThreshold ?? 50) || 50,
@@ -1142,23 +1176,13 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         : effectType === "stat"
           ? "combat"
           : "manual";
-      const passiveTrigger = [
-        "always",
-        "in-combat",
-        "out-of-combat",
-        "self-hp-half-or-less",
-        "self-hp-quarter-or-less",
-        "self-hp-below-threshold",
-        "target-hp-half-or-less",
-        "target-hp-quarter-or-less",
-        "target-hp-below-threshold",
-        "self-has-condition",
-        "self-missing-condition",
-        "target-has-condition",
-        "target-missing-condition"
-      ].includes(readValue("passiveTrigger", "always"))
+      const passiveTrigger = EFFECT_PASSIVE_TRIGGER_KEYS.includes(readValue("passiveTrigger", "always"))
         ? readValue("passiveTrigger", "always")
         : "always";
+      const specialDurationSelect = row.querySelector("[data-effect-field='specialDuration']");
+      const specialDuration = this._normalizeSpecialDurationList(
+        [...(specialDurationSelect?.selectedOptions ?? [])].map((option) => option.value)
+      );
 
       return {
         id: `${row.dataset.effectId ?? ""}`.trim(),
@@ -1173,6 +1197,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         effectType,
         durationMode,
         durationRounds: readNumber("durationRounds", 1, 1, 99),
+        specialDuration,
         condition: MOVE_SECONDARY_CONDITION_KEYS.includes(readValue("condition", "none"))
           ? readValue("condition", "none")
           : "none",
@@ -1207,6 +1232,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     toggleSection("stat", effectType === "stat");
     toggleSection("amount", ["stat", "damage", "heal", "will"].includes(effectType));
     toggleSection("duration", effectType === "condition" || effectType === "stat");
+    toggleSection("specialDuration", effectType === "condition" || effectType === "stat");
     toggleSection("notes", effectType === "custom");
     toggleSection(
       "passiveCondition",
@@ -1247,6 +1273,24 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       clash: "POKROLE.Pokemon.Clash"
     };
     return labelByStat[statKey] ?? TRAIT_LABEL_BY_KEY[statKey] ?? "POKROLE.Common.Unknown";
+  }
+
+  _normalizeSpecialDurationList(value) {
+    const rawList = Array.isArray(value)
+      ? value
+      : typeof value === "string" && value.trim()
+        ? value.split(",")
+        : value && typeof value === "object"
+          ? Object.values(value)
+          : [];
+    const normalized = [];
+    for (const entry of rawList) {
+      const key = `${entry ?? ""}`.trim().toLowerCase();
+      if (!key || key === "none") continue;
+      if (!MOVE_SECONDARY_SPECIAL_DURATION_KEYS.includes(key)) continue;
+      if (!normalized.includes(key)) normalized.push(key);
+    }
+    return normalized;
   }
 
   _buildAttributeRows(attributeKeys, trackMaxByKey = null, minValue = 0) {
@@ -1451,6 +1495,25 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           durationLabel = game.i18n.format("POKROLE.TemporaryEffects.DurationRoundsWithValue", {
             rounds
           });
+        }
+        const specialDurationList = this._normalizeSpecialDurationList(entry?.specialDuration);
+        if (specialDurationList.length > 0) {
+          const specialLabelByKey = {
+            "turn-start": "POKROLE.Move.Secondary.Duration.Special.TurnStart",
+            "turn-end": "POKROLE.Move.Secondary.Duration.Special.TurnEnd",
+            "next-action": "POKROLE.Move.Secondary.Duration.Special.NextAction",
+            "next-attack": "POKROLE.Move.Secondary.Duration.Special.NextAttack",
+            "next-hit": "POKROLE.Move.Secondary.Duration.Special.NextHit",
+            "is-attacked": "POKROLE.Move.Secondary.Duration.Special.IsAttacked",
+            "is-damaged": "POKROLE.Move.Secondary.Duration.Special.IsDamaged",
+            "is-hit": "POKROLE.Move.Secondary.Duration.Special.IsHit"
+          };
+          const specialLabel = specialDurationList
+            .map((durationKey) =>
+              game.i18n.localize(specialLabelByKey[durationKey] ?? "POKROLE.Common.Unknown")
+            )
+            .join(", ");
+          durationLabel = `${durationLabel} + ${specialLabel}`;
         }
 
         return {

@@ -286,6 +286,17 @@
             "Manual": "Manuale",
             "Rounds": "Round",
             "Combat": "Fino a fine combattimento"
+          },
+          "Special": {
+            "Label": "Durata Speciale",
+            "TurnStart": "Fino a inizio turno",
+            "TurnEnd": "Fino a fine turno",
+            "NextAction": "Scade alla prossima azione",
+            "NextAttack": "Scade al prossimo tiro attacco",
+            "NextHit": "Scade al prossimo colpo riuscito",
+            "IsAttacked": "Scade quando viene attaccato",
+            "IsDamaged": "Scade quando subisce danno",
+            "IsHit": "Scade quando viene colpito"
           }
         },
         "Trigger": {

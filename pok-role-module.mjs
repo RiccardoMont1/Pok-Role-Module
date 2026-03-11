@@ -31,6 +31,8 @@ async function clearCombatScopedTemporaryEffects(combat) {
   }
 }
 
+const LAST_COMBAT_TURN_STATE = new Map();
+
 const HUD_CONDITION_DEFINITIONS = Object.freeze([
   { key: "sleep", label: "POKROLE.Conditions.Sleep", icon: getSystemAssetPath("assets/ailments/asleep.svg") },
   { key: "burn", label: "POKROLE.Conditions.Burn", icon: getSystemAssetPath("assets/ailments/burn.svg") },
@@ -158,12 +160,55 @@ Hooks.on("updateCombat", async (combat, changed) => {
     Object.prototype.hasOwnProperty.call(changed, "active") && changed.active === false;
   if (hasCombatEnded) {
     await clearCombatScopedTemporaryEffects(combat);
+    LAST_COMBAT_TURN_STATE.delete(`${combat?.id ?? ""}`);
     return;
   }
 
+  const combatId = `${combat?.id ?? ""}`.trim();
+  const previousTurnState = LAST_COMBAT_TURN_STATE.get(combatId) ?? {};
+  const previousTurn = Number.isInteger(previousTurnState.turn)
+    ? previousTurnState.turn
+    : Number.isInteger(combat?.previous?.turn)
+      ? combat.previous.turn
+      : null;
+  const currentTurn = Number.isInteger(combat.turn) ? combat.turn : null;
+  const hasTurnChange = Object.prototype.hasOwnProperty.call(changed, "turn");
   const hasRoundChange = Object.prototype.hasOwnProperty.call(changed, "round");
-  if (!hasRoundChange) return;
-  if ((combat.round ?? 0) <= 0) return;
+  const shouldProcessTurnState = hasTurnChange || hasRoundChange;
+  if (shouldProcessTurnState) {
+    const previousActor = previousTurn !== null ? combat.turns?.[previousTurn]?.actor ?? null : null;
+    if (
+      previousActor &&
+      previousActor.documentName === "Actor" &&
+      typeof previousActor.processTemporaryEffectSpecialDuration === "function"
+    ) {
+      await previousActor.processTemporaryEffectSpecialDuration("turn-end", { combatId });
+    }
+
+    const currentActor = currentTurn !== null ? combat.turns?.[currentTurn]?.actor ?? null : null;
+    if (
+      currentActor &&
+      currentActor.documentName === "Actor" &&
+      typeof currentActor.processTemporaryEffectSpecialDuration === "function"
+    ) {
+      await currentActor.processTemporaryEffectSpecialDuration("turn-start", { combatId });
+    }
+  }
+
+  if (!hasRoundChange) {
+    LAST_COMBAT_TURN_STATE.set(combatId, {
+      turn: Number.isInteger(combat.turn) ? combat.turn : null,
+      round: Number.isInteger(combat.round) ? combat.round : null
+    });
+    return;
+  }
+  if ((combat.round ?? 0) <= 0) {
+    LAST_COMBAT_TURN_STATE.set(combatId, {
+      turn: Number.isInteger(combat.turn) ? combat.turn : null,
+      round: Number.isInteger(combat.round) ? combat.round : null
+    });
+    return;
+  }
   const roundKey = `${combat.id}:${combat.round ?? 0}`;
   const initiativeUpdates = [];
 
@@ -191,10 +236,15 @@ Hooks.on("updateCombat", async (combat, changed) => {
   if (initiativeUpdates.length > 0) {
     await combat.updateEmbeddedDocuments("Combatant", initiativeUpdates);
   }
+  LAST_COMBAT_TURN_STATE.set(combatId, {
+    turn: Number.isInteger(combat.turn) ? combat.turn : null,
+    round: Number.isInteger(combat.round) ? combat.round : null
+  });
 });
 
 Hooks.on("deleteCombat", async (combat) => {
   await clearCombatScopedTemporaryEffects(combat);
+  LAST_COMBAT_TURN_STATE.delete(`${combat?.id ?? ""}`);
 });
 
 Hooks.on("applyTokenStatusEffect", (token, statusId, isActive) => {

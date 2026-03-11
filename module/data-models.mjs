@@ -3,6 +3,7 @@ import {
   CORE_ATTRIBUTE_DEFINITIONS,
   MOVE_SECONDARY_CONDITION_KEYS,
   MOVE_SECONDARY_DURATION_MODE_KEYS,
+  MOVE_SECONDARY_SPECIAL_DURATION_KEYS,
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
@@ -287,6 +288,18 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
             choices: MOVE_SECONDARY_DURATION_MODE_KEYS
           }),
           durationRounds: integerField(1, { min: 1, max: 99 }),
+          specialDuration: new ArrayField(
+            new StringField({
+              required: true,
+              blank: false,
+              initial: "none",
+              choices: MOVE_SECONDARY_SPECIAL_DURATION_KEYS
+            }),
+            {
+              required: true,
+              initial: () => []
+            }
+          ),
           condition: new StringField({
             required: true,
             blank: false,

@@ -209,6 +209,36 @@ export const MOVE_SECONDARY_DURATION_MODE_KEYS = Object.freeze([
   "combat"
 ]);
 
+// DAE-inspired event-based expiration hooks for temporary effects.
+// Multiple values can be selected on one effect.
+export const MOVE_SECONDARY_SPECIAL_DURATION_KEYS = Object.freeze([
+  "none",
+  "turn-start",
+  "turn-end",
+  "next-action",
+  "next-attack",
+  "next-hit",
+  "is-attacked",
+  "is-damaged",
+  "is-hit"
+]);
+
+export const EFFECT_PASSIVE_TRIGGER_KEYS = Object.freeze([
+  "always",
+  "in-combat",
+  "out-of-combat",
+  "self-hp-half-or-less",
+  "self-hp-quarter-or-less",
+  "self-hp-below-threshold",
+  "target-hp-half-or-less",
+  "target-hp-quarter-or-less",
+  "target-hp-below-threshold",
+  "self-has-condition",
+  "self-missing-condition",
+  "target-has-condition",
+  "target-missing-condition"
+]);
+
 export const MOVE_SECONDARY_CONDITION_KEYS = Object.freeze([
   "none",
   "sleep",

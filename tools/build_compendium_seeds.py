@@ -11,8 +11,24 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "module" / "seeds" / "generated"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 BASE = "https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/csv"
+MANIFEST_PATH = ROOT / "system.json"
+
+
+def load_system_id():
+    try:
+        manifest_data = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+        system_id = str(manifest_data.get("id", "")).strip()
+        if system_id:
+            return system_id
+    except Exception:
+        pass
+    return "pok-role-system"
+
+
+SYSTEM_ID = load_system_id()
+SYSTEM_ASSET_ROOT = f"systems/{SYSTEM_ID}/assets"
 POKEMON_IMAGE_DIR = ROOT / "assets" / "pokemon" / "book" / "book"
-POKEMON_IMAGE_ROOT = "systems/pok-role-system/assets/pokemon/book/book"
+POKEMON_IMAGE_ROOT = f"{SYSTEM_ASSET_ROOT}/pokemon/book/book"
 VALID_TYPE_KEYS = {
     "normal", "bug", "dark", "dragon", "electric", "fairy", "fighting", "fire", "flying",
     "ghost", "grass", "ground", "ice", "poison", "psychic", "rock", "steel", "water"
@@ -21,7 +37,7 @@ TYPE_FALLBACKS = {
     "shadow": "ghost",
     "unknown": "normal"
 }
-MOVE_TYPE_ICON_ROOT = "systems/pok-role-system/assets/types"
+MOVE_TYPE_ICON_ROOT = f"{SYSTEM_ASSET_ROOT}/types"
 POKROLE_ATTRIBUTE_KEYS = [
     "strength",
     "dexterity",

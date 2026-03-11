@@ -4,6 +4,7 @@ import {
   MOVE_CATEGORY_LABEL_BY_KEY,
   MOVE_SECONDARY_CONDITION_KEYS,
   MOVE_SECONDARY_DURATION_MODE_KEYS,
+  MOVE_SECONDARY_SPECIAL_DURATION_KEYS,
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
@@ -195,6 +196,16 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       rounds: "POKROLE.Move.Secondary.Duration.Mode.Rounds",
       combat: "POKROLE.Move.Secondary.Duration.Mode.Combat"
     };
+    context.secondarySpecialDurationOptions = {
+      "turn-start": "POKROLE.Move.Secondary.Duration.Special.TurnStart",
+      "turn-end": "POKROLE.Move.Secondary.Duration.Special.TurnEnd",
+      "next-action": "POKROLE.Move.Secondary.Duration.Special.NextAction",
+      "next-attack": "POKROLE.Move.Secondary.Duration.Special.NextAttack",
+      "next-hit": "POKROLE.Move.Secondary.Duration.Special.NextHit",
+      "is-attacked": "POKROLE.Move.Secondary.Duration.Special.IsAttacked",
+      "is-damaged": "POKROLE.Move.Secondary.Duration.Special.IsDamaged",
+      "is-hit": "POKROLE.Move.Secondary.Duration.Special.IsHit"
+    };
     context.secondaryConditionOptions = Object.fromEntries(
       MOVE_SECONDARY_CONDITION_KEYS.map((conditionKey) => [
         conditionKey,
@@ -269,6 +280,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       effectType: "condition",
       durationMode: "manual",
       durationRounds: 1,
+      specialDuration: [],
       condition: "none",
       stat: "none",
       amount: 0,
@@ -310,6 +322,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     const stat = MOVE_SECONDARY_STAT_KEYS.includes(normalizedEffect.stat)
       ? normalizedEffect.stat
       : "none";
+    const specialDuration = this._normalizeSpecialDurationList(normalizedEffect.specialDuration);
 
     const chance = Number(normalizedEffect.chance);
     const amount = Number(normalizedEffect.amount);
@@ -326,11 +339,30 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
         Number.isFinite(durationRounds)
           ? Math.min(Math.max(Math.floor(durationRounds), 1), 99)
           : 1,
+      specialDuration,
       condition,
       stat,
       amount: Number.isFinite(amount) ? Math.min(Math.max(Math.floor(amount), -99), 99) : 0,
       notes: `${normalizedEffect.notes ?? ""}`.trim()
     };
+  }
+
+  _normalizeSpecialDurationList(value) {
+    const rawList = Array.isArray(value)
+      ? value
+      : typeof value === "string" && value.trim()
+        ? value.split(",")
+        : value && typeof value === "object"
+          ? Object.values(value)
+          : [];
+    const normalized = [];
+    for (const entry of rawList) {
+      const key = `${entry ?? ""}`.trim().toLowerCase();
+      if (!key || key === "none") continue;
+      if (!MOVE_SECONDARY_SPECIAL_DURATION_KEYS.includes(key)) continue;
+      if (!normalized.includes(key)) normalized.push(key);
+    }
+    return normalized;
   }
 
   _normalizeEffectType(effectType) {
@@ -342,9 +374,30 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
 
   _decorateSecondaryEffectForDisplay(effect) {
     const effectType = this._normalizeEffectType(effect.effectType);
+    const specialDurationSelections = this._normalizeSpecialDurationList(effect.specialDuration);
+    const selectedSet = new Set(specialDurationSelections);
+    const specialDurationOptions = MOVE_SECONDARY_SPECIAL_DURATION_KEYS
+      .filter((key) => key !== "none")
+      .map((key) => ({
+        value: key,
+        selected: selectedSet.has(key),
+        label:
+          {
+            "turn-start": "POKROLE.Move.Secondary.Duration.Special.TurnStart",
+            "turn-end": "POKROLE.Move.Secondary.Duration.Special.TurnEnd",
+            "next-action": "POKROLE.Move.Secondary.Duration.Special.NextAction",
+            "next-attack": "POKROLE.Move.Secondary.Duration.Special.NextAttack",
+            "next-hit": "POKROLE.Move.Secondary.Duration.Special.NextHit",
+            "is-attacked": "POKROLE.Move.Secondary.Duration.Special.IsAttacked",
+            "is-damaged": "POKROLE.Move.Secondary.Duration.Special.IsDamaged",
+            "is-hit": "POKROLE.Move.Secondary.Duration.Special.IsHit"
+          }[key] ?? "POKROLE.Common.Unknown"
+      }));
     return {
       ...effect,
       effectType,
+      specialDuration: specialDurationSelections,
+      specialDurationOptions,
       showConditionField: effectType === "condition",
       showStatField: effectType === "stat",
       showAmountField: ["stat", "damage", "heal", "will"].includes(effectType),
@@ -396,6 +449,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     toggleSection("stat", effectType === "stat");
     toggleSection("amount", ["stat", "damage", "heal", "will"].includes(effectType));
     toggleSection("duration", effectType === "condition" || effectType === "stat");
+    toggleSection("specialDuration", effectType === "condition" || effectType === "stat");
     toggleSection("notes", effectType === "custom");
   }
 
