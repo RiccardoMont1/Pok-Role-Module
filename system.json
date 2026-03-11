@@ -1,6 +1,6 @@
 {
-  "id": "poké-role-system",
-  "title": "Poké Role System",
+  "id": "poke-role-system",
+  "title": "Poke Role System",
   "description": "MVP Foundry VTT v13 system scaffold for PokeRole 2.0 inspired campaigns.",
   "version": "0.10.5",
   "compatibility": {
