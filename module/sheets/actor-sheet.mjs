@@ -3,6 +3,12 @@ import {
   CORE_ATTRIBUTE_DEFINITIONS,
   getSystemAssetPath,
   MOVE_CATEGORY_LABEL_BY_KEY,
+  MOVE_SECONDARY_CONDITION_KEYS,
+  MOVE_SECONDARY_DURATION_MODE_KEYS,
+  MOVE_SECONDARY_EFFECT_TYPE_KEYS,
+  MOVE_SECONDARY_STAT_KEYS,
+  MOVE_SECONDARY_TARGET_KEYS,
+  MOVE_SECONDARY_TRIGGER_KEYS,
   MOVE_TARGET_LABEL_BY_KEY,
   MOVE_TYPE_LABEL_BY_KEY,
   POKROLE,
@@ -159,7 +165,51 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.pokemonTierOptions = POKEMON_TIER_LABEL_BY_KEY;
     context.conditionChips = this._buildConditionChips();
     context.temporaryEffects = this._buildTemporaryEffects();
+    context.actorConfiguredEffects = this._buildActorConfiguredEffects();
+    context.effectTriggerOptions = {
+      "on-hit": "POKROLE.Move.Secondary.Trigger.OnHit",
+      "on-hit-damage": "POKROLE.Move.Secondary.Trigger.OnHitDamage",
+      "on-miss": "POKROLE.Move.Secondary.Trigger.OnMiss",
+      always: "POKROLE.Move.Secondary.Trigger.Always"
+    };
+    context.effectTargetOptions = {
+      target: "POKROLE.Move.Secondary.Target.Target",
+      self: "POKROLE.Move.Secondary.Target.Self",
+      "all-targets": "POKROLE.Move.Secondary.Target.AllTargets",
+      "all-allies": "POKROLE.Move.Secondary.Target.AllAllies",
+      "all-foes": "POKROLE.Move.Secondary.Target.AllFoes"
+    };
+    context.effectTypeOptions = {
+      condition: "POKROLE.Move.Secondary.Type.Condition",
+      stat: "POKROLE.Move.Secondary.Type.Stat",
+      damage: "POKROLE.Move.Secondary.Type.Damage",
+      heal: "POKROLE.Move.Secondary.Type.Heal",
+      will: "POKROLE.Move.Secondary.Type.Will",
+      custom: "POKROLE.Move.Secondary.Type.Custom"
+    };
+    context.effectDurationModeOptions = {
+      manual: "POKROLE.Move.Secondary.Duration.Mode.Manual",
+      rounds: "POKROLE.Move.Secondary.Duration.Mode.Rounds",
+      combat: "POKROLE.Move.Secondary.Duration.Mode.Combat"
+    };
+    context.effectConditionOptions = Object.fromEntries(
+      MOVE_SECONDARY_CONDITION_KEYS.map((conditionKey) => [
+        conditionKey,
+        this._getSecondaryConditionLabelPath(conditionKey)
+      ])
+    );
+    context.effectStatOptions = Object.fromEntries(
+      MOVE_SECONDARY_STAT_KEYS.map((statKey) => [statKey, this._getSecondaryStatLabelPath(statKey)])
+    );
+    context.effectPassiveTriggerOptions = {
+      always: "POKROLE.Effects.PassiveTrigger.Always",
+      "in-combat": "POKROLE.Effects.PassiveTrigger.InCombat",
+      "self-hp-half-or-less": "POKROLE.Effects.PassiveTrigger.SelfHpHalfOrLess",
+      "target-hp-half-or-less": "POKROLE.Effects.PassiveTrigger.TargetHpHalfOrLess",
+      "self-has-condition": "POKROLE.Effects.PassiveTrigger.SelfHasCondition"
+    };
     if (this.actor.type === "trainer") {
+      context.trainerView = this._normalizeTrainerView(this._trainerActiveView ?? "main");
       context.trainerPhysicalMentalAttributes = this._buildAttributeRows([
         "strength",
         "vitality",
@@ -299,8 +349,26 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     );
     html.find("[data-action='roll-evasion']").on("click", () => this.actor.rollEvasion());
     html.find("[data-action='set-track']").on("click", (event) => this._onSetTrack(event));
+    html.find("[data-action='toggle-condition-chip']").on("click", (event) =>
+      this._onToggleConditionChip(event)
+    );
     html.find("[data-action='remove-temporary-effect']").on("click", (event) =>
       this._onRemoveTemporaryEffect(event)
+    );
+    html.find("[data-action='add-actor-effect']").on("click", (event) =>
+      this._onAddActorEffect(event)
+    );
+    html.find("[data-action='delete-actor-effect']").on("click", (event) =>
+      this._onDeleteActorEffect(event)
+    );
+    html.find("[data-action='apply-actor-effect']").on("click", (event) =>
+      this._onApplyActorEffect(event)
+    );
+    html.find("[data-action='save-actor-effects']").on("click", (event) =>
+      this._onSaveActorEffects(event, html)
+    );
+    html.find("[data-effect-field='effectType']").on("change", (event) =>
+      this._onActorEffectTypeChanged(event)
     );
     html.find("[data-action='add-extra-skill']").on("click", (event) =>
       this._onAddExtraSkill(event)
@@ -342,12 +410,19 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     html.find("[data-action='switch-pokemon-tab']").on("click", (event) =>
       this._onSwitchPokemonTab(event, html)
     );
+    html.find("[data-action='switch-trainer-tab']").on("click", (event) =>
+      this._onSwitchTrainerTab(event, html)
+    );
     html.find("[data-action='evolution-available']").on("click", (event) =>
       this._onEvolutionAvailable(event)
     );
+    html.find(".actor-effect-row").each((_index, row) => this._refreshActorEffectRowVisibility(row));
 
     if (this.actor.type === "pokemon") {
       this._applyPokemonTabState(html, this._pokemonActiveView ?? "main");
+    }
+    if (this.actor.type === "trainer") {
+      this._applyTrainerTabState(html, this._trainerActiveView ?? "main");
     }
   }
 
@@ -477,6 +552,16 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     this._applyPokemonTabState(html, this._pokemonActiveView);
   }
 
+  _onSwitchTrainerTab(event, html) {
+    event.preventDefault();
+    if (this.actor.type !== "trainer") return;
+
+    const tab = event.currentTarget.dataset.tab;
+    if (!tab) return;
+    this._trainerActiveView = this._normalizeTrainerView(tab);
+    this._applyTrainerTabState(html, this._trainerActiveView);
+  }
+
   _onEvolutionAvailable(event) {
     event.preventDefault();
     if (this.actor.type !== "pokemon") return;
@@ -597,6 +682,19 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     await this.actor.update({ [field]: nextValue });
   }
 
+  async _onToggleConditionChip(event) {
+    event.preventDefault();
+    if (!this.isEditable || typeof this.actor.toggleQuickCondition !== "function") return;
+    const conditionKey = `${event.currentTarget.dataset.conditionKey ?? ""}`.trim();
+    if (!conditionKey) return;
+    const result = await this.actor.toggleQuickCondition(conditionKey);
+    if (result?.detail) {
+      if (result.applied) ui.notifications.info(result.detail);
+      else ui.notifications.warn(result.detail);
+    }
+    this.render(false);
+  }
+
   async _onRemoveTemporaryEffect(event) {
     event.preventDefault();
     if (!this.isEditable) return;
@@ -606,6 +704,65 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     if (typeof this.actor.removeTemporaryEffect !== "function") return;
 
     await this.actor.removeTemporaryEffect(effectId);
+  }
+
+  async _onAddActorEffect(event) {
+    event.preventDefault();
+    if (!this.isEditable || typeof this.actor.addConfiguredEffect !== "function") return;
+    await this.actor.addConfiguredEffect({
+      label: "",
+      trigger: "always",
+      chance: 100,
+      target: "self",
+      effectType: "condition",
+      durationMode: "manual",
+      durationRounds: 1,
+      condition: "none",
+      stat: "none",
+      amount: 0,
+      notes: "",
+      passive: false,
+      passiveTrigger: "always"
+    });
+    this.render(false);
+  }
+
+  async _onDeleteActorEffect(event) {
+    event.preventDefault();
+    if (!this.isEditable || typeof this.actor.deleteConfiguredEffect !== "function") return;
+    const effectId = `${event.currentTarget.dataset.effectId ?? ""}`.trim();
+    if (!effectId) return;
+    await this.actor.deleteConfiguredEffect(effectId);
+    this.render(false);
+  }
+
+  async _onApplyActorEffect(event) {
+    event.preventDefault();
+    if (typeof this.actor.applyConfiguredEffect !== "function") return;
+    const effectId = `${event.currentTarget.dataset.effectId ?? ""}`.trim();
+    if (!effectId) return;
+    const result = await this.actor.applyConfiguredEffect(effectId, { targetActor: this.actor });
+    if (result?.applied) {
+      ui.notifications.info(game.i18n.localize("POKROLE.Effects.ApplySuccess"));
+    } else {
+      ui.notifications.warn(result?.detail || game.i18n.localize("POKROLE.Effects.ApplyFailed"));
+    }
+    this.render(false);
+  }
+
+  async _onSaveActorEffects(event, html) {
+    event.preventDefault();
+    if (!this.isEditable || typeof this.actor.setConfiguredEffects !== "function") return;
+    const effects = this._collectActorEffectsFromSheet(html);
+    await this.actor.setConfiguredEffects(effects);
+    ui.notifications.info(game.i18n.localize("POKROLE.Effects.SaveSuccess"));
+    this.render(false);
+  }
+
+  _onActorEffectTypeChanged(event) {
+    const row = event.currentTarget.closest(".actor-effect-row");
+    if (!row) return;
+    this._refreshActorEffectRowVisibility(row);
   }
 
   _prepareMoveData(move) {
@@ -784,7 +941,6 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         const suffixByType = {
           condition: "Condition",
           stat: "Stat",
-          "combat-stat": "CombatStat",
           damage: "Damage",
           heal: "Heal",
           will: "Will",
@@ -806,6 +962,140 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       entries.push(`+${secondaryEffects.length - 2}`);
     }
     return entries.join(" | ");
+  }
+
+  _normalizeSheetEffectType(effectType) {
+    const normalizedType = `${effectType ?? "condition"}`.trim().toLowerCase();
+    if (normalizedType === "combat-stat") return "stat";
+    if (MOVE_SECONDARY_EFFECT_TYPE_KEYS.includes(normalizedType)) return normalizedType;
+    return "condition";
+  }
+
+  _buildActorConfiguredEffects() {
+    const rawEffects =
+      typeof this.actor.getConfiguredEffects === "function" ? this.actor.getConfiguredEffects() : [];
+
+    return rawEffects.map((effect) => {
+      const effectType = this._normalizeSheetEffectType(effect.effectType);
+      const showConditionField = effectType === "condition";
+      const showStatField = effectType === "stat";
+      const showAmountField = ["stat", "damage", "heal", "will"].includes(effectType);
+      const showDurationField = effectType === "condition" || effectType === "stat";
+      const showNotesField = effectType === "custom";
+
+      return {
+        ...effect,
+        effectType,
+        showConditionField,
+        showStatField,
+        showAmountField,
+        showDurationField,
+        showNotesField
+      };
+    });
+  }
+
+  _collectActorEffectsFromSheet(html) {
+    const rows = html.find(".actor-effect-row").toArray();
+    return rows.map((rowElement) => {
+      const row = rowElement;
+      const readValue = (field, fallback = "") =>
+        `${row.querySelector(`[data-effect-field='${field}']`)?.value ?? fallback}`.trim();
+      const readNumber = (field, fallback = 0, min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) => {
+        const numeric = Number(readValue(field, fallback));
+        if (!Number.isFinite(numeric)) return fallback;
+        return Math.min(Math.max(Math.floor(numeric), min), max);
+      };
+
+      const effectType = this._normalizeSheetEffectType(readValue("effectType", "condition"));
+      const durationMode = MOVE_SECONDARY_DURATION_MODE_KEYS.includes(readValue("durationMode", "manual"))
+        ? readValue("durationMode", "manual")
+        : effectType === "stat"
+          ? "combat"
+          : "manual";
+      const passiveTrigger = [
+        "always",
+        "in-combat",
+        "self-hp-half-or-less",
+        "target-hp-half-or-less",
+        "self-has-condition"
+      ].includes(readValue("passiveTrigger", "always"))
+        ? readValue("passiveTrigger", "always")
+        : "always";
+
+      return {
+        id: `${row.dataset.effectId ?? ""}`.trim(),
+        label: readValue("label", ""),
+        trigger: MOVE_SECONDARY_TRIGGER_KEYS.includes(readValue("trigger", "always"))
+          ? readValue("trigger", "always")
+          : "always",
+        chance: readNumber("chance", 100, 0, 100),
+        target: MOVE_SECONDARY_TARGET_KEYS.includes(readValue("target", "self"))
+          ? readValue("target", "self")
+          : "self",
+        effectType,
+        durationMode,
+        durationRounds: readNumber("durationRounds", 1, 1, 99),
+        condition: MOVE_SECONDARY_CONDITION_KEYS.includes(readValue("condition", "none"))
+          ? readValue("condition", "none")
+          : "none",
+        stat: MOVE_SECONDARY_STAT_KEYS.includes(readValue("stat", "none"))
+          ? readValue("stat", "none")
+          : "none",
+        amount: readNumber("amount", 0, -99, 99),
+        notes: readValue("notes", ""),
+        passive: Boolean(row.querySelector("[data-effect-field='passive']")?.checked),
+        passiveTrigger
+      };
+    });
+  }
+
+  _refreshActorEffectRowVisibility(row) {
+    const effectTypeSelect = row.querySelector("[data-effect-field='effectType']");
+    const effectType = this._normalizeSheetEffectType(effectTypeSelect?.value ?? "condition");
+
+    const toggleSection = (sectionKey, visible) => {
+      const sectionElement = row.querySelector(`[data-effect-visible='${sectionKey}']`);
+      if (!sectionElement) return;
+      sectionElement.classList.toggle("is-hidden", !visible);
+    };
+
+    toggleSection("condition", effectType === "condition");
+    toggleSection("stat", effectType === "stat");
+    toggleSection("amount", ["stat", "damage", "heal", "will"].includes(effectType));
+    toggleSection("duration", effectType === "condition" || effectType === "stat");
+    toggleSection("notes", effectType === "custom");
+  }
+
+  _getSecondaryConditionLabelPath(conditionKey) {
+    const labelByCondition = {
+      none: "POKROLE.Common.None",
+      sleep: "POKROLE.Conditions.Sleep",
+      burn: "POKROLE.Conditions.Burn",
+      frozen: "POKROLE.Conditions.Frozen",
+      paralyzed: "POKROLE.Conditions.Paralyzed",
+      poisoned: "POKROLE.Conditions.Poisoned",
+      fainted: "POKROLE.Conditions.Fainted",
+      confused: "POKROLE.Move.Secondary.Condition.Confused",
+      flinch: "POKROLE.Move.Secondary.Condition.Flinch",
+      disabled: "POKROLE.Move.Secondary.Condition.Disabled",
+      infatuated: "POKROLE.Move.Secondary.Condition.Infatuated",
+      "badly-poisoned": "POKROLE.Move.Secondary.Condition.BadlyPoisoned"
+    };
+    return labelByCondition[conditionKey] ?? "POKROLE.Common.Unknown";
+  }
+
+  _getSecondaryStatLabelPath(statKey) {
+    const labelByStat = {
+      none: "POKROLE.Common.None",
+      defense: "POKROLE.Combat.Defense",
+      specialDefense: "POKROLE.Combat.SpecialDefense",
+      accuracy: "POKROLE.Pokemon.Accuracy",
+      damage: "POKROLE.Pokemon.Damage",
+      evasion: "POKROLE.Pokemon.Evasion",
+      clash: "POKROLE.Pokemon.Clash"
+    };
+    return labelByStat[statKey] ?? TRAIT_LABEL_BY_KEY[statKey] ?? "POKROLE.Common.Unknown";
   }
 
   _buildAttributeRows(attributeKeys, trackMaxByKey = null, minValue = 0) {
@@ -898,7 +1188,20 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   _normalizePokemonView(tabName) {
-    if (tabName === "learned" || tabName === "settings") return tabName;
+    if (tabName === "learned" || tabName === "settings" || tabName === "effects") return tabName;
+    return "main";
+  }
+
+  _applyTrainerTabState(html, tabName) {
+    const tab = this._normalizeTrainerView(tabName);
+    html.find("[data-action='switch-trainer-tab']").removeClass("is-active");
+    html.find(`.trainer-view-button[data-tab='${tab}']`).addClass("is-active");
+    html.find(".trainer-view-panel").removeClass("is-active");
+    html.find(`.trainer-view-panel[data-tab='${tab}']`).addClass("is-active");
+  }
+
+  _normalizeTrainerView(tabName) {
+    if (tabName === "effects") return "effects";
     return "main";
   }
 
@@ -946,6 +1249,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   _buildConditionChips() {
     return AILMENT_DEFINITIONS.map((ailment) => ({
       ...ailment,
+      key: ailment.key,
       fieldPath: `system.conditions.${ailment.key}`,
       active: Boolean(this.actor.system.conditions?.[ailment.key])
     }));

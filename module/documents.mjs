@@ -93,6 +93,22 @@ const CONDITION_ALIASES = Object.freeze({
 });
 
 const TEMPORARY_EFFECTS_FLAG = "automation.temporaryEffects";
+const CONFIGURED_EFFECTS_FLAG = "automation.configuredEffects";
+const CONDITION_FIELD_BY_KEY = Object.freeze({
+  sleep: "sleep",
+  burn: "burn",
+  frozen: "frozen",
+  paralyzed: "paralyzed",
+  poisoned: "poisoned",
+  fainted: "fainted"
+});
+const PASSIVE_TRIGGER_KEYS = Object.freeze([
+  "always",
+  "in-combat",
+  "self-hp-half-or-less",
+  "target-hp-half-or-less",
+  "self-has-condition"
+]);
 
 export class PokRoleActor extends Actor {
   getRollData() {
@@ -845,9 +861,7 @@ export class PokRoleActor extends Actor {
     const target = MOVE_SECONDARY_TARGET_KEYS.includes(rawEffect.target)
       ? rawEffect.target
       : "target";
-    const effectType = MOVE_SECONDARY_EFFECT_TYPE_KEYS.includes(rawEffect.effectType)
-      ? rawEffect.effectType
-      : "condition";
+    const effectType = this._normalizeSecondaryEffectType(rawEffect.effectType);
     const durationMode = this._normalizeSecondaryDurationMode(rawEffect.durationMode, effectType);
     const durationRounds = this._normalizeSecondaryDurationRounds(rawEffect.durationRounds);
     const condition = this._normalizeConditionKey(rawEffect.condition);
@@ -870,12 +884,19 @@ export class PokRoleActor extends Actor {
     };
   }
 
+  _normalizeSecondaryEffectType(effectType) {
+    const normalizedType = `${effectType ?? "condition"}`.trim().toLowerCase();
+    if (normalizedType === "combat-stat") return "stat";
+    if (MOVE_SECONDARY_EFFECT_TYPE_KEYS.includes(normalizedType)) return normalizedType;
+    return "condition";
+  }
+
   _normalizeSecondaryDurationMode(durationMode, effectType = "custom") {
     const normalized = `${durationMode ?? ""}`.trim().toLowerCase();
     if (MOVE_SECONDARY_DURATION_MODE_KEYS.includes(normalized)) {
       return normalized;
     }
-    if (effectType === "stat" || effectType === "combat-stat") {
+    if (this._normalizeSecondaryEffectType(effectType) === "stat") {
       return "combat";
     }
     return "manual";
@@ -1317,22 +1338,19 @@ export class PokRoleActor extends Actor {
 
   _formatSecondaryEffectLabel(effect) {
     if (effect.label) return effect.label;
+    const normalizedType = this._normalizeSecondaryEffectType(effect.effectType);
 
     const effectTypeLabel = game.i18n.localize(
-      `POKROLE.Move.Secondary.Type.${this._toSecondaryTypeLabelSuffix(effect.effectType)}`
+      `POKROLE.Move.Secondary.Type.${this._toSecondaryTypeLabelSuffix(normalizedType)}`
     );
-    if (effect.effectType === "condition" && effect.condition !== "none") {
+    if (normalizedType === "condition" && effect.condition !== "none") {
       return `${effectTypeLabel}: ${this._localizeConditionName(effect.condition)}`;
     }
-    if (
-      (effect.effectType === "stat" || effect.effectType === "combat-stat") &&
-      effect.stat !== "none" &&
-      effect.amount !== 0
-    ) {
+    if (normalizedType === "stat" && effect.stat !== "none" && effect.amount !== 0) {
       const amountText = effect.amount > 0 ? `+${effect.amount}` : `${effect.amount}`;
       return `${effectTypeLabel}: ${this._localizeSecondaryStatName(effect.stat)} ${amountText}`;
     }
-    if (["damage", "heal", "will"].includes(effect.effectType)) {
+    if (["damage", "heal", "will"].includes(normalizedType)) {
       return `${effectTypeLabel}: ${effect.amount}`;
     }
     return effectTypeLabel;
@@ -1342,7 +1360,6 @@ export class PokRoleActor extends Actor {
     const suffixByType = {
       condition: "Condition",
       stat: "Stat",
-      "combat-stat": "CombatStat",
       damage: "Damage",
       heal: "Heal",
       will: "Will",
@@ -1384,13 +1401,20 @@ export class PokRoleActor extends Actor {
   }
 
   async _applySecondaryEffectToActor(effect, targetActor, sourceMove = null) {
-    switch (effect.effectType) {
+    const normalizedType = this._normalizeSecondaryEffectType(effect.effectType);
+    switch (normalizedType) {
       case "condition":
-        return this._applyConditionEffectToActor(effect, targetActor, sourceMove);
+        return this._applyConditionEffectToActor(
+          { ...effect, effectType: normalizedType },
+          targetActor,
+          sourceMove
+        );
       case "stat":
-        return this._applyStatEffectToActor(effect, targetActor, sourceMove);
-      case "combat-stat":
-        return this._applyCombatStatEffectToActor(effect, targetActor, sourceMove);
+        return this._applyStatEffectToActor(
+          { ...effect, effectType: normalizedType },
+          targetActor,
+          sourceMove
+        );
       case "damage": {
         const damageValue = this._resolveEffectAmountValue(
           toNumber(targetActor.system?.resources?.hp?.max, 1),
@@ -1455,15 +1479,7 @@ export class PokRoleActor extends Actor {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
     }
 
-    const conditionFieldByKey = {
-      sleep: "sleep",
-      burn: "burn",
-      frozen: "frozen",
-      paralyzed: "paralyzed",
-      poisoned: "poisoned",
-      fainted: "fainted"
-    };
-    const systemConditionField = conditionFieldByKey[conditionKey];
+    const systemConditionField = CONDITION_FIELD_BY_KEY[conditionKey];
     if (systemConditionField) {
       const alreadyActive = Boolean(targetActor.system.conditions?.[systemConditionField]);
       if (alreadyActive) {
@@ -1475,6 +1491,7 @@ export class PokRoleActor extends Actor {
       await targetActor.update({ [`system.conditions.${systemConditionField}`]: true });
       const trackedCondition = await this._trackTemporaryConditionEffect({
         targetActor,
+        conditionKey,
         conditionPath: `system.conditions.${systemConditionField}`,
         label: this._formatSecondaryEffectLabel(effect),
         sourceMove,
@@ -1512,7 +1529,7 @@ export class PokRoleActor extends Actor {
 
     if (["accuracy", "damage", "evasion", "clash"].includes(statKey)) {
       return this._applyCombatStatEffectToActor(
-        { ...effect, effectType: "combat-stat", stat: statKey, amount },
+        { ...effect, effectType: "stat", stat: statKey, amount },
         targetActor,
         sourceMove
       );
@@ -1574,6 +1591,125 @@ export class PokRoleActor extends Actor {
     return this._getTemporaryEffectEntries(this);
   }
 
+  getConfiguredEffects() {
+    return this._getConfiguredEffectEntries(this);
+  }
+
+  async setConfiguredEffects(effects = []) {
+    await this._setConfiguredEffectEntries(this, effects);
+    return this.getConfiguredEffects();
+  }
+
+  async addConfiguredEffect(initialEffect = {}) {
+    const currentEffects = this.getConfiguredEffects();
+    currentEffects.push(this._normalizeConfiguredEffect(initialEffect));
+    await this._setConfiguredEffectEntries(this, currentEffects);
+    return currentEffects[currentEffects.length - 1] ?? null;
+  }
+
+  async updateConfiguredEffect(effectId, updates = {}) {
+    const normalizedEffectId = `${effectId ?? ""}`.trim();
+    if (!normalizedEffectId) return null;
+
+    const currentEffects = this.getConfiguredEffects();
+    const effectIndex = currentEffects.findIndex((entry) => entry.id === normalizedEffectId);
+    if (effectIndex < 0) return null;
+
+    const nextEffect = this._normalizeConfiguredEffect({
+      ...currentEffects[effectIndex],
+      ...updates,
+      id: normalizedEffectId
+    });
+    currentEffects.splice(effectIndex, 1, nextEffect);
+    await this._setConfiguredEffectEntries(this, currentEffects);
+    return nextEffect;
+  }
+
+  async deleteConfiguredEffect(effectId) {
+    const normalizedEffectId = `${effectId ?? ""}`.trim();
+    if (!normalizedEffectId) return false;
+
+    const currentEffects = this.getConfiguredEffects();
+    const nextEffects = currentEffects.filter((entry) => entry.id !== normalizedEffectId);
+    if (nextEffects.length === currentEffects.length) return false;
+    await this._setConfiguredEffectEntries(this, nextEffects);
+    return true;
+  }
+
+  async applyConfiguredEffect(effectId, options = {}) {
+    const normalizedEffectId = `${effectId ?? ""}`.trim();
+    if (!normalizedEffectId) {
+      return { applied: false, detail: game.i18n.localize("POKROLE.Common.Unknown") };
+    }
+
+    const configuredEffect = this.getConfiguredEffects().find(
+      (entry) => entry.id === normalizedEffectId
+    );
+    if (!configuredEffect) {
+      return { applied: false, detail: game.i18n.localize("POKROLE.Common.Unknown") };
+    }
+
+    return this._applyConfiguredEffectData(configuredEffect, options);
+  }
+
+  async toggleQuickCondition(conditionKey, options = {}) {
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    const systemConditionField = CONDITION_FIELD_BY_KEY[normalizedCondition];
+    if (!systemConditionField) {
+      return { applied: false, detail: game.i18n.localize("POKROLE.Common.Unknown") };
+    }
+
+    const conditionPath = `system.conditions.${systemConditionField}`;
+    const currentState = Boolean(this.system.conditions?.[systemConditionField]);
+    const nextState = options.active === undefined ? !currentState : Boolean(options.active);
+
+    if (nextState) {
+      if (currentState) {
+        return {
+          applied: false,
+          detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectAlreadyActive")
+        };
+      }
+      return this._applyConditionEffectToActor(
+        {
+          label: this._localizeConditionName(normalizedCondition),
+          trigger: "always",
+          chance: 100,
+          target: "self",
+          effectType: "condition",
+          durationMode: "manual",
+          durationRounds: 1,
+          condition: normalizedCondition,
+          stat: "none",
+          amount: 0,
+          notes: ""
+        },
+        this,
+        null
+      );
+    }
+
+    await this.update({ [conditionPath]: false });
+    const currentTemporaryEffects = this._getTemporaryEffectEntries(this);
+    const remainingEffects = currentTemporaryEffects.filter((entry) => {
+      const changes = Array.isArray(entry?.changes) ? entry.changes : [];
+      return !changes.some((change) => {
+        const changePath = `${change?.path ?? ""}`.trim();
+        const trackedCondition = this._normalizeConditionKey(change?.conditionKey);
+        return changePath === conditionPath || trackedCondition === normalizedCondition;
+      });
+    });
+    if (remainingEffects.length !== currentTemporaryEffects.length) {
+      await this._setTemporaryEffectEntries(this, remainingEffects);
+    }
+    return {
+      applied: true,
+      detail: game.i18n.format("POKROLE.Chat.ConditionCleared", {
+        condition: this._localizeConditionName(normalizedCondition)
+      })
+    };
+  }
+
   async removeTemporaryEffect(effectId, options = {}) {
     const normalizedEffectId = `${effectId ?? ""}`.trim();
     if (!normalizedEffectId) return false;
@@ -1591,6 +1727,83 @@ export class PokRoleActor extends Actor {
     }
     await this._setTemporaryEffectEntries(this, currentEntries);
     return true;
+  }
+
+  _normalizeConfiguredEffect(effect) {
+    const normalizedBase = this._normalizeSecondaryEffectDefinition(effect);
+    const normalizedId = `${effect?.id ?? foundry.utils.randomID?.() ?? `${Date.now()}`}`.trim();
+    const passive = Boolean(effect?.passive ?? false);
+    const passiveTrigger = PASSIVE_TRIGGER_KEYS.includes(`${effect?.passiveTrigger ?? ""}`)
+      ? `${effect.passiveTrigger}`
+      : "always";
+
+    return {
+      ...normalizedBase,
+      id: normalizedId,
+      passive,
+      passiveTrigger
+    };
+  }
+
+  _normalizeConfiguredEffects(effectList) {
+    const rawList = Array.isArray(effectList)
+      ? effectList
+      : effectList && typeof effectList === "object"
+        ? Object.values(effectList)
+        : [];
+    return rawList.map((effect) => this._normalizeConfiguredEffect(effect));
+  }
+
+  _getConfiguredEffectEntries(targetActor) {
+    const rawEntries = targetActor?.getFlag(POKROLE.ID, CONFIGURED_EFFECTS_FLAG);
+    return this._normalizeConfiguredEffects(rawEntries);
+  }
+
+  async _setConfiguredEffectEntries(targetActor, entries) {
+    const normalizedEntries = this._normalizeConfiguredEffects(entries);
+    await targetActor.setFlag(POKROLE.ID, CONFIGURED_EFFECTS_FLAG, normalizedEntries);
+  }
+
+  _checkPassiveTrigger(effect, targetActor) {
+    if (!effect.passive) return true;
+
+    const triggerKey = PASSIVE_TRIGGER_KEYS.includes(`${effect.passiveTrigger ?? ""}`)
+      ? `${effect.passiveTrigger}`
+      : "always";
+    if (triggerKey === "always") return true;
+    if (triggerKey === "in-combat") return Boolean(game.combat);
+    if (triggerKey === "self-has-condition") {
+      const conditions = this.system?.conditions ?? {};
+      return Object.values(conditions).some((value) => Boolean(value));
+    }
+    if (triggerKey === "self-hp-half-or-less") {
+      const currentHp = Math.max(toNumber(this.system?.resources?.hp?.value, 0), 0);
+      const maxHp = Math.max(toNumber(this.system?.resources?.hp?.max, 1), 1);
+      return currentHp <= Math.floor(maxHp / 2);
+    }
+    if (triggerKey === "target-hp-half-or-less") {
+      const currentHp = Math.max(toNumber(targetActor?.system?.resources?.hp?.value, 0), 0);
+      const maxHp = Math.max(toNumber(targetActor?.system?.resources?.hp?.max, 1), 1);
+      return currentHp <= Math.floor(maxHp / 2);
+    }
+    return true;
+  }
+
+  async _applyConfiguredEffectData(effect, options = {}) {
+    const targetActor = options.targetActor ?? this;
+    if (!targetActor) {
+      return { applied: false, detail: game.i18n.localize("POKROLE.Common.Unknown") };
+    }
+
+    const normalizedEffect = this._normalizeConfiguredEffect(effect);
+    if (!this._checkPassiveTrigger(normalizedEffect, targetActor)) {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Chat.PassiveTriggerNotMet")
+      };
+    }
+
+    return this._applySecondaryEffectToActor(normalizedEffect, targetActor, null);
   }
 
   async clearCombatTemporaryEffects(combatId = null) {
@@ -1684,6 +1897,7 @@ export class PokRoleActor extends Actor {
 
   async _trackTemporaryConditionEffect({
     targetActor,
+    conditionKey = "none",
     conditionPath,
     label = "",
     sourceMove = null,
@@ -1726,6 +1940,7 @@ export class PokRoleActor extends Actor {
         {
           kind: "boolean",
           path: conditionPath,
+          conditionKey: this._normalizeConditionKey(conditionKey),
           previousValue: false
         }
       ]

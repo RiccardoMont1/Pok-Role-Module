@@ -20,6 +20,7 @@
       "Will": "Will"
     },
     "Trainer": {
+      "MainSheetTab": "Trainer Sheet",
       "Role": "Role",
       "RolePlaceholder": "Researcher, Ranger, Ace Trainer...",
       "Age": "Age",
@@ -79,6 +80,26 @@
       "SourceUnknown": "Unknown source",
       "Remove": "Remove effect"
     },
+    "Effects": {
+      "Tab": "Effects",
+      "ConfiguredTitle": "Configured Effects",
+      "Add": "Add Effect",
+      "Save": "Save Effects",
+      "Empty": "No configured effects yet.",
+      "Passive": "Passive",
+      "PassiveTrigger": {
+        "Label": "Passive Trigger",
+        "Always": "Always",
+        "InCombat": "Only in combat",
+        "SelfHpHalfOrLess": "Self HP at or below half",
+        "TargetHpHalfOrLess": "Target HP at or below half",
+        "SelfHasCondition": "Self has a condition"
+      },
+      "Apply": "Apply Effect",
+      "ApplySuccess": "Effect applied.",
+      "ApplyFailed": "Effect could not be applied.",
+      "SaveSuccess": "Effects saved."
+    },
     "Pokemon": {
       "Species": "Species",
       "SpeciesPlaceholder": "Pikachu, Charmander...",
@@ -126,7 +147,7 @@
       "SettingsHint": "These limits are saved only on this Pokemon actor.",
       "SettingsCoreBase": "Base Core Attributes",
       "SettingsCoreMax": "Maximum Core Attributes",
-      "SettingsFixedAtFive": "Social Attributes, Skills and Extra are fixed at 1-5.",
+      "SettingsFixedAtFive": "Social Attributes, Skills and Extra are fixed at 0-5.",
       "SettingsAttributesMax": "Attribute Maximums",
       "SettingsSkillsMax": "Skill Maximums",
       "SettingsExtraMax": "Extra Maximum",
@@ -492,6 +513,8 @@
       "SecondaryEffectAlreadyActive": "Already active",
       "SecondaryEffectTracked": "tracked as extra condition",
       "SecondaryEffectNoStatChange": "No stat change",
+      "ConditionCleared": "{condition} removed.",
+      "PassiveTriggerNotMet": "Passive trigger requirements are not met.",
       "HoldingBack": {
         "Label": "Holding Back",
         "None": "No Holding Back",

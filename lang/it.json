@@ -20,6 +20,7 @@
       "Will": "Volonta"
     },
     "Trainer": {
+      "MainSheetTab": "Scheda Allenatore",
       "Role": "Ruolo",
       "RolePlaceholder": "Ricercatore, Ranger, Allenatore...",
       "Age": "Eta",
@@ -79,6 +80,26 @@
       "SourceUnknown": "Fonte sconosciuta",
       "Remove": "Rimuovi effetto"
     },
+    "Effects": {
+      "Tab": "Effetti",
+      "ConfiguredTitle": "Effetti Configurati",
+      "Add": "Aggiungi Effetto",
+      "Save": "Salva Effetti",
+      "Empty": "Nessun effetto configurato.",
+      "Passive": "Passivo",
+      "PassiveTrigger": {
+        "Label": "Trigger Passivo",
+        "Always": "Sempre",
+        "InCombat": "Solo in combattimento",
+        "SelfHpHalfOrLess": "PS propri a meta o meno",
+        "TargetHpHalfOrLess": "PS bersaglio a meta o meno",
+        "SelfHasCondition": "Ha una condizione"
+      },
+      "Apply": "Applica Effetto",
+      "ApplySuccess": "Effetto applicato.",
+      "ApplyFailed": "Impossibile applicare l'effetto.",
+      "SaveSuccess": "Effetti salvati."
+    },
     "Pokemon": {
       "Species": "Specie",
       "SpeciesPlaceholder": "Pikachu, Charmander...",
@@ -126,7 +147,7 @@
       "SettingsHint": "Questi limiti vengono salvati solo su questo attore Pokemon.",
       "SettingsCoreBase": "Attributi Core Base",
       "SettingsCoreMax": "Attributi Core Massimi",
-      "SettingsFixedAtFive": "Attributi Sociali, Abilita ed Extra sono fissi a 1-5.",
+      "SettingsFixedAtFive": "Attributi Sociali, Abilita ed Extra sono fissi a 0-5.",
       "SettingsAttributesMax": "Massimi Attributi",
       "SettingsSkillsMax": "Massimi Abilita",
       "SettingsExtraMax": "Massimo Extra",
@@ -492,6 +513,8 @@
       "SecondaryEffectAlreadyActive": "Gia attivo",
       "SecondaryEffectTracked": "tracciato come condizione extra",
       "SecondaryEffectNoStatChange": "Nessun cambio statistica",
+      "ConditionCleared": "{condition} rimossa.",
+      "PassiveTriggerNotMet": "Le condizioni del trigger passivo non sono soddisfatte.",
       "HoldingBack": {
         "Label": "Holding Back",
         "None": "Nessun contenimento",

@@ -33,6 +33,18 @@ async function clearCombatScopedTemporaryEffects(combat) {
 Hooks.once("init", () => {
   console.log(`${POKROLE.ID} | Initializing ${POKROLE.TITLE}`);
 
+  // Disable Foundry's default token status effects in favor of PokRole actor effects/conditions.
+  CONFIG.statusEffects = [];
+  try {
+    CONFIG.specialStatusEffects = {};
+  } catch (_error) {
+    if (CONFIG.specialStatusEffects && typeof CONFIG.specialStatusEffects === "object") {
+      for (const key of Object.keys(CONFIG.specialStatusEffects)) {
+        delete CONFIG.specialStatusEffects[key];
+      }
+    }
+  }
+
   CONFIG.Actor.documentClass = PokRoleActor;
   CONFIG.Item.documentClass = PokRoleItem;
 

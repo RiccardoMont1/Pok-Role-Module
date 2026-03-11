@@ -185,7 +185,6 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     context.secondaryEffectTypeOptions = {
       condition: "POKROLE.Move.Secondary.Type.Condition",
       stat: "POKROLE.Move.Secondary.Type.Stat",
-      "combat-stat": "POKROLE.Move.Secondary.Type.CombatStat",
       damage: "POKROLE.Move.Secondary.Type.Damage",
       heal: "POKROLE.Move.Secondary.Type.Heal",
       will: "POKROLE.Move.Secondary.Type.Will",
@@ -224,6 +223,12 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     html.find("[data-action='remove-secondary-effect']").on("click", (event) =>
       this._onRemoveSecondaryEffect(event)
     );
+    html.find(".move-secondary-effect-row select[name$='.effectType']").on("change", (event) =>
+      this._onSecondaryEffectTypeChanged(event)
+    );
+    html.find(".move-secondary-effect-row").each((_index, row) =>
+      this._refreshSecondaryEffectRowVisibility(row)
+    );
   }
 
   async _updateObject(event, formData) {
@@ -251,7 +256,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       : [];
     return rawEffects.map((effect, index) => ({
       index,
-      ...this._normalizeSecondaryEffect(effect)
+      ...this._decorateSecondaryEffectForDisplay(this._normalizeSecondaryEffect(effect))
     }));
   }
 
@@ -293,12 +298,10 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     const target = MOVE_SECONDARY_TARGET_KEYS.includes(normalizedEffect.target)
       ? normalizedEffect.target
       : "target";
-    const effectType = MOVE_SECONDARY_EFFECT_TYPE_KEYS.includes(normalizedEffect.effectType)
-      ? normalizedEffect.effectType
-      : "condition";
+    const effectType = this._normalizeEffectType(normalizedEffect.effectType);
     const durationMode = MOVE_SECONDARY_DURATION_MODE_KEYS.includes(normalizedEffect.durationMode)
       ? normalizedEffect.durationMode
-      : (effectType === "stat" || effectType === "combat-stat")
+      : effectType === "stat"
         ? "combat"
         : "manual";
     const condition = MOVE_SECONDARY_CONDITION_KEYS.includes(normalizedEffect.condition)
@@ -330,6 +333,26 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     };
   }
 
+  _normalizeEffectType(effectType) {
+    const normalizedType = `${effectType ?? "condition"}`.trim().toLowerCase();
+    if (normalizedType === "combat-stat") return "stat";
+    if (MOVE_SECONDARY_EFFECT_TYPE_KEYS.includes(normalizedType)) return normalizedType;
+    return "condition";
+  }
+
+  _decorateSecondaryEffectForDisplay(effect) {
+    const effectType = this._normalizeEffectType(effect.effectType);
+    return {
+      ...effect,
+      effectType,
+      showConditionField: effectType === "condition",
+      showStatField: effectType === "stat",
+      showAmountField: ["stat", "damage", "heal", "will"].includes(effectType),
+      showDurationField: effectType === "condition" || effectType === "stat",
+      showNotesField: effectType === "custom"
+    };
+  }
+
   async _onAddSecondaryEffect(event) {
     event.preventDefault();
     if (!this.isEditable || this.item.type !== "move") return;
@@ -351,6 +374,29 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     current.splice(index, 1);
     await this.item.update({ "system.secondaryEffects": current });
     this.render(false);
+  }
+
+  _onSecondaryEffectTypeChanged(event) {
+    const row = event.currentTarget.closest(".move-secondary-effect-row");
+    if (!row) return;
+    this._refreshSecondaryEffectRowVisibility(row);
+  }
+
+  _refreshSecondaryEffectRowVisibility(row) {
+    const effectTypeSelect = row.querySelector("select[name$='.effectType']");
+    const effectType = this._normalizeEffectType(effectTypeSelect?.value ?? "condition");
+
+    const toggleSection = (sectionKey, visible) => {
+      const sectionElement = row.querySelector(`[data-effect-visible='${sectionKey}']`);
+      if (!sectionElement) return;
+      sectionElement.classList.toggle("is-hidden", !visible);
+    };
+
+    toggleSection("condition", effectType === "condition");
+    toggleSection("stat", effectType === "stat");
+    toggleSection("amount", ["stat", "damage", "heal", "will"].includes(effectType));
+    toggleSection("duration", effectType === "condition" || effectType === "stat");
+    toggleSection("notes", effectType === "custom");
   }
 
   _getSecondaryConditionLabelPath(conditionKey) {
