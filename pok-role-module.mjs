@@ -262,8 +262,8 @@ Hooks.on("createActiveEffect", (effectDocument) => {
 
   const conditionKey = resolveConditionKeyFromStatus(effectDocument);
   if (!conditionKey) return;
-  if (typeof actor.toggleQuickCondition === "function") {
-    void actor.toggleQuickCondition(conditionKey, { active: true });
+  if (typeof actor.synchronizeConditionFlags === "function") {
+    void actor.synchronizeConditionFlags();
   }
 });
 
@@ -273,7 +273,7 @@ Hooks.on("deleteActiveEffect", (effectDocument) => {
 
   const conditionKey = resolveConditionKeyFromStatus(effectDocument);
   if (!conditionKey) return;
-  if (typeof actor.toggleQuickCondition === "function") {
-    void actor.toggleQuickCondition(conditionKey, { active: false });
+  if (typeof actor.synchronizeConditionFlags === "function") {
+    void actor.synchronizeConditionFlags();
   }
 });

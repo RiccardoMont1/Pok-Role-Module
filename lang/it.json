@@ -114,6 +114,8 @@
       "ApplySuccess": "Effetto applicato.",
       "ApplyFailed": "Impossibile applicare l'effetto.",
       "SaveSuccess": "Effetti salvati."
+      ,
+      "NativeHint": "Usa gli Active Effects di Foundry: clicca Aggiungi Effetto e modifica dalla scheda standard Active Effect."
     },
     "Pokemon": {
       "Species": "Specie",

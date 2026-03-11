@@ -1546,57 +1546,77 @@ export class PokRoleActor extends Actor {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
     }
 
-    const systemConditionField = CONDITION_FIELD_BY_KEY[conditionKey];
-    if (systemConditionField) {
-      const alreadyActive = Boolean(targetActor.system.conditions?.[systemConditionField]);
-      if (alreadyActive) {
-        await this._setConditionFlagState(targetActor, conditionKey, true);
-        if (!this._hasTrackedConditionEffect(targetActor, conditionKey)) {
-          await this._ensureConditionEffectFromFlag(targetActor, conditionKey);
-        }
-        return {
-          applied: false,
-          detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectAlreadyActive")
-        };
-      }
-      await targetActor.update({ [`system.conditions.${systemConditionField}`]: true });
+    const statusId = `pokrole-condition-${conditionKey}`;
+    const existingConditionEffect = (targetActor?.effects?.contents ?? []).find((effectDocument) => {
+      if (effectDocument?.disabled) return false;
+      const statusEntries = [...(effectDocument.statuses ?? [])].map((entry) =>
+        `${entry ?? ""}`.trim().toLowerCase()
+      );
+      if (statusEntries.includes(statusId)) return true;
+      return this._extractConditionKeyFromEffect(effectDocument) === conditionKey;
+    });
+    if (existingConditionEffect) {
       await this._setConditionFlagState(targetActor, conditionKey, true);
-      const trackedCondition = await this._trackTemporaryConditionEffect({
-        targetActor,
-        conditionKey,
-        conditionPath: `system.conditions.${systemConditionField}`,
-        label: this._formatSecondaryEffectLabel(effect),
-        sourceMove,
-        durationMode: this._normalizeSecondaryDurationMode(effect.durationMode, "condition"),
-        durationRounds: this._normalizeSecondaryDurationRounds(effect.durationRounds),
-        specialDuration: effect.specialDuration
-      });
       return {
-        applied: true,
-        detail: `${this._localizeConditionName(conditionKey)} (${this._localizeTemporaryDuration(
-          trackedCondition?.durationMode,
-          trackedCondition?.durationRounds,
-          trackedCondition?.specialDuration
-        )})`
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectAlreadyActive")
       };
     }
 
-    await targetActor.setFlag(POKROLE.ID, `automation.conditions.${conditionKey}`, true);
-    await this._setConditionFlagState(targetActor, conditionKey, true);
-    await this._trackTemporaryConditionEffect({
-      targetActor,
+    const normalizedDurationMode = this._normalizeSecondaryDurationMode(effect.durationMode, "condition");
+    const normalizedDurationRounds = this._normalizeSecondaryDurationRounds(effect.durationRounds);
+    const normalizedSpecialDuration = this._normalizeSpecialDurationList(effect.specialDuration);
+    const automationFlags = this._buildManagedAutomationFlagPayload({
+      effectType: "condition",
       conditionKey,
-      conditionPath: null,
-      label: this._formatSecondaryEffectLabel(effect),
-      sourceMove,
-      durationMode: this._normalizeSecondaryDurationMode(effect.durationMode, "condition"),
-      durationRounds: this._normalizeSecondaryDurationRounds(effect.durationRounds),
-      specialDuration: effect.specialDuration
+      durationMode: normalizedDurationMode,
+      durationRounds: normalizedDurationRounds,
+      specialDuration: normalizedSpecialDuration,
+      sourceMove
     });
+    const effectLabel = this._formatSecondaryEffectLabel(effect) || this._localizeConditionName(conditionKey);
+    const conditionPath = CONDITION_FIELD_BY_KEY[conditionKey]
+      ? `system.conditions.${CONDITION_FIELD_BY_KEY[conditionKey]}`
+      : null;
+    const effectChanges = [];
+    if (conditionPath) {
+      effectChanges.push({
+        key: conditionPath,
+        mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
+        value: "true",
+        priority: 50
+      });
+    }
+
+    const durationData = this._buildManagedEffectDuration(
+      automationFlags.durationMode,
+      automationFlags.durationRounds
+    );
+    await targetActor.createEmbeddedDocuments("ActiveEffect", [
+      {
+        name: effectLabel,
+        img: sourceMove?.img || "icons/svg/aura.svg",
+        origin: sourceMove?.uuid ?? null,
+        transfer: false,
+        disabled: false,
+        statuses: [statusId],
+        changes: effectChanges,
+        duration: durationData,
+        flags: {
+          [POKROLE.ID]: {
+            automation: automationFlags
+          }
+        }
+      }
+    ]);
+
+    await this._setConditionFlagState(targetActor, conditionKey, true);
     return {
       applied: true,
-      detail: `${this._localizeConditionName(conditionKey)} (${game.i18n.localize(
-        "POKROLE.Chat.SecondaryEffectTracked"
+      detail: `${this._localizeConditionName(conditionKey)} (${this._localizeTemporaryDuration(
+        automationFlags.durationMode,
+        automationFlags.durationRounds,
+        automationFlags.specialDuration
       )})`
     };
   }
@@ -1686,6 +1706,10 @@ export class PokRoleActor extends Actor {
     return this._getConfiguredEffectEntries(this);
   }
 
+  async synchronizeConditionFlags() {
+    await this._synchronizeConditionFlagsFromTemporaryEffects(this);
+  }
+
   async setConfiguredEffects(effects = []) {
     await this._setConfiguredEffectEntries(this, effects);
     return this.getConfiguredEffects();
@@ -1772,6 +1796,13 @@ export class PokRoleActor extends Actor {
     const normalizedEffectId = `${effectId ?? ""}`.trim();
     if (!normalizedEffectId) return false;
 
+    const embeddedEffect = this.effects?.get(normalizedEffectId);
+    if (embeddedEffect && this._isManagedAutomationEffect(embeddedEffect)) {
+      await embeddedEffect.delete();
+      await this._synchronizeConditionFlagsFromTemporaryEffects(this);
+      return true;
+    }
+
     const shouldRevert = options.revert !== false;
     const currentEntries = this._getTemporaryEffectEntries(this);
     const effectIndex = currentEntries.findIndex(
@@ -1835,6 +1866,16 @@ export class PokRoleActor extends Actor {
   _hasTrackedConditionEffect(targetActor, conditionKey) {
     const normalizedCondition = this._normalizeConditionKey(conditionKey);
     if (normalizedCondition === "none") return false;
+    const statusId = `pokrole-condition-${normalizedCondition}`;
+    const hasManagedActiveEffect = (targetActor?.effects?.contents ?? []).some((effectDocument) => {
+      if (effectDocument?.disabled) return false;
+      const statusEntries = [...(effectDocument.statuses ?? [])].map((entry) =>
+        `${entry ?? ""}`.trim().toLowerCase()
+      );
+      if (statusEntries.includes(statusId)) return true;
+      return this._extractConditionKeyFromEffect(effectDocument) === normalizedCondition;
+    });
+    if (hasManagedActiveEffect) return true;
     return this._getTemporaryEffectEntries(targetActor).some((entry) => {
       const changes = Array.isArray(entry?.changes) ? entry.changes : [];
       return changes.some((change) => this._normalizeConditionKey(change?.conditionKey) === normalizedCondition);
@@ -1890,15 +1931,7 @@ export class PokRoleActor extends Actor {
 
     if (!this._hasTrackedConditionEffect(targetActor, normalizedCondition)) {
       const effectConfig = this._buildConditionFlagEffectConfig(normalizedCondition);
-      await this._trackTemporaryConditionEffect({
-        targetActor,
-        conditionKey: normalizedCondition,
-        conditionPath: systemField ? `system.conditions.${systemField}` : null,
-        label: this._formatSecondaryEffectLabel(effectConfig),
-        sourceMove: null,
-        durationMode: "manual",
-        durationRounds: 1
-      });
+      return this._applyConditionEffectToActor(effectConfig, targetActor, null);
     }
 
     return {
@@ -1912,6 +1945,21 @@ export class PokRoleActor extends Actor {
     if (normalizedCondition === "none") return 0;
 
     const shouldRevert = options.revert !== false;
+    const statusId = `pokrole-condition-${normalizedCondition}`;
+    const effectIdsToDelete = (targetActor?.effects?.contents ?? [])
+      .filter((effectDocument) => {
+        const statusEntries = [...(effectDocument.statuses ?? [])].map((entry) =>
+          `${entry ?? ""}`.trim().toLowerCase()
+        );
+        if (statusEntries.includes(statusId)) return true;
+        return this._extractConditionKeyFromEffect(effectDocument) === normalizedCondition;
+      })
+      .map((effectDocument) => effectDocument.id)
+      .filter((effectId) => effectId);
+    if (effectIdsToDelete.length > 0) {
+      await targetActor.deleteEmbeddedDocuments("ActiveEffect", effectIdsToDelete);
+    }
+
     const currentEntries = this._getTemporaryEffectEntries(targetActor);
     const remainingEntries = [];
     let removedCount = 0;
@@ -1936,11 +1984,16 @@ export class PokRoleActor extends Actor {
       await this._setTemporaryEffectEntries(targetActor, remainingEntries);
     }
 
-    return removedCount;
+    return removedCount + effectIdsToDelete.length;
   }
 
   async _synchronizeConditionFlagsFromTemporaryEffects(targetActor) {
     const activeConditionKeys = new Set();
+    for (const effectDocument of targetActor?.effects?.contents ?? []) {
+      if (effectDocument?.disabled) continue;
+      const conditionFromEffect = this._extractConditionKeyFromEffect(effectDocument);
+      if (conditionFromEffect !== "none") activeConditionKeys.add(conditionFromEffect);
+    }
     const entries = this._getTemporaryEffectEntries(targetActor);
     for (const entry of entries) {
       const changes = Array.isArray(entry?.changes) ? entry.changes : [];
@@ -2113,10 +2166,30 @@ export class PokRoleActor extends Actor {
   }
 
   async clearCombatTemporaryEffects(combatId = null) {
-    const currentEntries = this._getTemporaryEffectEntries(this);
-    if (!currentEntries.length) return 0;
-
     const normalizedCombatId = `${combatId ?? ""}`.trim();
+    const managedEffectsToDelete = this._getManagedAutomationEffects(this)
+      .filter((effectDocument) => {
+        const automationFlags = effectDocument.getFlag(POKROLE.ID, "automation") ?? {};
+        const isCombatScoped = Boolean(automationFlags?.expiresWithCombat);
+        if (!isCombatScoped) return false;
+        const effectCombatId = `${automationFlags?.combatId ?? ""}`.trim();
+        const matchesCombat =
+          !normalizedCombatId || !effectCombatId || effectCombatId === normalizedCombatId;
+        return matchesCombat;
+      })
+      .map((effectDocument) => effectDocument.id)
+      .filter((effectId) => effectId);
+    if (managedEffectsToDelete.length > 0) {
+      await this.deleteEmbeddedDocuments("ActiveEffect", managedEffectsToDelete);
+    }
+
+    const currentEntries = this._getTemporaryEffectEntries(this);
+    if (!currentEntries.length) {
+      if (managedEffectsToDelete.length > 0) {
+        await this._synchronizeConditionFlagsFromTemporaryEffects(this);
+      }
+      return managedEffectsToDelete.length;
+    }
     const remainingEntries = [];
     let clearedCount = 0;
 
@@ -2139,7 +2212,7 @@ export class PokRoleActor extends Actor {
       await this._synchronizeConditionFlagsFromTemporaryEffects(this);
     }
 
-    return clearedCount;
+    return clearedCount + managedEffectsToDelete.length;
   }
 
   async advanceTemporaryEffectsRound(combatId = null) {
@@ -2214,12 +2287,35 @@ export class PokRoleActor extends Actor {
     };
     const resolvedEvent = eventAliases[normalizedEventKey] ?? normalizedEventKey;
 
-    const currentEntries = this._getTemporaryEffectEntries(this);
-    if (!currentEntries.length) return 0;
     const normalizedCombatId = `${options.combatId ?? game.combat?.id ?? ""}`.trim();
+    const managedEffectsToDelete = this._getManagedAutomationEffects(this)
+      .filter((effectDocument) => {
+        const automationFlags = effectDocument.getFlag(POKROLE.ID, "automation") ?? {};
+        const specialDurationList = this._normalizeSpecialDurationList(automationFlags?.specialDuration);
+        if (!specialDurationList.length || !specialDurationList.includes(resolvedEvent)) {
+          return false;
+        }
+        const effectCombatId = `${automationFlags?.combatId ?? ""}`.trim();
+        const requiresCombatMatch = ["turn-start", "turn-end"].includes(resolvedEvent);
+        if (!requiresCombatMatch) return true;
+        return !normalizedCombatId || !effectCombatId || effectCombatId === normalizedCombatId;
+      })
+      .map((effectDocument) => effectDocument.id)
+      .filter((effectId) => effectId);
+    if (managedEffectsToDelete.length > 0) {
+      await this.deleteEmbeddedDocuments("ActiveEffect", managedEffectsToDelete);
+    }
+
+    const currentEntries = this._getTemporaryEffectEntries(this);
+    if (!currentEntries.length) {
+      if (managedEffectsToDelete.length > 0) {
+        await this._synchronizeConditionFlagsFromTemporaryEffects(this);
+      }
+      return managedEffectsToDelete.length;
+    }
 
     const remainingEntries = [];
-    let removedCount = 0;
+    let removedCount = managedEffectsToDelete.length;
 
     for (const entry of currentEntries) {
       const specialDurationList = this._normalizeSpecialDurationList(entry?.specialDuration);
@@ -2354,52 +2450,56 @@ export class PokRoleActor extends Actor {
       };
     }
 
-    await targetActor.update({ [path]: nextValue });
-
     const normalizedRounds = this._normalizeSecondaryDurationRounds(durationRounds);
     const requestedMode = this._normalizeSecondaryDurationMode(durationMode, "stat");
     const normalizedSpecialDuration = this._normalizeSpecialDurationList(specialDuration);
-    const combatId = game.combat?.id ?? null;
-    const combatRound = game.combat?.round ?? null;
-    const effectiveMode =
-      (requestedMode === "combat" || requestedMode === "rounds") && !combatId
-        ? "manual"
-        : requestedMode;
-    const isCombatScoped = effectiveMode === "combat" || effectiveMode === "rounds";
-    const effectId =
-      foundry.utils.randomID?.() ??
-      `${Date.now()}-${Math.floor(Math.random() * 1_000_000)}`;
-    const effectEntries = this._getTemporaryEffectEntries(targetActor);
-    effectEntries.push({
-      id: effectId,
-      label: `${label ?? ""}`.trim() || game.i18n.localize("POKROLE.TemporaryEffects.Title"),
+    const automationFlags = this._buildManagedAutomationFlagPayload({
       effectType: "modifier",
-      sourceMoveId: sourceMove?.id ?? null,
-      sourceMoveName: sourceMove?.name ?? "",
-      sourceActorId: this.id ?? null,
-      sourceActorName: this.name ?? "",
-      durationMode: effectiveMode,
-      remainingRounds: effectiveMode === "rounds" ? normalizedRounds : null,
+      conditionKey: "none",
+      durationMode: requestedMode,
+      durationRounds: normalizedRounds,
       specialDuration: normalizedSpecialDuration,
-      expiresWithCombat: isCombatScoped,
-      combatId: isCombatScoped ? combatId : null,
-      appliedRound: isCombatScoped ? combatRound : null,
-      createdAt: Date.now(),
-      changes: [
-        {
-          path,
-          amountApplied: appliedAmount,
-          min,
-          max
-        }
-      ]
+      sourceMove
     });
-    await this._setTemporaryEffectEntries(targetActor, effectEntries);
+    const durationData = this._buildManagedEffectDuration(
+      automationFlags.durationMode,
+      automationFlags.durationRounds
+    );
+    await targetActor.createEmbeddedDocuments("ActiveEffect", [
+      {
+        name: `${label ?? ""}`.trim() || detailLabel || game.i18n.localize("POKROLE.TemporaryEffects.Title"),
+        img: sourceMove?.img || "icons/svg/aura.svg",
+        origin: sourceMove?.uuid ?? null,
+        transfer: false,
+        disabled: false,
+        statuses: [],
+        duration: durationData,
+        changes: [
+          {
+            key: path,
+            mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+            value: `${appliedAmount}`,
+            priority: 20
+          }
+        ],
+        flags: {
+          [POKROLE.ID]: {
+            automation: {
+              ...automationFlags,
+              path,
+              amountApplied: appliedAmount,
+              min,
+              max
+            }
+          }
+        }
+      }
+    ]);
 
     const durationLabel = this._localizeTemporaryDuration(
-      effectiveMode,
-      normalizedRounds,
-      normalizedSpecialDuration
+      automationFlags.durationMode,
+      automationFlags.durationRounds,
+      automationFlags.specialDuration
     );
     return {
       applied: true,
@@ -2442,6 +2542,84 @@ export class PokRoleActor extends Actor {
       game.i18n.localize(labelByKey[durationKey] ?? "POKROLE.Common.Unknown")
     );
     return labels.join(", ");
+  }
+
+  _buildManagedEffectDuration(durationMode, durationRounds) {
+    const normalizedMode = `${durationMode ?? "manual"}`.trim().toLowerCase();
+    if (normalizedMode !== "rounds") return {};
+    const normalizedRounds = this._normalizeSecondaryDurationRounds(durationRounds);
+    const combat = game.combat;
+    const duration = { rounds: normalizedRounds };
+    if (combat) {
+      duration.startRound = Number.isFinite(Number(combat.round)) ? Number(combat.round) : 0;
+      duration.startTurn = Number.isFinite(Number(combat.turn)) ? Number(combat.turn) : 0;
+      duration.combat = combat.id ?? null;
+    }
+    return duration;
+  }
+
+  _buildManagedAutomationFlagPayload({
+    effectType = "custom",
+    conditionKey = "none",
+    durationMode = "manual",
+    durationRounds = 1,
+    specialDuration = [],
+    sourceMove = null
+  } = {}) {
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    const normalizedDurationMode = this._normalizeSecondaryDurationMode(durationMode, effectType);
+    const normalizedDurationRounds = this._normalizeSecondaryDurationRounds(durationRounds);
+    const normalizedSpecialDuration = this._normalizeSpecialDurationList(specialDuration);
+    const combatId = game.combat?.id ?? null;
+    const effectiveMode =
+      (normalizedDurationMode === "combat" || normalizedDurationMode === "rounds") && !combatId
+        ? "manual"
+        : normalizedDurationMode;
+    const expiresWithCombat = effectiveMode === "combat" || effectiveMode === "rounds";
+
+    return {
+      managed: true,
+      sourceType: "automation",
+      effectType,
+      conditionKey: normalizedCondition,
+      durationMode: effectiveMode,
+      durationRounds: normalizedDurationRounds,
+      specialDuration: normalizedSpecialDuration,
+      expiresWithCombat,
+      combatId: expiresWithCombat ? combatId : null,
+      sourceMoveId: sourceMove?.id ?? null,
+      sourceMoveName: sourceMove?.name ?? "",
+      sourceActorId: this.id ?? null,
+      sourceActorName: this.name ?? "",
+      createdAt: Date.now()
+    };
+  }
+
+  _isManagedAutomationEffect(effectDocument) {
+    const automationFlags = effectDocument?.getFlag(POKROLE.ID, "automation");
+    return Boolean(automationFlags?.managed);
+  }
+
+  _extractConditionKeyFromEffect(effectDocument) {
+    const automationFlags = effectDocument?.getFlag(POKROLE.ID, "automation");
+    const fromFlags = this._normalizeConditionKey(automationFlags?.conditionKey);
+    if (fromFlags !== "none") return fromFlags;
+    const statusEntries = [...(effectDocument?.statuses ?? [])];
+    for (const statusEntry of statusEntries) {
+      const normalizedStatus = `${statusEntry ?? ""}`.trim().toLowerCase();
+      if (!normalizedStatus.startsWith("pokrole-condition-")) continue;
+      const conditionKey = this._normalizeConditionKey(
+        normalizedStatus.replace(/^pokrole-condition-/, "")
+      );
+      if (conditionKey !== "none") return conditionKey;
+    }
+    return "none";
+  }
+
+  _getManagedAutomationEffects(targetActor) {
+    const actor = targetActor ?? this;
+    const effects = actor?.effects?.contents ?? [];
+    return effects.filter((effectDocument) => this._isManagedAutomationEffect(effectDocument));
   }
 
   async _revertTemporaryEffectEntry(entry) {

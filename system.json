@@ -2,7 +2,7 @@
   "id": "pok-role-system",
   "title": "Pok\u00E9 Role System",
   "description": "MVP Foundry VTT v13 system scaffold for PokeRole 2.0 inspired campaigns.",
-  "version": "0.10.7",
+  "version": "0.10.8",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
