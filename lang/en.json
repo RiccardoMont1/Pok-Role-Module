@@ -21,6 +21,7 @@
     },
     "Trainer": {
       "MainSheetTab": "Trainer Sheet",
+      "InventoryTab": "Inventory",
       "BioTab": "Bio & Info",
       "InfoTitle": "Character Info",
       "Role": "Role",

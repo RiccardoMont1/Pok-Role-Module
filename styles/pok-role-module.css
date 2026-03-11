@@ -2799,3 +2799,181 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Final trainer + effect editor overrides */
+.pok-role.sheet.actor.pok-role-trainer-window .window-content {
+  background: linear-gradient(180deg, #182844 0%, #0f1d33 100%) !important;
+}
+
+.pok-role.sheet.actor .window-content > form.editable.pok-role-sheet.trainer-sheet,
+.pok-role.sheet.actor .window-content > form.pok-role-sheet.trainer-sheet,
+form.editable.pok-role-sheet.trainer-sheet {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.trainer-sheet {
+  background: linear-gradient(180deg, #1a2b49 0%, #122039 100%);
+}
+
+.trainer-sheet .trainer-sheet-shell {
+  --tr-card: #fff4e6;
+  --tr-card-soft: #ffedd9;
+  --tr-ink: #2d3040;
+  --tr-muted: #635b52;
+  --tr-outline: #d2c0a7;
+  --tr-accent: #52bbff;
+  --tr-accent-strong: #1b7fc5;
+  --tr-accent-soft: rgba(82, 187, 255, 0.34);
+}
+
+.trainer-sheet .trainer-sheet-shell.trainer-theme-female {
+  --tr-accent: #ff83c8;
+  --tr-accent-strong: #d24c96;
+  --tr-accent-soft: rgba(255, 131, 200, 0.34);
+}
+
+.trainer-sheet .trainer-view-button {
+  border-color: color-mix(in srgb, var(--tr-accent-strong) 52%, #b5c0d4 48%);
+  background: color-mix(in srgb, var(--tr-accent-soft) 72%, #fff4e6 28%);
+  color: #1f2d46;
+}
+
+.trainer-sheet .trainer-view-button.is-active {
+  border-color: color-mix(in srgb, var(--tr-accent-strong) 78%, #5f2b2b 22%);
+  background: linear-gradient(180deg, var(--tr-accent) 0%, var(--tr-accent-strong) 100%);
+  color: #ffffff;
+}
+
+.trainer-sheet .trainer-id-card {
+  border-color: color-mix(in srgb, var(--tr-accent-strong) 36%, var(--tr-outline) 64%);
+  background: linear-gradient(180deg, var(--tr-card) 0%, var(--tr-card-soft) 100%);
+}
+
+.trainer-sheet .trainer-id-header {
+  background: linear-gradient(165deg, var(--tr-accent-strong) 0%, var(--tr-accent) 100%);
+}
+
+.trainer-sheet .trainer-id-body {
+  background:
+    linear-gradient(0deg, var(--tr-accent-soft), var(--tr-accent-soft)),
+    linear-gradient(180deg, var(--tr-card) 0%, var(--tr-card-soft) 100%);
+}
+
+.trainer-sheet .trainer-card-fields input,
+.trainer-sheet .trainer-card-vitals input,
+.trainer-sheet .trainer-control select,
+.trainer-sheet .trainer-bio-panel input,
+.trainer-sheet .trainer-bio-panel textarea {
+  background: #fff2e1;
+  border-color: color-mix(in srgb, var(--tr-accent-strong) 18%, #bca98f 82%);
+  color: var(--tr-ink);
+}
+
+.trainer-sheet .trainer-quick-actions button {
+  background: color-mix(in srgb, var(--tr-accent-soft) 38%, #fff2e1 62%);
+  border-color: color-mix(in srgb, var(--tr-accent-strong) 35%, #b8c2d6 65%);
+}
+
+.trainer-sheet .trainer-stat-panel,
+.trainer-sheet .trainer-inventory-section,
+.trainer-sheet .trainer-bio-panel,
+.trainer-sheet .trainer-conditions-panel,
+.trainer-sheet .actor-effects-panel {
+  background: linear-gradient(180deg, var(--tr-card) 0%, var(--tr-card-soft) 100%);
+  border-color: color-mix(in srgb, var(--tr-accent-strong) 30%, var(--tr-outline) 70%);
+}
+
+.trainer-sheet .trainer-inventory-section .section-title-row,
+.trainer-sheet .actor-effects-panel .section-title-row {
+  background: linear-gradient(165deg, var(--tr-accent-strong) 0%, var(--tr-accent) 100%);
+}
+
+.trainer-sheet .trainer-inventory-section .inventory-add-button,
+.trainer-sheet .actor-effects-panel .button-row button {
+  background: #fff0dd;
+  border-color: color-mix(in srgb, var(--tr-accent-strong) 40%, #d1b292 60%);
+  color: #2f3646;
+}
+
+.trainer-sheet .trainer-pocket-card,
+.trainer-sheet .trainer-pocket-item {
+  background: #fff3e3;
+  border-color: color-mix(in srgb, var(--tr-accent-strong) 25%, #cfbea9 75%);
+}
+
+.trainer-sheet .trainer-pocket-item-main img {
+  background: #ffeed8;
+}
+
+.trainer-sheet .trainer-view-panel[data-tab="main"].is-active,
+.trainer-sheet .trainer-view-panel[data-tab="inventory"].is-active,
+.trainer-sheet .trainer-view-panel[data-tab="effects"].is-active,
+.trainer-sheet .trainer-view-panel[data-tab="bio"].is-active {
+  display: grid;
+  gap: 10px;
+}
+
+.move-sheet .move-duration-fields {
+  margin: 0;
+  border: 1px solid #a3abba;
+  border-radius: 10px;
+  background: #fff2e3;
+  padding: 6px 8px;
+  display: grid;
+  gap: 6px;
+  grid-column: span 2;
+}
+
+.move-sheet .move-duration-fields > legend {
+  padding: 0 4px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #3a4458;
+  font-weight: 700;
+}
+
+.move-sheet .move-duration-fields select[multiple] {
+  min-height: 88px;
+}
+
+.pok-role-ae-config .pokrole-ae-automation {
+  margin-top: 10px;
+  border: 2px solid #a43129;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #25344d 0%, #1b273b 100%);
+  color: #e8edf8;
+  padding: 10px;
+}
+
+.pok-role-ae-config .pokrole-ae-automation legend {
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0 6px;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+}
+
+.pok-role-ae-config .pokrole-ae-automation .hint {
+  margin: 0 0 8px;
+  color: #bfcde5;
+  font-size: 0.72rem;
+}
+
+.pok-role-ae-config .pokrole-ae-automation label {
+  color: #eef2fb;
+  font-weight: 600;
+}
+
+.pok-role-ae-config .pokrole-ae-automation select,
+.pok-role-ae-config .pokrole-ae-automation input[type="number"] {
+  background: #fff2e1;
+  border: 1px solid #b98f83;
+  color: #2f3342;
+}
+
+.pok-role-ae-config .pokrole-ae-rounds-row.is-hidden {
+  display: none;
+}

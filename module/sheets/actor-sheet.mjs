@@ -1500,7 +1500,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   _normalizeTrainerView(tabName) {
-    if (tabName === "effects" || tabName === "bio") return tabName;
+    if (tabName === "inventory" || tabName === "effects" || tabName === "bio") return tabName;
     return "main";
   }
 

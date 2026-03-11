@@ -184,37 +184,40 @@
             {{selectOptions ../secondaryEffectTypeOptions selected=effect.effectType localize=true}}
           </select>
         </label>
-        <label data-effect-visible="duration" class="{{#unless effect.showDurationField}}is-hidden{{/unless}}">
-          <span>{{localize "POKROLE.Move.Secondary.Duration.Mode.Label"}}</span>
-          <select name="system.secondaryEffects.{{effect.index}}.durationMode">
-            {{selectOptions ../secondaryDurationModeOptions selected=effect.durationMode localize=true}}
-          </select>
-        </label>
-        <label data-effect-visible="duration" class="{{#unless effect.showDurationField}}is-hidden{{/unless}}">
-          <span>{{localize "POKROLE.Move.Secondary.Duration.Rounds"}}</span>
-          <input
-            type="number"
-            name="system.secondaryEffects.{{effect.index}}.durationRounds"
-            value="{{effect.durationRounds}}"
-            min="1"
-            max="99"
-            data-dtype="Number"
-          />
-        </label>
-        <label data-effect-visible="specialDuration" class="{{#unless effect.showDurationField}}is-hidden{{/unless}}">
-          <span>{{localize "POKROLE.Move.Secondary.Duration.Special.Label"}}</span>
-          <select
-            name="system.secondaryEffects.{{effect.index}}.specialDuration"
-            multiple
-            size="4"
-          >
-            {{#each effect.specialDurationOptions as |option|}}
-            <option value="{{option.value}}" {{#if option.selected}}selected{{/if}}>
-              {{localize option.label}}
-            </option>
-            {{/each}}
-          </select>
-        </label>
+        <fieldset data-effect-visible="duration" class="move-duration-fields {{#unless effect.showDurationField}}is-hidden{{/unless}}">
+          <legend>{{localize "POKROLE.Move.Secondary.Duration.Mode.Label"}}</legend>
+          <label>
+            <span>{{localize "POKROLE.Move.Secondary.Duration.Mode.Label"}}</span>
+            <select name="system.secondaryEffects.{{effect.index}}.durationMode">
+              {{selectOptions ../secondaryDurationModeOptions selected=effect.durationMode localize=true}}
+            </select>
+          </label>
+          <label>
+            <span>{{localize "POKROLE.Move.Secondary.Duration.Rounds"}}</span>
+            <input
+              type="number"
+              name="system.secondaryEffects.{{effect.index}}.durationRounds"
+              value="{{effect.durationRounds}}"
+              min="1"
+              max="99"
+              data-dtype="Number"
+            />
+          </label>
+          <label>
+            <span>{{localize "POKROLE.Move.Secondary.Duration.Special.Label"}}</span>
+            <select
+              name="system.secondaryEffects.{{effect.index}}.specialDuration"
+              multiple
+              size="4"
+            >
+              {{#each effect.specialDurationOptions as |option|}}
+              <option value="{{option.value}}" {{#if option.selected}}selected{{/if}}>
+                {{localize option.label}}
+              </option>
+              {{/each}}
+            </select>
+          </label>
+        </fieldset>
         <label data-effect-visible="condition" class="{{#unless effect.showConditionField}}is-hidden{{/unless}}">
           <span>{{localize "POKROLE.Move.Secondary.Condition.Label"}}</span>
           <select name="system.secondaryEffects.{{effect.index}}.condition">

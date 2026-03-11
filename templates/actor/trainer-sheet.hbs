@@ -16,6 +16,17 @@
         type="button"
         class="trainer-view-button"
         data-action="switch-trainer-tab"
+        data-tab="inventory"
+        title="{{localize 'POKROLE.Trainer.InventoryTab'}}"
+        aria-label="{{localize 'POKROLE.Trainer.InventoryTab'}}"
+      >
+        <i class="fas fa-box-open"></i>
+        <span class="trainer-view-label">{{localize "POKROLE.Trainer.InventoryTab"}}</span>
+      </button>
+      <button
+        type="button"
+        class="trainer-view-button"
+        data-action="switch-trainer-tab"
         data-tab="effects"
         title="{{localize 'POKROLE.Effects.Tab'}}"
         aria-label="{{localize 'POKROLE.Effects.Tab'}}"
@@ -437,198 +448,200 @@
     </section>
 
   </section>
-
-  <section class="sheet-section trainer-inventory-section">
-      <div class="section-title-row">
-        <h2>{{localize "POKROLE.Trainer.InventoryTitle"}}</h2>
-        <button type="button" class="inventory-add-button" data-action="create-gear">
-          <i class="fas fa-plus"></i>
-          {{localize "POKROLE.Actions.NewGear"}}
-        </button>
       </div>
 
-      <div class="trainer-pocket-grid">
-        <section class="trainer-pocket-card pocket-potions">
-          <header>
-            <h3>{{localize "POKROLE.Gear.Pocket.Potions"}}</h3>
-            <small>{{gearPocketPotions.length}} {{localize "POKROLE.Trainer.InventoryItems"}}</small>
-          </header>
-          {{#if gearPocketPotions.length}}
-          <div class="trainer-pocket-items">
-            {{#each gearPocketPotions as |gear|}}
-            <article class="trainer-pocket-item" data-item-id="{{gear.id}}">
-              <div class="trainer-pocket-item-main">
-                <img src="{{gear.img}}" title="{{gear.name}}" />
-                <div>
-                  <strong>{{gear.name}}</strong>
-                  <small>{{gear.stockLabel}}</small>
-                </div>
-              </div>
-              <small class="trainer-pocket-effect">{{gear.effectsSummary}}</small>
-              <div class="move-actions">
-                <button type="button" class="icon-button" data-action="use-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Use'}}">
-                  <i class="fas fa-hand-sparkles"></i>
-                </button>
-                <button type="button" class="icon-button" data-action="edit-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Edit'}}">
-                  <i class="fas fa-pen"></i>
-                </button>
-                <button type="button" class="icon-button danger" data-action="delete-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Delete'}}">
-                  <i class="fas fa-trash"></i>
-                </button>
-              </div>
-            </article>
-            {{/each}}
+      <div class="trainer-view-panel" data-tab="inventory">
+        <section class="sheet-section trainer-inventory-section">
+          <div class="section-title-row">
+            <h2>{{localize "POKROLE.Trainer.InventoryTitle"}}</h2>
+            <button type="button" class="inventory-add-button" data-action="create-gear">
+              <i class="fas fa-plus"></i>
+              {{localize "POKROLE.Actions.NewGear"}}
+            </button>
           </div>
-          {{else}}
-          <p class="empty-state">{{localize "POKROLE.Gear.Empty"}}</p>
-          {{/if}}
-        </section>
 
-        <section class="trainer-pocket-card pocket-small">
-          <header>
-            <h3>{{localize "POKROLE.Gear.Pocket.Small"}}</h3>
-            <small>{{gearPocketSmall.length}} {{localize "POKROLE.Trainer.InventoryItems"}}</small>
-          </header>
-          {{#if gearPocketSmall.length}}
-          <div class="trainer-pocket-items">
-            {{#each gearPocketSmall as |gear|}}
-            <article class="trainer-pocket-item" data-item-id="{{gear.id}}">
-              <div class="trainer-pocket-item-main">
-                <img src="{{gear.img}}" title="{{gear.name}}" />
-                <div>
-                  <strong>{{gear.name}}</strong>
-                  <small>{{gear.stockLabel}}</small>
-                </div>
+          <div class="trainer-pocket-grid">
+            <section class="trainer-pocket-card pocket-potions">
+              <header>
+                <h3>{{localize "POKROLE.Gear.Pocket.Potions"}}</h3>
+                <small>{{gearPocketPotions.length}} {{localize "POKROLE.Trainer.InventoryItems"}}</small>
+              </header>
+              {{#if gearPocketPotions.length}}
+              <div class="trainer-pocket-items">
+                {{#each gearPocketPotions as |gear|}}
+                <article class="trainer-pocket-item" data-item-id="{{gear.id}}">
+                  <div class="trainer-pocket-item-main">
+                    <img src="{{gear.img}}" title="{{gear.name}}" />
+                    <div>
+                      <strong>{{gear.name}}</strong>
+                      <small>{{gear.stockLabel}}</small>
+                    </div>
+                  </div>
+                  <small class="trainer-pocket-effect">{{gear.effectsSummary}}</small>
+                  <div class="move-actions">
+                    <button type="button" class="icon-button" data-action="use-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Use'}}">
+                      <i class="fas fa-hand-sparkles"></i>
+                    </button>
+                    <button type="button" class="icon-button" data-action="edit-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Edit'}}">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                    <button type="button" class="icon-button danger" data-action="delete-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Delete'}}">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </article>
+                {{/each}}
               </div>
-              <small class="trainer-pocket-effect">{{gear.effectsSummary}}</small>
-              <div class="move-actions">
-                <button type="button" class="icon-button" data-action="use-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Use'}}">
-                  <i class="fas fa-hand-sparkles"></i>
-                </button>
-                <button type="button" class="icon-button" data-action="edit-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Edit'}}">
-                  <i class="fas fa-pen"></i>
-                </button>
-                <button type="button" class="icon-button danger" data-action="delete-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Delete'}}">
-                  <i class="fas fa-trash"></i>
-                </button>
-              </div>
-            </article>
-            {{/each}}
-          </div>
-          {{else}}
-          <p class="empty-state">{{localize "POKROLE.Gear.Empty"}}</p>
-          {{/if}}
-        </section>
+              {{else}}
+              <p class="empty-state">{{localize "POKROLE.Gear.Empty"}}</p>
+              {{/if}}
+            </section>
 
-        <section class="trainer-pocket-card pocket-main">
-          <header>
-            <h3>{{localize "POKROLE.Gear.Pocket.Main"}}</h3>
-            <small>{{gearPocketMain.length}} {{localize "POKROLE.Trainer.InventoryItems"}}</small>
-          </header>
-          {{#if gearPocketMain.length}}
-          <div class="trainer-pocket-items">
-            {{#each gearPocketMain as |gear|}}
-            <article class="trainer-pocket-item" data-item-id="{{gear.id}}">
-              <div class="trainer-pocket-item-main">
-                <img src="{{gear.img}}" title="{{gear.name}}" />
-                <div>
-                  <strong>{{gear.name}}</strong>
-                  <small>{{gear.stockLabel}}</small>
-                </div>
+            <section class="trainer-pocket-card pocket-small">
+              <header>
+                <h3>{{localize "POKROLE.Gear.Pocket.Small"}}</h3>
+                <small>{{gearPocketSmall.length}} {{localize "POKROLE.Trainer.InventoryItems"}}</small>
+              </header>
+              {{#if gearPocketSmall.length}}
+              <div class="trainer-pocket-items">
+                {{#each gearPocketSmall as |gear|}}
+                <article class="trainer-pocket-item" data-item-id="{{gear.id}}">
+                  <div class="trainer-pocket-item-main">
+                    <img src="{{gear.img}}" title="{{gear.name}}" />
+                    <div>
+                      <strong>{{gear.name}}</strong>
+                      <small>{{gear.stockLabel}}</small>
+                    </div>
+                  </div>
+                  <small class="trainer-pocket-effect">{{gear.effectsSummary}}</small>
+                  <div class="move-actions">
+                    <button type="button" class="icon-button" data-action="use-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Use'}}">
+                      <i class="fas fa-hand-sparkles"></i>
+                    </button>
+                    <button type="button" class="icon-button" data-action="edit-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Edit'}}">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                    <button type="button" class="icon-button danger" data-action="delete-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Delete'}}">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </article>
+                {{/each}}
               </div>
-              <small class="trainer-pocket-effect">{{gear.effectsSummary}}</small>
-              <div class="move-actions">
-                <button type="button" class="icon-button" data-action="use-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Use'}}">
-                  <i class="fas fa-hand-sparkles"></i>
-                </button>
-                <button type="button" class="icon-button" data-action="edit-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Edit'}}">
-                  <i class="fas fa-pen"></i>
-                </button>
-                <button type="button" class="icon-button danger" data-action="delete-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Delete'}}">
-                  <i class="fas fa-trash"></i>
-                </button>
-              </div>
-            </article>
-            {{/each}}
-          </div>
-          {{else}}
-          <p class="empty-state">{{localize "POKROLE.Gear.Empty"}}</p>
-          {{/if}}
-        </section>
+              {{else}}
+              <p class="empty-state">{{localize "POKROLE.Gear.Empty"}}</p>
+              {{/if}}
+            </section>
 
-        <section class="trainer-pocket-card pocket-badge">
-          <header>
-            <h3>{{localize "POKROLE.Gear.Pocket.Badge"}}</h3>
-            <small>{{gearPocketBadge.length}} {{localize "POKROLE.Trainer.InventoryItems"}}</small>
-          </header>
-          {{#if gearPocketBadge.length}}
-          <div class="trainer-pocket-items">
-            {{#each gearPocketBadge as |gear|}}
-            <article class="trainer-pocket-item" data-item-id="{{gear.id}}">
-              <div class="trainer-pocket-item-main">
-                <img src="{{gear.img}}" title="{{gear.name}}" />
-                <div>
-                  <strong>{{gear.name}}</strong>
-                  <small>{{gear.stockLabel}}</small>
-                </div>
+            <section class="trainer-pocket-card pocket-main">
+              <header>
+                <h3>{{localize "POKROLE.Gear.Pocket.Main"}}</h3>
+                <small>{{gearPocketMain.length}} {{localize "POKROLE.Trainer.InventoryItems"}}</small>
+              </header>
+              {{#if gearPocketMain.length}}
+              <div class="trainer-pocket-items">
+                {{#each gearPocketMain as |gear|}}
+                <article class="trainer-pocket-item" data-item-id="{{gear.id}}">
+                  <div class="trainer-pocket-item-main">
+                    <img src="{{gear.img}}" title="{{gear.name}}" />
+                    <div>
+                      <strong>{{gear.name}}</strong>
+                      <small>{{gear.stockLabel}}</small>
+                    </div>
+                  </div>
+                  <small class="trainer-pocket-effect">{{gear.effectsSummary}}</small>
+                  <div class="move-actions">
+                    <button type="button" class="icon-button" data-action="use-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Use'}}">
+                      <i class="fas fa-hand-sparkles"></i>
+                    </button>
+                    <button type="button" class="icon-button" data-action="edit-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Edit'}}">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                    <button type="button" class="icon-button danger" data-action="delete-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Delete'}}">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </article>
+                {{/each}}
               </div>
-              <small class="trainer-pocket-effect">{{gear.effectsSummary}}</small>
-              <div class="move-actions">
-                <button type="button" class="icon-button" data-action="use-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Use'}}">
-                  <i class="fas fa-hand-sparkles"></i>
-                </button>
-                <button type="button" class="icon-button" data-action="edit-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Edit'}}">
-                  <i class="fas fa-pen"></i>
-                </button>
-                <button type="button" class="icon-button danger" data-action="delete-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Delete'}}">
-                  <i class="fas fa-trash"></i>
-                </button>
-              </div>
-            </article>
-            {{/each}}
-          </div>
-          {{else}}
-          <p class="empty-state">{{localize "POKROLE.Gear.Empty"}}</p>
-          {{/if}}
-        </section>
+              {{else}}
+              <p class="empty-state">{{localize "POKROLE.Gear.Empty"}}</p>
+              {{/if}}
+            </section>
 
-        <section class="trainer-pocket-card pocket-held">
-          <header>
-            <h3>{{localize "POKROLE.Gear.Pocket.Held"}}</h3>
-            <small>{{gearPocketHeld.length}} {{localize "POKROLE.Trainer.InventoryItems"}}</small>
-          </header>
-          {{#if gearPocketHeld.length}}
-          <div class="trainer-pocket-items">
-            {{#each gearPocketHeld as |gear|}}
-            <article class="trainer-pocket-item" data-item-id="{{gear.id}}">
-              <div class="trainer-pocket-item-main">
-                <img src="{{gear.img}}" title="{{gear.name}}" />
-                <div>
-                  <strong>{{gear.name}}</strong>
-                  <small>{{gear.stockLabel}}</small>
-                </div>
+            <section class="trainer-pocket-card pocket-badge">
+              <header>
+                <h3>{{localize "POKROLE.Gear.Pocket.Badge"}}</h3>
+                <small>{{gearPocketBadge.length}} {{localize "POKROLE.Trainer.InventoryItems"}}</small>
+              </header>
+              {{#if gearPocketBadge.length}}
+              <div class="trainer-pocket-items">
+                {{#each gearPocketBadge as |gear|}}
+                <article class="trainer-pocket-item" data-item-id="{{gear.id}}">
+                  <div class="trainer-pocket-item-main">
+                    <img src="{{gear.img}}" title="{{gear.name}}" />
+                    <div>
+                      <strong>{{gear.name}}</strong>
+                      <small>{{gear.stockLabel}}</small>
+                    </div>
+                  </div>
+                  <small class="trainer-pocket-effect">{{gear.effectsSummary}}</small>
+                  <div class="move-actions">
+                    <button type="button" class="icon-button" data-action="use-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Use'}}">
+                      <i class="fas fa-hand-sparkles"></i>
+                    </button>
+                    <button type="button" class="icon-button" data-action="edit-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Edit'}}">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                    <button type="button" class="icon-button danger" data-action="delete-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Delete'}}">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </article>
+                {{/each}}
               </div>
-              <small class="trainer-pocket-effect">{{gear.effectsSummary}}</small>
-              <div class="move-actions">
-                <button type="button" class="icon-button" data-action="use-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Use'}}">
-                  <i class="fas fa-hand-sparkles"></i>
-                </button>
-                <button type="button" class="icon-button" data-action="edit-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Edit'}}">
-                  <i class="fas fa-pen"></i>
-                </button>
-                <button type="button" class="icon-button danger" data-action="delete-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Delete'}}">
-                  <i class="fas fa-trash"></i>
-                </button>
+              {{else}}
+              <p class="empty-state">{{localize "POKROLE.Gear.Empty"}}</p>
+              {{/if}}
+            </section>
+
+            <section class="trainer-pocket-card pocket-held">
+              <header>
+                <h3>{{localize "POKROLE.Gear.Pocket.Held"}}</h3>
+                <small>{{gearPocketHeld.length}} {{localize "POKROLE.Trainer.InventoryItems"}}</small>
+              </header>
+              {{#if gearPocketHeld.length}}
+              <div class="trainer-pocket-items">
+                {{#each gearPocketHeld as |gear|}}
+                <article class="trainer-pocket-item" data-item-id="{{gear.id}}">
+                  <div class="trainer-pocket-item-main">
+                    <img src="{{gear.img}}" title="{{gear.name}}" />
+                    <div>
+                      <strong>{{gear.name}}</strong>
+                      <small>{{gear.stockLabel}}</small>
+                    </div>
+                  </div>
+                  <small class="trainer-pocket-effect">{{gear.effectsSummary}}</small>
+                  <div class="move-actions">
+                    <button type="button" class="icon-button" data-action="use-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Use'}}">
+                      <i class="fas fa-hand-sparkles"></i>
+                    </button>
+                    <button type="button" class="icon-button" data-action="edit-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Edit'}}">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                    <button type="button" class="icon-button danger" data-action="delete-gear" data-item-id="{{gear.id}}" title="{{localize 'POKROLE.Actions.Delete'}}">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </article>
+                {{/each}}
               </div>
-            </article>
-            {{/each}}
+              {{else}}
+              <p class="empty-state">{{localize "POKROLE.Gear.Empty"}}</p>
+              {{/if}}
+            </section>
           </div>
-          {{else}}
-          <p class="empty-state">{{localize "POKROLE.Gear.Empty"}}</p>
-          {{/if}}
         </section>
-      </div>
-    </section>
       </div>
 
       <div class="trainer-view-panel" data-tab="effects">

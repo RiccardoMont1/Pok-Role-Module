@@ -21,6 +21,7 @@
     },
     "Trainer": {
       "MainSheetTab": "Scheda Allenatore",
+      "InventoryTab": "Inventario",
       "BioTab": "Bio e Info",
       "InfoTitle": "Informazioni Personaggio",
       "Role": "Ruolo",

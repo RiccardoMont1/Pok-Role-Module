@@ -1,6 +1,8 @@
 import {
   ATTRIBUTE_DEFINITIONS,
   getSystemAssetPath,
+  MOVE_SECONDARY_DURATION_MODE_KEYS,
+  MOVE_SECONDARY_SPECIAL_DURATION_KEYS,
   POKROLE,
   SKILL_DEFINITIONS
 } from "./module/constants.mjs";
@@ -75,6 +77,148 @@ function resolveConditionKeyFromStatus(statusId) {
     }
   }
   return null;
+}
+
+function normalizeSpecialDurationList(value) {
+  const rawList = Array.isArray(value)
+    ? value
+    : typeof value === "string" && value.trim()
+      ? value.split(",")
+      : value && typeof value === "object"
+        ? Object.values(value)
+        : [];
+  const normalized = [];
+  for (const entry of rawList) {
+    const key = `${entry ?? ""}`.trim().toLowerCase();
+    if (!key || key === "none") continue;
+    if (!MOVE_SECONDARY_SPECIAL_DURATION_KEYS.includes(key)) continue;
+    if (!normalized.includes(key)) normalized.push(key);
+  }
+  return normalized;
+}
+
+function getDurationModeLabelPath(durationMode) {
+  const labelByMode = {
+    manual: "POKROLE.Move.Secondary.Duration.Mode.Manual",
+    rounds: "POKROLE.Move.Secondary.Duration.Mode.Rounds",
+    combat: "POKROLE.Move.Secondary.Duration.Mode.Combat"
+  };
+  return labelByMode[durationMode] ?? "POKROLE.Common.Unknown";
+}
+
+function getSpecialDurationLabelPath(durationKey) {
+  const labelByDuration = {
+    "turn-start": "POKROLE.Move.Secondary.Duration.Special.TurnStart",
+    "turn-end": "POKROLE.Move.Secondary.Duration.Special.TurnEnd",
+    "next-action": "POKROLE.Move.Secondary.Duration.Special.NextAction",
+    "next-attack": "POKROLE.Move.Secondary.Duration.Special.NextAttack",
+    "next-hit": "POKROLE.Move.Secondary.Duration.Special.NextHit",
+    "is-attacked": "POKROLE.Move.Secondary.Duration.Special.IsAttacked",
+    "is-damaged": "POKROLE.Move.Secondary.Duration.Special.IsDamaged",
+    "is-hit": "POKROLE.Move.Secondary.Duration.Special.IsHit"
+  };
+  return labelByDuration[durationKey] ?? "POKROLE.Common.Unknown";
+}
+
+function renderActiveEffectAutomationConfig(app, html) {
+  const effectDocument = app?.object ?? null;
+  const parentActor = effectDocument?.parent ?? null;
+  if (!parentActor || parentActor.documentName !== "Actor") return;
+  if (parentActor.type !== "trainer" && parentActor.type !== "pokemon") return;
+
+  const root = html?.[0] ?? html;
+  if (!root || typeof root.querySelector !== "function") return;
+  if (typeof html?.addClass === "function") {
+    html.addClass("pok-role-ae-config");
+  } else {
+    root.classList?.add?.("pok-role-ae-config");
+  }
+
+  const existingSection = root.querySelector(".pokrole-ae-automation");
+  if (existingSection) existingSection.remove();
+
+  const detailsTab =
+    root.querySelector(".tab[data-tab='details']") ??
+    root.querySelector(".tab[data-tab='duration']") ??
+    root.querySelector("form");
+  if (!detailsTab) return;
+
+  const automationFlags = effectDocument.getFlag(POKROLE.ID, "automation") ?? {};
+  const rawDurationMode = `${automationFlags?.durationMode ?? "manual"}`
+    .trim()
+    .toLowerCase();
+  const durationMode = MOVE_SECONDARY_DURATION_MODE_KEYS.includes(rawDurationMode)
+    ? rawDurationMode
+    : "manual";
+  const rawRounds = Number(automationFlags?.durationRounds);
+  const durationRounds = Number.isFinite(rawRounds) ? Math.min(Math.max(Math.floor(rawRounds), 1), 99) : 1;
+  const specialDuration = normalizeSpecialDurationList(automationFlags?.specialDuration);
+  const selectedSpecialDuration = new Set(specialDuration);
+
+  const modeOptionsHtml = MOVE_SECONDARY_DURATION_MODE_KEYS.map((modeKey) => {
+    const selected = modeKey === durationMode ? " selected" : "";
+    const label = game.i18n.localize(getDurationModeLabelPath(modeKey));
+    return `<option value="${modeKey}"${selected}>${label}</option>`;
+  }).join("");
+
+  const specialOptionsHtml = MOVE_SECONDARY_SPECIAL_DURATION_KEYS
+    .filter((durationKey) => durationKey !== "none")
+    .map((durationKey) => {
+      const selected = selectedSpecialDuration.has(durationKey) ? " selected" : "";
+      const label = game.i18n.localize(getSpecialDurationLabelPath(durationKey));
+      return `<option value="${durationKey}"${selected}>${label}</option>`;
+    })
+    .join("");
+
+  const section = document.createElement("fieldset");
+  section.className = "pokrole-ae-automation";
+  section.innerHTML = `
+    <legend>${game.i18n.localize("POKROLE.Effects.Tab")}</legend>
+    <p class="hint">${game.i18n.localize("POKROLE.Move.Secondary.Duration.Special.Label")}</p>
+    <div class="form-group">
+      <label>${game.i18n.localize("POKROLE.Move.Secondary.Duration.Mode.Label")}</label>
+      <div class="form-fields">
+        <select name="flags.${POKROLE.ID}.automation.durationMode">
+          ${modeOptionsHtml}
+        </select>
+      </div>
+    </div>
+    <div class="form-group pokrole-ae-rounds-row">
+      <label>${game.i18n.localize("POKROLE.Move.Secondary.Duration.Rounds")}</label>
+      <div class="form-fields">
+        <input
+          type="number"
+          name="flags.${POKROLE.ID}.automation.durationRounds"
+          value="${durationRounds}"
+          min="1"
+          max="99"
+          data-dtype="Number"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>${game.i18n.localize("POKROLE.Move.Secondary.Duration.Special.Label")}</label>
+      <div class="form-fields">
+        <select
+          name="flags.${POKROLE.ID}.automation.specialDuration"
+          multiple
+          size="6"
+        >
+          ${specialOptionsHtml}
+        </select>
+      </div>
+    </div>
+  `;
+
+  detailsTab.appendChild(section);
+  const durationModeSelect = section.querySelector(`select[name="flags.${POKROLE.ID}.automation.durationMode"]`);
+  const roundsRow = section.querySelector(".pokrole-ae-rounds-row");
+  const refreshRoundVisibility = () => {
+    const mode = `${durationModeSelect?.value ?? "manual"}`.trim().toLowerCase();
+    if (roundsRow) roundsRow.classList.toggle("is-hidden", mode !== "rounds");
+  };
+  durationModeSelect?.addEventListener("change", refreshRoundVisibility);
+  refreshRoundVisibility();
 }
 
 Hooks.once("init", () => {
@@ -291,4 +435,8 @@ Hooks.on("deleteActiveEffect", (effectDocument) => {
   if (typeof actor.synchronizeConditionFlags === "function") {
     void actor.synchronizeConditionFlags();
   }
+});
+
+Hooks.on("renderActiveEffectConfig", (app, html) => {
+  renderActiveEffectAutomationConfig(app, html);
 });
