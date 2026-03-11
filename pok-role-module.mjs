@@ -267,6 +267,21 @@ Hooks.on("createActiveEffect", (effectDocument) => {
   }
 });
 
+Hooks.on("updateActiveEffect", (effectDocument, changedData) => {
+  const actor = effectDocument?.parent ?? null;
+  if (!actor || actor.documentName !== "Actor") return;
+
+  const hasConditionStatuses = [...(effectDocument?.statuses ?? [])].some((statusId) =>
+    `${statusId ?? ""}`.trim().toLowerCase().startsWith("pokrole-condition-")
+  );
+  const updatesDisabled = Object.prototype.hasOwnProperty.call(changedData ?? {}, "disabled");
+  const updatesStatuses = Object.prototype.hasOwnProperty.call(changedData ?? {}, "statuses");
+  if (!hasConditionStatuses && !updatesStatuses && !updatesDisabled) return;
+  if (typeof actor.synchronizeConditionFlags === "function") {
+    void actor.synchronizeConditionFlags();
+  }
+});
+
 Hooks.on("deleteActiveEffect", (effectDocument) => {
   const actor = effectDocument?.parent ?? null;
   if (!actor || actor.documentName !== "Actor") return;

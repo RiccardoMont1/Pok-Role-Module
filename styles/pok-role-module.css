@@ -1363,6 +1363,24 @@
   font-size: 0.75rem;
 }
 
+.pok-role-sheet .effects-group-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px;
+}
+
+.pok-role-sheet .effects-group {
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.pok-role-sheet .effects-group h3 {
+  margin: 0 0 6px;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
 .trainer-sheet .actor-effect-list {
   display: grid;
   gap: 8px;
@@ -1421,6 +1439,15 @@
   color: #f5f7fb;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.pokemon-sheet .effects-group {
+  border: 3px solid var(--pk-outline);
+  background: #cf472e;
+}
+
+.pokemon-sheet .effects-group h3 {
+  color: #ffffff;
 }
 
 .pokemon-sheet .actor-effect-list {
@@ -1527,6 +1554,15 @@
 
 .trainer-sheet .temporary-effect-main small {
   color: #4b5365;
+}
+
+.trainer-sheet .effects-group {
+  border: 1px solid #8d96aa;
+  background: #e8edf7;
+}
+
+.trainer-sheet .effects-group h3 {
+  color: #2f3646;
 }
 
 .trainer-sheet .trainer-bio-panel h2 {

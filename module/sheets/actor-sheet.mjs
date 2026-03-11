@@ -373,6 +373,15 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.gearBattleItems = gearItems.filter((gear) => gear.usableInBattle);
     context.gearFieldItems = gearItems.filter((gear) => !gear.usableInBattle);
     context.embeddedEffects = this._buildEmbeddedEffects();
+    context.embeddedTemporaryEffects = context.embeddedEffects.filter(
+      (effect) => effect.group === "temporary"
+    );
+    context.embeddedPassiveEffects = context.embeddedEffects.filter(
+      (effect) => effect.group === "passive"
+    );
+    context.embeddedDisabledEffects = context.embeddedEffects.filter(
+      (effect) => effect.group === "disabled"
+    );
     return context;
   }
 
@@ -427,6 +436,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     );
     html.find("[data-action='edit-embedded-effect']").on("click", (event) =>
       this._onEditEmbeddedEffect(event)
+    );
+    html.find("[data-action='toggle-embedded-effect-disabled']").on("click", (event) =>
+      this._onToggleEmbeddedEffectDisabled(event)
     );
     html.find("[data-action='delete-embedded-effect']").on("click", (event) =>
       this._onDeleteEmbeddedEffect(event)
@@ -833,6 +845,23 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     effect?.sheet?.render(true);
   }
 
+  async _onToggleEmbeddedEffectDisabled(event) {
+    event.preventDefault();
+    if (!this.isEditable) return;
+
+    const effectId = `${event.currentTarget.dataset.effectId ?? ""}`.trim();
+    if (!effectId) return;
+    const effect = this.actor.effects.get(effectId);
+    if (!effect) return;
+
+    const nextDisabled = !Boolean(effect.disabled);
+    await effect.update({ disabled: nextDisabled });
+    if (typeof this.actor.synchronizeConditionFlags === "function") {
+      await this.actor.synchronizeConditionFlags();
+    }
+    this.render(false);
+  }
+
   async _onDeleteEmbeddedEffect(event) {
     event.preventDefault();
     if (!this.isEditable) return;
@@ -862,28 +891,143 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       .slice()
       .sort((left, right) => `${left.name ?? ""}`.localeCompare(`${right.name ?? ""}`))
       .map((effect) => {
+        const durationInfo = this._resolveEmbeddedEffectDurationInfo(effect);
         const statusList = [...(effect.statuses ?? [])];
         const statusLabel =
           statusList.length > 0
             ? statusList.join(", ")
             : game.i18n.localize("POKROLE.Common.None");
-        const durationRounds = Number(effect.duration?.remaining ?? Number.NaN);
-        const durationLabel = Number.isFinite(durationRounds)
-          ? game.i18n.format("POKROLE.TemporaryEffects.DurationRoundsWithValue", {
-            rounds: Math.max(Math.floor(durationRounds), 0)
-          })
-          : game.i18n.localize("POKROLE.TemporaryEffects.DurationManual");
+        const disabled = Boolean(effect.disabled);
+        const group = disabled
+          ? "disabled"
+          : durationInfo.isTemporary
+            ? "temporary"
+            : "passive";
 
         return {
           id: effect.id,
           name: effect.name || game.i18n.localize("POKROLE.Common.Unknown"),
           icon: effect.img || "icons/svg/aura.svg",
-          disabled: Boolean(effect.disabled),
+          disabled,
+          group,
           origin: `${effect.origin ?? ""}`.trim() || game.i18n.localize("POKROLE.Common.None"),
           statuses: statusLabel,
-          durationLabel
+          durationLabel: durationInfo.label
         };
       });
+  }
+
+  _resolveEmbeddedEffectDurationInfo(effect) {
+    const automationFlags = effect?.getFlag(POKROLE.ID, "automation") ?? {};
+    const durationMode = `${automationFlags?.durationMode ?? ""}`.trim().toLowerCase();
+    const specialDurationList = this._normalizeSpecialDurationList(automationFlags?.specialDuration);
+    if (durationMode === "combat") {
+      const label = game.i18n.localize("POKROLE.TemporaryEffects.DurationCombat");
+      return {
+        isTemporary: true,
+        label: this._appendSpecialDurationLabel(label, specialDurationList)
+      };
+    }
+    if (durationMode === "rounds") {
+      const rounds = Math.max(
+        Math.floor(
+          Number(effect?.duration?.remaining ?? automationFlags?.durationRounds ?? 1) || 1
+        ),
+        0
+      );
+      const label = game.i18n.format("POKROLE.TemporaryEffects.DurationRoundsWithValue", {
+        rounds
+      });
+      return {
+        isTemporary: true,
+        label: this._appendSpecialDurationLabel(label, specialDurationList)
+      };
+    }
+    if (durationMode === "manual") {
+      const label = game.i18n.localize("POKROLE.TemporaryEffects.DurationManual");
+      const hasSpecialDuration = specialDurationList.length > 0;
+      return {
+        isTemporary: hasSpecialDuration,
+        label: this._appendSpecialDurationLabel(label, specialDurationList)
+      };
+    }
+
+    const nativeDuration = effect?.duration ?? {};
+    const nativeLabel = `${nativeDuration.label ?? ""}`.trim();
+    const remaining = Number(nativeDuration.remaining ?? Number.NaN);
+    const rounds = Number(nativeDuration.rounds ?? Number.NaN);
+    const turns = Number(nativeDuration.turns ?? Number.NaN);
+    const seconds = Number(nativeDuration.seconds ?? Number.NaN);
+    const hasFiniteDuration =
+      Number.isFinite(remaining) ||
+      (Number.isFinite(rounds) && rounds > 0) ||
+      (Number.isFinite(turns) && turns > 0) ||
+      (Number.isFinite(seconds) && seconds > 0);
+
+    if (hasFiniteDuration) {
+      if (nativeLabel) {
+        return { isTemporary: true, label: nativeLabel };
+      }
+      if (Number.isFinite(remaining)) {
+        return {
+          isTemporary: true,
+          label: game.i18n.format("POKROLE.TemporaryEffects.DurationRoundsWithValue", {
+            rounds: Math.max(Math.floor(remaining), 0)
+          })
+        };
+      }
+      if (Number.isFinite(rounds) && rounds > 0) {
+        return {
+          isTemporary: true,
+          label: game.i18n.format("POKROLE.TemporaryEffects.DurationRoundsWithValue", {
+            rounds: Math.max(Math.floor(rounds), 0)
+          })
+        };
+      }
+      if (Number.isFinite(turns) && turns > 0) {
+        return {
+          isTemporary: true,
+          label: game.i18n.format("POKROLE.Effects.DurationTurnsWithValue", {
+            turns: Math.max(Math.floor(turns), 0)
+          })
+        };
+      }
+      if (Number.isFinite(seconds) && seconds > 0) {
+        return {
+          isTemporary: true,
+          label: game.i18n.format("POKROLE.Effects.DurationSecondsWithValue", {
+            seconds: Math.max(Math.floor(seconds), 0)
+          })
+        };
+      }
+    }
+
+    return {
+      isTemporary: false,
+      label: game.i18n.localize("POKROLE.TemporaryEffects.DurationManual")
+    };
+  }
+
+  _appendSpecialDurationLabel(baseLabel, specialDurationList = []) {
+    if (!Array.isArray(specialDurationList) || specialDurationList.length === 0) {
+      return baseLabel;
+    }
+    const specialDurationLabelByKey = {
+      "turn-start": "POKROLE.Move.Secondary.Duration.Special.TurnStart",
+      "turn-end": "POKROLE.Move.Secondary.Duration.Special.TurnEnd",
+      "next-action": "POKROLE.Move.Secondary.Duration.Special.NextAction",
+      "next-attack": "POKROLE.Move.Secondary.Duration.Special.NextAttack",
+      "next-hit": "POKROLE.Move.Secondary.Duration.Special.NextHit",
+      "is-attacked": "POKROLE.Move.Secondary.Duration.Special.IsAttacked",
+      "is-damaged": "POKROLE.Move.Secondary.Duration.Special.IsDamaged",
+      "is-hit": "POKROLE.Move.Secondary.Duration.Special.IsHit"
+    };
+    const label = specialDurationList
+      .map((durationKey) =>
+        game.i18n.localize(specialDurationLabelByKey[durationKey] ?? "POKROLE.Common.Unknown")
+      )
+      .join(", ");
+    return `${baseLabel} + ${label}`;
   }
 
   _prepareMoveData(move) {
@@ -1395,69 +1539,6 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   _buildTemporaryEffects() {
-    const temporaryFromActiveEffects = (this.actor.effects?.contents ?? [])
-      .filter((effectDocument) => Boolean(effectDocument.getFlag(POKROLE.ID, "automation")?.managed))
-      .map((effectDocument) => {
-        const automationFlags = effectDocument.getFlag(POKROLE.ID, "automation") ?? {};
-        const sourceMoveName = `${automationFlags?.sourceMoveName ?? ""}`.trim();
-        const sourceActorName = `${automationFlags?.sourceActorName ?? ""}`.trim();
-        let sourceLabel = game.i18n.localize("POKROLE.TemporaryEffects.SourceUnknown");
-        if (sourceMoveName && sourceActorName) {
-          sourceLabel = game.i18n.format("POKROLE.TemporaryEffects.SourceMoveActor", {
-            move: sourceMoveName,
-            actor: sourceActorName
-          });
-        } else if (sourceMoveName) {
-          sourceLabel = game.i18n.format("POKROLE.TemporaryEffects.SourceMove", {
-            move: sourceMoveName
-          });
-        }
-
-        const durationMode = `${automationFlags?.durationMode ?? "manual"}`.trim().toLowerCase();
-        let durationLabel = game.i18n.localize("POKROLE.TemporaryEffects.DurationManual");
-        if (durationMode === "combat") {
-          durationLabel = game.i18n.localize("POKROLE.TemporaryEffects.DurationCombat");
-        } else if (durationMode === "rounds") {
-          const rounds = Math.max(
-            Math.floor(Number(effectDocument.duration?.remaining ?? automationFlags?.durationRounds ?? 1) || 1),
-            0
-          );
-          durationLabel = game.i18n.format("POKROLE.TemporaryEffects.DurationRoundsWithValue", {
-            rounds
-          });
-        }
-
-        const specialDurationList = this._normalizeSpecialDurationList(
-          automationFlags?.specialDuration
-        );
-        if (specialDurationList.length > 0) {
-          const specialLabelByKey = {
-            "turn-start": "POKROLE.Move.Secondary.Duration.Special.TurnStart",
-            "turn-end": "POKROLE.Move.Secondary.Duration.Special.TurnEnd",
-            "next-action": "POKROLE.Move.Secondary.Duration.Special.NextAction",
-            "next-attack": "POKROLE.Move.Secondary.Duration.Special.NextAttack",
-            "next-hit": "POKROLE.Move.Secondary.Duration.Special.NextHit",
-            "is-attacked": "POKROLE.Move.Secondary.Duration.Special.IsAttacked",
-            "is-damaged": "POKROLE.Move.Secondary.Duration.Special.IsDamaged",
-            "is-hit": "POKROLE.Move.Secondary.Duration.Special.IsHit"
-          };
-          const specialLabel = specialDurationList
-            .map((durationKey) =>
-              game.i18n.localize(specialLabelByKey[durationKey] ?? "POKROLE.Common.Unknown")
-            )
-            .join(", ");
-          durationLabel = `${durationLabel} + ${specialLabel}`;
-        }
-
-        return {
-          id: `${effectDocument.id ?? ""}`.trim(),
-          label: `${effectDocument.name ?? ""}`.trim() || game.i18n.localize("POKROLE.TemporaryEffects.Title"),
-          sourceLabel,
-          durationLabel,
-          createdAt: Number(automationFlags?.createdAt ?? effectDocument._stats?.createdTime ?? 0)
-        };
-      });
-
     const rawEntries = this.actor.getFlag(POKROLE.ID, "automation.temporaryEffects");
     const legacyEntries = Array.isArray(rawEntries)
       ? rawEntries
@@ -1501,7 +1582,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           })
       : [];
 
-    return [...temporaryFromActiveEffects, ...legacyEntries]
+    return legacyEntries
       .filter((entry) => entry.id)
       .sort((left, right) => Number(right.createdAt ?? 0) - Number(left.createdAt ?? 0));
   }

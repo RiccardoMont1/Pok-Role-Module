@@ -563,71 +563,172 @@
       </div>
     </div>
     <p class="inline-meta">{{localize "POKROLE.Effects.NativeHint"}}</p>
-  </section>
+    <div class="effects-group-grid">
+      <section class="effects-group">
+        <h3>{{localize "POKROLE.Effects.TemporaryTitle"}}</h3>
+        <div class="temporary-effects-list">
+          {{#if embeddedTemporaryEffects.length}}
+          {{#each embeddedTemporaryEffects as |effect|}}
+          <article class="temporary-effect-row">
+            <div class="temporary-effect-main">
+              <strong>{{effect.name}}</strong>
+              <small>{{effect.durationLabel}} | {{effect.statuses}}</small>
+              <small>{{effect.origin}}</small>
+            </div>
+            <div class="move-actions">
+              <button
+                type="button"
+                class="icon-button"
+                data-action="edit-embedded-effect"
+                data-effect-id="{{effect.id}}"
+                title="{{localize 'POKROLE.Actions.Edit'}}"
+              >
+                <i class="fas fa-pen"></i>
+              </button>
+              <button
+                type="button"
+                class="icon-button"
+                data-action="toggle-embedded-effect-disabled"
+                data-effect-id="{{effect.id}}"
+                title="{{localize 'POKROLE.Effects.Disable'}}"
+              >
+                <i class="fas fa-toggle-off"></i>
+              </button>
+              <button
+                type="button"
+                class="icon-button danger"
+                data-action="delete-embedded-effect"
+                data-effect-id="{{effect.id}}"
+                title="{{localize 'POKROLE.Actions.Delete'}}"
+              >
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </article>
+          {{/each}}
+          {{/if}}
+          {{#if temporaryEffects.length}}
+          {{#each temporaryEffects as |effect|}}
+          <article class="temporary-effect-row">
+            <div class="temporary-effect-main">
+              <strong>{{effect.label}}</strong>
+              <small>{{effect.sourceLabel}} | {{effect.durationLabel}}</small>
+            </div>
+            <button
+              type="button"
+              class="icon-button danger temporary-effect-remove"
+              data-action="remove-temporary-effect"
+              data-effect-id="{{effect.id}}"
+              title="{{localize 'POKROLE.TemporaryEffects.Remove'}}"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
+          </article>
+          {{/each}}
+          {{/if}}
+          {{#unless embeddedTemporaryEffects.length}}
+          {{#unless temporaryEffects.length}}
+          <p class="empty-state">{{localize "POKROLE.Effects.TemporaryEmpty"}}</p>
+          {{/unless}}
+          {{/unless}}
+        </div>
+      </section>
 
-  <section class="sheet-section actor-effects-panel">
-    <h2>{{localize "POKROLE.Effects.ExternalTitle"}}</h2>
-    <div class="temporary-effects-list">
-      {{#if embeddedEffects.length}}
-      {{#each embeddedEffects as |effect|}}
-      <article class="temporary-effect-row">
-        <div class="temporary-effect-main">
-          <strong>{{effect.name}}</strong>
-          <small>{{effect.durationLabel}} | {{effect.statuses}}</small>
-          <small>{{effect.origin}}</small>
+      <section class="effects-group">
+        <h3>{{localize "POKROLE.Effects.PassiveTitle"}}</h3>
+        <div class="temporary-effects-list">
+          {{#if embeddedPassiveEffects.length}}
+          {{#each embeddedPassiveEffects as |effect|}}
+          <article class="temporary-effect-row">
+            <div class="temporary-effect-main">
+              <strong>{{effect.name}}</strong>
+              <small>{{effect.durationLabel}} | {{effect.statuses}}</small>
+              <small>{{effect.origin}}</small>
+            </div>
+            <div class="move-actions">
+              <button
+                type="button"
+                class="icon-button"
+                data-action="edit-embedded-effect"
+                data-effect-id="{{effect.id}}"
+                title="{{localize 'POKROLE.Actions.Edit'}}"
+              >
+                <i class="fas fa-pen"></i>
+              </button>
+              <button
+                type="button"
+                class="icon-button"
+                data-action="toggle-embedded-effect-disabled"
+                data-effect-id="{{effect.id}}"
+                title="{{localize 'POKROLE.Effects.Disable'}}"
+              >
+                <i class="fas fa-toggle-off"></i>
+              </button>
+              <button
+                type="button"
+                class="icon-button danger"
+                data-action="delete-embedded-effect"
+                data-effect-id="{{effect.id}}"
+                title="{{localize 'POKROLE.Actions.Delete'}}"
+              >
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </article>
+          {{/each}}
+          {{else}}
+          <p class="empty-state">{{localize "POKROLE.Effects.PassiveEmpty"}}</p>
+          {{/if}}
         </div>
-        <div class="move-actions">
-          <button
-            type="button"
-            class="icon-button"
-            data-action="edit-embedded-effect"
-            data-effect-id="{{effect.id}}"
-            title="{{localize 'POKROLE.Actions.Edit'}}"
-          >
-            <i class="fas fa-pen"></i>
-          </button>
-          <button
-            type="button"
-            class="icon-button danger"
-            data-action="delete-embedded-effect"
-            data-effect-id="{{effect.id}}"
-            title="{{localize 'POKROLE.Actions.Delete'}}"
-          >
-            <i class="fas fa-trash"></i>
-          </button>
-        </div>
-      </article>
-      {{/each}}
-      {{else}}
-      <p class="empty-state">{{localize "POKROLE.Effects.ExternalEmpty"}}</p>
-      {{/if}}
-    </div>
-  </section>
+      </section>
 
-  <section class="sheet-section trainer-conditions-panel">
-    <h2>{{localize "POKROLE.TemporaryEffects.Title"}}</h2>
-    <div class="temporary-effects-list">
-      {{#if temporaryEffects.length}}
-      {{#each temporaryEffects as |effect|}}
-      <article class="temporary-effect-row">
-        <div class="temporary-effect-main">
-          <strong>{{effect.label}}</strong>
-          <small>{{effect.sourceLabel}} | {{effect.durationLabel}}</small>
+      <section class="effects-group">
+        <h3>{{localize "POKROLE.Effects.DisabledTitle"}}</h3>
+        <div class="temporary-effects-list">
+          {{#if embeddedDisabledEffects.length}}
+          {{#each embeddedDisabledEffects as |effect|}}
+          <article class="temporary-effect-row">
+            <div class="temporary-effect-main">
+              <strong>{{effect.name}}</strong>
+              <small>{{effect.durationLabel}} | {{effect.statuses}}</small>
+              <small>{{effect.origin}}</small>
+            </div>
+            <div class="move-actions">
+              <button
+                type="button"
+                class="icon-button"
+                data-action="edit-embedded-effect"
+                data-effect-id="{{effect.id}}"
+                title="{{localize 'POKROLE.Actions.Edit'}}"
+              >
+                <i class="fas fa-pen"></i>
+              </button>
+              <button
+                type="button"
+                class="icon-button"
+                data-action="toggle-embedded-effect-disabled"
+                data-effect-id="{{effect.id}}"
+                title="{{localize 'POKROLE.Effects.Enable'}}"
+              >
+                <i class="fas fa-toggle-on"></i>
+              </button>
+              <button
+                type="button"
+                class="icon-button danger"
+                data-action="delete-embedded-effect"
+                data-effect-id="{{effect.id}}"
+                title="{{localize 'POKROLE.Actions.Delete'}}"
+              >
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </article>
+          {{/each}}
+          {{else}}
+          <p class="empty-state">{{localize "POKROLE.Effects.DisabledEmpty"}}</p>
+          {{/if}}
         </div>
-        <button
-          type="button"
-          class="icon-button danger temporary-effect-remove"
-          data-action="remove-temporary-effect"
-          data-effect-id="{{effect.id}}"
-          title="{{localize 'POKROLE.TemporaryEffects.Remove'}}"
-        >
-          <i class="fas fa-trash"></i>
-        </button>
-      </article>
-      {{/each}}
-      {{else}}
-      <p class="empty-state">{{localize "POKROLE.TemporaryEffects.None"}}</p>
-      {{/if}}
+      </section>
     </div>
   </section>
       </div>

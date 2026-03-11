@@ -113,9 +113,18 @@
       "Apply": "Apply Effect",
       "ApplySuccess": "Effect applied.",
       "ApplyFailed": "Effect could not be applied.",
-      "SaveSuccess": "Effects saved."
-      ,
-      "NativeHint": "Use Foundry Active Effects: click Add Effect, then edit with the standard Active Effect sheet."
+      "SaveSuccess": "Effects saved.",
+      "NativeHint": "Use Foundry Active Effects: click Add Effect, then edit with the standard Active Effect sheet.",
+      "TemporaryTitle": "Temporary Effects",
+      "PassiveTitle": "Passive Effects",
+      "DisabledTitle": "Disabled Effects",
+      "TemporaryEmpty": "No temporary effects.",
+      "PassiveEmpty": "No passive effects.",
+      "DisabledEmpty": "No disabled effects.",
+      "Disable": "Disable effect",
+      "Enable": "Enable effect",
+      "DurationTurnsWithValue": "{turns} turns left",
+      "DurationSecondsWithValue": "{seconds}s left"
     },
     "Pokemon": {
       "Species": "Species",
