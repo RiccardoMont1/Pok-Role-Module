@@ -731,6 +731,9 @@
   gap: 6px;
   margin: 0;
   padding: 0;
+  position: sticky;
+  top: 8px;
+  z-index: 12;
 }
 
 .trainer-sheet .trainer-view-button {
@@ -1367,7 +1370,7 @@
 
 .trainer-sheet .actor-effect-row {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 8px;
   align-items: end;
   border: 1px solid #8c96aa;
@@ -1378,6 +1381,7 @@
 
 .trainer-sheet .actor-effect-row .move-actions {
   align-self: center;
+  justify-self: end;
 }
 
 .trainer-sheet .actor-effect-row input,
@@ -1426,7 +1430,7 @@
 
 .pokemon-sheet .actor-effect-row {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 8px;
   align-items: end;
   border: 3px solid var(--pk-outline);
@@ -1437,6 +1441,7 @@
 
 .pokemon-sheet .actor-effect-row .move-actions {
   align-self: center;
+  justify-self: end;
 }
 
 .pokemon-sheet .actor-effect-row input,
@@ -1478,6 +1483,12 @@
   align-items: center;
   border-radius: 10px;
   padding: 6px 8px;
+}
+
+.pok-role-sheet .temporary-effect-row .move-actions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
 }
 
 .pok-role-sheet .temporary-effect-main {
@@ -1581,6 +1592,9 @@
   gap: 6px;
   margin: 0;
   padding: 0;
+  position: sticky;
+  top: 8px;
+  z-index: 12;
 }
 
 .pokemon-sheet .pokemon-view-button {
@@ -1795,28 +1809,37 @@
 }
 
 .pokemon-sheet .pokemon-conditions-strip {
-  margin-top: 8px;
-  border: 3px solid var(--pk-outline);
-  border-radius: 12px;
-  padding: 6px;
-  background: #2f342d;
+  border: 4px solid var(--pk-outline);
+  border-radius: 20px;
+  padding: 10px;
+  background: #d24a30;
 }
 
-.pokemon-sheet .pokemon-conditions-strip h3 {
-  margin: 0 0 6px;
-  color: #f4f6fb;
-  font-size: 0.82rem;
+.pokemon-sheet .pokemon-conditions-strip h2 {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
 }
 
 .pokemon-sheet .pokemon-conditions-strip .condition-chip-grid.compact {
-  grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+  gap: 8px;
 }
 
 .pokemon-sheet .pokemon-conditions-strip .condition-chip {
-  border-color: #5c5548;
-  background: #f1f4fb;
+  border: 2px solid #5b5448;
+  border-radius: 999px;
+  background: #f2f5fd;
+  min-height: 34px;
+}
+
+.pokemon-sheet .pokemon-conditions-strip .condition-chip.is-active {
+  background: #2f342d;
+  border-color: #847767;
+}
+
+.pokemon-sheet .pokemon-conditions-strip .condition-chip.is-active span {
+  color: #ffffff;
 }
 
 .pokemon-sheet .pokemon-matchups-card .matchup-group-list {

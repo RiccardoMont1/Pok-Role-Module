@@ -1,5 +1,6 @@
 import {
   ATTRIBUTE_DEFINITIONS,
+  getSystemAssetPath,
   POKROLE,
   SKILL_DEFINITIONS
 } from "./module/constants.mjs";
@@ -30,11 +31,55 @@ async function clearCombatScopedTemporaryEffects(combat) {
   }
 }
 
+const HUD_CONDITION_DEFINITIONS = Object.freeze([
+  { key: "sleep", label: "POKROLE.Conditions.Sleep", icon: getSystemAssetPath("assets/ailments/asleep.svg") },
+  { key: "burn", label: "POKROLE.Conditions.Burn", icon: getSystemAssetPath("assets/ailments/burn.svg") },
+  { key: "frozen", label: "POKROLE.Conditions.Frozen", icon: getSystemAssetPath("assets/ailments/frozen.svg") },
+  { key: "paralyzed", label: "POKROLE.Conditions.Paralyzed", icon: getSystemAssetPath("assets/ailments/paralyzed.svg") },
+  { key: "poisoned", label: "POKROLE.Conditions.Poisoned", icon: getSystemAssetPath("assets/ailments/poisoned.svg") },
+  { key: "fainted", label: "POKROLE.Conditions.Fainted", icon: getSystemAssetPath("assets/ailments/fainted.svg") },
+  { key: "confused", label: "POKROLE.Move.Secondary.Condition.Confused", icon: "icons/svg/daze.svg" },
+  { key: "flinch", label: "POKROLE.Move.Secondary.Condition.Flinch", icon: "icons/svg/falling.svg" },
+  { key: "disabled", label: "POKROLE.Move.Secondary.Condition.Disabled", icon: "icons/svg/cancel.svg" },
+  { key: "infatuated", label: "POKROLE.Move.Secondary.Condition.Infatuated", icon: "icons/svg/heart.svg" },
+  { key: "badly-poisoned", label: "POKROLE.Move.Secondary.Condition.BadlyPoisoned", icon: "icons/svg/skull.svg" }
+]);
+const HUD_CONDITION_KEY_BY_STATUS_ID = new Map(
+  HUD_CONDITION_DEFINITIONS.map((entry) => [`pokrole-condition-${entry.key}`, entry.key])
+);
+
+function buildHudConditionStatuses() {
+  return HUD_CONDITION_DEFINITIONS.map((entry) => ({
+    id: `pokrole-condition-${entry.key}`,
+    name: game.i18n?.localize?.(entry.label) ?? entry.label,
+    img: entry.icon
+  }));
+}
+
+function resolveConditionKeyFromStatus(statusId) {
+  if (!statusId) return null;
+  if (typeof statusId === "string") {
+    return HUD_CONDITION_KEY_BY_STATUS_ID.get(statusId) ?? null;
+  }
+  if (typeof statusId === "object") {
+    const candidates = [
+      statusId.id,
+      ...(Array.isArray(statusId.statuses) ? statusId.statuses : []),
+      ...((statusId.statuses instanceof Set) ? [...statusId.statuses] : [])
+    ];
+    for (const candidate of candidates) {
+      const resolved = HUD_CONDITION_KEY_BY_STATUS_ID.get(`${candidate ?? ""}`);
+      if (resolved) return resolved;
+    }
+  }
+  return null;
+}
+
 Hooks.once("init", () => {
   console.log(`${POKROLE.ID} | Initializing ${POKROLE.TITLE}`);
 
-  // Disable Foundry's default token status effects in favor of PokRole actor effects/conditions.
-  CONFIG.statusEffects = [];
+  // Replace Foundry's default token status effects with PokRole condition flags.
+  CONFIG.statusEffects = buildHudConditionStatuses();
   try {
     CONFIG.specialStatusEffects = {};
   } catch (_error) {
@@ -150,4 +195,35 @@ Hooks.on("updateCombat", async (combat, changed) => {
 
 Hooks.on("deleteCombat", async (combat) => {
   await clearCombatScopedTemporaryEffects(combat);
+});
+
+Hooks.on("applyTokenStatusEffect", (token, statusId, isActive) => {
+  const conditionKey = resolveConditionKeyFromStatus(statusId);
+  if (!conditionKey) return;
+
+  const actor = token?.actor ?? null;
+  if (!actor || typeof actor.toggleQuickCondition !== "function") return;
+  void actor.toggleQuickCondition(conditionKey, { active: Boolean(isActive) });
+});
+
+Hooks.on("createActiveEffect", (effectDocument) => {
+  const actor = effectDocument?.parent ?? null;
+  if (!actor || actor.documentName !== "Actor") return;
+
+  const conditionKey = resolveConditionKeyFromStatus(effectDocument);
+  if (!conditionKey) return;
+  if (typeof actor.toggleQuickCondition === "function") {
+    void actor.toggleQuickCondition(conditionKey, { active: true });
+  }
+});
+
+Hooks.on("deleteActiveEffect", (effectDocument) => {
+  const actor = effectDocument?.parent ?? null;
+  if (!actor || actor.documentName !== "Actor") return;
+
+  const conditionKey = resolveConditionKeyFromStatus(effectDocument);
+  if (!conditionKey) return;
+  if (typeof actor.toggleQuickCondition === "function") {
+    void actor.toggleQuickCondition(conditionKey, { active: false });
+  }
 });

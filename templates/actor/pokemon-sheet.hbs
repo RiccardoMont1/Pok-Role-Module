@@ -766,6 +766,16 @@
               {{selectOptions ../effectPassiveTriggerOptions selected=effect.passiveTrigger localize=true}}
             </select>
           </label>
+          <label data-effect-visible="passiveCondition" class="{{#unless effect.showPassiveConditionField}}is-hidden{{/unless}}">
+            <span>{{localize "POKROLE.Effects.PassiveTrigger.Condition"}}</span>
+            <select data-effect-field="passiveCondition">
+              {{selectOptions ../effectConditionOptions selected=effect.passiveCondition localize=true}}
+            </select>
+          </label>
+          <label data-effect-visible="passiveThreshold" class="{{#unless effect.showPassiveThresholdField}}is-hidden{{/unless}}">
+            <span>{{localize "POKROLE.Effects.PassiveTrigger.Threshold"}}</span>
+            <input type="number" value="{{effect.passiveThreshold}}" min="1" max="99" data-effect-field="passiveThreshold" />
+          </label>
           <div class="move-actions">
             <button type="button" class="icon-button" data-action="apply-actor-effect" data-effect-id="{{effect.id}}" title="{{localize 'POKROLE.Effects.Apply'}}">
               <i class="fas fa-bolt"></i>
@@ -780,6 +790,45 @@
       {{else}}
       <p class="empty-state">{{localize "POKROLE.Effects.Empty"}}</p>
       {{/if}}
+    </section>
+
+    <section class="sheet-section actor-effects-panel">
+      <h2>{{localize "POKROLE.Effects.ExternalTitle"}}</h2>
+      <div class="temporary-effects-list">
+        {{#if embeddedEffects.length}}
+        {{#each embeddedEffects as |effect|}}
+        <article class="temporary-effect-row">
+          <div class="temporary-effect-main">
+            <strong>{{effect.name}}</strong>
+            <small>{{effect.durationLabel}} | {{effect.statuses}}</small>
+            <small>{{effect.origin}}</small>
+          </div>
+          <div class="move-actions">
+            <button
+              type="button"
+              class="icon-button"
+              data-action="edit-embedded-effect"
+              data-effect-id="{{effect.id}}"
+              title="{{localize 'POKROLE.Actions.Edit'}}"
+            >
+              <i class="fas fa-pen"></i>
+            </button>
+            <button
+              type="button"
+              class="icon-button danger"
+              data-action="delete-embedded-effect"
+              data-effect-id="{{effect.id}}"
+              title="{{localize 'POKROLE.Actions.Delete'}}"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </article>
+        {{/each}}
+        {{else}}
+        <p class="empty-state">{{localize "POKROLE.Effects.ExternalEmpty"}}</p>
+        {{/if}}
+      </div>
     </section>
 
     <section class="sheet-section pokemon-temporary-effects-section">

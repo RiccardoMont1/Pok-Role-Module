@@ -94,6 +94,10 @@ const CONDITION_ALIASES = Object.freeze({
 
 const TEMPORARY_EFFECTS_FLAG = "automation.temporaryEffects";
 const CONFIGURED_EFFECTS_FLAG = "automation.configuredEffects";
+const CONDITION_FLAGS_FLAG = "automation.conditionFlags";
+const CONDITION_KEYS = Object.freeze(
+  MOVE_SECONDARY_CONDITION_KEYS.filter((conditionKey) => conditionKey !== "none")
+);
 const CONDITION_FIELD_BY_KEY = Object.freeze({
   sleep: "sleep",
   burn: "burn",
@@ -105,9 +109,17 @@ const CONDITION_FIELD_BY_KEY = Object.freeze({
 const PASSIVE_TRIGGER_KEYS = Object.freeze([
   "always",
   "in-combat",
+  "out-of-combat",
   "self-hp-half-or-less",
+  "self-hp-quarter-or-less",
+  "self-hp-below-threshold",
   "target-hp-half-or-less",
-  "self-has-condition"
+  "target-hp-quarter-or-less",
+  "target-hp-below-threshold",
+  "self-has-condition",
+  "self-missing-condition",
+  "target-has-condition",
+  "target-missing-condition"
 ]);
 
 export class PokRoleActor extends Actor {
@@ -1483,12 +1495,17 @@ export class PokRoleActor extends Actor {
     if (systemConditionField) {
       const alreadyActive = Boolean(targetActor.system.conditions?.[systemConditionField]);
       if (alreadyActive) {
+        await this._setConditionFlagState(targetActor, conditionKey, true);
+        if (!this._hasTrackedConditionEffect(targetActor, conditionKey)) {
+          await this._ensureConditionEffectFromFlag(targetActor, conditionKey);
+        }
         return {
           applied: false,
           detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectAlreadyActive")
         };
       }
       await targetActor.update({ [`system.conditions.${systemConditionField}`]: true });
+      await this._setConditionFlagState(targetActor, conditionKey, true);
       const trackedCondition = await this._trackTemporaryConditionEffect({
         targetActor,
         conditionKey,
@@ -1508,6 +1525,16 @@ export class PokRoleActor extends Actor {
     }
 
     await targetActor.setFlag(POKROLE.ID, `automation.conditions.${conditionKey}`, true);
+    await this._setConditionFlagState(targetActor, conditionKey, true);
+    await this._trackTemporaryConditionEffect({
+      targetActor,
+      conditionKey,
+      conditionPath: null,
+      label: this._formatSecondaryEffectLabel(effect),
+      sourceMove,
+      durationMode: this._normalizeSecondaryDurationMode(effect.durationMode, "condition"),
+      durationRounds: this._normalizeSecondaryDurationRounds(effect.durationRounds)
+    });
     return {
       applied: true,
       detail: `${this._localizeConditionName(conditionKey)} (${game.i18n.localize(
@@ -1587,6 +1614,10 @@ export class PokRoleActor extends Actor {
     return 5;
   }
 
+  getConditionFlags() {
+    return this._getConditionFlagEntries(this);
+  }
+
   getTemporaryEffects() {
     return this._getTemporaryEffectEntries(this);
   }
@@ -1654,54 +1685,21 @@ export class PokRoleActor extends Actor {
 
   async toggleQuickCondition(conditionKey, options = {}) {
     const normalizedCondition = this._normalizeConditionKey(conditionKey);
-    const systemConditionField = CONDITION_FIELD_BY_KEY[normalizedCondition];
-    if (!systemConditionField) {
+    if (normalizedCondition === "none") {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.Unknown") };
     }
 
-    const conditionPath = `system.conditions.${systemConditionField}`;
-    const currentState = Boolean(this.system.conditions?.[systemConditionField]);
+    const currentFlags = this._getConditionFlagEntries(this);
+    const currentState = Boolean(currentFlags[normalizedCondition]);
     const nextState = options.active === undefined ? !currentState : Boolean(options.active);
 
     if (nextState) {
-      if (currentState) {
-        return {
-          applied: false,
-          detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectAlreadyActive")
-        };
-      }
-      return this._applyConditionEffectToActor(
-        {
-          label: this._localizeConditionName(normalizedCondition),
-          trigger: "always",
-          chance: 100,
-          target: "self",
-          effectType: "condition",
-          durationMode: "manual",
-          durationRounds: 1,
-          condition: normalizedCondition,
-          stat: "none",
-          amount: 0,
-          notes: ""
-        },
-        this,
-        null
-      );
+      await this._setConditionFlagState(this, normalizedCondition, true);
+      return this._ensureConditionEffectFromFlag(this, normalizedCondition);
     }
 
-    await this.update({ [conditionPath]: false });
-    const currentTemporaryEffects = this._getTemporaryEffectEntries(this);
-    const remainingEffects = currentTemporaryEffects.filter((entry) => {
-      const changes = Array.isArray(entry?.changes) ? entry.changes : [];
-      return !changes.some((change) => {
-        const changePath = `${change?.path ?? ""}`.trim();
-        const trackedCondition = this._normalizeConditionKey(change?.conditionKey);
-        return changePath === conditionPath || trackedCondition === normalizedCondition;
-      });
-    });
-    if (remainingEffects.length !== currentTemporaryEffects.length) {
-      await this._setTemporaryEffectEntries(this, remainingEffects);
-    }
+    await this._setConditionFlagState(this, normalizedCondition, false);
+    await this._removeTrackedConditionEffects(this, normalizedCondition, { revert: false });
     return {
       applied: true,
       detail: game.i18n.format("POKROLE.Chat.ConditionCleared", {
@@ -1726,7 +1724,203 @@ export class PokRoleActor extends Actor {
       await this._revertTemporaryEffectEntry(entryToRemove);
     }
     await this._setTemporaryEffectEntries(this, currentEntries);
+    await this._synchronizeConditionFlagsFromTemporaryEffects(this);
     return true;
+  }
+
+  _getConditionFlagEntries(targetActor) {
+    const rawFlags = targetActor?.getFlag(POKROLE.ID, CONDITION_FLAGS_FLAG);
+    const normalizedFlags = {};
+
+    for (const conditionKey of CONDITION_KEYS) {
+      let isActive = false;
+
+      if (rawFlags && typeof rawFlags === "object" && Object.prototype.hasOwnProperty.call(rawFlags, conditionKey)) {
+        isActive = Boolean(rawFlags[conditionKey]);
+      } else {
+        const systemField = CONDITION_FIELD_BY_KEY[conditionKey];
+        if (systemField) {
+          isActive = Boolean(targetActor?.system?.conditions?.[systemField]);
+        } else {
+          isActive = Boolean(targetActor?.getFlag(POKROLE.ID, `automation.conditions.${conditionKey}`));
+        }
+      }
+
+      normalizedFlags[conditionKey] = isActive;
+    }
+
+    return normalizedFlags;
+  }
+
+  async _setConditionFlagState(targetActor, conditionKey, isActive) {
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    if (normalizedCondition === "none") return;
+
+    const nextFlags = this._getConditionFlagEntries(targetActor);
+    nextFlags[normalizedCondition] = Boolean(isActive);
+    await targetActor.setFlag(POKROLE.ID, CONDITION_FLAGS_FLAG, nextFlags);
+
+    const systemField = CONDITION_FIELD_BY_KEY[normalizedCondition];
+    if (systemField) {
+      await targetActor.update({ [`system.conditions.${systemField}`]: Boolean(isActive) });
+    } else {
+      await targetActor.setFlag(
+        POKROLE.ID,
+        `automation.conditions.${normalizedCondition}`,
+        Boolean(isActive)
+      );
+    }
+  }
+
+  _hasTrackedConditionEffect(targetActor, conditionKey) {
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    if (normalizedCondition === "none") return false;
+    return this._getTemporaryEffectEntries(targetActor).some((entry) => {
+      const changes = Array.isArray(entry?.changes) ? entry.changes : [];
+      return changes.some((change) => this._normalizeConditionKey(change?.conditionKey) === normalizedCondition);
+    });
+  }
+
+  _buildConditionFlagEffectConfig(conditionKey) {
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    const conditionNotes = {
+      sleep: "Sleep: cannot act until awakened according to the CoreBook.",
+      burn: "Burn: apply burn penalties/effects according to the CoreBook.",
+      frozen: "Frozen: follow thaw and action restrictions from the CoreBook.",
+      paralyzed: "Paralyzed: apply action/speed penalties according to the CoreBook.",
+      poisoned: "Poisoned: apply poison progression according to the CoreBook.",
+      fainted: "Fainted: actor is unable to act until recovered.",
+      confused: "Confused: apply confusion behavior from the CoreBook.",
+      flinch: "Flinch: actor may lose action per CoreBook timing.",
+      disabled: "Disabled: selected move/action cannot be used as per CoreBook.",
+      infatuated: "Infatuated: apply infatuation checks per CoreBook.",
+      "badly-poisoned": "Badly Poisoned: escalating poison effects per CoreBook."
+    };
+
+    return {
+      label: this._localizeConditionName(normalizedCondition),
+      trigger: "always",
+      chance: 100,
+      target: "self",
+      effectType: "condition",
+      durationMode: "manual",
+      durationRounds: 1,
+      condition: normalizedCondition,
+      stat: "none",
+      amount: 0,
+      notes: conditionNotes[normalizedCondition] ?? ""
+    };
+  }
+
+  async _ensureConditionEffectFromFlag(targetActor, conditionKey) {
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    if (normalizedCondition === "none") {
+      return { applied: false, detail: game.i18n.localize("POKROLE.Common.Unknown") };
+    }
+
+    const systemField = CONDITION_FIELD_BY_KEY[normalizedCondition];
+    if (systemField && !targetActor.system?.conditions?.[systemField]) {
+      await targetActor.update({ [`system.conditions.${systemField}`]: true });
+    }
+
+    if (!systemField) {
+      await targetActor.setFlag(POKROLE.ID, `automation.conditions.${normalizedCondition}`, true);
+    }
+
+    if (!this._hasTrackedConditionEffect(targetActor, normalizedCondition)) {
+      const effectConfig = this._buildConditionFlagEffectConfig(normalizedCondition);
+      await this._trackTemporaryConditionEffect({
+        targetActor,
+        conditionKey: normalizedCondition,
+        conditionPath: systemField ? `system.conditions.${systemField}` : null,
+        label: this._formatSecondaryEffectLabel(effectConfig),
+        sourceMove: null,
+        durationMode: "manual",
+        durationRounds: 1
+      });
+    }
+
+    return {
+      applied: true,
+      detail: this._localizeConditionName(normalizedCondition)
+    };
+  }
+
+  async _removeTrackedConditionEffects(targetActor, conditionKey, options = {}) {
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    if (normalizedCondition === "none") return 0;
+
+    const shouldRevert = options.revert !== false;
+    const currentEntries = this._getTemporaryEffectEntries(targetActor);
+    const remainingEntries = [];
+    let removedCount = 0;
+
+    for (const entry of currentEntries) {
+      const changes = Array.isArray(entry?.changes) ? entry.changes : [];
+      const isConditionMatch = changes.some(
+        (change) => this._normalizeConditionKey(change?.conditionKey) === normalizedCondition
+      );
+      if (!isConditionMatch) {
+        remainingEntries.push(entry);
+        continue;
+      }
+
+      if (shouldRevert) {
+        await this._revertTemporaryEffectEntry(entry);
+      }
+      removedCount += 1;
+    }
+
+    if (removedCount > 0 || remainingEntries.length !== currentEntries.length) {
+      await this._setTemporaryEffectEntries(targetActor, remainingEntries);
+    }
+
+    return removedCount;
+  }
+
+  async _synchronizeConditionFlagsFromTemporaryEffects(targetActor) {
+    const activeConditionKeys = new Set();
+    const entries = this._getTemporaryEffectEntries(targetActor);
+    for (const entry of entries) {
+      const changes = Array.isArray(entry?.changes) ? entry.changes : [];
+      for (const change of changes) {
+        const normalizedCondition = this._normalizeConditionKey(change?.conditionKey);
+        if (normalizedCondition !== "none") {
+          activeConditionKeys.add(normalizedCondition);
+        }
+      }
+    }
+
+    const nextFlags = this._getConditionFlagEntries(targetActor);
+    let hasChanges = false;
+    for (const conditionKey of CONDITION_KEYS) {
+      const shouldBeActive = activeConditionKeys.has(conditionKey);
+      if (nextFlags[conditionKey] !== shouldBeActive) {
+        nextFlags[conditionKey] = shouldBeActive;
+        hasChanges = true;
+      }
+
+      const systemField = CONDITION_FIELD_BY_KEY[conditionKey];
+      if (systemField && Boolean(targetActor.system?.conditions?.[systemField]) !== shouldBeActive) {
+        await targetActor.update({ [`system.conditions.${systemField}`]: shouldBeActive });
+      }
+      if (!systemField) {
+        const currentState = Boolean(
+          targetActor.getFlag(POKROLE.ID, `automation.conditions.${conditionKey}`)
+        );
+        if (currentState !== shouldBeActive) {
+          await targetActor.setFlag(
+            POKROLE.ID,
+            `automation.conditions.${conditionKey}`,
+            shouldBeActive
+          );
+        }
+      }
+    }
+
+    if (hasChanges) {
+      await targetActor.setFlag(POKROLE.ID, CONDITION_FLAGS_FLAG, nextFlags);
+    }
   }
 
   _normalizeConfiguredEffect(effect) {
@@ -1736,12 +1930,16 @@ export class PokRoleActor extends Actor {
     const passiveTrigger = PASSIVE_TRIGGER_KEYS.includes(`${effect?.passiveTrigger ?? ""}`)
       ? `${effect.passiveTrigger}`
       : "always";
+    const passiveCondition = this._normalizeConditionKey(effect?.passiveCondition);
+    const passiveThreshold = clamp(Math.floor(toNumber(effect?.passiveThreshold, 50)), 1, 99);
 
     return {
       ...normalizedBase,
       id: normalizedId,
       passive,
-      passiveTrigger
+      passiveTrigger,
+      passiveCondition,
+      passiveThreshold
     };
   }
 
@@ -1770,23 +1968,57 @@ export class PokRoleActor extends Actor {
     const triggerKey = PASSIVE_TRIGGER_KEYS.includes(`${effect.passiveTrigger ?? ""}`)
       ? `${effect.passiveTrigger}`
       : "always";
-    if (triggerKey === "always") return true;
-    if (triggerKey === "in-combat") return Boolean(game.combat);
-    if (triggerKey === "self-has-condition") {
-      const conditions = this.system?.conditions ?? {};
-      return Object.values(conditions).some((value) => Boolean(value));
+    const normalizedCondition = this._normalizeConditionKey(effect?.passiveCondition);
+    const hpThresholdPercent = clamp(Math.floor(toNumber(effect?.passiveThreshold, 50)), 1, 99);
+    const resolveHpPercent = (actor) => {
+      const currentHp = Math.max(toNumber(actor?.system?.resources?.hp?.value, 0), 0);
+      const maxHp = Math.max(toNumber(actor?.system?.resources?.hp?.max, 1), 1);
+      return Math.floor((currentHp / maxHp) * 100);
+    };
+    const hasCondition = (actor, conditionKey) => {
+      if (conditionKey === "none") return false;
+      const conditionFlags =
+        typeof actor?.getConditionFlags === "function" ? actor.getConditionFlags() : {};
+      if (Object.prototype.hasOwnProperty.call(conditionFlags, conditionKey)) {
+        return Boolean(conditionFlags[conditionKey]);
+      }
+      const systemField = CONDITION_FIELD_BY_KEY[conditionKey];
+      if (systemField) {
+        return Boolean(actor?.system?.conditions?.[systemField]);
+      }
+      return Boolean(actor?.getFlag(POKROLE.ID, `automation.conditions.${conditionKey}`));
+    };
+
+    switch (triggerKey) {
+      case "always":
+        return true;
+      case "in-combat":
+        return Boolean(game.combat);
+      case "out-of-combat":
+        return !game.combat;
+      case "self-hp-half-or-less":
+        return resolveHpPercent(this) <= 50;
+      case "self-hp-quarter-or-less":
+        return resolveHpPercent(this) <= 25;
+      case "self-hp-below-threshold":
+        return resolveHpPercent(this) <= hpThresholdPercent;
+      case "target-hp-half-or-less":
+        return resolveHpPercent(targetActor) <= 50;
+      case "target-hp-quarter-or-less":
+        return resolveHpPercent(targetActor) <= 25;
+      case "target-hp-below-threshold":
+        return resolveHpPercent(targetActor) <= hpThresholdPercent;
+      case "self-has-condition":
+        return hasCondition(this, normalizedCondition);
+      case "self-missing-condition":
+        return !hasCondition(this, normalizedCondition);
+      case "target-has-condition":
+        return hasCondition(targetActor, normalizedCondition);
+      case "target-missing-condition":
+        return !hasCondition(targetActor, normalizedCondition);
+      default:
+        return true;
     }
-    if (triggerKey === "self-hp-half-or-less") {
-      const currentHp = Math.max(toNumber(this.system?.resources?.hp?.value, 0), 0);
-      const maxHp = Math.max(toNumber(this.system?.resources?.hp?.max, 1), 1);
-      return currentHp <= Math.floor(maxHp / 2);
-    }
-    if (triggerKey === "target-hp-half-or-less") {
-      const currentHp = Math.max(toNumber(targetActor?.system?.resources?.hp?.value, 0), 0);
-      const maxHp = Math.max(toNumber(targetActor?.system?.resources?.hp?.max, 1), 1);
-      return currentHp <= Math.floor(maxHp / 2);
-    }
-    return true;
   }
 
   async _applyConfiguredEffectData(effect, options = {}) {
@@ -1796,6 +2028,19 @@ export class PokRoleActor extends Actor {
     }
 
     const normalizedEffect = this._normalizeConfiguredEffect(effect);
+    const normalizedType = this._normalizeSecondaryEffectType(normalizedEffect.effectType);
+    if (normalizedType === "condition" && this._normalizeConditionKey(normalizedEffect.condition) === "none") {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Errors.InvalidEffectConfiguration")
+      };
+    }
+    if (normalizedType === "stat" && this._normalizeSecondaryStatKey(normalizedEffect.stat) === "none") {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Errors.InvalidEffectConfiguration")
+      };
+    }
     if (!this._checkPassiveTrigger(normalizedEffect, targetActor)) {
       return {
         applied: false,
@@ -1830,6 +2075,7 @@ export class PokRoleActor extends Actor {
 
     if (clearedCount > 0 || remainingEntries.length !== currentEntries.length) {
       await this._setTemporaryEffectEntries(this, remainingEntries);
+      await this._synchronizeConditionFlagsFromTemporaryEffects(this);
     }
 
     return clearedCount;
@@ -1877,6 +2123,7 @@ export class PokRoleActor extends Actor {
 
     if (changed || nextEntries.length !== currentEntries.length) {
       await this._setTemporaryEffectEntries(this, nextEntries);
+      await this._synchronizeConditionFlagsFromTemporaryEffects(this);
     }
 
     return expiredCount;
@@ -1904,7 +2151,7 @@ export class PokRoleActor extends Actor {
     durationMode = "manual",
     durationRounds = 1
   }) {
-    if (!targetActor || !conditionPath) {
+    if (!targetActor) {
       return { durationMode: "manual", durationRounds: 1 };
     }
 
@@ -1939,7 +2186,7 @@ export class PokRoleActor extends Actor {
       changes: [
         {
           kind: "boolean",
-          path: conditionPath,
+          path: conditionPath ?? "",
           conditionKey: this._normalizeConditionKey(conditionKey),
           previousValue: false
         }

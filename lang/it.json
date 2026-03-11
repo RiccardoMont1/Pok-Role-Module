@@ -21,6 +21,8 @@
     },
     "Trainer": {
       "MainSheetTab": "Scheda Allenatore",
+      "BioTab": "Bio e Info",
+      "InfoTitle": "Informazioni Personaggio",
       "Role": "Ruolo",
       "RolePlaceholder": "Ricercatore, Ranger, Allenatore...",
       "Age": "Eta",
@@ -83,6 +85,9 @@
     "Effects": {
       "Tab": "Effetti",
       "ConfiguredTitle": "Effetti Configurati",
+      "ExternalTitle": "Effetti Applicati",
+      "ExternalEmpty": "Nessun effetto esterno su questo attore.",
+      "New": "Nuovo Effetto",
       "Add": "Aggiungi Effetto",
       "Save": "Salva Effetti",
       "Empty": "Nessun effetto configurato.",
@@ -91,9 +96,19 @@
         "Label": "Trigger Passivo",
         "Always": "Sempre",
         "InCombat": "Solo in combattimento",
+        "OutOfCombat": "Solo fuori combattimento",
         "SelfHpHalfOrLess": "PS propri a meta o meno",
+        "SelfHpQuarterOrLess": "PS propri al 25% o meno",
+        "SelfHpBelowThreshold": "PS propri sotto soglia personalizzata",
         "TargetHpHalfOrLess": "PS bersaglio a meta o meno",
-        "SelfHasCondition": "Ha una condizione"
+        "TargetHpQuarterOrLess": "PS bersaglio al 25% o meno",
+        "TargetHpBelowThreshold": "PS bersaglio sotto soglia personalizzata",
+        "SelfHasCondition": "Ha una condizione",
+        "SelfMissingCondition": "Non ha una condizione",
+        "TargetHasCondition": "Il bersaglio ha una condizione",
+        "TargetMissingCondition": "Il bersaglio non ha una condizione",
+        "Condition": "Condizione",
+        "Threshold": "Soglia PS (%)"
       },
       "Apply": "Applica Effetto",
       "ApplySuccess": "Effetto applicato.",
@@ -577,7 +592,8 @@
       "GearOutOfStock": "Oggetto senza scorte.",
       "GearNotUsableInBattle": "Questo oggetto non puo essere usato in lotta.",
       "GearWrongTarget": "Questo oggetto non puo bersagliare l'attore selezionato.",
-      "HPUpdateFailed": "Impossibile aggiornare i PS del bersaglio. Controlla i permessi."
+      "HPUpdateFailed": "Impossibile aggiornare i PS del bersaglio. Controlla i permessi.",
+      "InvalidEffectConfiguration": "Completa la configurazione dell'effetto prima di applicarlo."
     },
     "Sheets": {
       "Actor": "Scheda Attore PokeRole",

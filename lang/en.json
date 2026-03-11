@@ -21,6 +21,8 @@
     },
     "Trainer": {
       "MainSheetTab": "Trainer Sheet",
+      "BioTab": "Bio & Info",
+      "InfoTitle": "Character Info",
       "Role": "Role",
       "RolePlaceholder": "Researcher, Ranger, Ace Trainer...",
       "Age": "Age",
@@ -83,6 +85,9 @@
     "Effects": {
       "Tab": "Effects",
       "ConfiguredTitle": "Configured Effects",
+      "ExternalTitle": "Applied Effects",
+      "ExternalEmpty": "No external effects on this actor.",
+      "New": "New Effect",
       "Add": "Add Effect",
       "Save": "Save Effects",
       "Empty": "No configured effects yet.",
@@ -91,9 +96,19 @@
         "Label": "Passive Trigger",
         "Always": "Always",
         "InCombat": "Only in combat",
+        "OutOfCombat": "Only out of combat",
         "SelfHpHalfOrLess": "Self HP at or below half",
+        "SelfHpQuarterOrLess": "Self HP at or below 25%",
+        "SelfHpBelowThreshold": "Self HP below custom threshold",
         "TargetHpHalfOrLess": "Target HP at or below half",
-        "SelfHasCondition": "Self has a condition"
+        "TargetHpQuarterOrLess": "Target HP at or below 25%",
+        "TargetHpBelowThreshold": "Target HP below custom threshold",
+        "SelfHasCondition": "Self has a condition",
+        "SelfMissingCondition": "Self does not have a condition",
+        "TargetHasCondition": "Target has a condition",
+        "TargetMissingCondition": "Target does not have a condition",
+        "Condition": "Condition",
+        "Threshold": "HP Threshold (%)"
       },
       "Apply": "Apply Effect",
       "ApplySuccess": "Effect applied.",
@@ -577,7 +592,8 @@
       "GearOutOfStock": "Item is out of stock.",
       "GearNotUsableInBattle": "This item cannot be used in battle.",
       "GearWrongTarget": "This item cannot target the selected actor.",
-      "HPUpdateFailed": "Unable to update target HP. Check permissions."
+      "HPUpdateFailed": "Unable to update target HP. Check permissions.",
+      "InvalidEffectConfiguration": "Complete the effect configuration before applying it."
     },
     "Sheets": {
       "Actor": "PokeRole Actor Sheet",

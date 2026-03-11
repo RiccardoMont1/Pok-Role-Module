@@ -61,6 +61,31 @@ const AILMENT_DEFINITIONS = Object.freeze([
     key: "fainted",
     labelPath: "POKROLE.Conditions.Fainted",
     icon: getSystemAssetPath("assets/ailments/fainted.svg")
+  },
+  {
+    key: "confused",
+    labelPath: "POKROLE.Move.Secondary.Condition.Confused",
+    icon: "icons/svg/daze.svg"
+  },
+  {
+    key: "flinch",
+    labelPath: "POKROLE.Move.Secondary.Condition.Flinch",
+    icon: "icons/svg/falling.svg"
+  },
+  {
+    key: "disabled",
+    labelPath: "POKROLE.Move.Secondary.Condition.Disabled",
+    icon: "icons/svg/cancel.svg"
+  },
+  {
+    key: "infatuated",
+    labelPath: "POKROLE.Move.Secondary.Condition.Infatuated",
+    icon: "icons/svg/heart.svg"
+  },
+  {
+    key: "badly-poisoned",
+    labelPath: "POKROLE.Move.Secondary.Condition.BadlyPoisoned",
+    icon: "icons/svg/skull.svg"
   }
 ]);
 
@@ -96,6 +121,12 @@ const MATCHUP_GROUP_DEFINITIONS = Object.freeze([
     multiplierIcon: getSystemAssetPath("assets/icons/matchups/X0.svg")
   }
 ]);
+
+function resolveConditionKeyFromStatusId(statusId) {
+  const normalizedStatusId = `${statusId ?? ""}`.trim().toLowerCase();
+  if (!normalizedStatusId.startsWith("pokrole-condition-")) return null;
+  return normalizedStatusId.replace(/^pokrole-condition-/, "");
+}
 
 export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   static get defaultOptions() {
@@ -204,9 +235,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.effectPassiveTriggerOptions = {
       always: "POKROLE.Effects.PassiveTrigger.Always",
       "in-combat": "POKROLE.Effects.PassiveTrigger.InCombat",
+      "out-of-combat": "POKROLE.Effects.PassiveTrigger.OutOfCombat",
       "self-hp-half-or-less": "POKROLE.Effects.PassiveTrigger.SelfHpHalfOrLess",
+      "self-hp-quarter-or-less": "POKROLE.Effects.PassiveTrigger.SelfHpQuarterOrLess",
+      "self-hp-below-threshold": "POKROLE.Effects.PassiveTrigger.SelfHpBelowThreshold",
       "target-hp-half-or-less": "POKROLE.Effects.PassiveTrigger.TargetHpHalfOrLess",
-      "self-has-condition": "POKROLE.Effects.PassiveTrigger.SelfHasCondition"
+      "target-hp-quarter-or-less": "POKROLE.Effects.PassiveTrigger.TargetHpQuarterOrLess",
+      "target-hp-below-threshold": "POKROLE.Effects.PassiveTrigger.TargetHpBelowThreshold",
+      "self-has-condition": "POKROLE.Effects.PassiveTrigger.SelfHasCondition",
+      "self-missing-condition": "POKROLE.Effects.PassiveTrigger.SelfMissingCondition",
+      "target-has-condition": "POKROLE.Effects.PassiveTrigger.TargetHasCondition",
+      "target-missing-condition": "POKROLE.Effects.PassiveTrigger.TargetMissingCondition"
     };
     if (this.actor.type === "trainer") {
       context.trainerView = this._normalizeTrainerView(this._trainerActiveView ?? "main");
@@ -321,6 +360,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.gearItems = gearItems;
     context.gearBattleItems = gearItems.filter((gear) => gear.usableInBattle);
     context.gearFieldItems = gearItems.filter((gear) => !gear.usableInBattle);
+    context.embeddedEffects = this._buildEmbeddedEffects();
     return context;
   }
 
@@ -369,6 +409,15 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     );
     html.find("[data-effect-field='effectType']").on("change", (event) =>
       this._onActorEffectTypeChanged(event)
+    );
+    html.find("[data-effect-field='passiveTrigger']").on("change", (event) =>
+      this._onActorEffectPassiveTriggerChanged(event)
+    );
+    html.find("[data-action='edit-embedded-effect']").on("click", (event) =>
+      this._onEditEmbeddedEffect(event)
+    );
+    html.find("[data-action='delete-embedded-effect']").on("click", (event) =>
+      this._onDeleteEmbeddedEffect(event)
     );
     html.find("[data-action='add-extra-skill']").on("click", (event) =>
       this._onAddExtraSkill(event)
@@ -710,11 +759,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     event.preventDefault();
     if (!this.isEditable || typeof this.actor.addConfiguredEffect !== "function") return;
     await this.actor.addConfiguredEffect({
-      label: "",
+      label: game.i18n.localize("POKROLE.Effects.New"),
       trigger: "always",
       chance: 100,
       target: "self",
-      effectType: "condition",
+      effectType: "custom",
       durationMode: "manual",
       durationRounds: 1,
       condition: "none",
@@ -722,7 +771,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       amount: 0,
       notes: "",
       passive: false,
-      passiveTrigger: "always"
+      passiveTrigger: "always",
+      passiveCondition: "none",
+      passiveThreshold: 50
     });
     this.render(false);
   }
@@ -763,6 +814,68 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const row = event.currentTarget.closest(".actor-effect-row");
     if (!row) return;
     this._refreshActorEffectRowVisibility(row);
+  }
+
+  _onActorEffectPassiveTriggerChanged(event) {
+    const row = event.currentTarget.closest(".actor-effect-row");
+    if (!row) return;
+    this._refreshActorEffectRowVisibility(row);
+  }
+
+  _onEditEmbeddedEffect(event) {
+    event.preventDefault();
+    const effectId = `${event.currentTarget.dataset.effectId ?? ""}`.trim();
+    if (!effectId) return;
+    const effect = this.actor.effects.get(effectId);
+    effect?.sheet?.render(true);
+  }
+
+  async _onDeleteEmbeddedEffect(event) {
+    event.preventDefault();
+    if (!this.isEditable) return;
+    const effectId = `${event.currentTarget.dataset.effectId ?? ""}`.trim();
+    if (!effectId) return;
+    const effect = this.actor.effects.get(effectId);
+    if (!effect) return;
+    const conditionKeys = [...(effect.statuses ?? [])]
+      .map((statusId) => resolveConditionKeyFromStatusId(statusId))
+      .filter((statusKey) => statusKey);
+    for (const conditionKey of conditionKeys) {
+      if (typeof this.actor.toggleQuickCondition === "function") {
+        await this.actor.toggleQuickCondition(conditionKey, { active: false });
+      }
+    }
+    await effect.delete();
+  }
+
+  _buildEmbeddedEffects() {
+    const effects = this.actor.effects?.contents ?? [];
+    return effects
+      .slice()
+      .sort((left, right) => `${left.name ?? ""}`.localeCompare(`${right.name ?? ""}`))
+      .map((effect) => {
+        const statusList = [...(effect.statuses ?? [])];
+        const statusLabel =
+          statusList.length > 0
+            ? statusList.join(", ")
+            : game.i18n.localize("POKROLE.Common.None");
+        const durationRounds = Number(effect.duration?.remaining ?? Number.NaN);
+        const durationLabel = Number.isFinite(durationRounds)
+          ? game.i18n.format("POKROLE.TemporaryEffects.DurationRoundsWithValue", {
+            rounds: Math.max(Math.floor(durationRounds), 0)
+          })
+          : game.i18n.localize("POKROLE.TemporaryEffects.DurationManual");
+
+        return {
+          id: effect.id,
+          name: effect.name || game.i18n.localize("POKROLE.Common.Unknown"),
+          icon: effect.img || "icons/svg/aura.svg",
+          disabled: Boolean(effect.disabled),
+          origin: `${effect.origin ?? ""}`.trim() || game.i18n.localize("POKROLE.Common.None"),
+          statuses: statusLabel,
+          durationLabel
+        };
+      });
   }
 
   _prepareMoveData(move) {
@@ -977,6 +1090,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
     return rawEffects.map((effect) => {
       const effectType = this._normalizeSheetEffectType(effect.effectType);
+      const passiveTrigger = `${effect?.passiveTrigger ?? "always"}`;
+      const showPassiveConditionField = [
+        "self-has-condition",
+        "self-missing-condition",
+        "target-has-condition",
+        "target-missing-condition"
+      ].includes(passiveTrigger);
+      const showPassiveThresholdField = [
+        "self-hp-below-threshold",
+        "target-hp-below-threshold"
+      ].includes(passiveTrigger);
       const showConditionField = effectType === "condition";
       const showStatField = effectType === "stat";
       const showAmountField = ["stat", "damage", "heal", "will"].includes(effectType);
@@ -986,11 +1110,16 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       return {
         ...effect,
         effectType,
+        passiveTrigger,
+        passiveCondition: `${effect?.passiveCondition ?? "none"}`,
+        passiveThreshold: Number(effect?.passiveThreshold ?? 50) || 50,
         showConditionField,
         showStatField,
         showAmountField,
         showDurationField,
-        showNotesField
+        showNotesField,
+        showPassiveConditionField,
+        showPassiveThresholdField
       };
     });
   }
@@ -1016,9 +1145,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       const passiveTrigger = [
         "always",
         "in-combat",
+        "out-of-combat",
         "self-hp-half-or-less",
+        "self-hp-quarter-or-less",
+        "self-hp-below-threshold",
         "target-hp-half-or-less",
-        "self-has-condition"
+        "target-hp-quarter-or-less",
+        "target-hp-below-threshold",
+        "self-has-condition",
+        "self-missing-condition",
+        "target-has-condition",
+        "target-missing-condition"
       ].includes(readValue("passiveTrigger", "always"))
         ? readValue("passiveTrigger", "always")
         : "always";
@@ -1045,7 +1182,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         amount: readNumber("amount", 0, -99, 99),
         notes: readValue("notes", ""),
         passive: Boolean(row.querySelector("[data-effect-field='passive']")?.checked),
-        passiveTrigger
+        passiveTrigger,
+        passiveCondition: MOVE_SECONDARY_CONDITION_KEYS.includes(readValue("passiveCondition", "none"))
+          ? readValue("passiveCondition", "none")
+          : "none",
+        passiveThreshold: readNumber("passiveThreshold", 50, 1, 99)
       };
     });
   }
@@ -1053,6 +1194,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   _refreshActorEffectRowVisibility(row) {
     const effectTypeSelect = row.querySelector("[data-effect-field='effectType']");
     const effectType = this._normalizeSheetEffectType(effectTypeSelect?.value ?? "condition");
+    const passiveTriggerSelect = row.querySelector("[data-effect-field='passiveTrigger']");
+    const passiveTrigger = `${passiveTriggerSelect?.value ?? "always"}`.trim().toLowerCase();
 
     const toggleSection = (sectionKey, visible) => {
       const sectionElement = row.querySelector(`[data-effect-visible='${sectionKey}']`);
@@ -1065,6 +1208,14 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     toggleSection("amount", ["stat", "damage", "heal", "will"].includes(effectType));
     toggleSection("duration", effectType === "condition" || effectType === "stat");
     toggleSection("notes", effectType === "custom");
+    toggleSection(
+      "passiveCondition",
+      ["self-has-condition", "self-missing-condition", "target-has-condition", "target-missing-condition"].includes(passiveTrigger)
+    );
+    toggleSection(
+      "passiveThreshold",
+      ["self-hp-below-threshold", "target-hp-below-threshold"].includes(passiveTrigger)
+    );
   }
 
   _getSecondaryConditionLabelPath(conditionKey) {
@@ -1201,7 +1352,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   _normalizeTrainerView(tabName) {
-    if (tabName === "effects") return "effects";
+    if (tabName === "effects" || tabName === "bio") return tabName;
     return "main";
   }
 
@@ -1247,11 +1398,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   _buildConditionChips() {
+    const conditionFlags =
+      typeof this.actor.getConditionFlags === "function" ? this.actor.getConditionFlags() : {};
     return AILMENT_DEFINITIONS.map((ailment) => ({
       ...ailment,
       key: ailment.key,
       fieldPath: `system.conditions.${ailment.key}`,
-      active: Boolean(this.actor.system.conditions?.[ailment.key])
+      active: Boolean(
+        conditionFlags[ailment.key] ??
+          this.actor.system.conditions?.[ailment.key] ??
+          this.actor.getFlag(POKROLE.ID, `automation.conditions.${ailment.key}`)
+      )
     }));
   }
 
