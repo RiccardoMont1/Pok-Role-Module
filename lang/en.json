@@ -26,6 +26,11 @@
       "Role": "Role",
       "RolePlaceholder": "Researcher, Ranger, Ace Trainer...",
       "Age": "Age",
+      "Gender": "Gender",
+      "GenderValues": {
+        "Male": "Male",
+        "Female": "Female"
+      },
       "Player": "Player",
       "Concept": "Concept",
       "Nature": "Nature",

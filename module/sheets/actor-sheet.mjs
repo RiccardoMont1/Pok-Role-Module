@@ -178,6 +178,23 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.actionTrack = this._buildTrack(this.actor.system.combat?.actionNumber, 5, 1);
     context.badgesTrack = this._buildTrack(this.actor.system.badges, 8, 0);
     context.trainerRankOptions = TRAINER_CARD_RANK_LABEL_BY_KEY;
+    const trainerGenderValue = `${this.actor.system.gender ?? "male"}`.trim().toLowerCase();
+    const trainerGender = trainerGenderValue === "female" ? "female" : "male";
+    context.trainerGender = trainerGender;
+    context.trainerGenderClass = trainerGender;
+    context.trainerGenderOptions = {
+      male: "POKROLE.Trainer.GenderValues.Male",
+      female: "POKROLE.Trainer.GenderValues.Female"
+    };
+    context.trainerGenderIcons = {
+      male: getSystemAssetPath("assets/icons/msymbol2.png"),
+      female: getSystemAssetPath("assets/icons/fsymbol2.png")
+    };
+    context.trainerGenderSymbolPath = context.trainerGenderIcons[trainerGender];
+    context.trainerGenderLabelPath =
+      trainerGender === "female"
+        ? "POKROLE.Trainer.GenderValues.Female"
+        : "POKROLE.Trainer.GenderValues.Male";
     const extraSkills = Array.isArray(this.actor.system.extraSkills)
       ? this.actor.system.extraSkills
       : [];
@@ -372,6 +389,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.gearItems = gearItems;
     context.gearBattleItems = gearItems.filter((gear) => gear.usableInBattle);
     context.gearFieldItems = gearItems.filter((gear) => !gear.usableInBattle);
+    context.gearPocketPotions = gearItems.filter((gear) => gear.pocketKey === "potions");
+    context.gearPocketSmall = gearItems.filter((gear) => gear.pocketKey === "small");
+    context.gearPocketMain = gearItems.filter((gear) => gear.pocketKey === "main");
+    context.gearPocketBadge = gearItems.filter((gear) => gear.pocketKey === "badge");
+    context.gearPocketHeld = gearItems.filter((gear) => gear.pocketKey === "held");
     context.embeddedEffects = this._buildEmbeddedEffects();
     context.embeddedTemporaryEffects = context.embeddedEffects.filter(
       (effect) => effect.group === "temporary"

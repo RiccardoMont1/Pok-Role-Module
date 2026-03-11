@@ -107,6 +107,12 @@ export class TrainerDataModel extends BaseCharacterDataModel {
         choices: TRAINER_CARD_RANK_KEYS
       }),
       age: integerField(10, { min: 0, max: 120 }),
+      gender: new StringField({
+        required: true,
+        blank: false,
+        initial: "male",
+        choices: ["male", "female"]
+      }),
       player: trimmedStringField(""),
       concept: trimmedStringField(""),
       nature: trimmedStringField(""),

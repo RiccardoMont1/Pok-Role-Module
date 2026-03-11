@@ -26,6 +26,11 @@
       "Role": "Ruolo",
       "RolePlaceholder": "Ricercatore, Ranger, Allenatore...",
       "Age": "Eta",
+      "Gender": "Sesso",
+      "GenderValues": {
+        "Male": "Uomo",
+        "Female": "Donna"
+      },
       "Player": "Giocatore",
       "Concept": "Concetto",
       "Nature": "Natura",
