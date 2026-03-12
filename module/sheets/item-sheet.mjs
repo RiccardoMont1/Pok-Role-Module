@@ -23,8 +23,8 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["pok-role", "sheet", "item"],
-      width: 620,
-      height: 720,
+      width: 860,
+      height: 820,
       submitOnClose: true,
       submitOnChange: true,
       resizable: true
@@ -176,7 +176,37 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       insight: "POKROLE.Attributes.Insight",
       none: "POKROLE.Move.NoStat"
     };
+    const durationType = `${context.system?.durationType ?? "instant"}`.trim().toLowerCase();
+    const buildDurationOption = (value, label) => ({
+      value,
+      label,
+      selected: value === durationType
+    });
+    context.moveDurationOptions = {
+      direct: [
+        buildDurationOption("instant", "POKROLE.Move.Duration.Values.Instant"),
+        buildDurationOption("manual", "POKROLE.Move.Duration.Values.Manual")
+      ],
+      time: [
+        buildDurationOption("time-turns", "POKROLE.Move.Duration.Values.TimeTurns"),
+        buildDurationOption("time-rounds", "POKROLE.Move.Duration.Values.TimeRounds"),
+        buildDurationOption("time-minutes", "POKROLE.Move.Duration.Values.TimeMinutes"),
+        buildDurationOption("time-hours", "POKROLE.Move.Duration.Values.TimeHours"),
+        buildDurationOption("time-days", "POKROLE.Move.Duration.Values.TimeDays"),
+        buildDurationOption("time-months", "POKROLE.Move.Duration.Values.TimeMonths"),
+        buildDurationOption("time-years", "POKROLE.Move.Duration.Values.TimeYears")
+      ],
+      permanent: [
+        buildDurationOption(
+          "permanent-until-dissolved",
+          "POKROLE.Move.Duration.Values.PermanentUntilDissolved"
+        ),
+        buildDurationOption("permanent", "POKROLE.Move.Duration.Values.Permanent")
+      ]
+    };
+    context.moveDurationUsesValue = durationType.startsWith("time-");
     context.secondaryEffects = this._getMoveSecondaryEffectsForDisplay();
+    context.moveEffectSections = this._buildMoveEffectSections(context.secondaryEffects);
     context.secondaryTriggerOptions = {
       "on-hit": "POKROLE.Move.Secondary.Trigger.OnHit",
       "on-hit-damage": "POKROLE.Move.Secondary.Trigger.OnHitDamage",
@@ -192,7 +222,15 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     };
     context.secondaryEffectTypeOptions = {
       condition: "POKROLE.Move.Secondary.Type.Condition",
+      "active-effect": "POKROLE.Move.Secondary.Type.ActiveEffect",
       stat: "POKROLE.Move.Secondary.Type.Stat",
+      damage: "POKROLE.Move.Secondary.Type.Damage",
+      heal: "POKROLE.Move.Secondary.Type.Heal",
+      will: "POKROLE.Move.Secondary.Type.Will",
+      custom: "POKROLE.Move.Secondary.Type.Custom"
+    };
+    context.secondaryEffectTypeOptionsExtra = {
+      "active-effect": "POKROLE.Move.Secondary.Type.ActiveEffect",
       damage: "POKROLE.Move.Secondary.Type.Damage",
       heal: "POKROLE.Move.Secondary.Type.Heal",
       will: "POKROLE.Move.Secondary.Type.Will",
@@ -230,17 +268,35 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     super.activateListeners(html);
     if (this.item.type !== "move") return;
 
+    html.find("[data-action='switch-move-tab']").on("click", (event) =>
+      this._onSwitchMoveTab(event, html)
+    );
     html.find("select[name='system.type']").on("change", (event) => {
       const typeKey = event.currentTarget.value || "none";
       const iconPath = getMoveTypeIcon(typeKey);
       const imageElement = html.find(".profile-img");
       imageElement.attr("src", iconPath);
     });
+    html.find("select[name='system.durationType']").on("change", (event) =>
+      this._onDurationTypeChanged(event, html)
+    );
     html.find("[data-action='add-secondary-effect']").on("click", (event) =>
       this._onAddSecondaryEffect(event)
     );
+    html.find("[data-action='add-secondary-effect-section']").on("click", (event) =>
+      this._onAddSecondaryEffectSection(event)
+    );
+    html.find("[data-action='remove-secondary-effect-section']").on("click", (event) =>
+      this._onRemoveSecondaryEffectSection(event)
+    );
     html.find("[data-action='remove-secondary-effect']").on("click", (event) =>
       this._onRemoveSecondaryEffect(event)
+    );
+    html.find("[data-action='configure-secondary-active-effect']").on("click", (event) =>
+      this._onConfigureSecondaryActiveEffect(event)
+    );
+    html.find("[data-action='unlink-secondary-active-effect']").on("click", (event) =>
+      this._onUnlinkSecondaryActiveEffect(event)
     );
     html.find("[data-action='add-secondary-special-duration']").on("click", (event) =>
       this._onAddSecondarySpecialDuration(event)
@@ -254,6 +310,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     html.find(".move-secondary-effect-row").each((_index, row) =>
       this._refreshSecondaryEffectRowVisibility(row)
     );
+    this._onDurationTypeChanged(null, html);
   }
 
   async _updateObject(event, formData) {
@@ -270,6 +327,20 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
         }
       }
       formData["system.target"] = this._normalizeMoveTarget(moveSystem.target);
+      formData["system.durationType"] = this._normalizeMoveDurationType(moveSystem.durationType);
+      formData["system.durationValue"] = this._normalizeMoveDurationValue(moveSystem.durationValue);
+      formData["system.willCost"] = Math.min(
+        Math.max(Math.floor(Number(moveSystem.willCost ?? 0) || 0), 0),
+        99
+      );
+      formData["system.accuracyDiceModifier"] = Math.min(
+        Math.max(Math.floor(Number(moveSystem.accuracyDiceModifier ?? 0) || 0), -99),
+        99
+      );
+      formData["system.accuracyFlatModifier"] = Math.min(
+        Math.max(Math.floor(Number(moveSystem.accuracyFlatModifier ?? 0) || 0), -99),
+        99
+      );
       formData["system.secondaryEffects"] = secondaryEffects;
     }
     if (this.item.type === "gear") {
@@ -285,26 +356,61 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     const rawEffects = Array.isArray(this.item.system?.secondaryEffects)
       ? this.item.system.secondaryEffects
       : [];
-    return rawEffects.map((effect, index) => ({
+    const normalizedEffects = this._normalizeSecondaryEffects(rawEffects);
+    return normalizedEffects.map((effect, index) => ({
       index,
-      ...this._decorateSecondaryEffectForDisplay(this._normalizeSecondaryEffect(effect))
+      ...this._decorateSecondaryEffectForDisplay(effect)
     }));
   }
 
-  _createDefaultSecondaryEffect() {
+  _buildMoveEffectSections(secondaryEffects = []) {
+    const effects = Array.isArray(secondaryEffects) ? secondaryEffects : [];
+    const maxSectionIndex = effects.reduce(
+      (maxValue, effect) => Math.max(maxValue, Number(effect?.section ?? 0)),
+      0
+    );
+    const sections = [];
+    for (let sectionIndex = 0; sectionIndex <= maxSectionIndex; sectionIndex += 1) {
+      const sectionEffects = effects.filter((effect) => Number(effect?.section ?? 0) === sectionIndex);
+      sections.push({
+        index: sectionIndex,
+        displayIndex: sectionIndex + 1,
+        isExtra: sectionIndex > 0,
+        canRemove: sectionIndex > 0,
+        showAddSectionButton: sectionIndex === maxSectionIndex,
+        effects: sectionEffects
+      });
+    }
+    if (sections.length === 0) {
+      sections.push({
+        index: 0,
+        displayIndex: 1,
+        isExtra: false,
+        canRemove: false,
+        showAddSectionButton: true,
+        effects: []
+      });
+    }
+    return sections;
+  }
+
+  _createDefaultSecondaryEffect(section = 0) {
+    const normalizedSection = Math.max(Math.floor(Number(section) || 0), 0);
     return {
+      section: normalizedSection,
       label: "",
       trigger: "on-hit",
       chance: 100,
       target: "target",
-      effectType: "condition",
+      effectType: normalizedSection > 0 ? "active-effect" : "condition",
       durationMode: "manual",
       durationRounds: 1,
       specialDuration: [],
       condition: "none",
       stat: "none",
       amount: 0,
-      notes: ""
+      notes: "",
+      linkedEffectId: ""
     };
   }
 
@@ -313,17 +419,50 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     return "foe";
   }
 
+  _normalizeMoveDurationType(value) {
+    const normalized = `${value ?? "instant"}`.trim().toLowerCase();
+    const allowedValues = new Set([
+      "instant",
+      "manual",
+      "time-turns",
+      "time-rounds",
+      "time-minutes",
+      "time-hours",
+      "time-days",
+      "time-months",
+      "time-years",
+      "permanent-until-dissolved",
+      "permanent"
+    ]);
+    return allowedValues.has(normalized) ? normalized : "instant";
+  }
+
+  _normalizeMoveDurationValue(value) {
+    const numericValue = Number(value);
+    if (!Number.isFinite(numericValue)) return 1;
+    return Math.min(Math.max(Math.floor(numericValue), 1), 999);
+  }
+
   _normalizeSecondaryEffects(value) {
     const rawList = Array.isArray(value)
       ? value
       : value && typeof value === "object"
         ? Object.values(value)
         : [];
-    return rawList.map((effect) => this._normalizeSecondaryEffect(effect));
+    const normalized = rawList.map((effect) => this._normalizeSecondaryEffect(effect));
+    const knownSections = [...new Set(normalized.map((entry) => Math.max(Number(entry.section ?? 0), 0)))].sort(
+      (left, right) => left - right
+    );
+    const sectionMap = new Map(knownSections.map((sectionKey, index) => [sectionKey, index]));
+    return normalized.map((entry) => ({
+      ...entry,
+      section: sectionMap.get(Math.max(Number(entry.section ?? 0), 0)) ?? 0
+    }));
   }
 
   _normalizeSecondaryEffect(effect) {
     const normalizedEffect = effect && typeof effect === "object" ? effect : {};
+    const section = Math.max(Math.floor(Number(normalizedEffect.section ?? 0) || 0), 0);
     const trigger = MOVE_SECONDARY_TRIGGER_KEYS.includes(normalizedEffect.trigger)
       ? normalizedEffect.trigger
       : "on-hit";
@@ -331,6 +470,8 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       ? normalizedEffect.target
       : "target";
     const effectType = this._normalizeEffectType(normalizedEffect.effectType);
+    const normalizedEffectType =
+      section > 0 && ["condition", "stat"].includes(effectType) ? "active-effect" : effectType;
     const durationMode = MOVE_SECONDARY_DURATION_MODE_KEYS.includes(normalizedEffect.durationMode)
       ? normalizedEffect.durationMode
       : "manual";
@@ -347,11 +488,12 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     const durationRounds = Number(normalizedEffect.durationRounds);
 
     return {
+      section,
       label: `${normalizedEffect.label ?? ""}`.trim(),
       trigger,
       chance: Number.isFinite(chance) ? Math.min(Math.max(Math.floor(chance), 0), 100) : 100,
       target,
-      effectType,
+      effectType: normalizedEffectType,
       durationMode,
       durationRounds:
         Number.isFinite(durationRounds)
@@ -361,7 +503,8 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       condition,
       stat,
       amount: Number.isFinite(amount) ? Math.min(Math.max(Math.floor(amount), -99), 99) : 0,
-      notes: `${normalizedEffect.notes ?? ""}`.trim()
+      notes: `${normalizedEffect.notes ?? ""}`.trim(),
+      linkedEffectId: `${normalizedEffect.linkedEffectId ?? ""}`.trim()
     };
   }
 
@@ -385,6 +528,9 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
 
   _normalizeEffectType(effectType) {
     const normalizedType = `${effectType ?? "condition"}`.trim().toLowerCase();
+    if (normalizedType === "activeeffect" || normalizedType === "active_effect") {
+      return "active-effect";
+    }
     if (normalizedType === "combat-stat") return "stat";
     if (MOVE_SECONDARY_EFFECT_TYPE_KEYS.includes(normalizedType)) return normalizedType;
     return "condition";
@@ -398,12 +544,18 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       value: durationKey,
       options: this._buildSecondarySpecialDurationOptions(durationKey)
     }));
+    const linkedEffectId = `${effect.linkedEffectId ?? ""}`.trim();
+    const linkedEffect = linkedEffectId ? this.item.effects?.get(linkedEffectId) ?? null : null;
     return {
       ...effect,
       effectType,
+      linkedEffectId,
+      hasLinkedEffect: Boolean(linkedEffect),
+      linkedEffectName: linkedEffect?.name ?? game.i18n.localize("POKROLE.Move.Secondary.ActiveEffect.Unconfigured"),
       specialDuration: specialDurationSelections,
       specialDurationRows,
       showConditionField: effectType === "condition",
+      showActiveEffectField: effectType === "active-effect",
       showStatField: effectType === "stat",
       showAmountField: ["stat", "damage", "heal", "will"].includes(effectType),
       showDurationField: effectType === "condition" || effectType === "stat",
@@ -414,9 +566,45 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
   async _onAddSecondaryEffect(event) {
     event.preventDefault();
     if (!this.isEditable || this.item.type !== "move") return;
+    const section = Math.max(Math.floor(Number(event.currentTarget.dataset.sectionIndex ?? 0) || 0), 0);
     const current = this._normalizeSecondaryEffects(this.item.system?.secondaryEffects);
-    current.push(this._createDefaultSecondaryEffect());
+    current.push(this._createDefaultSecondaryEffect(section));
     await this.item.update({ "system.secondaryEffects": current });
+    this.render(false);
+  }
+
+  async _onAddSecondaryEffectSection(event) {
+    event.preventDefault();
+    if (!this.isEditable || this.item.type !== "move") return;
+    const current = this._normalizeSecondaryEffects(this.item.system?.secondaryEffects);
+    const highestSection = current.reduce(
+      (maxSection, effect) => Math.max(maxSection, Number(effect?.section ?? 0)),
+      0
+    );
+    current.push(this._createDefaultSecondaryEffect(highestSection + 1));
+    await this.item.update({ "system.secondaryEffects": current });
+    this.render(false);
+  }
+
+  async _onRemoveSecondaryEffectSection(event) {
+    event.preventDefault();
+    if (!this.isEditable || this.item.type !== "move") return;
+
+    const sectionIndex = Number(event.currentTarget.dataset.sectionIndex);
+    if (!Number.isInteger(sectionIndex) || sectionIndex <= 0) return;
+
+    const current = this._normalizeSecondaryEffects(this.item.system?.secondaryEffects);
+    const effectsToRemove = current.filter((effect) => Number(effect?.section ?? 0) === sectionIndex);
+    const nextEffects = current.filter((effect) => Number(effect?.section ?? 0) !== sectionIndex);
+    for (const effect of effectsToRemove) {
+      const linkedEffectId = `${effect?.linkedEffectId ?? ""}`.trim();
+      if (!linkedEffectId) continue;
+      const linkedEffect = this.item.effects?.get(linkedEffectId);
+      if (linkedEffect) {
+        await linkedEffect.delete();
+      }
+    }
+    await this.item.update({ "system.secondaryEffects": nextEffects });
     this.render(false);
   }
 
@@ -429,8 +617,74 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
 
     const current = this._normalizeSecondaryEffects(this.item.system?.secondaryEffects);
     if (index >= current.length) return;
-    current.splice(index, 1);
+    const [removedEffect] = current.splice(index, 1);
+    const linkedEffectId = `${removedEffect?.linkedEffectId ?? ""}`.trim();
+    if (linkedEffectId) {
+      const linkedEffect = this.item.effects?.get(linkedEffectId);
+      if (linkedEffect) {
+        await linkedEffect.delete();
+      }
+    }
     await this.item.update({ "system.secondaryEffects": current });
+    this.render(false);
+  }
+
+  async _onConfigureSecondaryActiveEffect(event) {
+    event.preventDefault();
+    if (!this.isEditable || this.item.type !== "move") return;
+
+    const secondaryIndex = Number(event.currentTarget.dataset.secondaryIndex);
+    if (!Number.isInteger(secondaryIndex) || secondaryIndex < 0) return;
+
+    const effects = this._normalizeSecondaryEffects(this.item.system?.secondaryEffects);
+    if (secondaryIndex >= effects.length) return;
+    const effect = effects[secondaryIndex];
+    let linkedEffect = effect.linkedEffectId ? this.item.effects?.get(effect.linkedEffectId) ?? null : null;
+
+    if (!linkedEffect) {
+      const [createdEffect] = await this.item.createEmbeddedDocuments("ActiveEffect", [
+        {
+          name: effect.label || `${this.item.name} - ${game.i18n.localize("POKROLE.Move.Secondary.Label")} ${secondaryIndex + 1}`,
+          img: this.item.img || "icons/svg/aura.svg",
+          origin: this.item.uuid ?? null,
+          transfer: false,
+          disabled: false,
+          statuses: [],
+          changes: [],
+          flags: {
+            core: { overlay: false }
+          }
+        }
+      ]);
+      if (!createdEffect) return;
+      linkedEffect = createdEffect;
+      effect.linkedEffectId = createdEffect.id;
+      effects.splice(secondaryIndex, 1, effect);
+      await this.item.update({ "system.secondaryEffects": effects });
+    }
+
+    linkedEffect.sheet?.render(true);
+    this.render(false);
+  }
+
+  async _onUnlinkSecondaryActiveEffect(event) {
+    event.preventDefault();
+    if (!this.isEditable || this.item.type !== "move") return;
+
+    const secondaryIndex = Number(event.currentTarget.dataset.secondaryIndex);
+    if (!Number.isInteger(secondaryIndex) || secondaryIndex < 0) return;
+
+    const effects = this._normalizeSecondaryEffects(this.item.system?.secondaryEffects);
+    if (secondaryIndex >= effects.length) return;
+    const effect = effects[secondaryIndex];
+    const linkedEffectId = `${effect?.linkedEffectId ?? ""}`.trim();
+    if (linkedEffectId) {
+      const linkedEffect = this.item.effects?.get(linkedEffectId);
+      if (linkedEffect) await linkedEffect.delete();
+    }
+    effect.linkedEffectId = "";
+    effects.splice(secondaryIndex, 1, effect);
+    await this.item.update({ "system.secondaryEffects": effects });
     this.render(false);
   }
 
@@ -507,6 +761,24 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     this.render(false);
   }
 
+  _onSwitchMoveTab(event, html) {
+    event.preventDefault();
+    const targetTab = `${event.currentTarget.dataset.tab ?? ""}`.trim().toLowerCase();
+    if (!targetTab) return;
+    html.find("[data-action='switch-move-tab']").removeClass("is-active");
+    html.find(`[data-action='switch-move-tab'][data-tab='${targetTab}']`).addClass("is-active");
+    html.find(".move-tab-panel").removeClass("is-active");
+    html.find(`.move-tab-panel[data-tab='${targetTab}']`).addClass("is-active");
+  }
+
+  _onDurationTypeChanged(_event, html) {
+    const durationType = `${html.find("select[name='system.durationType']").val() ?? "instant"}`
+      .trim()
+      .toLowerCase();
+    const showValueField = durationType.startsWith("time-");
+    html.find(".move-duration-value-row").toggleClass("is-hidden", !showValueField);
+  }
+
   _onSecondaryEffectTypeChanged(event) {
     const row = event.currentTarget.closest(".move-secondary-effect-row");
     if (!row) return;
@@ -524,6 +796,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     };
 
     toggleSection("condition", effectType === "condition");
+    toggleSection("active-effect", effectType === "active-effect");
     toggleSection("stat", effectType === "stat");
     toggleSection("amount", ["stat", "damage", "heal", "will"].includes(effectType));
     toggleSection("duration", effectType === "condition" || effectType === "stat");

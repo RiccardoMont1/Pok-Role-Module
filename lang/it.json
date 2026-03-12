@@ -129,6 +129,15 @@
       "DisabledEmpty": "Nessun effetto disabilitato.",
       "Disable": "Disabilita effetto",
       "Enable": "Riattiva effetto",
+      "AlwaysShowIcon": "Mostra sempre icona effetto",
+      "OverlayIcon": "Overlay Icona",
+      "StackMode": {
+        "Label": "Impilabile",
+        "NameOrigin": "Non si impila per stesso Nome e Origine",
+        "Name": "Non si impila per stesso Nome",
+        "Origin": "Non si impila per stessa Origine",
+        "Multiple": "Si impila piu volte"
+      },
       "DurationTurnsWithValue": "{turns} turni rimanenti",
       "DurationSecondsWithValue": "{seconds}s rimanenti"
     },
@@ -246,8 +255,11 @@
       "NoStat": "Nessuna Stat",
       "Type": "Tipo",
       "Target": "Bersaglio",
+      "Range": "Range",
+      "RangePlaceholder": "Mischia, 1m, Scena, ecc.",
       "ActionTag": "Costo Azione",
       "ActionTagShort": "Tag",
+      "DetailsTab": "Dettagli",
       "ActionTagValues": {
         "1A": "1 Azione",
         "2A": "2 Azioni",
@@ -274,12 +286,46 @@
       },
       "Power": "Potenza",
       "ReducedAccuracy": "Precisione Ridotta",
+      "AccuracyDiceModifier": "Modifica Dadi Precisione",
+      "AccuracyFlatModifier": "Modifica Flat Precisione",
       "AccuracyAttribute": "Attributo Precisione",
       "AccuracySkill": "Abilita Precisione",
       "AccuracySummary": "Precisione",
       "DamageSummary": "Pool Danno",
       "DamageAttribute": "Attributo Danno",
       "DamageAttributeAuto": "Auto (da categoria)",
+      "WillCost": "Costo Volonta",
+      "DetailsBlock": {
+        "Title": "Dettagli Mossa"
+      },
+      "UsageBlock": {
+        "Title": "Utilizzo Mossa"
+      },
+      "EffectsBlock": {
+        "Title": "Effetti Mossa"
+      },
+      "Duration": {
+        "Label": "Durata",
+        "Value": "Valore Durata",
+        "Groups": {
+          "Time": "Tempo",
+          "Permanent": "Permanente"
+        },
+        "Values": {
+          "Instant": "Istantaneo",
+          "Manual": "Manuale",
+          "TimeTurns": "Turni",
+          "TimeRounds": "Round",
+          "TimeMinutes": "Minuti",
+          "TimeHours": "Ore",
+          "TimeDays": "Giorni",
+          "TimeMonths": "Mesi",
+          "TimeYears": "Anni",
+          "PermanentUntilDissolved": "Finche non dissolto",
+          "Permanent": "Permanente"
+        }
+      },
+      "Properties": "Proprieta",
       "Flags": "Tag",
       "Priority": "Priorita",
       "PriorityWithValue": "Priorita {value}",
@@ -291,6 +337,7 @@
       "Secondary": {
         "Title": "Effetti Secondari",
         "Add": "Aggiungi Effetto",
+        "AddExtraSection": "Aggiungi Blocco Effetti Extra",
         "Empty": "Nessun effetto secondario configurato.",
         "Label": "Etichetta",
         "Chance": "Probabilita (%)",
@@ -338,12 +385,18 @@
         "Type": {
           "Label": "Tipo Effetto",
           "Condition": "Condizione",
+          "ActiveEffect": "Effetto Attivo / Condizione",
           "Stat": "Cambio Stat",
           "CombatStat": "Stat Combattimento",
           "Damage": "Danno",
           "Heal": "Cura",
           "Will": "Volonta",
           "Custom": "Personalizzato"
+        },
+        "ActiveEffect": {
+          "Label": "Effetto Attivo",
+          "Configure": "Configura",
+          "Unconfigured": "Nessun Active Effect collegato."
         },
         "Condition": {
           "Label": "Condizione",
@@ -534,6 +587,7 @@
       "CombinedFlavor": "{actor} tira {label}<br><small>{breakdown}</small>",
       "RollBreakdown": "Grezzi: {raw} | Rimossi: {removed} | Netti: {net} | Richiesti: {required}",
       "RawSuccesses": "Successi Grezzi",
+      "ModifiedSuccesses": "Successi Modificati",
       "RemovedSuccesses": "Successi Rimossi",
       "NetSuccesses": "Successi Netti",
       "RequiredSuccesses": "Successi Richiesti",
@@ -616,6 +670,7 @@
       "UnknownMove": "Mossa non trovata.",
       "UnknownGear": "Oggetto non trovato.",
       "UnknownMoveTraits": "I trait della mossa non sono validi o mancano.",
+      "NotEnoughWill": "Volonta insufficiente ({current}/{required}).",
       "NoTraitsSelected": "Seleziona almeno un trait per il Tiro Combinato.",
       "EvasionAlreadyUsedThisRound": "La Schivata e gia stata usata in questo round.",
       "ClashAlreadyUsedThisRound": "Il Clash e gia stato usato in questo round.",

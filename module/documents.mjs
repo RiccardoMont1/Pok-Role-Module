@@ -108,6 +108,25 @@ const CONDITION_FIELD_BY_KEY = Object.freeze({
   poisoned: "poisoned",
   fainted: "fainted"
 });
+const CONDITION_ICON_BY_KEY = Object.freeze({
+  sleep: getSystemAssetPath("assets/ailments/asleep.svg"),
+  burn: getSystemAssetPath("assets/ailments/burn.svg"),
+  frozen: getSystemAssetPath("assets/ailments/frozen.svg"),
+  paralyzed: getSystemAssetPath("assets/ailments/paralyzed.svg"),
+  poisoned: getSystemAssetPath("assets/ailments/poisoned.svg"),
+  fainted: getSystemAssetPath("assets/ailments/fainted.svg"),
+  confused: "icons/svg/daze.svg",
+  flinch: "icons/svg/falling.svg",
+  disabled: "icons/svg/cancel.svg",
+  infatuated: "icons/svg/heal.svg",
+  "badly-poisoned": "icons/svg/skull.svg"
+});
+const ACTIVE_EFFECT_STACK_MODE_KEYS = Object.freeze([
+  "name-origin",
+  "name",
+  "origin",
+  "multiple"
+]);
 
 export class PokRoleActor extends Actor {
   getRollData() {
@@ -455,15 +474,32 @@ export class PokRoleActor extends Actor {
     const isHoldingBackHalf = holdingBackMode === "half";
     const isHoldingBackNonLethal = holdingBackMode === "nonlethal" && Boolean(move.system.lethal);
     const actionNumber = await this._resolveActionRequirement(options.actionNumber, roundKey);
+    const willCost = Math.max(Math.floor(toNumber(move.system?.willCost, 0)), 0);
+    const currentWill = Math.max(Math.floor(toNumber(this.system?.resources?.will?.value, 0)), 0);
+    if (willCost > currentWill) {
+      ui.notifications.warn(
+        game.i18n.format("POKROLE.Errors.NotEnoughWill", { current: currentWill, required: willCost })
+      );
+      return null;
+    }
+    let willBefore = currentWill;
+    let willAfter = currentWill;
     const painPenalty = this.getPainPenalty();
     const accuracyAttributeKey = move.system.accuracyAttribute || "dexterity";
     const accuracySkillKey = move.system.accuracySkill || "brawl";
-    const accuracyDicePool =
+    const accuracyDicePoolBase =
       this.getTraitValue(accuracyAttributeKey) + this.getSkillValue(accuracySkillKey);
+    const accuracyDiceModifier = clamp(Math.floor(toNumber(move.system?.accuracyDiceModifier, 0)), -99, 99);
+    const accuracyFlatModifier = clamp(Math.floor(toNumber(move.system?.accuracyFlatModifier, 0)), -99, 99);
+    const accuracyDicePool = Math.max(accuracyDicePoolBase + accuracyDiceModifier, 1);
 
-    if (Number.isNaN(accuracyDicePool)) {
+    if (Number.isNaN(accuracyDicePoolBase)) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownMoveTraits"));
       return null;
+    }
+    if (willCost > 0) {
+      willAfter = Math.max(currentWill - willCost, 0);
+      await this.update({ "system.resources.will.value": willAfter });
     }
 
     const reducedAccuracy = Math.max(toNumber(move.system.reducedAccuracy, 0), 0);
@@ -471,8 +507,9 @@ export class PokRoleActor extends Actor {
       async: true
     });
     const rawAccuracySuccesses = toNumber(accuracyRoll.total, 0);
+    const modifiedAccuracySuccesses = rawAccuracySuccesses + accuracyFlatModifier;
     const removedAccuracySuccesses = reducedAccuracy + painPenalty;
-    const netAccuracySuccesses = rawAccuracySuccesses - removedAccuracySuccesses;
+    const netAccuracySuccesses = modifiedAccuracySuccesses - removedAccuracySuccesses;
     const requiredSuccesses = actionNumber;
     let hit = netAccuracySuccesses >= requiredSuccesses;
     const criticalThreshold = requiredSuccesses + (move.system.highCritical ? 2 : 3);
@@ -600,6 +637,10 @@ export class PokRoleActor extends Actor {
       ...moveSecondaryEffectResults,
       ...abilitySecondaryEffectResults
     ];
+    const accuracyDiceModifierLabel =
+      accuracyDiceModifier > 0 ? `+${accuracyDiceModifier}` : `${accuracyDiceModifier}`;
+    const accuracyFlatModifierLabel =
+      accuracyFlatModifier > 0 ? `+${accuracyFlatModifier}` : `${accuracyFlatModifier}`;
 
     const summaryHtml = await renderTemplate(
       getSystemAssetPath("templates/chat/move-roll.hbs"),
@@ -611,11 +652,20 @@ export class PokRoleActor extends Actor {
         categoryLabel: game.i18n.localize(
           MOVE_CATEGORY_LABEL_BY_KEY[category] ?? "POKROLE.Common.Unknown"
         ),
+        willCost,
+        willBefore,
+        willAfter,
+        accuracyDicePoolBase,
+        accuracyDiceModifier,
+        accuracyDiceModifierLabel,
+        accuracyFlatModifier,
+        accuracyFlatModifierLabel,
         accuracyAttributeLabel: this.localizeTrait(accuracyAttributeKey),
         accuracySkillLabel: this.localizeTrait(accuracySkillKey),
         actionNumber,
         requiredSuccesses,
         rawAccuracySuccesses,
+        modifiedAccuracySuccesses,
         removedAccuracySuccesses,
         netAccuracySuccesses,
         hit,
@@ -891,6 +941,7 @@ export class PokRoleActor extends Actor {
 
   _normalizeSecondaryEffectDefinition(effect) {
     const rawEffect = effect && typeof effect === "object" ? effect : {};
+    const section = Math.max(Math.floor(toNumber(rawEffect.section, 0)), 0);
     const trigger = MOVE_SECONDARY_TRIGGER_KEYS.includes(rawEffect.trigger)
       ? rawEffect.trigger
       : "on-hit";
@@ -898,7 +949,12 @@ export class PokRoleActor extends Actor {
       ? rawEffect.target
       : "target";
     const effectType = this._normalizeSecondaryEffectType(rawEffect.effectType);
-    const durationMode = this._normalizeSecondaryDurationMode(rawEffect.durationMode, effectType);
+    const normalizedEffectType =
+      section > 0 && ["condition", "stat"].includes(effectType) ? "active-effect" : effectType;
+    const durationMode = this._normalizeSecondaryDurationMode(
+      rawEffect.durationMode,
+      normalizedEffectType
+    );
     const durationRounds = this._normalizeSecondaryDurationRounds(rawEffect.durationRounds);
     const specialDuration = this._normalizeSpecialDurationList(rawEffect.specialDuration);
     const condition = this._normalizeConditionKey(rawEffect.condition);
@@ -908,22 +964,27 @@ export class PokRoleActor extends Actor {
 
     return {
       label: `${rawEffect.label ?? ""}`.trim(),
+      section,
       trigger,
       chance,
       target,
-      effectType,
+      effectType: normalizedEffectType,
       durationMode,
       durationRounds,
       specialDuration,
       condition,
       stat,
       amount,
-      notes: `${rawEffect.notes ?? ""}`.trim()
+      notes: `${rawEffect.notes ?? ""}`.trim(),
+      linkedEffectId: `${rawEffect.linkedEffectId ?? ""}`.trim()
     };
   }
 
   _normalizeSecondaryEffectType(effectType) {
     const normalizedType = `${effectType ?? "condition"}`.trim().toLowerCase();
+    if (normalizedType === "activeeffect" || normalizedType === "active_effect") {
+      return "active-effect";
+    }
     if (normalizedType === "combat-stat") return "stat";
     if (MOVE_SECONDARY_EFFECT_TYPE_KEYS.includes(normalizedType)) return normalizedType;
     return "condition";
@@ -1430,6 +1491,7 @@ export class PokRoleActor extends Actor {
   _toSecondaryTypeLabelSuffix(effectType) {
     const suffixByType = {
       condition: "Condition",
+      "active-effect": "ActiveEffect",
       stat: "Stat",
       damage: "Damage",
       heal: "Heal",
@@ -1476,6 +1538,12 @@ export class PokRoleActor extends Actor {
     switch (normalizedType) {
       case "condition":
         return this._applyConditionEffectToActor(
+          { ...effect, effectType: normalizedType },
+          targetActor,
+          sourceMove
+        );
+      case "active-effect":
+        return this._applySecondaryActiveEffectToActor(
           { ...effect, effectType: normalizedType },
           targetActor,
           sourceMove
@@ -1599,7 +1667,7 @@ export class PokRoleActor extends Actor {
     await targetActor.createEmbeddedDocuments("ActiveEffect", [
       {
         name: effectLabel,
-        img: sourceMove?.img || "icons/svg/aura.svg",
+        img: this._getConditionIconPath(conditionKey) || sourceMove?.img || "icons/svg/aura.svg",
         origin: sourceMove?.uuid ?? null,
         transfer: false,
         disabled: false,
@@ -1622,6 +1690,89 @@ export class PokRoleActor extends Actor {
         automationFlags.durationRounds,
         automationFlags.specialDuration
       )})`
+    };
+  }
+
+  _getConditionIconPath(conditionKey) {
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    return CONDITION_ICON_BY_KEY[normalizedCondition] ?? null;
+  }
+
+  _normalizeActiveEffectStackMode(value) {
+    const normalized = `${value ?? "name-origin"}`.trim().toLowerCase();
+    return ACTIVE_EFFECT_STACK_MODE_KEYS.includes(normalized) ? normalized : "name-origin";
+  }
+
+  _findStackConflictActiveEffect(targetActor, effectData) {
+    if (!targetActor || !effectData) return null;
+    const effectName = `${effectData.name ?? ""}`.trim().toLowerCase();
+    const effectOrigin = `${effectData.origin ?? ""}`.trim().toLowerCase();
+    const automationFlags = effectData.flags?.[POKROLE.ID]?.automation ?? {};
+    const stackMode = this._normalizeActiveEffectStackMode(automationFlags?.stackMode);
+    if (stackMode === "multiple") return null;
+
+    return (targetActor.effects?.contents ?? []).find((existingEffect) => {
+      const existingName = `${existingEffect?.name ?? ""}`.trim().toLowerCase();
+      const existingOrigin = `${existingEffect?.origin ?? ""}`.trim().toLowerCase();
+      if (stackMode === "name") {
+        return Boolean(effectName) && existingName === effectName;
+      }
+      if (stackMode === "origin") {
+        return Boolean(effectOrigin) && existingOrigin === effectOrigin;
+      }
+      return Boolean(effectName) && existingName === effectName && effectOrigin === existingOrigin;
+    }) ?? null;
+  }
+
+  async _applySecondaryActiveEffectToActor(effect, targetActor, sourceMove = null) {
+    const linkedEffectId = `${effect?.linkedEffectId ?? ""}`.trim();
+    if (!linkedEffectId || sourceMove?.type !== "move") {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Errors.InvalidEffectConfiguration")
+      };
+    }
+
+    const templateEffect = sourceMove.effects?.get(linkedEffectId) ?? null;
+    if (!templateEffect) {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Errors.InvalidEffectConfiguration")
+      };
+    }
+
+    const templateData = templateEffect.toObject();
+    const conflictEffect = this._findStackConflictActiveEffect(targetActor, templateData);
+    if (conflictEffect) {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectAlreadyActive")
+      };
+    }
+
+    const [createdEffect] = await targetActor.createEmbeddedDocuments("ActiveEffect", [
+      {
+        name: `${templateData?.name ?? ""}`.trim() || this._formatSecondaryEffectLabel(effect),
+        img: templateData?.img || sourceMove?.img || "icons/svg/aura.svg",
+        origin: sourceMove?.uuid ?? templateData?.origin ?? null,
+        transfer: false,
+        disabled: false,
+        statuses: Array.isArray(templateData?.statuses) ? templateData.statuses : [],
+        tint: templateData?.tint ?? null,
+        description: templateData?.description ?? "",
+        duration: templateData?.duration ?? {},
+        changes: Array.isArray(templateData?.changes) ? templateData.changes : [],
+        flags: templateData?.flags ?? {}
+      }
+    ]);
+
+    if (createdEffect && typeof targetActor.synchronizeConditionFlags === "function") {
+      await targetActor.synchronizeConditionFlags();
+    }
+
+    return {
+      applied: true,
+      detail: `${createdEffect?.name ?? this._formatSecondaryEffectLabel(effect)}`
     };
   }
 
@@ -2211,6 +2362,12 @@ export class PokRoleActor extends Actor {
       };
     }
     if (normalizedType === "stat" && this._normalizeSecondaryStatKey(normalizedEffect.stat) === "none") {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Errors.InvalidEffectConfiguration")
+      };
+    }
+    if (normalizedType === "active-effect" && !`${normalizedEffect.linkedEffectId ?? ""}`.trim()) {
       return {
         applied: false,
         detail: game.i18n.localize("POKROLE.Errors.InvalidEffectConfiguration")

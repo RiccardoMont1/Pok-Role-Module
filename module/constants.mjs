@@ -195,6 +195,7 @@ export const MOVE_SECONDARY_TARGET_KEYS = Object.freeze([
 
 export const MOVE_SECONDARY_EFFECT_TYPE_KEYS = Object.freeze([
   "condition",
+  "active-effect",
   "stat",
   "combat-stat",
   "damage",

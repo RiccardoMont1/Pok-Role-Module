@@ -45,6 +45,15 @@ async function processCombatSpecialDurationEvent(combat, eventKey) {
   }
 }
 
+async function ensureEffectIconDisplay(effectDocument) {
+  if (!effectDocument) return;
+  const automationFlags = effectDocument.getFlag?.(POKROLE.ID, "automation") ?? {};
+  if (!automationFlags?.alwaysShowIcon) return;
+  const currentImage = `${effectDocument.img ?? ""}`.trim();
+  if (currentImage) return;
+  await effectDocument.update({ img: "icons/svg/aura.svg" });
+}
+
 const LAST_COMBAT_TURN_STATE = new Map();
 
 const HUD_CONDITION_DEFINITIONS = Object.freeze([
@@ -57,7 +66,7 @@ const HUD_CONDITION_DEFINITIONS = Object.freeze([
   { key: "confused", label: "POKROLE.Move.Secondary.Condition.Confused", icon: "icons/svg/daze.svg" },
   { key: "flinch", label: "POKROLE.Move.Secondary.Condition.Flinch", icon: "icons/svg/falling.svg" },
   { key: "disabled", label: "POKROLE.Move.Secondary.Condition.Disabled", icon: "icons/svg/cancel.svg" },
-  { key: "infatuated", label: "POKROLE.Move.Secondary.Condition.Infatuated", icon: "icons/svg/heart.svg" },
+  { key: "infatuated", label: "POKROLE.Move.Secondary.Condition.Infatuated", icon: "icons/svg/heal.svg" },
   { key: "badly-poisoned", label: "POKROLE.Move.Secondary.Condition.BadlyPoisoned", icon: "icons/svg/skull.svg" }
 ]);
 const HUD_CONDITION_KEY_BY_STATUS_ID = new Map(
@@ -168,6 +177,16 @@ function getConditionLabelPath(conditionKey) {
     "badly-poisoned": "POKROLE.Move.Secondary.Condition.BadlyPoisoned"
   };
   return labelByCondition[conditionKey] ?? "POKROLE.Common.Unknown";
+}
+
+function getStackModeLabelPath(stackModeKey) {
+  const labelByStackMode = {
+    "name-origin": "POKROLE.Effects.StackMode.NameOrigin",
+    name: "POKROLE.Effects.StackMode.Name",
+    origin: "POKROLE.Effects.StackMode.Origin",
+    multiple: "POKROLE.Effects.StackMode.Multiple"
+  };
+  return labelByStackMode[stackModeKey] ?? "POKROLE.Common.Unknown";
 }
 
 function createAeSpecialDurationRow(index, selectedKey = "") {
@@ -319,6 +338,12 @@ function renderActiveEffectAutomationConfig(app, html) {
   const passiveThreshold = Number.isFinite(Number(automationFlags?.passiveThreshold))
     ? Math.min(Math.max(Math.floor(Number(automationFlags.passiveThreshold)), 1), 99)
     : 50;
+  const rawStackMode = `${automationFlags?.stackMode ?? "name-origin"}`.trim().toLowerCase();
+  const stackMode = ["name-origin", "name", "origin", "multiple"].includes(rawStackMode)
+    ? rawStackMode
+    : "name-origin";
+  const alwaysShowIcon = Boolean(automationFlags?.alwaysShowIcon);
+  const overlayIcon = Boolean(effectDocument?.getFlag?.("core", "overlay"));
 
   const modeOptionsHtml = ["manual", "rounds"].map((modeKey) => {
     const selected = modeKey === durationMode ? " selected" : "";
@@ -337,12 +362,21 @@ function renderActiveEffectAutomationConfig(app, html) {
     const label = game.i18n.localize(getConditionLabelPath(conditionKey));
     return `<option value="${conditionKey}"${selected}>${label}</option>`;
   }).join("");
+  const stackModeOptionsHtml = ["name-origin", "name", "origin", "multiple"]
+    .map((stackModeKey) => {
+      const selected = stackModeKey === stackMode ? " selected" : "";
+      const label = game.i18n.localize(getStackModeLabelPath(stackModeKey));
+      return `<option value="${stackModeKey}"${selected}>${label}</option>`;
+    })
+    .join("");
 
   const specialRowsHtml = (specialDuration.length > 0 ? specialDuration : [])
     .map((durationKey, index) => createAeSpecialDurationRow(index, durationKey))
     .join("");
 
   const passiveChecked = passiveEnabled ? " checked" : "";
+  const alwaysShowIconChecked = alwaysShowIcon ? " checked" : "";
+  const overlayIconChecked = overlayIcon ? " checked" : "";
   const thresholdRowClass = passiveTrigger.includes("threshold") ? "" : " is-hidden";
   const conditionRowClass = passiveTrigger.includes("condition") ? "" : " is-hidden";
 
@@ -383,6 +417,26 @@ function renderActiveEffectAutomationConfig(app, html) {
           max="99"
           data-dtype="Number"
         />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>${game.i18n.localize("POKROLE.Effects.StackMode.Label")}</label>
+      <div class="form-fields">
+        <select name="flags.${POKROLE.ID}.automation.stackMode">
+          ${stackModeOptionsHtml}
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>${game.i18n.localize("POKROLE.Effects.AlwaysShowIcon")}</label>
+      <div class="form-fields">
+        <input type="checkbox" name="flags.${POKROLE.ID}.automation.alwaysShowIcon" ${alwaysShowIconChecked} />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>${game.i18n.localize("POKROLE.Effects.OverlayIcon")}</label>
+      <div class="form-fields">
+        <input type="checkbox" name="flags.core.overlay" ${overlayIconChecked} />
       </div>
     </div>
   `;
@@ -676,6 +730,7 @@ Hooks.on("updateActor", (actorDocument) => {
 });
 
 Hooks.on("createActiveEffect", (effectDocument) => {
+  void ensureEffectIconDisplay(effectDocument);
   const actor = effectDocument?.parent ?? null;
   if (!actor || actor.documentName !== "Actor") return;
 
@@ -689,6 +744,7 @@ Hooks.on("createActiveEffect", (effectDocument) => {
 });
 
 Hooks.on("updateActiveEffect", (effectDocument, changedData) => {
+  void ensureEffectIconDisplay(effectDocument);
   const actor = effectDocument?.parent ?? null;
   if (!actor || actor.documentName !== "Actor") return;
 

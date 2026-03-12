@@ -82,7 +82,7 @@ const AILMENT_DEFINITIONS = Object.freeze([
   {
     key: "infatuated",
     labelPath: "POKROLE.Move.Secondary.Condition.Infatuated",
-    icon: "icons/svg/heart.svg"
+    icon: "icons/svg/heal.svg"
   },
   {
     key: "badly-poisoned",
@@ -557,8 +557,14 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           accuracyAttribute: "dexterity",
           accuracySkill: "brawl",
           reducedAccuracy: 0,
+          accuracyDiceModifier: 0,
+          accuracyFlatModifier: 0,
           power: 2,
           damageAttribute: "auto",
+          willCost: 0,
+          range: "",
+          durationType: "instant",
+          durationValue: 1,
           priority: 0,
           highCritical: false,
           neverFail: false,
@@ -1228,12 +1234,13 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         if (label) return label;
         const effectType = `${effect?.effectType ?? "custom"}`.trim();
         const chance = Number(effect?.chance ?? 100);
-        const suffixByType = {
-          condition: "Condition",
-          stat: "Stat",
-          damage: "Damage",
-          heal: "Heal",
-          will: "Will",
+      const suffixByType = {
+        condition: "Condition",
+        "active-effect": "ActiveEffect",
+        stat: "Stat",
+        damage: "Damage",
+        heal: "Heal",
+        will: "Will",
           custom: "Custom"
         };
         const typeLabel = game.i18n.localize(

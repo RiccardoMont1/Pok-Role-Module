@@ -209,6 +209,19 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const attributeChoices = ATTRIBUTE_DEFINITIONS.map((attribute) => attribute.key);
     const skillChoices = SKILL_DEFINITIONS.map((skill) => skill.key);
+    const moveDurationChoices = [
+      "instant",
+      "manual",
+      "time-turns",
+      "time-rounds",
+      "time-minutes",
+      "time-hours",
+      "time-days",
+      "time-months",
+      "time-years",
+      "permanent-until-dissolved",
+      "permanent"
+    ];
     const damageAttributeChoices = [
       "auto",
       ...CORE_ATTRIBUTE_DEFINITIONS.map((attribute) => attribute.key),
@@ -254,12 +267,23 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
       }),
       power: integerField(0, { min: 0 }),
       reducedAccuracy: integerField(0, { min: 0, max: 6 }),
+      accuracyDiceModifier: integerField(0, { min: -99, max: 99 }),
+      accuracyFlatModifier: integerField(0, { min: -99, max: 99 }),
       damageAttribute: new StringField({
         required: true,
         blank: false,
         initial: "auto",
         choices: damageAttributeChoices
       }),
+      willCost: integerField(0, { min: 0, max: 99 }),
+      range: trimmedStringField(""),
+      durationType: new StringField({
+        required: true,
+        blank: false,
+        initial: "instant",
+        choices: moveDurationChoices
+      }),
+      durationValue: integerField(1, { min: 1, max: 999 }),
       priority: integerField(0, { min: -3, max: 5 }),
       highCritical: new BooleanField({ required: true, initial: false }),
       neverFail: new BooleanField({ required: true, initial: false }),
@@ -267,6 +291,7 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
       isUsable: new BooleanField({ required: true, initial: true }),
       secondaryEffects: new ArrayField(
         new SchemaField({
+          section: integerField(0, { min: 0, max: 99 }),
           label: trimmedStringField(""),
           trigger: new StringField({
             required: true,
@@ -319,7 +344,8 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
             choices: MOVE_SECONDARY_STAT_KEYS
           }),
           amount: integerField(0, { min: -99, max: 99 }),
-          notes: trimmedStringField("")
+          notes: trimmedStringField(""),
+          linkedEffectId: trimmedStringField("")
         }),
         {
           required: true,

@@ -13,7 +13,11 @@
 
   <section class="chat-card-section">
     <p><strong>{{localize "POKROLE.Chat.Accuracy"}}:</strong> {{accuracyAttributeLabel}} + {{accuracySkillLabel}}</p>
-    <p>{{localize "POKROLE.Chat.RawSuccesses"}}: {{rawAccuracySuccesses}} | {{localize "POKROLE.Chat.RemovedSuccesses"}}: {{removedAccuracySuccesses}} | {{localize "POKROLE.Chat.NetSuccesses"}}: {{netAccuracySuccesses}} | {{localize "POKROLE.Chat.RequiredSuccesses"}}: {{requiredSuccesses}}</p>
+    <p><strong>{{localize "POKROLE.Move.AccuracyDiceModifier"}}:</strong> {{accuracyDicePoolBase}} {{#if accuracyDiceModifier}}({{accuracyDiceModifierLabel}}){{/if}} | <strong>{{localize "POKROLE.Move.AccuracyFlatModifier"}}:</strong> {{accuracyFlatModifierLabel}}</p>
+    <p>{{localize "POKROLE.Chat.RawSuccesses"}}: {{rawAccuracySuccesses}} | {{localize "POKROLE.Chat.ModifiedSuccesses"}}: {{modifiedAccuracySuccesses}} | {{localize "POKROLE.Chat.RemovedSuccesses"}}: {{removedAccuracySuccesses}} | {{localize "POKROLE.Chat.NetSuccesses"}}: {{netAccuracySuccesses}} | {{localize "POKROLE.Chat.RequiredSuccesses"}}: {{requiredSuccesses}}</p>
+    {{#if willCost}}
+    <p><strong>{{localize "POKROLE.Move.WillCost"}}:</strong> {{willCost}} ({{willBefore}} -> {{willAfter}})</p>
+    {{/if}}
     <p>
       <strong>{{localize "POKROLE.Chat.Result"}}:</strong>
       <span class="chat-result-badge {{#if hit}}is-hit{{else}}is-miss{{/if}}">

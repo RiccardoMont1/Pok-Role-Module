@@ -129,6 +129,15 @@
       "DisabledEmpty": "No disabled effects.",
       "Disable": "Disable effect",
       "Enable": "Enable effect",
+      "AlwaysShowIcon": "Always show effect icon",
+      "OverlayIcon": "Overlay Icon",
+      "StackMode": {
+        "Label": "Stackable",
+        "NameOrigin": "No stacking for same Name and Origin",
+        "Name": "No stacking for same Name",
+        "Origin": "No stacking for same Origin",
+        "Multiple": "Allow multiple stacks"
+      },
       "DurationTurnsWithValue": "{turns} turns left",
       "DurationSecondsWithValue": "{seconds}s left"
     },
@@ -246,8 +255,11 @@
       "NoStat": "No Stat",
       "Type": "Type",
       "Target": "Target",
+      "Range": "Range",
+      "RangePlaceholder": "Melee, 1m, Scene, etc.",
       "ActionTag": "Action Cost",
       "ActionTagShort": "Tag",
+      "DetailsTab": "Details",
       "ActionTagValues": {
         "1A": "1 Action",
         "2A": "2 Actions",
@@ -274,12 +286,46 @@
       },
       "Power": "Power",
       "ReducedAccuracy": "Reduced Accuracy",
+      "AccuracyDiceModifier": "Accuracy Dice Modifier",
+      "AccuracyFlatModifier": "Accuracy Flat Modifier",
       "AccuracyAttribute": "Accuracy Attribute",
       "AccuracySkill": "Accuracy Skill",
       "AccuracySummary": "Accuracy",
       "DamageSummary": "Damage Pool",
       "DamageAttribute": "Damage Attribute",
       "DamageAttributeAuto": "Auto (from category)",
+      "WillCost": "Will Cost",
+      "DetailsBlock": {
+        "Title": "Move Details"
+      },
+      "UsageBlock": {
+        "Title": "Move Usage"
+      },
+      "EffectsBlock": {
+        "Title": "Move Effects"
+      },
+      "Duration": {
+        "Label": "Duration",
+        "Value": "Duration Value",
+        "Groups": {
+          "Time": "Time",
+          "Permanent": "Permanent"
+        },
+        "Values": {
+          "Instant": "Instant",
+          "Manual": "Manual",
+          "TimeTurns": "Turns",
+          "TimeRounds": "Rounds",
+          "TimeMinutes": "Minutes",
+          "TimeHours": "Hours",
+          "TimeDays": "Days",
+          "TimeMonths": "Months",
+          "TimeYears": "Years",
+          "PermanentUntilDissolved": "Until dispelled",
+          "Permanent": "Permanent"
+        }
+      },
+      "Properties": "Properties",
       "Flags": "Flags",
       "Priority": "Priority",
       "PriorityWithValue": "Priority {value}",
@@ -291,6 +337,7 @@
       "Secondary": {
         "Title": "Secondary Effects",
         "Add": "Add Effect",
+        "AddExtraSection": "Add Extra Effect Block",
         "Empty": "No secondary effects configured.",
         "Label": "Label",
         "Chance": "Chance (%)",
@@ -338,12 +385,18 @@
         "Type": {
           "Label": "Effect Type",
           "Condition": "Condition",
+          "ActiveEffect": "Active Effect / Condition",
           "Stat": "Stat Change",
           "CombatStat": "Combat Stat",
           "Damage": "Damage",
           "Heal": "Heal",
           "Will": "Will",
           "Custom": "Custom"
+        },
+        "ActiveEffect": {
+          "Label": "Active Effect",
+          "Configure": "Configure",
+          "Unconfigured": "No Active Effect linked yet."
         },
         "Condition": {
           "Label": "Condition",
@@ -534,6 +587,7 @@
       "CombinedFlavor": "{actor} rolls {label}<br><small>{breakdown}</small>",
       "RollBreakdown": "Raw: {raw} | Removed: {removed} | Net: {net} | Required: {required}",
       "RawSuccesses": "Raw Successes",
+      "ModifiedSuccesses": "Modified Successes",
       "RemovedSuccesses": "Removed Successes",
       "NetSuccesses": "Net Successes",
       "RequiredSuccesses": "Required Successes",
@@ -616,6 +670,7 @@
       "UnknownMove": "Move not found.",
       "UnknownGear": "Item not found.",
       "UnknownMoveTraits": "Move traits are invalid or missing.",
+      "NotEnoughWill": "Not enough Will ({current}/{required}).",
       "NoTraitsSelected": "Select at least one trait for Combined Roll.",
       "EvasionAlreadyUsedThisRound": "Evasion was already used this round.",
       "ClashAlreadyUsedThisRound": "Clash was already used this round.",
