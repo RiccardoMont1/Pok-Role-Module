@@ -298,7 +298,7 @@
               <label>
                 <span>{{localize "POKROLE.Move.Secondary.Trigger.Label"}}</span>
                 <select name="system.secondaryEffects.{{effect.index}}.trigger">
-                  {{selectOptions ../../secondaryTriggerOptions selected=effect.trigger localize=true}}
+                  {{selectOptions @root.secondaryTriggerOptions selected=effect.trigger localize=true}}
                 </select>
               </label>
               <label>
@@ -315,16 +315,16 @@
               <label>
                 <span>{{localize "POKROLE.Move.Secondary.Target.Label"}}</span>
                 <select name="system.secondaryEffects.{{effect.index}}.target">
-                  {{selectOptions ../../secondaryTargetOptions selected=effect.target localize=true}}
+                  {{selectOptions @root.secondaryTargetOptions selected=effect.target localize=true}}
                 </select>
               </label>
               <label>
                 <span>{{localize "POKROLE.Move.Secondary.Type.Label"}}</span>
                 <select name="system.secondaryEffects.{{effect.index}}.effectType">
                   {{#if effect.section}}
-                  {{selectOptions ../../secondaryEffectTypeOptionsExtra selected=effect.effectType localize=true}}
+                  {{selectOptions @root.secondaryEffectTypeOptionsExtra selected=effect.effectType localize=true}}
                   {{else}}
-                  {{selectOptions ../../secondaryEffectTypeOptions selected=effect.effectType localize=true}}
+                  {{selectOptions @root.secondaryEffectTypeOptions selected=effect.effectType localize=true}}
                   {{/if}}
                 </select>
               </label>
@@ -333,7 +333,7 @@
                 <label>
                   <span>{{localize "POKROLE.Move.Secondary.Duration.Mode.Label"}}</span>
                   <select name="system.secondaryEffects.{{effect.index}}.durationMode">
-                    {{selectOptions ../../secondaryDurationModeOptions selected=effect.durationMode localize=true}}
+                    {{selectOptions @root.secondaryDurationModeOptions selected=effect.durationMode localize=true}}
                   </select>
                 </label>
                 <label>
@@ -392,7 +392,7 @@
               <label data-effect-visible="condition" class="{{#unless effect.showConditionField}}is-hidden{{/unless}}">
                 <span>{{localize "POKROLE.Move.Secondary.Condition.Label"}}</span>
                 <select name="system.secondaryEffects.{{effect.index}}.condition">
-                  {{selectOptions ../../secondaryConditionOptions selected=effect.condition localize=true}}
+                  {{selectOptions @root.secondaryConditionOptions selected=effect.condition localize=true}}
                 </select>
               </label>
               <div data-effect-visible="active-effect" class="move-linked-active-effect {{#unless effect.showActiveEffectField}}is-hidden{{/unless}}">
@@ -423,7 +423,7 @@
               <label data-effect-visible="stat" class="{{#unless effect.showStatField}}is-hidden{{/unless}}">
                 <span>{{localize "POKROLE.Move.Secondary.Stat.Label"}}</span>
                 <select name="system.secondaryEffects.{{effect.index}}.stat">
-                  {{selectOptions ../../secondaryStatOptions selected=effect.stat localize=true}}
+                  {{selectOptions @root.secondaryStatOptions selected=effect.stat localize=true}}
                 </select>
               </label>
               <label data-effect-visible="amount" class="{{#unless effect.showAmountField}}is-hidden{{/unless}}">

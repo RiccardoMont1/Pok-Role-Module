@@ -53,6 +53,20 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
   async getData(options = {}) {
     const context = await super.getData(options);
     context.system = this.item.system;
+    context.actionTagOptions ??= {};
+    context.typeOptions ??= {};
+    context.categoryOptions ??= {};
+    context.targetOptions ??= {};
+    context.accuracyAttributeOptions ??= {};
+    context.accuracySkillOptions ??= {};
+    context.damageAttributeOptions ??= {};
+    context.secondaryTriggerOptions ??= {};
+    context.secondaryTargetOptions ??= {};
+    context.secondaryEffectTypeOptions ??= {};
+    context.secondaryEffectTypeOptionsExtra ??= {};
+    context.secondaryDurationModeOptions ??= {};
+    context.secondaryConditionOptions ??= {};
+    context.secondaryStatOptions ??= {};
     const typeOptions = Object.fromEntries(
       TYPE_OPTIONS.map((typeKey) => [
         typeKey,
