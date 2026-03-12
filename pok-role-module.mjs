@@ -135,6 +135,13 @@ function removeStatusEffectDefinition(statusId) {
   );
 }
 
+function clearManagedStatusEffectDefinitions() {
+  const currentList = Array.isArray(CONFIG.statusEffects) ? CONFIG.statusEffects : [];
+  CONFIG.statusEffects = currentList.filter(
+    (entry) => !`${entry?.id ?? ""}`.trim().toLowerCase().startsWith("pokrole-ae-")
+  );
+}
+
 function resolveShowTokenIconFlag(effectDocument) {
   const automationFlags = effectDocument?.getFlag?.(POKROLE.ID, "automation") ?? {};
   if (Object.prototype.hasOwnProperty.call(automationFlags, "showTokenIcon")) {
@@ -169,11 +176,21 @@ async function synchronizeEffectTokenIcon(effectDocument) {
         .map((status) => `${status ?? ""}`.trim())
         .filter(Boolean)
     );
+    const managedPrefix = "pokrole-ae-";
+    const hasExplicitStatus = [...currentStatuses].some(
+      (statusEntry) => !statusEntry.toLowerCase().startsWith(managedPrefix)
+    );
     const hasManagedStatus = currentStatuses.has(statusId);
     const currentImage = `${effectDocument.img ?? ""}`.trim();
     const updateData = {};
 
-    if (shouldShowTokenIcon) {
+    if (hasExplicitStatus) {
+      if (hasManagedStatus) {
+        currentStatuses.delete(statusId);
+        updateData.statuses = [...currentStatuses];
+      }
+      removeStatusEffectDefinition(statusId);
+    } else if (shouldShowTokenIcon) {
       if (!currentImage) updateData.img = "icons/svg/aura.svg";
       if (!hasManagedStatus) {
         currentStatuses.add(statusId);
@@ -202,6 +219,7 @@ async function synchronizeEffectTokenIcon(effectDocument) {
 
 async function synchronizeAllActorEffectTokenIcons() {
   if (!game) return;
+  clearManagedStatusEffectDefinitions();
   const actorsByKey = new Map();
   const rememberActor = (actor) => {
     if (!actor || actor.documentName !== "Actor") return;
