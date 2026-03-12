@@ -74,7 +74,8 @@
       "Frozen": "Congelato",
       "Paralyzed": "Paralisi",
       "Poisoned": "Avvelenato",
-      "Fainted": "Svenuto"
+      "Fainted": "Svenuto",
+      "Dead": "Morto"
     },
     "TemporaryEffects": {
       "Title": "Effetti Temporanei",
@@ -748,6 +749,7 @@
       "InvalidEffectConfiguration": "Completa la configurazione dell'effetto prima di applicarlo.",
       "CombatRequired": "Questa azione richiede un combattimento attivo.",
       "MoveBlockedByWeather": "Mossa bloccata dal meteo: {weather}.",
+      "ActorDead": "Non puoi agire se sei morto.",
       "ActorFainted": "Non puoi agire se sei svenuto.",
       "ActorSleeping": "Non puoi agire se sei addormentato.",
       "ActorFrozen": "Non puoi agire se sei congelato.",

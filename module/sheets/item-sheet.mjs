@@ -931,6 +931,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       paralyzed: "POKROLE.Conditions.Paralyzed",
       poisoned: "POKROLE.Conditions.Poisoned",
       fainted: "POKROLE.Conditions.Fainted",
+      dead: "POKROLE.Conditions.Dead",
       confused: "POKROLE.Move.Secondary.Condition.Confused",
       flinch: "POKROLE.Move.Secondary.Condition.Flinch",
       disabled: "POKROLE.Move.Secondary.Condition.Disabled",

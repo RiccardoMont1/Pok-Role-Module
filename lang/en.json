@@ -74,7 +74,8 @@
       "Frozen": "Frozen",
       "Paralyzed": "Paralyzed",
       "Poisoned": "Poisoned",
-      "Fainted": "Fainted"
+      "Fainted": "Fainted",
+      "Dead": "Dead"
     },
     "TemporaryEffects": {
       "Title": "Temporary Effects",
@@ -748,6 +749,7 @@
       "InvalidEffectConfiguration": "Complete the effect configuration before applying it.",
       "CombatRequired": "This action requires an active combat.",
       "MoveBlockedByWeather": "Move blocked by weather: {weather}.",
+      "ActorDead": "Cannot act while dead.",
       "ActorFainted": "Cannot act while fainted.",
       "ActorSleeping": "Cannot act while asleep.",
       "ActorFrozen": "Cannot act while frozen.",

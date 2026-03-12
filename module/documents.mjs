@@ -92,15 +92,18 @@ const CONDITION_ALIASES = Object.freeze({
   badly_poisoned: "badly-poisoned",
   freeze: "frozen",
   frozen: "frozen",
-  confused: "confused"
+  confused: "confused",
+  dead: "dead",
+  morto: "dead"
 });
 
 const TEMPORARY_EFFECTS_FLAG = "automation.temporaryEffects";
 const CONFIGURED_EFFECTS_FLAG = "automation.configuredEffects";
 const CONDITION_FLAGS_FLAG = "automation.conditionFlags";
-const CONDITION_KEYS = Object.freeze(
-  MOVE_SECONDARY_CONDITION_KEYS.filter((conditionKey) => conditionKey !== "none")
-);
+const CONDITION_KEYS = Object.freeze([
+  ...MOVE_SECONDARY_CONDITION_KEYS.filter((conditionKey) => conditionKey !== "none"),
+  "dead"
+]);
 const CONDITION_FIELD_BY_KEY = Object.freeze({
   sleep: "sleep",
   burn: "burn",
@@ -116,6 +119,7 @@ const CONDITION_ICON_BY_KEY = Object.freeze({
   paralyzed: getSystemAssetPath("assets/ailments/paralyzed.svg"),
   poisoned: getSystemAssetPath("assets/ailments/poisoned.svg"),
   fainted: getSystemAssetPath("assets/ailments/fainted.svg"),
+  dead: "icons/svg/skull.svg",
   confused: "icons/svg/daze.svg",
   flinch: "icons/svg/falling.svg",
   disabled: "icons/svg/cancel.svg",
@@ -564,6 +568,10 @@ export class PokRoleActor extends Actor {
 
   async _assertCanAct(actionType = "generic") {
     if (!game.combat) return { allowed: true, reason: "" };
+
+    if (this._isConditionActive("dead")) {
+      return { allowed: false, reason: game.i18n.localize("POKROLE.Errors.ActorDead") };
+    }
 
     if (this._isConditionActive("fainted")) {
       return { allowed: false, reason: game.i18n.localize("POKROLE.Errors.ActorFainted") };
@@ -1023,6 +1031,8 @@ export class PokRoleActor extends Actor {
     }
     const isHoldingBackHalf = holdingBackMode === "half";
     const isHoldingBackNonLethal = holdingBackMode === "nonlethal" && Boolean(move.system.lethal);
+    const canInflictDeathOnKo =
+      Boolean(move.system?.lethal) && !isHoldingBackHalf && !isHoldingBackNonLethal;
     const actionNumber = await this._resolveActionRequirement(options.actionNumber, roundKey);
     const activeWeather = this.getActiveWeatherKey();
     const moveType = move.system.type || "normal";
@@ -1180,7 +1190,8 @@ export class PokRoleActor extends Actor {
           targetActor: actorTarget,
           painPenalty,
           critical,
-          isHoldingBackHalf
+          isHoldingBackHalf,
+          canInflictDeathOnKo
         });
         damageTargetResults.push(damageResult);
       }
@@ -1587,7 +1598,8 @@ export class PokRoleActor extends Actor {
     targetActor,
     painPenalty,
     critical,
-    isHoldingBackHalf
+    isHoldingBackHalf,
+    canInflictDeathOnKo = false
   }) {
     const category = move.system.category || "physical";
     const moveType = move.system.type || "normal";
@@ -1674,7 +1686,10 @@ export class PokRoleActor extends Actor {
     let hpBefore = null;
     let hpAfter = null;
     if (targetActor && finalDamage > 0) {
-      const hpChange = await this._safeApplyDamage(targetActor, finalDamage);
+      const hpChange = await this._safeApplyDamage(targetActor, finalDamage, {
+        applyDeadOnZero: Boolean(canInflictDeathOnKo),
+        sourceMove: move
+      });
       hpBefore = hpChange?.hpBefore ?? null;
       hpAfter = hpChange?.hpAfter ?? null;
       if (rangedAttack) {
@@ -1828,6 +1843,7 @@ export class PokRoleActor extends Actor {
     if (alias.includes("disable")) return "disabled";
     if (alias.includes("infatuat")) return "infatuated";
     if (alias.includes("faint")) return "fainted";
+    if (alias.includes("dead") || alias.includes("mort")) return "dead";
     return "none";
   }
 
@@ -2349,6 +2365,7 @@ export class PokRoleActor extends Actor {
       paralyzed: "POKROLE.Conditions.Paralyzed",
       poisoned: "POKROLE.Conditions.Poisoned",
       fainted: "POKROLE.Conditions.Fainted",
+      dead: "POKROLE.Conditions.Dead",
       confused: "POKROLE.Move.Secondary.Condition.Confused",
       flinch: "POKROLE.Move.Secondary.Condition.Flinch",
       disabled: "POKROLE.Move.Secondary.Condition.Disabled",
@@ -2750,6 +2767,16 @@ export class PokRoleActor extends Actor {
     await this._synchronizeConditionFlagsFromTemporaryEffects(this);
   }
 
+  async synchronizeFaintedFromHp() {
+    if (this.type !== "pokemon") return false;
+    const hpValue = Math.max(toNumber(this.system.resources?.hp?.value, 0), 0);
+    const shouldBeFainted = hpValue <= 0;
+    const isFainted = this._isConditionActive("fainted");
+    if (shouldBeFainted === isFainted) return false;
+    await this.toggleQuickCondition("fainted", { active: shouldBeFainted });
+    return true;
+  }
+
   _isConditionalAutomationEffect(effectDocument) {
     const automationFlags = effectDocument?.getFlag(POKROLE.ID, "automation") ?? {};
     const hasPassiveToggle = automationFlags?.passive === true;
@@ -2994,6 +3021,7 @@ export class PokRoleActor extends Actor {
       paralyzed: "Paralyzed: apply action/speed penalties according to the CoreBook.",
       poisoned: "Poisoned: apply poison progression according to the CoreBook.",
       fainted: "Fainted: actor is unable to act until recovered.",
+      dead: "Dead: actor is dead and cannot act until manually restored by the table.",
       confused: "Confused: apply confusion behavior from the CoreBook.",
       flinch: "Flinch: actor may lose action per CoreBook timing.",
       disabled: "Disabled: selected move/action cannot be used as per CoreBook.",
@@ -4847,7 +4875,7 @@ export class PokRoleActor extends Actor {
     await this.setFlag(POKROLE.ID, flagKey, roundKey);
   }
 
-  async _safeApplyDamage(targetActor, damage) {
+  async _safeApplyDamage(targetActor, damage, options = {}) {
     const normalizedDamage = Math.max(toNumber(damage, 0), 0);
     if (!targetActor || normalizedDamage <= 0) {
       return null;
@@ -4855,10 +4883,15 @@ export class PokRoleActor extends Actor {
 
     const hpValue = Math.max(toNumber(targetActor.system.resources?.hp?.value, 0), 0);
     const hpAfter = Math.max(hpValue - normalizedDamage, 0);
+    const applyDeadOnZero = Boolean(options?.applyDeadOnZero);
+    const isLethalKo = applyDeadOnZero && hpValue > 0 && hpAfter <= 0;
     try {
       await targetActor.update({ "system.resources.hp.value": hpAfter });
       if (hpAfter <= 0 && typeof targetActor.toggleQuickCondition === "function") {
         await targetActor.toggleQuickCondition("fainted", { active: true });
+        if (isLethalKo) {
+          await targetActor.toggleQuickCondition("dead", { active: true });
+        }
       }
     } catch (error) {
       console.error(`${POKROLE.ID} | Failed to apply damage`, error);

@@ -254,6 +254,7 @@ const HUD_CONDITION_DEFINITIONS = Object.freeze([
   { key: "paralyzed", label: "POKROLE.Conditions.Paralyzed", icon: getSystemAssetPath("assets/ailments/paralyzed.svg") },
   { key: "poisoned", label: "POKROLE.Conditions.Poisoned", icon: getSystemAssetPath("assets/ailments/poisoned.svg") },
   { key: "fainted", label: "POKROLE.Conditions.Fainted", icon: getSystemAssetPath("assets/ailments/fainted.svg") },
+  { key: "dead", label: "POKROLE.Conditions.Dead", icon: "icons/svg/skull.svg" },
   { key: "confused", label: "POKROLE.Move.Secondary.Condition.Confused", icon: "icons/svg/daze.svg" },
   { key: "flinch", label: "POKROLE.Move.Secondary.Condition.Flinch", icon: "icons/svg/falling.svg" },
   { key: "disabled", label: "POKROLE.Move.Secondary.Condition.Disabled", icon: "icons/svg/cancel.svg" },
@@ -361,6 +362,7 @@ function getConditionLabelPath(conditionKey) {
     paralyzed: "POKROLE.Conditions.Paralyzed",
     poisoned: "POKROLE.Conditions.Poisoned",
     fainted: "POKROLE.Conditions.Fainted",
+    dead: "POKROLE.Conditions.Dead",
     confused: "POKROLE.Move.Secondary.Condition.Confused",
     flinch: "POKROLE.Move.Secondary.Condition.Flinch",
     disabled: "POKROLE.Move.Secondary.Condition.Disabled",
@@ -812,6 +814,11 @@ Hooks.once("ready", async () => {
   game.pokrole ??= {};
   game.pokrole.seedCompendia = async (options = {}) => seedCompendia(options);
   await synchronizeAllActorEffectTokenIcons();
+  for (const actor of game.actors?.contents ?? []) {
+    if (actor?.type !== "pokemon") continue;
+    if (typeof actor.synchronizeFaintedFromHp !== "function") continue;
+    await actor.synchronizeFaintedFromHp();
+  }
 });
 
 Hooks.on("updateCombat", async (combat, changed) => {
@@ -934,8 +941,18 @@ Hooks.on("applyTokenStatusEffect", (token, statusId, isActive) => {
   void actor.toggleQuickCondition(conditionKey, { active: Boolean(isActive) });
 });
 
-Hooks.on("updateActor", (actorDocument) => {
+Hooks.on("updateActor", (actorDocument, changedData) => {
   if (!actorDocument || actorDocument.documentName !== "Actor") return;
+  const hpWasUpdated =
+    foundry.utils.hasProperty(changedData ?? {}, "system.resources.hp") ||
+    foundry.utils.hasProperty(changedData ?? {}, "system.resources.hp.value");
+  if (
+    actorDocument.type === "pokemon" &&
+    hpWasUpdated &&
+    typeof actorDocument.synchronizeFaintedFromHp === "function"
+  ) {
+    void actorDocument.synchronizeFaintedFromHp();
+  }
   if (typeof actorDocument.synchronizeConditionalActiveEffects === "function") {
     void actorDocument.synchronizeConditionalActiveEffects();
   }

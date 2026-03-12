@@ -65,6 +65,11 @@ const AILMENT_DEFINITIONS = Object.freeze([
     icon: getSystemAssetPath("assets/ailments/fainted.svg")
   },
   {
+    key: "dead",
+    labelPath: "POKROLE.Conditions.Dead",
+    icon: "icons/svg/skull.svg"
+  },
+  {
     key: "confused",
     labelPath: "POKROLE.Move.Secondary.Condition.Confused",
     icon: "icons/svg/daze.svg"
@@ -1520,6 +1525,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       paralyzed: "POKROLE.Conditions.Paralyzed",
       poisoned: "POKROLE.Conditions.Poisoned",
       fainted: "POKROLE.Conditions.Fainted",
+      dead: "POKROLE.Conditions.Dead",
       confused: "POKROLE.Move.Secondary.Condition.Confused",
       flinch: "POKROLE.Move.Secondary.Condition.Flinch",
       disabled: "POKROLE.Move.Secondary.Condition.Disabled",
