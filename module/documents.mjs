@@ -6,6 +6,7 @@ import {
   MOVE_SECONDARY_DURATION_MODE_KEYS,
   MOVE_SECONDARY_SPECIAL_DURATION_KEYS,
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
+  MOVE_SECONDARY_WEATHER_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
   MOVE_SECONDARY_TRIGGER_KEYS,
@@ -142,6 +143,7 @@ const TRAINER_STATE_FLAG_KEY = "combat.trainerState";
 const HEALING_TRACK_FLAG_KEY = "combat.healingTrack";
 const TREATMENT_BLOCK_FLAG_KEY = "combat.treatmentBlockedRound";
 const SHIELD_STREAK_FLAG_KEY = "combat.shieldStreak";
+const SLEEP_RESIST_TRACK_FLAG_KEY = "combat.sleepResistTrack";
 const SPECIAL_WEATHER_KEYS = Object.freeze(["harsh-sunlight", "typhoon", "strong-winds"]);
 const BASIC_WEATHER_KEYS = Object.freeze(["sunny", "rain", "sandstorm", "hail"]);
 
@@ -168,6 +170,59 @@ export class PokRoleActor extends Actor {
       return Math.max(this.getTraitValue("insight"), 0);
     }
     return Math.max(this.getTraitValue("vitality"), 0);
+  }
+
+  _localizeWeatherName(weatherKey) {
+    const normalized = this._normalizeWeatherKey(weatherKey);
+    const labelByKey = {
+      none: "POKROLE.Common.None",
+      sunny: "POKROLE.Combat.WeatherValues.Sunny",
+      "harsh-sunlight": "POKROLE.Combat.WeatherValues.HarshSunlight",
+      rain: "POKROLE.Combat.WeatherValues.Rain",
+      typhoon: "POKROLE.Combat.WeatherValues.Typhoon",
+      sandstorm: "POKROLE.Combat.WeatherValues.Sandstorm",
+      "strong-winds": "POKROLE.Combat.WeatherValues.StrongWinds",
+      hail: "POKROLE.Combat.WeatherValues.Hail"
+    };
+    return game.i18n.localize(labelByKey[normalized] ?? "POKROLE.Common.None");
+  }
+
+  _localizeCoverLevel(levelKey) {
+    const normalized = `${levelKey ?? "none"}`.trim().toLowerCase();
+    const labelByKey = {
+      none: "POKROLE.Common.None",
+      quarter: "POKROLE.Combat.CoverQuarter",
+      half: "POKROLE.Combat.CoverHalf",
+      full: "POKROLE.Combat.CoverFull"
+    };
+    return game.i18n.localize(labelByKey[normalized] ?? "POKROLE.Common.None");
+  }
+
+  async restPokemon() {
+    if (this.type !== "pokemon") return null;
+    const hpValue = Math.max(toNumber(this.system.resources?.hp?.value, 0), 0);
+    const hpMax = Math.max(toNumber(this.system.resources?.hp?.max, 1), 1);
+    const willValue = Math.max(toNumber(this.system.resources?.will?.value, 0), 0);
+    const willMax = Math.max(toNumber(this.system.resources?.will?.max, 1), 1);
+    const updatePayload = {};
+    if (hpValue !== hpMax) updatePayload["system.resources.hp.value"] = hpMax;
+    if (willValue !== willMax) updatePayload["system.resources.will.value"] = willMax;
+    if (Object.keys(updatePayload).length > 0) {
+      await this.update(updatePayload);
+    }
+    await this.resetTurnState({ resetInitiative: true });
+    await this.toggleQuickCondition("fainted", { active: false });
+    await this.toggleQuickCondition("flinch", { active: false });
+    await this.toggleQuickCondition("sleep", { active: false });
+    ui.notifications.info(
+      game.i18n.format("POKROLE.Chat.PokemonRested", { actor: this.name })
+    );
+    return {
+      hpBefore: hpValue,
+      hpAfter: hpMax,
+      willBefore: willValue,
+      willAfter: willMax
+    };
   }
 
   _normalizeWeatherKey(weatherKey) {
@@ -199,7 +254,7 @@ export class PokRoleActor extends Actor {
     ) {
       ui.notifications.warn(
         game.i18n.format("POKROLE.Errors.WeatherBlockedByExtreme", {
-          weather: currentWeather
+          weather: this._localizeWeatherName(currentWeather)
         })
       );
       return null;
@@ -253,7 +308,13 @@ export class PokRoleActor extends Actor {
     const normalizedLevel = ["none", "quarter", "half", "full"].includes(`${level ?? "half"}`.trim().toLowerCase())
       ? `${level}`.trim().toLowerCase()
       : "half";
-    return this.setTrainerCover(normalizedLevel);
+    const appliedLevel = await this.setTrainerCover(normalizedLevel);
+    ui.notifications.info(
+      game.i18n.format("POKROLE.Chat.CoverSet", {
+        level: this._localizeCoverLevel(appliedLevel)
+      })
+    );
+    return appliedLevel;
   }
 
   getTrainerCover() {
@@ -350,17 +411,215 @@ export class PokRoleActor extends Actor {
     return `${combat.id}:${Math.max(currentRound + roundOffset, 0)}`;
   }
 
+  _getConditionResistFlagKey(conditionKey) {
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    return `combat.conditionResist.${normalizedCondition}`;
+  }
+
+  async _attemptConditionResistThisRound(conditionKey, threshold = 2) {
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    if (normalizedCondition === "none" || !game.combat) {
+      return { resisted: false, rolled: false, netSuccesses: 0 };
+    }
+
+    const roundKey = this._getCurrentRoundKey(0);
+    const flagKey = this._getConditionResistFlagKey(normalizedCondition);
+    const currentFlag = this.getFlag(POKROLE.ID, flagKey) ?? {};
+    if (`${currentFlag?.roundKey ?? ""}`.trim() === `${roundKey ?? ""}`.trim()) {
+      return {
+        resisted: Boolean(currentFlag?.resisted),
+        rolled: false,
+        netSuccesses: Math.max(Math.floor(toNumber(currentFlag?.netSuccesses, 0)), 0)
+      };
+    }
+
+    const dicePool = Math.max(this.getTraitValue("insight"), 1);
+    const roll = await new Roll(successPoolFormula(dicePool)).evaluate({ async: true });
+    const rawSuccesses = Math.max(Math.floor(toNumber(roll.total, 0)), 0);
+    const removedSuccesses = this.getPainPenalty();
+    const netSuccesses = Math.max(rawSuccesses - removedSuccesses, 0);
+    const resisted = netSuccesses >= Math.max(Math.floor(toNumber(threshold, 2)), 1);
+
+    await this.setFlag(POKROLE.ID, flagKey, {
+      roundKey: `${roundKey ?? ""}`.trim(),
+      resisted,
+      netSuccesses
+    });
+
+    await roll.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      flavor: game.i18n.format("POKROLE.Chat.ConditionResistRoll", {
+        actor: this.name,
+        condition: this._localizeConditionName(normalizedCondition),
+        required: threshold
+      })
+    });
+
+    return { resisted, rolled: true, netSuccesses };
+  }
+
+  async _attemptSleepWakeResistance() {
+    if (!game.combat) return { wokeUp: false, totalSuccesses: 0, gainedSuccesses: 0 };
+
+    const currentTrack = this.getFlag(POKROLE.ID, SLEEP_RESIST_TRACK_FLAG_KEY) ?? {};
+    const previousTotal = Math.max(Math.floor(toNumber(currentTrack?.totalSuccesses, 0)), 0);
+    const currentRoundKey = this._getCurrentRoundKey(0);
+    if (`${currentTrack?.roundKey ?? ""}`.trim() === `${currentRoundKey ?? ""}`.trim()) {
+      return { wokeUp: previousTotal >= 5, totalSuccesses: previousTotal, gainedSuccesses: 0 };
+    }
+    const dicePool = Math.max(this.getTraitValue("insight"), 1);
+    const roll = await new Roll(successPoolFormula(dicePool)).evaluate({ async: true });
+    const rawSuccesses = Math.max(Math.floor(toNumber(roll.total, 0)), 0);
+    const removedSuccesses = this.getPainPenalty();
+    const gainedSuccesses = Math.max(rawSuccesses - removedSuccesses, 0);
+    const totalSuccesses = previousTotal + gainedSuccesses;
+
+    await this.setFlag(POKROLE.ID, SLEEP_RESIST_TRACK_FLAG_KEY, {
+      totalSuccesses,
+      roundKey: currentRoundKey
+    });
+
+    await roll.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      flavor: game.i18n.format("POKROLE.Chat.SleepResistanceRoll", {
+        actor: this.name,
+        gained: gainedSuccesses,
+        total: totalSuccesses
+      })
+    });
+
+    if (totalSuccesses >= 5) {
+      await this.toggleQuickCondition("sleep", { active: false });
+      ui.notifications.info(
+        game.i18n.format("POKROLE.Chat.SleepWokeUp", { actor: this.name })
+      );
+      return { wokeUp: true, totalSuccesses, gainedSuccesses };
+    }
+
+    return { wokeUp: false, totalSuccesses, gainedSuccesses };
+  }
+
+  async _clearSleepResistanceTrack() {
+    await this.unsetFlag(POKROLE.ID, SLEEP_RESIST_TRACK_FLAG_KEY);
+  }
+
+  async _initializeSleepResistanceTrack() {
+    const currentTrack = this.getFlag(POKROLE.ID, SLEEP_RESIST_TRACK_FLAG_KEY) ?? {};
+    const totalSuccesses = Math.max(Math.floor(toNumber(currentTrack?.totalSuccesses, 0)), 0);
+    if (totalSuccesses <= 0) {
+      await this.setFlag(POKROLE.ID, SLEEP_RESIST_TRACK_FLAG_KEY, {
+        totalSuccesses: 0,
+        roundKey: this._getCurrentRoundKey(0)
+      });
+    }
+  }
+
+  async processTurnStartStatusAutomation() {
+    if (!game.combat) return { processed: false, results: [] };
+
+    const results = [];
+    const clearConditionWithNotice = async (conditionKey) => {
+      await this.toggleQuickCondition(conditionKey, { active: false });
+      ui.notifications.info(
+        game.i18n.format("POKROLE.Chat.ConditionCleared", {
+          condition: this._localizeConditionName(conditionKey)
+        })
+      );
+    };
+
+    if (this._isConditionActive("sleep")) {
+      const sleepResist = await this._attemptSleepWakeResistance();
+      if (sleepResist?.wokeUp && this._isConditionActive("sleep")) {
+        await clearConditionWithNotice("sleep");
+      }
+      results.push({ condition: "sleep", resolved: Boolean(sleepResist?.wokeUp) });
+    }
+
+    if (this._isConditionActive("frozen")) {
+      const frozenResist = await this._attemptConditionResistThisRound("frozen", 2);
+      if (frozenResist?.resisted) {
+        await clearConditionWithNotice("frozen");
+      }
+      results.push({ condition: "frozen", resolved: Boolean(frozenResist?.resisted) });
+    }
+
+    if (this._isConditionActive("infatuated")) {
+      const infatuatedResist = await this._attemptConditionResistThisRound("infatuated", 2);
+      if (infatuatedResist?.resisted) {
+        await clearConditionWithNotice("infatuated");
+      }
+      results.push({ condition: "infatuated", resolved: Boolean(infatuatedResist?.resisted) });
+    }
+
+    if (this._isConditionActive("confused")) {
+      const confusedResist = await this._attemptConditionResistThisRound("confused", 2);
+      if (confusedResist?.resisted) {
+        await clearConditionWithNotice("confused");
+      }
+      results.push({ condition: "confused", resolved: Boolean(confusedResist?.resisted) });
+    }
+
+    return { processed: true, results };
+  }
+
   async _assertCanAct(actionType = "generic") {
     if (!game.combat) return { allowed: true, reason: "" };
 
     if (this._isConditionActive("fainted")) {
       return { allowed: false, reason: game.i18n.localize("POKROLE.Errors.ActorFainted") };
     }
+
+    if (this._isConditionActive("sleep")) {
+      const sleepResist = await this._attemptSleepWakeResistance();
+      if (sleepResist?.wokeUp) {
+        if (this._isConditionActive("sleep")) {
+          await this.toggleQuickCondition("sleep", { active: false });
+        }
+      } else {
+        return { allowed: false, reason: game.i18n.localize("POKROLE.Errors.ActorSleeping") };
+      }
+    }
+
+    if (this._isConditionActive("frozen")) {
+      const frozenResist = await this._attemptConditionResistThisRound("frozen", 2);
+      if (frozenResist?.resisted) {
+        await this.toggleQuickCondition("frozen", { active: false });
+        ui.notifications.info(
+          game.i18n.format("POKROLE.Chat.ConditionCleared", {
+            condition: this._localizeConditionName("frozen")
+          })
+        );
+      } else {
+        return { allowed: false, reason: game.i18n.localize("POKROLE.Errors.ActorFrozen") };
+      }
+    }
+
+    if (this._isConditionActive("infatuated")) {
+      const infatuatedResist = await this._attemptConditionResistThisRound("infatuated", 2);
+      if (infatuatedResist?.resisted) {
+        await this.toggleQuickCondition("infatuated", { active: false });
+        ui.notifications.info(
+          game.i18n.format("POKROLE.Chat.ConditionCleared", {
+            condition: this._localizeConditionName("infatuated")
+          })
+        );
+      }
+    }
+
+    if (this._isConditionActive("confused")) {
+      const confusedResist = await this._attemptConditionResistThisRound("confused", 2);
+      if (confusedResist?.resisted) {
+        await this.toggleQuickCondition("confused", { active: false });
+        ui.notifications.info(
+          game.i18n.format("POKROLE.Chat.ConditionCleared", {
+            condition: this._localizeConditionName("confused")
+          })
+        );
+      }
+    }
+
     if (this._isConditionActive("sleep")) {
       return { allowed: false, reason: game.i18n.localize("POKROLE.Errors.ActorSleeping") };
-    }
-    if (this._isConditionActive("frozen")) {
-      return { allowed: false, reason: game.i18n.localize("POKROLE.Errors.ActorFrozen") };
     }
 
     if (this._isConditionActive("flinch")) {
@@ -1488,6 +1747,7 @@ export class PokRoleActor extends Actor {
     const durationRounds = this._normalizeSecondaryDurationRounds(rawEffect.durationRounds);
     const specialDuration = this._normalizeSpecialDurationList(rawEffect.specialDuration);
     const condition = this._normalizeConditionKey(rawEffect.condition);
+    const weather = this._normalizeSecondaryWeatherKey(rawEffect.weather);
     const stat = this._normalizeSecondaryStatKey(rawEffect.stat);
     const chance = clamp(Math.floor(toNumber(rawEffect.chance, 100)), 0, 100);
     const amount = clamp(Math.floor(toNumber(rawEffect.amount, 0)), -99, 99);
@@ -1503,6 +1763,7 @@ export class PokRoleActor extends Actor {
       durationRounds,
       specialDuration,
       condition,
+      weather,
       stat,
       amount,
       notes: `${rawEffect.notes ?? ""}`.trim(),
@@ -1568,6 +1829,11 @@ export class PokRoleActor extends Actor {
     if (alias.includes("infatuat")) return "infatuated";
     if (alias.includes("faint")) return "fainted";
     return "none";
+  }
+
+  _normalizeSecondaryWeatherKey(weatherKey) {
+    const normalized = `${weatherKey ?? "none"}`.trim().toLowerCase();
+    return MOVE_SECONDARY_WEATHER_KEYS.includes(normalized) ? normalized : "none";
   }
 
   _isConditionImmune(targetActor, conditionKey) {
@@ -1838,6 +2104,7 @@ export class PokRoleActor extends Actor {
 
     const results = [];
     for (const effect of secondaryEffects) {
+      const normalizedEffectType = this._normalizeSecondaryEffectType(effect.effectType);
       if (!this._secondaryTriggerMatches(effect.trigger, { hit, isDamagingMove, finalDamage })) {
         continue;
       }
@@ -1859,6 +2126,21 @@ export class PokRoleActor extends Actor {
             roll: chanceRollTotal,
             chance: effect.chance
           })
+        });
+        continue;
+      }
+
+      if (normalizedEffectType === "weather") {
+        const applyResult = await this._applySecondaryEffectToActor(
+          { ...effect, effectType: "weather" },
+          this,
+          move
+        );
+        results.push({
+          label: this._formatSecondaryEffectLabel(effect),
+          targetName: this._localizeMoveTarget("battlefield"),
+          applied: applyResult.applied,
+          detail: applyResult.detail
         });
         continue;
       }
@@ -2032,6 +2314,9 @@ export class PokRoleActor extends Actor {
     if (normalizedType === "condition" && effect.condition !== "none") {
       return `${effectTypeLabel}: ${this._localizeConditionName(effect.condition)}`;
     }
+    if (normalizedType === "weather") {
+      return `${effectTypeLabel}: ${this._localizeSecondaryWeatherName(effect.weather)}`;
+    }
     if (normalizedType === "stat" && effect.stat !== "none" && effect.amount !== 0) {
       const amountText = effect.amount > 0 ? `+${effect.amount}` : `${effect.amount}`;
       return `${effectTypeLabel}: ${this._localizeSecondaryStatName(effect.stat)} ${amountText}`;
@@ -2047,6 +2332,7 @@ export class PokRoleActor extends Actor {
       condition: "Condition",
       "active-effect": "ActiveEffect",
       stat: "Stat",
+      weather: "Weather",
       damage: "Damage",
       heal: "Heal",
       will: "Will",
@@ -2087,6 +2373,21 @@ export class PokRoleActor extends Actor {
     return this.localizeTrait(statKey);
   }
 
+  _localizeSecondaryWeatherName(weatherKey) {
+    const labelByWeather = {
+      none: "POKROLE.Common.None",
+      sunny: "POKROLE.Combat.WeatherValues.Sunny",
+      "harsh-sunlight": "POKROLE.Combat.WeatherValues.HarshSunlight",
+      rain: "POKROLE.Combat.WeatherValues.Rain",
+      typhoon: "POKROLE.Combat.WeatherValues.Typhoon",
+      sandstorm: "POKROLE.Combat.WeatherValues.Sandstorm",
+      "strong-winds": "POKROLE.Combat.WeatherValues.StrongWinds",
+      hail: "POKROLE.Combat.WeatherValues.Hail"
+    };
+    const normalizedWeather = this._normalizeSecondaryWeatherKey(weatherKey);
+    return game.i18n.localize(labelByWeather[normalizedWeather] ?? "POKROLE.Common.None");
+  }
+
   async _applySecondaryEffectToActor(effect, targetActor, sourceMove = null) {
     const normalizedType = this._normalizeSecondaryEffectType(effect.effectType);
     switch (normalizedType) {
@@ -2108,6 +2409,8 @@ export class PokRoleActor extends Actor {
           targetActor,
           sourceMove
         );
+      case "weather":
+        return this._applyWeatherEffect({ ...effect, effectType: normalizedType }, sourceMove);
       case "damage": {
         const damageValue = this._resolveEffectAmountValue(
           toNumber(targetActor.system?.resources?.hp?.max, 1),
@@ -2257,6 +2560,9 @@ export class PokRoleActor extends Actor {
     ]);
 
     await this._setConditionFlagState(targetActor, conditionKey, true);
+    if (conditionKey === "sleep" && typeof targetActor._initializeSleepResistanceTrack === "function") {
+      await targetActor._initializeSleepResistanceTrack();
+    }
     return {
       applied: true,
       detail: `${this._localizeConditionName(conditionKey)} (${this._localizeTemporaryDuration(
@@ -2570,10 +2876,16 @@ export class PokRoleActor extends Actor {
 
     if (nextState) {
       await this._setConditionFlagState(this, normalizedCondition, true);
+      if (normalizedCondition === "sleep") {
+        await this._initializeSleepResistanceTrack();
+      }
       return this._ensureConditionEffectFromFlag(this, normalizedCondition);
     }
 
     await this._setConditionFlagState(this, normalizedCondition, false);
+    if (normalizedCondition === "sleep") {
+      await this._clearSleepResistanceTrack();
+    }
     await this._removeTrackedConditionEffects(this, normalizedCondition, { revert: false });
     return {
       applied: true,
@@ -2774,6 +3086,9 @@ export class PokRoleActor extends Actor {
     if (removedCount > 0 || remainingEntries.length !== currentEntries.length) {
       await this._setTemporaryEffectEntries(targetActor, remainingEntries);
     }
+    if (normalizedCondition === "sleep") {
+      await targetActor.unsetFlag(POKROLE.ID, SLEEP_RESIST_TRACK_FLAG_KEY);
+    }
 
     return removedCount + effectIdsToDelete.length;
   }
@@ -2820,6 +3135,10 @@ export class PokRoleActor extends Actor {
             shouldBeActive
           );
         }
+      }
+
+      if (conditionKey === "sleep" && !shouldBeActive) {
+        await targetActor.unsetFlag(POKROLE.ID, SLEEP_RESIST_TRACK_FLAG_KEY);
       }
     }
 
@@ -3200,6 +3519,7 @@ export class PokRoleActor extends Actor {
 
   async _applyRoundEndWeatherDamage(weatherKey) {
     const weather = this._normalizeWeatherKey(weatherKey);
+    const localizedWeather = this._localizeWeatherName(weather);
     if (weather === "none") {
       return { totalDamage: 0, label: game.i18n.localize("POKROLE.Common.None") };
     }
@@ -3214,13 +3534,16 @@ export class PokRoleActor extends Actor {
     if (damage <= 0) {
       return {
         totalDamage: 0,
-        label: game.i18n.format("POKROLE.Chat.WeatherNoDamage", { weather })
+        label: game.i18n.format("POKROLE.Chat.WeatherNoDamage", { weather: localizedWeather })
       };
     }
     await this._safeApplyDamage(this, damage);
     return {
       totalDamage: damage,
-      label: game.i18n.format("POKROLE.Chat.WeatherRoundDamage", { weather, damage })
+      label: game.i18n.format("POKROLE.Chat.WeatherRoundDamage", {
+        weather: localizedWeather,
+        damage
+      })
     };
   }
 
@@ -3622,6 +3945,41 @@ export class PokRoleActor extends Actor {
     };
   }
 
+  async _applyWeatherEffect(effect, sourceMove = null) {
+    const weatherKey = this._normalizeSecondaryWeatherKey(effect.weather);
+    if (!game.combat) {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Errors.CombatRequired")
+      };
+    }
+
+    const durationMode = this._normalizeSecondaryDurationMode(effect.durationMode, "weather");
+    const durationRounds = this._normalizeSecondaryDurationRounds(effect.durationRounds);
+    const weatherDurationRounds = durationMode === "rounds" ? durationRounds : 0;
+    const payload = await this.setActiveWeather(weatherKey, {
+      durationRounds: weatherDurationRounds,
+      sourceMoveId: sourceMove?.id ?? null
+    });
+    if (!payload) {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectFailed")
+      };
+    }
+
+    const durationLabel =
+      durationMode === "rounds"
+        ? game.i18n.format("POKROLE.TemporaryEffects.DurationRoundsWithValue", {
+            rounds: weatherDurationRounds
+          })
+        : game.i18n.localize("POKROLE.TemporaryEffects.DurationManual");
+    return {
+      applied: true,
+      detail: `${this._localizeSecondaryWeatherName(weatherKey)} (${durationLabel})`
+    };
+  }
+
   async _safeApplyHeal(targetActor, healAmount, options = {}) {
     const normalizedHeal = Math.max(toNumber(healAmount, 0), 0);
     if (!targetActor || normalizedHeal <= 0) {
@@ -3915,7 +4273,11 @@ export class PokRoleActor extends Actor {
       ? resolvedLevel
       : "half";
     await this.setTrainerCover(targetLevel);
-    ui.notifications.info(game.i18n.format("POKROLE.Chat.CoverSet", { level: targetLevel }));
+    ui.notifications.info(
+      game.i18n.format("POKROLE.Chat.CoverSet", {
+        level: this._localizeCoverLevel(targetLevel)
+      })
+    );
     return targetLevel;
   }
 

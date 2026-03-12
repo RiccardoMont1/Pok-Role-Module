@@ -460,6 +460,12 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       this._onTrainerSetWeather(event)
     );
     html.find("[data-action='roll-evasion']").on("click", () => this.actor.rollEvasion());
+    html.find("[data-action='pokemon-rest']").on("click", (event) =>
+      this._onPokemonRest(event)
+    );
+    html.find("[data-action='take-cover']").on("click", (event) =>
+      this._onTakeCover(event)
+    );
     html.find("[data-action='set-track']").on("click", (event) => this._onSetTrack(event));
     html.find("[data-action='toggle-condition-chip']").on("click", (event) =>
       this._onToggleConditionChip(event)
@@ -590,6 +596,21 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const level = `${event.currentTarget.dataset.cover ?? "half"}`.trim().toLowerCase();
     if (typeof this.actor.takeCover === "function") await this.actor.takeCover(level);
     else await this.actor.trainerTakeCover(level);
+    this.render(false);
+  }
+
+  async _onTakeCover(event) {
+    event.preventDefault();
+    if (typeof this.actor.takeCover !== "function") return;
+    const level = `${event.currentTarget.dataset.cover ?? "half"}`.trim().toLowerCase();
+    await this.actor.takeCover(level);
+    this.render(false);
+  }
+
+  async _onPokemonRest(event) {
+    event.preventDefault();
+    if (this.actor.type !== "pokemon" || typeof this.actor.restPokemon !== "function") return;
+    await this.actor.restPokemon();
     this.render(false);
   }
 
@@ -806,7 +827,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
   async _onCreateGear(event) {
     event.preventDefault();
-    if (!this.isEditable || this.actor.type !== "trainer") return;
+    if (!this.isEditable || !["trainer", "pokemon"].includes(this.actor.type)) return;
 
     await this.actor.createEmbeddedDocuments("Item", [
       {
@@ -1371,6 +1392,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         condition: "Condition",
         "active-effect": "ActiveEffect",
         stat: "Stat",
+        weather: "Weather",
         damage: "Damage",
         heal: "Heal",
         will: "Will",
@@ -1628,7 +1650,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   _normalizePokemonView(tabName) {
-    if (tabName === "learned" || tabName === "settings" || tabName === "effects") return tabName;
+    if (tabName === "learned" || tabName === "inventory" || tabName === "settings" || tabName === "effects") return tabName;
     return "main";
   }
 

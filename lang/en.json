@@ -401,6 +401,7 @@
           "ActiveEffect": "Active Effect / Condition",
           "Stat": "Stat Change",
           "CombatStat": "Combat Stat",
+          "Weather": "Weather",
           "Damage": "Damage",
           "Heal": "Heal",
           "Will": "Will",
@@ -421,6 +422,9 @@
         },
         "Stat": {
           "Label": "Affected Stat"
+        },
+        "Weather": {
+          "Label": "Weather"
         }
       },
       "DescriptionPlaceholder": "Effects, target rules and edge cases."
@@ -549,6 +553,7 @@
       "RollInitiative": "Roll Initiative",
       "RollEvasion": "Roll Evasion",
       "ResetActionCounter": "Reset Actions",
+      "Rest": "Rest",
       "NewMove": "Add Move",
       "NewGear": "Add Item",
       "Use": "Use",
@@ -668,6 +673,10 @@
       "SecondaryEffectTracked": "tracked as extra condition",
       "SecondaryEffectNoStatChange": "No stat change",
       "ConditionCleared": "{condition} removed.",
+      "ConditionResistRoll": "{actor} rolls Insight to resist {condition} (required: {required}).",
+      "SleepResistanceRoll": "{actor} builds Sleep resistance (+{gained}, total {total}/5).",
+      "SleepWokeUp": "{actor} woke up.",
+      "PokemonRested": "{actor} rested and recovered HP and Will.",
       "PassiveTriggerNotMet": "Passive trigger requirements are not met.",
       "HoldingBack": {
         "Label": "Holding Back",

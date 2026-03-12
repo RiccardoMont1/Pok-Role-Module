@@ -124,6 +124,16 @@
   flex-wrap: wrap;
 }
 
+.pok-role-sheet .inventory-add-button {
+  width: auto;
+  inline-size: fit-content;
+  flex: 0 0 auto;
+  min-height: 26px;
+  padding: 4px 10px;
+  font-size: 0.74rem;
+  line-height: 1;
+}
+
 .pok-role-sheet .inline-meta {
   margin: 0;
   font-size: 0.9rem;
@@ -1665,7 +1675,8 @@
 }
 
 .pokemon-sheet .pokemon-view-panel.is-active {
-  display: block;
+  display: grid;
+  gap: 10px;
 }
 
 .pokemon-sheet .pokemon-arcade-top {
@@ -2105,6 +2116,144 @@
   text-transform: uppercase;
 }
 
+.pokemon-sheet .pokemon-inventory-section {
+  border: 4px solid var(--pk-outline);
+  border-radius: 20px;
+  background: #d24a30;
+}
+
+.pokemon-sheet .pokemon-inventory-section h2 {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+}
+
+.pokemon-sheet .pokemon-inventory-section .inventory-add-button {
+  border: 2px solid #5b5448;
+  border-radius: 10px;
+  background: #2f342d;
+  color: #f5f7fb;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.pokemon-sheet .pokemon-pocket-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.pokemon-sheet .pokemon-pocket-card {
+  border: 3px solid var(--pk-outline);
+  border-radius: 12px;
+  background: #f7f9ff;
+  padding: 8px;
+}
+
+.pokemon-sheet .pokemon-pocket-card header {
+  border-bottom: 1px solid #d6dcec;
+  padding-bottom: 5px;
+  margin-bottom: 6px;
+}
+
+.pokemon-sheet .pokemon-pocket-card h3 {
+  margin: 0;
+  color: #2f394b;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+}
+
+.pokemon-sheet .pokemon-pocket-card small {
+  color: #6b7383;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+}
+
+.pokemon-sheet .pokemon-pocket-card.pocket-potions {
+  border-color: #8eb6e8;
+  background: #edf4ff;
+}
+
+.pokemon-sheet .pokemon-pocket-card.pocket-small {
+  border-color: #84c4b3;
+  background: #edf9f5;
+}
+
+.pokemon-sheet .pokemon-pocket-card.pocket-main {
+  border-color: #e1be85;
+  background: #fef8ee;
+}
+
+.pokemon-sheet .pokemon-pocket-card.pocket-badge {
+  border-color: #c8ace2;
+  background: #f8f1ff;
+}
+
+.pokemon-sheet .pokemon-pocket-items {
+  display: grid;
+  gap: 6px;
+}
+
+.pokemon-sheet .pokemon-pocket-item {
+  border: 1px solid #d5dceb;
+  border-radius: 10px;
+  padding: 6px;
+  display: grid;
+  gap: 5px;
+  background: #ffffff;
+}
+
+.pokemon-sheet .pokemon-pocket-item-main {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 7px;
+  align-items: center;
+}
+
+.pokemon-sheet .pokemon-pocket-item-main img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: #f0f4fb;
+  border: 1px solid #ccd4e2;
+}
+
+.pokemon-sheet .pokemon-pocket-item-main strong {
+  display: block;
+  color: #2f3746;
+  font-size: 0.77rem;
+  line-height: 1.2;
+}
+
+.pokemon-sheet .pokemon-pocket-item-main small {
+  display: block;
+  color: #6d7585;
+  font-size: 0.66rem;
+}
+
+.pokemon-sheet .pokemon-pocket-effect {
+  display: block;
+  color: #4d5668;
+  font-size: 0.68rem;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.pokemon-sheet .pokemon-pocket-item .move-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 24px);
+  gap: 4px;
+  justify-content: end;
+}
+
+.pokemon-sheet .pokemon-pocket-item .move-actions .icon-button {
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 6px;
+}
+
 .pokemon-sheet .moves-table {
   border-radius: 10px;
   overflow: hidden;
@@ -2393,6 +2542,10 @@
     flex-basis: clamp(42%, 48%, 49%);
     width: clamp(42%, 48%, 49%);
     max-width: 49%;
+  }
+
+  .pokemon-sheet .pokemon-pocket-layout {
+    grid-template-columns: 1fr;
   }
 
   .trainer-sheet .actor-effect-row,

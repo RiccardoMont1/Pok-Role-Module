@@ -401,6 +401,7 @@
           "ActiveEffect": "Effetto Attivo / Condizione",
           "Stat": "Cambio Stat",
           "CombatStat": "Stat Combattimento",
+          "Weather": "Meteo",
           "Damage": "Danno",
           "Heal": "Cura",
           "Will": "Volonta",
@@ -421,6 +422,9 @@
         },
         "Stat": {
           "Label": "Stat Coinvolta"
+        },
+        "Weather": {
+          "Label": "Meteo"
         }
       },
       "DescriptionPlaceholder": "Effetti, regole bersaglio e casi particolari."
@@ -549,6 +553,7 @@
       "RollInitiative": "Tira Iniziativa",
       "RollEvasion": "Tira Schivata",
       "ResetActionCounter": "Reset Azioni",
+      "Rest": "Riposa",
       "NewMove": "Aggiungi Mossa",
       "NewGear": "Aggiungi Oggetto",
       "Use": "Usa",
@@ -668,6 +673,10 @@
       "SecondaryEffectTracked": "tracciato come condizione extra",
       "SecondaryEffectNoStatChange": "Nessun cambio statistica",
       "ConditionCleared": "{condition} rimossa.",
+      "ConditionResistRoll": "{actor} tira Intuito per resistere a {condition} (richiesti: {required}).",
+      "SleepResistanceRoll": "{actor} accumula resistenza al Sonno (+{gained}, totale {total}/5).",
+      "SleepWokeUp": "{actor} si risveglia.",
+      "PokemonRested": "{actor} ha riposato e ha recuperato PS e Volonta.",
       "PassiveTriggerNotMet": "Le condizioni del trigger passivo non sono soddisfatte.",
       "HoldingBack": {
         "Label": "Holding Back",

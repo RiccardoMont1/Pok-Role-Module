@@ -5,6 +5,7 @@ import {
   MOVE_SECONDARY_DURATION_MODE_KEYS,
   MOVE_SECONDARY_SPECIAL_DURATION_KEYS,
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
+  MOVE_SECONDARY_WEATHER_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
   MOVE_SECONDARY_TRIGGER_KEYS,
@@ -345,6 +346,12 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
             blank: false,
             initial: "none",
             choices: MOVE_SECONDARY_CONDITION_KEYS
+          }),
+          weather: new StringField({
+            required: true,
+            blank: false,
+            initial: "none",
+            choices: MOVE_SECONDARY_WEATHER_KEYS
           }),
           stat: new StringField({
             required: true,

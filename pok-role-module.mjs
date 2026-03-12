@@ -836,6 +836,13 @@ Hooks.on("updateCombat", async (combat, changed) => {
     ) {
       await currentActor.processTemporaryEffectSpecialDuration("turn-start", { combatId });
     }
+    if (
+      currentActor &&
+      currentActor.documentName === "Actor" &&
+      typeof currentActor.processTurnStartStatusAutomation === "function"
+    ) {
+      await currentActor.processTurnStartStatusAutomation();
+    }
   }
 
   if (!hasRoundChange) {

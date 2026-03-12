@@ -198,10 +198,22 @@ export const MOVE_SECONDARY_EFFECT_TYPE_KEYS = Object.freeze([
   "active-effect",
   "stat",
   "combat-stat",
+  "weather",
   "damage",
   "heal",
   "will",
   "custom"
+]);
+
+export const MOVE_SECONDARY_WEATHER_KEYS = Object.freeze([
+  "none",
+  "sunny",
+  "harsh-sunlight",
+  "rain",
+  "typhoon",
+  "sandstorm",
+  "strong-winds",
+  "hail"
 ]);
 
 export const MOVE_SECONDARY_DURATION_MODE_KEYS = Object.freeze([

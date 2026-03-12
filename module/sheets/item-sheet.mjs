@@ -6,6 +6,7 @@ import {
   MOVE_SECONDARY_DURATION_MODE_KEYS,
   MOVE_SECONDARY_SPECIAL_DURATION_KEYS,
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
+  MOVE_SECONDARY_WEATHER_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
   MOVE_SECONDARY_TRIGGER_KEYS,
@@ -72,6 +73,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     context.secondaryDurationModeOptions ??= {};
     context.secondaryConditionOptions ??= {};
     context.secondaryStatOptions ??= {};
+    context.secondaryWeatherOptions ??= {};
     const typeOptions = Object.fromEntries(
       TYPE_OPTIONS.map((typeKey) => [
         typeKey,
@@ -257,6 +259,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       condition: "POKROLE.Move.Secondary.Type.Condition",
       "active-effect": "POKROLE.Move.Secondary.Type.ActiveEffect",
       stat: "POKROLE.Move.Secondary.Type.Stat",
+      weather: "POKROLE.Move.Secondary.Type.Weather",
       damage: "POKROLE.Move.Secondary.Type.Damage",
       heal: "POKROLE.Move.Secondary.Type.Heal",
       will: "POKROLE.Move.Secondary.Type.Will",
@@ -264,6 +267,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     };
     context.secondaryEffectTypeOptionsExtra = {
       "active-effect": "POKROLE.Move.Secondary.Type.ActiveEffect",
+      weather: "POKROLE.Move.Secondary.Type.Weather",
       damage: "POKROLE.Move.Secondary.Type.Damage",
       heal: "POKROLE.Move.Secondary.Type.Heal",
       will: "POKROLE.Move.Secondary.Type.Will",
@@ -293,6 +297,12 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     );
     context.secondaryStatOptions = Object.fromEntries(
       MOVE_SECONDARY_STAT_KEYS.map((statKey) => [statKey, this._getSecondaryStatLabelPath(statKey)])
+    );
+    context.secondaryWeatherOptions = Object.fromEntries(
+      MOVE_SECONDARY_WEATHER_KEYS.map((weatherKey) => [
+        weatherKey,
+        this._getSecondaryWeatherLabelPath(weatherKey)
+      ])
     );
     const activeMoveTab = this._moveActiveTab === "details" ? "details" : "description";
     context.moveTabDescriptionActive = activeMoveTab === "description";
@@ -468,6 +478,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       durationRounds: 1,
       specialDuration: [],
       condition: "none",
+      weather: "none",
       stat: "none",
       amount: 0,
       notes: "",
@@ -566,6 +577,9 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     const condition = MOVE_SECONDARY_CONDITION_KEYS.includes(normalizedEffect.condition)
       ? normalizedEffect.condition
       : "none";
+    const weather = MOVE_SECONDARY_WEATHER_KEYS.includes(normalizedEffect.weather)
+      ? normalizedEffect.weather
+      : "none";
     const stat = MOVE_SECONDARY_STAT_KEYS.includes(normalizedEffect.stat)
       ? normalizedEffect.stat
       : "none";
@@ -589,6 +603,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
           : 1,
       specialDuration,
       condition,
+      weather,
       stat,
       amount: Number.isFinite(amount) ? Math.min(Math.max(Math.floor(amount), -99), 99) : 0,
       notes: `${normalizedEffect.notes ?? ""}`.trim(),
@@ -643,10 +658,11 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       specialDuration: specialDurationSelections,
       specialDurationRows,
       showConditionField: effectType === "condition",
+      showWeatherField: effectType === "weather",
       showActiveEffectField: effectType === "active-effect",
       showStatField: effectType === "stat",
       showAmountField: ["stat", "damage", "heal", "will"].includes(effectType),
-      showDurationField: effectType === "condition" || effectType === "stat",
+      showDurationField: effectType === "condition" || effectType === "stat" || effectType === "weather",
       showNotesField: effectType === "custom"
     };
   }
@@ -898,10 +914,11 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     };
 
     toggleSection("condition", effectType === "condition");
+    toggleSection("weather", effectType === "weather");
     toggleSection("active-effect", effectType === "active-effect");
     toggleSection("stat", effectType === "stat");
     toggleSection("amount", ["stat", "damage", "heal", "will"].includes(effectType));
-    toggleSection("duration", effectType === "condition" || effectType === "stat");
+    toggleSection("duration", effectType === "condition" || effectType === "stat" || effectType === "weather");
     toggleSection("notes", effectType === "custom");
   }
 
@@ -934,5 +951,19 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       clash: "POKROLE.Pokemon.Clash"
     };
     return labelByStat[statKey] ?? TRAIT_LABEL_BY_KEY[statKey] ?? "POKROLE.Common.Unknown";
+  }
+
+  _getSecondaryWeatherLabelPath(weatherKey) {
+    const labelByWeather = {
+      none: "POKROLE.Common.None",
+      sunny: "POKROLE.Combat.WeatherValues.Sunny",
+      "harsh-sunlight": "POKROLE.Combat.WeatherValues.HarshSunlight",
+      rain: "POKROLE.Combat.WeatherValues.Rain",
+      typhoon: "POKROLE.Combat.WeatherValues.Typhoon",
+      sandstorm: "POKROLE.Combat.WeatherValues.Sandstorm",
+      "strong-winds": "POKROLE.Combat.WeatherValues.StrongWinds",
+      hail: "POKROLE.Combat.WeatherValues.Hail"
+    };
+    return labelByWeather[weatherKey] ?? "POKROLE.Common.None";
   }
 }

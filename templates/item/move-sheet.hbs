@@ -460,6 +460,12 @@
                   {{safeSelectOptions @root.secondaryConditionOptions selected=effect.condition localize=true}}
                 </select>
               </label>
+              <label data-effect-visible="weather" class="{{#unless effect.showWeatherField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.Weather.Label"}}</span>
+                <select name="system.secondaryEffects.{{effect.index}}.weather">
+                  {{safeSelectOptions @root.secondaryWeatherOptions selected=effect.weather localize=true}}
+                </select>
+              </label>
               <div data-effect-visible="active-effect" class="move-linked-active-effect {{#unless effect.showActiveEffectField}}is-hidden{{/unless}}">
                 <span>{{localize "POKROLE.Move.Secondary.ActiveEffect.Label"}}</span>
                 <p class="linked-effect-name">{{effect.linkedEffectName}}</p>
