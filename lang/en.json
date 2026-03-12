@@ -344,6 +344,7 @@
       "HighCritical": "High Critical",
       "NeverFail": "Never Fail",
       "Lethal": "Lethal",
+      "ShieldMove": "Shield Move",
       "IsUsable": "Show as usable move",
       "SupportNoDamage": "Support (no direct damage)",
       "Secondary": {
@@ -580,7 +581,34 @@
       "HoldingBackPrompt": "How should {move} be used?",
       "HoldingBackNormal": "Go all out",
       "HoldingBackHalf": "Hold Back (half damage)",
-      "HoldingBackNonLethal": "Hold Back (no lethal damage)"
+      "HoldingBackNonLethal": "Hold Back (no lethal damage)",
+      "WeatherSetButton": "Set Weather",
+      "WeatherSetTitle": "Set Weather",
+      "WeatherLabel": "Weather",
+      "CoverQuarter": "Quarter",
+      "CoverHalf": "Half",
+      "CoverFull": "Full",
+      "WeatherValues": {
+        "Sunny": "Sunny",
+        "HarshSunlight": "Harsh Sunlight",
+        "Rain": "Rain",
+        "Typhoon": "Typhoon",
+        "Sandstorm": "Sandstorm",
+        "StrongWinds": "Strong Winds",
+        "Hail": "Hail"
+      },
+      "TrainerState": {
+        "InFray": "In Fray",
+        "Cover": "Cover"
+      },
+      "TrainerActions": {
+        "UseItemOnPokemon": "Use Item on Pokemon",
+        "SearchForCover": "Search for Cover",
+        "TakeCover": "Take Cover",
+        "EnterFray": "Enter the Fray",
+        "LeaveFray": "Leave the Fray",
+        "RunAway": "Run Away"
+      }
     },
     "Chat": {
       "Actor": "Actor",
@@ -618,6 +646,19 @@
       "GearLethalHealNote": "Lethal damage reduced by {value}.",
       "GearAwarenessNote": "Awareness restored.",
       "GearStatusNote": "Status recovery: {value}.",
+      "GearStatusCured": "Status cured: {value}.",
+      "TrainerUseItemRoll": "{actor} rolls Clever + Medicine to use an item in battle.",
+      "TrainerSearchCoverRoll": "{actor} rolls Insight + Alert to search for cover.",
+      "CoverSetFull": "Full cover obtained.",
+      "CoverSet": "Cover set: {level}.",
+      "TrainerEnteredFray": "Trainer enters the fray.",
+      "TrainerLeftFray": "Trainer returns to command position.",
+      "RunAwaySuccess": "Escaped successfully.",
+      "RunAwayFailed": "Could not escape.",
+      "RoundEndAutomation": "Round End Automation",
+      "WeatherNoDamage": "{weather}: no weather damage.",
+      "WeatherRoundDamage": "{weather}: {damage} damage.",
+      "ConditionImmune": "Target is immune to this condition.",
       "SecondaryEffectApplied": "Applied",
       "SecondaryEffectFailed": "Failed",
       "SecondaryEffectChanceFailed": "Chance failed ({roll} > {chance})",
@@ -695,7 +736,22 @@
       "GearNotUsableInBattle": "This item cannot be used in battle.",
       "GearWrongTarget": "This item cannot target the selected actor.",
       "HPUpdateFailed": "Unable to update target HP. Check permissions.",
-      "InvalidEffectConfiguration": "Complete the effect configuration before applying it."
+      "InvalidEffectConfiguration": "Complete the effect configuration before applying it.",
+      "CombatRequired": "This action requires an active combat.",
+      "MoveBlockedByWeather": "Move blocked by weather: {weather}.",
+      "ActorFainted": "Cannot act while fainted.",
+      "ActorSleeping": "Cannot act while asleep.",
+      "ActorFrozen": "Cannot act while frozen.",
+      "ActorFlinched": "Flinched and lost the action.",
+      "ActorBusyWithItemTreatment": "Cannot act this round while being treated with an item.",
+      "ActorMoveDisabled": "This actor is disabled from using moves.",
+      "TrainerItemNeedsPokemonTarget": "Select one Pokemon target first.",
+      "TrainerNoBattleItems": "No usable battle items found.",
+      "TrainerItemCheckFailed": "Item application check failed.",
+      "TrainerCannotSearchCoverInFray": "Cannot search for cover while in the fray.",
+      "NoRunAwayOpponent": "No opponent available for escape check.",
+      "ShieldMoveAlreadyUsedThisRound": "A Shield Move has already been used this round.",
+      "WeatherBlockedByExtreme": "Extreme weather prevents this weather change ({weather})."
     },
     "Sheets": {
       "Actor": "PokeRole Actor Sheet",

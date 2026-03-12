@@ -97,7 +97,42 @@
             <i class="fas fa-rotate-left"></i>
             {{localize "POKROLE.Actions.ResetActionCounter"}}
           </button>
+          <button type="button" data-action="trainer-use-item-on-pokemon">
+            <i class="fas fa-suitcase-medical"></i>
+            {{localize "POKROLE.Combat.TrainerActions.UseItemOnPokemon"}}
+          </button>
+          <button type="button" data-action="trainer-search-cover">
+            <i class="fas fa-binoculars"></i>
+            {{localize "POKROLE.Combat.TrainerActions.SearchForCover"}}
+          </button>
+          <button type="button" data-action="trainer-take-cover" data-cover="half">
+            <i class="fas fa-shield"></i>
+            {{localize "POKROLE.Combat.TrainerActions.TakeCover"}}
+          </button>
+          <button type="button" data-action="trainer-toggle-fray">
+            <i class="fas fa-fist-raised"></i>
+            {{#if trainerInFray}}
+            {{localize "POKROLE.Combat.TrainerActions.LeaveFray"}}
+            {{else}}
+            {{localize "POKROLE.Combat.TrainerActions.EnterFray"}}
+            {{/if}}
+          </button>
+          <button type="button" data-action="trainer-run-away">
+            <i class="fas fa-person-running"></i>
+            {{localize "POKROLE.Combat.TrainerActions.RunAway"}}
+          </button>
+          <button type="button" data-action="trainer-set-weather">
+            <i class="fas fa-cloud-sun-rain"></i>
+            {{localize "POKROLE.Combat.WeatherSetButton"}}
+          </button>
         </div>
+        <small class="trainer-quick-meta">
+          {{localize "POKROLE.Combat.TrainerState.InFray"}}: {{#if trainerInFray}}{{localize "POKROLE.Common.Hit"}}{{else}}{{localize "POKROLE.Common.None"}}{{/if}}
+          |
+          {{localize "POKROLE.Combat.TrainerState.Cover"}}: {{trainerCoverLabel}}
+          |
+          {{localize "POKROLE.Combat.WeatherLabel"}}: {{activeWeatherLabel}}
+        </small>
       </aside>
 
       <section class="trainer-id-info">

@@ -28,6 +28,18 @@
     {{#if holdingBackActive}}
     <p><strong>{{localize "POKROLE.Chat.HoldingBack.Label"}}:</strong> {{holdingBackLabel}} {{#if holdingBackNonLethalApplied}}({{localize "POKROLE.Chat.HoldingBack.NonLethalNote"}}){{/if}}</p>
     {{/if}}
+    {{#if infatuated}}
+    <p><strong>{{localize "POKROLE.Move.Secondary.Condition.Infatuated"}}:</strong> {{localize "POKROLE.Chat.HoldingBack.HalfDamage"}}</p>
+    {{/if}}
+    {{#if confusionPenalty}}
+    <p><strong>{{localize "POKROLE.Move.Secondary.Condition.Confused"}}:</strong> -{{confusionPenalty}} {{localize "POKROLE.Chat.RemovedSuccesses"}}</p>
+    {{#if confusionSelfDamage}}
+    <p><strong>{{localize "POKROLE.Chat.FinalDamage"}} (Self):</strong> 1</p>
+    {{/if}}
+    {{/if}}
+    {{#if activeWeather}}
+    <p><strong>{{localize "POKROLE.Combat.WeatherLabel"}}:</strong> {{activeWeather}}</p>
+    {{/if}}
   </section>
 
   {{#if reactionAttempted}}

@@ -344,6 +344,7 @@
       "HighCritical": "Alto Critico",
       "NeverFail": "Non Fallisce",
       "Lethal": "Letale",
+      "ShieldMove": "Mossa Scudo",
       "IsUsable": "Mostra come mossa utilizzabile",
       "SupportNoDamage": "Supporto (nessun danno diretto)",
       "Secondary": {
@@ -580,7 +581,34 @@
       "HoldingBackPrompt": "Come vuoi usare {move}?",
       "HoldingBackNormal": "Colpisci al massimo",
       "HoldingBackHalf": "Trattieni (meta danno)",
-      "HoldingBackNonLethal": "Trattieni (niente danno letale)"
+      "HoldingBackNonLethal": "Trattieni (niente danno letale)",
+      "WeatherSetButton": "Imposta Meteo",
+      "WeatherSetTitle": "Imposta Meteo",
+      "WeatherLabel": "Meteo",
+      "CoverQuarter": "1/4",
+      "CoverHalf": "1/2",
+      "CoverFull": "Totale",
+      "WeatherValues": {
+        "Sunny": "Sole",
+        "HarshSunlight": "Sole Infernale",
+        "Rain": "Pioggia",
+        "Typhoon": "Tifone",
+        "Sandstorm": "Tempesta di Sabbia",
+        "StrongWinds": "Venti Forti",
+        "Hail": "Grandine"
+      },
+      "TrainerState": {
+        "InFray": "In Mischia",
+        "Cover": "Copertura"
+      },
+      "TrainerActions": {
+        "UseItemOnPokemon": "Usa Oggetto su Pokemon",
+        "SearchForCover": "Cerca Copertura",
+        "TakeCover": "Mettiti al Riparo",
+        "EnterFray": "Entra in Mischia",
+        "LeaveFray": "Esci dalla Mischia",
+        "RunAway": "Fuggi"
+      }
     },
     "Chat": {
       "Actor": "Attore",
@@ -618,6 +646,19 @@
       "GearLethalHealNote": "Danno letale ridotto di {value}.",
       "GearAwarenessNote": "Coscienza ripristinata.",
       "GearStatusNote": "Cura stati: {value}.",
+      "GearStatusCured": "Stati curati: {value}.",
+      "TrainerUseItemRoll": "{actor} tira Astuzia + Medicina per usare un oggetto in battaglia.",
+      "TrainerSearchCoverRoll": "{actor} tira Intuito + Allerta per cercare copertura.",
+      "CoverSetFull": "Copertura completa trovata.",
+      "CoverSet": "Copertura impostata: {level}.",
+      "TrainerEnteredFray": "L'allenatore entra in mischia.",
+      "TrainerLeftFray": "L'allenatore torna a dare ordini.",
+      "RunAwaySuccess": "Fuga riuscita.",
+      "RunAwayFailed": "Fuga fallita.",
+      "RoundEndAutomation": "Automazione Fine Round",
+      "WeatherNoDamage": "{weather}: nessun danno da meteo.",
+      "WeatherRoundDamage": "{weather}: {damage} danno.",
+      "ConditionImmune": "Il bersaglio e immune a questa condizione.",
       "SecondaryEffectApplied": "Applicato",
       "SecondaryEffectFailed": "Fallito",
       "SecondaryEffectChanceFailed": "Probabilita fallita ({roll} > {chance})",
@@ -695,7 +736,22 @@
       "GearNotUsableInBattle": "Questo oggetto non puo essere usato in lotta.",
       "GearWrongTarget": "Questo oggetto non puo bersagliare l'attore selezionato.",
       "HPUpdateFailed": "Impossibile aggiornare i PS del bersaglio. Controlla i permessi.",
-      "InvalidEffectConfiguration": "Completa la configurazione dell'effetto prima di applicarlo."
+      "InvalidEffectConfiguration": "Completa la configurazione dell'effetto prima di applicarlo.",
+      "CombatRequired": "Questa azione richiede un combattimento attivo.",
+      "MoveBlockedByWeather": "Mossa bloccata dal meteo: {weather}.",
+      "ActorFainted": "Non puoi agire se sei svenuto.",
+      "ActorSleeping": "Non puoi agire se sei addormentato.",
+      "ActorFrozen": "Non puoi agire se sei congelato.",
+      "ActorFlinched": "Tentennamento: azione persa.",
+      "ActorBusyWithItemTreatment": "Questo round e occupato dal trattamento con oggetto.",
+      "ActorMoveDisabled": "Questo attore non puo usare mosse (Disabled).",
+      "TrainerItemNeedsPokemonTarget": "Seleziona prima un bersaglio Pokemon.",
+      "TrainerNoBattleItems": "Nessun oggetto da battaglia disponibile.",
+      "TrainerItemCheckFailed": "Controllo uso oggetto fallito.",
+      "TrainerCannotSearchCoverInFray": "Non puoi cercare copertura mentre sei in mischia.",
+      "NoRunAwayOpponent": "Nessun avversario valido per la fuga.",
+      "ShieldMoveAlreadyUsedThisRound": "Hai gia usato una Mossa Scudo in questo round.",
+      "WeatherBlockedByExtreme": "Un meteo estremo impedisce questo cambio meteo ({weather})."
     },
     "Sheets": {
       "Actor": "Scheda Attore PokeRole",

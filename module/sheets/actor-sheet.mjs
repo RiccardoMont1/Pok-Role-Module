@@ -279,6 +279,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     };
     if (this.actor.type === "trainer") {
       context.trainerView = this._normalizeTrainerView(this._trainerActiveView ?? "main");
+      context.trainerInFray = typeof this.actor.isTrainerInFray === "function"
+        ? this.actor.isTrainerInFray()
+        : false;
+      context.trainerCover = typeof this.actor.getTrainerCover === "function"
+        ? this.actor.getTrainerCover()
+        : "none";
+      context.trainerCoverLabel = this._localizeCoverLabel(context.trainerCover);
+      context.activeWeather = typeof this.actor.getActiveWeatherKey === "function"
+        ? this.actor.getActiveWeatherKey()
+        : "none";
+      context.activeWeatherLabel = this._localizeWeatherLabel(context.activeWeather);
       context.trainerPhysicalMentalAttributes = this._buildAttributeRows([
         "strength",
         "vitality",
@@ -430,6 +441,24 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     html.find("[data-action='reset-action-counter']").on("click", () =>
       this.actor.resetActionCounter()
     );
+    html.find("[data-action='trainer-use-item-on-pokemon']").on("click", (event) =>
+      this._onTrainerUseItemOnPokemon(event)
+    );
+    html.find("[data-action='trainer-search-cover']").on("click", (event) =>
+      this._onTrainerSearchCover(event)
+    );
+    html.find("[data-action='trainer-take-cover']").on("click", (event) =>
+      this._onTrainerTakeCover(event)
+    );
+    html.find("[data-action='trainer-toggle-fray']").on("click", (event) =>
+      this._onTrainerToggleFray(event)
+    );
+    html.find("[data-action='trainer-run-away']").on("click", (event) =>
+      this._onTrainerRunAway(event)
+    );
+    html.find("[data-action='trainer-set-weather']").on("click", (event) =>
+      this._onTrainerSetWeather(event)
+    );
     html.find("[data-action='roll-evasion']").on("click", () => this.actor.rollEvasion());
     html.find("[data-action='set-track']").on("click", (event) => this._onSetTrack(event));
     html.find("[data-action='toggle-condition-chip']").on("click", (event) =>
@@ -535,6 +564,106 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     await this.actor.rollSkill(skill);
   }
 
+  async _onTrainerUseItemOnPokemon(event) {
+    event.preventDefault();
+    if (this.actor.type !== "trainer" || typeof this.actor.trainerUseItemOnPokemon !== "function") {
+      return;
+    }
+    await this.actor.trainerUseItemOnPokemon();
+    this.render(false);
+  }
+
+  async _onTrainerSearchCover(event) {
+    event.preventDefault();
+    if (this.actor.type !== "trainer" || typeof this.actor.trainerSearchForCover !== "function") {
+      return;
+    }
+    await this.actor.trainerSearchForCover();
+    this.render(false);
+  }
+
+  async _onTrainerTakeCover(event) {
+    event.preventDefault();
+    if (typeof this.actor.takeCover !== "function" && typeof this.actor.trainerTakeCover !== "function") {
+      return;
+    }
+    const level = `${event.currentTarget.dataset.cover ?? "half"}`.trim().toLowerCase();
+    if (typeof this.actor.takeCover === "function") await this.actor.takeCover(level);
+    else await this.actor.trainerTakeCover(level);
+    this.render(false);
+  }
+
+  async _onTrainerToggleFray(event) {
+    event.preventDefault();
+    if (this.actor.type !== "trainer" || typeof this.actor.trainerEnterFray !== "function") {
+      return;
+    }
+    await this.actor.trainerEnterFray();
+    this.render(false);
+  }
+
+  async _onTrainerRunAway(event) {
+    event.preventDefault();
+    if (this.actor.type !== "trainer" || typeof this.actor.trainerRunAwayFromBattle !== "function") {
+      return;
+    }
+    await this.actor.trainerRunAwayFromBattle();
+    this.render(false);
+  }
+
+  async _onTrainerSetWeather(event) {
+    event.preventDefault();
+    if (this.actor.type !== "trainer" || typeof this.actor.setActiveWeather !== "function") return;
+    const weatherOptions = [
+      "none",
+      "sunny",
+      "harsh-sunlight",
+      "rain",
+      "typhoon",
+      "sandstorm",
+      "strong-winds",
+      "hail"
+    ];
+    const weatherOptionsMarkup = weatherOptions
+      .map(
+        (weatherKey) =>
+          `<option value="${weatherKey}">${this._localizeWeatherLabel(weatherKey)}</option>`
+      )
+      .join("");
+    const selectedWeather = await new Promise((resolve) => {
+      new Dialog({
+        title: game.i18n.localize("POKROLE.Combat.WeatherSetTitle"),
+        content: `
+          <form class="pok-role-combined-roll">
+            <div class="form-group">
+              <label>${game.i18n.localize("POKROLE.Combat.WeatherLabel")}</label>
+              <select name="weather">
+                ${weatherOptionsMarkup}
+              </select>
+            </div>
+          </form>
+        `,
+        buttons: {
+          confirm: {
+            icon: "<i class='fas fa-check'></i>",
+            label: game.i18n.localize("POKROLE.Combat.ConfirmReaction"),
+            callback: (dialogHtml) => resolve(dialogHtml?.[0]?.querySelector("select[name='weather']")?.value ?? "none")
+          },
+          cancel: {
+            icon: "<i class='fas fa-times'></i>",
+            label: game.i18n.localize("POKROLE.Common.Cancel"),
+            callback: () => resolve("")
+          }
+        },
+        default: "confirm",
+        close: () => resolve("")
+      }, { classes: ["pok-role-dialog"] }).render(true);
+    });
+    if (!selectedWeather) return;
+    await this.actor.setActiveWeather(selectedWeather);
+    this.render(false);
+  }
+
   async _onCreateMove(event) {
     event.preventDefault();
     if (!this.isEditable || this.actor.type !== "pokemon") return;
@@ -572,6 +701,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           highCritical: false,
           neverFail: false,
           lethal: false,
+          shieldMove: false,
           actionTag: "1A",
           isUsable: canMarkUsable,
           secondaryEffects: []
@@ -1513,6 +1643,32 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   _normalizeTrainerView(tabName) {
     if (tabName === "inventory" || tabName === "effects" || tabName === "bio") return tabName;
     return "main";
+  }
+
+  _localizeCoverLabel(coverKey) {
+    const normalized = `${coverKey ?? "none"}`.trim().toLowerCase();
+    const labelByKey = {
+      none: "POKROLE.Common.None",
+      quarter: "POKROLE.Combat.CoverQuarter",
+      half: "POKROLE.Combat.CoverHalf",
+      full: "POKROLE.Combat.CoverFull"
+    };
+    return game.i18n.localize(labelByKey[normalized] ?? "POKROLE.Common.None");
+  }
+
+  _localizeWeatherLabel(weatherKey) {
+    const normalized = `${weatherKey ?? "none"}`.trim().toLowerCase();
+    const labelByKey = {
+      none: "POKROLE.Common.None",
+      sunny: "POKROLE.Combat.WeatherValues.Sunny",
+      "harsh-sunlight": "POKROLE.Combat.WeatherValues.HarshSunlight",
+      rain: "POKROLE.Combat.WeatherValues.Rain",
+      typhoon: "POKROLE.Combat.WeatherValues.Typhoon",
+      sandstorm: "POKROLE.Combat.WeatherValues.Sandstorm",
+      "strong-winds": "POKROLE.Combat.WeatherValues.StrongWinds",
+      hail: "POKROLE.Combat.WeatherValues.Hail"
+    };
+    return game.i18n.localize(labelByKey[normalized] ?? "POKROLE.Common.None");
   }
 
   _buildPokemonMatchups() {

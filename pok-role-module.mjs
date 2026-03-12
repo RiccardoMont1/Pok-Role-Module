@@ -45,6 +45,47 @@ async function processCombatSpecialDurationEvent(combat, eventKey) {
   }
 }
 
+function normalizeCombatWeatherKey(weatherKey) {
+  const normalized = `${weatherKey ?? "none"}`.trim().toLowerCase();
+  const valid = new Set([
+    "none",
+    "sunny",
+    "harsh-sunlight",
+    "rain",
+    "typhoon",
+    "sandstorm",
+    "strong-winds",
+    "hail"
+  ]);
+  return valid.has(normalized) ? normalized : "none";
+}
+
+async function processRoundEndCombatAutomation(combat) {
+  if (!combat) return;
+  const weatherData = combat.getFlag(POKROLE.ID, "combat.weather") ?? {};
+  const weatherKey = normalizeCombatWeatherKey(weatherData?.condition);
+  for (const combatant of combat.combatants ?? []) {
+    const actor = combatant.actor;
+    if (!actor || typeof actor.processRoundEndCombatAutomation !== "function") continue;
+    await actor.processRoundEndCombatAutomation({ weatherKey, combatId: combat.id });
+  }
+}
+
+async function advanceCombatWeatherDuration(combat) {
+  if (!combat) return;
+  const weatherData = combat.getFlag(POKROLE.ID, "combat.weather") ?? {};
+  const weatherKey = normalizeCombatWeatherKey(weatherData?.condition);
+  if (weatherKey === "none") return;
+  const durationRounds = Math.max(Math.floor(Number(weatherData?.durationRounds ?? 0) || 0), 0);
+  if (durationRounds <= 0) return;
+  const nextDuration = durationRounds - 1;
+  await combat.setFlag(POKROLE.ID, "combat.weather", {
+    ...weatherData,
+    condition: nextDuration <= 0 ? "none" : weatherKey,
+    durationRounds: Math.max(nextDuration, 0)
+  });
+}
+
 async function ensureEffectIconDisplay(effectDocument) {
   if (!effectDocument) return;
   const automationFlags = effectDocument.getFlag?.(POKROLE.ID, "automation") ?? {};
@@ -96,11 +137,15 @@ function removeStatusEffectDefinition(statusId) {
 
 function resolveShowTokenIconFlag(effectDocument) {
   const automationFlags = effectDocument?.getFlag?.(POKROLE.ID, "automation") ?? {};
-  return Boolean(
-    automationFlags?.showTokenIcon ??
-      automationFlags?.alwaysShowIcon ??
-      effectDocument?.getFlag?.("core", "overlay")
-  );
+  if (Object.prototype.hasOwnProperty.call(automationFlags, "showTokenIcon")) {
+    return Boolean(automationFlags.showTokenIcon);
+  }
+  if (Object.prototype.hasOwnProperty.call(automationFlags, "alwaysShowIcon")) {
+    return Boolean(automationFlags.alwaysShowIcon);
+  }
+  const coreOverlay = effectDocument?.getFlag?.("core", "overlay");
+  if (coreOverlay !== undefined && coreOverlay !== null) return Boolean(coreOverlay);
+  return true;
 }
 
 const EFFECT_TOKEN_ICON_SYNC_LOCK = new Set();
@@ -802,6 +847,8 @@ Hooks.on("updateCombat", async (combat, changed) => {
   }
   if (Number.isFinite(previousRound) && previousRound >= 1) {
     await processCombatSpecialDurationEvent(combat, "round-end");
+    await processRoundEndCombatAutomation(combat);
+    await advanceCombatWeatherDuration(combat);
   }
   if ((combat.round ?? 0) <= 0) {
     LAST_COMBAT_TURN_STATE.set(combatId, {

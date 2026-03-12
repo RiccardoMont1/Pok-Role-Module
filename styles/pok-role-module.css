@@ -2924,6 +2924,18 @@ form.editable.pok-role-sheet.trainer-sheet {
   text-transform: uppercase;
 }
 
+.trainer-sheet .trainer-quick-actions {
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+}
+
+.trainer-sheet .trainer-quick-meta {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.7rem;
+  color: #384053;
+  line-height: 1.3;
+}
+
 .trainer-sheet .trainer-pocket-card,
 .trainer-sheet .trainer-pocket-item {
   background: #fff3e3;

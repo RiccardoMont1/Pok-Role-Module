@@ -127,6 +127,23 @@ const ACTIVE_EFFECT_STACK_MODE_KEYS = Object.freeze([
   "origin",
   "multiple"
 ]);
+const WEATHER_KEYS = Object.freeze([
+  "none",
+  "sunny",
+  "harsh-sunlight",
+  "rain",
+  "typhoon",
+  "sandstorm",
+  "strong-winds",
+  "hail"
+]);
+const WEATHER_FLAG_KEY = "combat.weather";
+const TRAINER_STATE_FLAG_KEY = "combat.trainerState";
+const HEALING_TRACK_FLAG_KEY = "combat.healingTrack";
+const TREATMENT_BLOCK_FLAG_KEY = "combat.treatmentBlockedRound";
+const SHIELD_STREAK_FLAG_KEY = "combat.shieldStreak";
+const SPECIAL_WEATHER_KEYS = Object.freeze(["harsh-sunlight", "typhoon", "strong-winds"]);
+const BASIC_WEATHER_KEYS = Object.freeze(["sunny", "rain", "sandstorm", "hail"]);
 
 export class PokRoleActor extends Actor {
   getRollData() {
@@ -151,6 +168,256 @@ export class PokRoleActor extends Actor {
       return Math.max(this.getTraitValue("insight"), 0);
     }
     return Math.max(this.getTraitValue("vitality"), 0);
+  }
+
+  _normalizeWeatherKey(weatherKey) {
+    const normalized = `${weatherKey ?? "none"}`.trim().toLowerCase();
+    return WEATHER_KEYS.includes(normalized) ? normalized : "none";
+  }
+
+  getActiveWeatherKey() {
+    const combat = game.combat;
+    if (!combat) return "none";
+    const weatherData = combat.getFlag(POKROLE.ID, WEATHER_FLAG_KEY) ?? {};
+    return this._normalizeWeatherKey(weatherData?.condition);
+  }
+
+  async setActiveWeather(weatherKey = "none", options = {}) {
+    const combat = game.combat;
+    if (!combat) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.CombatRequired"));
+      return null;
+    }
+    const normalized = this._normalizeWeatherKey(weatherKey);
+    const currentWeather = this._normalizeWeatherKey(
+      (combat.getFlag(POKROLE.ID, WEATHER_FLAG_KEY) ?? {})?.condition
+    );
+    if (
+      BASIC_WEATHER_KEYS.includes(normalized) &&
+      SPECIAL_WEATHER_KEYS.includes(currentWeather) &&
+      normalized !== currentWeather
+    ) {
+      ui.notifications.warn(
+        game.i18n.format("POKROLE.Errors.WeatherBlockedByExtreme", {
+          weather: currentWeather
+        })
+      );
+      return null;
+    }
+    const durationRounds = Math.max(Math.floor(toNumber(options.durationRounds, 0)), 0);
+    const payload = {
+      condition: normalized,
+      durationRounds,
+      roundSet: Math.max(Math.floor(toNumber(combat.round, 0)), 0),
+      sourceActorId: this.id ?? null,
+      sourceActorName: this.name ?? ""
+    };
+    await combat.setFlag(POKROLE.ID, WEATHER_FLAG_KEY, payload);
+    return payload;
+  }
+
+  async clearActiveWeather() {
+    const combat = game.combat;
+    if (!combat) return false;
+    await combat.setFlag(POKROLE.ID, WEATHER_FLAG_KEY, {
+      condition: "none",
+      durationRounds: 0,
+      roundSet: Math.max(Math.floor(toNumber(combat.round, 0)), 0),
+      sourceActorId: this.id ?? null,
+      sourceActorName: this.name ?? ""
+    });
+    return true;
+  }
+
+  _getTrainerState() {
+    const rawState = this.getFlag(POKROLE.ID, TRAINER_STATE_FLAG_KEY) ?? {};
+    return {
+      inFray: Boolean(rawState?.inFray),
+      cover: ["none", "quarter", "half", "full"].includes(`${rawState?.cover ?? "none"}`.trim().toLowerCase())
+        ? `${rawState.cover}`.trim().toLowerCase()
+        : "none"
+    };
+  }
+
+  async setTrainerCover(cover = "none") {
+    const normalizedCover = ["none", "quarter", "half", "full"].includes(`${cover ?? "none"}`.trim().toLowerCase())
+      ? `${cover}`.trim().toLowerCase()
+      : "none";
+    const state = this._getTrainerState();
+    state.cover = normalizedCover;
+    await this.setFlag(POKROLE.ID, TRAINER_STATE_FLAG_KEY, state);
+    return normalizedCover;
+  }
+
+  async takeCover(level = "half") {
+    const normalizedLevel = ["none", "quarter", "half", "full"].includes(`${level ?? "half"}`.trim().toLowerCase())
+      ? `${level}`.trim().toLowerCase()
+      : "half";
+    return this.setTrainerCover(normalizedLevel);
+  }
+
+  getTrainerCover() {
+    return this._getTrainerState().cover;
+  }
+
+  async _degradeCoverOnHit(targetActor) {
+    if (!targetActor) return "none";
+    const state = targetActor.getFlag(POKROLE.ID, TRAINER_STATE_FLAG_KEY) ?? {};
+    const cover = `${state?.cover ?? "none"}`.trim().toLowerCase();
+    let nextCover = cover;
+    if (cover === "full") nextCover = "half";
+    else if (cover === "half" || cover === "quarter") nextCover = "none";
+    else return cover;
+    const nextState = {
+      inFray: Boolean(state?.inFray),
+      cover: nextCover
+    };
+    await targetActor.setFlag(POKROLE.ID, TRAINER_STATE_FLAG_KEY, nextState);
+    return nextCover;
+  }
+
+  async setTrainerInFray(active) {
+    const state = this._getTrainerState();
+    state.inFray = Boolean(active);
+    await this.setFlag(POKROLE.ID, TRAINER_STATE_FLAG_KEY, state);
+    return state.inFray;
+  }
+
+  isTrainerInFray() {
+    return this._getTrainerState().inFray;
+  }
+
+  _getCoverDefenseBonus(actor, move = null) {
+    if (!actor || !move) return 0;
+    if (!this._isMoveRanged(move)) return 0;
+
+    const state = actor.getFlag(POKROLE.ID, TRAINER_STATE_FLAG_KEY) ?? {};
+    const cover = `${state?.cover ?? "none"}`.trim().toLowerCase();
+    if (cover === "quarter") return 1;
+    if (cover === "half") return 2;
+    return 0;
+  }
+
+  _getWeatherDamageBonusDice(moveType, weatherKey) {
+    const weather = this._normalizeWeatherKey(weatherKey);
+    if (weather === "sunny" || weather === "harsh-sunlight") {
+      return moveType === "fire" ? 1 : 0;
+    }
+    if (weather === "rain" || weather === "typhoon") {
+      return moveType === "water" ? 1 : 0;
+    }
+    if (weather === "strong-winds") {
+      return moveType === "flying" ? 1 : 0;
+    }
+    return 0;
+  }
+
+  _getWeatherFlatDamageReduction(moveType, weatherKey) {
+    const weather = this._normalizeWeatherKey(weatherKey);
+    if (weather === "sunny" && moveType === "water") return 1;
+    if (weather === "rain" && moveType === "fire") return 1;
+    return 0;
+  }
+
+  _getWeatherDefenseBonus(targetActor, category, weatherKey) {
+    const weather = this._normalizeWeatherKey(weatherKey);
+    if (!targetActor || weather === "none") return 0;
+    if (weather === "sandstorm" && category === "special" && targetActor.hasType?.("rock")) {
+      return 1;
+    }
+    if (weather === "hail" && category !== "special" && targetActor.hasType?.("ice")) {
+      return 1;
+    }
+    return 0;
+  }
+
+  _isMoveRanged(move) {
+    const rangeMode = this._normalizeMoveRangeMode(move?.system?.rangeMode);
+    return ["meters", "scene", "battlefield", "custom"].includes(rangeMode);
+  }
+
+  _isConditionActive(conditionKey) {
+    const normalized = this._normalizeConditionKey(conditionKey);
+    if (normalized === "none") return false;
+    const flags = this._getConditionFlagEntries(this);
+    return Boolean(flags?.[normalized]);
+  }
+
+  _getCurrentRoundKey(roundOffset = 0) {
+    const combat = game.combat;
+    if (!combat?.id) return null;
+    const currentRound = Math.max(Math.floor(toNumber(combat.round, 0)), 0);
+    return `${combat.id}:${Math.max(currentRound + roundOffset, 0)}`;
+  }
+
+  async _assertCanAct(actionType = "generic") {
+    if (!game.combat) return { allowed: true, reason: "" };
+
+    if (this._isConditionActive("fainted")) {
+      return { allowed: false, reason: game.i18n.localize("POKROLE.Errors.ActorFainted") };
+    }
+    if (this._isConditionActive("sleep")) {
+      return { allowed: false, reason: game.i18n.localize("POKROLE.Errors.ActorSleeping") };
+    }
+    if (this._isConditionActive("frozen")) {
+      return { allowed: false, reason: game.i18n.localize("POKROLE.Errors.ActorFrozen") };
+    }
+
+    if (this._isConditionActive("flinch")) {
+      await this.toggleQuickCondition("flinch", { active: false });
+      return { allowed: false, reason: game.i18n.localize("POKROLE.Errors.ActorFlinched") };
+    }
+
+    const blockedRound = `${this.getFlag(POKROLE.ID, TREATMENT_BLOCK_FLAG_KEY) ?? ""}`.trim();
+    const currentRoundKey = this._getCurrentRoundKey(0);
+    if (blockedRound && currentRoundKey && blockedRound === currentRoundKey) {
+      return {
+        allowed: false,
+        reason: game.i18n.localize("POKROLE.Errors.ActorBusyWithItemTreatment")
+      };
+    }
+
+    if (actionType === "move" && this._isConditionActive("disabled")) {
+      return { allowed: false, reason: game.i18n.localize("POKROLE.Errors.ActorMoveDisabled") };
+    }
+
+    return { allowed: true, reason: "" };
+  }
+
+  _getHealingTrack() {
+    const combat = game.combat;
+    const currentRoundKey = this._getCurrentRoundKey(0);
+    const track = this.getFlag(POKROLE.ID, HEALING_TRACK_FLAG_KEY) ?? {};
+    if (!combat || !currentRoundKey) {
+      return {
+        roundKey: "",
+        healedThisRound: 0,
+        completeHealedThisRound: 0
+      };
+    }
+    if (`${track?.roundKey ?? ""}`.trim() !== currentRoundKey) {
+      return {
+        roundKey: currentRoundKey,
+        healedThisRound: 0,
+        completeHealedThisRound: 0
+      };
+    }
+    return {
+      roundKey: currentRoundKey,
+      healedThisRound: Math.max(Math.floor(toNumber(track?.healedThisRound, 0)), 0),
+      completeHealedThisRound: Math.max(Math.floor(toNumber(track?.completeHealedThisRound, 0)), 0)
+    };
+  }
+
+  async _setHealingTrack(track) {
+    await this.setFlag(POKROLE.ID, HEALING_TRACK_FLAG_KEY, {
+      roundKey: `${track?.roundKey ?? ""}`.trim(),
+      healedThisRound: Math.max(Math.floor(toNumber(track?.healedThisRound, 0)), 0),
+      completeHealedThisRound: Math.max(
+        Math.floor(toNumber(track?.completeHealedThisRound, 0)),
+        0
+      )
+    });
   }
 
   getPainPenalty() {
@@ -361,6 +628,11 @@ export class PokRoleActor extends Actor {
 
   async rollInitiative(options = {}) {
     await this.synchronizeConditionalActiveEffects();
+    const actionCheck = await this._assertCanAct("initiative");
+    if (!actionCheck.allowed) {
+      ui.notifications.warn(actionCheck.reason);
+      return null;
+    }
     const roll = await new Roll(POKROLE.INITIATIVE_FORMULA, {
       dexterity: this.getTraitValue("dexterity"),
       alert: this.getSkillValue("alert")
@@ -383,6 +655,11 @@ export class PokRoleActor extends Actor {
 
   async rollEvasion(actionNumber = null, options = {}) {
     await this.synchronizeConditionalActiveEffects();
+    const actionCheck = await this._assertCanAct("evasion");
+    if (!actionCheck.allowed) {
+      ui.notifications.warn(actionCheck.reason);
+      return null;
+    }
     const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
     if (!options.ignoreRoundLimit && !this._canUseReactionThisRound("evasion", roundKey)) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.EvasionAlreadyUsedThisRound"));
@@ -412,6 +689,11 @@ export class PokRoleActor extends Actor {
   async rollClash(moveId, actionNumber = null, options = {}) {
     await this.synchronizeConditionalActiveEffects();
     if (this.type !== "pokemon") return null;
+    const actionCheck = await this._assertCanAct("clash");
+    if (!actionCheck.allowed) {
+      ui.notifications.warn(actionCheck.reason);
+      return null;
+    }
 
     const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
     if (!options.ignoreRoundLimit && !this._canUseReactionThisRound("clash", roundKey)) {
@@ -462,6 +744,11 @@ export class PokRoleActor extends Actor {
   async rollMove(moveId, options = {}) {
     await this.synchronizeConditionalActiveEffects();
     if (this.type !== "pokemon") return null;
+    const actionCheck = await this._assertCanAct("move");
+    if (!actionCheck.allowed) {
+      ui.notifications.warn(actionCheck.reason);
+      return null;
+    }
 
     const move = this.items.get(moveId);
     if (!move || move.type !== "move") {
@@ -469,11 +756,38 @@ export class PokRoleActor extends Actor {
       return null;
     }
     const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
-    const holdingBackMode = await this._resolveHoldingBackChoice(move, options);
+    let holdingBackMode = await this._resolveHoldingBackChoice(move, options);
     if (holdingBackMode === null) return null;
+    const infatuated = this._isConditionActive("infatuated");
+    if (infatuated && holdingBackMode === "none") {
+      holdingBackMode = "half";
+    }
     const isHoldingBackHalf = holdingBackMode === "half";
     const isHoldingBackNonLethal = holdingBackMode === "nonlethal" && Boolean(move.system.lethal);
     const actionNumber = await this._resolveActionRequirement(options.actionNumber, roundKey);
+    const activeWeather = this.getActiveWeatherKey();
+    const moveType = move.system.type || "normal";
+    const weatherBlocksMove =
+      (activeWeather === "harsh-sunlight" && moveType === "water") ||
+      (activeWeather === "typhoon" && moveType === "fire");
+    if (weatherBlocksMove) {
+      ui.notifications.warn(
+        game.i18n.format("POKROLE.Errors.MoveBlockedByWeather", { weather: activeWeather })
+      );
+      return null;
+    }
+    const isShieldMove = Boolean(move.system?.shieldMove);
+    if (isShieldMove && roundKey) {
+      const shieldState = this.getFlag(POKROLE.ID, SHIELD_STREAK_FLAG_KEY) ?? {};
+      const lastShieldRound = `${shieldState?.lastRoundKey ?? ""}`.trim();
+      if (lastShieldRound && lastShieldRound === `${roundKey}`.trim()) {
+        ui.notifications.warn(
+          game.i18n.localize("POKROLE.Errors.ShieldMoveAlreadyUsedThisRound")
+        );
+        return null;
+      }
+    }
+    const shieldPenalty = isShieldMove ? this._getShieldMoveAccuracyPenalty(roundKey) : 0;
     const willCost = Math.max(Math.floor(toNumber(move.system?.willCost, 0)), 0);
     const currentWill = Math.max(Math.floor(toNumber(this.system?.resources?.will?.value, 0)), 0);
     if (willCost > currentWill) {
@@ -519,13 +833,14 @@ export class PokRoleActor extends Actor {
       await this.update({ "system.resources.will.value": willAfter });
     }
 
-    const reducedAccuracy = Math.max(toNumber(move.system.reducedAccuracy, 0), 0);
+    const confusionPenalty = this._isConditionActive("confused") ? 1 : 0;
+    const reducedAccuracy = Math.max(toNumber(move.system.reducedAccuracy, 0), 0) + shieldPenalty;
     const accuracyRoll = await new Roll(successPoolFormula(accuracyDicePool)).evaluate({
       async: true
     });
     const rawAccuracySuccesses = toNumber(accuracyRoll.total, 0);
     const modifiedAccuracySuccesses = rawAccuracySuccesses + accuracyFlatModifier;
-    const removedAccuracySuccesses = reducedAccuracy + painPenalty;
+    const removedAccuracySuccesses = reducedAccuracy + painPenalty + confusionPenalty;
     const netAccuracySuccesses = modifiedAccuracySuccesses - removedAccuracySuccesses;
     const requiredSuccesses = actionNumber;
     let hit = netAccuracySuccesses >= requiredSuccesses;
@@ -542,7 +857,6 @@ export class PokRoleActor extends Actor {
     });
 
     const targetActor = targetActors[0] ?? null;
-    const moveType = move.system.type || "normal";
     const category = move.system.category || "physical";
     const isDamagingMove = category !== "support";
     let reaction = {
@@ -629,6 +943,11 @@ export class PokRoleActor extends Actor {
       }
     }
 
+    let confusionSelfDamage = null;
+    if (confusionPenalty > 0 && !hit) {
+      confusionSelfDamage = await this._safeApplyDamage(this, 1);
+    }
+
     const secondaryEffects = this._collectMoveSecondaryEffects(move);
     const moveSecondaryEffectResults = await this._applyMoveSecondaryEffects({
       move,
@@ -699,6 +1018,8 @@ export class PokRoleActor extends Actor {
               ? game.i18n.localize("POKROLE.Chat.HoldingBack.NonLethal")
               : game.i18n.localize("POKROLE.Chat.HoldingBack.None"),
         holdingBackNonLethalApplied: isHoldingBackNonLethal,
+        infatuated,
+        activeWeather,
         isDamagingMove,
         showDamageSection: hit && isDamagingMove && !reaction.clashResolved,
         damageAttributeLabel,
@@ -722,7 +1043,9 @@ export class PokRoleActor extends Actor {
         hasSecondaryEffects: secondaryEffectResults.length > 0,
         hasHpUpdate: hpAfter !== null && hpBefore !== null,
         hpBefore,
-        hpAfter
+        hpAfter,
+        confusionPenalty,
+        confusionSelfDamage
       }
     );
 
@@ -774,6 +1097,10 @@ export class PokRoleActor extends Actor {
 
     if (options.advanceAction !== false) {
       await this._advanceActionCounter(actionNumber, roundKey);
+    }
+    if (isShieldMove) {
+      await this._registerShieldMoveUsage(roundKey);
+      await this._activateShieldProtectionForRound(roundKey);
     }
 
     return result;
@@ -1012,8 +1339,23 @@ export class PokRoleActor extends Actor {
     const damagePainPenalty = damageAttributeKey === "vitality" ? 0 : painPenalty;
     const criticalDice = critical ? 2 : 0;
     const stabDice = this.hasType(moveType) ? 1 : 0;
-    const defense = targetActor ? this._getTargetDefense(targetActor, category) : 0;
-    const poolBeforeDefense = damageAttributeValue + power + stabDice + criticalDice - damagePainPenalty;
+    const activeWeather = this.getActiveWeatherKey();
+    const weatherBonusDice = this._getWeatherDamageBonusDice(moveType, activeWeather);
+    const weatherFlatReduction = this._getWeatherFlatDamageReduction(moveType, activeWeather);
+    const coverDefenseBonus = targetActor ? this._getCoverDefenseBonus(targetActor, move) : 0;
+    const weatherDefenseBonus = targetActor
+      ? this._getWeatherDefenseBonus(targetActor, category, activeWeather)
+      : 0;
+    const defense = targetActor
+      ? this._getTargetDefense(targetActor, category) + coverDefenseBonus + weatherDefenseBonus
+      : 0;
+    const poolBeforeDefense =
+      damageAttributeValue +
+      power +
+      stabDice +
+      criticalDice +
+      weatherBonusDice -
+      damagePainPenalty;
     const damagePool = Math.max(poolBeforeDefense - defense, 0);
     const typeInteraction = targetActor
       ? this._evaluateTypeInteraction(moveType, targetActor)
@@ -1040,6 +1382,8 @@ export class PokRoleActor extends Actor {
 
     const baseDamage = Math.max(damageSuccesses, 1);
     let finalDamage = 0;
+    let shieldPreventedDamage = false;
+    let coverAbsorbedDamage = false;
     if (!typeInteraction.immune) {
       const weaknessBonus = damageSuccesses >= 1 ? typeInteraction.weaknessBonus : 0;
       const resolvedDamage = Math.max(
@@ -1049,6 +1393,23 @@ export class PokRoleActor extends Actor {
       finalDamage = isHoldingBackHalf
         ? Math.max(Math.floor(resolvedDamage / 2), 1)
         : resolvedDamage;
+      finalDamage = Math.max(finalDamage - weatherFlatReduction, 0);
+    }
+
+    const rangedAttack = this._isMoveRanged(move);
+    const targetCover = `${targetActor?.getTrainerCover?.() ?? "none"}`.trim().toLowerCase();
+    if (rangedAttack && targetCover === "full" && finalDamage > 0) {
+      finalDamage = 0;
+      coverAbsorbedDamage = true;
+      await this._degradeCoverOnHit(targetActor);
+    }
+
+    if (finalDamage > 0 && targetActor && typeof targetActor._consumeShieldProtectionIfAny === "function") {
+      const shieldProtected = await targetActor._consumeShieldProtectionIfAny();
+      if (shieldProtected) {
+        finalDamage = 0;
+        shieldPreventedDamage = true;
+      }
     }
 
     let hpBefore = null;
@@ -1057,6 +1418,9 @@ export class PokRoleActor extends Actor {
       const hpChange = await this._safeApplyDamage(targetActor, finalDamage);
       hpBefore = hpChange?.hpBefore ?? null;
       hpAfter = hpChange?.hpAfter ?? null;
+      if (rangedAttack) {
+        await this._degradeCoverOnHit(targetActor);
+      }
     }
 
     return {
@@ -1071,6 +1435,12 @@ export class PokRoleActor extends Actor {
       poolBeforeDefense,
       damagePool,
       typeInteraction,
+      shieldPreventedDamage,
+      coverAbsorbedDamage,
+      weatherBonusDice,
+      weatherFlatReduction,
+      coverDefenseBonus,
+      weatherDefenseBonus,
       stabDice,
       criticalDice,
       damageAttributeLabel
@@ -1198,6 +1568,30 @@ export class PokRoleActor extends Actor {
     if (alias.includes("infatuat")) return "infatuated";
     if (alias.includes("faint")) return "fainted";
     return "none";
+  }
+
+  _isConditionImmune(targetActor, conditionKey) {
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    if (!targetActor || normalizedCondition === "none") return false;
+
+    const weather = this.getActiveWeatherKey();
+    if ((weather === "sunny" || weather === "harsh-sunlight") && normalizedCondition === "frozen") {
+      return true;
+    }
+    if (weather === "typhoon" && normalizedCondition === "burn") {
+      return true;
+    }
+
+    if (normalizedCondition === "burn" && targetActor.hasType?.("fire")) return true;
+    if (normalizedCondition === "frozen" && targetActor.hasType?.("ice")) return true;
+    if (normalizedCondition === "paralyzed" && targetActor.hasType?.("electric")) return true;
+    if (
+      ["poisoned", "badly-poisoned"].includes(normalizedCondition) &&
+      (targetActor.hasType?.("poison") || targetActor.hasType?.("steel"))
+    ) {
+      return true;
+    }
+    return false;
   }
 
   _normalizeSecondaryStatKey(statKey) {
@@ -1746,6 +2140,12 @@ export class PokRoleActor extends Actor {
         if (!hpChange) {
           return { applied: false, detail: game.i18n.localize("POKROLE.Errors.HPUpdateFailed") };
         }
+        if (toNumber(hpChange?.hpAfter, 0) === toNumber(hpChange?.hpBefore, 0)) {
+          return {
+            applied: false,
+            detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectNoStatChange")
+          };
+        }
         return {
           applied: true,
           detail: game.i18n.format("POKROLE.Chat.SecondaryEffectHpChange", {
@@ -1776,6 +2176,12 @@ export class PokRoleActor extends Actor {
     const conditionKey = this._normalizeConditionKey(effect.condition);
     if (conditionKey === "none") {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
+    }
+    if (this._isConditionImmune(targetActor, conditionKey)) {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Chat.ConditionImmune")
+      };
     }
 
     const statusId = `pokrole-condition-${conditionKey}`;
@@ -1817,6 +2223,14 @@ export class PokRoleActor extends Actor {
         mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
         value: "true",
         priority: 50
+      });
+    }
+    if (conditionKey === "paralyzed") {
+      effectChanges.push({
+        key: "system.attributes.dexterity",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: "-2",
+        priority: 60
       });
     }
 
@@ -1960,12 +2374,17 @@ export class PokRoleActor extends Actor {
     if (statKey === "specialDefense") resolvedKey = "insight";
 
     if (Object.prototype.hasOwnProperty.call(targetActor.system.attributes ?? {}, resolvedKey)) {
-      const maxValue = this._resolveAttributeMaximum(targetActor, resolvedKey);
+      const isCoreAttribute = ["strength", "dexterity", "vitality", "special", "insight"].includes(
+        resolvedKey
+      );
+      const configuredMax = this._resolveAttributeMaximum(targetActor, resolvedKey);
+      const maxValue = isCoreAttribute ? Math.min(configuredMax, 10) : configuredMax;
+      const minValue = isCoreAttribute ? 1 : 0;
       return this._applyTemporaryTrackedModifier({
         targetActor,
         path: `system.attributes.${resolvedKey}`,
         amount,
-        min: 0,
+        min: minValue,
         max: maxValue,
         label: this._formatSecondaryEffectLabel(effect),
         sourceMove,
@@ -2730,6 +3149,81 @@ export class PokRoleActor extends Actor {
     return removedCount;
   }
 
+  async processRoundEndCombatAutomation(options = {}) {
+    const weatherKey = this._normalizeWeatherKey(options.weatherKey ?? this.getActiveWeatherKey());
+    const statusDamage = await this._applyRoundEndStatusDamage();
+    const weatherDamage = await this._applyRoundEndWeatherDamage(weatherKey);
+    if (statusDamage.totalDamage <= 0 && weatherDamage.totalDamage <= 0) {
+      return { totalDamage: 0, statusDamage, weatherDamage };
+    }
+
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `
+        <div class="pok-role-chat-card">
+          <h3>${game.i18n.localize("POKROLE.Chat.RoundEndAutomation")}</h3>
+          <p><strong>${this.name}</strong></p>
+          <p>${statusDamage.label}</p>
+          <p>${weatherDamage.label}</p>
+        </div>
+      `
+    });
+    return {
+      totalDamage: statusDamage.totalDamage + weatherDamage.totalDamage,
+      statusDamage,
+      weatherDamage
+    };
+  }
+
+  async _applyRoundEndStatusDamage() {
+    const conditionFlags = this.getConditionFlags();
+    let totalDamage = 0;
+    const statusParts = [];
+
+    const applyDamage = async (conditionKey, amount) => {
+      if (!conditionFlags?.[conditionKey]) return;
+      const hpResult = await this._safeApplyDamage(this, amount);
+      if (!hpResult) return;
+      totalDamage += amount;
+      statusParts.push(`${this._localizeConditionName(conditionKey)} -${amount}`);
+    };
+
+    await applyDamage("burn", 1);
+    await applyDamage("poisoned", 1);
+    await applyDamage("badly-poisoned", 1);
+
+    if (!statusParts.length) {
+      return { totalDamage: 0, label: game.i18n.localize("POKROLE.Common.None") };
+    }
+    return { totalDamage, label: statusParts.join(" | ") };
+  }
+
+  async _applyRoundEndWeatherDamage(weatherKey) {
+    const weather = this._normalizeWeatherKey(weatherKey);
+    if (weather === "none") {
+      return { totalDamage: 0, label: game.i18n.localize("POKROLE.Common.None") };
+    }
+    const isPokemon = this.type === "pokemon";
+    let damage = 0;
+    if (weather === "sandstorm" && isPokemon && !this.hasType("rock") && !this.hasType("ground") && !this.hasType("steel")) {
+      damage = 1;
+    }
+    if (weather === "hail" && isPokemon && !this.hasType("ice")) {
+      damage = 1;
+    }
+    if (damage <= 0) {
+      return {
+        totalDamage: 0,
+        label: game.i18n.format("POKROLE.Chat.WeatherNoDamage", { weather })
+      };
+    }
+    await this._safeApplyDamage(this, damage);
+    return {
+      totalDamage: damage,
+      label: game.i18n.format("POKROLE.Chat.WeatherRoundDamage", { weather, damage })
+    };
+  }
+
   _getTemporaryEffectEntries(targetActor) {
     const rawEntries = targetActor?.getFlag(POKROLE.ID, TEMPORARY_EFFECTS_FLAG);
     if (!Array.isArray(rawEntries)) return [];
@@ -2804,6 +3298,21 @@ export class PokRoleActor extends Actor {
     };
   }
 
+  _getManagedModifierEffectsForPath(targetActor, path) {
+    const normalizedPath = `${path ?? ""}`.trim();
+    if (!targetActor || !normalizedPath) return [];
+    const effects = targetActor.effects?.contents ?? [];
+    return effects.filter((effectDocument) => {
+      if (effectDocument?.disabled) return false;
+      const automationFlags = effectDocument.getFlag?.(POKROLE.ID, "automation") ?? {};
+      if (!automationFlags?.managed) return false;
+      if (`${automationFlags?.effectType ?? ""}`.trim().toLowerCase() !== "modifier") return false;
+      if (`${automationFlags?.path ?? ""}`.trim() !== normalizedPath) return false;
+      const amountApplied = Math.floor(toNumber(automationFlags?.amountApplied, 0));
+      return amountApplied !== 0;
+    });
+  }
+
   async _applyTemporaryTrackedModifier({
     targetActor,
     path,
@@ -2820,6 +3329,31 @@ export class PokRoleActor extends Actor {
     const numericAmount = Math.floor(toNumber(amount, 0));
     if (!targetActor || !path || numericAmount === 0) {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
+    }
+
+    const existingPathModifiers = this._getManagedModifierEffectsForPath(targetActor, path);
+    const sameDirectionModifiers = existingPathModifiers.filter((effectDocument) => {
+      const flags = effectDocument.getFlag(POKROLE.ID, "automation") ?? {};
+      const applied = Math.floor(toNumber(flags?.amountApplied, 0));
+      if (applied === 0) return false;
+      return Math.sign(applied) === Math.sign(numericAmount);
+    });
+    const strongestSameDirection = sameDirectionModifiers.reduce((maxAmount, effectDocument) => {
+      const flags = effectDocument.getFlag(POKROLE.ID, "automation") ?? {};
+      const applied = Math.floor(toNumber(flags?.amountApplied, 0));
+      return Math.max(maxAmount, Math.abs(applied));
+    }, 0);
+    if (strongestSameDirection >= Math.abs(numericAmount)) {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectNoStatChange")
+      };
+    }
+    const weakerSameDirectionIds = sameDirectionModifiers
+      .map((effectDocument) => effectDocument.id)
+      .filter((effectId) => effectId);
+    if (weakerSameDirectionIds.length > 0) {
+      await targetActor.deleteEmbeddedDocuments("ActiveEffect", weakerSameDirectionIds);
     }
 
     const currentValue = toNumber(foundry.utils.getProperty(targetActor, path), 0);
@@ -3088,7 +3622,7 @@ export class PokRoleActor extends Actor {
     };
   }
 
-  async _safeApplyHeal(targetActor, healAmount) {
+  async _safeApplyHeal(targetActor, healAmount, options = {}) {
     const normalizedHeal = Math.max(toNumber(healAmount, 0), 0);
     if (!targetActor || normalizedHeal <= 0) {
       return null;
@@ -3096,12 +3630,32 @@ export class PokRoleActor extends Actor {
 
     const hpValue = Math.max(toNumber(targetActor.system.resources?.hp?.value, 0), 0);
     const hpMax = Math.max(toNumber(targetActor.system.resources?.hp?.max, 1), 1);
-    const hpAfter = Math.min(hpValue + normalizedHeal, hpMax);
+    const healingCategory = `${options?.healingCategory ?? "standard"}`.trim().toLowerCase();
+    let allowedHeal = normalizedHeal;
+    if (game.combat && targetActor instanceof PokRoleActor) {
+      const track = targetActor._getHealingTrack();
+      const perRoundLimit =
+        healingCategory === "full" ? 9_999 : healingCategory === "complete" ? 5 : 3;
+      const remainingHeal = Math.max(perRoundLimit - track.healedThisRound, 0);
+      allowedHeal = Math.min(allowedHeal, remainingHeal);
+      if (allowedHeal > 0) {
+        track.healedThisRound += allowedHeal;
+        if (healingCategory !== "standard") {
+          track.completeHealedThisRound += allowedHeal;
+        }
+        await targetActor._setHealingTrack(track);
+      }
+    }
+
+    const hpAfter = Math.min(hpValue + allowedHeal, hpMax);
     if (hpAfter === hpValue) {
-      return { hpBefore: hpValue, hpAfter };
+      return { hpBefore: hpValue, hpAfter, healedApplied: 0 };
     }
     try {
       await targetActor.update({ "system.resources.hp.value": hpAfter });
+      if (options?.restoreAwareness && hpAfter > 0 && typeof targetActor.toggleQuickCondition === "function") {
+        await targetActor.toggleQuickCondition("fainted", { active: false });
+      }
     } catch (error) {
       console.error(`${POKROLE.ID} | Failed to apply heal`, error);
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.HPUpdateFailed"));
@@ -3109,7 +3663,8 @@ export class PokRoleActor extends Actor {
 
     return {
       hpBefore: hpValue,
-      hpAfter
+      hpAfter,
+      healedApplied: Math.max(hpAfter - hpValue, 0)
     };
   }
 
@@ -3147,17 +3702,43 @@ export class PokRoleActor extends Actor {
     const hpMax = Math.max(toNumber(targetActor.system.resources?.hp?.max, 1), 1);
     const healsFullHp = gearItem.system.heal?.fullHp ?? false;
     const healHpValue = Math.max(toNumber(gearItem.system.heal?.hp, 0), 0);
+    const healingAmount = healsFullHp ? Math.max(hpMax - hpBefore, 0) : healHpValue;
+    const healingCategory = healsFullHp
+      ? "full"
+      : healHpValue >= 5 || Number(gearItem.system.heal?.lethal ?? 0) > 0
+        ? "complete"
+        : "standard";
+    const healResult = await this._safeApplyHeal(targetActor, healingAmount, {
+      healingCategory,
+      restoreAwareness: Boolean(gearItem.system.heal?.restoreAwareness)
+    });
+    const hpAfter = Math.max(toNumber(healResult?.hpAfter, hpBefore), hpBefore);
+    const healedAmount = Math.max(toNumber(healResult?.healedApplied, hpAfter - hpBefore), 0);
 
-    let hpAfter = hpBefore;
-    if (healsFullHp) {
-      hpAfter = hpMax;
-    } else if (healHpValue > 0) {
-      hpAfter = Math.min(hpBefore + healHpValue, hpMax);
-    }
-    const healedAmount = Math.max(hpAfter - hpBefore, 0);
-
-    if (hpAfter !== hpBefore) {
-      await targetActor.update({ "system.resources.hp.value": hpAfter });
+    const statusCures = [];
+    const clearCondition = async (conditionKey) => {
+      if (typeof targetActor.toggleQuickCondition !== "function") return;
+      if (!targetActor._isConditionActive?.(conditionKey)) return;
+      await targetActor.toggleQuickCondition(conditionKey, { active: false });
+      statusCures.push(conditionKey);
+    };
+    if (gearItem.system.status?.all) {
+      for (const conditionKey of CONDITION_KEYS) {
+        await clearCondition(conditionKey);
+      }
+    } else {
+      const statusMap = [
+        ["poison", "poisoned"],
+        ["sleep", "sleep"],
+        ["burn", "burn"],
+        ["frozen", "frozen"],
+        ["paralysis", "paralyzed"],
+        ["confusion", "confused"]
+      ];
+      for (const [fieldKey, conditionKey] of statusMap) {
+        if (!gearItem.system.status?.[fieldKey]) continue;
+        await clearCondition(conditionKey);
+      }
     }
 
     const consumeResult = gearItem.system.consumable ? await this._consumeGearItem(gearItem) : null;
@@ -3181,6 +3762,13 @@ export class PokRoleActor extends Actor {
       notes.push(
         game.i18n.format("POKROLE.Chat.GearStatusNote", {
           value: statusEffects.join(", ")
+        })
+      );
+    }
+    if (statusCures.length > 0) {
+      notes.push(
+        game.i18n.format("POKROLE.Chat.GearStatusCured", {
+          value: statusCures.map((key) => this._localizeConditionName(key)).join(", ")
         })
       );
     }
@@ -3223,6 +3811,182 @@ export class PokRoleActor extends Actor {
       healedAmount,
       consumeResult
     };
+  }
+
+  async trainerUseItemOnPokemon(options = {}) {
+    if (this.type !== "trainer") return null;
+    const targetActor = options.targetActor ?? getTargetActorFromUserSelection();
+    if (!targetActor || targetActor.type !== "pokemon") {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.TrainerItemNeedsPokemonTarget"));
+      return null;
+    }
+
+    const candidateItems = this.items
+      .filter((item) => item.type === "gear")
+      .filter((item) => Boolean(item.system?.canUseInBattle))
+      .filter((item) => Math.max(toNumber(item.system?.quantity, 0), 0) > 0);
+    if (!candidateItems.length) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.TrainerNoBattleItems"));
+      return null;
+    }
+
+    let selectedItemId = `${options.itemId ?? ""}`.trim();
+    if (!selectedItemId) {
+      const chosen = await new Promise((resolve) => {
+        new Dialog({
+          title: game.i18n.localize("POKROLE.Combat.TrainerActions.UseItemOnPokemon"),
+          content: `
+            <form class="pok-role-combined-roll">
+              <div class="form-group">
+                <label>${game.i18n.localize("POKROLE.Fields.Name")}</label>
+                <select name="itemId">
+                  ${candidateItems
+                    .map((item) => `<option value="${item.id}">${item.name}</option>`)
+                    .join("")}
+                </select>
+              </div>
+            </form>
+          `,
+          buttons: {
+            confirm: {
+              icon: "<i class='fas fa-check'></i>",
+              label: game.i18n.localize("POKROLE.Combat.ConfirmReaction"),
+              callback: (dialogHtml) => resolve(dialogHtml?.[0]?.querySelector("select[name='itemId']")?.value ?? "")
+            },
+            cancel: {
+              icon: "<i class='fas fa-times'></i>",
+              label: game.i18n.localize("POKROLE.Common.Cancel"),
+              callback: () => resolve("")
+            }
+          },
+          default: "confirm",
+          close: () => resolve("")
+        }, { classes: ["pok-role-dialog"] }).render(true);
+      });
+      selectedItemId = `${chosen ?? ""}`.trim();
+    }
+    if (!selectedItemId) return null;
+
+    const medicineRoll = await this._rollSuccessPool({
+      dicePool: this.getTraitValue("clever") + this.getSkillValue("medicine"),
+      removedSuccesses: this.getPainPenalty(),
+      requiredSuccesses: 1,
+      flavor: game.i18n.format("POKROLE.Chat.TrainerUseItemRoll", { actor: this.name })
+    });
+    if (!medicineRoll?.success) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.TrainerItemCheckFailed"));
+      return null;
+    }
+
+    const result = await this.useGearItem(selectedItemId, { targetActor });
+    if (!result) return null;
+
+    if (game.combat && !this.isTrainerInFray()) {
+      const blockedRoundKey = this._getCurrentRoundKey(1);
+      if (blockedRoundKey) {
+        await targetActor.setFlag(POKROLE.ID, TREATMENT_BLOCK_FLAG_KEY, blockedRoundKey);
+      }
+    }
+    return result;
+  }
+
+  async trainerSearchForCover() {
+    if (this.type !== "trainer") return null;
+    if (this.isTrainerInFray()) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.TrainerCannotSearchCoverInFray"));
+      return null;
+    }
+    const result = await this._rollSuccessPool({
+      dicePool: this.getTraitValue("insight") + this.getSkillValue("alert"),
+      removedSuccesses: this.getPainPenalty(),
+      requiredSuccesses: 1,
+      flavor: game.i18n.format("POKROLE.Chat.TrainerSearchCoverRoll", { actor: this.name })
+    });
+    if (!result?.success) return result;
+    await this.setTrainerCover("full");
+    ui.notifications.info(game.i18n.localize("POKROLE.Chat.CoverSetFull"));
+    return result;
+  }
+
+  async trainerTakeCover(level = "half") {
+    if (this.type !== "trainer") return null;
+    const resolvedLevel = `${level ?? "half"}`.trim().toLowerCase();
+    const targetLevel = ["full", "half", "quarter", "none"].includes(resolvedLevel)
+      ? resolvedLevel
+      : "half";
+    await this.setTrainerCover(targetLevel);
+    ui.notifications.info(game.i18n.format("POKROLE.Chat.CoverSet", { level: targetLevel }));
+    return targetLevel;
+  }
+
+  async trainerEnterFray(options = {}) {
+    if (this.type !== "trainer") return null;
+    const active = options.active === undefined ? !this.isTrainerInFray() : Boolean(options.active);
+    await this.setTrainerInFray(active);
+    ui.notifications.info(
+      game.i18n.localize(
+        active ? "POKROLE.Chat.TrainerEnteredFray" : "POKROLE.Chat.TrainerLeftFray"
+      )
+    );
+    return active;
+  }
+
+  async trainerRunAwayFromBattle(options = {}) {
+    if (this.type !== "trainer") return null;
+    const combat = game.combat;
+    if (!combat) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.CombatRequired"));
+      return null;
+    }
+    const foeActor = options.foeActor ?? this._resolveRunAwayFoeActor();
+    if (!foeActor) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.NoRunAwayOpponent"));
+      return null;
+    }
+
+    const selfRoll = await new Roll(
+      successPoolFormula(this.getTraitValue("dexterity") + this.getSkillValue("athletic"))
+    ).evaluate({ async: true });
+    const foeRoll = await new Roll(
+      successPoolFormula(foeActor.getTraitValue("dexterity") + foeActor.getSkillValue("athletic"))
+    ).evaluate({ async: true });
+    const selfNet = toNumber(selfRoll.total, 0) - this.getPainPenalty();
+    const foeNet = toNumber(foeRoll.total, 0) - foeActor.getPainPenalty();
+    const escaped = selfNet > foeNet;
+
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `
+        <div class="pok-role-chat-card">
+          <h3>${game.i18n.localize("POKROLE.Combat.TrainerActions.RunAway")}</h3>
+          <p><strong>${this.name}</strong>: ${selfNet}</p>
+          <p><strong>${foeActor.name}</strong>: ${foeNet}</p>
+          <p><strong>${game.i18n.localize("POKROLE.Chat.Result")}:</strong> ${
+            escaped
+              ? game.i18n.localize("POKROLE.Chat.RunAwaySuccess")
+              : game.i18n.localize("POKROLE.Chat.RunAwayFailed")
+          }</p>
+        </div>
+      `
+    });
+
+    if (escaped && game.user?.isGM) {
+      await combat.update({ active: false });
+    }
+
+    return { escaped, selfNet, foeNet, foeActor };
+  }
+
+  _resolveRunAwayFoeActor() {
+    const target = getTargetActorFromUserSelection();
+    if (target && target.id !== this.id) return target;
+    const combatants = game.combat?.combatants ?? [];
+    for (const combatant of combatants) {
+      const actor = combatant.actor;
+      if (!actor || actor.id === this.id) continue;
+      return actor;
+    }
+    return null;
   }
 
   hasType(typeKey) {
@@ -3522,6 +4286,58 @@ export class PokRoleActor extends Actor {
     });
   }
 
+  _getShieldMoveAccuracyPenalty(roundKey = null) {
+    const state = this.getFlag(POKROLE.ID, SHIELD_STREAK_FLAG_KEY) ?? {};
+    const currentRoundKey = roundKey ?? this._getCurrentRoundKey(0);
+    if (!currentRoundKey) return 0;
+    const lastRoundKey = `${state?.lastRoundKey ?? ""}`.trim();
+    const streak = Math.max(Math.floor(toNumber(state?.streak, 0)), 0);
+    if (!lastRoundKey || !streak) return 0;
+    const [combatId, roundText] = currentRoundKey.split(":");
+    const [lastCombatId, lastRoundText] = lastRoundKey.split(":");
+    if (!combatId || !lastCombatId || combatId !== lastCombatId) return 0;
+    const currentRound = Math.floor(toNumber(roundText, 0));
+    const lastRound = Math.floor(toNumber(lastRoundText, 0));
+    if (currentRound - lastRound !== 1) return 0;
+    return Math.max(streak, 0) * 2;
+  }
+
+  async _registerShieldMoveUsage(roundKey = null) {
+    const currentRoundKey = roundKey ?? this._getCurrentRoundKey(0);
+    if (!currentRoundKey) return;
+    const state = this.getFlag(POKROLE.ID, SHIELD_STREAK_FLAG_KEY) ?? {};
+    const lastRoundKey = `${state?.lastRoundKey ?? ""}`.trim();
+    let nextStreak = 1;
+    const [combatId, roundText] = currentRoundKey.split(":");
+    const [lastCombatId, lastRoundText] = lastRoundKey.split(":");
+    if (combatId && lastCombatId && combatId === lastCombatId) {
+      const currentRound = Math.floor(toNumber(roundText, 0));
+      const lastRound = Math.floor(toNumber(lastRoundText, 0));
+      if (currentRound - lastRound === 1) {
+        nextStreak = Math.max(Math.floor(toNumber(state?.streak, 0)), 0) + 1;
+      }
+    }
+    await this.setFlag(POKROLE.ID, SHIELD_STREAK_FLAG_KEY, {
+      lastRoundKey: currentRoundKey,
+      streak: nextStreak
+    });
+  }
+
+  async _activateShieldProtectionForRound(roundKey = null) {
+    const currentRoundKey = roundKey ?? this._getCurrentRoundKey(0);
+    if (!currentRoundKey) return;
+    await this.setFlag(POKROLE.ID, "combat.shieldActiveRound", currentRoundKey);
+  }
+
+  async _consumeShieldProtectionIfAny() {
+    const currentRoundKey = this._getCurrentRoundKey(0);
+    if (!currentRoundKey) return false;
+    const activeRound = `${this.getFlag(POKROLE.ID, "combat.shieldActiveRound") ?? ""}`.trim();
+    if (!activeRound || activeRound !== currentRoundKey) return false;
+    await this.setFlag(POKROLE.ID, "combat.shieldActiveRound", "");
+    return true;
+  }
+
   _computeClashDamage(moveType, targetActor) {
     const interaction = this._evaluateTypeInteraction(moveType, targetActor);
     if (interaction.immune) return 0;
@@ -3679,6 +4495,9 @@ export class PokRoleActor extends Actor {
     const hpAfter = Math.max(hpValue - normalizedDamage, 0);
     try {
       await targetActor.update({ "system.resources.hp.value": hpAfter });
+      if (hpAfter <= 0 && typeof targetActor.toggleQuickCondition === "function") {
+        await targetActor.toggleQuickCondition("fainted", { active: true });
+      }
     } catch (error) {
       console.error(`${POKROLE.ID} | Failed to apply damage`, error);
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.HPUpdateFailed"));
@@ -3723,6 +4542,16 @@ export class PokRoleActor extends Actor {
       if (table.immune.includes(defenderType)) immune = true;
       if (table.double.includes(defenderType)) weaknessBonus += 1;
       if (table.half.includes(defenderType)) resistancePenalty += 1;
+    }
+
+    const activeWeather = this.getActiveWeatherKey();
+    if (
+      activeWeather === "strong-winds" &&
+      defenderTypes.includes("flying") &&
+      ["electric", "ice", "rock"].includes(`${moveType ?? ""}`.trim().toLowerCase())
+    ) {
+      weaknessBonus = Math.max(weaknessBonus - 1, 0);
+      resistancePenalty = Math.max(resistancePenalty - 1, 0);
     }
 
     let label = "POKROLE.Chat.TypeEffect.Neutral";
