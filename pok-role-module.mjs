@@ -188,7 +188,12 @@ function registerTemplateHelpers() {
     const optionsHash = helperOptions?.hash ?? {};
     const selectOptionsHelper = handlebars.helpers?.selectOptions;
     if (typeof selectOptionsHelper !== "function") return "";
-    return selectOptionsHelper(sourceChoices, optionsHash);
+    return selectOptionsHelper.call(this, sourceChoices, {
+      hash: optionsHash,
+      data: helperOptions?.data,
+      fn: helperOptions?.fn,
+      inverse: helperOptions?.inverse
+    });
   });
 }
 
