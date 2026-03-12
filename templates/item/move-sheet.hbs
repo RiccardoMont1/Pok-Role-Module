@@ -11,7 +11,7 @@
         <label>
           <span>{{localize "POKROLE.Move.ActionTag"}}</span>
           <select name="system.actionTag">
-            {{selectOptions actionTagOptions selected=system.actionTag localize=true}}
+            {{safeSelectOptions actionTagOptions selected=system.actionTag localize=true}}
           </select>
         </label>
       </div>
@@ -56,25 +56,25 @@
             <label>
               <span>{{localize "POKROLE.Move.Type"}}</span>
               <select name="system.type">
-                {{selectOptions typeOptions selected=system.type localize=true}}
+                {{safeSelectOptions typeOptions selected=system.type localize=true}}
               </select>
             </label>
             <label>
               <span>{{localize "POKROLE.Move.Category.Label"}}</span>
               <select name="system.category">
-                {{selectOptions categoryOptions selected=system.category localize=true}}
+                {{safeSelectOptions categoryOptions selected=system.category localize=true}}
               </select>
             </label>
             <label>
               <span>{{localize "POKROLE.Move.AccuracyAttribute"}}</span>
               <select name="system.accuracyAttribute">
-                {{selectOptions accuracyAttributeOptions selected=system.accuracyAttribute localize=true}}
+                {{safeSelectOptions accuracyAttributeOptions selected=system.accuracyAttribute localize=true}}
               </select>
             </label>
             <label>
               <span>{{localize "POKROLE.Move.AccuracySkill"}}</span>
               <select name="system.accuracySkill">
-                {{selectOptions accuracySkillOptions selected=system.accuracySkill localize=true}}
+                {{safeSelectOptions accuracySkillOptions selected=system.accuracySkill localize=true}}
               </select>
             </label>
             <label>
@@ -155,7 +155,7 @@
             <label>
               <span>{{localize "POKROLE.Move.Target"}}</span>
               <select name="system.target">
-                {{selectOptions targetOptions selected=system.target localize=true}}
+                {{safeSelectOptions targetOptions selected=system.target localize=true}}
               </select>
             </label>
             <label>
@@ -249,7 +249,7 @@
             <label>
               <span>{{localize "POKROLE.Move.DamageAttribute"}}</span>
               <select name="system.damageAttribute">
-                {{selectOptions damageAttributeOptions selected=system.damageAttribute localize=true}}
+                {{safeSelectOptions damageAttributeOptions selected=system.damageAttribute localize=true}}
               </select>
             </label>
             <label>
@@ -298,7 +298,7 @@
               <label>
                 <span>{{localize "POKROLE.Move.Secondary.Trigger.Label"}}</span>
                 <select name="system.secondaryEffects.{{effect.index}}.trigger">
-                  {{selectOptions @root.secondaryTriggerOptions selected=effect.trigger localize=true}}
+                  {{safeSelectOptions @root.secondaryTriggerOptions selected=effect.trigger localize=true}}
                 </select>
               </label>
               <label>
@@ -315,16 +315,16 @@
               <label>
                 <span>{{localize "POKROLE.Move.Secondary.Target.Label"}}</span>
                 <select name="system.secondaryEffects.{{effect.index}}.target">
-                  {{selectOptions @root.secondaryTargetOptions selected=effect.target localize=true}}
+                  {{safeSelectOptions @root.secondaryTargetOptions selected=effect.target localize=true}}
                 </select>
               </label>
               <label>
                 <span>{{localize "POKROLE.Move.Secondary.Type.Label"}}</span>
                 <select name="system.secondaryEffects.{{effect.index}}.effectType">
                   {{#if effect.section}}
-                  {{selectOptions @root.secondaryEffectTypeOptionsExtra selected=effect.effectType localize=true}}
+                  {{safeSelectOptions @root.secondaryEffectTypeOptionsExtra selected=effect.effectType localize=true}}
                   {{else}}
-                  {{selectOptions @root.secondaryEffectTypeOptions selected=effect.effectType localize=true}}
+                  {{safeSelectOptions @root.secondaryEffectTypeOptions selected=effect.effectType localize=true}}
                   {{/if}}
                 </select>
               </label>
@@ -333,7 +333,7 @@
                 <label>
                   <span>{{localize "POKROLE.Move.Secondary.Duration.Mode.Label"}}</span>
                   <select name="system.secondaryEffects.{{effect.index}}.durationMode">
-                    {{selectOptions @root.secondaryDurationModeOptions selected=effect.durationMode localize=true}}
+                    {{safeSelectOptions @root.secondaryDurationModeOptions selected=effect.durationMode localize=true}}
                   </select>
                 </label>
                 <label>
@@ -392,7 +392,7 @@
               <label data-effect-visible="condition" class="{{#unless effect.showConditionField}}is-hidden{{/unless}}">
                 <span>{{localize "POKROLE.Move.Secondary.Condition.Label"}}</span>
                 <select name="system.secondaryEffects.{{effect.index}}.condition">
-                  {{selectOptions @root.secondaryConditionOptions selected=effect.condition localize=true}}
+                  {{safeSelectOptions @root.secondaryConditionOptions selected=effect.condition localize=true}}
                 </select>
               </label>
               <div data-effect-visible="active-effect" class="move-linked-active-effect {{#unless effect.showActiveEffectField}}is-hidden{{/unless}}">
@@ -423,7 +423,7 @@
               <label data-effect-visible="stat" class="{{#unless effect.showStatField}}is-hidden{{/unless}}">
                 <span>{{localize "POKROLE.Move.Secondary.Stat.Label"}}</span>
                 <select name="system.secondaryEffects.{{effect.index}}.stat">
-                  {{selectOptions @root.secondaryStatOptions selected=effect.stat localize=true}}
+                  {{safeSelectOptions @root.secondaryStatOptions selected=effect.stat localize=true}}
                 </select>
               </label>
               <label data-effect-visible="amount" class="{{#unless effect.showAmountField}}is-hidden{{/unless}}">

@@ -179,6 +179,19 @@ function getConditionLabelPath(conditionKey) {
   return labelByCondition[conditionKey] ?? "POKROLE.Common.Unknown";
 }
 
+function registerTemplateHelpers() {
+  const handlebars = globalThis.Handlebars;
+  if (!handlebars || handlebars.helpers?.safeSelectOptions) return;
+
+  handlebars.registerHelper("safeSelectOptions", function safeSelectOptions(choices, helperOptions) {
+    const sourceChoices = choices && typeof choices === "object" ? choices : {};
+    const optionsHash = helperOptions?.hash ?? {};
+    const selectOptionsHelper = handlebars.helpers?.selectOptions;
+    if (typeof selectOptionsHelper !== "function") return "";
+    return selectOptionsHelper(sourceChoices, optionsHash);
+  });
+}
+
 function getStackModeLabelPath(stackModeKey) {
   const labelByStackMode = {
     "name-origin": "POKROLE.Effects.StackMode.NameOrigin",
@@ -535,6 +548,7 @@ function renderActiveEffectAutomationConfig(app, html) {
 
 Hooks.once("init", () => {
   console.log(`${POKROLE.ID} | Initializing ${POKROLE.TITLE}`);
+  registerTemplateHelpers();
 
   // Replace Foundry's default token status effects with PokRole condition flags.
   CONFIG.statusEffects = buildHudConditionStatuses();
