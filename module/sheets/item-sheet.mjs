@@ -20,6 +20,11 @@ import {
 import { getMoveTypeIcon } from "../move-type-icons.mjs";
 
 export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
+  constructor(...args) {
+    super(...args);
+    this._moveActiveTab = "description";
+  }
+
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["pok-role", "sheet", "item"],
@@ -190,6 +195,20 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       insight: "POKROLE.Attributes.Insight",
       none: "POKROLE.Move.NoStat"
     };
+    context.rangeModeOptions = {
+      self: "POKROLE.Move.RangeMode.Self",
+      melee: "POKROLE.Move.RangeMode.Melee",
+      meters: "POKROLE.Move.RangeMode.Meters",
+      scene: "POKROLE.Move.RangeMode.Scene",
+      battlefield: "POKROLE.Move.RangeMode.Battlefield",
+      custom: "POKROLE.Move.RangeMode.Custom"
+    };
+    const moveRangeMode = this._normalizeMoveRangeMode(context.system?.rangeMode);
+    context.moveRangeUsesValue = moveRangeMode === "meters";
+    context.moveRangeUsesText = moveRangeMode === "custom";
+    context.system.rangeMode = moveRangeMode;
+    context.system.rangeValue = this._normalizeMoveRangeValue(context.system?.rangeValue);
+    context.system.rangeText = `${context.system?.rangeText ?? ""}`.trim();
     const durationType = `${context.system?.durationType ?? "instant"}`.trim().toLowerCase();
     const buildDurationOption = (value, label) => ({
       value,
@@ -275,6 +294,23 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     context.secondaryStatOptions = Object.fromEntries(
       MOVE_SECONDARY_STAT_KEYS.map((statKey) => [statKey, this._getSecondaryStatLabelPath(statKey)])
     );
+    const activeMoveTab = this._moveActiveTab === "details" ? "details" : "description";
+    context.moveTabDescriptionActive = activeMoveTab === "description";
+    context.moveTabDetailsActive = activeMoveTab === "details";
+    const resolveLabel = (labelPath) => game.i18n.localize(labelPath ?? "POKROLE.Common.Unknown");
+    context.moveSidebarSummary = {
+      type: resolveLabel(typeOptions[context.system?.type] ?? "POKROLE.Common.Unknown"),
+      category: resolveLabel(
+        MOVE_CATEGORY_LABEL_BY_KEY[context.system?.category] ?? "POKROLE.Common.Unknown"
+      ),
+      power: Math.max(Math.floor(Number(context.system?.power ?? 0) || 0), 0),
+      willCost: Math.max(Math.floor(Number(context.system?.willCost ?? 0) || 0), 0),
+      properties: [
+        context.system?.highCritical ? "POKROLE.Move.HighCritical" : null,
+        context.system?.neverFail ? "POKROLE.Move.NeverFail" : null,
+        context.system?.lethal ? "POKROLE.Move.Lethal" : null
+      ].filter((entry) => entry)
+    };
     return context;
   }
 
@@ -294,8 +330,8 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     html.find("select[name='system.durationType']").on("change", (event) =>
       this._onDurationTypeChanged(event, html)
     );
-    html.find("[data-action='add-secondary-effect']").on("click", (event) =>
-      this._onAddSecondaryEffect(event)
+    html.find("select[name='system.rangeMode']").on("change", (event) =>
+      this._onRangeModeChanged(event, html)
     );
     html.find("[data-action='add-secondary-effect-section']").on("click", (event) =>
       this._onAddSecondaryEffectSection(event)
@@ -324,7 +360,9 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     html.find(".move-secondary-effect-row").each((_index, row) =>
       this._refreshSecondaryEffectRowVisibility(row)
     );
+    this._applyMoveTabState(html, this._moveActiveTab);
     this._onDurationTypeChanged(null, html);
+    this._onRangeModeChanged(null, html);
   }
 
   async _updateObject(event, formData) {
@@ -341,6 +379,14 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
         }
       }
       formData["system.target"] = this._normalizeMoveTarget(moveSystem.target);
+      formData["system.rangeMode"] = this._normalizeMoveRangeMode(moveSystem.rangeMode);
+      formData["system.rangeValue"] = this._normalizeMoveRangeValue(moveSystem.rangeValue);
+      formData["system.rangeText"] = `${moveSystem.rangeText ?? ""}`.trim();
+      formData["system.range"] = this._buildRangeLabel({
+        rangeMode: formData["system.rangeMode"],
+        rangeValue: formData["system.rangeValue"],
+        rangeText: formData["system.rangeText"]
+      });
       formData["system.durationType"] = this._normalizeMoveDurationType(moveSystem.durationType);
       formData["system.durationValue"] = this._normalizeMoveDurationValue(moveSystem.durationValue);
       formData["system.willCost"] = Math.min(
@@ -431,6 +477,33 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
   _normalizeMoveTarget(value) {
     if (MOVE_TARGET_KEYS.includes(value)) return value;
     return "foe";
+  }
+
+  _normalizeMoveRangeMode(value) {
+    const normalized = `${value ?? "melee"}`.trim().toLowerCase();
+    const allowed = new Set(["self", "melee", "meters", "scene", "battlefield", "custom"]);
+    return allowed.has(normalized) ? normalized : "melee";
+  }
+
+  _normalizeMoveRangeValue(value) {
+    const numericValue = Number(value);
+    if (!Number.isFinite(numericValue)) return 1;
+    return Math.min(Math.max(Math.floor(numericValue), 0), 999);
+  }
+
+  _buildRangeLabel({ rangeMode = "melee", rangeValue = 1, rangeText = "" } = {}) {
+    const normalizedMode = this._normalizeMoveRangeMode(rangeMode);
+    const normalizedValue = this._normalizeMoveRangeValue(rangeValue);
+    const normalizedText = `${rangeText ?? ""}`.trim();
+    if (normalizedMode === "meters") return `${normalizedValue}m`;
+    if (normalizedMode === "custom") return normalizedText || game.i18n.localize("POKROLE.Move.RangeMode.Custom");
+    const labelMap = {
+      self: "POKROLE.Move.RangeMode.Self",
+      melee: "POKROLE.Move.RangeMode.Melee",
+      scene: "POKROLE.Move.RangeMode.Scene",
+      battlefield: "POKROLE.Move.RangeMode.Battlefield"
+    };
+    return game.i18n.localize(labelMap[normalizedMode] ?? "POKROLE.Common.Unknown");
   }
 
   _normalizeMoveDurationType(value) {
@@ -779,10 +852,16 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     event.preventDefault();
     const targetTab = `${event.currentTarget.dataset.tab ?? ""}`.trim().toLowerCase();
     if (!targetTab) return;
+    this._moveActiveTab = targetTab === "details" ? "details" : "description";
+    this._applyMoveTabState(html, this._moveActiveTab);
+  }
+
+  _applyMoveTabState(html, tabKey = "description") {
+    const normalizedTab = tabKey === "details" ? "details" : "description";
     html.find("[data-action='switch-move-tab']").removeClass("is-active");
-    html.find(`[data-action='switch-move-tab'][data-tab='${targetTab}']`).addClass("is-active");
+    html.find(`[data-action='switch-move-tab'][data-tab='${normalizedTab}']`).addClass("is-active");
     html.find(".move-tab-panel").removeClass("is-active");
-    html.find(`.move-tab-panel[data-tab='${targetTab}']`).addClass("is-active");
+    html.find(`.move-tab-panel[data-tab='${normalizedTab}']`).addClass("is-active");
   }
 
   _onDurationTypeChanged(_event, html) {
@@ -791,6 +870,14 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       .toLowerCase();
     const showValueField = durationType.startsWith("time-");
     html.find(".move-duration-value-row").toggleClass("is-hidden", !showValueField);
+  }
+
+  _onRangeModeChanged(_event, html) {
+    const rangeMode = `${html.find("select[name='system.rangeMode']").val() ?? "melee"}`
+      .trim()
+      .toLowerCase();
+    html.find(".move-range-value-row").toggleClass("is-hidden", rangeMode !== "meters");
+    html.find(".move-range-text-row").toggleClass("is-hidden", rangeMode !== "custom");
   }
 
   _onSecondaryEffectTypeChanged(event) {

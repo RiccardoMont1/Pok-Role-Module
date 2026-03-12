@@ -276,6 +276,14 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
         choices: damageAttributeChoices
       }),
       willCost: integerField(0, { min: 0, max: 99 }),
+      rangeMode: new StringField({
+        required: true,
+        blank: false,
+        initial: "melee",
+        choices: ["self", "melee", "meters", "scene", "battlefield", "custom"]
+      }),
+      rangeValue: integerField(1, { min: 0, max: 999 }),
+      rangeText: trimmedStringField(""),
       range: trimmedStringField(""),
       durationType: new StringField({
         required: true,

@@ -3050,6 +3050,50 @@ form.editable.pok-role-sheet.trainer-sheet {
   gap: 8px;
 }
 
+.move-sheet .move-side-summary-row,
+.move-sheet .move-side-properties {
+  display: grid;
+  gap: 4px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  border: 2px solid #4a2a2a;
+  background: #fceede;
+}
+
+.move-sheet .move-side-summary-row > span,
+.move-sheet .move-side-properties > span {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #633535;
+}
+
+.move-sheet .move-side-summary-row > strong {
+  font-size: 0.9rem;
+  color: #2f2520;
+}
+
+.move-sheet .move-property-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.move-sheet .move-property-tag {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 999px;
+  border: 1px solid #9f7368;
+  background: #fff7ee;
+  font-size: 0.68rem;
+  color: #5a3434;
+}
+
+.move-sheet .move-property-empty {
+  color: #7a6a62;
+  font-size: 0.72rem;
+}
+
 .move-sheet .move-main-card {
   min-width: 0;
 }
@@ -3159,6 +3203,11 @@ form.editable.pok-role-sheet.trainer-sheet {
 }
 
 .move-sheet .move-duration-value-row.is-hidden {
+  display: none !important;
+}
+
+.move-sheet .move-range-value-row.is-hidden,
+.move-sheet .move-range-text-row.is-hidden {
   display: none !important;
 }
 

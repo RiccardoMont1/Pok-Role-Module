@@ -48,10 +48,138 @@ async function processCombatSpecialDurationEvent(combat, eventKey) {
 async function ensureEffectIconDisplay(effectDocument) {
   if (!effectDocument) return;
   const automationFlags = effectDocument.getFlag?.(POKROLE.ID, "automation") ?? {};
-  if (!automationFlags?.alwaysShowIcon) return;
+  const showTokenIcon = Boolean(
+    automationFlags?.showTokenIcon ??
+      automationFlags?.alwaysShowIcon ??
+      effectDocument?.getFlag?.("core", "overlay")
+  );
+  if (!showTokenIcon) return;
   const currentImage = `${effectDocument.img ?? ""}`.trim();
   if (currentImage) return;
   await effectDocument.update({ img: "icons/svg/aura.svg" });
+}
+
+function getManagedEffectStatusId(effectDocument) {
+  const rawIdentifier = `${effectDocument?.uuid ?? effectDocument?.id ?? ""}`
+    .trim()
+    .toLowerCase();
+  if (!rawIdentifier) return "";
+  const slug = rawIdentifier
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return slug ? `pokrole-ae-${slug}` : "";
+}
+
+function upsertStatusEffectDefinition(statusEntry) {
+  if (!statusEntry?.id) return;
+  const nextList = Array.isArray(CONFIG.statusEffects) ? [...CONFIG.statusEffects] : [];
+  const existingIndex = nextList.findIndex((entry) => `${entry?.id ?? ""}` === `${statusEntry.id}`);
+  if (existingIndex >= 0) {
+    nextList[existingIndex] = {
+      ...nextList[existingIndex],
+      ...statusEntry
+    };
+  } else {
+    nextList.push(statusEntry);
+  }
+  CONFIG.statusEffects = nextList;
+}
+
+function removeStatusEffectDefinition(statusId) {
+  const normalizedStatusId = `${statusId ?? ""}`.trim();
+  if (!normalizedStatusId) return;
+  const currentList = Array.isArray(CONFIG.statusEffects) ? CONFIG.statusEffects : [];
+  CONFIG.statusEffects = currentList.filter(
+    (entry) => `${entry?.id ?? ""}`.trim() !== normalizedStatusId
+  );
+}
+
+function resolveShowTokenIconFlag(effectDocument) {
+  const automationFlags = effectDocument?.getFlag?.(POKROLE.ID, "automation") ?? {};
+  return Boolean(
+    automationFlags?.showTokenIcon ??
+      automationFlags?.alwaysShowIcon ??
+      effectDocument?.getFlag?.("core", "overlay")
+  );
+}
+
+const EFFECT_TOKEN_ICON_SYNC_LOCK = new Set();
+
+async function synchronizeEffectTokenIcon(effectDocument) {
+  if (!effectDocument || effectDocument.documentName !== "ActiveEffect") return;
+  const parentActor = effectDocument.parent;
+  if (!parentActor || parentActor.documentName !== "Actor") return;
+
+  const statusId = getManagedEffectStatusId(effectDocument);
+  if (!statusId) return;
+
+  const lockKey = `${effectDocument.uuid ?? `${parentActor.uuid ?? parentActor.id}:${effectDocument.id}`}`;
+  if (EFFECT_TOKEN_ICON_SYNC_LOCK.has(lockKey)) return;
+  EFFECT_TOKEN_ICON_SYNC_LOCK.add(lockKey);
+  try {
+    const wantsTokenIcon = resolveShowTokenIconFlag(effectDocument);
+    const shouldShowTokenIcon = wantsTokenIcon && !effectDocument.disabled;
+    const currentStatuses = new Set(
+      [...(effectDocument.statuses instanceof Set ? effectDocument.statuses : effectDocument?.statuses ?? [])]
+        .map((status) => `${status ?? ""}`.trim())
+        .filter(Boolean)
+    );
+    const hasManagedStatus = currentStatuses.has(statusId);
+    const currentImage = `${effectDocument.img ?? ""}`.trim();
+    const updateData = {};
+
+    if (shouldShowTokenIcon) {
+      if (!currentImage) updateData.img = "icons/svg/aura.svg";
+      if (!hasManagedStatus) {
+        currentStatuses.add(statusId);
+        updateData.statuses = [...currentStatuses];
+      }
+      upsertStatusEffectDefinition({
+        id: statusId,
+        name: `${effectDocument.name ?? game.i18n.localize("POKROLE.Effects.New")}`.trim() || game.i18n.localize("POKROLE.Effects.New"),
+        img: `${updateData.img ?? currentImage ?? "icons/svg/aura.svg"}`
+      });
+    } else {
+      if (hasManagedStatus) {
+        currentStatuses.delete(statusId);
+        updateData.statuses = [...currentStatuses];
+      }
+      removeStatusEffectDefinition(statusId);
+    }
+
+    if (Object.keys(updateData).length > 0) {
+      await effectDocument.update(updateData);
+    }
+  } finally {
+    EFFECT_TOKEN_ICON_SYNC_LOCK.delete(lockKey);
+  }
+}
+
+async function synchronizeAllActorEffectTokenIcons() {
+  if (!game) return;
+  const actorsByKey = new Map();
+  const rememberActor = (actor) => {
+    if (!actor || actor.documentName !== "Actor") return;
+    const actorKey = `${actor.uuid ?? actor.id ?? ""}`.trim();
+    if (!actorKey) return;
+    actorsByKey.set(actorKey, actor);
+  };
+
+  for (const actor of game.actors?.contents ?? []) {
+    rememberActor(actor);
+  }
+
+  for (const scene of game.scenes?.contents ?? []) {
+    for (const tokenDocument of scene?.tokens?.contents ?? []) {
+      rememberActor(tokenDocument?.actor ?? null);
+    }
+  }
+
+  for (const actor of actorsByKey.values()) {
+    for (const effectDocument of actor.effects?.contents ?? []) {
+      await synchronizeEffectTokenIcon(effectDocument);
+    }
+  }
 }
 
 const LAST_COMBAT_TURN_STATE = new Map();
@@ -360,8 +488,7 @@ function renderActiveEffectAutomationConfig(app, html) {
   const stackMode = ["name-origin", "name", "origin", "multiple"].includes(rawStackMode)
     ? rawStackMode
     : "name-origin";
-  const alwaysShowIcon = Boolean(automationFlags?.alwaysShowIcon);
-  const overlayIcon = Boolean(effectDocument?.getFlag?.("core", "overlay"));
+  const showTokenIcon = resolveShowTokenIconFlag(effectDocument);
 
   const modeOptionsHtml = ["manual", "rounds"].map((modeKey) => {
     const selected = modeKey === durationMode ? " selected" : "";
@@ -393,8 +520,7 @@ function renderActiveEffectAutomationConfig(app, html) {
     .join("");
 
   const passiveChecked = passiveEnabled ? " checked" : "";
-  const alwaysShowIconChecked = alwaysShowIcon ? " checked" : "";
-  const overlayIconChecked = overlayIcon ? " checked" : "";
+  const showTokenIconChecked = showTokenIcon ? " checked" : "";
   const thresholdRowClass = passiveTrigger.includes("threshold") ? "" : " is-hidden";
   const conditionRowClass = passiveTrigger.includes("condition") ? "" : " is-hidden";
 
@@ -446,15 +572,9 @@ function renderActiveEffectAutomationConfig(app, html) {
       </div>
     </div>
     <div class="form-group">
-      <label>${game.i18n.localize("POKROLE.Effects.AlwaysShowIcon")}</label>
+      <label>${game.i18n.localize("POKROLE.Effects.ShowTokenIcon")}</label>
       <div class="form-fields">
-        <input type="checkbox" name="flags.${POKROLE.ID}.automation.alwaysShowIcon" ${alwaysShowIconChecked} />
-      </div>
-    </div>
-    <div class="form-group">
-      <label>${game.i18n.localize("POKROLE.Effects.OverlayIcon")}</label>
-      <div class="form-fields">
-        <input type="checkbox" name="flags.core.overlay" ${overlayIconChecked} />
+        <input type="checkbox" name="flags.${POKROLE.ID}.automation.showTokenIcon" ${showTokenIconChecked} />
       </div>
     </div>
   `;
@@ -628,6 +748,7 @@ Hooks.once("init", () => {
 Hooks.once("ready", async () => {
   game.pokrole ??= {};
   game.pokrole.seedCompendia = async (options = {}) => seedCompendia(options);
+  await synchronizeAllActorEffectTokenIcons();
 });
 
 Hooks.on("updateCombat", async (combat, changed) => {
@@ -750,6 +871,7 @@ Hooks.on("updateActor", (actorDocument) => {
 
 Hooks.on("createActiveEffect", (effectDocument) => {
   void ensureEffectIconDisplay(effectDocument);
+  void synchronizeEffectTokenIcon(effectDocument);
   const actor = effectDocument?.parent ?? null;
   if (!actor || actor.documentName !== "Actor") return;
 
@@ -764,6 +886,7 @@ Hooks.on("createActiveEffect", (effectDocument) => {
 
 Hooks.on("updateActiveEffect", (effectDocument, changedData) => {
   void ensureEffectIconDisplay(effectDocument);
+  void synchronizeEffectTokenIcon(effectDocument);
   const actor = effectDocument?.parent ?? null;
   if (!actor || actor.documentName !== "Actor") return;
 
@@ -781,6 +904,8 @@ Hooks.on("updateActiveEffect", (effectDocument, changedData) => {
 });
 
 Hooks.on("deleteActiveEffect", (effectDocument) => {
+  const statusId = getManagedEffectStatusId(effectDocument);
+  if (statusId) removeStatusEffectDefinition(statusId);
   const actor = effectDocument?.parent ?? null;
   if (!actor || actor.documentName !== "Actor") return;
 
