@@ -306,8 +306,12 @@
           },
           "Special": {
             "Label": "Special Duration",
+            "Add": "Add Special Duration",
+            "Empty": "No special duration configured.",
             "TurnStart": "Until turn start",
             "TurnEnd": "Until turn end",
+            "RoundEnd": "Until round end",
+            "CombatEnd": "Until combat end",
             "NextAction": "Expires on next action",
             "NextAttack": "Expires on next attack roll",
             "NextHit": "Expires on next successful hit",

@@ -215,6 +215,8 @@ export const MOVE_SECONDARY_SPECIAL_DURATION_KEYS = Object.freeze([
   "none",
   "turn-start",
   "turn-end",
+  "round-end",
+  "combat-end",
   "next-action",
   "next-attack",
   "next-hit",

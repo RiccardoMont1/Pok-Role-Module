@@ -2895,6 +2895,33 @@ form.editable.pok-role-sheet.trainer-sheet {
   background: #fff0dd;
   border-color: color-mix(in srgb, var(--tr-accent-strong) 40%, #d1b292 60%);
   color: #2f3646;
+  font-size: 0.72rem;
+  line-height: 1;
+  min-height: 26px;
+  padding: 4px 8px;
+}
+
+.trainer-sheet .trainer-pocket-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.trainer-sheet .trainer-pocket-column {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.trainer-sheet .trainer-pocket-column-title {
+  margin: 0;
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--tr-accent-soft) 42%, #fff0db 58%);
+  border: 1px solid color-mix(in srgb, var(--tr-accent-strong) 28%, #ccb79c 72%);
+  color: #2f3646;
+  font-size: 0.76rem;
+  text-transform: uppercase;
 }
 
 .trainer-sheet .trainer-pocket-card,
@@ -2939,6 +2966,39 @@ form.editable.pok-role-sheet.trainer-sheet {
   min-height: 88px;
 }
 
+.move-sheet .move-special-duration-list {
+  display: grid;
+  gap: 6px;
+}
+
+.move-sheet .move-special-duration-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 28px;
+  gap: 6px;
+  align-items: center;
+}
+
+.move-sheet .move-special-duration-row .icon-button {
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+}
+
+.move-sheet .small-button {
+  margin-top: 4px;
+  width: fit-content;
+  min-height: 26px;
+  padding: 4px 8px;
+  border-radius: 7px;
+  font-size: 0.72rem;
+}
+
+@media (max-width: 920px) {
+  .trainer-sheet .trainer-pocket-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
 .pok-role-ae-config .pokrole-ae-automation {
   margin-top: 10px;
   border: 2px solid #a43129;
@@ -2974,6 +3034,32 @@ form.editable.pok-role-sheet.trainer-sheet {
   color: #2f3342;
 }
 
-.pok-role-ae-config .pokrole-ae-rounds-row.is-hidden {
+.pok-role-ae-config .pokrole-ae-special-duration-list {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+}
+
+.pok-role-ae-config .pokrole-ae-special-duration-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 28px;
+  gap: 6px;
+  align-items: center;
+}
+
+.pok-role-ae-config .pokrole-ae-special-duration-row .icon-button {
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
+}
+
+.pok-role-ae-config .pokrole-ae-add-duration {
+  min-height: 26px;
+  padding: 4px 8px;
+  border-radius: 7px;
+  font-size: 0.72rem;
+}
+
+.pok-role-ae-config .pokrole-ae-automation .is-hidden {
   display: none;
 }

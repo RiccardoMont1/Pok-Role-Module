@@ -239,12 +239,13 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     };
     context.effectDurationModeOptions = {
       manual: "POKROLE.Move.Secondary.Duration.Mode.Manual",
-      rounds: "POKROLE.Move.Secondary.Duration.Mode.Rounds",
-      combat: "POKROLE.Move.Secondary.Duration.Mode.Combat"
+      rounds: "POKROLE.Move.Secondary.Duration.Mode.Rounds"
     };
     context.effectSpecialDurationOptions = {
       "turn-start": "POKROLE.Move.Secondary.Duration.Special.TurnStart",
       "turn-end": "POKROLE.Move.Secondary.Duration.Special.TurnEnd",
+      "round-end": "POKROLE.Move.Secondary.Duration.Special.RoundEnd",
+      "combat-end": "POKROLE.Move.Secondary.Duration.Special.CombatEnd",
       "next-action": "POKROLE.Move.Secondary.Duration.Special.NextAction",
       "next-attack": "POKROLE.Move.Secondary.Duration.Special.NextAttack",
       "next-hit": "POKROLE.Move.Secondary.Duration.Special.NextHit",
@@ -373,8 +374,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       potions: 0,
       small: 1,
       main: 2,
-      badge: 3,
-      held: 4
+      held: 2,
+      badge: 3
     };
     const gearItems = this.actor.items
       .filter((item) => item.type === "gear")
@@ -393,7 +394,6 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.gearPocketSmall = gearItems.filter((gear) => gear.pocketKey === "small");
     context.gearPocketMain = gearItems.filter((gear) => gear.pocketKey === "main");
     context.gearPocketBadge = gearItems.filter((gear) => gear.pocketKey === "badge");
-    context.gearPocketHeld = gearItems.filter((gear) => gear.pocketKey === "held");
     context.embeddedEffects = this._buildEmbeddedEffects();
     context.embeddedTemporaryEffects = context.embeddedEffects.filter(
       (effect) => effect.group === "temporary"
@@ -1037,6 +1037,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const specialDurationLabelByKey = {
       "turn-start": "POKROLE.Move.Secondary.Duration.Special.TurnStart",
       "turn-end": "POKROLE.Move.Secondary.Duration.Special.TurnEnd",
+      "round-end": "POKROLE.Move.Secondary.Duration.Special.RoundEnd",
+      "combat-end": "POKROLE.Move.Secondary.Duration.Special.CombatEnd",
       "next-action": "POKROLE.Move.Secondary.Duration.Special.NextAction",
       "next-attack": "POKROLE.Move.Secondary.Duration.Special.NextAttack",
       "next-hit": "POKROLE.Move.Secondary.Duration.Special.NextHit",
@@ -1136,7 +1138,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   _prepareGearData(gear) {
-    const pocketKey = `${gear.system.pocket ?? "main"}`.toLowerCase();
+    const rawPocketKey = `${gear.system.pocket ?? "main"}`.toLowerCase();
+    const pocketKey = rawPocketKey === "held" ? "main" : rawPocketKey;
     const categoryLabel = game.i18n.localize(
       `POKROLE.Gear.Category.${this._toTitleCaseKey(gear.system.category)}`
     );
@@ -1277,9 +1280,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       const effectType = this._normalizeSheetEffectType(readValue("effectType", "condition"));
       const durationMode = MOVE_SECONDARY_DURATION_MODE_KEYS.includes(readValue("durationMode", "manual"))
         ? readValue("durationMode", "manual")
-        : effectType === "stat"
-          ? "combat"
-          : "manual";
+        : "manual";
       const passiveTrigger = EFFECT_PASSIVE_TRIGGER_KEYS.includes(readValue("passiveTrigger", "always"))
         ? readValue("passiveTrigger", "always")
         : "always";

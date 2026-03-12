@@ -159,6 +159,7 @@ export class PokRoleActor extends Actor {
   }
 
   async rollCombinedDialog() {
+    await this.synchronizeConditionalActiveEffects();
     const attributes = Object.keys(this.system.attributes ?? {}).map((key) => ({
       key,
       label: this.localizeTrait(key),
@@ -301,6 +302,7 @@ export class PokRoleActor extends Actor {
   }
 
   async rollAttribute(attributeKey) {
+    await this.synchronizeConditionalActiveEffects();
     const traitValue = this.getTraitValue(attributeKey);
     if (Number.isNaN(traitValue)) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownAttribute"));
@@ -320,6 +322,7 @@ export class PokRoleActor extends Actor {
   }
 
   async rollSkill(skillKey) {
+    await this.synchronizeConditionalActiveEffects();
     const skillValue = this.getSkillValue(skillKey);
     if (Number.isNaN(skillValue)) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownSkill"));
@@ -338,6 +341,7 @@ export class PokRoleActor extends Actor {
   }
 
   async rollInitiative(options = {}) {
+    await this.synchronizeConditionalActiveEffects();
     const roll = await new Roll(POKROLE.INITIATIVE_FORMULA, {
       dexterity: this.getTraitValue("dexterity"),
       alert: this.getSkillValue("alert")
@@ -359,6 +363,7 @@ export class PokRoleActor extends Actor {
   }
 
   async rollEvasion(actionNumber = null, options = {}) {
+    await this.synchronizeConditionalActiveEffects();
     const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
     if (!options.ignoreRoundLimit && !this._canUseReactionThisRound("evasion", roundKey)) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.EvasionAlreadyUsedThisRound"));
@@ -386,6 +391,7 @@ export class PokRoleActor extends Actor {
   }
 
   async rollClash(moveId, actionNumber = null, options = {}) {
+    await this.synchronizeConditionalActiveEffects();
     if (this.type !== "pokemon") return null;
 
     const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
@@ -435,6 +441,7 @@ export class PokRoleActor extends Actor {
   }
 
   async rollMove(moveId, options = {}) {
+    await this.synchronizeConditionalActiveEffects();
     if (this.type !== "pokemon") return null;
 
     const move = this.items.get(moveId);
@@ -926,9 +933,6 @@ export class PokRoleActor extends Actor {
     const normalized = `${durationMode ?? ""}`.trim().toLowerCase();
     if (MOVE_SECONDARY_DURATION_MODE_KEYS.includes(normalized)) {
       return normalized;
-    }
-    if (this._normalizeSecondaryEffectType(effectType) === "stat") {
-      return "combat";
     }
     return "manual";
   }
@@ -1710,6 +1714,63 @@ export class PokRoleActor extends Actor {
     await this._synchronizeConditionFlagsFromTemporaryEffects(this);
   }
 
+  _isConditionalAutomationEffect(effectDocument) {
+    const automationFlags = effectDocument?.getFlag(POKROLE.ID, "automation") ?? {};
+    const hasPassiveToggle = automationFlags?.passive === true;
+    const passiveTriggerKey = `${automationFlags?.passiveTrigger ?? ""}`.trim().toLowerCase();
+    return hasPassiveToggle || passiveTriggerKey.length > 0;
+  }
+
+  _isConditionalAutomationEffectActive(effectDocument, targetActor = this) {
+    if (!this._isConditionalAutomationEffect(effectDocument)) return true;
+    const automationFlags = effectDocument?.getFlag(POKROLE.ID, "automation") ?? {};
+    const passiveTrigger = EFFECT_PASSIVE_TRIGGER_KEYS.includes(`${automationFlags?.passiveTrigger ?? ""}`)
+      ? `${automationFlags.passiveTrigger}`
+      : "always";
+    const passiveCondition = this._normalizeConditionKey(automationFlags?.passiveCondition);
+    const passiveThreshold = clamp(Math.floor(toNumber(automationFlags?.passiveThreshold, 50)), 1, 99);
+    return this._checkPassiveTrigger(
+      {
+        passive: true,
+        passiveTrigger,
+        passiveCondition,
+        passiveThreshold
+      },
+      targetActor ?? this
+    );
+  }
+
+  async synchronizeConditionalActiveEffects(options = {}) {
+    const targetActor = options.targetActor ?? this;
+    const updates = [];
+
+    for (const effectDocument of this.effects?.contents ?? []) {
+      if (!this._isConditionalAutomationEffect(effectDocument)) continue;
+
+      const automationFlags = effectDocument.getFlag(POKROLE.ID, "automation") ?? {};
+      const autoDisabledByCondition = Boolean(automationFlags?.autoDisabledByCondition);
+      const shouldBeActive = this._isConditionalAutomationEffectActive(effectDocument, targetActor);
+
+      if (!shouldBeActive && !effectDocument.disabled) {
+        const updatePayload = { _id: effectDocument.id, disabled: true };
+        updatePayload[`flags.${POKROLE.ID}.automation.autoDisabledByCondition`] = true;
+        updates.push(updatePayload);
+        continue;
+      }
+
+      if (shouldBeActive && effectDocument.disabled && autoDisabledByCondition) {
+        const updatePayload = { _id: effectDocument.id, disabled: false };
+        updatePayload[`flags.${POKROLE.ID}.automation.autoDisabledByCondition`] = false;
+        updates.push(updatePayload);
+      }
+    }
+
+    if (updates.length > 0) {
+      await this.updateEmbeddedDocuments("ActiveEffect", updates);
+    }
+    return updates.length;
+  }
+
   async setConfiguredEffects(effects = []) {
     await this._setConfiguredEffectEntries(this, effects);
     return this.getConfiguredEffects();
@@ -2272,6 +2333,10 @@ export class PokRoleActor extends Actor {
       "turn-start": "turn-start",
       turnend: "turn-end",
       "turn-end": "turn-end",
+      roundend: "round-end",
+      "round-end": "round-end",
+      combatend: "combat-end",
+      "combat-end": "combat-end",
       nextaction: "next-action",
       "next-action": "next-action",
       nextattack: "next-attack",
@@ -2296,7 +2361,7 @@ export class PokRoleActor extends Actor {
           return false;
         }
         const effectCombatId = `${automationFlags?.combatId ?? ""}`.trim();
-        const requiresCombatMatch = ["turn-start", "turn-end"].includes(resolvedEvent);
+        const requiresCombatMatch = ["turn-start", "turn-end", "round-end", "combat-end"].includes(resolvedEvent);
         if (!requiresCombatMatch) return true;
         return !normalizedCombatId || !effectCombatId || effectCombatId === normalizedCombatId;
       })
@@ -2325,7 +2390,7 @@ export class PokRoleActor extends Actor {
       }
 
       const entryCombatId = `${entry?.combatId ?? ""}`.trim();
-      const requiresCombatMatch = ["turn-start", "turn-end"].includes(resolvedEvent);
+      const requiresCombatMatch = ["turn-start", "turn-end", "round-end", "combat-end"].includes(resolvedEvent);
       const matchesCombat =
         !requiresCombatMatch ||
         !normalizedCombatId ||
@@ -2531,6 +2596,8 @@ export class PokRoleActor extends Actor {
     const labelByKey = {
       "turn-start": "POKROLE.Move.Secondary.Duration.Special.TurnStart",
       "turn-end": "POKROLE.Move.Secondary.Duration.Special.TurnEnd",
+      "round-end": "POKROLE.Move.Secondary.Duration.Special.RoundEnd",
+      "combat-end": "POKROLE.Move.Secondary.Duration.Special.CombatEnd",
       "next-action": "POKROLE.Move.Secondary.Duration.Special.NextAction",
       "next-attack": "POKROLE.Move.Secondary.Duration.Special.NextAttack",
       "next-hit": "POKROLE.Move.Secondary.Duration.Special.NextHit",

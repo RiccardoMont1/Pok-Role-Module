@@ -306,8 +306,12 @@
           },
           "Special": {
             "Label": "Durata Speciale",
+            "Add": "Aggiungi Durata Speciale",
+            "Empty": "Nessuna durata speciale configurata.",
             "TurnStart": "Fino a inizio turno",
             "TurnEnd": "Fino a fine turno",
+            "RoundEnd": "Fino a fine round",
+            "CombatEnd": "Fino a fine combattimento",
             "NextAction": "Scade alla prossima azione",
             "NextAttack": "Scade al prossimo tiro attacco",
             "NextHit": "Scade al prossimo colpo riuscito",
