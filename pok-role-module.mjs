@@ -197,28 +197,105 @@ function createAeSpecialDurationRow(index, selectedKey = "") {
   `;
 }
 
+function resolveRenderedRootElement(rendered) {
+  if (!rendered) return null;
+  if (rendered instanceof HTMLElement) return rendered;
+  if (Array.isArray(rendered) && rendered[0] instanceof HTMLElement) return rendered[0];
+  if (rendered[0] instanceof HTMLElement) return rendered[0];
+  if (rendered.element instanceof HTMLElement) return rendered.element;
+  if (typeof rendered.querySelector === "function") return rendered;
+  return null;
+}
+
+function resolveEffectConfigForm(rootElement) {
+  if (!rootElement) return null;
+  if (rootElement.matches?.("form")) return rootElement;
+  return rootElement.querySelector?.("form") ?? rootElement;
+}
+
+function isNavigationTabNode(node) {
+  if (!node) return true;
+  const tagName = `${node.tagName ?? ""}`.toLowerCase();
+  if (tagName === "a" || tagName === "button" || tagName === "nav") return true;
+  if (node.classList?.contains("item")) return true;
+  if (node.getAttribute?.("role") === "tab") return true;
+  const parent = node.parentElement;
+  if (!parent) return false;
+  if (parent.classList?.contains("tabs")) return true;
+  if (parent.getAttribute?.("role") === "tablist") return true;
+  return false;
+}
+
+function resolveTabPane(rootElement, tabKey) {
+  if (!rootElement) return null;
+  const selectors = [
+    `.tab[data-tab='${tabKey}']`,
+    `section[data-tab='${tabKey}']`,
+    `div[data-tab='${tabKey}']`,
+    `[data-application-part='${tabKey}']`,
+    `[data-panel='${tabKey}']`,
+    `[data-tab-content='${tabKey}']`,
+    `[data-tab='${tabKey}']`
+  ];
+
+  for (const selector of selectors) {
+    const candidates = [...rootElement.querySelectorAll(selector)];
+    for (const candidate of candidates) {
+      if (isNavigationTabNode(candidate)) continue;
+      return candidate;
+    }
+  }
+
+  const tabControls = [...rootElement.querySelectorAll(`[data-tab='${tabKey}'], [data-action='tab'][data-tab='${tabKey}']`)];
+  for (const control of tabControls) {
+    const controlTargetId = `${control.getAttribute?.("aria-controls") ?? ""}`.trim();
+    if (!controlTargetId) continue;
+    const escapedId = typeof globalThis.CSS?.escape === "function"
+      ? globalThis.CSS.escape(controlTargetId)
+      : controlTargetId;
+    const panelNode = rootElement.querySelector(`#${escapedId}`);
+    if (!panelNode || isNavigationTabNode(panelNode)) continue;
+    return panelNode;
+  }
+
+  return null;
+}
+
+function isActiveEffectConfigApp(app) {
+  if (!app) return false;
+  const targetDocument = app?.object ?? app?.document ?? null;
+  if (`${targetDocument?.documentName ?? ""}` === "ActiveEffect") return true;
+  const className = `${app?.constructor?.name ?? ""}`.trim().toLowerCase();
+  const appId = `${app?.id ?? ""}`.trim().toLowerCase();
+  return className.includes("activeeffect") || appId.includes("active-effect");
+}
+
 function renderActiveEffectAutomationConfig(app, html) {
-  const effectDocument = app?.object ?? null;
+  if (!isActiveEffectConfigApp(app)) return;
+  const effectDocument = app?.object ?? app?.document ?? null;
   const parentActor = effectDocument?.parent ?? null;
   if (!parentActor || parentActor.documentName !== "Actor") return;
   if (parentActor.type !== "trainer" && parentActor.type !== "pokemon") return;
 
-  const root = html?.[0] ?? html;
+  const root = resolveRenderedRootElement(html);
   if (!root || typeof root.querySelector !== "function") return;
-  if (typeof html?.addClass === "function") {
-    html.addClass("pok-role-ae-config");
-  } else {
-    root.classList?.add?.("pok-role-ae-config");
-  }
 
-  const existingSection = root.querySelector(".pokrole-ae-automation");
-  if (existingSection) existingSection.remove();
+  const formRoot = resolveEffectConfigForm(root);
+  root.classList?.add?.("pok-role-ae-config");
+  formRoot?.classList?.add?.("pok-role-ae-config");
+
+  root.querySelectorAll(".pokrole-ae-details-panel, .pokrole-ae-duration-panel").forEach((node) => node.remove());
+  formRoot?.querySelectorAll?.(".pokrole-ae-details-panel, .pokrole-ae-duration-panel")?.forEach?.((node) => node.remove());
 
   const detailsTab =
-    root.querySelector(".tab[data-tab='details']") ??
-    root.querySelector(".tab[data-tab='duration']") ??
-    root.querySelector("form");
-  if (!detailsTab) return;
+    resolveTabPane(formRoot, "details") ??
+    resolveTabPane(root, "details") ??
+    formRoot ??
+    root;
+  const durationTab =
+    resolveTabPane(formRoot, "duration") ??
+    resolveTabPane(root, "duration") ??
+    detailsTab;
 
   const automationFlags = effectDocument.getFlag(POKROLE.ID, "automation") ?? {};
   const rawDurationMode = `${automationFlags?.durationMode ?? "manual"}`
@@ -265,13 +342,55 @@ function renderActiveEffectAutomationConfig(app, html) {
     .map((durationKey, index) => createAeSpecialDurationRow(index, durationKey))
     .join("");
 
-  const section = document.createElement("fieldset");
-  section.className = "pokrole-ae-automation";
   const passiveChecked = passiveEnabled ? " checked" : "";
   const thresholdRowClass = passiveTrigger.includes("threshold") ? "" : " is-hidden";
   const conditionRowClass = passiveTrigger.includes("condition") ? "" : " is-hidden";
-  section.innerHTML = `
-    <legend>${game.i18n.localize("POKROLE.Effects.Tab")}</legend>
+
+  const detailsSection = document.createElement("fieldset");
+  detailsSection.className = "pokrole-ae-automation pokrole-ae-details-panel";
+  detailsSection.innerHTML = `
+    <legend>${game.i18n.localize("POKROLE.Effects.Passive")}</legend>
+    <div class="form-group">
+      <label>${game.i18n.localize("POKROLE.Effects.Passive")}</label>
+      <div class="form-fields">
+        <input type="checkbox" name="flags.${POKROLE.ID}.automation.passive" ${passiveChecked} />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>${game.i18n.localize("POKROLE.Effects.PassiveTrigger.Label")}</label>
+      <div class="form-fields">
+        <select name="flags.${POKROLE.ID}.automation.passiveTrigger">
+          ${passiveTriggerOptionsHtml}
+        </select>
+      </div>
+    </div>
+    <div class="form-group pokrole-ae-condition-row${conditionRowClass}">
+      <label>${game.i18n.localize("POKROLE.Effects.PassiveTrigger.Condition")}</label>
+      <div class="form-fields">
+        <select name="flags.${POKROLE.ID}.automation.passiveCondition">
+          ${passiveConditionOptionsHtml}
+        </select>
+      </div>
+    </div>
+    <div class="form-group pokrole-ae-threshold-row${thresholdRowClass}">
+      <label>${game.i18n.localize("POKROLE.Effects.PassiveTrigger.Threshold")}</label>
+      <div class="form-fields">
+        <input
+          type="number"
+          name="flags.${POKROLE.ID}.automation.passiveThreshold"
+          value="${passiveThreshold}"
+          min="1"
+          max="99"
+          data-dtype="Number"
+        />
+      </div>
+    </div>
+  `;
+
+  const durationSection = document.createElement("fieldset");
+  durationSection.className = "pokrole-ae-automation pokrole-ae-duration-panel";
+  durationSection.innerHTML = `
+    <legend>${game.i18n.localize("POKROLE.Move.Secondary.Duration.Mode.Label")}</legend>
     <div class="form-group">
       <label>${game.i18n.localize("POKROLE.Move.Secondary.Duration.Mode.Label")}</label>
       <div class="form-fields">
@@ -310,52 +429,18 @@ function renderActiveEffectAutomationConfig(app, html) {
         </button>
       </div>
     </div>
-    <hr />
-    <div class="form-group">
-      <label>${game.i18n.localize("POKROLE.Effects.Passive")}</label>
-      <div class="form-fields">
-        <input type="checkbox" name="flags.${POKROLE.ID}.automation.passive" ${passiveChecked} />
-      </div>
-    </div>
-    <div class="form-group">
-      <label>${game.i18n.localize("POKROLE.Effects.PassiveTrigger.Label")}</label>
-      <div class="form-fields">
-        <select name="flags.${POKROLE.ID}.automation.passiveTrigger">
-          ${passiveTriggerOptionsHtml}
-        </select>
-      </div>
-    </div>
-    <div class="form-group pokrole-ae-condition-row${conditionRowClass}">
-      <label>${game.i18n.localize("POKROLE.Effects.PassiveTrigger.Condition")}</label>
-      <div class="form-fields">
-        <select name="flags.${POKROLE.ID}.automation.passiveCondition">
-          ${passiveConditionOptionsHtml}
-        </select>
-      </div>
-    </div>
-    <div class="form-group pokrole-ae-threshold-row${thresholdRowClass}">
-      <label>${game.i18n.localize("POKROLE.Effects.PassiveTrigger.Threshold")}</label>
-      <div class="form-fields">
-        <input
-          type="number"
-          name="flags.${POKROLE.ID}.automation.passiveThreshold"
-          value="${passiveThreshold}"
-          min="1"
-          max="99"
-          data-dtype="Number"
-        />
-      </div>
-    </div>
   `;
 
-  detailsTab.appendChild(section);
-  const durationModeSelect = section.querySelector(`select[name="flags.${POKROLE.ID}.automation.durationMode"]`);
-  const roundsRow = section.querySelector(".pokrole-ae-rounds-row");
-  const passiveTriggerSelect = section.querySelector(`select[name="flags.${POKROLE.ID}.automation.passiveTrigger"]`);
-  const thresholdRow = section.querySelector(".pokrole-ae-threshold-row");
-  const conditionRow = section.querySelector(".pokrole-ae-condition-row");
-  const addDurationButton = section.querySelector(".pokrole-ae-add-duration");
-  const specialDurationList = section.querySelector(".pokrole-ae-special-duration-list");
+  detailsTab.appendChild(detailsSection);
+  durationTab.appendChild(durationSection);
+
+  const durationModeSelect = durationSection.querySelector(`select[name="flags.${POKROLE.ID}.automation.durationMode"]`);
+  const roundsRow = durationSection.querySelector(".pokrole-ae-rounds-row");
+  const passiveTriggerSelect = detailsSection.querySelector(`select[name="flags.${POKROLE.ID}.automation.passiveTrigger"]`);
+  const thresholdRow = detailsSection.querySelector(".pokrole-ae-threshold-row");
+  const conditionRow = detailsSection.querySelector(".pokrole-ae-condition-row");
+  const addDurationButton = durationSection.querySelector(".pokrole-ae-add-duration");
+  const specialDurationList = durationSection.querySelector(".pokrole-ae-special-duration-list");
 
   const refreshRoundVisibility = () => {
     const mode = `${durationModeSelect?.value ?? "manual"}`.trim().toLowerCase();
@@ -381,7 +466,7 @@ function renderActiveEffectAutomationConfig(app, html) {
     specialDurationList.insertAdjacentHTML("beforeend", createAeSpecialDurationRow(index, "turn-start"));
   });
 
-  section.addEventListener("click", (event) => {
+  durationSection.addEventListener("click", (event) => {
     const removeButton = event.target.closest(".pokrole-ae-remove-duration");
     if (!removeButton) return;
     event.preventDefault();
@@ -635,4 +720,9 @@ Hooks.on("deleteActiveEffect", (effectDocument) => {
 
 Hooks.on("renderActiveEffectConfig", (app, html) => {
   renderActiveEffectAutomationConfig(app, html);
+});
+
+Hooks.on("renderApplicationV2", (app, element) => {
+  if (!isActiveEffectConfigApp(app)) return;
+  renderActiveEffectAutomationConfig(app, element);
 });
