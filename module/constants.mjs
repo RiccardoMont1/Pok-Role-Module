@@ -150,6 +150,11 @@ export const MOVE_CATEGORY_LABEL_BY_KEY = Object.freeze({
   support: "POKROLE.Move.Category.Support"
 });
 
+export const MOVE_PRIMARY_MODE_KEYS = Object.freeze([
+  "damage",
+  "effect-only"
+]);
+
 export const MOVE_TARGET_KEYS = Object.freeze([
   "foe",
   "random-foe",

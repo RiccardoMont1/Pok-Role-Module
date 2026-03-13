@@ -146,6 +146,13 @@
     "Pokemon": {
       "Species": "Species",
       "SpeciesPlaceholder": "Pikachu, Charmander...",
+      "Gender": "Gender",
+      "GenderValues": {
+        "Male": "Male",
+        "Female": "Female",
+        "Genderless": "Genderless",
+        "Unknown": "Unknown"
+      },
       "Ability": "Ability",
       "Rank": "Rank",
       "Nature": "Nature",
@@ -298,6 +305,12 @@
         "Support": "Support"
       },
       "Power": "Power",
+      "NoDirectDamage": "No direct damage",
+      "PrimaryMode": {
+        "Label": "Primary Effect Mode",
+        "Damage": "Direct damage",
+        "EffectOnly": "Effect only"
+      },
       "ReducedAccuracy": "Reduced Accuracy",
       "AccuracyDiceModifier": "Accuracy Dice Modifier",
       "AccuracyFlatModifier": "Accuracy Flat Modifier",
@@ -315,7 +328,9 @@
         "Title": "Move Usage"
       },
       "EffectsBlock": {
-        "Title": "Move Effects"
+        "Title": "Move Effects",
+        "PrimaryTitle": "Primary Effect",
+        "ExtraTitle": "Extra Effects"
       },
       "Duration": {
         "Label": "Duration",

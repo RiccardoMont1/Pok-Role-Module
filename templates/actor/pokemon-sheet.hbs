@@ -88,6 +88,19 @@
               />
             </label>
             <label>
+              <span>{{localize "POKROLE.Pokemon.Gender"}}</span>
+              <div class="pokemon-gender-select-wrap">
+                <select name="system.gender">
+                  {{selectOptions pokemonGenderOptions selected=pokemonGender localize=true}}
+                </select>
+                <img
+                  class="pokemon-gender-symbol"
+                  src="{{pokemonGenderSymbolPath}}"
+                  alt="{{localize pokemonGenderLabelPath}}"
+                />
+              </div>
+            </label>
+            <label>
               <span>{{localize "POKROLE.Pokemon.Rank"}}</span>
               <select name="system.tier">
                 {{selectOptions pokemonTierOptions selected=system.tier localize=true}}

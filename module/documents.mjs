@@ -973,7 +973,7 @@ export class PokRoleActor extends Actor {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownMove"));
       return null;
     }
-    if (move.system.category === "support") {
+    if (!this._moveUsesPrimaryDamage(move)) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.ClashNeedsDamagingMove"));
       return null;
     }
@@ -1127,7 +1127,7 @@ export class PokRoleActor extends Actor {
 
     const targetActor = targetActors[0] ?? null;
     const category = move.system.category || "physical";
-    const isDamagingMove = category !== "support";
+    const isDamagingMove = this._moveUsesPrimaryDamage(move);
     let reaction = {
       attempted: false,
       type: "none",
@@ -4976,6 +4976,18 @@ export class PokRoleActor extends Actor {
         ? toNumber(targetActor.system?.attributes?.insight, 0)
         : toNumber(targetActor.system?.attributes?.vitality, 0);
     return Math.max(fallbackDefense, 0);
+  }
+
+  _normalizeMovePrimaryMode(value) {
+    const normalized = `${value ?? "damage"}`.trim().toLowerCase();
+    return normalized === "effect-only" ? "effect-only" : "damage";
+  }
+
+  _moveUsesPrimaryDamage(move) {
+    const moveSystem = move?.system ?? move ?? {};
+    const normalizedCategory = `${moveSystem?.category ?? "physical"}`.trim().toLowerCase();
+    if (normalizedCategory === "support") return false;
+    return this._normalizeMovePrimaryMode(moveSystem?.primaryMode) === "damage";
   }
 
   _resolveDamageAttributeKey(move) {

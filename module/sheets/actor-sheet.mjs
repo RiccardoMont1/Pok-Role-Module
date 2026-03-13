@@ -312,6 +312,24 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       ]);
     }
     if (this.actor.type === "pokemon") {
+      const pokemonGenderValue = `${this.actor.system.gender ?? "unknown"}`.trim().toLowerCase();
+      context.pokemonGender = ["male", "female", "genderless", "unknown"].includes(pokemonGenderValue)
+        ? pokemonGenderValue
+        : "unknown";
+      context.pokemonGenderOptions = {
+        male: "POKROLE.Pokemon.GenderValues.Male",
+        female: "POKROLE.Pokemon.GenderValues.Female",
+        genderless: "POKROLE.Pokemon.GenderValues.Genderless",
+        unknown: "POKROLE.Pokemon.GenderValues.Unknown"
+      };
+      context.pokemonGenderIcons = {
+        male: getSystemAssetPath("assets/icons/msymbol2.png"),
+        female: getSystemAssetPath("assets/icons/fsymbol2.png"),
+        genderless: getSystemAssetPath("assets/icons/osymbol2.png"),
+        unknown: getSystemAssetPath("assets/icons/null.png")
+      };
+      context.pokemonGenderSymbolPath = context.pokemonGenderIcons[context.pokemonGender];
+      context.pokemonGenderLabelPath = context.pokemonGenderOptions[context.pokemonGender];
       const trackMax = this._getPokemonTrackMaxConfig();
       const pokemonSkillKeys = [
         "brawl",
@@ -711,6 +729,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           target: "foe",
           accuracyAttribute: "dexterity",
           accuracySkill: "brawl",
+          primaryMode: "damage",
           reducedAccuracy: 0,
           accuracyDiceModifier: 0,
           accuracyFlatModifier: 0,
@@ -1236,11 +1255,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const accuracySummary =
       reducedAccuracy > 0 ? `${accuracyLabel} (-${reducedAccuracy})` : accuracyLabel;
 
+    const usesPrimaryDamage = this._moveUsesPrimaryDamage(move.system);
     const damageAttribute = this._resolveDamageAttributeForDisplay(move.system);
-    const damageSummary =
-      category === "support"
-        ? game.i18n.localize("POKROLE.Move.SupportNoDamage")
-        : `${this._localizeTrait(damageAttribute)} + ${Number(move.system.power ?? 0)}`;
+    const damageSummary = usesPrimaryDamage
+      ? `${this._localizeTrait(damageAttribute)} + ${Number(move.system.power ?? 0)}`
+      : game.i18n.localize("POKROLE.Move.NoDirectDamage");
 
     const flags = [];
     if (move.system.highCritical) flags.push(game.i18n.localize("POKROLE.Move.HighCritical"));
@@ -1300,6 +1319,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const damageAttribute = moveSystem.damageAttribute || "auto";
     if (damageAttribute !== "auto") return damageAttribute;
     return moveSystem.category === "special" ? "special" : "strength";
+  }
+
+  _normalizeMovePrimaryMode(primaryMode) {
+    const normalized = `${primaryMode ?? "damage"}`.trim().toLowerCase();
+    return normalized === "effect-only" ? "effect-only" : "damage";
+  }
+
+  _moveUsesPrimaryDamage(moveSystem) {
+    const normalizedCategory = `${moveSystem?.category ?? "physical"}`.trim().toLowerCase();
+    if (normalizedCategory === "support") return false;
+    return this._normalizeMovePrimaryMode(moveSystem?.primaryMode) === "damage";
   }
 
   _prepareGearData(gear) {

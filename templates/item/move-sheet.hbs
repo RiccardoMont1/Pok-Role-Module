@@ -268,28 +268,27 @@
           </div>
         </section>
 
-        <section class="sheet-section">
-          <div class="section-title-row">
-            <h2>{{localize "POKROLE.Move.EffectsBlock.Title"}}</h2>
-            <div class="button-row">
-              <button type="button" data-action="add-secondary-effect-section">
-                <i class="fas fa-plus"></i>
-                {{localize "POKROLE.Move.Secondary.Add"}}
-              </button>
-            </div>
-          </div>
-        </section>
-
         {{#each moveEffectSections as |section|}}
         <section class="sheet-section move-effect-section">
           <div class="section-title-row">
             <h2>
-              {{localize "POKROLE.Move.EffectsBlock.Title"}}
               {{#if section.isExtra}}
-              #{{section.displayIndex}}
+              {{localize "POKROLE.Move.EffectsBlock.ExtraTitle"}} #{{section.displayIndex}}
+              {{else}}
+              {{localize "POKROLE.Move.EffectsBlock.PrimaryTitle"}}
               {{/if}}
             </h2>
             <div class="button-row">
+              <button type="button" data-action="add-secondary-effect" data-section-index="{{section.index}}">
+                <i class="fas fa-plus"></i>
+                {{localize "POKROLE.Move.Secondary.Add"}}
+              </button>
+              {{#if section.showAddSectionButton}}
+              <button type="button" data-action="add-secondary-effect-section">
+                <i class="fas fa-plus"></i>
+                {{localize "POKROLE.Move.Secondary.AddExtraSection"}}
+              </button>
+              {{/if}}
               {{#if section.canRemove}}
               <button type="button" class="danger" data-action="remove-secondary-effect-section" data-section-index="{{section.index}}">
                 <i class="fas fa-trash"></i>
@@ -302,6 +301,12 @@
           {{#unless section.isExtra}}
           <div class="form-grid two-col move-effect-core-grid">
             <label>
+              <span>{{localize "POKROLE.Move.PrimaryMode.Label"}}</span>
+              <select name="system.primaryMode">
+                {{safeSelectOptions @root.primaryModeOptions selected=@root.system.primaryMode localize=true}}
+              </select>
+            </label>
+            <label class="move-primary-damage-field {{#unless @root.moveUsesPrimaryDamage}}is-hidden{{/unless}}">
               <span>{{localize "POKROLE.Move.Power"}}</span>
               <input
                 type="number"
@@ -311,7 +316,7 @@
                 data-dtype="Number"
               />
             </label>
-            <label>
+            <label class="move-primary-damage-field {{#unless @root.moveUsesPrimaryDamage}}is-hidden{{/unless}}">
               <span>{{localize "POKROLE.Move.DamageAttribute"}}</span>
               <select name="system.damageAttribute">
                 {{safeSelectOptions @root.damageAttributeOptions selected=@root.system.damageAttribute localize=true}}

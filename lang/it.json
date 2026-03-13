@@ -146,6 +146,13 @@
     "Pokemon": {
       "Species": "Specie",
       "SpeciesPlaceholder": "Pikachu, Charmander...",
+      "Gender": "Sesso",
+      "GenderValues": {
+        "Male": "Maschio",
+        "Female": "Femmina",
+        "Genderless": "Senza sesso",
+        "Unknown": "Sconosciuto"
+      },
       "Ability": "Abilita",
       "Rank": "Rank",
       "Nature": "Natura",
@@ -298,6 +305,12 @@
         "Support": "Supporto"
       },
       "Power": "Potenza",
+      "NoDirectDamage": "Nessun danno diretto",
+      "PrimaryMode": {
+        "Label": "Modalita Effetto Principale",
+        "Damage": "Danno diretto",
+        "EffectOnly": "Solo effetto"
+      },
       "ReducedAccuracy": "Precisione Ridotta",
       "AccuracyDiceModifier": "Modifica Dadi Precisione",
       "AccuracyFlatModifier": "Modifica Flat Precisione",
@@ -315,7 +328,9 @@
         "Title": "Utilizzo Mossa"
       },
       "EffectsBlock": {
-        "Title": "Effetti Mossa"
+        "Title": "Effetti Mossa",
+        "PrimaryTitle": "Effetto Principale",
+        "ExtraTitle": "Effetti Extra"
       },
       "Duration": {
         "Label": "Durata",

@@ -9,6 +9,7 @@ import {
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
   MOVE_SECONDARY_TRIGGER_KEYS,
+  MOVE_PRIMARY_MODE_KEYS,
   MOVE_TARGET_KEYS,
   MOVE_TYPE_KEYS,
   POKEMON_TIER_KEYS,
@@ -147,6 +148,12 @@ export class PokemonDataModel extends BaseCharacterDataModel {
       attributes: new SchemaField(pokemonAttributeSchema()),
       skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 0, { min: 0, max: 5 })),
       species: trimmedStringField(""),
+      gender: new StringField({
+        required: true,
+        blank: false,
+        initial: "unknown",
+        choices: ["male", "female", "genderless", "unknown"]
+      }),
       ability: trimmedStringField(""),
       nature: trimmedStringField(""),
       battleItem: trimmedStringField(""),
@@ -265,6 +272,12 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
         blank: false,
         initial: "brawl",
         choices: skillChoices
+      }),
+      primaryMode: new StringField({
+        required: true,
+        blank: false,
+        initial: "damage",
+        choices: MOVE_PRIMARY_MODE_KEYS
       }),
       power: integerField(0, { min: 0 }),
       reducedAccuracy: integerField(0, { min: 0, max: 6 }),

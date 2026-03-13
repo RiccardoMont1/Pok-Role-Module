@@ -10,6 +10,7 @@ import {
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
   MOVE_SECONDARY_TRIGGER_KEYS,
+  MOVE_PRIMARY_MODE_KEYS,
   MOVE_TARGET_LABEL_BY_KEY,
   MOVE_TARGET_KEYS,
   MOVE_TYPE_LABEL_BY_KEY,
@@ -66,6 +67,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     context.accuracyAttributeOptions ??= {};
     context.accuracySkillOptions ??= {};
     context.damageAttributeOptions ??= {};
+    context.primaryModeOptions ??= {};
     context.secondaryTriggerOptions ??= {};
     context.secondaryTargetOptions ??= {};
     context.secondaryEffectTypeOptions ??= {};
@@ -197,6 +199,10 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       insight: "POKROLE.Attributes.Insight",
       none: "POKROLE.Move.NoStat"
     };
+    context.primaryModeOptions = {
+      damage: "POKROLE.Move.PrimaryMode.Damage",
+      "effect-only": "POKROLE.Move.PrimaryMode.EffectOnly"
+    };
     context.rangeModeOptions = {
       self: "POKROLE.Move.RangeMode.Self",
       melee: "POKROLE.Move.RangeMode.Melee",
@@ -240,6 +246,8 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       ]
     };
     context.moveDurationUsesValue = durationType.startsWith("time-");
+    context.system.primaryMode = this._normalizeMovePrimaryMode(context.system?.primaryMode);
+    context.moveUsesPrimaryDamage = this._moveUsesPrimaryDamage(context.system);
     context.secondaryEffects = this._getMoveSecondaryEffectsForDisplay();
     context.moveEffectSections = this._buildMoveEffectSections(context.secondaryEffects);
     context.secondaryTriggerOptions = {
@@ -313,7 +321,9 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       category: resolveLabel(
         MOVE_CATEGORY_LABEL_BY_KEY[context.system?.category] ?? "POKROLE.Common.Unknown"
       ),
-      power: Math.max(Math.floor(Number(context.system?.power ?? 0) || 0), 0),
+      power: context.moveUsesPrimaryDamage
+        ? Math.max(Math.floor(Number(context.system?.power ?? 0) || 0), 0)
+        : game.i18n.localize("POKROLE.Move.NoDirectDamage"),
       willCost: Math.max(Math.floor(Number(context.system?.willCost ?? 0) || 0), 0),
       properties: [
         context.system?.highCritical ? "POKROLE.Move.HighCritical" : null,
@@ -341,8 +351,14 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     html.find("select[name='system.durationType']").on("change", (event) =>
       this._onDurationTypeChanged(event, html)
     );
+    html.find("select[name='system.primaryMode'], select[name='system.category']").on("change", () =>
+      this._onPrimaryDamageModeChanged(html)
+    );
     html.find("select[name='system.rangeMode']").on("change", (event) =>
       this._onRangeModeChanged(event, html)
+    );
+    html.find("[data-action='add-secondary-effect']").on("click", (event) =>
+      this._onAddSecondaryEffect(event)
     );
     html.find("[data-action='add-secondary-effect-section']").on("click", (event) =>
       this._onAddSecondaryEffectSection(event)
@@ -373,6 +389,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     );
     this._applyMoveTabState(html, this._moveActiveTab);
     this._onDurationTypeChanged(null, html);
+    this._onPrimaryDamageModeChanged(html);
     this._onRangeModeChanged(null, html);
   }
 
@@ -390,6 +407,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
         }
       }
       formData["system.target"] = this._normalizeMoveTarget(moveSystem.target);
+      formData["system.primaryMode"] = this._normalizeMovePrimaryMode(moveSystem.primaryMode);
       formData["system.rangeMode"] = this._normalizeMoveRangeMode(moveSystem.rangeMode);
       formData["system.rangeValue"] = this._normalizeMoveRangeValue(moveSystem.rangeValue);
       formData["system.rangeText"] = `${moveSystem.rangeText ?? ""}`.trim();
@@ -467,13 +485,14 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
 
   _createDefaultSecondaryEffect(section = 0) {
     const normalizedSection = Math.max(Math.floor(Number(section) || 0), 0);
+    const defaultPrimaryType = this._moveUsesPrimaryDamage(this.item.system) ? "condition" : "heal";
     return {
       section: normalizedSection,
       label: "",
       trigger: "on-hit",
       chance: 100,
       target: "target",
-      effectType: normalizedSection > 0 ? "active-effect" : "condition",
+      effectType: normalizedSection > 0 ? "active-effect" : defaultPrimaryType,
       durationMode: "manual",
       durationRounds: 1,
       specialDuration: [],
@@ -501,6 +520,17 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     const numericValue = Number(value);
     if (!Number.isFinite(numericValue)) return 1;
     return Math.min(Math.max(Math.floor(numericValue), 0), 999);
+  }
+
+  _normalizeMovePrimaryMode(value) {
+    const normalized = `${value ?? "damage"}`.trim().toLowerCase();
+    return MOVE_PRIMARY_MODE_KEYS.includes(normalized) ? normalized : "damage";
+  }
+
+  _moveUsesPrimaryDamage(moveSystem) {
+    const normalizedCategory = `${moveSystem?.category ?? "physical"}`.trim().toLowerCase();
+    if (normalizedCategory === "support") return false;
+    return this._normalizeMovePrimaryMode(moveSystem?.primaryMode) === "damage";
   }
 
   _buildRangeLabel({ rangeMode = "melee", rangeValue = 1, rangeText = "" } = {}) {
@@ -887,6 +917,15 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       .toLowerCase();
     const showValueField = durationType.startsWith("time-");
     html.find(".move-duration-value-row").toggleClass("is-hidden", !showValueField);
+  }
+
+  _onPrimaryDamageModeChanged(html) {
+    const moveSystem = {
+      category: `${html.find("select[name='system.category']").val() ?? "physical"}`.trim().toLowerCase(),
+      primaryMode: `${html.find("select[name='system.primaryMode']").val() ?? "damage"}`.trim().toLowerCase()
+    };
+    const showPrimaryDamageFields = this._moveUsesPrimaryDamage(moveSystem);
+    html.find(".move-primary-damage-field").toggleClass("is-hidden", !showPrimaryDamageFields);
   }
 
   _onRangeModeChanged(_event, html) {

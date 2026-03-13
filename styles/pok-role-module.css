@@ -1747,6 +1747,23 @@
   font-weight: 600;
 }
 
+.pokemon-sheet .pokemon-gender-select-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 30px;
+  align-items: center;
+  gap: 6px;
+}
+
+.pokemon-sheet .pokemon-gender-symbol {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  border-radius: 999px;
+  border: 2px solid var(--pk-outline);
+  background: rgba(246, 248, 255, 0.92);
+  padding: 3px;
+}
+
 .pokemon-sheet .pokemon-top-cards {
   display: grid;
   grid-template-columns: 1.35fr 0.65fr;
@@ -3368,6 +3385,10 @@ form.editable.pok-role-sheet.trainer-sheet {
 }
 
 .move-sheet .move-duration-value-row.is-hidden {
+  display: none !important;
+}
+
+.move-sheet .move-primary-damage-field.is-hidden {
   display: none !important;
 }
 
