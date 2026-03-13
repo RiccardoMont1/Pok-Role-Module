@@ -372,6 +372,14 @@
         "Chance": "Probabilita (%)",
         "Amount": "Valore",
         "Notes": "Note",
+        "HealMode": {
+          "Label": "Fonte Cura",
+          "Fixed": "Valore fisso",
+          "MaxHpPercent": "% dei PS massimi bersaglio",
+          "DamagePercent": "% del danno inflitto",
+          "OfDamageDealt": "del danno inflitto",
+          "OfMaxHp": "dei PS massimi"
+        },
         "Duration": {
           "Rounds": "Round",
           "Mode": {
@@ -430,6 +438,9 @@
         },
         "Condition": {
           "Label": "Condizione",
+          "Burn1": "Scottatura 1",
+          "Burn2": "Scottatura 2",
+          "Burn3": "Scottatura 3",
           "Confused": "Confusione",
           "Flinch": "Tentennamento",
           "Disabled": "Disabilitato",
@@ -692,6 +703,18 @@
       "ConditionResistRoll": "{actor} tira Intuito per resistere a {condition} (richiesti: {required}).",
       "SleepResistanceRoll": "{actor} accumula resistenza al Sonno (+{gained}, totale {total}/5).",
       "SleepWokeUp": "{actor} si risveglia.",
+      "BurnSelection": {
+        "Title": "Intensita Scottatura",
+        "Prompt": "Scegli quale livello di Scottatura applicare."
+      },
+      "BurnRecovery": {
+        "Title": "Recupero Scottatura",
+        "Prompt": "{actor} ha {stage} ({current}/{required} successi). Vuoi spendere 1 azione per tirare Destrezza + Atletica e ridurla?",
+        "UseAction": "Spendi 1 Azione",
+        "Flavor": "{actor} tira Destrezza + Atletica per ridurre {stage}.",
+        "Progress": "{actor} ottiene {gained} successi di recupero per {stage} ({total}/{required}).",
+        "Cleared": "{actor} ha rimosso {condition}."
+      },
       "PokemonRested": "{actor} ha riposato e ha recuperato PS e Volonta.",
       "PassiveTriggerNotMet": "Le condizioni del trigger passivo non sono soddisfatte.",
       "HoldingBack": {

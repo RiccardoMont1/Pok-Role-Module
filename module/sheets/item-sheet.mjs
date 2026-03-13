@@ -6,6 +6,7 @@ import {
   MOVE_SECONDARY_DURATION_MODE_KEYS,
   MOVE_SECONDARY_SPECIAL_DURATION_KEYS,
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
+  MOVE_SECONDARY_HEAL_MODE_KEYS,
   MOVE_SECONDARY_WEATHER_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
@@ -73,6 +74,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     context.secondaryEffectTypeOptions ??= {};
     context.secondaryEffectTypeOptionsExtra ??= {};
     context.secondaryDurationModeOptions ??= {};
+    context.secondaryHealModeOptions ??= {};
     context.secondaryConditionOptions ??= {};
     context.secondaryStatOptions ??= {};
     context.secondaryWeatherOptions ??= {};
@@ -284,6 +286,11 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     context.secondaryDurationModeOptions = {
       manual: "POKROLE.Move.Secondary.Duration.Mode.Manual",
       rounds: "POKROLE.Move.Secondary.Duration.Mode.Rounds"
+    };
+    context.secondaryHealModeOptions = {
+      fixed: "POKROLE.Move.Secondary.HealMode.Fixed",
+      "max-hp-percent": "POKROLE.Move.Secondary.HealMode.MaxHpPercent",
+      "damage-percent": "POKROLE.Move.Secondary.HealMode.DamagePercent"
     };
     context.secondarySpecialDurationOptions = {
       "turn-start": "POKROLE.Move.Secondary.Duration.Special.TurnStart",
@@ -500,6 +507,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       weather: "none",
       stat: "none",
       amount: 0,
+      healMode: "fixed",
       notes: "",
       linkedEffectId: ""
     };
@@ -604,9 +612,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     const durationMode = MOVE_SECONDARY_DURATION_MODE_KEYS.includes(normalizedEffect.durationMode)
       ? normalizedEffect.durationMode
       : "manual";
-    const condition = MOVE_SECONDARY_CONDITION_KEYS.includes(normalizedEffect.condition)
-      ? normalizedEffect.condition
-      : "none";
+    const condition = this._normalizeConditionVariantKey(normalizedEffect.condition);
     const weather = MOVE_SECONDARY_WEATHER_KEYS.includes(normalizedEffect.weather)
       ? normalizedEffect.weather
       : "none";
@@ -614,10 +620,22 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       ? normalizedEffect.stat
       : "none";
     const specialDuration = this._normalizeSpecialDurationList(normalizedEffect.specialDuration);
+    const healMode = this._normalizeHealMode(
+      normalizedEffect.healMode,
+      effectType,
+      normalizedEffect.amount
+    );
 
     const chance = Number(normalizedEffect.chance);
-    const amount = Number(normalizedEffect.amount);
+    const rawAmount = Number(normalizedEffect.amount);
     const durationRounds = Number(normalizedEffect.durationRounds);
+    const normalizedAmount = Number.isFinite(rawAmount)
+      ? Math.min(Math.max(Math.floor(rawAmount), -999), 999)
+      : 0;
+    const amount =
+      effectType === "heal" && healMode !== "fixed"
+        ? Math.abs(normalizedAmount)
+        : normalizedAmount;
 
     return {
       section,
@@ -635,7 +653,8 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       condition,
       weather,
       stat,
-      amount: Number.isFinite(amount) ? Math.min(Math.max(Math.floor(amount), -99), 99) : 0,
+      amount,
+      healMode,
       notes: `${normalizedEffect.notes ?? ""}`.trim(),
       linkedEffectId: `${normalizedEffect.linkedEffectId ?? ""}`.trim()
     };
@@ -669,6 +688,27 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     return "condition";
   }
 
+  _normalizeConditionVariantKey(conditionKey) {
+    const normalized = `${conditionKey ?? "none"}`
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9-]+/g, "");
+    const alias = {
+      burn1: "burn",
+      burn2: "burn2",
+      burn3: "burn3"
+    }[normalized] ?? normalized;
+    return MOVE_SECONDARY_CONDITION_KEYS.includes(alias) ? alias : "none";
+  }
+
+  _normalizeHealMode(healMode, effectType = "custom", amount = 0) {
+    const normalizedType = this._normalizeEffectType(effectType);
+    if (normalizedType !== "heal") return "fixed";
+    const normalizedMode = `${healMode ?? ""}`.trim().toLowerCase();
+    if (MOVE_SECONDARY_HEAL_MODE_KEYS.includes(normalizedMode)) return normalizedMode;
+    return Number(amount) < 0 ? "max-hp-percent" : "fixed";
+  }
+
   _decorateSecondaryEffectForDisplay(effect) {
     const effectType = this._normalizeEffectType(effect.effectType);
     const specialDurationSelections = this._normalizeSpecialDurationList(effect.specialDuration);
@@ -692,6 +732,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       showActiveEffectField: effectType === "active-effect",
       showStatField: effectType === "stat",
       showAmountField: ["stat", "damage", "heal", "will"].includes(effectType),
+      showHealModeField: effectType === "heal",
       showDurationField: effectType === "condition" || effectType === "stat" || effectType === "weather",
       showNotesField: effectType === "custom"
     };
@@ -957,6 +998,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     toggleSection("active-effect", effectType === "active-effect");
     toggleSection("stat", effectType === "stat");
     toggleSection("amount", ["stat", "damage", "heal", "will"].includes(effectType));
+    toggleSection("heal-mode", effectType === "heal");
     toggleSection("duration", effectType === "condition" || effectType === "stat" || effectType === "weather");
     toggleSection("notes", effectType === "custom");
   }
@@ -965,7 +1007,9 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     const labelByCondition = {
       none: "POKROLE.Common.None",
       sleep: "POKROLE.Conditions.Sleep",
-      burn: "POKROLE.Conditions.Burn",
+      burn: "POKROLE.Move.Secondary.Condition.Burn1",
+      burn2: "POKROLE.Move.Secondary.Condition.Burn2",
+      burn3: "POKROLE.Move.Secondary.Condition.Burn3",
       frozen: "POKROLE.Conditions.Frozen",
       paralyzed: "POKROLE.Conditions.Paralyzed",
       poisoned: "POKROLE.Conditions.Poisoned",

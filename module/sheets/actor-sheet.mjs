@@ -1550,7 +1550,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const labelByCondition = {
       none: "POKROLE.Common.None",
       sleep: "POKROLE.Conditions.Sleep",
-      burn: "POKROLE.Conditions.Burn",
+      burn: "POKROLE.Move.Secondary.Condition.Burn1",
+      burn2: "POKROLE.Move.Secondary.Condition.Burn2",
+      burn3: "POKROLE.Move.Secondary.Condition.Burn3",
       frozen: "POKROLE.Conditions.Frozen",
       paralyzed: "POKROLE.Conditions.Paralyzed",
       poisoned: "POKROLE.Conditions.Poisoned",

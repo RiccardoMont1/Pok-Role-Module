@@ -502,14 +502,20 @@
                   {{safeSelectOptions @root.secondaryStatOptions selected=effect.stat localize=true}}
                 </select>
               </label>
+              <label data-effect-visible="heal-mode" class="{{#unless effect.showHealModeField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.HealMode.Label"}}</span>
+                <select name="system.secondaryEffects.{{effect.index}}.healMode">
+                  {{safeSelectOptions @root.secondaryHealModeOptions selected=effect.healMode localize=true}}
+                </select>
+              </label>
               <label data-effect-visible="amount" class="{{#unless effect.showAmountField}}is-hidden{{/unless}}">
                 <span>{{localize "POKROLE.Move.Secondary.Amount"}}</span>
                 <input
                   type="number"
                   name="system.secondaryEffects.{{effect.index}}.amount"
                   value="{{effect.amount}}"
-                  min="-99"
-                  max="99"
+                  min="-999"
+                  max="999"
                   data-dtype="Number"
                 />
               </label>

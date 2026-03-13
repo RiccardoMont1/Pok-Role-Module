@@ -5,6 +5,7 @@ import {
   MOVE_SECONDARY_DURATION_MODE_KEYS,
   MOVE_SECONDARY_SPECIAL_DURATION_KEYS,
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
+  MOVE_SECONDARY_HEAL_MODE_KEYS,
   MOVE_SECONDARY_WEATHER_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
@@ -372,7 +373,13 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
             initial: "none",
             choices: MOVE_SECONDARY_STAT_KEYS
           }),
-          amount: integerField(0, { min: -99, max: 99 }),
+          amount: integerField(0, { min: -999, max: 999 }),
+          healMode: new StringField({
+            required: true,
+            blank: false,
+            initial: "fixed",
+            choices: MOVE_SECONDARY_HEAL_MODE_KEYS
+          }),
           notes: trimmedStringField(""),
           linkedEffectId: trimmedStringField("")
         }),

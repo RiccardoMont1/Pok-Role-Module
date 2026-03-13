@@ -2,9 +2,9 @@
 
 Scheda della mossa: Non molto intuibile cercare di fare una mossa che cura (Si deve aggiungere un effetto per poi curare)
 
-I Pokemon che sono immuni a determinati status, non devono nemmeno prendere il tag dello status
+# I Pokemon che sono immuni a determinati status, non devono nemmeno prendere il tag dello status
 
-Burn: C'è solo il Burn 1 e non è automatizzato. All'inizio del round del pokemon deve chiedere se usare un'azione per effettuare un tiro di DEX + Athletic. Il Burn 1 si rimuove solo quando effettui un totale di 4 successi
+# Burn: C'è solo il Burn 1 e non è automatizzato. All'inizio del round del pokemon deve chiedere se usare un'azione per effettuare un tiro di DEX + Athletic. Il Burn 1 si rimuove solo quando effettui un totale di 4 successi
 
 Paralisi: Non capisco la parte del pokemon si muove alla metà della velocità (Suppongo intenda dimezzare l'iniziativa)
 

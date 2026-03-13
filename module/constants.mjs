@@ -210,6 +210,12 @@ export const MOVE_SECONDARY_EFFECT_TYPE_KEYS = Object.freeze([
   "custom"
 ]);
 
+export const MOVE_SECONDARY_HEAL_MODE_KEYS = Object.freeze([
+  "fixed",
+  "max-hp-percent",
+  "damage-percent"
+]);
+
 export const MOVE_SECONDARY_WEATHER_KEYS = Object.freeze([
   "none",
   "sunny",
@@ -263,6 +269,8 @@ export const MOVE_SECONDARY_CONDITION_KEYS = Object.freeze([
   "none",
   "sleep",
   "burn",
+  "burn2",
+  "burn3",
   "frozen",
   "paralyzed",
   "poisoned",

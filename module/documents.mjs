@@ -6,6 +6,7 @@ import {
   MOVE_SECONDARY_DURATION_MODE_KEYS,
   MOVE_SECONDARY_SPECIAL_DURATION_KEYS,
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
+  MOVE_SECONDARY_HEAL_MODE_KEYS,
   MOVE_SECONDARY_WEATHER_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
@@ -101,7 +102,9 @@ const TEMPORARY_EFFECTS_FLAG = "automation.temporaryEffects";
 const CONFIGURED_EFFECTS_FLAG = "automation.configuredEffects";
 const CONDITION_FLAGS_FLAG = "automation.conditionFlags";
 const CONDITION_KEYS = Object.freeze([
-  ...MOVE_SECONDARY_CONDITION_KEYS.filter((conditionKey) => conditionKey !== "none"),
+  ...MOVE_SECONDARY_CONDITION_KEYS.filter(
+    (conditionKey) => !["none", "burn2", "burn3"].includes(conditionKey)
+  ),
   "dead"
 ]);
 const CONDITION_FIELD_BY_KEY = Object.freeze({
@@ -148,6 +151,7 @@ const HEALING_TRACK_FLAG_KEY = "combat.healingTrack";
 const TREATMENT_BLOCK_FLAG_KEY = "combat.treatmentBlockedRound";
 const SHIELD_STREAK_FLAG_KEY = "combat.shieldStreak";
 const SLEEP_RESIST_TRACK_FLAG_KEY = "combat.sleepResistTrack";
+const BURN_TRACK_FLAG_KEY = "combat.burnTrack";
 const SPECIAL_WEATHER_KEYS = Object.freeze(["harsh-sunlight", "typhoon", "strong-winds"]);
 const BASIC_WEATHER_KEYS = Object.freeze(["sunny", "rain", "sandstorm", "hail"]);
 
@@ -518,6 +522,294 @@ export class PokRoleActor extends Actor {
     }
   }
 
+  _normalizeBurnStage(stage, fallback = 1) {
+    const numericStage = Math.floor(toNumber(stage, fallback));
+    return clamp(numericStage, 1, 3);
+  }
+
+  _getBurnRemovalThreshold(stage = 1) {
+    const normalizedStage = this._normalizeBurnStage(stage, 1);
+    return {
+      1: 4,
+      2: 6,
+      3: 8
+    }[normalizedStage] ?? 4;
+  }
+
+  _getBurnRoundDamage(stage = 1) {
+    return this._normalizeBurnStage(stage, 1);
+  }
+
+  _getBurnConditionVariant(stage = 1) {
+    const normalizedStage = this._normalizeBurnStage(stage, 1);
+    if (normalizedStage === 3) return "burn3";
+    if (normalizedStage === 2) return "burn2";
+    return "burn";
+  }
+
+  _localizeBurnStageName(stage = 1) {
+    const normalizedStage = this._normalizeBurnStage(stage, 1);
+    const localizationKey = {
+      1: "POKROLE.Move.Secondary.Condition.Burn1",
+      2: "POKROLE.Move.Secondary.Condition.Burn2",
+      3: "POKROLE.Move.Secondary.Condition.Burn3"
+    }[normalizedStage] ?? "POKROLE.Conditions.Burn";
+    return game.i18n.localize(localizationKey);
+  }
+
+  _normalizeBurnConditionVariant(conditionKey) {
+    const normalized = `${conditionKey ?? "burn"}`
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9-]+/g, "");
+    if (normalized === "burn3") return "burn3";
+    if (normalized === "burn2") return "burn2";
+    return "burn";
+  }
+
+  _resolveBurnStageFromCondition(conditionKey) {
+    const variantKey = this._normalizeBurnConditionVariant(conditionKey);
+    if (variantKey === "burn3") return 3;
+    if (variantKey === "burn2") return 2;
+    return 1;
+  }
+
+  _getCurrentCombatTurnKey() {
+    const combat = game.combat;
+    if (!combat) return null;
+    return `${combat.id}:${combat.round ?? 0}:${combat.turn ?? 0}`;
+  }
+
+  _getBurnTrack() {
+    const rawTrack = this.getFlag(POKROLE.ID, BURN_TRACK_FLAG_KEY) ?? {};
+    return {
+      stage: this._normalizeBurnStage(rawTrack?.stage, 1),
+      totalSuccesses: Math.max(Math.floor(toNumber(rawTrack?.totalSuccesses, 0)), 0),
+      lastAttemptTurnKey: `${rawTrack?.lastAttemptTurnKey ?? ""}`.trim()
+    };
+  }
+
+  async _setBurnTrack(track = {}) {
+    await this.setFlag(POKROLE.ID, BURN_TRACK_FLAG_KEY, {
+      stage: this._normalizeBurnStage(track?.stage, 1),
+      totalSuccesses: Math.max(Math.floor(toNumber(track?.totalSuccesses, 0)), 0),
+      lastAttemptTurnKey: `${track?.lastAttemptTurnKey ?? ""}`.trim()
+    });
+  }
+
+  async _clearBurnTrack() {
+    await this.unsetFlag(POKROLE.ID, BURN_TRACK_FLAG_KEY);
+  }
+
+  _extractBurnStageFromEffect(effectDocument) {
+    const automationFlags = effectDocument?.getFlag(POKROLE.ID, "automation") ?? {};
+    if (automationFlags?.conditionKey && this._normalizeConditionKey(automationFlags.conditionKey) === "burn") {
+      return this._normalizeBurnStage(automationFlags?.burnStage, 1);
+    }
+    const name = `${effectDocument?.name ?? ""}`.trim().toLowerCase();
+    if (/\bburn\s*3\b/.test(name)) return 3;
+    if (/\bburn\s*2\b/.test(name)) return 2;
+    return 1;
+  }
+
+  async _applyBurnStage(stage = 1, options = {}) {
+    const currentTrack = this.getFlag(POKROLE.ID, BURN_TRACK_FLAG_KEY) ?? {};
+    const nextStage = Math.max(
+      this._normalizeBurnStage(currentTrack?.stage, 1),
+      this._normalizeBurnStage(stage, 1)
+    );
+    await this.setFlag(POKROLE.ID, BURN_TRACK_FLAG_KEY, {
+      stage: nextStage,
+      totalSuccesses: Math.max(Math.floor(toNumber(currentTrack?.totalSuccesses, 0)), 0),
+      lastAttemptTurnKey:
+        options.resetAttempt === true ? "" : `${currentTrack?.lastAttemptTurnKey ?? ""}`.trim()
+    });
+    return nextStage;
+  }
+
+  async _synchronizeManagedBurnConditionEffect(targetActor, stage = 1) {
+    if (!targetActor) return false;
+    const managedBurnEffect = (targetActor.effects?.contents ?? []).find(
+      (effectDocument) =>
+        !effectDocument?.disabled &&
+        this._isManagedAutomationEffect(effectDocument) &&
+        this._extractConditionKeyFromEffect(effectDocument) === "burn"
+    );
+    if (!managedBurnEffect) return false;
+
+    const normalizedStage = this._normalizeBurnStage(stage, 1);
+    const desiredName = this._localizeBurnStageName(normalizedStage);
+    const automationFlags = foundry.utils.deepClone(
+      managedBurnEffect.getFlag(POKROLE.ID, "automation") ?? {}
+    );
+    const needsUpdate =
+      this._normalizeBurnStage(automationFlags?.burnStage, 1) !== normalizedStage ||
+      this._normalizeConditionKey(automationFlags?.conditionKey) !== "burn" ||
+      `${managedBurnEffect.name ?? ""}`.trim() !== desiredName;
+    if (!needsUpdate) return false;
+
+    automationFlags.conditionKey = "burn";
+    automationFlags.burnStage = normalizedStage;
+    await managedBurnEffect.update({
+      name: desiredName,
+      [`flags.${POKROLE.ID}.automation`]: automationFlags
+    });
+    return true;
+  }
+
+  async _promptBurnStageSelection() {
+    return new Promise((resolve) => {
+      new Dialog(
+        {
+          title: game.i18n.localize("POKROLE.Chat.BurnSelection.Title"),
+          content: `
+            <div class="pok-role-dialog-content">
+              <p>${game.i18n.localize("POKROLE.Chat.BurnSelection.Prompt")}</p>
+            </div>
+          `,
+          buttons: {
+            burn1: {
+              label: this._localizeBurnStageName(1),
+              callback: () => resolve(1)
+            },
+            burn2: {
+              label: this._localizeBurnStageName(2),
+              callback: () => resolve(2)
+            },
+            burn3: {
+              label: this._localizeBurnStageName(3),
+              callback: () => resolve(3)
+            },
+            cancel: {
+              label: game.i18n.localize("POKROLE.Common.Cancel"),
+              callback: () => resolve(null)
+            }
+          },
+          default: "burn1",
+          close: () => resolve(null)
+        },
+        { classes: ["pok-role-dialog"] }
+      ).render(true);
+    });
+  }
+
+  async _attemptBurnRecovery() {
+    if (!game.combat || this.type !== "pokemon" || !this._isConditionActive("burn")) {
+      return { attempted: false, recovered: false, totalSuccesses: 0, stage: 1 };
+    }
+
+    const turnKey = this._getCurrentCombatTurnKey();
+    const burnTrack = this._getBurnTrack();
+    if (burnTrack.lastAttemptTurnKey && burnTrack.lastAttemptTurnKey === `${turnKey ?? ""}`.trim()) {
+      return {
+        attempted: false,
+        recovered: false,
+        totalSuccesses: burnTrack.totalSuccesses,
+        stage: burnTrack.stage
+      };
+    }
+
+    const threshold = this._getBurnRemovalThreshold(burnTrack.stage);
+    const spendAction = await new Promise((resolve) => {
+      new Dialog({
+        title: game.i18n.localize("POKROLE.Chat.BurnRecovery.Title"),
+        content: `
+          <div class="pok-role-dialog-content">
+            <p>${game.i18n.format("POKROLE.Chat.BurnRecovery.Prompt", {
+              actor: this.name,
+              stage: this._localizeBurnStageName(burnTrack.stage),
+              current: burnTrack.totalSuccesses,
+              required: threshold
+            })}</p>
+          </div>
+        `,
+        buttons: {
+          yes: {
+            icon: "<i class='fas fa-fire-extinguisher'></i>",
+            label: game.i18n.localize("POKROLE.Chat.BurnRecovery.UseAction"),
+            callback: () => resolve(true)
+          },
+          no: {
+            icon: "<i class='fas fa-times'></i>",
+            label: game.i18n.localize("POKROLE.Common.Cancel"),
+            callback: () => resolve(false)
+          }
+        },
+        default: "yes",
+        close: () => resolve(false)
+      }, { classes: ["pok-role-dialog"] }).render(true);
+    });
+
+    if (!spendAction) {
+      await this._setBurnTrack({
+        ...burnTrack,
+        lastAttemptTurnKey: `${turnKey ?? ""}`.trim()
+      });
+      return {
+        attempted: false,
+        recovered: false,
+        totalSuccesses: burnTrack.totalSuccesses,
+        stage: burnTrack.stage
+      };
+    }
+
+    const roundKey = this._getCurrentRoundKey(0);
+    const currentActionNumber = await this._resolveActionRequirement(null, roundKey);
+    const rollResult = await this._rollSuccessPool({
+      dicePool: this.getTraitValue("dexterity") + this.getSkillValue("athletic"),
+      removedSuccesses: this.getPainPenalty(),
+      requiredSuccesses: 1,
+      flavor: game.i18n.format("POKROLE.Chat.BurnRecovery.Flavor", {
+        actor: this.name,
+        stage: this._localizeBurnStageName(burnTrack.stage)
+      })
+    });
+    await this._advanceActionCounter(currentActionNumber, roundKey);
+
+    const gainedSuccesses = Math.max(Math.floor(toNumber(rollResult?.netSuccesses, 0)), 0);
+    const totalSuccesses = burnTrack.totalSuccesses + gainedSuccesses;
+    const recovered = totalSuccesses >= threshold;
+
+    if (recovered) {
+      await this.toggleQuickCondition("burn", { active: false });
+      ui.notifications.info(
+        game.i18n.format("POKROLE.Chat.BurnRecovery.Cleared", {
+          actor: this.name,
+          condition: this._localizeBurnStageName(burnTrack.stage)
+        })
+      );
+      return {
+        attempted: true,
+        recovered: true,
+        gainedSuccesses,
+        totalSuccesses,
+        stage: burnTrack.stage
+      };
+    }
+
+    await this._setBurnTrack({
+      stage: burnTrack.stage,
+      totalSuccesses,
+      lastAttemptTurnKey: `${turnKey ?? ""}`.trim()
+    });
+    ui.notifications.info(
+      game.i18n.format("POKROLE.Chat.BurnRecovery.Progress", {
+        actor: this.name,
+        stage: this._localizeBurnStageName(burnTrack.stage),
+        gained: gainedSuccesses,
+        total: totalSuccesses,
+        required: threshold
+      })
+    );
+    return {
+      attempted: true,
+      recovered: false,
+      gainedSuccesses,
+      totalSuccesses,
+      stage: burnTrack.stage
+    };
+  }
+
   async processTurnStartStatusAutomation() {
     if (!game.combat) return { processed: false, results: [] };
 
@@ -561,6 +853,23 @@ export class PokRoleActor extends Actor {
         await clearConditionWithNotice("confused");
       }
       results.push({ condition: "confused", resolved: Boolean(confusedResist?.resisted) });
+    }
+
+    if (
+      this._isConditionActive("burn") &&
+      !this._isConditionActive("dead") &&
+      !this._isConditionActive("fainted") &&
+      !this._isConditionActive("sleep") &&
+      !this._isConditionActive("frozen")
+    ) {
+      const burnRecovery = await this._attemptBurnRecovery();
+      results.push({
+        condition: "burn",
+        attempted: Boolean(burnRecovery?.attempted),
+        resolved: Boolean(burnRecovery?.recovered),
+        stage: burnRecovery?.stage ?? this._getBurnTrack().stage,
+        totalSuccesses: burnRecovery?.totalSuccesses ?? this._getBurnTrack().totalSuccesses
+      });
     }
 
     return { processed: true, results };
@@ -1226,7 +1535,8 @@ export class PokRoleActor extends Actor {
       targetActors,
       hit,
       isDamagingMove,
-      finalDamage
+      finalDamage,
+      damageTargetResults
     });
     const abilitySecondaryEffectResults = await this._applyAbilityAutomationEffects({
       move,
@@ -1234,7 +1544,8 @@ export class PokRoleActor extends Actor {
       targetActors,
       hit,
       isDamagingMove,
-      finalDamage
+      finalDamage,
+      damageTargetResults
     });
     const secondaryEffectResults = [
       ...moveSecondaryEffectResults,
@@ -1761,11 +2072,23 @@ export class PokRoleActor extends Actor {
     );
     const durationRounds = this._normalizeSecondaryDurationRounds(rawEffect.durationRounds);
     const specialDuration = this._normalizeSpecialDurationList(rawEffect.specialDuration);
-    const condition = this._normalizeConditionKey(rawEffect.condition);
+    const condition =
+      normalizedEffectType === "condition"
+        ? this._normalizeConditionVariantKey(rawEffect.condition)
+        : this._normalizeConditionKey(rawEffect.condition);
     const weather = this._normalizeSecondaryWeatherKey(rawEffect.weather);
     const stat = this._normalizeSecondaryStatKey(rawEffect.stat);
     const chance = clamp(Math.floor(toNumber(rawEffect.chance, 100)), 0, 100);
-    const amount = clamp(Math.floor(toNumber(rawEffect.amount, 0)), -99, 99);
+    const healMode = this._normalizeSecondaryHealMode(
+      rawEffect.healMode,
+      normalizedEffectType,
+      rawEffect.amount
+    );
+    const rawAmount = clamp(Math.floor(toNumber(rawEffect.amount, 0)), -999, 999);
+    const amount =
+      normalizedEffectType === "heal" && healMode !== "fixed"
+        ? Math.abs(rawAmount)
+        : rawAmount;
 
     return {
       label: `${rawEffect.label ?? ""}`.trim(),
@@ -1781,6 +2104,7 @@ export class PokRoleActor extends Actor {
       weather,
       stat,
       amount,
+      healMode,
       notes: `${rawEffect.notes ?? ""}`.trim(),
       linkedEffectId: `${rawEffect.linkedEffectId ?? ""}`.trim()
     };
@@ -1794,6 +2118,14 @@ export class PokRoleActor extends Actor {
     if (normalizedType === "combat-stat") return "stat";
     if (MOVE_SECONDARY_EFFECT_TYPE_KEYS.includes(normalizedType)) return normalizedType;
     return "condition";
+  }
+
+  _normalizeSecondaryHealMode(healMode, effectType = "custom", amount = 0) {
+    const normalizedType = this._normalizeSecondaryEffectType(effectType);
+    if (normalizedType !== "heal") return "fixed";
+    const normalizedMode = `${healMode ?? ""}`.trim().toLowerCase();
+    if (MOVE_SECONDARY_HEAL_MODE_KEYS.includes(normalizedMode)) return normalizedMode;
+    return Number(amount) < 0 ? "max-hp-percent" : "fixed";
   }
 
   _normalizeSecondaryDurationMode(durationMode, effectType = "custom") {
@@ -1824,6 +2156,19 @@ export class PokRoleActor extends Actor {
       if (!normalized.includes(durationKey)) normalized.push(durationKey);
     }
     return normalized;
+  }
+
+  _normalizeConditionVariantKey(conditionKey) {
+    const normalized = `${conditionKey ?? ""}`
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9-]+/g, "");
+    if (!normalized) return "none";
+    if (normalized === "burn3") return "burn3";
+    if (normalized === "burn2") return "burn2";
+    if (normalized === "burn1" || normalized === "burn") return "burn";
+    const alias = CONDITION_ALIASES[normalized] ?? normalized;
+    return MOVE_SECONDARY_CONDITION_KEYS.includes(alias) ? alias : "none";
   }
 
   _normalizeConditionKey(conditionKey) {
@@ -2112,13 +2457,18 @@ export class PokRoleActor extends Actor {
     targetActors,
     hit,
     isDamagingMove,
-    finalDamage
+    finalDamage,
+    damageTargetResults = []
   }) {
     if (!Array.isArray(secondaryEffects) || secondaryEffects.length === 0) {
       return [];
     }
 
     const results = [];
+    const totalDamageDealt = (Array.isArray(damageTargetResults) ? damageTargetResults : []).reduce(
+      (sum, result) => sum + Math.max(toNumber(result?.finalDamage, 0), 0),
+      0
+    );
     for (const effect of secondaryEffects) {
       const normalizedEffectType = this._normalizeSecondaryEffectType(effect.effectType);
       if (!this._secondaryTriggerMatches(effect.trigger, { hit, isDamagingMove, finalDamage })) {
@@ -2150,7 +2500,8 @@ export class PokRoleActor extends Actor {
         const applyResult = await this._applySecondaryEffectToActor(
           { ...effect, effectType: "weather" },
           this,
-          move
+          move,
+          { finalDamage, totalDamageDealt, damageTargetResults }
         );
         results.push({
           label: this._formatSecondaryEffectLabel(effect),
@@ -2194,7 +2545,11 @@ export class PokRoleActor extends Actor {
             continue;
           }
         }
-        const applyResult = await this._applySecondaryEffectToActor(effect, targetActor, move);
+        const applyResult = await this._applySecondaryEffectToActor(effect, targetActor, move, {
+          finalDamage,
+          totalDamageDealt,
+          damageTargetResults
+        });
         results.push({
           label: this._formatSecondaryEffectLabel(effect),
           targetName: targetActor.name,
@@ -2213,7 +2568,8 @@ export class PokRoleActor extends Actor {
     targetActors,
     hit,
     isDamagingMove,
-    finalDamage
+    finalDamage,
+    damageTargetResults = []
   }) {
     const abilityItems = this.items.filter((item) => item.type === "ability");
     if (!abilityItems.length) return [];
@@ -2245,7 +2601,8 @@ export class PokRoleActor extends Actor {
         targetActors,
         hit,
         isDamagingMove,
-        finalDamage
+        finalDamage,
+        damageTargetResults
       });
       results.push(...effectResults);
     }
@@ -2328,7 +2685,11 @@ export class PokRoleActor extends Actor {
       `POKROLE.Move.Secondary.Type.${this._toSecondaryTypeLabelSuffix(normalizedType)}`
     );
     if (normalizedType === "condition" && effect.condition !== "none") {
-      return `${effectTypeLabel}: ${this._localizeConditionName(effect.condition)}`;
+      const conditionLabel =
+        this._normalizeConditionKey(effect.condition) === "burn"
+          ? this._localizeBurnStageName(this._resolveBurnStageFromCondition(effect.condition))
+          : this._localizeConditionName(effect.condition);
+      return `${effectTypeLabel}: ${conditionLabel}`;
     }
     if (normalizedType === "weather") {
       return `${effectTypeLabel}: ${this._localizeSecondaryWeatherName(effect.weather)}`;
@@ -2337,7 +2698,21 @@ export class PokRoleActor extends Actor {
       const amountText = effect.amount > 0 ? `+${effect.amount}` : `${effect.amount}`;
       return `${effectTypeLabel}: ${this._localizeSecondaryStatName(effect.stat)} ${amountText}`;
     }
-    if (["damage", "heal", "will"].includes(normalizedType)) {
+    if (normalizedType === "heal") {
+      const healMode = this._normalizeSecondaryHealMode(
+        effect.healMode,
+        normalizedType,
+        effect.amount
+      );
+      if (healMode === "damage-percent") {
+        return `${effectTypeLabel}: ${Math.abs(toNumber(effect.amount, 0))}% ${game.i18n.localize("POKROLE.Move.Secondary.HealMode.OfDamageDealt")}`;
+      }
+      if (healMode === "max-hp-percent") {
+        return `${effectTypeLabel}: ${Math.abs(toNumber(effect.amount, 0))}% ${game.i18n.localize("POKROLE.Move.Secondary.HealMode.OfMaxHp")}`;
+      }
+      return `${effectTypeLabel}: ${Math.abs(toNumber(effect.amount, 0))}`;
+    }
+    if (["damage", "will"].includes(normalizedType)) {
       return `${effectTypeLabel}: ${effect.amount}`;
     }
     return effectTypeLabel;
@@ -2358,6 +2733,13 @@ export class PokRoleActor extends Actor {
   }
 
   _localizeConditionName(conditionKey) {
+    const normalizedCondition = `${conditionKey ?? ""}`
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9-]+/g, "");
+    if (normalizedCondition === "burn1") return this._localizeBurnStageName(1);
+    if (normalizedCondition === "burn2") return this._localizeBurnStageName(2);
+    if (normalizedCondition === "burn3") return this._localizeBurnStageName(3);
     const knownConditionLabels = {
       sleep: "POKROLE.Conditions.Sleep",
       burn: "POKROLE.Conditions.Burn",
@@ -2405,7 +2787,7 @@ export class PokRoleActor extends Actor {
     return game.i18n.localize(labelByWeather[normalizedWeather] ?? "POKROLE.Common.None");
   }
 
-  async _applySecondaryEffectToActor(effect, targetActor, sourceMove = null) {
+  async _applySecondaryEffectToActor(effect, targetActor, sourceMove = null, context = {}) {
     const normalizedType = this._normalizeSecondaryEffectType(effect.effectType);
     switch (normalizedType) {
       case "condition":
@@ -2449,10 +2831,7 @@ export class PokRoleActor extends Actor {
         };
       }
       case "heal": {
-        const healValue = this._resolveEffectAmountValue(
-          toNumber(targetActor.system?.resources?.hp?.max, 1),
-          effect.amount
-        );
+        const healValue = this._resolveHealEffectAmountValue(effect, targetActor, context);
         if (healValue <= 0) {
           return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
         }
@@ -2492,8 +2871,34 @@ export class PokRoleActor extends Actor {
     return Math.max(Math.floor((Math.max(maxValue, 1) * Math.abs(numericAmount)) / 100), 1);
   }
 
+  _resolveHealEffectAmountValue(effect, targetActor, context = {}) {
+    const healMode = this._normalizeSecondaryHealMode(
+      effect?.healMode,
+      effect?.effectType,
+      effect?.amount
+    );
+    const numericAmount = Math.abs(Math.floor(toNumber(effect?.amount, 0)));
+    if (numericAmount <= 0) return 0;
+
+    if (healMode === "damage-percent") {
+      const totalDamageDealt = Math.max(Math.floor(toNumber(context?.totalDamageDealt, 0)), 0);
+      if (totalDamageDealt <= 0) return 0;
+      return Math.max(Math.floor((totalDamageDealt * numericAmount) / 100), 1);
+    }
+
+    if (healMode === "max-hp-percent") {
+      const maxHp = Math.max(toNumber(targetActor?.system?.resources?.hp?.max, 1), 1);
+      return Math.max(Math.floor((maxHp * numericAmount) / 100), 1);
+    }
+
+    return Math.max(numericAmount, 0);
+  }
+
   async _applyConditionEffectToActor(effect, targetActor, sourceMove = null) {
-    const conditionKey = this._normalizeConditionKey(effect.condition);
+    const conditionVariant = this._normalizeConditionVariantKey(effect.condition);
+    const conditionKey = this._normalizeConditionKey(conditionVariant);
+    const burnStage =
+      conditionKey === "burn" ? this._resolveBurnStageFromCondition(conditionVariant) : 1;
     if (conditionKey === "none") {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
     }
@@ -2515,6 +2920,20 @@ export class PokRoleActor extends Actor {
     });
     if (existingConditionEffect) {
       await this._setConditionFlagState(targetActor, conditionKey, true);
+      if (conditionKey === "burn") {
+        if (typeof targetActor._applyBurnStage === "function") {
+          const resolvedStage = await targetActor._applyBurnStage(burnStage);
+          await this._synchronizeManagedBurnConditionEffect(targetActor, resolvedStage);
+          return {
+            applied: true,
+            detail: this._localizeBurnStageName(resolvedStage)
+          };
+        }
+        return {
+          applied: false,
+          detail: this._localizeBurnStageName(burnStage)
+        };
+      }
       return {
         applied: false,
         detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectAlreadyActive")
@@ -2532,7 +2951,13 @@ export class PokRoleActor extends Actor {
       specialDuration: normalizedSpecialDuration,
       sourceMove
     });
-    const effectLabel = this._formatSecondaryEffectLabel(effect) || this._localizeConditionName(conditionKey);
+    if (conditionKey === "burn") {
+      automationFlags.burnStage = burnStage;
+    }
+    const effectLabel =
+      conditionKey === "burn"
+        ? this._localizeBurnStageName(burnStage)
+        : this._formatSecondaryEffectLabel(effect) || this._localizeConditionName(conditionKey);
     const conditionPath = CONDITION_FIELD_BY_KEY[conditionKey]
       ? `system.conditions.${CONDITION_FIELD_BY_KEY[conditionKey]}`
       : null;
@@ -2577,12 +3002,19 @@ export class PokRoleActor extends Actor {
     ]);
 
     await this._setConditionFlagState(targetActor, conditionKey, true);
+    if (conditionKey === "burn" && typeof targetActor._applyBurnStage === "function") {
+      await targetActor._applyBurnStage(burnStage);
+    }
     if (conditionKey === "sleep" && typeof targetActor._initializeSleepResistanceTrack === "function") {
       await targetActor._initializeSleepResistanceTrack();
     }
+    const conditionLabel =
+      conditionKey === "burn"
+        ? this._localizeBurnStageName(burnStage)
+        : this._localizeConditionName(conditionKey);
     return {
       applied: true,
-      detail: `${this._localizeConditionName(conditionKey)} (${this._localizeTemporaryDuration(
+      detail: `${conditionLabel} (${this._localizeTemporaryDuration(
         automationFlags.durationMode,
         automationFlags.durationRounds,
         automationFlags.specialDuration
@@ -2902,16 +3334,39 @@ export class PokRoleActor extends Actor {
     const nextState = options.active === undefined ? !currentState : Boolean(options.active);
 
     if (nextState) {
+      let burnStage = 1;
+      if (normalizedCondition === "burn") {
+        const hasExplicitBurnStage = Object.prototype.hasOwnProperty.call(options, "burnStage");
+        if (hasExplicitBurnStage) {
+          burnStage = this._normalizeBurnStage(options.burnStage, 1);
+        } else {
+          const selectedStage = await this._promptBurnStageSelection();
+          if (!selectedStage) {
+            return { applied: false, detail: game.i18n.localize("POKROLE.Common.Cancel") };
+          }
+          burnStage = this._normalizeBurnStage(selectedStage, 1);
+        }
+      }
+      if (this._isConditionImmune(this, normalizedCondition)) {
+        await this._purgeImmuneConditionState(this, normalizedCondition);
+        return {
+          applied: false,
+          detail: game.i18n.localize("POKROLE.Chat.ConditionImmune")
+        };
+      }
       await this._setConditionFlagState(this, normalizedCondition, true);
       if (normalizedCondition === "sleep") {
         await this._initializeSleepResistanceTrack();
       }
-      return this._ensureConditionEffectFromFlag(this, normalizedCondition);
+      return this._ensureConditionEffectFromFlag(this, normalizedCondition, { burnStage });
     }
 
     await this._setConditionFlagState(this, normalizedCondition, false);
     if (normalizedCondition === "sleep") {
       await this._clearSleepResistanceTrack();
+    }
+    if (normalizedCondition === "burn") {
+      await this._clearBurnTrack();
     }
     await this._removeTrackedConditionEffects(this, normalizedCondition, { revert: false });
     return {
@@ -2993,6 +3448,100 @@ export class PokRoleActor extends Actor {
     }
   }
 
+  async _disableConditionEffectForImmunity(targetActor, effectDocument, conditionKey) {
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    if (!targetActor || !effectDocument || normalizedCondition === "none") return false;
+
+    const statusId = `pokrole-condition-${normalizedCondition}`;
+    const currentStatuses = [...(effectDocument.statuses ?? [])]
+      .map((entry) => `${entry ?? ""}`.trim())
+      .filter(Boolean);
+    const nextStatuses = currentStatuses.filter(
+      (entry) => entry.toLowerCase() !== statusId
+    );
+    const updateData = {};
+    if (!effectDocument.disabled) updateData.disabled = true;
+    if (nextStatuses.length !== currentStatuses.length) {
+      updateData.statuses = nextStatuses;
+    }
+    if (Object.keys(updateData).length === 0) return false;
+    await effectDocument.update(updateData);
+    return true;
+  }
+
+  async _purgeImmuneConditionTemporaryEntries(targetActor, conditionKey) {
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    if (!targetActor || normalizedCondition === "none") return false;
+
+    const currentEntries = this._getTemporaryEffectEntries(targetActor);
+    const remainingEntries = currentEntries.filter((entry) => {
+      const changes = Array.isArray(entry?.changes) ? entry.changes : [];
+      return !changes.some(
+        (change) => this._normalizeConditionKey(change?.conditionKey) === normalizedCondition
+      );
+    });
+    if (remainingEntries.length === currentEntries.length) return false;
+    await this._setTemporaryEffectEntries(targetActor, remainingEntries);
+    return true;
+  }
+
+  async _purgeImmuneConditionState(targetActor, conditionKey) {
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    if (!targetActor || normalizedCondition === "none") return false;
+
+    let changed = false;
+    const effects = [...(targetActor.effects?.contents ?? [])];
+    for (const effectDocument of effects) {
+      if (this._extractConditionKeyFromEffect(effectDocument) !== normalizedCondition) continue;
+      const wasChanged = await this._disableConditionEffectForImmunity(
+        targetActor,
+        effectDocument,
+        normalizedCondition
+      );
+      changed ||= wasChanged;
+    }
+
+    const removedTemporaryEntries = await this._purgeImmuneConditionTemporaryEntries(
+      targetActor,
+      normalizedCondition
+    );
+    changed ||= removedTemporaryEntries;
+
+    const currentFlags = this._getConditionFlagEntries(targetActor);
+    if (currentFlags[normalizedCondition]) {
+      await this._setConditionFlagState(targetActor, normalizedCondition, false);
+      changed = true;
+    } else {
+      const systemField = CONDITION_FIELD_BY_KEY[normalizedCondition];
+      if (systemField && targetActor.system?.conditions?.[systemField]) {
+        await targetActor.update({ [`system.conditions.${systemField}`]: false });
+        changed = true;
+      }
+      if (!systemField) {
+        const currentState = Boolean(
+          targetActor.getFlag(POKROLE.ID, `automation.conditions.${normalizedCondition}`)
+        );
+        if (currentState) {
+          await targetActor.setFlag(
+            POKROLE.ID,
+            `automation.conditions.${normalizedCondition}`,
+            false
+          );
+          changed = true;
+        }
+      }
+    }
+
+    if (normalizedCondition === "sleep") {
+      await targetActor.unsetFlag(POKROLE.ID, SLEEP_RESIST_TRACK_FLAG_KEY);
+    }
+    if (normalizedCondition === "burn" && typeof targetActor._clearBurnTrack === "function") {
+      await targetActor._clearBurnTrack();
+    }
+
+    return changed;
+  }
+
   _hasTrackedConditionEffect(targetActor, conditionKey) {
     const normalizedCondition = this._normalizeConditionKey(conditionKey);
     if (normalizedCondition === "none") return false;
@@ -3012,8 +3561,10 @@ export class PokRoleActor extends Actor {
     });
   }
 
-  _buildConditionFlagEffectConfig(conditionKey) {
+  _buildConditionFlagEffectConfig(conditionKey, options = {}) {
     const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    const burnStage =
+      normalizedCondition === "burn" ? this._normalizeBurnStage(options?.burnStage, 1) : 1;
     const conditionNotes = {
       sleep: "Sleep: cannot act until awakened according to the CoreBook.",
       burn: "Burn: apply burn penalties/effects according to the CoreBook.",
@@ -3030,7 +3581,10 @@ export class PokRoleActor extends Actor {
     };
 
     return {
-      label: this._localizeConditionName(normalizedCondition),
+      label:
+        normalizedCondition === "burn"
+          ? this._localizeBurnStageName(burnStage)
+          : this._localizeConditionName(normalizedCondition),
       trigger: "always",
       chance: 100,
       target: "self",
@@ -3038,17 +3592,30 @@ export class PokRoleActor extends Actor {
       durationMode: "manual",
       durationRounds: 1,
       specialDuration: [],
-      condition: normalizedCondition,
+      condition:
+        normalizedCondition === "burn"
+          ? this._getBurnConditionVariant(burnStage)
+          : normalizedCondition,
       stat: "none",
       amount: 0,
       notes: conditionNotes[normalizedCondition] ?? ""
     };
   }
 
-  async _ensureConditionEffectFromFlag(targetActor, conditionKey) {
+  async _ensureConditionEffectFromFlag(targetActor, conditionKey, options = {}) {
     const normalizedCondition = this._normalizeConditionKey(conditionKey);
     if (normalizedCondition === "none") {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.Unknown") };
+    }
+    const burnStage =
+      normalizedCondition === "burn" ? this._normalizeBurnStage(options?.burnStage, 1) : 1;
+
+    if (this._isConditionImmune(targetActor, normalizedCondition)) {
+      await this._purgeImmuneConditionState(targetActor, normalizedCondition);
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Chat.ConditionImmune")
+      };
     }
 
     const systemField = CONDITION_FIELD_BY_KEY[normalizedCondition];
@@ -3061,8 +3628,23 @@ export class PokRoleActor extends Actor {
     }
 
     if (!this._hasTrackedConditionEffect(targetActor, normalizedCondition)) {
-      const effectConfig = this._buildConditionFlagEffectConfig(normalizedCondition);
+      const effectConfig = this._buildConditionFlagEffectConfig(normalizedCondition, { burnStage });
       return this._applyConditionEffectToActor(effectConfig, targetActor, null);
+    }
+
+    if (normalizedCondition === "burn") {
+      if (typeof targetActor._applyBurnStage === "function") {
+        const resolvedStage = await targetActor._applyBurnStage(burnStage);
+        await this._synchronizeManagedBurnConditionEffect(targetActor, resolvedStage);
+        return {
+          applied: true,
+          detail: this._localizeBurnStageName(resolvedStage)
+        };
+      }
+      return {
+        applied: true,
+        detail: this._localizeBurnStageName(burnStage)
+      };
     }
 
     return {
@@ -3123,26 +3705,60 @@ export class PokRoleActor extends Actor {
 
   async _synchronizeConditionFlagsFromTemporaryEffects(targetActor) {
     const activeConditionKeys = new Set();
-    for (const effectDocument of targetActor?.effects?.contents ?? []) {
-      if (effectDocument?.disabled) continue;
+    let activeBurnStage = 1;
+    for (const effectDocument of [...(targetActor?.effects?.contents ?? [])]) {
       const conditionFromEffect = this._extractConditionKeyFromEffect(effectDocument);
-      if (conditionFromEffect !== "none") activeConditionKeys.add(conditionFromEffect);
+      if (conditionFromEffect === "none") continue;
+      if (this._isConditionImmune(targetActor, conditionFromEffect)) {
+        await this._disableConditionEffectForImmunity(
+          targetActor,
+          effectDocument,
+          conditionFromEffect
+        );
+        continue;
+      }
+      if (effectDocument?.disabled) continue;
+      if (conditionFromEffect === "burn") {
+        activeBurnStage = Math.max(activeBurnStage, this._extractBurnStageFromEffect(effectDocument));
+      }
+      activeConditionKeys.add(conditionFromEffect);
     }
     const entries = this._getTemporaryEffectEntries(targetActor);
+    const remainingEntries = [];
+    let entriesChanged = false;
     for (const entry of entries) {
       const changes = Array.isArray(entry?.changes) ? entry.changes : [];
+      let keepEntry = true;
       for (const change of changes) {
         const normalizedCondition = this._normalizeConditionKey(change?.conditionKey);
         if (normalizedCondition !== "none") {
+          if (this._isConditionImmune(targetActor, normalizedCondition)) {
+            keepEntry = false;
+            entriesChanged = true;
+            continue;
+          }
+          if (normalizedCondition === "burn") {
+            activeBurnStage = Math.max(
+              activeBurnStage,
+              this._resolveBurnStageFromCondition(change?.conditionKey)
+            );
+          }
           activeConditionKeys.add(normalizedCondition);
         }
       }
+      if (keepEntry) remainingEntries.push(entry);
+    }
+
+    if (entriesChanged) {
+      await this._setTemporaryEffectEntries(targetActor, remainingEntries);
     }
 
     const nextFlags = this._getConditionFlagEntries(targetActor);
     let hasChanges = false;
     for (const conditionKey of CONDITION_KEYS) {
-      const shouldBeActive = activeConditionKeys.has(conditionKey);
+      const shouldBeActive =
+        activeConditionKeys.has(conditionKey) &&
+        !this._isConditionImmune(targetActor, conditionKey);
       if (nextFlags[conditionKey] !== shouldBeActive) {
         nextFlags[conditionKey] = shouldBeActive;
         hasChanges = true;
@@ -3172,6 +3788,13 @@ export class PokRoleActor extends Actor {
 
     if (hasChanges) {
       await targetActor.setFlag(POKROLE.ID, CONDITION_FLAGS_FLAG, nextFlags);
+    }
+    if (activeConditionKeys.has("burn") && !this._isConditionImmune(targetActor, "burn")) {
+      if (typeof targetActor._applyBurnStage === "function") {
+        await targetActor._applyBurnStage(activeBurnStage);
+      }
+    } else if (typeof targetActor._clearBurnTrack === "function") {
+      await targetActor._clearBurnTrack();
     }
   }
 
@@ -3532,10 +4155,14 @@ export class PokRoleActor extends Actor {
       const hpResult = await this._safeApplyDamage(this, amount);
       if (!hpResult) return;
       totalDamage += amount;
-      statusParts.push(`${this._localizeConditionName(conditionKey)} -${amount}`);
+      const label =
+        conditionKey === "burn"
+          ? this._localizeBurnStageName(this._getBurnTrack().stage)
+          : this._localizeConditionName(conditionKey);
+      statusParts.push(`${label} -${amount}`);
     };
 
-    await applyDamage("burn", 1);
+    await applyDamage("burn", this._getBurnRoundDamage(this._getBurnTrack().stage));
     await applyDamage("poisoned", 1);
     await applyDamage("badly-poisoned", 1);
 

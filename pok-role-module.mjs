@@ -816,6 +816,9 @@ Hooks.once("ready", async () => {
   await synchronizeAllActorEffectTokenIcons();
   for (const actor of game.actors?.contents ?? []) {
     if (actor?.type !== "pokemon") continue;
+    if (typeof actor.synchronizeConditionFlags === "function") {
+      await actor.synchronizeConditionFlags();
+    }
     if (typeof actor.synchronizeFaintedFromHp !== "function") continue;
     await actor.synchronizeFaintedFromHp();
   }

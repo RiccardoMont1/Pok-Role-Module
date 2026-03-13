@@ -372,6 +372,14 @@
         "Chance": "Chance (%)",
         "Amount": "Amount",
         "Notes": "Notes",
+        "HealMode": {
+          "Label": "Healing Source",
+          "Fixed": "Fixed value",
+          "MaxHpPercent": "% of target max HP",
+          "DamagePercent": "% of damage dealt",
+          "OfDamageDealt": "of damage dealt",
+          "OfMaxHp": "of max HP"
+        },
         "Duration": {
           "Rounds": "Rounds",
           "Mode": {
@@ -430,6 +438,9 @@
         },
         "Condition": {
           "Label": "Condition",
+          "Burn1": "Burn 1",
+          "Burn2": "Burn 2",
+          "Burn3": "Burn 3",
           "Confused": "Confused",
           "Flinch": "Flinch",
           "Disabled": "Disabled",
@@ -692,6 +703,18 @@
       "ConditionResistRoll": "{actor} rolls Insight to resist {condition} (required: {required}).",
       "SleepResistanceRoll": "{actor} builds Sleep resistance (+{gained}, total {total}/5).",
       "SleepWokeUp": "{actor} woke up.",
+      "BurnSelection": {
+        "Title": "Burn Severity",
+        "Prompt": "Choose which Burn stage to apply."
+      },
+      "BurnRecovery": {
+        "Title": "Burn Recovery",
+        "Prompt": "{actor} has {stage} ({current}/{required} successes). Spend 1 action to roll Dexterity + Athletic and reduce it?",
+        "UseAction": "Spend 1 Action",
+        "Flavor": "{actor} rolls Dexterity + Athletic to reduce {stage}.",
+        "Progress": "{actor} gains {gained} Burn recovery successes for {stage} ({total}/{required}).",
+        "Cleared": "{actor} cleared {condition}."
+      },
       "PokemonRested": "{actor} rested and recovered HP and Will.",
       "PassiveTriggerNotMet": "Passive trigger requirements are not met.",
       "HoldingBack": {
