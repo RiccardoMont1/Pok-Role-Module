@@ -115,7 +115,8 @@ function makeGear(seedId, name, config = {}) {
         hp: Number(heal.hp ?? 0),
         lethal: Number(heal.lethal ?? 0),
         fullHp: Boolean(heal.fullHp ?? false),
-        restoreAwareness: Boolean(heal.restoreAwareness ?? false)
+        restoreAwareness: Boolean(heal.restoreAwareness ?? false),
+        battleHealingCategory: `${heal.battleHealingCategory ?? "standard"}`.trim().toLowerCase()
       },
       status: {
         ...baseStatus(),
@@ -342,7 +343,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "potions",
       canUseInBattle: true,
       target: "any",
-      heal: { fullHp: true },
+      heal: { fullHp: true, battleHealingCategory: "unlimited" },
       description: "Corebook p.77. Single-use capsule. Recover full HP."
     }),
     makeGear("heal-full-restore", "Full Restore", {
@@ -350,7 +351,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "potions",
       canUseInBattle: true,
       target: "any",
-      heal: { fullHp: true },
+      heal: { fullHp: true, battleHealingCategory: "unlimited" },
       status: { all: true },
       description: "Corebook p.77. Single-use capsule. Recover full HP and heal status."
     }),

@@ -89,6 +89,14 @@
       "SourceUnknown": "Unknown source",
       "Remove": "Remove effect"
     },
+    "Healing": {
+      "Category": {
+        "Label": "Healing Category",
+        "Standard": "Basic Heal (3 HP/round)",
+        "Complete": "Complete Heal (5 HP/round)",
+        "Unlimited": "Unlimited (Max Potion / Full Restore)"
+      }
+    },
     "Effects": {
       "Tab": "Effects",
       "ConfiguredTitle": "Configured Effects",
@@ -369,7 +377,7 @@
         "AddExtraSection": "Add Extra Effect Block",
         "Empty": "No secondary effects configured.",
         "Label": "Label",
-        "Chance": "Chance (%)",
+        "Chance": "Chance Dice (0 = Auto)",
         "Amount": "Amount",
         "Notes": "Notes",
         "HealMode": {
@@ -435,6 +443,11 @@
           "Label": "Active Effect",
           "Configure": "Configure",
           "Unconfigured": "No Active Effect linked yet."
+        },
+        "HealingCategory": {
+          "Label": "Healing Type",
+          "Basic": "Basic",
+          "Complete": "Complete"
         },
         "Condition": {
           "Label": "Condition",
@@ -693,12 +706,25 @@
       "ConditionImmune": "Target is immune to this condition.",
       "SecondaryEffectApplied": "Applied",
       "SecondaryEffectFailed": "Failed",
-      "SecondaryEffectChanceFailed": "Chance failed ({roll} > {chance})",
+      "SecondaryEffectChanceFailed": "Chance dice failed ({rolls}) on {dice}d6: no 6 was rolled.",
       "SecondaryEffectNoTarget": "No valid target",
       "SecondaryEffectHpChange": "HP {before} -> {after}",
       "SecondaryEffectAlreadyActive": "Already active",
       "SecondaryEffectTracked": "tracked as extra condition",
+      "SecondaryEffectNoHealConfigured": "No healing value configured.",
+      "SecondaryEffectNoDamageToDrain": "No damage was dealt, so there is nothing to drain.",
+      "SecondaryEffectTargetAlreadyFullHp": "Target is already at full HP.",
+      "SecondaryEffectHealingLimitReached": "Healing limit reached for this round ({limit} HP).",
+      "SecondaryEffectNoDamageConfigured": "No damage value configured.",
+      "SecondaryEffectNoStatConfigured": "No stat change value configured.",
+      "SecondaryEffectInvalidStat": "No valid stat selected.",
       "SecondaryEffectNoStatChange": "No stat change",
+      "SecondaryEffectNoWillConfigured": "No Will change value configured.",
+      "SecondaryEffectTargetAlreadyFullWill": "Target already has full Will.",
+      "SecondaryEffectTargetAlreadyEmptyWill": "Target already has no Will left.",
+      "SecondaryEffectNoWillChange": "No Will change applied.",
+      "SecondaryEffectNoConditionConfigured": "No condition selected.",
+      "SecondaryEffectNoWeatherConfigured": "No weather selected.",
       "ConditionCleared": "{condition} removed.",
       "ConditionResistRoll": "{actor} rolls Insight to resist {condition} (required: {required}).",
       "SleepResistanceRoll": "{actor} builds Sleep resistance (+{gained}, total {total}/5).",
@@ -715,6 +741,18 @@
         "Progress": "{actor} gains {gained} Burn recovery successes for {stage} ({total}/{required}).",
         "Cleared": "{actor} cleared {condition}."
       },
+      "ParalysisTurnRoll": "{actor} rolls 2d6 to act through Paralysis.",
+      "ParalysisTurnPassed": "{actor} fights through Paralysis and can act this turn.",
+      "ParalysisTurnFailed": "{actor} is fully locked by Paralysis and loses actions this turn.",
+      "ConfusionSuppressedRound": "{actor} keeps it together: Confusion is ignored for this round.",
+      "InfatuationSuppressedRound": "{actor} breaks through Infatuation for this round.",
+      "FrozenShellDamageRoll": "{actor} uses {move} against the ice shell.",
+      "FrozenShellBroken": "{actor} shatters the ice shell with {move}.",
+      "FrozenShellDamaged": "{actor} damages the ice shell with {move} for {damage}. Ice HP left: {hp}.",
+      "FrozenShellHeld": "{actor}'s {move} does not break the ice shell. Ice HP left: {hp}.",
+      "DisabledMoveNoLastMove": "No valid last used move is available to disable.",
+      "DisabledMoveSceneDuration": "Until scene end",
+      "DisabledMoveLabel": "Disabled: {move}",
       "PokemonRested": "{actor} rested and recovered HP and Will.",
       "PassiveTriggerNotMet": "Passive trigger requirements are not met.",
       "HoldingBack": {
@@ -791,9 +829,11 @@
       "ActorFainted": "Cannot act while fainted.",
       "ActorSleeping": "Cannot act while asleep.",
       "ActorFrozen": "Cannot act while frozen.",
+      "ActorParalyzedTurn": "Paralysis prevents actions this turn.",
       "ActorFlinched": "Flinched and lost the action.",
       "ActorBusyWithItemTreatment": "Cannot act this round while being treated with an item.",
       "ActorMoveDisabled": "This actor is disabled from using moves.",
+      "ActorMoveDisabledSpecific": "{move} is disabled and cannot be used.",
       "TrainerItemNeedsPokemonTarget": "Select one Pokemon target first.",
       "TrainerNoBattleItems": "No usable battle items found.",
       "TrainerItemCheckFailed": "Item application check failed.",

@@ -378,7 +378,7 @@
                   name="system.secondaryEffects.{{effect.index}}.chance"
                   value="{{effect.chance}}"
                   min="0"
-                  max="100"
+                  max="20"
                   data-dtype="Number"
                 />
               </label>
@@ -506,6 +506,12 @@
                 <span>{{localize "POKROLE.Move.Secondary.HealMode.Label"}}</span>
                 <select name="system.secondaryEffects.{{effect.index}}.healMode">
                   {{safeSelectOptions @root.secondaryHealModeOptions selected=effect.healMode localize=true}}
+                </select>
+              </label>
+              <label data-effect-visible="heal-category" class="{{#unless effect.showHealingCategoryField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.HealingCategory.Label"}}</span>
+                <select name="system.secondaryEffects.{{effect.index}}.healingCategory">
+                  {{safeSelectOptions @root.secondaryHealingCategoryOptions selected=effect.healingCategory localize=true}}
                 </select>
               </label>
               <label data-effect-visible="amount" class="{{#unless effect.showAmountField}}is-hidden{{/unless}}">

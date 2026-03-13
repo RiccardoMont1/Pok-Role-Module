@@ -1,6 +1,7 @@
 import {
   COMBAT_FLAG_KEYS,
   getSystemAssetPath,
+  HEALING_CATEGORY_KEYS,
   MOVE_CATEGORY_LABEL_BY_KEY,
   MOVE_SECONDARY_CONDITION_KEYS,
   MOVE_SECONDARY_DURATION_MODE_KEYS,
@@ -26,6 +27,13 @@ function toNumber(value, fallback = 0) {
 
 function clamp(value, minimum, maximum) {
   return Math.min(Math.max(value, minimum), maximum);
+}
+
+function legacyChancePercentToDiceCount(percent, maxDice = 20) {
+  const normalizedPercent = clamp(Math.floor(toNumber(percent, 0)), 1, 99);
+  const probability = normalizedPercent / 100;
+  const estimatedDice = Math.round(Math.log(1 - probability) / Math.log(5 / 6));
+  return clamp(Number.isFinite(estimatedDice) ? estimatedDice : 1, 1, maxDice);
 }
 
 function successPoolFormula(dicePool) {
@@ -127,7 +135,7 @@ const CONDITION_ICON_BY_KEY = Object.freeze({
   flinch: "icons/svg/falling.svg",
   disabled: "icons/svg/cancel.svg",
   infatuated: "icons/svg/heal.svg",
-  "badly-poisoned": "icons/svg/skull.svg"
+  "badly-poisoned": getSystemAssetPath("assets/ailments/poisoned.svg")
 });
 const ACTIVE_EFFECT_STACK_MODE_KEYS = Object.freeze([
   "name-origin",
@@ -152,8 +160,19 @@ const TREATMENT_BLOCK_FLAG_KEY = "combat.treatmentBlockedRound";
 const SHIELD_STREAK_FLAG_KEY = "combat.shieldStreak";
 const SLEEP_RESIST_TRACK_FLAG_KEY = "combat.sleepResistTrack";
 const BURN_TRACK_FLAG_KEY = "combat.burnTrack";
+const PARALYSIS_TURN_CHECK_FLAG_KEY = "combat.paralysisTurnCheck";
+const CONFUSION_BYPASS_FLAG_KEY = "combat.confusionBypassRound";
+const INFATUATION_BYPASS_FLAG_KEY = "combat.infatuationBypassRound";
+const FROZEN_SHELL_FLAG_KEY = "combat.frozenShell";
+const LAST_USED_MOVE_FLAG_KEY = "combat.lastUsedMove";
 const SPECIAL_WEATHER_KEYS = Object.freeze(["harsh-sunlight", "typhoon", "strong-winds"]);
 const BASIC_WEATHER_KEYS = Object.freeze(["sunny", "rain", "sandstorm", "hail"]);
+const FROZEN_SHELL_DEFAULTS = Object.freeze({
+  hp: 5,
+  defense: 2,
+  specialDefense: 2
+});
+const SECONDARY_EFFECT_CHANCE_DICE_MAX = 20;
 
 export class PokRoleActor extends Actor {
   getRollData() {
@@ -419,6 +438,20 @@ export class PokRoleActor extends Actor {
     return `${combat.id}:${Math.max(currentRound + roundOffset, 0)}`;
   }
 
+  _getCurrentTurnKey() {
+    const combat = game.combat;
+    if (!combat?.id || !Number.isInteger(combat.turn)) return null;
+    const currentRound = Math.max(Math.floor(toNumber(combat.round, 0)), 0);
+    return `${combat.id}:${currentRound}:${combat.turn}`;
+  }
+
+  _isCurrentCombatTurn() {
+    const combat = game.combat;
+    if (!combat || !Number.isInteger(combat.turn)) return false;
+    const currentActor = combat.turns?.[combat.turn]?.actor ?? null;
+    return Boolean(currentActor && currentActor.id === this.id);
+  }
+
   _getConditionResistFlagKey(conditionKey) {
     const normalizedCondition = this._normalizeConditionKey(conditionKey);
     return `combat.conditionResist.${normalizedCondition}`;
@@ -464,6 +497,149 @@ export class PokRoleActor extends Actor {
     });
 
     return { resisted, rolled: true, netSuccesses };
+  }
+
+  _getParalysisTurnCheckState() {
+    const state = this.getFlag(POKROLE.ID, PARALYSIS_TURN_CHECK_FLAG_KEY) ?? {};
+    return {
+      turnKey: `${state?.turnKey ?? ""}`.trim(),
+      rawSuccesses: Math.max(Math.floor(toNumber(state?.rawSuccesses, 0)), 0),
+      canAct: Boolean(state?.canAct)
+    };
+  }
+
+  async _clearParalysisTurnCheck() {
+    await this.unsetFlag(POKROLE.ID, PARALYSIS_TURN_CHECK_FLAG_KEY);
+  }
+
+  async _resolveParalysisTurnCheckThisTurn() {
+    if (!game.combat || !this._isConditionActive("paralyzed") || !this._isCurrentCombatTurn()) {
+      return { canAct: true, rolled: false, rawSuccesses: 1 };
+    }
+
+    const currentTurnKey = this._getCurrentTurnKey();
+    const currentState = this._getParalysisTurnCheckState();
+    if (currentTurnKey && currentState.turnKey === currentTurnKey) {
+      return {
+        canAct: currentState.canAct,
+        rolled: false,
+        rawSuccesses: currentState.rawSuccesses
+      };
+    }
+
+    const roll = await new Roll(successPoolFormula(2)).evaluate({ async: true });
+    const rawSuccesses = Math.max(Math.floor(toNumber(roll.total, 0)), 0);
+    const canAct = rawSuccesses > 0;
+
+    await this.setFlag(POKROLE.ID, PARALYSIS_TURN_CHECK_FLAG_KEY, {
+      turnKey: `${currentTurnKey ?? ""}`.trim(),
+      rawSuccesses,
+      canAct
+    });
+
+    await roll.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      flavor: game.i18n.format("POKROLE.Chat.ParalysisTurnRoll", {
+        actor: this.name
+      })
+    });
+
+    ui.notifications[canAct ? "info" : "warn"](
+      game.i18n.format(
+        canAct ? "POKROLE.Chat.ParalysisTurnPassed" : "POKROLE.Chat.ParalysisTurnFailed",
+        { actor: this.name }
+      )
+    );
+
+    return { canAct, rolled: true, rawSuccesses };
+  }
+
+  _getConfusionBypassRoundKey() {
+    return `${this.getFlag(POKROLE.ID, CONFUSION_BYPASS_FLAG_KEY) ?? ""}`.trim();
+  }
+
+  _isConfusionSuppressedThisRound() {
+    const currentRoundKey = this._getCurrentRoundKey(0);
+    return Boolean(currentRoundKey && this._getConfusionBypassRoundKey() === currentRoundKey);
+  }
+
+  async _clearConfusionSuppression() {
+    await this.unsetFlag(POKROLE.ID, CONFUSION_BYPASS_FLAG_KEY);
+  }
+
+  async _resolveConfusionSuppressionThisRound() {
+    if (!game.combat || !this._isConditionActive("confused") || !this._isCurrentCombatTurn()) {
+      return { suppressed: false, rolled: false, netSuccesses: 0 };
+    }
+
+    const currentRoundKey = this._getCurrentRoundKey(0);
+    if (currentRoundKey && this._getConfusionBypassRoundKey() === currentRoundKey) {
+      return { suppressed: true, rolled: false, netSuccesses: 0 };
+    }
+
+    const resistResult = await this._attemptConditionResistThisRound("confused", 2);
+    if (resistResult?.resisted && currentRoundKey) {
+      await this.setFlag(POKROLE.ID, CONFUSION_BYPASS_FLAG_KEY, currentRoundKey);
+      ui.notifications.info(
+        game.i18n.format("POKROLE.Chat.ConfusionSuppressedRound", {
+          actor: this.name
+        })
+      );
+    }
+
+    return {
+      suppressed: Boolean(resistResult?.resisted),
+      rolled: Boolean(resistResult?.rolled),
+      netSuccesses: Math.max(Math.floor(toNumber(resistResult?.netSuccesses, 0)), 0)
+    };
+  }
+
+  _hasConfusionPenaltyThisRound() {
+    return this._isConditionActive("confused") && !this._isConfusionSuppressedThisRound();
+  }
+
+  _getInfatuationBypassRoundKey() {
+    return `${this.getFlag(POKROLE.ID, INFATUATION_BYPASS_FLAG_KEY) ?? ""}`.trim();
+  }
+
+  _isInfatuationSuppressedThisRound() {
+    const currentRoundKey = this._getCurrentRoundKey(0);
+    return Boolean(currentRoundKey && this._getInfatuationBypassRoundKey() === currentRoundKey);
+  }
+
+  async _clearInfatuationSuppression() {
+    await this.unsetFlag(POKROLE.ID, INFATUATION_BYPASS_FLAG_KEY);
+  }
+
+  async _resolveInfatuationSuppressionThisRound() {
+    if (!game.combat || !this._isConditionActive("infatuated") || !this._isCurrentCombatTurn()) {
+      return { suppressed: false, rolled: false, netSuccesses: 0 };
+    }
+
+    const currentRoundKey = this._getCurrentRoundKey(0);
+    if (currentRoundKey && this._getInfatuationBypassRoundKey() === currentRoundKey) {
+      return { suppressed: true, rolled: false, netSuccesses: 0 };
+    }
+
+    const resistResult = await this._attemptConditionResistThisRound("infatuated", 2);
+    if (resistResult?.resisted && currentRoundKey) {
+      await this.setFlag(POKROLE.ID, INFATUATION_BYPASS_FLAG_KEY, currentRoundKey);
+      ui.notifications.info(
+        game.i18n.format("POKROLE.Chat.InfatuationSuppressedRound", {
+          actor: this.name
+        })
+      );
+    }
+
+    return {
+      suppressed: Boolean(resistResult?.resisted),
+      rolled: Boolean(resistResult?.rolled),
+      netSuccesses: Math.max(Math.floor(toNumber(resistResult?.netSuccesses, 0)), 0)
+    };
+  }
+
+  _hasInfatuationPenaltyThisRound() {
+    return this._isConditionActive("infatuated") && !this._isInfatuationSuppressedThisRound();
   }
 
   async _attemptSleepWakeResistance() {
@@ -520,6 +696,43 @@ export class PokRoleActor extends Actor {
         roundKey: this._getCurrentRoundKey(0)
       });
     }
+  }
+
+  _getFrozenShellState() {
+    const state = this.getFlag(POKROLE.ID, FROZEN_SHELL_FLAG_KEY) ?? {};
+    return {
+      hp: clamp(
+        Math.floor(toNumber(state?.hp, FROZEN_SHELL_DEFAULTS.hp)),
+        0,
+        FROZEN_SHELL_DEFAULTS.hp
+      ),
+      defense: FROZEN_SHELL_DEFAULTS.defense,
+      specialDefense: FROZEN_SHELL_DEFAULTS.specialDefense
+    };
+  }
+
+  async _setFrozenShellState(state = {}) {
+    const normalizedState = {
+      hp: clamp(
+        Math.floor(toNumber(state?.hp, FROZEN_SHELL_DEFAULTS.hp)),
+        0,
+        FROZEN_SHELL_DEFAULTS.hp
+      ),
+      defense: FROZEN_SHELL_DEFAULTS.defense,
+      specialDefense: FROZEN_SHELL_DEFAULTS.specialDefense
+    };
+    await this.setFlag(POKROLE.ID, FROZEN_SHELL_FLAG_KEY, normalizedState);
+    return normalizedState;
+  }
+
+  async _initializeFrozenShell(force = false) {
+    const currentState = this._getFrozenShellState();
+    if (!force && currentState.hp > 0) return currentState;
+    return this._setFrozenShellState(FROZEN_SHELL_DEFAULTS);
+  }
+
+  async _clearFrozenShellState() {
+    await this.unsetFlag(POKROLE.ID, FROZEN_SHELL_FLAG_KEY);
   }
 
   _normalizeBurnStage(stage, fallback = 1) {
@@ -814,6 +1027,7 @@ export class PokRoleActor extends Actor {
     if (!game.combat) return { processed: false, results: [] };
 
     const results = [];
+    let paralysisBlocksTurn = false;
     const clearConditionWithNotice = async (conditionKey) => {
       await this.toggleQuickCondition(conditionKey, { active: false });
       ui.notifications.info(
@@ -832,31 +1046,43 @@ export class PokRoleActor extends Actor {
     }
 
     if (this._isConditionActive("frozen")) {
-      const frozenResist = await this._attemptConditionResistThisRound("frozen", 2);
-      if (frozenResist?.resisted) {
-        await clearConditionWithNotice("frozen");
-      }
-      results.push({ condition: "frozen", resolved: Boolean(frozenResist?.resisted) });
+      const frozenShell = await this._initializeFrozenShell();
+      results.push({
+        condition: "frozen",
+        resolved: false,
+        shellHp: frozenShell.hp
+      });
+    }
+
+    if (this._isConditionActive("paralyzed")) {
+      const paralysisCheck = await this._resolveParalysisTurnCheckThisTurn();
+      paralysisBlocksTurn = !Boolean(paralysisCheck?.canAct);
+      results.push({
+        condition: "paralyzed",
+        resolved: Boolean(paralysisCheck?.canAct),
+        blocked: paralysisBlocksTurn
+      });
     }
 
     if (this._isConditionActive("infatuated")) {
-      const infatuatedResist = await this._attemptConditionResistThisRound("infatuated", 2);
-      if (infatuatedResist?.resisted) {
-        await clearConditionWithNotice("infatuated");
-      }
-      results.push({ condition: "infatuated", resolved: Boolean(infatuatedResist?.resisted) });
+      const infatuationResult = await this._resolveInfatuationSuppressionThisRound();
+      results.push({
+        condition: "infatuated",
+        resolved: Boolean(infatuationResult?.suppressed)
+      });
     }
 
     if (this._isConditionActive("confused")) {
-      const confusedResist = await this._attemptConditionResistThisRound("confused", 2);
-      if (confusedResist?.resisted) {
-        await clearConditionWithNotice("confused");
-      }
-      results.push({ condition: "confused", resolved: Boolean(confusedResist?.resisted) });
+      const confusionResult = await this._resolveConfusionSuppressionThisRound();
+      results.push({
+        condition: "confused",
+        resolved: Boolean(confusionResult?.suppressed)
+      });
     }
 
     if (
       this._isConditionActive("burn") &&
+      !paralysisBlocksTurn &&
       !this._isConditionActive("dead") &&
       !this._isConditionActive("fainted") &&
       !this._isConditionActive("sleep") &&
@@ -875,8 +1101,25 @@ export class PokRoleActor extends Actor {
     return { processed: true, results };
   }
 
-  async _assertCanAct(actionType = "generic") {
-    if (!game.combat) return { allowed: true, reason: "" };
+  async _assertCanAct(actionType = "generic", options = {}) {
+    if (!game.combat) {
+      if (actionType === "move") {
+        const moveId = `${options?.moveId ?? ""}`.trim();
+        const disabledMoveLock = this._getDisabledMoveRestriction();
+        if (moveId && disabledMoveLock?.moveId === moveId) {
+          return {
+            allowed: false,
+            reason: game.i18n.format("POKROLE.Errors.ActorMoveDisabledSpecific", {
+              move:
+                disabledMoveLock.moveName ||
+                options?.moveName ||
+                game.i18n.localize("POKROLE.Common.Unknown")
+            })
+          };
+        }
+      }
+      return { allowed: true, reason: "" };
+    }
 
     if (this._isConditionActive("dead")) {
       return { allowed: false, reason: game.i18n.localize("POKROLE.Errors.ActorDead") };
@@ -898,41 +1141,19 @@ export class PokRoleActor extends Actor {
     }
 
     if (this._isConditionActive("frozen")) {
-      const frozenResist = await this._attemptConditionResistThisRound("frozen", 2);
-      if (frozenResist?.resisted) {
-        await this.toggleQuickCondition("frozen", { active: false });
-        ui.notifications.info(
-          game.i18n.format("POKROLE.Chat.ConditionCleared", {
-            condition: this._localizeConditionName("frozen")
-          })
-        );
+      if (actionType === "move") {
+        await this._initializeFrozenShell();
       } else {
         return { allowed: false, reason: game.i18n.localize("POKROLE.Errors.ActorFrozen") };
       }
     }
 
     if (this._isConditionActive("infatuated")) {
-      const infatuatedResist = await this._attemptConditionResistThisRound("infatuated", 2);
-      if (infatuatedResist?.resisted) {
-        await this.toggleQuickCondition("infatuated", { active: false });
-        ui.notifications.info(
-          game.i18n.format("POKROLE.Chat.ConditionCleared", {
-            condition: this._localizeConditionName("infatuated")
-          })
-        );
-      }
+      await this._resolveInfatuationSuppressionThisRound();
     }
 
     if (this._isConditionActive("confused")) {
-      const confusedResist = await this._attemptConditionResistThisRound("confused", 2);
-      if (confusedResist?.resisted) {
-        await this.toggleQuickCondition("confused", { active: false });
-        ui.notifications.info(
-          game.i18n.format("POKROLE.Chat.ConditionCleared", {
-            condition: this._localizeConditionName("confused")
-          })
-        );
-      }
+      await this._resolveConfusionSuppressionThisRound();
     }
 
     if (this._isConditionActive("sleep")) {
@@ -953,8 +1174,30 @@ export class PokRoleActor extends Actor {
       };
     }
 
-    if (actionType === "move" && this._isConditionActive("disabled")) {
-      return { allowed: false, reason: game.i18n.localize("POKROLE.Errors.ActorMoveDisabled") };
+    if (actionType !== "initiative" && this._isConditionActive("paralyzed") && this._isCurrentCombatTurn()) {
+      const paralysisCheck = await this._resolveParalysisTurnCheckThisTurn();
+      if (!paralysisCheck?.canAct) {
+        return {
+          allowed: false,
+          reason: game.i18n.localize("POKROLE.Errors.ActorParalyzedTurn")
+        };
+      }
+    }
+
+    if (actionType === "move") {
+      const moveId = `${options?.moveId ?? ""}`.trim();
+      const disabledMoveLock = this._getDisabledMoveRestriction();
+      if (moveId && disabledMoveLock?.moveId === moveId) {
+        return {
+          allowed: false,
+          reason: game.i18n.format("POKROLE.Errors.ActorMoveDisabledSpecific", {
+            move:
+              disabledMoveLock.moveName ||
+              options?.moveName ||
+              game.i18n.localize("POKROLE.Common.Unknown")
+          })
+        };
+      }
     }
 
     return { allowed: true, reason: "" };
@@ -994,6 +1237,31 @@ export class PokRoleActor extends Actor {
         0
       )
     });
+  }
+
+  _normalizeHealingCategory(value) {
+    const normalized = `${value ?? "standard"}`.trim().toLowerCase();
+    return HEALING_CATEGORY_KEYS.includes(normalized) ? normalized : "standard";
+  }
+
+  _getHealingRoundLimit(healingCategory = "standard") {
+    const normalizedCategory = this._normalizeHealingCategory(healingCategory);
+    if (normalizedCategory === "unlimited") return Number.POSITIVE_INFINITY;
+    if (normalizedCategory === "complete") return 5;
+    return 3;
+  }
+
+  _resolveGearHealingCategory(gearItem) {
+    const sourceValue = gearItem?._source?.system?.heal?.battleHealingCategory;
+    if (`${sourceValue ?? ""}`.trim()) {
+      return this._normalizeHealingCategory(sourceValue);
+    }
+
+    const itemName = `${gearItem?.name ?? ""}`.trim().toLowerCase();
+    if (itemName === "max potion" || itemName === "full restore") {
+      return "unlimited";
+    }
+    return "standard";
   }
 
   getPainPenalty() {
@@ -1202,6 +1470,50 @@ export class PokRoleActor extends Actor {
     });
   }
 
+  _getLastUsedMoveRecord() {
+    const record = this.getFlag(POKROLE.ID, LAST_USED_MOVE_FLAG_KEY) ?? {};
+    return {
+      moveId: `${record?.moveId ?? ""}`.trim(),
+      moveName: `${record?.moveName ?? ""}`.trim(),
+      moveUuid: `${record?.moveUuid ?? ""}`.trim(),
+      sceneId: `${record?.sceneId ?? ""}`.trim(),
+      roundKey: `${record?.roundKey ?? ""}`.trim(),
+      usedAt: Math.max(toNumber(record?.usedAt, 0), 0)
+    };
+  }
+
+  async _recordLastUsedMove(move) {
+    if (!move?.id) return;
+    await this.setFlag(POKROLE.ID, LAST_USED_MOVE_FLAG_KEY, {
+      moveId: move.id,
+      moveName: move.name ?? "",
+      moveUuid: move.uuid ?? "",
+      sceneId: canvas?.scene?.id ?? "",
+      roundKey: this._getCurrentRoundKey(0) ?? "",
+      usedAt: Date.now()
+    });
+  }
+
+  _getDisabledMoveRestriction(targetActor = this) {
+    const actor = targetActor ?? this;
+    const effectDocument = (actor?.effects?.contents ?? []).find((activeEffect) => {
+      if (!activeEffect || activeEffect.disabled) return false;
+      const automationFlags = activeEffect.getFlag?.(POKROLE.ID, "automation") ?? {};
+      const effectType = `${automationFlags?.effectType ?? ""}`.trim().toLowerCase();
+      const conditionKey = this._normalizeConditionKey(automationFlags?.conditionKey);
+      return effectType === "move-disabled" || conditionKey === "disabled";
+    });
+    if (!effectDocument) return null;
+
+    const automationFlags = effectDocument.getFlag?.(POKROLE.ID, "automation") ?? {};
+    return {
+      effectDocument,
+      moveId: `${automationFlags?.disabledMoveId ?? ""}`.trim(),
+      moveName:
+        `${automationFlags?.disabledMoveName ?? ""}`.trim() || `${effectDocument?.name ?? ""}`.trim()
+    };
+  }
+
   async rollInitiative(options = {}) {
     await this.synchronizeConditionalActiveEffects();
     const actionCheck = await this._assertCanAct("initiative");
@@ -1213,7 +1525,10 @@ export class PokRoleActor extends Actor {
       dexterity: this.getTraitValue("dexterity"),
       alert: this.getSkillValue("alert")
     }).evaluate({ async: true });
-    const rolledInitiative = Math.max(toNumber(roll.total, 0), 0);
+    const baseInitiative = Math.max(toNumber(roll.total, 0), 0);
+    const rolledInitiative = this._isConditionActive("paralyzed")
+      ? Math.floor(baseInitiative / 2)
+      : baseInitiative;
     await this.update({ "system.combat.initiative": rolledInitiative });
 
     if (!options.silent) {
@@ -1282,6 +1597,15 @@ export class PokRoleActor extends Actor {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownMove"));
       return null;
     }
+    const disabledMoveLock = this._getDisabledMoveRestriction();
+    if (disabledMoveLock?.moveId && disabledMoveLock.moveId === move.id) {
+      ui.notifications.warn(
+        game.i18n.format("POKROLE.Errors.ActorMoveDisabledSpecific", {
+          move: disabledMoveLock.moveName || move.name
+        })
+      );
+      return null;
+    }
     if (!this._moveUsesPrimaryDamage(move)) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.ClashNeedsDamagingMove"));
       return null;
@@ -1310,6 +1634,7 @@ export class PokRoleActor extends Actor {
     if (options.advanceAction !== false) {
       await this._advanceActionCounter(normalizedAction, roundKey);
     }
+    await this._recordLastUsedMove(move);
 
     return {
       ...result,
@@ -1320,23 +1645,35 @@ export class PokRoleActor extends Actor {
   async rollMove(moveId, options = {}) {
     await this.synchronizeConditionalActiveEffects();
     if (this.type !== "pokemon") return null;
-    const actionCheck = await this._assertCanAct("move");
-    if (!actionCheck.allowed) {
-      ui.notifications.warn(actionCheck.reason);
-      return null;
-    }
-
     const move = this.items.get(moveId);
     if (!move || move.type !== "move") {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownMove"));
       return null;
     }
+    const actionCheck = await this._assertCanAct("move", {
+      moveId: move.id,
+      moveName: move.name
+    });
+    if (!actionCheck.allowed) {
+      ui.notifications.warn(actionCheck.reason);
+      return null;
+    }
     const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
-    let holdingBackMode = await this._resolveHoldingBackChoice(move, options);
-    if (holdingBackMode === null) return null;
-    const infatuated = this._isConditionActive("infatuated");
-    if (infatuated && holdingBackMode === "none") {
+    const frozenBreakoutActive = this._isConditionActive("frozen");
+    const moveTargetKey = this._normalizeMoveTargetKey(move.system?.target);
+    const infatuated =
+      !frozenBreakoutActive &&
+      this._hasInfatuationPenaltyThisRound() &&
+      this._moveUsesPrimaryDamage(move) &&
+      this._moveShouldAutoHoldBackFromInfatuation(moveTargetKey);
+    let holdingBackMode = "none";
+    if (frozenBreakoutActive) {
+      holdingBackMode = "none";
+    } else if (infatuated) {
       holdingBackMode = "half";
+    } else {
+      holdingBackMode = await this._resolveHoldingBackChoice(move, options);
+      if (holdingBackMode === null) return null;
     }
     const isHoldingBackHalf = holdingBackMode === "half";
     const isHoldingBackNonLethal = holdingBackMode === "nonlethal" && Boolean(move.system.lethal);
@@ -1389,7 +1726,6 @@ export class PokRoleActor extends Actor {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownMoveTraits"));
       return null;
     }
-    const moveTargetKey = this._normalizeMoveTargetKey(move.system?.target);
     const selectedTargetActors = this._getSelectedTargetActors();
     const targetActors = this._resolveActorsForMoveTarget(moveTargetKey, selectedTargetActors);
     const targetValidation = this._validateMoveTargetSelection(
@@ -1411,7 +1747,18 @@ export class PokRoleActor extends Actor {
       await this.update({ "system.resources.will.value": willAfter });
     }
 
-    const confusionPenalty = this._isConditionActive("confused") ? 1 : 0;
+    if (this._isConditionActive("frozen")) {
+      return this._resolveFrozenBreakoutMove(move, {
+        roundKey,
+        actionNumber,
+        willCost,
+        willBefore,
+        willAfter,
+        advanceAction: options.advanceAction !== false
+      });
+    }
+
+    const confusionPenalty = this._hasConfusionPenaltyThisRound() ? 1 : 0;
     const reducedAccuracy = Math.max(toNumber(move.system.reducedAccuracy, 0), 0) + shieldPenalty;
     const accuracyRoll = await new Roll(successPoolFormula(accuracyDicePool)).evaluate({
       async: true
@@ -1634,6 +1981,8 @@ export class PokRoleActor extends Actor {
       speaker: ChatMessage.getSpeaker({ actor: this }),
       content: summaryHtml
     });
+
+    await this._recordLastUsedMove(move);
 
     const result = {
       accuracyRoll,
@@ -2078,12 +2427,13 @@ export class PokRoleActor extends Actor {
         : this._normalizeConditionKey(rawEffect.condition);
     const weather = this._normalizeSecondaryWeatherKey(rawEffect.weather);
     const stat = this._normalizeSecondaryStatKey(rawEffect.stat);
-    const chance = clamp(Math.floor(toNumber(rawEffect.chance, 100)), 0, 100);
+    const chance = this._normalizeSecondaryChanceDice(rawEffect.chance);
     const healMode = this._normalizeSecondaryHealMode(
       rawEffect.healMode,
       normalizedEffectType,
       rawEffect.amount
     );
+    const healingCategory = this._normalizeHealingCategory(rawEffect.healingCategory);
     const rawAmount = clamp(Math.floor(toNumber(rawEffect.amount, 0)), -999, 999);
     const amount =
       normalizedEffectType === "heal" && healMode !== "fixed"
@@ -2105,6 +2455,7 @@ export class PokRoleActor extends Actor {
       stat,
       amount,
       healMode,
+      healingCategory,
       notes: `${rawEffect.notes ?? ""}`.trim(),
       linkedEffectId: `${rawEffect.linkedEffectId ?? ""}`.trim()
     };
@@ -2134,6 +2485,18 @@ export class PokRoleActor extends Actor {
       return normalized;
     }
     return "manual";
+  }
+
+  _normalizeSecondaryChanceDice(chanceValue, fallback = 0) {
+    const numericChance = Number(chanceValue);
+    if (!Number.isFinite(numericChance)) return fallback;
+    const normalizedChance = Math.floor(numericChance);
+    if (normalizedChance <= 0) return 0;
+    if (normalizedChance >= 100) return 0;
+    if (normalizedChance <= SECONDARY_EFFECT_CHANCE_DICE_MAX) {
+      return normalizedChance;
+    }
+    return legacyChancePercentToDiceCount(normalizedChance, SECONDARY_EFFECT_CHANCE_DICE_MAX);
   }
 
   _normalizeSecondaryDurationRounds(durationRounds) {
@@ -2217,6 +2580,12 @@ export class PokRoleActor extends Actor {
       (targetActor.hasType?.("poison") || targetActor.hasType?.("steel"))
     ) {
       return true;
+    }
+    if (normalizedCondition === "infatuated" && targetActor.type === "pokemon") {
+      const gender = `${targetActor.system?.gender ?? "unknown"}`.trim().toLowerCase();
+      if (["genderless", "unknown", "none", "null", ""].includes(gender)) {
+        return true;
+      }
     }
     return false;
   }
@@ -2452,6 +2821,7 @@ export class PokRoleActor extends Actor {
 
   async _applyMoveSecondaryEffects({
     move,
+    sourceItem = null,
     moveTargetKey,
     secondaryEffects,
     targetActors,
@@ -2464,6 +2834,7 @@ export class PokRoleActor extends Actor {
       return [];
     }
 
+    const effectSourceItem = sourceItem ?? move ?? null;
     const results = [];
     const totalDamageDealt = (Array.isArray(damageTargetResults) ? damageTargetResults : []).reduce(
       (sum, result) => sum + Math.max(toNumber(result?.finalDamage, 0), 0),
@@ -2475,12 +2846,17 @@ export class PokRoleActor extends Actor {
         continue;
       }
 
-      let chanceRollTotal = null;
+      const chanceDice = this._normalizeSecondaryChanceDice(effect.chance);
+      let chanceRollResults = [];
       let chanceSucceeded = true;
-      if (effect.chance < 100) {
-        const chanceRoll = await new Roll("1d100").evaluate({ async: true });
-        chanceRollTotal = toNumber(chanceRoll.total, 101);
-        chanceSucceeded = chanceRollTotal <= effect.chance;
+      if (chanceDice > 0) {
+        const chanceRoll = await new Roll(`${chanceDice}d6`).evaluate({ async: true });
+        chanceRollResults = chanceRoll.dice.flatMap((die) =>
+          Array.isArray(die?.results)
+            ? die.results.map((result) => Math.floor(toNumber(result?.result, 0)))
+            : []
+        );
+        chanceSucceeded = chanceRollResults.some((result) => result === 6);
       }
 
       if (!chanceSucceeded) {
@@ -2489,8 +2865,8 @@ export class PokRoleActor extends Actor {
           targetName: game.i18n.localize("POKROLE.Common.None"),
           applied: false,
           detail: game.i18n.format("POKROLE.Chat.SecondaryEffectChanceFailed", {
-            roll: chanceRollTotal,
-            chance: effect.chance
+            rolls: chanceRollResults.join(", "),
+            dice: chanceDice
           })
         });
         continue;
@@ -2500,14 +2876,20 @@ export class PokRoleActor extends Actor {
         const applyResult = await this._applySecondaryEffectToActor(
           { ...effect, effectType: "weather" },
           this,
-          move,
+          effectSourceItem,
           { finalDamage, totalDamageDealt, damageTargetResults }
         );
         results.push({
           label: this._formatSecondaryEffectLabel(effect),
           targetName: this._localizeMoveTarget("battlefield"),
           applied: applyResult.applied,
-          detail: applyResult.detail
+          detail: applyResult.applied
+            ? applyResult.detail
+            : this._resolveSecondaryEffectFailureDetail(effect, this, applyResult, {
+                finalDamage,
+                totalDamageDealt,
+                damageTargetResults
+              })
         });
         continue;
       }
@@ -2545,7 +2927,7 @@ export class PokRoleActor extends Actor {
             continue;
           }
         }
-        const applyResult = await this._applySecondaryEffectToActor(effect, targetActor, move, {
+        const applyResult = await this._applySecondaryEffectToActor(effect, targetActor, effectSourceItem, {
           finalDamage,
           totalDamageDealt,
           damageTargetResults
@@ -2554,7 +2936,13 @@ export class PokRoleActor extends Actor {
           label: this._formatSecondaryEffectLabel(effect),
           targetName: targetActor.name,
           applied: applyResult.applied,
-          detail: applyResult.detail
+          detail: applyResult.applied
+            ? applyResult.detail
+            : this._resolveSecondaryEffectFailureDetail(effect, targetActor, applyResult, {
+                finalDamage,
+                totalDamageDealt,
+                damageTargetResults
+              })
         });
       }
     }
@@ -2596,6 +2984,7 @@ export class PokRoleActor extends Actor {
 
       const effectResults = await this._applyMoveSecondaryEffects({
         move,
+        sourceItem: abilityItem,
         moveTargetKey,
         secondaryEffects: normalizedEffects,
         targetActors,
@@ -2787,6 +3176,92 @@ export class PokRoleActor extends Actor {
     return game.i18n.localize(labelByWeather[normalizedWeather] ?? "POKROLE.Common.None");
   }
 
+  _resolveSecondaryEffectFailureDetail(effect, targetActor = null, applyResult = {}, context = {}) {
+    const rawDetail = `${applyResult?.detail ?? ""}`.trim();
+    const noneLabel = game.i18n.localize("POKROLE.Common.None");
+    const unknownLabel = game.i18n.localize("POKROLE.Common.Unknown");
+    if (rawDetail && ![noneLabel, unknownLabel].includes(rawDetail)) return rawDetail;
+
+    const normalizedType = this._normalizeSecondaryEffectType(effect?.effectType);
+    switch (normalizedType) {
+      case "heal": {
+        const healMode = this._normalizeSecondaryHealMode(
+          effect?.healMode,
+          normalizedType,
+          effect?.amount
+        );
+        if (healMode === "damage-percent" && Math.max(toNumber(context?.totalDamageDealt, 0), 0) <= 0) {
+          return game.i18n.localize("POKROLE.Chat.SecondaryEffectNoDamageToDrain");
+        }
+        if (targetActor) {
+          const hpValue = Math.max(toNumber(targetActor.system?.resources?.hp?.value, 0), 0);
+          const hpMax = Math.max(toNumber(targetActor.system?.resources?.hp?.max, 1), 1);
+          if (hpValue >= hpMax) {
+            return game.i18n.localize("POKROLE.Chat.SecondaryEffectTargetAlreadyFullHp");
+          }
+          if (game.combat && targetActor instanceof PokRoleActor) {
+            const limit = this._getHealingRoundLimit(effect?.healingCategory);
+            if (Number.isFinite(limit)) {
+              const track = targetActor._getHealingTrack();
+              if (Math.max(toNumber(track?.healedThisRound, 0), 0) >= limit) {
+                return game.i18n.format("POKROLE.Chat.SecondaryEffectHealingLimitReached", { limit });
+              }
+            }
+          }
+        }
+        return game.i18n.localize("POKROLE.Chat.SecondaryEffectNoHealConfigured");
+      }
+      case "damage":
+        return game.i18n.localize("POKROLE.Chat.SecondaryEffectNoDamageConfigured");
+      case "stat": {
+        const statKey = this._normalizeSecondaryStatKey(effect?.stat);
+        if (statKey === "none" || rawDetail === unknownLabel) {
+          return game.i18n.localize("POKROLE.Chat.SecondaryEffectInvalidStat");
+        }
+        if (Math.floor(toNumber(effect?.amount, 0)) === 0 || rawDetail === noneLabel) {
+          return game.i18n.localize("POKROLE.Chat.SecondaryEffectNoStatConfigured");
+        }
+        return game.i18n.localize("POKROLE.Chat.SecondaryEffectNoStatChange");
+      }
+      case "will": {
+        const amount = Math.floor(toNumber(effect?.amount, 0));
+        if (amount === 0 || rawDetail === noneLabel) {
+          return game.i18n.localize("POKROLE.Chat.SecondaryEffectNoWillConfigured");
+        }
+        if (targetActor) {
+          const currentWill = Math.max(toNumber(targetActor.system?.resources?.will?.value, 0), 0);
+          const maxWill = Math.max(toNumber(targetActor.system?.resources?.will?.max, 1), 1);
+          if (amount > 0 && currentWill >= maxWill) {
+            return game.i18n.localize("POKROLE.Chat.SecondaryEffectTargetAlreadyFullWill");
+          }
+          if (amount < 0 && currentWill <= 0) {
+            return game.i18n.localize("POKROLE.Chat.SecondaryEffectTargetAlreadyEmptyWill");
+          }
+        }
+        return game.i18n.localize("POKROLE.Chat.SecondaryEffectNoWillChange");
+      }
+      case "condition":
+        if (this._normalizeConditionKey(effect?.condition) === "none") {
+          return game.i18n.localize("POKROLE.Chat.SecondaryEffectNoConditionConfigured");
+        }
+        return game.i18n.localize("POKROLE.Chat.SecondaryEffectFailed");
+      case "weather":
+        if (this._normalizeSecondaryWeatherKey(effect?.weather) === "none") {
+          return game.i18n.localize("POKROLE.Chat.SecondaryEffectNoWeatherConfigured");
+        }
+        if (!game.combat) {
+          return game.i18n.localize("POKROLE.Errors.CombatRequired");
+        }
+        return game.i18n.localize("POKROLE.Chat.SecondaryEffectFailed");
+      case "active-effect":
+        return game.i18n.localize("POKROLE.Errors.InvalidEffectConfiguration");
+      case "custom":
+        return `${effect?.notes ?? ""}`.trim() || game.i18n.localize("POKROLE.Chat.SecondaryEffectFailed");
+      default:
+        return game.i18n.localize("POKROLE.Chat.SecondaryEffectFailed");
+    }
+  }
+
   async _applySecondaryEffectToActor(effect, targetActor, sourceMove = null, context = {}) {
     const normalizedType = this._normalizeSecondaryEffectType(effect.effectType);
     switch (normalizedType) {
@@ -2835,7 +3310,9 @@ export class PokRoleActor extends Actor {
         if (healValue <= 0) {
           return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
         }
-        const hpChange = await this._safeApplyHeal(targetActor, healValue);
+        const hpChange = await this._safeApplyHeal(targetActor, healValue, {
+          healingCategory: effect.healingCategory
+        });
         if (!hpChange) {
           return { applied: false, detail: game.i18n.localize("POKROLE.Errors.HPUpdateFailed") };
         }
@@ -2894,6 +3371,179 @@ export class PokRoleActor extends Actor {
     return Math.max(numericAmount, 0);
   }
 
+  async _resolveFrozenBreakoutMove(move, options = {}) {
+    const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
+    const normalizedAction = clamp(toNumber(options.actionNumber, 1), 1, 5);
+    const frozenShellBefore = await this._initializeFrozenShell();
+    const shellDefense =
+      move.system.category === "special"
+        ? frozenShellBefore.specialDefense
+        : frozenShellBefore.defense;
+    const typeInteraction = this._evaluateTypeInteractionAgainstTypes(move.system.type || "normal", [
+      "ice"
+    ]);
+    const superEffective = !typeInteraction.immune && typeInteraction.weaknessBonus > 0;
+    const isDamagingMove = this._moveUsesPrimaryDamage(move);
+    const damageAttributeKey = this._resolveDamageAttributeKey(move);
+    const damageAttributeValue = Math.max(toNumber(this.getTraitValue(damageAttributeKey), 0), 0);
+    const movePower = Math.max(Math.floor(toNumber(move.system?.power, 0)), 0);
+    const stabDice = this.hasType(move.system.type) ? 1 : 0;
+    const damagePool = Math.max(movePower + damageAttributeValue + stabDice, 0);
+
+    let damageSuccesses = 0;
+    let shellDamage = 0;
+    let shellDestroyed = superEffective;
+
+    if (!shellDestroyed && isDamagingMove && damagePool > 0) {
+      const damageRoll = await new Roll(successPoolFormula(damagePool)).evaluate({ async: true });
+      damageSuccesses = Math.max(Math.floor(toNumber(damageRoll.total, 0)), 0);
+      shellDamage = Math.max(damageSuccesses - shellDefense, 0);
+      await damageRoll.toMessage({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        flavor: game.i18n.format("POKROLE.Chat.FrozenShellDamageRoll", {
+          actor: this.name,
+          move: move.name
+        })
+      });
+      shellDestroyed = shellDamage >= frozenShellBefore.hp;
+    }
+
+    const shellHpAfter = shellDestroyed
+      ? 0
+      : Math.max(frozenShellBefore.hp - Math.max(shellDamage, 0), 0);
+
+    if (shellDestroyed) {
+      await this.toggleQuickCondition("frozen", { active: false });
+    } else {
+      await this._setFrozenShellState({
+        ...frozenShellBefore,
+        hp: shellHpAfter
+      });
+    }
+
+    const resultLabel = shellDestroyed
+      ? game.i18n.format("POKROLE.Chat.FrozenShellBroken", {
+          actor: this.name,
+          move: move.name
+        })
+      : shellDamage > 0
+        ? game.i18n.format("POKROLE.Chat.FrozenShellDamaged", {
+            actor: this.name,
+            move: move.name,
+            damage: shellDamage,
+            hp: shellHpAfter
+          })
+        : game.i18n.format("POKROLE.Chat.FrozenShellHeld", {
+            actor: this.name,
+            move: move.name,
+            hp: shellHpAfter
+          });
+
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `
+        <div class="pok-role-chat-card arcade-red">
+          <header class="chat-card-header">
+            <h3>${game.i18n.localize("POKROLE.Conditions.Frozen")}</h3>
+          </header>
+          <section class="chat-card-section">
+            <p><strong>${this.name}</strong></p>
+            <p>${resultLabel}</p>
+            <p><strong>${game.i18n.localize("POKROLE.Chat.TypeEffect.Label")}:</strong> ${game.i18n.localize(typeInteraction.label)}</p>
+            <p><strong>${game.i18n.localize("POKROLE.Chat.TargetDefense")}:</strong> ${shellDefense}</p>
+            <p><strong>${game.i18n.localize("POKROLE.Chat.FinalDamage")}:</strong> ${shellDamage}</p>
+          </section>
+        </div>
+      `
+    });
+
+    if (options.advanceAction !== false) {
+      await this._advanceActionCounter(normalizedAction, roundKey);
+    }
+    await this._recordLastUsedMove(move);
+
+    return {
+      frozenBreakout: true,
+      shellDestroyed,
+      shellDamage,
+      shellHpBefore: frozenShellBefore.hp,
+      shellHpAfter,
+      move
+    };
+  }
+
+  async _applyDisabledMoveEffectToActor(targetActor, sourceMove = null) {
+    const lastUsedMove = targetActor?._getLastUsedMoveRecord?.() ?? {};
+    const disabledMoveId = `${lastUsedMove?.moveId ?? ""}`.trim();
+    const moveDocument =
+      disabledMoveId && targetActor?.items ? targetActor.items.get(disabledMoveId) ?? null : null;
+    if (!targetActor || !moveDocument || moveDocument.type !== "move") {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Chat.DisabledMoveNoLastMove")
+      };
+    }
+
+    const existingRestriction = this._getDisabledMoveRestriction(targetActor);
+    if (existingRestriction?.moveId && existingRestriction.moveId === moveDocument.id) {
+      await this._setConditionFlagState(targetActor, "disabled", true);
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectAlreadyActive")
+      };
+    }
+
+    await this._removeTrackedConditionEffects(targetActor, "disabled", { revert: false });
+
+    const inCombat = Boolean(game.combat);
+    const automationFlags = this._buildManagedAutomationFlagPayload({
+      effectType: "move-disabled",
+      conditionKey: "disabled",
+      durationMode: inCombat ? "rounds" : "manual",
+      durationRounds: 5,
+      specialDuration: [],
+      sourceMove
+    });
+    automationFlags.disabledMoveId = moveDocument.id;
+    automationFlags.disabledMoveName = moveDocument.name ?? "";
+    automationFlags.sceneScoped = !inCombat;
+    automationFlags.sceneId = !inCombat ? canvas?.scene?.id ?? null : null;
+
+    const durationData = this._buildManagedEffectDuration(
+      automationFlags.durationMode,
+      automationFlags.durationRounds
+    );
+    const durationLabel = inCombat
+      ? this._localizeTemporaryDuration("rounds", 5, [])
+      : game.i18n.localize("POKROLE.Chat.DisabledMoveSceneDuration");
+
+    await targetActor.createEmbeddedDocuments("ActiveEffect", [
+      {
+        name: game.i18n.format("POKROLE.Chat.DisabledMoveLabel", {
+          move: moveDocument.name
+        }),
+        img: this._getConditionIconPath("disabled") || sourceMove?.img || "icons/svg/cancel.svg",
+        origin: sourceMove?.uuid ?? null,
+        transfer: false,
+        disabled: false,
+        statuses: ["pokrole-condition-disabled"],
+        changes: [],
+        duration: durationData,
+        flags: {
+          [POKROLE.ID]: {
+            automation: automationFlags
+          }
+        }
+      }
+    ]);
+
+    await this._setConditionFlagState(targetActor, "disabled", true);
+    return {
+      applied: true,
+      detail: `${moveDocument.name} (${durationLabel})`
+    };
+  }
+
   async _applyConditionEffectToActor(effect, targetActor, sourceMove = null) {
     const conditionVariant = this._normalizeConditionVariantKey(effect.condition);
     const conditionKey = this._normalizeConditionKey(conditionVariant);
@@ -2907,6 +3557,9 @@ export class PokRoleActor extends Actor {
         applied: false,
         detail: game.i18n.localize("POKROLE.Chat.ConditionImmune")
       };
+    }
+    if (conditionKey === "disabled") {
+      return this._applyDisabledMoveEffectToActor(targetActor, sourceMove);
     }
 
     const statusId = `pokrole-condition-${conditionKey}`;
@@ -2934,15 +3587,32 @@ export class PokRoleActor extends Actor {
           detail: this._localizeBurnStageName(burnStage)
         };
       }
+      if (conditionKey === "frozen" && typeof targetActor._initializeFrozenShell === "function") {
+        await targetActor._initializeFrozenShell();
+      }
+      if (conditionKey === "confused" && typeof targetActor._clearConfusionSuppression === "function") {
+        await targetActor._clearConfusionSuppression();
+      }
+      if (conditionKey === "infatuated" && typeof targetActor._clearInfatuationSuppression === "function") {
+        await targetActor._clearInfatuationSuppression();
+      }
+      if (conditionKey === "paralyzed" && typeof targetActor._clearParalysisTurnCheck === "function") {
+        await targetActor._clearParalysisTurnCheck();
+      }
       return {
         applied: false,
         detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectAlreadyActive")
       };
     }
 
-    const normalizedDurationMode = this._normalizeSecondaryDurationMode(effect.durationMode, "condition");
-    const normalizedDurationRounds = this._normalizeSecondaryDurationRounds(effect.durationRounds);
-    const normalizedSpecialDuration = this._normalizeSpecialDurationList(effect.specialDuration);
+    let normalizedDurationMode = this._normalizeSecondaryDurationMode(effect.durationMode, "condition");
+    let normalizedDurationRounds = this._normalizeSecondaryDurationRounds(effect.durationRounds);
+    let normalizedSpecialDuration = this._normalizeSpecialDurationList(effect.specialDuration);
+    if (["confused", "infatuated"].includes(conditionKey)) {
+      normalizedDurationMode = "rounds";
+      normalizedDurationRounds = 5;
+      normalizedSpecialDuration = [];
+    }
     const automationFlags = this._buildManagedAutomationFlagPayload({
       effectType: "condition",
       conditionKey,
@@ -3007,6 +3677,18 @@ export class PokRoleActor extends Actor {
     }
     if (conditionKey === "sleep" && typeof targetActor._initializeSleepResistanceTrack === "function") {
       await targetActor._initializeSleepResistanceTrack();
+    }
+    if (conditionKey === "frozen" && typeof targetActor._initializeFrozenShell === "function") {
+      await targetActor._initializeFrozenShell(true);
+    }
+    if (conditionKey === "confused" && typeof targetActor._clearConfusionSuppression === "function") {
+      await targetActor._clearConfusionSuppression();
+    }
+    if (conditionKey === "infatuated" && typeof targetActor._clearInfatuationSuppression === "function") {
+      await targetActor._clearInfatuationSuppression();
+    }
+    if (conditionKey === "paralyzed" && typeof targetActor._clearParalysisTurnCheck === "function") {
+      await targetActor._clearParalysisTurnCheck();
     }
     const conditionLabel =
       conditionKey === "burn"
@@ -3209,6 +3891,76 @@ export class PokRoleActor extends Actor {
     return true;
   }
 
+  async clearSceneScopedMoveDisableEffects(currentSceneId = null) {
+    const normalizedSceneId = `${currentSceneId ?? canvas?.scene?.id ?? ""}`.trim();
+    if (!normalizedSceneId) return 0;
+    const effectIds = (this.effects?.contents ?? [])
+      .filter((effectDocument) => {
+        const automationFlags = effectDocument?.getFlag?.(POKROLE.ID, "automation") ?? {};
+        if (`${automationFlags?.effectType ?? ""}`.trim().toLowerCase() !== "move-disabled") return false;
+        if (!automationFlags?.sceneScoped) return false;
+        const effectSceneId = `${automationFlags?.sceneId ?? ""}`.trim();
+        return Boolean(effectSceneId) && effectSceneId !== normalizedSceneId;
+      })
+      .map((effectDocument) => effectDocument.id)
+      .filter((effectId) => effectId);
+    if (effectIds.length > 0) {
+      await this.deleteEmbeddedDocuments("ActiveEffect", effectIds);
+    }
+    return effectIds.length;
+  }
+
+  async _clearConditionAuxiliaryState(targetActor, conditionKey) {
+    const actor = targetActor ?? this;
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    if (!actor || normalizedCondition === "none") return;
+
+    if (normalizedCondition === "sleep") {
+      await actor.unsetFlag(POKROLE.ID, SLEEP_RESIST_TRACK_FLAG_KEY);
+    }
+    if (normalizedCondition === "burn" && typeof actor._clearBurnTrack === "function") {
+      await actor._clearBurnTrack();
+    }
+    if (normalizedCondition === "frozen" && typeof actor._clearFrozenShellState === "function") {
+      await actor._clearFrozenShellState();
+    }
+    if (normalizedCondition === "paralyzed" && typeof actor._clearParalysisTurnCheck === "function") {
+      await actor._clearParalysisTurnCheck();
+    }
+    if (normalizedCondition === "confused" && typeof actor._clearConfusionSuppression === "function") {
+      await actor._clearConfusionSuppression();
+    }
+    if (normalizedCondition === "infatuated" && typeof actor._clearInfatuationSuppression === "function") {
+      await actor._clearInfatuationSuppression();
+    }
+  }
+
+  _hasConditionAuxiliaryState(targetActor, conditionKey) {
+    const actor = targetActor ?? this;
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    if (!actor || normalizedCondition === "none") return false;
+
+    if (normalizedCondition === "sleep") {
+      return Boolean(actor.getFlag(POKROLE.ID, SLEEP_RESIST_TRACK_FLAG_KEY));
+    }
+    if (normalizedCondition === "burn") {
+      return Boolean(actor.getFlag(POKROLE.ID, BURN_TRACK_FLAG_KEY));
+    }
+    if (normalizedCondition === "frozen") {
+      return Boolean(actor.getFlag(POKROLE.ID, FROZEN_SHELL_FLAG_KEY));
+    }
+    if (normalizedCondition === "paralyzed") {
+      return Boolean(actor.getFlag(POKROLE.ID, PARALYSIS_TURN_CHECK_FLAG_KEY));
+    }
+    if (normalizedCondition === "confused") {
+      return Boolean(actor.getFlag(POKROLE.ID, CONFUSION_BYPASS_FLAG_KEY));
+    }
+    if (normalizedCondition === "infatuated") {
+      return Boolean(actor.getFlag(POKROLE.ID, INFATUATION_BYPASS_FLAG_KEY));
+    }
+    return false;
+  }
+
   _isConditionalAutomationEffect(effectDocument) {
     const automationFlags = effectDocument?.getFlag(POKROLE.ID, "automation") ?? {};
     const hasPassiveToggle = automationFlags?.passive === true;
@@ -3334,6 +4086,9 @@ export class PokRoleActor extends Actor {
     const nextState = options.active === undefined ? !currentState : Boolean(options.active);
 
     if (nextState) {
+      if (normalizedCondition === "disabled") {
+        return this._applyDisabledMoveEffectToActor(this, null);
+      }
       let burnStage = 1;
       if (normalizedCondition === "burn") {
         const hasExplicitBurnStage = Object.prototype.hasOwnProperty.call(options, "burnStage");
@@ -3362,12 +4117,7 @@ export class PokRoleActor extends Actor {
     }
 
     await this._setConditionFlagState(this, normalizedCondition, false);
-    if (normalizedCondition === "sleep") {
-      await this._clearSleepResistanceTrack();
-    }
-    if (normalizedCondition === "burn") {
-      await this._clearBurnTrack();
-    }
+    await this._clearConditionAuxiliaryState(this, normalizedCondition);
     await this._removeTrackedConditionEffects(this, normalizedCondition, { revert: false });
     return {
       applied: true,
@@ -3532,12 +4282,7 @@ export class PokRoleActor extends Actor {
       }
     }
 
-    if (normalizedCondition === "sleep") {
-      await targetActor.unsetFlag(POKROLE.ID, SLEEP_RESIST_TRACK_FLAG_KEY);
-    }
-    if (normalizedCondition === "burn" && typeof targetActor._clearBurnTrack === "function") {
-      await targetActor._clearBurnTrack();
-    }
+    await this._clearConditionAuxiliaryState(targetActor, normalizedCondition);
 
     return changed;
   }
@@ -3589,8 +4334,8 @@ export class PokRoleActor extends Actor {
       chance: 100,
       target: "self",
       effectType: "condition",
-      durationMode: "manual",
-      durationRounds: 1,
+      durationMode: ["confused", "infatuated"].includes(normalizedCondition) ? "rounds" : "manual",
+      durationRounds: ["confused", "infatuated"].includes(normalizedCondition) ? 5 : 1,
       specialDuration: [],
       condition:
         normalizedCondition === "burn"
@@ -3609,6 +4354,10 @@ export class PokRoleActor extends Actor {
     }
     const burnStage =
       normalizedCondition === "burn" ? this._normalizeBurnStage(options?.burnStage, 1) : 1;
+
+    if (normalizedCondition === "disabled") {
+      return this._applyDisabledMoveEffectToActor(targetActor, null);
+    }
 
     if (this._isConditionImmune(targetActor, normalizedCondition)) {
       await this._purgeImmuneConditionState(targetActor, normalizedCondition);
@@ -3645,6 +4394,19 @@ export class PokRoleActor extends Actor {
         applied: true,
         detail: this._localizeBurnStageName(burnStage)
       };
+    }
+
+    if (normalizedCondition === "frozen" && typeof targetActor._initializeFrozenShell === "function") {
+      await targetActor._initializeFrozenShell();
+    }
+    if (normalizedCondition === "confused" && typeof targetActor._clearConfusionSuppression === "function") {
+      await targetActor._clearConfusionSuppression();
+    }
+    if (normalizedCondition === "infatuated" && typeof targetActor._clearInfatuationSuppression === "function") {
+      await targetActor._clearInfatuationSuppression();
+    }
+    if (normalizedCondition === "paralyzed" && typeof targetActor._clearParalysisTurnCheck === "function") {
+      await targetActor._clearParalysisTurnCheck();
     }
 
     return {
@@ -3696,9 +4458,7 @@ export class PokRoleActor extends Actor {
     if (removedCount > 0 || remainingEntries.length !== currentEntries.length) {
       await this._setTemporaryEffectEntries(targetActor, remainingEntries);
     }
-    if (normalizedCondition === "sleep") {
-      await targetActor.unsetFlag(POKROLE.ID, SLEEP_RESIST_TRACK_FLAG_KEY);
-    }
+    await this._clearConditionAuxiliaryState(targetActor, normalizedCondition);
 
     return removedCount + effectIdsToDelete.length;
   }
@@ -3781,8 +4541,8 @@ export class PokRoleActor extends Actor {
         }
       }
 
-      if (conditionKey === "sleep" && !shouldBeActive) {
-        await targetActor.unsetFlag(POKROLE.ID, SLEEP_RESIST_TRACK_FLAG_KEY);
+      if (!shouldBeActive && (nextFlags[conditionKey] !== shouldBeActive || this._hasConditionAuxiliaryState(targetActor, conditionKey))) {
+        await this._clearConditionAuxiliaryState(targetActor, conditionKey);
       }
     }
 
@@ -3793,8 +4553,20 @@ export class PokRoleActor extends Actor {
       if (typeof targetActor._applyBurnStage === "function") {
         await targetActor._applyBurnStage(activeBurnStage);
       }
-    } else if (typeof targetActor._clearBurnTrack === "function") {
+    } else if (this._hasConditionAuxiliaryState(targetActor, "burn") && typeof targetActor._clearBurnTrack === "function") {
       await targetActor._clearBurnTrack();
+    }
+    if (!activeConditionKeys.has("frozen") && this._hasConditionAuxiliaryState(targetActor, "frozen")) {
+      await targetActor._clearFrozenShellState();
+    }
+    if (!activeConditionKeys.has("paralyzed") && this._hasConditionAuxiliaryState(targetActor, "paralyzed")) {
+      await targetActor._clearParalysisTurnCheck();
+    }
+    if (!activeConditionKeys.has("confused") && this._hasConditionAuxiliaryState(targetActor, "confused")) {
+      await targetActor._clearConfusionSuppression();
+    }
+    if (!activeConditionKeys.has("infatuated") && this._hasConditionAuxiliaryState(targetActor, "infatuated")) {
+      await targetActor._clearInfatuationSuppression();
     }
   }
 
@@ -4130,11 +4902,15 @@ export class PokRoleActor extends Actor {
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: this }),
       content: `
-        <div class="pok-role-chat-card">
-          <h3>${game.i18n.localize("POKROLE.Chat.RoundEndAutomation")}</h3>
-          <p><strong>${this.name}</strong></p>
-          <p>${statusDamage.label}</p>
-          <p>${weatherDamage.label}</p>
+        <div class="pok-role-chat-card arcade-red">
+          <header class="chat-card-header">
+            <h3>${game.i18n.localize("POKROLE.Chat.RoundEndAutomation")}</h3>
+          </header>
+          <section class="chat-card-section">
+            <p><strong>${this.name}</strong></p>
+            <p>${statusDamage.label}</p>
+            <p>${weatherDamage.label}</p>
+          </section>
         </div>
       `
     });
@@ -4310,13 +5086,22 @@ export class PokRoleActor extends Actor {
     }
 
     const existingPathModifiers = this._getManagedModifierEffectsForPath(targetActor, path);
+    const incomingSourceType = this._getAutomationSourceItemType({
+      sourceItemType: `${sourceMove?.type ?? ""}`.trim().toLowerCase(),
+      sourceMoveId: sourceMove?.type === "move" ? sourceMove?.id ?? null : null
+    });
     const sameDirectionModifiers = existingPathModifiers.filter((effectDocument) => {
       const flags = effectDocument.getFlag(POKROLE.ID, "automation") ?? {};
       const applied = Math.floor(toNumber(flags?.amountApplied, 0));
       if (applied === 0) return false;
       return Math.sign(applied) === Math.sign(numericAmount);
     });
-    const strongestSameDirection = sameDirectionModifiers.reduce((maxAmount, effectDocument) => {
+    const nonStackableSameDirectionModifiers = sameDirectionModifiers.filter((effectDocument) => {
+      const flags = effectDocument.getFlag(POKROLE.ID, "automation") ?? {};
+      const existingSourceType = this._getAutomationSourceItemType(flags);
+      return !this._canStackTrackedModifierSources(incomingSourceType, existingSourceType);
+    });
+    const strongestSameDirection = nonStackableSameDirectionModifiers.reduce((maxAmount, effectDocument) => {
       const flags = effectDocument.getFlag(POKROLE.ID, "automation") ?? {};
       const applied = Math.floor(toNumber(flags?.amountApplied, 0));
       return Math.max(maxAmount, Math.abs(applied));
@@ -4327,7 +5112,7 @@ export class PokRoleActor extends Actor {
         detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectNoStatChange")
       };
     }
-    const weakerSameDirectionIds = sameDirectionModifiers
+    const weakerSameDirectionIds = nonStackableSameDirectionModifiers
       .map((effectDocument) => effectDocument.id)
       .filter((effectId) => effectId);
     if (weakerSameDirectionIds.length > 0) {
@@ -4382,6 +5167,9 @@ export class PokRoleActor extends Actor {
               ...automationFlags,
               path,
               amountApplied: appliedAmount,
+              sourceItemType: `${sourceMove?.type ?? ""}`.trim().toLowerCase() || null,
+              sourceItemId: sourceMove?.id ?? null,
+              sourceItemName: sourceMove?.name ?? "",
               min,
               max
             }
@@ -4399,6 +5187,21 @@ export class PokRoleActor extends Actor {
       applied: true,
       detail: `${detailLabel || path} ${currentValue} -> ${nextValue} (${durationLabel})`
     };
+  }
+
+  _getAutomationSourceItemType(automationFlags = {}) {
+    const explicitType = `${automationFlags?.sourceItemType ?? ""}`.trim().toLowerCase();
+    if (["move", "ability"].includes(explicitType)) return explicitType;
+    const legacyMoveId = `${automationFlags?.sourceMoveId ?? ""}`.trim();
+    if (legacyMoveId) return "move";
+    return "";
+  }
+
+  _canStackTrackedModifierSources(leftSourceType, rightSourceType) {
+    return (
+      (leftSourceType === "move" && rightSourceType === "ability") ||
+      (leftSourceType === "ability" && rightSourceType === "move")
+    );
   }
 
   _localizeTemporaryDuration(durationMode, rounds = 1, specialDuration = []) {
@@ -4483,6 +5286,9 @@ export class PokRoleActor extends Actor {
       specialDuration: normalizedSpecialDuration,
       expiresWithCombat,
       combatId: expiresWithCombat ? combatId : null,
+      sourceItemType: `${sourceMove?.type ?? ""}`.trim().toLowerCase() || null,
+      sourceItemId: sourceMove?.id ?? null,
+      sourceItemName: sourceMove?.name ?? "",
       sourceMoveId: sourceMove?.id ?? null,
       sourceMoveName: sourceMove?.name ?? "",
       sourceActorId: this.id ?? null,
@@ -4643,29 +5449,32 @@ export class PokRoleActor extends Actor {
 
     const hpValue = Math.max(toNumber(targetActor.system.resources?.hp?.value, 0), 0);
     const hpMax = Math.max(toNumber(targetActor.system.resources?.hp?.max, 1), 1);
-    const healingCategory = `${options?.healingCategory ?? "standard"}`.trim().toLowerCase();
+    const healingCategory = this._normalizeHealingCategory(options?.healingCategory);
     let allowedHeal = normalizedHeal;
+    let track = null;
     if (game.combat && targetActor instanceof PokRoleActor) {
-      const track = targetActor._getHealingTrack();
-      const perRoundLimit =
-        healingCategory === "full" ? 9_999 : healingCategory === "complete" ? 5 : 3;
+      track = targetActor._getHealingTrack();
+      const perRoundLimit = this._getHealingRoundLimit(healingCategory);
       const remainingHeal = Math.max(perRoundLimit - track.healedThisRound, 0);
-      allowedHeal = Math.min(allowedHeal, remainingHeal);
-      if (allowedHeal > 0) {
-        track.healedThisRound += allowedHeal;
-        if (healingCategory !== "standard") {
-          track.completeHealedThisRound += allowedHeal;
-        }
-        await targetActor._setHealingTrack(track);
-      }
+      allowedHeal = Number.isFinite(perRoundLimit)
+        ? Math.min(allowedHeal, remainingHeal)
+        : allowedHeal;
     }
 
     const hpAfter = Math.min(hpValue + allowedHeal, hpMax);
+    const healedApplied = Math.max(hpAfter - hpValue, 0);
     if (hpAfter === hpValue) {
       return { hpBefore: hpValue, hpAfter, healedApplied: 0 };
     }
     try {
       await targetActor.update({ "system.resources.hp.value": hpAfter });
+      if (track && healedApplied > 0) {
+        track.healedThisRound += healedApplied;
+        if (healingCategory !== "standard") {
+          track.completeHealedThisRound += healedApplied;
+        }
+        await targetActor._setHealingTrack(track);
+      }
       if (options?.restoreAwareness && hpAfter > 0 && typeof targetActor.toggleQuickCondition === "function") {
         await targetActor.toggleQuickCondition("fainted", { active: false });
       }
@@ -4677,7 +5486,7 @@ export class PokRoleActor extends Actor {
     return {
       hpBefore: hpValue,
       hpAfter,
-      healedApplied: Math.max(hpAfter - hpValue, 0)
+      healedApplied
     };
   }
 
@@ -4716,11 +5525,7 @@ export class PokRoleActor extends Actor {
     const healsFullHp = gearItem.system.heal?.fullHp ?? false;
     const healHpValue = Math.max(toNumber(gearItem.system.heal?.hp, 0), 0);
     const healingAmount = healsFullHp ? Math.max(hpMax - hpBefore, 0) : healHpValue;
-    const healingCategory = healsFullHp
-      ? "full"
-      : healHpValue >= 5 || Number(gearItem.system.heal?.lethal ?? 0) > 0
-        ? "complete"
-        : "standard";
+    const healingCategory = this._resolveGearHealingCategory(gearItem);
     const healResult = await this._safeApplyHeal(targetActor, healingAmount, {
       healingCategory,
       restoreAwareness: Boolean(gearItem.system.heal?.restoreAwareness)
@@ -5515,7 +6320,6 @@ export class PokRoleActor extends Actor {
     try {
       await targetActor.update({ "system.resources.hp.value": hpAfter });
       if (hpAfter <= 0 && typeof targetActor.toggleQuickCondition === "function") {
-        await targetActor.toggleQuickCondition("fainted", { active: true });
         if (isLethalKo) {
           await targetActor.toggleQuickCondition("dead", { active: true });
         }
@@ -5531,7 +6335,7 @@ export class PokRoleActor extends Actor {
     };
   }
 
-  _evaluateTypeInteraction(moveType, targetActor) {
+  _evaluateTypeInteractionAgainstTypes(moveType, defenderTypes = []) {
     if (!moveType || moveType === "none") {
       return {
         immune: false,
@@ -5550,11 +6354,6 @@ export class PokRoleActor extends Actor {
         label: "POKROLE.Chat.TypeEffect.Neutral"
       };
     }
-
-    const defenderTypes = [
-      targetActor.system.types?.primary,
-      targetActor.system.types?.secondary
-    ].filter((typeKey) => typeKey && typeKey !== "none");
 
     let weaknessBonus = 0;
     let resistancePenalty = 0;
@@ -5593,6 +6392,14 @@ export class PokRoleActor extends Actor {
     };
   }
 
+  _evaluateTypeInteraction(moveType, targetActor) {
+    const defenderTypes = [
+      targetActor?.system?.types?.primary,
+      targetActor?.system?.types?.secondary
+    ].filter((typeKey) => typeKey && typeKey !== "none");
+    return this._evaluateTypeInteractionAgainstTypes(moveType, defenderTypes);
+  }
+
   _getTargetDefense(targetActor, category) {
     if (targetActor instanceof PokRoleActor) {
       return targetActor.getDefense(category);
@@ -5615,6 +6422,18 @@ export class PokRoleActor extends Actor {
     const normalizedCategory = `${moveSystem?.category ?? "physical"}`.trim().toLowerCase();
     if (normalizedCategory === "support") return false;
     return this._normalizeMovePrimaryMode(moveSystem?.primaryMode) === "damage";
+  }
+
+  _moveShouldAutoHoldBackFromInfatuation(moveTargetKey) {
+    const normalizedTarget = this._normalizeMoveTargetKey(moveTargetKey);
+    return [
+      "foe",
+      "random-foe",
+      "all-foes",
+      "area",
+      "foe-battlefield",
+      "battlefield-area"
+    ].includes(normalizedTarget);
   }
 
   _resolveDamageAttributeKey(move) {

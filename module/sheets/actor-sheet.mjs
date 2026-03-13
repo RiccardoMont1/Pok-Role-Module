@@ -92,7 +92,7 @@ const AILMENT_DEFINITIONS = Object.freeze([
   {
     key: "badly-poisoned",
     labelPath: "POKROLE.Move.Secondary.Condition.BadlyPoisoned",
-    icon: "icons/svg/skull.svg"
+    icon: getSystemAssetPath("assets/ailments/poisoned.svg")
   }
 ]);
 
@@ -873,7 +873,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             hp: 1,
             lethal: 0,
             fullHp: false,
-            restoreAwareness: false
+            restoreAwareness: false,
+            battleHealingCategory: "standard"
           },
           status: {
             all: false,

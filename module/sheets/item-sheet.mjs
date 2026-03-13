@@ -1,6 +1,7 @@
 import {
   ATTRIBUTE_DEFINITIONS,
   getSystemAssetPath,
+  HEALING_CATEGORY_KEYS,
   MOVE_CATEGORY_LABEL_BY_KEY,
   MOVE_SECONDARY_CONDITION_KEYS,
   MOVE_SECONDARY_DURATION_MODE_KEYS,
@@ -21,6 +22,13 @@ import {
   TYPE_OPTIONS
 } from "../constants.mjs";
 import { getMoveTypeIcon } from "../move-type-icons.mjs";
+
+function normalizeLegacyChancePercentToDiceCount(percent, maxDice = 20) {
+  const numericPercent = Math.min(Math.max(Math.floor(Number(percent) || 0), 1), 99);
+  const probability = numericPercent / 100;
+  const estimatedDice = Math.round(Math.log(1 - probability) / Math.log(5 / 6));
+  return Math.min(Math.max(Number.isFinite(estimatedDice) ? estimatedDice : 1, 1), maxDice);
+}
 
 export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
   constructor(...args) {
@@ -75,6 +83,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     context.secondaryEffectTypeOptionsExtra ??= {};
     context.secondaryDurationModeOptions ??= {};
     context.secondaryHealModeOptions ??= {};
+    context.secondaryHealingCategoryOptions ??= {};
     context.secondaryConditionOptions ??= {};
     context.secondaryStatOptions ??= {};
     context.secondaryWeatherOptions ??= {};
@@ -124,6 +133,13 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
         trainer: "POKROLE.Gear.Target.Trainer",
         any: "POKROLE.Gear.Target.Any"
       };
+      context.gearHealingCategoryOptions = {
+        standard: "POKROLE.Healing.Category.Standard",
+        complete: "POKROLE.Healing.Category.Complete",
+        unlimited: "POKROLE.Healing.Category.Unlimited"
+      };
+      context.system.heal ??= {};
+      context.system.heal.battleHealingCategory = this._getGearBattleHealingCategory(this.item);
       return context;
     }
 
@@ -291,6 +307,10 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       fixed: "POKROLE.Move.Secondary.HealMode.Fixed",
       "max-hp-percent": "POKROLE.Move.Secondary.HealMode.MaxHpPercent",
       "damage-percent": "POKROLE.Move.Secondary.HealMode.DamagePercent"
+    };
+    context.secondaryHealingCategoryOptions = {
+      standard: "POKROLE.Move.Secondary.HealingCategory.Basic",
+      complete: "POKROLE.Move.Secondary.HealingCategory.Complete"
     };
     context.secondarySpecialDurationOptions = {
       "turn-start": "POKROLE.Move.Secondary.Duration.Special.TurnStart",
@@ -497,7 +517,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       section: normalizedSection,
       label: "",
       trigger: "on-hit",
-      chance: 100,
+      chance: 0,
       target: "target",
       effectType: normalizedSection > 0 ? "active-effect" : defaultPrimaryType,
       durationMode: "manual",
@@ -508,9 +528,27 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       stat: "none",
       amount: 0,
       healMode: "fixed",
+      healingCategory: "standard",
       notes: "",
       linkedEffectId: ""
     };
+  }
+
+  _normalizeHealingCategory(value) {
+    const normalized = `${value ?? "standard"}`.trim().toLowerCase();
+    return HEALING_CATEGORY_KEYS.includes(normalized) ? normalized : "standard";
+  }
+
+  _getGearBattleHealingCategory(item) {
+    const explicitValue = item?._source?.system?.heal?.battleHealingCategory;
+    const normalizedExplicit = this._normalizeHealingCategory(explicitValue);
+    if (`${explicitValue ?? ""}`.trim()) return normalizedExplicit;
+
+    const itemName = `${item?.name ?? ""}`.trim().toLowerCase();
+    if (itemName === "max potion" || itemName === "full restore") {
+      return "unlimited";
+    }
+    return "standard";
   }
 
   _normalizeMoveTarget(value) {
@@ -625,6 +663,10 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       effectType,
       normalizedEffect.amount
     );
+    let healingCategory = this._normalizeHealingCategory(normalizedEffect.healingCategory);
+    if (normalizedEffectType === "heal" && healingCategory === "unlimited") {
+      healingCategory = "complete";
+    }
 
     const chance = Number(normalizedEffect.chance);
     const rawAmount = Number(normalizedEffect.amount);
@@ -641,7 +683,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       section,
       label: `${normalizedEffect.label ?? ""}`.trim(),
       trigger,
-      chance: Number.isFinite(chance) ? Math.min(Math.max(Math.floor(chance), 0), 100) : 100,
+      chance: this._normalizeChanceDiceValue(chance),
       target,
       effectType: normalizedEffectType,
       durationMode,
@@ -655,9 +697,20 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       stat,
       amount,
       healMode,
+      healingCategory,
       notes: `${normalizedEffect.notes ?? ""}`.trim(),
       linkedEffectId: `${normalizedEffect.linkedEffectId ?? ""}`.trim()
     };
+  }
+
+  _normalizeChanceDiceValue(value, fallback = 0) {
+    const numericValue = Number(value);
+    if (!Number.isFinite(numericValue)) return fallback;
+    const normalizedValue = Math.floor(numericValue);
+    if (normalizedValue <= 0) return 0;
+    if (normalizedValue >= 100) return 0;
+    if (normalizedValue <= 20) return normalizedValue;
+    return normalizeLegacyChancePercentToDiceCount(normalizedValue, 20);
   }
 
   _normalizeSpecialDurationList(value) {
@@ -733,6 +786,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       showStatField: effectType === "stat",
       showAmountField: ["stat", "damage", "heal", "will"].includes(effectType),
       showHealModeField: effectType === "heal",
+      showHealingCategoryField: effectType === "heal",
       showDurationField: effectType === "condition" || effectType === "stat" || effectType === "weather",
       showNotesField: effectType === "custom"
     };
@@ -999,6 +1053,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     toggleSection("stat", effectType === "stat");
     toggleSection("amount", ["stat", "damage", "heal", "will"].includes(effectType));
     toggleSection("heal-mode", effectType === "heal");
+    toggleSection("heal-category", effectType === "heal");
     toggleSection("duration", effectType === "condition" || effectType === "stat" || effectType === "weather");
     toggleSection("notes", effectType === "custom");
   }

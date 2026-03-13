@@ -245,6 +245,33 @@ async function synchronizeAllActorEffectTokenIcons() {
   }
 }
 
+async function clearSceneScopedMoveDisableEffects(sceneId = null) {
+  if (!game) return;
+  const normalizedSceneId = `${sceneId ?? canvas?.scene?.id ?? ""}`.trim();
+  if (!normalizedSceneId) return;
+
+  const actorsByKey = new Map();
+  const rememberActor = (actor) => {
+    if (!actor || actor.documentName !== "Actor") return;
+    const actorKey = `${actor.uuid ?? actor.id ?? ""}`.trim();
+    if (!actorKey) return;
+    actorsByKey.set(actorKey, actor);
+  };
+
+  for (const actor of game.actors?.contents ?? []) {
+    rememberActor(actor);
+  }
+
+  for (const token of canvas?.tokens?.placeables ?? []) {
+    rememberActor(token?.actor ?? null);
+  }
+
+  for (const actor of actorsByKey.values()) {
+    if (typeof actor.clearSceneScopedMoveDisableEffects !== "function") continue;
+    await actor.clearSceneScopedMoveDisableEffects(normalizedSceneId);
+  }
+}
+
 const LAST_COMBAT_TURN_STATE = new Map();
 
 const HUD_CONDITION_DEFINITIONS = Object.freeze([
@@ -259,7 +286,7 @@ const HUD_CONDITION_DEFINITIONS = Object.freeze([
   { key: "flinch", label: "POKROLE.Move.Secondary.Condition.Flinch", icon: "icons/svg/falling.svg" },
   { key: "disabled", label: "POKROLE.Move.Secondary.Condition.Disabled", icon: "icons/svg/cancel.svg" },
   { key: "infatuated", label: "POKROLE.Move.Secondary.Condition.Infatuated", icon: "icons/svg/heal.svg" },
-  { key: "badly-poisoned", label: "POKROLE.Move.Secondary.Condition.BadlyPoisoned", icon: "icons/svg/skull.svg" }
+  { key: "badly-poisoned", label: "POKROLE.Move.Secondary.Condition.BadlyPoisoned", icon: getSystemAssetPath("assets/ailments/poisoned.svg") }
 ]);
 const HUD_CONDITION_KEY_BY_STATUS_ID = new Map(
   HUD_CONDITION_DEFINITIONS.map((entry) => [`pokrole-condition-${entry.key}`, entry.key])
@@ -814,6 +841,7 @@ Hooks.once("ready", async () => {
   game.pokrole ??= {};
   game.pokrole.seedCompendia = async (options = {}) => seedCompendia(options);
   await synchronizeAllActorEffectTokenIcons();
+  await clearSceneScopedMoveDisableEffects(canvas?.scene?.id ?? null);
   for (const actor of game.actors?.contents ?? []) {
     if (actor?.type !== "pokemon") continue;
     if (typeof actor.synchronizeConditionFlags === "function") {
@@ -822,6 +850,10 @@ Hooks.once("ready", async () => {
     if (typeof actor.synchronizeFaintedFromHp !== "function") continue;
     await actor.synchronizeFaintedFromHp();
   }
+});
+
+Hooks.on("canvasReady", async (canvasDocument) => {
+  await clearSceneScopedMoveDisableEffects(canvasDocument?.scene?.id ?? canvas?.scene?.id ?? null);
 });
 
 Hooks.on("updateCombat", async (combat, changed) => {
@@ -914,7 +946,7 @@ Hooks.on("updateCombat", async (combat, changed) => {
 
     const initiativeRoll = await actor.rollInitiative({ silent: true });
     const rolledScore = Math.max(
-      Number(initiativeRoll?.total ?? actor.system?.combat?.initiative ?? 0) || 0,
+      Number(actor.system?.combat?.initiative ?? initiativeRoll?.total ?? 0) || 0,
       0
     );
     initiativeUpdates.push({ _id: combatant.id, initiative: rolledScore });

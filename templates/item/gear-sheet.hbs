@@ -93,6 +93,12 @@
           data-dtype="Number"
         />
       </label>
+      <label>
+        <span>{{localize "POKROLE.Healing.Category.Label"}}</span>
+        <select name="system.heal.battleHealingCategory">
+          {{selectOptions gearHealingCategoryOptions selected=system.heal.battleHealingCategory localize=true}}
+        </select>
+      </label>
     </div>
   </section>
 

@@ -89,6 +89,14 @@
       "SourceUnknown": "Fonte sconosciuta",
       "Remove": "Rimuovi effetto"
     },
+    "Healing": {
+      "Category": {
+        "Label": "Categoria Cura",
+        "Standard": "Cura Base (3 PS/round)",
+        "Complete": "Complete Heal (5 PS/round)",
+        "Unlimited": "Senza Limite (Max Potion / Full Restore)"
+      }
+    },
     "Effects": {
       "Tab": "Effetti",
       "ConfiguredTitle": "Effetti Configurati",
@@ -369,7 +377,7 @@
         "AddExtraSection": "Aggiungi Blocco Effetti Extra",
         "Empty": "Nessun effetto secondario configurato.",
         "Label": "Etichetta",
-        "Chance": "Probabilita (%)",
+        "Chance": "Dadi Chance (0 = Auto)",
         "Amount": "Valore",
         "Notes": "Note",
         "HealMode": {
@@ -435,6 +443,11 @@
           "Label": "Effetto Attivo",
           "Configure": "Configura",
           "Unconfigured": "Nessun Active Effect collegato."
+        },
+        "HealingCategory": {
+          "Label": "Tipo Cura",
+          "Basic": "Base",
+          "Complete": "Completa"
         },
         "Condition": {
           "Label": "Condizione",
@@ -693,12 +706,25 @@
       "ConditionImmune": "Il bersaglio e immune a questa condizione.",
       "SecondaryEffectApplied": "Applicato",
       "SecondaryEffectFailed": "Fallito",
-      "SecondaryEffectChanceFailed": "Probabilita fallita ({roll} > {chance})",
+      "SecondaryEffectChanceFailed": "Dadi chance falliti ({rolls}) su {dice}d6: nessun 6 ottenuto.",
       "SecondaryEffectNoTarget": "Nessun bersaglio valido",
       "SecondaryEffectHpChange": "PS {before} -> {after}",
       "SecondaryEffectAlreadyActive": "Gia attivo",
       "SecondaryEffectTracked": "tracciato come condizione extra",
+      "SecondaryEffectNoHealConfigured": "Nessun valore di cura configurato.",
+      "SecondaryEffectNoDamageToDrain": "Non e stato inflitto danno, quindi non c'e nulla da drenare.",
+      "SecondaryEffectTargetAlreadyFullHp": "Il bersaglio ha gia i PS pieni.",
+      "SecondaryEffectHealingLimitReached": "Limite di cura raggiunto per questo round ({limit} PS).",
+      "SecondaryEffectNoDamageConfigured": "Nessun valore di danno configurato.",
+      "SecondaryEffectNoStatConfigured": "Nessun valore di cambio statistica configurato.",
+      "SecondaryEffectInvalidStat": "Nessuna statistica valida selezionata.",
       "SecondaryEffectNoStatChange": "Nessun cambio statistica",
+      "SecondaryEffectNoWillConfigured": "Nessun valore di Volonta configurato.",
+      "SecondaryEffectTargetAlreadyFullWill": "Il bersaglio ha gia la Volonta piena.",
+      "SecondaryEffectTargetAlreadyEmptyWill": "Il bersaglio non ha piu Volonta.",
+      "SecondaryEffectNoWillChange": "Nessuna modifica alla Volonta applicata.",
+      "SecondaryEffectNoConditionConfigured": "Nessuna condizione selezionata.",
+      "SecondaryEffectNoWeatherConfigured": "Nessun meteo selezionato.",
       "ConditionCleared": "{condition} rimossa.",
       "ConditionResistRoll": "{actor} tira Intuito per resistere a {condition} (richiesti: {required}).",
       "SleepResistanceRoll": "{actor} accumula resistenza al Sonno (+{gained}, totale {total}/5).",
@@ -715,6 +741,18 @@
         "Progress": "{actor} ottiene {gained} successi di recupero per {stage} ({total}/{required}).",
         "Cleared": "{actor} ha rimosso {condition}."
       },
+      "ParalysisTurnRoll": "{actor} tira 2d6 per agire nonostante la Paralisi.",
+      "ParalysisTurnPassed": "{actor} supera la Paralisi e puo agire in questo turno.",
+      "ParalysisTurnFailed": "{actor} rimane bloccato dalla Paralisi e perde le azioni di questo turno.",
+      "ConfusionSuppressedRound": "{actor} si ricompone: la Confusione e ignorata per questo round.",
+      "InfatuationSuppressedRound": "{actor} supera l'Infatuazione per questo round.",
+      "FrozenShellDamageRoll": "{actor} usa {move} contro il guscio di ghiaccio.",
+      "FrozenShellBroken": "{actor} rompe il guscio di ghiaccio con {move}.",
+      "FrozenShellDamaged": "{actor} danneggia il guscio di ghiaccio con {move} per {damage}. PS ghiaccio rimasti: {hp}.",
+      "FrozenShellHeld": "{move} non rompe il guscio di ghiaccio di {actor}. PS ghiaccio rimasti: {hp}.",
+      "DisabledMoveNoLastMove": "Non c'e una mossa usata valida da disabilitare.",
+      "DisabledMoveSceneDuration": "Fino a fine scena",
+      "DisabledMoveLabel": "Disabled: {move}",
       "PokemonRested": "{actor} ha riposato e ha recuperato PS e Volonta.",
       "PassiveTriggerNotMet": "Le condizioni del trigger passivo non sono soddisfatte.",
       "HoldingBack": {
@@ -791,9 +829,11 @@
       "ActorFainted": "Non puoi agire se sei svenuto.",
       "ActorSleeping": "Non puoi agire se sei addormentato.",
       "ActorFrozen": "Non puoi agire se sei congelato.",
+      "ActorParalyzedTurn": "La Paralisi impedisce di agire in questo turno.",
       "ActorFlinched": "Tentennamento: azione persa.",
       "ActorBusyWithItemTreatment": "Questo round e occupato dal trattamento con oggetto.",
       "ActorMoveDisabled": "Questo attore non puo usare mosse (Disabled).",
+      "ActorMoveDisabledSpecific": "{move} e disabilitata e non puo essere usata.",
       "TrainerItemNeedsPokemonTarget": "Seleziona prima un bersaglio Pokemon.",
       "TrainerNoBattleItems": "Nessun oggetto da battaglia disponibile.",
       "TrainerItemCheckFailed": "Controllo uso oggetto fallito.",

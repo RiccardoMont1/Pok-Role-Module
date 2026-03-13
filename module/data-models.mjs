@@ -5,6 +5,7 @@ import {
   MOVE_SECONDARY_DURATION_MODE_KEYS,
   MOVE_SECONDARY_SPECIAL_DURATION_KEYS,
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
+  HEALING_CATEGORY_KEYS,
   MOVE_SECONDARY_HEAL_MODE_KEYS,
   MOVE_SECONDARY_WEATHER_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
@@ -323,7 +324,7 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
             initial: "on-hit",
             choices: MOVE_SECONDARY_TRIGGER_KEYS
           }),
-          chance: integerField(100, { min: 0, max: 100 }),
+          chance: integerField(0, { min: 0, max: 100 }),
           target: new StringField({
             required: true,
             blank: false,
@@ -379,6 +380,12 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
             blank: false,
             initial: "fixed",
             choices: MOVE_SECONDARY_HEAL_MODE_KEYS
+          }),
+          healingCategory: new StringField({
+            required: true,
+            blank: false,
+            initial: "standard",
+            choices: HEALING_CATEGORY_KEYS
           }),
           notes: trimmedStringField(""),
           linkedEffectId: trimmedStringField("")
@@ -441,7 +448,13 @@ export class GearDataModel extends foundry.abstract.TypeDataModel {
         hp: integerField(0, { min: 0, max: 50 }),
         lethal: integerField(0, { min: 0, max: 50 }),
         fullHp: new BooleanField({ required: true, initial: false }),
-        restoreAwareness: new BooleanField({ required: true, initial: false })
+        restoreAwareness: new BooleanField({ required: true, initial: false }),
+        battleHealingCategory: new StringField({
+          required: true,
+          blank: false,
+          initial: "standard",
+          choices: HEALING_CATEGORY_KEYS
+        })
       }),
       status: new SchemaField({
         all: new BooleanField({ required: true, initial: false }),
