@@ -704,6 +704,7 @@
       "WeatherNoDamage": "{weather}: nessun danno da meteo.",
       "WeatherRoundDamage": "{weather}: {damage} danno.",
       "ConditionImmune": "Il bersaglio e immune a questa condizione.",
+      "ConditionBlockedByWeather": "Il meteo {weather} non permette al Pokemon di essere {condition}.",
       "InfatuationInvalidTargetGender": "Infatuazione non funziona su Pokemon senza un genere definito.",
       "InfatuationRequiresOppositeGender": "Infatuazione funziona solo contro un Pokemon di sesso opposto.",
       "SecondaryEffectApplied": "Applicato",

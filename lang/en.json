@@ -704,6 +704,7 @@
       "WeatherNoDamage": "{weather}: no weather damage.",
       "WeatherRoundDamage": "{weather}: {damage} damage.",
       "ConditionImmune": "Target is immune to this condition.",
+      "ConditionBlockedByWeather": "The current weather ({weather}) prevents the Pokemon from becoming {condition}.",
       "InfatuationInvalidTargetGender": "Infatuation does not work on Pokemon without a defined gender.",
       "InfatuationRequiresOppositeGender": "Infatuation only works on a Pokemon of the opposite gender.",
       "SecondaryEffectApplied": "Applied",

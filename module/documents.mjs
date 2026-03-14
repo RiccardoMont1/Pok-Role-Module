@@ -41,6 +41,47 @@ function successPoolFormula(dicePool) {
   return `${normalizedDicePool}d6cs>=${POKROLE.SUCCESS_TARGET}`;
 }
 
+const TYPE_KEY_ALIASES = Object.freeze({
+  normale: "normal",
+  normal: "normal",
+  lotta: "fighting",
+  fighting: "fighting",
+  volante: "flying",
+  flying: "flying",
+  veleno: "poison",
+  poison: "poison",
+  terra: "ground",
+  ground: "ground",
+  roccia: "rock",
+  rock: "rock",
+  coleottero: "bug",
+  bug: "bug",
+  spettro: "ghost",
+  ghost: "ghost",
+  acciaio: "steel",
+  steel: "steel",
+  fuoco: "fire",
+  fire: "fire",
+  acqua: "water",
+  water: "water",
+  erba: "grass",
+  grass: "grass",
+  elettrico: "electric",
+  electric: "electric",
+  psico: "psychic",
+  psychic: "psychic",
+  ghiaccio: "ice",
+  ice: "ice",
+  drago: "dragon",
+  dragon: "dragon",
+  buio: "dark",
+  dark: "dark",
+  folletto: "fairy",
+  fairy: "fairy",
+  none: "none",
+  nessuno: "none"
+});
+
 function hasPainPenaltyException(primaryTraitKey, secondaryTraitKey) {
   return primaryTraitKey === "vitality" || secondaryTraitKey === "vitality";
 }
@@ -257,6 +298,11 @@ export class PokRoleActor extends Actor {
     return WEATHER_KEYS.includes(normalized) ? normalized : "none";
   }
 
+  _normalizeTypeKey(typeKey) {
+    const normalized = `${typeKey ?? "none"}`.trim().toLowerCase();
+    return TYPE_KEY_ALIASES[normalized] ?? normalized;
+  }
+
   getActiveWeatherKey() {
     const combat = game.combat;
     if (!combat) return "none";
@@ -388,22 +434,24 @@ export class PokRoleActor extends Actor {
 
   _getWeatherDamageBonusDice(moveType, weatherKey) {
     const weather = this._normalizeWeatherKey(weatherKey);
+    const normalizedMoveType = this._normalizeTypeKey(moveType);
     if (weather === "sunny" || weather === "harsh-sunlight") {
-      return moveType === "fire" ? 1 : 0;
+      return normalizedMoveType === "fire" ? 1 : 0;
     }
     if (weather === "rain" || weather === "typhoon") {
-      return moveType === "water" ? 1 : 0;
+      return normalizedMoveType === "water" ? 1 : 0;
     }
     if (weather === "strong-winds") {
-      return moveType === "flying" ? 1 : 0;
+      return normalizedMoveType === "flying" ? 1 : 0;
     }
     return 0;
   }
 
   _getWeatherFlatDamageReduction(moveType, weatherKey) {
     const weather = this._normalizeWeatherKey(weatherKey);
-    if (weather === "sunny" && moveType === "water") return 1;
-    if (weather === "rain" && moveType === "fire") return 1;
+    const normalizedMoveType = this._normalizeTypeKey(moveType);
+    if ((weather === "sunny" || weather === "harsh-sunlight") && normalizedMoveType === "water") return 1;
+    if ((weather === "rain" || weather === "typhoon") && normalizedMoveType === "fire") return 1;
     return 0;
   }
 
@@ -1680,13 +1728,15 @@ export class PokRoleActor extends Actor {
     const canInflictDeathOnKo = inflictLethalDamage && !isHoldingBackHalf;
     const actionNumber = await this._resolveActionRequirement(options.actionNumber, roundKey);
     const activeWeather = this.getActiveWeatherKey();
-    const moveType = move.system.type || "normal";
+    const moveType = this._normalizeTypeKey(move.system.type || "normal");
     const weatherBlocksMove =
       (activeWeather === "harsh-sunlight" && moveType === "water") ||
       (activeWeather === "typhoon" && moveType === "fire");
     if (weatherBlocksMove) {
       ui.notifications.warn(
-        game.i18n.format("POKROLE.Errors.MoveBlockedByWeather", { weather: activeWeather })
+        game.i18n.format("POKROLE.Errors.MoveBlockedByWeather", {
+          weather: this._localizeWeatherName(activeWeather)
+        })
       );
       return null;
     }
@@ -2260,7 +2310,7 @@ export class PokRoleActor extends Actor {
     canInflictDeathOnKo = false
   }) {
     const category = move.system.category || "physical";
-    const moveType = move.system.type || "normal";
+    const moveType = this._normalizeTypeKey(move.system.type || "normal");
     const damageAttributeKey = this._resolveDamageAttributeKey(move);
     const damageAttributeLabel = this.localizeTrait(damageAttributeKey);
     const damageAttributeValue = Math.max(this.getTraitValue(damageAttributeKey), 0);
@@ -2497,6 +2547,19 @@ export class PokRoleActor extends Actor {
     return legacyChancePercentToDiceCount(normalizedChance, SECONDARY_EFFECT_CHANCE_DICE_MAX);
   }
 
+  _getWeatherSecondaryChanceDiceBonus(effect, move, weatherKey) {
+    const weather = this._normalizeWeatherKey(weatherKey);
+    const moveType = this._normalizeTypeKey(move?.system?.type ?? move?.type ?? "none");
+    const conditionVariant = this._normalizeConditionVariantKey(effect?.condition);
+    const isBurnEffect = conditionVariant === "burn" || conditionVariant === "burn2" || conditionVariant === "burn3";
+
+    if ((weather === "sunny" || weather === "harsh-sunlight") && moveType === "fire" && isBurnEffect) {
+      return 2;
+    }
+
+    return 0;
+  }
+
   _normalizeSecondaryDurationRounds(durationRounds) {
     return clamp(Math.floor(toNumber(durationRounds, 1)), 1, 99);
   }
@@ -2596,34 +2659,52 @@ export class PokRoleActor extends Actor {
     return { valid: true, detail: "" };
   }
 
-  _isConditionImmune(targetActor, conditionKey) {
+  _getConditionBlockedDetail(targetActor, conditionKey) {
     const normalizedCondition = this._normalizeConditionKey(conditionKey);
-    if (!targetActor || normalizedCondition === "none") return false;
+    if (!targetActor || normalizedCondition === "none") return "";
 
     const weather = this.getActiveWeatherKey();
+    const localizedCondition = `${this._localizeConditionName(normalizedCondition)}`.toLowerCase();
     if ((weather === "sunny" || weather === "harsh-sunlight") && normalizedCondition === "frozen") {
-      return true;
+      return game.i18n.format("POKROLE.Chat.ConditionBlockedByWeather", {
+        condition: localizedCondition,
+        weather: this._localizeWeatherName(weather)
+      });
     }
     if (weather === "typhoon" && normalizedCondition === "burn") {
-      return true;
+      return game.i18n.format("POKROLE.Chat.ConditionBlockedByWeather", {
+        condition: localizedCondition,
+        weather: this._localizeWeatherName(weather)
+      });
     }
 
-    if (normalizedCondition === "burn" && targetActor.hasType?.("fire")) return true;
-    if (normalizedCondition === "frozen" && targetActor.hasType?.("ice")) return true;
-    if (normalizedCondition === "paralyzed" && targetActor.hasType?.("electric")) return true;
+    if (normalizedCondition === "burn" && targetActor.hasType?.("fire")) {
+      return game.i18n.localize("POKROLE.Chat.ConditionImmune");
+    }
+    if (normalizedCondition === "frozen" && targetActor.hasType?.("ice")) {
+      return game.i18n.localize("POKROLE.Chat.ConditionImmune");
+    }
+    if (normalizedCondition === "paralyzed" && targetActor.hasType?.("electric")) {
+      return game.i18n.localize("POKROLE.Chat.ConditionImmune");
+    }
     if (
       ["poisoned", "badly-poisoned"].includes(normalizedCondition) &&
       (targetActor.hasType?.("poison") || targetActor.hasType?.("steel"))
     ) {
-      return true;
+      return game.i18n.localize("POKROLE.Chat.ConditionImmune");
     }
     if (normalizedCondition === "infatuated" && targetActor.type === "pokemon") {
       const gender = `${targetActor.system?.gender ?? "unknown"}`.trim().toLowerCase();
       if (["genderless", "unknown", "none", "null", ""].includes(gender)) {
-        return true;
+        return game.i18n.localize("POKROLE.Chat.ConditionImmune");
       }
     }
-    return false;
+
+    return "";
+  }
+
+  _isConditionImmune(targetActor, conditionKey) {
+    return Boolean(this._getConditionBlockedDetail(targetActor, conditionKey));
   }
 
   _normalizeSecondaryStatKey(statKey) {
@@ -2871,6 +2952,7 @@ export class PokRoleActor extends Actor {
     }
 
     const effectSourceItem = sourceItem ?? move ?? null;
+    const activeWeather = this.getActiveWeatherKey();
     const results = [];
     const totalDamageDealt = (Array.isArray(damageTargetResults) ? damageTargetResults : []).reduce(
       (sum, result) => sum + Math.max(toNumber(result?.finalDamage, 0), 0),
@@ -2882,10 +2964,16 @@ export class PokRoleActor extends Actor {
         continue;
       }
 
-      const chanceDice = this._normalizeSecondaryChanceDice(effect.chance);
+      const baseChanceDice = this._normalizeSecondaryChanceDice(effect.chance);
+      const weatherChanceBonusDice = this._getWeatherSecondaryChanceDiceBonus(
+        effect,
+        move,
+        activeWeather
+      );
+      const chanceDice = Math.max(baseChanceDice + weatherChanceBonusDice, 0);
       let chanceRollResults = [];
       let chanceSucceeded = true;
-      if (chanceDice > 0) {
+      if (chanceDice > 0 && baseChanceDice > 0) {
         const chanceRoll = await new Roll(`${chanceDice}d6`).evaluate({ async: true });
         chanceRollResults = chanceRoll.dice.flatMap((die) =>
           Array.isArray(die?.results)
@@ -3609,7 +3697,7 @@ export class PokRoleActor extends Actor {
     if (this._isConditionImmune(targetActor, conditionKey)) {
       return {
         applied: false,
-        detail: game.i18n.localize("POKROLE.Chat.ConditionImmune")
+        detail: this._getConditionBlockedDetail(targetActor, conditionKey)
       };
     }
     if (conditionKey === "disabled") {
@@ -3938,7 +4026,7 @@ export class PokRoleActor extends Actor {
   async synchronizeFaintedFromHp() {
     if (this.type !== "pokemon") return false;
     const hpValue = Math.max(toNumber(this.system.resources?.hp?.value, 0), 0);
-    const shouldBeFainted = hpValue <= 0;
+    const shouldBeFainted = hpValue <= 0 && !this._isConditionActive("dead");
     const isFainted = this._isConditionActive("fainted");
     if (shouldBeFainted === isFainted) return false;
     await this.toggleQuickCondition("fainted", { active: shouldBeFainted });
@@ -4140,6 +4228,15 @@ export class PokRoleActor extends Actor {
     const nextState = options.active === undefined ? !currentState : Boolean(options.active);
 
     if (nextState) {
+      if (normalizedCondition === "fainted" && this._isConditionActive("dead")) {
+        return {
+          applied: false,
+          detail: this._localizeConditionName("dead")
+        };
+      }
+      if (normalizedCondition === "dead" && this._isConditionActive("fainted")) {
+        await this.toggleQuickCondition("fainted", { active: false });
+      }
       if (normalizedCondition === "disabled") {
         return this._applyDisabledMoveEffectToActor(this, null);
       }
@@ -4160,7 +4257,7 @@ export class PokRoleActor extends Actor {
         await this._purgeImmuneConditionState(this, normalizedCondition);
         return {
           applied: false,
-          detail: game.i18n.localize("POKROLE.Chat.ConditionImmune")
+          detail: this._getConditionBlockedDetail(this, normalizedCondition)
         };
       }
       await this._setConditionFlagState(this, normalizedCondition, true);
@@ -4412,12 +4509,15 @@ export class PokRoleActor extends Actor {
     if (normalizedCondition === "disabled") {
       return this._applyDisabledMoveEffectToActor(targetActor, null);
     }
+    if (normalizedCondition === "dead" && targetActor?._isConditionActive?.("fainted")) {
+      await targetActor.toggleQuickCondition("fainted", { active: false });
+    }
 
     if (this._isConditionImmune(targetActor, normalizedCondition)) {
       await this._purgeImmuneConditionState(targetActor, normalizedCondition);
       return {
         applied: false,
-        detail: game.i18n.localize("POKROLE.Chat.ConditionImmune")
+        detail: this._getConditionBlockedDetail(targetActor, normalizedCondition)
       };
     }
 
@@ -5866,9 +5966,10 @@ export class PokRoleActor extends Actor {
   }
 
   hasType(typeKey) {
-    const primary = this.system.types?.primary || "none";
-    const secondary = this.system.types?.secondary || "none";
-    return typeKey === primary || typeKey === secondary;
+    const normalizedType = this._normalizeTypeKey(typeKey);
+    const primary = this._normalizeTypeKey(this.system.types?.primary || "none");
+    const secondary = this._normalizeTypeKey(this.system.types?.secondary || "none");
+    return normalizedType === primary || normalizedType === secondary;
   }
 
   localizeTrait(traitKey) {
@@ -6377,6 +6478,9 @@ export class PokRoleActor extends Actor {
         } else if (typeof targetActor.toggleQuickCondition === "function") {
           await targetActor.toggleQuickCondition("dead", { active: true });
         }
+        if (typeof targetActor.toggleQuickCondition === "function" && targetActor._isConditionActive?.("fainted")) {
+          await targetActor.toggleQuickCondition("fainted", { active: false });
+        }
       }
     } catch (error) {
       console.error(`${POKROLE.ID} | Failed to apply damage`, error);
@@ -6390,7 +6494,9 @@ export class PokRoleActor extends Actor {
   }
 
   _evaluateTypeInteractionAgainstTypes(moveType, defenderTypes = []) {
-    if (!moveType || moveType === "none") {
+    const normalizedMoveType = this._normalizeTypeKey(moveType);
+    const normalizedDefenderTypes = defenderTypes.map((entry) => this._normalizeTypeKey(entry));
+    if (!normalizedMoveType || normalizedMoveType === "none") {
       return {
         immune: false,
         weaknessBonus: 0,
@@ -6399,7 +6505,7 @@ export class PokRoleActor extends Actor {
       };
     }
 
-    const table = TYPE_EFFECTIVENESS[moveType];
+    const table = TYPE_EFFECTIVENESS[normalizedMoveType];
     if (!table) {
       return {
         immune: false,
@@ -6413,7 +6519,7 @@ export class PokRoleActor extends Actor {
     let resistancePenalty = 0;
     let immune = false;
 
-    for (const defenderType of defenderTypes) {
+    for (const defenderType of normalizedDefenderTypes) {
       if (table.immune.includes(defenderType)) immune = true;
       if (table.double.includes(defenderType)) weaknessBonus += 1;
       if (table.half.includes(defenderType)) resistancePenalty += 1;
@@ -6422,8 +6528,8 @@ export class PokRoleActor extends Actor {
     const activeWeather = this.getActiveWeatherKey();
     if (
       activeWeather === "strong-winds" &&
-      defenderTypes.includes("flying") &&
-      ["electric", "ice", "rock"].includes(`${moveType ?? ""}`.trim().toLowerCase())
+      normalizedDefenderTypes.includes("flying") &&
+      ["electric", "ice", "rock"].includes(normalizedMoveType)
     ) {
       weaknessBonus = Math.max(weaknessBonus - 1, 0);
       resistancePenalty = Math.max(resistancePenalty - 1, 0);
