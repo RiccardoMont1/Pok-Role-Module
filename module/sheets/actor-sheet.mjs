@@ -1265,7 +1265,6 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const flags = [];
     if (move.system.highCritical) flags.push(game.i18n.localize("POKROLE.Move.HighCritical"));
     if (move.system.neverFail) flags.push(game.i18n.localize("POKROLE.Move.NeverFail"));
-    if (move.system.lethal) flags.push(game.i18n.localize("POKROLE.Move.Lethal"));
     const priority = Number(move.system.priority ?? 0);
     if (priority !== 0) {
       flags.push(

@@ -1676,9 +1676,8 @@ export class PokRoleActor extends Actor {
       if (holdingBackMode === null) return null;
     }
     const isHoldingBackHalf = holdingBackMode === "half";
-    const isHoldingBackNonLethal = holdingBackMode === "nonlethal" && Boolean(move.system.lethal);
-    const canInflictDeathOnKo =
-      Boolean(move.system?.lethal) && !isHoldingBackHalf && !isHoldingBackNonLethal;
+    const inflictLethalDamage = holdingBackMode === "lethal";
+    const canInflictDeathOnKo = inflictLethalDamage && !isHoldingBackHalf;
     const actionNumber = await this._resolveActionRequirement(options.actionNumber, roundKey);
     const activeWeather = this.getActiveWeatherKey();
     const moveType = move.system.type || "normal";
@@ -1942,10 +1941,9 @@ export class PokRoleActor extends Actor {
         holdingBackLabel:
           holdingBackMode === "half"
             ? game.i18n.localize("POKROLE.Chat.HoldingBack.HalfDamage")
-            : holdingBackMode === "nonlethal"
-              ? game.i18n.localize("POKROLE.Chat.HoldingBack.NonLethal")
+            : holdingBackMode === "lethal"
+              ? game.i18n.localize("POKROLE.Chat.HoldingBack.Lethal")
               : game.i18n.localize("POKROLE.Chat.HoldingBack.None"),
-        holdingBackNonLethalApplied: isHoldingBackNonLethal,
         infatuated,
         activeWeather,
         isDamagingMove,
@@ -2558,6 +2556,44 @@ export class PokRoleActor extends Actor {
   _normalizeSecondaryWeatherKey(weatherKey) {
     const normalized = `${weatherKey ?? "none"}`.trim().toLowerCase();
     return MOVE_SECONDARY_WEATHER_KEYS.includes(normalized) ? normalized : "none";
+  }
+
+  _normalizePokemonGenderKey(actor) {
+    const rawGender = `${actor?.system?.gender ?? "unknown"}`.trim().toLowerCase();
+    return ["male", "female", "genderless", "unknown"].includes(rawGender)
+      ? rawGender
+      : "unknown";
+  }
+
+  _validateInfatuationGenderRule(sourceActor, targetActor, options = {}) {
+    if (options.allowManualOverride === true) {
+      return { valid: true, detail: "" };
+    }
+    if (!targetActor || targetActor.type !== "pokemon") {
+      return { valid: true, detail: "" };
+    }
+
+    const targetGender = this._normalizePokemonGenderKey(targetActor);
+    if (!["male", "female"].includes(targetGender)) {
+      return {
+        valid: false,
+        detail: game.i18n.localize("POKROLE.Chat.InfatuationInvalidTargetGender")
+      };
+    }
+
+    if (!sourceActor || sourceActor.id === targetActor.id || sourceActor.type !== "pokemon") {
+      return { valid: true, detail: "" };
+    }
+
+    const sourceGender = this._normalizePokemonGenderKey(sourceActor);
+    if (!["male", "female"].includes(sourceGender) || sourceGender === targetGender) {
+      return {
+        valid: false,
+        detail: game.i18n.localize("POKROLE.Chat.InfatuationRequiresOppositeGender")
+      };
+    }
+
+    return { valid: true, detail: "" };
   }
 
   _isConditionImmune(targetActor, conditionKey) {
@@ -3388,23 +3424,26 @@ export class PokRoleActor extends Actor {
     const damageAttributeValue = Math.max(toNumber(this.getTraitValue(damageAttributeKey), 0), 0);
     const movePower = Math.max(Math.floor(toNumber(move.system?.power, 0)), 0);
     const stabDice = this.hasType(move.system.type) ? 1 : 0;
-    const damagePool = Math.max(movePower + damageAttributeValue + stabDice, 0);
+    const poolBeforeDefense = Math.max(movePower + damageAttributeValue + stabDice, 0);
+    const damagePool = Math.max(poolBeforeDefense - shellDefense, 0);
 
     let damageSuccesses = 0;
     let shellDamage = 0;
     let shellDestroyed = superEffective;
 
-    if (!shellDestroyed && isDamagingMove && damagePool > 0) {
-      const damageRoll = await new Roll(successPoolFormula(damagePool)).evaluate({ async: true });
-      damageSuccesses = Math.max(Math.floor(toNumber(damageRoll.total, 0)), 0);
-      shellDamage = Math.max(damageSuccesses - shellDefense, 0);
-      await damageRoll.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this }),
-        flavor: game.i18n.format("POKROLE.Chat.FrozenShellDamageRoll", {
-          actor: this.name,
-          move: move.name
-        })
-      });
+    if (!shellDestroyed && isDamagingMove && !typeInteraction.immune) {
+      if (damagePool > 0) {
+        const damageRoll = await new Roll(successPoolFormula(damagePool)).evaluate({ async: true });
+        damageSuccesses = Math.max(Math.floor(toNumber(damageRoll.total, 0)), 0);
+        await damageRoll.toMessage({
+          speaker: ChatMessage.getSpeaker({ actor: this }),
+          flavor: game.i18n.format("POKROLE.Chat.FrozenShellDamageRoll", {
+            actor: this.name,
+            move: move.name
+          })
+        });
+      }
+      shellDamage = Math.max(damageSuccesses, 1);
       shellDestroyed = shellDamage >= frozenShellBefore.hp;
     }
 
@@ -3450,7 +3489,9 @@ export class PokRoleActor extends Actor {
             <p><strong>${this.name}</strong></p>
             <p>${resultLabel}</p>
             <p><strong>${game.i18n.localize("POKROLE.Chat.TypeEffect.Label")}:</strong> ${game.i18n.localize(typeInteraction.label)}</p>
+            <p><strong>${game.i18n.localize("POKROLE.Chat.PoolBeforeDefense")}:</strong> ${poolBeforeDefense}</p>
             <p><strong>${game.i18n.localize("POKROLE.Chat.TargetDefense")}:</strong> ${shellDefense}</p>
+            <p><strong>${game.i18n.localize("POKROLE.Chat.FinalPool")}:</strong> ${damagePool}</p>
             <p><strong>${game.i18n.localize("POKROLE.Chat.FinalDamage")}:</strong> ${shellDamage}</p>
           </section>
         </div>
@@ -3544,13 +3585,26 @@ export class PokRoleActor extends Actor {
     };
   }
 
-  async _applyConditionEffectToActor(effect, targetActor, sourceMove = null) {
+  async _applyConditionEffectToActor(effect, targetActor, sourceMove = null, options = {}) {
     const conditionVariant = this._normalizeConditionVariantKey(effect.condition);
     const conditionKey = this._normalizeConditionKey(conditionVariant);
     const burnStage =
       conditionKey === "burn" ? this._resolveBurnStageFromCondition(conditionVariant) : 1;
     if (conditionKey === "none") {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
+    }
+    if (conditionKey === "infatuated") {
+      const genderRule = this._validateInfatuationGenderRule(
+        options?.sourceActor ?? this,
+        targetActor,
+        { allowManualOverride: options?.allowManualOverride === true }
+      );
+      if (!genderRule.valid) {
+        return {
+          applied: false,
+          detail: genderRule.detail || game.i18n.localize("POKROLE.Chat.SecondaryEffectFailed")
+        };
+      }
     }
     if (this._isConditionImmune(targetActor, conditionKey)) {
       return {
@@ -6054,16 +6108,13 @@ export class PokRoleActor extends Actor {
   }
 
   async _resolveHoldingBackChoice(move, options = {}) {
-    if (!move || move.type !== "move" || move.system.category === "support") {
+    if (!move || move.type !== "move" || !this._moveUsesPrimaryDamage(move)) {
       return "none";
     }
 
     const normalizedOption = `${options.holdingBack ?? ""}`.trim().toLowerCase();
-    if (normalizedOption === "none" || normalizedOption === "half") {
+    if (normalizedOption === "none" || normalizedOption === "half" || normalizedOption === "lethal") {
       return normalizedOption;
-    }
-    if (normalizedOption === "nonlethal") {
-      return move.system.lethal ? "nonlethal" : "none";
     }
 
     if (options.promptHoldingBack === false) {
@@ -6081,16 +6132,13 @@ export class PokRoleActor extends Actor {
           icon: "<i class='fas fa-hand-paper'></i>",
           label: game.i18n.localize("POKROLE.Combat.HoldingBackHalf"),
           callback: () => resolve("half")
+        },
+        lethal: {
+          icon: "<i class='fas fa-skull'></i>",
+          label: game.i18n.localize("POKROLE.Combat.HoldingBackLethal"),
+          callback: () => resolve("lethal")
         }
       };
-
-      if (move.system.lethal) {
-        buttons.nonlethal = {
-          icon: "<i class='fas fa-shield-heart'></i>",
-          label: game.i18n.localize("POKROLE.Combat.HoldingBackNonLethal"),
-          callback: () => resolve("nonlethal")
-        };
-      }
 
       new Dialog({
         title: game.i18n.localize("POKROLE.Combat.HoldingBackTitle"),
@@ -6316,11 +6364,17 @@ export class PokRoleActor extends Actor {
     const hpValue = Math.max(toNumber(targetActor.system.resources?.hp?.value, 0), 0);
     const hpAfter = Math.max(hpValue - normalizedDamage, 0);
     const applyDeadOnZero = Boolean(options?.applyDeadOnZero);
-    const isLethalKo = applyDeadOnZero && hpValue > 0 && hpAfter <= 0;
+    const isLethalKo = applyDeadOnZero && hpAfter <= 0;
     try {
       await targetActor.update({ "system.resources.hp.value": hpAfter });
-      if (hpAfter <= 0 && typeof targetActor.toggleQuickCondition === "function") {
-        if (isLethalKo) {
+      if (isLethalKo) {
+        if (
+          typeof targetActor._setConditionFlagState === "function" &&
+          typeof targetActor._ensureConditionEffectFromFlag === "function"
+        ) {
+          await targetActor._setConditionFlagState(targetActor, "dead", true);
+          await targetActor._ensureConditionEffectFromFlag(targetActor, "dead");
+        } else if (typeof targetActor.toggleQuickCondition === "function") {
           await targetActor.toggleQuickCondition("dead", { active: true });
         }
       }

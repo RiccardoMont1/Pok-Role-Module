@@ -18,6 +18,8 @@
 
 # Infatuato: Stessa cosa di Confusione. Inoltre non deve chiedere se la mossa deve essere effettuata al massimo della potenza o trattenendosi quando cerca di attaccare il nemico o gli alleati del nemico. Non funziona contro pokemon senza genere
 
+# 
+
 Sole: Aumenta danno fuoco, non diminuisce danno acqua. Inoltre puoi ancora essere congelato (Non devi poter essere congelato)
 
 Sole Infernale: Blocca correttamente mosse acqua, aggiunge danno fuoco. Posso ancora essere congelato. Impedisce cambio di meteo correttamente. La probabilità di Burn la vediamo insieme perché non so come cazzo fare
@@ -26,7 +28,6 @@ Pioggia: non rimuove il dado al danno mosse fuoco, aggiunge dado per il danno mo
 
 Tifone: Mosse di tipo fuoco non lanciabili, giusto. Aggiunge danni alle mosse acqua. Impedisce cambio di meteo correttamente.
 
-Danni Letali. Al momento il pokemon non muore anche se è stato ucciso da una mossa letale, sistema il problema. Inoltre, cambio di regolamento, tutte le mosse diventano NON letali, ma ogni mossa può essere dichiarata come letale. È ancora possibile trattenersi per fare metà danno
+# Danni Letali. Al momento il pokemon non muore anche se è stato ucciso da una mossa letale, sistema il problema. Inoltre, cambio di regolamento, tutte le mosse diventano NON letali, ma ogni mossa può essere dichiarata come letale. È ancora possibile trattenersi per fare metà danno
 
 PokèBall e sistema di cattura e owernship della scheda (Nuove pokè, Velox Ball - SOLO Primo turno catch rate di ultraball; Subball - Contro pokèmon acqua cath rate di una megaball; Cura ball. Catch rate normale ma cura il pokèmon una volta catturato)
-

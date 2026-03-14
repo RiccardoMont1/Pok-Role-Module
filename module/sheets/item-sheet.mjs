@@ -355,7 +355,6 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       properties: [
         context.system?.highCritical ? "POKROLE.Move.HighCritical" : null,
         context.system?.neverFail ? "POKROLE.Move.NeverFail" : null,
-        context.system?.lethal ? "POKROLE.Move.Lethal" : null,
         context.system?.shieldMove ? "POKROLE.Move.ShieldMove" : null
       ].filter((entry) => entry)
     };

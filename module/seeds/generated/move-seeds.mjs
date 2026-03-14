@@ -1601,7 +1601,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.395. User foregoes its next turn to recharge."
     },
@@ -3083,7 +3083,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.401. User faints."
     },
@@ -3681,7 +3681,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": true,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.375. User charges for one turn before attacking. Has a 30% chance to make the target flinch."
     },
@@ -3941,7 +3941,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.393. User faints."
     },
@@ -6827,7 +6827,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": -3,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.366. If the user takes damage before attacking, the attack is canceled."
     },
@@ -7347,7 +7347,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.370. Inflicts more damage when the user has more HP remaining, with a maximum of 150 power."
     },
@@ -7945,7 +7945,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.369. User foregoes its next turn to recharge."
     },
@@ -7971,7 +7971,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.422. User foregoes its next turn to recharge."
     },
@@ -8153,7 +8153,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.372. Lowers the user\u2019s Special Attack by two stages after inflicting damage."
     },
@@ -8361,7 +8361,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.424. Inflicts more damage when the user has more HP remaining, with a maximum of 150 power."
     },
@@ -8751,7 +8751,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.379. User foregoes its next turn to recharge."
     },
@@ -9141,7 +9141,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.418. Hits the target two turns later."
     },
@@ -9167,7 +9167,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.414. Lowers the user\u2019s Special Attack by two stages after inflicting damage."
     },
@@ -9999,7 +9999,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.396. Can only be used after all of the user\u2019s other moves have been used."
     },
@@ -10753,7 +10753,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.394. User foregoes its next turn to recharge."
     },
@@ -11221,7 +11221,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.356. Lowers the user\u2019s Special Attack by two stages after inflicting damage."
     },
@@ -11299,7 +11299,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.380. Lowers the user\u2019s Special Attack by two stages after inflicting damage."
     },
@@ -11351,7 +11351,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.417. User foregoes its next turn to recharge."
     },
@@ -11819,7 +11819,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.416. User receives 1/2 the damage inflicted in recoil."
     },
@@ -11871,7 +11871,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.358. User foregoes its next turn to recharge."
     },
@@ -14237,7 +14237,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.358. Has a 20% chance to [paralyze]{mechanic:paralysis} the target."
     },
@@ -14263,7 +14263,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.370. Has a 20% chance to [burn]{mechanic:burn} the target."
     },
@@ -14315,7 +14315,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.387. Requires a turn to charge before attacking. Has a 30% chance to paralyze the target."
     },
@@ -14341,7 +14341,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.387. Requires a turn to charge before attacking. Has a 30% chance to [burn]{mechanic:burn} the target."
     },
@@ -14419,7 +14419,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.373. Lowers the user\u2019s Defense, Special Defense, and Speed by one stage each."
     },
@@ -15173,7 +15173,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.390. Inflicts regular damage."
     },
@@ -15875,7 +15875,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.363. User receives 1/2 the damage inflicted in recoil."
     },
@@ -17539,7 +17539,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.370. Removes the user\u2019s []{type:fire} type after inflicting damage."
     },
@@ -17877,7 +17877,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": -3,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.372. Only inflicts damage if the user was hit by a physical move this turn."
     },
@@ -17903,7 +17903,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.363. Lowers the user\u2019s Special Attack by two stages after inflicting damage."
     },
@@ -18059,7 +18059,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.413. User foregoes its next turn to recharge."
     },
@@ -18267,7 +18267,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.372. Inflicts damage, and the user takes damage equal to half of its max HP, rounded up."
     },
@@ -19957,7 +19957,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.367. User foregoes its next turn to recharge."
     },
@@ -19983,7 +19983,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.358. User foregoes its next turn to recharge."
     },
@@ -20009,7 +20009,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "priority": 0,
       "highCritical": false,
       "neverFail": false,
-      "lethal": true,
+      "lethal": false,
       "isUsable": true,
       "description": "Corebook p.420. Inflicts damage, and the user takes damage equal to half of its max HP, rounded up."
     },

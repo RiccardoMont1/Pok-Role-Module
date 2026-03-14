@@ -624,9 +624,9 @@
       "ClashMove": "Mossa per Clash",
       "HoldingBackTitle": "Holding Back",
       "HoldingBackPrompt": "Come vuoi usare {move}?",
-      "HoldingBackNormal": "Colpisci al massimo",
+      "HoldingBackNormal": "Danno normale",
       "HoldingBackHalf": "Trattieni (meta danno)",
-      "HoldingBackNonLethal": "Trattieni (niente danno letale)",
+      "HoldingBackLethal": "Infliggi danni letali",
       "WeatherSetButton": "Imposta Meteo",
       "WeatherSetTitle": "Imposta Meteo",
       "WeatherLabel": "Meteo",
@@ -704,6 +704,8 @@
       "WeatherNoDamage": "{weather}: nessun danno da meteo.",
       "WeatherRoundDamage": "{weather}: {damage} danno.",
       "ConditionImmune": "Il bersaglio e immune a questa condizione.",
+      "InfatuationInvalidTargetGender": "Infatuazione non funziona su Pokemon senza un genere definito.",
+      "InfatuationRequiresOppositeGender": "Infatuazione funziona solo contro un Pokemon di sesso opposto.",
       "SecondaryEffectApplied": "Applicato",
       "SecondaryEffectFailed": "Fallito",
       "SecondaryEffectChanceFailed": "Dadi chance falliti ({rolls}) su {dice}d6: nessun 6 ottenuto.",
@@ -757,10 +759,9 @@
       "PassiveTriggerNotMet": "Le condizioni del trigger passivo non sono soddisfatte.",
       "HoldingBack": {
         "Label": "Holding Back",
-        "None": "Nessun contenimento",
+        "None": "Danno normale (non letale)",
         "HalfDamage": "Meta danno (arrotondato per difetto, minimo 1)",
-        "NonLethal": "Danno normale invece di danno letale",
-        "NonLethalNote": "Il danno letale e stato convertito in danno normale"
+        "Lethal": "Danno letale"
       },
       "Reaction": {
         "Label": "Reazione",

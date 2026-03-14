@@ -624,9 +624,9 @@
       "ClashMove": "Clash Move",
       "HoldingBackTitle": "Holding Back",
       "HoldingBackPrompt": "How should {move} be used?",
-      "HoldingBackNormal": "Go all out",
+      "HoldingBackNormal": "Normal damage",
       "HoldingBackHalf": "Hold Back (half damage)",
-      "HoldingBackNonLethal": "Hold Back (no lethal damage)",
+      "HoldingBackLethal": "Inflict lethal damage",
       "WeatherSetButton": "Set Weather",
       "WeatherSetTitle": "Set Weather",
       "WeatherLabel": "Weather",
@@ -704,6 +704,8 @@
       "WeatherNoDamage": "{weather}: no weather damage.",
       "WeatherRoundDamage": "{weather}: {damage} damage.",
       "ConditionImmune": "Target is immune to this condition.",
+      "InfatuationInvalidTargetGender": "Infatuation does not work on Pokemon without a defined gender.",
+      "InfatuationRequiresOppositeGender": "Infatuation only works on a Pokemon of the opposite gender.",
       "SecondaryEffectApplied": "Applied",
       "SecondaryEffectFailed": "Failed",
       "SecondaryEffectChanceFailed": "Chance dice failed ({rolls}) on {dice}d6: no 6 was rolled.",
@@ -757,10 +759,9 @@
       "PassiveTriggerNotMet": "Passive trigger requirements are not met.",
       "HoldingBack": {
         "Label": "Holding Back",
-        "None": "No Holding Back",
+        "None": "Normal damage (non-lethal)",
         "HalfDamage": "Half damage (rounded down, minimum 1)",
-        "NonLethal": "Regular damage instead of lethal damage",
-        "NonLethalNote": "Lethal damage was converted to regular damage"
+        "Lethal": "Lethal damage"
       },
       "Reaction": {
         "Label": "Reaction",
