@@ -500,6 +500,12 @@
                   {{safeSelectOptions @root.secondaryHealModeOptions selected=effect.healMode localize=true}}
                 </select>
               </label>
+              <label data-effect-visible="heal-profile" class="{{#unless effect.showHealProfileField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.HealProfile.Label"}}</span>
+                <select name="system.secondaryEffects.{{effect.index}}.healProfile">
+                  {{safeSelectOptions @root.secondaryHealProfileOptions selected=effect.healProfile localize=true}}
+                </select>
+              </label>
               <label data-effect-visible="heal-category" class="{{#unless effect.showHealingCategoryField}}is-hidden{{/unless}}">
                 <span>{{localize "POKROLE.Move.Secondary.HealingCategory.Label"}}</span>
                 <select name="system.secondaryEffects.{{effect.index}}.healingCategory">

@@ -216,6 +216,11 @@ export const MOVE_SECONDARY_HEAL_MODE_KEYS = Object.freeze([
   "damage-percent"
 ]);
 
+export const MOVE_SECONDARY_HEAL_PROFILE_KEYS = Object.freeze([
+  "standard",
+  "sunlight-restoration"
+]);
+
 export const HEALING_CATEGORY_KEYS = Object.freeze([
   "standard",
   "complete",

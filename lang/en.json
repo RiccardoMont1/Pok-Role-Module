@@ -388,6 +388,11 @@
           "OfDamageDealt": "of damage dealt",
           "OfMaxHp": "of max HP"
         },
+        "HealProfile": {
+          "Label": "Healing Profile",
+          "Standard": "Standard",
+          "SunlightRestoration": "Sunlight/context dependent"
+        },
         "Duration": {
           "Rounds": "Rounds",
           "Mode": {
@@ -715,6 +720,14 @@
       "SecondaryEffectAlreadyActive": "Already active",
       "SecondaryEffectTracked": "tracked as extra condition",
       "SecondaryEffectNoHealConfigured": "No healing value configured.",
+      "SecondaryEffectHealAdjustedComplete": "{reason}: healing counts as Complete Heal.",
+      "SecondaryEffectHealAdjustedOneHp": "{reason}: healing is reduced to 1 HP.",
+      "SecondaryEffectHealAdjustedZeroHp": "{reason}: healing is reduced to 0 HP.",
+      "SecondaryEffectHealReason": {
+        "Night": "Night",
+        "Indoors": "Indoors",
+        "Underground": "Underground"
+      },
       "SecondaryEffectNoDamageToDrain": "No damage was dealt, so there is nothing to drain.",
       "SecondaryEffectTargetAlreadyFullHp": "Target is already at full HP.",
       "SecondaryEffectHealingLimitReached": "Healing limit reached for this round ({limit} HP).",

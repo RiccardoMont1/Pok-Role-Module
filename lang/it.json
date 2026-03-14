@@ -388,6 +388,11 @@
           "OfDamageDealt": "del danno inflitto",
           "OfMaxHp": "dei PS massimi"
         },
+        "HealProfile": {
+          "Label": "Profilo Cura",
+          "Standard": "Standard",
+          "SunlightRestoration": "Dipendente da sole/contesto"
+        },
         "Duration": {
           "Rounds": "Round",
           "Mode": {
@@ -715,6 +720,14 @@
       "SecondaryEffectAlreadyActive": "Gia attivo",
       "SecondaryEffectTracked": "tracciato come condizione extra",
       "SecondaryEffectNoHealConfigured": "Nessun valore di cura configurato.",
+      "SecondaryEffectHealAdjustedComplete": "{reason}: la cura conta come Completa.",
+      "SecondaryEffectHealAdjustedOneHp": "{reason}: la cura e ridotta a 1 PS.",
+      "SecondaryEffectHealAdjustedZeroHp": "{reason}: la cura e ridotta a 0 PS.",
+      "SecondaryEffectHealReason": {
+        "Night": "Notte",
+        "Indoors": "Al chiuso",
+        "Underground": "Sottoterra"
+      },
       "SecondaryEffectNoDamageToDrain": "Non e stato inflitto danno, quindi non c'e nulla da drenare.",
       "SecondaryEffectTargetAlreadyFullHp": "Il bersaglio ha gia i PS pieni.",
       "SecondaryEffectHealingLimitReached": "Limite di cura raggiunto per questo round ({limit} PS).",

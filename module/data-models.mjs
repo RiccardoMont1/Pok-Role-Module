@@ -7,6 +7,7 @@ import {
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
   HEALING_CATEGORY_KEYS,
   MOVE_SECONDARY_HEAL_MODE_KEYS,
+  MOVE_SECONDARY_HEAL_PROFILE_KEYS,
   MOVE_SECONDARY_WEATHER_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
@@ -380,6 +381,12 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
             blank: false,
             initial: "fixed",
             choices: MOVE_SECONDARY_HEAL_MODE_KEYS
+          }),
+          healProfile: new StringField({
+            required: true,
+            blank: false,
+            initial: "standard",
+            choices: MOVE_SECONDARY_HEAL_PROFILE_KEYS
           }),
           healingCategory: new StringField({
             required: true,

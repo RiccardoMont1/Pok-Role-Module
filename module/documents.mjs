@@ -8,6 +8,7 @@ import {
   MOVE_SECONDARY_SPECIAL_DURATION_KEYS,
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
   MOVE_SECONDARY_HEAL_MODE_KEYS,
+  MOVE_SECONDARY_HEAL_PROFILE_KEYS,
   MOVE_SECONDARY_WEATHER_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
@@ -455,6 +456,16 @@ export class PokRoleActor extends Actor {
     return 0;
   }
 
+  _applyWeatherDamageReduction(finalDamage, weatherFlatReduction, options = {}) {
+    const normalizedDamage = Math.max(toNumber(finalDamage, 0), 0);
+    const normalizedReduction = Math.max(toNumber(weatherFlatReduction, 0), 0);
+    const immune = Boolean(options?.immune);
+    if (immune || normalizedDamage <= 0 || normalizedReduction <= 0) {
+      return normalizedDamage;
+    }
+    return Math.max(normalizedDamage - normalizedReduction, 1);
+  }
+
   _getWeatherDefenseBonus(targetActor, category, weatherKey) {
     const weather = this._normalizeWeatherKey(weatherKey);
     if (!targetActor || weather === "none") return 0;
@@ -806,6 +817,14 @@ export class PokRoleActor extends Actor {
     if (normalizedStage === 3) return "burn3";
     if (normalizedStage === 2) return "burn2";
     return "burn";
+  }
+
+  _statusDamageCanKill(conditionKey) {
+    const normalizedCondition = this._normalizeConditionKey(conditionKey);
+    if (normalizedCondition === "burn") {
+      return this._normalizeBurnStage(this._getBurnTrack().stage, 1) >= 3;
+    }
+    return false;
   }
 
   _localizeBurnStageName(stage = 1) {
@@ -2372,7 +2391,9 @@ export class PokRoleActor extends Actor {
       finalDamage = isHoldingBackHalf
         ? Math.max(Math.floor(resolvedDamage / 2), 1)
         : resolvedDamage;
-      finalDamage = Math.max(finalDamage - weatherFlatReduction, 0);
+      finalDamage = this._applyWeatherDamageReduction(finalDamage, weatherFlatReduction, {
+        immune: typeInteraction.immune
+      });
     }
 
     const rangedAttack = this._isMoveRanged(move);
@@ -2439,7 +2460,7 @@ export class PokRoleActor extends Actor {
     );
     if (legacyEffects.length > 0) return legacyEffects;
 
-    return this._inferSecondaryEffectsFromDescription(move.system?.description, move.system?.target);
+    return this._inferSecondaryEffectsFromDescription(move.system?.description, move.system?.target, move);
   }
 
   _normalizeSecondaryEffectDefinitions(effectList) {
@@ -2481,6 +2502,7 @@ export class PokRoleActor extends Actor {
       normalizedEffectType,
       rawEffect.amount
     );
+    const healProfile = this._normalizeSecondaryHealProfile(rawEffect.healProfile);
     const healingCategory = this._normalizeHealingCategory(rawEffect.healingCategory);
     const rawAmount = clamp(Math.floor(toNumber(rawEffect.amount, 0)), -999, 999);
     const amount =
@@ -2503,6 +2525,7 @@ export class PokRoleActor extends Actor {
       stat,
       amount,
       healMode,
+      healProfile,
       healingCategory,
       notes: `${rawEffect.notes ?? ""}`.trim(),
       linkedEffectId: `${rawEffect.linkedEffectId ?? ""}`.trim()
@@ -2527,6 +2550,128 @@ export class PokRoleActor extends Actor {
     return Number(amount) < 0 ? "max-hp-percent" : "fixed";
   }
 
+  _normalizeSecondaryHealProfile(healProfile) {
+    const normalized = `${healProfile ?? "standard"}`.trim().toLowerCase();
+    return MOVE_SECONDARY_HEAL_PROFILE_KEYS.includes(normalized) ? normalized : "standard";
+  }
+
+  _inferHealProfileFromMove(move, descriptionText = "") {
+    const moveName = `${move?.name ?? ""}`.trim().toLowerCase();
+    const seedId = `${move?.getFlag?.(POKROLE.ID, "seedId") ?? ""}`.trim().toLowerCase();
+    const normalizedDescription = `${descriptionText ?? ""}`.trim().toLowerCase();
+    const isSunlightHealMove =
+      ["morning sun", "moonlight", "synthesis"].includes(moveName) ||
+      ["move-morning-sun", "move-moonlight", "move-synthesis"].includes(seedId);
+    if (isSunlightHealMove && normalizedDescription.includes("affected by weather")) {
+      return "sunlight-restoration";
+    }
+    return "standard";
+  }
+
+  _getSceneHealingContext() {
+    const scene = canvas?.scene ?? null;
+    const rawContext = scene?.getFlag?.(POKROLE.ID, "healingContext") ?? {};
+    const rawTimeOfDay = `${rawContext?.timeOfDay ?? ""}`.trim().toLowerCase();
+    const darkness = Number(scene?.darkness ?? 0);
+    const timeOfDay = ["day", "night"].includes(rawTimeOfDay)
+      ? rawTimeOfDay
+      : darkness >= 0.75
+        ? "night"
+        : "day";
+
+    const rawLocation = `${rawContext?.location ?? ""}`.trim().toLowerCase();
+    const location = ["outdoors", "indoors", "underground"].includes(rawLocation)
+      ? rawLocation
+      : "outdoors";
+
+    return {
+      timeOfDay,
+      location
+    };
+  }
+
+  _localizeHealingContextReason(reasonKey) {
+    const labelByReason = {
+      night: "POKROLE.Chat.SecondaryEffectHealReason.Night",
+      indoors: "POKROLE.Chat.SecondaryEffectHealReason.Indoors",
+      underground: "POKROLE.Chat.SecondaryEffectHealReason.Underground"
+    };
+    return game.i18n.localize(labelByReason[reasonKey] ?? "POKROLE.Common.Unknown");
+  }
+
+  _resolveSecondaryHealConfiguration(effect, sourceMove = null) {
+    const healMode = this._normalizeSecondaryHealMode(
+      effect?.healMode,
+      effect?.effectType,
+      effect?.amount
+    );
+    const healProfile = this._normalizeSecondaryHealProfile(effect?.healProfile);
+    const healingCategory = this._normalizeHealingCategory(effect?.healingCategory);
+    const amount = Math.abs(Math.floor(toNumber(effect?.amount, 0)));
+
+    const resolved = {
+      effectType: "heal",
+      healMode,
+      healProfile,
+      healingCategory,
+      amount,
+      adjustmentDetail: ""
+    };
+
+    if (healProfile !== "sunlight-restoration") {
+      return resolved;
+    }
+
+    const weather = this.getActiveWeatherKey();
+    const sceneContext = this._getSceneHealingContext();
+    const reducedToOneHpByWeather = ["rain", "sandstorm", "hail"].includes(weather);
+    const nullifiedByWeather = weather === "typhoon";
+    const reducedByEnvironment =
+      sceneContext.timeOfDay === "night" ||
+      ["indoors", "underground"].includes(sceneContext.location);
+
+    if (nullifiedByWeather) {
+      return {
+        ...resolved,
+        healMode: "fixed",
+        healingCategory: "standard",
+        amount: 0,
+        adjustmentDetail: game.i18n.format("POKROLE.Chat.SecondaryEffectHealAdjustedZeroHp", {
+          reason: this._localizeWeatherName(weather)
+        })
+      };
+    }
+
+    if (reducedToOneHpByWeather || reducedByEnvironment) {
+      const reductionReason = reducedToOneHpByWeather
+        ? this._localizeWeatherName(weather)
+        : this._localizeHealingContextReason(
+            sceneContext.timeOfDay === "night" ? "night" : sceneContext.location
+          );
+      return {
+        ...resolved,
+        healMode: "fixed",
+        healingCategory: "standard",
+        amount: 1,
+        adjustmentDetail: game.i18n.format("POKROLE.Chat.SecondaryEffectHealAdjustedOneHp", {
+          reason: reductionReason
+        })
+      };
+    }
+
+    if (weather === "sunny" || weather === "harsh-sunlight") {
+      return {
+        ...resolved,
+        healingCategory: "complete",
+        adjustmentDetail: game.i18n.format("POKROLE.Chat.SecondaryEffectHealAdjustedComplete", {
+          reason: this._localizeWeatherName(weather)
+        })
+      };
+    }
+
+    return resolved;
+  }
+
   _normalizeSecondaryDurationMode(durationMode, effectType = "custom") {
     const normalized = `${durationMode ?? ""}`.trim().toLowerCase();
     if (MOVE_SECONDARY_DURATION_MODE_KEYS.includes(normalized)) {
@@ -2549,11 +2694,17 @@ export class PokRoleActor extends Actor {
 
   _getWeatherSecondaryChanceDiceBonus(effect, move, weatherKey) {
     const weather = this._normalizeWeatherKey(weatherKey);
-    const moveType = this._normalizeTypeKey(move?.system?.type ?? move?.type ?? "none");
+    const moveType = this._normalizeTypeKey(move?.system?.type ?? "none");
+    const normalizedEffectType = this._normalizeSecondaryEffectType(effect?.effectType);
     const conditionVariant = this._normalizeConditionVariantKey(effect?.condition);
     const isBurnEffect = conditionVariant === "burn" || conditionVariant === "burn2" || conditionVariant === "burn3";
 
-    if ((weather === "sunny" || weather === "harsh-sunlight") && moveType === "fire" && isBurnEffect) {
+    if (
+      weather === "harsh-sunlight" &&
+      moveType === "fire" &&
+      normalizedEffectType === "condition" &&
+      isBurnEffect
+    ) {
       return 2;
     }
 
@@ -2592,6 +2743,7 @@ export class PokRoleActor extends Actor {
     if (normalized === "burn2") return "burn2";
     if (normalized === "burn1" || normalized === "burn") return "burn";
     const alias = CONDITION_ALIASES[normalized] ?? normalized;
+    if (alias === "dead") return "dead";
     return MOVE_SECONDARY_CONDITION_KEYS.includes(alias) ? alias : "none";
   }
 
@@ -2774,7 +2926,7 @@ export class PokRoleActor extends Actor {
     return secondaryEffects;
   }
 
-  _inferSecondaryEffectsFromDescription(description, moveTargetKey) {
+  _inferSecondaryEffectsFromDescription(description, moveTargetKey, move = null) {
     const descriptionText = `${description ?? ""}`.replace(/\s+/g, " ").trim();
     if (!descriptionText) return [];
     const lowerDescription = descriptionText.toLowerCase();
@@ -2878,6 +3030,7 @@ export class PokRoleActor extends Actor {
     if (halfHealMatch) {
       const targetWord = `${halfHealMatch[1] ?? ""}`.toLowerCase();
       const target = ["user", "itself", "self"].includes(targetWord) ? "self" : "target";
+      const healProfile = this._inferHealProfileFromMove(move, descriptionText);
       addEffect({
         label: "",
         trigger: "on-hit",
@@ -2887,6 +3040,7 @@ export class PokRoleActor extends Actor {
         condition: "none",
         stat: "none",
         amount: -50,
+        healProfile,
         notes: ""
       });
     }
@@ -3309,11 +3463,11 @@ export class PokRoleActor extends Actor {
     const normalizedType = this._normalizeSecondaryEffectType(effect?.effectType);
     switch (normalizedType) {
       case "heal": {
-        const healMode = this._normalizeSecondaryHealMode(
-          effect?.healMode,
-          normalizedType,
-          effect?.amount
-        );
+        const resolvedHeal = this._resolveSecondaryHealConfiguration(effect, context?.sourceMove ?? null);
+        const healMode = resolvedHeal.healMode;
+        if (resolvedHeal.adjustmentDetail && Math.max(toNumber(resolvedHeal.amount, 0), 0) <= 0) {
+          return resolvedHeal.adjustmentDetail;
+        }
         if (healMode === "damage-percent" && Math.max(toNumber(context?.totalDamageDealt, 0), 0) <= 0) {
           return game.i18n.localize("POKROLE.Chat.SecondaryEffectNoDamageToDrain");
         }
@@ -3324,7 +3478,7 @@ export class PokRoleActor extends Actor {
             return game.i18n.localize("POKROLE.Chat.SecondaryEffectTargetAlreadyFullHp");
           }
           if (game.combat && targetActor instanceof PokRoleActor) {
-            const limit = this._getHealingRoundLimit(effect?.healingCategory);
+            const limit = this._getHealingRoundLimit(resolvedHeal.healingCategory);
             if (Number.isFinite(limit)) {
               const track = targetActor._getHealingTrack();
               if (Math.max(toNumber(track?.healedThisRound, 0), 0) >= limit) {
@@ -3430,12 +3584,16 @@ export class PokRoleActor extends Actor {
         };
       }
       case "heal": {
-        const healValue = this._resolveHealEffectAmountValue(effect, targetActor, context);
+        const resolvedHeal = this._resolveSecondaryHealConfiguration(effect, sourceMove);
+        const healValue = this._resolveHealEffectAmountValue(resolvedHeal, targetActor, context);
         if (healValue <= 0) {
-          return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
+          return {
+            applied: false,
+            detail: resolvedHeal.adjustmentDetail || game.i18n.localize("POKROLE.Common.None")
+          };
         }
         const hpChange = await this._safeApplyHeal(targetActor, healValue, {
-          healingCategory: effect.healingCategory
+          healingCategory: resolvedHeal.healingCategory
         });
         if (!hpChange) {
           return { applied: false, detail: game.i18n.localize("POKROLE.Errors.HPUpdateFailed") };
@@ -3448,10 +3606,13 @@ export class PokRoleActor extends Actor {
         }
         return {
           applied: true,
-          detail: game.i18n.format("POKROLE.Chat.SecondaryEffectHpChange", {
-            before: hpChange.hpBefore,
-            after: hpChange.hpAfter
-          })
+          detail: [
+            game.i18n.format("POKROLE.Chat.SecondaryEffectHpChange", {
+              before: hpChange.hpBefore,
+              after: hpChange.hpAfter
+            }),
+            `${resolvedHeal.adjustmentDetail ?? ""}`.trim()
+          ].filter(Boolean).join(" | ")
         };
       }
       case "will":
@@ -4025,6 +4186,7 @@ export class PokRoleActor extends Actor {
 
   async synchronizeFaintedFromHp() {
     if (this.type !== "pokemon") return false;
+    if (this.__pokrolePendingDeadSync) return false;
     const hpValue = Math.max(toNumber(this.system.resources?.hp?.value, 0), 0);
     const shouldBeFainted = hpValue <= 0 && !this._isConditionActive("dead");
     const isFainted = this._isConditionActive("fainted");
@@ -5082,7 +5244,9 @@ export class PokRoleActor extends Actor {
 
     const applyDamage = async (conditionKey, amount) => {
       if (!conditionFlags?.[conditionKey]) return;
-      const hpResult = await this._safeApplyDamage(this, amount);
+      const hpResult = await this._safeApplyDamage(this, amount, {
+        applyDeadOnZero: this._statusDamageCanKill(conditionKey)
+      });
       if (!hpResult) return;
       totalDamage += amount;
       const label =
@@ -6466,6 +6630,9 @@ export class PokRoleActor extends Actor {
     const hpAfter = Math.max(hpValue - normalizedDamage, 0);
     const applyDeadOnZero = Boolean(options?.applyDeadOnZero);
     const isLethalKo = applyDeadOnZero && hpAfter <= 0;
+    if (isLethalKo) {
+      targetActor.__pokrolePendingDeadSync = true;
+    }
     try {
       await targetActor.update({ "system.resources.hp.value": hpAfter });
       if (isLethalKo) {
@@ -6485,6 +6652,10 @@ export class PokRoleActor extends Actor {
     } catch (error) {
       console.error(`${POKROLE.ID} | Failed to apply damage`, error);
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.HPUpdateFailed"));
+    } finally {
+      if (isLethalKo) {
+        delete targetActor.__pokrolePendingDeadSync;
+      }
     }
 
     return {
