@@ -187,42 +187,6 @@
               </select>
             </label>
             <label>
-              <span>{{localize "POKROLE.Move.RangeMode.Label"}}</span>
-              <select name="system.rangeMode">
-                {{safeSelectOptions rangeModeOptions selected=system.rangeMode localize=true}}
-              </select>
-            </label>
-            <label class="move-range-value-row {{#unless moveRangeUsesValue}}is-hidden{{/unless}}">
-              <span>{{localize "POKROLE.Move.RangeMode.Value"}}</span>
-              <input
-                type="number"
-                name="system.rangeValue"
-                value="{{system.rangeValue}}"
-                min="0"
-                max="999"
-                data-dtype="Number"
-              />
-            </label>
-            <label class="move-range-text-row {{#unless moveRangeUsesText}}is-hidden{{/unless}}">
-              <span>{{localize "POKROLE.Move.RangeMode.CustomText"}}</span>
-              <input
-                type="text"
-                name="system.rangeText"
-                value="{{system.rangeText}}"
-                placeholder="{{localize 'POKROLE.Move.RangePlaceholder'}}"
-              />
-            </label>
-            <label>
-              <span>{{localize "POKROLE.Move.Range"}}</span>
-              <input
-                type="text"
-                name="system.range"
-                value="{{system.range}}"
-                readonly
-                placeholder="{{localize 'POKROLE.Move.RangePlaceholder'}}"
-              />
-            </label>
-            <label>
               <span>{{localize "POKROLE.Move.Duration.Label"}}</span>
               <select name="system.durationType">
                 {{#each moveDurationOptions.direct as |option|}}

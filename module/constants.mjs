@@ -34,7 +34,8 @@ export function getSystemAssetPath(relativePath = "") {
 export const COMBAT_FLAG_KEYS = Object.freeze({
   LAST_EVASION_ROUND: "combat.lastEvasionRound",
   LAST_CLASH_ROUND: "combat.lastClashRound",
-  LAST_ACTION_ROUND: "combat.lastActionRound"
+  LAST_ACTION_ROUND: "combat.lastActionRound",
+  MOVE_QUEUE: "combat.moveQueue"
 });
 
 export const CORE_ATTRIBUTE_DEFINITIONS = Object.freeze([

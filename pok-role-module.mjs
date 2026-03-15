@@ -21,6 +21,14 @@ import {
   TrainerDataModel
 } from "./module/data-models.mjs";
 import { PokRoleActor, PokRoleItem } from "./module/documents.mjs";
+import {
+  clearCombatMoveQueue,
+  enqueueCombatMoveDeclaration,
+  executeCombatMoveEntry,
+  moveCombatMoveEntry,
+  removeCombatMoveEntry,
+  renderMoveQueueOverlay
+} from "./module/move-queue.mjs";
 import { PokRoleActorSheet } from "./module/sheets/actor-sheet.mjs";
 import { PokRoleMoveSheet } from "./module/sheets/item-sheet.mjs";
 
@@ -867,6 +875,17 @@ Hooks.once("init", () => {
 Hooks.once("ready", async () => {
   game.pokrole ??= {};
   game.pokrole.seedCompendia = async (options = {}) => seedCompendia(options);
+  game.pokrole.renderMoveQueueOverlay = async () => renderMoveQueueOverlay();
+  game.pokrole.enqueueCombatMoveDeclaration = async (entry, combat = game.combat ?? null) =>
+    enqueueCombatMoveDeclaration(entry, combat);
+  game.pokrole.clearCombatMoveQueue = async (combat = game.combat ?? null) =>
+    clearCombatMoveQueue(combat);
+  game.pokrole.removeCombatMoveEntry = async (entryId, combat = game.combat ?? null) =>
+    removeCombatMoveEntry(combat, entryId);
+  game.pokrole.moveCombatMoveEntry = async (entryId, targetIndex, combat = game.combat ?? null) =>
+    moveCombatMoveEntry(combat, entryId, targetIndex);
+  game.pokrole.executeCombatMoveEntry = async (entryId, combat = game.combat ?? null) =>
+    executeCombatMoveEntry(combat, entryId);
   await synchronizeAllActorEffectTokenIcons();
   await clearSceneScopedMoveDisableEffects(canvas?.scene?.id ?? null);
   for (const actor of game.actors?.contents ?? []) {
@@ -877,6 +896,7 @@ Hooks.once("ready", async () => {
     if (typeof actor.synchronizeFaintedFromHp !== "function") continue;
     await actor.synchronizeFaintedFromHp();
   }
+  await renderMoveQueueOverlay();
 });
 
 Hooks.on("canvasReady", async (canvasDocument) => {
@@ -887,6 +907,7 @@ Hooks.on("updateCombat", async (combat, changed) => {
   const hasCombatEnded =
     Object.prototype.hasOwnProperty.call(changed, "active") && changed.active === false;
   if (hasCombatEnded) {
+    await clearCombatMoveQueue(combat);
     await processCombatSpecialDurationEvent(combat, "combat-end");
     await clearCombatScopedTemporaryEffects(combat);
     LAST_COMBAT_TURN_STATE.delete(`${combat?.id ?? ""}`);
@@ -945,6 +966,7 @@ Hooks.on("updateCombat", async (combat, changed) => {
     await advanceCombatWeatherDuration(combat);
     await advanceCombatTerrainDuration(combat);
   }
+  await clearCombatMoveQueue(combat);
   if ((combat.round ?? 0) <= 0) {
     LAST_COMBAT_TURN_STATE.set(combatId, {
       turn: Number.isInteger(combat.turn) ? combat.turn : null,
@@ -993,6 +1015,18 @@ Hooks.on("deleteCombat", async (combat) => {
   await processCombatSpecialDurationEvent(combat, "combat-end");
   await clearCombatScopedTemporaryEffects(combat);
   LAST_COMBAT_TURN_STATE.delete(`${combat?.id ?? ""}`);
+});
+
+Hooks.on("createCombat", () => {
+  void renderMoveQueueOverlay();
+});
+
+Hooks.on("updateCombat", () => {
+  void renderMoveQueueOverlay();
+});
+
+Hooks.on("deleteCombat", () => {
+  void renderMoveQueueOverlay();
 });
 
 Hooks.on("applyTokenStatusEffect", (token, statusId, isActive) => {

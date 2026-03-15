@@ -249,21 +249,6 @@ def build_move_description(move_system):
     return description or "Corebook move entry."
 
 
-def infer_range_config(move_target_key, move_system, effect_text):
-    lower_effect = (effect_text or "").lower()
-    if move_target_key == "self":
-        return {"rangeMode": "self", "rangeValue": 0, "rangeText": ""}
-    if move_target_key in {"battlefield", "foe-battlefield", "ally-battlefield"}:
-        return {"rangeMode": "battlefield", "rangeValue": 1, "rangeText": ""}
-    if move_target_key in {"all-foes", "all-allies", "area", "battlefield-area"}:
-        return {"rangeMode": "scene", "rangeValue": 1, "rangeText": ""}
-    if move_system.get("attributes", {}).get("physicalRanged") or any(
-        token in lower_effect for token in (" ranged", "projectile move", "projectile moves")
-    ):
-        return {"rangeMode": "scene", "rangeValue": 1, "rangeText": ""}
-    return {"rangeMode": "melee", "rangeValue": 1, "rangeText": ""}
-
-
 def infer_duration_config(effect_text):
     lower_effect = (effect_text or "").lower()
     round_match = re.search(r"duration\s+(\d+)\s+round", lower_effect)
@@ -681,7 +666,6 @@ def build_move_entry(row):
     type_key = normalize_move_type(system.get("type"))
     category_key = normalize_move_category(system.get("category"))
     target_key = normalize_move_target(system.get("target"))
-    range_config = infer_range_config(target_key, system, effect_text)
     duration_config = infer_duration_config(effect_text)
     will_cost = infer_will_cost(system, effect_text)
 
@@ -729,10 +713,6 @@ def build_move_entry(row):
             "accuracyFlatModifier": 0,
             "damageAttribute": normalize_damage_attribute(category_key, system.get("dmgMod1")),
             "willCost": will_cost,
-            "rangeMode": range_config["rangeMode"],
-            "rangeValue": range_config["rangeValue"],
-            "rangeText": range_config["rangeText"],
-            "range": "",
             "durationType": duration_config["durationType"],
             "durationValue": duration_config["durationValue"],
             "priority": clamp(parse_priority_from_effect(effect_text), -3, 5),

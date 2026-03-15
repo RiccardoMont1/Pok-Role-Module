@@ -545,8 +545,19 @@ export class PokRoleActor extends Actor {
   }
 
   _isMoveRanged(move) {
-    const rangeMode = this._normalizeMoveRangeMode(move?.system?.rangeMode);
-    return ["meters", "scene", "battlefield", "custom"].includes(rangeMode);
+    const moveSourceAttributes =
+      move?.getFlag?.(POKROLE.ID, "sourceAttributes") ??
+      foundry.utils.getProperty(move, `flags.${POKROLE.ID}.sourceAttributes`) ??
+      {};
+    return Boolean(moveSourceAttributes?.physicalRanged);
+  }
+
+  _normalizeMoveCombatCategory(value) {
+    const normalized = `${value ?? ""}`.trim().toLowerCase();
+    if (normalized === "physical" || normalized === "special" || normalized === "support") {
+      return normalized;
+    }
+    return "support";
   }
 
   _isConditionActive(conditionKey) {
@@ -1743,6 +1754,30 @@ export class PokRoleActor extends Actor {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.ClashNeedsDamagingMove"));
       return null;
     }
+    const expectedCategory = this._normalizeMoveCombatCategory(options.expectedCategory);
+    const moveCategory = this._normalizeMoveCombatCategory(move.system?.category);
+    if (
+      expectedCategory !== "support" &&
+      moveCategory !== expectedCategory
+    ) {
+      ui.notifications.warn(
+        game.i18n.format("POKROLE.Errors.ClashNeedsMatchingCategory", {
+          expected: game.i18n.localize(
+            expectedCategory === "physical"
+              ? "POKROLE.Move.Category.Physical"
+              : "POKROLE.Move.Category.Special"
+          ),
+          actual: game.i18n.localize(
+            moveCategory === "physical"
+              ? "POKROLE.Move.Category.Physical"
+              : moveCategory === "special"
+                ? "POKROLE.Move.Category.Special"
+                : "POKROLE.Move.Category.Support"
+          )
+        })
+      );
+      return null;
+    }
 
     const damageAttributeKey = this._resolveDamageAttributeKey(move);
     const normalizedAction = await this._resolveActionRequirement(actionNumber, roundKey);
@@ -1772,6 +1807,100 @@ export class PokRoleActor extends Actor {
     return {
       ...result,
       move
+    };
+  }
+
+  async queueMove(moveId, options = {}) {
+    const combat = game.combat ?? null;
+    if (!combat) {
+      return this.rollMove(moveId, options);
+    }
+
+    await this.synchronizeConditionalActiveEffects();
+    if (this.type !== "pokemon") return null;
+    const move = this.items.get(moveId);
+    if (!move || move.type !== "move") {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownMove"));
+      return null;
+    }
+
+    const actionCheck = await this._assertCanAct("move", {
+      moveId: move.id,
+      moveName: move.name
+    });
+    if (!actionCheck.allowed) {
+      ui.notifications.warn(actionCheck.reason);
+      return null;
+    }
+
+    const currentCombatantActorId = `${combat.combatant?.actor?.id ?? ""}`.trim();
+    if (currentCombatantActorId && currentCombatantActorId !== this.id) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.MoveQueueOnlyCurrentTurn"));
+      return null;
+    }
+
+    const combatant = combat.combatants.find((entry) => entry.actor?.id === this.id) ?? null;
+    if (!combatant) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.CombatRequired"));
+      return null;
+    }
+
+    const selectedTargetActors = Array.isArray(options.targetActorIds)
+      ? this._resolveActorsFromIds(options.targetActorIds)
+      : this._getSelectedTargetActors();
+    const moveTargetKey = this._normalizeMoveTargetKey(move.system?.target);
+    const targetActors = this._resolveActorsForMoveTarget(moveTargetKey, selectedTargetActors);
+    const targetValidation = this._validateMoveTargetSelection(
+      moveTargetKey,
+      selectedTargetActors,
+      targetActors
+    );
+    if (!targetValidation.valid) {
+      ui.notifications.warn(targetValidation.message);
+      return null;
+    }
+
+    const enqueueMove = game.pokrole?.enqueueCombatMoveDeclaration;
+    if (typeof enqueueMove !== "function") {
+      return this.rollMove(moveId, options);
+    }
+
+    const priority = Math.min(Math.max(Math.floor(toNumber(move.system?.priority, 0)), -3), 5);
+    const initiative = Math.max(
+      toNumber(combatant.initiative, toNumber(this.system?.combat?.initiative, 0)),
+      0
+    );
+
+    const queueEntry = await enqueueMove(
+      {
+        actorId: this.id,
+        combatantId: `${combatant.id ?? ""}`.trim(),
+        userId: `${game.user?.id ?? ""}`.trim(),
+        moveId: move.id,
+        moveName: `${move.name ?? game.i18n.localize("POKROLE.Common.Unknown")}`.trim(),
+        moveImg: `${move.img ?? ""}`.trim(),
+        priority,
+        initiative,
+        targetActorIds: targetActors.map((actor) => actor.id).filter(Boolean),
+        targetMode: moveTargetKey,
+        declaredAt: Date.now(),
+        declaredRound: Math.max(Math.floor(toNumber(combat.round, 0)), 0),
+        declaredTurn: Number.isInteger(combat.turn) ? combat.turn : 0
+      },
+      combat
+    );
+
+    ui.notifications.info(
+      game.i18n.format("POKROLE.Combat.MoveQueued", {
+        actor: this.name,
+        move: move.name
+      })
+    );
+
+    return {
+      queued: true,
+      move,
+      queueEntry
     };
   }
 
@@ -1860,7 +1989,9 @@ export class PokRoleActor extends Actor {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownMoveTraits"));
       return null;
     }
-    const selectedTargetActors = this._getSelectedTargetActors();
+    const selectedTargetActors = Array.isArray(options.targetActorIds)
+      ? this._resolveActorsFromIds(options.targetActorIds)
+      : this._getSelectedTargetActors();
     const targetActors = this._resolveActorsForMoveTarget(moveTargetKey, selectedTargetActors);
     const targetValidation = this._validateMoveTargetSelection(
       moveTargetKey,
@@ -1869,11 +2000,6 @@ export class PokRoleActor extends Actor {
     );
     if (!targetValidation.valid) {
       ui.notifications.warn(targetValidation.message);
-      return null;
-    }
-    const rangeValidation = this._validateMoveRangeTargets(move, moveTargetKey, targetActors);
-    if (!rangeValidation.valid) {
-      ui.notifications.warn(rangeValidation.message);
       return null;
     }
     if (willCost > 0) {
@@ -2197,6 +2323,19 @@ export class PokRoleActor extends Actor {
     return [...(game.user?.targets ?? [])].map((token) => token.actor).filter(Boolean);
   }
 
+  _resolveActorsFromIds(actorIds = []) {
+    const ids = Array.isArray(actorIds) ? actorIds : [];
+    const uniqueActors = new Map();
+    for (const actorId of ids) {
+      const normalizedId = `${actorId ?? ""}`.trim();
+      if (!normalizedId) continue;
+      const actor = game.actors?.get(normalizedId) ?? null;
+      if (!actor) continue;
+      uniqueActors.set(actor.id, actor);
+    }
+    return [...uniqueActors.values()];
+  }
+
   _resolveActorsForMoveTarget(moveTargetKey, selectedTargetActors = []) {
     const normalizedTarget = this._normalizeMoveTargetKey(moveTargetKey);
     const uniqueActors = new Map();
@@ -2227,45 +2366,6 @@ export class PokRoleActor extends Actor {
     return [...uniqueActors.values()];
   }
 
-  _normalizeMoveRangeMode(value) {
-    const normalized = `${value ?? "melee"}`.trim().toLowerCase();
-    const allowedModes = new Set(["self", "melee", "meters", "scene", "battlefield", "custom"]);
-    return allowedModes.has(normalized) ? normalized : "melee";
-  }
-
-  _normalizeMoveRangeValue(value) {
-    const numericValue = Number(value);
-    if (!Number.isFinite(numericValue)) return 1;
-    return Math.min(Math.max(Math.floor(numericValue), 0), 999);
-  }
-
-  _getMoveRangeConfig(moveSystem = {}) {
-    const rangeMode = this._normalizeMoveRangeMode(moveSystem.rangeMode);
-    const rangeValue = this._normalizeMoveRangeValue(moveSystem.rangeValue);
-    const rangeText = `${moveSystem.rangeText ?? moveSystem.range ?? ""}`.trim();
-    return {
-      rangeMode,
-      rangeValue,
-      rangeText,
-      label: this._buildMoveRangeLabel({ rangeMode, rangeValue, rangeText })
-    };
-  }
-
-  _buildMoveRangeLabel({ rangeMode = "melee", rangeValue = 1, rangeText = "" } = {}) {
-    const normalizedMode = this._normalizeMoveRangeMode(rangeMode);
-    const normalizedValue = this._normalizeMoveRangeValue(rangeValue);
-    const normalizedText = `${rangeText ?? ""}`.trim();
-    if (normalizedMode === "meters") return `${normalizedValue}m`;
-    if (normalizedMode === "custom") return normalizedText || game.i18n.localize("POKROLE.Move.RangeMode.Custom");
-    const labelByMode = {
-      self: "POKROLE.Move.RangeMode.Self",
-      melee: "POKROLE.Move.RangeMode.Melee",
-      scene: "POKROLE.Move.RangeMode.Scene",
-      battlefield: "POKROLE.Move.RangeMode.Battlefield"
-    };
-    return game.i18n.localize(labelByMode[normalizedMode] ?? "POKROLE.Common.Unknown");
-  }
-
   _validateMoveTargetSelection(moveTargetKey, selectedTargetActors = [], resolvedTargetActors = []) {
     const normalizedTarget = this._normalizeMoveTargetKey(moveTargetKey);
     const requiresSelection = new Set([
@@ -2287,90 +2387,6 @@ export class PokRoleActor extends Actor {
       valid: false,
       message: game.i18n.localize("POKROLE.Errors.InvalidMoveTargetSelection")
     };
-  }
-
-  _getActorTokensOnCanvas(actor) {
-    if (!actor || !canvas?.tokens) return [];
-    const placeables = canvas.tokens.placeables ?? [];
-    return placeables.filter((tokenDocument) => tokenDocument?.actor?.id === actor.id);
-  }
-
-  _measureTokenDistance(tokenA, tokenB) {
-    if (!tokenA || !tokenB || !canvas?.grid) return null;
-    const ax = Number(tokenA.center?.x ?? 0);
-    const ay = Number(tokenA.center?.y ?? 0);
-    const bx = Number(tokenB.center?.x ?? 0);
-    const by = Number(tokenB.center?.y ?? 0);
-    const pixelDistance = Math.hypot(ax - bx, ay - by);
-    const gridSize = Math.max(Number(canvas.grid.size ?? 100), 1);
-    const sceneDistance = Math.max(Number(canvas.scene?.grid?.distance ?? 1), 1);
-    return (pixelDistance / gridSize) * sceneDistance;
-  }
-
-  _getClosestActorDistance(sourceActor, targetActor) {
-    const sourceTokens = this._getActorTokensOnCanvas(sourceActor);
-    const targetTokens = this._getActorTokensOnCanvas(targetActor);
-    if (!sourceTokens.length || !targetTokens.length) return null;
-    let minDistance = Number.POSITIVE_INFINITY;
-    for (const sourceToken of sourceTokens) {
-      for (const targetToken of targetTokens) {
-        const distance = this._measureTokenDistance(sourceToken, targetToken);
-        if (!Number.isFinite(distance)) continue;
-        if (distance < minDistance) minDistance = distance;
-      }
-    }
-    return Number.isFinite(minDistance) ? minDistance : null;
-  }
-
-  _validateMoveRangeTargets(move, moveTargetKey, targetActors = []) {
-    if (!game.combat?.active && !game.combat?.started) {
-      return { valid: true, message: "" };
-    }
-    const rangeConfig = this._getMoveRangeConfig(move?.system ?? {});
-    const normalizedTarget = this._normalizeMoveTargetKey(moveTargetKey);
-    const rangeMode = rangeConfig.rangeMode;
-    const targets = Array.isArray(targetActors) ? targetActors.filter(Boolean) : [];
-
-    if (rangeMode === "scene" || rangeMode === "battlefield" || rangeMode === "custom") {
-      return { valid: true, message: "" };
-    }
-    if (rangeMode === "self") {
-      const hasInvalidTarget = targets.some((actor) => actor.id !== this.id);
-      if (!hasInvalidTarget) return { valid: true, message: "" };
-      return {
-        valid: false,
-        message: game.i18n.localize("POKROLE.Errors.InvalidMoveTargetSelection")
-      };
-    }
-    if (!targets.length && ["foe", "random-foe", "ally", "all-foes", "all-allies", "area", "battlefield-area"].includes(normalizedTarget)) {
-      return {
-        valid: false,
-        message: game.i18n.localize("POKROLE.Errors.InvalidMoveTargetSelection")
-      };
-    }
-
-    const maxRange = rangeMode === "meters" ? rangeConfig.rangeValue : 1;
-    for (const targetActor of targets) {
-      if (!targetActor || targetActor.id === this.id) continue;
-      const distance = this._getClosestActorDistance(this, targetActor);
-      if (distance === null) {
-        return {
-          valid: false,
-          message: game.i18n.localize("POKROLE.Errors.MoveRangeCheckNeedsToken")
-        };
-      }
-      if (distance > maxRange) {
-        return {
-          valid: false,
-          message: game.i18n.format("POKROLE.Errors.MoveTargetOutOfRange", {
-            target: targetActor.name ?? game.i18n.localize("POKROLE.Chat.NoTarget"),
-            distance: distance.toFixed(1),
-            range: maxRange
-          })
-        };
-      }
-    }
-    return { valid: true, message: "" };
   }
 
   _resolveDamageTargets(moveTargetKey, targetActors) {
@@ -6551,13 +6567,15 @@ export class PokRoleActor extends Actor {
     const socialAccuracyMove = this._isSocialAccuracyMove(move);
     const moveCanBeEvaded = !socialAccuracyMove && !move.system.neverFail;
     const moveCanBeClashed = !socialAccuracyMove;
+    const incomingMoveCategory = this._normalizeMoveCombatCategory(move?.system?.category);
 
     const choice = await this._promptDefensiveReaction({
       targetActor,
       move,
       roundKey,
       moveCanBeEvaded,
-      moveCanBeClashed
+      moveCanBeClashed,
+      incomingMoveCategory
     });
 
     if (!choice || choice.type === "none") {
@@ -6611,7 +6629,8 @@ export class PokRoleActor extends Actor {
 
     if (choice.type === "clash") {
       const clashResult = await targetActor.rollClash(choice.clashMoveId, null, {
-        roundKey
+        roundKey,
+        expectedCategory: incomingMoveCategory
       });
       if (!clashResult) {
         return {
@@ -6685,14 +6704,21 @@ export class PokRoleActor extends Actor {
     move,
     roundKey,
     moveCanBeEvaded,
-    moveCanBeClashed
+    moveCanBeClashed,
+    incomingMoveCategory = "support"
   }) {
     const canUseEvasion =
       moveCanBeEvaded && targetActor._canUseReactionThisRound("evasion", roundKey);
+    const requiredClashCategory = this._normalizeMoveCombatCategory(incomingMoveCategory);
     const clashMoves = targetActor.items
-      .filter((item) => item.type === "move" && item.system.category !== "support");
+      .filter((item) => {
+        if (item.type !== "move") return false;
+        if (!targetActor._moveUsesPrimaryDamage(item)) return false;
+        return this._normalizeMoveCombatCategory(item.system?.category) === requiredClashCategory;
+      });
     const canUseClash =
       moveCanBeClashed &&
+      (requiredClashCategory === "physical" || requiredClashCategory === "special") &&
       targetActor._canUseReactionThisRound("clash", roundKey) &&
       clashMoves.length > 0;
 

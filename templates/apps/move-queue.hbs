@@ -1,0 +1,76 @@
+<section id="{{rootId}}" class="pok-role-move-queue{{#if minimized}} is-minimized{{/if}}">
+  <div class="pok-role-move-queue-shell">
+    <div class="pok-role-move-queue-header">
+      <button type="button" class="pok-role-move-queue-toggle" data-action="toggle-queue">
+        <i class="fas {{#if minimized}}fa-chevron-down{{else}}fa-chevron-up{{/if}}"></i>
+      </button>
+      <div class="pok-role-move-queue-title-group">
+        <span class="pok-role-move-queue-title">{{localize "POKROLE.Combat.MoveQueueTitle"}}</span>
+        <span class="pok-role-move-queue-count">{{queueCount}}</span>
+      </div>
+      {{#unless minimized}}
+      {{#if canClear}}
+      <button type="button" class="pok-role-move-queue-clear" data-action="clear-queue">
+        <i class="fas fa-trash-alt"></i>
+        <span>{{localize "POKROLE.Combat.MoveQueueClear"}}</span>
+      </button>
+      {{/if}}
+      {{/unless}}
+    </div>
+
+    {{#unless minimized}}
+    <div class="pok-role-move-queue-body">
+      {{#if hasEntries}}
+      <div class="pok-role-move-queue-track">
+        {{#each entries}}
+        <article
+          class="pok-role-move-queue-entry{{#if isBroken}} is-broken{{/if}}"
+          data-entry-id="{{id}}"
+          draggable="{{#if canDrag}}true{{else}}false{{/if}}"
+        >
+          <div class="pok-role-move-queue-entry-art">
+            <img src="{{moveImg}}" alt="{{moveName}}" />
+          </div>
+          <div class="pok-role-move-queue-entry-main">
+            <div class="pok-role-move-queue-entry-names">
+              <span class="pok-role-move-queue-entry-move">{{moveName}}</span>
+              <span class="pok-role-move-queue-entry-actor">{{actorName}}</span>
+            </div>
+            <div class="pok-role-move-queue-entry-meta">
+              <span>{{localize "POKROLE.Combat.MoveQueuePriorityShort"}} {{priorityLabel}}</span>
+              <span>{{localize "POKROLE.Combat.MoveQueueInitiativeShort"}} {{initiativeLabel}}</span>
+              <span>{{categoryLabel}}</span>
+            </div>
+            <div class="pok-role-move-queue-entry-targets">
+              <strong>{{localize "POKROLE.Combat.MoveQueueTargets"}}:</strong> {{targetSummary}}
+            </div>
+          </div>
+          <div class="pok-role-move-queue-entry-actions">
+            {{#if canExecute}}
+            <button type="button" class="pok-role-move-queue-action" data-action="execute-entry" data-entry-id="{{id}}" title="{{localize 'POKROLE.Combat.MoveQueueExecute'}}">
+              <i class="fas fa-play"></i>
+            </button>
+            {{/if}}
+            {{#if canRemove}}
+            <button type="button" class="pok-role-move-queue-action is-danger" data-action="remove-entry" data-entry-id="{{id}}" title="{{localize 'POKROLE.Combat.MoveQueueRemove'}}">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+            {{/if}}
+            {{#if canDrag}}
+            <span class="pok-role-move-queue-drag" title="{{localize 'POKROLE.Combat.MoveQueueDrag'}}">
+              <i class="fas fa-grip-lines"></i>
+            </span>
+            {{/if}}
+          </div>
+        </article>
+        {{/each}}
+      </div>
+      {{else}}
+      <div class="pok-role-move-queue-empty">
+        {{localize "POKROLE.Combat.MoveQueueEmpty"}}
+      </div>
+      {{/if}}
+    </div>
+    {{/unless}}
+  </div>
+</section>

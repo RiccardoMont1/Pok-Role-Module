@@ -736,10 +736,6 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           power: 2,
           damageAttribute: "auto",
           willCost: 0,
-          rangeMode: "melee",
-          rangeValue: 1,
-          rangeText: "",
-          range: "",
           durationType: "instant",
           durationValue: 1,
           priority: 0,
@@ -768,7 +764,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     event.preventDefault();
     const { itemId } = event.currentTarget.dataset;
     if (!itemId) return;
-    await this.actor.rollMove(itemId);
+    await this.actor.queueMove(itemId);
   }
 
   async _onRollClash(event) {

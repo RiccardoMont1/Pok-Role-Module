@@ -3514,3 +3514,246 @@ form.editable.pok-role-sheet.trainer-sheet {
 .pok-role-ae-config .pokrole-ae-automation .is-hidden {
   display: none;
 }
+
+#pok-role-move-queue {
+  position: fixed;
+  top: 8px;
+  left: 50%;
+  z-index: 70;
+  width: min(980px, calc(100vw - 360px));
+  transform: translateX(-50%);
+}
+
+.pok-role-move-queue-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 2px solid rgba(18, 26, 40, 0.92);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(32, 44, 66, 0.98), rgba(18, 26, 40, 0.98));
+  box-shadow: 0 14px 30px rgba(6, 11, 19, 0.38);
+}
+
+.pok-role-move-queue.is-minimized {
+  width: auto;
+}
+
+.pok-role-move-queue.is-minimized .pok-role-move-queue-shell {
+  padding: 8px 10px;
+}
+
+.pok-role-move-queue-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pok-role-move-queue-toggle,
+.pok-role-move-queue-clear,
+.pok-role-move-queue-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(245, 233, 216, 0.22);
+  border-radius: 12px;
+  background: rgba(245, 233, 216, 0.12);
+  color: #fff4e8;
+  cursor: pointer;
+  transition: background 120ms ease, transform 120ms ease, border-color 120ms ease;
+}
+
+.pok-role-move-queue-toggle {
+  width: 34px;
+  min-width: 34px;
+  padding: 0;
+}
+
+.pok-role-move-queue-toggle:hover,
+.pok-role-move-queue-clear:hover,
+.pok-role-move-queue-action:hover {
+  background: rgba(245, 233, 216, 0.22);
+  border-color: rgba(245, 233, 216, 0.32);
+  transform: translateY(-1px);
+}
+
+.pok-role-move-queue-title-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: auto;
+}
+
+.pok-role-move-queue-title {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff4e8;
+}
+
+.pok-role-move-queue-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f75c4a, #cf3d2e);
+  color: #fff7f0;
+  font-weight: 800;
+}
+
+.pok-role-move-queue-body {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.pok-role-move-queue-track {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  min-width: max-content;
+}
+
+.pok-role-move-queue-entry {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  width: 236px;
+  min-height: 108px;
+  padding: 10px;
+  border: 2px solid rgba(245, 233, 216, 0.16);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(217, 70, 56, 0.95), rgba(173, 46, 38, 0.95));
+  color: #fff7f0;
+  box-shadow: 0 10px 22px rgba(12, 17, 29, 0.28);
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+.pok-role-move-queue-entry:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(12, 17, 29, 0.34);
+}
+
+.pok-role-move-queue-entry.is-broken {
+  opacity: 0.72;
+  filter: saturate(0.8);
+}
+
+.pok-role-move-queue-entry.is-dragging {
+  opacity: 0.5;
+}
+
+.pok-role-move-queue-entry.is-drop-before {
+  box-shadow: -6px 0 0 #fff4e8, 0 14px 26px rgba(12, 17, 29, 0.34);
+}
+
+.pok-role-move-queue-entry.is-drop-after {
+  box-shadow: 6px 0 0 #fff4e8, 0 14px 26px rgba(12, 17, 29, 0.34);
+}
+
+.pok-role-move-queue-entry-art {
+  flex: 0 0 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(16, 23, 36, 0.18);
+}
+
+.pok-role-move-queue-entry-art img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.pok-role-move-queue-entry-main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.pok-role-move-queue-entry-names {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.pok-role-move-queue-entry-move {
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.pok-role-move-queue-entry-actor,
+.pok-role-move-queue-entry-meta,
+.pok-role-move-queue-entry-targets {
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.pok-role-move-queue-entry-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: rgba(255, 247, 240, 0.92);
+}
+
+.pok-role-move-queue-entry-targets {
+  color: rgba(255, 247, 240, 0.92);
+}
+
+.pok-role-move-queue-entry-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pok-role-move-queue-action {
+  width: 32px;
+  min-width: 32px;
+  padding: 0;
+}
+
+.pok-role-move-queue-action.is-danger {
+  background: rgba(20, 27, 41, 0.2);
+}
+
+.pok-role-move-queue-drag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: rgba(20, 27, 41, 0.16);
+  color: #fff4e8;
+  cursor: grab;
+}
+
+.pok-role-move-queue-empty {
+  padding: 12px 16px;
+  border: 1px dashed rgba(245, 233, 216, 0.22);
+  border-radius: 14px;
+  color: rgba(255, 244, 232, 0.92);
+  text-align: center;
+}
+
+@media (max-width: 960px) {
+  #pok-role-move-queue {
+    width: calc(100vw - 24px);
+  }
+
+  .pok-role-move-queue-entry {
+    width: 216px;
+  }
+}

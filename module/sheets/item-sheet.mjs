@@ -225,20 +225,6 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       damage: "POKROLE.Move.PrimaryMode.Damage",
       "effect-only": "POKROLE.Move.PrimaryMode.EffectOnly"
     };
-    context.rangeModeOptions = {
-      self: "POKROLE.Move.RangeMode.Self",
-      melee: "POKROLE.Move.RangeMode.Melee",
-      meters: "POKROLE.Move.RangeMode.Meters",
-      scene: "POKROLE.Move.RangeMode.Scene",
-      battlefield: "POKROLE.Move.RangeMode.Battlefield",
-      custom: "POKROLE.Move.RangeMode.Custom"
-    };
-    const moveRangeMode = this._normalizeMoveRangeMode(context.system?.rangeMode);
-    context.moveRangeUsesValue = moveRangeMode === "meters";
-    context.moveRangeUsesText = moveRangeMode === "custom";
-    context.system.rangeMode = moveRangeMode;
-    context.system.rangeValue = this._normalizeMoveRangeValue(context.system?.rangeValue);
-    context.system.rangeText = `${context.system?.rangeText ?? ""}`.trim();
     const durationType = `${context.system?.durationType ?? "instant"}`.trim().toLowerCase();
     const buildDurationOption = (value, label) => ({
       value,
@@ -403,9 +389,6 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     html.find("select[name='system.primaryMode'], select[name='system.category']").on("change", () =>
       this._onPrimaryDamageModeChanged(html)
     );
-    html.find("select[name='system.rangeMode']").on("change", (event) =>
-      this._onRangeModeChanged(event, html)
-    );
     html.find("[data-action='add-secondary-effect']").on("click", (event) =>
       this._onAddSecondaryEffect(event)
     );
@@ -439,7 +422,6 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     this._applyMoveTabState(html, this._moveActiveTab);
     this._onDurationTypeChanged(null, html);
     this._onPrimaryDamageModeChanged(html);
-    this._onRangeModeChanged(null, html);
   }
 
   async _updateObject(event, formData) {
@@ -457,14 +439,6 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       }
       formData["system.target"] = this._normalizeMoveTarget(moveSystem.target);
       formData["system.primaryMode"] = this._normalizeMovePrimaryMode(moveSystem.primaryMode);
-      formData["system.rangeMode"] = this._normalizeMoveRangeMode(moveSystem.rangeMode);
-      formData["system.rangeValue"] = this._normalizeMoveRangeValue(moveSystem.rangeValue);
-      formData["system.rangeText"] = `${moveSystem.rangeText ?? ""}`.trim();
-      formData["system.range"] = this._buildRangeLabel({
-        rangeMode: formData["system.rangeMode"],
-        rangeValue: formData["system.rangeValue"],
-        rangeText: formData["system.rangeText"]
-      });
       formData["system.durationType"] = this._normalizeMoveDurationType(moveSystem.durationType);
       formData["system.durationValue"] = this._normalizeMoveDurationValue(moveSystem.durationValue);
       formData["system.willCost"] = Math.min(
@@ -583,18 +557,6 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     return "foe";
   }
 
-  _normalizeMoveRangeMode(value) {
-    const normalized = `${value ?? "melee"}`.trim().toLowerCase();
-    const allowed = new Set(["self", "melee", "meters", "scene", "battlefield", "custom"]);
-    return allowed.has(normalized) ? normalized : "melee";
-  }
-
-  _normalizeMoveRangeValue(value) {
-    const numericValue = Number(value);
-    if (!Number.isFinite(numericValue)) return 1;
-    return Math.min(Math.max(Math.floor(numericValue), 0), 999);
-  }
-
   _normalizeMovePrimaryMode(value) {
     const normalized = `${value ?? "damage"}`.trim().toLowerCase();
     return MOVE_PRIMARY_MODE_KEYS.includes(normalized) ? normalized : "damage";
@@ -604,21 +566,6 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     const normalizedCategory = `${moveSystem?.category ?? "physical"}`.trim().toLowerCase();
     if (normalizedCategory === "support") return false;
     return this._normalizeMovePrimaryMode(moveSystem?.primaryMode) === "damage";
-  }
-
-  _buildRangeLabel({ rangeMode = "melee", rangeValue = 1, rangeText = "" } = {}) {
-    const normalizedMode = this._normalizeMoveRangeMode(rangeMode);
-    const normalizedValue = this._normalizeMoveRangeValue(rangeValue);
-    const normalizedText = `${rangeText ?? ""}`.trim();
-    if (normalizedMode === "meters") return `${normalizedValue}m`;
-    if (normalizedMode === "custom") return normalizedText || game.i18n.localize("POKROLE.Move.RangeMode.Custom");
-    const labelMap = {
-      self: "POKROLE.Move.RangeMode.Self",
-      melee: "POKROLE.Move.RangeMode.Melee",
-      scene: "POKROLE.Move.RangeMode.Scene",
-      battlefield: "POKROLE.Move.RangeMode.Battlefield"
-    };
-    return game.i18n.localize(labelMap[normalizedMode] ?? "POKROLE.Common.Unknown");
   }
 
   _normalizeMoveDurationType(value) {
@@ -1164,14 +1111,6 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     };
     const showPrimaryDamageFields = this._moveUsesPrimaryDamage(moveSystem);
     html.find(".move-primary-damage-field").toggleClass("is-hidden", !showPrimaryDamageFields);
-  }
-
-  _onRangeModeChanged(_event, html) {
-    const rangeMode = `${html.find("select[name='system.rangeMode']").val() ?? "melee"}`
-      .trim()
-      .toLowerCase();
-    html.find(".move-range-value-row").toggleClass("is-hidden", rangeMode !== "meters");
-    html.find(".move-range-text-row").toggleClass("is-hidden", rangeMode !== "custom");
   }
 
   _onSecondaryEffectTypeChanged(event) {
