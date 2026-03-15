@@ -463,6 +463,12 @@
                   {{safeSelectOptions @root.secondaryWeatherOptions selected=effect.weather localize=true}}
                 </select>
               </label>
+              <label data-effect-visible="terrain" class="{{#unless effect.showTerrainField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.Terrain.Label"}}</span>
+                <select name="system.secondaryEffects.{{effect.index}}.terrain">
+                  {{safeSelectOptions @root.secondaryTerrainOptions selected=effect.terrain localize=true}}
+                </select>
+              </label>
               <div data-effect-visible="active-effect" class="move-linked-active-effect {{#unless effect.showActiveEffectField}}is-hidden{{/unless}}">
                 <span>{{localize "POKROLE.Move.Secondary.ActiveEffect.Label"}}</span>
                 <p class="linked-effect-name">{{effect.linkedEffectName}}</p>
@@ -494,22 +500,33 @@
                   {{safeSelectOptions @root.secondaryStatOptions selected=effect.stat localize=true}}
                 </select>
               </label>
+              <label data-effect-visible="heal-type" class="{{#unless effect.showHealTypeField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.HealType.Label"}}</span>
+                <select name="system.secondaryEffects.{{effect.index}}.healType">
+                  {{safeSelectOptions @root.secondaryHealTypeOptions selected=effect.healType localize=true}}
+                </select>
+              </label>
+              <label class="checkbox-row {{#unless effect.showConditionalField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.Conditional.Label"}}</span>
+                <input
+                  type="checkbox"
+                  name="system.secondaryEffects.{{effect.index}}.conditional"
+                  {{checked effect.conditional}}
+                />
+              </label>
+              <label class="{{#unless effect.showActivationConditionField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.ActivationCondition.Label"}}</span>
+                <input
+                  type="text"
+                  name="system.secondaryEffects.{{effect.index}}.activationCondition"
+                  value="{{effect.activationCondition}}"
+                  placeholder="{{localize 'POKROLE.Move.Secondary.ActivationCondition.Placeholder'}}"
+                />
+              </label>
               <label data-effect-visible="heal-mode" class="{{#unless effect.showHealModeField}}is-hidden{{/unless}}">
                 <span>{{localize "POKROLE.Move.Secondary.HealMode.Label"}}</span>
                 <select name="system.secondaryEffects.{{effect.index}}.healMode">
                   {{safeSelectOptions @root.secondaryHealModeOptions selected=effect.healMode localize=true}}
-                </select>
-              </label>
-              <label data-effect-visible="heal-profile" class="{{#unless effect.showHealProfileField}}is-hidden{{/unless}}">
-                <span>{{localize "POKROLE.Move.Secondary.HealProfile.Label"}}</span>
-                <select name="system.secondaryEffects.{{effect.index}}.healProfile">
-                  {{safeSelectOptions @root.secondaryHealProfileOptions selected=effect.healProfile localize=true}}
-                </select>
-              </label>
-              <label data-effect-visible="heal-category" class="{{#unless effect.showHealingCategoryField}}is-hidden{{/unless}}">
-                <span>{{localize "POKROLE.Move.Secondary.HealingCategory.Label"}}</span>
-                <select name="system.secondaryEffects.{{effect.index}}.healingCategory">
-                  {{safeSelectOptions @root.secondaryHealingCategoryOptions selected=effect.healingCategory localize=true}}
                 </select>
               </label>
               <label data-effect-visible="amount" class="{{#unless effect.showAmountField}}is-hidden{{/unless}}">

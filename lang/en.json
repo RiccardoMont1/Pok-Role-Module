@@ -380,6 +380,13 @@
         "Chance": "Chance Dice (0 = Auto)",
         "Amount": "Amount",
         "Notes": "Notes",
+        "Conditional": {
+          "Label": "Conditional?"
+        },
+        "ActivationCondition": {
+          "Label": "Activation Condition",
+          "Placeholder": "weather=sunny or weather=harsh-sunlight"
+        },
         "HealMode": {
           "Label": "Healing Source",
           "Fixed": "Fixed value",
@@ -388,10 +395,18 @@
           "OfDamageDealt": "of damage dealt",
           "OfMaxHp": "of max HP"
         },
+        "HealType": {
+          "Label": "Healing Type",
+          "Basic": "Basic",
+          "Complete": "Complete",
+          "BasicNumeric": "Basic Numeric",
+          "CompleteNumeric": "Complete Numeric"
+        },
         "HealProfile": {
           "Label": "Healing Profile",
           "Standard": "Standard",
-          "SunlightRestoration": "Sunlight/context dependent"
+          "SunlightRestoration": "Sunlight/context dependent",
+          "SandRestoration": "Sandstorm dependent"
         },
         "Duration": {
           "Rounds": "Rounds",
@@ -439,6 +454,7 @@
           "Stat": "Stat Change",
           "CombatStat": "Combat Stat",
           "Weather": "Weather",
+          "Terrain": "Terrain",
           "Damage": "Damage",
           "Heal": "Heal",
           "Will": "Will",
@@ -467,6 +483,9 @@
         },
         "Stat": {
           "Label": "Affected Stat"
+        },
+        "Terrain": {
+          "Label": "Terrain"
         },
         "Weather": {
           "Label": "Weather"
@@ -647,6 +666,12 @@
         "StrongWinds": "Strong Winds",
         "Hail": "Hail"
       },
+      "TerrainValues": {
+        "Electric": "Electric Terrain",
+        "Grassy": "Grassy Terrain",
+        "Misty": "Misty Terrain",
+        "Psychic": "Psychic Terrain"
+      },
       "TrainerState": {
         "InFray": "In Fray",
         "Cover": "Cover"
@@ -719,6 +744,9 @@
       "SecondaryEffectHpChange": "HP {before} -> {after}",
       "SecondaryEffectAlreadyActive": "Already active",
       "SecondaryEffectTracked": "tracked as extra condition",
+      "SecondaryEffectConditionNotMet": "Condition not met: {condition}",
+      "SecondaryEffectConditionInvalid": "Invalid activation condition.",
+      "SecondaryEffectConditionInvalidExpression": "Invalid conditional expression: {condition}",
       "SecondaryEffectNoHealConfigured": "No healing value configured.",
       "SecondaryEffectHealAdjustedComplete": "{reason}: healing counts as Complete Heal.",
       "SecondaryEffectHealAdjustedOneHp": "{reason}: healing is reduced to 1 HP.",
@@ -741,6 +769,7 @@
       "SecondaryEffectNoWillChange": "No Will change applied.",
       "SecondaryEffectNoConditionConfigured": "No condition selected.",
       "SecondaryEffectNoWeatherConfigured": "No weather selected.",
+      "SecondaryEffectNoTerrainConfigured": "No terrain selected.",
       "ConditionCleared": "{condition} removed.",
       "ConditionResistRoll": "{actor} rolls Insight to resist {condition} (required: {required}).",
       "SleepResistanceRoll": "{actor} builds Sleep resistance (+{gained}, total {total}/5).",

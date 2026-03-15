@@ -7,7 +7,9 @@ import {
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
   HEALING_CATEGORY_KEYS,
   MOVE_SECONDARY_HEAL_MODE_KEYS,
+  MOVE_SECONDARY_HEAL_TYPE_KEYS,
   MOVE_SECONDARY_HEAL_PROFILE_KEYS,
+  MOVE_SECONDARY_TERRAIN_KEYS,
   MOVE_SECONDARY_WEATHER_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
@@ -357,6 +359,8 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
               initial: () => []
             }
           ),
+          conditional: new BooleanField({ required: true, initial: false }),
+          activationCondition: trimmedStringField(""),
           condition: new StringField({
             required: true,
             blank: false,
@@ -369,6 +373,12 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
             initial: "none",
             choices: MOVE_SECONDARY_WEATHER_KEYS
           }),
+          terrain: new StringField({
+            required: true,
+            blank: false,
+            initial: "none",
+            choices: MOVE_SECONDARY_TERRAIN_KEYS
+          }),
           stat: new StringField({
             required: true,
             blank: false,
@@ -376,6 +386,12 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
             choices: MOVE_SECONDARY_STAT_KEYS
           }),
           amount: integerField(0, { min: -999, max: 999 }),
+          healType: new StringField({
+            required: true,
+            blank: false,
+            initial: "basic",
+            choices: MOVE_SECONDARY_HEAL_TYPE_KEYS
+          }),
           healMode: new StringField({
             required: true,
             blank: false,

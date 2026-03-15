@@ -8,7 +8,9 @@ import {
   MOVE_SECONDARY_SPECIAL_DURATION_KEYS,
   MOVE_SECONDARY_EFFECT_TYPE_KEYS,
   MOVE_SECONDARY_HEAL_MODE_KEYS,
+  MOVE_SECONDARY_HEAL_TYPE_KEYS,
   MOVE_SECONDARY_HEAL_PROFILE_KEYS,
+  MOVE_SECONDARY_TERRAIN_KEYS,
   MOVE_SECONDARY_WEATHER_KEYS,
   MOVE_SECONDARY_STAT_KEYS,
   MOVE_SECONDARY_TARGET_KEYS,
@@ -87,6 +89,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     context.secondaryHealingCategoryOptions ??= {};
     context.secondaryConditionOptions ??= {};
     context.secondaryStatOptions ??= {};
+    context.secondaryTerrainOptions ??= {};
     context.secondaryWeatherOptions ??= {};
     const typeOptions = Object.fromEntries(
       TYPE_OPTIONS.map((typeKey) => [
@@ -287,6 +290,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       "active-effect": "POKROLE.Move.Secondary.Type.ActiveEffect",
       stat: "POKROLE.Move.Secondary.Type.Stat",
       weather: "POKROLE.Move.Secondary.Type.Weather",
+      terrain: "POKROLE.Move.Secondary.Type.Terrain",
       damage: "POKROLE.Move.Secondary.Type.Damage",
       heal: "POKROLE.Move.Secondary.Type.Heal",
       will: "POKROLE.Move.Secondary.Type.Will",
@@ -295,6 +299,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     context.secondaryEffectTypeOptionsExtra = {
       "active-effect": "POKROLE.Move.Secondary.Type.ActiveEffect",
       weather: "POKROLE.Move.Secondary.Type.Weather",
+      terrain: "POKROLE.Move.Secondary.Type.Terrain",
       damage: "POKROLE.Move.Secondary.Type.Damage",
       heal: "POKROLE.Move.Secondary.Type.Heal",
       will: "POKROLE.Move.Secondary.Type.Will",
@@ -304,6 +309,12 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       manual: "POKROLE.Move.Secondary.Duration.Mode.Manual",
       rounds: "POKROLE.Move.Secondary.Duration.Mode.Rounds"
     };
+    context.secondaryHealTypeOptions = {
+      basic: "POKROLE.Move.Secondary.HealType.Basic",
+      complete: "POKROLE.Move.Secondary.HealType.Complete",
+      "basic-numeric": "POKROLE.Move.Secondary.HealType.BasicNumeric",
+      "complete-numeric": "POKROLE.Move.Secondary.HealType.CompleteNumeric"
+    };
     context.secondaryHealModeOptions = {
       fixed: "POKROLE.Move.Secondary.HealMode.Fixed",
       "max-hp-percent": "POKROLE.Move.Secondary.HealMode.MaxHpPercent",
@@ -311,7 +322,8 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     };
     context.secondaryHealProfileOptions = {
       standard: "POKROLE.Move.Secondary.HealProfile.Standard",
-      "sunlight-restoration": "POKROLE.Move.Secondary.HealProfile.SunlightRestoration"
+      "sunlight-restoration": "POKROLE.Move.Secondary.HealProfile.SunlightRestoration",
+      "sand-restoration": "POKROLE.Move.Secondary.HealProfile.SandRestoration"
     };
     context.secondaryHealingCategoryOptions = {
       standard: "POKROLE.Move.Secondary.HealingCategory.Basic",
@@ -342,6 +354,12 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       MOVE_SECONDARY_WEATHER_KEYS.map((weatherKey) => [
         weatherKey,
         this._getSecondaryWeatherLabelPath(weatherKey)
+      ])
+    );
+    context.secondaryTerrainOptions = Object.fromEntries(
+      MOVE_SECONDARY_TERRAIN_KEYS.map((terrainKey) => [
+        terrainKey,
+        this._getSecondaryTerrainLabelPath(terrainKey)
       ])
     );
     const activeMoveTab = this._moveActiveTab === "details" ? "details" : "description";
@@ -527,10 +545,14 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       durationMode: "manual",
       durationRounds: 1,
       specialDuration: [],
+      conditional: false,
+      activationCondition: "",
       condition: "none",
       weather: "none",
+      terrain: "none",
       stat: "none",
       amount: 0,
+      healType: "basic",
       healMode: "fixed",
       healProfile: "standard",
       healingCategory: "standard",
@@ -659,6 +681,9 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     const weather = MOVE_SECONDARY_WEATHER_KEYS.includes(normalizedEffect.weather)
       ? normalizedEffect.weather
       : "none";
+    const terrain = MOVE_SECONDARY_TERRAIN_KEYS.includes(normalizedEffect.terrain)
+      ? normalizedEffect.terrain
+      : "none";
     const stat = MOVE_SECONDARY_STAT_KEYS.includes(normalizedEffect.stat)
       ? normalizedEffect.stat
       : "none";
@@ -668,6 +693,11 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       effectType,
       normalizedEffect.amount
     );
+    const healType = this._normalizeHealType(normalizedEffect.healType, effectType, {
+      healMode: normalizedEffect.healMode,
+      healingCategory: normalizedEffect.healingCategory,
+      amount: normalizedEffect.amount
+    });
     const healProfile = this._normalizeHealProfile(normalizedEffect.healProfile);
     let healingCategory = this._normalizeHealingCategory(normalizedEffect.healingCategory);
     if (normalizedEffectType === "heal" && healingCategory === "unlimited") {
@@ -684,6 +714,13 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       effectType === "heal" && healMode !== "fixed"
         ? Math.abs(normalizedAmount)
         : normalizedAmount;
+    const normalizedHealConfiguration = this._coerceHealConfiguration({
+      effectType: normalizedEffectType,
+      healType,
+      healMode,
+      healingCategory,
+      amount
+    });
 
     return {
       section,
@@ -698,13 +735,17 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
           ? Math.min(Math.max(Math.floor(durationRounds), 1), 99)
           : 1,
       specialDuration,
+      conditional: Boolean(normalizedEffect.conditional),
+      activationCondition: `${normalizedEffect.activationCondition ?? ""}`.trim(),
       condition,
       weather,
+      terrain,
       stat,
-      amount,
-      healMode,
+      amount: normalizedHealConfiguration.amount,
+      healType: normalizedHealConfiguration.healType,
+      healMode: normalizedHealConfiguration.healMode,
       healProfile,
-      healingCategory,
+      healingCategory: normalizedHealConfiguration.healingCategory,
       notes: `${normalizedEffect.notes ?? ""}`.trim(),
       linkedEffectId: `${normalizedEffect.linkedEffectId ?? ""}`.trim()
     };
@@ -769,13 +810,89 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     return Number(amount) < 0 ? "max-hp-percent" : "fixed";
   }
 
+  _normalizeHealType(healType, effectType = "custom", effect = {}) {
+    const normalizedType = this._normalizeEffectType(effectType);
+    if (normalizedType !== "heal") return "basic";
+    const normalized = `${healType ?? ""}`.trim().toLowerCase();
+    if (MOVE_SECONDARY_HEAL_TYPE_KEYS.includes(normalized)) return normalized;
+    if (this._normalizeHealProfile(effect?.healProfile) !== "standard") return "basic";
+
+    const inferredCategory = this._normalizeHealingCategory(effect?.healingCategory);
+    const inferredMode = this._normalizeHealMode(effect?.healMode, normalizedType, effect?.amount);
+    const inferredAmount = Math.abs(Math.floor(Number(effect?.amount ?? 0) || 0));
+
+    if (inferredCategory === "complete") {
+      if (inferredMode === "fixed" && inferredAmount === 5) return "complete";
+      return "complete-numeric";
+    }
+
+    if (inferredMode === "fixed" && inferredAmount === 3) return "basic";
+    return "basic-numeric";
+  }
+
   _normalizeHealProfile(healProfile) {
     const normalized = `${healProfile ?? "standard"}`.trim().toLowerCase();
     return MOVE_SECONDARY_HEAL_PROFILE_KEYS.includes(normalized) ? normalized : "standard";
   }
 
+  _coerceHealConfiguration({ effectType, healType, healMode, healingCategory, amount }) {
+    const normalizedEffectType = this._normalizeEffectType(effectType);
+    if (normalizedEffectType !== "heal") {
+      return {
+        healType: "basic",
+        healMode: "fixed",
+        healingCategory: "standard",
+        amount: Math.floor(Number(amount) || 0)
+      };
+    }
+
+    const normalizedHealType = this._normalizeHealType(healType, normalizedEffectType, {
+      healMode,
+      healingCategory,
+      amount
+    });
+    const normalizedHealMode = this._normalizeHealMode(healMode, normalizedEffectType, amount);
+    const normalizedHealingCategory = this._normalizeHealingCategory(healingCategory);
+    const normalizedAmount = Math.abs(Math.floor(Number(amount) || 0));
+
+    switch (normalizedHealType) {
+      case "basic":
+        return {
+          healType: normalizedHealType,
+          healMode: "fixed",
+          healingCategory: "standard",
+          amount: 3
+        };
+      case "complete":
+        return {
+          healType: normalizedHealType,
+          healMode: "fixed",
+          healingCategory: "complete",
+          amount: 5
+        };
+      case "complete-numeric":
+        return {
+          healType: normalizedHealType,
+          healMode: normalizedHealMode,
+          healingCategory: "complete",
+          amount: normalizedAmount
+        };
+      case "basic-numeric":
+      default:
+        return {
+          healType: "basic-numeric",
+          healMode: normalizedHealMode,
+          healingCategory: normalizedHealingCategory === "complete" ? "standard" : normalizedHealingCategory,
+          amount: normalizedAmount
+        };
+    }
+  }
+
   _decorateSecondaryEffectForDisplay(effect) {
     const effectType = this._normalizeEffectType(effect.effectType);
+    const healType = this._normalizeHealType(effect.healType, effectType, effect);
+    const usesNumericHealConfiguration =
+      effectType === "heal" && ["basic-numeric", "complete-numeric"].includes(healType);
     const specialDurationSelections = this._normalizeSpecialDurationList(effect.specialDuration);
     const specialDurationRows = specialDurationSelections.map((durationKey, index) => ({
       index,
@@ -792,15 +909,28 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       linkedEffectName: linkedEffect?.name ?? game.i18n.localize("POKROLE.Move.Secondary.ActiveEffect.Unconfigured"),
       specialDuration: specialDurationSelections,
       specialDurationRows,
+      healType,
+      conditional: Boolean(effect.conditional),
+      activationCondition: `${effect.activationCondition ?? ""}`.trim(),
       showConditionField: effectType === "condition",
       showWeatherField: effectType === "weather",
+      showTerrainField: effectType === "terrain",
       showActiveEffectField: effectType === "active-effect",
       showStatField: effectType === "stat",
-      showAmountField: ["stat", "damage", "heal", "will"].includes(effectType),
-      showHealModeField: effectType === "heal",
-      showHealProfileField: effectType === "heal",
-      showHealingCategoryField: effectType === "heal",
-      showDurationField: effectType === "condition" || effectType === "stat" || effectType === "weather",
+      showAmountField:
+        ["stat", "damage", "will"].includes(effectType) ||
+        (effectType === "heal" && usesNumericHealConfiguration),
+      showConditionalField: true,
+      showActivationConditionField: Boolean(effect.conditional),
+      showHealTypeField: effectType === "heal",
+      showHealModeField: effectType === "heal" && usesNumericHealConfiguration,
+      showHealProfileField: false,
+      showHealingCategoryField: false,
+      showDurationField:
+        effectType === "condition" ||
+        effectType === "stat" ||
+        effectType === "weather" ||
+        effectType === "terrain",
       showNotesField: effectType === "custom"
     };
   }
@@ -1062,13 +1192,20 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
 
     toggleSection("condition", effectType === "condition");
     toggleSection("weather", effectType === "weather");
+    toggleSection("terrain", effectType === "terrain");
     toggleSection("active-effect", effectType === "active-effect");
     toggleSection("stat", effectType === "stat");
     toggleSection("amount", ["stat", "damage", "heal", "will"].includes(effectType));
     toggleSection("heal-mode", effectType === "heal");
     toggleSection("heal-profile", effectType === "heal");
     toggleSection("heal-category", effectType === "heal");
-    toggleSection("duration", effectType === "condition" || effectType === "stat" || effectType === "weather");
+    toggleSection(
+      "duration",
+      effectType === "condition" ||
+        effectType === "stat" ||
+        effectType === "weather" ||
+        effectType === "terrain"
+    );
     toggleSection("notes", effectType === "custom");
   }
 
@@ -1118,5 +1255,16 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       hail: "POKROLE.Combat.WeatherValues.Hail"
     };
     return labelByWeather[weatherKey] ?? "POKROLE.Common.None";
+  }
+
+  _getSecondaryTerrainLabelPath(terrainKey) {
+    const labelByTerrain = {
+      none: "POKROLE.Common.None",
+      electric: "POKROLE.Combat.TerrainValues.Electric",
+      grassy: "POKROLE.Combat.TerrainValues.Grassy",
+      misty: "POKROLE.Combat.TerrainValues.Misty",
+      psychic: "POKROLE.Combat.TerrainValues.Psychic"
+    };
+    return labelByTerrain[terrainKey] ?? "POKROLE.Common.None";
   }
 }

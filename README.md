@@ -20,11 +20,12 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
   - `Abilities` (`Item`)
 - Compendium build model:
   - Compendium data is prepared externally via `tools/build_compendium_seeds.py` and stored in `module/seeds/generated/`.
+  - Move compendium data can also be rebuilt from upstream `moves.db` via `tools/build_moves_from_db.py`.
   - Foundry packs are precompiled into `packs/*` (LevelDB) via `tools/build_static_compendia.mjs`.
   - No automatic seeding/generation runs at world startup.
   - Item seeds include all listed Corebook items from `Trainer's Basics`, `Healing Items`, `Items for Pokemon Care`, `Evolutionary Items`, and `Held Items` (p.76-85, 107 total item entries).
-  - `Moves` compendium is rebuilt from Corebook pages `346-430` (771 move items).
-  - Every move entry includes description text and a `Corebook p.X` reference in the move description field.
+  - `Moves` compendium is rebuilt from upstream Pokerole move data (`moves.db`) into `888` static move items.
+  - Move rebuilds generate `module/seeds/generated/move-automation-report.json` and `.md` with `full/partial/manual` automation coverage.
   - Move icons are auto-assigned by move type (`assets/types/*.svg`).
   - `Abilities` compendium is rebuilt from Corebook pages `434-471` (257 ability items), each with effect text and `Corebook p.X` in description.
   - `Pokedex` compendium is fully seeded with `#001-#890` plus supported regional/mega/primal forms (1022 pokedex items).
@@ -100,8 +101,10 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
   - Automatic HP subtraction on selected target token(s) based on move target mode
   - Secondary effects automation:
     - executes configured secondary effects after move resolution (conditions, stat changes, combat-profile changes, HP heal/damage, Will change, custom notes)
-    - supports chance-based effects (`0-100%`) and trigger modes (`on-hit`, `on-hit-damage`, `on-miss`, `always`)
+    - supports chance-dice based effects (`Xd6`, effect triggers if any die shows `6`) and trigger modes (`on-hit`, `on-hit-damage`, `on-miss`, `always`)
     - supports multi-target secondary effects (`target`, `self`, `all-targets`, `all-allies`, `all-foes`)
+    - supports conditional secondary effects with expressions such as `weather=sunny or weather=harsh-sunlight`
+    - supports weather activation and simplified terrain activation as first-class secondary effect types
     - fallback inference from move description text for common patterns (status chance, stat stage up/down, half-max HP heal, fraction-of-max HP damage)
     - legacy upstream `effectGroups` are converted into this format during seed generation/import
     - optional ability automation hook: embedded `ability` items can run the same effect engine when `system.effect` contains JSON effect payload(s)
@@ -127,11 +130,13 @@ Important: do not use the GitHub `.../blob/...` URL, because Foundry expects raw
 - `module/`: data models, documents, sheets
 - `assets/`: static assets (Pokeball pattern, move type icons, ailments, generic icon set)
 - `module/seeds/generated/`: generated datasets for `moves`, `abilities`, `pokedex`, and `pokemon actor` compendia
+- `module/seeds/generated/move-automation-report.json` / `.md`: move import coverage report from `moves.db`
 - `packs/`: compendium pack databases (v13 LevelDB folders)
 - `templates/`: handlebars sheets/chat card
 - `styles/`: sheet styles
 - `lang/`: localization files
 - `tools/build_compendium_seeds.py`: regenerates `moves`, `abilities`, `pokedex`, and `pokemon actor` seed modules
+- `tools/build_moves_from_db.py`: rebuilds the `moves` seed module from upstream `moves.db` and writes an automation coverage report
 - `tools/build_static_compendia.mjs`: compiles hard-coded seed data into static `packs/*` LevelDB compendia
 
 Asset source:
@@ -142,9 +147,10 @@ Asset source:
 - The system now defines 11 compendium packs in `system.json`.
 - Packs are shipped precompiled and populated by default.
 - If you regenerate data:
-  1. Run `python tools/build_compendium_seeds.py`.
-  2. Run `node tools/build_static_compendia.mjs`.
-  3. Publish the updated `packs/*` content in your release/zip.
+  1. Run `python tools/build_compendium_seeds.py` for items/abilities/pokedex/pokemon actors.
+  2. Run `python tools/build_moves_from_db.py` for the move compendium rebuild from `moves.db`.
+  3. Run `node tools/build_static_compendia.mjs`.
+  4. Publish the updated `packs/*` content in your release/zip.
 
 Compendium grouping and rules mapping (PokeRole 2.0 PDF):
 - Trainer/Travel/Healing Items: p.76-80
@@ -174,8 +180,9 @@ Compendium grouping and rules mapping (PokeRole 2.0 PDF):
 
 ## Current Limits
 
-- Chance Dice from legacy move data are approximated to a percentage and resolved as `% chance` (not as explicit chance-dice rolls).
-- Status condition durations/turn countdowns are not fully automated yet.
+- Some moves still require manual handling or custom overrides; see `module/seeds/generated/move-automation-report.md`.
+- Delayed / future-resolution moves (`Wish`, `Future Sight`, `Doom Desire`, etc.) are not fully automated yet.
+- Terrain support is simplified to a single active combat terrain and does not yet model side-specific battlefield ownership.
 - Extra conditions not present in `system.conditions` (for example `Flinch`, `Disabled`, `Infatuated`) are tracked as actor flags.
 - Priority/Low Priority does not reorder combat turns automatically yet.
 - Shield-chain penalty (`-2` each consecutive round) is not auto-tracked yet.

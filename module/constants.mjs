@@ -204,6 +204,7 @@ export const MOVE_SECONDARY_EFFECT_TYPE_KEYS = Object.freeze([
   "stat",
   "combat-stat",
   "weather",
+  "terrain",
   "damage",
   "heal",
   "will",
@@ -216,9 +217,17 @@ export const MOVE_SECONDARY_HEAL_MODE_KEYS = Object.freeze([
   "damage-percent"
 ]);
 
+export const MOVE_SECONDARY_HEAL_TYPE_KEYS = Object.freeze([
+  "basic",
+  "complete",
+  "basic-numeric",
+  "complete-numeric"
+]);
+
 export const MOVE_SECONDARY_HEAL_PROFILE_KEYS = Object.freeze([
   "standard",
-  "sunlight-restoration"
+  "sunlight-restoration",
+  "sand-restoration"
 ]);
 
 export const HEALING_CATEGORY_KEYS = Object.freeze([
@@ -236,6 +245,14 @@ export const MOVE_SECONDARY_WEATHER_KEYS = Object.freeze([
   "sandstorm",
   "strong-winds",
   "hail"
+]);
+
+export const MOVE_SECONDARY_TERRAIN_KEYS = Object.freeze([
+  "none",
+  "electric",
+  "grassy",
+  "misty",
+  "psychic"
 ]);
 
 export const MOVE_SECONDARY_DURATION_MODE_KEYS = Object.freeze([

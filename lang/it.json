@@ -380,6 +380,13 @@
         "Chance": "Dadi Chance (0 = Auto)",
         "Amount": "Valore",
         "Notes": "Note",
+        "Conditional": {
+          "Label": "Condizionale?"
+        },
+        "ActivationCondition": {
+          "Label": "Condizione di Attivazione",
+          "Placeholder": "weather=sunny or weather=harsh-sunlight"
+        },
         "HealMode": {
           "Label": "Fonte Cura",
           "Fixed": "Valore fisso",
@@ -388,10 +395,18 @@
           "OfDamageDealt": "del danno inflitto",
           "OfMaxHp": "dei PS massimi"
         },
+        "HealType": {
+          "Label": "Tipo Cura",
+          "Basic": "Base",
+          "Complete": "Completa",
+          "BasicNumeric": "Base Numerica",
+          "CompleteNumeric": "Completa Numerica"
+        },
         "HealProfile": {
           "Label": "Profilo Cura",
           "Standard": "Standard",
-          "SunlightRestoration": "Dipendente da sole/contesto"
+          "SunlightRestoration": "Dipendente da sole/contesto",
+          "SandRestoration": "Dipendente da tempesta di sabbia"
         },
         "Duration": {
           "Rounds": "Round",
@@ -439,6 +454,7 @@
           "Stat": "Cambio Stat",
           "CombatStat": "Stat Combattimento",
           "Weather": "Meteo",
+          "Terrain": "Terreno",
           "Damage": "Danno",
           "Heal": "Cura",
           "Will": "Volonta",
@@ -467,6 +483,9 @@
         },
         "Stat": {
           "Label": "Stat Coinvolta"
+        },
+        "Terrain": {
+          "Label": "Terreno"
         },
         "Weather": {
           "Label": "Meteo"
@@ -647,6 +666,12 @@
         "StrongWinds": "Venti Forti",
         "Hail": "Grandine"
       },
+      "TerrainValues": {
+        "Electric": "Campo Elettrico",
+        "Grassy": "Campo Erboso",
+        "Misty": "Campo Nebbioso",
+        "Psychic": "Campo Psichico"
+      },
       "TrainerState": {
         "InFray": "In Mischia",
         "Cover": "Copertura"
@@ -719,6 +744,9 @@
       "SecondaryEffectHpChange": "PS {before} -> {after}",
       "SecondaryEffectAlreadyActive": "Gia attivo",
       "SecondaryEffectTracked": "tracciato come condizione extra",
+      "SecondaryEffectConditionNotMet": "Condizione non soddisfatta: {condition}",
+      "SecondaryEffectConditionInvalid": "Condizione di attivazione non valida.",
+      "SecondaryEffectConditionInvalidExpression": "Espressione condizionale non valida: {condition}",
       "SecondaryEffectNoHealConfigured": "Nessun valore di cura configurato.",
       "SecondaryEffectHealAdjustedComplete": "{reason}: la cura conta come Completa.",
       "SecondaryEffectHealAdjustedOneHp": "{reason}: la cura e ridotta a 1 PS.",
@@ -741,6 +769,7 @@
       "SecondaryEffectNoWillChange": "Nessuna modifica alla Volonta applicata.",
       "SecondaryEffectNoConditionConfigured": "Nessuna condizione selezionata.",
       "SecondaryEffectNoWeatherConfigured": "Nessun meteo selezionato.",
+      "SecondaryEffectNoTerrainConfigured": "Nessun terreno selezionato.",
       "ConditionCleared": "{condition} rimossa.",
       "ConditionResistRoll": "{actor} tira Intuito per resistere a {condition} (richiesti: {required}).",
       "SleepResistanceRoll": "{actor} accumula resistenza al Sonno (+{gained}, totale {total}/5).",

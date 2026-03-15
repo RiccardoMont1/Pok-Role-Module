@@ -60,6 +60,18 @@ function normalizeCombatWeatherKey(weatherKey) {
   return valid.has(normalized) ? normalized : "none";
 }
 
+function normalizeCombatTerrainKey(terrainKey) {
+  const normalized = `${terrainKey ?? "none"}`.trim().toLowerCase();
+  const valid = new Set([
+    "none",
+    "electric",
+    "grassy",
+    "misty",
+    "psychic"
+  ]);
+  return valid.has(normalized) ? normalized : "none";
+}
+
 async function processRoundEndCombatAutomation(combat) {
   if (!combat) return;
   const weatherData = combat.getFlag(POKROLE.ID, "combat.weather") ?? {};
@@ -82,6 +94,21 @@ async function advanceCombatWeatherDuration(combat) {
   await combat.setFlag(POKROLE.ID, "combat.weather", {
     ...weatherData,
     condition: nextDuration <= 0 ? "none" : weatherKey,
+    durationRounds: Math.max(nextDuration, 0)
+  });
+}
+
+async function advanceCombatTerrainDuration(combat) {
+  if (!combat) return;
+  const terrainData = combat.getFlag(POKROLE.ID, "combat.terrain") ?? {};
+  const terrainKey = normalizeCombatTerrainKey(terrainData?.condition);
+  if (terrainKey === "none") return;
+  const durationRounds = Math.max(Math.floor(Number(terrainData?.durationRounds ?? 0) || 0), 0);
+  if (durationRounds <= 0) return;
+  const nextDuration = durationRounds - 1;
+  await combat.setFlag(POKROLE.ID, "combat.terrain", {
+    ...terrainData,
+    condition: nextDuration <= 0 ? "none" : terrainKey,
     durationRounds: Math.max(nextDuration, 0)
   });
 }
@@ -916,6 +943,7 @@ Hooks.on("updateCombat", async (combat, changed) => {
     await processCombatSpecialDurationEvent(combat, "round-end");
     await processRoundEndCombatAutomation(combat);
     await advanceCombatWeatherDuration(combat);
+    await advanceCombatTerrainDuration(combat);
   }
   if ((combat.round ?? 0) <= 0) {
     LAST_COMBAT_TURN_STATE.set(combatId, {

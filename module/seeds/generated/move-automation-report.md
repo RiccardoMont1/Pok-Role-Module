@@ -1,0 +1,337 @@
+# Move Automation Report
+
+Source: `D:\DeskTop\Script\PokèRole Module\Pok-Role-Module\_upstream\foundry-pokerole\packs\moves.db`
+
+Total moves: **888**
+
+## Status Totals
+
+- `full`: 597
+- `partial`: 241
+- `manual`: 50
+
+## Reason Totals
+
+- `alternative-trait-formula`: 97
+- `reaction-window`: 58
+- `external-rule-reference`: 25
+- `terrain-field-effect`: 21
+- `dynamic-power-formula`: 20
+- `charge-move`: 19
+- `ignore-defenses`: 19
+- `mixed-category`: 18
+- `suggested-effects`: 18
+- `recoil`: 15
+- `switcher-move`: 14
+- `dynamic-type`: 12
+- `maneuver-rule`: 11
+- `must-recharge`: 10
+- `user-faints`: 9
+- `copied-move-dependent`: 8
+- `always-crit`: 6
+- `delayed-effect`: 4
+- `dynamax-rule`: 4
+- `rampage`: 4
+- `status-cleanse`: 4
+- `destroy-shield`: 3
+- `special-defense-rule`: 3
+- `manual-terrain-resolution`: 1
+- `stored-damage-formula`: 1
+- `temporary-type-immunity-change`: 1
+
+## Manual Moves
+
+- **Acid Downpour**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **All-Out Pummeling**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Ambush**: dynamic-type, maneuver-rule
+- **Bide**: stored-damage-formula
+- **Black Hole Eclipse**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Bloom Doom**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Breakneck Blitz**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Clash**: alternative-trait-formula, dynamic-type, external-rule-reference, maneuver-rule, reaction-window
+- **Continental Crush**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Copycat**: copied-move-dependent
+- **Corkscrew Crash**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Cover An Ally**: dynamic-type, maneuver-rule
+- **Devastating Drake**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Doom Desire**: delayed-effect
+- **Evasion**: dynamic-type, external-rule-reference, maneuver-rule, reaction-window
+- **Fickle Beam**: dynamic-power-formula
+- **Fling**: external-rule-reference
+- **Future Sight**: delayed-effect
+- **Gigavolt Havoc**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Grapple**: alternative-trait-formula, dynamic-type, maneuver-rule
+- **Grassy Terrain**: manual-terrain-resolution, terrain-field-effect
+- **Help Another**: dynamic-type, maneuver-rule, reaction-window
+- **Hidden Power**: dynamic-type, external-rule-reference
+- **Hydro Vortex**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Inferno Overdrive**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Instruct**: copied-move-dependent
+- **Ivy Cudgel**: alternative-trait-formula, copied-move-dependent
+- **Magnitude**: dynamic-power-formula
+- **Me First**: copied-move-dependent, reaction-window
+- **Mimic**: copied-move-dependent
+- **Mirror Move**: copied-move-dependent
+- **Never-Ending Nightmare**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Raging Bull**: copied-move-dependent
+- **Run Away**: dynamic-type, maneuver-rule
+- **Savage Spin-Out**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Shattered Psyche**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects, terrain-field-effect
+- **Shed Tail**: external-rule-reference, switcher-move
+- **Sketch**: copied-move-dependent
+- **Snatch**: external-rule-reference, reaction-window
+- **Stabilize An Ally**: dynamic-type, maneuver-rule
+- **Struggle (Physical)**: alternative-trait-formula, dynamic-type, maneuver-rule
+- **Struggle (Special)**: alternative-trait-formula, dynamic-type, maneuver-rule
+- **Struggle Throw**: alternative-trait-formula, dynamic-type, maneuver-rule
+- **Substitute**: external-rule-reference, switcher-move
+- **Subzero Slammer**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Supersonic Skystrike**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Tectonic Rage**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Twinkle Tackle**: dynamic-power-formula, external-rule-reference, mixed-category, suggested-effects
+- **Wish**: delayed-effect
+- **Yawn**: delayed-effect
+
+## Partial Moves
+
+- **Absorb**: alternative-trait-formula
+- **Accelerock**: alternative-trait-formula, reaction-window
+- **After You**: reaction-window
+- **Alluring Voice**: alternative-trait-formula
+- **Ally Switch**: reaction-window, switcher-move
+- **Aqua Jet**: reaction-window
+- **Aqua Step**: alternative-trait-formula
+- **Aqua Tail**: alternative-trait-formula
+- **Avalanche**: reaction-window
+- **Baby-Doll Eyes**: reaction-window
+- **Baneful Bunker**: reaction-window
+- **Baton Pass**: switcher-move
+- **Beak Blast**: charge-move
+- **Behemoth Bash**: dynamax-rule
+- **Behemoth Blade**: dynamax-rule
+- **Blast Burn**: must-recharge
+- **Block**: alternative-trait-formula
+- **Bounce**: charge-move
+- **Brave Bird**: recoil
+- **Brick Break**: destroy-shield
+- **Brine**: alternative-trait-formula
+- **Bullet Punch**: alternative-trait-formula, reaction-window
+- **Bullet Seed**: alternative-trait-formula
+- **Burning Bulwark**: reaction-window
+- **Camouflage**: alternative-trait-formula
+- **Charm**: alternative-trait-formula
+- **Chilly Reception**: switcher-move
+- **Chip Away**: ignore-defenses
+- **Chloroblast**: recoil
+- **Circle Throw**: reaction-window, switcher-move
+- **Clamp**: alternative-trait-formula
+- **Coaching**: alternative-trait-formula
+- **Comeuppance**: ignore-defenses
+- **Confuse Ray**: alternative-trait-formula
+- **Counter**: ignore-defenses, reaction-window
+- **Court Change**: terrain-field-effect
+- **Crafty Shield**: reaction-window
+- **Curse**: alternative-trait-formula
+- **Defog**: destroy-shield, terrain-field-effect
+- **Destiny Bond**: user-faints
+- **Detect**: reaction-window
+- **Dig**: charge-move
+- **Disarming Voice**: alternative-trait-formula
+- **Dive**: charge-move
+- **Dizzy Punch**: alternative-trait-formula
+- **Double-Edge**: recoil
+- **Dragon Tail**: reaction-window, switcher-move
+- **Drill Run**: alternative-trait-formula
+- **Dynamax Cannon**: dynamax-rule
+- **Egg Bomb**: alternative-trait-formula
+- **Electric Terrain**: terrain-field-effect
+- **Electrify**: reaction-window
+- **Electro Shot**: charge-move
+- **Encore**: alternative-trait-formula, reaction-window
+- **Endeavor**: ignore-defenses
+- **Endure**: reaction-window
+- **Entrainment**: alternative-trait-formula
+- **Eternabeam**: must-recharge
+- **Expanding Force**: terrain-field-effect
+- **Explosion**: user-faints
+- **Extreme Speed**: reaction-window
+- **Fake Out**: reaction-window
+- **False Surrender**: alternative-trait-formula
+- **Feint**: reaction-window
+- **Final Gambit**: alternative-trait-formula, ignore-defenses, user-faints
+- **First Impression**: alternative-trait-formula, reaction-window
+- **Flame Charge**: alternative-trait-formula
+- **Flare Blitz**: recoil
+- **Flip Turn**: switcher-move
+- **Floral Healing**: terrain-field-effect
+- **Flower Trick**: always-crit
+- **Fly**: charge-move
+- **Focus Punch**: charge-move
+- **Follow Me**: reaction-window
+- **Foul Play**: alternative-trait-formula
+- **Freeze Shock**: charge-move
+- **Frenzy Plant**: must-recharge
+- **Frost Breath**: always-crit
+- **Fury Cutter**: alternative-trait-formula
+- **Fury Swipes**: alternative-trait-formula
+- **Geomancy**: charge-move
+- **Giga Drain**: alternative-trait-formula
+- **Giga Impact**: must-recharge
+- **Grassy Glide**: reaction-window, terrain-field-effect
+- **Gravity**: alternative-trait-formula
+- **Growl**: alternative-trait-formula
+- **Grudge**: user-faints
+- **Head Charge**: recoil
+- **Head Smash**: recoil
+- **Healing Wish**: user-faints
+- **Helping Hand**: reaction-window
+- **Hydro Cannon**: must-recharge
+- **Hyper Beam**: must-recharge
+- **Hyper Voice**: alternative-trait-formula
+- **Hyperspace Hole**: ignore-defenses
+- **Ice Ball**: alternative-trait-formula
+- **Ice Burn**: charge-move
+- **Ice Shard**: reaction-window
+- **Ice Spinner**: alternative-trait-formula
+- **Jet Punch**: reaction-window
+- **Judgment**: ignore-defenses
+- **Jungle Healing**: status-cleanse
+- **King's Shield**: reaction-window
+- **Land's Wrath**: alternative-trait-formula
+- **Light Of Ruin**: recoil
+- **Liquidation**: alternative-trait-formula
+- **Lunar Dance**: user-faints
+- **Mach Punch**: reaction-window
+- **Magic Coat**: reaction-window
+- **Magic Powder**: alternative-trait-formula
+- **Magical Leaf**: alternative-trait-formula
+- **Malignant Chain**: alternative-trait-formula
+- **Mat Block**: reaction-window
+- **Max Guard**: dynamax-rule, reaction-window
+- **Max Lightning**: terrain-field-effect
+- **Max Mindstorm**: terrain-field-effect
+- **Max Overgrowth**: terrain-field-effect
+- **Max Starfall**: terrain-field-effect
+- **Mega Drain**: alternative-trait-formula
+- **Memento**: user-faints
+- **Metal Burst**: alternative-trait-formula, ignore-defenses, reaction-window
+- **Meteor Assault**: must-recharge
+- **Meteor Beam**: charge-move
+- **Mind Blown**: recoil
+- **Mirror Coat**: ignore-defenses, reaction-window
+- **Mist**: alternative-trait-formula
+- **Misty Explosion**: terrain-field-effect, user-faints
+- **Misty Terrain**: status-cleanse, terrain-field-effect
+- **Mortal Spin**: terrain-field-effect
+- **Nature's Madness**: ignore-defenses
+- **Night Shade**: alternative-trait-formula, ignore-defenses
+- **Noble Roar**: alternative-trait-formula
+- **Obstruct**: reaction-window
+- **Outrage**: rampage
+- **Parting Shot**: switcher-move
+- **Petal Dance**: alternative-trait-formula, rampage
+- **Phantom Force**: charge-move
+- **Photon Geyser**: alternative-trait-formula
+- **Play Nice**: alternative-trait-formula
+- **Poison Jab**: alternative-trait-formula
+- **Prismatic Laser**: must-recharge
+- **Protect**: reaction-window
+- **Psyblade**: alternative-trait-formula, terrain-field-effect
+- **Psychic Fangs**: destroy-shield
+- **Psychic Noise**: alternative-trait-formula
+- **Psychic Terrain**: terrain-field-effect
+- **Psyshock**: special-defense-rule
+- **Psystrike**: special-defense-rule
+- **Psywave**: ignore-defenses
+- **Pursuit**: alternative-trait-formula
+- **Pyro Ball**: alternative-trait-formula
+- **Quick Attack**: alternative-trait-formula, reaction-window
+- **Quick Guard**: reaction-window
+- **Rage**: alternative-trait-formula
+- **Rage Powder**: reaction-window
+- **Raging Fury**: rampage
+- **Rain Dance**: alternative-trait-formula
+- **Rapid Spin**: terrain-field-effect
+- **Razor Leaf**: alternative-trait-formula
+- **Razor Wind**: charge-move
+- **Reflect Type**: alternative-trait-formula
+- **Refresh**: alternative-trait-formula
+- **Rising Voltage**: terrain-field-effect
+- **Roar**: reaction-window, switcher-move
+- **Roar Of Time**: must-recharge
+- **Rock Smash**: alternative-trait-formula
+- **Rock Throw**: alternative-trait-formula
+- **Rock Wrecker**: must-recharge
+- **Rollout**: alternative-trait-formula
+- **Roost**: temporary-type-immunity-change
+- **Ruination**: ignore-defenses
+- **Sacred Sword**: ignore-defenses
+- **Sappy Seed**: ignore-defenses
+- **Scald**: alternative-trait-formula
+- **Secret Sword**: special-defense-rule
+- **Seed Bomb**: alternative-trait-formula
+- **Seismic Toss**: ignore-defenses
+- **Self Destruct**: user-faints
+- **Shadow Force**: charge-move
+- **Shadow Punch**: alternative-trait-formula
+- **Shadow Sneak**: alternative-trait-formula, reaction-window
+- **Shell Side Arm**: alternative-trait-formula
+- **Shell Trap**: reaction-window
+- **Shelter**: alternative-trait-formula
+- **Silk Trap**: reaction-window
+- **Sing**: alternative-trait-formula
+- **Skull Bash**: charge-move
+- **Sky Attack**: charge-move
+- **Sky Drop**: charge-move
+- **Solar Beam**: charge-move
+- **Solar Blade**: charge-move
+- **Sonic Boom**: ignore-defenses
+- **Sparkly Swirl**: status-cleanse
+- **Spiky Shield**: ignore-defenses, reaction-window
+- **Spotlight**: reaction-window
+- **Steel Beam**: recoil
+- **Steel Roller**: terrain-field-effect
+- **Storm Throw**: always-crit
+- **Submission**: recoil
+- **Sucker Punch**: reaction-window
+- **Super Fang**: alternative-trait-formula, ignore-defenses
+- **Surging Strikes**: always-crit
+- **Swagger**: alternative-trait-formula
+- **Synchronoise**: alternative-trait-formula
+- **Synthesis**: alternative-trait-formula
+- **Tackle**: alternative-trait-formula
+- **Take Down**: recoil
+- **Take Heart**: status-cleanse
+- **Taunt**: alternative-trait-formula
+- **Teatime**: alternative-trait-formula
+- **Teeter Dance**: alternative-trait-formula
+- **Teleport**: switcher-move
+- **Tera Blast**: alternative-trait-formula
+- **Tera Starstorm**: alternative-trait-formula
+- **Terrain Pulse**: terrain-field-effect
+- **Thousand Arrows**: alternative-trait-formula
+- **Thousand Waves**: alternative-trait-formula
+- **Thrash**: rampage
+- **Thunderclap**: reaction-window
+- **Topsy-Turvy**: alternative-trait-formula
+- **Torment**: alternative-trait-formula
+- **Trick**: alternative-trait-formula
+- **Triple Dive**: alternative-trait-formula
+- **Trop Kick**: alternative-trait-formula
+- **Twineedle**: alternative-trait-formula
+- **U-Turn**: switcher-move
+- **Upper Hand**: reaction-window
+- **Vacuum Wave**: reaction-window
+- **Vital Throw**: reaction-window
+- **Volt Switch**: switcher-move
+- **Volt Tackle**: recoil
+- **Water Gun**: alternative-trait-formula
+- **Water Shuriken**: alternative-trait-formula, reaction-window
+- **Wave Crash**: alternative-trait-formula, recoil
+- **Whirlwind**: alternative-trait-formula, reaction-window, switcher-move
+- **Wicked Blow**: always-crit
+- **Wide Guard**: reaction-window
+- **Wild Charge**: recoil
+- **Wood Hammer**: recoil
+- **Worry Seed**: alternative-trait-formula
+- **Zippy Zap**: always-crit, reaction-window
