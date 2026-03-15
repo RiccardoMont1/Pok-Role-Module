@@ -1675,6 +1675,27 @@ export class PokRoleActor extends Actor {
       : baseInitiative;
     await this.update({ "system.combat.initiative": rolledInitiative });
 
+    const combat = game.combat ?? null;
+    const combatant = combat?.combatants?.find?.((entry) => entry.actor?.id === this.id) ?? null;
+    if (combatant && options.updateCombatant !== false) {
+      await combatant.update({ initiative: rolledInitiative });
+      if (typeof combat?.setupTurns === "function") {
+        await combat.setupTurns();
+      }
+      if (options.setTurnOnRoll !== false) {
+        const rankedTurns = Array.from(combat?.turns ?? []);
+        let highestTurnIndex = rankedTurns.findIndex(
+          (entry) => Boolean(entry) && !entry.defeated
+        );
+        if (highestTurnIndex < 0 && rankedTurns.length > 0) {
+          highestTurnIndex = 0;
+        }
+        if (highestTurnIndex >= 0 && combat.turn !== highestTurnIndex) {
+          await combat.update({ turn: highestTurnIndex });
+        }
+      }
+    }
+
     if (!options.silent) {
       await roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this }),

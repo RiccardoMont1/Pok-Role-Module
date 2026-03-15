@@ -27,6 +27,13 @@ function getCurrentCombat() {
   return isActiveCombat(combat) ? combat : null;
 }
 
+function getCombatantForQueueEntry(entry, combat = getCurrentCombat()) {
+  if (!combat) return null;
+  const combatantId = `${entry?.combatantId ?? ""}`.trim();
+  if (!combatantId) return null;
+  return combat.combatants?.get?.(combatantId) ?? combat.combatants?.find?.((candidate) => candidate.id === combatantId) ?? null;
+}
+
 function getQueueFlagKey() {
   return COMBAT_FLAG_KEYS.MOVE_QUEUE ?? "combat.moveQueue";
 }
@@ -55,21 +62,23 @@ function normalizeQueueEntry(entry = {}, index = 0) {
   };
 }
 
-function getActorForQueueEntry(entry) {
+function getActorForQueueEntry(entry, combat = getCurrentCombat()) {
+  const combatant = getCombatantForQueueEntry(entry, combat);
+  if (combatant?.actor) return combatant.actor;
   const actorId = `${entry?.actorId ?? ""}`.trim();
   if (!actorId) return null;
   return game.actors?.get(actorId) ?? null;
 }
 
-function getMoveForQueueEntry(entry, actor = null) {
-  const parentActor = actor ?? getActorForQueueEntry(entry);
+function getMoveForQueueEntry(entry, actor = null, combat = getCurrentCombat()) {
+  const parentActor = actor ?? getActorForQueueEntry(entry, combat);
   const moveId = `${entry?.moveId ?? ""}`.trim();
   if (!parentActor || !moveId) return null;
   return parentActor.items?.get(moveId) ?? null;
 }
 
-function canManageQueueEntry(entry) {
-  const actor = getActorForQueueEntry(entry);
+function canManageQueueEntry(entry, combat = getCurrentCombat()) {
+  const actor = getActorForQueueEntry(entry, combat);
   return Boolean(game.user?.isGM || actor?.isOwner);
 }
 
@@ -111,10 +120,10 @@ function getQueueTargetSummary(entry) {
 function getDecoratedQueueEntries(combat) {
   const rawQueue = getCombatMoveQueue(combat);
   return rawQueue.map((entry, index) => {
-    const actor = getActorForQueueEntry(entry);
-    const move = getMoveForQueueEntry(entry, actor);
+    const actor = getActorForQueueEntry(entry, combat);
+    const move = getMoveForQueueEntry(entry, actor, combat);
     const categoryKey = `${move?.system?.category ?? "support"}`.trim().toLowerCase();
-    const canManage = canManageQueueEntry(entry);
+    const canManage = canManageQueueEntry(entry, combat);
     return {
       ...entry,
       actorName: `${actor?.name ?? entry.actorId ?? game.i18n.localize("POKROLE.Common.Unknown")}`.trim(),
@@ -177,7 +186,7 @@ export async function removeCombatMoveEntry(combat, entryId) {
   if (!normalizedEntryId) return getCombatMoveQueue(combat);
   const queue = getCombatMoveQueue(combat);
   const entry = queue.find((candidate) => candidate.id === normalizedEntryId);
-  if (!entry || !canManageQueueEntry(entry)) return queue;
+  if (!entry || !canManageQueueEntry(entry, combat)) return queue;
   const nextQueue = queue.filter((candidate) => candidate.id !== normalizedEntryId);
   return setCombatMoveQueue(combat, nextQueue);
 }
@@ -206,15 +215,15 @@ export async function executeCombatMoveEntry(combat, entryId) {
   const normalizedEntryId = `${entryId ?? ""}`.trim();
   const queue = getCombatMoveQueue(combat);
   const entry = queue.find((candidate) => candidate.id === normalizedEntryId);
-  if (!entry || !canManageQueueEntry(entry)) return null;
+  if (!entry || !canManageQueueEntry(entry, combat)) return null;
 
-  const actor = getActorForQueueEntry(entry);
+  const actor = getActorForQueueEntry(entry, combat);
   if (!actor || typeof actor.rollMove !== "function") {
     ui.notifications.warn(game.i18n.localize("POKROLE.Combat.MoveQueueBrokenEntry"));
     return null;
   }
 
-  const move = getMoveForQueueEntry(entry, actor);
+  const move = getMoveForQueueEntry(entry, actor, combat);
   if (!move) {
     ui.notifications.warn(game.i18n.localize("POKROLE.Combat.MoveQueueBrokenEntry"));
     return null;

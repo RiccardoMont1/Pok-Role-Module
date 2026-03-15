@@ -931,6 +931,7 @@ Hooks.on("updateCombat", async (combat, changed) => {
     if (
       previousActor &&
       previousActor.documentName === "Actor" &&
+      previousTurn !== currentTurn &&
       typeof previousActor.processTemporaryEffectSpecialDuration === "function"
     ) {
       await previousActor.processTemporaryEffectSpecialDuration("turn-end", { combatId });
@@ -938,15 +939,19 @@ Hooks.on("updateCombat", async (combat, changed) => {
 
     const currentActor = currentTurn !== null ? combat.turns?.[currentTurn]?.actor ?? null : null;
     if (
+      !hasRoundChange &&
       currentActor &&
       currentActor.documentName === "Actor" &&
+      previousTurn !== currentTurn &&
       typeof currentActor.processTemporaryEffectSpecialDuration === "function"
     ) {
       await currentActor.processTemporaryEffectSpecialDuration("turn-start", { combatId });
     }
     if (
+      !hasRoundChange &&
       currentActor &&
       currentActor.documentName === "Actor" &&
+      previousTurn !== currentTurn &&
       typeof currentActor.processTurnStartStatusAutomation === "function"
     ) {
       await currentActor.processTurnStartStatusAutomation();
@@ -994,7 +999,11 @@ Hooks.on("updateCombat", async (combat, changed) => {
     }
     if (typeof actor.rollInitiative !== "function") continue;
 
-    const initiativeRoll = await actor.rollInitiative({ silent: true });
+    const initiativeRoll = await actor.rollInitiative({
+      silent: true,
+      updateCombatant: false,
+      setTurnOnRoll: false
+    });
     const rolledScore = Math.max(
       Number(actor.system?.combat?.initiative ?? initiativeRoll?.total ?? 0) || 0,
       0
@@ -1005,8 +1014,45 @@ Hooks.on("updateCombat", async (combat, changed) => {
   if (initiativeUpdates.length > 0) {
     await combat.updateEmbeddedDocuments("Combatant", initiativeUpdates);
   }
+  if (typeof combat.setupTurns === "function") {
+    await combat.setupTurns();
+  }
+
+  const rankedTurns = Array.from(combat.turns ?? []);
+  let highestTurnIndex = rankedTurns.findIndex((combatant) => Boolean(combatant) && !combatant.defeated);
+  if (highestTurnIndex < 0 && rankedTurns.length > 0) {
+    highestTurnIndex = 0;
+  }
+
+  const highestActor =
+    highestTurnIndex >= 0 ? rankedTurns[highestTurnIndex]?.actor ?? null : null;
+  if (highestTurnIndex >= 0) {
+    LAST_COMBAT_TURN_STATE.set(combatId, {
+      turn: highestTurnIndex,
+      round: Number.isInteger(combat.round) ? combat.round : null
+    });
+    if (combat.turn !== highestTurnIndex) {
+      await combat.update({ turn: highestTurnIndex });
+    }
+  }
+
+  if (
+    highestActor &&
+    highestActor.documentName === "Actor" &&
+    typeof highestActor.processTemporaryEffectSpecialDuration === "function"
+  ) {
+    await highestActor.processTemporaryEffectSpecialDuration("turn-start", { combatId });
+  }
+  if (
+    highestActor &&
+    highestActor.documentName === "Actor" &&
+    typeof highestActor.processTurnStartStatusAutomation === "function"
+  ) {
+    await highestActor.processTurnStartStatusAutomation();
+  }
+
   LAST_COMBAT_TURN_STATE.set(combatId, {
-    turn: Number.isInteger(combat.turn) ? combat.turn : null,
+    turn: highestTurnIndex >= 0 ? highestTurnIndex : Number.isInteger(combat.turn) ? combat.turn : null,
     round: Number.isInteger(combat.round) ? combat.round : null
   });
 });
