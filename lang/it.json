@@ -311,10 +311,16 @@
       "AccuracyFlatModifier": "Modifica Flat Precisione",
       "AccuracyAttribute": "Attributo Precisione",
       "AccuracySkill": "Abilita Precisione",
+      "AccuracyFormula": "Formula Precisione",
       "AccuracySummary": "Precisione",
       "DamageSummary": "Pool Danno",
       "DamageAttribute": "Attributo Danno",
       "DamageAttributeAuto": "Auto (da categoria)",
+      "DamageBaseFormula": "Formula Base Danno",
+      "Formula": {
+        "Label": "Formula"
+      },
+      "PowerFormula": "Formula Potenza",
       "WillCost": "Costo Volonta",
       "DetailsBlock": {
         "Title": "Dettagli Mossa"
@@ -816,6 +822,13 @@
         "ClashTargetDamage": "Danno al difensore (clash)",
         "ClashAttackerDamage": "Danno all'attaccante (clash)"
       },
+      "ShieldMove": {
+        "Label": "Mossa Scudo"
+      },
+      "ShieldMoveDamageReduced": "{shield}: -{amount} danni",
+      "ShieldMoveEndureTriggered": "{shield} lascia {target} a 1 PS",
+      "ShieldMoveRetaliation": "{shield} -> {target}: {detail}",
+      "SecondaryEffectBlockedByShield": "Bloccato da Mossa Scudo: {shield}",
       "TypeEffect": {
         "Label": "Efficacia Tipo",
         "Neutral": "Neutro",

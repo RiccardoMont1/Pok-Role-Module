@@ -284,7 +284,9 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
         initial: "damage",
         choices: MOVE_PRIMARY_MODE_KEYS
       }),
+      accuracyFormula: trimmedStringField(""),
       power: integerField(0, { min: 0 }),
+      powerFormula: trimmedStringField(""),
       reducedAccuracy: integerField(0, { min: 0, max: 6 }),
       accuracyDiceModifier: integerField(0, { min: -99, max: 99 }),
       accuracyFlatModifier: integerField(0, { min: -99, max: 99 }),
@@ -294,6 +296,7 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
         initial: "auto",
         choices: damageAttributeChoices
       }),
+      damageBaseFormula: trimmedStringField(""),
       willCost: integerField(0, { min: 0, max: 99 }),
       durationType: new StringField({
         required: true,

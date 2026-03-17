@@ -2,14 +2,11 @@
   "source": "D:\\DeskTop\\Script\\Pok\u00e8Role Module\\Pok-Role-Module\\_upstream\\foundry-pokerole\\packs\\moves.db",
   "totalMoves": 888,
   "statusTotals": {
-    "partial": 241,
-    "full": 597,
-    "manual": 50
+    "full": 713,
+    "manual": 50,
+    "partial": 125
   },
   "reasonTotals": {
-    "alternative-trait-formula": 97,
-    "reaction-window": 58,
-    "dynamic-power-formula": 20,
     "external-rule-reference": 25,
     "mixed-category": 18,
     "suggested-effects": 18,
@@ -26,7 +23,9 @@
     "copied-move-dependent": 8,
     "terrain-field-effect": 21,
     "user-faints": 9,
+    "alternative-trait-formula": 1,
     "delayed-effect": 4,
+    "dynamic-power-formula": 2,
     "always-crit": 6,
     "manual-terrain-resolution": 1,
     "status-cleanse": 4,
@@ -38,10 +37,8 @@
     {
       "name": "Absorb",
       "seedId": "move-absorb",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "special",
       "target": "foe",
@@ -50,11 +47,8 @@
     {
       "name": "Accelerock",
       "seedId": "move-accelerock",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula",
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "rock",
       "category": "physical",
       "target": "foe",
@@ -85,7 +79,6 @@
       "seedId": "move-acid-downpour",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -148,10 +141,8 @@
     {
       "name": "After You",
       "seedId": "move-after-you",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "ally",
@@ -192,7 +183,6 @@
       "seedId": "move-all-out-pummeling",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -205,10 +195,8 @@
     {
       "name": "Alluring Voice",
       "seedId": "move-alluring-voice",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fairy",
       "category": "special",
       "target": "foe",
@@ -219,7 +207,6 @@
       "seedId": "move-ally-switch",
       "status": "partial",
       "reasons": [
-        "reaction-window",
         "switcher-move"
       ],
       "type": "psychic",
@@ -293,10 +280,8 @@
     {
       "name": "Aqua Jet",
       "seedId": "move-aqua-jet",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "physical",
       "target": "foe",
@@ -315,10 +300,8 @@
     {
       "name": "Aqua Step",
       "seedId": "move-aqua-step",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "physical",
       "target": "foe",
@@ -327,10 +310,8 @@
     {
       "name": "Aqua Tail",
       "seedId": "move-aqua-tail",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "physical",
       "target": "foe",
@@ -489,10 +470,8 @@
     {
       "name": "Avalanche",
       "seedId": "move-avalanche",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ice",
       "category": "physical",
       "target": "foe",
@@ -511,10 +490,8 @@
     {
       "name": "Baby-Doll Eyes",
       "seedId": "move-baby-doll-eyes",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fairy",
       "category": "support",
       "target": "foe",
@@ -533,10 +510,8 @@
     {
       "name": "Baneful Bunker",
       "seedId": "move-baneful-bunker",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "poison",
       "category": "support",
       "target": "self",
@@ -707,7 +682,6 @@
       "seedId": "move-black-hole-eclipse",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -772,10 +746,8 @@
     {
       "name": "Block",
       "seedId": "move-block",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "foe",
@@ -796,7 +768,6 @@
       "seedId": "move-bloom-doom",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -955,7 +926,6 @@
       "seedId": "move-breakneck-blitz",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -980,10 +950,8 @@
     {
       "name": "Brine",
       "seedId": "move-brine",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "special",
       "target": "foe",
@@ -1062,11 +1030,8 @@
     {
       "name": "Bullet Punch",
       "seedId": "move-bullet-punch",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula",
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "steel",
       "category": "physical",
       "target": "foe",
@@ -1075,10 +1040,8 @@
     {
       "name": "Bullet Seed",
       "seedId": "move-bullet-seed",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "physical",
       "target": "foe",
@@ -1097,10 +1060,8 @@
     {
       "name": "Burning Bulwark",
       "seedId": "move-burning-bulwark",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fire",
       "category": "support",
       "target": "self",
@@ -1139,10 +1100,8 @@
     {
       "name": "Camouflage",
       "seedId": "move-camouflage",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "self",
@@ -1191,10 +1150,8 @@
     {
       "name": "Charm",
       "seedId": "move-charm",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fairy",
       "category": "support",
       "target": "foe",
@@ -1261,7 +1218,6 @@
       "seedId": "move-circle-throw",
       "status": "partial",
       "reasons": [
-        "reaction-window",
         "switcher-move"
       ],
       "type": "fighting",
@@ -1272,10 +1228,8 @@
     {
       "name": "Clamp",
       "seedId": "move-clamp",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "physical",
       "target": "foe",
@@ -1306,11 +1260,9 @@
       "seedId": "move-clash",
       "status": "manual",
       "reasons": [
-        "alternative-trait-formula",
         "dynamic-type",
         "external-rule-reference",
-        "maneuver-rule",
-        "reaction-window"
+        "maneuver-rule"
       ],
       "type": "none",
       "category": "support",
@@ -1340,10 +1292,8 @@
     {
       "name": "Coaching",
       "seedId": "move-coaching",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "support",
       "target": "all-allies",
@@ -1414,10 +1364,8 @@
     {
       "name": "Confuse Ray",
       "seedId": "move-confuse-ray",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ghost",
       "category": "support",
       "target": "foe",
@@ -1448,7 +1396,6 @@
       "seedId": "move-continental-crush",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -1515,7 +1462,6 @@
       "seedId": "move-corkscrew-crash",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -1570,8 +1516,7 @@
       "seedId": "move-counter",
       "status": "partial",
       "reasons": [
-        "ignore-defenses",
-        "reaction-window"
+        "ignore-defenses"
       ],
       "type": "fighting",
       "category": "physical",
@@ -1626,10 +1571,8 @@
     {
       "name": "Crafty Shield",
       "seedId": "move-crafty-shield",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fairy",
       "category": "support",
       "target": "all-allies",
@@ -1688,10 +1631,8 @@
     {
       "name": "Curse",
       "seedId": "move-curse",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ghost",
       "category": "support",
       "target": "foe",
@@ -1815,10 +1756,8 @@
     {
       "name": "Detect",
       "seedId": "move-detect",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "support",
       "target": "self",
@@ -1829,7 +1768,6 @@
       "seedId": "move-devastating-drake",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -1908,10 +1846,8 @@
     {
       "name": "Dizzy Punch",
       "seedId": "move-dizzy-punch",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -2136,7 +2072,6 @@
       "seedId": "move-dragon-tail",
       "status": "partial",
       "reasons": [
-        "reaction-window",
         "switcher-move"
       ],
       "type": "dragon",
@@ -2187,10 +2122,8 @@
     {
       "name": "Drill Run",
       "seedId": "move-drill-run",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ground",
       "category": "physical",
       "target": "foe",
@@ -2301,10 +2234,8 @@
     {
       "name": "Egg Bomb",
       "seedId": "move-egg-bomb",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -2325,10 +2256,8 @@
     {
       "name": "Electrify",
       "seedId": "move-electrify",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "electric",
       "category": "support",
       "target": "foe",
@@ -2399,11 +2328,8 @@
     {
       "name": "Encore",
       "seedId": "move-encore",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula",
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "foe",
@@ -2424,10 +2350,8 @@
     {
       "name": "Endure",
       "seedId": "move-endure",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "self",
@@ -2446,10 +2370,8 @@
     {
       "name": "Entrainment",
       "seedId": "move-entrainment",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "foe",
@@ -2494,8 +2416,7 @@
       "reasons": [
         "dynamic-type",
         "external-rule-reference",
-        "maneuver-rule",
-        "reaction-window"
+        "maneuver-rule"
       ],
       "type": "none",
       "category": "support",
@@ -2539,10 +2460,8 @@
     {
       "name": "Extreme Speed",
       "seedId": "move-extreme-speed",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -2581,10 +2500,8 @@
     {
       "name": "Fake Out",
       "seedId": "move-fake-out",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -2603,10 +2520,8 @@
     {
       "name": "False Surrender",
       "seedId": "move-false-surrender",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dark",
       "category": "physical",
       "target": "foe",
@@ -2635,10 +2550,8 @@
     {
       "name": "Feint",
       "seedId": "move-feint",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -2711,7 +2624,6 @@
       "seedId": "move-final-gambit",
       "status": "partial",
       "reasons": [
-        "alternative-trait-formula",
         "ignore-defenses",
         "user-faints"
       ],
@@ -2783,11 +2695,8 @@
     {
       "name": "First Impression",
       "seedId": "move-first-impression",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula",
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "bug",
       "category": "physical",
       "target": "foe",
@@ -2836,10 +2745,8 @@
     {
       "name": "Flame Charge",
       "seedId": "move-flame-charge",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fire",
       "category": "physical",
       "target": "foe",
@@ -3042,10 +2949,8 @@
     {
       "name": "Follow Me",
       "seedId": "move-follow-me",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "self",
@@ -3084,10 +2989,8 @@
     {
       "name": "Foul Play",
       "seedId": "move-foul-play",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dark",
       "category": "physical",
       "target": "foe",
@@ -3182,10 +3085,8 @@
     {
       "name": "Fury Cutter",
       "seedId": "move-fury-cutter",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "bug",
       "category": "physical",
       "target": "foe",
@@ -3194,10 +3095,8 @@
     {
       "name": "Fury Swipes",
       "seedId": "move-fury-swipes",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -3280,10 +3179,8 @@
     {
       "name": "Giga Drain",
       "seedId": "move-giga-drain",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "special",
       "target": "foe",
@@ -3316,7 +3213,6 @@
       "seedId": "move-gigavolt-havoc",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -3381,7 +3277,6 @@
       "seedId": "move-grapple",
       "status": "manual",
       "reasons": [
-        "alternative-trait-formula",
         "dynamic-type",
         "maneuver-rule"
       ],
@@ -3425,7 +3320,6 @@
       "seedId": "move-grassy-glide",
       "status": "partial",
       "reasons": [
-        "reaction-window",
         "terrain-field-effect"
       ],
       "type": "grass",
@@ -3459,10 +3353,8 @@
     {
       "name": "Gravity",
       "seedId": "move-gravity",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "support",
       "target": "battlefield",
@@ -3471,10 +3363,8 @@
     {
       "name": "Growl",
       "seedId": "move-growl",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "all-foes",
@@ -3764,8 +3654,7 @@
       "status": "manual",
       "reasons": [
         "dynamic-type",
-        "maneuver-rule",
-        "reaction-window"
+        "maneuver-rule"
       ],
       "type": "none",
       "category": "support",
@@ -3775,10 +3664,8 @@
     {
       "name": "Helping Hand",
       "seedId": "move-helping-hand",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "ally",
@@ -3934,7 +3821,6 @@
       "seedId": "move-hydro-vortex",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -3979,10 +3865,8 @@
     {
       "name": "Hyper Voice",
       "seedId": "move-hyper-voice",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "special",
       "target": "all-foes",
@@ -4023,10 +3907,8 @@
     {
       "name": "Ice Ball",
       "seedId": "move-ice-ball",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ice",
       "category": "physical",
       "target": "foe",
@@ -4087,10 +3969,8 @@
     {
       "name": "Ice Shard",
       "seedId": "move-ice-shard",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ice",
       "category": "physical",
       "target": "foe",
@@ -4099,10 +3979,8 @@
     {
       "name": "Ice Spinner",
       "seedId": "move-ice-spinner",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ice",
       "category": "physical",
       "target": "foe",
@@ -4183,7 +4061,6 @@
       "seedId": "move-inferno-overdrive",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -4270,7 +4147,6 @@
       "seedId": "move-ivy-cudgel",
       "status": "manual",
       "reasons": [
-        "alternative-trait-formula",
         "copied-move-dependent"
       ],
       "type": "grass",
@@ -4291,10 +4167,8 @@
     {
       "name": "Jet Punch",
       "seedId": "move-jet-punch",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "physical",
       "target": "foe",
@@ -4357,10 +4231,8 @@
     {
       "name": "King's Shield",
       "seedId": "move-king-s-shield",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "steel",
       "category": "support",
       "target": "self",
@@ -4389,10 +4261,8 @@
     {
       "name": "Land's Wrath",
       "seedId": "move-land-s-wrath",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ground",
       "category": "physical",
       "target": "all-foes",
@@ -4563,10 +4433,8 @@
     {
       "name": "Liquidation",
       "seedId": "move-liquidation",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "physical",
       "target": "foe",
@@ -4667,10 +4535,8 @@
     {
       "name": "Mach Punch",
       "seedId": "move-mach-punch",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "physical",
       "target": "foe",
@@ -4679,10 +4545,8 @@
     {
       "name": "Magic Coat",
       "seedId": "move-magic-coat",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "support",
       "target": "foe-battlefield",
@@ -4691,10 +4555,8 @@
     {
       "name": "Magic Powder",
       "seedId": "move-magic-powder",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "support",
       "target": "foe",
@@ -4713,10 +4575,8 @@
     {
       "name": "Magical Leaf",
       "seedId": "move-magical-leaf",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "special",
       "target": "foe",
@@ -4787,10 +4647,8 @@
     {
       "name": "Malignant Chain",
       "seedId": "move-malignant-chain",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "poison",
       "category": "special",
       "target": "foe",
@@ -4799,10 +4657,8 @@
     {
       "name": "Mat Block",
       "seedId": "move-mat-block",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "support",
       "target": "all-allies",
@@ -4873,8 +4729,7 @@
       "seedId": "move-max-guard",
       "status": "partial",
       "reasons": [
-        "dynamax-rule",
-        "reaction-window"
+        "dynamax-rule"
       ],
       "type": "normal",
       "category": "physical",
@@ -5024,8 +4879,7 @@
       "seedId": "move-me-first",
       "status": "manual",
       "reasons": [
-        "copied-move-dependent",
-        "reaction-window"
+        "copied-move-dependent"
       ],
       "type": "normal",
       "category": "support",
@@ -5055,10 +4909,8 @@
     {
       "name": "Mega Drain",
       "seedId": "move-mega-drain",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "special",
       "target": "foe",
@@ -5111,9 +4963,7 @@
       "seedId": "move-metal-burst",
       "status": "partial",
       "reasons": [
-        "alternative-trait-formula",
-        "ignore-defenses",
-        "reaction-window"
+        "ignore-defenses"
       ],
       "type": "steel",
       "category": "physical",
@@ -5263,8 +5113,7 @@
       "seedId": "move-mirror-coat",
       "status": "partial",
       "reasons": [
-        "ignore-defenses",
-        "reaction-window"
+        "ignore-defenses"
       ],
       "type": "psychic",
       "category": "support",
@@ -5296,10 +5145,8 @@
     {
       "name": "Mist",
       "seedId": "move-mist",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ice",
       "category": "support",
       "target": "all-allies",
@@ -5540,7 +5387,6 @@
       "seedId": "move-never-ending-nightmare",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -5565,7 +5411,6 @@
       "seedId": "move-night-shade",
       "status": "partial",
       "reasons": [
-        "alternative-trait-formula",
         "ignore-defenses"
       ],
       "type": "ghost",
@@ -5606,10 +5451,8 @@
     {
       "name": "Noble Roar",
       "seedId": "move-noble-roar",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "foe",
@@ -5648,10 +5491,8 @@
     {
       "name": "Obstruct",
       "seedId": "move-obstruct",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dark",
       "category": "support",
       "target": "self",
@@ -5836,7 +5677,6 @@
       "seedId": "move-petal-dance",
       "status": "partial",
       "reasons": [
-        "alternative-trait-formula",
         "rampage"
       ],
       "type": "grass",
@@ -5859,10 +5699,8 @@
     {
       "name": "Photon Geyser",
       "seedId": "move-photon-geyser",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "physical",
       "target": "foe",
@@ -5901,10 +5739,8 @@
     {
       "name": "Play Nice",
       "seedId": "move-play-nice",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "foe",
@@ -5953,10 +5789,8 @@
     {
       "name": "Poison Jab",
       "seedId": "move-poison-jab",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "poison",
       "category": "physical",
       "target": "foe",
@@ -6167,10 +6001,8 @@
     {
       "name": "Protect",
       "seedId": "move-protect",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "self",
@@ -6191,7 +6023,6 @@
       "seedId": "move-psyblade",
       "status": "partial",
       "reasons": [
-        "alternative-trait-formula",
         "terrain-field-effect"
       ],
       "type": "psychic",
@@ -6234,10 +6065,8 @@
     {
       "name": "Psychic Noise",
       "seedId": "move-psychic-noise",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "special",
       "target": "foe",
@@ -6354,10 +6183,8 @@
     {
       "name": "Pursuit",
       "seedId": "move-pursuit",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dark",
       "category": "physical",
       "target": "foe",
@@ -6366,10 +6193,8 @@
     {
       "name": "Pyro Ball",
       "seedId": "move-pyro-ball",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fire",
       "category": "physical",
       "target": "foe",
@@ -6388,11 +6213,8 @@
     {
       "name": "Quick Attack",
       "seedId": "move-quick-attack",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula",
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -6401,10 +6223,8 @@
     {
       "name": "Quick Guard",
       "seedId": "move-quick-guard",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "support",
       "target": "all-allies",
@@ -6423,10 +6243,8 @@
     {
       "name": "Rage",
       "seedId": "move-rage",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -6445,10 +6263,8 @@
     {
       "name": "Rage Powder",
       "seedId": "move-rage-powder",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "bug",
       "category": "support",
       "target": "self",
@@ -6481,10 +6297,8 @@
     {
       "name": "Rain Dance",
       "seedId": "move-rain-dance",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "support",
       "target": "battlefield",
@@ -6505,10 +6319,8 @@
     {
       "name": "Razor Leaf",
       "seedId": "move-razor-leaf",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "physical",
       "target": "all-foes",
@@ -6569,10 +6381,8 @@
     {
       "name": "Reflect Type",
       "seedId": "move-reflect-type",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "self",
@@ -6581,10 +6391,8 @@
     {
       "name": "Refresh",
       "seedId": "move-refresh",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "self",
@@ -6687,7 +6495,6 @@
       "seedId": "move-roar",
       "status": "partial",
       "reasons": [
-        "reaction-window",
         "switcher-move"
       ],
       "type": "normal",
@@ -6750,10 +6557,8 @@
     {
       "name": "Rock Smash",
       "seedId": "move-rock-smash",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "physical",
       "target": "foe",
@@ -6762,10 +6567,8 @@
     {
       "name": "Rock Throw",
       "seedId": "move-rock-throw",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "rock",
       "category": "physical",
       "target": "foe",
@@ -6816,10 +6619,8 @@
     {
       "name": "Rollout",
       "seedId": "move-rollout",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "rock",
       "category": "physical",
       "target": "foe",
@@ -6981,7 +6782,6 @@
       "seedId": "move-savage-spin-out",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -6994,10 +6794,8 @@
     {
       "name": "Scald",
       "seedId": "move-scald",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "special",
       "target": "foe",
@@ -7088,10 +6886,8 @@
     {
       "name": "Seed Bomb",
       "seedId": "move-seed-bomb",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "physical",
       "target": "foe",
@@ -7176,10 +6972,8 @@
     {
       "name": "Shadow Punch",
       "seedId": "move-shadow-punch",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ghost",
       "category": "physical",
       "target": "foe",
@@ -7188,11 +6982,8 @@
     {
       "name": "Shadow Sneak",
       "seedId": "move-shadow-sneak",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula",
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ghost",
       "category": "physical",
       "target": "foe",
@@ -7213,7 +7004,6 @@
       "seedId": "move-shattered-psyche",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects",
@@ -7250,10 +7040,8 @@
     {
       "name": "Shell Side Arm",
       "seedId": "move-shell-side-arm",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "poison",
       "category": "special",
       "target": "foe",
@@ -7272,10 +7060,8 @@
     {
       "name": "Shell Trap",
       "seedId": "move-shell-trap",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fire",
       "category": "special",
       "target": "foe",
@@ -7284,10 +7070,8 @@
     {
       "name": "Shelter",
       "seedId": "move-shelter",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "steel",
       "category": "support",
       "target": "self",
@@ -7336,10 +7120,8 @@
     {
       "name": "Silk Trap",
       "seedId": "move-silk-trap",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "bug",
       "category": "support",
       "target": "self",
@@ -7368,10 +7150,8 @@
     {
       "name": "Sing",
       "seedId": "move-sing",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "foe",
@@ -7620,8 +7400,7 @@
       "seedId": "move-snatch",
       "status": "manual",
       "reasons": [
-        "external-rule-reference",
-        "reaction-window"
+        "external-rule-reference"
       ],
       "type": "dark",
       "category": "support",
@@ -7821,8 +7600,7 @@
       "seedId": "move-spiky-shield",
       "status": "partial",
       "reasons": [
-        "ignore-defenses",
-        "reaction-window"
+        "ignore-defenses"
       ],
       "type": "grass",
       "category": "support",
@@ -7912,10 +7690,8 @@
     {
       "name": "Spotlight",
       "seedId": "move-spotlight",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "ally",
@@ -8135,7 +7911,6 @@
       "seedId": "move-struggle-physical",
       "status": "manual",
       "reasons": [
-        "alternative-trait-formula",
         "dynamic-type",
         "maneuver-rule"
       ],
@@ -8149,7 +7924,6 @@
       "seedId": "move-struggle-special",
       "status": "manual",
       "reasons": [
-        "alternative-trait-formula",
         "dynamic-type",
         "maneuver-rule"
       ],
@@ -8173,7 +7947,6 @@
       "seedId": "move-struggle-throw",
       "status": "manual",
       "reasons": [
-        "alternative-trait-formula",
         "dynamic-type",
         "maneuver-rule"
       ],
@@ -8232,7 +8005,6 @@
       "seedId": "move-subzero-slammer",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -8245,10 +8017,8 @@
     {
       "name": "Sucker Punch",
       "seedId": "move-sucker-punch",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dark",
       "category": "physical",
       "target": "foe",
@@ -8279,7 +8049,6 @@
       "seedId": "move-super-fang",
       "status": "partial",
       "reasons": [
-        "alternative-trait-formula",
         "ignore-defenses"
       ],
       "type": "normal",
@@ -8322,7 +8091,6 @@
       "seedId": "move-supersonic-skystrike",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -8357,10 +8125,8 @@
     {
       "name": "Swagger",
       "seedId": "move-swagger",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "foe",
@@ -8429,10 +8195,8 @@
     {
       "name": "Synchronoise",
       "seedId": "move-synchronoise",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "special",
       "target": "area",
@@ -8441,10 +8205,8 @@
     {
       "name": "Synthesis",
       "seedId": "move-synthesis",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "support",
       "target": "self",
@@ -8473,10 +8235,8 @@
     {
       "name": "Tackle",
       "seedId": "move-tackle",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -8559,10 +8319,8 @@
     {
       "name": "Taunt",
       "seedId": "move-taunt",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dark",
       "category": "support",
       "target": "foe",
@@ -8581,10 +8339,8 @@
     {
       "name": "Teatime",
       "seedId": "move-teatime",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "area",
@@ -8605,7 +8361,6 @@
       "seedId": "move-tectonic-rage",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -8618,10 +8373,8 @@
     {
       "name": "Teeter Dance",
       "seedId": "move-teeter-dance",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "area",
@@ -8662,10 +8415,8 @@
     {
       "name": "Tera Blast",
       "seedId": "move-tera-blast",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -8674,10 +8425,8 @@
     {
       "name": "Tera Starstorm",
       "seedId": "move-tera-starstorm",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "all-foes",
@@ -8708,10 +8457,8 @@
     {
       "name": "Thousand Arrows",
       "seedId": "move-thousand-arrows",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ground",
       "category": "physical",
       "target": "all-foes",
@@ -8720,10 +8467,8 @@
     {
       "name": "Thousand Waves",
       "seedId": "move-thousand-waves",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ground",
       "category": "physical",
       "target": "all-foes",
@@ -8824,10 +8569,8 @@
     {
       "name": "Thunderclap",
       "seedId": "move-thunderclap",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "electric",
       "category": "special",
       "target": "foe",
@@ -8866,10 +8609,8 @@
     {
       "name": "Topsy-Turvy",
       "seedId": "move-topsy-turvy",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dark",
       "category": "support",
       "target": "foe",
@@ -8888,10 +8629,8 @@
     {
       "name": "Torment",
       "seedId": "move-torment",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dark",
       "category": "support",
       "target": "foe",
@@ -8960,10 +8699,8 @@
     {
       "name": "Trick",
       "seedId": "move-trick",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "support",
       "target": "foe",
@@ -9012,10 +8749,8 @@
     {
       "name": "Triple Dive",
       "seedId": "move-triple-dive",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "physical",
       "target": "foe",
@@ -9034,10 +8769,8 @@
     {
       "name": "Trop Kick",
       "seedId": "move-trop-kick",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "physical",
       "target": "foe",
@@ -9066,10 +8799,8 @@
     {
       "name": "Twineedle",
       "seedId": "move-twineedle",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "bug",
       "category": "physical",
       "target": "foe",
@@ -9080,7 +8811,6 @@
       "seedId": "move-twinkle-tackle",
       "status": "manual",
       "reasons": [
-        "dynamic-power-formula",
         "external-rule-reference",
         "mixed-category",
         "suggested-effects"
@@ -9115,10 +8845,8 @@
     {
       "name": "Upper Hand",
       "seedId": "move-upper-hand",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "physical",
       "target": "foe",
@@ -9147,10 +8875,8 @@
     {
       "name": "Vacuum Wave",
       "seedId": "move-vacuum-wave",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "special",
       "target": "foe",
@@ -9219,10 +8945,8 @@
     {
       "name": "Vital Throw",
       "seedId": "move-vital-throw",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "physical",
       "target": "foe",
@@ -9265,10 +8989,8 @@
     {
       "name": "Water Gun",
       "seedId": "move-water-gun",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "special",
       "target": "foe",
@@ -9297,11 +9019,8 @@
     {
       "name": "Water Shuriken",
       "seedId": "move-water-shuriken",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula",
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "special",
       "target": "foe",
@@ -9342,7 +9061,6 @@
       "seedId": "move-wave-crash",
       "status": "partial",
       "reasons": [
-        "alternative-trait-formula",
         "recoil"
       ],
       "type": "water",
@@ -9375,8 +9093,6 @@
       "seedId": "move-whirlwind",
       "status": "partial",
       "reasons": [
-        "alternative-trait-formula",
-        "reaction-window",
         "switcher-move"
       ],
       "type": "normal",
@@ -9409,10 +9125,8 @@
     {
       "name": "Wide Guard",
       "seedId": "move-wide-guard",
-      "status": "partial",
-      "reasons": [
-        "reaction-window"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "rock",
       "category": "support",
       "target": "all-allies",
@@ -9517,10 +9231,8 @@
     {
       "name": "Worry Seed",
       "seedId": "move-worry-seed",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "support",
       "target": "foe",
@@ -9603,8 +9315,7 @@
       "seedId": "move-zippy-zap",
       "status": "partial",
       "reasons": [
-        "always-crit",
-        "reaction-window"
+        "always-crit"
       ],
       "type": "electric",
       "category": "physical",

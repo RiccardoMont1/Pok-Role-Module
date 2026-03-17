@@ -189,6 +189,20 @@ def parse_priority_from_effect(effect_text):
     return HELPERS.parse_priority_from_effect(effect_text)
 
 
+def resolve_move_priority(move_system, effect_text=""):
+    system = move_system or {}
+    attributes = system.get("attributes", {}) or {}
+    reaction_priority = parse_number(attributes.get("reactionMove"), 0)
+    if reaction_priority:
+        return clamp(int(reaction_priority), -3, 5)
+
+    late_reaction_priority = parse_number(attributes.get("lateReactionMove"), 0)
+    if late_reaction_priority:
+        return clamp(-int(late_reaction_priority), -3, 5)
+
+    return clamp(parse_priority_from_effect(effect_text), -3, 5)
+
+
 def infer_action_tag(effect_text, attributes):
     return HELPERS.infer_action_tag(effect_text, attributes)
 
@@ -271,6 +285,69 @@ def infer_will_cost(move_system, effect_text):
     if match:
         return clamp(int(match.group(1)), 0, 99)
     return 0
+
+
+def resolve_damage_attribute_formula_key(category_key, damage_key):
+    normalized = str(damage_key or "").strip().lower()
+    if normalized in {"strength", "dexterity", "vitality", "special", "insight"}:
+        return normalized
+    if normalized == "auto":
+        return "special" if category_key == "special" else "strength"
+    return ""
+
+
+def build_move_formula_config(move_system, category_key, effect_text="", description_text=""):
+    combined_text = f"{clean_text(effect_text)} {clean_text(description_text)}".lower()
+    acc_attr_1 = normalize_accuracy_attribute(category_key, move_system.get("accAttr1"))
+    acc_skill_1 = normalize_accuracy_skill(category_key, move_system.get("accSkill1"))
+    acc_attr_2 = clean_text(move_system.get("accAttr1var", ""))
+    acc_skill_2 = clean_text(move_system.get("accSkill1var", ""))
+    dmg_attr_1 = resolve_damage_attribute_formula_key(
+        category_key,
+        normalize_damage_attribute(category_key, move_system.get("dmgMod1")),
+    )
+    dmg_attr_2 = resolve_damage_attribute_formula_key(
+        category_key,
+        normalize_damage_attribute(category_key, move_system.get("dmgMod1var")),
+    )
+
+    accuracy_formula = ""
+    damage_base_formula = ""
+    power_formula = ""
+
+    if "if the user's strength score is higher than their special" in combined_text:
+        accuracy_formula = (
+            f"if(gt(source.strength, source.special), source.{acc_attr_2 or 'strength'} + "
+            f"source.{normalize_accuracy_skill(category_key, acc_skill_2 or 'brawl')}, "
+            f"source.{acc_attr_1} + source.{acc_skill_1})"
+        )
+        damage_base_formula = (
+            f"if(gt(source.strength, source.special), source.{dmg_attr_2 or 'strength'}, "
+            f"source.{dmg_attr_1 or 'special'})"
+        )
+    else:
+        resolved_acc_attr_2 = normalize_accuracy_attribute(category_key, acc_attr_2) if acc_attr_2 else acc_attr_1
+        resolved_acc_skill_2 = normalize_accuracy_skill(category_key, acc_skill_2) if acc_skill_2 else acc_skill_1
+        combo_1 = f"source.{acc_attr_1} + source.{acc_skill_1}"
+        combo_2 = f"source.{resolved_acc_attr_2} + source.{resolved_acc_skill_2}"
+        if combo_1 != combo_2 and (acc_attr_2 or acc_skill_2):
+            accuracy_formula = f"max({combo_1}, {combo_2})"
+
+        if dmg_attr_1 and dmg_attr_2 and dmg_attr_1 != dmg_attr_2:
+            damage_base_formula = f"max(source.{dmg_attr_1}, source.{dmg_attr_2})"
+
+    raw_power = clean_text(move_system.get("power", ""))
+    normalized_power = raw_power.lower()
+    if normalized_power == "happiness + loyalty":
+        power_formula = "source.happiness + source.loyalty"
+    elif "half of the target's remaining hp" in combined_text:
+        power_formula = "min(10, floor(target.hpCurrent / 2))"
+
+    return {
+        "accuracyFormula": accuracy_formula,
+        "damageBaseFormula": damage_base_formula,
+        "powerFormula": power_formula,
+    }
 
 
 def convert_effect_groups(effect_groups, move_target_key):
@@ -587,23 +664,28 @@ def build_terrain_effects(move_name, move_system, report_reasons):
     }]
 
 
-def infer_automation_reasons(row, target_key):
+def infer_automation_reasons(row, target_key, formula_config=None):
     system = row.get("system", {}) or {}
     attributes = system.get("attributes", {}) or {}
     effect_text = clean_text(system.get("effect", ""))
     description_text = clean_text(system.get("description", ""))
     combined_text = f"{effect_text} {description_text}".lower()
     reasons = set()
+    formula_config = formula_config or {}
 
     power_value = system.get("power")
     try:
         float(power_value)
     except (TypeError, ValueError):
-        reasons.add("dynamic-power-formula")
+        if not clean_text(formula_config.get("powerFormula", "")):
+            reasons.add("dynamic-power-formula")
 
     for variant_key in ("accAttr1var", "accSkill1var", "dmgMod1var"):
         if clean_text(system.get(variant_key, "")):
-            reasons.add("alternative-trait-formula")
+            if not clean_text(formula_config.get("accuracyFormula", "")) and not clean_text(
+                formula_config.get("damageBaseFormula", "")
+            ):
+                reasons.add("alternative-trait-formula")
             break
 
     if normalize_move_type(system.get("type")) == "none":
@@ -615,9 +697,6 @@ def infer_automation_reasons(row, target_key):
     for attribute_key, reason_label in MOVE_PROPERTY_REASON_LABELS.items():
         if attributes.get(attribute_key):
             reasons.add(reason_label)
-
-    if parse_number(attributes.get("reactionMove"), 0) or parse_number(attributes.get("lateReactionMove"), 0):
-        reasons.add("reaction-window")
 
     if "suggested effects" in combined_text:
         reasons.add("suggested-effects")
@@ -668,8 +747,9 @@ def build_move_entry(row):
     target_key = normalize_move_target(system.get("target"))
     duration_config = infer_duration_config(effect_text)
     will_cost = infer_will_cost(system, effect_text)
+    formula_config = build_move_formula_config(system, category_key, effect_text, description)
 
-    automation_reasons = infer_automation_reasons(row, target_key)
+    automation_reasons = infer_automation_reasons(row, target_key, formula_config)
 
     power_value = parse_number(system.get("power"), 0)
     if isinstance(power_value, float):
@@ -706,16 +786,19 @@ def build_move_entry(row):
             "actionTag": infer_action_tag(effect_text, attributes),
             "accuracyAttribute": normalize_accuracy_attribute(category_key, system.get("accAttr1")),
             "accuracySkill": normalize_accuracy_skill(category_key, system.get("accSkill1")),
+            "accuracyFormula": formula_config["accuracyFormula"],
             "primaryMode": primary_mode,
             "power": power_value,
+            "powerFormula": formula_config["powerFormula"],
             "reducedAccuracy": clamp(parse_number(attributes.get("accuracyReduction"), 0), 0, 6),
             "accuracyDiceModifier": 0,
             "accuracyFlatModifier": 0,
             "damageAttribute": normalize_damage_attribute(category_key, system.get("dmgMod1")),
+            "damageBaseFormula": formula_config["damageBaseFormula"],
             "willCost": will_cost,
             "durationType": duration_config["durationType"],
             "durationValue": duration_config["durationValue"],
-            "priority": clamp(parse_priority_from_effect(effect_text), -3, 5),
+            "priority": resolve_move_priority(system, effect_text),
             "highCritical": bool(attributes.get("highCritical", False)),
             "neverFail": bool(attributes.get("neverFail", False)),
             "lethal": False,

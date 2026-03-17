@@ -105,6 +105,15 @@
                 {{safeSelectOptions accuracySkillOptions selected=system.accuracySkill localize=true}}
               </select>
             </label>
+            <label class="span-two">
+              <span>{{localize "POKROLE.Move.AccuracyFormula"}}</span>
+              <input
+                type="text"
+                name="system.accuracyFormula"
+                value="{{system.accuracyFormula}}"
+                placeholder="max(source.dexterity + source.brawl, source.insight + source.perform)"
+              />
+            </label>
             <label>
               <span>{{localize "POKROLE.Move.ReducedAccuracy"}}</span>
               <input
@@ -272,11 +281,29 @@
                 data-dtype="Number"
               />
             </label>
+            <label class="move-primary-damage-field span-two {{#unless @root.moveUsesPrimaryDamage}}is-hidden{{/unless}}">
+              <span>{{localize "POKROLE.Move.PowerFormula"}}</span>
+              <input
+                type="text"
+                name="system.powerFormula"
+                value="{{@root.system.powerFormula}}"
+                placeholder="min(10, floor(target.hpCurrent / 2))"
+              />
+            </label>
             <label class="move-primary-damage-field {{#unless @root.moveUsesPrimaryDamage}}is-hidden{{/unless}}">
               <span>{{localize "POKROLE.Move.DamageAttribute"}}</span>
               <select name="system.damageAttribute">
                 {{safeSelectOptions @root.damageAttributeOptions selected=@root.system.damageAttribute localize=true}}
               </select>
+            </label>
+            <label class="move-primary-damage-field span-two {{#unless @root.moveUsesPrimaryDamage}}is-hidden{{/unless}}">
+              <span>{{localize "POKROLE.Move.DamageBaseFormula"}}</span>
+              <input
+                type="text"
+                name="system.damageBaseFormula"
+                value="{{@root.system.damageBaseFormula}}"
+                placeholder="max(source.strength, source.special)"
+              />
             </label>
             <label>
               <span>{{localize "POKROLE.Move.AccuracyDiceModifier"}}</span>

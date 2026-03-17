@@ -12,7 +12,14 @@
   </header>
 
   <section class="chat-card-section">
-    <p><strong>{{localize "POKROLE.Chat.Accuracy"}}:</strong> {{accuracyAttributeLabel}} + {{accuracySkillLabel}}</p>
+    <p>
+      <strong>{{localize "POKROLE.Chat.Accuracy"}}:</strong>
+      {{#if accuracySummaryLabel}}
+      {{accuracySummaryLabel}}
+      {{else}}
+      {{accuracyAttributeLabel}} + {{accuracySkillLabel}}
+      {{/if}}
+    </p>
     <p><strong>{{localize "POKROLE.Move.AccuracyDiceModifier"}}:</strong> {{accuracyDicePoolBase}} {{#if accuracyDiceModifier}}({{accuracyDiceModifierLabel}}){{/if}} | <strong>{{localize "POKROLE.Move.AccuracyFlatModifier"}}:</strong> {{accuracyFlatModifierLabel}}</p>
     <p>{{localize "POKROLE.Chat.RawSuccesses"}}: {{rawAccuracySuccesses}} | {{localize "POKROLE.Chat.ModifiedSuccesses"}}: {{modifiedAccuracySuccesses}} | {{localize "POKROLE.Chat.RemovedSuccesses"}}: {{removedAccuracySuccesses}} | {{localize "POKROLE.Chat.NetSuccesses"}}: {{netAccuracySuccesses}} | {{localize "POKROLE.Chat.RequiredSuccesses"}}: {{requiredSuccesses}}</p>
     {{#if willCost}}
@@ -68,6 +75,9 @@
     <p>{{localize "POKROLE.Chat.DamageSuccesses"}}: {{damageSuccesses}} | STAB: +{{stabDice}} | {{localize "POKROLE.Chat.CriticalBonusDice"}}: +{{criticalDice}}</p>
     <p><strong>{{localize "POKROLE.Chat.TypeEffect.Label"}}:</strong> {{typeLabel}}</p>
     <p><strong>{{localize "POKROLE.Chat.FinalDamage"}}:</strong> {{finalDamage}} {{#if targetName}}({{targetName}}){{/if}}</p>
+    {{#if shieldDetail}}
+    <p><strong>{{localize "POKROLE.Chat.ShieldMove.Label"}}:</strong> {{shieldDetail}}</p>
+    {{/if}}
     {{#if hasHpUpdate}}
     <p><strong>{{localize "POKROLE.Chat.TargetHP"}}:</strong> {{hpBefore}} -> {{hpAfter}}</p>
     {{/if}}
@@ -75,7 +85,7 @@
     <p><strong>{{localize "POKROLE.Chat.AdditionalTargets"}}:</strong></p>
     <ul class="chat-list">
       {{#each additionalTargetResults as |targetResult|}}
-      <li>{{targetResult.targetName}}: {{localize "POKROLE.Chat.FinalDamage"}} {{targetResult.finalDamage}} {{#if targetResult.hasHpUpdate}}({{targetResult.hpBefore}} -> {{targetResult.hpAfter}}){{/if}}</li>
+      <li>{{targetResult.targetName}}: {{localize "POKROLE.Chat.FinalDamage"}} {{targetResult.finalDamage}} {{#if targetResult.hasHpUpdate}}({{targetResult.hpBefore}} -> {{targetResult.hpAfter}}){{/if}}{{#if targetResult.shieldDetail}} | {{localize "POKROLE.Chat.ShieldMove.Label"}}: {{targetResult.shieldDetail}}{{/if}}</li>
       {{/each}}
     </ul>
     {{/if}}

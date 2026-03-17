@@ -428,6 +428,20 @@ def parse_priority_from_effect(effect_text):
     return clamp(parse_number(match.group(1), 0), -3, 5)
 
 
+def resolve_move_priority(move_system):
+    system = move_system or {}
+    attributes = system.get("attributes", {}) or {}
+    reaction_priority = parse_number(attributes.get("reactionMove"), 0)
+    if reaction_priority:
+        return clamp(int(reaction_priority), -3, 5)
+
+    late_reaction_priority = parse_number(attributes.get("lateReactionMove"), 0)
+    if late_reaction_priority:
+        return clamp(-int(late_reaction_priority), -3, 5)
+
+    return parse_priority_from_effect(system.get("effect", ""))
+
+
 def infer_action_tag(effect_text, attributes):
     text = f"{effect_text or ''}".lower()
     if attributes.get("successiveActions"):
@@ -636,7 +650,7 @@ def build_fallback_move_system(upstream_move):
         "power": power,
         "reducedAccuracy": reduced_accuracy,
         "damageAttribute": normalize_damage_attribute(category_key, move_system.get("dmgMod1")),
-        "priority": parse_priority_from_effect(move_system.get("effect", "")),
+        "priority": resolve_move_priority(move_system),
         "highCritical": bool(move_attributes.get("highCritical", False)),
         "neverFail": bool(move_attributes.get("neverFail", False)),
         "lethal": bool(move_attributes.get("lethal", False)),

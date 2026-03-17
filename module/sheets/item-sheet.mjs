@@ -256,6 +256,9 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     context.moveDurationUsesValue = durationType.startsWith("time-");
     context.system.primaryMode = this._normalizeMovePrimaryMode(context.system?.primaryMode);
     context.moveUsesPrimaryDamage = this._moveUsesPrimaryDamage(context.system);
+    context.moveHasAccuracyFormula = Boolean(`${context.system?.accuracyFormula ?? ""}`.trim());
+    context.moveHasPowerFormula = Boolean(`${context.system?.powerFormula ?? ""}`.trim());
+    context.moveHasDamageBaseFormula = Boolean(`${context.system?.damageBaseFormula ?? ""}`.trim());
     context.secondaryEffects = this._getMoveSecondaryEffectsForDisplay();
     context.moveEffectSections = this._buildMoveEffectSections(context.secondaryEffects);
     context.secondaryTriggerOptions = {
@@ -358,10 +361,14 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
         MOVE_CATEGORY_LABEL_BY_KEY[context.system?.category] ?? "POKROLE.Common.Unknown"
       ),
       power: context.moveUsesPrimaryDamage
-        ? Math.max(Math.floor(Number(context.system?.power ?? 0) || 0), 0)
+        ? context.moveHasPowerFormula
+          ? game.i18n.localize("POKROLE.Move.Formula.Label")
+          : Math.max(Math.floor(Number(context.system?.power ?? 0) || 0), 0)
         : game.i18n.localize("POKROLE.Move.NoDirectDamage"),
       willCost: Math.max(Math.floor(Number(context.system?.willCost ?? 0) || 0), 0),
       properties: [
+        context.moveHasAccuracyFormula ? "POKROLE.Move.AccuracyFormula" : null,
+        context.moveHasDamageBaseFormula ? "POKROLE.Move.DamageBaseFormula" : null,
         context.system?.highCritical ? "POKROLE.Move.HighCritical" : null,
         context.system?.neverFail ? "POKROLE.Move.NeverFail" : null,
         context.system?.shieldMove ? "POKROLE.Move.ShieldMove" : null

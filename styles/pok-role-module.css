@@ -223,6 +223,10 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.pok-role-sheet .form-grid .span-two {
+  grid-column: 1 / -1;
+}
+
 .pok-role-sheet .checkbox-grid {
   display: grid;
   gap: 6px;

@@ -1,292 +1,176 @@
-﻿"name","seedId","status","reasons","reasonsCount","type","category","target","secondaryEffects"
-"Acid Downpour","move-acid-downpour","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","poison","support","foe","0"
-"All-Out Pummeling","move-all-out-pummeling","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","fighting","support","foe","0"
-"Ambush","move-ambush","manual","dynamic-type; maneuver-rule","2","none","support","foe","0"
-"Bide","move-bide","manual","stored-damage-formula","1","normal","physical","foe","0"
-"Black Hole Eclipse","move-black-hole-eclipse","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","dark","support","foe","0"
-"Bloom Doom","move-bloom-doom","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","grass","support","foe","0"
-"Breakneck Blitz","move-breakneck-blitz","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","normal","support","foe","0"
-"Clash","move-clash","manual","alternative-trait-formula; dynamic-type; external-rule-reference; maneuver-rule; reaction-window","5","none","support","self","0"
-"Continental Crush","move-continental-crush","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","rock","support","foe","0"
-"Copycat","move-copycat","manual","copied-move-dependent","1","normal","support","foe","0"
-"Corkscrew Crash","move-corkscrew-crash","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","steel","support","foe","0"
-"Cover An Ally","move-cover-an-ally","manual","dynamic-type; maneuver-rule","2","none","support","ally","0"
-"Devastating Drake","move-devastating-drake","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","dragon","support","foe","0"
-"Doom Desire","move-doom-desire","manual","delayed-effect","1","steel","special","foe","0"
-"Evasion","move-evasion","manual","dynamic-type; external-rule-reference; maneuver-rule; reaction-window","4","none","support","self","0"
-"Fickle Beam","move-fickle-beam","manual","dynamic-power-formula","1","dragon","special","foe","0"
-"Fling","move-fling","manual","external-rule-reference","1","dark","physical","foe","0"
-"Future Sight","move-future-sight","manual","delayed-effect","1","psychic","special","foe","0"
-"Gigavolt Havoc","move-gigavolt-havoc","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","electric","support","foe","0"
-"Grapple","move-grapple","manual","alternative-trait-formula; dynamic-type; maneuver-rule","3","none","support","foe","0"
-"Grassy Terrain","move-grassy-terrain","manual","manual-terrain-resolution; terrain-field-effect","2","grass","support","ally-battlefield","1"
-"Help Another","move-help-another","manual","dynamic-type; maneuver-rule; reaction-window","3","none","support","ally","0"
-"Hidden Power","move-hidden-power","manual","dynamic-type; external-rule-reference","2","none","special","foe","0"
-"Hydro Vortex","move-hydro-vortex","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","water","support","foe","0"
-"Inferno Overdrive","move-inferno-overdrive","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","fire","support","foe","0"
-"Instruct","move-instruct","manual","copied-move-dependent","1","psychic","support","foe","0"
-"Ivy Cudgel","move-ivy-cudgel","manual","alternative-trait-formula; copied-move-dependent","2","grass","physical","foe","0"
-"Magnitude","move-magnitude","manual","dynamic-power-formula","1","ground","physical","area","0"
-"Me First","move-me-first","manual","copied-move-dependent; reaction-window","2","normal","support","foe","0"
-"Mimic","move-mimic","manual","copied-move-dependent","1","normal","support","foe","0"
-"Mirror Move","move-mirror-move","manual","copied-move-dependent","1","flying","support","foe","0"
-"Never-Ending Nightmare","move-never-ending-nightmare","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","ghost","support","foe","0"
-"Raging Bull","move-raging-bull","manual","copied-move-dependent","1","normal","physical","foe","0"
-"Run Away","move-run-away","manual","dynamic-type; maneuver-rule","2","none","support","self","0"
-"Savage Spin-Out","move-savage-spin-out","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","bug","support","foe","0"
-"Shattered Psyche","move-shattered-psyche","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects; terrain-field-effect","5","psychic","support","foe","1"
-"Shed Tail","move-shed-tail","manual","external-rule-reference; switcher-move","2","normal","support","self","0"
-"Sketch","move-sketch","manual","copied-move-dependent","1","normal","support","foe","0"
-"Snatch","move-snatch","manual","external-rule-reference; reaction-window","2","dark","support","foe","0"
-"Stabilize An Ally","move-stabilize-an-ally","manual","dynamic-type; maneuver-rule","2","none","support","ally","0"
-"Struggle (Physical)","move-struggle-physical","manual","alternative-trait-formula; dynamic-type; maneuver-rule","3","none","physical","foe","0"
-"Struggle (Special)","move-struggle-special","manual","alternative-trait-formula; dynamic-type; maneuver-rule","3","none","special","foe","0"
-"Struggle Throw","move-struggle-throw","manual","alternative-trait-formula; dynamic-type; maneuver-rule","3","none","physical","foe","0"
-"Substitute","move-substitute","manual","external-rule-reference; switcher-move","2","normal","support","self","0"
-"Subzero Slammer","move-subzero-slammer","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","ice","support","foe","0"
-"Supersonic Skystrike","move-supersonic-skystrike","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","flying","support","foe","0"
-"Tectonic Rage","move-tectonic-rage","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","ground","support","foe","0"
-"Twinkle Tackle","move-twinkle-tackle","manual","dynamic-power-formula; external-rule-reference; mixed-category; suggested-effects","4","fairy","support","foe","0"
-"Wish","move-wish","manual","delayed-effect","1","normal","support","ally","1"
-"Yawn","move-yawn","manual","delayed-effect","1","normal","support","foe","0"
-"Absorb","move-absorb","partial","alternative-trait-formula","1","grass","special","foe","1"
-"Accelerock","move-accelerock","partial","alternative-trait-formula; reaction-window","2","rock","physical","foe","0"
-"After You","move-after-you","partial","reaction-window","1","normal","support","ally","0"
-"Alluring Voice","move-alluring-voice","partial","alternative-trait-formula","1","fairy","special","foe","0"
-"Ally Switch","move-ally-switch","partial","reaction-window; switcher-move","2","psychic","support","self","0"
-"Aqua Jet","move-aqua-jet","partial","reaction-window","1","water","physical","foe","0"
-"Aqua Step","move-aqua-step","partial","alternative-trait-formula","1","water","physical","foe","1"
-"Aqua Tail","move-aqua-tail","partial","alternative-trait-formula","1","water","physical","foe","1"
-"Avalanche","move-avalanche","partial","reaction-window","1","ice","physical","foe","0"
-"Baby-Doll Eyes","move-baby-doll-eyes","partial","reaction-window","1","fairy","support","foe","1"
-"Baneful Bunker","move-baneful-bunker","partial","reaction-window","1","poison","support","self","0"
-"Baton Pass","move-baton-pass","partial","switcher-move","1","normal","support","self","0"
-"Beak Blast","move-beak-blast","partial","charge-move","1","flying","physical","foe","0"
-"Behemoth Bash","move-behemoth-bash","partial","dynamax-rule","1","steel","physical","foe","0"
-"Behemoth Blade","move-behemoth-blade","partial","dynamax-rule","1","steel","physical","foe","0"
-"Blast Burn","move-blast-burn","partial","must-recharge","1","fire","special","foe","0"
-"Block","move-block","partial","alternative-trait-formula","1","normal","support","foe","0"
-"Bounce","move-bounce","partial","charge-move","1","flying","physical","foe","1"
-"Brave Bird","move-brave-bird","partial","recoil","1","flying","physical","foe","0"
-"Brick Break","move-brick-break","partial","destroy-shield","1","fighting","physical","foe","0"
-"Brine","move-brine","partial","alternative-trait-formula","1","water","special","foe","0"
-"Bullet Punch","move-bullet-punch","partial","alternative-trait-formula; reaction-window","2","steel","physical","foe","0"
-"Bullet Seed","move-bullet-seed","partial","alternative-trait-formula","1","grass","physical","foe","0"
-"Burning Bulwark","move-burning-bulwark","partial","reaction-window","1","fire","support","self","0"
-"Camouflage","move-camouflage","partial","alternative-trait-formula","1","normal","support","self","0"
-"Charm","move-charm","partial","alternative-trait-formula","1","fairy","support","foe","1"
-"Chilly Reception","move-chilly-reception","partial","switcher-move","1","ice","support","battlefield","1"
-"Chip Away","move-chip-away","partial","ignore-defenses","1","normal","physical","foe","0"
-"Chloroblast","move-chloroblast","partial","recoil","1","grass","special","foe","0"
-"Circle Throw","move-circle-throw","partial","reaction-window; switcher-move","2","fighting","physical","foe","0"
-"Clamp","move-clamp","partial","alternative-trait-formula","1","water","physical","foe","0"
-"Coaching","move-coaching","partial","alternative-trait-formula","1","fighting","support","all-allies","0"
-"Comeuppance","move-comeuppance","partial","ignore-defenses","1","dark","physical","foe","0"
-"Confuse Ray","move-confuse-ray","partial","alternative-trait-formula","1","ghost","support","foe","1"
-"Counter","move-counter","partial","ignore-defenses; reaction-window","2","fighting","physical","foe","0"
-"Court Change","move-court-change","partial","terrain-field-effect","1","normal","support","battlefield","1"
-"Crafty Shield","move-crafty-shield","partial","reaction-window","1","fairy","support","all-allies","0"
-"Curse","move-curse","partial","alternative-trait-formula","1","ghost","support","foe","0"
-"Defog","move-defog","partial","destroy-shield; terrain-field-effect","2","flying","support","battlefield","1"
-"Destiny Bond","move-destiny-bond","partial","user-faints","1","ghost","support","self","0"
-"Detect","move-detect","partial","reaction-window","1","fighting","support","self","0"
-"Dig","move-dig","partial","charge-move","1","ground","physical","foe","0"
-"Disarming Voice","move-disarming-voice","partial","alternative-trait-formula","1","fairy","special","all-foes","0"
-"Dive","move-dive","partial","charge-move","1","water","physical","foe","0"
-"Dizzy Punch","move-dizzy-punch","partial","alternative-trait-formula","1","normal","physical","foe","1"
-"Double-Edge","move-double-edge","partial","recoil","1","normal","physical","foe","0"
-"Dragon Tail","move-dragon-tail","partial","reaction-window; switcher-move","2","dragon","physical","foe","0"
-"Drill Run","move-drill-run","partial","alternative-trait-formula","1","ground","physical","foe","0"
-"Dynamax Cannon","move-dynamax-cannon","partial","dynamax-rule","1","dragon","special","foe","0"
-"Egg Bomb","move-egg-bomb","partial","alternative-trait-formula","1","normal","physical","foe","0"
-"Electric Terrain","move-electric-terrain","partial","terrain-field-effect","1","electric","support","battlefield","1"
-"Electrify","move-electrify","partial","reaction-window","1","electric","support","foe","0"
-"Electro Shot","move-electro-shot","partial","charge-move","1","electric","special","foe","0"
-"Encore","move-encore","partial","alternative-trait-formula; reaction-window","2","normal","support","foe","0"
-"Endeavor","move-endeavor","partial","ignore-defenses","1","normal","physical","foe","0"
-"Endure","move-endure","partial","reaction-window","1","normal","support","self","0"
-"Entrainment","move-entrainment","partial","alternative-trait-formula","1","normal","support","foe","0"
-"Eternabeam","move-eternabeam","partial","must-recharge","1","dragon","special","foe","0"
-"Expanding Force","move-expanding-force","partial","terrain-field-effect","1","psychic","special","foe","1"
-"Explosion","move-explosion","partial","user-faints","1","normal","physical","area","0"
-"Extreme Speed","move-extreme-speed","partial","reaction-window","1","normal","physical","foe","0"
-"Fake Out","move-fake-out","partial","reaction-window","1","normal","physical","foe","1"
-"False Surrender","move-false-surrender","partial","alternative-trait-formula","1","dark","physical","foe","0"
-"Feint","move-feint","partial","reaction-window","1","normal","physical","foe","0"
-"Final Gambit","move-final-gambit","partial","alternative-trait-formula; ignore-defenses; user-faints","3","fighting","special","foe","0"
-"First Impression","move-first-impression","partial","alternative-trait-formula; reaction-window","2","bug","physical","foe","0"
-"Flame Charge","move-flame-charge","partial","alternative-trait-formula","1","fire","physical","foe","1"
-"Flare Blitz","move-flare-blitz","partial","recoil","1","fire","physical","foe","1"
-"Flip Turn","move-flip-turn","partial","switcher-move","1","water","physical","foe","0"
-"Floral Healing","move-floral-healing","partial","terrain-field-effect","1","fairy","support","ally","3"
-"Flower Trick","move-flower-trick","partial","always-crit","1","grass","physical","foe","0"
-"Fly","move-fly","partial","charge-move","1","flying","physical","foe","0"
-"Focus Punch","move-focus-punch","partial","charge-move","1","fighting","physical","foe","0"
-"Follow Me","move-follow-me","partial","reaction-window","1","normal","support","self","0"
-"Foul Play","move-foul-play","partial","alternative-trait-formula","1","dark","physical","foe","0"
-"Freeze Shock","move-freeze-shock","partial","charge-move","1","ice","physical","foe","1"
-"Frenzy Plant","move-frenzy-plant","partial","must-recharge","1","grass","special","foe","0"
-"Frost Breath","move-frost-breath","partial","always-crit","1","ice","special","foe","0"
-"Fury Cutter","move-fury-cutter","partial","alternative-trait-formula","1","bug","physical","foe","0"
-"Fury Swipes","move-fury-swipes","partial","alternative-trait-formula","1","normal","physical","foe","0"
-"Geomancy","move-geomancy","partial","charge-move","1","fairy","support","self","0"
-"Giga Drain","move-giga-drain","partial","alternative-trait-formula","1","grass","special","foe","1"
-"Giga Impact","move-giga-impact","partial","must-recharge","1","normal","physical","foe","0"
-"Grassy Glide","move-grassy-glide","partial","reaction-window; terrain-field-effect","2","grass","physical","foe","1"
-"Gravity","move-gravity","partial","alternative-trait-formula","1","psychic","support","battlefield","0"
-"Growl","move-growl","partial","alternative-trait-formula","1","normal","support","all-foes","1"
-"Grudge","move-grudge","partial","user-faints","1","ghost","support","foe","0"
-"Head Charge","move-head-charge","partial","recoil","1","normal","physical","foe","0"
-"Head Smash","move-head-smash","partial","recoil","1","rock","physical","foe","0"
-"Healing Wish","move-healing-wish","partial","user-faints","1","psychic","support","self","1"
-"Helping Hand","move-helping-hand","partial","reaction-window","1","normal","support","ally","0"
-"Hydro Cannon","move-hydro-cannon","partial","must-recharge","1","water","special","foe","0"
-"Hyper Beam","move-hyper-beam","partial","must-recharge","1","normal","special","foe","0"
-"Hyper Voice","move-hyper-voice","partial","alternative-trait-formula","1","normal","special","all-foes","0"
-"Hyperspace Hole","move-hyperspace-hole","partial","ignore-defenses","1","psychic","special","foe","0"
-"Ice Ball","move-ice-ball","partial","alternative-trait-formula","1","ice","physical","foe","0"
-"Ice Burn","move-ice-burn","partial","charge-move","1","ice","special","foe","1"
-"Ice Shard","move-ice-shard","partial","reaction-window","1","ice","physical","foe","0"
-"Ice Spinner","move-ice-spinner","partial","alternative-trait-formula","1","ice","physical","foe","0"
-"Jet Punch","move-jet-punch","partial","reaction-window","1","water","physical","foe","0"
-"Judgment","move-judgment","partial","ignore-defenses","1","normal","special","foe","0"
-"Jungle Healing","move-jungle-healing","partial","status-cleanse","1","grass","support","all-allies","1"
-"King's Shield","move-king-s-shield","partial","reaction-window","1","steel","support","self","1"
-"Land's Wrath","move-land-s-wrath","partial","alternative-trait-formula","1","ground","physical","all-foes","0"
-"Light Of Ruin","move-light-of-ruin","partial","recoil","1","fairy","special","foe","0"
-"Liquidation","move-liquidation","partial","alternative-trait-formula","1","water","physical","foe","1"
-"Lunar Dance","move-lunar-dance","partial","user-faints","1","psychic","support","self","0"
-"Mach Punch","move-mach-punch","partial","reaction-window","1","fighting","physical","foe","0"
-"Magic Coat","move-magic-coat","partial","reaction-window","1","psychic","support","foe-battlefield","0"
-"Magic Powder","move-magic-powder","partial","alternative-trait-formula","1","psychic","support","foe","0"
-"Magical Leaf","move-magical-leaf","partial","alternative-trait-formula","1","grass","special","foe","0"
-"Malignant Chain","move-malignant-chain","partial","alternative-trait-formula","1","poison","special","foe","0"
-"Mat Block","move-mat-block","partial","reaction-window","1","fighting","support","all-allies","0"
-"Max Guard","move-max-guard","partial","dynamax-rule; reaction-window","2","normal","physical","self","0"
-"Max Lightning","move-max-lightning","partial","terrain-field-effect","1","electric","physical","all-foes","1"
-"Max Mindstorm","move-max-mindstorm","partial","terrain-field-effect","1","psychic","physical","all-foes","1"
-"Max Overgrowth","move-max-overgrowth","partial","terrain-field-effect","1","grass","physical","all-foes","1"
-"Max Starfall","move-max-starfall","partial","terrain-field-effect","1","fairy","physical","all-foes","1"
-"Mega Drain","move-mega-drain","partial","alternative-trait-formula","1","grass","special","foe","1"
-"Memento","move-memento","partial","user-faints","1","dark","support","foe","5"
-"Metal Burst","move-metal-burst","partial","alternative-trait-formula; ignore-defenses; reaction-window","3","steel","physical","foe","0"
-"Meteor Assault","move-meteor-assault","partial","must-recharge","1","fighting","physical","foe","0"
-"Meteor Beam","move-meteor-beam","partial","charge-move","1","rock","special","foe","1"
-"Mind Blown","move-mind-blown","partial","recoil","1","fire","special","area","0"
-"Mirror Coat","move-mirror-coat","partial","ignore-defenses; reaction-window","2","psychic","support","foe","0"
-"Mist","move-mist","partial","alternative-trait-formula","1","ice","support","all-allies","0"
-"Misty Explosion","move-misty-explosion","partial","terrain-field-effect; user-faints","2","fairy","special","area","1"
-"Misty Terrain","move-misty-terrain","partial","status-cleanse; terrain-field-effect","2","fairy","support","battlefield","1"
-"Mortal Spin","move-mortal-spin","partial","terrain-field-effect","1","poison","physical","all-foes","2"
-"Nature's Madness","move-nature-s-madness","partial","ignore-defenses","1","fairy","special","foe","0"
-"Night Shade","move-night-shade","partial","alternative-trait-formula; ignore-defenses","2","ghost","special","foe","0"
-"Noble Roar","move-noble-roar","partial","alternative-trait-formula","1","normal","support","foe","2"
-"Obstruct","move-obstruct","partial","reaction-window","1","dark","support","self","1"
-"Outrage","move-outrage","partial","rampage","1","dragon","physical","random-foe","0"
-"Parting Shot","move-parting-shot","partial","switcher-move","1","dark","support","foe","2"
-"Petal Dance","move-petal-dance","partial","alternative-trait-formula; rampage","2","grass","special","random-foe","0"
-"Phantom Force","move-phantom-force","partial","charge-move","1","ghost","physical","foe","0"
-"Photon Geyser","move-photon-geyser","partial","alternative-trait-formula","1","psychic","physical","foe","0"
-"Play Nice","move-play-nice","partial","alternative-trait-formula","1","normal","support","foe","1"
-"Poison Jab","move-poison-jab","partial","alternative-trait-formula","1","poison","physical","foe","1"
-"Prismatic Laser","move-prismatic-laser","partial","must-recharge","1","psychic","special","foe","0"
-"Protect","move-protect","partial","reaction-window","1","normal","support","self","0"
-"Psyblade","move-psyblade","partial","alternative-trait-formula; terrain-field-effect","2","psychic","physical","foe","1"
-"Psychic Fangs","move-psychic-fangs","partial","destroy-shield","1","psychic","physical","foe","0"
-"Psychic Noise","move-psychic-noise","partial","alternative-trait-formula","1","psychic","special","foe","0"
-"Psychic Terrain","move-psychic-terrain","partial","terrain-field-effect","1","psychic","support","battlefield","1"
-"Psyshock","move-psyshock","partial","special-defense-rule","1","psychic","special","foe","0"
-"Psystrike","move-psystrike","partial","special-defense-rule","1","psychic","special","foe","0"
-"Psywave","move-psywave","partial","ignore-defenses","1","psychic","special","foe","0"
-"Pursuit","move-pursuit","partial","alternative-trait-formula","1","dark","physical","foe","0"
-"Pyro Ball","move-pyro-ball","partial","alternative-trait-formula","1","fire","physical","foe","1"
-"Quick Attack","move-quick-attack","partial","alternative-trait-formula; reaction-window","2","normal","physical","foe","0"
-"Quick Guard","move-quick-guard","partial","reaction-window","1","fighting","support","all-allies","0"
-"Rage","move-rage","partial","alternative-trait-formula","1","normal","physical","foe","0"
-"Rage Powder","move-rage-powder","partial","reaction-window","1","bug","support","self","0"
-"Raging Fury","move-raging-fury","partial","rampage","1","fire","physical","random-foe","0"
-"Rain Dance","move-rain-dance","partial","alternative-trait-formula","1","water","support","battlefield","1"
-"Rapid Spin","move-rapid-spin","partial","terrain-field-effect","1","normal","physical","foe","2"
-"Razor Leaf","move-razor-leaf","partial","alternative-trait-formula","1","grass","physical","all-foes","0"
-"Razor Wind","move-razor-wind","partial","charge-move","1","normal","special","all-foes","0"
-"Reflect Type","move-reflect-type","partial","alternative-trait-formula","1","normal","support","self","0"
-"Refresh","move-refresh","partial","alternative-trait-formula","1","normal","support","self","0"
-"Rising Voltage","move-rising-voltage","partial","terrain-field-effect","1","electric","special","foe","1"
-"Roar","move-roar","partial","reaction-window; switcher-move","2","normal","support","foe","0"
-"Roar Of Time","move-roar-of-time","partial","must-recharge","1","dragon","special","foe","0"
-"Rock Smash","move-rock-smash","partial","alternative-trait-formula","1","fighting","physical","foe","1"
-"Rock Throw","move-rock-throw","partial","alternative-trait-formula","1","rock","physical","foe","0"
-"Rock Wrecker","move-rock-wrecker","partial","must-recharge","1","rock","physical","foe","0"
-"Rollout","move-rollout","partial","alternative-trait-formula","1","rock","physical","foe","0"
-"Roost","move-roost","partial","temporary-type-immunity-change","1","flying","support","self","1"
-"Ruination","move-ruination","partial","ignore-defenses","1","dark","special","foe","0"
-"Sacred Sword","move-sacred-sword","partial","ignore-defenses","1","fighting","physical","foe","0"
-"Sappy Seed","move-sappy-seed","partial","ignore-defenses","1","grass","physical","foe","0"
-"Scald","move-scald","partial","alternative-trait-formula","1","water","special","foe","1"
-"Secret Sword","move-secret-sword","partial","special-defense-rule","1","fighting","special","foe","0"
-"Seed Bomb","move-seed-bomb","partial","alternative-trait-formula","1","grass","physical","foe","0"
-"Seismic Toss","move-seismic-toss","partial","ignore-defenses","1","fighting","physical","foe","0"
-"Self Destruct","move-self-destruct","partial","user-faints","1","normal","physical","area","0"
-"Shadow Force","move-shadow-force","partial","charge-move","1","ghost","physical","foe","0"
-"Shadow Punch","move-shadow-punch","partial","alternative-trait-formula","1","ghost","physical","foe","0"
-"Shadow Sneak","move-shadow-sneak","partial","alternative-trait-formula; reaction-window","2","ghost","physical","foe","0"
-"Shell Side Arm","move-shell-side-arm","partial","alternative-trait-formula","1","poison","special","foe","1"
-"Shell Trap","move-shell-trap","partial","reaction-window","1","fire","special","foe","0"
-"Shelter","move-shelter","partial","alternative-trait-formula","1","steel","support","self","3"
-"Silk Trap","move-silk-trap","partial","reaction-window","1","bug","support","self","0"
-"Sing","move-sing","partial","alternative-trait-formula","1","normal","support","foe","1"
-"Skull Bash","move-skull-bash","partial","charge-move","1","normal","physical","foe","1"
-"Sky Attack","move-sky-attack","partial","charge-move","1","flying","physical","foe","1"
-"Sky Drop","move-sky-drop","partial","charge-move","1","flying","physical","foe","0"
-"Solar Beam","move-solar-beam","partial","charge-move","1","grass","special","foe","0"
-"Solar Blade","move-solar-blade","partial","charge-move","1","grass","physical","foe","0"
-"Sonic Boom","move-sonic-boom","partial","ignore-defenses","1","normal","special","foe","0"
-"Sparkly Swirl","move-sparkly-swirl","partial","status-cleanse","1","fairy","special","all-allies","0"
-"Spiky Shield","move-spiky-shield","partial","ignore-defenses; reaction-window","2","grass","support","self","0"
-"Spotlight","move-spotlight","partial","reaction-window","1","normal","support","ally","0"
-"Steel Beam","move-steel-beam","partial","recoil","1","steel","special","foe","0"
-"Steel Roller","move-steel-roller","partial","terrain-field-effect","1","steel","physical","foe","1"
-"Storm Throw","move-storm-throw","partial","always-crit","1","fighting","physical","foe","0"
-"Submission","move-submission","partial","recoil","1","fighting","physical","foe","0"
-"Sucker Punch","move-sucker-punch","partial","reaction-window","1","dark","physical","foe","0"
-"Super Fang","move-super-fang","partial","alternative-trait-formula; ignore-defenses","2","normal","physical","foe","0"
-"Surging Strikes","move-surging-strikes","partial","always-crit","1","water","physical","foe","0"
-"Swagger","move-swagger","partial","alternative-trait-formula","1","normal","support","foe","2"
-"Synchronoise","move-synchronoise","partial","alternative-trait-formula","1","psychic","special","area","0"
-"Synthesis","move-synthesis","partial","alternative-trait-formula","1","grass","support","self","4"
-"Tackle","move-tackle","partial","alternative-trait-formula","1","normal","physical","foe","0"
-"Take Down","move-take-down","partial","recoil","1","normal","physical","foe","0"
-"Take Heart","move-take-heart","partial","status-cleanse","1","psychic","support","self","2"
-"Taunt","move-taunt","partial","alternative-trait-formula","1","dark","support","foe","0"
-"Teatime","move-teatime","partial","alternative-trait-formula","1","normal","support","area","0"
-"Teeter Dance","move-teeter-dance","partial","alternative-trait-formula","1","normal","support","area","1"
-"Teleport","move-teleport","partial","switcher-move","1","psychic","support","self","0"
-"Tera Blast","move-tera-blast","partial","alternative-trait-formula","1","normal","physical","foe","0"
-"Tera Starstorm","move-tera-starstorm","partial","alternative-trait-formula","1","normal","physical","all-foes","0"
-"Terrain Pulse","move-terrain-pulse","partial","terrain-field-effect","1","normal","special","foe","1"
-"Thousand Arrows","move-thousand-arrows","partial","alternative-trait-formula","1","ground","physical","all-foes","0"
-"Thousand Waves","move-thousand-waves","partial","alternative-trait-formula","1","ground","physical","all-foes","0"
-"Thrash","move-thrash","partial","rampage","1","normal","physical","random-foe","0"
-"Thunderclap","move-thunderclap","partial","reaction-window","1","electric","special","foe","0"
-"Topsy-Turvy","move-topsy-turvy","partial","alternative-trait-formula","1","dark","support","foe","0"
-"Torment","move-torment","partial","alternative-trait-formula","1","dark","support","foe","0"
-"Trick","move-trick","partial","alternative-trait-formula","1","psychic","support","foe","0"
-"Triple Dive","move-triple-dive","partial","alternative-trait-formula","1","water","physical","foe","0"
-"Trop Kick","move-trop-kick","partial","alternative-trait-formula","1","grass","physical","foe","1"
-"Twineedle","move-twineedle","partial","alternative-trait-formula","1","bug","physical","foe","1"
-"Upper Hand","move-upper-hand","partial","reaction-window","1","fighting","physical","foe","0"
-"U-Turn","move-u-turn","partial","switcher-move","1","bug","physical","foe","0"
-"Vacuum Wave","move-vacuum-wave","partial","reaction-window","1","fighting","special","foe","0"
-"Vital Throw","move-vital-throw","partial","reaction-window","1","fighting","physical","foe","0"
-"Volt Switch","move-volt-switch","partial","switcher-move","1","electric","special","foe","0"
-"Volt Tackle","move-volt-tackle","partial","recoil","1","electric","physical","foe","1"
-"Water Gun","move-water-gun","partial","alternative-trait-formula","1","water","special","foe","0"
-"Water Shuriken","move-water-shuriken","partial","alternative-trait-formula; reaction-window","2","water","special","foe","0"
-"Wave Crash","move-wave-crash","partial","alternative-trait-formula; recoil","2","water","physical","foe","1"
-"Whirlwind","move-whirlwind","partial","alternative-trait-formula; reaction-window; switcher-move","3","normal","support","foe","0"
-"Wicked Blow","move-wicked-blow","partial","always-crit","1","dark","physical","foe","0"
-"Wide Guard","move-wide-guard","partial","reaction-window","1","rock","support","all-allies","0"
-"Wild Charge","move-wild-charge","partial","recoil","1","electric","physical","foe","1"
-"Wood Hammer","move-wood-hammer","partial","recoil","1","grass","physical","foe","0"
-"Worry Seed","move-worry-seed","partial","alternative-trait-formula","1","grass","support","foe","0"
-"Zippy Zap","move-zippy-zap","partial","always-crit; reaction-window","2","electric","physical","foe","0"
+name,seedId,status,reasons,reasonsCount,type,category,target,secondaryEffects
+Acid Downpour,move-acid-downpour,manual,external-rule-reference|mixed-category|suggested-effects,3,poison,support,foe,0
+All-Out Pummeling,move-all-out-pummeling,manual,external-rule-reference|mixed-category|suggested-effects,3,fighting,support,foe,0
+Ally Switch,move-ally-switch,partial,switcher-move,1,psychic,support,self,0
+Ambush,move-ambush,manual,dynamic-type|maneuver-rule,2,none,support,foe,0
+Baton Pass,move-baton-pass,partial,switcher-move,1,normal,support,self,0
+Beak Blast,move-beak-blast,partial,charge-move,1,flying,physical,foe,0
+Behemoth Bash,move-behemoth-bash,partial,dynamax-rule,1,steel,physical,foe,0
+Behemoth Blade,move-behemoth-blade,partial,dynamax-rule,1,steel,physical,foe,0
+Bide,move-bide,manual,stored-damage-formula,1,normal,physical,foe,0
+Black Hole Eclipse,move-black-hole-eclipse,manual,external-rule-reference|mixed-category|suggested-effects,3,dark,support,foe,0
+Blast Burn,move-blast-burn,partial,must-recharge,1,fire,special,foe,0
+Bloom Doom,move-bloom-doom,manual,external-rule-reference|mixed-category|suggested-effects,3,grass,support,foe,0
+Bounce,move-bounce,partial,charge-move,1,flying,physical,foe,1
+Brave Bird,move-brave-bird,partial,recoil,1,flying,physical,foe,0
+Breakneck Blitz,move-breakneck-blitz,manual,external-rule-reference|mixed-category|suggested-effects,3,normal,support,foe,0
+Brick Break,move-brick-break,partial,destroy-shield,1,fighting,physical,foe,0
+Chilly Reception,move-chilly-reception,partial,switcher-move,1,ice,support,battlefield,1
+Chip Away,move-chip-away,partial,ignore-defenses,1,normal,physical,foe,0
+Chloroblast,move-chloroblast,partial,recoil,1,grass,special,foe,0
+Circle Throw,move-circle-throw,partial,switcher-move,1,fighting,physical,foe,0
+Clash,move-clash,manual,dynamic-type|external-rule-reference|maneuver-rule,3,none,support,self,0
+Comeuppance,move-comeuppance,partial,ignore-defenses,1,dark,physical,foe,0
+Continental Crush,move-continental-crush,manual,external-rule-reference|mixed-category|suggested-effects,3,rock,support,foe,0
+Copycat,move-copycat,manual,copied-move-dependent,1,normal,support,foe,0
+Corkscrew Crash,move-corkscrew-crash,manual,external-rule-reference|mixed-category|suggested-effects,3,steel,support,foe,0
+Counter,move-counter,partial,ignore-defenses,1,fighting,physical,foe,0
+Court Change,move-court-change,partial,terrain-field-effect,1,normal,support,battlefield,1
+Cover An Ally,move-cover-an-ally,manual,dynamic-type|maneuver-rule,2,none,support,ally,0
+Defog,move-defog,partial,destroy-shield|terrain-field-effect,2,flying,support,battlefield,1
+Destiny Bond,move-destiny-bond,partial,user-faints,1,ghost,support,self,0
+Devastating Drake,move-devastating-drake,manual,external-rule-reference|mixed-category|suggested-effects,3,dragon,support,foe,0
+Dig,move-dig,partial,charge-move,1,ground,physical,foe,0
+Disarming Voice,move-disarming-voice,partial,alternative-trait-formula,1,fairy,special,all-foes,0
+Dive,move-dive,partial,charge-move,1,water,physical,foe,0
+Doom Desire,move-doom-desire,manual,delayed-effect,1,steel,special,foe,0
+Double-Edge,move-double-edge,partial,recoil,1,normal,physical,foe,0
+Dragon Tail,move-dragon-tail,partial,switcher-move,1,dragon,physical,foe,0
+Dynamax Cannon,move-dynamax-cannon,partial,dynamax-rule,1,dragon,special,foe,0
+Electric Terrain,move-electric-terrain,partial,terrain-field-effect,1,electric,support,battlefield,1
+Electro Shot,move-electro-shot,partial,charge-move,1,electric,special,foe,0
+Endeavor,move-endeavor,partial,ignore-defenses,1,normal,physical,foe,0
+Eternabeam,move-eternabeam,partial,must-recharge,1,dragon,special,foe,0
+Evasion,move-evasion,manual,dynamic-type|external-rule-reference|maneuver-rule,3,none,support,self,0
+Expanding Force,move-expanding-force,partial,terrain-field-effect,1,psychic,special,foe,1
+Explosion,move-explosion,partial,user-faints,1,normal,physical,area,0
+Fickle Beam,move-fickle-beam,manual,dynamic-power-formula,1,dragon,special,foe,0
+Final Gambit,move-final-gambit,partial,ignore-defenses|user-faints,2,fighting,special,foe,0
+Flare Blitz,move-flare-blitz,partial,recoil,1,fire,physical,foe,1
+Fling,move-fling,manual,external-rule-reference,1,dark,physical,foe,0
+Flip Turn,move-flip-turn,partial,switcher-move,1,water,physical,foe,0
+Floral Healing,move-floral-healing,partial,terrain-field-effect,1,fairy,support,ally,3
+Flower Trick,move-flower-trick,partial,always-crit,1,grass,physical,foe,0
+Fly,move-fly,partial,charge-move,1,flying,physical,foe,0
+Focus Punch,move-focus-punch,partial,charge-move,1,fighting,physical,foe,0
+Freeze Shock,move-freeze-shock,partial,charge-move,1,ice,physical,foe,1
+Frenzy Plant,move-frenzy-plant,partial,must-recharge,1,grass,special,foe,0
+Frost Breath,move-frost-breath,partial,always-crit,1,ice,special,foe,0
+Future Sight,move-future-sight,manual,delayed-effect,1,psychic,special,foe,0
+Geomancy,move-geomancy,partial,charge-move,1,fairy,support,self,0
+Giga Impact,move-giga-impact,partial,must-recharge,1,normal,physical,foe,0
+Gigavolt Havoc,move-gigavolt-havoc,manual,external-rule-reference|mixed-category|suggested-effects,3,electric,support,foe,0
+Grapple,move-grapple,manual,dynamic-type|maneuver-rule,2,none,support,foe,0
+Grassy Glide,move-grassy-glide,partial,terrain-field-effect,1,grass,physical,foe,1
+Grassy Terrain,move-grassy-terrain,manual,manual-terrain-resolution|terrain-field-effect,2,grass,support,ally-battlefield,1
+Grudge,move-grudge,partial,user-faints,1,ghost,support,foe,0
+Head Charge,move-head-charge,partial,recoil,1,normal,physical,foe,0
+Head Smash,move-head-smash,partial,recoil,1,rock,physical,foe,0
+Healing Wish,move-healing-wish,partial,user-faints,1,psychic,support,self,1
+Help Another,move-help-another,manual,dynamic-type|maneuver-rule,2,none,support,ally,0
+Hidden Power,move-hidden-power,manual,dynamic-type|external-rule-reference,2,none,special,foe,0
+Hydro Cannon,move-hydro-cannon,partial,must-recharge,1,water,special,foe,0
+Hydro Vortex,move-hydro-vortex,manual,external-rule-reference|mixed-category|suggested-effects,3,water,support,foe,0
+Hyper Beam,move-hyper-beam,partial,must-recharge,1,normal,special,foe,0
+Hyperspace Hole,move-hyperspace-hole,partial,ignore-defenses,1,psychic,special,foe,0
+Ice Burn,move-ice-burn,partial,charge-move,1,ice,special,foe,1
+Inferno Overdrive,move-inferno-overdrive,manual,external-rule-reference|mixed-category|suggested-effects,3,fire,support,foe,0
+Instruct,move-instruct,manual,copied-move-dependent,1,psychic,support,foe,0
+Ivy Cudgel,move-ivy-cudgel,manual,copied-move-dependent,1,grass,physical,foe,0
+Judgment,move-judgment,partial,ignore-defenses,1,normal,special,foe,0
+Jungle Healing,move-jungle-healing,partial,status-cleanse,1,grass,support,all-allies,1
+Light Of Ruin,move-light-of-ruin,partial,recoil,1,fairy,special,foe,0
+Lunar Dance,move-lunar-dance,partial,user-faints,1,psychic,support,self,0
+Magnitude,move-magnitude,manual,dynamic-power-formula,1,ground,physical,area,0
+Max Guard,move-max-guard,partial,dynamax-rule,1,normal,physical,self,0
+Max Lightning,move-max-lightning,partial,terrain-field-effect,1,electric,physical,all-foes,1
+Max Mindstorm,move-max-mindstorm,partial,terrain-field-effect,1,psychic,physical,all-foes,1
+Max Overgrowth,move-max-overgrowth,partial,terrain-field-effect,1,grass,physical,all-foes,1
+Max Starfall,move-max-starfall,partial,terrain-field-effect,1,fairy,physical,all-foes,1
+Me First,move-me-first,manual,copied-move-dependent,1,normal,support,foe,0
+Memento,move-memento,partial,user-faints,1,dark,support,foe,5
+Metal Burst,move-metal-burst,partial,ignore-defenses,1,steel,physical,foe,0
+Meteor Assault,move-meteor-assault,partial,must-recharge,1,fighting,physical,foe,0
+Meteor Beam,move-meteor-beam,partial,charge-move,1,rock,special,foe,1
+Mimic,move-mimic,manual,copied-move-dependent,1,normal,support,foe,0
+Mind Blown,move-mind-blown,partial,recoil,1,fire,special,area,0
+Mirror Coat,move-mirror-coat,partial,ignore-defenses,1,psychic,support,foe,0
+Mirror Move,move-mirror-move,manual,copied-move-dependent,1,flying,support,foe,0
+Misty Explosion,move-misty-explosion,partial,terrain-field-effect|user-faints,2,fairy,special,area,1
+Misty Terrain,move-misty-terrain,partial,status-cleanse|terrain-field-effect,2,fairy,support,battlefield,1
+Mortal Spin,move-mortal-spin,partial,terrain-field-effect,1,poison,physical,all-foes,2
+Nature's Madness,move-nature-s-madness,partial,ignore-defenses,1,fairy,special,foe,0
+Never-Ending Nightmare,move-never-ending-nightmare,manual,external-rule-reference|mixed-category|suggested-effects,3,ghost,support,foe,0
+Night Shade,move-night-shade,partial,ignore-defenses,1,ghost,special,foe,0
+Outrage,move-outrage,partial,rampage,1,dragon,physical,random-foe,0
+Parting Shot,move-parting-shot,partial,switcher-move,1,dark,support,foe,2
+Petal Dance,move-petal-dance,partial,rampage,1,grass,special,random-foe,0
+Phantom Force,move-phantom-force,partial,charge-move,1,ghost,physical,foe,0
+Prismatic Laser,move-prismatic-laser,partial,must-recharge,1,psychic,special,foe,0
+Psyblade,move-psyblade,partial,terrain-field-effect,1,psychic,physical,foe,1
+Psychic Fangs,move-psychic-fangs,partial,destroy-shield,1,psychic,physical,foe,0
+Psychic Terrain,move-psychic-terrain,partial,terrain-field-effect,1,psychic,support,battlefield,1
+Psyshock,move-psyshock,partial,special-defense-rule,1,psychic,special,foe,0
+Psystrike,move-psystrike,partial,special-defense-rule,1,psychic,special,foe,0
+Psywave,move-psywave,partial,ignore-defenses,1,psychic,special,foe,0
+Raging Bull,move-raging-bull,manual,copied-move-dependent,1,normal,physical,foe,0
+Raging Fury,move-raging-fury,partial,rampage,1,fire,physical,random-foe,0
+Rapid Spin,move-rapid-spin,partial,terrain-field-effect,1,normal,physical,foe,2
+Razor Wind,move-razor-wind,partial,charge-move,1,normal,special,all-foes,0
+Rising Voltage,move-rising-voltage,partial,terrain-field-effect,1,electric,special,foe,1
+Roar,move-roar,partial,switcher-move,1,normal,support,foe,0
+Roar Of Time,move-roar-of-time,partial,must-recharge,1,dragon,special,foe,0
+Rock Wrecker,move-rock-wrecker,partial,must-recharge,1,rock,physical,foe,0
+Roost,move-roost,partial,temporary-type-immunity-change,1,flying,support,self,1
+Ruination,move-ruination,partial,ignore-defenses,1,dark,special,foe,0
+Run Away,move-run-away,manual,dynamic-type|maneuver-rule,2,none,support,self,0
+Sacred Sword,move-sacred-sword,partial,ignore-defenses,1,fighting,physical,foe,0
+Sappy Seed,move-sappy-seed,partial,ignore-defenses,1,grass,physical,foe,0
+Savage Spin-Out,move-savage-spin-out,manual,external-rule-reference|mixed-category|suggested-effects,3,bug,support,foe,0
+Secret Sword,move-secret-sword,partial,special-defense-rule,1,fighting,special,foe,0
+Seismic Toss,move-seismic-toss,partial,ignore-defenses,1,fighting,physical,foe,0
+Self Destruct,move-self-destruct,partial,user-faints,1,normal,physical,area,0
+Shadow Force,move-shadow-force,partial,charge-move,1,ghost,physical,foe,0
+Shattered Psyche,move-shattered-psyche,manual,external-rule-reference|mixed-category|suggested-effects|terrain-field-effect,4,psychic,support,foe,1
+Shed Tail,move-shed-tail,manual,external-rule-reference|switcher-move,2,normal,support,self,0
+Sketch,move-sketch,manual,copied-move-dependent,1,normal,support,foe,0
+Skull Bash,move-skull-bash,partial,charge-move,1,normal,physical,foe,1
+Sky Attack,move-sky-attack,partial,charge-move,1,flying,physical,foe,1
+Sky Drop,move-sky-drop,partial,charge-move,1,flying,physical,foe,0
+Snatch,move-snatch,manual,external-rule-reference,1,dark,support,foe,0
+Solar Beam,move-solar-beam,partial,charge-move,1,grass,special,foe,0
+Solar Blade,move-solar-blade,partial,charge-move,1,grass,physical,foe,0
+Sonic Boom,move-sonic-boom,partial,ignore-defenses,1,normal,special,foe,0
+Sparkly Swirl,move-sparkly-swirl,partial,status-cleanse,1,fairy,special,all-allies,0
+Spiky Shield,move-spiky-shield,partial,ignore-defenses,1,grass,support,self,0
+Stabilize An Ally,move-stabilize-an-ally,manual,dynamic-type|maneuver-rule,2,none,support,ally,0
+Steel Beam,move-steel-beam,partial,recoil,1,steel,special,foe,0
+Steel Roller,move-steel-roller,partial,terrain-field-effect,1,steel,physical,foe,1
+Storm Throw,move-storm-throw,partial,always-crit,1,fighting,physical,foe,0
+Struggle (Physical),move-struggle-physical,manual,dynamic-type|maneuver-rule,2,none,physical,foe,0
+Struggle (Special),move-struggle-special,manual,dynamic-type|maneuver-rule,2,none,special,foe,0
+Struggle Throw,move-struggle-throw,manual,dynamic-type|maneuver-rule,2,none,physical,foe,0
+Submission,move-submission,partial,recoil,1,fighting,physical,foe,0
+Substitute,move-substitute,manual,external-rule-reference|switcher-move,2,normal,support,self,0
+Subzero Slammer,move-subzero-slammer,manual,external-rule-reference|mixed-category|suggested-effects,3,ice,support,foe,0
+Super Fang,move-super-fang,partial,ignore-defenses,1,normal,physical,foe,0
+Supersonic Skystrike,move-supersonic-skystrike,manual,external-rule-reference|mixed-category|suggested-effects,3,flying,support,foe,0
+Surging Strikes,move-surging-strikes,partial,always-crit,1,water,physical,foe,0
+Take Down,move-take-down,partial,recoil,1,normal,physical,foe,0
+Take Heart,move-take-heart,partial,status-cleanse,1,psychic,support,self,2
+Tectonic Rage,move-tectonic-rage,manual,external-rule-reference|mixed-category|suggested-effects,3,ground,support,foe,0
+Teleport,move-teleport,partial,switcher-move,1,psychic,support,self,0
+Terrain Pulse,move-terrain-pulse,partial,terrain-field-effect,1,normal,special,foe,1
+Thrash,move-thrash,partial,rampage,1,normal,physical,random-foe,0
+Twinkle Tackle,move-twinkle-tackle,manual,external-rule-reference|mixed-category|suggested-effects,3,fairy,support,foe,0
+U-Turn,move-u-turn,partial,switcher-move,1,bug,physical,foe,0
+Volt Switch,move-volt-switch,partial,switcher-move,1,electric,special,foe,0
+Volt Tackle,move-volt-tackle,partial,recoil,1,electric,physical,foe,1
+Wave Crash,move-wave-crash,partial,recoil,1,water,physical,foe,1
+Whirlwind,move-whirlwind,partial,switcher-move,1,normal,support,foe,0
+Wicked Blow,move-wicked-blow,partial,always-crit,1,dark,physical,foe,0
+Wild Charge,move-wild-charge,partial,recoil,1,electric,physical,foe,1
+Wish,move-wish,manual,delayed-effect,1,normal,support,ally,1
+Wood Hammer,move-wood-hammer,partial,recoil,1,grass,physical,foe,0
+Yawn,move-yawn,manual,delayed-effect,1,normal,support,foe,0
+Zippy Zap,move-zippy-zap,partial,always-crit,1,electric,physical,foe,0

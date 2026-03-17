@@ -311,10 +311,16 @@
       "AccuracyFlatModifier": "Accuracy Flat Modifier",
       "AccuracyAttribute": "Accuracy Attribute",
       "AccuracySkill": "Accuracy Skill",
+      "AccuracyFormula": "Accuracy Formula",
       "AccuracySummary": "Accuracy",
       "DamageSummary": "Damage Pool",
       "DamageAttribute": "Damage Attribute",
       "DamageAttributeAuto": "Auto (from category)",
+      "DamageBaseFormula": "Damage Base Formula",
+      "Formula": {
+        "Label": "Formula"
+      },
+      "PowerFormula": "Power Formula",
       "WillCost": "Will Cost",
       "DetailsBlock": {
         "Title": "Move Details"
@@ -816,6 +822,13 @@
         "ClashTargetDamage": "Damage to defender (clash)",
         "ClashAttackerDamage": "Damage to attacker (clash)"
       },
+      "ShieldMove": {
+        "Label": "Shield Move"
+      },
+      "ShieldMoveDamageReduced": "{shield}: -{amount} damage",
+      "ShieldMoveEndureTriggered": "{shield} keeps {target} at 1 HP",
+      "ShieldMoveRetaliation": "{shield} -> {target}: {detail}",
+      "SecondaryEffectBlockedByShield": "Blocked by Shield Move: {shield}",
       "TypeEffect": {
         "Label": "Type Effect",
         "Neutral": "Neutral",
