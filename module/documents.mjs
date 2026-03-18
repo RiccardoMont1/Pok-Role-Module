@@ -320,10 +320,24 @@ export class PokRoleActor extends Actor {
   }
 
   getDefense(category = "physical") {
-    if (category === "special") {
-      return Math.max(this.getTraitValue("insight"), 0);
+    const base = category === "special"
+      ? Math.max(this.getTraitValue("insight"), 0)
+      : Math.max(this.getTraitValue("vitality"), 0);
+    const weather = this.getActiveWeatherKey?.() ?? "none";
+    const weatherBonus = this._getWeatherDefenseBonusForStat(category, weather);
+    return base + weatherBonus;
+  }
+
+  _getWeatherDefenseBonusForStat(category, weatherKey) {
+    const weather = this._normalizeWeatherKey(weatherKey);
+    if (weather === "none" || this.type !== "pokemon") return 0;
+    if (weather === "sandstorm" && category === "special" && this.hasType?.("rock")) {
+      return 1;
     }
-    return Math.max(this.getTraitValue("vitality"), 0);
+    if (weather === "hail" && category !== "special" && this.hasType?.("ice")) {
+      return 1;
+    }
+    return 0;
   }
 
   _localizeWeatherName(weatherKey) {
