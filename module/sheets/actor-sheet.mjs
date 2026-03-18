@@ -1751,9 +1751,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       ui.notifications.warn(game.i18n.localize("POKROLE.Trainer.PartyFull"));
       return;
     }
-    const ownedPokemon = game.actors.filter(
-      (a) => a.type === "pokemon" && a.isOwner && !currentParty.includes(a.id)
-    );
+    const trainerId = this.actor.id;
+    const ownedPokemon = game.actors.filter((a) => {
+      if (a.type !== "pokemon" || currentParty.includes(a.id)) return false;
+      return a.system.currentTrainer === trainerId;
+    });
     if (!ownedPokemon.length) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Trainer.PartyNoAvailable"));
       return;
