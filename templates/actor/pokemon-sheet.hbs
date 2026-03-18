@@ -167,10 +167,22 @@
               <span>{{localize "POKROLE.Pokemon.Ability"}}</span>
               <input type="text" name="system.ability" value="{{system.ability}}" />
             </label>
-            <label>
-              <span>{{localize "POKROLE.Pokemon.BattleItem"}}</span>
-              <input type="text" name="system.battleItem" value="{{system.battleItem}}" />
-            </label>
+            <div class="pokemon-battle-item-drop" data-action="drop-battle-item">
+              <span class="pokemon-trainer-drop-label">{{localize "POKROLE.Pokemon.BattleItem"}}</span>
+              {{#if battleItemData}}
+              <div class="pokemon-trainer-drop-value pokemon-battle-item-value">
+                <img src="{{battleItemData.img}}" width="24" height="24" />
+                <span>{{battleItemData.name}}</span>
+                <button type="button" class="icon-button pokemon-trainer-clear" data-action="clear-battle-item" title="{{localize 'POKROLE.Actions.Delete'}}">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              {{else}}
+              <div class="pokemon-trainer-drop-value">
+                <span>&mdash;</span>
+              </div>
+              {{/if}}
+            </div>
             <label>
               <span>{{localize "POKROLE.Pokemon.Accessory"}}</span>
               <input type="text" name="system.accessory" value="{{system.accessory}}" />

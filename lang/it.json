@@ -164,6 +164,7 @@
       "CurrentTrainer": "Allenatore Attuale",
       "DropTrainerHere": "Trascina qui la scheda dell'allenatore",
       "DropTrainerOnly": "Solo le schede allenatore possono essere trascinate qui.",
+      "DropItemOnly": "Solo gli oggetti possono essere trascinati qui.",
       "Species": "Specie",
       "SpeciesPlaceholder": "Pikachu, Charmander...",
       "Gender": "Sesso",

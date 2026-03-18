@@ -404,6 +404,20 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       context.caughtByName = caughtByActor?.name ?? "";
       context.currentTrainerName = currentTrainerActor?.name ?? "";
       context.isGM = game.user.isGM;
+
+      // Battle Item (held item drop zone)
+      const battleItemId = this.actor.system.battleItem || "";
+      if (battleItemId) {
+        // Try world items first, then compendium packs
+        let battleItem = game.items.get(battleItemId);
+        if (!battleItem) {
+          // Search in actor's owned items
+          battleItem = this.actor.items.get(battleItemId);
+        }
+        if (battleItem) {
+          context.battleItemData = { id: battleItem.id, name: battleItem.name, img: battleItem.img };
+        }
+      }
     }
     if (this.actor.type === "pokemon") {
       await this._syncLearnsetMovesToItems();
@@ -594,6 +608,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     );
     html.find("[data-action='clear-trainer-field']").on("click", (event) =>
       this._onClearTrainerField(event)
+    );
+    html.find("[data-action='clear-battle-item']").on("click", (event) =>
+      this._onClearBattleItem(event)
     );
 
     html.find("[data-action='create-move']").on("click", (event) =>
@@ -1989,6 +2006,25 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const learnsetZone = event.target.closest(".learnset-rank-drop-zone");
     if (learnsetZone) return;
 
+    // Handle battle item drop
+    const battleItemDrop = event.target.closest("[data-action='drop-battle-item']");
+    if (battleItemDrop && this.actor.type === "pokemon") {
+      let data;
+      try {
+        data = JSON.parse(event.dataTransfer.getData("text/plain"));
+      } catch {
+        return;
+      }
+      if (data.type !== "Item") return;
+      const item = await fromUuid(data.uuid);
+      if (!item || item.type !== "gear") {
+        ui.notifications.warn(game.i18n.localize("POKROLE.Pokemon.DropItemOnly"));
+        return;
+      }
+      await this.actor.update({ "system.battleItem": item.id });
+      return;
+    }
+
     const dropTarget = event.target.closest("[data-action='drop-trainer']");
     if (dropTarget && this.actor.type === "pokemon") {
       if (!game.user.isGM) return;
@@ -2013,6 +2049,12 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       return;
     }
     return super._onDrop(event);
+  }
+
+  async _onClearBattleItem(event) {
+    event.preventDefault();
+    if (this.actor.type !== "pokemon") return;
+    await this.actor.update({ "system.battleItem": "" });
   }
 
   async _onClearTrainerField(event) {

@@ -164,6 +164,7 @@
       "CurrentTrainer": "Current Trainer",
       "DropTrainerHere": "Drag a trainer sheet here",
       "DropTrainerOnly": "Only trainer sheets can be dropped here.",
+      "DropItemOnly": "Only items can be dropped here.",
       "Species": "Species",
       "SpeciesPlaceholder": "Pikachu, Charmander...",
       "Gender": "Gender",
