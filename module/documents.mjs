@@ -2551,6 +2551,9 @@ export class PokRoleActor extends Actor {
     const weatherBonusDice = this._getWeatherDamageBonusDice(moveType, activeWeather);
     const weatherFlatReduction = this._getWeatherFlatDamageReduction(moveType, activeWeather);
     const coverDefenseBonus = targetActor ? this._getCoverDefenseBonus(targetActor, move) : 0;
+    const weatherDefenseBonus = targetActor?.type === "pokemon"
+      ? targetActor._getWeatherDefenseBonusForStat(category, activeWeather)
+      : 0;
     const defense = targetActor
       ? this._getTargetDefense(targetActor, category) + coverDefenseBonus
       : 0;
