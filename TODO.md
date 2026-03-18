@@ -2,7 +2,7 @@
 
 ~~Creare due field nella scheda del pokémon (Sarebbe perfetto metterli sotto l'immagine del Pokémon) che si compilano trascinando la scheda dell'allenatore sul field. In questa maniera si capisce a chi appartiene il pokémon. I field si devono chiamare "Catturato da" e "Allenatore Attuale"~~
 
-Sistemare i pulsanti nella scheda dell'allenatore per "Cercare Copertura" (Deve aumentare il numero di successi richiesto in base alla copertura. 1/4 di copertura da +1 alla DEF e SDEF contro attacchi ranged, 1/2 copertura dà +2, mentre la full copertura noon permette di farti colpire dagli attacchi e quest'ultimi devono prima danneggiare la copertura), "Entrare in mischia" (Deve farti aggiungere l'allenatore in turn order e tirare l'iniziativa), "Fuggi" deve far ritirare il pokémon e fare un tiro di Destrezza + Atletica vs la Destrezza + Atletica dell'avversario. Se passa, deve terminare l'incontro 
+~~Sistemare i pulsanti nella scheda dell'allenatore per "Cercare Copertura" (Deve aumentare il numero di successi richiesto in base alla copertura. 1/4 di copertura da +1 alla DEF e SDEF contro attacchi ranged, 1/2 copertura dà +2, mentre la full copertura noon permette di farti colpire dagli attacchi e quest'ultimi devono prima danneggiare la copertura), "Entrare in mischia" (Deve farti aggiungere l'allenatore in turn order e tirare l'iniziativa), "Fuggi" deve far ritirare il pokémon e fare un tiro di Destrezza + Atletica vs la Destrezza + Atletica dell'avversario. Se passa, deve terminare l'incontro~~Quando l'allenatore esce dal combattimento, deve essere rimosso anche dal turn order
 
 Tempesta di Sabbia e Grandine non incrementano le stastiche di 1 per la DEF per Tempesta di Sabbio e SP DEF per Grandine
 
