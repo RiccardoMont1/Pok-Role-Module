@@ -6737,6 +6737,14 @@ export class PokRoleActor extends Actor {
         }
         await this.rollInitiative();
       }
+    } else {
+      const combat = game.combat;
+      if (combat) {
+        const existingCombatant = combat.combatants.find((c) => c.actor?.id === this.id);
+        if (existingCombatant) {
+          await combat.deleteEmbeddedDocuments("Combatant", [existingCombatant.id]);
+        }
+      }
     }
 
     ui.notifications.info(
