@@ -2899,6 +2899,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
+      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [],
       "description": "Core v3.0 The queen calls her swarm an heeds them to charge against you. No matter where you run, they will surround you. Hope you are not allergic to bees. Single Target. Ranged. High Critical."
@@ -7753,6 +7754,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
+      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [],
       "description": "Core v3.0 The Pok\u00e9mon starts shooting seed as if they were a machine gun. Single Target. Ranged. Successive Actions. Projectile Moves."
@@ -43289,6 +43291,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
+      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [],
       "description": "Core v3.0 This Pok\u00e9mon brings good fortune to businesses and trainers alike. Make sure to use some of that hard earned money to buy them a treat. Single Target. Ranged. At the end of the battle give Money to your Trainer Equal to their Rank: Starter/Rookie - 100 Standard - 250 Advanced - 500 Ace or more - 1000"
@@ -43932,6 +43935,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
+      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [],
       "description": "Core v3.0 The Pok\u00e9mon shoots a barrage of stingers or spikes that pierce like needles. Single Target. Low Accuracy 1. Ranged. Successive Actions."
@@ -48549,6 +48553,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
+      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [],
       "description": "Core v3.0 The user sends out a barrage of sharp razor-like leaves. 'Death by a thousand cuts' would be the best depiction. Target All Foes in Range. Cutter Move. Ranged. High Critical."
@@ -50272,6 +50277,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
+      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [
         {
@@ -56472,6 +56478,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
+      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [],
       "description": "Core v3.0 They say it\u2019s great to get two birds with one stone, this Pok\u00e9mon will give one bird ALL the stones. Single Target. Ranged. Remove the Target's immunity to Ground-Type Moves. If the Target is Out of Range due to using \"Fly\", \"Bounce\" or \"Sky Drop\", this Move hits anyways."
@@ -65078,6 +65085,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
+      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [],
       "description": "Core v3.0 Out of nowhere, pointy shards come raining from the sky towards the foes. Even flying creatures will fall to the ground if they are knocked by them. Take cover, this is gonna hurt. Target All Foes in Range. Ranged. Lethal. Unique. Ignore the Target's immunity to Ground. Remove the immunity to Ground-Type Moves of those affected. Whole Scene Duration."

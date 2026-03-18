@@ -897,6 +897,26 @@ Hooks.once("ready", async () => {
     await actor.synchronizeFaintedFromHp();
   }
   await renderMoveQueueOverlay();
+
+  // One-time migration: set isRanged on known physical ranged moves
+  if (game.user.isGM) {
+    const PHYSICAL_RANGED_MOVES = new Set([
+      "Attack Order", "Bullet Seed", "Pay Day", "Pin Missile",
+      "Razor Leaf", "Rock Slide", "Smack Down", "Thousand Arrows"
+    ]);
+    for (const actor of game.actors?.contents ?? []) {
+      const updates = [];
+      for (const item of actor.items) {
+        if (item.type !== "move") continue;
+        if (PHYSICAL_RANGED_MOVES.has(item.name) && !item.system.isRanged) {
+          updates.push({ _id: item.id, "system.isRanged": true });
+        }
+      }
+      if (updates.length > 0) {
+        await actor.updateEmbeddedDocuments("Item", updates);
+      }
+    }
+  }
 });
 
 Hooks.on("canvasReady", async (canvasDocument) => {
