@@ -621,17 +621,6 @@ export class PokRoleActor extends Actor {
     return Math.max(normalizedDamage - normalizedReduction, 1);
   }
 
-  _getWeatherDefenseBonus(targetActor, category, weatherKey) {
-    const weather = this._normalizeWeatherKey(weatherKey);
-    if (!targetActor || weather === "none") return 0;
-    if (weather === "sandstorm" && category === "special" && targetActor.hasType?.("rock")) {
-      return 1;
-    }
-    if (weather === "hail" && category !== "special" && targetActor.hasType?.("ice")) {
-      return 1;
-    }
-    return 0;
-  }
 
   _getMoveSourceAttributes(move) {
     return (
@@ -2562,11 +2551,8 @@ export class PokRoleActor extends Actor {
     const weatherBonusDice = this._getWeatherDamageBonusDice(moveType, activeWeather);
     const weatherFlatReduction = this._getWeatherFlatDamageReduction(moveType, activeWeather);
     const coverDefenseBonus = targetActor ? this._getCoverDefenseBonus(targetActor, move) : 0;
-    const weatherDefenseBonus = targetActor
-      ? this._getWeatherDefenseBonus(targetActor, category, activeWeather)
-      : 0;
     const defense = targetActor
-      ? this._getTargetDefense(targetActor, category) + coverDefenseBonus + weatherDefenseBonus
+      ? this._getTargetDefense(targetActor, category) + coverDefenseBonus
       : 0;
     const poolBeforeDefense =
       damageAttributeValue +
