@@ -1917,6 +1917,10 @@
   font-size: 0.8rem;
 }
 
+.pokemon-sheet .pokemon-trainer-drop.pokemon-trainer-readonly {
+  cursor: default;
+}
+
 .pokemon-sheet .pokemon-trainer-drop-placeholder {
   display: flex;
   align-items: center;

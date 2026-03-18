@@ -70,35 +70,47 @@
             title="{{actor.name}}"
           />
           <div class="pokemon-trainer-fields">
-            <div class="pokemon-trainer-drop" data-field="system.caughtBy" data-action="drop-trainer">
+            <div class="pokemon-trainer-drop {{#unless isGM}}pokemon-trainer-readonly{{/unless}}" data-field="system.caughtBy" {{#if isGM}}data-action="drop-trainer"{{/if}}>
               <span class="pokemon-trainer-drop-label">{{localize "POKROLE.Pokemon.CaughtBy"}}</span>
               {{#if caughtByName}}
               <div class="pokemon-trainer-drop-value">
                 <span>{{caughtByName}}</span>
+                {{#if isGM}}
                 <button type="button" class="icon-button pokemon-trainer-clear" data-action="clear-trainer-field" data-field="system.caughtBy" title="{{localize 'POKROLE.Actions.Delete'}}">
                   <i class="fas fa-times"></i>
                 </button>
+                {{/if}}
               </div>
               {{else}}
               <div class="pokemon-trainer-drop-placeholder">
+                {{#if isGM}}
                 <i class="fas fa-hand-point-down"></i>
                 <span>{{localize "POKROLE.Pokemon.DropTrainerHere"}}</span>
+                {{else}}
+                <span>&mdash;</span>
+                {{/if}}
               </div>
               {{/if}}
             </div>
-            <div class="pokemon-trainer-drop" data-field="system.currentTrainer" data-action="drop-trainer">
+            <div class="pokemon-trainer-drop {{#unless isGM}}pokemon-trainer-readonly{{/unless}}" data-field="system.currentTrainer" {{#if isGM}}data-action="drop-trainer"{{/if}}>
               <span class="pokemon-trainer-drop-label">{{localize "POKROLE.Pokemon.CurrentTrainer"}}</span>
               {{#if currentTrainerName}}
               <div class="pokemon-trainer-drop-value">
                 <span>{{currentTrainerName}}</span>
+                {{#if isGM}}
                 <button type="button" class="icon-button pokemon-trainer-clear" data-action="clear-trainer-field" data-field="system.currentTrainer" title="{{localize 'POKROLE.Actions.Delete'}}">
                   <i class="fas fa-times"></i>
                 </button>
+                {{/if}}
               </div>
               {{else}}
               <div class="pokemon-trainer-drop-placeholder">
+                {{#if isGM}}
                 <i class="fas fa-hand-point-down"></i>
                 <span>{{localize "POKROLE.Pokemon.DropTrainerHere"}}</span>
+                {{else}}
+                <span>&mdash;</span>
+                {{/if}}
               </div>
               {{/if}}
             </div>

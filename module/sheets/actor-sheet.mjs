@@ -398,6 +398,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       const currentTrainerActor = currentTrainerId ? game.actors.get(currentTrainerId) : null;
       context.caughtByName = caughtByActor?.name ?? "";
       context.currentTrainerName = currentTrainerActor?.name ?? "";
+      context.isGM = game.user.isGM;
     }
     const moves = this.actor.items
       .filter((item) => item.type === "move")
@@ -1812,6 +1813,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   async _onDrop(event) {
     const dropTarget = event.target.closest("[data-action='drop-trainer']");
     if (dropTarget && this.actor.type === "pokemon") {
+      if (!game.user.isGM) return;
       let data;
       try {
         data = JSON.parse(event.dataTransfer.getData("text/plain"));
@@ -1838,6 +1840,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   async _onClearTrainerField(event) {
     event.preventDefault();
     if (this.actor.type !== "pokemon") return;
+    if (!game.user.isGM) return;
     const field = event.currentTarget.dataset.field;
     if (!field) return;
     await this.actor.update({ [field]: "" });
