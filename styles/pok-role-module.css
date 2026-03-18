@@ -2355,6 +2355,20 @@
   text-transform: uppercase;
 }
 
+.pokemon-sheet .pokemon-moves-section .moves-rank-group {
+  margin-bottom: 10px;
+}
+
+.pokemon-sheet .pokemon-moves-section .moves-rank-header {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin: 8px 0 4px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 .pokemon-sheet .pokemon-moves-section .pokemon-move-meta {
   margin-bottom: 8px;
   font-size: 0.9rem;

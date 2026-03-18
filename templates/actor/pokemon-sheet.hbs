@@ -688,65 +688,70 @@
         {{usableMovesCount}} / {{maxUsableMoves}}
       </div>
 
-      {{#if learnedMoves.length}}
-      <table class="moves-table">
-        <thead>
-          <tr>
-            <th>{{localize "POKROLE.Move.Name"}}</th>
-            <th>{{localize "POKROLE.Move.Type"}}</th>
-            <th>{{localize "POKROLE.Move.Category.Label"}}</th>
-            <th>{{localize "POKROLE.Move.ActionTagShort"}}</th>
-            <th>{{localize "POKROLE.Move.Target"}}</th>
-            <th>{{localize "POKROLE.Pokemon.UsableToggle"}}</th>
-            <th>{{localize "POKROLE.Common.Actions"}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each learnedMoves as |move|}}
-          <tr data-item-id="{{move.id}}">
-            <td class="move-name">
-              <img src="{{move.img}}" title="{{move.name}}" />
-              <span>{{move.name}}</span>
-            </td>
-            <td>{{move.typeLabel}}</td>
-            <td>{{move.categoryLabel}}</td>
-            <td><span class="move-action-chip">{{move.actionTagShort}}</span></td>
-            <td>{{move.targetLabel}}</td>
-            <td>
-              <label class="checkbox-row">
-                <input
-                  type="checkbox"
-                  data-action="toggle-move-usable"
+      {{#if movesByRank.length}}
+      {{#each movesByRank as |rankGroup|}}
+      <div class="moves-rank-group">
+        <h3 class="moves-rank-header">{{localize rankGroup.label}}</h3>
+        <table class="moves-table">
+          <thead>
+            <tr>
+              <th>{{localize "POKROLE.Move.Name"}}</th>
+              <th>{{localize "POKROLE.Move.Type"}}</th>
+              <th>{{localize "POKROLE.Move.Category.Label"}}</th>
+              <th>{{localize "POKROLE.Move.ActionTagShort"}}</th>
+              <th>{{localize "POKROLE.Move.Target"}}</th>
+              <th>{{localize "POKROLE.Pokemon.UsableToggle"}}</th>
+              <th>{{localize "POKROLE.Common.Actions"}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each rankGroup.moves as |move|}}
+            <tr data-item-id="{{move.id}}">
+              <td class="move-name">
+                <img src="{{move.img}}" title="{{move.name}}" />
+                <span>{{move.name}}</span>
+              </td>
+              <td>{{move.typeLabel}}</td>
+              <td>{{move.categoryLabel}}</td>
+              <td><span class="move-action-chip">{{move.actionTagShort}}</span></td>
+              <td>{{move.targetLabel}}</td>
+              <td>
+                <label class="checkbox-row">
+                  <input
+                    type="checkbox"
+                    data-action="toggle-move-usable"
+                    data-item-id="{{move.id}}"
+                    {{checked move.isUsable}}
+                  />
+                  <span>{{localize "POKROLE.Pokemon.UsableToggleShort"}}</span>
+                </label>
+              </td>
+              <td class="move-actions">
+                <button
+                  type="button"
+                  class="icon-button"
+                  data-action="edit-move"
                   data-item-id="{{move.id}}"
-                  {{checked move.isUsable}}
-                />
-                <span>{{localize "POKROLE.Pokemon.UsableToggleShort"}}</span>
-              </label>
-            </td>
-            <td class="move-actions">
-              <button
-                type="button"
-                class="icon-button"
-                data-action="edit-move"
-                data-item-id="{{move.id}}"
-                title="{{localize 'POKROLE.Actions.Edit'}}"
-              >
-                <i class="fas fa-pen"></i>
-              </button>
-              <button
-                type="button"
-                class="icon-button danger"
-                data-action="delete-move"
-                data-item-id="{{move.id}}"
-                title="{{localize 'POKROLE.Actions.Delete'}}"
-              >
-                <i class="fas fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
+                  title="{{localize 'POKROLE.Actions.Edit'}}"
+                >
+                  <i class="fas fa-pen"></i>
+                </button>
+                <button
+                  type="button"
+                  class="icon-button danger"
+                  data-action="delete-move"
+                  data-item-id="{{move.id}}"
+                  title="{{localize 'POKROLE.Actions.Delete'}}"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      {{/each}}
       {{else}}
       <p class="empty-state">{{localize "POKROLE.Move.Empty"}}</p>
       {{/if}}

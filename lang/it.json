@@ -14,7 +14,8 @@
       "None": "Nessuno",
       "Hit": "Colpito",
       "Miss": "Mancato",
-      "Confirm": "Conferma"
+      "Confirm": "Conferma",
+      "Other": "Altro"
     },
     "Resources": {
       "HP": "PS",

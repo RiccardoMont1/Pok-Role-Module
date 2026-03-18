@@ -14,7 +14,8 @@
       "None": "None",
       "Hit": "Hit",
       "Miss": "Miss",
-      "Confirm": "Confirm"
+      "Confirm": "Confirm",
+      "Other": "Other"
     },
     "Resources": {
       "HP": "HP",

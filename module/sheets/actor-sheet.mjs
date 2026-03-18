@@ -420,6 +420,43 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       context.learnedMoves = moves;
       context.usableMovesCount = context.usableMoves.length;
       context.pokemonView = this._normalizePokemonView(this._pokemonActiveView ?? "main");
+
+      // Group moves by rank for the learned tab
+      const moveNameToRank = {};
+      for (const rankKey of POKEMON_TIER_KEYS) {
+        const raw = `${this.actor.system.learnsetByRank?.[rankKey] ?? ""}`;
+        const names = raw.split(",").map((s) => s.trim()).filter(Boolean);
+        for (const name of names) {
+          if (!moveNameToRank[name]) moveNameToRank[name] = rankKey;
+        }
+      }
+      const grouped = {};
+      for (const rankKey of POKEMON_TIER_KEYS) {
+        grouped[rankKey] = [];
+      }
+      grouped["other"] = [];
+      for (const move of moves) {
+        const rank = moveNameToRank[move.name];
+        if (rank) {
+          grouped[rank].push(move);
+        } else {
+          grouped["other"].push(move);
+        }
+      }
+      context.movesByRank = POKEMON_TIER_KEYS
+        .filter((rankKey) => grouped[rankKey].length > 0)
+        .map((rankKey) => ({
+          key: rankKey,
+          label: POKEMON_TIER_LABEL_BY_KEY[rankKey] ?? rankKey,
+          moves: grouped[rankKey]
+        }));
+      if (grouped["other"].length > 0) {
+        context.movesByRank.push({
+          key: "other",
+          label: "POKROLE.Common.Other",
+          moves: grouped["other"]
+        });
+      }
     }
     const pocketOrder = {
       potions: 0,
