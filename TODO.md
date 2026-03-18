@@ -6,7 +6,7 @@
 
 ~~Modifica alla scheda del pokèmon per la sezione Impostazioni - Mosse imparabili per Rank. Non devono essere campi in cui si scrive la mossa, ma nella quale in cui si devono allegare gli oggetti delle mosse apprendibili per rank.~~
 
-Aggiungere un tag o un field alle mosse fisiche per indicare se siano Ranged (Questa tag non deve bloccare l'uso della mossa melee se non sei adiacente al pokémon, serve soltanto per il calcolo delle coperture). Inoltre le mosse speciali sono sempre ranged a meno che non viene detto diversamente
+~~Aggiungere un tag o un field alle mosse fisiche per indicare se siano Ranged (Questa tag non deve bloccare l'uso della mossa melee se non sei adiacente al pokémon, serve soltanto per il calcolo delle coperture). Inoltre le mosse speciali sono sempre ranged a meno che non viene detto diversamente~~
 
 Tempesta di Sabbia e Grandine non incrementano le stastiche di 1 per la DEF per Tempesta di Sabbio e SP DEF per Grandine
 
