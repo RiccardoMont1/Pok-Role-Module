@@ -13,7 +13,8 @@
       "Unknown": "Sconosciuto",
       "None": "Nessuno",
       "Hit": "Colpito",
-      "Miss": "Mancato"
+      "Miss": "Mancato",
+      "Confirm": "Conferma"
     },
     "Resources": {
       "HP": "PS",
@@ -671,6 +672,8 @@
       "CoverQuarter": "1/4",
       "CoverHalf": "1/2",
       "CoverFull": "Totale",
+      "CoverFullDesc": "Blocca tutti gli attacchi ranged",
+      "SearchCoverLevel": "Livello di Copertura",
       "WeatherValues": {
         "Sunny": "Sole",
         "HarshSunlight": "Sole Infernale",

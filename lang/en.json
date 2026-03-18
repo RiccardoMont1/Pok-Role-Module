@@ -13,7 +13,8 @@
       "Unknown": "Unknown",
       "None": "None",
       "Hit": "Hit",
-      "Miss": "Miss"
+      "Miss": "Miss",
+      "Confirm": "Confirm"
     },
     "Resources": {
       "HP": "HP",
@@ -671,6 +672,8 @@
       "CoverQuarter": "Quarter",
       "CoverHalf": "Half",
       "CoverFull": "Full",
+      "CoverFullDesc": "Blocks all ranged attacks",
+      "SearchCoverLevel": "Cover Level",
       "WeatherValues": {
         "Sunny": "Sunny",
         "HarshSunlight": "Harsh Sunlight",

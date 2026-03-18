@@ -6651,15 +6651,56 @@ export class PokRoleActor extends Actor {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.TrainerCannotSearchCoverInFray"));
       return null;
     }
+
+    const coverLevel = await new Promise((resolve) => {
+      new Dialog({
+        title: game.i18n.localize("POKROLE.Combat.TrainerActions.SearchForCover"),
+        content: `
+          <form class="pok-role-combined-roll">
+            <div class="form-group">
+              <label>${game.i18n.localize("POKROLE.Combat.SearchCoverLevel")}</label>
+              <select name="coverLevel">
+                <option value="quarter">${game.i18n.localize("POKROLE.Combat.CoverQuarter")} (+1 DEF/SDEF vs ranged)</option>
+                <option value="half">${game.i18n.localize("POKROLE.Combat.CoverHalf")} (+2 DEF/SDEF vs ranged)</option>
+                <option value="full">${game.i18n.localize("POKROLE.Combat.CoverFull")} (${game.i18n.localize("POKROLE.Combat.CoverFullDesc")})</option>
+              </select>
+            </div>
+          </form>
+        `,
+        buttons: {
+          ok: {
+            icon: '<i class="fas fa-check"></i>',
+            label: game.i18n.localize("POKROLE.Common.Confirm"),
+            callback: (html) => resolve(html.find("[name='coverLevel']").val())
+          },
+          cancel: {
+            icon: '<i class="fas fa-times"></i>',
+            label: game.i18n.localize("POKROLE.Common.Cancel"),
+            callback: () => resolve(null)
+          }
+        },
+        default: "ok"
+      }).render(true);
+    });
+
+    if (!coverLevel) return null;
+
+    const requiredSuccessesMap = { quarter: 1, half: 2, full: 3 };
+    const requiredSuccesses = requiredSuccessesMap[coverLevel] ?? 1;
+
     const result = await this._rollSuccessPool({
       dicePool: this.getTraitValue("insight") + this.getSkillValue("alert"),
       removedSuccesses: this.getPainPenalty(),
-      requiredSuccesses: 1,
+      requiredSuccesses,
       flavor: game.i18n.format("POKROLE.Chat.TrainerSearchCoverRoll", { actor: this.name })
     });
     if (!result?.success) return result;
-    await this.setTrainerCover("full");
-    ui.notifications.info(game.i18n.localize("POKROLE.Chat.CoverSetFull"));
+    await this.setTrainerCover(coverLevel);
+    ui.notifications.info(
+      game.i18n.format("POKROLE.Chat.CoverSet", {
+        level: this._localizeCoverLevel(coverLevel)
+      })
+    );
     return result;
   }
 
@@ -6682,6 +6723,22 @@ export class PokRoleActor extends Actor {
     if (this.type !== "trainer") return null;
     const active = options.active === undefined ? !this.isTrainerInFray() : Boolean(options.active);
     await this.setTrainerInFray(active);
+
+    if (active) {
+      const combat = game.combat;
+      if (combat) {
+        const existingCombatant = combat.combatants.find((c) => c.actor?.id === this.id);
+        if (!existingCombatant) {
+          const tokenDoc = this.getActiveTokens(true)?.[0]?.document ?? null;
+          const combatantData = tokenDoc
+            ? { tokenId: tokenDoc.id, sceneId: tokenDoc.parent?.id, actorId: this.id }
+            : { actorId: this.id };
+          await combat.createEmbeddedDocuments("Combatant", [combatantData]);
+        }
+        await this.rollInitiative();
+      }
+    }
+
     ui.notifications.info(
       game.i18n.localize(
         active ? "POKROLE.Chat.TrainerEnteredFray" : "POKROLE.Chat.TrainerLeftFray"
@@ -6730,7 +6787,22 @@ export class PokRoleActor extends Actor {
     });
 
     if (escaped && game.user?.isGM) {
-      await combat.update({ active: false });
+      const partyPokemonIds = this.system.party ?? [];
+      const combatantIdsToRemove = [];
+      for (const combatant of combat.combatants) {
+        if (!combatant.actor) continue;
+        if (combatant.actor.id === this.id || partyPokemonIds.includes(combatant.actor.id)) {
+          combatantIdsToRemove.push(combatant.id);
+        }
+      }
+      if (combatantIdsToRemove.length > 0) {
+        await combat.deleteEmbeddedDocuments("Combatant", combatantIdsToRemove);
+      }
+
+      const remainingCombatants = combat.combatants.size;
+      if (remainingCombatants <= 1) {
+        await combat.update({ active: false });
+      }
     }
 
     return { escaped, selfNet, foeNet, foeActor };
