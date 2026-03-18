@@ -72,7 +72,7 @@
   <section class="chat-card-section">
     <h4>{{localize "POKROLE.Chat.DamageSetup"}}</h4>
     <p>{{localize "POKROLE.Chat.PoolBeforeDefense"}} {{poolBeforeDefense}} | {{localize "POKROLE.Chat.TargetDefense"}} {{defense}} | {{localize "POKROLE.Chat.FinalPool"}} {{damagePool}}</p>
-    <p>{{localize "POKROLE.Chat.DamageSuccesses"}}: {{damageSuccesses}} | STAB: +{{stabDice}} | {{localize "POKROLE.Chat.CriticalBonusDice"}}: +{{criticalDice}}</p>
+    <p>{{localize "POKROLE.Chat.DamageSuccesses"}}: {{damageSuccesses}} | STAB: +{{stabDice}}{{#if heldItemBonus}} | {{localize "POKROLE.Chat.HeldItemBonus"}}: +{{heldItemBonus}}{{/if}} | {{localize "POKROLE.Chat.CriticalBonusDice"}}: +{{criticalDice}}</p>
     <p><strong>{{localize "POKROLE.Chat.TypeEffect.Label"}}:</strong> {{typeLabel}}</p>
     <p><strong>{{localize "POKROLE.Chat.FinalDamage"}}:</strong> {{finalDamage}} {{#if targetName}}({{targetName}}){{/if}}</p>
     {{#if shieldDetail}}

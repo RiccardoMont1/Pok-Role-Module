@@ -186,16 +186,16 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
         };
       }
 
-      // Held item Z-Move type options
+      // Held item Z-Move type options and damage automation options
       if (context.isHeld) {
-        context.zMoveTypeOptions = Object.fromEntries(
-          TYPE_OPTIONS.map((typeKey) => [
-            typeKey,
-            typeKey === "none"
-              ? "POKROLE.Types.None"
-              : MOVE_TYPE_LABEL_BY_KEY[typeKey] ?? "POKROLE.Common.Unknown"
-          ])
-        );
+        const typeOptionEntries = TYPE_OPTIONS.map((typeKey) => [
+          typeKey,
+          typeKey === "none"
+            ? "POKROLE.Types.None"
+            : MOVE_TYPE_LABEL_BY_KEY[typeKey] ?? "POKROLE.Common.Unknown"
+        ]);
+        context.zMoveTypeOptions = Object.fromEntries(typeOptionEntries);
+        context.damageBonusTypeOptions = Object.fromEntries(typeOptionEntries);
       }
 
       return context;

@@ -310,7 +310,9 @@ export class PokRoleActor extends Actor {
 
   getTraitValue(traitKey) {
     if (!traitKey || traitKey === "none") return 0;
-    return toNumber(this.system.attributes?.[traitKey], Number.NaN);
+    const base = toNumber(this.system.attributes?.[traitKey], Number.NaN);
+    const heldBonus = this._getHeldItemStatBonus(traitKey);
+    return isNaN(base) ? base : base + heldBonus;
   }
 
   getInitiativeScore() {
@@ -325,7 +327,9 @@ export class PokRoleActor extends Actor {
       : Math.max(this.getTraitValue("vitality"), 0);
     const weather = this.getActiveWeatherKey?.() ?? "none";
     const weatherBonus = this._getWeatherDefenseBonusForStat(category, weather);
-    return base + weatherBonus;
+    const defKey = category === "special" ? "spDef" : "def";
+    const heldDefBonus = this._getHeldItemStatBonus(defKey);
+    return base + weatherBonus + heldDefBonus;
   }
 
   _getWeatherDefenseBonusForStat(category, weatherKey) {
@@ -601,6 +605,59 @@ export class PokRoleActor extends Actor {
       return normalizedMoveType === "flying" ? 1 : 0;
     }
     return 0;
+  }
+
+  /**
+   * Get a stat bonus from the held battle item (e.g. Light Ball gives +1 Str/Spe to Pikachu).
+   */
+  _getHeldItemStatBonus(statKey) {
+    if (this.type !== "pokemon") return 0;
+    const battleItemId = this.system.battleItem || "";
+    if (!battleItemId) return 0;
+    let item = game.items.get(battleItemId);
+    if (!item) item = this.items.get(battleItemId);
+    if (!item || item.type !== "gear") return 0;
+    const held = item.system.held ?? {};
+    // Check compatible pokemon
+    const compatiblePokemon = (held.compatiblePokemon || "").toLowerCase().trim();
+    if (compatiblePokemon) {
+      const species = (this.system.species || this.name || "").toLowerCase().trim();
+      if (!species.includes(compatiblePokemon) && !compatiblePokemon.includes(species)) return 0;
+    }
+    const bonuses = held.statBonuses ?? {};
+    return toNumber(bonuses[statKey], 0);
+  }
+
+  /**
+   * Get held item damage bonus dice for the attacking pokemon.
+   * Checks the pokemon's equipped battle item and returns bonus dice
+   * if the move type/category matches the item's conditions.
+   */
+  _getHeldItemDamageBonus(moveType, moveCategory) {
+    if (this.type !== "pokemon") return 0;
+    const battleItemId = this.system.battleItem || "";
+    if (!battleItemId) return 0;
+    // Try world items first, then actor's owned items
+    let item = game.items.get(battleItemId);
+    if (!item) item = this.items.get(battleItemId);
+    if (!item || item.type !== "gear") return 0;
+    const held = item.system.held ?? {};
+    const bonusDice = held.damageBonusDice ?? 0;
+    if (bonusDice <= 0) return 0;
+    const normalizedMoveType = this._normalizeTypeKey(moveType);
+    // Check type condition
+    const requiredType = this._normalizeTypeKey(held.damageBonusType || "none");
+    if (requiredType && requiredType !== "none" && requiredType !== normalizedMoveType) return 0;
+    // Check category condition (if specified)
+    const requiredCategory = (held.damageBonusCategory || "").toLowerCase();
+    if (requiredCategory && requiredCategory !== moveCategory.toLowerCase()) return 0;
+    // Check compatible pokemon (if specified)
+    const compatiblePokemon = (held.compatiblePokemon || "").toLowerCase().trim();
+    if (compatiblePokemon) {
+      const species = (this.system.species || this.name || "").toLowerCase().trim();
+      if (!species.includes(compatiblePokemon) && !compatiblePokemon.includes(species)) return 0;
+    }
+    return bonusDice;
   }
 
   _getWeatherFlatDamageReduction(moveType, weatherKey) {
@@ -2210,6 +2267,7 @@ export class PokRoleActor extends Actor {
       label: "POKROLE.Chat.TypeEffect.Neutral"
     };
     let stabDice = 0;
+    let heldItemBonus = 0;
     let criticalDice = critical ? 2 : 0;
     let damageAttributeLabel = this.localizeTrait("none");
     const damageTargetResults = [];
@@ -2245,6 +2303,7 @@ export class PokRoleActor extends Actor {
         shieldDetail = firstDamageResult.shieldDetail ?? "";
         typeInteraction = firstDamageResult.typeInteraction;
         stabDice = firstDamageResult.stabDice;
+        heldItemBonus = firstDamageResult.heldItemBonus ?? 0;
         criticalDice = firstDamageResult.criticalDice;
         damageAttributeLabel = firstDamageResult.damageAttributeLabel;
       }
@@ -2339,6 +2398,7 @@ export class PokRoleActor extends Actor {
         damagePool,
         damageSuccesses,
         stabDice,
+        heldItemBonus,
         criticalDice,
         typeLabel: game.i18n.localize(typeInteraction.label),
         finalDamage,
@@ -2547,6 +2607,7 @@ export class PokRoleActor extends Actor {
     const damagePainPenalty = damageBaseSetup.ignoresPainPenalty ? 0 : painPenalty;
     const criticalDice = critical ? 2 : 0;
     const stabDice = this.hasType(moveType) ? 1 : 0;
+    const heldItemBonus = this._getHeldItemDamageBonus(moveType, category);
     const activeWeather = this.getActiveWeatherKey();
     const weatherBonusDice = this._getWeatherDamageBonusDice(moveType, activeWeather);
     const weatherFlatReduction = this._getWeatherFlatDamageReduction(moveType, activeWeather);
@@ -2562,6 +2623,7 @@ export class PokRoleActor extends Actor {
       power +
       stabDice +
       criticalDice +
+      heldItemBonus +
       weatherBonusDice -
       damagePainPenalty;
     const damagePool = Math.max(poolBeforeDefense - defense, 0);
@@ -2712,6 +2774,7 @@ export class PokRoleActor extends Actor {
       weatherDefenseBonus,
       stabDice,
       criticalDice,
+      heldItemBonus,
       damageAttributeLabel
     };
   }

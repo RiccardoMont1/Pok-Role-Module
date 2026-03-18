@@ -351,6 +351,45 @@
       </label>
     </div>
     {{/if}}
+    <h3 style="margin-top:10px;">{{localize "POKROLE.Gear.Held.DamageAutomation"}}</h3>
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Gear.Held.DamageBonusType"}}</span>
+        <select name="system.held.damageBonusType">
+          {{selectOptions damageBonusTypeOptions selected=system.held.damageBonusType localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.Held.DamageBonusDice"}}</span>
+        <input type="number" name="system.held.damageBonusDice" value="{{system.held.damageBonusDice}}" min="0" max="10" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.Held.DamageBonusCategory"}}</span>
+        <select name="system.held.damageBonusCategory">
+          <option value="" {{#unless system.held.damageBonusCategory}}selected{{/unless}}>{{localize "POKROLE.Common.Any"}}</option>
+          <option value="physical" {{#if (eq system.held.damageBonusCategory "physical")}}selected{{/if}}>{{localize "POKROLE.Move.CategoryPhysical"}}</option>
+          <option value="special" {{#if (eq system.held.damageBonusCategory "special")}}selected{{/if}}>{{localize "POKROLE.Move.CategorySpecial"}}</option>
+        </select>
+      </label>
+    </div>
+    <div class="checkbox-grid" style="margin-top:6px;">
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.held.highCritical" {{checked system.held.highCritical}} />
+        <span>{{localize "POKROLE.Gear.Held.HighCritical"}}</span>
+      </label>
+    </div>
+    {{#if system.held.highCritical}}
+    <div class="form-grid two-col" style="margin-top:6px;">
+      <label>
+        <span>{{localize "POKROLE.Gear.Held.HighCriticalCategory"}}</span>
+        <select name="system.held.highCriticalCategory">
+          <option value="" {{#unless system.held.highCriticalCategory}}selected{{/unless}}>{{localize "POKROLE.Common.Any"}}</option>
+          <option value="physical" {{#if (eq system.held.highCriticalCategory "physical")}}selected{{/if}}>{{localize "POKROLE.Move.CategoryPhysical"}}</option>
+          <option value="special" {{#if (eq system.held.highCriticalCategory "special")}}selected{{/if}}>{{localize "POKROLE.Move.CategorySpecial"}}</option>
+        </select>
+      </label>
+    </div>
+    {{/if}}
   </section>
   <section class="sheet-section">
     <h2>{{localize "POKROLE.Gear.Held.StatBonuses"}}</h2>

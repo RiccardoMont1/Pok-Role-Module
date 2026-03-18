@@ -512,6 +512,27 @@ export class GearDataModel extends foundry.abstract.TypeDataModel {
           choices: TYPE_OPTIONS
         }),
         isMegaStone: new BooleanField({ required: true, initial: false }),
+        // Automation: damage bonus conditional on move type
+        damageBonusType: new StringField({
+          required: true,
+          blank: false,
+          initial: "none",
+          choices: TYPE_OPTIONS
+        }),
+        damageBonusDice: integerField(0, { min: 0, max: 10 }),
+        // Automation: damage bonus conditional on move category
+        damageBonusCategory: new StringField({
+          required: true,
+          blank: true,
+          initial: ""
+        }),
+        // Automation: high critical effect
+        highCritical: new BooleanField({ required: true, initial: false }),
+        highCriticalCategory: new StringField({
+          required: true,
+          blank: true,
+          initial: ""
+        }),
         statBonuses: new SchemaField({
           strength: integerField(0, { min: -10, max: 10 }),
           dexterity: integerField(0, { min: -10, max: 10 }),

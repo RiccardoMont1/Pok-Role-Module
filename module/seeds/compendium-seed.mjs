@@ -815,126 +815,126 @@ const ITEM_SEEDS = Object.freeze({
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Fighting-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Fighting-type moves", damageBonusType: "fighting", damageBonusDice: 1 },
       description: "The symbol of an outstanding martial artist. Add 1 Extra die to the Damage pool of Fight-Type Moves."
     }),
     makeGear("held-black-glasses", "Black Glasses", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Dark-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Dark-type moves", damageBonusType: "dark", damageBonusDice: 1 },
       description: "No self-respecting ruffian can go without these. Add 1 Extra die to the Damage pool of Dark-Type Moves."
     }),
     makeGear("held-charcoal", "Charcoal", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Fire-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Fire-type moves", damageBonusType: "fire", damageBonusDice: 1 },
       description: "Special charcoal to keep a flame strong. Add 1 Extra die to the Damage pool of Fire-Type Moves."
     }),
     makeGear("held-dragon-fang", "Dragon Fang", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Dragon-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Dragon-type moves", damageBonusType: "dragon", damageBonusDice: 1 },
       description: "The fang of a fierce dragon fuels your inner rage. Add 1 Extra die to the Damage pool of Dragon-Type Moves."
     }),
     makeGear("held-hard-stone", "Hard Stone", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Rock-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Rock-type moves", damageBonusType: "rock", damageBonusDice: 1 },
       description: "Good ol' rock! Nothing beats that! Add 1 Extra die to the Damage pool of Rock-Type Moves."
     }),
     makeGear("held-magnet", "Magnet", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Electric-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Electric-type moves", damageBonusType: "electric", damageBonusDice: 1 },
       description: "These magnets... how do they work? Add 1 Extra die to the Damage pool of Electric-Type Moves."
     }),
     makeGear("held-metal-coat", "Metal Coat", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Steel-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Steel-type moves", damageBonusType: "steel", damageBonusDice: 1 },
       description: "Leave any surface coated in a shiny chrome. Add 1 Extra die to the Damage pool of Steel-Type Moves."
     }),
     makeGear("held-miracle-seed", "Miracle Seed", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Grass-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Grass-type moves", damageBonusType: "grass", damageBonusDice: 1 },
       description: "A seed that is said to flourish into a tree of life. Add 1 Extra die to the Damage pool of Grass-Type Moves."
     }),
     makeGear("held-mystic-water", "Mystic Water", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Water-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Water-type moves", damageBonusType: "water", damageBonusDice: 1 },
       description: "Water that emits a mysterious glow. Add 1 Extra die to the Damage pool of Water-Type Moves."
     }),
     makeGear("held-never-melt-ice", "Never-Melt Ice", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Ice-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Ice-type moves", damageBonusType: "ice", damageBonusDice: 1 },
       description: "This magical piece of ice never melts. Add 1 Extra die to the Damage pool of Ice-Type Moves."
     }),
     makeGear("held-poison-barb", "Poison Barb", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Poison-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Poison-type moves", damageBonusType: "poison", damageBonusDice: 1 },
       description: "A toxin-infused barb to ensure complete saturation. Add 1 Extra die to the Damage pool of Poison-Type Moves."
     }),
     makeGear("held-sharp-beak", "Sharp Beak", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Flying-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Flying-type moves", damageBonusType: "flying", damageBonusDice: 1 },
       description: "A sharp metal cover to reinforce beaks. Add 1 Extra die to the Damage pool of Flying-Type Moves."
     }),
     makeGear("held-silk-scarf", "Silk Scarf", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Normal-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Normal-type moves", damageBonusType: "normal", damageBonusDice: 1 },
       description: "A basic scarf, simple, but fashionable. Add 1 Extra die to the Damage pool of Normal-Type Moves."
     }),
     makeGear("held-silver-powder", "Silver Powder", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Bug-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Bug-type moves", damageBonusType: "bug", damageBonusDice: 1 },
       description: "An itchy powder that induces allergies. Add 1 Extra die to the Damage pool of Bug-Type Moves."
     }),
     makeGear("held-soft-sand", "Soft Sand", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Ground-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Ground-type moves", damageBonusType: "ground", damageBonusDice: 1 },
       description: "Finely grounded sand, soft to the touch. Add 1 Extra die to the Damage pool of Ground-Type Moves."
     }),
     makeGear("held-spell-tag", "Spell Tag", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Ghost-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Ghost-type moves", damageBonusType: "ghost", damageBonusDice: 1 },
       description: "An old piece of paper used to seal evil spirits. Add 1 Extra die to the Damage pool of Ghost-Type Moves."
     }),
     makeGear("held-twisted-spoon", "Twisted Spoon", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Psychic-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Psychic-type moves", damageBonusType: "psychic", damageBonusDice: 1 },
       description: "A spoon used to practice one's mind prowess. Add 1 Extra die to the Damage pool of Psychic-Type Moves."
     }),
     makeGear("held-fairy-wings", "Fairy Wings", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 damage die to Fairy-type moves" },
+      held: { passiveEffect: "Add 1 damage die to Fairy-type moves", damageBonusType: "fairy", damageBonusDice: 1 },
       description: "Frolic like a fae through an enchanted forest. Add 1 Extra die to the Damage pool of Fairy-Type Moves."
     }),
 
@@ -943,28 +943,28 @@ const ITEM_SEEDS = Object.freeze({
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { compatiblePokemon: "Pikachu", passiveEffect: "Pikachu gets Strength and Special Attributes increased by 1" },
+      held: { compatiblePokemon: "Pikachu", passiveEffect: "Pikachu gets Strength and Special Attributes increased by 1", statBonuses: { strength: 1, special: 1 } },
       description: "A bright ball that harnesses electricity. Pikachu loves it and they get their Strength and Special Attributes increased by 1."
     }),
     makeGear("held-lucky-punch", "Lucky Punch", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { compatiblePokemon: "Chansey", passiveEffect: "Chansey gets High Critical Effect to all Physical Moves and Strength increased by 2" },
+      held: { compatiblePokemon: "Chansey", passiveEffect: "Chansey gets High Critical Effect to all Physical Moves and Strength increased by 2", highCritical: true, highCriticalCategory: "physical", statBonuses: { strength: 2 } },
       description: "Boxing gloves. Chansey loves them and gets the High Critical Effect to all Physical Moves and Strength increased by 2."
     }),
     makeGear("held-leek", "Leek", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { compatiblePokemon: "Farfetch'd", passiveEffect: "Farfetch'd gets High Critical Effect to all Physical and Special Moves" },
+      held: { compatiblePokemon: "Farfetch'd", passiveEffect: "Farfetch'd gets High Critical Effect to all Physical and Special Moves", highCritical: true },
       description: "A common leek. It is loved by Farfetch'd and gives the High Critical Effect to all their Physical and Special Moves."
     }),
     makeGear("held-thick-club", "Thick Club", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { compatiblePokemon: "Cubone, Marowak", passiveEffect: "Cubone & Marowak get Strength Increased by 2" },
+      held: { compatiblePokemon: "Cubone, Marowak", passiveEffect: "Cubone & Marowak get Strength Increased by 2", statBonuses: { strength: 2 } },
       description: "A strong club made with dried bone. Cubone & Marowak love it and get their Strength Increased by 2."
     }),
 

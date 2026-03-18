@@ -15,7 +15,8 @@
       "Hit": "Colpito",
       "Miss": "Mancato",
       "Confirm": "Conferma",
-      "Other": "Altro"
+      "Other": "Altro",
+      "Any": "Qualsiasi"
     },
     "Resources": {
       "HP": "PS",
@@ -582,6 +583,12 @@
         "IsMegaStone": "Mega Pietra",
         "IsZCrystal": "Cristallo Z",
         "ZMoveType": "Tipo Mossa Z",
+        "DamageAutomation": "Automazione Danno",
+        "DamageBonusType": "Tipo Bonus Danno",
+        "DamageBonusDice": "Dadi Bonus Danno",
+        "DamageBonusCategory": "Categoria Bonus Danno",
+        "HighCritical": "Critico Alto",
+        "HighCriticalCategory": "Categoria Critico Alto",
         "StatBonuses": "Bonus Statistiche"
       },
       "Evolution": {
@@ -766,6 +773,7 @@
       "FinalPool": "Pool finale",
       "DamageSuccesses": "Successi Danno",
       "CriticalBonusDice": "Dadi bonus Critico",
+      "HeldItemBonus": "Bonus Strumento",
       "FinalDamage": "Danno finale",
       "AdditionalTargets": "Bersagli aggiuntivi",
       "TargetHP": "PS Bersaglio",

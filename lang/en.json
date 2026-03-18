@@ -15,7 +15,8 @@
       "Hit": "Hit",
       "Miss": "Miss",
       "Confirm": "Confirm",
-      "Other": "Other"
+      "Other": "Other",
+      "Any": "Any"
     },
     "Resources": {
       "HP": "HP",
@@ -560,6 +561,32 @@
         "Frozen": "Frozen",
         "Paralysis": "Paralysis",
         "Confusion": "Confusion"
+      },
+      "Held": {
+        "Title": "Held Item",
+        "PassiveEffect": "Passive Effect",
+        "PassiveEffectPlaceholder": "Describe the passive effect...",
+        "CompatiblePokemon": "Compatible Pokemon",
+        "CompatiblePokemonPlaceholder": "Leave empty for any Pokemon",
+        "IsMegaStone": "Mega Stone",
+        "IsZCrystal": "Z Crystal",
+        "ZMoveType": "Z-Move Type",
+        "DamageAutomation": "Damage Automation",
+        "DamageBonusType": "Damage Bonus Type",
+        "DamageBonusDice": "Damage Bonus Dice",
+        "DamageBonusCategory": "Damage Bonus Category",
+        "HighCritical": "High Critical",
+        "HighCriticalCategory": "High Critical Category",
+        "StatBonuses": "Stat Bonuses"
+      },
+      "Evolution": {
+        "Title": "Evolution Stone",
+        "CompatiblePokemon": "Compatible Pokemon",
+        "CompatiblePokemonPlaceholder": "Leave empty for any Pokemon"
+      },
+      "Vitamin": {
+        "Title": "Vitamin",
+        "Stat": "Stat Increased"
       }
     },
     "Playable": {
@@ -734,6 +761,7 @@
       "FinalPool": "Final pool",
       "DamageSuccesses": "Damage successes",
       "CriticalBonusDice": "Critical bonus dice",
+      "HeldItemBonus": "Held Item Bonus",
       "FinalDamage": "Final damage",
       "AdditionalTargets": "Additional targets",
       "TargetHP": "Target HP",
