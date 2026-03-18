@@ -140,6 +140,13 @@ export class TrainerDataModel extends BaseCharacterDataModel {
           required: true,
           initial: () => []
         }
+      ),
+      party: new ArrayField(
+        new StringField({ required: true, blank: false }),
+        {
+          required: true,
+          initial: () => []
+        }
       )
     };
   }

@@ -310,6 +310,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         "clever",
         "allure"
       ]);
+      context.partyMembers = this._buildPartyMembers();
+      context.canAddToParty = (this.actor.system.party?.length ?? 0) < 6;
     }
     if (this.actor.type === "pokemon") {
       const pokemonGenderValue = `${this.actor.system.gender ?? "unknown"}`.trim().toLowerCase();
@@ -528,6 +530,15 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     );
     html.find("[data-action='delete-extra-skill']").on("click", (event) =>
       this._onDeleteExtraSkill(event)
+    );
+    html.find("[data-action='add-party-member']").on("click", (event) =>
+      this._onAddPartyMember(event)
+    );
+    html.find("[data-action='remove-party-member']").on("click", (event) =>
+      this._onRemovePartyMember(event)
+    );
+    html.find("[data-action='open-party-member']").on("click", (event) =>
+      this._onOpenPartyMember(event)
     );
 
     html.find("[data-action='create-move']").on("click", (event) =>
@@ -1696,8 +1707,101 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     html.find(`.trainer-view-panel[data-tab='${tab}']`).addClass("is-active");
   }
 
+  _buildPartyMembers() {
+    const partyIds = this.actor.system.party ?? [];
+    const members = [];
+    for (const actorId of partyIds) {
+      const pokemon = game.actors.get(actorId);
+      if (!pokemon || pokemon.type !== "pokemon") continue;
+      const primaryType = pokemon.system.types?.primary ?? "normal";
+      const secondaryType = pokemon.system.types?.secondary ?? "none";
+      members.push({
+        id: pokemon.id,
+        name: pokemon.name,
+        img: pokemon.img,
+        species: pokemon.system.species ?? "",
+        hp: pokemon.system.resources?.hp?.value ?? 0,
+        hpMax: pokemon.system.resources?.hp?.max ?? 0,
+        will: pokemon.system.resources?.will?.value ?? 0,
+        willMax: pokemon.system.resources?.will?.max ?? 0,
+        primaryTypeIcon: primaryType !== "none" ? getMoveTypeIcon(primaryType) : null,
+        primaryTypeLabel: primaryType !== "none" ? game.i18n.localize(MOVE_TYPE_LABEL_BY_KEY[primaryType] ?? "") : "",
+        secondaryTypeIcon: secondaryType !== "none" ? getMoveTypeIcon(secondaryType) : null,
+        secondaryTypeLabel: secondaryType !== "none" ? game.i18n.localize(MOVE_TYPE_LABEL_BY_KEY[secondaryType] ?? "") : ""
+      });
+    }
+    return members;
+  }
+
+  async _onAddPartyMember(event) {
+    event.preventDefault();
+    if (this.actor.type !== "trainer") return;
+    const currentParty = this.actor.system.party ?? [];
+    if (currentParty.length >= 6) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Trainer.PartyFull"));
+      return;
+    }
+    const ownedPokemon = game.actors.filter(
+      (a) => a.type === "pokemon" && a.isOwner && !currentParty.includes(a.id)
+    );
+    if (!ownedPokemon.length) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Trainer.PartyNoAvailable"));
+      return;
+    }
+    const options = ownedPokemon.map(
+      (p) => `<option value="${p.id}">${p.name}${p.system.species ? ` (${p.system.species})` : ""}</option>`
+    ).join("");
+    const content = `
+      <form>
+        <div class="form-group">
+          <label>${game.i18n.localize("POKROLE.Trainer.PartySelect")}</label>
+          <select name="pokemonId">${options}</select>
+        </div>
+      </form>
+    `;
+    const result = await foundry.applications.api.DialogV2.wait({
+      window: { title: game.i18n.localize("POKROLE.Trainer.PartyAdd") },
+      content,
+      buttons: [
+        {
+          action: "add",
+          label: game.i18n.localize("POKROLE.Trainer.PartyAdd"),
+          icon: "fas fa-plus",
+          callback: (event, button) => {
+            return button.form.elements.pokemonId?.value ?? null;
+          }
+        },
+        {
+          action: "cancel",
+          label: game.i18n.localize("POKROLE.Common.Cancel")
+        }
+      ]
+    });
+    if (!result) return;
+    const newParty = [...currentParty, result];
+    await this.actor.update({ "system.party": newParty });
+  }
+
+  async _onRemovePartyMember(event) {
+    event.preventDefault();
+    if (this.actor.type !== "trainer") return;
+    const actorId = event.currentTarget.dataset.actorId;
+    if (!actorId) return;
+    const currentParty = this.actor.system.party ?? [];
+    const newParty = currentParty.filter((id) => id !== actorId);
+    await this.actor.update({ "system.party": newParty });
+  }
+
+  _onOpenPartyMember(event) {
+    event.preventDefault();
+    const actorId = event.currentTarget.dataset.actorId;
+    if (!actorId) return;
+    const pokemon = game.actors.get(actorId);
+    if (pokemon) pokemon.sheet.render(true);
+  }
+
   _normalizeTrainerView(tabName) {
-    if (tabName === "inventory" || tabName === "effects" || tabName === "bio") return tabName;
+    if (tabName === "inventory" || tabName === "effects" || tabName === "bio" || tabName === "party") return tabName;
     return "main";
   }
 

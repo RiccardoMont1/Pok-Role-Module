@@ -64,6 +64,12 @@
       "InventoryPlaceholder": "Pokeballs, ropes, maps, key items...",
       "Achievements": "Achievements",
       "AchievementsPlaceholder": "Medals, catches and milestones...",
+      "PartyTab": "Current Party",
+      "PartyAdd": "Add Pokemon",
+      "PartySelect": "Select a Pokemon",
+      "PartyEmpty": "No Pokemon in the party. Add one to get started.",
+      "PartyFull": "Party is full (maximum 6 Pokemon).",
+      "PartyNoAvailable": "No available Pokemon to add.",
       "ActiveEffects": "Conditions / Active Effects",
       "ActiveEffectsPlaceholder": "Conditions, buffs, debuffs, persistent effects..."
     },

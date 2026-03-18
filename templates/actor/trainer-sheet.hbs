@@ -38,6 +38,17 @@
         type="button"
         class="trainer-view-button"
         data-action="switch-trainer-tab"
+        data-tab="party"
+        title="{{localize 'POKROLE.Trainer.PartyTab'}}"
+        aria-label="{{localize 'POKROLE.Trainer.PartyTab'}}"
+      >
+        <i class="fas fa-users"></i>
+        <span class="trainer-view-label">{{localize "POKROLE.Trainer.PartyTab"}}</span>
+      </button>
+      <button
+        type="button"
+        class="trainer-view-button"
+        data-action="switch-trainer-tab"
         data-tab="bio"
         title="{{localize 'POKROLE.Trainer.BioTab'}}"
         aria-label="{{localize 'POKROLE.Trainer.BioTab'}}"
@@ -844,6 +855,55 @@
         </div>
       </section>
     </div>
+  </section>
+      </div>
+
+      <div class="trainer-view-panel" data-tab="party">
+  <section class="sheet-section trainer-party-panel">
+    <div class="section-title-row">
+      <h2>{{localize "POKROLE.Trainer.PartyTab"}}</h2>
+      <small class="party-count">{{partyMembers.length}} / 6</small>
+      {{#if canAddToParty}}
+      <button type="button" data-action="add-party-member">
+        <i class="fas fa-plus"></i>
+        {{localize "POKROLE.Trainer.PartyAdd"}}
+      </button>
+      {{/if}}
+    </div>
+
+    {{#if partyMembers.length}}
+    <div class="trainer-party-grid">
+      {{#each partyMembers as |pokemon|}}
+      <article class="party-card" data-actor-id="{{pokemon.id}}">
+        <div class="party-card-portrait">
+          <img src="{{pokemon.img}}" title="{{pokemon.name}}" />
+        </div>
+        <div class="party-card-info">
+          <strong class="party-card-name">{{pokemon.name}}</strong>
+          <small class="party-card-species">{{pokemon.species}}</small>
+          <div class="party-card-types">
+            {{#if pokemon.primaryTypeIcon}}<img class="party-type-icon" src="{{pokemon.primaryTypeIcon}}" title="{{pokemon.primaryTypeLabel}}" />{{/if}}
+            {{#if pokemon.secondaryTypeIcon}}<img class="party-type-icon" src="{{pokemon.secondaryTypeIcon}}" title="{{pokemon.secondaryTypeLabel}}" />{{/if}}
+          </div>
+          <div class="party-card-vitals">
+            <span class="party-hp">{{localize "POKROLE.Resources.HP"}}: {{pokemon.hp}} / {{pokemon.hpMax}}</span>
+            <span class="party-will">{{localize "POKROLE.Resources.Will"}}: {{pokemon.will}} / {{pokemon.willMax}}</span>
+          </div>
+        </div>
+        <div class="party-card-actions">
+          <button type="button" class="icon-button" data-action="open-party-member" data-actor-id="{{pokemon.id}}" title="{{localize 'POKROLE.Actions.Edit'}}">
+            <i class="fas fa-external-link-alt"></i>
+          </button>
+          <button type="button" class="icon-button danger" data-action="remove-party-member" data-actor-id="{{pokemon.id}}" title="{{localize 'POKROLE.Actions.Delete'}}">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </article>
+      {{/each}}
+    </div>
+    {{else}}
+    <p class="empty-state">{{localize "POKROLE.Trainer.PartyEmpty"}}</p>
+    {{/if}}
   </section>
       </div>
 

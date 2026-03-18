@@ -1620,6 +1620,126 @@
   color: #ffffff;
 }
 
+.trainer-sheet .trainer-party-panel {
+  padding: 10px;
+}
+
+.trainer-sheet .trainer-party-panel .section-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.trainer-sheet .trainer-party-panel .section-title-row h2 {
+  margin: 0;
+  border-bottom: none;
+  color: #ffffff;
+  flex: 0 0 auto;
+}
+
+.trainer-sheet .trainer-party-panel .party-count {
+  color: #9aa3b8;
+  font-size: 0.85rem;
+  flex: 1 1 auto;
+}
+
+.trainer-sheet .trainer-party-panel .section-title-row button {
+  background: #2d3340;
+  border: 1px solid #5b6479;
+  color: #f2f5fd;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 0.78rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.trainer-sheet .trainer-party-panel .section-title-row button:hover {
+  background: #3a4255;
+}
+
+.trainer-sheet .trainer-party-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+}
+
+.trainer-sheet .party-card {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  background: #2a3244;
+  border: 1px solid #3e4a60;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.trainer-sheet .party-card-portrait {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #4a5572;
+}
+
+.trainer-sheet .party-card-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trainer-sheet .party-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.trainer-sheet .party-card-name {
+  color: #f2f5fd;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trainer-sheet .party-card-species {
+  color: #9aa3b8;
+  font-size: 0.75rem;
+}
+
+.trainer-sheet .party-card-types {
+  display: flex;
+  gap: 4px;
+}
+
+.trainer-sheet .party-type-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.trainer-sheet .party-card-vitals {
+  display: flex;
+  gap: 10px;
+  font-size: 0.72rem;
+}
+
+.trainer-sheet .party-hp {
+  color: #6dcf7c;
+}
+
+.trainer-sheet .party-will {
+  color: #6bb5e0;
+}
+
+.trainer-sheet .party-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .trainer-sheet .trainer-inventory-panel .section-title-row {
   align-items: center;
   margin-bottom: 10px;
