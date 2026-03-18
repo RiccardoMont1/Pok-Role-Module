@@ -405,6 +405,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       context.currentTrainerName = currentTrainerActor?.name ?? "";
       context.isGM = game.user.isGM;
     }
+    if (this.actor.type === "pokemon") {
+      await this._syncLearnsetMovesToItems();
+    }
     const moves = this.actor.items
       .filter((item) => item.type === "move")
       .sort((a, b) => a.sort - b.sort)
@@ -857,6 +860,39 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     }
 
     await move.update({ "system.isUsable": nextValue });
+  }
+
+  async _syncLearnsetMovesToItems() {
+    if (this.actor.type !== "pokemon" || !this.isEditable) return;
+    const currentTier = this.actor.system.tier ?? "starter";
+    const tierIndex = POKEMON_TIER_KEYS.indexOf(currentTier);
+    if (tierIndex < 0) return;
+
+    const ranksUpToCurrent = POKEMON_TIER_KEYS.slice(0, tierIndex + 1);
+    const moveNamesToAdd = [];
+    for (const rank of ranksUpToCurrent) {
+      const raw = `${this.actor.system.learnsetByRank?.[rank] ?? ""}`;
+      const names = raw.split(",").map((s) => s.trim()).filter(Boolean);
+      moveNamesToAdd.push(...names);
+    }
+
+    const existingNames = new Set(
+      this.actor.items.filter((i) => i.type === "move").map((i) => i.name)
+    );
+    const newMoves = [];
+    const seen = new Set();
+    for (const name of moveNamesToAdd) {
+      if (existingNames.has(name) || seen.has(name)) continue;
+      seen.add(name);
+      newMoves.push({
+        name,
+        type: "move",
+        system: { isUsable: false }
+      });
+    }
+    if (newMoves.length > 0) {
+      await this.actor.createEmbeddedDocuments("Item", newMoves);
+    }
   }
 
   _onToggleLearnsetPanel(event, html) {
