@@ -219,6 +219,7 @@ const CONFUSION_BYPASS_FLAG_KEY = "combat.confusionBypassRound";
 const INFATUATION_BYPASS_FLAG_KEY = "combat.infatuationBypassRound";
 const FROZEN_SHELL_FLAG_KEY = "combat.frozenShell";
 const LAST_USED_MOVE_FLAG_KEY = "combat.lastUsedMove";
+const CHOICE_LOCKED_MOVE_FLAG = "combat.choiceLockedMove";
 const SPECIAL_WEATHER_KEYS = Object.freeze(["harsh-sunlight", "typhoon", "strong-winds"]);
 const BASIC_WEATHER_KEYS = Object.freeze(["sunny", "rain", "sandstorm", "hail"]);
 const FROZEN_SHELL_DEFAULTS = Object.freeze({
@@ -2145,6 +2146,20 @@ export class PokRoleActor extends Actor {
       );
       return null;
     }
+    // Choice Band / Choice Specs / Choice Scarf: lock to one move
+    const choiceHeldData = this._getHeldItemData();
+    if (choiceHeldData?.choiceType) {
+      const lockedMoveId = this.getFlag(POKROLE.ID, CHOICE_LOCKED_MOVE_FLAG) ?? null;
+      if (lockedMoveId && lockedMoveId !== move.id) {
+        const lockedMove = this.items.get(lockedMoveId);
+        const lockedMoveName = lockedMove?.name ?? "a locked move";
+        ui.notifications.warn(`${this.name} is locked to ${lockedMoveName} by its Choice item!`);
+        return null;
+      }
+      if (!lockedMoveId) {
+        await this.setFlag(POKROLE.ID, CHOICE_LOCKED_MOVE_FLAG, move.id);
+      }
+    }
     const isShieldMove = Boolean(move.system?.shieldMove);
     if (isShieldMove && roundKey) {
       const shieldState = this.getFlag(POKROLE.ID, SHIELD_STREAK_FLAG_KEY) ?? {};
@@ -2458,6 +2473,30 @@ export class PokRoleActor extends Actor {
     });
 
     await this._recordLastUsedMove(move);
+
+    // Throat Spray: +1 special after using a sound-based move
+    const postMoveHeldData = this._getHeldItemData();
+    if (postMoveHeldData?.throatSpray && hit) {
+      const SOUND_KEYWORDS = ["sound", "cry", "voice", "sing", "roar", "screech", "growl", "howl",
+        "chatter", "echo", "hyper voice", "boomburst", "uproar", "snore", "round", "relic song",
+        "snarl", "disarming voice", "bug buzz", "grass whistle", "metal sound", "perish song",
+        "noble roar", "parting shot", "sparkling aria", "clangorous", "overdrive", "eerie spell"];
+      const moveDesc = `${move.system?.description ?? ""}`.toLowerCase();
+      const moveName = `${move.name ?? ""}`.toLowerCase();
+      const isSoundMove = SOUND_KEYWORDS.some((kw) => moveDesc.includes(kw) || moveName.includes(kw));
+      if (isSoundMove) {
+        await this._applyStatEffectToActor(
+          { stat: "special", amount: 1, effectType: "stat", durationMode: "combat", durationRounds: 0, specialDuration: [] },
+          this,
+          move
+        );
+        await this.update({ "system.battleItem": "" });
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this }),
+          content: `<strong>${this.name}'s</strong> Throat Spray activated! Special increased by 1.`
+        });
+      }
+    }
 
     const result = {
       accuracyRoll,
@@ -2804,6 +2843,69 @@ export class PokRoleActor extends Actor {
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: targetActor }),
         content: `<strong>${targetActor.name}'s</strong> Rocky Helmet dealt 1 damage to <strong>${this.name}</strong>!`
+      });
+    }
+
+    // Sticky Barb: transfer to attacker on non-ranged physical contact
+    if (targetHeldData?.stickyBarb && finalDamage > 0 && !this._isMoveRanged(move) && category === "physical") {
+      const targetBattleItemId = targetActor.system.battleItem || "";
+      if (targetBattleItemId) {
+        await targetActor.update({ "system.battleItem": "" });
+        await this.update({ "system.battleItem": targetBattleItemId });
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+          content: `<strong>${targetActor.name}'s</strong> Sticky Barb transferred to <strong>${this.name}</strong>!`
+        });
+      }
+    }
+
+    // King's Rock: chance to flinch on any damaging hit
+    if (attackerHeldData?.flinchOnHit && finalDamage > 0 && targetActor) {
+      const flinchRoll = await new Roll("1d6").evaluate({ async: true });
+      const flinchResult = toNumber(flinchRoll.total, 0);
+      if (flinchResult >= 6) {
+        await targetActor.toggleQuickCondition("flinch", { active: true });
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this }),
+          content: `<strong>${this.name}'s</strong> King's Rock caused <strong>${targetActor.name}</strong> to flinch! (rolled ${flinchResult})`
+        });
+      }
+    }
+
+    // Weakness Policy: +1 strength and +1 special after taking super-effective damage
+    if (targetHeldData?.weaknessPolicy && finalDamage > 0 && typeInteraction.weaknessBonus > 0 && targetActor) {
+      await this._applyStatEffectToActor(
+        { stat: "strength", amount: 1, effectType: "stat", durationMode: "combat", durationRounds: 0, specialDuration: [] },
+        targetActor,
+        move
+      );
+      await this._applyStatEffectToActor(
+        { stat: "special", amount: 1, effectType: "stat", durationMode: "combat", durationRounds: 0, specialDuration: [] },
+        targetActor,
+        move
+      );
+      await targetActor.update({ "system.battleItem": "" });
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+        content: `<strong>${targetActor.name}'s</strong> Weakness Policy activated! Strength and Special increased by 1.`
+      });
+    }
+
+    // Eject Button: notify trainer to switch after taking damage
+    if (targetHeldData?.ejectButton && finalDamage > 0 && targetActor) {
+      await targetActor.update({ "system.battleItem": "" });
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+        content: `<strong>${targetActor.name}'s</strong> Eject Button activated! The trainer should switch ${targetActor.name} out.`
+      });
+    }
+
+    // Red Card: notify that attacker should be switched after damage
+    if (targetHeldData?.redCard && finalDamage > 0 && targetActor) {
+      await targetActor.update({ "system.battleItem": "" });
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+        content: `<strong>${targetActor.name}'s</strong> Red Card activated! <strong>${this.name}</strong> should be switched out by its trainer.`
       });
     }
 
@@ -3797,7 +3899,9 @@ export class PokRoleActor extends Actor {
         move,
         activeWeather
       );
-      const chanceDice = Math.max(baseChanceDice + weatherChanceBonusDice, 0);
+      // Loaded Dice: +2 chance dice for secondary effects
+      const loadedDiceBonus = this._getHeldItemData()?.loadedDice ? 2 : 0;
+      const chanceDice = Math.max(baseChanceDice + weatherChanceBonusDice + loadedDiceBonus, 0);
       let chanceRollResults = [];
       let chanceSucceeded = true;
       if (chanceDice > 0 && baseChanceDice > 0) {
@@ -4728,6 +4832,17 @@ export class PokRoleActor extends Actor {
     if (conditionKey === "paralyzed" && typeof targetActor._clearParalysisTurnCheck === "function") {
       await targetActor._clearParalysisTurnCheck();
     }
+    // Destiny Knot: if infatuation was applied and target has Destiny Knot, mirror infatuation back to attacker
+    if (conditionKey === "infatuated" && targetActor?._getHeldItemData?.()?.destinyKnot) {
+      const sourceActor = options?.sourceActor ?? this;
+      if (sourceActor && sourceActor !== targetActor && !sourceActor._isConditionActive?.("infatuated")) {
+        await sourceActor.toggleQuickCondition("infatuated", { active: true });
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+          content: `<strong>${targetActor.name}'s</strong> Destiny Knot infatuated <strong>${sourceActor.name}</strong> in return!`
+        });
+      }
+    }
     const conditionLabel =
       conditionKey === "burn"
         ? this._localizeBurnStageName(burnStage)
@@ -4831,6 +4946,15 @@ export class PokRoleActor extends Actor {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
     }
 
+    // Clear Amulet: immune to stat reduction from enemies
+    if (amount < 0 && targetActor !== this && targetActor?._getHeldItemData?.()?.immuneToStatReduction) {
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+        content: `<strong>${targetActor.name}'s</strong> Clear Amulet prevented a stat reduction!`
+      });
+      return { applied: false, detail: `${targetActor.name}'s Clear Amulet blocked the stat reduction.` };
+    }
+
     const statKey = this._normalizeSecondaryStatKey(effect.stat);
     if (statKey === "none") {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.Unknown") };
@@ -4848,6 +4972,7 @@ export class PokRoleActor extends Actor {
     if (statKey === "defense") resolvedKey = "vitality";
     if (statKey === "specialDefense") resolvedKey = "insight";
 
+    let statResult = null;
     if (Object.prototype.hasOwnProperty.call(targetActor.system.attributes ?? {}, resolvedKey)) {
       const isCoreAttribute = ["strength", "dexterity", "vitality", "special", "insight"].includes(
         resolvedKey
@@ -4855,7 +4980,7 @@ export class PokRoleActor extends Actor {
       const configuredMax = this._resolveAttributeMaximum(targetActor, resolvedKey);
       const maxValue = isCoreAttribute ? Math.min(configuredMax, 10) : configuredMax;
       const minValue = isCoreAttribute ? 1 : 0;
-      return this._applyTemporaryTrackedModifier({
+      statResult = await this._applyTemporaryTrackedModifier({
         targetActor,
         path: `system.attributes.${resolvedKey}`,
         amount,
@@ -4868,10 +4993,8 @@ export class PokRoleActor extends Actor {
         durationRounds: effect.durationRounds,
         specialDuration: effect.specialDuration
       });
-    }
-
-    if (Object.prototype.hasOwnProperty.call(targetActor.system.skills ?? {}, resolvedKey)) {
-      return this._applyTemporaryTrackedModifier({
+    } else if (Object.prototype.hasOwnProperty.call(targetActor.system.skills ?? {}, resolvedKey)) {
+      statResult = await this._applyTemporaryTrackedModifier({
         targetActor,
         path: `system.skills.${resolvedKey}`,
         amount,
@@ -4885,6 +5008,30 @@ export class PokRoleActor extends Actor {
         specialDuration: effect.specialDuration
       });
     }
+
+    // White Herb: restore all negative stat modifiers after a stat reduction is applied
+    if (statResult?.applied && amount < 0 && targetActor?._getHeldItemData?.()?.whiteHerb) {
+      const negativeEffects = this._getManagedModifierEffectsForPath(targetActor, `system.attributes.${resolvedKey}`)
+        .concat(this._getManagedModifierEffectsForPath(targetActor, `system.skills.${resolvedKey}`))
+        .filter((effectDocument) => {
+          const flags = effectDocument.getFlag(POKROLE.ID, "automation") ?? {};
+          return Math.floor(toNumber(flags?.amountApplied, 0)) < 0;
+        });
+      if (negativeEffects.length > 0) {
+        const effectIds = negativeEffects.map((e) => e.id).filter(Boolean);
+        if (effectIds.length > 0) {
+          await targetActor.deleteEmbeddedDocuments("ActiveEffect", effectIds);
+        }
+        await targetActor.update({ "system.battleItem": "" });
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+          content: `<strong>${targetActor.name}'s</strong> White Herb restored its lowered stats!`
+        });
+      }
+      return statResult;
+    }
+
+    if (statResult) return statResult;
 
     return { applied: false, detail: game.i18n.localize("POKROLE.Common.Unknown") };
   }
@@ -5946,29 +6093,94 @@ export class PokRoleActor extends Actor {
     const weatherKey = this._normalizeWeatherKey(options.weatherKey ?? this.getActiveWeatherKey());
     const statusDamage = await this._applyRoundEndStatusDamage();
     const weatherDamage = await this._applyRoundEndWeatherDamage(weatherKey);
-    if (statusDamage.totalDamage <= 0 && weatherDamage.totalDamage <= 0) {
+    const heldItemResult = await this._applyRoundEndHeldItemEffects();
+    const hasAnyEffect = statusDamage.totalDamage > 0 || weatherDamage.totalDamage > 0 || heldItemResult.label;
+    if (!hasAnyEffect) {
       return { totalDamage: 0, statusDamage, weatherDamage };
     }
 
-    await ChatMessage.create({
-      speaker: ChatMessage.getSpeaker({ actor: this }),
-      content: `
-        <div class="pok-role-chat-card arcade-red">
-          <header class="chat-card-header">
-            <h3>${game.i18n.localize("POKROLE.Chat.RoundEndAutomation")}</h3>
-          </header>
-          <section class="chat-card-section">
-            <p><strong>${this.name}</strong></p>
-            <p>${statusDamage.label}</p>
-            <p>${weatherDamage.label}</p>
-          </section>
-        </div>
-      `
-    });
+    const sections = [statusDamage.label, weatherDamage.label, heldItemResult.label]
+      .filter((label) => label && label !== game.i18n.localize("POKROLE.Common.None"))
+      .map((label) => `<p>${label}</p>`)
+      .join("");
+    if (sections) {
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        content: `
+          <div class="pok-role-chat-card arcade-red">
+            <header class="chat-card-header">
+              <h3>${game.i18n.localize("POKROLE.Chat.RoundEndAutomation")}</h3>
+            </header>
+            <section class="chat-card-section">
+              <p><strong>${this.name}</strong></p>
+              ${sections}
+            </section>
+          </div>
+        `
+      });
+    }
     return {
-      totalDamage: statusDamage.totalDamage + weatherDamage.totalDamage,
+      totalDamage: statusDamage.totalDamage + weatherDamage.totalDamage + (heldItemResult.totalDamage ?? 0),
       statusDamage,
       weatherDamage
+    };
+  }
+
+  async _applyRoundEndHeldItemEffects() {
+    const held = this._getHeldItemData();
+    if (!held) return { label: "", totalDamage: 0 };
+    const parts = [];
+    let totalDamage = 0;
+
+    // Leftovers: heal HP at end of round (limited uses)
+    if (held.endOfRoundHeal > 0) {
+      const flagKey = "combat.leftoversUses";
+      const currentUses = toNumber(this.getFlag(POKROLE.ID, flagKey), 0);
+      const maxUses = toNumber(held.endOfRoundMaxUses, 3);
+      if (currentUses < maxUses) {
+        const hpValue = Math.max(toNumber(this.system?.resources?.hp?.value, 0), 0);
+        const hpMax = Math.max(toNumber(this.system?.resources?.hp?.max, 1), 1);
+        if (hpValue < hpMax) {
+          const healAmount = Math.min(held.endOfRoundHeal, hpMax - hpValue);
+          await this.update({ "system.resources.hp.value": hpValue + healAmount });
+          await this.setFlag(POKROLE.ID, flagKey, currentUses + 1);
+          parts.push(`Leftovers healed ${healAmount} HP (use ${currentUses + 1}/${maxUses})`);
+        }
+        if (currentUses + 1 >= maxUses) {
+          await this.update({ "system.battleItem": "" });
+          parts.push("Leftovers consumed!");
+        }
+      }
+    }
+
+    // Sticky Barb: deal damage to self at end of round
+    if (held.stickyBarb && held.endOfRoundDamage > 0) {
+      const damage = held.endOfRoundDamage;
+      await this._safeApplyDamage(this, damage, { applyDeadOnZero: false });
+      totalDamage += damage;
+      parts.push(`Sticky Barb dealt ${damage} damage`);
+    }
+
+    // Flame Orb / Toxic Orb: apply status on first round
+    if (held.onEnterBattleStatus) {
+      const flagKey = "combat.orbStatusApplied";
+      const alreadyApplied = this.getFlag(POKROLE.ID, flagKey);
+      if (!alreadyApplied) {
+        await this.setFlag(POKROLE.ID, flagKey, true);
+        const statusToApply = held.onEnterBattleStatus.toLowerCase().trim();
+        if (statusToApply === "burn" && !this._isConditionActive("burn")) {
+          await this.toggleQuickCondition("burn", { active: true });
+          parts.push("Flame Orb inflicted burn!");
+        } else if (statusToApply === "poison" && !this._isConditionActive("poisoned")) {
+          await this.toggleQuickCondition("poisoned", { active: true });
+          parts.push("Toxic Orb inflicted poison!");
+        }
+      }
+    }
+
+    return {
+      label: parts.length > 0 ? parts.join(" | ") : "",
+      totalDamage
     };
   }
 
@@ -6006,6 +6218,13 @@ export class PokRoleActor extends Actor {
     const localizedWeather = this._localizeWeatherName(weather);
     if (weather === "none") {
       return { totalDamage: 0, label: game.i18n.localize("POKROLE.Common.None") };
+    }
+    // Umbrella: immune to weather damage
+    if (this._getHeldItemData()?.immuneToWeather) {
+      return {
+        totalDamage: 0,
+        label: game.i18n.format("POKROLE.Chat.WeatherNoDamage", { weather: localizedWeather })
+      };
     }
     const isPokemon = this.type === "pokemon";
     let damage = 0;
@@ -7971,7 +8190,17 @@ export class PokRoleActor extends Actor {
       targetActor?.system?.types?.primary,
       targetActor?.system?.types?.secondary
     ].filter((typeKey) => typeKey && typeKey !== "none");
-    return this._evaluateTypeInteractionAgainstTypes(moveType, defenderTypes);
+    const interaction = this._evaluateTypeInteractionAgainstTypes(moveType, defenderTypes);
+    // Ring Target: remove type immunities from the defender
+    if (interaction.immune && targetActor?._getHeldItemData?.()?.removeTypeImmunities) {
+      interaction.immune = false;
+      interaction.label = interaction.weaknessBonus > interaction.resistancePenalty
+        ? "POKROLE.Chat.TypeEffect.Super"
+        : interaction.resistancePenalty > interaction.weaknessBonus
+          ? "POKROLE.Chat.TypeEffect.Resisted"
+          : "POKROLE.Chat.TypeEffect.Neutral";
+    }
+    return interaction;
   }
 
   _getTargetDefense(targetActor, category) {
@@ -8099,9 +8328,10 @@ export class PokRoleActor extends Actor {
   }
 
   _resolveMovePower(move, targetActor = null, actionNumber = 1) {
+    let basePower;
     const powerFormula = `${move?.system?.powerFormula ?? ""}`.trim();
     if (powerFormula) {
-      return Math.max(
+      basePower = Math.max(
         Math.floor(
           evaluateNumericFormula(
             powerFormula,
@@ -8111,8 +8341,20 @@ export class PokRoleActor extends Actor {
         ),
         0
       );
+    } else {
+      basePower = Math.max(toNumber(move?.system?.power, 0), 0);
     }
-    return Math.max(toNumber(move?.system?.power, 0), 0);
+    // Choice Band / Choice Specs / Choice Scarf: power bonus/penalty
+    const choiceHeld = this._getHeldItemData();
+    if (choiceHeld?.choiceType) {
+      const lockedMoveId = this.getFlag(POKROLE.ID, CHOICE_LOCKED_MOVE_FLAG) ?? null;
+      if (lockedMoveId === move?.id) {
+        basePower += toNumber(choiceHeld.choicePowerBonus, 3);
+      } else if (lockedMoveId) {
+        basePower = Math.max(basePower + toNumber(choiceHeld.choicePowerPenalty, -3), 0);
+      }
+    }
+    return basePower;
   }
 
   _resolveMoveDamageBase(move, targetActor = null, actionNumber = 1) {
