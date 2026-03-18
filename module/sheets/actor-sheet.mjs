@@ -879,16 +879,36 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const existingNames = new Set(
       this.actor.items.filter((i) => i.type === "move").map((i) => i.name)
     );
-    const newMoves = [];
+    const COMMON_MOVE_NAMES = new Set([
+      "Struggle (Physical)", "Struggle (Special)", "Grapple",
+      "Help Another", "Cover An Ally", "Run Away",
+      "Ambush", "Clash", "Evasion", "Stabilize An Ally"
+    ]);
+    const namesToCreate = [];
     const seen = new Set();
     for (const name of moveNamesToAdd) {
-      if (existingNames.has(name) || seen.has(name)) continue;
+      if (existingNames.has(name) || seen.has(name) || COMMON_MOVE_NAMES.has(name)) continue;
       seen.add(name);
-      newMoves.push({
-        name,
-        type: "move",
-        system: { isUsable: false }
-      });
+      namesToCreate.push(name);
+    }
+    if (namesToCreate.length === 0) return;
+
+    // Look up moves from the Moves compendium
+    const pack = game.packs.get("pok-role-system.moves");
+    if (!pack) return;
+    const index = await pack.getIndex({ fields: ["name"] });
+    const newMoves = [];
+    for (const name of namesToCreate) {
+      const entry = index.find((e) => e.name === name);
+      if (entry) {
+        const doc = await pack.getDocument(entry._id);
+        if (doc) {
+          const moveData = doc.toObject();
+          moveData.system.isUsable = false;
+          delete moveData._id;
+          newMoves.push(moveData);
+        }
+      }
     }
     if (newMoves.length > 0) {
       await this.actor.createEmbeddedDocuments("Item", newMoves);
