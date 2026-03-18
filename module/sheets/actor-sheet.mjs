@@ -1827,6 +1827,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       const field = dropTarget.dataset.field;
       if (!field) return;
       await this.actor.update({ [field]: actor.id });
+      if (field === "system.currentTrainer") {
+        await this._syncOwnershipFromTrainer(actor);
+      }
       return;
     }
     return super._onDrop(event);
@@ -1838,6 +1841,24 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const field = event.currentTarget.dataset.field;
     if (!field) return;
     await this.actor.update({ [field]: "" });
+  }
+
+  async _syncOwnershipFromTrainer(trainerActor) {
+    const trainerOwnership = trainerActor.ownership ?? {};
+    const pokemonOwnership = foundry.utils.deepClone(this.actor.ownership ?? {});
+    let changed = false;
+    for (const [userId, level] of Object.entries(trainerOwnership)) {
+      if (userId === "default") continue;
+      if (level === CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) {
+        if (pokemonOwnership[userId] !== CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) {
+          pokemonOwnership[userId] = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
+          changed = true;
+        }
+      }
+    }
+    if (changed) {
+      await this.actor.update({ ownership: pokemonOwnership });
+    }
   }
 
   _normalizeTrainerView(tabName) {
