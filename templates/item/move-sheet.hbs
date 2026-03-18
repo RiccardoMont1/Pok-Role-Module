@@ -167,6 +167,14 @@
             <label class="checkbox-row">
               <input
                 type="checkbox"
+                name="system.isRanged"
+                {{checked system.isRanged}}
+              />
+              <span>{{localize "POKROLE.Move.IsRanged"}}</span>
+            </label>
+            <label class="checkbox-row">
+              <input
+                type="checkbox"
                 name="system.isUsable"
                 {{checked system.isUsable}}
               />

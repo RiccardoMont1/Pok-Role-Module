@@ -371,7 +371,8 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
         context.moveHasDamageBaseFormula ? "POKROLE.Move.DamageBaseFormula" : null,
         context.system?.highCritical ? "POKROLE.Move.HighCritical" : null,
         context.system?.neverFail ? "POKROLE.Move.NeverFail" : null,
-        context.system?.shieldMove ? "POKROLE.Move.ShieldMove" : null
+        context.system?.shieldMove ? "POKROLE.Move.ShieldMove" : null,
+        (context.system?.isRanged || context.system?.category === "special") ? "POKROLE.Move.IsRanged" : null
       ].filter((entry) => entry)
     };
     return context;

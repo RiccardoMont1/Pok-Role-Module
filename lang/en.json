@@ -374,6 +374,7 @@
       "NeverFail": "Never Fail",
       "Lethal": "Lethal",
       "ShieldMove": "Shield Move",
+      "IsRanged": "Ranged",
       "IsUsable": "Show as usable move",
       "SupportNoDamage": "Support (no direct damage)",
       "Secondary": {

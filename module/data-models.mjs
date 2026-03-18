@@ -319,6 +319,7 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
       neverFail: new BooleanField({ required: true, initial: false }),
       lethal: new BooleanField({ required: true, initial: false }),
       shieldMove: new BooleanField({ required: true, initial: false }),
+      isRanged: new BooleanField({ required: true, initial: false }),
       isUsable: new BooleanField({ required: true, initial: true }),
       secondaryEffects: new ArrayField(
         new SchemaField({

@@ -374,6 +374,7 @@
       "NeverFail": "Non Fallisce",
       "Lethal": "Letale",
       "ShieldMove": "Mossa Scudo",
+      "IsRanged": "A Distanza",
       "IsUsable": "Mostra come mossa utilizzabile",
       "SupportNoDamage": "Supporto (nessun danno diretto)",
       "Secondary": {

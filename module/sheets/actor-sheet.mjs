@@ -1451,6 +1451,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const flags = [];
     if (move.system.highCritical) flags.push(game.i18n.localize("POKROLE.Move.HighCritical"));
     if (move.system.neverFail) flags.push(game.i18n.localize("POKROLE.Move.NeverFail"));
+    const isRanged = move.system.isRanged || category === "special";
+    if (isRanged) flags.push(game.i18n.localize("POKROLE.Move.IsRanged"));
     const priority = Number(move.system.priority ?? 0);
     if (priority !== 0) {
       flags.push(
@@ -1478,6 +1480,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       name: move.name,
       img: getMoveTypeIcon(moveType),
       isUsable,
+      isRanged,
       actionTag,
       actionTagShort: actionTag,
       actionTagLabel,
