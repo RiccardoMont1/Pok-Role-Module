@@ -440,10 +440,7 @@ export class GearDataModel extends foundry.abstract.TypeDataModel {
           "revive",
           "drink",
           "pokeball",
-          "battle",
           "travel",
-          "protective",
-          "care",
           "vitamin",
           "grooming",
           "evolution",
@@ -524,6 +521,15 @@ export class GearDataModel extends foundry.abstract.TypeDataModel {
           def: integerField(0, { min: -10, max: 10 }),
           spDef: integerField(0, { min: -10, max: 10 }),
           initiative: integerField(0, { min: -10, max: 10 })
+        })
+      }),
+      // Vitamin fields
+      vitamin: new SchemaField({
+        stat: new StringField({
+          required: true,
+          blank: false,
+          initial: "none",
+          choices: ["none", "hp", "will", "strength", "dexterity", "vitality", "special", "insight"]
         })
       }),
       // Evolution item fields

@@ -526,10 +526,7 @@
         "Revive": "Rianimazione",
         "Drink": "Bevanda",
         "Pokeball": "Pokeball",
-        "Battle": "Lotta",
         "Travel": "Viaggio",
-        "Protective": "Protettivo",
-        "Care": "Cura Base",
         "Vitamin": "Vitamina",
         "Grooming": "Toeletta",
         "Evolution": "Evoluzione",
@@ -590,6 +587,10 @@
         "Title": "Pietra Evolutiva",
         "CompatiblePokemon": "Pokemon Compatibile",
         "CompatiblePokemonPlaceholder": "Lascia vuoto per qualsiasi Pokemon"
+      },
+      "Vitamin": {
+        "Title": "Vitamina",
+        "Stat": "Statistica Aumentata"
       }
     },
     "Playable": {

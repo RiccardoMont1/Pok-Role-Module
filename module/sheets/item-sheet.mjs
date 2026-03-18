@@ -115,10 +115,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
         revive: "POKROLE.Gear.Category.Revive",
         drink: "POKROLE.Gear.Category.Drink",
         pokeball: "POKROLE.Gear.Category.Pokeball",
-        battle: "POKROLE.Gear.Category.Battle",
         travel: "POKROLE.Gear.Category.Travel",
-        protective: "POKROLE.Gear.Category.Protective",
-        care: "POKROLE.Gear.Category.Care",
         vitamin: "POKROLE.Gear.Category.Vitamin",
         grooming: "POKROLE.Gear.Category.Grooming",
         evolution: "POKROLE.Gear.Category.Evolution",
@@ -148,11 +145,17 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       // Category-specific flags for template conditionals
       const cat = context.system.category;
       context.isPokeball = cat === "pokeball";
-      context.isHealingType = ["healing", "status", "revive", "drink", "care"].includes(cat);
+      context.isHealing = cat === "healing";
+      context.isStatus = cat === "status";
+      context.isRevive = cat === "revive";
+      context.isDrink = cat === "drink";
       context.isHeld = cat === "held";
       context.isEvolution = cat === "evolution";
       context.isTravel = cat === "travel";
-      context.isGeneric = ["battle", "vitamin", "protective", "grooming", "key", "other"].includes(cat);
+      context.isVitamin = cat === "vitamin";
+      context.isGrooming = cat === "grooming";
+      context.isKey = cat === "key";
+      context.isOther = cat === "other";
 
       // Pokéball special effect options
       if (context.isPokeball) {
@@ -166,6 +169,20 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
           heavy: "POKROLE.Gear.Pokeball.EffectHeavy",
           luxury: "POKROLE.Gear.Pokeball.EffectLuxury",
           old: "POKROLE.Gear.Pokeball.EffectOld"
+        };
+      }
+
+      // Vitamin stat options
+      if (context.isVitamin) {
+        context.vitaminStatOptions = {
+          none: "POKROLE.Common.None",
+          hp: "POKROLE.Resources.HP",
+          will: "POKROLE.Resources.Will",
+          strength: "POKROLE.Attributes.Strength",
+          dexterity: "POKROLE.Attributes.Dexterity",
+          vitality: "POKROLE.Attributes.Vitality",
+          special: "POKROLE.Attributes.Special",
+          insight: "POKROLE.Attributes.Insight"
         };
       }
 

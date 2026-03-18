@@ -18,7 +18,7 @@
     </div>
   </header>
 
-  {{!-- Common fields: Category, Pocket, Target, Quantity --}}
+  {{!-- Common fields: Category, Pocket, Quantity --}}
   <section class="sheet-section">
     <div class="form-grid two-col">
       <label>
@@ -33,12 +33,14 @@
           {{selectOptions gearPocketOptions selected=system.pocket localize=true}}
         </select>
       </label>
+      {{#unless isKey}}
       <label>
         <span>{{localize "POKROLE.Gear.Target.Label"}}</span>
         <select name="system.target">
           {{selectOptions gearTargetOptions selected=system.target localize=true}}
         </select>
       </label>
+      {{/unless}}
       <label>
         <span>{{localize "POKROLE.Gear.Quantity"}}</span>
         <input
@@ -53,7 +55,7 @@
     </div>
   </section>
 
-  {{!-- POKEBALL Section --}}
+  {{!-- POKEBALL --}}
   {{#if isPokeball}}
   <section class="sheet-section">
     <h2>{{localize "POKROLE.Gear.Pokeball.Title"}}</h2>
@@ -78,80 +80,36 @@
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.pokeball.healsOnCapture"
-          {{checked system.pokeball.healsOnCapture}}
-        />
-        <span>{{localize "POKROLE.Gear.Pokeball.HealsOnCapture"}}</span>
-      </label>
-      <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.consumable"
-          {{checked system.consumable}}
-        />
+        <input type="checkbox" name="system.consumable" {{checked system.consumable}} />
         <span>{{localize "POKROLE.Gear.Consumable"}}</span>
       </label>
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.canUseInBattle"
-          {{checked system.canUseInBattle}}
-        />
+        <input type="checkbox" name="system.canUseInBattle" {{checked system.canUseInBattle}} />
         <span>{{localize "POKROLE.Gear.UseInBattle"}}</span>
       </label>
     </div>
   </section>
   {{/if}}
 
-  {{!-- HEALING / STATUS / REVIVE / DRINK / CARE Section --}}
-  {{#if isHealingType}}
+  {{!-- HEALING (Cura) --}}
+  {{#if isHealing}}
   <section class="sheet-section">
     <div class="form-grid two-col">
       <label>
         <span>{{localize "POKROLE.Gear.UnitsCurrent"}}</span>
-        <input
-          type="number"
-          name="system.units.value"
-          value="{{system.units.value}}"
-          min="0"
-          max="99"
-          data-dtype="Number"
-        />
+        <input type="number" name="system.units.value" value="{{system.units.value}}" min="0" max="99" data-dtype="Number" />
       </label>
       <label>
         <span>{{localize "POKROLE.Gear.UnitsMax"}}</span>
-        <input
-          type="number"
-          name="system.units.max"
-          value="{{system.units.max}}"
-          min="0"
-          max="99"
-          data-dtype="Number"
-        />
+        <input type="number" name="system.units.max" value="{{system.units.max}}" min="0" max="99" data-dtype="Number" />
       </label>
       <label>
         <span>{{localize "POKROLE.Gear.HealHp"}}</span>
-        <input
-          type="number"
-          name="system.heal.hp"
-          value="{{system.heal.hp}}"
-          min="0"
-          max="50"
-          data-dtype="Number"
-        />
+        <input type="number" name="system.heal.hp" value="{{system.heal.hp}}" min="0" max="50" data-dtype="Number" />
       </label>
       <label>
         <span>{{localize "POKROLE.Gear.HealLethal"}}</span>
-        <input
-          type="number"
-          name="system.heal.lethal"
-          value="{{system.heal.lethal}}"
-          min="0"
-          max="50"
-          data-dtype="Number"
-        />
+        <input type="number" name="system.heal.lethal" value="{{system.heal.lethal}}" min="0" max="50" data-dtype="Number" />
       </label>
       <label>
         <span>{{localize "POKROLE.Healing.Category.Label"}}</span>
@@ -161,109 +119,195 @@
       </label>
     </div>
   </section>
-
   <section class="sheet-section">
     <h2>{{localize "POKROLE.Gear.Flags"}}</h2>
     <div class="checkbox-grid">
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.consumable"
-          {{checked system.consumable}}
-        />
+        <input type="checkbox" name="system.consumable" {{checked system.consumable}} />
         <span>{{localize "POKROLE.Gear.Consumable"}}</span>
       </label>
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.canUseInBattle"
-          {{checked system.canUseInBattle}}
-        />
+        <input type="checkbox" name="system.canUseInBattle" {{checked system.canUseInBattle}} />
         <span>{{localize "POKROLE.Gear.UseInBattle"}}</span>
       </label>
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.heal.fullHp"
-          {{checked system.heal.fullHp}}
-        />
+        <input type="checkbox" name="system.heal.fullHp" {{checked system.heal.fullHp}} />
         <span>{{localize "POKROLE.Gear.FullHp"}}</span>
       </label>
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.heal.restoreAwareness"
-          {{checked system.heal.restoreAwareness}}
-        />
+        <input type="checkbox" name="system.heal.restoreAwareness" {{checked system.heal.restoreAwareness}} />
         <span>{{localize "POKROLE.Gear.RestoreAwareness"}}</span>
       </label>
     </div>
   </section>
+  {{/if}}
 
+  {{!-- STATUS (Cura Status) --}}
+  {{#if isStatus}}
   <section class="sheet-section">
     <h2>{{localize "POKROLE.Gear.StatusHeals"}}</h2>
     <div class="checkbox-grid">
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.status.all"
-          {{checked system.status.all}}
-        />
+        <input type="checkbox" name="system.status.all" {{checked system.status.all}} />
         <span>{{localize "POKROLE.Gear.Status.All"}}</span>
       </label>
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.status.poison"
-          {{checked system.status.poison}}
-        />
+        <input type="checkbox" name="system.status.poison" {{checked system.status.poison}} />
         <span>{{localize "POKROLE.Gear.Status.Poison"}}</span>
       </label>
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.status.sleep"
-          {{checked system.status.sleep}}
-        />
+        <input type="checkbox" name="system.status.sleep" {{checked system.status.sleep}} />
         <span>{{localize "POKROLE.Gear.Status.Sleep"}}</span>
       </label>
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.status.burn"
-          {{checked system.status.burn}}
-        />
+        <input type="checkbox" name="system.status.burn" {{checked system.status.burn}} />
         <span>{{localize "POKROLE.Gear.Status.Burn"}}</span>
       </label>
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.status.frozen"
-          {{checked system.status.frozen}}
-        />
+        <input type="checkbox" name="system.status.frozen" {{checked system.status.frozen}} />
         <span>{{localize "POKROLE.Gear.Status.Frozen"}}</span>
       </label>
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.status.paralysis"
-          {{checked system.status.paralysis}}
-        />
+        <input type="checkbox" name="system.status.paralysis" {{checked system.status.paralysis}} />
         <span>{{localize "POKROLE.Gear.Status.Paralysis"}}</span>
       </label>
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.status.confusion"
-          {{checked system.status.confusion}}
-        />
+        <input type="checkbox" name="system.status.confusion" {{checked system.status.confusion}} />
+        <span>{{localize "POKROLE.Gear.Status.Confusion"}}</span>
+      </label>
+    </div>
+  </section>
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Gear.Flags"}}</h2>
+    <div class="checkbox-grid">
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.consumable" {{checked system.consumable}} />
+        <span>{{localize "POKROLE.Gear.Consumable"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.canUseInBattle" {{checked system.canUseInBattle}} />
+        <span>{{localize "POKROLE.Gear.UseInBattle"}}</span>
+      </label>
+    </div>
+  </section>
+  {{/if}}
+
+  {{!-- REVIVE (Rianimazione) --}}
+  {{#if isRevive}}
+  <section class="sheet-section">
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Gear.HealHp"}}</span>
+        <input type="number" name="system.heal.hp" value="{{system.heal.hp}}" min="0" max="50" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Healing.Category.Label"}}</span>
+        <select name="system.heal.battleHealingCategory">
+          {{selectOptions gearHealingCategoryOptions selected=system.heal.battleHealingCategory localize=true}}
+        </select>
+      </label>
+    </div>
+  </section>
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Gear.Flags"}}</h2>
+    <div class="checkbox-grid">
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.consumable" {{checked system.consumable}} />
+        <span>{{localize "POKROLE.Gear.Consumable"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.canUseInBattle" {{checked system.canUseInBattle}} />
+        <span>{{localize "POKROLE.Gear.UseInBattle"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.heal.fullHp" {{checked system.heal.fullHp}} />
+        <span>{{localize "POKROLE.Gear.FullHp"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.heal.restoreAwareness" {{checked system.heal.restoreAwareness}} />
+        <span>{{localize "POKROLE.Gear.RestoreAwareness"}}</span>
+      </label>
+    </div>
+  </section>
+  {{/if}}
+
+  {{!-- DRINK (Bevanda) --}}
+  {{#if isDrink}}
+  <section class="sheet-section">
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Gear.UnitsCurrent"}}</span>
+        <input type="number" name="system.units.value" value="{{system.units.value}}" min="0" max="99" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.UnitsMax"}}</span>
+        <input type="number" name="system.units.max" value="{{system.units.max}}" min="0" max="99" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.HealHp"}}</span>
+        <input type="number" name="system.heal.hp" value="{{system.heal.hp}}" min="0" max="50" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.HealLethal"}}</span>
+        <input type="number" name="system.heal.lethal" value="{{system.heal.lethal}}" min="0" max="50" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Healing.Category.Label"}}</span>
+        <select name="system.heal.battleHealingCategory">
+          {{selectOptions gearHealingCategoryOptions selected=system.heal.battleHealingCategory localize=true}}
+        </select>
+      </label>
+    </div>
+  </section>
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Gear.Flags"}}</h2>
+    <div class="checkbox-grid">
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.consumable" {{checked system.consumable}} />
+        <span>{{localize "POKROLE.Gear.Consumable"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.canUseInBattle" {{checked system.canUseInBattle}} />
+        <span>{{localize "POKROLE.Gear.UseInBattle"}}</span>
+      </label>
+    </div>
+  </section>
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Gear.StatusHeals"}}</h2>
+    <div class="checkbox-grid">
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.status.all" {{checked system.status.all}} />
+        <span>{{localize "POKROLE.Gear.Status.All"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.status.poison" {{checked system.status.poison}} />
+        <span>{{localize "POKROLE.Gear.Status.Poison"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.status.sleep" {{checked system.status.sleep}} />
+        <span>{{localize "POKROLE.Gear.Status.Sleep"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.status.burn" {{checked system.status.burn}} />
+        <span>{{localize "POKROLE.Gear.Status.Burn"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.status.frozen" {{checked system.status.frozen}} />
+        <span>{{localize "POKROLE.Gear.Status.Frozen"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.status.paralysis" {{checked system.status.paralysis}} />
+        <span>{{localize "POKROLE.Gear.Status.Paralysis"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.status.confusion" {{checked system.status.confusion}} />
         <span>{{localize "POKROLE.Gear.Status.Confusion"}}</span>
       </label>
     </div>
   </section>
   {{/if}}
 
-  {{!-- HELD ITEM Section --}}
+  {{!-- HELD ITEM --}}
   {{#if isHeld}}
   <section class="sheet-section">
     <h2>{{localize "POKROLE.Gear.Held.Title"}}</h2>
@@ -289,19 +333,11 @@
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.held.isMegaStone"
-          {{checked system.held.isMegaStone}}
-        />
+        <input type="checkbox" name="system.held.isMegaStone" {{checked system.held.isMegaStone}} />
         <span>{{localize "POKROLE.Gear.Held.IsMegaStone"}}</span>
       </label>
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.held.isZCrystal"
-          {{checked system.held.isZCrystal}}
-        />
+        <input type="checkbox" name="system.held.isZCrystal" {{checked system.held.isZCrystal}} />
         <span>{{localize "POKROLE.Gear.Held.IsZCrystal"}}</span>
       </label>
     </div>
@@ -316,7 +352,6 @@
     </div>
     {{/if}}
   </section>
-
   <section class="sheet-section">
     <h2>{{localize "POKROLE.Gear.Held.StatBonuses"}}</h2>
     <div class="form-grid two-col">
@@ -356,7 +391,7 @@
   </section>
   {{/if}}
 
-  {{!-- EVOLUTION Section --}}
+  {{!-- EVOLUTION --}}
   {{#if isEvolution}}
   <section class="sheet-section">
     <h2>{{localize "POKROLE.Gear.Evolution.Title"}}</h2>
@@ -373,99 +408,108 @@
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.consumable"
-          {{checked system.consumable}}
-        />
+        <input type="checkbox" name="system.consumable" {{checked system.consumable}} />
         <span>{{localize "POKROLE.Gear.Consumable"}}</span>
       </label>
     </div>
   </section>
   {{/if}}
 
-  {{!-- TRAVEL / EQUIPMENT Section --}}
+  {{!-- TRAVEL --}}
   {{#if isTravel}}
   <section class="sheet-section">
     <div class="form-grid two-col">
       <label>
         <span>{{localize "POKROLE.Gear.UnitsCurrent"}}</span>
-        <input
-          type="number"
-          name="system.units.value"
-          value="{{system.units.value}}"
-          min="0"
-          max="99"
-          data-dtype="Number"
-        />
+        <input type="number" name="system.units.value" value="{{system.units.value}}" min="0" max="99" data-dtype="Number" />
       </label>
       <label>
         <span>{{localize "POKROLE.Gear.UnitsMax"}}</span>
-        <input
-          type="number"
-          name="system.units.max"
-          value="{{system.units.max}}"
-          min="0"
-          max="99"
-          data-dtype="Number"
-        />
+        <input type="number" name="system.units.max" value="{{system.units.max}}" min="0" max="99" data-dtype="Number" />
       </label>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.consumable"
-          {{checked system.consumable}}
-        />
+        <input type="checkbox" name="system.consumable" {{checked system.consumable}} />
         <span>{{localize "POKROLE.Gear.Consumable"}}</span>
       </label>
     </div>
   </section>
   {{/if}}
 
-  {{!-- BATTLE / VITAMIN / PROTECTIVE / GROOMING / KEY / OTHER Section --}}
-  {{#if isGeneric}}
+  {{!-- VITAMIN --}}
+  {{#if isVitamin}}
   <section class="sheet-section">
+    <h2>{{localize "POKROLE.Gear.Vitamin.Title"}}</h2>
     <div class="form-grid two-col">
       <label>
-        <span>{{localize "POKROLE.Gear.UnitsCurrent"}}</span>
-        <input
-          type="number"
-          name="system.units.value"
-          value="{{system.units.value}}"
-          min="0"
-          max="99"
-          data-dtype="Number"
-        />
-      </label>
-      <label>
-        <span>{{localize "POKROLE.Gear.UnitsMax"}}</span>
-        <input
-          type="number"
-          name="system.units.max"
-          value="{{system.units.max}}"
-          min="0"
-          max="99"
-          data-dtype="Number"
-        />
+        <span>{{localize "POKROLE.Gear.Vitamin.Stat"}}</span>
+        <select name="system.vitamin.stat">
+          {{selectOptions vitaminStatOptions selected=system.vitamin.stat localize=true}}
+        </select>
       </label>
     </div>
     <div class="checkbox-grid">
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.consumable"
-          {{checked system.consumable}}
-        />
+        <input type="checkbox" name="system.consumable" {{checked system.consumable}} />
+        <span>{{localize "POKROLE.Gear.Consumable"}}</span>
+      </label>
+    </div>
+  </section>
+  {{/if}}
+
+  {{!-- GROOMING --}}
+  {{#if isGrooming}}
+  <section class="sheet-section">
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Gear.UnitsCurrent"}}</span>
+        <input type="number" name="system.units.value" value="{{system.units.value}}" min="0" max="99" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.UnitsMax"}}</span>
+        <input type="number" name="system.units.max" value="{{system.units.max}}" min="0" max="99" data-dtype="Number" />
+      </label>
+    </div>
+  </section>
+  {{/if}}
+
+  {{!-- KEY --}}
+  {{#if isKey}}
+  <section class="sheet-section">
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Gear.UnitsCurrent"}}</span>
+        <input type="number" name="system.units.value" value="{{system.units.value}}" min="0" max="99" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.UnitsMax"}}</span>
+        <input type="number" name="system.units.max" value="{{system.units.max}}" min="0" max="99" data-dtype="Number" />
+      </label>
+    </div>
+  </section>
+  {{/if}}
+
+  {{!-- OTHER --}}
+  {{#if isOther}}
+  <section class="sheet-section">
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Gear.UnitsCurrent"}}</span>
+        <input type="number" name="system.units.value" value="{{system.units.value}}" min="0" max="99" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.UnitsMax"}}</span>
+        <input type="number" name="system.units.max" value="{{system.units.max}}" min="0" max="99" data-dtype="Number" />
+      </label>
+    </div>
+    <div class="checkbox-grid">
+      <label class="checkbox-row">
+        <input type="checkbox" name="system.consumable" {{checked system.consumable}} />
         <span>{{localize "POKROLE.Gear.Consumable"}}</span>
       </label>
       <label class="checkbox-row">
-        <input
-          type="checkbox"
-          name="system.canUseInBattle"
-          {{checked system.canUseInBattle}}
-        />
+        <input type="checkbox" name="system.canUseInBattle" {{checked system.canUseInBattle}} />
         <span>{{localize "POKROLE.Gear.UseInBattle"}}</span>
       </label>
     </div>
