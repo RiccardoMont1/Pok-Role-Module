@@ -559,6 +559,37 @@
         "Frozen": "Congelato",
         "Paralysis": "Paralisi",
         "Confusion": "Confusione"
+      },
+      "Pokeball": {
+        "Title": "Impostazioni Pokeball",
+        "SealPower": "Potenza di Sigillo",
+        "SpecialEffect": "Effetto Speciale",
+        "HealsOnCapture": "Cura alla Cattura",
+        "EffectNone": "Nessuno",
+        "EffectQuick": "Velox Ball (Round 1: 9, -2/round)",
+        "EffectNet": "Sub Ball (Acqua: potenza Mega Ball)",
+        "EffectHeal": "Cura Ball (Cura alla cattura)",
+        "EffectDusk": "Dusk Ball",
+        "EffectFast": "Fast Ball",
+        "EffectHeavy": "Heavy Ball",
+        "EffectLuxury": "Luxury Ball",
+        "EffectOld": "Old Pokeball"
+      },
+      "Held": {
+        "Title": "Strumento Tenuto",
+        "PassiveEffect": "Effetto Passivo",
+        "PassiveEffectPlaceholder": "Descrivi l'effetto passivo...",
+        "CompatiblePokemon": "Pokemon Compatibile",
+        "CompatiblePokemonPlaceholder": "Lascia vuoto per qualsiasi Pokemon",
+        "IsMegaStone": "Mega Pietra",
+        "IsZCrystal": "Cristallo Z",
+        "ZMoveType": "Tipo Mossa Z",
+        "StatBonuses": "Bonus Statistiche"
+      },
+      "Evolution": {
+        "Title": "Pietra Evolutiva",
+        "CompatiblePokemon": "Pokemon Compatibile",
+        "CompatiblePokemonPlaceholder": "Lascia vuoto per qualsiasi Pokemon"
       }
     },
     "Playable": {

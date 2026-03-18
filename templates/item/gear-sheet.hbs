@@ -18,6 +18,7 @@
     </div>
   </header>
 
+  {{!-- Common fields: Category, Pocket, Target, Quantity --}}
   <section class="sheet-section">
     <div class="form-grid two-col">
       <label>
@@ -49,6 +50,65 @@
           data-dtype="Number"
         />
       </label>
+    </div>
+  </section>
+
+  {{!-- POKEBALL Section --}}
+  {{#if isPokeball}}
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Gear.Pokeball.Title"}}</h2>
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Gear.Pokeball.SealPower"}}</span>
+        <input
+          type="number"
+          name="system.pokeball.sealPower"
+          value="{{system.pokeball.sealPower}}"
+          min="0"
+          max="20"
+          data-dtype="Number"
+        />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.Pokeball.SpecialEffect"}}</span>
+        <select name="system.pokeball.specialEffect">
+          {{selectOptions pokeballEffectOptions selected=system.pokeball.specialEffect localize=true}}
+        </select>
+      </label>
+    </div>
+    <div class="checkbox-grid">
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.pokeball.healsOnCapture"
+          {{checked system.pokeball.healsOnCapture}}
+        />
+        <span>{{localize "POKROLE.Gear.Pokeball.HealsOnCapture"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.consumable"
+          {{checked system.consumable}}
+        />
+        <span>{{localize "POKROLE.Gear.Consumable"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.canUseInBattle"
+          {{checked system.canUseInBattle}}
+        />
+        <span>{{localize "POKROLE.Gear.UseInBattle"}}</span>
+      </label>
+    </div>
+  </section>
+  {{/if}}
+
+  {{!-- HEALING / STATUS / REVIVE / DRINK / CARE Section --}}
+  {{#if isHealingType}}
+  <section class="sheet-section">
+    <div class="form-grid two-col">
       <label>
         <span>{{localize "POKROLE.Gear.UnitsCurrent"}}</span>
         <input
@@ -201,7 +261,218 @@
       </label>
     </div>
   </section>
+  {{/if}}
 
+  {{!-- HELD ITEM Section --}}
+  {{#if isHeld}}
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Gear.Held.Title"}}</h2>
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Gear.Held.PassiveEffect"}}</span>
+        <input
+          type="text"
+          name="system.held.passiveEffect"
+          value="{{system.held.passiveEffect}}"
+          placeholder="{{localize 'POKROLE.Gear.Held.PassiveEffectPlaceholder'}}"
+        />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.Held.CompatiblePokemon"}}</span>
+        <input
+          type="text"
+          name="system.held.compatiblePokemon"
+          value="{{system.held.compatiblePokemon}}"
+          placeholder="{{localize 'POKROLE.Gear.Held.CompatiblePokemonPlaceholder'}}"
+        />
+      </label>
+    </div>
+    <div class="checkbox-grid">
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.held.isMegaStone"
+          {{checked system.held.isMegaStone}}
+        />
+        <span>{{localize "POKROLE.Gear.Held.IsMegaStone"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.held.isZCrystal"
+          {{checked system.held.isZCrystal}}
+        />
+        <span>{{localize "POKROLE.Gear.Held.IsZCrystal"}}</span>
+      </label>
+    </div>
+    {{#if system.held.isZCrystal}}
+    <div class="form-grid two-col" style="margin-top:6px;">
+      <label>
+        <span>{{localize "POKROLE.Gear.Held.ZMoveType"}}</span>
+        <select name="system.held.zMoveType">
+          {{selectOptions zMoveTypeOptions selected=system.held.zMoveType localize=true}}
+        </select>
+      </label>
+    </div>
+    {{/if}}
+  </section>
+
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Gear.Held.StatBonuses"}}</h2>
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Attributes.Strength"}}</span>
+        <input type="number" name="system.held.statBonuses.strength" value="{{system.held.statBonuses.strength}}" min="-10" max="10" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Attributes.Dexterity"}}</span>
+        <input type="number" name="system.held.statBonuses.dexterity" value="{{system.held.statBonuses.dexterity}}" min="-10" max="10" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Attributes.Vitality"}}</span>
+        <input type="number" name="system.held.statBonuses.vitality" value="{{system.held.statBonuses.vitality}}" min="-10" max="10" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Attributes.Special"}}</span>
+        <input type="number" name="system.held.statBonuses.special" value="{{system.held.statBonuses.special}}" min="-10" max="10" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Attributes.Insight"}}</span>
+        <input type="number" name="system.held.statBonuses.insight" value="{{system.held.statBonuses.insight}}" min="-10" max="10" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Combat.Defense"}}</span>
+        <input type="number" name="system.held.statBonuses.def" value="{{system.held.statBonuses.def}}" min="-10" max="10" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Combat.SpecialDefense"}}</span>
+        <input type="number" name="system.held.statBonuses.spDef" value="{{system.held.statBonuses.spDef}}" min="-10" max="10" data-dtype="Number" />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Combat.InitiativeScore"}}</span>
+        <input type="number" name="system.held.statBonuses.initiative" value="{{system.held.statBonuses.initiative}}" min="-10" max="10" data-dtype="Number" />
+      </label>
+    </div>
+  </section>
+  {{/if}}
+
+  {{!-- EVOLUTION Section --}}
+  {{#if isEvolution}}
+  <section class="sheet-section">
+    <h2>{{localize "POKROLE.Gear.Evolution.Title"}}</h2>
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Gear.Evolution.CompatiblePokemon"}}</span>
+        <input
+          type="text"
+          name="system.evolution.compatiblePokemon"
+          value="{{system.evolution.compatiblePokemon}}"
+          placeholder="{{localize 'POKROLE.Gear.Evolution.CompatiblePokemonPlaceholder'}}"
+        />
+      </label>
+    </div>
+    <div class="checkbox-grid">
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.consumable"
+          {{checked system.consumable}}
+        />
+        <span>{{localize "POKROLE.Gear.Consumable"}}</span>
+      </label>
+    </div>
+  </section>
+  {{/if}}
+
+  {{!-- TRAVEL / EQUIPMENT Section --}}
+  {{#if isTravel}}
+  <section class="sheet-section">
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Gear.UnitsCurrent"}}</span>
+        <input
+          type="number"
+          name="system.units.value"
+          value="{{system.units.value}}"
+          min="0"
+          max="99"
+          data-dtype="Number"
+        />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.UnitsMax"}}</span>
+        <input
+          type="number"
+          name="system.units.max"
+          value="{{system.units.max}}"
+          min="0"
+          max="99"
+          data-dtype="Number"
+        />
+      </label>
+    </div>
+    <div class="checkbox-grid">
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.consumable"
+          {{checked system.consumable}}
+        />
+        <span>{{localize "POKROLE.Gear.Consumable"}}</span>
+      </label>
+    </div>
+  </section>
+  {{/if}}
+
+  {{!-- BATTLE / VITAMIN / PROTECTIVE / GROOMING / KEY / OTHER Section --}}
+  {{#if isGeneric}}
+  <section class="sheet-section">
+    <div class="form-grid two-col">
+      <label>
+        <span>{{localize "POKROLE.Gear.UnitsCurrent"}}</span>
+        <input
+          type="number"
+          name="system.units.value"
+          value="{{system.units.value}}"
+          min="0"
+          max="99"
+          data-dtype="Number"
+        />
+      </label>
+      <label>
+        <span>{{localize "POKROLE.Gear.UnitsMax"}}</span>
+        <input
+          type="number"
+          name="system.units.max"
+          value="{{system.units.max}}"
+          min="0"
+          max="99"
+          data-dtype="Number"
+        />
+      </label>
+    </div>
+    <div class="checkbox-grid">
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.consumable"
+          {{checked system.consumable}}
+        />
+        <span>{{localize "POKROLE.Gear.Consumable"}}</span>
+      </label>
+      <label class="checkbox-row">
+        <input
+          type="checkbox"
+          name="system.canUseInBattle"
+          {{checked system.canUseInBattle}}
+        />
+        <span>{{localize "POKROLE.Gear.UseInBattle"}}</span>
+      </label>
+    </div>
+  </section>
+  {{/if}}
+
+  {{!-- Description (always shown) --}}
   <section class="sheet-section">
     <h2>{{localize "POKROLE.Common.Description"}}</h2>
     <textarea

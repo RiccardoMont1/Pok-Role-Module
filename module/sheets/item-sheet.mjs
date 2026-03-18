@@ -144,6 +144,43 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       };
       context.system.heal ??= {};
       context.system.heal.battleHealingCategory = this._getGearBattleHealingCategory(this.item);
+
+      // Category-specific flags for template conditionals
+      const cat = context.system.category;
+      context.isPokeball = cat === "pokeball";
+      context.isHealingType = ["healing", "status", "revive", "drink", "care"].includes(cat);
+      context.isHeld = cat === "held";
+      context.isEvolution = cat === "evolution";
+      context.isTravel = cat === "travel";
+      context.isGeneric = ["battle", "vitamin", "protective", "grooming", "key", "other"].includes(cat);
+
+      // Pokéball special effect options
+      if (context.isPokeball) {
+        context.pokeballEffectOptions = {
+          none: "POKROLE.Gear.Pokeball.EffectNone",
+          quick: "POKROLE.Gear.Pokeball.EffectQuick",
+          net: "POKROLE.Gear.Pokeball.EffectNet",
+          heal: "POKROLE.Gear.Pokeball.EffectHeal",
+          dusk: "POKROLE.Gear.Pokeball.EffectDusk",
+          fast: "POKROLE.Gear.Pokeball.EffectFast",
+          heavy: "POKROLE.Gear.Pokeball.EffectHeavy",
+          luxury: "POKROLE.Gear.Pokeball.EffectLuxury",
+          old: "POKROLE.Gear.Pokeball.EffectOld"
+        };
+      }
+
+      // Held item Z-Move type options
+      if (context.isHeld) {
+        context.zMoveTypeOptions = Object.fromEntries(
+          TYPE_OPTIONS.map((typeKey) => [
+            typeKey,
+            typeKey === "none"
+              ? "POKROLE.Types.None"
+              : MOVE_TYPE_LABEL_BY_KEY[typeKey] ?? "POKROLE.Common.Unknown"
+          ])
+        );
+      }
+
       return context;
     }
 

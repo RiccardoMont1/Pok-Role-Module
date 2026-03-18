@@ -492,6 +492,44 @@ export class GearDataModel extends foundry.abstract.TypeDataModel {
         paralysis: new BooleanField({ required: true, initial: false }),
         confusion: new BooleanField({ required: true, initial: false })
       }),
+      // Pokéball fields
+      pokeball: new SchemaField({
+        sealPower: integerField(0, { min: 0, max: 20 }),
+        specialEffect: new StringField({
+          required: true,
+          blank: false,
+          initial: "none",
+          choices: ["none", "quick", "net", "heal", "dusk", "fast", "heavy", "luxury", "old"]
+        }),
+        healsOnCapture: new BooleanField({ required: true, initial: false })
+      }),
+      // Held item fields
+      held: new SchemaField({
+        passiveEffect: trimmedStringField(""),
+        compatiblePokemon: trimmedStringField(""),
+        isZCrystal: new BooleanField({ required: true, initial: false }),
+        zMoveType: new StringField({
+          required: true,
+          blank: false,
+          initial: "none",
+          choices: TYPE_OPTIONS
+        }),
+        isMegaStone: new BooleanField({ required: true, initial: false }),
+        statBonuses: new SchemaField({
+          strength: integerField(0, { min: -10, max: 10 }),
+          dexterity: integerField(0, { min: -10, max: 10 }),
+          vitality: integerField(0, { min: -10, max: 10 }),
+          special: integerField(0, { min: -10, max: 10 }),
+          insight: integerField(0, { min: -10, max: 10 }),
+          def: integerField(0, { min: -10, max: 10 }),
+          spDef: integerField(0, { min: -10, max: 10 }),
+          initiative: integerField(0, { min: -10, max: 10 })
+        })
+      }),
+      // Evolution item fields
+      evolution: new SchemaField({
+        compatiblePokemon: trimmedStringField("")
+      }),
       description: trimmedStringField("")
     };
   }
