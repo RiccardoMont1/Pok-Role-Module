@@ -1,5 +1,7 @@
 Creare una tab nella scheda dell'allenatore per la gestione della squadra (Massimo 6 Pokémon). I Pokémon selezionabili sono soltanto quelli di cui sei Owner della scheda
 
+Creare due field nella scheda del pokémon (Sarebbe perfetto metterli sotto l'immagine del Pokémon) che si compilano trascinando la scheda dell'allenatore sul field. In questa maniera si capisce a chi appartiene il pokémon. I field si devono chiamare "Catturato da" e "Allenatore Attuale"
+
 Tempesta di Sabbia e Grandine non incrementano le stastiche di 1 per la DEF per Tempesta di Sabbio e SP DEF per Grandine
 
 Automatizazione delle mosse:
