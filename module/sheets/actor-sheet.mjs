@@ -618,6 +618,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
     if (this.actor.type === "pokemon") {
       this._applyPokemonTabState(html, this._pokemonActiveView ?? "main");
+      if (this._learnsetPanelOpen) {
+        html.find(".learnset-collapsible").show();
+        html.find("[data-action='toggle-learnset-panel'] i")
+          .removeClass("fa-chevron-down").addClass("fa-chevron-up");
+      }
     }
     if (this.actor.type === "trainer") {
       this._applyTrainerTabState(html, this._trainerActiveView ?? "main");
@@ -917,6 +922,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
   _onToggleLearnsetPanel(event, html) {
     event.preventDefault();
+    this._learnsetPanelOpen = !this._learnsetPanelOpen;
     const panel = html.find(".learnset-collapsible");
     const icon = $(event.currentTarget).find("i");
     panel.slideToggle(200);
