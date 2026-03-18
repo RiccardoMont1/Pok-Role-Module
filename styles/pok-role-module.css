@@ -2676,6 +2676,21 @@
 
 .pokemon-sheet .pokemon-settings-learnset {
   margin-top: 14px;
+  border: 4px solid var(--pk-outline);
+  border-radius: 20px;
+  background: #d24a30;
+  padding: 10px;
+}
+
+.pokemon-sheet .pokemon-settings-learnset h3 {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.pokemon-sheet .pokemon-settings-learnset .inline-meta {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .pokemon-sheet .learnset-toggle-row {
@@ -2689,7 +2704,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--pk-text-dark, #333);
+  color: #ffffff;
 }
 
 .pokemon-sheet .pokemon-rank-learnset-list {
@@ -2706,7 +2721,7 @@
 }
 
 .pokemon-sheet .learnset-rank-label {
-  color: #7d3727;
+  color: #ffffff;
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;

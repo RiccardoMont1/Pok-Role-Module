@@ -1891,6 +1891,10 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   async _onDrop(event) {
+    // If dropped on a learnset zone, let _onDropLearnsetMove handle it exclusively
+    const learnsetZone = event.target.closest(".learnset-rank-drop-zone");
+    if (learnsetZone) return;
+
     const dropTarget = event.target.closest("[data-action='drop-trainer']");
     if (dropTarget && this.actor.type === "pokemon") {
       if (!game.user.isGM) return;
