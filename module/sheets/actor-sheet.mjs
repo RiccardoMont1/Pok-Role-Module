@@ -968,14 +968,6 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     if (moves.includes(moveName)) return;
     moves.push(moveName);
     await this.actor.update({ [`system.learnsetByRank.${rank}`]: moves.join(", ") });
-
-    // Also add the move to the pokemon's items with isUsable: false
-    const existingMove = this.actor.items.find((i) => i.type === "move" && i.name === moveName);
-    if (!existingMove) {
-      const moveData = item.toObject();
-      moveData.system.isUsable = false;
-      await this.actor.createEmbeddedDocuments("Item", [moveData]);
-    }
   }
 
   _onSwitchPokemonTab(event, html) {
