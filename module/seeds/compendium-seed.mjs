@@ -95,7 +95,7 @@ function makeGear(seedId, name, config = {}) {
     description = "",
     img = "icons/svg/item-bag.svg",
     pokeball = { sealPower: 0, specialEffect: "none", healsOnCapture: false },
-    held = { passiveEffect: "", compatiblePokemon: "", isZCrystal: false, zMoveType: "none", isMegaStone: false, statBonuses: { strength: 0, dexterity: 0, vitality: 0, special: 0, insight: 0, def: 0, spDef: 0, initiative: 0 } },
+    held = { passiveEffect: "", compatiblePokemon: "", isZCrystal: false, zMoveType: "none", isMegaStone: false, damageBonusType: "none", damageBonusDice: 0, damageBonusCategory: "", highCritical: false, highCriticalCategory: "", statBonuses: { strength: 0, dexterity: 0, vitality: 0, special: 0, insight: 0, def: 0, spDef: 0, initiative: 0 } },
     vitamin = { stat: "none" },
     evolution = { compatiblePokemon: "" }
   } = config;
@@ -138,6 +138,11 @@ function makeGear(seedId, name, config = {}) {
         isZCrystal: Boolean(held.isZCrystal ?? false),
         zMoveType: `${held.zMoveType ?? "none"}`.trim().toLowerCase(),
         isMegaStone: Boolean(held.isMegaStone ?? false),
+        damageBonusType: `${held.damageBonusType ?? "none"}`.trim().toLowerCase(),
+        damageBonusDice: Number(held.damageBonusDice ?? 0),
+        damageBonusCategory: `${held.damageBonusCategory ?? ""}`.trim().toLowerCase(),
+        highCritical: Boolean(held.highCritical ?? false),
+        highCriticalCategory: `${held.highCriticalCategory ?? ""}`.trim().toLowerCase(),
         statBonuses: {
           strength: Number(held.statBonuses?.strength ?? 0),
           dexterity: Number(held.statBonuses?.dexterity ?? 0),
