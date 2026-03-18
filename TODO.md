@@ -4,7 +4,7 @@
 
 ~~Sistemare i pulsanti nella scheda dell'allenatore per "Cercare Copertura" (Deve aumentare il numero di successi richiesto in base alla copertura. 1/4 di copertura da +1 alla DEF e SDEF contro attacchi ranged, 1/2 copertura dà +2, mentre la full copertura noon permette di farti colpire dagli attacchi e quest'ultimi devono prima danneggiare la copertura), "Entrare in mischia" (Deve farti aggiungere l'allenatore in turn order e tirare l'iniziativa), "Fuggi" deve far ritirare il pokémon e fare un tiro di Destrezza + Atletica vs la Destrezza + Atletica dell'avversario. Se passa, deve terminare l'incontro. Quando l'allenatore esce dal combattimento, deve essere rimosso anche dal turn order~~
 
-Modifica alla scheda del pokèmon per la sezione Impostazioni - Mosse imparabili per Rank. Non devono essere campi in cui si scrive la mossa, ma nella quale in cui si devono allegare gli oggetti delle mosse apprendibili per rank.
+~~Modifica alla scheda del pokèmon per la sezione Impostazioni - Mosse imparabili per Rank. Non devono essere campi in cui si scrive la mossa, ma nella quale in cui si devono allegare gli oggetti delle mosse apprendibili per rank.~~
 
 Aggiungere un tag o un field alle mosse fisiche per indicare se siano Ranged (Questa tag non deve bloccare l'uso della mossa melee se non sei adiacente al pokémon, serve soltanto per il calcolo delle coperture). Inoltre le mosse speciali sono sempre ranged a meno che non viene detto diversamente
 
