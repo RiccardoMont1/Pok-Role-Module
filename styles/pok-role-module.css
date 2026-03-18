@@ -2675,26 +2675,93 @@
 }
 
 .pokemon-sheet .pokemon-settings-learnset {
-  margin-top: 10px;
+  margin-top: 14px;
+}
+
+.pokemon-sheet .learnset-toggle-row {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pokemon-sheet .learnset-toggle-row .icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--pk-text-dark, #333);
 }
 
 .pokemon-sheet .pokemon-rank-learnset-list {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 6px;
+  gap: 8px;
+  margin-top: 6px;
 }
 
-.pokemon-sheet .pokemon-rank-learnset-list label {
-  display: grid;
+.pokemon-sheet .learnset-rank-group {
+  display: flex;
+  flex-direction: column;
   gap: 4px;
 }
 
-.pokemon-sheet .pokemon-rank-learnset-list textarea {
-  min-height: 56px;
-  height: auto;
-  resize: vertical;
+.pokemon-sheet .learnset-rank-label {
+  color: #7d3727;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.pokemon-sheet .learnset-rank-drop-zone {
+  min-height: 36px;
+  border: 2px dashed var(--pk-outline, #c0a080);
+  border-radius: 8px;
   padding: 6px 8px;
-  line-height: 1.25;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.pokemon-sheet .learnset-rank-drop-zone.drag-over {
+  background-color: rgba(100, 180, 100, 0.15);
+  border-color: #6ab06a;
+}
+
+.pokemon-sheet .learnset-move-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--pk-surface, #f5e6d0);
+  border: 1px solid var(--pk-outline, #c0a080);
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.pokemon-sheet .learnset-move-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #c44;
+  padding: 0 2px;
+  font-size: 0.65rem;
+}
+
+.pokemon-sheet .learnset-drop-placeholder {
+  color: #999;
+  font-size: 0.72rem;
+  font-style: italic;
+}
+
+.pokemon-sheet .learnset-rank-drop-zone .learnset-drop-placeholder {
+  display: block;
+}
+
+.pokemon-sheet .learnset-rank-drop-zone .learnset-move-chip ~ .learnset-drop-placeholder {
+  display: none;
 }
 
 @media (max-width: 1250px) {

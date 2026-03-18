@@ -376,12 +376,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         fieldPath: `system.manualCoreBase.${attribute.key}`,
         value: this._resolveTrackMax(this.actor.system.manualCoreBase?.[attribute.key], 1)
       }));
-      context.pokemonLearnsetByRankRows = POKEMON_TIER_KEYS.map((rankKey) => ({
-        key: rankKey,
-        label: POKEMON_TIER_LABEL_BY_KEY[rankKey] ?? "POKROLE.Common.Unknown",
-        fieldPath: `system.learnsetByRank.${rankKey}`,
-        value: `${this.actor.system.learnsetByRank?.[rankKey] ?? ""}`
-      }));
+      context.pokemonLearnsetByRankRows = POKEMON_TIER_KEYS.map((rankKey) => {
+        const raw = `${this.actor.system.learnsetByRank?.[rankKey] ?? ""}`;
+        const moves = raw.split(",").map((s) => s.trim()).filter(Boolean);
+        return {
+          key: rankKey,
+          label: POKEMON_TIER_LABEL_BY_KEY[rankKey] ?? "POKROLE.Common.Unknown",
+          fieldPath: `system.learnsetByRank.${rankKey}`,
+          value: raw,
+          moves
+        };
+      });
       context.evolutionTimeOptions = {
         fast: "POKROLE.Pokemon.EvolutionFast",
         medium: "POKROLE.Pokemon.EvolutionMedium",
@@ -581,6 +586,22 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     html.find("[data-action='toggle-move-usable']").on("change", (event) =>
       this._onToggleMoveUsable(event)
     );
+    html.find("[data-action='toggle-learnset-panel']").on("click", (event) =>
+      this._onToggleLearnsetPanel(event, html)
+    );
+    html.find(".learnset-move-remove").on("click", (event) =>
+      this._onRemoveLearnsetMove(event)
+    );
+    html.find(".learnset-rank-drop-zone").each((_i, el) => {
+      el.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        el.classList.add("drag-over");
+      });
+      el.addEventListener("dragleave", () => {
+        el.classList.remove("drag-over");
+      });
+      el.addEventListener("drop", (e) => this._onDropLearnsetMove(e));
+    });
     html.find("[data-action='switch-pokemon-tab']").on("click", (event) =>
       this._onSwitchPokemonTab(event, html)
     );
@@ -836,6 +857,63 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     }
 
     await move.update({ "system.isUsable": nextValue });
+  }
+
+  _onToggleLearnsetPanel(event, html) {
+    event.preventDefault();
+    const panel = html.find(".learnset-collapsible");
+    const icon = $(event.currentTarget).find("i");
+    panel.slideToggle(200);
+    icon.toggleClass("fa-chevron-down fa-chevron-up");
+  }
+
+  async _onRemoveLearnsetMove(event) {
+    event.preventDefault();
+    if (!this.isEditable) return;
+    const btn = event.currentTarget;
+    const rank = btn.dataset.rank;
+    const moveName = btn.dataset.moveName;
+    if (!rank || !moveName) return;
+
+    const raw = `${this.actor.system.learnsetByRank?.[rank] ?? ""}`;
+    const moves = raw.split(",").map((s) => s.trim()).filter(Boolean);
+    const updated = moves.filter((m) => m !== moveName);
+    await this.actor.update({ [`system.learnsetByRank.${rank}`]: updated.join(", ") });
+  }
+
+  async _onDropLearnsetMove(event) {
+    event.preventDefault();
+    if (!this.isEditable) return;
+    const zone = event.currentTarget;
+    zone.classList.remove("drag-over");
+    const rank = zone.dataset.rank;
+    if (!rank) return;
+
+    let data;
+    try {
+      data = JSON.parse(event.dataTransfer.getData("text/plain"));
+    } catch {
+      return;
+    }
+
+    if (data.type !== "Item") return;
+    const item = await Item.implementation.fromDropData(data);
+    if (!item || item.type !== "move") return;
+
+    const moveName = item.name;
+    const raw = `${this.actor.system.learnsetByRank?.[rank] ?? ""}`;
+    const moves = raw.split(",").map((s) => s.trim()).filter(Boolean);
+    if (moves.includes(moveName)) return;
+    moves.push(moveName);
+    await this.actor.update({ [`system.learnsetByRank.${rank}`]: moves.join(", ") });
+
+    // Also add the move to the pokemon's items with isUsable: false
+    const existingMove = this.actor.items.find((i) => i.type === "move" && i.name === moveName);
+    if (!existingMove) {
+      const moveData = item.toObject();
+      moveData.system.isUsable = false;
+      await this.actor.createEmbeddedDocuments("Item", [moveData]);
+    }
   }
 
   _onSwitchPokemonTab(event, html) {

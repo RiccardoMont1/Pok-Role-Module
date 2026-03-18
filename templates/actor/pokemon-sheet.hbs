@@ -751,6 +751,34 @@
       <p class="empty-state">{{localize "POKROLE.Move.Empty"}}</p>
       {{/if}}
     </section>
+
+    <section class="pokemon-settings-block pokemon-settings-learnset">
+      <div class="section-title-row learnset-toggle-row">
+        <h3>{{localize "POKROLE.Pokemon.RankLearnsetTitle"}}</h3>
+        <button type="button" class="icon-button" data-action="toggle-learnset-panel">
+          <i class="fas fa-chevron-down"></i>
+        </button>
+      </div>
+      <p class="inline-meta">{{localize "POKROLE.Pokemon.RankLearnsetHint"}}</p>
+      <div class="pokemon-rank-learnset-list learnset-collapsible" style="display:none;">
+        {{#each pokemonLearnsetByRankRows as |row|}}
+        <div class="learnset-rank-group" data-rank="{{row.key}}">
+          <span class="learnset-rank-label">{{localize row.label}}</span>
+          <div class="learnset-rank-drop-zone" data-rank="{{row.key}}" data-field-path="{{row.fieldPath}}">
+            {{#each row.moves as |move|}}
+            <span class="learnset-move-chip" data-move-name="{{move}}">
+              {{move}}
+              <button type="button" class="learnset-move-remove" data-rank="{{row.key}}" data-move-name="{{move}}">
+                <i class="fas fa-times"></i>
+              </button>
+            </span>
+            {{/each}}
+            <span class="learnset-drop-placeholder">{{localize "POKROLE.Pokemon.RankLearnsetPlaceholder"}}</span>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </section>
       </div>
 
       <div class="pokemon-view-panel" data-tab="inventory">
@@ -1166,22 +1194,6 @@
         <p class="inline-meta">{{localize "POKROLE.Pokemon.SettingsFixedAtFive"}}</p>
       </div>
 
-      <section class="pokemon-settings-block pokemon-settings-learnset">
-        <h3>{{localize "POKROLE.Pokemon.RankLearnsetTitle"}}</h3>
-        <p class="inline-meta">{{localize "POKROLE.Pokemon.RankLearnsetHint"}}</p>
-        <div class="pokemon-rank-learnset-list">
-          {{#each pokemonLearnsetByRankRows as |row|}}
-          <label>
-            <span>{{localize row.label}}</span>
-            <textarea
-              name="{{row.fieldPath}}"
-              rows="2"
-              placeholder="{{localize 'POKROLE.Pokemon.RankLearnsetPlaceholder'}}"
-            >{{row.value}}</textarea>
-          </label>
-          {{/each}}
-        </div>
-      </section>
     </section>
       </div>
     </div>
