@@ -27,4 +27,4 @@ Sistemare la scheda degli item dando il contesto. Per esempio una pokéball non 
 
 Importazione di tutti gli Item dal GitHub
 
-PokèBall e sistema di cattura e owernship della scheda (Nuove pokè, Velox Ball - SOLO Primo turno catch rate di ultraball [Quindi non vuoi usare la formula 9 al primo round e diminuisce di 2 ad ogni round che passa?] ; Subball - Contro pokèmon acqua cath rate di una megaball; Cura ball. Catch rate normale ma cura il pokèmon una volta catturato)
+PokèBall e sistema di cattura e owernship della scheda (Nuove pokè, Velox Ball - SOLO Primo turno catch rate di 9 al primo round e diminuisce di 2 ad ogni round che passa ; Sub Ball - Contro pokèmon acqua cath rate di una megaball; Cura ball. Catch rate normale ma cura il pokèmon una volta catturato)
