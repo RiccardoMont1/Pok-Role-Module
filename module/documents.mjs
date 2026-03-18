@@ -6652,6 +6652,16 @@ export class PokRoleActor extends Actor {
       return null;
     }
 
+    // Step 1: Roll Insight + Alert with 1 required success to find cover
+    const result = await this._rollSuccessPool({
+      dicePool: this.getTraitValue("insight") + this.getSkillValue("alert"),
+      removedSuccesses: this.getPainPenalty(),
+      requiredSuccesses: 1,
+      flavor: game.i18n.format("POKROLE.Chat.TrainerSearchCoverRoll", { actor: this.name })
+    });
+    if (!result?.success) return result;
+
+    // Step 2: If roll succeeded, show dialog to choose cover level
     const coverLevel = await new Promise((resolve) => {
       new Dialog({
         title: game.i18n.localize("POKROLE.Combat.TrainerActions.SearchForCover"),
@@ -6685,16 +6695,6 @@ export class PokRoleActor extends Actor {
 
     if (!coverLevel) return null;
 
-    const requiredSuccessesMap = { quarter: 1, half: 2, full: 3 };
-    const requiredSuccesses = requiredSuccessesMap[coverLevel] ?? 1;
-
-    const result = await this._rollSuccessPool({
-      dicePool: this.getTraitValue("insight") + this.getSkillValue("alert"),
-      removedSuccesses: this.getPainPenalty(),
-      requiredSuccesses,
-      flavor: game.i18n.format("POKROLE.Chat.TrainerSearchCoverRoll", { actor: this.name })
-    });
-    if (!result?.success) return result;
     await this.setTrainerCover(coverLevel);
     ui.notifications.info(
       game.i18n.format("POKROLE.Chat.CoverSet", {
