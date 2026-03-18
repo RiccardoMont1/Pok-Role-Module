@@ -1315,15 +1315,7 @@ const ITEM_SEEDS = Object.freeze({
     makeGear("held-snorlium-z", "Snorlium Z", { category: "held", pocket: "main", consumable: false, held: { isZCrystal: true, zMoveType: "none", compatiblePokemon: "Snorlax" }, description: "This is a crystallized form of Z-Power. It upgrades Snorlax's Giga Impact to a Z-Move." }),
     makeGear("held-solganium-z", "Solganium Z", { category: "held", pocket: "main", consumable: false, held: { isZCrystal: true, zMoveType: "none", compatiblePokemon: "Solgaleo" }, description: "This is a crystallized form of Z-Power. It upgrades Solgaleo's Sunsteel Strike to a Z-Move." }),
     makeGear("held-tapunium-z", "Tapunium Z", { category: "held", pocket: "main", consumable: false, held: { isZCrystal: true, zMoveType: "none", compatiblePokemon: "Tapu" }, description: "This is a crystallized form of Z-Power. It upgrades the tapu's Nature's Madness to a Z-Move." }),
-    makeGear("held-ultranecrozium-z", "Ultranecrozium Z", { category: "held", pocket: "main", consumable: false, held: { isZCrystal: true, zMoveType: "none", compatiblePokemon: "Necrozma" }, description: "This is a crystallized form of Z-Power. It upgrades Necrozma's Photon Geyser to a Z-Move." }),
-
-    // --- TMs/TRs ---
-    makeGear("held-tm-basic", "TM - Basic", { category: "other", pocket: "main", description: "Technical Machine that contains the guide on how to teach a basic Physical or Special to several Pokemon." }),
-    makeGear("held-tm-high-power", "TM - High Power", { category: "other", pocket: "main", description: "A Technical Machine that contains the guide on how to teach a high powered Physical or Special to several Pokemon." }),
-    makeGear("held-tm-support", "TM - Support", { category: "other", pocket: "main", description: "A Technical Machine that contains the guide on how to teach a Support Move to several Pokemon." }),
-    makeGear("held-tr-basic", "TR - Basic", { category: "other", pocket: "main", description: "A Technical Machine that contains the guide on how to teach a basic Physical or Special to a single Pokemon." }),
-    makeGear("held-tr-high-power", "TR - High Power", { category: "other", pocket: "main", description: "A Technical Machine that contains the guide on how to teach a high powered Physical or Special to a single Pokemon." }),
-    makeGear("held-tr-support", "TR - Support", { category: "other", pocket: "main", description: "A Technical Machine that contains the guide on how to teach a Support Move to a single Pokemon." })
+    makeGear("held-ultranecrozium-z", "Ultranecrozium Z", { category: "held", pocket: "main", consumable: false, held: { isZCrystal: true, zMoveType: "none", compatiblePokemon: "Necrozma" }, description: "This is a crystallized form of Z-Power. It upgrades Necrozma's Photon Geyser to a Z-Move." })
   ],
 
   moves: MOVE_COMPENDIUM_ENTRIES,
