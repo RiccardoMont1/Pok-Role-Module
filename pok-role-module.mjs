@@ -898,12 +898,14 @@ Hooks.once("ready", async () => {
   }
   await renderMoveQueueOverlay();
 
-  // One-time migration: set isRanged on known physical ranged moves
+  // Migration: set isRanged on known physical ranged moves
   if (game.user.isGM) {
     const PHYSICAL_RANGED_MOVES = new Set([
       "Attack Order", "Bullet Seed", "Pay Day", "Pin Missile",
       "Razor Leaf", "Rock Slide", "Smack Down", "Thousand Arrows"
     ]);
+
+    // Update moves on all actor sheets
     for (const actor of game.actors?.contents ?? []) {
       const updates = [];
       for (const item of actor.items) {
@@ -915,6 +917,23 @@ Hooks.once("ready", async () => {
       if (updates.length > 0) {
         await actor.updateEmbeddedDocuments("Item", updates);
       }
+    }
+
+    // Update moves in the compendium
+    const movesPack = game.packs.get("pok-role-system.moves");
+    if (movesPack) {
+      const wasLocked = movesPack.locked;
+      if (wasLocked) await movesPack.configure({ locked: false });
+      const index = await movesPack.getIndex({ fields: ["name", "system.isRanged", "system.category"] });
+      for (const entry of index) {
+        if (PHYSICAL_RANGED_MOVES.has(entry.name)) {
+          const doc = await movesPack.getDocument(entry._id);
+          if (doc && !doc.system.isRanged) {
+            await doc.update({ "system.isRanged": true });
+          }
+        }
+      }
+      if (wasLocked) await movesPack.configure({ locked: true });
     }
   }
 });
