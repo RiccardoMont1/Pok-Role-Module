@@ -366,6 +366,18 @@ const ITEM_SEEDS = Object.freeze({
       pokeball: { sealPower: 9, specialEffect: "quick" },
       description: "Uncommon. The seal on this ball works on a timer. Starting with a max potency of 9 dice on the first Round of battle and reducing the seal potency by 2 each Round that passes."
     }),
+    makeGear("trainer-net-ball", "Net Ball", {
+      category: "pokeball",
+      canUseInBattle: true,
+      pokeball: { sealPower: 4, specialEffect: "net" },
+      description: "Uncommon. Normally has the seal potency of a Pokeball (4 dice), but against Water-type Pokemon it has the seal potency of a Greatball (6 dice)."
+    }),
+    makeGear("trainer-heal-ball", "Heal Ball", {
+      category: "pokeball",
+      canUseInBattle: true,
+      pokeball: { sealPower: 4, specialEffect: "heal", healsOnCapture: true },
+      description: "Uncommon. Has the seal potency of a Pokeball (4 dice) but fully heals the Pokemon once captured."
+    }),
 
     // --- Revive items ---
     makeGear("trainer-revive", "Revive", {
