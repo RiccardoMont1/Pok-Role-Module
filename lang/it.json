@@ -158,6 +158,10 @@
       "DurationSecondsWithValue": "{seconds}s rimanenti"
     },
     "Pokemon": {
+      "CaughtBy": "Catturato da",
+      "CurrentTrainer": "Allenatore Attuale",
+      "DropTrainerHere": "Trascina qui la scheda dell'allenatore",
+      "DropTrainerOnly": "Solo le schede allenatore possono essere trascinate qui.",
       "Species": "Specie",
       "SpeciesPlaceholder": "Pikachu, Charmander...",
       "Gender": "Sesso",

@@ -392,6 +392,12 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       context.evolutionThreshold = evolutionThresholdByTime[evolutionTimeKey] ?? 15;
       context.evolutionProgressValue = Math.max(Number(this.actor.system.victories ?? 0), 0);
       context.evolutionReady = context.evolutionProgressValue >= context.evolutionThreshold;
+      const caughtById = this.actor.system.caughtBy || "";
+      const currentTrainerId = this.actor.system.currentTrainer || "";
+      const caughtByActor = caughtById ? game.actors.get(caughtById) : null;
+      const currentTrainerActor = currentTrainerId ? game.actors.get(currentTrainerId) : null;
+      context.caughtByName = caughtByActor?.name ?? "";
+      context.currentTrainerName = currentTrainerActor?.name ?? "";
     }
     const moves = this.actor.items
       .filter((item) => item.type === "move")
@@ -539,6 +545,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     );
     html.find("[data-action='open-party-member']").on("click", (event) =>
       this._onOpenPartyMember(event)
+    );
+    html.find("[data-action='clear-trainer-field']").on("click", (event) =>
+      this._onClearTrainerField(event)
     );
 
     html.find("[data-action='create-move']").on("click", (event) =>
@@ -1798,6 +1807,37 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     if (!actorId) return;
     const pokemon = game.actors.get(actorId);
     if (pokemon) pokemon.sheet.render(true);
+  }
+
+  async _onDrop(event) {
+    const dropTarget = event.target.closest("[data-action='drop-trainer']");
+    if (dropTarget && this.actor.type === "pokemon") {
+      let data;
+      try {
+        data = JSON.parse(event.dataTransfer.getData("text/plain"));
+      } catch {
+        return;
+      }
+      if (data.type !== "Actor") return;
+      const actor = await fromUuid(data.uuid);
+      if (!actor || actor.type !== "trainer") {
+        ui.notifications.warn(game.i18n.localize("POKROLE.Pokemon.DropTrainerOnly"));
+        return;
+      }
+      const field = dropTarget.dataset.field;
+      if (!field) return;
+      await this.actor.update({ [field]: actor.id });
+      return;
+    }
+    return super._onDrop(event);
+  }
+
+  async _onClearTrainerField(event) {
+    event.preventDefault();
+    if (this.actor.type !== "pokemon") return;
+    const field = event.currentTarget.dataset.field;
+    if (!field) return;
+    await this.actor.update({ [field]: "" });
   }
 
   _normalizeTrainerView(tabName) {

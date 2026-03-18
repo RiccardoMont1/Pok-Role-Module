@@ -159,6 +159,8 @@ export class PokemonDataModel extends BaseCharacterDataModel {
       ...base,
       attributes: new SchemaField(pokemonAttributeSchema()),
       skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 0, { min: 0, max: 5 })),
+      caughtBy: trimmedStringField(""),
+      currentTrainer: trimmedStringField(""),
       species: trimmedStringField(""),
       gender: new StringField({
         required: true,

@@ -1855,6 +1855,69 @@
   grid-template-columns: minmax(220px, 0.95fr) 1.05fr;
 }
 
+.pokemon-sheet .pokemon-portrait-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pokemon-sheet .pokemon-trainer-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pokemon-sheet .pokemon-trainer-drop {
+  border: 3px dashed var(--pk-outline);
+  border-radius: 12px;
+  padding: 6px 10px;
+  background: #f6f8ff;
+  min-height: 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pokemon-sheet .pokemon-trainer-drop-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #8f3b27;
+}
+
+.pokemon-sheet .pokemon-trainer-drop-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.pokemon-sheet .pokemon-trainer-drop-value span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f252d;
+}
+
+.pokemon-sheet .pokemon-trainer-clear {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #a03020;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.pokemon-sheet .pokemon-trainer-drop-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #9a8a80;
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
 .pokemon-sheet .pokemon-identity-header .profile-img {
   width: 100%;
   max-width: none;

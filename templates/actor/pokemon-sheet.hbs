@@ -62,12 +62,48 @@
       <div class="pokemon-view-panel is-active" data-tab="main">
     <div class="pokemon-arcade-top">
       <header class="sheet-header pokemon-identity-header">
-        <img
-          class="profile-img"
-          src="{{actor.img}}"
-          data-edit="img"
-          title="{{actor.name}}"
-        />
+        <div class="pokemon-portrait-column">
+          <img
+            class="profile-img"
+            src="{{actor.img}}"
+            data-edit="img"
+            title="{{actor.name}}"
+          />
+          <div class="pokemon-trainer-fields">
+            <div class="pokemon-trainer-drop" data-field="system.caughtBy" data-action="drop-trainer">
+              <span class="pokemon-trainer-drop-label">{{localize "POKROLE.Pokemon.CaughtBy"}}</span>
+              {{#if caughtByName}}
+              <div class="pokemon-trainer-drop-value">
+                <span>{{caughtByName}}</span>
+                <button type="button" class="icon-button pokemon-trainer-clear" data-action="clear-trainer-field" data-field="system.caughtBy" title="{{localize 'POKROLE.Actions.Delete'}}">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              {{else}}
+              <div class="pokemon-trainer-drop-placeholder">
+                <i class="fas fa-hand-point-down"></i>
+                <span>{{localize "POKROLE.Pokemon.DropTrainerHere"}}</span>
+              </div>
+              {{/if}}
+            </div>
+            <div class="pokemon-trainer-drop" data-field="system.currentTrainer" data-action="drop-trainer">
+              <span class="pokemon-trainer-drop-label">{{localize "POKROLE.Pokemon.CurrentTrainer"}}</span>
+              {{#if currentTrainerName}}
+              <div class="pokemon-trainer-drop-value">
+                <span>{{currentTrainerName}}</span>
+                <button type="button" class="icon-button pokemon-trainer-clear" data-action="clear-trainer-field" data-field="system.currentTrainer" title="{{localize 'POKROLE.Actions.Delete'}}">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              {{else}}
+              <div class="pokemon-trainer-drop-placeholder">
+                <i class="fas fa-hand-point-down"></i>
+                <span>{{localize "POKROLE.Pokemon.DropTrainerHere"}}</span>
+              </div>
+              {{/if}}
+            </div>
+          </div>
+        </div>
         <div class="header-fields">
           <h1 class="charname">
             <input
