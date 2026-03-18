@@ -95,7 +95,7 @@ function makeGear(seedId, name, config = {}) {
     description = "",
     img = "icons/svg/item-bag.svg",
     pokeball = { sealPower: 0, specialEffect: "none", healsOnCapture: false },
-    held = { passiveEffect: "", compatiblePokemon: "", isZCrystal: false, zMoveType: "none", isMegaStone: false, damageBonusType: "none", damageBonusDice: 0, damageBonusCategory: "", highCritical: false, highCriticalCategory: "", statBonuses: { strength: 0, dexterity: 0, vitality: 0, special: 0, insight: 0, def: 0, spDef: 0, initiative: 0 } },
+    held = { passiveEffect: "", compatiblePokemon: "", isZCrystal: false, zMoveType: "none", isMegaStone: false, damageBonusType: "none", damageBonusDice: 0, damageBonusCategory: "", highCritical: false, highCriticalCategory: "", statBonuses: { strength: 0, dexterity: 0, vitality: 0, special: 0, insight: 0, def: 0, spDef: 0, initiative: 0 }, accuracyBonusDice: 0, accuracyPenaltyToAttacker: 0, reducedLowAccuracy: 0, superEffectiveBonusDice: 0, lifeOrb: false, loadedDice: false, metronomeBonus: false, focusSash: false, choiceType: "", choicePowerBonus: 0, choicePowerPenalty: 0, choiceInitiativeBonus: 0, choicePriorityBonus: 0, onEnterBattleStatus: "", immuneToStatReduction: false, destinyKnot: false, ejectButton: false, redCard: false, removeTypeImmunities: false, immuneToHazards: false, immuneToWeather: false, immuneToSpore: false, rockyHelmet: false, stickyBarb: false, powerHerb: false, throatSpray: false, weaknessPolicy: false, whiteHerb: false, flinchOnHit: false, endOfRoundHeal: 0, endOfRoundMaxUses: 0, endOfRoundDamage: 0 },
     vitamin = { stat: "none" },
     evolution = { compatiblePokemon: "" }
   } = config;
@@ -152,7 +152,39 @@ function makeGear(seedId, name, config = {}) {
           def: Number(held.statBonuses?.def ?? 0),
           spDef: Number(held.statBonuses?.spDef ?? 0),
           initiative: Number(held.statBonuses?.initiative ?? 0)
-        }
+        },
+        accuracyBonusDice: Number(held.accuracyBonusDice ?? 0),
+        accuracyPenaltyToAttacker: Number(held.accuracyPenaltyToAttacker ?? 0),
+        reducedLowAccuracy: Number(held.reducedLowAccuracy ?? 0),
+        superEffectiveBonusDice: Number(held.superEffectiveBonusDice ?? 0),
+        lifeOrb: Boolean(held.lifeOrb ?? false),
+        loadedDice: Boolean(held.loadedDice ?? false),
+        metronomeBonus: Boolean(held.metronomeBonus ?? false),
+        focusSash: Boolean(held.focusSash ?? false),
+        choiceType: `${held.choiceType ?? ""}`.trim().toLowerCase(),
+        choicePowerBonus: Number(held.choicePowerBonus ?? 0),
+        choicePowerPenalty: Number(held.choicePowerPenalty ?? 0),
+        choiceInitiativeBonus: Number(held.choiceInitiativeBonus ?? 0),
+        choicePriorityBonus: Number(held.choicePriorityBonus ?? 0),
+        onEnterBattleStatus: `${held.onEnterBattleStatus ?? ""}`.trim().toLowerCase(),
+        immuneToStatReduction: Boolean(held.immuneToStatReduction ?? false),
+        destinyKnot: Boolean(held.destinyKnot ?? false),
+        ejectButton: Boolean(held.ejectButton ?? false),
+        redCard: Boolean(held.redCard ?? false),
+        removeTypeImmunities: Boolean(held.removeTypeImmunities ?? false),
+        immuneToHazards: Boolean(held.immuneToHazards ?? false),
+        immuneToWeather: Boolean(held.immuneToWeather ?? false),
+        immuneToSpore: Boolean(held.immuneToSpore ?? false),
+        rockyHelmet: Boolean(held.rockyHelmet ?? false),
+        stickyBarb: Boolean(held.stickyBarb ?? false),
+        powerHerb: Boolean(held.powerHerb ?? false),
+        throatSpray: Boolean(held.throatSpray ?? false),
+        weaknessPolicy: Boolean(held.weaknessPolicy ?? false),
+        whiteHerb: Boolean(held.whiteHerb ?? false),
+        flinchOnHit: Boolean(held.flinchOnHit ?? false),
+        endOfRoundHeal: Number(held.endOfRoundHeal ?? 0),
+        endOfRoundMaxUses: Number(held.endOfRoundMaxUses ?? 0),
+        endOfRoundDamage: Number(held.endOfRoundDamage ?? 0)
       },
       vitamin: {
         stat: `${vitamin.stat ?? "none"}`.trim().toLowerCase()
@@ -985,42 +1017,42 @@ const ITEM_SEEDS = Object.freeze({
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Choose a Physical Move, increase its Power by 3. All other Moves get their Power reduced by 3" },
+      held: { passiveEffect: "Choose a Physical Move, increase its Power by 3. All other Moves get their Power reduced by 3", choiceType: "physical", choicePowerBonus: 3, choicePowerPenalty: 3 },
       description: "Hit hard! Choose a Physical Move, increase its Power by 3. All other Moves get their Power reduced by 3."
     }),
     makeGear("held-choice-scarf", "Choice Scarf", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Increase initiative by 3. Choose a Move, it gets Reaction 5. All other Moves get Power reduced by 3", statBonuses: { initiative: 3 } },
+      held: { passiveEffect: "Increase initiative by 3. Choose a Move, it gets Reaction 5. All other Moves get Power reduced by 3", statBonuses: { initiative: 3 }, choiceType: "any", choicePowerPenalty: 3, choiceInitiativeBonus: 3, choicePriorityBonus: 5 },
       description: "Hit fast! Increase initiative by 3. Choose a Move, it gets the effect Reaction 5. All other Moves get their Power reduced by 3."
     }),
     makeGear("held-choice-specs", "Choice Specs", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Choose a Special Move, increase its Power by 3. All other Moves get their Power reduced by 3" },
+      held: { passiveEffect: "Choose a Special Move, increase its Power by 3. All other Moves get their Power reduced by 3", choiceType: "special", choicePowerBonus: 3, choicePowerPenalty: 3 },
       description: "Hit fabulously! Choose a Special Move, increase its Power by 3. All other Moves get their Power reduced by 3."
     }),
     makeGear("held-clear-amulet", "Clear Amulet", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Attributes and traits of the user can't be lowered by other Pokemon" },
+      held: { passiveEffect: "Attributes and traits of the user can't be lowered by other Pokemon", immuneToStatReduction: true },
       description: "An amulet of protection against evil. Attributes and traits of the user can't be lowered by other Pokemon."
     }),
     makeGear("held-destiny-knot", "Destiny Knot", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "If this Pokemon falls in love the foe will fall in love with them in return" },
+      held: { passiveEffect: "If this Pokemon falls in love the foe will fall in love with them in return", destinyKnot: true },
       description: "The red string of fate may never break. If this Pokemon falls in love the foe will fall in love with them in return."
     }),
     makeGear("held-eject-button", "Eject Button", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "After receiving damage, activate the Switcher effect for the user. Effect activates only once per Round" },
+      held: { passiveEffect: "After receiving damage, activate the Switcher effect for the user. Effect activates only once per Round", ejectButton: true },
       description: "A tempting big red button. Do not push. After receiving damage, activate the Switcher effect for the user. Effect activates only once per Round."
     }),
     makeGear("held-eviolite", "Eviolite", {
@@ -1034,28 +1066,28 @@ const ITEM_SEEDS = Object.freeze({
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Super-Effective Moves used by this Pokemon deal 1 extra damage" },
+      held: { passiveEffect: "Super-Effective Moves used by this Pokemon deal 1 extra damage", superEffectiveBonusDice: 1 },
       description: "The symbol of a true martial artist. Super-Effective Moves used by this Pokemon deal 1 extra damage."
     }),
     makeGear("held-focus-sash", "Focus Sash", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "The first time the user would faint due to damage from a move, remain at 1 HP instead" },
+      held: { passiveEffect: "The first time the user would faint due to damage from a move, remain at 1 HP instead", focusSash: true },
       description: "Remain concious until the end. The first time the user would faint due to damage from a move, remain at 1 HP instead."
     }),
     makeGear("held-flame-orb", "Flame Orb", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "User gets a 1st degree burn when they come out" },
+      held: { passiveEffect: "User gets a 1st degree burn when they come out", onEnterBattleStatus: "burn" },
       description: "A magical orb that casts a small fire. Warning: keep away from children & pets. User gets a 1st degree burn when they come out."
     }),
     makeGear("held-heavy-duty-boots", "Heavy-Duty Boots", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "The user is immune to Entry Hazards" },
+      held: { passiveEffect: "The user is immune to Entry Hazards", immuneToHazards: true },
       description: "These metal-plated boots will protect your feet even from a bear trap. The user is immune to Entry Hazards."
     }),
     makeGear("held-iron-ball", "Iron Ball", {
@@ -1069,42 +1101,42 @@ const ITEM_SEEDS = Object.freeze({
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 Chance dice to Flinch on all Special Moves. May trigger Evolution on certain Pokemon" },
+      held: { passiveEffect: "Add 1 Chance dice to Flinch on all Special Moves. May trigger Evolution on certain Pokemon", flinchOnHit: true },
       description: "A crown-shaped rock. May trigger Evolution on certain Pokemon. Add 1 Chance dice to Flinch on all Special Moves."
     }),
     makeGear("held-leftovers", "Leftovers", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Heal 1 Damage at the end of the Round. Consumed after healing 3 Damage" },
+      held: { passiveEffect: "Heal 1 Damage at the end of the Round. Consumed after healing 3 Damage", endOfRoundHeal: 1, endOfRoundMaxUses: 3 },
       description: "Don't waste food. Heal 1 Damage at the end of the Round. Consumed after healing 3 Damage."
     }),
     makeGear("held-life-orb", "Life Orb", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add the Recoil effect and 2 Extra dice to the damage pool of Physical and Special Moves" },
+      held: { passiveEffect: "Add the Recoil effect and 2 Extra dice to the damage pool of Physical and Special Moves", lifeOrb: true, damageBonusDice: 2, damageBonusType: "none" },
       description: "A cursed item that promises power. Add the Recoil effect and 2 Extra dice to the damage pool of Physical and Special Moves."
     }),
     makeGear("held-loaded-dice", "Loaded Dice", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Moves with Chance Dice effects get 2 Extra Chance dice on each effect" },
+      held: { passiveEffect: "Moves with Chance Dice effects get 2 Extra Chance dice on each effect", loadedDice: true },
       description: "Sometimes you have to coax lady luck. Moves with Chance Dice effects get 2 Extra Chance dice on each effect."
     }),
     makeGear("held-metronome", "Metronome", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add 1 Extra die to the damage pool of Double, Triple, and Successive Actions" },
+      held: { passiveEffect: "Add 1 Extra die to the damage pool of Double, Triple, and Successive Actions", metronomeBonus: true },
       description: "Follow the rhythm to attack in succession. Add 1 Extra die to the damage pool of Double, Triple, and Successive Actions."
     }),
     makeGear("held-power-herb", "Power Herb", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Remove the need to charge from a Charge Move. Single use" },
+      held: { passiveEffect: "Remove the need to charge from a Charge Move. Single use", powerHerb: true },
       description: "This Herb infuses a red energy. Remove the need to charge from a Charge Move. Single use."
     }),
     makeGear("held-protective-pads", "Protective Pads", {
@@ -1125,7 +1157,7 @@ const ITEM_SEEDS = Object.freeze({
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "All Physical and Special Moves get the High Critical Effect. Triggers Evolution on certain Pokemon" },
+      held: { passiveEffect: "All Physical and Special Moves get the High Critical Effect. Triggers Evolution on certain Pokemon", highCritical: true },
       description: "Deadly claws that trigger Evolution on certain Pokemon. All Physical and Special Moves get the High Critical Effect."
     }),
     makeGear("held-razor-fang", "Razor Fang", {
@@ -1139,91 +1171,91 @@ const ITEM_SEEDS = Object.freeze({
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "After receiving damage, activate the Switcher effect for the foe. Effect activates only once per Round" },
+      held: { passiveEffect: "After receiving damage, activate the Switcher effect for the foe. Effect activates only once per Round", redCard: true },
       description: "Send an offending Pokemon to the bench! After receiving damage, activate the Switcher effect for the foe. Effect activates only once per Round."
     }),
     makeGear("held-ring-target", "Ring Target", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Remove all immunities of the user" },
+      held: { passiveEffect: "Remove all immunities of the user", removeTypeImmunities: true },
       description: "There is no escaping harm when you have a target on your back. Remove all immunities of the user."
     }),
     makeGear("held-rocky-helmet", "Rocky Helmet", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Deal 1 damage to a foe hitting the user with a Non-Ranged Physical Move" },
+      held: { passiveEffect: "Deal 1 damage to a foe hitting the user with a Non-Ranged Physical Move", rockyHelmet: true },
       description: "The best defense is a good offense. Deal 1 damage to a foe hitting the user with a Non-Ranged Physical Move."
     }),
     makeGear("held-safety-goggles", "Safety Goggles", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "The user is immune to the Added Effects of Moves with the words Spore, Powder & Pollen" },
+      held: { passiveEffect: "The user is immune to the Added Effects of Moves with the words Spore, Powder & Pollen", immuneToSpore: true },
       description: "No more pesky allergies. The user is immune to the Added Effects of Moves with the words Spore, Powder & Pollen."
     }),
     makeGear("held-sticky-barb", "Sticky Barb", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Deal 1 Damage to the user at end of Round. If hit with Non-Ranged Physical Move, transfer the Sticky Barb" },
+      held: { passiveEffect: "Deal 1 Damage to the user at end of Round. If hit with Non-Ranged Physical Move, transfer the Sticky Barb", stickyBarb: true, endOfRoundDamage: 1 },
       description: "Deal 1 Damage to the user at the end of the Round. If hit with a Non-Ranged Physical Move, transfer the sticky Barb."
     }),
     makeGear("held-throat-spray", "Throat Spray", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Increase Special by 1 after using a Sound-Based Move" },
+      held: { passiveEffect: "Increase Special by 1 after using a Sound-Based Move", throatSpray: true },
       description: "This spray relaxes vocal cords. Increase Special by 1 after using a Sound-Based Move."
     }),
     makeGear("held-toxic-orb", "Toxic Orb", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "User gets poisoned when they come out" },
+      held: { passiveEffect: "User gets poisoned when they come out", onEnterBattleStatus: "poison" },
       description: "A magical orb that oozes venom. Warning: keep away from children & pets. User gets poisoned when they come out."
     }),
     makeGear("held-umbrella", "Umbrella", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "The user ignores the effects of Sunny, Rain and Hail weather" },
+      held: { passiveEffect: "The user ignores the effects of Sunny, Rain and Hail weather", immuneToWeather: true },
       description: "Rain or shine, you should be prepared. The user ignores the effects of Sunny, Rain and Hail weather."
     }),
     makeGear("held-weakness-policy", "Weakness Policy", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Increase user's Strength and Special by 1 after being hit with a Super-Effective Move" },
+      held: { passiveEffect: "Increase user's Strength and Special by 1 after being hit with a Super-Effective Move", weaknessPolicy: true },
       description: "A policy of compensation for damages. Increase user's Strength and Special by 1 after being hit with a Super-Effective Move."
     }),
     makeGear("held-white-herb", "White Herb", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Restore any lowered Attribute/Trait. Single use" },
+      held: { passiveEffect: "Restore any lowered Attribute/Trait. Single use", whiteHerb: true },
       description: "This Herb infuses a glowing energy. Restore any lowered Attribute/Trait. Single use."
     }),
     makeGear("held-wide-lens", "Wide Lens", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "The user adds 2 Dice to the Accuracy Roll of their Moves" },
+      held: { passiveEffect: "The user adds 2 Dice to the Accuracy Roll of their Moves", accuracyBonusDice: 2 },
       description: "These lenses enhace vision so it's easier to see your targets. The user adds 2 Dice to the Accuracy Roll of their Moves."
     }),
     makeGear("held-zoom-lens", "Zoom Lens", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Reduce Low Accuracy on Moves up to 2 points" },
+      held: { passiveEffect: "Reduce Low Accuracy on Moves up to 2 points", reducedLowAccuracy: 2 },
       description: "No more suffering from short-sight. Reduce Low Accuracy on Moves up to 2 points. (i.e. Low Accuracy 5 becomes 3)"
     }),
     makeGear("held-bright-powder", "Bright Powder", {
       category: "held",
       pocket: "main",
       consumable: false,
-      held: { passiveEffect: "Add an Extra Low Accuracy 1 on the Moves targeting this Pokemon" },
+      held: { passiveEffect: "Add an Extra Low Accuracy 1 on the Moves targeting this Pokemon", accuracyPenaltyToAttacker: 1 },
       description: "A glitter powder that hurts the foe's eyes. Add an Extra Low Accuracy 1 on the Moves targeting this Pokemon."
     }),
     makeGear("held-air-balloon", "Air Balloon", {

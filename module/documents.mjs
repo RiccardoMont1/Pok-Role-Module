@@ -660,6 +660,32 @@ export class PokRoleActor extends Actor {
     return bonusDice;
   }
 
+  /**
+   * Get the held item data object for this pokemon's equipped battle item.
+   * Returns null if no valid held item is equipped.
+   */
+  _getHeldItemData() {
+    if (this.type !== "pokemon") return null;
+    const battleItemId = this.system.battleItem || "";
+    if (!battleItemId) return null;
+    let item = game.items.get(battleItemId);
+    if (!item) item = this.items.get(battleItemId);
+    if (!item || item.type !== "gear") return null;
+    return item.system.held ?? null;
+  }
+
+  /**
+   * Check if the held item grants High Critical for the given move.
+   */
+  _checkHeldItemHighCritical(move) {
+    const held = this._getHeldItemData();
+    if (!held?.highCritical) return false;
+    const category = (move.system?.category || "physical").toLowerCase();
+    const requiredCategory = (held.highCriticalCategory || "").toLowerCase();
+    if (requiredCategory && requiredCategory !== category) return false;
+    return true;
+  }
+
   _getWeatherFlatDamageReduction(moveType, weatherKey) {
     const weather = this._normalizeWeatherKey(weatherKey);
     const normalizedMoveType = this._normalizeTypeKey(moveType);
@@ -2170,7 +2196,8 @@ export class PokRoleActor extends Actor {
       -99,
       99
     );
-    const accuracyDicePool = Math.max(accuracyDicePoolBase + accuracyDiceModifier, 1);
+    const heldAccuracyBonus = this._getHeldItemData()?.accuracyBonusDice ?? 0;
+    const accuracyDicePool = Math.max(accuracyDicePoolBase + accuracyDiceModifier + heldAccuracyBonus, 1);
 
     if (!Number.isFinite(accuracyDicePoolBase)) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownMoveTraits"));
@@ -2193,17 +2220,20 @@ export class PokRoleActor extends Actor {
     }
 
     const confusionPenalty = this._hasConfusionPenaltyThisRound() ? 1 : 0;
-    const reducedAccuracy = Math.max(toNumber(move.system.reducedAccuracy, 0), 0) + shieldPenalty;
+    const heldReducedLowAccuracy = this._getHeldItemData()?.reducedLowAccuracy ?? 0;
+    const reducedAccuracy = Math.max(toNumber(move.system.reducedAccuracy, 0) - heldReducedLowAccuracy, 0) + shieldPenalty;
+    const targetBrightPowder = targetActors[0]?._getHeldItemData?.()?.accuracyPenaltyToAttacker ?? 0;
     const accuracyRoll = await new Roll(successPoolFormula(accuracyDicePool)).evaluate({
       async: true
     });
     const rawAccuracySuccesses = toNumber(accuracyRoll.total, 0);
     const modifiedAccuracySuccesses = rawAccuracySuccesses + accuracyFlatModifier;
-    const removedAccuracySuccesses = reducedAccuracy + painPenalty + confusionPenalty;
+    const removedAccuracySuccesses = reducedAccuracy + painPenalty + confusionPenalty + targetBrightPowder;
     const netAccuracySuccesses = modifiedAccuracySuccesses - removedAccuracySuccesses;
     const requiredSuccesses = actionNumber;
     let hit = netAccuracySuccesses >= requiredSuccesses;
-    const criticalThreshold = requiredSuccesses + (move.system.highCritical ? 2 : 3);
+    const heldHighCritical = this._checkHeldItemHighCritical(move);
+    const criticalThreshold = requiredSuccesses + ((move.system.highCritical || heldHighCritical) ? 2 : 3);
     const critical = hit && netAccuracySuccesses >= criticalThreshold;
 
     await accuracyRoll.toMessage({
@@ -2618,15 +2648,6 @@ export class PokRoleActor extends Actor {
     const defense = targetActor
       ? this._getTargetDefense(targetActor, category) + coverDefenseBonus
       : 0;
-    const poolBeforeDefense =
-      damageAttributeValue +
-      power +
-      stabDice +
-      criticalDice +
-      heldItemBonus +
-      weatherBonusDice -
-      damagePainPenalty;
-    const damagePool = Math.max(poolBeforeDefense - defense, 0);
     const typeInteraction = targetActor
       ? this._evaluateTypeInteraction(moveType, targetActor)
       : {
@@ -2635,6 +2656,21 @@ export class PokRoleActor extends Actor {
           resistancePenalty: 0,
           label: "POKROLE.Chat.TypeEffect.Neutral"
         };
+    const expertBeltBonus = (!typeInteraction.immune && typeInteraction.weaknessBonus > 0)
+      ? (this._getHeldItemData()?.superEffectiveBonusDice ?? 0)
+      : 0;
+    const metronomeBonus = (this._getHeldItemData()?.metronomeBonus && actionNumber > 1) ? 1 : 0;
+    const poolBeforeDefense =
+      damageAttributeValue +
+      power +
+      stabDice +
+      criticalDice +
+      heldItemBonus +
+      weatherBonusDice +
+      expertBeltBonus +
+      metronomeBonus -
+      damagePainPenalty;
+    const damagePool = Math.max(poolBeforeDefense - defense, 0);
 
     let damageRoll = null;
     let damageSuccesses = 0;
@@ -2710,6 +2746,30 @@ export class PokRoleActor extends Actor {
       });
     }
 
+    // Focus Sash: survive lethal damage at 1 HP (once)
+    const targetHeldData = targetActor?._getHeldItemData?.() ?? null;
+    if (finalDamage > 0 && targetHeldData?.focusSash && hpValue > 0 && finalDamage >= hpValue) {
+      finalDamage = Math.max(hpValue - 1, 0);
+      // Consume the Focus Sash
+      const targetBattleItemId = targetActor.system.battleItem || "";
+      if (targetBattleItemId) {
+        let sashItem = game.items.get(targetBattleItemId);
+        if (!sashItem) sashItem = targetActor.items.get(targetBattleItemId);
+        if (sashItem) {
+          const currentQty = toNumber(sashItem.system?.quantity, 1);
+          if (currentQty > 1) {
+            await sashItem.update({ "system.quantity": currentQty - 1 });
+          } else {
+            await targetActor.update({ "system.battleItem": "" });
+          }
+        }
+      }
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+        content: `<strong>${targetActor.name}</strong> held on with Focus Sash!`
+      });
+    }
+
     let hpBefore = null;
     let hpAfter = null;
     if (targetActor && finalDamage > 0) {
@@ -2722,6 +2782,29 @@ export class PokRoleActor extends Actor {
       if (rangedAttack) {
         await this._degradeCoverOnHit(targetActor);
       }
+    }
+
+    // Life Orb recoil: deal recoil damage to attacker after dealing damage
+    const attackerHeldData = this._getHeldItemData();
+    if (attackerHeldData?.lifeOrb && damageSuccesses > 0) {
+      const recoilRoll = await new Roll(successPoolFormula(damageSuccesses)).evaluate({ async: true });
+      const recoilDamage = toNumber(recoilRoll.total, 0);
+      if (recoilDamage > 0) {
+        await this._safeApplyDamage(this, recoilDamage, { applyDeadOnZero: false });
+        await recoilRoll.toMessage({
+          speaker: ChatMessage.getSpeaker({ actor: this }),
+          flavor: `${this.name} took ${recoilDamage} recoil damage from Life Orb!`
+        });
+      }
+    }
+
+    // Rocky Helmet: deal 1 damage to attacker on non-ranged physical contact
+    if (targetHeldData?.rockyHelmet && finalDamage > 0 && !this._isMoveRanged(move) && category === "physical") {
+      await this._safeApplyDamage(this, 1, { applyDeadOnZero: false });
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+        content: `<strong>${targetActor.name}'s</strong> Rocky Helmet dealt 1 damage to <strong>${this.name}</strong>!`
+      });
     }
 
     const retaliationResults =
@@ -2775,6 +2858,8 @@ export class PokRoleActor extends Actor {
       stabDice,
       criticalDice,
       heldItemBonus,
+      expertBeltBonus,
+      metronomeBonus,
       damageAttributeLabel
     };
   }

@@ -542,7 +542,49 @@ export class GearDataModel extends foundry.abstract.TypeDataModel {
           def: integerField(0, { min: -10, max: 10 }),
           spDef: integerField(0, { min: -10, max: 10 }),
           initiative: integerField(0, { min: -10, max: 10 })
-        })
+        }),
+        // Accuracy modifiers
+        accuracyBonusDice: integerField(0, { min: -10, max: 10 }),
+        accuracyPenaltyToAttacker: integerField(0, { min: 0, max: 10 }),
+        reducedLowAccuracy: integerField(0, { min: 0, max: 10 }),
+        // Super-effective bonus
+        superEffectiveBonusDice: integerField(0, { min: 0, max: 10 }),
+        // Life Orb
+        lifeOrb: new BooleanField({ required: true, initial: false }),
+        // Loaded Dice
+        loadedDice: new BooleanField({ required: true, initial: false }),
+        // Metronome (multi-action bonus)
+        metronomeBonus: new BooleanField({ required: true, initial: false }),
+        // Focus Sash
+        focusSash: new BooleanField({ required: true, initial: false }),
+        // Choice items
+        choiceType: new StringField({ required: true, blank: true, initial: "" }),
+        choicePowerBonus: integerField(0, { min: 0, max: 10 }),
+        choicePowerPenalty: integerField(0, { min: 0, max: 10 }),
+        choiceInitiativeBonus: integerField(0, { min: 0, max: 10 }),
+        choicePriorityBonus: integerField(0, { min: 0, max: 10 }),
+        // On-enter-battle status
+        onEnterBattleStatus: new StringField({ required: true, blank: true, initial: "" }),
+        // Passive immunities/flags
+        immuneToStatReduction: new BooleanField({ required: true, initial: false }),
+        destinyKnot: new BooleanField({ required: true, initial: false }),
+        ejectButton: new BooleanField({ required: true, initial: false }),
+        redCard: new BooleanField({ required: true, initial: false }),
+        removeTypeImmunities: new BooleanField({ required: true, initial: false }),
+        immuneToHazards: new BooleanField({ required: true, initial: false }),
+        immuneToWeather: new BooleanField({ required: true, initial: false }),
+        immuneToSpore: new BooleanField({ required: true, initial: false }),
+        rockyHelmet: new BooleanField({ required: true, initial: false }),
+        stickyBarb: new BooleanField({ required: true, initial: false }),
+        powerHerb: new BooleanField({ required: true, initial: false }),
+        throatSpray: new BooleanField({ required: true, initial: false }),
+        weaknessPolicy: new BooleanField({ required: true, initial: false }),
+        whiteHerb: new BooleanField({ required: true, initial: false }),
+        flinchOnHit: new BooleanField({ required: true, initial: false }),
+        // End of round effects
+        endOfRoundHeal: integerField(0, { min: 0, max: 10 }),
+        endOfRoundMaxUses: integerField(0, { min: 0, max: 10 }),
+        endOfRoundDamage: integerField(0, { min: 0, max: 10 })
       }),
       // Vitamin fields
       vitamin: new SchemaField({
