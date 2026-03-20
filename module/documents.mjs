@@ -207,6 +207,7 @@ const TERRAIN_KEYS = Object.freeze([
 ]);
 const WEATHER_FLAG_KEY = "combat.weather";
 const TERRAIN_FLAG_KEY = "combat.terrain";
+const TERRAIN_ENTRIES_FLAG_KEY = "combat.terrainEntries";
 const TRAINER_STATE_FLAG_KEY = "combat.trainerState";
 const HEALING_TRACK_FLAG_KEY = "combat.healingTrack";
 const TREATMENT_BLOCK_FLAG_KEY = "combat.treatmentBlockedRound";
@@ -219,10 +220,13 @@ const CONFUSION_BYPASS_FLAG_KEY = "combat.confusionBypassRound";
 const INFATUATION_BYPASS_FLAG_KEY = "combat.infatuationBypassRound";
 const FROZEN_SHELL_FLAG_KEY = "combat.frozenShell";
 const LAST_USED_MOVE_FLAG_KEY = "combat.lastUsedMove";
+const LAST_RECEIVED_ATTACK_FLAG_KEY = "combat.lastReceivedAttack";
 const MULTI_TURN_STATE_FLAG_KEY = "combat.multiTurnState";
+const SPECIAL_DAMAGE_UNIQUE_TARGETS_FLAG_KEY = "combat.specialDamageUniqueTargets";
 const CHOICE_LOCKED_MOVE_FLAG = "combat.choiceLockedMove";
 const SPECIAL_WEATHER_KEYS = Object.freeze(["harsh-sunlight", "typhoon", "strong-winds"]);
 const BASIC_WEATHER_KEYS = Object.freeze(["sunny", "rain", "sandstorm", "hail"]);
+const TERRAIN_ENTRY_SCOPE_KEYS = Object.freeze(["battlefield", "side"]);
 const RAMPAGE_MAX_USES = 3;
 const HEALING_BLOCK_FLAG_KEY = "effects.healingBlockedUntil";
 const STRENGTH_LIFTING_CAPACITY_KG = Object.freeze([
@@ -238,6 +242,48 @@ const STRENGTH_LIFTING_CAPACITY_KG = Object.freeze([
   544,
   680
 ]);
+const RANK_DAMAGE_DICE_BY_TIER = Object.freeze({
+  starter: 1,
+  beginner: 2,
+  amateur: 4,
+  ace: 6,
+  pro: 8,
+  master: 10,
+  champion: 10
+});
+const SPECIAL_DAMAGE_MOVE_RULES = Object.freeze({
+  "move-chip-away": Object.freeze({
+    ignoresCover: true
+  }),
+  "move-hyperspace-hole": Object.freeze({
+    ignoresShield: true
+  }),
+  "move-sonic-boom": Object.freeze({
+    ignoresCover: true,
+    ignoresShield: true,
+    ignoreTypeInteraction: true,
+    fixedFinalDamage: 1
+  }),
+  "move-counter": Object.freeze({
+    retaliationCategories: Object.freeze(["physical"])
+  }),
+  "move-mirror-coat": Object.freeze({
+    forcesDamageMode: true,
+    retaliationCategories: Object.freeze(["special"])
+  }),
+  "move-metal-burst": Object.freeze({
+    retaliationCategories: Object.freeze(["physical", "special"])
+  }),
+  "move-comeuppance": Object.freeze({
+    retaliationCategories: Object.freeze(["physical", "special"])
+  }),
+  "move-endeavor": Object.freeze({
+    minimumTargetHpSourceCurrent: true
+  }),
+  "move-ruination": Object.freeze({
+    uniqueTargetPerCombat: true
+  })
+});
 const SPECIAL_CHARGE_MOVE_RULES = Object.freeze({
   "move-beak-blast": Object.freeze({
     outOfRange: false,
@@ -328,6 +374,75 @@ const SPECIAL_CHARGE_MOVE_RULES = Object.freeze({
       "move-hurricane",
       "move-smack-down"
     ])
+  })
+});
+const TERRAIN_RUNTIME_MOVE_RULES = Object.freeze({
+  "move-court-change": Object.freeze({
+    swapSideTerrain: true
+  }),
+  "move-defog": Object.freeze({
+    clearAllTerrainsOnHit: true
+  }),
+  "move-electric-terrain": Object.freeze({
+    terrainScope: "battlefield"
+  }),
+  "move-expanding-force": Object.freeze({
+    requiredTerrain: "psychic",
+    bonusDamageDice: 2,
+    bonusTargetCount: 1
+  }),
+  "move-grassy-glide": Object.freeze({
+    conditionalPriority: Object.freeze({
+      terrain: "grassy",
+      active: 1,
+      inactive: 0
+    })
+  }),
+  "move-grassy-terrain": Object.freeze({
+    terrainScope: "side"
+  }),
+  "move-max-lightning": Object.freeze({
+    terrainScope: "battlefield"
+  }),
+  "move-max-mindstorm": Object.freeze({
+    terrainScope: "battlefield"
+  }),
+  "move-max-overgrowth": Object.freeze({
+    terrainScope: "side"
+  }),
+  "move-max-starfall": Object.freeze({
+    terrainScope: "battlefield"
+  }),
+  "move-misty-explosion": Object.freeze({
+    requiredTerrain: "misty",
+    bonusDamageDice: 4
+  }),
+  "move-mortal-spin": Object.freeze({
+    clearActorSideTerrainsOnHit: true,
+    clearBattlefieldTerrainsOnHit: true
+  }),
+  "move-psyblade": Object.freeze({
+    requiredTerrain: "electric",
+    bonusDamageDice: 2
+  }),
+  "move-psychic-terrain": Object.freeze({
+    terrainScope: "battlefield"
+  }),
+  "move-rapid-spin": Object.freeze({
+    clearActorSideTerrainsOnHit: true,
+    clearBattlefieldTerrainsOnHit: true
+  }),
+  "move-rising-voltage": Object.freeze({
+    requiredTerrain: "electric",
+    bonusDamageDice: 3
+  }),
+  "move-steel-roller": Object.freeze({
+    requiresAnyTerrain: true,
+    clearAllTerrainsOnHit: true
+  }),
+  "move-terrain-pulse": Object.freeze({
+    typeMatchesPreferredTerrain: true,
+    bonusDamageDiceIfAnyTerrain: 2
   })
 });
 const CHARGE_MOVE_PROFILE_OVERRIDES = Object.freeze({
@@ -547,6 +662,173 @@ export class PokRoleActor extends Actor {
     return TERRAIN_KEYS.includes(normalized) ? normalized : "none";
   }
 
+  _normalizeTerrainScope(scope) {
+    const normalized = `${scope ?? "battlefield"}`.trim().toLowerCase();
+    return TERRAIN_ENTRY_SCOPE_KEYS.includes(normalized) ? normalized : "battlefield";
+  }
+
+  _normalizeTerrainSideDisposition(value, fallback = 0) {
+    const numericValue = Number(value);
+    if (!Number.isFinite(numericValue)) return fallback;
+    return clamp(Math.sign(Math.trunc(numericValue)), -1, 1);
+  }
+
+  _normalizeTerrainEntry(entry) {
+    const normalizedTerrain = this._normalizeTerrainKey(entry?.terrain ?? entry?.condition);
+    if (normalizedTerrain === "none") return null;
+    const scope = this._normalizeTerrainScope(entry?.scope);
+    const normalizedEntry = {
+      id: `${entry?.id ?? foundry.utils.randomID()}`.trim() || foundry.utils.randomID(),
+      terrain: normalizedTerrain,
+      scope,
+      sideDisposition:
+        scope === "side"
+          ? this._normalizeTerrainSideDisposition(entry?.sideDisposition, 0)
+          : null,
+      durationRounds: Math.max(Math.floor(toNumber(entry?.durationRounds, 0)), 0),
+      roundSet: Math.max(Math.floor(toNumber(entry?.roundSet, 0)), 0),
+      sourceActorId: `${entry?.sourceActorId ?? ""}`.trim() || null,
+      sourceActorName: `${entry?.sourceActorName ?? ""}`.trim(),
+      sourceMoveId: `${entry?.sourceMoveId ?? ""}`.trim() || null,
+      sourceMoveName: `${entry?.sourceMoveName ?? ""}`.trim()
+    };
+    return normalizedEntry;
+  }
+
+  _getLegacyTerrainEntry(combat = game.combat) {
+    if (!combat) return null;
+    const terrainData = combat.getFlag(POKROLE.ID, TERRAIN_FLAG_KEY) ?? {};
+    const terrainKey = this._normalizeTerrainKey(terrainData?.condition);
+    if (terrainKey === "none") return null;
+    return this._normalizeTerrainEntry({
+      id: "legacy-battlefield-terrain",
+      terrain: terrainKey,
+      scope: "battlefield",
+      durationRounds: terrainData?.durationRounds ?? 0,
+      roundSet: terrainData?.roundSet ?? 0,
+      sourceActorId: terrainData?.sourceActorId ?? null,
+      sourceActorName: terrainData?.sourceActorName ?? "",
+      sourceMoveId: terrainData?.sourceMoveId ?? null
+    });
+  }
+
+  _getCombatTerrainEntries(combat = game.combat) {
+    if (!combat) return [];
+    const rawEntries = combat.getFlag(POKROLE.ID, TERRAIN_ENTRIES_FLAG_KEY);
+    const normalizedEntries = Array.isArray(rawEntries)
+      ? rawEntries
+          .map((entry) => this._normalizeTerrainEntry(entry))
+          .filter(Boolean)
+      : [];
+    if (normalizedEntries.length > 0) {
+      return normalizedEntries;
+    }
+    const legacyEntry = this._getLegacyTerrainEntry(combat);
+    return legacyEntry ? [legacyEntry] : [];
+  }
+
+  async _syncLegacyTerrainFlag(combat, terrainEntries = [], options = {}) {
+    if (!combat) return null;
+    const normalizedEntries = Array.isArray(terrainEntries)
+      ? terrainEntries.map((entry) => this._normalizeTerrainEntry(entry)).filter(Boolean)
+      : [];
+    const battlefieldEntry =
+      normalizedEntries.find((entry) => entry.scope === "battlefield") ?? null;
+    const payload = battlefieldEntry
+      ? {
+          condition: battlefieldEntry.terrain,
+          durationRounds: battlefieldEntry.durationRounds,
+          roundSet: battlefieldEntry.roundSet,
+          sourceActorId: battlefieldEntry.sourceActorId ?? options.sourceActorId ?? this.id ?? null,
+          sourceActorName: battlefieldEntry.sourceActorName || options.sourceActorName || this.name || "",
+          sourceMoveId: battlefieldEntry.sourceMoveId ?? options.sourceMoveId ?? null
+        }
+      : {
+          condition: "none",
+          durationRounds: 0,
+          roundSet: Math.max(Math.floor(toNumber(combat.round, 0)), 0),
+          sourceActorId: options.sourceActorId ?? this.id ?? null,
+          sourceActorName: options.sourceActorName ?? this.name ?? "",
+          sourceMoveId: options.sourceMoveId ?? null
+        };
+    await combat.setFlag(POKROLE.ID, TERRAIN_FLAG_KEY, payload);
+    return payload;
+  }
+
+  async _setCombatTerrainEntries(combat, terrainEntries = [], options = {}) {
+    if (!combat) return [];
+    const normalizedEntries = (Array.isArray(terrainEntries) ? terrainEntries : [])
+      .map((entry) => this._normalizeTerrainEntry(entry))
+      .filter(Boolean);
+    await combat.setFlag(POKROLE.ID, TERRAIN_ENTRIES_FLAG_KEY, normalizedEntries);
+    await this._syncLegacyTerrainFlag(combat, normalizedEntries, options);
+    return normalizedEntries;
+  }
+
+  _getActorCombatSideDisposition(actor = this, combat = game.combat) {
+    const normalizedActor = actor ?? null;
+    if (!combat || !normalizedActor) return 0;
+    const combatant =
+      combat.combatants?.find?.((entry) => entry.actor?.id === normalizedActor.id) ?? null;
+    const possibleDispositions = [
+      combatant?.token?.disposition,
+      combatant?.token?.document?.disposition,
+      normalizedActor.getActiveTokens?.(true)?.[0]?.document?.disposition,
+      normalizedActor.getActiveTokens?.()?.[0]?.document?.disposition
+    ];
+    for (const rawDisposition of possibleDispositions) {
+      const numericValue = Number(rawDisposition);
+      if (!Number.isFinite(numericValue)) continue;
+      return clamp(Math.sign(Math.trunc(numericValue)), -1, 1);
+    }
+    return 0;
+  }
+
+  getActiveTerrainEntries(options = {}) {
+    const combat = options.combat ?? game.combat;
+    return this._getCombatTerrainEntries(combat);
+  }
+
+  getActiveTerrainKeysForActor(actor = this, options = {}) {
+    const combat = options.combat ?? game.combat;
+    const terrainEntries = this._getCombatTerrainEntries(combat);
+    const sideDisposition = this._getActorCombatSideDisposition(actor, combat);
+    const keys = [];
+    for (const entry of terrainEntries) {
+      if (entry.scope === "battlefield") {
+        keys.push(entry.terrain);
+        continue;
+      }
+      if (entry.scope === "side" && entry.sideDisposition === sideDisposition) {
+        keys.push(entry.terrain);
+      }
+    }
+    return [...new Set(keys.filter((key) => key && key !== "none"))];
+  }
+
+  getPreferredTerrainKeyForActor(actor = this, options = {}) {
+    const combat = options.combat ?? game.combat;
+    const terrainEntries = this._getCombatTerrainEntries(combat);
+    const sideDisposition = this._getActorCombatSideDisposition(actor, combat);
+    const preferBattlefield = options.preferBattlefield !== false;
+    const battlefieldEntry =
+      terrainEntries.find((entry) => entry.scope === "battlefield") ?? null;
+    const sideEntry =
+      terrainEntries.find(
+        (entry) => entry.scope === "side" && entry.sideDisposition === sideDisposition
+      ) ?? null;
+    const preferredEntry = preferBattlefield
+      ? battlefieldEntry ?? sideEntry
+      : sideEntry ?? battlefieldEntry;
+    return preferredEntry?.terrain ?? "none";
+  }
+
+  hasActiveTerrainForActor(actor = this, terrainKey = "none", options = {}) {
+    const normalizedTerrain = this._normalizeTerrainKey(terrainKey);
+    if (normalizedTerrain === "none") return false;
+    return this.getActiveTerrainKeysForActor(actor, options).includes(normalizedTerrain);
+  }
+
   _normalizeTypeKey(typeKey) {
     const normalized = `${typeKey ?? "none"}`.trim().toLowerCase();
     return TYPE_KEY_ALIASES[normalized] ?? normalized;
@@ -562,8 +844,9 @@ export class PokRoleActor extends Actor {
   getActiveTerrainKey() {
     const combat = game.combat;
     if (!combat) return "none";
-    const terrainData = combat.getFlag(POKROLE.ID, TERRAIN_FLAG_KEY) ?? {};
-    return this._normalizeTerrainKey(terrainData?.condition);
+    const battlefieldEntry =
+      this._getCombatTerrainEntries(combat).find((entry) => entry.scope === "battlefield") ?? null;
+    return battlefieldEntry?.terrain ?? "none";
   }
 
   async setActiveWeather(weatherKey = "none", options = {}) {
@@ -621,28 +904,165 @@ export class PokRoleActor extends Actor {
     }
     const normalized = this._normalizeTerrainKey(terrainKey);
     const durationRounds = Math.max(Math.floor(toNumber(options.durationRounds, 0)), 0);
-    const payload = {
-      condition: normalized,
-      durationRounds,
-      roundSet: Math.max(Math.floor(toNumber(combat.round, 0)), 0),
+    const scope = this._normalizeTerrainScope(options.scope ?? "battlefield");
+    const sideDisposition =
+      scope === "side"
+        ? this._normalizeTerrainSideDisposition(
+            options.sideDisposition,
+            this._getActorCombatSideDisposition(this, combat)
+          )
+        : null;
+    let terrainEntries = this._getCombatTerrainEntries(combat).filter((entry) => {
+      if (scope === "battlefield") return entry.scope !== "battlefield";
+      if (scope === "side") {
+        return !(entry.scope === "side" && entry.sideDisposition === sideDisposition);
+      }
+      return true;
+    });
+
+    const payload =
+      normalized === "none"
+        ? null
+        : this._normalizeTerrainEntry({
+            id: options.id ?? foundry.utils.randomID(),
+            terrain: normalized,
+            scope,
+            sideDisposition,
+            durationRounds,
+            roundSet: Math.max(Math.floor(toNumber(combat.round, 0)), 0),
+            sourceActorId: this.id ?? null,
+            sourceActorName: this.name ?? "",
+            sourceMoveId: options.sourceMoveId ?? null,
+            sourceMoveName: options.sourceMoveName ?? ""
+          });
+    if (payload) {
+      terrainEntries.push(payload);
+    }
+    await this._setCombatTerrainEntries(combat, terrainEntries, {
       sourceActorId: this.id ?? null,
-      sourceActorName: this.name ?? ""
-    };
-    await combat.setFlag(POKROLE.ID, TERRAIN_FLAG_KEY, payload);
+      sourceActorName: this.name ?? "",
+      sourceMoveId: options.sourceMoveId ?? null
+    });
     return payload;
   }
 
-  async clearActiveTerrain() {
+  async clearActiveTerrain(options = {}) {
     const combat = game.combat;
     if (!combat) return false;
-    await combat.setFlag(POKROLE.ID, TERRAIN_FLAG_KEY, {
-      condition: "none",
-      durationRounds: 0,
-      roundSet: Math.max(Math.floor(toNumber(combat.round, 0)), 0),
+    const clearAll = options.all === true;
+    const scope = this._normalizeTerrainScope(options.scope ?? "battlefield");
+    const sideDisposition =
+      scope === "side"
+        ? this._normalizeTerrainSideDisposition(
+            options.sideDisposition,
+            this._getActorCombatSideDisposition(this, combat)
+          )
+        : null;
+    const terrainKey = this._normalizeTerrainKey(options.terrain);
+    const currentEntries = this._getCombatTerrainEntries(combat);
+    const nextEntries = clearAll
+      ? []
+      : currentEntries.filter((entry) => {
+          if (scope === "battlefield" && entry.scope !== "battlefield") return true;
+          if (scope === "side") {
+            if (entry.scope !== "side") return true;
+            if (entry.sideDisposition !== sideDisposition) return true;
+          }
+          if (terrainKey !== "none" && entry.terrain !== terrainKey) return true;
+          return false;
+        });
+    if (nextEntries.length === currentEntries.length) return false;
+    await this._setCombatTerrainEntries(combat, nextEntries, {
       sourceActorId: this.id ?? null,
       sourceActorName: this.name ?? ""
     });
     return true;
+  }
+
+  async clearTerrainsForActorSide(actor = this, options = {}) {
+    const combat = game.combat;
+    if (!combat) return false;
+    const sideDisposition = this._getActorCombatSideDisposition(actor, combat);
+    const includeBattlefield = options.includeBattlefield === true;
+    const currentEntries = this._getCombatTerrainEntries(combat);
+    const nextEntries = currentEntries.filter((entry) => {
+      if (entry.scope === "side" && entry.sideDisposition === sideDisposition) return false;
+      if (includeBattlefield && entry.scope === "battlefield") return false;
+      return true;
+    });
+    if (nextEntries.length === currentEntries.length) return false;
+    await this._setCombatTerrainEntries(combat, nextEntries, {
+      sourceActorId: this.id ?? null,
+      sourceActorName: this.name ?? ""
+    });
+    return true;
+  }
+
+  async clearAllActiveTerrains() {
+    return this.clearActiveTerrain({ all: true });
+  }
+
+  async swapTerrainSides(actor = this) {
+    const combat = game.combat;
+    if (!combat) return false;
+    const sourceSide = this._getActorCombatSideDisposition(actor, combat);
+    if (sourceSide === 0) return false;
+    const foeSide = sourceSide === 1 ? -1 : 1;
+    const currentEntries = this._getCombatTerrainEntries(combat);
+    let changed = false;
+    const nextEntries = currentEntries.map((entry) => {
+      if (entry.scope !== "side") return entry;
+      if (entry.sideDisposition === sourceSide) {
+        changed = true;
+        return { ...entry, sideDisposition: foeSide };
+      }
+      if (entry.sideDisposition === foeSide) {
+        changed = true;
+        return { ...entry, sideDisposition: sourceSide };
+      }
+      return entry;
+    });
+    if (!changed) return false;
+    await this._setCombatTerrainEntries(combat, nextEntries, {
+      sourceActorId: this.id ?? null,
+      sourceActorName: this.name ?? ""
+    });
+    return true;
+  }
+
+  async synchronizeTerrainEffectsForCombat(combat = game.combat) {
+    if (!combat) return 0;
+    let updates = 0;
+    const battlefieldTerrain = this.getActiveTerrainKey();
+
+    for (const combatant of combat.combatants ?? []) {
+      const actor = combatant.actor;
+      if (!actor || actor.documentName !== "Actor") continue;
+
+      if (
+        battlefieldTerrain === "electric" &&
+        actor.type === "pokemon" &&
+        actor._isConditionActive?.("sleep") &&
+        actor._isActorGroundedForTerrain?.(actor)
+      ) {
+        await actor.toggleQuickCondition("sleep", { active: false });
+        updates += 1;
+      }
+
+      if (
+        battlefieldTerrain === "misty" &&
+        actor._isActorGroundedForTerrain?.(actor)
+      ) {
+        for (const conditionKey of CONDITION_KEYS) {
+          if (["dead", "fainted"].includes(conditionKey)) continue;
+          if (!actor._isConditionActive?.(conditionKey)) continue;
+          await actor.toggleQuickCondition(conditionKey, { active: false });
+          updates += 1;
+        }
+      }
+    }
+
+    return updates;
   }
 
   _getTrainerState() {
@@ -847,9 +1267,133 @@ export class PokRoleActor extends Actor {
       .toLowerCase();
   }
 
+  _getMoveSpecialDamageRule(move) {
+    const seedId = this._getMoveSeedId(move);
+    return seedId ? SPECIAL_DAMAGE_MOVE_RULES[seedId] ?? null : null;
+  }
+
   _isMoveRanged(move) {
     const moveSourceAttributes = this._getMoveSourceAttributes(move);
     return Boolean(moveSourceAttributes?.physicalRanged);
+  }
+
+  _getTerrainRuntimeMoveRule(move) {
+    const seedId = this._getMoveSeedId(move);
+    return seedId ? TERRAIN_RUNTIME_MOVE_RULES[seedId] ?? null : null;
+  }
+
+  _getGroundImmunityInteraction(targetActor) {
+    if (!targetActor) {
+      return { immune: false, weaknessBonus: 0, resistancePenalty: 0, label: "POKROLE.Chat.TypeEffect.Neutral" };
+    }
+    return this._evaluateTypeInteractionAgainstTypes("ground", [
+      targetActor?.system?.types?.primary,
+      targetActor?.system?.types?.secondary
+    ]);
+  }
+
+  _isActorGroundedForTerrain(actor = this) {
+    if (!actor || actor.type !== "pokemon") return true;
+    const interaction = this._getGroundImmunityInteraction(actor);
+    return !interaction.immune;
+  }
+
+  _isTerrainMoveRequirementMet(move, actor = this) {
+    const runtimeRule = this._getTerrainRuntimeMoveRule(move);
+    if (!runtimeRule?.requiredTerrain) return true;
+    return this.hasActiveTerrainForActor(actor, runtimeRule.requiredTerrain);
+  }
+
+  _hasAnyActiveTerrainForActor(actor = this) {
+    return this.getActiveTerrainKeysForActor(actor).length > 0;
+  }
+
+  _resolveEffectiveMovePriority(move, actor = this) {
+    const runtimeRule = this._getTerrainRuntimeMoveRule(move);
+    if (runtimeRule?.conditionalPriority) {
+      const requiredTerrain = this._normalizeTerrainKey(runtimeRule.conditionalPriority.terrain);
+      const isActive = this.hasActiveTerrainForActor(actor, requiredTerrain);
+      const resolvedPriority = isActive
+        ? runtimeRule.conditionalPriority.active
+        : runtimeRule.conditionalPriority.inactive;
+      return clamp(Math.floor(toNumber(resolvedPriority, 0)), -3, 5);
+    }
+    return clamp(Math.floor(toNumber(move?.system?.priority, 0)), -3, 5);
+  }
+
+  _resolveEffectiveMoveType(move, actor = this) {
+    const runtimeRule = this._getTerrainRuntimeMoveRule(move);
+    if (runtimeRule?.typeMatchesPreferredTerrain) {
+      const preferredTerrain = this.getPreferredTerrainKeyForActor(actor, {
+        preferBattlefield: true
+      });
+      if (preferredTerrain !== "none") {
+        return preferredTerrain;
+      }
+    }
+    return this._normalizeTypeKey(move?.system?.type || "normal");
+  }
+
+  _getTerrainDamageBonusDice(move, actor = this) {
+    const runtimeRule = this._getTerrainRuntimeMoveRule(move);
+    const effectiveType = this._resolveEffectiveMoveType(move, actor);
+    const moveCategory = this._normalizeMoveCombatCategory(move?.system?.category);
+    let bonusDice = 0;
+
+    if (["physical", "special"].includes(moveCategory)) {
+      if (effectiveType === "electric" && this.hasActiveTerrainForActor(actor, "electric")) bonusDice += 1;
+      if (effectiveType === "psychic" && this.hasActiveTerrainForActor(actor, "psychic")) bonusDice += 1;
+      if (effectiveType === "grass" && this.hasActiveTerrainForActor(actor, "grassy")) bonusDice += 1;
+    }
+
+    if (runtimeRule?.requiredTerrain && this.hasActiveTerrainForActor(actor, runtimeRule.requiredTerrain)) {
+      bonusDice += Math.max(Math.floor(toNumber(runtimeRule.bonusDamageDice, 0)), 0);
+    }
+    if (runtimeRule?.bonusDamageDiceIfAnyTerrain && this._hasAnyActiveTerrainForActor(actor)) {
+      bonusDice += Math.max(Math.floor(toNumber(runtimeRule.bonusDamageDiceIfAnyTerrain, 0)), 0);
+    }
+    return bonusDice;
+  }
+
+  _getTerrainPowerOverride(move, actor = this) {
+    const effectiveType = this._resolveEffectiveMoveType(move, actor);
+    if (effectiveType === "dragon" && this.hasActiveTerrainForActor(actor, "misty")) {
+      return 0;
+    }
+    return null;
+  }
+
+  _getAdditionalDamageTargetsFromTerrain(move, targetActors = [], actor = this) {
+    const runtimeRule = this._getTerrainRuntimeMoveRule(move);
+    const bonusTargetCount = Math.max(Math.floor(toNumber(runtimeRule?.bonusTargetCount, 0)), 0);
+    if (bonusTargetCount <= 0) return [];
+    if (runtimeRule?.requiredTerrain && !this.hasActiveTerrainForActor(actor, runtimeRule.requiredTerrain)) {
+      return [];
+    }
+    return [...(Array.isArray(targetActors) ? targetActors : [])].slice(1, 1 + bonusTargetCount);
+  }
+
+  _getTerrainRuntimeFailureDetail(move) {
+    const runtimeRule = this._getTerrainRuntimeMoveRule(move);
+    if (runtimeRule?.requiresAnyTerrain && !this._hasAnyActiveTerrainForActor(this)) {
+      return game.i18n.localize("POKROLE.Errors.MoveRequiresActiveTerrain");
+    }
+    const effectivePriority = this._resolveEffectiveMovePriority(move, this);
+    if (
+      effectivePriority !== 0 &&
+      this.hasActiveTerrainForActor(this, "psychic") &&
+      this.type === "pokemon" &&
+      this._isActorGroundedForTerrain(this)
+    ) {
+      return game.i18n.format("POKROLE.Errors.MoveBlockedByTerrain", {
+        terrain: this._localizeTerrainName("psychic")
+      });
+    }
+    return "";
+  }
+
+  _canUseMoveUnderTerrain(move) {
+    return !Boolean(this._getTerrainRuntimeFailureDetail(move));
   }
 
   _normalizeMoveCombatCategory(value) {
@@ -2020,6 +2564,84 @@ export class PokRoleActor extends Actor {
     });
   }
 
+  _getLastReceivedAttackRecord() {
+    const record = this.getFlag(POKROLE.ID, LAST_RECEIVED_ATTACK_FLAG_KEY) ?? {};
+    return {
+      combatId: `${record?.combatId ?? ""}`.trim(),
+      roundKey: `${record?.roundKey ?? ""}`.trim(),
+      sourceActorId: `${record?.sourceActorId ?? ""}`.trim(),
+      sourceActorName: `${record?.sourceActorName ?? ""}`.trim(),
+      moveId: `${record?.moveId ?? ""}`.trim(),
+      moveName: `${record?.moveName ?? ""}`.trim(),
+      moveSeedId: `${record?.moveSeedId ?? ""}`.trim().toLowerCase(),
+      category: this._normalizeMoveCombatCategory(record?.category),
+      damagePool: Math.max(toNumber(record?.damagePool, 0), 0),
+      recordedAt: Math.max(toNumber(record?.recordedAt, 0), 0)
+    };
+  }
+
+  async _recordLastReceivedAttack({
+    sourceActor = null,
+    move = null,
+    category = "support",
+    damagePool = 0,
+    roundKey = null
+  } = {}) {
+    if (!(this instanceof PokRoleActor)) return;
+    const combatId = `${game.combat?.id ?? ""}`.trim();
+    if (!combatId) return;
+    await this.setFlag(POKROLE.ID, LAST_RECEIVED_ATTACK_FLAG_KEY, {
+      combatId,
+      roundKey: `${roundKey ?? this._getCurrentRoundKey(0) ?? ""}`.trim(),
+      sourceActorId: `${sourceActor?.id ?? ""}`.trim(),
+      sourceActorName: `${sourceActor?.name ?? ""}`.trim(),
+      moveId: `${move?.id ?? ""}`.trim(),
+      moveName: `${move?.name ?? ""}`.trim(),
+      moveSeedId: this._getMoveSeedId(move),
+      category: this._normalizeMoveCombatCategory(category),
+      damagePool: Math.max(toNumber(damagePool, 0), 0),
+      recordedAt: Date.now()
+    });
+  }
+
+  _getSpecialDamageUniqueTargetsState() {
+    const rawState = this.getFlag(POKROLE.ID, SPECIAL_DAMAGE_UNIQUE_TARGETS_FLAG_KEY) ?? {};
+    const combatId = `${rawState?.combatId ?? ""}`.trim();
+    const activeCombatId = `${game.combat?.id ?? ""}`.trim();
+    if (!combatId || !activeCombatId || combatId !== activeCombatId) {
+      return {
+        combatId: activeCombatId,
+        targetsByMove: {}
+      };
+    }
+    return {
+      combatId,
+      targetsByMove: foundry.utils.deepClone(rawState?.targetsByMove ?? {})
+    };
+  }
+
+  _hasSpecialDamageMoveAlreadyHitTarget(move, targetActor) {
+    const seedId = this._getMoveSeedId(move);
+    const targetId = `${targetActor?.id ?? ""}`.trim();
+    if (!seedId || !targetId) return false;
+    const state = this._getSpecialDamageUniqueTargetsState();
+    const targetIds = Array.isArray(state.targetsByMove?.[seedId]) ? state.targetsByMove[seedId] : [];
+    return targetIds.includes(targetId);
+  }
+
+  async _markSpecialDamageMoveHitTarget(move, targetActor) {
+    const seedId = this._getMoveSeedId(move);
+    const targetId = `${targetActor?.id ?? ""}`.trim();
+    if (!seedId || !targetId) return;
+    const state = this._getSpecialDamageUniqueTargetsState();
+    const nextTargets = Array.isArray(state.targetsByMove?.[seedId]) ? [...state.targetsByMove[seedId]] : [];
+    if (!nextTargets.includes(targetId)) {
+      nextTargets.push(targetId);
+    }
+    state.targetsByMove[seedId] = nextTargets;
+    await this.setFlag(POKROLE.ID, SPECIAL_DAMAGE_UNIQUE_TARGETS_FLAG_KEY, state);
+  }
+
   _normalizeMultiTurnMode(value) {
     const normalized = `${value ?? ""}`.trim().toLowerCase();
     if (["charge", "recharge", "rampage"].includes(normalized)) return normalized;
@@ -3014,12 +3636,18 @@ export class PokRoleActor extends Actor {
       return null;
     }
 
+    const terrainFailureDetail = this._getTerrainRuntimeFailureDetail(move);
+    if (terrainFailureDetail) {
+      ui.notifications.warn(terrainFailureDetail);
+      return null;
+    }
+
     const enqueueMove = game.pokrole?.enqueueCombatMoveDeclaration;
     if (typeof enqueueMove !== "function") {
       return this.rollMove(moveId, options);
     }
 
-    const priority = Math.min(Math.max(Math.floor(toNumber(move.system?.priority, 0)), -3), 5);
+    const priority = this._resolveEffectiveMovePriority(move, this);
     const initiative = Math.max(
       toNumber(combatant.initiative, toNumber(this.system?.combat?.initiative, 0)),
       0
@@ -3096,7 +3724,7 @@ export class PokRoleActor extends Actor {
     const canInflictDeathOnKo = inflictLethalDamage && !isHoldingBackHalf;
     const actionNumber = await this._resolveActionRequirement(options.actionNumber, roundKey);
     const activeWeather = this.getActiveWeatherKey();
-    const moveType = this._normalizeTypeKey(move.system.type || "normal");
+    const moveType = this._resolveEffectiveMoveType(move, this);
     const weatherBlocksMove =
       (activeWeather === "harsh-sunlight" && moveType === "water") ||
       (activeWeather === "typhoon" && moveType === "fire");
@@ -3158,6 +3786,11 @@ export class PokRoleActor extends Actor {
     );
     if (!targetValidation.valid) {
       ui.notifications.warn(targetValidation.message);
+      return null;
+    }
+    const specialDamageFailureReason = this._getSpecialDamageMoveFailureReason(move, targetActors);
+    if (specialDamageFailureReason) {
+      ui.notifications.warn(specialDamageFailureReason);
       return null;
     }
 
@@ -3225,6 +3858,11 @@ export class PokRoleActor extends Actor {
       );
       return null;
     }
+    const terrainFailureDetail = this._getTerrainRuntimeFailureDetail(move);
+    if (terrainFailureDetail) {
+      ui.notifications.warn(terrainFailureDetail);
+      return null;
+    }
     let willBefore = currentWill;
     let willAfter = currentWill;
     if (willCost > 0) {
@@ -3246,8 +3884,11 @@ export class PokRoleActor extends Actor {
     const requiredSuccesses = actionNumber;
     let hit = netAccuracySuccesses >= requiredSuccesses;
     const heldHighCritical = this._checkHeldItemHighCritical(move);
+    const moveSourceAttributes = this._getMoveSourceAttributes(move);
     const criticalThreshold = requiredSuccesses + ((move.system.highCritical || heldHighCritical) ? 2 : 3);
-    let critical = hit && netAccuracySuccesses >= criticalThreshold;
+    let critical =
+      hit &&
+      (Boolean(moveSourceAttributes?.alwaysCrit) || netAccuracySuccesses >= criticalThreshold);
 
     await accuracyRoll.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: this }),
@@ -3289,6 +3930,7 @@ export class PokRoleActor extends Actor {
       targetDamage: 0,
       label: "POKROLE.Chat.Reaction.None"
     };
+    let recoilResult = null;
 
     const canUseDefensiveReaction =
       hit &&
@@ -3332,7 +3974,7 @@ export class PokRoleActor extends Actor {
     const damageTargetResults = [];
 
     if (hit && isDamagingMove && !reaction.clashResolved) {
-      const damageTargets = this._resolveDamageTargets(moveTargetKey, targetActors);
+      const damageTargets = this._resolveDamageTargets(moveTargetKey, targetActors, move);
       const targetsToDamage = damageTargets.length > 0 ? damageTargets : targetActor ? [targetActor] : [];
 
       for (const actorTarget of targetsToDamage) {
@@ -3366,7 +4008,10 @@ export class PokRoleActor extends Actor {
         criticalDice = firstDamageResult.criticalDice;
         damageAttributeLabel = firstDamageResult.damageAttributeLabel;
       }
+
     }
+
+    recoilResult = await this._applyMoveRecoilDamage(move, damageTargetResults);
 
     let confusionSelfDamage = null;
     if (confusionPenalty > 0 && !hit) {
@@ -3396,9 +4041,15 @@ export class PokRoleActor extends Actor {
       roundKey
     });
     const secondaryEffectResults = [
+      ...(recoilResult ? [recoilResult] : []),
       ...moveSecondaryEffectResults,
       ...abilitySecondaryEffectResults
     ];
+    const terrainFieldMoveResults = await this._applyTerrainFieldMoveRuntime({
+      move,
+      hit
+    });
+    secondaryEffectResults.push(...terrainFieldMoveResults);
     const accuracyDiceModifierLabel =
       accuracyDiceModifier > 0 ? `+${accuracyDiceModifier}` : `${accuracyDiceModifier}`;
     const accuracyFlatModifierLabel =
@@ -3487,6 +4138,24 @@ export class PokRoleActor extends Actor {
       speaker: ChatMessage.getSpeaker({ actor: this }),
       content: summaryHtml
     });
+
+    if (
+      moveSourceAttributes?.userFaints &&
+      isDamagingMove &&
+      damageTargetResults.some((entry) => Math.max(toNumber(entry?.finalDamage, 0), 0) > 0)
+    ) {
+      const selfHp = Math.max(toNumber(this.system?.resources?.hp?.value, 0), 0);
+      if (selfHp > 0) {
+        await this._safeApplyDamage(this, selfHp, { applyDeadOnZero: false });
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this }),
+          content: game.i18n.format("POKROLE.Chat.SpecialDamage.UserFainted", {
+            actor: this.name,
+            move: move.name
+          })
+        });
+      }
+    }
 
     await this._recordLastUsedMove(move);
 
@@ -3666,7 +4335,7 @@ export class PokRoleActor extends Actor {
     };
   }
 
-  _resolveDamageTargets(moveTargetKey, targetActors) {
+  _resolveDamageTargets(moveTargetKey, targetActors, move = null) {
     const normalizedTarget = this._normalizeMoveTargetKey(moveTargetKey);
     if (!Array.isArray(targetActors) || targetActors.length === 0) {
       if (normalizedTarget === "self") return [this];
@@ -3676,7 +4345,9 @@ export class PokRoleActor extends Actor {
     if (["all-foes", "area", "battlefield-area"].includes(normalizedTarget)) {
       return targetActors;
     }
-    return [targetActors[0]];
+    const primaryTargets = [targetActors[0]];
+    const extraTargets = this._getAdditionalDamageTargetsFromTerrain(move, targetActors, this);
+    return [...primaryTargets, ...extraTargets];
   }
 
   async _resolveMoveDamageAgainstTarget({
@@ -3690,12 +4361,18 @@ export class PokRoleActor extends Actor {
     roundKey = null
   }) {
     const category = move.system.category || "physical";
-    const moveType = this._normalizeTypeKey(move.system.type || "normal");
+    const moveType = this._resolveEffectiveMoveType(move, this);
+    const moveSourceAttributes = this._getMoveSourceAttributes(move);
     const specialChargeRule = this._getSpecialChargeMoveRule(move);
+    const specialDamageRule = this._getMoveSpecialDamageRule(move);
     const damageBaseSetup = this._resolveMoveDamageBase(move, targetActor, actionNumber);
     const damageAttributeLabel = damageBaseSetup.label;
     const damageAttributeValue = damageBaseSetup.value;
-    const power = this._resolveMovePower(move, targetActor, actionNumber);
+    const terrainPowerOverride = this._getTerrainPowerOverride(move, this);
+    const power =
+      terrainPowerOverride === null
+        ? this._resolveMovePower(move, targetActor, actionNumber)
+        : terrainPowerOverride;
     const damagePainPenalty = damageBaseSetup.ignoresPainPenalty ? 0 : painPenalty;
     const criticalDice = critical ? 2 : 0;
     const stabDice = this.hasType(moveType) ? 1 : 0;
@@ -3703,17 +4380,23 @@ export class PokRoleActor extends Actor {
     const activeWeather = this.getActiveWeatherKey();
     const weatherBonusDice = this._getWeatherDamageBonusDice(moveType, activeWeather);
     const weatherFlatReduction = this._getWeatherFlatDamageReduction(moveType, activeWeather);
-    const ignoresCover = Boolean(specialChargeRule?.ignoresCover);
-    const ignoresShield = Boolean(specialChargeRule?.ignoresShield);
-    const ignoresDefenses = Boolean(specialChargeRule?.ignoresDefenses);
+    const terrainBonusDice = this._getTerrainDamageBonusDice(move, this);
+    const ignoresCover = Boolean(specialChargeRule?.ignoresCover || specialDamageRule?.ignoresCover);
+    const ignoresShield = Boolean(specialChargeRule?.ignoresShield || specialDamageRule?.ignoresShield);
+    const ignoresDefenses = Boolean(
+      specialChargeRule?.ignoresDefenses ||
+      specialDamageRule?.ignoresDefenses ||
+      moveSourceAttributes?.ignoreDefenses
+    );
+    const defenseCategory = moveSourceAttributes?.resistedWithDefense ? "physical" : category;
     const coverDefenseBonus = (targetActor && !ignoresCover) ? this._getCoverDefenseBonus(targetActor, move) : 0;
     const weatherDefenseBonus = targetActor?.type === "pokemon"
-      ? targetActor._getWeatherDefenseBonusForStat(category, activeWeather)
+      ? targetActor._getWeatherDefenseBonusForStat(defenseCategory, activeWeather)
       : 0;
     const defense = targetActor
-      ? (ignoresDefenses ? 0 : this._getTargetDefense(targetActor, category)) + coverDefenseBonus
+      ? (ignoresDefenses ? 0 : this._getTargetDefense(targetActor, defenseCategory)) + coverDefenseBonus
       : 0;
-    const typeInteraction = targetActor
+    let typeInteraction = targetActor
       ? this._evaluateTypeInteraction(moveType, targetActor)
       : {
           immune: false,
@@ -3721,25 +4404,38 @@ export class PokRoleActor extends Actor {
           resistancePenalty: 0,
           label: "POKROLE.Chat.TypeEffect.Neutral"
         };
+    if (specialDamageRule?.ignoreTypeInteraction) {
+      typeInteraction = {
+        immune: false,
+        weaknessBonus: 0,
+        resistancePenalty: 0,
+        label: "POKROLE.Chat.TypeEffect.Neutral"
+      };
+    }
     const expertBeltBonus = (!typeInteraction.immune && typeInteraction.weaknessBonus > 0)
       ? (this._getHeldItemData()?.superEffectiveBonusDice ?? 0)
       : 0;
     const metronomeBonus = (this._getHeldItemData()?.metronomeBonus && actionNumber > 1) ? 1 : 0;
-    const poolBeforeDefense =
+    const rawPoolBeforeDefense =
       damageAttributeValue +
       power +
       stabDice +
       criticalDice +
       heldItemBonus +
+      terrainBonusDice +
       weatherBonusDice +
       expertBeltBonus +
       metronomeBonus -
       damagePainPenalty;
-    const damagePool = Math.max(poolBeforeDefense - defense, 0);
+    const fixedFinalDamage = Math.max(toNumber(specialDamageRule?.fixedFinalDamage, 0), 0);
+    const poolBeforeDefense = fixedFinalDamage > 0 ? 0 : rawPoolBeforeDefense;
+    const damagePool = fixedFinalDamage > 0 ? 0 : Math.max(poolBeforeDefense - defense, 0);
 
     let damageRoll = null;
     let damageSuccesses = 0;
-    if (damagePool > 0) {
+    if (fixedFinalDamage > 0) {
+      damageSuccesses = fixedFinalDamage;
+    } else if (damagePool > 0) {
       damageRoll = await new Roll(successPoolFormula(damagePool)).evaluate({ async: true });
       damageSuccesses = toNumber(damageRoll.total, 0);
       await damageRoll.toMessage({
@@ -3751,7 +4447,7 @@ export class PokRoleActor extends Actor {
       });
     }
 
-    const baseDamage = Math.max(damageSuccesses, 1);
+    const baseDamage = fixedFinalDamage > 0 ? fixedFinalDamage : Math.max(damageSuccesses, 1);
     let finalDamage = 0;
     let shieldPreventedDamage = false;
     let shieldDamageReduction = 0;
@@ -3848,6 +4544,12 @@ export class PokRoleActor extends Actor {
     let hpBefore = null;
     let hpAfter = null;
     if (targetActor && finalDamage > 0) {
+      if (specialDamageRule?.minimumTargetHpSourceCurrent) {
+        const sourceHpFloor = Math.max(toNumber(this.system?.resources?.hp?.value, 0), 0);
+        finalDamage = Math.min(finalDamage, Math.max(hpValue - sourceHpFloor, 0));
+      }
+    }
+    if (targetActor && finalDamage > 0) {
       const hpChange = await this._safeApplyDamage(targetActor, finalDamage, {
         applyDeadOnZero: Boolean(canInflictDeathOnKo),
         sourceMove: move
@@ -3860,6 +4562,22 @@ export class PokRoleActor extends Actor {
     }
 
     const attackLandedOnTarget = !typeInteraction.immune && Boolean(targetActor);
+    if (targetActor instanceof PokRoleActor && attackLandedOnTarget && damagePool > 0) {
+      await targetActor._recordLastReceivedAttack({
+        sourceActor: this,
+        move,
+        category,
+        damagePool,
+        roundKey
+      });
+    }
+    if (
+      targetActor instanceof PokRoleActor &&
+      finalDamage > 0 &&
+      specialDamageRule?.uniqueTargetPerCombat
+    ) {
+      await this._markSpecialDamageMoveHitTarget(move, targetActor);
+    }
     if (targetActor instanceof PokRoleActor && attackLandedOnTarget) {
       const chargeHitResults = await targetActor._handleChargeMoveHitWhileCharging({
         attackMove: move,
@@ -4015,6 +4733,7 @@ export class PokRoleActor extends Actor {
       shieldDetail,
       shieldRemoved: Boolean(shieldResponse?.shieldRemoved),
       coverAbsorbedDamage,
+      terrainBonusDice,
       weatherBonusDice,
       weatherFlatReduction,
       coverDefenseBonus,
@@ -4308,32 +5027,46 @@ export class PokRoleActor extends Actor {
     const normalizedActor = actor ?? null;
     const primaryType = this._normalizeTypeKey(normalizedActor?.system?.types?.primary || "none");
     const secondaryType = this._normalizeTypeKey(normalizedActor?.system?.types?.secondary || "none");
+    const activeTerrains = normalizedActor ? this.getActiveTerrainKeysForActor(normalizedActor) : [];
     return {
       name: `${normalizedActor?.name ?? ""}`.trim().toLowerCase(),
       gender: `${normalizedActor?.system?.gender ?? "unknown"}`.trim().toLowerCase(),
       primaryType,
       secondaryType,
-      types: [primaryType, secondaryType].filter((typeKey) => typeKey && typeKey !== "none")
+      types: [primaryType, secondaryType].filter((typeKey) => typeKey && typeKey !== "none"),
+      terrains: activeTerrains
     };
   }
 
   _buildSecondaryActivationContext(effect, targetActor = null, sourceMove = null, context = {}) {
     const sceneContext = this._getSceneHealingContext();
+    const sourceTerrainKeys = this.getActiveTerrainKeysForActor(this);
+    const targetTerrainKeys = targetActor ? this.getActiveTerrainKeysForActor(targetActor) : [];
+    const terrainKeys =
+      sourceTerrainKeys.length > 0
+        ? sourceTerrainKeys
+        : sceneContext.terrain && sceneContext.terrain !== "none"
+          ? [sceneContext.terrain]
+          : [];
     return {
       weather: this.getActiveWeatherKey(),
       timeOfDay: sceneContext.timeOfDay,
       location: sceneContext.location,
-      terrain: this.getActiveTerrainKey() !== "none" ? this.getActiveTerrainKey() : sceneContext.terrain,
+      terrain: terrainKeys,
+      battlefieldTerrain: this.getActiveTerrainKey(),
       combat: Boolean(game.combat),
       hit: Boolean(context?.hit),
       damagingMove: Boolean(context?.isDamagingMove),
       finalDamage: Math.max(toNumber(context?.finalDamage, 0), 0),
       totalDamageDealt: Math.max(toNumber(context?.totalDamageDealt, 0), 0),
       source: this._getSecondaryConditionActorContext(this),
-      target: this._getSecondaryConditionActorContext(targetActor),
+      target: {
+        ...this._getSecondaryConditionActorContext(targetActor),
+        terrains: targetTerrainKeys
+      },
       move: {
         name: `${sourceMove?.name ?? ""}`.trim().toLowerCase(),
-        type: this._normalizeTypeKey(sourceMove?.system?.type || "none"),
+        type: this._resolveEffectiveMoveType(sourceMove, this),
         category: `${sourceMove?.system?.category ?? "support"}`.trim().toLowerCase(),
         target: this._normalizeMoveTargetKey(context?.moveTargetKey ?? sourceMove?.system?.target),
         actionTag: `${sourceMove?.system?.actionTag ?? ""}`.trim().toLowerCase()
@@ -4354,7 +5087,9 @@ export class PokRoleActor extends Actor {
       time: "timeOfDay",
       timeofday: "timeOfDay",
       "source.type": "source.types",
-      "target.type": "target.types"
+      "target.type": "target.types",
+      "source.terrain": "source.terrains",
+      "target.terrain": "target.terrains"
     }[normalizedKey.toLowerCase()] ?? normalizedKey;
 
     return foundry.utils.getProperty(activationContext, aliasKey);
@@ -4663,6 +5398,18 @@ export class PokRoleActor extends Actor {
       return game.i18n.format("POKROLE.Chat.ConditionBlockedByWeather", {
         condition: localizedCondition,
         weather: this._localizeWeatherName(weather)
+      });
+    }
+
+    if (
+      this.hasActiveTerrainForActor(targetActor, "misty") &&
+      targetActor.type === "pokemon" &&
+      this._isActorGroundedForTerrain(targetActor) &&
+      !["dead", "fainted"].includes(normalizedCondition)
+    ) {
+      return game.i18n.format("POKROLE.Chat.ConditionBlockedByTerrain", {
+        condition: localizedCondition,
+        terrain: this._localizeTerrainName("misty")
       });
     }
 
@@ -5019,6 +5766,28 @@ export class PokRoleActor extends Actor {
         continue;
       }
 
+      if (normalizedEffectType === "terrain") {
+        const applyResult = await this._applySecondaryEffectToActor(
+          { ...effect, effectType: "terrain" },
+          this,
+          effectSourceItem,
+          { moveTargetKey, hit, isDamagingMove, finalDamage, totalDamageDealt, damageTargetResults }
+        );
+        results.push({
+          label: this._formatSecondaryEffectLabel(effect),
+          targetName: this._localizeMoveTarget(moveTargetKey),
+          applied: applyResult.applied,
+          detail: applyResult.applied
+            ? applyResult.detail
+            : this._resolveSecondaryEffectFailureDetail(effect, this, applyResult, {
+                finalDamage,
+                totalDamageDealt,
+                damageTargetResults
+              })
+        });
+        continue;
+      }
+
       const effectTargets = this._resolveActorsForSecondaryTarget(effect.target, {
         moveTargetKey,
         targetActors
@@ -5094,6 +5863,45 @@ export class PokRoleActor extends Actor {
     }
 
     return results;
+  }
+
+  async _applyMoveRecoilDamage(move, damageTargetResults = []) {
+    const moveSourceAttributes = this._getMoveSourceAttributes(move);
+    if (!moveSourceAttributes?.recoil) return null;
+
+    const totalDamageDealt = (Array.isArray(damageTargetResults) ? damageTargetResults : []).reduce(
+      (sum, result) => sum + Math.max(toNumber(result?.finalDamage, 0), 0),
+      0
+    );
+    if (totalDamageDealt <= 0) {
+      return {
+        applied: false,
+        damage: 0,
+        dice: 0
+      };
+    }
+
+    const recoilRoll = await new Roll(successPoolFormula(totalDamageDealt)).evaluate({ async: true });
+    const recoilDamage = Math.max(toNumber(recoilRoll.total, 0), 0);
+    if (recoilDamage > 0) {
+      await this._safeApplyDamage(this, recoilDamage, { applyDeadOnZero: false });
+    }
+
+    await recoilRoll.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      flavor: game.i18n.format("POKROLE.Chat.MoveRecoilFlavor", {
+        actor: this.name,
+        move: move?.name ?? game.i18n.localize("POKROLE.Common.Unknown"),
+        dice: totalDamageDealt,
+        damage: recoilDamage
+      })
+    });
+
+    return {
+      applied: recoilDamage > 0,
+      damage: recoilDamage,
+      dice: totalDamageDealt
+    };
   }
 
   async _applyAbilityAutomationEffects({
@@ -5576,16 +6384,22 @@ export class PokRoleActor extends Actor {
       move.system.category === "special"
         ? frozenShellBefore.specialDefense
         : frozenShellBefore.defense;
-    const typeInteraction = this._evaluateTypeInteractionAgainstTypes(move.system.type || "normal", [
+    const effectiveMoveType = this._resolveEffectiveMoveType(move, this);
+    const typeInteraction = this._evaluateTypeInteractionAgainstTypes(effectiveMoveType || "normal", [
       "ice"
     ]);
     const superEffective = !typeInteraction.immune && typeInteraction.weaknessBonus > 0;
     const isDamagingMove = this._moveUsesPrimaryDamage(move);
     const damageBaseSetup = this._resolveMoveDamageBase(move, this, normalizedAction);
     const damageAttributeValue = damageBaseSetup.value;
-    const movePower = this._resolveMovePower(move, this, normalizedAction);
-    const stabDice = this.hasType(move.system.type) ? 1 : 0;
-    const poolBeforeDefense = Math.max(movePower + damageAttributeValue + stabDice, 0);
+    const terrainPowerOverride = this._getTerrainPowerOverride(move, this);
+    const movePower =
+      terrainPowerOverride === null
+        ? this._resolveMovePower(move, this, normalizedAction)
+        : terrainPowerOverride;
+    const stabDice = this.hasType(effectiveMoveType) ? 1 : 0;
+    const terrainBonusDice = this._getTerrainDamageBonusDice(move, this);
+    const poolBeforeDefense = Math.max(movePower + damageAttributeValue + stabDice + terrainBonusDice, 0);
     const damagePool = Math.max(poolBeforeDefense - shellDefense, 0);
 
     let damageSuccesses = 0;
@@ -7070,7 +7884,163 @@ export class PokRoleActor extends Actor {
       await this._synchronizeConditionFlagsFromTemporaryEffects(this);
     }
 
+    const expiredManagedEffects = await this._cleanupExpiredManagedRoundEffects(this, normalizedCombatId);
+    if (expiredManagedEffects > 0) {
+      return expiredCount + expiredManagedEffects;
+    }
+
     return expiredCount;
+  }
+
+  async prepareAutomationEffectRoundTracking(effectDocument) {
+    const effect = effectDocument ?? null;
+    const targetActor = effect?.parent ?? this;
+    if (!effect || !targetActor || targetActor.documentName !== "Actor") return false;
+
+    const automationFlags = effect.getFlag?.(POKROLE.ID, "automation") ?? {};
+    const durationMode = `${automationFlags?.durationMode ?? "manual"}`.trim().toLowerCase();
+    if (durationMode !== "rounds") return false;
+
+    const combat = game.combat ?? null;
+    const combatId = `${automationFlags?.combatId ?? effect?.duration?.combat ?? combat?.id ?? ""}`.trim();
+    const totalRounds = this._normalizeSecondaryDurationRounds(
+      automationFlags?.durationRounds ?? effect?.duration?.rounds ?? 1
+    );
+
+    let appliedRound = Math.floor(toNumber(automationFlags?.appliedRound, Number.NaN));
+    if (!Number.isFinite(appliedRound)) {
+      const durationStartRound = Math.floor(toNumber(effect?.duration?.startRound, Number.NaN));
+      const combatRound = Math.floor(toNumber(combat?.round, Number.NaN));
+      appliedRound = Number.isFinite(durationStartRound)
+        ? durationStartRound
+        : Number.isFinite(combatRound)
+          ? combatRound
+          : Number.NaN;
+    }
+
+    let appliedTurn = Math.floor(toNumber(automationFlags?.appliedTurn, Number.NaN));
+    if (!Number.isFinite(appliedTurn)) {
+      const durationStartTurn = Math.floor(toNumber(effect?.duration?.startTurn, Number.NaN));
+      const combatTurn = Math.floor(toNumber(combat?.turn, Number.NaN));
+      appliedTurn = Number.isFinite(durationStartTurn)
+        ? durationStartTurn
+        : Number.isFinite(combatTurn)
+          ? combatTurn
+          : 0;
+    }
+
+    const currentRound = Math.floor(toNumber(combat?.round, Number.NaN));
+    const elapsedRounds =
+      Number.isFinite(currentRound) && Number.isFinite(appliedRound)
+        ? Math.max(currentRound - appliedRound, 0)
+        : 0;
+    const remainingRounds = Math.max(totalRounds - elapsedRounds, 0);
+
+    const updateData = {};
+    if (combatId && `${automationFlags?.combatId ?? ""}`.trim() !== combatId) {
+      updateData[`flags.${POKROLE.ID}.automation.combatId`] = combatId;
+    }
+    if (
+      Number.isFinite(appliedRound) &&
+      Math.floor(toNumber(automationFlags?.appliedRound, Number.NaN)) !== appliedRound
+    ) {
+      updateData[`flags.${POKROLE.ID}.automation.appliedRound`] = appliedRound;
+    }
+    if (
+      Number.isFinite(appliedTurn) &&
+      Math.floor(toNumber(automationFlags?.appliedTurn, Number.NaN)) !== appliedTurn
+    ) {
+      updateData[`flags.${POKROLE.ID}.automation.appliedTurn`] = appliedTurn;
+    }
+    if (Math.floor(toNumber(automationFlags?.durationRounds, Number.NaN)) !== totalRounds) {
+      updateData[`flags.${POKROLE.ID}.automation.durationRounds`] = totalRounds;
+    }
+    if (Math.floor(toNumber(automationFlags?.remainingRounds, Number.NaN)) !== remainingRounds) {
+      updateData[`flags.${POKROLE.ID}.automation.remainingRounds`] = remainingRounds;
+    }
+
+    if (
+      combatId &&
+      Number.isFinite(appliedRound) &&
+      (Math.floor(toNumber(effect?.duration?.rounds, Number.NaN)) !== totalRounds ||
+        Math.floor(toNumber(effect?.duration?.startRound, Number.NaN)) !== appliedRound ||
+        Math.floor(toNumber(effect?.duration?.startTurn, Number.NaN)) !== appliedTurn ||
+        `${effect?.duration?.combat ?? ""}`.trim() !== combatId)
+    ) {
+      updateData.duration = {
+        rounds: totalRounds,
+        startRound: appliedRound,
+        startTurn: Number.isFinite(appliedTurn) ? appliedTurn : 0,
+        combat: combatId
+      };
+    }
+
+    if (!Object.keys(updateData).length) return false;
+    await effect.update(updateData);
+    return true;
+  }
+
+  async advanceManagedAutomationEffectsRound(combatId = null) {
+    const targetActor = this;
+    if (!targetActor || targetActor.documentName !== "Actor") return 0;
+
+    const normalizedCombatId = `${combatId ?? game.combat?.id ?? ""}`.trim();
+    const currentRound = Math.max(Math.floor(toNumber(game.combat?.round, 0)), 0);
+    if (!normalizedCombatId || currentRound <= 0) return 0;
+
+    const effectUpdates = [];
+    const effectIdsToDelete = [];
+
+    for (const effectDocument of targetActor.effects?.contents ?? []) {
+      const automationFlags = effectDocument?.getFlag?.(POKROLE.ID, "automation") ?? {};
+      const durationMode = `${automationFlags?.durationMode ?? "manual"}`.trim().toLowerCase();
+      if (durationMode !== "rounds") continue;
+
+      const effectCombatId = `${automationFlags?.combatId ?? effectDocument?.duration?.combat ?? ""}`.trim();
+      if (effectCombatId && effectCombatId !== normalizedCombatId) continue;
+
+      const totalRounds = this._normalizeSecondaryDurationRounds(
+        automationFlags?.durationRounds ?? effectDocument?.duration?.rounds ?? 1
+      );
+      let appliedRound = Math.floor(toNumber(automationFlags?.appliedRound, Number.NaN));
+      if (!Number.isFinite(appliedRound)) {
+        const nativeStartRound = Math.floor(toNumber(effectDocument?.duration?.startRound, Number.NaN));
+        appliedRound = Number.isFinite(nativeStartRound) ? nativeStartRound : currentRound;
+      }
+
+      const elapsedRounds = Math.max(currentRound - appliedRound, 0);
+      const remainingRounds = Math.max(totalRounds - elapsedRounds, 0);
+      if (remainingRounds <= 0) {
+        if (effectDocument.id) effectIdsToDelete.push(effectDocument.id);
+        continue;
+      }
+
+      const currentTrackedRemaining = Math.floor(toNumber(automationFlags?.remainingRounds, Number.NaN));
+      const currentTrackedRound = Math.floor(toNumber(automationFlags?.appliedRound, Number.NaN));
+      const needsMetadataUpdate =
+        currentTrackedRemaining !== remainingRounds ||
+        currentTrackedRound !== appliedRound ||
+        `${automationFlags?.combatId ?? ""}`.trim() !== (effectCombatId || normalizedCombatId);
+
+      if (!needsMetadataUpdate) continue;
+
+      effectUpdates.push({
+        _id: effectDocument.id,
+        [`flags.${POKROLE.ID}.automation.remainingRounds`]: remainingRounds,
+        [`flags.${POKROLE.ID}.automation.appliedRound`]: appliedRound,
+        [`flags.${POKROLE.ID}.automation.durationRounds`]: totalRounds,
+        [`flags.${POKROLE.ID}.automation.combatId`]: effectCombatId || normalizedCombatId
+      });
+    }
+
+    if (effectUpdates.length > 0) {
+      await targetActor.updateEmbeddedDocuments("ActiveEffect", effectUpdates);
+    }
+    if (effectIdsToDelete.length > 0) {
+      await targetActor.deleteEmbeddedDocuments("ActiveEffect", effectIdsToDelete);
+    }
+
+    return effectIdsToDelete.length;
   }
 
   async processTemporaryEffectSpecialDuration(eventKey, options = {}) {
@@ -7166,13 +8136,18 @@ export class PokRoleActor extends Actor {
     const weatherKey = this._normalizeWeatherKey(options.weatherKey ?? this.getActiveWeatherKey());
     const statusDamage = await this._applyRoundEndStatusDamage();
     const weatherDamage = await this._applyRoundEndWeatherDamage(weatherKey);
+    const terrainEffect = await this._applyRoundEndTerrainEffects();
     const heldItemResult = await this._applyRoundEndHeldItemEffects();
-    const hasAnyEffect = statusDamage.totalDamage > 0 || weatherDamage.totalDamage > 0 || heldItemResult.label;
+    const hasAnyEffect =
+      statusDamage.totalDamage > 0 ||
+      weatherDamage.totalDamage > 0 ||
+      Boolean(terrainEffect.label) ||
+      Boolean(heldItemResult.label);
     if (!hasAnyEffect) {
-      return { totalDamage: 0, statusDamage, weatherDamage };
+      return { totalDamage: 0, statusDamage, weatherDamage, terrainEffect };
     }
 
-    const sections = [statusDamage.label, weatherDamage.label, heldItemResult.label]
+    const sections = [statusDamage.label, weatherDamage.label, terrainEffect.label, heldItemResult.label]
       .filter((label) => label && label !== game.i18n.localize("POKROLE.Common.None"))
       .map((label) => `<p>${label}</p>`)
       .join("");
@@ -7195,8 +8170,84 @@ export class PokRoleActor extends Actor {
     return {
       totalDamage: statusDamage.totalDamage + weatherDamage.totalDamage + (heldItemResult.totalDamage ?? 0),
       statusDamage,
-      weatherDamage
+      weatherDamage,
+      terrainEffect
     };
+  }
+
+  async _applyRoundEndTerrainEffects() {
+    if (!this.hasActiveTerrainForActor(this, "grassy")) {
+      return { label: "", totalHealing: 0 };
+    }
+
+    const hpValue = Math.max(toNumber(this.system?.resources?.hp?.value, 0), 0);
+    const hpMax = Math.max(toNumber(this.system?.resources?.hp?.max, 0), 0);
+    if (hpMax <= 0 || hpValue >= hpMax) {
+      return { label: game.i18n.localize("POKROLE.Common.None"), totalHealing: 0 };
+    }
+
+    const healResult = await this._safeApplyHeal(this, 1, {
+      healingCategory: "unlimited"
+    });
+    const healedApplied = Math.max(toNumber(healResult?.healedApplied, 0), 0);
+    if (healedApplied <= 0) {
+      return { label: game.i18n.localize("POKROLE.Common.None"), totalHealing: 0 };
+    }
+
+    return {
+      label: game.i18n.format("POKROLE.Chat.TerrainRoundHeal", {
+        terrain: this._localizeTerrainName("grassy"),
+        healing: healedApplied
+      }),
+      totalHealing: healedApplied
+    };
+  }
+
+  async _applyTerrainFieldMoveRuntime({ move, hit }) {
+    const runtimeRule = this._getTerrainRuntimeMoveRule(move);
+    if (!runtimeRule || !hit || !game.combat) return [];
+
+    const results = [];
+    const effectLabel = game.i18n.localize("POKROLE.Move.Secondary.Type.Terrain.Label");
+    const targetLabel = this._localizeMoveTarget(move?.system?.target);
+
+    if (runtimeRule.swapSideTerrain) {
+      const swapped = await this.swapTerrainSides(this);
+      results.push({
+        label: effectLabel,
+        targetName: targetLabel,
+        applied: swapped,
+        detail: swapped
+          ? game.i18n.localize("POKROLE.Chat.TerrainSwapped")
+          : game.i18n.localize("POKROLE.Chat.TerrainNoSwap")
+      });
+    }
+
+    if (runtimeRule.clearAllTerrainsOnHit) {
+      const cleared = await this.clearAllActiveTerrains();
+      results.push({
+        label: effectLabel,
+        targetName: game.i18n.localize("POKROLE.Move.TargetValues.Battlefield"),
+        applied: cleared,
+        detail: cleared
+          ? game.i18n.localize("POKROLE.Chat.TerrainClearedAll")
+          : game.i18n.localize("POKROLE.Chat.TerrainNoActive")
+      });
+    } else if (runtimeRule.clearActorSideTerrainsOnHit || runtimeRule.clearBattlefieldTerrainsOnHit) {
+      const cleared = await this.clearTerrainsForActorSide(this, {
+        includeBattlefield: runtimeRule.clearBattlefieldTerrainsOnHit === true
+      });
+      results.push({
+        label: effectLabel,
+        targetName: targetLabel,
+        applied: cleared,
+        detail: cleared
+          ? game.i18n.localize("POKROLE.Chat.TerrainClearedSide")
+          : game.i18n.localize("POKROLE.Chat.TerrainNoActive")
+      });
+    }
+
+    return results;
   }
 
   async _applyRoundEndHeldItemEffects() {
@@ -7628,9 +8679,12 @@ export class PokRoleActor extends Actor {
       conditionKey: normalizedCondition,
       durationMode: effectiveMode,
       durationRounds: normalizedDurationRounds,
+      remainingRounds: effectiveMode === "rounds" ? normalizedDurationRounds : null,
       specialDuration: normalizedSpecialDuration,
       expiresWithCombat,
       combatId: expiresWithCombat ? combatId : null,
+      appliedRound: expiresWithCombat ? game.combat?.round ?? null : null,
+      appliedTurn: expiresWithCombat ? game.combat?.turn ?? null : null,
       sourceItemType: `${sourceMove?.type ?? ""}`.trim().toLowerCase() || null,
       sourceItemId: sourceMove?.id ?? null,
       sourceItemName: sourceMove?.name ?? "",
@@ -7667,6 +8721,52 @@ export class PokRoleActor extends Actor {
     const actor = targetActor ?? this;
     const effects = actor?.effects?.contents ?? [];
     return effects.filter((effectDocument) => this._isManagedAutomationEffect(effectDocument));
+  }
+
+  async _cleanupExpiredManagedRoundEffects(targetActor, combatId = null) {
+    const combat = game.combat;
+    if (!targetActor || !combat) return 0;
+
+    const normalizedCombatId = `${combatId ?? combat.id ?? ""}`.trim();
+    if (!normalizedCombatId) return 0;
+
+    const currentRound = Math.max(Math.floor(toNumber(combat.round, 0)), 0);
+    const expiredEffectIds = [];
+
+    for (const effectDocument of this._getManagedAutomationEffects(targetActor)) {
+      const automationFlags = effectDocument.getFlag(POKROLE.ID, "automation") ?? {};
+      const durationMode = this._normalizeSecondaryDurationMode(
+        automationFlags?.durationMode,
+        automationFlags?.effectType ?? "custom"
+      );
+      if (durationMode !== "rounds") continue;
+
+      const effectCombatId = `${automationFlags?.combatId ?? effectDocument?.duration?.combat ?? ""}`.trim();
+      if (effectCombatId && effectCombatId !== normalizedCombatId) continue;
+
+      const durationRounds = this._normalizeSecondaryDurationRounds(
+        effectDocument?.duration?.rounds ?? automationFlags?.durationRounds ?? 1
+      );
+      const startRound = Math.max(
+        Math.floor(
+          toNumber(
+            effectDocument?.duration?.startRound ?? automationFlags?.appliedRound ?? currentRound,
+            currentRound
+          )
+        ),
+        0
+      );
+      if (currentRound > startRound + durationRounds - 1) {
+        expiredEffectIds.push(effectDocument.id);
+      }
+    }
+
+    if (expiredEffectIds.length > 0) {
+      await targetActor.deleteEmbeddedDocuments("ActiveEffect", expiredEffectIds);
+      await this._synchronizeConditionFlagsFromTemporaryEffects(targetActor);
+    }
+
+    return expiredEffectIds.length;
   }
 
   async _revertTemporaryEffectEntry(entry) {
@@ -7795,12 +8895,33 @@ export class PokRoleActor extends Actor {
       };
     }
 
+    const runtimeRule = this._getTerrainRuntimeMoveRule(sourceMove);
+    const moveTargetKey = this._normalizeMoveTargetKey(sourceMove?.system?.target);
+    const movePrimaryMode = this._normalizeMovePrimaryMode(sourceMove?.system?.primaryMode);
+    const canCreateTerrain =
+      Boolean(runtimeRule?.terrainScope) ||
+      ["battlefield", "ally-battlefield", "foe-battlefield", "battlefield-area"].includes(moveTargetKey) ||
+      movePrimaryMode === "effect-only";
+    if (!canCreateTerrain) {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectConditionNotMet")
+      };
+    }
     const durationMode = this._normalizeSecondaryDurationMode(effect.durationMode, "terrain");
     const durationRounds = this._normalizeSecondaryDurationRounds(effect.durationRounds);
     const terrainDurationRounds = durationMode === "rounds" ? durationRounds : 0;
+    const terrainScope = this._normalizeTerrainScope(
+      runtimeRule?.terrainScope ??
+        (this._normalizeMoveTargetKey(sourceMove?.system?.target) === "ally-battlefield"
+          ? "side"
+          : "battlefield")
+    );
     const payload = await this.setActiveTerrain(terrainKey, {
       durationRounds: terrainDurationRounds,
-      sourceMoveId: sourceMove?.id ?? null
+      scope: terrainScope,
+      sourceMoveId: sourceMove?.id ?? null,
+      sourceMoveName: sourceMove?.name ?? ""
     });
     if (!payload) {
       return {
@@ -7808,6 +8929,7 @@ export class PokRoleActor extends Actor {
         detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectFailed")
       };
     }
+    await this.synchronizeTerrainEffectsForCombat();
 
     const durationLabel =
       durationMode === "rounds"
@@ -7817,7 +8939,11 @@ export class PokRoleActor extends Actor {
         : game.i18n.localize("POKROLE.TemporaryEffects.DurationManual");
     return {
       applied: true,
-      detail: `${this._localizeSecondaryTerrainName(terrainKey)} (${durationLabel})`
+      detail: `${this._localizeSecondaryTerrainName(terrainKey)} (${durationLabel})${
+        terrainScope === "side"
+          ? ` - ${game.i18n.localize("POKROLE.Chat.TerrainScopeSide")}`
+          : ` - ${game.i18n.localize("POKROLE.Chat.TerrainScopeBattlefield")}`
+      }`
     };
   }
 
@@ -8803,7 +9929,7 @@ export class PokRoleActor extends Actor {
 
   _buildShieldAttackContext(move, attackerActor, roundKey = null, isDamagingMove = false) {
     const moveCategory = this._normalizeMoveCombatCategory(move?.system?.category);
-    const movePriority = Math.floor(toNumber(move?.system?.priority, 0));
+    const movePriority = this._resolveEffectiveMovePriority(move, attackerActor ?? this);
     const moveSourceAttributes = this._getMoveSourceAttributes(move);
     const specialChargeRule = this._getSpecialChargeMoveRule(move);
     return {
@@ -9300,12 +10426,13 @@ export class PokRoleActor extends Actor {
   }
 
   _getTargetDefense(targetActor, category) {
+    const normalizedCategory = this._normalizeMoveCombatCategory(category);
     if (targetActor instanceof PokRoleActor) {
-      return targetActor.getDefense(category);
+      return targetActor.getDefense(normalizedCategory);
     }
 
     const fallbackDefense =
-      category === "special"
+      normalizedCategory === "special"
         ? toNumber(targetActor.system?.attributes?.insight, 0)
         : toNumber(targetActor.system?.attributes?.vitality, 0);
     return Math.max(fallbackDefense, 0);
@@ -9318,9 +10445,75 @@ export class PokRoleActor extends Actor {
 
   _moveUsesPrimaryDamage(move) {
     const moveSystem = move?.system ?? move ?? {};
+    const specialDamageRule = this._getMoveSpecialDamageRule(move);
+    if (specialDamageRule?.forcesDamageMode) return true;
     const normalizedCategory = `${moveSystem?.category ?? "physical"}`.trim().toLowerCase();
     if (normalizedCategory === "support") return false;
     return this._normalizeMovePrimaryMode(moveSystem?.primaryMode) === "damage";
+  }
+
+  _getSpecialDamageMoveFailureReason(move, targetActors = []) {
+    const rule = this._getMoveSpecialDamageRule(move);
+    if (!rule) return null;
+    const primaryTarget = targetActors[0] ?? null;
+    const seedId = this._getMoveSeedId(move);
+
+    if (Array.isArray(rule.retaliationCategories) && rule.retaliationCategories.length > 0) {
+      if (!(primaryTarget instanceof PokRoleActor)) {
+        return game.i18n.localize("POKROLE.Errors.SpecialDamageNeedsTarget");
+      }
+      const lastAttack = this._getLastReceivedAttackRecord();
+      const activeCombatId = `${game.combat?.id ?? ""}`.trim();
+      if (
+        !activeCombatId ||
+        !lastAttack.combatId ||
+        lastAttack.combatId !== activeCombatId ||
+        !lastAttack.sourceActorId ||
+        lastAttack.sourceActorId !== primaryTarget.id ||
+        lastAttack.damagePool <= 0
+      ) {
+        return game.i18n.format("POKROLE.Errors.SpecialDamageNeedsRetaliationTarget", {
+          move: move.name,
+          actor: this.name
+        });
+      }
+      if (!rule.retaliationCategories.includes(lastAttack.category)) {
+        const categoryLabel =
+          rule.retaliationCategories.length > 1
+            ? game.i18n.localize("POKROLE.Move.Category.Damaging")
+            : game.i18n.localize(
+                rule.retaliationCategories[0] === "physical"
+                  ? "POKROLE.Move.Category.Physical"
+                  : "POKROLE.Move.Category.Special"
+              );
+        return game.i18n.format("POKROLE.Errors.SpecialDamageNeedsRetaliationCategory", {
+          move: move.name,
+          actor: this.name,
+          category: categoryLabel
+        });
+      }
+    }
+
+    if (seedId === "move-nature-s-madness" && primaryTarget instanceof PokRoleActor) {
+      const targetHp = Math.max(toNumber(primaryTarget.system?.resources?.hp?.value, 0), 0);
+      if (targetHp <= 1) {
+        return game.i18n.format("POKROLE.Errors.SpecialDamageTargetTooWeak", {
+          move: move.name,
+          target: primaryTarget.name
+        });
+      }
+    }
+
+    if (rule.uniqueTargetPerCombat && primaryTarget instanceof PokRoleActor) {
+      if (this._hasSpecialDamageMoveAlreadyHitTarget(move, primaryTarget)) {
+        return game.i18n.format("POKROLE.Errors.SpecialDamageAlreadyHitTarget", {
+          move: move.name,
+          target: primaryTarget.name
+        });
+      }
+    }
+
+    return null;
   }
 
   _moveShouldAutoHoldBackFromInfatuation(moveTargetKey) {
@@ -9337,6 +10530,8 @@ export class PokRoleActor extends Actor {
 
   _buildFormulaEntityContext(actor = null) {
     const entity = actor ?? null;
+    const lastReceivedAttack = actor instanceof PokRoleActor ? actor._getLastReceivedAttackRecord() : {};
+    const normalizedTier = `${entity?.system?.tier ?? ""}`.trim().toLowerCase();
     const context = {
       hpCurrent: Math.max(toNumber(entity?.system?.resources?.hp?.value, 0), 0),
       hpMax: Math.max(toNumber(entity?.system?.resources?.hp?.max, 0), 0),
@@ -9349,6 +10544,8 @@ export class PokRoleActor extends Actor {
       confidence: Math.max(toNumber(entity?.system?.confidence, 0), 0),
       battles: Math.max(toNumber(entity?.system?.battles, 0), 0),
       victories: Math.max(toNumber(entity?.system?.victories, 0), 0),
+      rankDamageDice: Math.max(toNumber(RANK_DAMAGE_DICE_BY_TIER[normalizedTier], 0), 0),
+      lastDamagePoolTaken: Math.max(toNumber(lastReceivedAttack?.damagePool, 0), 0),
       primaryType: this._normalizeTypeKey(entity?.system?.types?.primary || "none"),
       secondaryType: this._normalizeTypeKey(entity?.system?.types?.secondary || "none")
     };
@@ -9371,9 +10568,9 @@ export class PokRoleActor extends Actor {
       move: {
         power: Math.max(toNumber(move?.system?.power, 0), 0),
         willCost: Math.max(toNumber(move?.system?.willCost, 0), 0),
-        priority: toNumber(move?.system?.priority, 0),
+        priority: this._resolveEffectiveMovePriority(move, this),
         category: `${move?.system?.category ?? ""}`.trim().toLowerCase(),
-        type: this._normalizeTypeKey(move?.system?.type || "none")
+        type: this._resolveEffectiveMoveType(move, this)
       },
       action: {
         number: Math.max(toNumber(extras?.actionNumber, 1), 1)

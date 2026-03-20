@@ -6,32 +6,26 @@ Total moves: **888**
 
 ## Status Totals
 
-- `full`: 746
-- `partial`: 92
-- `manual`: 50
+- `full`: 805
+- `partial`: 28
+- `manual`: 55
 
 ## Reason Totals
 
-- `external-rule-reference`: 25
-- `terrain-field-effect`: 21
-- `ignore-defenses`: 19
+- `external-rule-reference`: 26
 - `mixed-category`: 18
 - `suggested-effects`: 18
-- `recoil`: 15
 - `switcher-move`: 14
-- `dynamic-type`: 12
+- `dynamic-type`: 13
 - `maneuver-rule`: 11
-- `user-faints`: 9
 - `copied-move-dependent`: 8
-- `always-crit`: 6
-- `delayed-effect`: 4
+- `delayed-effect`: 8
+- `user-faints`: 5
 - `dynamax-rule`: 4
-- `status-cleanse`: 4
+- `dynamic-power-formula`: 4
 - `destroy-shield`: 3
-- `special-defense-rule`: 3
-- `dynamic-power-formula`: 2
+- `status-cleanse`: 3
 - `alternative-trait-formula`: 1
-- `manual-terrain-resolution`: 1
 - `stored-damage-formula`: 1
 - `temporary-type-immunity-change`: 1
 
@@ -53,26 +47,31 @@ Total moves: **888**
 - **Doom Desire**: delayed-effect
 - **Evasion**: dynamic-type, external-rule-reference, maneuver-rule
 - **Fickle Beam**: dynamic-power-formula
+- **Final Gambit**: dynamic-power-formula
+- **Fire Pledge**: delayed-effect
 - **Fling**: external-rule-reference
 - **Future Sight**: delayed-effect
 - **Gigavolt Havoc**: external-rule-reference, mixed-category, suggested-effects
 - **Grapple**: dynamic-type, maneuver-rule
-- **Grassy Terrain**: manual-terrain-resolution, terrain-field-effect
+- **Grudge**: delayed-effect, user-faints
 - **Help Another**: dynamic-type, maneuver-rule
 - **Hidden Power**: dynamic-type, external-rule-reference
 - **Hydro Vortex**: external-rule-reference, mixed-category, suggested-effects
 - **Inferno Overdrive**: external-rule-reference, mixed-category, suggested-effects
 - **Instruct**: copied-move-dependent
 - **Ivy Cudgel**: copied-move-dependent
+- **Judgment**: dynamic-power-formula, dynamic-type, external-rule-reference
 - **Magnitude**: dynamic-power-formula
+- **Malignant Chain**: delayed-effect
 - **Me First**: copied-move-dependent
 - **Mimic**: copied-move-dependent
 - **Mirror Move**: copied-move-dependent
 - **Never-Ending Nightmare**: external-rule-reference, mixed-category, suggested-effects
 - **Raging Bull**: copied-move-dependent
 - **Run Away**: dynamic-type, maneuver-rule
+- **Sappy Seed**: delayed-effect
 - **Savage Spin-Out**: external-rule-reference, mixed-category, suggested-effects
-- **Shattered Psyche**: external-rule-reference, mixed-category, suggested-effects, terrain-field-effect
+- **Shattered Psyche**: external-rule-reference, mixed-category, suggested-effects
 - **Shed Tail**: external-rule-reference, switcher-move
 - **Sketch**: copied-move-dependent
 - **Snatch**: external-rule-reference
@@ -94,91 +93,27 @@ Total moves: **888**
 - **Baton Pass**: switcher-move
 - **Behemoth Bash**: dynamax-rule
 - **Behemoth Blade**: dynamax-rule
-- **Brave Bird**: recoil
 - **Brick Break**: destroy-shield
 - **Chilly Reception**: switcher-move
-- **Chip Away**: ignore-defenses
-- **Chloroblast**: recoil
 - **Circle Throw**: switcher-move
-- **Comeuppance**: ignore-defenses
-- **Counter**: ignore-defenses
-- **Court Change**: terrain-field-effect
-- **Defog**: destroy-shield, terrain-field-effect
+- **Defog**: destroy-shield
 - **Destiny Bond**: user-faints
 - **Disarming Voice**: alternative-trait-formula
-- **Double-Edge**: recoil
 - **Dragon Tail**: switcher-move
 - **Dynamax Cannon**: dynamax-rule
-- **Electric Terrain**: terrain-field-effect
-- **Endeavor**: ignore-defenses
-- **Expanding Force**: terrain-field-effect
-- **Explosion**: user-faints
-- **Final Gambit**: ignore-defenses, user-faints
-- **Flare Blitz**: recoil
 - **Flip Turn**: switcher-move
-- **Floral Healing**: terrain-field-effect
-- **Flower Trick**: always-crit
-- **Frost Breath**: always-crit
-- **Grassy Glide**: terrain-field-effect
-- **Grudge**: user-faints
-- **Head Charge**: recoil
-- **Head Smash**: recoil
 - **Healing Wish**: user-faints
-- **Hyperspace Hole**: ignore-defenses
-- **Judgment**: ignore-defenses
 - **Jungle Healing**: status-cleanse
-- **Light Of Ruin**: recoil
 - **Lunar Dance**: user-faints
 - **Max Guard**: dynamax-rule
-- **Max Lightning**: terrain-field-effect
-- **Max Mindstorm**: terrain-field-effect
-- **Max Overgrowth**: terrain-field-effect
-- **Max Starfall**: terrain-field-effect
 - **Memento**: user-faints
-- **Metal Burst**: ignore-defenses
-- **Mind Blown**: recoil
-- **Mirror Coat**: ignore-defenses
-- **Misty Explosion**: terrain-field-effect, user-faints
-- **Misty Terrain**: status-cleanse, terrain-field-effect
-- **Mortal Spin**: terrain-field-effect
-- **Nature's Madness**: ignore-defenses
-- **Night Shade**: ignore-defenses
 - **Parting Shot**: switcher-move
-- **Psyblade**: terrain-field-effect
 - **Psychic Fangs**: destroy-shield
-- **Psychic Terrain**: terrain-field-effect
-- **Psyshock**: special-defense-rule
-- **Psystrike**: special-defense-rule
-- **Psywave**: ignore-defenses
-- **Rapid Spin**: terrain-field-effect
-- **Rising Voltage**: terrain-field-effect
 - **Roar**: switcher-move
 - **Roost**: temporary-type-immunity-change
-- **Ruination**: ignore-defenses
-- **Sacred Sword**: ignore-defenses
-- **Sappy Seed**: ignore-defenses
-- **Secret Sword**: special-defense-rule
-- **Seismic Toss**: ignore-defenses
-- **Self Destruct**: user-faints
-- **Sonic Boom**: ignore-defenses
 - **Sparkly Swirl**: status-cleanse
-- **Spiky Shield**: ignore-defenses
-- **Steel Beam**: recoil
-- **Steel Roller**: terrain-field-effect
-- **Storm Throw**: always-crit
-- **Submission**: recoil
-- **Super Fang**: ignore-defenses
-- **Surging Strikes**: always-crit
-- **Take Down**: recoil
 - **Take Heart**: status-cleanse
 - **Teleport**: switcher-move
-- **Terrain Pulse**: terrain-field-effect
 - **U-Turn**: switcher-move
 - **Volt Switch**: switcher-move
-- **Volt Tackle**: recoil
-- **Wave Crash**: recoil
 - **Whirlwind**: switcher-move
-- **Wicked Blow**: always-crit
-- **Wild Charge**: recoil
-- **Wood Hammer**: recoil
-- **Zippy Zap**: always-crit

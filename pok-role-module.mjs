@@ -80,6 +80,85 @@ function normalizeCombatTerrainKey(terrainKey) {
   return valid.has(normalized) ? normalized : "none";
 }
 
+function normalizeCombatTerrainScope(scope) {
+  const normalized = `${scope ?? "battlefield"}`.trim().toLowerCase();
+  return ["battlefield", "side"].includes(normalized) ? normalized : "battlefield";
+}
+
+function normalizeCombatTerrainEntry(entry) {
+  const terrain = normalizeCombatTerrainKey(entry?.terrain ?? entry?.condition);
+  if (terrain === "none") return null;
+  const scope = normalizeCombatTerrainScope(entry?.scope);
+  return {
+    id: `${entry?.id ?? foundry.utils.randomID()}`.trim() || foundry.utils.randomID(),
+    terrain,
+    scope,
+    sideDisposition:
+      scope === "side"
+        ? Math.max(-1, Math.min(1, Math.sign(Math.trunc(Number(entry?.sideDisposition ?? 0) || 0))))
+        : null,
+    durationRounds: Math.max(Math.floor(Number(entry?.durationRounds ?? 0) || 0), 0),
+    roundSet: Math.max(Math.floor(Number(entry?.roundSet ?? 0) || 0), 0),
+    sourceActorId: `${entry?.sourceActorId ?? ""}`.trim() || null,
+    sourceActorName: `${entry?.sourceActorName ?? ""}`.trim(),
+    sourceMoveId: `${entry?.sourceMoveId ?? ""}`.trim() || null,
+    sourceMoveName: `${entry?.sourceMoveName ?? ""}`.trim()
+  };
+}
+
+function getCombatTerrainEntries(combat) {
+  if (!combat) return [];
+  const rawEntries = combat.getFlag(POKROLE.ID, "combat.terrainEntries");
+  const normalizedEntries = Array.isArray(rawEntries)
+    ? rawEntries.map((entry) => normalizeCombatTerrainEntry(entry)).filter(Boolean)
+    : [];
+  if (normalizedEntries.length > 0) return normalizedEntries;
+
+  const terrainData = combat.getFlag(POKROLE.ID, "combat.terrain") ?? {};
+  const terrainKey = normalizeCombatTerrainKey(terrainData?.condition);
+  if (terrainKey === "none") return [];
+  return [{
+    id: "legacy-battlefield-terrain",
+    terrain: terrainKey,
+    scope: "battlefield",
+    sideDisposition: null,
+    durationRounds: Math.max(Math.floor(Number(terrainData?.durationRounds ?? 0) || 0), 0),
+    roundSet: Math.max(Math.floor(Number(terrainData?.roundSet ?? 0) || 0), 0),
+    sourceActorId: `${terrainData?.sourceActorId ?? ""}`.trim() || null,
+    sourceActorName: `${terrainData?.sourceActorName ?? ""}`.trim(),
+    sourceMoveId: `${terrainData?.sourceMoveId ?? ""}`.trim() || null,
+    sourceMoveName: `${terrainData?.sourceMoveName ?? ""}`.trim()
+  }];
+}
+
+async function setCombatTerrainEntries(combat, terrainEntries) {
+  if (!combat) return [];
+  const normalizedEntries = (Array.isArray(terrainEntries) ? terrainEntries : [])
+    .map((entry) => normalizeCombatTerrainEntry(entry))
+    .filter(Boolean);
+  await combat.setFlag(POKROLE.ID, "combat.terrainEntries", normalizedEntries);
+
+  const battlefieldEntry = normalizedEntries.find((entry) => entry.scope === "battlefield") ?? null;
+  await combat.setFlag(POKROLE.ID, "combat.terrain", battlefieldEntry
+    ? {
+        condition: battlefieldEntry.terrain,
+        durationRounds: battlefieldEntry.durationRounds,
+        roundSet: battlefieldEntry.roundSet,
+        sourceActorId: battlefieldEntry.sourceActorId ?? null,
+        sourceActorName: battlefieldEntry.sourceActorName ?? "",
+        sourceMoveId: battlefieldEntry.sourceMoveId ?? null
+      }
+    : {
+        condition: "none",
+        durationRounds: 0,
+        roundSet: Math.max(Math.floor(Number(combat.round ?? 0) || 0), 0),
+        sourceActorId: null,
+        sourceActorName: "",
+        sourceMoveId: null
+      });
+  return normalizedEntries;
+}
+
 async function processRoundEndCombatAutomation(combat) {
   if (!combat) return;
   const weatherData = combat.getFlag(POKROLE.ID, "combat.weather") ?? {};
@@ -108,17 +187,23 @@ async function advanceCombatWeatherDuration(combat) {
 
 async function advanceCombatTerrainDuration(combat) {
   if (!combat) return;
-  const terrainData = combat.getFlag(POKROLE.ID, "combat.terrain") ?? {};
-  const terrainKey = normalizeCombatTerrainKey(terrainData?.condition);
-  if (terrainKey === "none") return;
-  const durationRounds = Math.max(Math.floor(Number(terrainData?.durationRounds ?? 0) || 0), 0);
-  if (durationRounds <= 0) return;
-  const nextDuration = durationRounds - 1;
-  await combat.setFlag(POKROLE.ID, "combat.terrain", {
-    ...terrainData,
-    condition: nextDuration <= 0 ? "none" : terrainKey,
-    durationRounds: Math.max(nextDuration, 0)
-  });
+  const terrainEntries = getCombatTerrainEntries(combat);
+  if (terrainEntries.length <= 0) return;
+  const nextEntries = [];
+  for (const entry of terrainEntries) {
+    const durationRounds = Math.max(Math.floor(Number(entry?.durationRounds ?? 0) || 0), 0);
+    if (durationRounds <= 0) {
+      nextEntries.push(entry);
+      continue;
+    }
+    const nextDuration = durationRounds - 1;
+    if (nextDuration <= 0) continue;
+    nextEntries.push({
+      ...entry,
+      durationRounds: nextDuration
+    });
+  }
+  await setCombatTerrainEntries(combat, nextEntries);
 }
 
 async function ensureEffectIconDisplay(effectDocument) {
@@ -1009,6 +1094,10 @@ Hooks.on("updateCombat", async (combat, changed) => {
     await processRoundEndCombatAutomation(combat);
     await advanceCombatWeatherDuration(combat);
     await advanceCombatTerrainDuration(combat);
+    const referenceActor = combat.combatants?.find?.((combatant) => combatant.actor)?.actor ?? null;
+    if (referenceActor && typeof referenceActor.synchronizeTerrainEffectsForCombat === "function") {
+      await referenceActor.synchronizeTerrainEffectsForCombat(combat);
+    }
   }
   await clearCombatMoveQueue(combat);
   if ((combat.round ?? 0) <= 0) {
@@ -1027,6 +1116,10 @@ Hooks.on("updateCombat", async (combat, changed) => {
 
     if (typeof actor.synchronizeConditionalActiveEffects === "function") {
       await actor.synchronizeConditionalActiveEffects();
+    }
+
+    if (typeof actor.advanceManagedAutomationEffectsRound === "function") {
+      await actor.advanceManagedAutomationEffectsRound(combat.id);
     }
 
     if (typeof actor.advanceTemporaryEffectsRound === "function") {
@@ -1151,6 +1244,10 @@ Hooks.on("createActiveEffect", (effectDocument) => {
   const actor = effectDocument?.parent ?? null;
   if (!actor || actor.documentName !== "Actor") return;
 
+  if (typeof actor.prepareAutomationEffectRoundTracking === "function") {
+    void actor.prepareAutomationEffectRoundTracking(effectDocument);
+  }
+
   const conditionKey = resolveConditionKeyFromStatus(effectDocument);
   if (conditionKey && typeof actor.synchronizeConditionFlags === "function") {
     void actor.synchronizeConditionFlags();
@@ -1165,6 +1262,10 @@ Hooks.on("updateActiveEffect", (effectDocument, changedData) => {
   void synchronizeEffectTokenIcon(effectDocument);
   const actor = effectDocument?.parent ?? null;
   if (!actor || actor.documentName !== "Actor") return;
+
+  if (typeof actor.prepareAutomationEffectRoundTracking === "function") {
+    void actor.prepareAutomationEffectRoundTracking(effectDocument);
+  }
 
   const hasConditionStatuses = [...(effectDocument?.statuses ?? [])].some((statusId) =>
     `${statusId ?? ""}`.trim().toLowerCase().startsWith("pokrole-condition-")

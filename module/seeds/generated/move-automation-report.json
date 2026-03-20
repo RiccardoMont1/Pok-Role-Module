@@ -2,32 +2,26 @@
   "source": "D:\\DeskTop\\Script\\Pok\u00e8Role Module\\Pok-Role-Module\\_upstream\\foundry-pokerole\\packs\\moves.db",
   "totalMoves": 888,
   "statusTotals": {
-    "full": 746,
-    "manual": 50,
-    "partial": 92
+    "full": 805,
+    "manual": 55,
+    "partial": 28
   },
   "reasonTotals": {
-    "external-rule-reference": 25,
+    "external-rule-reference": 26,
     "mixed-category": 18,
     "suggested-effects": 18,
     "switcher-move": 14,
-    "dynamic-type": 12,
+    "dynamic-type": 13,
     "maneuver-rule": 11,
     "dynamax-rule": 4,
     "stored-damage-formula": 1,
-    "recoil": 15,
     "destroy-shield": 3,
-    "ignore-defenses": 19,
     "copied-move-dependent": 8,
-    "terrain-field-effect": 21,
-    "user-faints": 9,
+    "user-faints": 5,
     "alternative-trait-formula": 1,
-    "delayed-effect": 4,
-    "dynamic-power-formula": 2,
-    "always-crit": 6,
-    "manual-terrain-resolution": 1,
-    "status-cleanse": 4,
-    "special-defense-rule": 3,
+    "delayed-effect": 8,
+    "dynamic-power-formula": 4,
+    "status-cleanse": 3,
     "temporary-type-immunity-change": 1
   },
   "moves": [
@@ -893,10 +887,8 @@
     {
       "name": "Brave Bird",
       "seedId": "move-brave-bird",
-      "status": "partial",
-      "reasons": [
-        "recoil"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "flying",
       "category": "physical",
       "target": "foe",
@@ -1183,10 +1175,8 @@
     {
       "name": "Chip Away",
       "seedId": "move-chip-away",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -1195,10 +1185,8 @@
     {
       "name": "Chloroblast",
       "seedId": "move-chloroblast",
-      "status": "partial",
-      "reasons": [
-        "recoil"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "special",
       "target": "foe",
@@ -1333,10 +1321,8 @@
     {
       "name": "Comeuppance",
       "seedId": "move-comeuppance",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dark",
       "category": "physical",
       "target": "foe",
@@ -1505,10 +1491,8 @@
     {
       "name": "Counter",
       "seedId": "move-counter",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "physical",
       "target": "foe",
@@ -1517,14 +1501,12 @@
     {
       "name": "Court Change",
       "seedId": "move-court-change",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "battlefield",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Cover An Ally",
@@ -1724,13 +1706,12 @@
       "seedId": "move-defog",
       "status": "partial",
       "reasons": [
-        "destroy-shield",
-        "terrain-field-effect"
+        "destroy-shield"
       ],
       "type": "flying",
       "category": "support",
       "target": "battlefield",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Destiny Bond",
@@ -1925,10 +1906,8 @@
     {
       "name": "Double-Edge",
       "seedId": "move-double-edge",
-      "status": "partial",
-      "reasons": [
-        "recoil"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -2231,14 +2210,12 @@
     {
       "name": "Electric Terrain",
       "seedId": "move-electric-terrain",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "electric",
       "category": "support",
       "target": "battlefield",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Electrify",
@@ -2323,10 +2300,8 @@
     {
       "name": "Endeavor",
       "seedId": "move-endeavor",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -2409,22 +2384,18 @@
     {
       "name": "Expanding Force",
       "seedId": "move-expanding-force",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "special",
       "target": "foe",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Explosion",
       "seedId": "move-explosion",
-      "status": "partial",
-      "reasons": [
-        "user-faints"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "area",
@@ -2605,10 +2576,9 @@
     {
       "name": "Final Gambit",
       "seedId": "move-final-gambit",
-      "status": "partial",
+      "status": "manual",
       "reasons": [
-        "ignore-defenses",
-        "user-faints"
+        "dynamic-power-formula"
       ],
       "type": "fighting",
       "category": "special",
@@ -2648,8 +2618,10 @@
     {
       "name": "Fire Pledge",
       "seedId": "move-fire-pledge",
-      "status": "full",
-      "reasons": [],
+      "status": "manual",
+      "reasons": [
+        "delayed-effect"
+      ],
       "type": "fire",
       "category": "special",
       "target": "area",
@@ -2758,10 +2730,8 @@
     {
       "name": "Flare Blitz",
       "seedId": "move-flare-blitz",
-      "status": "partial",
-      "reasons": [
-        "recoil"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fire",
       "category": "physical",
       "target": "foe",
@@ -2844,14 +2814,12 @@
     {
       "name": "Floral Healing",
       "seedId": "move-floral-healing",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fairy",
       "category": "support",
       "target": "ally",
-      "secondaryEffects": 3
+      "secondaryEffects": 2
     },
     {
       "name": "Flower Shield",
@@ -2866,10 +2834,8 @@
     {
       "name": "Flower Trick",
       "seedId": "move-flower-trick",
-      "status": "partial",
-      "reasons": [
-        "always-crit"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "physical",
       "target": "foe",
@@ -3028,10 +2994,8 @@
     {
       "name": "Frost Breath",
       "seedId": "move-frost-breath",
-      "status": "partial",
-      "reasons": [
-        "always-crit"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ice",
       "category": "special",
       "target": "foe",
@@ -3289,27 +3253,22 @@
     {
       "name": "Grassy Glide",
       "seedId": "move-grassy-glide",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "physical",
       "target": "foe",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Grassy Terrain",
       "seedId": "move-grassy-terrain",
-      "status": "manual",
-      "reasons": [
-        "manual-terrain-resolution",
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "support",
       "target": "ally-battlefield",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Grav Apple",
@@ -3354,8 +3313,9 @@
     {
       "name": "Grudge",
       "seedId": "move-grudge",
-      "status": "partial",
+      "status": "manual",
       "reasons": [
+        "delayed-effect",
         "user-faints"
       ],
       "type": "ghost",
@@ -3476,10 +3436,8 @@
     {
       "name": "Head Charge",
       "seedId": "move-head-charge",
-      "status": "partial",
-      "reasons": [
-        "recoil"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -3488,10 +3446,8 @@
     {
       "name": "Head Smash",
       "seedId": "move-head-smash",
-      "status": "partial",
-      "reasons": [
-        "recoil"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "rock",
       "category": "physical",
       "target": "foe",
@@ -3852,10 +3808,8 @@
     {
       "name": "Hyperspace Hole",
       "seedId": "move-hyperspace-hole",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "special",
       "target": "foe",
@@ -4142,9 +4096,11 @@
     {
       "name": "Judgment",
       "seedId": "move-judgment",
-      "status": "partial",
+      "status": "manual",
       "reasons": [
-        "ignore-defenses"
+        "dynamic-power-formula",
+        "dynamic-type",
+        "external-rule-reference"
       ],
       "type": "normal",
       "category": "special",
@@ -4376,10 +4332,8 @@
     {
       "name": "Light Of Ruin",
       "seedId": "move-light-of-ruin",
-      "status": "partial",
-      "reasons": [
-        "recoil"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fairy",
       "category": "special",
       "target": "foe",
@@ -4612,8 +4566,10 @@
     {
       "name": "Malignant Chain",
       "seedId": "move-malignant-chain",
-      "status": "full",
-      "reasons": [],
+      "status": "manual",
+      "reasons": [
+        "delayed-effect"
+      ],
       "type": "poison",
       "category": "special",
       "target": "foe",
@@ -4724,26 +4680,22 @@
     {
       "name": "Max Lightning",
       "seedId": "move-max-lightning",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "electric",
       "category": "physical",
       "target": "all-foes",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Max Mindstorm",
       "seedId": "move-max-mindstorm",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "physical",
       "target": "all-foes",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Max Ooze",
@@ -4758,14 +4710,12 @@
     {
       "name": "Max Overgrowth",
       "seedId": "move-max-overgrowth",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "physical",
       "target": "all-foes",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Max Phantasm",
@@ -4800,14 +4750,12 @@
     {
       "name": "Max Starfall",
       "seedId": "move-max-starfall",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fairy",
       "category": "physical",
       "target": "all-foes",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Max Steelspike",
@@ -4926,10 +4874,8 @@
     {
       "name": "Metal Burst",
       "seedId": "move-metal-burst",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "steel",
       "category": "physical",
       "target": "foe",
@@ -5030,10 +4976,8 @@
     {
       "name": "Mind Blown",
       "seedId": "move-mind-blown",
-      "status": "partial",
-      "reasons": [
-        "recoil"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fire",
       "category": "special",
       "target": "area",
@@ -5072,10 +5016,8 @@
     {
       "name": "Mirror Coat",
       "seedId": "move-mirror-coat",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "support",
       "target": "foe",
@@ -5126,28 +5068,22 @@
     {
       "name": "Misty Explosion",
       "seedId": "move-misty-explosion",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect",
-        "user-faints"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fairy",
       "category": "special",
       "target": "area",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Misty Terrain",
       "seedId": "move-misty-terrain",
-      "status": "partial",
-      "reasons": [
-        "status-cleanse",
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fairy",
       "category": "support",
       "target": "battlefield",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Moonblast",
@@ -5192,14 +5128,12 @@
     {
       "name": "Mortal Spin",
       "seedId": "move-mortal-spin",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "poison",
       "category": "physical",
       "target": "all-foes",
-      "secondaryEffects": 2
+      "secondaryEffects": 1
     },
     {
       "name": "Mountain Gale",
@@ -5324,10 +5258,8 @@
     {
       "name": "Nature's Madness",
       "seedId": "move-nature-s-madness",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fairy",
       "category": "special",
       "target": "foe",
@@ -5370,10 +5302,8 @@
     {
       "name": "Night Shade",
       "seedId": "move-night-shade",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ghost",
       "category": "special",
       "target": "foe",
@@ -5974,14 +5904,12 @@
     {
       "name": "Psyblade",
       "seedId": "move-psyblade",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "physical",
       "target": "foe",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Psych Up",
@@ -6028,14 +5956,12 @@
     {
       "name": "Psychic Terrain",
       "seedId": "move-psychic-terrain",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "support",
       "target": "battlefield",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Psycho Boost",
@@ -6080,10 +6006,8 @@
     {
       "name": "Psyshock",
       "seedId": "move-psyshock",
-      "status": "partial",
-      "reasons": [
-        "special-defense-rule"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "special",
       "target": "foe",
@@ -6092,10 +6016,8 @@
     {
       "name": "Psystrike",
       "seedId": "move-psystrike",
-      "status": "partial",
-      "reasons": [
-        "special-defense-rule"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "special",
       "target": "foe",
@@ -6104,10 +6026,8 @@
     {
       "name": "Psywave",
       "seedId": "move-psywave",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "special",
       "target": "foe",
@@ -6258,14 +6178,12 @@
     {
       "name": "Rapid Spin",
       "seedId": "move-rapid-spin",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
-      "secondaryEffects": 2
+      "secondaryEffects": 1
     },
     {
       "name": "Razor Leaf",
@@ -6430,14 +6348,12 @@
     {
       "name": "Rising Voltage",
       "seedId": "move-rising-voltage",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "electric",
       "category": "special",
       "target": "foe",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Roar",
@@ -6606,10 +6522,8 @@
     {
       "name": "Ruination",
       "seedId": "move-ruination",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dark",
       "category": "special",
       "target": "foe",
@@ -6641,10 +6555,8 @@
     {
       "name": "Sacred Sword",
       "seedId": "move-sacred-sword",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "physical",
       "target": "foe",
@@ -6713,9 +6625,9 @@
     {
       "name": "Sappy Seed",
       "seedId": "move-sappy-seed",
-      "status": "partial",
+      "status": "manual",
       "reasons": [
-        "ignore-defenses"
+        "delayed-effect"
       ],
       "type": "grass",
       "category": "physical",
@@ -6819,10 +6731,8 @@
     {
       "name": "Secret Sword",
       "seedId": "move-secret-sword",
-      "status": "partial",
-      "reasons": [
-        "special-defense-rule"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "special",
       "target": "foe",
@@ -6851,10 +6761,8 @@
     {
       "name": "Seismic Toss",
       "seedId": "move-seismic-toss",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "physical",
       "target": "foe",
@@ -6863,10 +6771,8 @@
     {
       "name": "Self Destruct",
       "seedId": "move-self-destruct",
-      "status": "partial",
-      "reasons": [
-        "user-faints"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "area",
@@ -6949,13 +6855,12 @@
       "reasons": [
         "external-rule-reference",
         "mixed-category",
-        "suggested-effects",
-        "terrain-field-effect"
+        "suggested-effects"
       ],
       "type": "psychic",
       "category": "support",
       "target": "foe",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Shed Tail",
@@ -7417,10 +7322,8 @@
     {
       "name": "Sonic Boom",
       "seedId": "move-sonic-boom",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "special",
       "target": "foe",
@@ -7531,10 +7434,8 @@
     {
       "name": "Spiky Shield",
       "seedId": "move-spiky-shield",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "support",
       "target": "self",
@@ -7686,10 +7587,8 @@
     {
       "name": "Steel Beam",
       "seedId": "move-steel-beam",
-      "status": "partial",
-      "reasons": [
-        "recoil"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "steel",
       "category": "special",
       "target": "foe",
@@ -7698,14 +7597,12 @@
     {
       "name": "Steel Roller",
       "seedId": "move-steel-roller",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "steel",
       "category": "physical",
       "target": "foe",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Steel Wing",
@@ -7790,10 +7687,8 @@
     {
       "name": "Storm Throw",
       "seedId": "move-storm-throw",
-      "status": "partial",
-      "reasons": [
-        "always-crit"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "physical",
       "target": "foe",
@@ -7911,10 +7806,8 @@
     {
       "name": "Submission",
       "seedId": "move-submission",
-      "status": "partial",
-      "reasons": [
-        "recoil"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "physical",
       "target": "foe",
@@ -7980,10 +7873,8 @@
     {
       "name": "Super Fang",
       "seedId": "move-super-fang",
-      "status": "partial",
-      "reasons": [
-        "ignore-defenses"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -8046,10 +7937,8 @@
     {
       "name": "Surging Strikes",
       "seedId": "move-surging-strikes",
-      "status": "partial",
-      "reasons": [
-        "always-crit"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "physical",
       "target": "foe",
@@ -8218,10 +8107,8 @@
     {
       "name": "Take Down",
       "seedId": "move-take-down",
-      "status": "partial",
-      "reasons": [
-        "recoil"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -8368,14 +8255,12 @@
     {
       "name": "Terrain Pulse",
       "seedId": "move-terrain-pulse",
-      "status": "partial",
-      "reasons": [
-        "terrain-field-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "special",
       "target": "foe",
-      "secondaryEffects": 1
+      "secondaryEffects": 0
     },
     {
       "name": "Thief",
@@ -8898,10 +8783,8 @@
     {
       "name": "Volt Tackle",
       "seedId": "move-volt-tackle",
-      "status": "partial",
-      "reasons": [
-        "recoil"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "electric",
       "category": "physical",
       "target": "foe",
@@ -8990,10 +8873,8 @@
     {
       "name": "Wave Crash",
       "seedId": "move-wave-crash",
-      "status": "partial",
-      "reasons": [
-        "recoil"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "physical",
       "target": "foe",
@@ -9034,10 +8915,8 @@
     {
       "name": "Wicked Blow",
       "seedId": "move-wicked-blow",
-      "status": "partial",
-      "reasons": [
-        "always-crit"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dark",
       "category": "physical",
       "target": "foe",
@@ -9066,10 +8945,8 @@
     {
       "name": "Wild Charge",
       "seedId": "move-wild-charge",
-      "status": "partial",
-      "reasons": [
-        "recoil"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "electric",
       "category": "physical",
       "target": "foe",
@@ -9140,10 +9017,8 @@
     {
       "name": "Wood Hammer",
       "seedId": "move-wood-hammer",
-      "status": "partial",
-      "reasons": [
-        "recoil"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "physical",
       "target": "foe",
@@ -9244,10 +9119,8 @@
     {
       "name": "Zippy Zap",
       "seedId": "move-zippy-zap",
-      "status": "partial",
-      "reasons": [
-        "always-crit"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "electric",
       "category": "physical",
       "target": "foe",

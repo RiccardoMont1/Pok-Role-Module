@@ -311,7 +311,8 @@
         "Label": "Categoria",
         "Physical": "Fisica",
         "Special": "Speciale",
-        "Support": "Supporto"
+        "Support": "Supporto",
+        "Damaging": "Fisica o Speciale"
       },
       "Power": "Potenza",
       "NoDirectDamage": "Nessun danno diretto",
@@ -757,6 +758,8 @@
       "ClashFlavor": "{actor} tira Clash con {move} (successi richiesti: {required})",
       "MoveAccuracyFlavor": "{actor} tira Precisione per {move} (successi richiesti: {required})",
       "MoveDamageFlavor": "{actor} tira Danno per {move}",
+      "MoveRecoilFlavor": "Rinculo di {move}: {damage} danni (da {dice} dadi)",
+      "Recoil": "Rinculo",
       "GenericRollFlavor": "{actor} tira un pool successi",
       "CombinedFlavor": "{actor} tira {label}<br><small>{breakdown}</small>",
       "RollBreakdown": "Grezzi: {raw} | Rimossi: {removed} | Netti: {net} | Richiesti: {required}",
@@ -795,6 +798,7 @@
       "WeatherRoundDamage": "{weather}: {damage} danno.",
       "ConditionImmune": "Il bersaglio e immune a questa condizione.",
       "ConditionBlockedByWeather": "Il meteo {weather} non permette al Pokemon di essere {condition}.",
+      "ConditionBlockedByTerrain": "Il terreno {terrain} non permette al Pokemon di essere {condition}.",
       "InfatuationInvalidTargetGender": "Infatuazione non funziona su Pokemon senza un genere definito.",
       "InfatuationRequiresOppositeGender": "Infatuazione funziona solo contro un Pokemon di sesso opposto.",
       "SecondaryEffectApplied": "Applicato",
@@ -830,6 +834,14 @@
       "SecondaryEffectNoConditionConfigured": "Nessuna condizione selezionata.",
       "SecondaryEffectNoWeatherConfigured": "Nessun meteo selezionato.",
       "SecondaryEffectNoTerrainConfigured": "Nessun terreno selezionato.",
+      "TerrainScopeBattlefield": "Campo",
+      "TerrainScopeSide": "Lato utente",
+      "TerrainRoundHeal": "{terrain}: cura {healing} PS.",
+      "TerrainClearedAll": "Tutti i terreni attivi sono stati rimossi.",
+      "TerrainClearedSide": "Il terreno che influenzava il lato dell'utilizzatore e stato rimosso.",
+      "TerrainNoActive": "Non ci sono terreni attivi da rimuovere.",
+      "TerrainSwapped": "Gli effetti di terreno a lato sono stati scambiati.",
+      "TerrainNoSwap": "Non ci sono effetti di terreno a lato da scambiare.",
       "ConditionCleared": "{condition} rimossa.",
       "ConditionResistRoll": "{actor} tira Intuito per resistere a {condition} (richiesti: {required}).",
       "SleepResistanceRoll": "{actor} accumula resistenza al Sonno (+{gained}, totale {total}/5).",
@@ -913,6 +925,9 @@
         "SkyDropFailedHeavy": "{actor} non riesce a sollevare abbastanza {target} per Cadutalibera.",
         "ShadowForceWound": "{target} non puo curare i danni di questo colpo per {hours} ore."
       },
+      "SpecialDamage": {
+        "UserFainted": "{actor} e svenuto dopo aver usato {move}."
+      },
       "SecondaryEffectHealingBlocked": "La guarigione su questo bersaglio e bloccata."
     },
     "Types": {
@@ -958,6 +973,8 @@
       "InvalidEffectConfiguration": "Completa la configurazione dell'effetto prima di applicarlo.",
       "CombatRequired": "Questa azione richiede un combattimento attivo.",
       "MoveBlockedByWeather": "Mossa bloccata dal meteo: {weather}.",
+      "MoveBlockedByTerrain": "Mossa bloccata dal terreno: {terrain}.",
+      "MoveRequiresActiveTerrain": "Questa mossa richiede un terreno attivo.",
       "ActorDead": "Non puoi agire se sei morto.",
       "ActorFainted": "Non puoi agire se sei svenuto.",
       "ActorSleeping": "Non puoi agire se sei addormentato.",
@@ -978,7 +995,12 @@
       "ActorChargingMoveLocked": "Devi completare la carica di {move} prima di usare un altra mossa.",
       "ActorRampagingMoveLocked": "La Rampage continua: devi continuare a usare {move}.",
       "ActorRampagingNoReaction": "Un Pokemon in Rampage non puo usare Schivata o Clash mentre {move} continua.",
-      "ActorSkyDropCarried": "Questo Pokemon e trasportato da {carrier} con Cadutalibera."
+      "ActorSkyDropCarried": "Questo Pokemon e trasportato da {carrier} con Cadutalibera.",
+      "SpecialDamageNeedsTarget": "Questa mossa richiede un bersaglio.",
+      "SpecialDamageNeedsRetaliationTarget": "{move} puo bersagliare solo l attore che ha colpito per ultimo {actor}.",
+      "SpecialDamageNeedsRetaliationCategory": "{move} puo essere usata solo se l ultima mossa del bersaglio su {actor} era {category}.",
+      "SpecialDamageTargetTooWeak": "{move} fallisce perche {target} ha 1 PS o meno.",
+      "SpecialDamageAlreadyHitTarget": "{move} ha gia colpito {target} durante questo combattimento."
     },
     "Sheets": {
       "Actor": "Scheda Attore PokeRole",

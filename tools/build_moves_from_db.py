@@ -91,6 +91,38 @@ MOVE_PROPERTY_REASON_LABELS = {
 }
 
 CHARGE_MOVE_SPECIAL_CASE_SEED_IDS = set()
+TERRAIN_SETTING_MOVE_SEED_IDS = {
+    "move-electric-terrain",
+    "move-grassy-terrain",
+    "move-misty-terrain",
+    "move-psychic-terrain",
+    "move-max-lightning",
+    "move-max-mindstorm",
+    "move-max-overgrowth",
+    "move-max-starfall",
+}
+HANDLED_TERRAIN_MOVE_SEED_IDS = {
+    "move-court-change",
+    "move-defog",
+    "move-electric-terrain",
+    "move-expanding-force",
+    "move-floral-healing",
+    "move-grassy-glide",
+    "move-grassy-terrain",
+    "move-max-lightning",
+    "move-max-mindstorm",
+    "move-max-overgrowth",
+    "move-max-starfall",
+    "move-misty-explosion",
+    "move-misty-terrain",
+    "move-mortal-spin",
+    "move-psyblade",
+    "move-psychic-terrain",
+    "move-rapid-spin",
+    "move-rising-voltage",
+    "move-steel-roller",
+    "move-terrain-pulse",
+}
 
 SPECIAL_MOVE_EFFECT_OVERRIDES = {
     "move-electro-shot": [
@@ -290,7 +322,10 @@ def parse_priority_from_effect(effect_text):
     return HELPERS.parse_priority_from_effect(effect_text)
 
 
-def resolve_move_priority(move_system, effect_text=""):
+def resolve_move_priority(move_system, effect_text="", seed_id=""):
+    normalized_seed_id = clean_text(seed_id).lower()
+    if normalized_seed_id == "move-grassy-glide":
+        return 0
     system = move_system or {}
     attributes = system.get("attributes", {}) or {}
     reaction_priority = parse_number(attributes.get("reactionMove"), 0)
@@ -441,8 +476,21 @@ def build_move_formula_config(move_system, category_key, effect_text="", descrip
     normalized_power = raw_power.lower()
     if normalized_power == "happiness + loyalty":
         power_formula = "source.happiness + source.loyalty"
-    elif "half of the target's remaining hp" in combined_text:
-        power_formula = "min(10, floor(target.hpCurrent / 2))"
+    elif re.search(r"last damage pool rolled against the user plus 2", combined_text):
+        damage_base_formula = "source.lastDamagePoolTaken + 2"
+    elif re.search(r"according to the user's rank", combined_text):
+        damage_base_formula = "source.rankDamageDice"
+    elif re.search(r"always inflict 1 typeless damage", combined_text):
+        damage_base_formula = "1"
+    elif re.search(r"difference between the user's current hp and the target's max hp", combined_text):
+        damage_base_formula = "min(10, max(target.hpMax - source.hpCurrent, 0))"
+    elif re.search(
+        r"(damage roll is half of the target's remaining hp|roll [a-z-]+-type damage dice equal to half of the target's remaining hp)",
+        combined_text,
+    ):
+        damage_base_formula = "min(10, floor(target.hpCurrent / 2))"
+    elif re.search(r"damage dice equal to the target's total hp", combined_text):
+        damage_base_formula = "target.hpMax"
 
     return {
         "accuracyFormula": accuracy_formula,
@@ -723,6 +771,9 @@ def parse_terrain_key(effect_text, move_name=""):
 
 
 def build_terrain_effects(move_name, move_system, report_reasons):
+    move_seed_id = f"move-{normalize_name_key(move_name)}"
+    if move_seed_id not in TERRAIN_SETTING_MOVE_SEED_IDS:
+        return []
     effect_text = clean_text(move_system.get("effect", ""))
     lower_effect = effect_text.lower()
     if "terrain" not in lower_effect and "terrain" not in move_name.lower():
@@ -740,7 +791,7 @@ def build_terrain_effects(move_name, move_system, report_reasons):
         duration_rounds = clamp(int(round_match.group(1)), 1, 99)
 
     report_reasons.add("terrain-field-effect")
-    if "user's side of the field" in lower_effect or "ally's side of the field" in lower_effect:
+    if move_seed_id == "move-grassy-terrain":
         report_reasons.add("manual-terrain-resolution")
 
     return [{
@@ -807,6 +858,8 @@ def infer_automation_reasons(row, target_key, formula_config=None):
             continue
         reasons.add(reason_label)
 
+    if "at the end of the round" in combined_text:
+        reasons.add("delayed-effect")
     if "suggested effects" in combined_text:
         reasons.add("suggested-effects")
     if re.search(r"\bsee p\.", combined_text):
@@ -829,6 +882,28 @@ def infer_automation_reasons(row, target_key, formula_config=None):
         reasons.add("temporary-type-immunity-change")
     if "heal any status ailment" in combined_text or "all status ailments and conditions are cured" in combined_text:
         reasons.add("status-cleanse")
+    if "type, power and extra added effects are decided by storyteller" in combined_text:
+        reasons.add("dynamic-type")
+        reasons.add("dynamic-power-formula")
+        reasons.add("external-rule-reference")
+    if clean_text(system.get("dmgMod1", "")).lower() == "target'sremaininghp":
+        reasons.add("dynamic-power-formula")
+
+    if seed_id in HANDLED_TERRAIN_MOVE_SEED_IDS:
+        reasons.discard("terrain-field-effect")
+        reasons.discard("manual-terrain-resolution")
+    if seed_id in {"move-misty-terrain", "move-max-starfall"}:
+        reasons.discard("status-cleanse")
+    if attributes.get("alwaysCrit"):
+        reasons.discard("always-crit")
+    if attributes.get("ignoreDefenses"):
+        reasons.discard("ignore-defenses")
+    if attributes.get("resistedWithDefense"):
+        reasons.discard("special-defense-rule")
+    if attributes.get("recoil"):
+        reasons.discard("recoil")
+    if attributes.get("userFaints") and normalize_move_category(system.get("category")) != "support":
+        reasons.discard("user-faints")
 
     return reasons
 
@@ -883,8 +958,22 @@ def build_move_entry(row):
     secondary_effects.extend(build_terrain_effects(row.get("name", ""), system, automation_reasons))
     secondary_effects = dedupe_secondary_effects(secondary_effects)
 
-    primary_mode = "effect-only" if category_key == "support" and power_value <= 0 else "damage"
-    if not secondary_effects and category_key == "support":
+    seed_id = get_move_seed_id(row)
+    if seed_id in HANDLED_TERRAIN_MOVE_SEED_IDS:
+        automation_reasons.discard("terrain-field-effect")
+        automation_reasons.discard("manual-terrain-resolution")
+    if seed_id in {"move-misty-terrain", "move-max-starfall"}:
+        automation_reasons.discard("status-cleanse")
+
+    has_primary_damage_definition = (
+        power_value > 0 or
+        bool(clean_text(formula_config.get("powerFormula", ""))) or
+        bool(clean_text(formula_config.get("damageBaseFormula", "")))
+    )
+    primary_mode = "damage"
+    if category_key == "support" and not has_primary_damage_definition:
+        primary_mode = "effect-only"
+    if not secondary_effects and category_key == "support" and not has_primary_damage_definition:
         primary_mode = "effect-only"
 
     automation_status = "full"
@@ -916,7 +1005,7 @@ def build_move_entry(row):
             "willCost": will_cost,
             "durationType": duration_config["durationType"],
             "durationValue": duration_config["durationValue"],
-            "priority": resolve_move_priority(system, effect_text),
+            "priority": resolve_move_priority(system, effect_text, get_move_seed_id(row)),
             "highCritical": bool(attributes.get("highCritical", False)),
             "neverFail": bool(attributes.get("neverFail", False)),
             "lethal": False,

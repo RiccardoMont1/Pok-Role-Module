@@ -1341,7 +1341,12 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     if (durationMode === "rounds") {
       const rounds = Math.max(
         Math.floor(
-          Number(effect?.duration?.remaining ?? automationFlags?.durationRounds ?? 1) || 1
+          Number(
+            automationFlags?.remainingRounds ??
+            effect?.duration?.remaining ??
+            automationFlags?.durationRounds ??
+            1
+          ) || 1
         ),
         0
       );

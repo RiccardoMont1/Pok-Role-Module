@@ -352,7 +352,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -1123,7 +1123,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -4998,7 +4998,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -5627,7 +5627,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -6692,10 +6692,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-brave-bird",
         "sourceDbId": "fd9a21ed913acf06",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "recoil"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -6831,7 +6829,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -9013,10 +9011,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-chip-away",
         "sourceDbId": "de769806b8b2513e",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -9086,10 +9082,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-chloroblast",
         "sourceDbId": "4f7b0d2f2e6c9686",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "recoil"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -10202,7 +10196,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyDiceModifier": 0,
       "accuracyFlatModifier": 0,
       "damageAttribute": "auto",
-      "damageBaseFormula": "",
+      "damageBaseFormula": "source.lastDamagePoolTaken + 2",
       "willCost": 0,
       "durationType": "instant",
       "durationValue": 1,
@@ -10219,10 +10213,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-comeuppance",
         "sourceDbId": "6000dcd8f9f728a8",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -10628,7 +10620,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -11060,7 +11052,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -11501,7 +11493,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyDiceModifier": 0,
       "accuracyFlatModifier": 0,
       "damageAttribute": "auto",
-      "damageBaseFormula": "",
+      "damageBaseFormula": "source.lastDamagePoolTaken + 2",
       "willCost": 0,
       "durationType": "instant",
       "durationValue": 1,
@@ -11518,10 +11510,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-counter",
         "sourceDbId": "dc6c407cf1ca86ef",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -11584,38 +11574,15 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "grassy",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "manual",
-          "durationRounds": 1,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 The Pok\u00e9mon signals the referee for half-time, the referee complies and both parties swap their sides of the field. Wait... we brought everything with us, right? Target Battlefield. Swap any Force Fields, Entry Hazards and Effects on the Foe's side of the field (ie Tailwind, Grassy Terrain healing, Fire Pledge.) for those on the User's side."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-court-change",
         "sourceDbId": "12a25660ff3da86d",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -13218,28 +13185,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "electric",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "manual",
-          "durationRounds": 1,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 A strong wind sweeps out the battle field, removing anything from bad weather to scattered objects and even invisible barriers. Target Battlefield. Remove all Force Fields, Entry Hazards and Terrains (Misty Terrain, Electric Terrain, etc.) from the Battlefield."
     },
     "flags": {
@@ -13248,8 +13194,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
         "sourceDbId": "eaf97643890df690",
         "automationStatus": "partial",
         "automationReasons": [
-          "destroy-shield",
-          "terrain-field-effect"
+          "destroy-shield"
         ],
         "sourceAttributes": {
           "accuracyReduction": 0,
@@ -13440,7 +13385,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -14703,10 +14648,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-double-edge",
         "sourceDbId": "2ab1deb01f1be26e",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "recoil"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -17096,38 +17039,15 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "electric",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "rounds",
-          "durationRounds": 4,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 The user electrifies the battlefield, making it impossible to relax around the sparks and live current. Target Battlefield. Add 1 Extra Damage Dice to all Physical & Special Electric-Type Moves. Pokemon without immunity to Ground will be cured of the Sleep Status. Duration 4 Rounds."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-electric-terrain",
         "sourceDbId": "d31a78094dce381e",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -17805,7 +17725,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyDiceModifier": 0,
       "accuracyFlatModifier": 0,
       "damageAttribute": "auto",
-      "damageBaseFormula": "",
+      "damageBaseFormula": "min(10, max(target.hpMax - source.hpCurrent, 0))",
       "willCost": 0,
       "durationType": "instant",
       "durationValue": 1,
@@ -17822,10 +17742,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-endeavor",
         "sourceDbId": "49c29b8b50e765eb",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -18427,38 +18345,15 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "psychic",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "manual",
-          "durationRounds": 1,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 Psychic energies form a bubble of light to damage the foe. Under Psychic Terrain, the energy is so big it turns into a tall pillar that crushes anyone inside. Single Target. Lethal. *If Psychic Terrain is active, add 2 Extra Dice to the Damage Pool of this Move and you may add another target to it."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-expanding-force",
         "sourceDbId": "cff7e41be84a4463",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -18528,10 +18423,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-explosion",
         "sourceDbId": "82b0a2a1530c4488",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "user-faints"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -19943,10 +19836,9 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-final-gambit",
         "sourceDbId": "e9c853ec4144a2ef",
-        "automationStatus": "partial",
+        "automationStatus": "manual",
         "automationReasons": [
-          "ignore-defenses",
-          "user-faints"
+          "dynamic-power-formula"
         ],
         "sourceAttributes": {
           "accuracyReduction": 0,
@@ -20305,8 +20197,10 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-fire-pledge",
         "sourceDbId": "179180b3d90b8322",
-        "automationStatus": "full",
-        "automationReasons": [],
+        "automationStatus": "manual",
+        "automationReasons": [
+          "delayed-effect"
+        ],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -21181,10 +21075,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-flare-blitz",
         "sourceDbId": "35f4e883c50763fe",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "recoil"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -21878,26 +21770,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
           "conditional": true,
           "activationCondition": "terrain!=grassy",
           "notes": ""
-        },
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "grassy",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "manual",
-          "durationRounds": 1,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
         }
       ],
       "description": "Core v3.0 The user creates a flower crown that heals and relaxes its wearer. Under the right conditions this move also creates a flower patch around its target. Target One Ally. Basic Heal. If successful, spend 1 Will point to activate. If Performed over Grassy Terrain this move is a Complete Heal."
@@ -21906,10 +21778,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-floral-healing",
         "sourceDbId": "2a4ec17c1b50bf68",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -22050,10 +21920,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-flower-trick",
         "sourceDbId": "a15ff17543ca51f2",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "always-crit"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -23264,10 +23132,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-frost-breath",
         "sourceDbId": "eb19a939d3aa5269",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "always-crit"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -24420,7 +24286,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -25242,44 +25108,21 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "willCost": 0,
       "durationType": "instant",
       "durationValue": 1,
-      "priority": 1,
+      "priority": 0,
       "highCritical": false,
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "grassy",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "manual",
-          "durationRounds": 1,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 A single leaf can hold the entire weight of the Pok\u00e9mon. When moving, it appears to glide over the grass. Single Target. *If Grassy Terrain is active, this Move has Reaction 1."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-grassy-glide",
         "sourceDbId": "3af47e494eaf6573",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": "1",
@@ -25342,39 +25185,15 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "grassy",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "rounds",
-          "durationRounds": 4,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 A patch of grass grows in the area surrounding the user, through it nature grants her many blessings. Target User's side of the field. Add 1 Extra Damage Dice to all Physical & Special Grass-Type Moves. Everyone on the User's side of the field heals 1 HP at the end of each Round. Spend 1 Will Point t activate. Duration 4 Rounds."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-grassy-terrain",
         "sourceDbId": "1efcaab33ccae39d",
-        "automationStatus": "manual",
-        "automationReasons": [
-          "manual-terrain-resolution",
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -25803,8 +25622,9 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-grudge",
         "sourceDbId": "96bd645e56bf3751",
-        "automationStatus": "partial",
+        "automationStatus": "manual",
         "automationReasons": [
+          "delayed-effect",
           "user-faints"
         ],
         "sourceAttributes": {
@@ -26735,10 +26555,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-head-charge",
         "sourceDbId": "0ea9ebe9bd5bc158",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "recoil"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -26808,10 +26626,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-head-smash",
         "sourceDbId": "0fb7c20f31a5b132",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "recoil"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 2,
           "reactionMove": 0,
@@ -29098,7 +28914,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -29590,10 +29406,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-hyperspace-hole",
         "sourceDbId": "44af90bddd9237a6",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -30983,7 +30797,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -31853,9 +31667,11 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-judgment",
         "sourceDbId": "97f7adab3a44cfe7",
-        "automationStatus": "partial",
+        "automationStatus": "manual",
         "automationReasons": [
-          "ignore-defenses"
+          "dynamic-power-formula",
+          "dynamic-type",
+          "external-rule-reference"
         ],
         "sourceAttributes": {
           "accuracyReduction": 0,
@@ -33661,10 +33477,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-light-of-ruin",
         "sourceDbId": "aa414e113ddad743",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "recoil"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -35469,8 +35283,10 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-malignant-chain",
         "sourceDbId": "0d0f845b5ef39cdb",
-        "automationStatus": "full",
-        "automationReasons": [],
+        "automationStatus": "manual",
+        "automationReasons": [
+          "delayed-effect"
+        ],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -36308,38 +36124,15 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "electric",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "rounds",
-          "durationRounds": 4,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 Target all foes in Range or a Single Max Target. Activate the Effects of Electric Terrain. Duration 4 Rounds."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-max-lightning",
         "sourceDbId": "4212365d0bb7faaa",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -36402,38 +36195,15 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "psychic",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "rounds",
-          "durationRounds": 4,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 Target all foes in Range or a Single Max Target. Activate the Effects of Psychic Terrain. Duration 4 Rounds."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-max-mindstorm",
         "sourceDbId": "6cced43ce39bbdba",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -36567,38 +36337,15 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "grassy",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "rounds",
-          "durationRounds": 4,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 Target all foes in Range or a Single Max Target. Activate the Effects of Grassy Terrain. Duration 4 Rounds."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-max-overgrowth",
         "sourceDbId": "4d5852e098d88af9",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -36895,38 +36642,15 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "misty",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "rounds",
-          "durationRounds": 4,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 Target all foes in Range or a Single Max Target. Activate the Effects of Misty Terrain. Duration 4 Rounds."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-max-starfall",
         "sourceDbId": "22aa0aba1f4e7cc2",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -37911,7 +37635,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyDiceModifier": 0,
       "accuracyFlatModifier": 0,
       "damageAttribute": "auto",
-      "damageBaseFormula": "",
+      "damageBaseFormula": "source.lastDamagePoolTaken + 2",
       "willCost": 0,
       "durationType": "instant",
       "durationValue": 1,
@@ -37928,10 +37652,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-metal-burst",
         "sourceDbId": "766e1dcccebfff88",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -38737,10 +38459,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-mind-blown",
         "sourceDbId": "143710da577326ce",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "recoil"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -38999,14 +38719,14 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "channel",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "",
       "reducedAccuracy": 0,
       "accuracyDiceModifier": 0,
       "accuracyFlatModifier": 0,
       "damageAttribute": "none",
-      "damageBaseFormula": "",
+      "damageBaseFormula": "source.lastDamagePoolTaken + 2",
       "willCost": 0,
       "durationType": "instant",
       "durationValue": 1,
@@ -39023,10 +38743,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-mirror-coat",
         "sourceDbId": "221410651e55f5b0",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -39413,39 +39131,15 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "misty",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "manual",
-          "durationRounds": 1,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 The user razes the field with a searing nuke of made of love, joy, kisses, and pink glitter. It is deadly. Area Attack. Lethal. The User faints after using this Move. *If Misty Terrain is active, add 4 Extra Dice to the Damage Pool of this Move."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-misty-explosion",
         "sourceDbId": "062a9bc09c390205",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect",
-          "user-faints"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -39508,39 +39202,15 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "misty",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "rounds",
-          "durationRounds": 4,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 The battlefield is shrouded by a pink mist that feels protective and soothing. This mist is able to render even the fiercest beasts into calm. Target Battlefield. All Status Ailments and Conditions are cured and no more can be inflicted. Physical & Special Dragon-Type Moves have Power 0. Duration 4 Rounds."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-misty-terrain",
         "sourceDbId": "340db6ab5b8ea1d2",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "status-cleanse",
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -40074,26 +39744,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
           "conditional": false,
           "activationCondition": "",
           "notes": ""
-        },
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "grassy",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "manual",
-          "durationRounds": 1,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
         }
       ],
       "description": "Core v3.0 The user spins around the field, cutting through obstacles and shooting small darts full of a toxic venom. The earth is now poisoned and left barren. All Foes in Range. Poison those Affected. Remove Entry Hazards, Terrains (ie Grassy Terrain, Misty Terrain), Ongoing Damage and Leech seed from the User or their side of the field."
@@ -40102,10 +39752,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-mortal-spin",
         "sourceDbId": "3797d77d26c35054",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -41119,12 +40767,12 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyFormula": "",
       "primaryMode": "damage",
       "power": 0,
-      "powerFormula": "min(10, floor(target.hpCurrent / 2))",
+      "powerFormula": "",
       "reducedAccuracy": 1,
       "accuracyDiceModifier": 0,
       "accuracyFlatModifier": 0,
       "damageAttribute": "auto",
-      "damageBaseFormula": "",
+      "damageBaseFormula": "min(10, floor(target.hpCurrent / 2))",
       "willCost": 0,
       "durationType": "instant",
       "durationValue": 1,
@@ -41141,10 +40789,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-nature-s-madness",
         "sourceDbId": "182217ef3e4c478a",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -41280,7 +40926,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -41452,7 +41098,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyDiceModifier": 0,
       "accuracyFlatModifier": 0,
       "damageAttribute": "auto",
-      "damageBaseFormula": "",
+      "damageBaseFormula": "source.rankDamageDice",
       "willCost": 0,
       "durationType": "instant",
       "durationValue": 1,
@@ -41469,10 +41115,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-night-shade",
         "sourceDbId": "97d66c675210e99d",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -46323,38 +45967,15 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "electric",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "manual",
-          "durationRounds": 1,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 The Pok\u00e9mon attacks using an ethereal blade. Electric energy will increase the sharpness of its edge. Single Target. Lethal. Cutter Move. *If Electric Terrain is active, add 2 Extra Dice to the Damage pool of this Move."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-psyblade",
         "sourceDbId": "fefc957b4ef542ad",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -46722,38 +46343,15 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "psychic",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "rounds",
-          "durationRounds": 4,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 The arena becomes radiated by psychic waves. Everyone feels their mind slog due to the buzz in their heads, making all tasks take longer than they should. Target Battlefield. Add 1 Extra Damage Dice to all Physical & Special Psychic-Type Moves. Pokemon without immunity to Ground can't use Moves with Reaction or Late Reaction. Duration 4 Rounds."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-psychic-terrain",
         "sourceDbId": "0387713d93c5ec0f",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -47163,10 +46761,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-psyshock",
         "sourceDbId": "ee62cf1969c73b44",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "special-defense-rule"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -47236,10 +46832,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-psystrike",
         "sourceDbId": "5593ef7b57cde828",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "special-defense-rule"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -47292,7 +46886,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyDiceModifier": 0,
       "accuracyFlatModifier": 0,
       "damageAttribute": "auto",
-      "damageBaseFormula": "",
+      "damageBaseFormula": "source.rankDamageDice",
       "willCost": 0,
       "durationType": "instant",
       "durationValue": 1,
@@ -47309,10 +46903,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-psywave",
         "sourceDbId": "bf31f4cda230b614",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -48484,26 +48076,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
           "conditional": false,
           "activationCondition": "",
           "notes": ""
-        },
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "grassy",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "manual",
-          "durationRounds": 1,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
         }
       ],
       "description": "Core v3.0 The Pok\u00e9mon makes a swift spin to strike at the foe and in the process everything laying close to the user is scattered out of the battlefield. Single Target. Increase the User's Dexterity by 1. Remove Entry Hazards, Terrains (ie Grassy Terrain, Misty Terrain), Ongoing Damage and Leech seed from the User and/or their side of the field."
@@ -48512,10 +48084,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-rapid-spin",
         "sourceDbId": "6e68a5c9c5f7814e",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -49808,38 +49378,15 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "electric",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "manual",
-          "durationRounds": 1,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 A shockwave travels through the ground, then rises as a golden pillar of thunderbolts. Single Target. Lethal. *If Electric Terrain is active, add 3 Extra Dice to the Damage pool of this Move."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-rising-voltage",
         "sourceDbId": "15ccd3560b9100be",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -51165,7 +50712,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyDiceModifier": 0,
       "accuracyFlatModifier": 0,
       "damageAttribute": "auto",
-      "damageBaseFormula": "",
+      "damageBaseFormula": "target.hpMax",
       "willCost": 0,
       "durationType": "instant",
       "durationValue": 1,
@@ -51182,10 +50729,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-ruination",
         "sourceDbId": "98cd46d0dff31f79",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -51419,10 +50964,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-sacred-sword",
         "sourceDbId": "b891d8f4c6bcd39b",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -51977,9 +51520,9 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-sappy-seed",
         "sourceDbId": "f5fe028d2daed2e8",
-        "automationStatus": "partial",
+        "automationStatus": "manual",
         "automationReasons": [
-          "ignore-defenses"
+          "delayed-effect"
         ],
         "sourceAttributes": {
           "accuracyReduction": 1,
@@ -52026,7 +51569,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -52769,10 +52312,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-secret-sword",
         "sourceDbId": "ed3e5d51307427dc",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "special-defense-rule"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -52986,7 +52527,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyDiceModifier": 0,
       "accuracyFlatModifier": 0,
       "damageAttribute": "auto",
-      "damageBaseFormula": "",
+      "damageBaseFormula": "source.rankDamageDice",
       "willCost": 0,
       "durationType": "instant",
       "durationValue": 1,
@@ -53003,10 +52544,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-seismic-toss",
         "sourceDbId": "1abcb5a8351c0465",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -53076,10 +52615,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-self-destruct",
         "sourceDbId": "da290815adfd3bfb",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "user-faints"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -53679,7 +53216,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -53696,28 +53233,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "psychic",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "manual",
-          "durationRounds": 1,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 Single Target. Suggested effects: Activate Psychic Terrain, Attribute Increase, Damage Increase See p. 610 for more info."
     },
     "flags": {
@@ -53728,8 +53244,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
         "automationReasons": [
           "external-rule-reference",
           "mixed-category",
-          "suggested-effects",
-          "terrain-field-effect"
+          "suggested-effects"
         ],
         "sourceAttributes": {
           "accuracyReduction": 0,
@@ -57679,7 +57194,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyDiceModifier": 0,
       "accuracyFlatModifier": 0,
       "damageAttribute": "auto",
-      "damageBaseFormula": "",
+      "damageBaseFormula": "1",
       "willCost": 0,
       "durationType": "instant",
       "durationValue": 1,
@@ -57696,10 +57211,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-sonic-boom",
         "sourceDbId": "aac453fb75cbcc4f",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -58537,10 +58050,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-spiky-shield",
         "sourceDbId": "c7fdb2ae89d5122e",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": "3",
@@ -59721,10 +59232,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-steel-beam",
         "sourceDbId": "34419e5ca8659d6e",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "recoil"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -59787,38 +59296,15 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "electric",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "manual",
-          "durationRounds": 1,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 The Pok\u00e9mon rolls into a wheel, destroying anything in their path. Buildings come crashing down, forests are swept away and the soil is left as a blank slate. Single Target. Lethal. Can't be used if there is no Active Terrain (Grassy Terrain, Electric Terrain, etc.) on the Battlefield. Remove any active Terrain on the Battlefield."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-steel-roller",
         "sourceDbId": "b947ad08193b1f1f",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -60550,10 +60036,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-storm-throw",
         "sourceDbId": "22c7ae2ba4d27860",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "always-crit"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -61474,10 +60958,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-submission",
         "sourceDbId": "82a73721bbe82a78",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "recoil"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 2,
           "reactionMove": 0,
@@ -61597,7 +61079,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -61908,12 +61390,12 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyFormula": "max(source.strength + source.brawl, source.dexterity + source.brawl)",
       "primaryMode": "damage",
       "power": 0,
-      "powerFormula": "min(10, floor(target.hpCurrent / 2))",
+      "powerFormula": "",
       "reducedAccuracy": 1,
       "accuracyDiceModifier": 0,
       "accuracyFlatModifier": 0,
       "damageAttribute": "auto",
-      "damageBaseFormula": "",
+      "damageBaseFormula": "min(10, floor(target.hpCurrent / 2))",
       "willCost": 0,
       "durationType": "instant",
       "durationValue": 1,
@@ -61930,10 +61412,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-super-fang",
         "sourceDbId": "4d686d027b24381f",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "ignore-defenses"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -62248,7 +61728,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -62418,10 +61898,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-surging-strikes",
         "sourceDbId": "dd5c9f8ea58b460c",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "always-crit"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -63834,10 +63312,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-take-down",
         "sourceDbId": "c280aeead56f4d53",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "recoil"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 2,
           "reactionMove": 0,
@@ -64404,7 +63880,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -64943,38 +64419,15 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [
-        {
-          "section": 0,
-          "label": "",
-          "trigger": "on-hit",
-          "chance": 0,
-          "target": "self",
-          "effectType": "terrain",
-          "condition": "none",
-          "weather": "none",
-          "terrain": "electric",
-          "stat": "none",
-          "amount": 0,
-          "durationMode": "manual",
-          "durationRounds": 1,
-          "healType": "basic",
-          "healMode": "fixed",
-          "conditional": false,
-          "activationCondition": "",
-          "notes": ""
-        }
-      ],
+      "secondaryEffects": [],
       "description": "Core v3.0 The user shoots a pulse that absorbs the energy flowing in the area to devastate its foes. Single Target. *Add 2 Extra Dice to the Damage Pool if there is a Terrain active in the Battlefield. Change this Move's Type to match that of a currently active Terrain (ie Electric Terrain, Grassy Terrain, etc.)."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-terrain-pulse",
         "sourceDbId": "8992921522ef94f4",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "terrain-field-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -67951,7 +67404,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "accuracyAttribute": "insight",
       "accuracySkill": "alert",
       "accuracyFormula": "",
-      "primaryMode": "effect-only",
+      "primaryMode": "damage",
       "power": 0,
       "powerFormula": "source.happiness + source.loyalty",
       "reducedAccuracy": 0,
@@ -69178,10 +68631,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-volt-tackle",
         "sourceDbId": "e0efe899f2eb9aa0",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "recoil"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -69876,10 +69327,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-wave-crash",
         "sourceDbId": "4a52564a3d4716d9",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "recoil"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -70164,10 +69613,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-wicked-blow",
         "sourceDbId": "b2e6957050d81451",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "always-crit"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -70398,10 +69845,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-wild-charge",
         "sourceDbId": "634185a3567576fe",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "recoil"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -70975,10 +70420,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-wood-hammer",
         "sourceDbId": "2305eddd08761008",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "recoil"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -71783,10 +71226,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-zippy-zap",
         "sourceDbId": "49aa5bcbd7f002bc",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "always-crit"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": "2",

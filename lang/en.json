@@ -311,7 +311,8 @@
         "Label": "Category",
         "Physical": "Physical",
         "Special": "Special",
-        "Support": "Support"
+        "Support": "Support",
+        "Damaging": "Physical or Special"
       },
       "Power": "Power",
       "NoDirectDamage": "No direct damage",
@@ -745,6 +746,8 @@
       "ClashFlavor": "{actor} rolls Clash with {move} (required successes: {required})",
       "MoveAccuracyFlavor": "{actor} rolls Accuracy for {move} (required successes: {required})",
       "MoveDamageFlavor": "{actor} rolls Damage for {move}",
+      "MoveRecoilFlavor": "{move} recoil: {damage} damage (from {dice} dice)",
+      "Recoil": "Recoil",
       "GenericRollFlavor": "{actor} rolls a success pool",
       "CombinedFlavor": "{actor} rolls {label}<br><small>{breakdown}</small>",
       "RollBreakdown": "Raw: {raw} | Removed: {removed} | Net: {net} | Required: {required}",
@@ -783,6 +786,7 @@
       "WeatherRoundDamage": "{weather}: {damage} damage.",
       "ConditionImmune": "Target is immune to this condition.",
       "ConditionBlockedByWeather": "The current weather ({weather}) prevents the Pokemon from becoming {condition}.",
+      "ConditionBlockedByTerrain": "The current terrain ({terrain}) prevents the Pokemon from becoming {condition}.",
       "InfatuationInvalidTargetGender": "Infatuation does not work on Pokemon without a defined gender.",
       "InfatuationRequiresOppositeGender": "Infatuation only works on a Pokemon of the opposite gender.",
       "SecondaryEffectApplied": "Applied",
@@ -818,6 +822,14 @@
       "SecondaryEffectNoConditionConfigured": "No condition selected.",
       "SecondaryEffectNoWeatherConfigured": "No weather selected.",
       "SecondaryEffectNoTerrainConfigured": "No terrain selected.",
+      "TerrainScopeBattlefield": "Battlefield",
+      "TerrainScopeSide": "User side",
+      "TerrainRoundHeal": "{terrain}: healed {healing} HP.",
+      "TerrainClearedAll": "All active terrains were cleared.",
+      "TerrainClearedSide": "Terrain affecting the user's side was cleared.",
+      "TerrainNoActive": "No active terrain to clear.",
+      "TerrainSwapped": "Side-based terrain effects were swapped.",
+      "TerrainNoSwap": "No side-based terrain effects to swap.",
       "ConditionCleared": "{condition} removed.",
       "ConditionResistRoll": "{actor} rolls Insight to resist {condition} (required: {required}).",
       "SleepResistanceRoll": "{actor} builds Sleep resistance (+{gained}, total {total}/5).",
@@ -901,6 +913,9 @@
         "SkyDropFailedHeavy": "{actor} cannot carry {target} high enough for Sky Drop.",
         "ShadowForceWound": "{target} cannot heal damage from this strike for {hours} hours."
       },
+      "SpecialDamage": {
+        "UserFainted": "{actor} fainted after using {move}."
+      },
       "SecondaryEffectHealingBlocked": "Healing is blocked on this target."
     },
     "Types": {
@@ -946,6 +961,8 @@
       "InvalidEffectConfiguration": "Complete the effect configuration before applying it.",
       "CombatRequired": "This action requires an active combat.",
       "MoveBlockedByWeather": "Move blocked by weather: {weather}.",
+      "MoveBlockedByTerrain": "Move blocked by terrain: {terrain}.",
+      "MoveRequiresActiveTerrain": "This move requires an active terrain.",
       "ActorDead": "Cannot act while dead.",
       "ActorFainted": "Cannot act while fainted.",
       "ActorSleeping": "Cannot act while asleep.",
@@ -966,7 +983,12 @@
       "ActorChargingMoveLocked": "Must finish charging {move} before using another move.",
       "ActorRampagingMoveLocked": "Rampage continues: must keep using {move}.",
       "ActorRampagingNoReaction": "Rampaging Pokemon cannot use Evasion or Clash while {move} continues.",
-      "ActorSkyDropCarried": "{carrier} is carrying this Pokemon with Sky Drop."
+      "ActorSkyDropCarried": "{carrier} is carrying this Pokemon with Sky Drop.",
+      "SpecialDamageNeedsTarget": "This move requires one target.",
+      "SpecialDamageNeedsRetaliationTarget": "{move} can only target the actor that last hit {actor}.",
+      "SpecialDamageNeedsRetaliationCategory": "{move} can only be used if the target's last move on {actor} was {category}.",
+      "SpecialDamageTargetTooWeak": "{move} fails because {target} has 1 HP or less.",
+      "SpecialDamageAlreadyHitTarget": "{move} already hit {target} during this battle."
     },
     "Sheets": {
       "Actor": "PokeRole Actor Sheet",

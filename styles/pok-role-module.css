@@ -1935,6 +1935,7 @@
   border: 4px solid var(--pk-outline);
   border-radius: 18px;
   padding: 5px 8px;
+  background: #f6f8ff;
   cursor: grab;
   min-height: 42px;
   display: flex;
