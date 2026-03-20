@@ -219,9 +219,136 @@ const CONFUSION_BYPASS_FLAG_KEY = "combat.confusionBypassRound";
 const INFATUATION_BYPASS_FLAG_KEY = "combat.infatuationBypassRound";
 const FROZEN_SHELL_FLAG_KEY = "combat.frozenShell";
 const LAST_USED_MOVE_FLAG_KEY = "combat.lastUsedMove";
+const MULTI_TURN_STATE_FLAG_KEY = "combat.multiTurnState";
 const CHOICE_LOCKED_MOVE_FLAG = "combat.choiceLockedMove";
 const SPECIAL_WEATHER_KEYS = Object.freeze(["harsh-sunlight", "typhoon", "strong-winds"]);
 const BASIC_WEATHER_KEYS = Object.freeze(["sunny", "rain", "sandstorm", "hail"]);
+const RAMPAGE_MAX_USES = 3;
+const HEALING_BLOCK_FLAG_KEY = "effects.healingBlockedUntil";
+const STRENGTH_LIFTING_CAPACITY_KG = Object.freeze([
+  0,
+  18,
+  45,
+  113,
+  181,
+  294,
+  362,
+  408,
+  453,
+  544,
+  680
+]);
+const SPECIAL_CHARGE_MOVE_RULES = Object.freeze({
+  "move-beak-blast": Object.freeze({
+    outOfRange: false,
+    chargeState: "heated",
+    punishOnHit: Object.freeze({
+      requiresDamagingMove: true,
+      requiresPhysicalContact: true,
+      condition: "burn2"
+    })
+  }),
+  "move-bounce": Object.freeze({
+    outOfRange: true,
+    chargeState: "air",
+    vulnerableTo: Object.freeze([
+      "move-thunder",
+      "move-twister",
+      "move-sky-uppercut",
+      "move-gust",
+      "move-hurricane",
+      "move-smack-down"
+    ])
+  }),
+  "move-dig": Object.freeze({
+    outOfRange: true,
+    chargeState: "underground",
+    vulnerableTo: Object.freeze([
+      "move-earth-power",
+      "move-earthquake",
+      "move-fissure",
+      "move-magnitude",
+      "move-stomping-tantrum"
+    ])
+  }),
+  "move-dive": Object.freeze({
+    outOfRange: true,
+    chargeState: "underwater",
+    vulnerableTo: Object.freeze([
+      "move-scald",
+      "move-surf",
+      "move-whirlpool",
+      "move-freeze-dry",
+      "move-sheer-cold"
+    ])
+  }),
+  "move-fly": Object.freeze({
+    outOfRange: true,
+    chargeState: "air",
+    vulnerableTo: Object.freeze([
+      "move-thunder",
+      "move-twister",
+      "move-sky-uppercut",
+      "move-gust",
+      "move-hurricane",
+      "move-smack-down"
+    ])
+  }),
+  "move-focus-punch": Object.freeze({
+    outOfRange: false,
+    chargeState: "focus",
+    interruptOnHit: Object.freeze({
+      requiresDamagingMove: true,
+      condition: "flinch"
+    })
+  }),
+  "move-phantom-force": Object.freeze({
+    outOfRange: true,
+    chargeState: "shadow",
+    ignoresCover: true,
+    ignoresShield: true
+  }),
+  "move-shadow-force": Object.freeze({
+    outOfRange: true,
+    chargeState: "shadow",
+    ignoresCover: true,
+    ignoresShield: true,
+    ignoresDefenses: true,
+    healingBlockHours: 24
+  }),
+  "move-sky-drop": Object.freeze({
+    outOfRange: true,
+    chargeState: "air",
+    carriesTargets: true,
+    vulnerableTo: Object.freeze([
+      "move-thunder",
+      "move-twister",
+      "move-sky-uppercut",
+      "move-gust",
+      "move-hurricane",
+      "move-smack-down"
+    ])
+  })
+});
+const CHARGE_MOVE_PROFILE_OVERRIDES = Object.freeze({
+  "move-electro-shot": {
+    skipChargeWeather: ["rain", "typhoon"]
+  },
+  "move-solar-beam": {
+    skipChargeWeather: ["sunny", "harsh-sunlight"],
+    extraChargeWeather: ["rain", "typhoon", "sandstorm", "hail"],
+    extraChargeActions: 2
+  },
+  "move-solar-blade": {
+    skipChargeWeather: ["sunny", "harsh-sunlight"],
+    extraChargeWeather: ["rain", "typhoon", "sandstorm", "hail"],
+    extraChargeActions: 2
+  }
+});
+const CHARGE_START_EFFECT_SEED_IDS = Object.freeze(new Set([
+  "move-meteor-beam",
+  "move-skull-bash"
+]));
 const FROZEN_SHELL_DEFAULTS = Object.freeze({
   hp: 5,
   defense: 2,
@@ -1344,6 +1471,14 @@ export class PokRoleActor extends Actor {
     if (!game.combat) return { processed: false, results: [] };
 
     const results = [];
+    const multiTurnResult = await this._processMultiTurnTurnStart();
+    if (multiTurnResult?.processed) {
+      results.push({
+        condition: "multi-turn",
+        resolved: true,
+        moveName: multiTurnResult.moveName ?? ""
+      });
+    }
     let paralysisBlocksTurn = false;
     const clearConditionWithNotice = async (conditionKey) => {
       await this.toggleQuickCondition(conditionKey, { active: false });
@@ -1488,6 +1623,80 @@ export class PokRoleActor extends Actor {
       return {
         allowed: false,
         reason: game.i18n.localize("POKROLE.Errors.ActorBusyWithItemTreatment")
+      };
+    }
+
+    const multiTurnState = this._getMultiTurnState();
+    if (multiTurnState.mode === "recharge") {
+      const rechargeResult = await this._consumePendingRechargeAction();
+      if (rechargeResult?.processed || this._getMultiTurnState().mode === "recharge") {
+        return {
+          allowed: false,
+          reason: game.i18n.format("POKROLE.Errors.ActorRecharging", {
+            move:
+              multiTurnState.moveName ||
+              options?.moveName ||
+              game.i18n.localize("POKROLE.Common.Unknown")
+          })
+        };
+      }
+    }
+
+    if (multiTurnState.mode === "charge") {
+      if (actionType !== "move") {
+        return {
+          allowed: false,
+          reason: game.i18n.format("POKROLE.Errors.ActorChargingMoveLocked", {
+            move: multiTurnState.moveName || game.i18n.localize("POKROLE.Common.Unknown")
+          })
+        };
+      }
+      const moveId = `${options?.moveId ?? ""}`.trim();
+      if (moveId && moveId !== multiTurnState.moveId) {
+        return {
+          allowed: false,
+          reason: game.i18n.format("POKROLE.Errors.ActorChargingMoveLocked", {
+            move: multiTurnState.moveName || game.i18n.localize("POKROLE.Common.Unknown")
+          })
+        };
+      }
+    }
+
+    if (multiTurnState.mode === "rampage") {
+      if (actionType === "evasion" || actionType === "clash") {
+        return {
+          allowed: false,
+          reason: game.i18n.format("POKROLE.Errors.ActorRampagingNoReaction", {
+            move: multiTurnState.moveName || game.i18n.localize("POKROLE.Common.Unknown")
+          })
+        };
+      }
+      if (actionType !== "move") {
+        return {
+          allowed: false,
+          reason: game.i18n.format("POKROLE.Errors.ActorRampagingMoveLocked", {
+            move: multiTurnState.moveName || game.i18n.localize("POKROLE.Common.Unknown")
+          })
+        };
+      }
+      const moveId = `${options?.moveId ?? ""}`.trim();
+      if (moveId && moveId !== multiTurnState.moveId) {
+        return {
+          allowed: false,
+          reason: game.i18n.format("POKROLE.Errors.ActorRampagingMoveLocked", {
+            move: multiTurnState.moveName || game.i18n.localize("POKROLE.Common.Unknown")
+          })
+        };
+      }
+    }
+
+    const skyDropCarrierState = this._getSkyDropCarrierState();
+    if (skyDropCarrierState) {
+      return {
+        allowed: false,
+        reason: game.i18n.format("POKROLE.Errors.ActorSkyDropCarried", {
+          carrier: skyDropCarrierState.carrier?.name ?? game.i18n.localize("POKROLE.Common.Unknown")
+        })
       };
     }
 
@@ -1809,6 +2018,759 @@ export class PokRoleActor extends Actor {
       roundKey: this._getCurrentRoundKey(0) ?? "",
       usedAt: Date.now()
     });
+  }
+
+  _normalizeMultiTurnMode(value) {
+    const normalized = `${value ?? ""}`.trim().toLowerCase();
+    if (["charge", "recharge", "rampage"].includes(normalized)) return normalized;
+    return "none";
+  }
+
+  _getMultiTurnState() {
+    const rawState = this.getFlag(POKROLE.ID, MULTI_TURN_STATE_FLAG_KEY) ?? {};
+    const mode = this._normalizeMultiTurnMode(rawState?.mode);
+    const activeCombatId = `${game.combat?.id ?? ""}`.trim();
+    const storedCombatId = `${rawState?.combatId ?? ""}`.trim();
+
+    if (mode === "none" || !activeCombatId || !storedCombatId || storedCombatId !== activeCombatId) {
+      return {
+        mode: "none",
+        combatId: activeCombatId,
+        moveId: "",
+        moveName: "",
+        moveUuid: "",
+        moveSeedId: "",
+        targetMode: "foe",
+        targetActorIds: [],
+        carriedTargetIds: [],
+        specialChargeState: "none",
+        outOfRange: false,
+        vulnerableMoveSeedIds: [],
+        chargeActionsRemaining: 0,
+        chargeStartEffectSignatures: [],
+        rechargeRound: 0,
+        rampageUses: 0,
+        rampageMaxUses: RAMPAGE_MAX_USES
+      };
+    }
+
+    return {
+      mode,
+      combatId: storedCombatId,
+      moveId: `${rawState?.moveId ?? ""}`.trim(),
+      moveName: `${rawState?.moveName ?? ""}`.trim(),
+      moveUuid: `${rawState?.moveUuid ?? ""}`.trim(),
+      moveSeedId: `${rawState?.moveSeedId ?? ""}`.trim().toLowerCase(),
+      targetMode: this._normalizeMoveTargetKey(rawState?.targetMode),
+      targetActorIds: Array.isArray(rawState?.targetActorIds)
+        ? [...new Set(rawState.targetActorIds.map((value) => `${value ?? ""}`.trim()).filter(Boolean))]
+        : [],
+      carriedTargetIds: Array.isArray(rawState?.carriedTargetIds)
+        ? [...new Set(rawState.carriedTargetIds.map((value) => `${value ?? ""}`.trim()).filter(Boolean))]
+        : [],
+      specialChargeState: `${rawState?.specialChargeState ?? "none"}`.trim().toLowerCase() || "none",
+      outOfRange: Boolean(rawState?.outOfRange),
+      vulnerableMoveSeedIds: Array.isArray(rawState?.vulnerableMoveSeedIds)
+        ? [...new Set(rawState.vulnerableMoveSeedIds.map((value) => `${value ?? ""}`.trim().toLowerCase()).filter(Boolean))]
+        : [],
+      chargeActionsRemaining: Math.max(Math.floor(toNumber(rawState?.chargeActionsRemaining, 0)), 0),
+      chargeStartEffectSignatures: Array.isArray(rawState?.chargeStartEffectSignatures)
+        ? [...new Set(rawState.chargeStartEffectSignatures.map((value) => `${value ?? ""}`.trim()).filter(Boolean))]
+        : [],
+      rechargeRound: Math.max(Math.floor(toNumber(rawState?.rechargeRound, 0)), 0),
+      rampageUses: Math.max(Math.floor(toNumber(rawState?.rampageUses, 0)), 0),
+      rampageMaxUses: Math.max(
+        Math.floor(toNumber(rawState?.rampageMaxUses, RAMPAGE_MAX_USES)),
+        1
+      )
+    };
+  }
+
+  async _setMultiTurnState(state = {}) {
+    const mode = this._normalizeMultiTurnMode(state?.mode);
+    if (mode === "none") {
+      await this.unsetFlag(POKROLE.ID, MULTI_TURN_STATE_FLAG_KEY);
+      return this._getMultiTurnState();
+    }
+
+    const combatId = `${game.combat?.id ?? state?.combatId ?? ""}`.trim();
+    if (!combatId) {
+      await this.unsetFlag(POKROLE.ID, MULTI_TURN_STATE_FLAG_KEY);
+      return this._getMultiTurnState();
+    }
+
+    await this.setFlag(POKROLE.ID, MULTI_TURN_STATE_FLAG_KEY, {
+      mode,
+      combatId,
+      moveId: `${state?.moveId ?? ""}`.trim(),
+      moveName: `${state?.moveName ?? ""}`.trim(),
+      moveUuid: `${state?.moveUuid ?? ""}`.trim(),
+      moveSeedId: `${state?.moveSeedId ?? ""}`.trim().toLowerCase(),
+      targetMode: this._normalizeMoveTargetKey(state?.targetMode),
+      targetActorIds: Array.isArray(state?.targetActorIds)
+        ? [...new Set(state.targetActorIds.map((value) => `${value ?? ""}`.trim()).filter(Boolean))]
+        : [],
+      carriedTargetIds: Array.isArray(state?.carriedTargetIds)
+        ? [...new Set(state.carriedTargetIds.map((value) => `${value ?? ""}`.trim()).filter(Boolean))]
+        : [],
+      specialChargeState: `${state?.specialChargeState ?? "none"}`.trim().toLowerCase() || "none",
+      outOfRange: Boolean(state?.outOfRange),
+      vulnerableMoveSeedIds: Array.isArray(state?.vulnerableMoveSeedIds)
+        ? [...new Set(state.vulnerableMoveSeedIds.map((value) => `${value ?? ""}`.trim().toLowerCase()).filter(Boolean))]
+        : [],
+      chargeActionsRemaining: Math.max(Math.floor(toNumber(state?.chargeActionsRemaining, 0)), 0),
+      chargeStartEffectSignatures: Array.isArray(state?.chargeStartEffectSignatures)
+        ? [...new Set(state.chargeStartEffectSignatures.map((value) => `${value ?? ""}`.trim()).filter(Boolean))]
+        : [],
+      rechargeRound: Math.max(Math.floor(toNumber(state?.rechargeRound, 0)), 0),
+      rampageUses: Math.max(Math.floor(toNumber(state?.rampageUses, 0)), 0),
+      rampageMaxUses: Math.max(
+        Math.floor(toNumber(state?.rampageMaxUses, RAMPAGE_MAX_USES)),
+        1
+      )
+    });
+
+    return this._getMultiTurnState();
+  }
+
+  async clearMultiTurnState() {
+    await this.unsetFlag(POKROLE.ID, MULTI_TURN_STATE_FLAG_KEY);
+  }
+
+  _getSecondaryEffectSignature(effect = {}) {
+    return JSON.stringify([
+      Math.max(Math.floor(toNumber(effect?.section, 0)), 0),
+      `${effect?.label ?? ""}`.trim(),
+      `${effect?.trigger ?? "on-hit"}`.trim().toLowerCase(),
+      Math.max(Math.floor(toNumber(effect?.chance, 0)), 0),
+      `${effect?.target ?? "target"}`.trim().toLowerCase(),
+      `${effect?.effectType ?? "custom"}`.trim().toLowerCase(),
+      `${effect?.condition ?? "none"}`.trim().toLowerCase(),
+      `${effect?.weather ?? "none"}`.trim().toLowerCase(),
+      `${effect?.terrain ?? "none"}`.trim().toLowerCase(),
+      `${effect?.stat ?? "none"}`.trim().toLowerCase(),
+      Math.floor(toNumber(effect?.amount, 0)),
+      `${effect?.durationMode ?? "manual"}`.trim().toLowerCase(),
+      Math.max(Math.floor(toNumber(effect?.durationRounds, 1)), 1),
+      Array.isArray(effect?.specialDuration)
+        ? effect.specialDuration.map((value) => `${value ?? ""}`.trim().toLowerCase()).filter(Boolean)
+        : [],
+      Boolean(effect?.conditional),
+      `${effect?.activationCondition ?? ""}`.trim().toLowerCase(),
+      `${effect?.notes ?? ""}`.trim()
+    ]);
+  }
+
+  async _postMultiTurnNotice(title, lines = []) {
+    const contentLines = (Array.isArray(lines) ? lines : []).filter(Boolean);
+    if (!title || contentLines.length <= 0) return;
+
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `
+        <div class="pok-role-chat-card arcade-red">
+          <header class="chat-card-header">
+            <h3>${title}</h3>
+          </header>
+          <section class="chat-card-section">
+            ${contentLines.map((line) => `<p>${line}</p>`).join("")}
+          </section>
+        </div>
+      `
+    });
+  }
+
+  _resolveChargeMoveProfile(move) {
+    const seedId = this._getMoveSeedId(move);
+    const override = CHARGE_MOVE_PROFILE_OVERRIDES[seedId] ?? {};
+    const activeWeather = this.getActiveWeatherKey();
+    const heldItem = this._getHeldItemData();
+    let totalChargeActions = Math.max(Math.floor(toNumber(override.baseChargeActions, 1)), 1);
+    let skipReason = "";
+
+    if (
+      Array.isArray(override.skipChargeWeather) &&
+      override.skipChargeWeather.includes(activeWeather)
+    ) {
+      totalChargeActions = 0;
+      skipReason = "weather";
+    } else if (
+      Array.isArray(override.extraChargeWeather) &&
+      override.extraChargeWeather.includes(activeWeather)
+    ) {
+      totalChargeActions = Math.max(
+        Math.floor(toNumber(override.extraChargeActions, totalChargeActions + 1)),
+        totalChargeActions
+      );
+    }
+
+    const consumesPowerHerb = !skipReason && Boolean(heldItem?.powerHerb);
+    if (consumesPowerHerb) {
+      totalChargeActions = 0;
+      skipReason = "power-herb";
+    }
+
+    return {
+      seedId,
+      activeWeather,
+      totalChargeActions,
+      skipReason,
+      consumesPowerHerb
+    };
+  }
+
+  _getSpecialChargeMoveRule(move) {
+    const seedId = typeof move === "string" ? `${move}`.trim().toLowerCase() : this._getMoveSeedId(move);
+    return SPECIAL_CHARGE_MOVE_RULES[seedId] ?? null;
+  }
+
+  _parseWeightKg(value) {
+    const normalized = `${value ?? ""}`.replace(",", ".").trim();
+    const match = normalized.match(/-?\d+(?:\.\d+)?/);
+    return match ? Math.max(toNumber(match[0], 0), 0) : 0;
+  }
+
+  _getLiftingCapacityKg() {
+    const strength = clamp(Math.floor(toNumber(this.getTraitValue("strength"), 0)), 0, STRENGTH_LIFTING_CAPACITY_KG.length - 1);
+    const athletic = Math.max(Math.floor(toNumber(this.getTraitValue("athletic"), 0)), 0);
+    const baseCapacity = STRENGTH_LIFTING_CAPACITY_KG[strength] ?? STRENGTH_LIFTING_CAPACITY_KG.at(-1) ?? 0;
+    return baseCapacity + (athletic * 4);
+  }
+
+  _canCarryTargetWithSkyDrop(targetActor) {
+    if (!(targetActor instanceof PokRoleActor)) return true;
+    if (targetActor.hasType("flying")) return false;
+    const targetWeight = this._parseWeightKg(targetActor.system?.weight);
+    if (targetWeight <= 0) return true;
+    return targetWeight <= this._getLiftingCapacityKg();
+  }
+
+  _getSkyDropCarrierState() {
+    if (!game.combat || !this.id) return null;
+    for (const combatant of game.combat.combatants ?? []) {
+      const carrier = combatant?.actor;
+      if (!(carrier instanceof PokRoleActor) || carrier.id === this.id) continue;
+      const state = carrier._getMultiTurnState();
+      if (state.mode !== "charge" || !state.outOfRange) continue;
+      const rule = carrier._getSpecialChargeMoveRule(state.moveSeedId);
+      if (!rule?.carriesTargets) continue;
+      if (!Array.isArray(state.carriedTargetIds) || !state.carriedTargetIds.includes(this.id)) continue;
+      return {
+        carrier,
+        state,
+        rule
+      };
+    }
+    return null;
+  }
+
+  _getChargeRangeProtectionState() {
+    const ownState = this._getMultiTurnState();
+    if (ownState.mode === "charge" && ownState.outOfRange) {
+      const ownRule = this._getSpecialChargeMoveRule(ownState.moveSeedId);
+      if (ownRule?.outOfRange) {
+        return {
+          ownerActor: this,
+          sourceActor: this,
+          state: ownState,
+          rule: ownRule
+        };
+      }
+    }
+
+    const carrierState = this._getSkyDropCarrierState();
+    if (carrierState) {
+      return {
+        ownerActor: carrierState.carrier,
+        sourceActor: carrierState.carrier,
+        state: carrierState.state,
+        rule: carrierState.rule
+      };
+    }
+
+    return null;
+  }
+
+  _canMoveHitOutOfRangeTarget(move, protectionState = null, attackerActor = null) {
+    if (!protectionState?.rule?.outOfRange) return true;
+
+    const attackSeedId = this._getMoveSeedId(move);
+    if (!attackSeedId) return false;
+
+    const sourceActor = protectionState.sourceActor ?? null;
+    const protectedState = protectionState.state ?? {};
+    if (
+      attackerActor &&
+      sourceActor &&
+      attackerActor.id === sourceActor.id &&
+      protectedState.moveId &&
+      protectedState.moveId === move?.id
+    ) {
+      return true;
+    }
+
+    const vulnerableMoveSeedIds = Array.isArray(protectionState.state?.vulnerableMoveSeedIds)
+      ? protectionState.state.vulnerableMoveSeedIds
+      : Array.isArray(protectionState.rule?.vulnerableTo)
+        ? protectionState.rule.vulnerableTo
+        : [];
+    return vulnerableMoveSeedIds.includes(attackSeedId);
+  }
+
+  _partitionTargetsByChargeRange(move, targetActors = []) {
+    const reachableTargets = [];
+    const blockedTargets = [];
+
+    for (const actor of Array.isArray(targetActors) ? targetActors : []) {
+      if (!(actor instanceof PokRoleActor)) {
+        reachableTargets.push(actor);
+        continue;
+      }
+
+      const protectionState = actor._getChargeRangeProtectionState();
+      if (!protectionState || actor._canMoveHitOutOfRangeTarget(move, protectionState, this)) {
+        reachableTargets.push(actor);
+        continue;
+      }
+
+      blockedTargets.push({
+        actor,
+        moveName: protectionState.state?.moveName || game.i18n.localize("POKROLE.Common.Unknown"),
+        sourceName: protectionState.sourceActor?.name || actor.name
+      });
+    }
+
+    return {
+      reachableTargets,
+      blockedTargets
+    };
+  }
+
+  async _applyShadowForceHealingBlock(targetActor, move) {
+    const specialRule = this._getSpecialChargeMoveRule(move);
+    const healingBlockHours = Math.max(toNumber(specialRule?.healingBlockHours, 0), 0);
+    if (!(targetActor instanceof PokRoleActor) || healingBlockHours <= 0) return;
+    await targetActor.setFlag(POKROLE.ID, HEALING_BLOCK_FLAG_KEY, Date.now() + (healingBlockHours * 60 * 60 * 1000));
+  }
+
+  _getHealingBlockExpiration() {
+    const expiration = toNumber(this.getFlag(POKROLE.ID, HEALING_BLOCK_FLAG_KEY), 0);
+    if (!Number.isFinite(expiration) || expiration <= 0) return 0;
+    if (Date.now() >= expiration) return 0;
+    return expiration;
+  }
+
+  async _clearHealingBlockIfExpired() {
+    const expiration = toNumber(this.getFlag(POKROLE.ID, HEALING_BLOCK_FLAG_KEY), 0);
+    if (Number.isFinite(expiration) && expiration > 0 && Date.now() >= expiration) {
+      await this.unsetFlag(POKROLE.ID, HEALING_BLOCK_FLAG_KEY);
+      return 0;
+    }
+    return expiration > 0 ? expiration : 0;
+  }
+
+  async _handleChargeMoveHitWhileCharging({ attackMove, attackerActor, isDamagingMove = false, landed = false } = {}) {
+    if (!landed) return null;
+    const state = this._getMultiTurnState();
+    if (state.mode !== "charge") return null;
+
+    const rule = this._getSpecialChargeMoveRule(state.moveSeedId);
+    if (!rule) return null;
+
+    const attackCategory = this._normalizeMoveCombatCategory(attackMove?.system?.category);
+    const isRangedAttack = this._isMoveRanged(attackMove);
+    const results = [];
+
+    if (
+      rule.punishOnHit &&
+      (!rule.punishOnHit.requiresDamagingMove || isDamagingMove) &&
+      (!rule.punishOnHit.requiresPhysicalContact || (attackCategory === "physical" && !isRangedAttack))
+    ) {
+      await attackerActor?.toggleQuickCondition?.(rule.punishOnHit.condition, { active: true });
+      results.push({
+        type: "punish",
+        detail: game.i18n.format("POKROLE.Chat.MultiTurn.BeakBlastPunish", {
+          attacker: attackerActor?.name ?? game.i18n.localize("POKROLE.Common.Unknown"),
+          target: this.name
+        })
+      });
+    }
+
+    if (
+      rule.interruptOnHit &&
+      (!rule.interruptOnHit.requiresDamagingMove || isDamagingMove)
+    ) {
+      await this.toggleQuickCondition(rule.interruptOnHit.condition, { active: true });
+      await this.clearMultiTurnState();
+      results.push({
+        type: "interrupt",
+        detail: game.i18n.format("POKROLE.Chat.MultiTurn.FocusPunchInterrupted", {
+          actor: this.name
+        })
+      });
+    }
+
+    return results;
+  }
+
+  _getChargeStartSecondaryEffects(move, effectList = []) {
+    const seedId = this._getMoveSeedId(move);
+    if (!CHARGE_START_EFFECT_SEED_IDS.has(seedId)) return [];
+    return (Array.isArray(effectList) ? effectList : []).filter((effect) => {
+      const effectType = this._normalizeSecondaryEffectType(effect?.effectType);
+      const targetMode = `${effect?.target ?? "target"}`.trim().toLowerCase();
+      return targetMode === "self" && ["stat", "combat-stat"].includes(effectType);
+    });
+  }
+
+  async _applyChargeStartEffects(move, effectList = [], roundKey = null) {
+    const chargeStartEffects = this._getChargeStartSecondaryEffects(move, effectList);
+    if (chargeStartEffects.length <= 0) {
+      return {
+        results: [],
+        skipSignatures: []
+      };
+    }
+
+    const effectResults = await this._applyMoveSecondaryEffects({
+      move,
+      moveTargetKey: "self",
+      secondaryEffects: chargeStartEffects,
+      targetActors: [this],
+      hit: true,
+      isDamagingMove: false,
+      finalDamage: 0,
+      damageTargetResults: [],
+      roundKey
+    });
+
+    return {
+      results: effectResults,
+      skipSignatures: chargeStartEffects.map((effect) => this._getSecondaryEffectSignature(effect))
+    };
+  }
+
+  async _consumePendingRechargeAction() {
+    const state = this._getMultiTurnState();
+    const currentRound = Math.max(Math.floor(toNumber(game.combat?.round, 0)), 0);
+    if (
+      state.mode !== "recharge" ||
+      !game.combat ||
+      !this._isCurrentCombatTurn() ||
+      state.rechargeRound !== currentRound
+    ) {
+      return { processed: false };
+    }
+
+    const roundKey = this._getCurrentRoundKey(0);
+    const currentActionNumber = await this._resolveActionRequirement(null, roundKey);
+    if (currentActionNumber > 1) {
+      await this.clearMultiTurnState();
+      return { processed: false };
+    }
+
+    await this._advanceActionCounter(currentActionNumber, roundKey);
+    await this.clearMultiTurnState();
+    await this._postMultiTurnNotice(
+      game.i18n.localize("POKROLE.Chat.MultiTurn.Title"),
+      [
+        game.i18n.format("POKROLE.Chat.MultiTurn.RechargeConsumed", {
+          actor: this.name,
+          move: state.moveName || game.i18n.localize("POKROLE.Common.Unknown")
+        })
+      ]
+    );
+
+    return { processed: true, moveName: state.moveName };
+  }
+
+  async _processMultiTurnTurnStart() {
+    if (!game.combat || !this._isCurrentCombatTurn()) {
+      return { processed: false };
+    }
+
+    return this._consumePendingRechargeAction();
+  }
+
+  async _resolveMultiTurnMovePreparation(move, context = {}) {
+    const roundKey = context.roundKey ?? getCurrentCombatRoundKey();
+    const actionNumber = clamp(toNumber(context.actionNumber, 1), 1, 5);
+    const targetActors = Array.isArray(context.targetActors) ? context.targetActors : [];
+    const moveTargetKey = this._normalizeMoveTargetKey(context.moveTargetKey ?? move?.system?.target);
+    const secondaryEffects = Array.isArray(context.secondaryEffects)
+      ? context.secondaryEffects
+      : this._collectMoveSecondaryEffects(move);
+    const activeState = this._getMultiTurnState();
+
+    if (activeState.mode === "charge" && activeState.moveId === move?.id) {
+      if (activeState.chargeActionsRemaining > 0) {
+        const nextRemaining = Math.max(activeState.chargeActionsRemaining - 1, 0);
+        await this._setMultiTurnState({
+          ...activeState,
+          chargeActionsRemaining: nextRemaining
+        });
+        if (context.advanceAction !== false) {
+          await this._advanceActionCounter(actionNumber, roundKey);
+        }
+        await this._recordLastUsedMove(move);
+        await this._postMultiTurnNotice(
+          game.i18n.localize("POKROLE.Chat.MultiTurn.Title"),
+          [
+            game.i18n.format("POKROLE.Chat.MultiTurn.ChargeContinues", {
+              actor: this.name,
+              move: move.name,
+              remaining: nextRemaining + 1
+            })
+          ]
+        );
+        return {
+          handled: true,
+          result: {
+            charging: true,
+            move,
+            remainingChargeActions: nextRemaining
+          }
+        };
+      }
+
+      await this.clearMultiTurnState();
+      return {
+        handled: false,
+        bypassLines: [
+          game.i18n.format("POKROLE.Chat.MultiTurn.ChargeReleased", {
+            actor: this.name,
+            move: move.name
+          })
+        ],
+        skipSecondaryEffectSignatures: new Set(activeState.chargeStartEffectSignatures)
+      };
+    }
+
+    const sourceAttributes = this._getMoveSourceAttributes(move);
+    if (!sourceAttributes?.charge) {
+      return {
+        handled: false,
+        bypassLines: [],
+        skipSecondaryEffectSignatures: new Set()
+      };
+    }
+
+    const specialChargeRule = this._getSpecialChargeMoveRule(move);
+    if (specialChargeRule?.carriesTargets) {
+      const primaryTarget = targetActors[0] ?? null;
+      if (primaryTarget instanceof PokRoleActor) {
+        if (primaryTarget.hasType("flying")) {
+          if (context.advanceAction !== false) {
+            await this._advanceActionCounter(actionNumber, roundKey);
+          }
+          await this._recordLastUsedMove(move);
+          await this._postMultiTurnNotice(
+            game.i18n.localize("POKROLE.Chat.MultiTurn.Title"),
+            [
+              game.i18n.format("POKROLE.Chat.MultiTurn.SkyDropFailedFlying", {
+                actor: this.name,
+                target: primaryTarget.name
+              })
+            ]
+          );
+          return {
+            handled: true,
+            result: {
+              failed: true,
+              reason: "sky-drop-flying"
+            }
+          };
+        }
+
+        if (!this._canCarryTargetWithSkyDrop(primaryTarget)) {
+          if (context.advanceAction !== false) {
+            await this._advanceActionCounter(actionNumber, roundKey);
+          }
+          await this._recordLastUsedMove(move);
+          await this._postMultiTurnNotice(
+            game.i18n.localize("POKROLE.Chat.MultiTurn.Title"),
+            [
+              game.i18n.format("POKROLE.Chat.MultiTurn.SkyDropFailedHeavy", {
+                actor: this.name,
+                target: primaryTarget.name
+              })
+            ]
+          );
+          return {
+            handled: true,
+            result: {
+              failed: true,
+              reason: "sky-drop-heavy"
+            }
+          };
+        }
+      }
+    }
+
+    const chargeProfile = this._resolveChargeMoveProfile(move);
+    const bypassLines = [];
+    if (chargeProfile.skipReason === "weather") {
+      bypassLines.push(
+        game.i18n.format("POKROLE.Chat.MultiTurn.ChargeSkippedWeather", {
+          actor: this.name,
+          move: move.name,
+          weather: this._localizeWeatherName(chargeProfile.activeWeather)
+        })
+      );
+    }
+    if (chargeProfile.skipReason === "power-herb") {
+      await this.update({ "system.battleItem": "" });
+      bypassLines.push(
+        game.i18n.format("POKROLE.Chat.MultiTurn.ChargeSkippedPowerHerb", {
+          actor: this.name,
+          move: move.name
+        })
+      );
+    }
+    if (chargeProfile.totalChargeActions <= 0) {
+      return {
+        handled: false,
+        bypassLines,
+        skipSecondaryEffectSignatures: new Set()
+      };
+    }
+
+    const chargeStartResult = await this._applyChargeStartEffects(move, secondaryEffects, roundKey);
+    await this._setMultiTurnState({
+      mode: "charge",
+      moveId: move.id,
+      moveName: move.name ?? "",
+      moveUuid: move.uuid ?? "",
+      moveSeedId: this._getMoveSeedId(move),
+      targetMode: moveTargetKey,
+      targetActorIds: targetActors.map((actor) => actor.id).filter(Boolean),
+      carriedTargetIds: specialChargeRule?.carriesTargets ? targetActors.map((actor) => actor.id).filter(Boolean) : [],
+      specialChargeState: `${specialChargeRule?.chargeState ?? "none"}`.trim().toLowerCase() || "none",
+      outOfRange: Boolean(specialChargeRule?.outOfRange),
+      vulnerableMoveSeedIds: Array.isArray(specialChargeRule?.vulnerableTo) ? specialChargeRule.vulnerableTo : [],
+      chargeActionsRemaining: Math.max(chargeProfile.totalChargeActions - 1, 0),
+      chargeStartEffectSignatures: chargeStartResult.skipSignatures,
+      rampageUses: 0,
+      rampageMaxUses: RAMPAGE_MAX_USES
+    });
+    if (context.advanceAction !== false) {
+      await this._advanceActionCounter(actionNumber, roundKey);
+    }
+    await this._recordLastUsedMove(move);
+
+    const chargeLines = [
+      game.i18n.format("POKROLE.Chat.MultiTurn.ChargeStarted", {
+        actor: this.name,
+        move: move.name,
+        actions: chargeProfile.totalChargeActions
+      }),
+      ...chargeStartResult.results
+        .filter((entry) => entry?.detail)
+        .map((entry) =>
+          game.i18n.format("POKROLE.Chat.MultiTurn.ChargeStartEffect", {
+            label: entry.label,
+            detail: entry.detail
+          })
+        )
+    ];
+    await this._postMultiTurnNotice(
+      game.i18n.localize("POKROLE.Chat.MultiTurn.Title"),
+      chargeLines
+    );
+
+    return {
+      handled: true,
+      result: {
+        charging: true,
+        move,
+        remainingChargeActions: Math.max(chargeProfile.totalChargeActions - 1, 0)
+      }
+    };
+  }
+
+  async _finalizeMultiTurnMoveResolution(move, result = {}, context = {}) {
+    if (!game.combat || !move) return;
+
+    const sourceAttributes = this._getMoveSourceAttributes(move);
+    const currentRound = Math.max(Math.floor(toNumber(game.combat?.round, 0)), 0);
+    const targetActorIds = Array.isArray(context?.targetActors)
+      ? context.targetActors.map((actor) => actor?.id).filter(Boolean)
+      : [];
+    const moveTargetKey = this._normalizeMoveTargetKey(context?.moveTargetKey ?? move.system?.target);
+
+    if (sourceAttributes?.mustRecharge && result?.hit) {
+      await this._setMultiTurnState({
+        mode: "recharge",
+        moveId: move.id,
+        moveName: move.name ?? "",
+        moveUuid: move.uuid ?? "",
+        targetMode: moveTargetKey,
+        targetActorIds,
+        rechargeRound: currentRound + 1
+      });
+      await this._postMultiTurnNotice(
+        game.i18n.localize("POKROLE.Chat.MultiTurn.Title"),
+        [
+          game.i18n.format("POKROLE.Chat.MultiTurn.RechargeQueued", {
+            actor: this.name,
+            move: move.name
+          })
+        ]
+      );
+    }
+
+    if (!sourceAttributes?.rampage) return;
+
+    const activeState = this._getMultiTurnState();
+    const nextUses =
+      activeState.mode === "rampage" && activeState.moveId === move.id
+        ? activeState.rampageUses + 1
+        : 1;
+    const maxUses =
+      activeState.mode === "rampage" && activeState.moveId === move.id
+        ? activeState.rampageMaxUses
+        : RAMPAGE_MAX_USES;
+
+    if (nextUses >= maxUses) {
+      await this.clearMultiTurnState();
+      await this.toggleQuickCondition("confused", { active: true });
+      await this._postMultiTurnNotice(
+        game.i18n.localize("POKROLE.Chat.MultiTurn.Title"),
+        [
+          game.i18n.format("POKROLE.Chat.MultiTurn.RampageEnded", {
+            actor: this.name,
+            move: move.name
+          })
+        ]
+      );
+      return;
+    }
+
+    await this._setMultiTurnState({
+      mode: "rampage",
+      moveId: move.id,
+      moveName: move.name ?? "",
+      moveUuid: move.uuid ?? "",
+      targetMode: moveTargetKey,
+      targetActorIds,
+      rampageUses: nextUses,
+      rampageMaxUses: maxUses
+    });
+    await this._postMultiTurnNotice(
+      game.i18n.localize("POKROLE.Chat.MultiTurn.Title"),
+      [
+        game.i18n.format(
+          nextUses <= 1
+            ? "POKROLE.Chat.MultiTurn.RampageStarted"
+            : "POKROLE.Chat.MultiTurn.RampageContinues",
+          {
+            actor: this.name,
+            move: move.name,
+            remaining: Math.max(maxUses - nextUses, 0)
+          }
+        )
+      ]
+    );
   }
 
   _getDisabledMoveRestriction(targetActor = this) {
@@ -2173,19 +3135,21 @@ export class PokRoleActor extends Actor {
     }
     const shieldPenalty = isShieldMove ? this._getShieldMoveAccuracyPenalty(roundKey) : 0;
     const willCost = Math.max(Math.floor(toNumber(move.system?.willCost, 0)), 0);
-    const currentWill = Math.max(Math.floor(toNumber(this.system?.resources?.will?.value, 0)), 0);
-    if (willCost > currentWill) {
-      ui.notifications.warn(
-        game.i18n.format("POKROLE.Errors.NotEnoughWill", { current: currentWill, required: willCost })
-      );
-      return null;
-    }
-    let willBefore = currentWill;
-    let willAfter = currentWill;
     const painPenalty = this.getPainPenalty();
-    const selectedTargetActors = Array.isArray(options.targetActorIds)
-      ? this._resolveActorsFromIds(options.targetActorIds)
+    const multiTurnState = this._getMultiTurnState();
+    const explicitTargetActorIds =
+      Array.isArray(options.targetActorIds) && options.targetActorIds.length > 0
+        ? options.targetActorIds
+        : null;
+    const liveSelectedTargetActors = explicitTargetActorIds
+      ? this._resolveActorsFromIds(explicitTargetActorIds)
       : this._getSelectedTargetActors();
+    const selectedTargetActors =
+      liveSelectedTargetActors.length > 0
+        ? liveSelectedTargetActors
+        : multiTurnState.moveId === move.id && Array.isArray(multiTurnState.targetActorIds)
+          ? this._resolveActorsFromIds(multiTurnState.targetActorIds)
+          : [];
     const targetActors = this._resolveActorsForMoveTarget(moveTargetKey, selectedTargetActors);
     const targetValidation = this._validateMoveTargetSelection(
       moveTargetKey,
@@ -2196,6 +3160,42 @@ export class PokRoleActor extends Actor {
       ui.notifications.warn(targetValidation.message);
       return null;
     }
+
+    if (this._isConditionActive("frozen")) {
+      return this._resolveFrozenBreakoutMove(move, {
+        roundKey,
+        actionNumber,
+        willCost,
+        willBefore: Math.max(Math.floor(toNumber(this.system?.resources?.will?.value, 0)), 0),
+        willAfter: Math.max(Math.floor(toNumber(this.system?.resources?.will?.value, 0)), 0),
+        advanceAction: options.advanceAction !== false
+      });
+    }
+
+    const secondaryEffects = this._collectMoveSecondaryEffects(move);
+    const multiTurnPreparation = await this._resolveMultiTurnMovePreparation(move, {
+      roundKey,
+      actionNumber,
+      targetActors,
+      moveTargetKey,
+      secondaryEffects,
+      advanceAction: options.advanceAction
+    });
+    if (multiTurnPreparation?.handled) {
+      return multiTurnPreparation.result ?? null;
+    }
+
+    if (Array.isArray(multiTurnPreparation?.bypassLines) && multiTurnPreparation.bypassLines.length > 0) {
+      await this._postMultiTurnNotice(
+        game.i18n.localize("POKROLE.Chat.MultiTurn.Title"),
+        multiTurnPreparation.bypassLines
+      );
+    }
+    const skippedSecondaryEffectSignatures =
+      multiTurnPreparation?.skipSecondaryEffectSignatures instanceof Set
+        ? multiTurnPreparation.skipSecondaryEffectSignatures
+        : new Set();
+
     const formulaTargetActor = targetActors[0] ?? null;
     const accuracySetup = this._resolveMoveAccuracySetup(move, formulaTargetActor, actionNumber);
     const accuracyDicePoolBase = accuracySetup.accuracyDicePoolBase;
@@ -2218,20 +3218,18 @@ export class PokRoleActor extends Actor {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownMoveTraits"));
       return null;
     }
+    const currentWill = Math.max(Math.floor(toNumber(this.system?.resources?.will?.value, 0)), 0);
+    if (willCost > currentWill) {
+      ui.notifications.warn(
+        game.i18n.format("POKROLE.Errors.NotEnoughWill", { current: currentWill, required: willCost })
+      );
+      return null;
+    }
+    let willBefore = currentWill;
+    let willAfter = currentWill;
     if (willCost > 0) {
       willAfter = Math.max(currentWill - willCost, 0);
       await this.update({ "system.resources.will.value": willAfter });
-    }
-
-    if (this._isConditionActive("frozen")) {
-      return this._resolveFrozenBreakoutMove(move, {
-        roundKey,
-        actionNumber,
-        willCost,
-        willBefore,
-        willAfter,
-        advanceAction: options.advanceAction !== false
-      });
     }
 
     const confusionPenalty = this._hasConfusionPenaltyThisRound() ? 1 : 0;
@@ -2249,7 +3247,7 @@ export class PokRoleActor extends Actor {
     let hit = netAccuracySuccesses >= requiredSuccesses;
     const heldHighCritical = this._checkHeldItemHighCritical(move);
     const criticalThreshold = requiredSuccesses + ((move.system.highCritical || heldHighCritical) ? 2 : 3);
-    const critical = hit && netAccuracySuccesses >= criticalThreshold;
+    let critical = hit && netAccuracySuccesses >= criticalThreshold;
 
     await accuracyRoll.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: this }),
@@ -2259,6 +3257,22 @@ export class PokRoleActor extends Actor {
         required: requiredSuccesses
       })
     });
+
+    const targetPartition = this._partitionTargetsByChargeRange(move, targetActors);
+    const blockedTargetResults = targetPartition.blockedTargets.map((entry) => ({
+      targetName: entry.actor?.name ?? game.i18n.localize("POKROLE.Chat.NoTarget"),
+      detail: game.i18n.format("POKROLE.Chat.MultiTurn.OutOfRangeBlocked", {
+        target: entry.actor?.name ?? game.i18n.localize("POKROLE.Chat.NoTarget"),
+        move: entry.moveName
+      })
+    }));
+    if (targetPartition.blockedTargets.length > 0) {
+      targetActors = targetPartition.reachableTargets;
+      if (targetActors.length <= 0) {
+        hit = false;
+        critical = false;
+      }
+    }
 
     const targetActor = targetActors[0] ?? null;
     const category = move.system.category || "physical";
@@ -2359,7 +3373,6 @@ export class PokRoleActor extends Actor {
       confusionSelfDamage = await this._safeApplyDamage(this, 1);
     }
 
-    const secondaryEffects = this._collectMoveSecondaryEffects(move);
     const moveSecondaryEffectResults = await this._applyMoveSecondaryEffects({
       move,
       moveTargetKey,
@@ -2369,7 +3382,8 @@ export class PokRoleActor extends Actor {
       isDamagingMove,
       finalDamage,
       damageTargetResults,
-      roundKey
+      roundKey,
+      skipEffectSignatures: skippedSecondaryEffectSignatures
     });
     const abilitySecondaryEffectResults = await this._applyAbilityAutomationEffects({
       move,
@@ -2457,6 +3471,8 @@ export class PokRoleActor extends Actor {
           hasHpUpdate: entry.hpBefore !== null && entry.hpAfter !== null,
           shieldDetail: entry.shieldDetail ?? ""
         })),
+        blockedTargetResults,
+        hasBlockedTargets: blockedTargetResults.length > 0,
         secondaryEffectResults,
         hasSecondaryEffects: secondaryEffectResults.length > 0,
         hasHpUpdate: hpAfter !== null && hpBefore !== null,
@@ -2506,8 +3522,14 @@ export class PokRoleActor extends Actor {
       reaction,
       finalDamage,
       secondaryEffectResults,
-      damageTargetResults
+      damageTargetResults,
+      blockedTargetResults
     };
+
+    await this._finalizeMultiTurnMoveResolution(move, result, {
+      moveTargetKey,
+      targetActors
+    });
 
     await this.processTemporaryEffectSpecialDuration("next-attack", {
       combatId: game.combat?.id ?? null
@@ -2669,6 +3691,7 @@ export class PokRoleActor extends Actor {
   }) {
     const category = move.system.category || "physical";
     const moveType = this._normalizeTypeKey(move.system.type || "normal");
+    const specialChargeRule = this._getSpecialChargeMoveRule(move);
     const damageBaseSetup = this._resolveMoveDamageBase(move, targetActor, actionNumber);
     const damageAttributeLabel = damageBaseSetup.label;
     const damageAttributeValue = damageBaseSetup.value;
@@ -2680,12 +3703,15 @@ export class PokRoleActor extends Actor {
     const activeWeather = this.getActiveWeatherKey();
     const weatherBonusDice = this._getWeatherDamageBonusDice(moveType, activeWeather);
     const weatherFlatReduction = this._getWeatherFlatDamageReduction(moveType, activeWeather);
-    const coverDefenseBonus = targetActor ? this._getCoverDefenseBonus(targetActor, move) : 0;
+    const ignoresCover = Boolean(specialChargeRule?.ignoresCover);
+    const ignoresShield = Boolean(specialChargeRule?.ignoresShield);
+    const ignoresDefenses = Boolean(specialChargeRule?.ignoresDefenses);
+    const coverDefenseBonus = (targetActor && !ignoresCover) ? this._getCoverDefenseBonus(targetActor, move) : 0;
     const weatherDefenseBonus = targetActor?.type === "pokemon"
       ? targetActor._getWeatherDefenseBonusForStat(category, activeWeather)
       : 0;
     const defense = targetActor
-      ? this._getTargetDefense(targetActor, category) + coverDefenseBonus
+      ? (ignoresDefenses ? 0 : this._getTargetDefense(targetActor, category)) + coverDefenseBonus
       : 0;
     const typeInteraction = targetActor
       ? this._evaluateTypeInteraction(moveType, targetActor)
@@ -2732,7 +3758,7 @@ export class PokRoleActor extends Actor {
     let shieldAddedEffectsBlocked = false;
     let shieldDetail = "";
     let coverAbsorbedDamage = false;
-    const shieldResponse =
+    let shieldResponse =
       targetActor instanceof PokRoleActor
         ? await targetActor._resolveShieldResponseForAttack(
             this._buildShieldAttackContext(move, this, roundKey, true)
@@ -2745,6 +3771,16 @@ export class PokRoleActor extends Actor {
             retaliationEntries: [],
             shieldRemoved: false
           };
+    if (ignoresShield) {
+      shieldResponse = {
+        entries: [],
+        damageReduction: 0,
+        blocksAddedEffects: false,
+        endureEntry: null,
+        retaliationEntries: [],
+        shieldRemoved: false
+      };
+    }
     shieldAddedEffectsBlocked = Boolean(shieldResponse?.blocksAddedEffects);
     if (!typeInteraction.immune) {
       const weaknessBonus = damageSuccesses >= 1 ? typeInteraction.weaknessBonus : 0;
@@ -2762,7 +3798,7 @@ export class PokRoleActor extends Actor {
 
     const rangedAttack = this._isMoveRanged(move);
     const targetCover = `${targetActor?.getTrainerCover?.() ?? "none"}`.trim().toLowerCase();
-    if (rangedAttack && targetCover === "full" && finalDamage > 0) {
+    if (!ignoresCover && rangedAttack && targetCover === "full" && finalDamage > 0) {
       finalDamage = 0;
       coverAbsorbedDamage = true;
       await this._degradeCoverOnHit(targetActor);
@@ -2818,9 +3854,35 @@ export class PokRoleActor extends Actor {
       });
       hpBefore = hpChange?.hpBefore ?? null;
       hpAfter = hpChange?.hpAfter ?? null;
-      if (rangedAttack) {
+      if (rangedAttack && !ignoresCover) {
         await this._degradeCoverOnHit(targetActor);
       }
+    }
+
+    const attackLandedOnTarget = !typeInteraction.immune && Boolean(targetActor);
+    if (targetActor instanceof PokRoleActor && attackLandedOnTarget) {
+      const chargeHitResults = await targetActor._handleChargeMoveHitWhileCharging({
+        attackMove: move,
+        attackerActor: this,
+        isDamagingMove: true,
+        landed: true
+      });
+      if (Array.isArray(chargeHitResults) && chargeHitResults.length > 0) {
+        shieldDetail = [shieldDetail, ...chargeHitResults.map((entry) => entry?.detail).filter(Boolean)]
+          .filter(Boolean)
+          .join(" | ");
+      }
+    }
+
+    if (targetActor instanceof PokRoleActor && finalDamage > 0 && specialChargeRule?.healingBlockHours) {
+      await this._applyShadowForceHealingBlock(targetActor, move);
+      shieldDetail = [
+        shieldDetail,
+        game.i18n.format("POKROLE.Chat.MultiTurn.ShadowForceWound", {
+          target: targetActor.name,
+          hours: Math.max(toNumber(specialChargeRule.healingBlockHours, 0), 0)
+        })
+      ].filter(Boolean).join(" | ");
     }
 
     // Life Orb recoil: deal recoil damage to attacker after dealing damage
@@ -3874,7 +4936,8 @@ export class PokRoleActor extends Actor {
     isDamagingMove,
     finalDamage,
     damageTargetResults = [],
-    roundKey = null
+    roundKey = null,
+    skipEffectSignatures = null
   }) {
     if (!Array.isArray(secondaryEffects) || secondaryEffects.length === 0) {
       return [];
@@ -3887,7 +4950,14 @@ export class PokRoleActor extends Actor {
       (sum, result) => sum + Math.max(toNumber(result?.finalDamage, 0), 0),
       0
     );
+    const skippedSignatureSet =
+      skipEffectSignatures instanceof Set
+        ? skipEffectSignatures
+        : new Set(Array.isArray(skipEffectSignatures) ? skipEffectSignatures : []);
     for (const effect of secondaryEffects) {
+      if (skippedSignatureSet.has(this._getSecondaryEffectSignature(effect))) {
+        continue;
+      }
       const normalizedEffectType = this._normalizeSecondaryEffectType(effect.effectType);
       if (!this._secondaryTriggerMatches(effect.trigger, { hit, isDamagingMove, finalDamage })) {
         continue;
@@ -4281,6 +5351,9 @@ export class PokRoleActor extends Actor {
       case "heal": {
         const resolvedHeal = this._resolveSecondaryHealConfiguration(effect, context?.sourceMove ?? null);
         const healMode = resolvedHeal.healMode;
+        if (applyResult?.healingBlocked) {
+          return game.i18n.localize("POKROLE.Chat.SecondaryEffectHealingBlocked");
+        }
         if (resolvedHeal.adjustmentDetail && Math.max(toNumber(resolvedHeal.amount, 0), 0) <= 0) {
           return resolvedHeal.adjustmentDetail;
         }
@@ -6754,6 +7827,13 @@ export class PokRoleActor extends Actor {
       return null;
     }
 
+    if (targetActor instanceof PokRoleActor) {
+      const healingBlockExpiration = await targetActor._clearHealingBlockIfExpired();
+      if (healingBlockExpiration > 0) {
+        return { hpBefore: Math.max(toNumber(targetActor.system.resources?.hp?.value, 0), 0), hpAfter: Math.max(toNumber(targetActor.system.resources?.hp?.value, 0), 0), healedApplied: 0, healingBlocked: true };
+      }
+    }
+
     const hpValue = Math.max(toNumber(targetActor.system.resources?.hp?.value, 0), 0);
     const hpMax = Math.max(toNumber(targetActor.system.resources?.hp?.max, 1), 1);
     const healingCategory = this._normalizeHealingCategory(options?.healingCategory);
@@ -7725,6 +8805,7 @@ export class PokRoleActor extends Actor {
     const moveCategory = this._normalizeMoveCombatCategory(move?.system?.category);
     const movePriority = Math.floor(toNumber(move?.system?.priority, 0));
     const moveSourceAttributes = this._getMoveSourceAttributes(move);
+    const specialChargeRule = this._getSpecialChargeMoveRule(move);
     return {
       move,
       attackerActor,
@@ -7734,7 +8815,8 @@ export class PokRoleActor extends Actor {
       isRanged: this._isMoveRanged(move),
       priority: movePriority,
       hasPriority: movePriority !== 0,
-      destroysShield: Boolean(moveSourceAttributes?.destroyShield)
+      destroysShield: Boolean(moveSourceAttributes?.destroyShield),
+      ignoresShield: Boolean(specialChargeRule?.ignoresShield)
     };
   }
 
@@ -7774,6 +8856,17 @@ export class PokRoleActor extends Actor {
 
     const activeEntries = this._getActiveShieldEntries(currentRoundKey);
     if (!activeEntries.length) {
+      return {
+        entries: [],
+        damageReduction: 0,
+        blocksAddedEffects: false,
+        endureEntry: null,
+        retaliationEntries: [],
+        shieldRemoved: false
+      };
+    }
+
+    if (attackContext?.ignoresShield) {
       return {
         entries: [],
         damageReduction: 0,
@@ -8097,6 +9190,9 @@ export class PokRoleActor extends Actor {
     }
     try {
       await targetActor.update({ "system.resources.hp.value": hpAfter });
+      if (hpAfter <= 0 && typeof targetActor.clearMultiTurnState === "function") {
+        await targetActor.clearMultiTurnState();
+      }
       if (isLethalKo) {
         if (
           typeof targetActor._setConditionFlagState === "function" &&

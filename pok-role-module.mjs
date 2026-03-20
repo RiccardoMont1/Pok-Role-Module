@@ -1099,6 +1099,11 @@ Hooks.on("updateCombat", async (combat, changed) => {
 Hooks.on("deleteCombat", async (combat) => {
   await processCombatSpecialDurationEvent(combat, "combat-end");
   await clearCombatScopedTemporaryEffects(combat);
+  for (const combatant of combat?.combatants ?? []) {
+    const actor = combatant?.actor ?? null;
+    if (!actor || typeof actor.clearMultiTurnState !== "function") continue;
+    await actor.clearMultiTurnState();
+  }
   LAST_COMBAT_TURN_STATE.delete(`${combat?.id ?? ""}`);
 });
 

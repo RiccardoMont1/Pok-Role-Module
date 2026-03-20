@@ -92,6 +92,17 @@
   </section>
   {{/if}}
 
+  {{#if hasBlockedTargets}}
+  <section class="chat-card-section">
+    <h4>{{localize "POKROLE.Chat.MultiTurn.OutOfRangeSection"}}</h4>
+    <ul class="chat-list">
+      {{#each blockedTargetResults as |targetResult|}}
+      <li>{{targetResult.detail}}</li>
+      {{/each}}
+    </ul>
+  </section>
+  {{/if}}
+
   {{#if hasSecondaryEffects}}
   <section class="chat-card-section">
     <h4>{{localize "POKROLE.Move.Secondary.Title"}}</h4>

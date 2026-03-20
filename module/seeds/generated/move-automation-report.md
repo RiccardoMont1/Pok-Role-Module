@@ -6,15 +6,14 @@ Total moves: **888**
 
 ## Status Totals
 
-- `full`: 713
-- `partial`: 125
+- `full`: 746
+- `partial`: 92
 - `manual`: 50
 
 ## Reason Totals
 
 - `external-rule-reference`: 25
 - `terrain-field-effect`: 21
-- `charge-move`: 19
 - `ignore-defenses`: 19
 - `mixed-category`: 18
 - `suggested-effects`: 18
@@ -22,13 +21,11 @@ Total moves: **888**
 - `switcher-move`: 14
 - `dynamic-type`: 12
 - `maneuver-rule`: 11
-- `must-recharge`: 10
 - `user-faints`: 9
 - `copied-move-dependent`: 8
 - `always-crit`: 6
 - `delayed-effect`: 4
 - `dynamax-rule`: 4
-- `rampage`: 4
 - `status-cleanse`: 4
 - `destroy-shield`: 3
 - `special-defense-rule`: 3
@@ -95,11 +92,8 @@ Total moves: **888**
 
 - **Ally Switch**: switcher-move
 - **Baton Pass**: switcher-move
-- **Beak Blast**: charge-move
 - **Behemoth Bash**: dynamax-rule
 - **Behemoth Blade**: dynamax-rule
-- **Blast Burn**: must-recharge
-- **Bounce**: charge-move
 - **Brave Bird**: recoil
 - **Brick Break**: destroy-shield
 - **Chilly Reception**: switcher-move
@@ -111,16 +105,12 @@ Total moves: **888**
 - **Court Change**: terrain-field-effect
 - **Defog**: destroy-shield, terrain-field-effect
 - **Destiny Bond**: user-faints
-- **Dig**: charge-move
 - **Disarming Voice**: alternative-trait-formula
-- **Dive**: charge-move
 - **Double-Edge**: recoil
 - **Dragon Tail**: switcher-move
 - **Dynamax Cannon**: dynamax-rule
 - **Electric Terrain**: terrain-field-effect
-- **Electro Shot**: charge-move
 - **Endeavor**: ignore-defenses
-- **Eternabeam**: must-recharge
 - **Expanding Force**: terrain-field-effect
 - **Explosion**: user-faints
 - **Final Gambit**: ignore-defenses, user-faints
@@ -128,22 +118,13 @@ Total moves: **888**
 - **Flip Turn**: switcher-move
 - **Floral Healing**: terrain-field-effect
 - **Flower Trick**: always-crit
-- **Fly**: charge-move
-- **Focus Punch**: charge-move
-- **Freeze Shock**: charge-move
-- **Frenzy Plant**: must-recharge
 - **Frost Breath**: always-crit
-- **Geomancy**: charge-move
-- **Giga Impact**: must-recharge
 - **Grassy Glide**: terrain-field-effect
 - **Grudge**: user-faints
 - **Head Charge**: recoil
 - **Head Smash**: recoil
 - **Healing Wish**: user-faints
-- **Hydro Cannon**: must-recharge
-- **Hyper Beam**: must-recharge
 - **Hyperspace Hole**: ignore-defenses
-- **Ice Burn**: charge-move
 - **Judgment**: ignore-defenses
 - **Jungle Healing**: status-cleanse
 - **Light Of Ruin**: recoil
@@ -155,8 +136,6 @@ Total moves: **888**
 - **Max Starfall**: terrain-field-effect
 - **Memento**: user-faints
 - **Metal Burst**: ignore-defenses
-- **Meteor Assault**: must-recharge
-- **Meteor Beam**: charge-move
 - **Mind Blown**: recoil
 - **Mirror Coat**: ignore-defenses
 - **Misty Explosion**: terrain-field-effect, user-faints
@@ -164,24 +143,16 @@ Total moves: **888**
 - **Mortal Spin**: terrain-field-effect
 - **Nature's Madness**: ignore-defenses
 - **Night Shade**: ignore-defenses
-- **Outrage**: rampage
 - **Parting Shot**: switcher-move
-- **Petal Dance**: rampage
-- **Phantom Force**: charge-move
-- **Prismatic Laser**: must-recharge
 - **Psyblade**: terrain-field-effect
 - **Psychic Fangs**: destroy-shield
 - **Psychic Terrain**: terrain-field-effect
 - **Psyshock**: special-defense-rule
 - **Psystrike**: special-defense-rule
 - **Psywave**: ignore-defenses
-- **Raging Fury**: rampage
 - **Rapid Spin**: terrain-field-effect
-- **Razor Wind**: charge-move
 - **Rising Voltage**: terrain-field-effect
 - **Roar**: switcher-move
-- **Roar Of Time**: must-recharge
-- **Rock Wrecker**: must-recharge
 - **Roost**: temporary-type-immunity-change
 - **Ruination**: ignore-defenses
 - **Sacred Sword**: ignore-defenses
@@ -189,12 +160,6 @@ Total moves: **888**
 - **Secret Sword**: special-defense-rule
 - **Seismic Toss**: ignore-defenses
 - **Self Destruct**: user-faints
-- **Shadow Force**: charge-move
-- **Skull Bash**: charge-move
-- **Sky Attack**: charge-move
-- **Sky Drop**: charge-move
-- **Solar Beam**: charge-move
-- **Solar Blade**: charge-move
 - **Sonic Boom**: ignore-defenses
 - **Sparkly Swirl**: status-cleanse
 - **Spiky Shield**: ignore-defenses
@@ -208,7 +173,6 @@ Total moves: **888**
 - **Take Heart**: status-cleanse
 - **Teleport**: switcher-move
 - **Terrain Pulse**: terrain-field-effect
-- **Thrash**: rampage
 - **U-Turn**: switcher-move
 - **Volt Switch**: switcher-move
 - **Volt Tackle**: recoil

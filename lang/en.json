@@ -879,7 +879,29 @@
         "Super": "Super Effective",
         "Resisted": "Not Very Effective",
         "Immune": "Immune"
-      }
+      },
+      "MultiTurn": {
+        "Title": "Multi-Turn Move",
+        "ChargeStarted": "{actor} starts charging {move} ({actions} charge action(s) required).",
+        "ChargeContinues": "{actor} continues charging {move}. Remaining charge actions after this: {remaining}.",
+        "ChargeReleased": "{actor} releases {move}.",
+        "ChargeSkippedWeather": "{actor} skips the charge for {move} thanks to {weather}.",
+        "ChargeSkippedPowerHerb": "{actor} consumes Power Herb and skips the charge for {move}.",
+        "ChargeStartEffect": "{label}: {detail}",
+        "RechargeQueued": "{move} will force {actor} to spend its first action next round recharging.",
+        "RechargeConsumed": "{actor} spends the first action of the round recharging after {move}.",
+        "RampageStarted": "{actor} enters a rampage with {move}. Up to {remaining} more use(s) remain.",
+        "RampageContinues": "{actor} keeps rampaging with {move}. Up to {remaining} more use(s) remain.",
+        "RampageEnded": "{actor}'s rampage with {move} ends and Confusion is applied.",
+        "BeakBlastPunish": "{target} scorched {attacker} while Beak Blast was charging.",
+        "FocusPunchInterrupted": "{actor} lost focus and Focus Punch was interrupted.",
+        "OutOfRangeBlocked": "{target} is out of range while charging {move}.",
+        "OutOfRangeSection": "Out of Range",
+        "SkyDropFailedFlying": "{actor} cannot use Sky Drop on {target} because Flying-types are not valid targets.",
+        "SkyDropFailedHeavy": "{actor} cannot carry {target} high enough for Sky Drop.",
+        "ShadowForceWound": "{target} cannot heal damage from this strike for {hours} hours."
+      },
+      "SecondaryEffectHealingBlocked": "Healing is blocked on this target."
     },
     "Types": {
       "None": "None",
@@ -939,7 +961,12 @@
       "TrainerCannotSearchCoverInFray": "Cannot search for cover while in the fray.",
       "NoRunAwayOpponent": "No opponent available for escape check.",
       "ShieldMoveAlreadyUsedThisRound": "A Shield Move has already been used this round.",
-      "WeatherBlockedByExtreme": "Extreme weather prevents this weather change ({weather})."
+      "WeatherBlockedByExtreme": "Extreme weather prevents this weather change ({weather}).",
+      "ActorRecharging": "{move} is recharging and consumes the first action of this round.",
+      "ActorChargingMoveLocked": "Must finish charging {move} before using another move.",
+      "ActorRampagingMoveLocked": "Rampage continues: must keep using {move}.",
+      "ActorRampagingNoReaction": "Rampaging Pokemon cannot use Evasion or Clash while {move} continues.",
+      "ActorSkyDropCarried": "{carrier} is carrying this Pokemon with Sky Drop."
     },
     "Sheets": {
       "Actor": "PokeRole Actor Sheet",

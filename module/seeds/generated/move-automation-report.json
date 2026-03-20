@@ -2,9 +2,9 @@
   "source": "D:\\DeskTop\\Script\\Pok\u00e8Role Module\\Pok-Role-Module\\_upstream\\foundry-pokerole\\packs\\moves.db",
   "totalMoves": 888,
   "statusTotals": {
-    "full": 713,
+    "full": 746,
     "manual": 50,
-    "partial": 125
+    "partial": 92
   },
   "reasonTotals": {
     "external-rule-reference": 25,
@@ -13,10 +13,8 @@
     "switcher-move": 14,
     "dynamic-type": 12,
     "maneuver-rule": 11,
-    "charge-move": 19,
     "dynamax-rule": 4,
     "stored-damage-formula": 1,
-    "must-recharge": 10,
     "recoil": 15,
     "destroy-shield": 3,
     "ignore-defenses": 19,
@@ -29,7 +27,6 @@
     "always-crit": 6,
     "manual-terrain-resolution": 1,
     "status-cleanse": 4,
-    "rampage": 4,
     "special-defense-rule": 3,
     "temporary-type-immunity-change": 1
   },
@@ -552,10 +549,8 @@
     {
       "name": "Beak Blast",
       "seedId": "move-beak-blast",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "flying",
       "category": "physical",
       "target": "foe",
@@ -694,10 +689,8 @@
     {
       "name": "Blast Burn",
       "seedId": "move-blast-burn",
-      "status": "partial",
-      "reasons": [
-        "must-recharge"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fire",
       "category": "special",
       "target": "foe",
@@ -870,10 +863,8 @@
     {
       "name": "Bounce",
       "seedId": "move-bounce",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "flying",
       "category": "physical",
       "target": "foe",
@@ -1790,10 +1781,8 @@
     {
       "name": "Dig",
       "seedId": "move-dig",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ground",
       "category": "physical",
       "target": "foe",
@@ -1834,10 +1823,8 @@
     {
       "name": "Dive",
       "seedId": "move-dive",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "physical",
       "target": "foe",
@@ -2286,14 +2273,12 @@
     {
       "name": "Electro Shot",
       "seedId": "move-electro-shot",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "electric",
       "category": "special",
       "target": "foe",
-      "secondaryEffects": 0
+      "secondaryEffects": 1
     },
     {
       "name": "Electroweb",
@@ -2400,10 +2385,8 @@
     {
       "name": "Eternabeam",
       "seedId": "move-eternabeam",
-      "status": "partial",
-      "reasons": [
-        "must-recharge"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dragon",
       "category": "special",
       "target": "foe",
@@ -2895,10 +2878,8 @@
     {
       "name": "Fly",
       "seedId": "move-fly",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "flying",
       "category": "physical",
       "target": "foe",
@@ -2937,10 +2918,8 @@
     {
       "name": "Focus Punch",
       "seedId": "move-focus-punch",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "physical",
       "target": "foe",
@@ -3009,10 +2988,8 @@
     {
       "name": "Freeze Shock",
       "seedId": "move-freeze-shock",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ice",
       "category": "physical",
       "target": "foe",
@@ -3041,10 +3018,8 @@
     {
       "name": "Frenzy Plant",
       "seedId": "move-frenzy-plant",
-      "status": "partial",
-      "reasons": [
-        "must-recharge"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "special",
       "target": "foe",
@@ -3167,14 +3142,12 @@
     {
       "name": "Geomancy",
       "seedId": "move-geomancy",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fairy",
       "category": "support",
       "target": "self",
-      "secondaryEffects": 0
+      "secondaryEffects": 3
     },
     {
       "name": "Giga Drain",
@@ -3189,10 +3162,8 @@
     {
       "name": "Giga Impact",
       "seedId": "move-giga-impact",
-      "status": "partial",
-      "reasons": [
-        "must-recharge"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -3787,10 +3758,8 @@
     {
       "name": "Hydro Cannon",
       "seedId": "move-hydro-cannon",
-      "status": "partial",
-      "reasons": [
-        "must-recharge"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "special",
       "target": "foe",
@@ -3833,10 +3802,8 @@
     {
       "name": "Hyper Beam",
       "seedId": "move-hyper-beam",
-      "status": "partial",
-      "reasons": [
-        "must-recharge"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "special",
       "target": "foe",
@@ -3927,10 +3894,8 @@
     {
       "name": "Ice Burn",
       "seedId": "move-ice-burn",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ice",
       "category": "special",
       "target": "foe",
@@ -4993,10 +4958,8 @@
     {
       "name": "Meteor Assault",
       "seedId": "move-meteor-assault",
-      "status": "partial",
-      "reasons": [
-        "must-recharge"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "physical",
       "target": "foe",
@@ -5005,10 +4968,8 @@
     {
       "name": "Meteor Beam",
       "seedId": "move-meteor-beam",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "rock",
       "category": "special",
       "target": "foe",
@@ -5561,10 +5522,8 @@
     {
       "name": "Outrage",
       "seedId": "move-outrage",
-      "status": "partial",
-      "reasons": [
-        "rampage"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dragon",
       "category": "physical",
       "target": "random-foe",
@@ -5675,10 +5634,8 @@
     {
       "name": "Petal Dance",
       "seedId": "move-petal-dance",
-      "status": "partial",
-      "reasons": [
-        "rampage"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "special",
       "target": "random-foe",
@@ -5687,10 +5644,8 @@
     {
       "name": "Phantom Force",
       "seedId": "move-phantom-force",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ghost",
       "category": "physical",
       "target": "foe",
@@ -5989,10 +5944,8 @@
     {
       "name": "Prismatic Laser",
       "seedId": "move-prismatic-laser",
-      "status": "partial",
-      "reasons": [
-        "must-recharge"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "special",
       "target": "foe",
@@ -6285,10 +6238,8 @@
     {
       "name": "Raging Fury",
       "seedId": "move-raging-fury",
-      "status": "partial",
-      "reasons": [
-        "rampage"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fire",
       "category": "physical",
       "target": "random-foe",
@@ -6339,10 +6290,8 @@
     {
       "name": "Razor Wind",
       "seedId": "move-razor-wind",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "special",
       "target": "all-foes",
@@ -6505,10 +6454,8 @@
     {
       "name": "Roar Of Time",
       "seedId": "move-roar-of-time",
-      "status": "partial",
-      "reasons": [
-        "must-recharge"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dragon",
       "category": "special",
       "target": "foe",
@@ -6587,10 +6534,8 @@
     {
       "name": "Rock Wrecker",
       "seedId": "move-rock-wrecker",
-      "status": "partial",
-      "reasons": [
-        "must-recharge"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "rock",
       "category": "physical",
       "target": "foe",
@@ -6960,10 +6905,8 @@
     {
       "name": "Shadow Force",
       "seedId": "move-shadow-force",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ghost",
       "category": "physical",
       "target": "foe",
@@ -7202,10 +7145,8 @@
     {
       "name": "Skull Bash",
       "seedId": "move-skull-bash",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -7214,10 +7155,8 @@
     {
       "name": "Sky Attack",
       "seedId": "move-sky-attack",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "flying",
       "category": "physical",
       "target": "foe",
@@ -7226,14 +7165,12 @@
     {
       "name": "Sky Drop",
       "seedId": "move-sky-drop",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "flying",
       "category": "physical",
       "target": "foe",
-      "secondaryEffects": 0
+      "secondaryEffects": 1
     },
     {
       "name": "Sky Uppercut",
@@ -7460,10 +7397,8 @@
     {
       "name": "Solar Beam",
       "seedId": "move-solar-beam",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "special",
       "target": "foe",
@@ -7472,10 +7407,8 @@
     {
       "name": "Solar Blade",
       "seedId": "move-solar-blade",
-      "status": "partial",
-      "reasons": [
-        "charge-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "physical",
       "target": "foe",
@@ -8477,10 +8410,8 @@
     {
       "name": "Thrash",
       "seedId": "move-thrash",
-      "status": "partial",
-      "reasons": [
-        "rampage"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "random-foe",

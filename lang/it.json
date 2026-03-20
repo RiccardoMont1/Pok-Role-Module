@@ -891,7 +891,29 @@
         "Super": "Super Efficace",
         "Resisted": "Non Molto Efficace",
         "Immune": "Immune"
-      }
+      },
+      "MultiTurn": {
+        "Title": "Mossa Multi-Turno",
+        "ChargeStarted": "{actor} inizia a caricare {move} ({actions} azione/i di carica richieste).",
+        "ChargeContinues": "{actor} continua a caricare {move}. Azioni di carica rimanenti dopo questa: {remaining}.",
+        "ChargeReleased": "{actor} rilascia {move}.",
+        "ChargeSkippedWeather": "{actor} salta la carica di {move} grazie a {weather}.",
+        "ChargeSkippedPowerHerb": "{actor} consuma Power Herb e salta la carica di {move}.",
+        "ChargeStartEffect": "{label}: {detail}",
+        "RechargeQueued": "{move} obblighera {actor} a spendere la prima azione del prossimo round per ricaricare.",
+        "RechargeConsumed": "{actor} spende la prima azione del round per ricaricare dopo {move}.",
+        "RampageStarted": "{actor} entra in Rampage con {move}. Restano fino a {remaining} altri usi.",
+        "RampageContinues": "{actor} continua la Rampage con {move}. Restano fino a {remaining} altri usi.",
+        "RampageEnded": "La Rampage di {actor} con {move} termina e viene applicata Confusione.",
+        "BeakBlastPunish": "{target} ha scottato {attacker} mentre Beccobomba era in carica.",
+        "FocusPunchInterrupted": "{actor} ha perso la concentrazione e Pugnofocus e stato interrotto.",
+        "OutOfRangeBlocked": "{target} e fuori portata mentre sta caricando {move}.",
+        "OutOfRangeSection": "Fuori Portata",
+        "SkyDropFailedFlying": "{actor} non puo usare Cadutalibera su {target} perche i Pokemon Volanti non sono bersagli validi.",
+        "SkyDropFailedHeavy": "{actor} non riesce a sollevare abbastanza {target} per Cadutalibera.",
+        "ShadowForceWound": "{target} non puo curare i danni di questo colpo per {hours} ore."
+      },
+      "SecondaryEffectHealingBlocked": "La guarigione su questo bersaglio e bloccata."
     },
     "Types": {
       "None": "Nessuno",
@@ -951,7 +973,12 @@
       "TrainerCannotSearchCoverInFray": "Non puoi cercare copertura mentre sei in mischia.",
       "NoRunAwayOpponent": "Nessun avversario valido per la fuga.",
       "ShieldMoveAlreadyUsedThisRound": "Hai gia usato una Mossa Scudo in questo round.",
-      "WeatherBlockedByExtreme": "Un meteo estremo impedisce questo cambio meteo ({weather})."
+      "WeatherBlockedByExtreme": "Un meteo estremo impedisce questo cambio meteo ({weather}).",
+      "ActorRecharging": "{move} sta ricaricando e consuma la prima azione di questo round.",
+      "ActorChargingMoveLocked": "Devi completare la carica di {move} prima di usare un altra mossa.",
+      "ActorRampagingMoveLocked": "La Rampage continua: devi continuare a usare {move}.",
+      "ActorRampagingNoReaction": "Un Pokemon in Rampage non puo usare Schivata o Clash mentre {move} continua.",
+      "ActorSkyDropCarried": "Questo Pokemon e trasportato da {carrier} con Cadutalibera."
     },
     "Sheets": {
       "Actor": "Scheda Attore PokeRole",

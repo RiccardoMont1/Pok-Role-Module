@@ -90,6 +90,107 @@ MOVE_PROPERTY_REASON_LABELS = {
     "maneuver": "maneuver-rule",
 }
 
+CHARGE_MOVE_SPECIAL_CASE_SEED_IDS = set()
+
+SPECIAL_MOVE_EFFECT_OVERRIDES = {
+    "move-electro-shot": [
+        {
+            "section": 0,
+            "label": "",
+            "trigger": "on-hit",
+            "chance": 0,
+            "target": "self",
+            "effectType": "stat",
+            "condition": "none",
+            "weather": "none",
+            "terrain": "none",
+            "stat": "special",
+            "amount": 1,
+            "healType": "basic",
+            "healMode": "fixed",
+            "conditional": False,
+            "activationCondition": "",
+            "notes": "",
+        }
+    ],
+    "move-geomancy": [
+        {
+            "section": 0,
+            "label": "",
+            "trigger": "on-hit",
+            "chance": 0,
+            "target": "self",
+            "effectType": "stat",
+            "condition": "none",
+            "weather": "none",
+            "terrain": "none",
+            "stat": "dexterity",
+            "amount": 2,
+            "healType": "basic",
+            "healMode": "fixed",
+            "conditional": False,
+            "activationCondition": "",
+            "notes": "",
+        },
+        {
+            "section": 0,
+            "label": "",
+            "trigger": "on-hit",
+            "chance": 0,
+            "target": "self",
+            "effectType": "stat",
+            "condition": "none",
+            "weather": "none",
+            "terrain": "none",
+            "stat": "special",
+            "amount": 2,
+            "healType": "basic",
+            "healMode": "fixed",
+            "conditional": False,
+            "activationCondition": "",
+            "notes": "",
+        },
+        {
+            "section": 0,
+            "label": "",
+            "trigger": "on-hit",
+            "chance": 0,
+            "target": "self",
+            "effectType": "stat",
+            "condition": "none",
+            "weather": "none",
+            "terrain": "none",
+            "stat": "specialDefense",
+            "amount": 2,
+            "healType": "basic",
+            "healMode": "fixed",
+            "conditional": False,
+            "activationCondition": "",
+            "notes": "",
+        },
+    ],
+    "move-sky-drop": [
+        {
+            "section": 0,
+            "label": "",
+            "trigger": "on-hit-damage",
+            "chance": 0,
+            "target": "target",
+            "effectType": "condition",
+            "condition": "flinch",
+            "weather": "none",
+            "terrain": "none",
+            "stat": "none",
+            "amount": 0,
+            "healType": "basic",
+            "healMode": "fixed",
+            "conditional": False,
+            "activationCondition": "",
+            "notes": "",
+        }
+    ],
+}
+
 MANUAL_REASON_KEYS = {
     "suggested-effects",
     "external-rule-reference",
@@ -672,6 +773,7 @@ def infer_automation_reasons(row, target_key, formula_config=None):
     combined_text = f"{effect_text} {description_text}".lower()
     reasons = set()
     formula_config = formula_config or {}
+    seed_id = get_move_seed_id(row)
 
     power_value = system.get("power")
     try:
@@ -695,8 +797,15 @@ def infer_automation_reasons(row, target_key, formula_config=None):
         reasons.add("mixed-category")
 
     for attribute_key, reason_label in MOVE_PROPERTY_REASON_LABELS.items():
-        if attributes.get(attribute_key):
-            reasons.add(reason_label)
+        if not attributes.get(attribute_key):
+            continue
+        if attribute_key == "charge":
+            if seed_id in CHARGE_MOVE_SPECIAL_CASE_SEED_IDS:
+                reasons.add(reason_label)
+            continue
+        if attribute_key in {"mustRecharge", "rampage"}:
+            continue
+        reasons.add(reason_label)
 
     if "suggested effects" in combined_text:
         reasons.add("suggested-effects")
@@ -736,6 +845,14 @@ def build_flags(system_id, row, automation_status, automation_reasons):
     }
 
 
+def get_move_seed_id(row):
+    return f"move-{slugify(row.get('name', 'move'))}"
+
+
+def build_special_move_effects(row):
+    return SPECIAL_MOVE_EFFECT_OVERRIDES.get(get_move_seed_id(row), [])
+
+
 def build_move_entry(row):
     system = row.get("system", {}) or {}
     attributes = system.get("attributes", {}) or {}
@@ -760,6 +877,7 @@ def build_move_entry(row):
 
     secondary_effects = []
     secondary_effects.extend(convert_effect_groups(system.get("effectGroups", []), target_key))
+    secondary_effects.extend(build_special_move_effects(row))
     secondary_effects.extend(build_heal_effects(row.get("name", ""), system, target_key, automation_reasons))
     secondary_effects.extend(build_weather_effects(system))
     secondary_effects.extend(build_terrain_effects(row.get("name", ""), system, automation_reasons))

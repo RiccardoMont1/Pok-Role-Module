@@ -2899,7 +2899,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
-      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [],
       "description": "Core v3.0 The queen calls her swarm an heeds them to charge against you. No matter where you run, they will surround you. Hope you are not allergic to bees. Single Target. Ranged. High Critical."
@@ -4089,10 +4088,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-beak-blast",
         "sourceDbId": "cc3406c8d7a52534",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -5100,10 +5097,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-blast-burn",
         "sourceDbId": "24a2faf8466c4fb7",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "must-recharge"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -6465,10 +6460,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-bounce",
         "sourceDbId": "cb8e12b837513c2b",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -7754,7 +7747,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
-      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [],
       "description": "Core v3.0 The Pok\u00e9mon starts shooting seed as if they were a machine gun. Single Target. Ranged. Successive Actions. Projectile Moves."
@@ -13637,10 +13629,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-dig",
         "sourceDbId": "e2addc638e8ef102",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -13963,10 +13953,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-dive",
         "sourceDbId": "7dbac980531068f5",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -17415,17 +17403,34 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "on-hit",
+          "chance": 0,
+          "target": "self",
+          "effectType": "stat",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "special",
+          "amount": 1,
+          "healType": "basic",
+          "healMode": "fixed",
+          "conditional": false,
+          "activationCondition": "",
+          "notes": ""
+        }
+      ],
       "description": "Core v3.0 The user stands as tall as possible, waiting for a lightning to strike. Then re-directs the lightning directly towards the foe; recharging themselves in the process. Single Target. Lethal. Charge Move. If Rain Weather is active, you skip this Move's Charge acton. Increase the User's Special Score by 1."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-electro-shot",
         "sourceDbId": "a2ed4769bd008a9e",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -18283,10 +18288,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-eternabeam",
         "sourceDbId": "b73ec4bd481b9227",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "must-recharge"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -22120,10 +22123,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-fly",
         "sourceDbId": "3b2d69cc25801e7d",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -22425,10 +22426,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-focus-punch",
         "sourceDbId": "bd977a7b21b7fa5e",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -22962,10 +22961,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-freeze-shock",
         "sourceDbId": "5935fa70a2cecf26",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -23196,10 +23193,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-frenzy-plant",
         "sourceDbId": "9f52d3d2af856795",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "must-recharge"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -24084,17 +24079,70 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "on-hit",
+          "chance": 0,
+          "target": "self",
+          "effectType": "stat",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "dexterity",
+          "amount": 2,
+          "healType": "basic",
+          "healMode": "fixed",
+          "conditional": false,
+          "activationCondition": "",
+          "notes": ""
+        },
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "on-hit",
+          "chance": 0,
+          "target": "self",
+          "effectType": "stat",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "special",
+          "amount": 2,
+          "healType": "basic",
+          "healMode": "fixed",
+          "conditional": false,
+          "activationCondition": "",
+          "notes": ""
+        },
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "on-hit",
+          "chance": 0,
+          "target": "self",
+          "effectType": "stat",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "specialDefense",
+          "amount": 2,
+          "healType": "basic",
+          "healMode": "fixed",
+          "conditional": false,
+          "activationCondition": "",
+          "notes": ""
+        }
+      ],
       "description": "Core v3.0 Through a mystical conection this Pok\u00e9mon absorbs the life force of earth itself to increase its power. Target Self. Charge Move. Unique. Increase by 2 the User's Dexterity, Special and Sp. Defense."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-geomancy",
         "sourceDbId": "2bd26668133c8f98",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -24254,10 +24302,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-giga-impact",
         "sourceDbId": "2a6d31118541ad62",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "must-recharge"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -28863,10 +28909,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-hydro-cannon",
         "sourceDbId": "01bcbefae04bd8f9",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "must-recharge"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -29153,10 +29197,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-hyper-beam",
         "sourceDbId": "c9782807123c5e40",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "must-recharge"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -29891,10 +29933,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-ice-burn",
         "sourceDbId": "9e32415a2058c5b3",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -38141,10 +38181,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-meteor-assault",
         "sourceDbId": "365f95459a5612eb",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "must-recharge"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -38233,10 +38271,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-meteor-beam",
         "sourceDbId": "cc2275bd596a76cc",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -42813,10 +42849,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-outrage",
         "sourceDbId": "7c2380fa544f2cc0",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "rampage"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -43291,7 +43325,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
-      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [],
       "description": "Core v3.0 This Pok\u00e9mon brings good fortune to businesses and trainers alike. Make sure to use some of that hard earned money to buy them a treat. Single Target. Ranged. At the end of the battle give Money to your Trainer Equal to their Rank: Starter/Rookie - 100 Standard - 250 Advanced - 500 Ace or more - 1000"
@@ -43655,10 +43688,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-petal-dance",
         "sourceDbId": "bec705fc4993e49f",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "rampage"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -43728,10 +43759,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-phantom-force",
         "sourceDbId": "f1fa0f1ac307dda0",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -43935,7 +43964,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
-      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [],
       "description": "Core v3.0 The Pok\u00e9mon shoots a barrage of stingers or spikes that pierce like needles. Single Target. Low Accuracy 1. Ranged. Successive Actions."
@@ -46070,10 +46098,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-prismatic-laser",
         "sourceDbId": "4d7297e738abae70",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "must-recharge"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -48284,10 +48310,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-raging-fury",
         "sourceDbId": "65f38828dffdab4b",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "rampage"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -48553,7 +48577,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
-      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [],
       "description": "Core v3.0 The user sends out a barrage of sharp razor-like leaves. 'Death by a thousand cuts' would be the best depiction. Target All Foes in Range. Cutter Move. Ranged. High Critical."
@@ -48723,10 +48746,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-razor-wind",
         "sourceDbId": "c60a0315d3a7dc16",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -49961,10 +49982,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-roar-of-time",
         "sourceDbId": "a6c62090853f0c18",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "must-recharge"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -50277,7 +50296,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
-      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [
         {
@@ -50627,10 +50645,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-rock-wrecker",
         "sourceDbId": "92848bdccc7e3cb0",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "must-recharge"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -53384,10 +53400,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-shadow-force",
         "sourceDbId": "253bf26f8e330a9c",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -55514,10 +55528,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-skull-bash",
         "sourceDbId": "0bfe02c467568241",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -55606,10 +55618,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-sky-attack",
         "sourceDbId": "3488330ddaf2cb40",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -55672,17 +55682,34 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "on-hit-damage",
+          "chance": 0,
+          "target": "target",
+          "effectType": "condition",
+          "condition": "flinch",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "none",
+          "amount": 0,
+          "healType": "basic",
+          "healMode": "fixed",
+          "conditional": false,
+          "activationCondition": "",
+          "notes": ""
+        }
+      ],
       "description": "Core v3.0 The Pok\u00e9mon clutches their foe and starts flying up high, then drops the foe from a decent altitude. Let gravity handle this one. Single Target. Charge Move. Out of Range while Charging. Vulnerable while charging to: Thunder / Twister / Sky Uppercut / Gust / Hurricane / Smack Down. Flinch Target. If Target is Flying-Type or too heavy to carry, this Move fails. See Strength chart on p. 532."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "move-sky-drop",
         "sourceDbId": "97a5cf4101a48b91",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -56478,7 +56505,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
-      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [],
       "description": "Core v3.0 They say it\u2019s great to get two birds with one stone, this Pok\u00e9mon will give one bird ALL the stones. Single Target. Ranged. Remove the Target's immunity to Ground-Type Moves. If the Target is Out of Range due to using \"Fly\", \"Bounce\" or \"Sky Drop\", this Move hits anyways."
@@ -57528,10 +57554,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-solar-beam",
         "sourceDbId": "03262588932db235",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -57601,10 +57625,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-solar-blade",
         "sourceDbId": "32f72cd978599f54",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "charge-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -65085,7 +65107,6 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "neverFail": false,
       "lethal": false,
       "shieldMove": false,
-      "isRanged": true,
       "isUsable": true,
       "secondaryEffects": [],
       "description": "Core v3.0 Out of nowhere, pointy shards come raining from the sky towards the foes. Even flying creatures will fall to the ground if they are knocked by them. Take cover, this is gonna hurt. Target All Foes in Range. Ranged. Lethal. Unique. Ignore the Target's immunity to Ground. Remove the immunity to Ground-Type Moves of those affected. Whole Scene Duration."
@@ -65236,10 +65257,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-thrash",
         "sourceDbId": "630a909a1e90363a",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "rampage"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
