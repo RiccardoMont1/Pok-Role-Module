@@ -1,7 +1,6 @@
 Automatizazione delle mosse:
 
 - terrain/field engine
-- special damage rules
 - switch/reposition
 - copy/mutation
 - maneuver engine
