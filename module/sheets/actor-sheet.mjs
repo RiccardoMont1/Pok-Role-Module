@@ -2483,8 +2483,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           updateConfirmButton();
         }
       }, {
-        width: 500,
+        width: 420,
         height: "auto",
+        resizable: true,
         classes: ["pok-role", "point-distribution"]
       });
       dlg.render(true);
