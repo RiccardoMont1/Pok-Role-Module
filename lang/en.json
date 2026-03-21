@@ -18,6 +18,21 @@
       "Other": "Other",
       "Any": "Any"
     },
+    "Dialog": {
+      "DistributePoints": "Distribute Points",
+      "AttributePoints": "Attribute Points",
+      "SocialPoints": "Social Points",
+      "SkillPoints": "Skill Points",
+      "SkillLimit": "Skill Limit",
+      "Remaining": "Remaining",
+      "PointsDistributed": "Points distributed successfully"
+    },
+    "AgeGroup": {
+      "Child": "Child",
+      "Teen": "Teen",
+      "Adult": "Adult",
+      "Senior": "Senior"
+    },
     "Resources": {
       "HP": "HP",
       "Will": "Will"
@@ -43,10 +58,11 @@
       "CardRank": "Trainer's Card Rank",
       "RankValues": {
         "Starter": "Starter",
-        "Beginner": "Beginner",
-        "Amateur": "Amateur",
+        "Rookie": "Rookie",
+        "Standard": "Standard",
+        "Advanced": "Advanced",
+        "Expert": "Expert",
         "Ace": "Ace",
-        "Pro": "Pro",
         "Master": "Master",
         "Champion": "Champion"
       },
@@ -233,10 +249,11 @@
       "Immunities": "Immunities",
       "TierValues": {
         "Starter": "Starter",
-        "Beginner": "Beginner",
-        "Amateur": "Amateur",
+        "Rookie": "Rookie",
+        "Standard": "Standard",
+        "Advanced": "Advanced",
+        "Expert": "Expert",
         "Ace": "Ace",
-        "Pro": "Pro",
         "Master": "Master",
         "Champion": "Champion"
       }

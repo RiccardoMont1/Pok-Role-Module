@@ -1,6 +1,7 @@
 import {
   ATTRIBUTE_DEFINITIONS,
   CORE_ATTRIBUTE_DEFINITIONS,
+  SOCIAL_ATTRIBUTE_DEFINITIONS,
   getSystemAssetPath,
   MOVE_CATEGORY_LABEL_BY_KEY,
   MOVE_SECONDARY_CONDITION_KEYS,
@@ -17,6 +18,7 @@ import {
   POKEMON_TIER_KEYS,
   POKEMON_TIER_LABEL_BY_KEY,
   SKILL_DEFINITIONS,
+  TRAINER_CARD_RANK_KEYS,
   TRAINER_CARD_RANK_LABEL_BY_KEY,
   TRAIT_LABEL_BY_KEY,
   TYPE_EFFECTIVENESS,
@@ -2232,5 +2234,222 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     return legacyEntries
       .filter((entry) => entry.id)
       .sort((left, right) => Number(right.createdAt ?? 0) - Number(left.createdAt ?? 0));
+  }
+
+  // ---------------------------------------------------------------------------
+  // Point Distribution System
+  // ---------------------------------------------------------------------------
+
+  async _updateObject(event, formData) {
+    if (this.actor.type === "trainer") {
+      const ageChanged = ("system.age" in formData) &&
+        Number(formData["system.age"]) !== Number(this.actor.system.age);
+      const rankChanged = ("system.cardRank" in formData) &&
+        formData["system.cardRank"] !== this.actor.system.cardRank;
+
+      if (ageChanged || rankChanged) {
+        const age = Number(formData["system.age"] ?? this.actor.system.age);
+        const rank = formData["system.cardRank"] ?? this.actor.system.cardRank;
+
+        const ageBonuses = this._getAgeBonuses(age);
+        const rankBonuses = this._getRankBonuses(rank);
+
+        const totalAttr = ageBonuses.attr + rankBonuses.attr;
+        const totalSocial = ageBonuses.social + rankBonuses.social;
+        const totalSkill = rankBonuses.skill;
+        const skillLimit = rankBonuses.skillLimit;
+
+        // Save the age/rank change first
+        await this.actor.update(formData);
+
+        if (totalAttr > 0 || totalSocial > 0 || totalSkill > 0) {
+          await this._showPointDistributionDialog(totalAttr, totalSocial, totalSkill, skillLimit);
+        } else {
+          // Child at starter rank: reset to base values
+          const resetData = {};
+          for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
+            resetData[`system.attributes.${key}`] = 1;
+          }
+          for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) {
+            resetData[`system.attributes.${key}`] = 1;
+          }
+          for (const { key } of SKILL_DEFINITIONS) {
+            resetData[`system.skills.${key}`] = 0;
+          }
+          await this.actor.update(resetData);
+        }
+        return;
+      }
+    }
+    return super._updateObject(event, formData);
+  }
+
+  _getAgeBonuses(age) {
+    const numAge = Number(age) || 0;
+    if (numAge <= 12) return { attr: 0, social: 0 };
+    if (numAge <= 19) return { attr: 2, social: 2 };
+    if (numAge <= 59) return { attr: 4, social: 4 };
+    return { attr: 3, social: 6 };
+  }
+
+  _getRankBonuses(rank) {
+    const table = {
+      starter:  { attr: 0,  social: 0,  skill: 5,  skillLimit: 1 },
+      rookie:   { attr: 2,  social: 2,  skill: 10, skillLimit: 2 },
+      standard: { attr: 4,  social: 4,  skill: 14, skillLimit: 3 },
+      advanced: { attr: 6,  social: 6,  skill: 17, skillLimit: 4 },
+      expert:   { attr: 8,  social: 8,  skill: 19, skillLimit: 5 },
+      ace:      { attr: 10, social: 10, skill: 20, skillLimit: 5 },
+      master:   { attr: 10, social: 10, skill: 22, skillLimit: 5 },
+      champion: { attr: 14, social: 14, skill: 25, skillLimit: 5 }
+    };
+    return table[rank] ?? table.starter;
+  }
+
+  async _showPointDistributionDialog(totalAttrPoints, totalSocialPoints, totalSkillPoints, skillLimit) {
+    const loc = (key) => game.i18n.localize(key);
+
+    const coreAttrs = CORE_ATTRIBUTE_DEFINITIONS.map((a) => ({
+      key: a.key, label: loc(a.label), value: 1
+    }));
+    const socialAttrs = SOCIAL_ATTRIBUTE_DEFINITIONS.map((a) => ({
+      key: a.key, label: loc(a.label), value: 1
+    }));
+    const skills = SKILL_DEFINITIONS.map((s) => ({
+      key: s.key, label: loc(s.label), value: 0
+    }));
+
+    const buildRows = (items, category) => items.map((item) =>
+      `<div class="point-dist-row" data-category="${category}" data-key="${item.key}">
+        <span class="point-dist-label">${item.label}</span>
+        <button type="button" class="point-dist-btn point-dist-minus" data-dir="-1">-</button>
+        <span class="point-dist-value">${item.value}</span>
+        <button type="button" class="point-dist-btn point-dist-plus" data-dir="1">+</button>
+      </div>`
+    ).join("");
+
+    const content = `
+      <form class="point-distribution-dialog">
+        <p style="margin-bottom:8px;font-style:italic;">
+          ${loc("POKROLE.Dialog.SkillLimit")}: <strong>${skillLimit}</strong>
+        </p>
+
+        <fieldset class="point-dist-section">
+          <legend>${loc("POKROLE.Dialog.AttributePoints")}
+            &mdash; <span class="point-dist-remaining" data-pool="attr">${totalAttrPoints}</span> ${loc("POKROLE.Dialog.Remaining")}
+          </legend>
+          ${buildRows(coreAttrs, "attr")}
+        </fieldset>
+
+        <fieldset class="point-dist-section">
+          <legend>${loc("POKROLE.Dialog.SocialPoints")}
+            &mdash; <span class="point-dist-remaining" data-pool="social">${totalSocialPoints}</span> ${loc("POKROLE.Dialog.Remaining")}
+          </legend>
+          ${buildRows(socialAttrs, "social")}
+        </fieldset>
+
+        <fieldset class="point-dist-section">
+          <legend>${loc("POKROLE.Dialog.SkillPoints")}
+            &mdash; <span class="point-dist-remaining" data-pool="skill">${totalSkillPoints}</span> ${loc("POKROLE.Dialog.Remaining")}
+          </legend>
+          ${buildRows(skills, "skill")}
+        </fieldset>
+      </form>
+    `;
+
+    return new Promise((resolve) => {
+      const dlg = new Dialog({
+        title: loc("POKROLE.Dialog.DistributePoints"),
+        content,
+        buttons: {
+          confirm: {
+            icon: '<i class="fas fa-check"></i>',
+            label: loc("POKROLE.Common.Confirm"),
+            disabled: true,
+            callback: async (html) => {
+              const updateData = {};
+              html.find(".point-dist-row").each((_i, row) => {
+                const el = $(row);
+                const category = el.data("category");
+                const key = el.data("key");
+                const val = Number(el.find(".point-dist-value").text());
+                if (category === "attr" || category === "social") {
+                  updateData[`system.attributes.${key}`] = val;
+                } else {
+                  updateData[`system.skills.${key}`] = val;
+                }
+              });
+              await this.actor.update(updateData);
+              ui.notifications.info(loc("POKROLE.Dialog.PointsDistributed"));
+              resolve(true);
+            }
+          },
+          cancel: {
+            icon: '<i class="fas fa-times"></i>',
+            label: loc("POKROLE.Common.Cancel"),
+            callback: () => resolve(false)
+          }
+        },
+        default: "confirm",
+        close: () => resolve(false),
+        render: (html) => {
+          const pools = {
+            attr: totalAttrPoints,
+            social: totalSocialPoints,
+            skill: totalSkillPoints
+          };
+          const maxByCategory = {
+            attr: 5,
+            social: 5,
+            skill: skillLimit
+          };
+          const baseByCategory = {
+            attr: 1,
+            social: 1,
+            skill: 0
+          };
+
+          const updateConfirmButton = () => {
+            const allSpent = pools.attr === 0 && pools.social === 0 && pools.skill === 0;
+            html.closest(".dialog").find("button[data-button='confirm']").prop("disabled", !allSpent);
+          };
+
+          const updateRemaining = () => {
+            for (const [pool, remaining] of Object.entries(pools)) {
+              html.find(`.point-dist-remaining[data-pool="${pool}"]`).text(remaining);
+            }
+            updateConfirmButton();
+          };
+
+          html.find(".point-dist-btn").on("click", (event) => {
+            event.preventDefault();
+            const btn = $(event.currentTarget);
+            const row = btn.closest(".point-dist-row");
+            const category = row.data("category");
+            const dir = Number(btn.data("dir"));
+            const valueEl = row.find(".point-dist-value");
+            const current = Number(valueEl.text());
+            const base = baseByCategory[category];
+            const max = maxByCategory[category];
+            const newVal = current + dir;
+
+            if (newVal < base || newVal > max) return;
+            if (dir > 0 && pools[category] <= 0) return;
+            if (dir < 0 && current <= base) return;
+
+            valueEl.text(newVal);
+            pools[category] -= dir;
+            updateRemaining();
+          });
+
+          updateConfirmButton();
+        }
+      }, {
+        width: 500,
+        height: "auto",
+        classes: ["pok-role", "point-distribution"]
+      });
+      dlg.render(true);
+    });
   }
 }

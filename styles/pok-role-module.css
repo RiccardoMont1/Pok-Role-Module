@@ -4158,3 +4158,61 @@ form.editable.pok-role-sheet.trainer-sheet {
     width: 216px;
   }
 }
+
+/* -------------------------------------------------------------------------
+   Point Distribution Dialog
+   ------------------------------------------------------------------------- */
+.point-distribution-dialog .point-dist-section {
+  border: 1px solid var(--color-border-light-tertiary, #999);
+  border-radius: 4px;
+  padding: 6px 10px 10px;
+  margin-bottom: 10px;
+}
+
+.point-distribution-dialog .point-dist-section legend {
+  font-weight: bold;
+  font-size: 0.95em;
+  padding: 0 4px;
+}
+
+.point-distribution-dialog .point-dist-remaining {
+  font-weight: bold;
+  color: var(--color-text-hyperlink, #4b68ff);
+}
+
+.point-distribution-dialog .point-dist-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+}
+
+.point-distribution-dialog .point-dist-label {
+  flex: 1;
+  font-size: 0.9em;
+}
+
+.point-distribution-dialog .point-dist-value {
+  display: inline-block;
+  width: 24px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.point-distribution-dialog .point-dist-btn {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  line-height: 26px;
+  text-align: center;
+  font-size: 0.85em;
+  cursor: pointer;
+  border: 1px solid var(--color-border-light-tertiary, #999);
+  border-radius: 3px;
+  background: var(--color-bg-btn, #eee);
+}
+
+.point-distribution-dialog .point-dist-btn:hover {
+  background: var(--color-bg-btn-hover, #ddd);
+}

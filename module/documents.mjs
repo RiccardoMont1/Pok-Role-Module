@@ -251,10 +251,11 @@ const STRENGTH_LIFTING_CAPACITY_KG = Object.freeze([
 ]);
 const RANK_DAMAGE_DICE_BY_TIER = Object.freeze({
   starter: 1,
-  beginner: 2,
-  amateur: 4,
-  ace: 6,
-  pro: 8,
+  rookie: 2,
+  standard: 3,
+  advanced: 4,
+  expert: 6,
+  ace: 8,
   master: 10,
   champion: 10
 });

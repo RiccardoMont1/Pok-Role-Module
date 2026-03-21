@@ -73,10 +73,11 @@ POKROLE_SKILL_KEYS = [
 ]
 POKEMON_TIER_KEYS = [
     "starter",
-    "beginner",
-    "amateur",
+    "rookie",
+    "standard",
+    "advanced",
+    "expert",
     "ace",
-    "pro",
     "master",
     "champion"
 ]
@@ -128,22 +129,23 @@ UPSTREAM_POKEDEX_DB_CANDIDATES = [
 ]
 UPSTREAM_RANK_TO_TIER = {
     "starter": "starter",
-    "rookie": "beginner",
-    "standard": "amateur",
-    "advanced": "ace",
-    "ace": "pro",
-    "expert": "master",
-    "master": "champion",
+    "rookie": "rookie",
+    "standard": "standard",
+    "advanced": "advanced",
+    "ace": "ace",
+    "expert": "expert",
+    "master": "master",
     "champion": "champion"
 }
 RANK_PRIORITY = {
     "starter": 0,
-    "beginner": 1,
-    "amateur": 2,
-    "ace": 3,
-    "pro": 4,
-    "master": 5,
-    "champion": 6
+    "rookie": 1,
+    "standard": 2,
+    "advanced": 3,
+    "expert": 4,
+    "ace": 5,
+    "master": 6,
+    "champion": 7
 }
 VALID_ATTRIBUTE_KEYS = {
     "strength",
@@ -341,15 +343,17 @@ def pokemon_image_path(*candidates):
 def rank_from_bst(bst):
     if bst <= 300:
         return "starter"
-    if bst <= 380:
-        return "beginner"
+    if bst <= 350:
+        return "rookie"
+    if bst <= 400:
+        return "standard"
     if bst <= 460:
-        return "amateur"
-    if bst <= 540:
+        return "advanced"
+    if bst <= 520:
+        return "expert"
+    if bst <= 580:
         return "ace"
-    if bst <= 620:
-        return "pro"
-    if bst <= 700:
+    if bst <= 660:
         return "master"
     return "champion"
 

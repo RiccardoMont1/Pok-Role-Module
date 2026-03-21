@@ -347,10 +347,11 @@ export const MOVE_TYPE_KEYS = Object.freeze([
 
 export const POKEMON_TIER_KEYS = Object.freeze([
   "starter",
-  "beginner",
-  "amateur",
+  "rookie",
+  "standard",
+  "advanced",
+  "expert",
   "ace",
-  "pro",
   "master",
   "champion"
 ]);
@@ -366,10 +367,11 @@ export const POKEMON_TIER_LABEL_BY_KEY = Object.freeze(
 
 export const TRAINER_CARD_RANK_KEYS = Object.freeze([
   "starter",
-  "beginner",
-  "amateur",
+  "rookie",
+  "standard",
+  "advanced",
+  "expert",
   "ace",
-  "pro",
   "master",
   "champion"
 ]);

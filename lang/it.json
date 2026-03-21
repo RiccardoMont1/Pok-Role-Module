@@ -18,6 +18,21 @@
       "Other": "Altro",
       "Any": "Qualsiasi"
     },
+    "Dialog": {
+      "DistributePoints": "Distribuisci Punti",
+      "AttributePoints": "Punti Attributo",
+      "SocialPoints": "Punti Sociali",
+      "SkillPoints": "Punti Abilita",
+      "SkillLimit": "Limite Abilita",
+      "Remaining": "Rimanenti",
+      "PointsDistributed": "Punti distribuiti con successo"
+    },
+    "AgeGroup": {
+      "Child": "Bambino",
+      "Teen": "Adolescente",
+      "Adult": "Adulto",
+      "Senior": "Anziano"
+    },
     "Resources": {
       "HP": "PS",
       "Will": "Volonta"
@@ -42,12 +57,13 @@
       "Money": "Denaro",
       "CardRank": "Grado Tessera Allenatore",
       "RankValues": {
-        "Starter": "Starter",
-        "Beginner": "Beginner",
-        "Amateur": "Amatore",
+        "Starter": "Esordiente",
+        "Rookie": "Novizio",
+        "Standard": "Standard",
+        "Advanced": "Avanzato",
+        "Expert": "Esperto",
         "Ace": "Asso",
-        "Pro": "Pro",
-        "Master": "Master",
+        "Master": "Maestro",
         "Champion": "Campione"
       },
       "SeenCaught": "Pokemon Visti/Catturati",
@@ -232,12 +248,13 @@
       "VulnerabilitiesQuad": "Vulnerabilita x4",
       "Immunities": "Immunita",
       "TierValues": {
-        "Starter": "Starter",
-        "Beginner": "Beginner",
-        "Amateur": "Amatore",
+        "Starter": "Esordiente",
+        "Rookie": "Novizio",
+        "Standard": "Standard",
+        "Advanced": "Avanzato",
+        "Expert": "Esperto",
         "Ace": "Asso",
-        "Pro": "Pro",
-        "Master": "Master",
+        "Master": "Maestro",
         "Champion": "Campione"
       }
     },

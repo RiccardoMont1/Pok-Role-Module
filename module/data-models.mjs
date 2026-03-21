@@ -110,7 +110,7 @@ export class TrainerDataModel extends BaseCharacterDataModel {
       cardRank: new StringField({
         required: true,
         blank: false,
-        initial: "starter",
+        initial: "rookie",
         choices: TRAINER_CARD_RANK_KEYS
       }),
       age: integerField(10, { min: 0, max: 120 }),

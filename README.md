@@ -31,7 +31,7 @@ Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
   - `Pokedex` compendium is fully seeded with `#001-#890` plus supported regional/mega/primal forms (1022 pokedex items).
   - `Pokemon Actors` compendium is seeded as playable `Actor` entries (`type: pokemon`) from Corebook-aligned Pokédex data (HP/WILL, suggested rank, attributes, typing, learnset).
   - Pokemon actor moves are embedded by default and grouped into `learnsetByRank`; all imported moves start as `isUsable: false` (learned-only until selected).
-  - Rank mapping used for imported Corebook-v3 data to this system tiers: `starter->starter`, `rookie->beginner`, `standard->amateur`, `advanced->ace`, `ace->pro`, `expert->master`, `master/champion->champion`.
+  - Rank mapping now uses official manual tiers directly (1:1): `starter`, `rookie`, `standard`, `advanced`, `expert`, `ace`, `master`, `champion`.
   - `Pokedex` and `Pokemon Actors` entries auto-bind artwork from `assets/pokemon/book/book/*.png` (identifier/form-aware fallback matching).
   - Manual GM-only seed command remains available in browser console for maintenance/debug:
     - `await game.pokrole.seedCompendia()`
