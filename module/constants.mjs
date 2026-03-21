@@ -366,6 +366,7 @@ export const POKEMON_TIER_LABEL_BY_KEY = Object.freeze(
 );
 
 export const TRAINER_CARD_RANK_KEYS = Object.freeze([
+  "none",
   "starter",
   "rookie",
   "standard",

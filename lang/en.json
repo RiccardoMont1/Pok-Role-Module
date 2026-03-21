@@ -57,6 +57,7 @@
       "Money": "Money",
       "CardRank": "Trainer's Card Rank",
       "RankValues": {
+        "None": "None",
         "Starter": "Starter",
         "Rookie": "Rookie",
         "Standard": "Standard",

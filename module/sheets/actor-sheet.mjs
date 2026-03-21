@@ -2294,6 +2294,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
   _getRankBonuses(rank) {
     const table = {
+      none:     { attr: 0,  social: 0,  skill: 0,  skillLimit: 0 },
       starter:  { attr: 0,  social: 0,  skill: 5,  skillLimit: 1 },
       rookie:   { attr: 2,  social: 2,  skill: 10, skillLimit: 2 },
       standard: { attr: 4,  social: 4,  skill: 14, skillLimit: 3 },
@@ -2365,24 +2366,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           confirm: {
             icon: '<i class="fas fa-check"></i>',
             label: loc("POKROLE.Common.Confirm"),
-            disabled: true,
-            callback: async (html) => {
-              const updateData = {};
-              html.find(".point-dist-row").each((_i, row) => {
-                const el = $(row);
-                const category = el.data("category");
-                const key = el.data("key");
-                const val = Number(el.find(".point-dist-value").text());
-                if (category === "attr" || category === "social") {
-                  updateData[`system.attributes.${key}`] = val;
-                } else {
-                  updateData[`system.skills.${key}`] = val;
-                }
-              });
-              await this.actor.update(updateData);
-              ui.notifications.info(loc("POKROLE.Dialog.PointsDistributed"));
-              resolve(true);
-            }
+            callback: () => {}
           },
           cancel: {
             icon: '<i class="fas fa-times"></i>',
@@ -2409,9 +2393,12 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             skill: 0
           };
 
+          const confirmBtn = html.closest(".dialog").find("button[data-button='confirm']");
+          confirmBtn.prop("disabled", true);
+
           const updateConfirmButton = () => {
             const allSpent = pools.attr === 0 && pools.social === 0 && pools.skill === 0;
-            html.closest(".dialog").find("button[data-button='confirm']").prop("disabled", !allSpent);
+            confirmBtn.prop("disabled", !allSpent);
           };
 
           const updateRemaining = () => {
@@ -2440,6 +2427,27 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             valueEl.text(newVal);
             pools[category] -= dir;
             updateRemaining();
+          });
+
+          // Override confirm button to apply and close
+          confirmBtn.off("click").on("click", async (event) => {
+            event.preventDefault();
+            const updateData = {};
+            html.find(".point-dist-row").each((_i, row) => {
+              const el = $(row);
+              const category = el.data("category");
+              const key = el.data("key");
+              const val = Number(el.find(".point-dist-value").text());
+              if (category === "attr" || category === "social") {
+                updateData[`system.attributes.${key}`] = val;
+              } else {
+                updateData[`system.skills.${key}`] = val;
+              }
+            });
+            await this.actor.update(updateData);
+            ui.notifications.info(loc("POKROLE.Dialog.PointsDistributed"));
+            dlg.close();
+            resolve(true);
           });
 
           updateConfirmButton();

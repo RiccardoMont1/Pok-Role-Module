@@ -57,6 +57,7 @@
       "Money": "Denaro",
       "CardRank": "Grado Tessera Allenatore",
       "RankValues": {
+        "None": "Nessuno",
         "Starter": "Esordiente",
         "Rookie": "Novizio",
         "Standard": "Standard",
