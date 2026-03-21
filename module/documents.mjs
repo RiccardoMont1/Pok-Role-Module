@@ -5730,11 +5730,6 @@ export class PokRoleActor extends Actor {
       multiTurnPreparation?.skipSecondaryEffectSignatures instanceof Set
         ? multiTurnPreparation.skipSecondaryEffectSignatures
         : new Set();
-    if (delayedMoveAutomation.skipMoveSecondaryEffectSignatures instanceof Set) {
-      for (const signature of delayedMoveAutomation.skipMoveSecondaryEffectSignatures) {
-        skippedSecondaryEffectSignatures.add(signature);
-      }
-    }
 
     const formulaTargetActor = targetActors[0] ?? null;
     const accuracySetup = this._resolveMoveAccuracySetup(move, formulaTargetActor, actionNumber);
@@ -5831,6 +5826,11 @@ export class PokRoleActor extends Actor {
       moveTargetKey,
       hit
     });
+    if (delayedMoveAutomation.skipMoveSecondaryEffectSignatures instanceof Set) {
+      for (const signature of delayedMoveAutomation.skipMoveSecondaryEffectSignatures) {
+        skippedSecondaryEffectSignatures.add(signature);
+      }
+    }
     let reaction = {
       attempted: false,
       type: "none",
