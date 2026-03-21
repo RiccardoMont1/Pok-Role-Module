@@ -4162,57 +4162,79 @@ form.editable.pok-role-sheet.trainer-sheet {
 /* -------------------------------------------------------------------------
    Point Distribution Dialog
    ------------------------------------------------------------------------- */
+.point-distribution .window-content {
+  background: #d6dceb;
+  border: 1px solid #7b8498;
+  border-radius: 6px;
+}
+
 .point-distribution-dialog .point-dist-section {
-  border: 1px solid var(--color-border-light-tertiary, #999);
+  border: 1px solid #a3abba;
   border-radius: 4px;
   padding: 6px 10px 10px;
   margin-bottom: 10px;
+  background: #f3f5f9;
 }
 
 .point-distribution-dialog .point-dist-section legend {
   font-weight: bold;
   font-size: 0.95em;
-  padding: 0 4px;
+  padding: 0 6px;
+  color: #2c3e50;
 }
 
 .point-distribution-dialog .point-dist-remaining {
   font-weight: bold;
-  color: var(--color-text-hyperlink, #4b68ff);
+  color: #c0392b;
 }
 
 .point-distribution-dialog .point-dist-row {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 2px 0;
+  padding: 3px 4px;
+  border-bottom: 1px solid #d6dceb;
+}
+
+.point-distribution-dialog .point-dist-row:last-child {
+  border-bottom: none;
 }
 
 .point-distribution-dialog .point-dist-label {
   flex: 1;
   font-size: 0.9em;
+  color: #34495e;
 }
 
 .point-distribution-dialog .point-dist-value {
   display: inline-block;
-  width: 24px;
+  width: 28px;
   text-align: center;
   font-weight: bold;
-  font-size: 0.95em;
+  font-size: 1em;
+  color: #2c3e50;
 }
 
 .point-distribution-dialog .point-dist-btn {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   padding: 0;
-  line-height: 26px;
+  line-height: 28px;
   text-align: center;
-  font-size: 0.85em;
+  font-size: 0.9em;
   cursor: pointer;
-  border: 1px solid var(--color-border-light-tertiary, #999);
-  border-radius: 3px;
-  background: var(--color-bg-btn, #eee);
+  border: 1px solid #a3abba;
+  border-radius: 4px;
+  background: #d6dceb;
+  color: #2c3e50;
+  font-weight: bold;
 }
 
 .point-distribution-dialog .point-dist-btn:hover {
-  background: var(--color-bg-btn-hover, #ddd);
+  background: #bfc9de;
+  border-color: #7b8498;
+}
+
+.point-distribution-dialog p {
+  color: #34495e;
 }
