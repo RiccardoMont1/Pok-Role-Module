@@ -782,6 +782,25 @@
       "RunAwaySuccess": "Escaped successfully.",
       "RunAwayFailed": "Could not escape.",
       "RoundEndAutomation": "Round End Automation",
+      "DelayedEffect": {
+        "RoundStart": "Delayed Effects - Round Start",
+        "RoundEnd": "Delayed Effects - Round End",
+        "Title": "Delayed Effect",
+        "Scheduled": "Scheduled",
+        "LoyaltySuccess": "Loyalty check succeeded.",
+        "LoyaltyFailure": "Loyalty check failed."
+      },
+      "Combat": {
+        "Delayed": {
+          "Retarget": {
+            "Damage": "Select a valid target for the delayed hit.",
+            "Wish": "Select the target to receive the delayed healing.",
+            "Yawn": "Select the target to receive the delayed sleep.",
+            "DefaultPrompt": "Choose which combatant should receive the delayed effect.",
+            "Title": "Retarget delayed effect"
+          }
+        }
+      },
       "WeatherNoDamage": "{weather}: no weather damage.",
       "WeatherRoundDamage": "{weather}: {damage} damage.",
       "ConditionImmune": "Target is immune to this condition.",
@@ -878,6 +897,24 @@
         "ClashTargetDamage": "Damage to defender (clash)",
         "ClashAttackerDamage": "Damage to attacker (clash)"
       },
+      "Switcher": {
+        "SelectTitle": "Choose switch target",
+        "SelectReplacement": "Choose the Pokemon that will enter battle.",
+        "SelectAlly": "Choose the ally to swap with.",
+        "SelfSwitch": "Self Switch",
+        "ForcedSwitch": "Forced Switch",
+        "AllySwitch": "Ally Switch",
+        "Decoy": "Substitute Decoy",
+        "DecoyCreated": "{actor} creates a Substitute Decoy with {hp} HP.",
+        "DecoyAlreadyPresent": "A Substitute Decoy is already active.",
+        "DecoyBlockedEffect": "The Substitute Decoy blocks the effect for {target}.",
+        "DecoyAbsorbedDamage": "{decoy} absorbs {damage} damage for {target} ({hpBefore} -> {hpAfter}).",
+        "SelfSwitched": "{source} retreats and sends {target} into battle.",
+        "ForcedSwitched": "{target} is forced out and {replacement} enters battle.",
+        "AllySwapped": "{source} swaps places with {target}.",
+        "BatonPass": "Baton Pass",
+        "BatonPassTransferred": "{source} passes {count} stat boosts to {target}."
+      },
       "ShieldMove": {
         "Label": "Shield Move"
       },
@@ -958,6 +995,9 @@
       "GearNotUsableInBattle": "This item cannot be used in battle.",
       "GearWrongTarget": "This item cannot target the selected actor.",
       "HPUpdateFailed": "Unable to update target HP. Check permissions.",
+      "NoValidSwitchCandidate": "No valid switch target is available.",
+      "CombatantUpdateFailed": "Unable to update combatant position. Check permissions.",
+      "CombatantSwapFailed": "Unable to swap combatants. Check permissions.",
       "InvalidEffectConfiguration": "Complete the effect configuration before applying it.",
       "CombatRequired": "This action requires an active combat.",
       "MoveBlockedByWeather": "Move blocked by weather: {weather}.",

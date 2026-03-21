@@ -20,7 +20,12 @@ import {
   WeatherDataModel,
   TrainerDataModel
 } from "./module/data-models.mjs";
-import { PokRoleActor, PokRoleItem } from "./module/documents.mjs";
+import {
+  PokRoleActor,
+  PokRoleItem,
+  clearCombatDelayedEffects,
+  processCombatDelayedEffects
+} from "./module/documents.mjs";
 import {
   clearCombatMoveQueue,
   enqueueCombatMoveDeclaration,
@@ -168,6 +173,23 @@ async function processRoundEndCombatAutomation(combat) {
     if (!actor || typeof actor.processRoundEndCombatAutomation !== "function") continue;
     await actor.processRoundEndCombatAutomation({ weatherKey, combatId: combat.id });
   }
+}
+
+async function clearCombatDelayedEffectQueue(combat) {
+  if (!combat) return;
+  const actor = combat.combatants?.find?.((combatant) => typeof combatant.actor?.clearDelayedEffectQueue === "function")?.actor ?? null;
+  if (!actor) return;
+  await actor.clearDelayedEffectQueue(combat);
+}
+
+async function processCombatDelayedEffectPhase(combat, phase, phaseRound = null) {
+  if (!combat) return [];
+  const actor = combat.combatants?.find?.((combatant) => typeof combatant.actor?.processDelayedEffectPhase === "function")?.actor ?? null;
+  if (!actor) return [];
+  return actor.processDelayedEffectPhase(phase, {
+    combat,
+    phaseRound
+  });
 }
 
 async function advanceCombatWeatherDuration(combat) {
@@ -1032,6 +1054,7 @@ Hooks.on("updateCombat", async (combat, changed) => {
     Object.prototype.hasOwnProperty.call(changed, "active") && changed.active === false;
   if (hasCombatEnded) {
     await clearCombatMoveQueue(combat);
+    await clearCombatDelayedEffectQueue(combat);
     await processCombatSpecialDurationEvent(combat, "combat-end");
     await clearCombatScopedTemporaryEffects(combat);
     LAST_COMBAT_TURN_STATE.delete(`${combat?.id ?? ""}`);
@@ -1091,6 +1114,7 @@ Hooks.on("updateCombat", async (combat, changed) => {
   }
   if (Number.isFinite(previousRound) && previousRound >= 1) {
     await processCombatSpecialDurationEvent(combat, "round-end");
+    await processCombatDelayedEffectPhase(combat, "round-end", previousRound);
     await processRoundEndCombatAutomation(combat);
     await advanceCombatWeatherDuration(combat);
     await advanceCombatTerrainDuration(combat);
@@ -1168,6 +1192,8 @@ Hooks.on("updateCombat", async (combat, changed) => {
     }
   }
 
+  await processCombatDelayedEffectPhase(combat, "round-start", combat.round ?? 0);
+
   if (
     highestActor &&
     highestActor.documentName === "Actor" &&
@@ -1190,6 +1216,7 @@ Hooks.on("updateCombat", async (combat, changed) => {
 });
 
 Hooks.on("deleteCombat", async (combat) => {
+  await clearCombatDelayedEffectQueue(combat);
   await processCombatSpecialDurationEvent(combat, "combat-end");
   await clearCombatScopedTemporaryEffects(combat);
   for (const combatant of combat?.combatants ?? []) {

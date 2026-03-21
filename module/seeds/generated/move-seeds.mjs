@@ -17039,7 +17039,28 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "on-hit",
+          "chance": 0,
+          "target": "self",
+          "effectType": "terrain",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "electric",
+          "stat": "none",
+          "amount": 0,
+          "durationMode": "rounds",
+          "durationRounds": 4,
+          "healType": "basic",
+          "healMode": "fixed",
+          "conditional": false,
+          "activationCondition": "",
+          "notes": ""
+        }
+      ],
       "description": "Core v3.0 The user electrifies the battlefield, making it impossible to relax around the sparks and live current. Target Battlefield. Add 1 Extra Damage Dice to all Physical & Special Electric-Type Moves. Pokemon without immunity to Ground will be cured of the Sleep Status. Duration 4 Rounds."
     },
     "flags": {
@@ -25185,7 +25206,28 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "on-hit",
+          "chance": 0,
+          "target": "self",
+          "effectType": "terrain",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "grassy",
+          "stat": "none",
+          "amount": 0,
+          "durationMode": "rounds",
+          "durationRounds": 4,
+          "healType": "basic",
+          "healMode": "fixed",
+          "conditional": false,
+          "activationCondition": "",
+          "notes": ""
+        }
+      ],
       "description": "Core v3.0 A patch of grass grows in the area surrounding the user, through it nature grants her many blessings. Target User's side of the field. Add 1 Extra Damage Dice to all Physical & Special Grass-Type Moves. Everyone on the User's side of the field heals 1 HP at the end of each Round. Spend 1 Will Point t activate. Duration 4 Rounds."
     },
     "flags": {
@@ -36124,7 +36166,28 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "on-hit",
+          "chance": 0,
+          "target": "self",
+          "effectType": "terrain",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "electric",
+          "stat": "none",
+          "amount": 0,
+          "durationMode": "rounds",
+          "durationRounds": 4,
+          "healType": "basic",
+          "healMode": "fixed",
+          "conditional": false,
+          "activationCondition": "",
+          "notes": ""
+        }
+      ],
       "description": "Core v3.0 Target all foes in Range or a Single Max Target. Activate the Effects of Electric Terrain. Duration 4 Rounds."
     },
     "flags": {
@@ -36195,7 +36258,28 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "on-hit",
+          "chance": 0,
+          "target": "self",
+          "effectType": "terrain",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "psychic",
+          "stat": "none",
+          "amount": 0,
+          "durationMode": "rounds",
+          "durationRounds": 4,
+          "healType": "basic",
+          "healMode": "fixed",
+          "conditional": false,
+          "activationCondition": "",
+          "notes": ""
+        }
+      ],
       "description": "Core v3.0 Target all foes in Range or a Single Max Target. Activate the Effects of Psychic Terrain. Duration 4 Rounds."
     },
     "flags": {
@@ -36337,7 +36421,28 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "on-hit",
+          "chance": 0,
+          "target": "self",
+          "effectType": "terrain",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "grassy",
+          "stat": "none",
+          "amount": 0,
+          "durationMode": "rounds",
+          "durationRounds": 4,
+          "healType": "basic",
+          "healMode": "fixed",
+          "conditional": false,
+          "activationCondition": "",
+          "notes": ""
+        }
+      ],
       "description": "Core v3.0 Target all foes in Range or a Single Max Target. Activate the Effects of Grassy Terrain. Duration 4 Rounds."
     },
     "flags": {
@@ -36642,7 +36747,28 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "on-hit",
+          "chance": 0,
+          "target": "self",
+          "effectType": "terrain",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "misty",
+          "stat": "none",
+          "amount": 0,
+          "durationMode": "rounds",
+          "durationRounds": 4,
+          "healType": "basic",
+          "healMode": "fixed",
+          "conditional": false,
+          "activationCondition": "",
+          "notes": ""
+        }
+      ],
       "description": "Core v3.0 Target all foes in Range or a Single Max Target. Activate the Effects of Misty Terrain. Duration 4 Rounds."
     },
     "flags": {
@@ -39202,7 +39328,28 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "on-hit",
+          "chance": 0,
+          "target": "self",
+          "effectType": "terrain",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "misty",
+          "stat": "none",
+          "amount": 0,
+          "durationMode": "rounds",
+          "durationRounds": 4,
+          "healType": "basic",
+          "healMode": "fixed",
+          "conditional": false,
+          "activationCondition": "",
+          "notes": ""
+        }
+      ],
       "description": "Core v3.0 The battlefield is shrouded by a pink mist that feels protective and soothing. This mist is able to render even the fiercest beasts into calm. Target Battlefield. All Status Ailments and Conditions are cured and no more can be inflicted. Physical & Special Dragon-Type Moves have Power 0. Duration 4 Rounds."
     },
     "flags": {
@@ -46343,7 +46490,28 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "lethal": false,
       "shieldMove": false,
       "isUsable": true,
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "on-hit",
+          "chance": 0,
+          "target": "self",
+          "effectType": "terrain",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "psychic",
+          "stat": "none",
+          "amount": 0,
+          "durationMode": "rounds",
+          "durationRounds": 4,
+          "healType": "basic",
+          "healMode": "fixed",
+          "conditional": false,
+          "activationCondition": "",
+          "notes": ""
+        }
+      ],
       "description": "Core v3.0 The arena becomes radiated by psychic waves. Everyone feels their mind slog due to the buzz in their heads, making all tasks take longer than they should. Target Battlefield. Add 1 Extra Damage Dice to all Physical & Special Psychic-Type Moves. Pokemon without immunity to Ground can't use Moves with Reaction or Late Reaction. Duration 4 Rounds."
     },
     "flags": {

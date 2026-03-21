@@ -771,7 +771,7 @@ def parse_terrain_key(effect_text, move_name=""):
 
 
 def build_terrain_effects(move_name, move_system, report_reasons):
-    move_seed_id = f"move-{normalize_name_key(move_name)}"
+    move_seed_id = f"move-{slugify(move_name)}"
     if move_seed_id not in TERRAIN_SETTING_MOVE_SEED_IDS:
         return []
     effect_text = clean_text(move_system.get("effect", ""))

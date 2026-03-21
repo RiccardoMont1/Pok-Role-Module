@@ -35,7 +35,8 @@ export const COMBAT_FLAG_KEYS = Object.freeze({
   LAST_EVASION_ROUND: "combat.lastEvasionRound",
   LAST_CLASH_ROUND: "combat.lastClashRound",
   LAST_ACTION_ROUND: "combat.lastActionRound",
-  MOVE_QUEUE: "combat.moveQueue"
+  MOVE_QUEUE: "combat.moveQueue",
+  DELAYED_EFFECT_QUEUE: "combat.delayedEffects"
 });
 
 export const CORE_ATTRIBUTE_DEFINITIONS = Object.freeze([

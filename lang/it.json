@@ -794,6 +794,25 @@
       "RunAwaySuccess": "Fuga riuscita.",
       "RunAwayFailed": "Fuga fallita.",
       "RoundEndAutomation": "Automazione Fine Round",
+      "DelayedEffect": {
+        "RoundStart": "Effetti Ritardati - Inizio Round",
+        "RoundEnd": "Effetti Ritardati - Fine Round",
+        "Title": "Effetto Ritardato",
+        "Scheduled": "Schedulato",
+        "LoyaltySuccess": "Prova di Lealta riuscita.",
+        "LoyaltyFailure": "Prova di Lealta fallita."
+      },
+      "Combat": {
+        "Delayed": {
+          "Retarget": {
+            "Damage": "Seleziona un bersaglio valido per l'impatto ritardato.",
+            "Wish": "Seleziona il bersaglio che ricevera la cura ritardata.",
+            "Yawn": "Seleziona il bersaglio che ricevera il Sonno ritardato.",
+            "DefaultPrompt": "Scegli quale combattente deve ricevere l'effetto ritardato.",
+            "Title": "Ritargetta effetto ritardato"
+          }
+        }
+      },
       "WeatherNoDamage": "{weather}: nessun danno da meteo.",
       "WeatherRoundDamage": "{weather}: {damage} danno.",
       "ConditionImmune": "Il bersaglio e immune a questa condizione.",
@@ -890,6 +909,24 @@
         "ClashTargetDamage": "Danno al difensore (clash)",
         "ClashAttackerDamage": "Danno all'attaccante (clash)"
       },
+      "Switcher": {
+        "SelectTitle": "Scegli il bersaglio dello switch",
+        "SelectReplacement": "Scegli il Pokémon che entra in campo.",
+        "SelectAlly": "Scegli l'alleato con cui scambiare posizione.",
+        "SelfSwitch": "Switch del proprio Pokémon",
+        "ForcedSwitch": "Switch forzato",
+        "AllySwitch": "Ally Switch",
+        "Decoy": "Sostituto",
+        "DecoyCreated": "{actor} crea un Sostituto con {hp} PS.",
+        "DecoyAlreadyPresent": "C'è già un Sostituto attivo.",
+        "DecoyBlockedEffect": "Il Sostituto blocca l'effetto su {target}.",
+        "DecoyAbsorbedDamage": "{decoy} assorbe {damage} danni per {target} ({hpBefore} -> {hpAfter}).",
+        "SelfSwitched": "{source} si ritira e manda in campo {target}.",
+        "ForcedSwitched": "{target} viene forzato a uscire e {replacement} entra in campo.",
+        "AllySwapped": "{source} scambia posizione con {target}.",
+        "BatonPass": "Baton Pass",
+        "BatonPassTransferred": "{source} passa {count} aumenti statistica a {target}."
+      },
       "ShieldMove": {
         "Label": "Mossa Scudo"
       },
@@ -970,6 +1007,9 @@
       "GearNotUsableInBattle": "Questo oggetto non puo essere usato in lotta.",
       "GearWrongTarget": "Questo oggetto non puo bersagliare l'attore selezionato.",
       "HPUpdateFailed": "Impossibile aggiornare i PS del bersaglio. Controlla i permessi.",
+      "NoValidSwitchCandidate": "Non c'e un bersaglio valido per lo switch.",
+      "CombatantUpdateFailed": "Impossibile aggiornare il combatant. Controlla i permessi.",
+      "CombatantSwapFailed": "Impossibile scambiare i combatant. Controlla i permessi.",
       "InvalidEffectConfiguration": "Completa la configurazione dell'effetto prima di applicarlo.",
       "CombatRequired": "Questa azione richiede un combattimento attivo.",
       "MoveBlockedByWeather": "Mossa bloccata dal meteo: {weather}.",
