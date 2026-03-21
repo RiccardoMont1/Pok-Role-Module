@@ -1293,10 +1293,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-ally-switch",
         "sourceDbId": "4855ba9b11fec0af",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "switcher-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": "3",
@@ -4015,10 +4013,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-baton-pass",
         "sourceDbId": "9b021cc83c4cae25",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "switcher-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -8938,10 +8934,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-chilly-reception",
         "sourceDbId": "b492df0579b204c7",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "switcher-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -9153,10 +9147,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-circle-throw",
         "sourceDbId": "760f56491883005a",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "switcher-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -14130,10 +14122,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-doom-desire",
         "sourceDbId": "c57e9962865e3196",
-        "automationStatus": "manual",
-        "automationReasons": [
-          "delayed-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -15702,10 +15692,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-dragon-tail",
         "sourceDbId": "b57b75ec746b9096",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "switcher-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -20218,10 +20206,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-fire-pledge",
         "sourceDbId": "179180b3d90b8322",
-        "automationStatus": "manual",
-        "automationReasons": [
-          "delayed-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -21599,10 +21585,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-flip-turn",
         "sourceDbId": "df211fd481623fc9",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "switcher-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -23650,10 +23634,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-future-sight",
         "sourceDbId": "b62ac307183ed033",
-        "automationStatus": "manual",
-        "automationReasons": [
-          "delayed-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -25664,11 +25646,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-grudge",
         "sourceDbId": "96bd645e56bf3751",
-        "automationStatus": "manual",
-        "automationReasons": [
-          "delayed-effect",
-          "user-faints"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -35325,10 +35304,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-malignant-chain",
         "sourceDbId": "0d0f845b5ef39cdb",
-        "automationStatus": "manual",
-        "automationReasons": [
-          "delayed-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -43051,10 +43028,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-parting-shot",
         "sourceDbId": "b9eb14a2b113da60",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "switcher-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -49624,10 +49599,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-roar",
         "sourceDbId": "96dc48f08f0ac565",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "switcher-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -51688,10 +51661,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-sappy-seed",
         "sourceDbId": "f5fe028d2daed2e8",
-        "automationStatus": "manual",
-        "automationReasons": [
-          "delayed-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
           "reactionMove": 0,
@@ -53483,11 +53454,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-shed-tail",
         "sourceDbId": "fbc8e8d0c3cec85a",
-        "automationStatus": "manual",
-        "automationReasons": [
-          "external-rule-reference",
-          "switcher-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -61197,11 +61165,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-substitute",
         "sourceDbId": "dc83c424d243668b",
-        "automationStatus": "manual",
-        "automationReasons": [
-          "external-rule-reference",
-          "switcher-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -64308,10 +64273,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-teleport",
         "sourceDbId": "cebd3b017f5d6945",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "switcher-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -67761,10 +67724,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-u-turn",
         "sourceDbId": "2b3b5ae3f12ce47b",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "switcher-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -68707,10 +68668,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-volt-switch",
         "sourceDbId": "c9f55aade3a1f33a",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "switcher-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -69708,10 +69667,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-whirlwind",
         "sourceDbId": "82a5d2fc8927d627",
-        "automationStatus": "partial",
-        "automationReasons": [
-          "switcher-move"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -70354,10 +70311,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-wish",
         "sourceDbId": "a89e627a062e2445",
-        "automationStatus": "manual",
-        "automationReasons": [
-          "delayed-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,
@@ -71051,10 +71006,8 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-yawn",
         "sourceDbId": "c1de2f7e593c49fe",
-        "automationStatus": "manual",
-        "automationReasons": [
-          "delayed-effect"
-        ],
+        "automationStatus": "full",
+        "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 0,
           "reactionMove": 0,

@@ -2,24 +2,22 @@
   "source": "D:\\DeskTop\\Script\\Pok\u00e8Role Module\\Pok-Role-Module\\_upstream\\foundry-pokerole\\packs\\moves.db",
   "totalMoves": 888,
   "statusTotals": {
-    "full": 805,
-    "manual": 55,
-    "partial": 28
+    "full": 827,
+    "manual": 45,
+    "partial": 16
   },
   "reasonTotals": {
-    "external-rule-reference": 26,
+    "external-rule-reference": 24,
     "mixed-category": 18,
     "suggested-effects": 18,
-    "switcher-move": 14,
     "dynamic-type": 13,
     "maneuver-rule": 11,
     "dynamax-rule": 4,
     "stored-damage-formula": 1,
     "destroy-shield": 3,
     "copied-move-dependent": 8,
-    "user-faints": 5,
+    "user-faints": 4,
     "alternative-trait-formula": 1,
-    "delayed-effect": 8,
     "dynamic-power-formula": 4,
     "status-cleanse": 3,
     "temporary-type-immunity-change": 1
@@ -196,10 +194,8 @@
     {
       "name": "Ally Switch",
       "seedId": "move-ally-switch",
-      "status": "partial",
-      "reasons": [
-        "switcher-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "support",
       "target": "self",
@@ -531,10 +527,8 @@
     {
       "name": "Baton Pass",
       "seedId": "move-baton-pass",
-      "status": "partial",
-      "reasons": [
-        "switcher-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "self",
@@ -1163,10 +1157,8 @@
     {
       "name": "Chilly Reception",
       "seedId": "move-chilly-reception",
-      "status": "partial",
-      "reasons": [
-        "switcher-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ice",
       "category": "support",
       "target": "battlefield",
@@ -1195,10 +1187,8 @@
     {
       "name": "Circle Throw",
       "seedId": "move-circle-throw",
-      "status": "partial",
-      "reasons": [
-        "switcher-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "physical",
       "target": "foe",
@@ -1834,10 +1824,8 @@
     {
       "name": "Doom Desire",
       "seedId": "move-doom-desire",
-      "status": "manual",
-      "reasons": [
-        "delayed-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "steel",
       "category": "special",
       "target": "foe",
@@ -2036,10 +2024,8 @@
     {
       "name": "Dragon Tail",
       "seedId": "move-dragon-tail",
-      "status": "partial",
-      "reasons": [
-        "switcher-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dragon",
       "category": "physical",
       "target": "foe",
@@ -2618,10 +2604,8 @@
     {
       "name": "Fire Pledge",
       "seedId": "move-fire-pledge",
-      "status": "manual",
-      "reasons": [
-        "delayed-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fire",
       "category": "special",
       "target": "area",
@@ -2792,10 +2776,8 @@
     {
       "name": "Flip Turn",
       "seedId": "move-flip-turn",
-      "status": "partial",
-      "reasons": [
-        "switcher-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "water",
       "category": "physical",
       "target": "foe",
@@ -3064,10 +3046,8 @@
     {
       "name": "Future Sight",
       "seedId": "move-future-sight",
-      "status": "manual",
-      "reasons": [
-        "delayed-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "special",
       "target": "foe",
@@ -3313,11 +3293,8 @@
     {
       "name": "Grudge",
       "seedId": "move-grudge",
-      "status": "manual",
-      "reasons": [
-        "delayed-effect",
-        "user-faints"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ghost",
       "category": "support",
       "target": "foe",
@@ -4566,10 +4543,8 @@
     {
       "name": "Malignant Chain",
       "seedId": "move-malignant-chain",
-      "status": "manual",
-      "reasons": [
-        "delayed-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "poison",
       "category": "special",
       "target": "foe",
@@ -5502,10 +5477,8 @@
     {
       "name": "Parting Shot",
       "seedId": "move-parting-shot",
-      "status": "partial",
-      "reasons": [
-        "switcher-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dark",
       "category": "support",
       "target": "foe",
@@ -6358,10 +6331,8 @@
     {
       "name": "Roar",
       "seedId": "move-roar",
-      "status": "partial",
-      "reasons": [
-        "switcher-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "foe",
@@ -6625,10 +6596,8 @@
     {
       "name": "Sappy Seed",
       "seedId": "move-sappy-seed",
-      "status": "manual",
-      "reasons": [
-        "delayed-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "physical",
       "target": "foe",
@@ -6865,11 +6834,8 @@
     {
       "name": "Shed Tail",
       "seedId": "move-shed-tail",
-      "status": "manual",
-      "reasons": [
-        "external-rule-reference",
-        "switcher-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "self",
@@ -7816,11 +7782,8 @@
     {
       "name": "Substitute",
       "seedId": "move-substitute",
-      "status": "manual",
-      "reasons": [
-        "external-rule-reference",
-        "switcher-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "self",
@@ -8213,10 +8176,8 @@
     {
       "name": "Teleport",
       "seedId": "move-teleport",
-      "status": "partial",
-      "reasons": [
-        "switcher-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "support",
       "target": "self",
@@ -8649,10 +8610,8 @@
     {
       "name": "U-Turn",
       "seedId": "move-u-turn",
-      "status": "partial",
-      "reasons": [
-        "switcher-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "bug",
       "category": "physical",
       "target": "foe",
@@ -8771,10 +8730,8 @@
     {
       "name": "Volt Switch",
       "seedId": "move-volt-switch",
-      "status": "partial",
-      "reasons": [
-        "switcher-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "electric",
       "category": "special",
       "target": "foe",
@@ -8903,10 +8860,8 @@
     {
       "name": "Whirlwind",
       "seedId": "move-whirlwind",
-      "status": "partial",
-      "reasons": [
-        "switcher-move"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "foe",
@@ -8985,10 +8940,8 @@
     {
       "name": "Wish",
       "seedId": "move-wish",
-      "status": "manual",
-      "reasons": [
-        "delayed-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "ally",
@@ -9077,10 +9030,8 @@
     {
       "name": "Yawn",
       "seedId": "move-yawn",
-      "status": "manual",
-      "reasons": [
-        "delayed-effect"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "foe",

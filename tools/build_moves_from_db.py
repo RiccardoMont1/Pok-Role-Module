@@ -123,6 +123,39 @@ HANDLED_TERRAIN_MOVE_SEED_IDS = {
     "move-steel-roller",
     "move-terrain-pulse",
 }
+HANDLED_SWITCHER_MOVE_SEED_IDS = {
+    "move-ally-switch",
+    "move-baton-pass",
+    "move-chilly-reception",
+    "move-circle-throw",
+    "move-dragon-tail",
+    "move-flip-turn",
+    "move-parting-shot",
+    "move-roar",
+    "move-shed-tail",
+    "move-substitute",
+    "move-teleport",
+    "move-u-turn",
+    "move-volt-switch",
+    "move-whirlwind",
+}
+HANDLED_DELAYED_MOVE_SEED_IDS = {
+    "move-doom-desire",
+    "move-fire-pledge",
+    "move-future-sight",
+    "move-grudge",
+    "move-malignant-chain",
+    "move-sappy-seed",
+    "move-wish",
+    "move-yawn",
+}
+HANDLED_EXTERNAL_RULE_MOVE_SEED_IDS = {
+    "move-shed-tail",
+    "move-substitute",
+}
+HANDLED_USER_FAINTS_MOVE_SEED_IDS = {
+    "move-grudge",
+}
 
 SPECIAL_MOVE_EFFECT_OVERRIDES = {
     "move-electro-shot": [
@@ -892,6 +925,14 @@ def infer_automation_reasons(row, target_key, formula_config=None):
     if seed_id in HANDLED_TERRAIN_MOVE_SEED_IDS:
         reasons.discard("terrain-field-effect")
         reasons.discard("manual-terrain-resolution")
+    if seed_id in HANDLED_SWITCHER_MOVE_SEED_IDS:
+        reasons.discard("switcher-move")
+    if seed_id in HANDLED_DELAYED_MOVE_SEED_IDS:
+        reasons.discard("delayed-effect")
+    if seed_id in HANDLED_EXTERNAL_RULE_MOVE_SEED_IDS:
+        reasons.discard("external-rule-reference")
+    if seed_id in HANDLED_USER_FAINTS_MOVE_SEED_IDS:
+        reasons.discard("user-faints")
     if seed_id in {"move-misty-terrain", "move-max-starfall"}:
         reasons.discard("status-cleanse")
     if attributes.get("alwaysCrit"):
@@ -962,6 +1003,14 @@ def build_move_entry(row):
     if seed_id in HANDLED_TERRAIN_MOVE_SEED_IDS:
         automation_reasons.discard("terrain-field-effect")
         automation_reasons.discard("manual-terrain-resolution")
+    if seed_id in HANDLED_SWITCHER_MOVE_SEED_IDS:
+        automation_reasons.discard("switcher-move")
+    if seed_id in HANDLED_DELAYED_MOVE_SEED_IDS:
+        automation_reasons.discard("delayed-effect")
+    if seed_id in HANDLED_EXTERNAL_RULE_MOVE_SEED_IDS:
+        automation_reasons.discard("external-rule-reference")
+    if seed_id in HANDLED_USER_FAINTS_MOVE_SEED_IDS:
+        automation_reasons.discard("user-faints")
     if seed_id in {"move-misty-terrain", "move-max-starfall"}:
         automation_reasons.discard("status-cleanse")
 
