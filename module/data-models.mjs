@@ -206,6 +206,16 @@ export class PokemonDataModel extends BaseCharacterDataModel {
       battles: integerField(0, { min: 0 }),
       victories: integerField(0, { min: 0 }),
       extra: integerField(0, { min: 0, max: 5 }),
+      extraSkills: new ArrayField(
+        new SchemaField({
+          name: trimmedStringField(""),
+          value: integerField(0, { min: 0, max: 5 })
+        }),
+        {
+          required: true,
+          initial: () => []
+        }
+      ),
       manualCoreBase: new SchemaField(
         valueSchema(CORE_ATTRIBUTE_DEFINITIONS, 1, { min: 1, max: 12 })
       ),

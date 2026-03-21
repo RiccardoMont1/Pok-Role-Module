@@ -2324,6 +2324,89 @@
   color: #ffffff;
 }
 
+/* Pokemon Extra Skills (like Trainer) */
+.pokemon-sheet .pokemon-extra-inline {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #8c4a3a;
+}
+
+.pokemon-sheet .pokemon-extra-inline .section-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.pokemon-sheet .pokemon-extra-inline h3 {
+  margin: 0;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.pokemon-sheet .pokemon-extra-inline .section-title-row button {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid #d85d43;
+  background: #c64933;
+  color: #fff;
+  cursor: pointer;
+}
+
+.pokemon-sheet .pokemon-extra-inline .section-title-row button:hover {
+  background: #e26d4d;
+}
+
+.pokemon-sheet .pokemon-extra-list {
+  display: grid;
+  gap: 6px;
+}
+
+.pokemon-sheet .pokemon-extra-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 1.1fr) minmax(120px, 1fr) 32px;
+  gap: 6px;
+  align-items: center;
+  padding: 4px;
+  border: 1px solid #a3543d;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.pokemon-sheet .pokemon-extra-row input[type="text"] {
+  border-radius: 8px;
+  border: 1px solid #8f6a5a;
+  background: rgba(255, 255, 255, 0.9);
+  height: 28px;
+  padding: 0 8px;
+  font-size: 0.85rem;
+  color: #1e252e;
+}
+
+.pokemon-sheet .pokemon-extra-row .icon-button.danger {
+  background: transparent;
+  border: none;
+  color: #ffaaaa;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 0.85rem;
+}
+
+.pokemon-sheet .pokemon-extra-row .icon-button.danger:hover {
+  color: #ff4444;
+}
+
+.pokemon-sheet .pokemon-extra-inline .empty-state {
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  font-size: 0.82rem;
+  margin: 4px 0;
+}
+
 .pokemon-sheet .attribute-row label {
   margin: 0;
   font-size: 0.85rem;

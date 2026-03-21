@@ -363,6 +363,15 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       ], trackMax.attributes, 1);
       context.pokemonSkillRows = this._buildSkillRows(pokemonSkillKeys, trackMax.skills, 0);
       context.pokemonExtraTrack = this._buildTrack(this.actor.system.extra, trackMax.extra, 0);
+      const pokemonExtraSkills = Array.isArray(this.actor.system.extraSkills)
+        ? this.actor.system.extraSkills
+        : [];
+      context.pokemonExtraSkills = pokemonExtraSkills.map((extraSkill, index) => ({
+        index,
+        name: `${extraSkill?.name ?? ""}`,
+        value: Number(extraSkill?.value ?? 0),
+        track: this._buildTrack(extraSkill?.value, 5, 0)
+      }));
       context.pokemonMatchups = this._buildPokemonMatchups();
       context.pokemonTrackSettingCoreAttributes = context.pokemonPhysicalMentalRows.map((row) => ({
         key: row.key,
@@ -1119,7 +1128,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
   async _onAddExtraSkill(event) {
     event.preventDefault();
-    if (!this.isEditable || this.actor.type !== "trainer") return;
+    if (!this.isEditable || !["trainer", "pokemon"].includes(this.actor.type)) return;
     const current = Array.isArray(this.actor.system.extraSkills)
       ? foundry.utils.deepClone(this.actor.system.extraSkills)
       : [];
@@ -1129,7 +1138,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
   async _onDeleteExtraSkill(event) {
     event.preventDefault();
-    if (!this.isEditable || this.actor.type !== "trainer") return;
+    if (!this.isEditable || !["trainer", "pokemon"].includes(this.actor.type)) return;
     const extraIndex = Number(event.currentTarget.dataset.extraIndex);
     if (!Number.isInteger(extraIndex) || extraIndex < 0) return;
     const current = Array.isArray(this.actor.system.extraSkills)

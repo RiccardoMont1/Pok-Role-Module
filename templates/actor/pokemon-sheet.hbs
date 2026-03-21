@@ -555,29 +555,59 @@
           </button>
         </div>
         {{/each}}
-        <div class="attribute-row">
-          <label>{{localize "POKROLE.Pokemon.Extra"}}</label>
-          <input
-            type="hidden"
-            name="system.extra"
-            value="{{pokemonExtraTrack.value}}"
-            data-dtype="Number"
-          />
-          <div class="track-bar compact" style="{{pokemonExtraTrack.style}}">
-            {{#each pokemonExtraTrack.slots as |slot|}}
-            <button
-              type="button"
-              class="track-box {{#if slot.active}}is-active{{/if}}"
-              data-action="set-track"
-              data-track-field="system.extra"
-              data-track-value="{{slot.value}}"
-              data-track-min="{{../min}}"
-              data-track-max="{{../max}}"
-              title="{{localize 'POKROLE.Pokemon.Extra'}} {{slot.value}}"
-            ></button>
+        <div class="pokemon-extra-inline">
+          <div class="section-title-row">
+            <h3>{{localize "POKROLE.Pokemon.Extra"}}</h3>
+            <button type="button" data-action="add-extra-skill">
+              <i class="fas fa-plus"></i>
+              {{localize "POKROLE.Trainer.AddExtra"}}
+            </button>
+          </div>
+          {{#if pokemonExtraSkills.length}}
+          <div class="pokemon-extra-list">
+            {{#each pokemonExtraSkills as |extra|}}
+            <div class="pokemon-extra-row">
+              <input
+                type="text"
+                name="system.extraSkills.{{extra.index}}.name"
+                value="{{extra.name}}"
+                placeholder="{{localize 'POKROLE.Trainer.ExtraName'}}"
+              />
+              <input
+                type="hidden"
+                name="system.extraSkills.{{extra.index}}.value"
+                value="{{extra.value}}"
+                data-dtype="Number"
+              />
+              <div class="track-bar compact">
+                {{#each extra.track.slots as |slot|}}
+                <button
+                  type="button"
+                  class="track-box {{#if slot.active}}is-active{{/if}}"
+                  data-action="set-track"
+                  data-track-field="system.extraSkills.{{../index}}.value"
+                  data-track-value="{{slot.value}}"
+                  data-track-min="{{../track.min}}"
+                  data-track-max="{{../track.max}}"
+                  title="{{../name}} {{slot.value}}"
+                ></button>
+                {{/each}}
+              </div>
+              <button
+                type="button"
+                class="icon-button danger"
+                data-action="delete-extra-skill"
+                data-extra-index="{{extra.index}}"
+                title="{{localize 'POKROLE.Actions.Delete'}}"
+              >
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
             {{/each}}
           </div>
-          <span></span>
+          {{else}}
+          <p class="empty-state">{{localize "POKROLE.Trainer.NoExtraSkills"}}</p>
+          {{/if}}
         </div>
       </div>
     </section>
