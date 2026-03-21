@@ -322,23 +322,28 @@ const SWITCHER_MOVE_RULES = Object.freeze({
   }),
   "move-circle-throw": Object.freeze({
     mode: "forced-foe-switch",
-    targetMode: "foe"
+    targetMode: "foe",
+    requiresHit: true
   }),
   "move-dragon-tail": Object.freeze({
     mode: "forced-foe-switch",
-    targetMode: "foe"
+    targetMode: "foe",
+    requiresHit: true
   }),
   "move-flip-turn": Object.freeze({
     mode: "self-switch",
-    targetMode: "foe"
+    targetMode: "foe",
+    requiresHit: true
   }),
   "move-parting-shot": Object.freeze({
     mode: "self-switch",
-    targetMode: "foe"
+    targetMode: "foe",
+    requiresHit: true
   }),
   "move-roar": Object.freeze({
     mode: "forced-foe-switch",
-    targetMode: "foe"
+    targetMode: "foe",
+    requiresHit: true
   }),
   "move-shed-tail": Object.freeze({
     mode: "self-switch",
@@ -358,15 +363,18 @@ const SWITCHER_MOVE_RULES = Object.freeze({
   }),
   "move-u-turn": Object.freeze({
     mode: "self-switch",
-    targetMode: "foe"
+    targetMode: "foe",
+    requiresHit: true
   }),
   "move-volt-switch": Object.freeze({
     mode: "self-switch",
-    targetMode: "foe"
+    targetMode: "foe",
+    requiresHit: true
   }),
   "move-whirlwind": Object.freeze({
     mode: "forced-foe-switch",
-    targetMode: "foe"
+    targetMode: "foe",
+    requiresHit: true
   })
 });
 const SPECIAL_CHARGE_MOVE_RULES = Object.freeze({
@@ -567,10 +575,12 @@ const SWITCHER_MOVE_RUNTIME_RULES = Object.freeze({
     requiresHit: true
   }),
   "move-parting-shot": Object.freeze({
-    kind: "self-switch"
+    kind: "self-switch",
+    requiresHit: true
   }),
   "move-roar": Object.freeze({
-    kind: "force-foe-switch"
+    kind: "force-foe-switch",
+    requiresHit: true
   }),
   "move-shed-tail": Object.freeze({
     kind: "shed-tail"
@@ -590,7 +600,8 @@ const SWITCHER_MOVE_RUNTIME_RULES = Object.freeze({
     requiresHit: true
   }),
   "move-whirlwind": Object.freeze({
-    kind: "force-foe-switch"
+    kind: "force-foe-switch",
+    requiresHit: true
   })
 });
 const DELAYED_MOVE_RUNTIME_RULES = Object.freeze({
@@ -8181,13 +8192,12 @@ export class PokRoleActor extends Actor {
     const rule = this._getSwitcherMoveRule(move);
     if (!rule) return [];
 
-    const results = [];
+  const results = [];
     const moveName = `${move?.name ?? game.i18n.localize("POKROLE.Common.Unknown")}`.trim();
     const sourceCombatant = this._getCombatantForActor(this, game.combat);
     const sourceTrainer = this._getPokemonTrainerActor(this);
 
     if (rule.mode === "decoy") {
-      if (!hit) return results;
       const selfHpBefore = Math.max(toNumber(this.system?.resources?.hp?.value, 0), 0);
       const selfDamage = Math.max(Math.floor(toNumber(rule.selfDamage, 0)), 0);
       let selfDamageApplied = null;
@@ -8226,7 +8236,7 @@ export class PokRoleActor extends Actor {
       return results;
     }
 
-    if (!hit && rule.mode !== "ally-switch") {
+    if (!hit && rule.requiresHit) {
       return results;
     }
 
