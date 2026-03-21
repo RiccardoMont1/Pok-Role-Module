@@ -2254,29 +2254,52 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         const ageBonuses = this._getAgeBonuses(age);
         const rankBonuses = this._getRankBonuses(rank);
 
-        const totalAttr = ageBonuses.attr + rankBonuses.attr;
-        const totalSocial = ageBonuses.social + rankBonuses.social;
-        const totalSkill = rankBonuses.skill;
-        const skillLimit = rankBonuses.skillLimit;
-
         // Save the age/rank change first
         await this.actor.update(formData);
 
-        if (totalAttr > 0 || totalSocial > 0 || totalSkill > 0) {
-          await this._showPointDistributionDialog(totalAttr, totalSocial, totalSkill, skillLimit);
+        if (ageChanged) {
+          // Age changed: reset everything and redistribute all points (age + rank)
+          const totalAttr = ageBonuses.attr + rankBonuses.attr;
+          const totalSocial = ageBonuses.social + rankBonuses.social;
+          const totalSkill = rankBonuses.skill;
+          const skillLimit = rankBonuses.skillLimit;
+
+          if (totalAttr > 0 || totalSocial > 0 || totalSkill > 0) {
+            await this._showPointDistributionDialog(totalAttr, totalSocial, totalSkill, skillLimit);
+          } else {
+            const resetData = {};
+            for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) resetData[`system.attributes.${key}`] = 1;
+            for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) resetData[`system.attributes.${key}`] = 1;
+            for (const { key } of SKILL_DEFINITIONS) resetData[`system.skills.${key}`] = 0;
+            await this.actor.update(resetData);
+          }
         } else {
-          // Child at starter rank: reset to base values
-          const resetData = {};
-          for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
-            resetData[`system.attributes.${key}`] = 1;
+          // Only rank changed: keep current attributes, only redistribute rank points
+          // Reset skills to 0 (skills come only from rank)
+          const resetSkills = {};
+          for (const { key } of SKILL_DEFINITIONS) resetSkills[`system.skills.${key}`] = 0;
+          await this.actor.update(resetSkills);
+
+          const rankAttr = rankBonuses.attr;
+          const rankSocial = rankBonuses.social;
+          const totalSkill = rankBonuses.skill;
+          const skillLimit = rankBonuses.skillLimit;
+
+          if (rankAttr > 0 || rankSocial > 0 || totalSkill > 0) {
+            // Use current attribute values as base (they include age bonuses)
+            const currentAttrBase = {};
+            for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
+              currentAttrBase[key] = Number(this.actor.system.attributes?.[key] ?? 1);
+            }
+            const currentSocialBase = {};
+            for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) {
+              currentSocialBase[key] = Number(this.actor.system.attributes?.[key] ?? 1);
+            }
+            await this._showPointDistributionDialog(rankAttr, rankSocial, totalSkill, skillLimit, {
+              attrBase: currentAttrBase,
+              socialBase: currentSocialBase
+            });
           }
-          for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) {
-            resetData[`system.attributes.${key}`] = 1;
-          }
-          for (const { key } of SKILL_DEFINITIONS) {
-            resetData[`system.skills.${key}`] = 0;
-          }
-          await this.actor.update(resetData);
         }
         return;
       }
@@ -2307,14 +2330,15 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     return table[rank] ?? table.starter;
   }
 
-  async _showPointDistributionDialog(totalAttrPoints, totalSocialPoints, totalSkillPoints, skillLimit) {
+  async _showPointDistributionDialog(totalAttrPoints, totalSocialPoints, totalSkillPoints, skillLimit, options = {}) {
+    const { attrBase = {}, socialBase = {} } = options;
     const loc = (key) => game.i18n.localize(key);
 
     const coreAttrs = CORE_ATTRIBUTE_DEFINITIONS.map((a) => ({
-      key: a.key, label: loc(a.label), value: 1
+      key: a.key, label: loc(a.label), value: attrBase[a.key] ?? 1
     }));
     const socialAttrs = SOCIAL_ATTRIBUTE_DEFINITIONS.map((a) => ({
-      key: a.key, label: loc(a.label), value: 1
+      key: a.key, label: loc(a.label), value: socialBase[a.key] ?? 1
     }));
     const skills = SKILL_DEFINITIONS.map((s) => ({
       key: s.key, label: loc(s.label), value: 0
@@ -2364,8 +2388,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       resolved: false
     };
     // Initialize with base values
-    for (const a of CORE_ATTRIBUTE_DEFINITIONS) state.values[`attr:${a.key}`] = 1;
-    for (const a of SOCIAL_ATTRIBUTE_DEFINITIONS) state.values[`social:${a.key}`] = 1;
+    for (const a of CORE_ATTRIBUTE_DEFINITIONS) state.values[`attr:${a.key}`] = attrBase[a.key] ?? 1;
+    for (const a of SOCIAL_ATTRIBUTE_DEFINITIONS) state.values[`social:${a.key}`] = socialBase[a.key] ?? 1;
     for (const s of SKILL_DEFINITIONS) state.values[`skill:${s.key}`] = 0;
 
     return new Promise((resolve) => {
@@ -2411,11 +2435,10 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             social: 5,
             skill: skillLimit
           };
-          const baseByCategory = {
-            attr: 1,
-            social: 1,
-            skill: 0
-          };
+          const attrBaseByKey = {};
+          for (const a of CORE_ATTRIBUTE_DEFINITIONS) attrBaseByKey[a.key] = attrBase[a.key] ?? 1;
+          const socialBaseByKey = {};
+          for (const a of SOCIAL_ATTRIBUTE_DEFINITIONS) socialBaseByKey[a.key] = socialBase[a.key] ?? 1;
 
           const confirmBtn = html.closest(".dialog").find("button[data-button='confirm']");
           confirmBtn.prop("disabled", true);
@@ -2441,7 +2464,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             const dir = Number(btn.data("dir"));
             const valueEl = row.find(".point-dist-value");
             const current = Number(valueEl.text());
-            const base = baseByCategory[category];
+            const base = category === "attr" ? (attrBaseByKey[key] ?? 1)
+              : category === "social" ? (socialBaseByKey[key] ?? 1)
+              : 0;
             const max = maxByCategory[category];
             const newVal = current + dir;
 
