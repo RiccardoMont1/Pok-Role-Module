@@ -8227,13 +8227,13 @@ export class PokRoleActor extends Actor {
     const content = `
       <form class="pok-role-switch-dialog">
         <div class="form-group">
-          <label>${foundry.utils.escapeHTML(prompt ?? (game.i18n.localize("POKROLE.Combat.Switcher.SelectReplacement") !== "POKROLE.Combat.Switcher.SelectReplacement" ? game.i18n.localize("POKROLE.Combat.Switcher.SelectReplacement") : "Seleziona il Pokémon da far entrare in campo"))}</label>
+          <label>${foundry.utils.escapeHTML(prompt ?? game.i18n.localize("POKROLE.Combat.Switcher.SelectReplacement"))}</label>
           <select name="switchCandidateId">${optionsHtml}</select>
         </div>
       </form>
     `;
     const result = await foundry.applications.api.DialogV2.wait({
-      window: { title: title ?? (game.i18n.localize("POKROLE.Combat.Switcher.SelectTitle") !== "POKROLE.Combat.Switcher.SelectTitle" ? game.i18n.localize("POKROLE.Combat.Switcher.SelectTitle") : "Sostituzione Pokémon") },
+      window: { title: title ?? game.i18n.localize("POKROLE.Combat.Switcher.SelectTitle") },
       content,
       buttons: [
         {

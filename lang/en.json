@@ -754,6 +754,35 @@
         "EnterFray": "Enter the Fray",
         "LeaveFray": "Leave the Fray",
         "RunAway": "Run Away"
+      },
+      "Switcher": {
+        "SelectTitle": "Pokémon Replacement",
+        "SelectReplacement": "Select the Pokémon to send into battle",
+        "SelectAlly": "Choose the ally to swap with.",
+        "SelfSwitch": "Self Switch",
+        "ForcedSwitch": "Forced Switch",
+        "AllySwitch": "Ally Switch",
+        "Decoy": "Substitute Decoy",
+        "DecoyCreated": "{actor} creates a Substitute Decoy with {hp} HP.",
+        "DecoyAlreadyPresent": "A Substitute Decoy is already active.",
+        "DecoyBlockedEffect": "The Substitute Decoy blocks the effect for {target}.",
+        "DecoyAbsorbedDamage": "{decoy} absorbs {damage} damage for {target} ({hpBefore} -> {hpAfter}).",
+        "SelfSwitched": "{source} retreats and sends {target} into battle.",
+        "ForcedSwitched": "{target} is forced out and {replacement} enters battle.",
+        "AllySwapped": "{source} swaps places with {target}.",
+        "BatonPass": "Baton Pass",
+        "BatonPassTransferred": "{source} passes {count} stat boosts to {target}.",
+        "EjectButtonTitle": "Eject Button: Choose replacement",
+        "RedCardTitle": "Red Card: Choose replacement"
+      },
+      "Delayed": {
+        "Retarget": {
+          "Damage": "Select a valid target for the delayed hit.",
+          "Wish": "Select the target to receive the delayed healing.",
+          "Yawn": "Select the target to receive the delayed sleep.",
+          "DefaultPrompt": "Choose which combatant should receive the delayed effect.",
+          "Title": "Retarget delayed effect"
+        }
       }
     },
     "Chat": {
@@ -813,17 +842,6 @@
         "Scheduled": "Scheduled",
         "LoyaltySuccess": "Loyalty check succeeded.",
         "LoyaltyFailure": "Loyalty check failed."
-      },
-      "Combat": {
-        "Delayed": {
-          "Retarget": {
-            "Damage": "Select a valid target for the delayed hit.",
-            "Wish": "Select the target to receive the delayed healing.",
-            "Yawn": "Select the target to receive the delayed sleep.",
-            "DefaultPrompt": "Choose which combatant should receive the delayed effect.",
-            "Title": "Retarget delayed effect"
-          }
-        }
       },
       "WeatherNoDamage": "{weather}: no weather damage.",
       "WeatherRoundDamage": "{weather}: {damage} damage.",
@@ -920,26 +938,6 @@
         "ClashFailed": "Clash failed",
         "ClashTargetDamage": "Damage to defender (clash)",
         "ClashAttackerDamage": "Damage to attacker (clash)"
-      },
-      "Switcher": {
-        "SelectTitle": "Choose switch target",
-        "SelectReplacement": "Select the Pokémon to send into battle",
-        "SelectAlly": "Choose the ally to swap with.",
-        "SelfSwitch": "Self Switch",
-        "ForcedSwitch": "Forced Switch",
-        "AllySwitch": "Ally Switch",
-        "Decoy": "Substitute Decoy",
-        "DecoyCreated": "{actor} creates a Substitute Decoy with {hp} HP.",
-        "DecoyAlreadyPresent": "A Substitute Decoy is already active.",
-        "DecoyBlockedEffect": "The Substitute Decoy blocks the effect for {target}.",
-        "DecoyAbsorbedDamage": "{decoy} absorbs {damage} damage for {target} ({hpBefore} -> {hpAfter}).",
-        "SelfSwitched": "{source} retreats and sends {target} into battle.",
-        "ForcedSwitched": "{target} is forced out and {replacement} enters battle.",
-        "AllySwapped": "{source} swaps places with {target}.",
-        "BatonPass": "Baton Pass",
-        "BatonPassTransferred": "{source} passes {count} stat boosts to {target}.",
-        "EjectButtonTitle": "Eject Button: Choose replacement",
-        "RedCardTitle": "Red Card: Choose replacement"
       },
       "ShieldMove": {
         "Label": "Shield Move"
