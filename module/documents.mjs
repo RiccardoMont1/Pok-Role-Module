@@ -1862,7 +1862,15 @@ export class PokRoleActor extends Actor {
     );
     return partyIds
       .map((actorId) => game.actors?.get?.(`${actorId ?? ""}`.trim()) ?? null)
-      .filter((actor) => actor && actor.type === "pokemon" && !activeCombatantActorIds.has(actor.id));
+      .filter((actor) => {
+        if (!actor || actor.type !== "pokemon") return false;
+        if (activeCombatantActorIds.has(actor.id)) return false;
+        // Exclude fainted or 0 HP Pokémon
+        const hp = Math.max(toNumber(actor.system?.resources?.hp?.value, 0), 0);
+        if (hp <= 0) return false;
+        if (actor._isConditionActive?.("dead") || actor._isConditionActive?.("fainted")) return false;
+        return true;
+      });
   }
 
   _getCombatantForActor(actor = this, combat = game.combat) {
@@ -8489,7 +8497,7 @@ export class PokRoleActor extends Actor {
         return results;
       }
 
-      const switched = await this._updateCombatantActor(sourceCombatant, chosenReplacement);
+      const switched = await this._switchCombatantToActor(game.combat, sourceCombatant, chosenReplacement);
       if (!switched) {
         results.push({
           label: game.i18n.localize("POKROLE.Combat.Switcher.BatonPass"),
@@ -8569,7 +8577,7 @@ export class PokRoleActor extends Actor {
         return results;
       }
 
-      const switched = await this._updateCombatantActor(sourceCombatant, chosenReplacement);
+      const switched = await this._switchCombatantToActor(game.combat, sourceCombatant, chosenReplacement);
       if (!switched) {
         results.push({
           label: game.i18n.localize("POKROLE.Combat.Switcher.SelfSwitch"),
@@ -8634,7 +8642,7 @@ export class PokRoleActor extends Actor {
         return results;
       }
 
-      const switched = await this._updateCombatantActor(targetCombatant, chosenReplacement);
+      const switched = await this._switchCombatantToActor(game.combat, targetCombatant, chosenReplacement);
       if (!switched) {
         results.push({
           label: game.i18n.localize("POKROLE.Combat.Switcher.ForcedSwitch"),

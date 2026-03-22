@@ -932,7 +932,7 @@
       },
       "Switcher": {
         "SelectTitle": "Scegli il bersaglio dello switch",
-        "SelectReplacement": "Scegli il Pokémon che entra in campo.",
+        "SelectReplacement": "Seleziona il Pokémon da far entrare in campo",
         "SelectAlly": "Scegli l'alleato con cui scambiare posizione.",
         "SelfSwitch": "Switch del proprio Pokémon",
         "ForcedSwitch": "Switch forzato",

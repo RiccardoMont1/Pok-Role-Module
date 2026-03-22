@@ -920,7 +920,7 @@
       },
       "Switcher": {
         "SelectTitle": "Choose switch target",
-        "SelectReplacement": "Choose the Pokemon that will enter battle.",
+        "SelectReplacement": "Select the Pokémon to send into battle",
         "SelectAlly": "Choose the ally to swap with.",
         "SelfSwitch": "Self Switch",
         "ForcedSwitch": "Forced Switch",
