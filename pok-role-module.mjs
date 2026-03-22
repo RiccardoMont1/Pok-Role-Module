@@ -1182,16 +1182,21 @@ Hooks.on("updateCombat", async (combat, changed) => {
     }
     if (typeof actor.rollInitiative !== "function") continue;
 
-    const initiativeRoll = await actor.rollInitiative({
-      silent: true,
-      updateCombatant: false,
-      setTurnOnRoll: false
-    });
-    const rolledScore = Math.max(
-      Number(actor.system?.combat?.initiative ?? initiativeRoll?.total ?? 0) || 0,
-      0
-    );
-    initiativeUpdates.push({ _id: combatant.id, initiative: rolledScore });
+    try {
+      const initiativeRoll = await actor.rollInitiative({
+        silent: true,
+        updateCombatant: false,
+        setTurnOnRoll: false,
+        skipActionCheck: true
+      });
+      const rolledScore = Math.max(
+        Number(actor.system?.combat?.initiative ?? initiativeRoll?.total ?? 0) || 0,
+        0
+      );
+      initiativeUpdates.push({ _id: combatant.id, initiative: rolledScore });
+    } catch (err) {
+      console.warn(`PokRole | Failed to re-roll initiative for ${actor.name}:`, err);
+    }
   }
 
   if (initiativeUpdates.length > 0) {

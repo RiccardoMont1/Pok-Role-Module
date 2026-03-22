@@ -4691,11 +4691,13 @@ export class PokRoleActor extends Actor {
   }
 
   async rollInitiative(options = {}) {
-    await this.synchronizeConditionalActiveEffects();
-    const actionCheck = await this._assertCanAct("initiative");
-    if (!actionCheck.allowed) {
-      ui.notifications.warn(actionCheck.reason);
-      return null;
+    if (!options.skipActionCheck) {
+      await this.synchronizeConditionalActiveEffects();
+      const actionCheck = await this._assertCanAct("initiative");
+      if (!actionCheck.allowed) {
+        ui.notifications.warn(actionCheck.reason);
+        return null;
+      }
     }
     const roll = await new Roll(POKROLE.INITIATIVE_FORMULA, {
       dexterity: this.getTraitValue("dexterity"),
