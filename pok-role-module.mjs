@@ -1278,15 +1278,14 @@ Hooks.on("deleteCombat", () => {
 });
 
 Hooks.on("getSceneControlButtons", (controls) => {
-  if (!controls.tokens) return;
-  controls.tokens.tools["pokrole-set-weather"] = {
+  const tokenControls = controls.find((c) => c.name === "token");
+  if (!tokenControls) return;
+  tokenControls.tools.push({
     name: "pokrole-set-weather",
     title: "POKROLE.Combat.WeatherSetButton",
     icon: "fas fa-cloud-sun-rain",
     button: true,
-    order: 100,
-    visible: game.user.isGM,
-    onChange: () => {
+    onClick: () => {
       const weatherOptions = [
         "none", "sunny", "harsh-sunlight", "rain",
         "typhoon", "sandstorm", "strong-winds", "hail"
