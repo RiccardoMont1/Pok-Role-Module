@@ -2265,10 +2265,10 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
           if (totalAttr > 0 || totalSocial > 0 || totalSkill > 0) {
             const confirmed = await this._showPointDistributionDialog(totalAttr, totalSocial, totalSkill, skillLimit, {
-              trackRank: rank
+              trackRank: rank,
+              pendingFormData: formData
             });
             if (confirmed) {
-              await this.actor.update(formData);
               await this.actor.setFlag("pok-role-system", "rankDistributions", {});
             }
             // If cancelled, nothing changes
@@ -2317,12 +2317,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
                 attrBase: currentAttrBase,
                 socialBase: currentSocialBase,
                 skillBase: currentSkillBase,
-                trackRank: rank
+                trackRank: rank,
+                pendingFormData: { "system.cardRank": rank }
               });
-              if (confirmed) {
-                // Only save rank after successful distribution
-                await this.actor.update({ "system.cardRank": rank });
-              }
               // If cancelled, rank stays at oldRank - nothing to revert
             } else {
               // No points to distribute, just save the rank
@@ -2364,7 +2361,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   async _showPointDistributionDialog(totalAttrPoints, totalSocialPoints, totalSkillPoints, skillLimit, options = {}) {
-    const { attrBase = {}, socialBase = {}, skillBase = {}, trackRank = null } = options;
+    const { attrBase = {}, socialBase = {}, skillBase = {}, trackRank = null, pendingFormData = null } = options;
     const loc = (key) => game.i18n.localize(key);
 
     const coreAttrs = CORE_ATTRIBUTE_DEFINITIONS.map((a) => ({
@@ -2466,6 +2463,10 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
               }
               if (extraSkills.length > 0) {
                 updateData["system.extraSkills"] = updatedExtraSkills;
+              }
+              // Include pending form data (rank/age change) in the same update
+              if (pendingFormData) {
+                Object.assign(updateData, pendingFormData);
               }
               await this.actor.update(updateData);
               if (trackRank) {
