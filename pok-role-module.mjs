@@ -1277,6 +1277,81 @@ Hooks.on("deleteCombat", () => {
   void renderMoveQueueOverlay();
 });
 
+Hooks.on("getSceneControlButtons", (controls) => {
+  const tokenControls = controls.find((c) => c.name === "token");
+  if (!tokenControls) return;
+  tokenControls.tools.push({
+    name: "pokrole-set-weather",
+    title: "POKROLE.Combat.WeatherSetButton",
+    icon: "fas fa-cloud-sun-rain",
+    button: true,
+    onClick: () => {
+      const weatherOptions = [
+        "none", "sunny", "harsh-sunlight", "rain",
+        "typhoon", "sandstorm", "strong-winds", "hail"
+      ];
+      const weatherLabelKeys = {
+        none: "POKROLE.Common.None",
+        sunny: "POKROLE.Combat.WeatherValues.Sunny",
+        "harsh-sunlight": "POKROLE.Combat.WeatherValues.HarshSunlight",
+        rain: "POKROLE.Combat.WeatherValues.Rain",
+        typhoon: "POKROLE.Combat.WeatherValues.Typhoon",
+        sandstorm: "POKROLE.Combat.WeatherValues.Sandstorm",
+        "strong-winds": "POKROLE.Combat.WeatherValues.StrongWinds",
+        hail: "POKROLE.Combat.WeatherValues.Hail"
+      };
+      const weatherOptionsMarkup = weatherOptions
+        .map(
+          (key) =>
+            `<option value="${key}">${game.i18n.localize(weatherLabelKeys[key] ?? "POKROLE.Common.None")}</option>`
+        )
+        .join("");
+      new Dialog(
+        {
+          title: game.i18n.localize("POKROLE.Combat.WeatherSetTitle"),
+          content: `
+            <form class="pok-role-combined-roll">
+              <div class="form-group">
+                <label>${game.i18n.localize("POKROLE.Combat.WeatherLabel")}</label>
+                <select name="weather">${weatherOptionsMarkup}</select>
+              </div>
+            </form>
+          `,
+          buttons: {
+            confirm: {
+              icon: "<i class='fas fa-check'></i>",
+              label: game.i18n.localize("POKROLE.Combat.ConfirmReaction"),
+              callback: async (dialogHtml) => {
+                const selected =
+                  dialogHtml?.[0]?.querySelector("select[name='weather']")?.value ?? "none";
+                if (!selected) return;
+                const actor =
+                  canvas?.tokens?.controlled?.[0]?.actor ??
+                  game.user?.character ??
+                  game.actors?.find((a) => a.type === "trainer" && a.isOwner) ??
+                  null;
+                if (!actor || typeof actor.setActiveWeather !== "function") {
+                  ui.notifications.warn(
+                    game.i18n.localize("POKROLE.Errors.NoTrainerActor")
+                  );
+                  return;
+                }
+                await actor.setActiveWeather(selected);
+              }
+            },
+            cancel: {
+              icon: "<i class='fas fa-times'></i>",
+              label: game.i18n.localize("POKROLE.Common.Cancel")
+            }
+          },
+          default: "confirm"
+        },
+        { classes: ["pok-role-dialog"] }
+      ).render(true);
+    }
+  });
+});
+
 Hooks.on("applyTokenStatusEffect", (token, statusId, isActive) => {
   const conditionKey = resolveConditionKeyFromStatus(statusId);
   if (!conditionKey) return;

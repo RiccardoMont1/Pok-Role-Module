@@ -1020,6 +1020,7 @@
       "CombatantSwapFailed": "Unable to swap combatants. Check permissions.",
       "InvalidEffectConfiguration": "Complete the effect configuration before applying it.",
       "CombatRequired": "This action requires an active combat.",
+      "NoTrainerActor": "No trainer actor found. Select a token or assign a character.",
       "MoveBlockedByWeather": "Move blocked by weather: {weather}.",
       "MoveBlockedByTerrain": "Move blocked by terrain: {terrain}.",
       "MoveRequiresActiveTerrain": "This move requires an active terrain.",

@@ -1032,6 +1032,7 @@
       "CombatantSwapFailed": "Impossibile scambiare i combatant. Controlla i permessi.",
       "InvalidEffectConfiguration": "Completa la configurazione dell'effetto prima di applicarlo.",
       "CombatRequired": "Questa azione richiede un combattimento attivo.",
+      "NoTrainerActor": "Nessun allenatore trovato. Seleziona un token o assegna un personaggio.",
       "MoveBlockedByWeather": "Mossa bloccata dal meteo: {weather}.",
       "MoveBlockedByTerrain": "Mossa bloccata dal terreno: {terrain}.",
       "MoveRequiresActiveTerrain": "Questa mossa richiede un terreno attivo.",
