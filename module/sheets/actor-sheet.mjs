@@ -2624,14 +2624,14 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   _getPokemonTierBonuses(tier) {
     const table = {
       none:     { attr: 0,  social: 0,  skill: 0,  skillLimit: 0 },
-      starter:  { attr: 0,  social: 0,  skill: 0,  skillLimit: 1 },
-      rookie:   { attr: 2,  social: 1,  skill: 2,  skillLimit: 2 },
-      standard: { attr: 4,  social: 2,  skill: 4,  skillLimit: 3 },
-      advanced: { attr: 6,  social: 3,  skill: 6,  skillLimit: 4 },
-      expert:   { attr: 8,  social: 4,  skill: 8,  skillLimit: 5 },
-      ace:      { attr: 10, social: 5,  skill: 10, skillLimit: 5 },
-      master:   { attr: 12, social: 6,  skill: 12, skillLimit: 5 },
-      champion: { attr: 14, social: 8,  skill: 14, skillLimit: 5 }
+      starter:  { attr: 0,  social: 0,  skill: 5,  skillLimit: 1 },
+      rookie:   { attr: 2,  social: 2,  skill: 10, skillLimit: 2 },
+      standard: { attr: 4,  social: 4,  skill: 14, skillLimit: 3 },
+      advanced: { attr: 6,  social: 6,  skill: 17, skillLimit: 4 },
+      expert:   { attr: 8,  social: 8,  skill: 19, skillLimit: 5 },
+      ace:      { attr: 10, social: 10, skill: 20, skillLimit: 5 },
+      master:   { attr: 10, social: 10, skill: 22, skillLimit: 5 },
+      champion: { attr: 14, social: 14, skill: 25, skillLimit: 5 }
     };
     return table[tier] ?? table.none;
   }
