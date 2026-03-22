@@ -1,7 +1,6 @@
 Automatizazione delle mosse:
 
 - terrain/field engine
-- switch/reposition
 - copy/mutation
 - maneuver engine
 - Z-Move overrides
