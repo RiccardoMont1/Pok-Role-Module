@@ -2313,12 +2313,16 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
               for (let i = 0; i < currentExtraSkills.length; i++) {
                 currentSkillBase[`extra_${i}`] = Number(currentExtraSkills[i].value ?? 0);
               }
-              await this._showPointDistributionDialog(diffAttr, diffSocial, diffSkill, skillLimit, {
+              const confirmed = await this._showPointDistributionDialog(diffAttr, diffSocial, diffSkill, skillLimit, {
                 attrBase: currentAttrBase,
                 socialBase: currentSocialBase,
                 skillBase: currentSkillBase,
                 trackRank: rank
               });
+              if (!confirmed) {
+                // User cancelled: revert rank
+                await this.actor.update({ "system.cardRank": oldRank });
+              }
             }
           } else if (newIdx < oldIdx) {
             // Downgrade: automatically remove points that were distributed for ranks above the new rank
