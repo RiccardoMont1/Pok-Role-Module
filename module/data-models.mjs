@@ -169,10 +169,27 @@ export class TrainerDataModel extends BaseCharacterDataModel {
 }
 
 export class PokemonDataModel extends BaseCharacterDataModel {
+  /** @override */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    const baseHp = Math.max(Math.floor(Number(this.baseHp) || 0), 1);
+    const vitality = Math.max(Math.floor(Number(this.attributes?.vitality) || 0), 0);
+    const insight = Math.max(Math.floor(Number(this.attributes?.insight) || 0), 0);
+    this.resources.hp.max = baseHp + vitality;
+    this.resources.will.max = insight + 3;
+    if (this.resources.hp.value > this.resources.hp.max) {
+      this.resources.hp.value = this.resources.hp.max;
+    }
+    if (this.resources.will.value > this.resources.will.max) {
+      this.resources.will.value = this.resources.will.max;
+    }
+  }
+
   static defineSchema() {
     const base = super.defineSchema();
     return {
       ...base,
+      baseHp: integerField(4, { min: 1, max: 99 }),
       attributes: new SchemaField(pokemonAttributeSchema()),
       skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 0, { min: 0, max: 5 })),
       caughtBy: trimmedStringField(""),

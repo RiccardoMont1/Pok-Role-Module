@@ -440,7 +440,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.moves = moves;
     if (this.actor.type === "pokemon") {
       const insightValue = Math.max(Number(this.actor.system.attributes?.insight ?? 0), 0);
-      context.maxUsableMoves = insightValue + 2;
+      context.maxUsableMoves = insightValue + 3;
       context.usableMoves = moves.filter((move) => move.isUsable);
       context.learnedMoves = moves;
       context.usableMovesCount = context.usableMoves.length;
@@ -827,7 +827,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     event.preventDefault();
     if (!this.isEditable || this.actor.type !== "pokemon") return;
     const insightValue = Math.max(Number(this.actor.system.attributes?.insight ?? 0), 0);
-    const maxUsableMoves = insightValue + 2;
+    const maxUsableMoves = insightValue + 3;
     const usableMovesCount = this.actor.items.filter(
       (item) => item.type === "move" && item.system?.isUsable !== false
     ).length;
@@ -915,7 +915,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
     if (nextValue) {
       const insightValue = Math.max(Number(this.actor.system.attributes?.insight ?? 0), 0);
-      const maxUsableMoves = insightValue + 2;
+      const maxUsableMoves = insightValue + 3;
       const usableMovesCount = this.actor.items.filter(
         (item) => item.type === "move" && item.system?.isUsable !== false
       ).length;

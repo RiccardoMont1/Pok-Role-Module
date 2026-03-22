@@ -282,15 +282,15 @@
               name="system.resources.hp.value"
               value="{{system.resources.hp.value}}"
               min="0"
+              max="{{system.resources.hp.max}}"
               data-dtype="Number"
             />
             <span>/</span>
             <input
               type="number"
-              name="system.resources.hp.max"
               value="{{system.resources.hp.max}}"
-              min="1"
-              data-dtype="Number"
+              disabled
+              title="Base HP + Vitality"
             />
           </div>
         </label>
@@ -302,15 +302,15 @@
               name="system.resources.will.value"
               value="{{system.resources.will.value}}"
               min="0"
+              max="{{system.resources.will.max}}"
               data-dtype="Number"
             />
             <span>/</span>
             <input
               type="number"
-              name="system.resources.will.max"
               value="{{system.resources.will.max}}"
-              min="1"
-              data-dtype="Number"
+              disabled
+              title="Insight + 3"
             />
           </div>
         </label>
@@ -1233,6 +1233,25 @@
               />
             </label>
             {{/each}}
+          </div>
+        </section>
+      </div>
+
+      <div class="pokemon-settings-grid" style="margin-top:12px;">
+        <section class="pokemon-settings-block">
+          <h3>{{localize "POKROLE.Pokemon.BaseHP"}}</h3>
+          <div class="pokemon-settings-list">
+            <label>
+              <span>{{localize "POKROLE.Pokemon.BaseHPHint"}}</span>
+              <input
+                type="number"
+                name="system.baseHp"
+                value="{{system.baseHp}}"
+                min="1"
+                max="99"
+                data-dtype="Number"
+              />
+            </label>
           </div>
         </section>
       </div>

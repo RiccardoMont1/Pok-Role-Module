@@ -238,6 +238,8 @@
       "SettingsHint": "Questi limiti vengono salvati solo su questo attore Pokemon.",
       "SettingsCoreBase": "Attributi Core Base",
       "SettingsCoreMax": "Attributi Core Massimi",
+      "BaseHP": "HP Base",
+      "BaseHPHint": "HP base della specie (HP Max = Base + Vitalità)",
       "SettingsFixedAtFive": "Attributi Sociali, Abilita ed Extra sono fissi a 0-5.",
       "SettingsAttributesMax": "Massimi Attributi",
       "SettingsSkillsMax": "Massimi Abilita",
