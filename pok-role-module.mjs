@@ -1278,14 +1278,15 @@ Hooks.on("deleteCombat", () => {
 });
 
 Hooks.on("getSceneControlButtons", (controls) => {
-  const tokenControls = controls.find((c) => c.name === "token");
-  if (!tokenControls) return;
-  tokenControls.tools.push({
+  if (!controls.tokens) return;
+  controls.tokens.tools["pokrole-set-weather"] = {
     name: "pokrole-set-weather",
     title: "POKROLE.Combat.WeatherSetButton",
-    icon: "fas fa-cloud-sun-rain",
+    icon: "fa-solid fa-cloud-sun-rain",
+    order: Object.keys(controls.tokens.tools).length,
     button: true,
-    onClick: () => {
+    visible: game.user.isGM,
+    onChange: () => {
       const weatherOptions = [
         "none", "sunny", "harsh-sunlight", "rain",
         "typhoon", "sandstorm", "strong-winds", "hail"
@@ -1349,7 +1350,7 @@ Hooks.on("getSceneControlButtons", (controls) => {
         { classes: ["pok-role-dialog"] }
       ).render(true);
     }
-  });
+  };
 });
 
 Hooks.on("applyTokenStatusEffect", (token, statusId, isActive) => {
