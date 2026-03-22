@@ -229,14 +229,17 @@ export async function executeCombatMoveEntry(combat, entryId) {
     return null;
   }
 
+  // Remove the entry from the queue BEFORE executing the move.
+  // Switch moves (U-Turn, Volt Switch, etc.) delete the old combatant during
+  // execution, which makes post-execution removal unreliable.
+  await removeCombatMoveEntry(combat, normalizedEntryId);
+
   const result = await actor.rollMove(move.id, {
     targetActorIds: entry.targetActorIds,
     executeFromQueue: true
   });
-  if (!result) return null;
 
-  await removeCombatMoveEntry(combat, normalizedEntryId);
-  return result;
+  return result ?? null;
 }
 
 function clearDropClasses(root) {
