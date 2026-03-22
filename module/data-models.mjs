@@ -88,8 +88,8 @@ class BaseCharacterDataModel extends foundry.abstract.TypeDataModel {
       biography: trimmedStringField(""),
       conditions: conditionSchemaField(),
       resources: new SchemaField({
-        hp: resourceField(10),
-        will: resourceField(3)
+        hp: resourceField(5),
+        will: resourceField(4)
       }),
       attributes: new SchemaField(valueSchema(ATTRIBUTE_DEFINITIONS, 1, { max: 5 })),
       skills: new SchemaField(valueSchema(SKILL_DEFINITIONS, 0, { max: 5 })),
@@ -109,6 +109,13 @@ export class TrainerDataModel extends BaseCharacterDataModel {
     const insight = Math.max(Math.floor(Number(this.attributes?.insight) || 0), 0);
     this.resources.hp.max = 4 + vitality;
     this.resources.will.max = insight + 3;
+    // Clamp current value so it never exceeds the computed max
+    if (this.resources.hp.value > this.resources.hp.max) {
+      this.resources.hp.value = this.resources.hp.max;
+    }
+    if (this.resources.will.value > this.resources.will.max) {
+      this.resources.will.value = this.resources.will.max;
+    }
   }
 
   static defineSchema() {
