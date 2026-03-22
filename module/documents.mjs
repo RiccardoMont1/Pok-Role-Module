@@ -16677,7 +16677,7 @@ export class PokRoleActor extends Actor {
 
   _resolveMovePower(move, targetActor = null, actionNumber = 1, options = {}) {
     let basePower;
-    const runtimeOverridePower = options?.runtimeOverride && Number.isFinite(Number(options.runtimeOverride.power))
+    const runtimeOverridePower = options?.runtimeOverride && options.runtimeOverride.power != null && Number.isFinite(Number(options.runtimeOverride.power))
       ? Math.max(Math.floor(toNumber(options.runtimeOverride.power, 0)), 0)
       : null;
     const powerFormula = `${move?.system?.powerFormula ?? ""}`.trim();
