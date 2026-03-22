@@ -720,6 +720,7 @@
       "MoveQueueTargets": "Targets",
       "MoveQueued": "{actor} declared {move}.",
       "MoveQueueBrokenEntry": "Queued move is no longer valid. Remove it from the queue.",
+      "TrackerCycleTitle": "{round} (Cycle {cycle}/{max})",
       "WeatherSetButton": "Set Weather",
       "WeatherSetTitle": "Set Weather",
       "WeatherLabel": "Weather",

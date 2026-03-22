@@ -732,6 +732,7 @@
       "MoveQueueTargets": "Bersagli",
       "MoveQueued": "{actor} ha dichiarato {move}.",
       "MoveQueueBrokenEntry": "La mossa in coda non e piu valida. Rimuovila dalla coda.",
+      "TrackerCycleTitle": "{round} (Ciclo {cycle}/{max})",
       "WeatherSetButton": "Imposta Meteo",
       "WeatherSetTitle": "Imposta Meteo",
       "WeatherLabel": "Meteo",

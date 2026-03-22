@@ -1323,18 +1323,27 @@ Hooks.on("deleteCombat", () => {
   void renderMoveQueueOverlay();
 });
 
-// Display "(Turno X)" next to "Round N" in the combat tracker header
+// Display "(Ciclo X/Y)" next to "Round N" in the combat tracker header
 Hooks.on("renderCombatTracker", (app, html) => {
   const combat = game.combat;
   if (!combat || !(combat instanceof PokRoleCombat)) return;
   const cycle = combat.cycle;
+  const maxCycles = PokRoleCombat.MAX_CYCLES;
   const roundEl = html instanceof HTMLElement
-    ? html.querySelector(".encounter-title .round")
-    : html.find?.(".encounter-title .round")?.[0];
+    ? html.querySelector(".encounter-title .round") ?? html.querySelector(".encounter-title")
+    : html.find?.(".encounter-title .round")?.[0] ?? html.find?.(".encounter-title")?.[0];
   if (!roundEl) return;
-  if (!roundEl.textContent.includes("(Turno")) {
-    roundEl.textContent = `${roundEl.textContent.trim()} (Turno ${cycle})`;
-  }
+  const currentTitle = `${roundEl.textContent ?? ""}`.trim();
+  if (!currentTitle) return;
+  const baseTitle = currentTitle
+    .replace(/\s*\((?:Turno\s+\d+|Ciclo\s+\d+\/\d+|Cycle\s+\d+\/\d+)\)\s*$/i, "")
+    .trim();
+  if (!baseTitle) return;
+  roundEl.textContent = game.i18n.format("POKROLE.Combat.TrackerCycleTitle", {
+    round: baseTitle,
+    cycle,
+    max: maxCycles
+  });
 });
 
 Hooks.on("getSceneControlButtons", (controls) => {
