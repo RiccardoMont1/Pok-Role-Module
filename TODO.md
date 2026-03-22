@@ -8,8 +8,6 @@ Wish al round successivo non cura
 
 Toxic Spike quando sostituisco il pokémon, il pokémon che entra non diventa avvelenato (Inoltre dovrebbe tirare un change dice e se fa 6 invece di avvelenato dovrebbe essere gravemente avvelenato) Suppongo che dià lo stesso problema per Spikes e Stealth Rock
 
-Controllare Copycat insieme
-
 Import delle abilità e dei pokémon e rimozione del compendio "Pokédex"
 
 Per le abilità dei pokémon, le abilità attualmente non hanno immagini. Non ci sono immagini per le abilità
