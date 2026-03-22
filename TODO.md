@@ -10,7 +10,7 @@ Toxic Spike quando sostituisco il pokémon, il pokémon che entra non diventa av
 
 Controllare Copycat insieme
 
-Import delle abilità e dei pokémon e rimozione del compendio "Pokéedex"
+Import delle abilità e dei pokémon e rimozione del compendio "Pokédex"
 
 Per le abilità dei pokémon, le abilità attualmente non hanno immagini. Non ci sono immagini per le abilità
 
