@@ -2250,30 +2250,31 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       if (ageChanged || rankChanged) {
         const age = Number(formData["system.age"] ?? this.actor.system.age);
         const rank = formData["system.cardRank"] ?? this.actor.system.cardRank;
-        // Save old rank BEFORE updating
+        const oldAge = Number(this.actor.system.age) || 0;
         const oldRank = this.actor.system.cardRank;
 
         const ageBonuses = this._getAgeBonuses(age);
         const rankBonuses = this._getRankBonuses(rank);
 
-        // Save the age/rank change
-        await this.actor.update(formData);
-
         if (ageChanged) {
-          // Age changed: reset everything and redistribute all points (age + rank)
+          // Age changed: show dialog FIRST, only save if confirmed
           const totalAttr = ageBonuses.attr + rankBonuses.attr;
           const totalSocial = ageBonuses.social + rankBonuses.social;
           const totalSkill = rankBonuses.skill;
           const skillLimit = rankBonuses.skillLimit;
 
-          // Clear all rank distribution history
-          await this.actor.setFlag("pok-role-system", "rankDistributions", {});
-
           if (totalAttr > 0 || totalSocial > 0 || totalSkill > 0) {
-            await this._showPointDistributionDialog(totalAttr, totalSocial, totalSkill, skillLimit, {
+            const confirmed = await this._showPointDistributionDialog(totalAttr, totalSocial, totalSkill, skillLimit, {
               trackRank: rank
             });
+            if (confirmed) {
+              await this.actor.update(formData);
+              await this.actor.setFlag("pok-role-system", "rankDistributions", {});
+            }
+            // If cancelled, nothing changes
           } else {
+            await this.actor.update(formData);
+            await this.actor.setFlag("pok-role-system", "rankDistributions", {});
             const resetData = {};
             for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) resetData[`system.attributes.${key}`] = 1;
             for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) resetData[`system.attributes.${key}`] = 1;
@@ -2287,7 +2288,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           const newIdx = rankOrder.indexOf(rank);
 
           if (newIdx > oldIdx) {
-            // Upgrade: calculate difference and distribute extra points
+            // Upgrade: show dialog FIRST, only save rank if confirmed
             const oldRankBonuses = this._getRankBonuses(oldRank);
             const diffAttr = rankBonuses.attr - oldRankBonuses.attr;
             const diffSocial = rankBonuses.social - oldRankBonuses.social;
@@ -2307,7 +2308,6 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
               for (const { key } of SKILL_DEFINITIONS) {
                 currentSkillBase[key] = Number(this.actor.system.skills?.[key] ?? 0);
               }
-              // Include extra skills in skill base
               const currentExtraSkills = Array.isArray(this.actor.system.extraSkills)
                 ? this.actor.system.extraSkills : [];
               for (let i = 0; i < currentExtraSkills.length; i++) {
@@ -2319,13 +2319,18 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
                 skillBase: currentSkillBase,
                 trackRank: rank
               });
-              if (!confirmed) {
-                // User cancelled: revert rank
-                await this.actor.update({ "system.cardRank": oldRank });
+              if (confirmed) {
+                // Only save rank after successful distribution
+                await this.actor.update({ "system.cardRank": rank });
               }
+              // If cancelled, rank stays at oldRank - nothing to revert
+            } else {
+              // No points to distribute, just save the rank
+              await this.actor.update(formData);
             }
           } else if (newIdx < oldIdx) {
-            // Downgrade: automatically remove points that were distributed for ranks above the new rank
+            // Downgrade: save rank change then remove points
+            await this.actor.update(formData);
             await this._applyRankDowngrade(oldRank, rank, rankOrder);
           }
         }
