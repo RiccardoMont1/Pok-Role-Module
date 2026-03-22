@@ -25,6 +25,8 @@
       "SkillPoints": "Skill Points",
       "SkillLimit": "Skill Limit",
       "Remaining": "Remaining",
+      "ToRemove": "To Remove",
+      "RemovePoints": "You need to remove points due to a rank downgrade.",
       "PointsDistributed": "Points distributed successfully"
     },
     "AgeGroup": {

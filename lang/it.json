@@ -25,6 +25,8 @@
       "SkillPoints": "Punti Abilita",
       "SkillLimit": "Limite Abilita",
       "Remaining": "Rimanenti",
+      "ToRemove": "Da Rimuovere",
+      "RemovePoints": "Devi rimuovere dei punti a causa del downgrade di rank.",
       "PointsDistributed": "Punti distribuiti con successo"
     },
     "AgeGroup": {
