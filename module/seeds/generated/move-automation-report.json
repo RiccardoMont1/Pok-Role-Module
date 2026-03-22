@@ -1,26 +1,16 @@
 {
-  "source": "D:\\DeskTop\\Script\\Pok\u00e8Role Module\\Pok-Role-Module\\_upstream\\foundry-pokerole\\packs\\moves.db",
-  "totalMoves": 888,
+  "source": "D:\\DeskTop\\Script\\Pok\u00e8Role Module\\external-references\\Pokerole-Data\\v3.0\\Moves",
+  "totalMoves": 894,
   "statusTotals": {
-    "full": 827,
-    "manual": 45,
-    "partial": 16
+    "full": 872,
+    "manual": 18,
+    "partial": 4
   },
   "reasonTotals": {
-    "external-rule-reference": 24,
+    "external-rule-reference": 18,
     "mixed-category": 18,
     "suggested-effects": 18,
-    "dynamic-type": 13,
-    "maneuver-rule": 11,
-    "dynamax-rule": 4,
-    "stored-damage-formula": 1,
-    "destroy-shield": 3,
-    "copied-move-dependent": 8,
-    "user-faints": 4,
-    "alternative-trait-formula": 1,
-    "dynamic-power-formula": 4,
-    "status-cleanse": 3,
-    "temporary-type-immunity-change": 1
+    "dynamax-rule": 4
   },
   "moves": [
     {
@@ -204,12 +194,9 @@
     {
       "name": "Ambush",
       "seedId": "move-ambush",
-      "status": "manual",
-      "reasons": [
-        "dynamic-type",
-        "maneuver-rule"
-      ],
-      "type": "none",
+      "status": "full",
+      "reasons": [],
+      "type": "normal",
       "category": "support",
       "target": "foe",
       "secondaryEffects": 0
@@ -332,7 +319,7 @@
       "type": "grass",
       "category": "support",
       "target": "all-allies",
-      "secondaryEffects": 0
+      "secondaryEffects": 1
     },
     {
       "name": "Aromatic Mist",
@@ -505,6 +492,16 @@
       "secondaryEffects": 0
     },
     {
+      "name": "Barb Barrage",
+      "seedId": "move-barb-barrage",
+      "status": "full",
+      "reasons": [],
+      "type": "poison",
+      "category": "physical",
+      "target": "foe",
+      "secondaryEffects": 1
+    },
+    {
       "name": "Barrage",
       "seedId": "move-barrage",
       "status": "full",
@@ -611,10 +608,8 @@
     {
       "name": "Bide",
       "seedId": "move-bide",
-      "status": "manual",
-      "reasons": [
-        "stored-damage-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -915,10 +910,8 @@
     {
       "name": "Brick Break",
       "seedId": "move-brick-break",
-      "status": "partial",
-      "reasons": [
-        "destroy-shield"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "physical",
       "target": "foe",
@@ -1227,13 +1220,9 @@
     {
       "name": "Clash",
       "seedId": "move-clash",
-      "status": "manual",
-      "reasons": [
-        "dynamic-type",
-        "external-rule-reference",
-        "maneuver-rule"
-      ],
-      "type": "none",
+      "status": "full",
+      "reasons": [],
+      "type": "normal",
       "category": "support",
       "target": "self",
       "secondaryEffects": 0
@@ -1405,10 +1394,8 @@
     {
       "name": "Copycat",
       "seedId": "move-copycat",
-      "status": "manual",
-      "reasons": [
-        "copied-move-dependent"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "foe",
@@ -1501,12 +1488,9 @@
     {
       "name": "Cover An Ally",
       "seedId": "move-cover-an-ally",
-      "status": "manual",
-      "reasons": [
-        "dynamic-type",
-        "maneuver-rule"
-      ],
-      "type": "none",
+      "status": "full",
+      "reasons": [],
+      "type": "normal",
       "category": "support",
       "target": "ally",
       "secondaryEffects": 0
@@ -1694,10 +1678,8 @@
     {
       "name": "Defog",
       "seedId": "move-defog",
-      "status": "partial",
-      "reasons": [
-        "destroy-shield"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "flying",
       "category": "support",
       "target": "battlefield",
@@ -1706,10 +1688,8 @@
     {
       "name": "Destiny Bond",
       "seedId": "move-destiny-bond",
-      "status": "partial",
-      "reasons": [
-        "user-faints"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ghost",
       "category": "support",
       "target": "self",
@@ -1760,6 +1740,16 @@
       "secondaryEffects": 0
     },
     {
+      "name": "Dire Claw",
+      "seedId": "move-dire-claw",
+      "status": "full",
+      "reasons": [],
+      "type": "poison",
+      "category": "physical",
+      "target": "foe",
+      "secondaryEffects": 3
+    },
+    {
       "name": "Disable",
       "seedId": "move-disable",
       "status": "full",
@@ -1772,10 +1762,8 @@
     {
       "name": "Disarming Voice",
       "seedId": "move-disarming-voice",
-      "status": "partial",
-      "reasons": [
-        "alternative-trait-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fairy",
       "category": "special",
       "target": "all-foes",
@@ -2356,13 +2344,9 @@
     {
       "name": "Evasion",
       "seedId": "move-evasion",
-      "status": "manual",
-      "reasons": [
-        "dynamic-type",
-        "external-rule-reference",
-        "maneuver-rule"
-      ],
-      "type": "none",
+      "status": "full",
+      "reasons": [],
+      "type": "normal",
       "category": "support",
       "target": "self",
       "secondaryEffects": 0
@@ -2520,10 +2504,8 @@
     {
       "name": "Fickle Beam",
       "seedId": "move-fickle-beam",
-      "status": "manual",
-      "reasons": [
-        "dynamic-power-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dragon",
       "category": "special",
       "target": "foe",
@@ -2562,10 +2544,8 @@
     {
       "name": "Final Gambit",
       "seedId": "move-final-gambit",
-      "status": "manual",
-      "reasons": [
-        "dynamic-power-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fighting",
       "category": "special",
       "target": "foe",
@@ -2764,10 +2744,8 @@
     {
       "name": "Fling",
       "seedId": "move-fling",
-      "status": "manual",
-      "reasons": [
-        "external-rule-reference"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dark",
       "category": "physical",
       "target": "foe",
@@ -3190,12 +3168,9 @@
     {
       "name": "Grapple",
       "seedId": "move-grapple",
-      "status": "manual",
-      "reasons": [
-        "dynamic-type",
-        "maneuver-rule"
-      ],
-      "type": "none",
+      "status": "full",
+      "reasons": [],
+      "type": "normal",
       "category": "support",
       "target": "foe",
       "secondaryEffects": 0
@@ -3458,7 +3433,7 @@
       "type": "normal",
       "category": "support",
       "target": "all-allies",
-      "secondaryEffects": 0
+      "secondaryEffects": 1
     },
     {
       "name": "Heal Block",
@@ -3493,10 +3468,8 @@
     {
       "name": "Healing Wish",
       "seedId": "move-healing-wish",
-      "status": "partial",
-      "reasons": [
-        "user-faints"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "support",
       "target": "self",
@@ -3555,12 +3528,9 @@
     {
       "name": "Help Another",
       "seedId": "move-help-another",
-      "status": "manual",
-      "reasons": [
-        "dynamic-type",
-        "maneuver-rule"
-      ],
-      "type": "none",
+      "status": "full",
+      "reasons": [],
+      "type": "normal",
       "category": "support",
       "target": "ally",
       "secondaryEffects": 0
@@ -3588,11 +3558,8 @@
     {
       "name": "Hidden Power",
       "seedId": "move-hidden-power",
-      "status": "manual",
-      "reasons": [
-        "dynamic-type",
-        "external-rule-reference"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "none",
       "category": "special",
       "target": "foe",
@@ -3989,10 +3956,8 @@
     {
       "name": "Instruct",
       "seedId": "move-instruct",
-      "status": "manual",
-      "reasons": [
-        "copied-move-dependent"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "support",
       "target": "foe",
@@ -4041,10 +4006,8 @@
     {
       "name": "Ivy Cudgel",
       "seedId": "move-ivy-cudgel",
-      "status": "manual",
-      "reasons": [
-        "copied-move-dependent"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "physical",
       "target": "foe",
@@ -4073,12 +4036,8 @@
     {
       "name": "Judgment",
       "seedId": "move-judgment",
-      "status": "manual",
-      "reasons": [
-        "dynamic-power-formula",
-        "dynamic-type",
-        "external-rule-reference"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "special",
       "target": "foe",
@@ -4097,14 +4056,12 @@
     {
       "name": "Jungle Healing",
       "seedId": "move-jungle-healing",
-      "status": "partial",
-      "reasons": [
-        "status-cleanse"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "grass",
       "category": "support",
       "target": "all-allies",
-      "secondaryEffects": 1
+      "secondaryEffects": 2
     },
     {
       "name": "Karate Chop",
@@ -4387,6 +4344,16 @@
       "secondaryEffects": 0
     },
     {
+      "name": "Lumina Crash",
+      "seedId": "move-lumina-crash",
+      "status": "full",
+      "reasons": [],
+      "type": "psychic",
+      "category": "special",
+      "target": "foe",
+      "secondaryEffects": 1
+    },
+    {
       "name": "Lunar Blessing",
       "seedId": "move-lunar-blessing",
       "status": "full",
@@ -4394,15 +4361,13 @@
       "type": "psychic",
       "category": "support",
       "target": "ally",
-      "secondaryEffects": 2
+      "secondaryEffects": 3
     },
     {
       "name": "Lunar Dance",
       "seedId": "move-lunar-dance",
-      "status": "partial",
-      "reasons": [
-        "user-faints"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "support",
       "target": "self",
@@ -4531,14 +4496,22 @@
     {
       "name": "Magnitude",
       "seedId": "move-magnitude",
-      "status": "manual",
-      "reasons": [
-        "dynamic-power-formula"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "ground",
       "category": "physical",
       "target": "area",
       "secondaryEffects": 0
+    },
+    {
+      "name": "Make It Rain",
+      "seedId": "move-make-it-rain",
+      "status": "full",
+      "reasons": [],
+      "type": "steel",
+      "category": "special",
+      "target": "area",
+      "secondaryEffects": 1
     },
     {
       "name": "Malignant Chain",
@@ -4765,10 +4738,8 @@
     {
       "name": "Me First",
       "seedId": "move-me-first",
-      "status": "manual",
-      "reasons": [
-        "copied-move-dependent"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "foe",
@@ -4837,10 +4808,8 @@
     {
       "name": "Memento",
       "seedId": "move-memento",
-      "status": "partial",
-      "reasons": [
-        "user-faints"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dark",
       "category": "support",
       "target": "foe",
@@ -4939,10 +4908,8 @@
     {
       "name": "Mimic",
       "seedId": "move-mimic",
-      "status": "manual",
-      "reasons": [
-        "copied-move-dependent"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "foe",
@@ -5001,10 +4968,8 @@
     {
       "name": "Mirror Move",
       "seedId": "move-mirror-move",
-      "status": "manual",
-      "reasons": [
-        "copied-move-dependent"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "flying",
       "category": "support",
       "target": "foe",
@@ -5845,6 +5810,16 @@
       "secondaryEffects": 0
     },
     {
+      "name": "Present",
+      "seedId": "move-present",
+      "status": "full",
+      "reasons": [],
+      "type": "normal",
+      "category": "physical",
+      "target": "foe",
+      "secondaryEffects": 0
+    },
+    {
       "name": "Prismatic Laser",
       "seedId": "move-prismatic-laser",
       "status": "full",
@@ -5907,10 +5882,8 @@
     {
       "name": "Psychic Fangs",
       "seedId": "move-psychic-fangs",
-      "status": "partial",
-      "reasons": [
-        "destroy-shield"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "physical",
       "target": "foe",
@@ -5964,7 +5937,7 @@
       "type": "psychic",
       "category": "support",
       "target": "foe",
-      "secondaryEffects": 0
+      "secondaryEffects": 1
     },
     {
       "name": "Psyshield Bash",
@@ -6024,7 +5997,7 @@
       "type": "poison",
       "category": "support",
       "target": "foe",
-      "secondaryEffects": 0
+      "secondaryEffects": 1
     },
     {
       "name": "Pursuit",
@@ -6119,10 +6092,8 @@
     {
       "name": "Raging Bull",
       "seedId": "move-raging-bull",
-      "status": "manual",
-      "reasons": [
-        "copied-move-dependent"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -6236,7 +6207,7 @@
       "type": "normal",
       "category": "support",
       "target": "self",
-      "secondaryEffects": 0
+      "secondaryEffects": 1
     },
     {
       "name": "Relic Song",
@@ -6461,10 +6432,8 @@
     {
       "name": "Roost",
       "seedId": "move-roost",
-      "status": "partial",
-      "reasons": [
-        "temporary-type-immunity-change"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "flying",
       "category": "support",
       "target": "self",
@@ -6503,12 +6472,9 @@
     {
       "name": "Run Away",
       "seedId": "move-run-away",
-      "status": "manual",
-      "reasons": [
-        "dynamic-type",
-        "maneuver-rule"
-      ],
-      "type": "none",
+      "status": "full",
+      "reasons": [],
+      "type": "normal",
       "category": "support",
       "target": "self",
       "secondaryEffects": 0
@@ -6655,7 +6621,7 @@
       "type": "ground",
       "category": "special",
       "target": "foe",
-      "secondaryEffects": 0
+      "secondaryEffects": 1
     },
     {
       "name": "Scratch",
@@ -6984,10 +6950,8 @@
     {
       "name": "Sketch",
       "seedId": "move-sketch",
-      "status": "manual",
-      "reasons": [
-        "copied-move-dependent"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "normal",
       "category": "support",
       "target": "foe",
@@ -7206,10 +7170,8 @@
     {
       "name": "Snatch",
       "seedId": "move-snatch",
-      "status": "manual",
-      "reasons": [
-        "external-rule-reference"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "dark",
       "category": "support",
       "target": "foe",
@@ -7328,14 +7290,12 @@
     {
       "name": "Sparkly Swirl",
       "seedId": "move-sparkly-swirl",
-      "status": "partial",
-      "reasons": [
-        "status-cleanse"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "fairy",
       "category": "special",
       "target": "all-allies",
-      "secondaryEffects": 0
+      "secondaryEffects": 1
     },
     {
       "name": "Spectral Thief",
@@ -7510,12 +7470,9 @@
     {
       "name": "Stabilize An Ally",
       "seedId": "move-stabilize-an-ally",
-      "status": "manual",
-      "reasons": [
-        "dynamic-type",
-        "maneuver-rule"
-      ],
-      "type": "none",
+      "status": "full",
+      "reasons": [],
+      "type": "normal",
       "category": "support",
       "target": "ally",
       "secondaryEffects": 0
@@ -7701,14 +7658,21 @@
       "secondaryEffects": 1
     },
     {
+      "name": "Struggle",
+      "seedId": "move-struggle",
+      "status": "full",
+      "reasons": [],
+      "type": "normal",
+      "category": "physical",
+      "target": "foe",
+      "secondaryEffects": 0
+    },
+    {
       "name": "Struggle (Physical)",
       "seedId": "move-struggle-physical",
-      "status": "manual",
-      "reasons": [
-        "dynamic-type",
-        "maneuver-rule"
-      ],
-      "type": "none",
+      "status": "full",
+      "reasons": [],
+      "type": "normal",
       "category": "physical",
       "target": "foe",
       "secondaryEffects": 0
@@ -7716,12 +7680,9 @@
     {
       "name": "Struggle (Special)",
       "seedId": "move-struggle-special",
-      "status": "manual",
-      "reasons": [
-        "dynamic-type",
-        "maneuver-rule"
-      ],
-      "type": "none",
+      "status": "full",
+      "reasons": [],
+      "type": "normal",
       "category": "special",
       "target": "foe",
       "secondaryEffects": 0
@@ -7739,12 +7700,9 @@
     {
       "name": "Struggle Throw",
       "seedId": "move-struggle-throw",
-      "status": "manual",
-      "reasons": [
-        "dynamic-type",
-        "maneuver-rule"
-      ],
-      "type": "none",
+      "status": "full",
+      "reasons": [],
+      "type": "normal",
       "category": "physical",
       "target": "foe",
       "secondaryEffects": 0
@@ -8080,14 +8038,12 @@
     {
       "name": "Take Heart",
       "seedId": "move-take-heart",
-      "status": "partial",
-      "reasons": [
-        "status-cleanse"
-      ],
+      "status": "full",
+      "reasons": [],
       "type": "psychic",
       "category": "support",
       "target": "self",
-      "secondaryEffects": 2
+      "secondaryEffects": 3
     },
     {
       "name": "Tar Shot",

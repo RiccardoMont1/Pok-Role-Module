@@ -1,1 +1,19 @@
 name,seedId,status,reasons,reasonsCount,type,category,target,secondaryEffects
+Acid Downpour,move-acid-downpour,manual,"external-rule-reference, mixed-category, suggested-effects",3,poison,support,foe,0
+All-Out Pummeling,move-all-out-pummeling,manual,"external-rule-reference, mixed-category, suggested-effects",3,fighting,support,foe,0
+Black Hole Eclipse,move-black-hole-eclipse,manual,"external-rule-reference, mixed-category, suggested-effects",3,dark,support,foe,0
+Bloom Doom,move-bloom-doom,manual,"external-rule-reference, mixed-category, suggested-effects",3,grass,support,foe,0
+Breakneck Blitz,move-breakneck-blitz,manual,"external-rule-reference, mixed-category, suggested-effects",3,normal,support,foe,0
+Continental Crush,move-continental-crush,manual,"external-rule-reference, mixed-category, suggested-effects",3,rock,support,foe,0
+Corkscrew Crash,move-corkscrew-crash,manual,"external-rule-reference, mixed-category, suggested-effects",3,steel,support,foe,0
+Devastating Drake,move-devastating-drake,manual,"external-rule-reference, mixed-category, suggested-effects",3,dragon,support,foe,0
+Gigavolt Havoc,move-gigavolt-havoc,manual,"external-rule-reference, mixed-category, suggested-effects",3,electric,support,foe,0
+Hydro Vortex,move-hydro-vortex,manual,"external-rule-reference, mixed-category, suggested-effects",3,water,support,foe,0
+Inferno Overdrive,move-inferno-overdrive,manual,"external-rule-reference, mixed-category, suggested-effects",3,fire,support,foe,0
+Never-Ending Nightmare,move-never-ending-nightmare,manual,"external-rule-reference, mixed-category, suggested-effects",3,ghost,support,foe,0
+Savage Spin-Out,move-savage-spin-out,manual,"external-rule-reference, mixed-category, suggested-effects",3,bug,support,foe,0
+Shattered Psyche,move-shattered-psyche,manual,"external-rule-reference, mixed-category, suggested-effects",3,psychic,support,foe,0
+Subzero Slammer,move-subzero-slammer,manual,"external-rule-reference, mixed-category, suggested-effects",3,ice,support,foe,0
+Supersonic Skystrike,move-supersonic-skystrike,manual,"external-rule-reference, mixed-category, suggested-effects",3,flying,support,foe,0
+Tectonic Rage,move-tectonic-rage,manual,"external-rule-reference, mixed-category, suggested-effects",3,ground,support,foe,0
+Twinkle Tackle,move-twinkle-tackle,manual,"external-rule-reference, mixed-category, suggested-effects",3,fairy,support,foe,0

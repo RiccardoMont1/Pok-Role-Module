@@ -37,6 +37,92 @@ import {
 import { PokRoleActorSheet } from "./module/sheets/actor-sheet.mjs";
 import { PokRoleMoveSheet } from "./module/sheets/item-sheet.mjs";
 
+const COMBAT_MUTATION_SOCKET_EVENT = `system.${POKROLE.ID}`;
+
+function getPrimaryActiveGm() {
+  return game.users?.activeGM ?? game.users?.find?.((user) => user?.isGM && user?.active) ?? null;
+}
+
+function canUserRequestCombatMutation(user, requesterActor) {
+  if (!user) return false;
+  if (user.isGM) return true;
+  if (!(requesterActor instanceof Actor)) return false;
+  return requesterActor.testUserPermission?.(user, CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) === true;
+}
+
+async function handleCombatMutationSocketRequest(message = {}) {
+  const operation = `${message?.operation ?? ""}`.trim();
+  const payload = message?.payload ?? {};
+  if (!operation) {
+    return { ok: false, error: "Missing combat mutation operation." };
+  }
+
+  const combatId = `${payload?.combatId ?? ""}`.trim();
+  const combat = combatId ? game.combats?.get(combatId) ?? null : null;
+  const requesterUser = `${payload?.requesterUserId ?? ""}`.trim()
+    ? game.users?.get(`${payload.requesterUserId}`.trim()) ?? null
+    : null;
+  const requesterActor = `${payload?.requesterActorId ?? ""}`.trim()
+    ? game.actors?.get(`${payload.requesterActorId}`.trim()) ?? null
+    : null;
+
+  if (!combat) {
+    return { ok: false, error: `Combat ${combatId} not found.` };
+  }
+  if (!canUserRequestCombatMutation(requesterUser, requesterActor)) {
+    return { ok: false, error: "Requester lacks permission to mutate combat." };
+  }
+
+  const dispatcherActor =
+    requesterActor ??
+    combat.combatants?.find?.((entry) => entry.actor)?.actor ??
+    null;
+  if (!(dispatcherActor instanceof PokRoleActor)) {
+    return { ok: false, error: "No dispatcher actor available for combat mutation." };
+  }
+
+  try {
+    switch (operation) {
+      case "switchCombatantToActor": {
+        const outgoingCombatant = combat.combatants.get(`${payload?.outgoingCombatantId ?? ""}`.trim()) ?? null;
+        const incomingActor = game.actors?.get(`${payload?.incomingActorId ?? ""}`.trim()) ?? null;
+        const switched = await dispatcherActor._switchCombatantToActorLocal(
+          combat,
+          outgoingCombatant,
+          incomingActor,
+          payload?.options ?? {}
+        );
+        return { ok: true, combatantId: switched?.id ?? null };
+      }
+      case "removeCombatantFromBattle": {
+        const combatant = combat.combatants.get(`${payload?.combatantId ?? ""}`.trim()) ?? null;
+        const removed = await dispatcherActor._removeCombatantFromBattleLocal(combat, combatant);
+        return { ok: true, removed: Boolean(removed) };
+      }
+      case "updateCombatantActor": {
+        const combatant = combat.combatants.get(`${payload?.combatantId ?? ""}`.trim()) ?? null;
+        const replacementActor = game.actors?.get(`${payload?.replacementActorId ?? ""}`.trim()) ?? null;
+        const updated = await dispatcherActor._updateCombatantActorLocal(combatant, replacementActor);
+        return { ok: true, updated: Boolean(updated) };
+      }
+      case "swapCombatantActors": {
+        const firstCombatant = combat.combatants.get(`${payload?.firstCombatantId ?? ""}`.trim()) ?? null;
+        const secondCombatant = combat.combatants.get(`${payload?.secondCombatantId ?? ""}`.trim()) ?? null;
+        const swapped = await dispatcherActor._swapCombatantActorsLocal(firstCombatant, secondCombatant);
+        return { ok: true, swapped: Boolean(swapped) };
+      }
+      default:
+        return { ok: false, error: `Unknown combat mutation operation: ${operation}` };
+    }
+  } catch (error) {
+    console.error(`${POKROLE.ID} | Combat mutation failed`, error);
+    return {
+      ok: false,
+      error: error instanceof Error ? error.message : `${error ?? "Unknown combat mutation error"}`
+    };
+  }
+}
+
 /**
  * Custom Combat class that overrides nextTurn() to loop back to the first
  * combatant without advancing the round. Use "Next Round" to advance rounds.
@@ -518,6 +604,33 @@ async function clearSceneScopedMoveDisableEffects(sceneId = null) {
   for (const actor of actorsByKey.values()) {
     if (typeof actor.clearSceneScopedMoveDisableEffects !== "function") continue;
     await actor.clearSceneScopedMoveDisableEffects(normalizedSceneId);
+  }
+}
+
+async function clearSceneScopedCopiedMoves(sceneId = null) {
+  if (!game) return;
+  const normalizedSceneId = `${sceneId ?? canvas?.scene?.id ?? ""}`.trim();
+  if (!normalizedSceneId) return;
+
+  const actorsByKey = new Map();
+  const rememberActor = (actor) => {
+    if (!actor || actor.documentName !== "Actor") return;
+    const actorKey = `${actor.uuid ?? actor.id ?? ""}`.trim();
+    if (!actorKey) return;
+    actorsByKey.set(actorKey, actor);
+  };
+
+  for (const actor of game.actors?.contents ?? []) {
+    rememberActor(actor);
+  }
+
+  for (const token of canvas?.tokens?.placeables ?? []) {
+    rememberActor(token?.actor ?? null);
+  }
+
+  for (const actor of actorsByKey.values()) {
+    if (typeof actor.clearSceneScopedCopiedMoves !== "function") continue;
+    await actor.clearSceneScopedCopiedMoves(normalizedSceneId);
   }
 }
 
@@ -1096,6 +1209,45 @@ Hooks.once("init", () => {
 
 Hooks.once("ready", async () => {
   game.pokrole ??= {};
+  game.pokrole.requestCombatMutation = async (operation, payload = {}) => {
+    if (game.user?.isGM) {
+      const directResult = await handleCombatMutationSocketRequest({
+        operation,
+        payload: {
+          ...payload,
+          requesterUserId: payload?.requesterUserId ?? game.user?.id ?? null
+        }
+      });
+      if (!directResult?.ok) {
+        throw new Error(directResult?.error ?? "Combat mutation failed.");
+      }
+      return directResult;
+    }
+    const activeGm = getPrimaryActiveGm();
+    if (!activeGm) {
+      throw new Error("No active GM is available to process the combat mutation.");
+    }
+    return new Promise((resolve, reject) => {
+      game.socket.emit(
+        COMBAT_MUTATION_SOCKET_EVENT,
+        {
+          type: "combat-mutation",
+          operation,
+          payload: {
+            ...payload,
+            requesterUserId: payload?.requesterUserId ?? game.user?.id ?? null
+          }
+        },
+        (response = {}) => {
+          if (!response?.ok) {
+            reject(new Error(response?.error ?? "Combat mutation failed."));
+            return;
+          }
+          resolve(response);
+        }
+      );
+    });
+  };
   game.pokrole.seedCompendia = async (options = {}) => seedCompendia(options);
   game.pokrole.renderMoveQueueOverlay = async () => renderMoveQueueOverlay();
   game.pokrole.enqueueCombatMoveDeclaration = async (entry, combat = game.combat ?? null) =>
@@ -1108,8 +1260,18 @@ Hooks.once("ready", async () => {
     moveCombatMoveEntry(combat, entryId, targetIndex);
   game.pokrole.executeCombatMoveEntry = async (entryId, combat = game.combat ?? null) =>
     executeCombatMoveEntry(combat, entryId);
+  game.socket.on(COMBAT_MUTATION_SOCKET_EVENT, async (message = {}, respond = null) => {
+    if (`${message?.type ?? ""}`.trim() !== "combat-mutation") return;
+    const activeGm = getPrimaryActiveGm();
+    if (!game.user?.isGM || (activeGm?.id && activeGm.id !== game.user.id)) return;
+    const response = await handleCombatMutationSocketRequest(message);
+    if (typeof respond === "function") {
+      respond(response);
+    }
+  });
   await synchronizeAllActorEffectTokenIcons();
   await clearSceneScopedMoveDisableEffects(canvas?.scene?.id ?? null);
+  await clearSceneScopedCopiedMoves(canvas?.scene?.id ?? null);
   for (const actor of game.actors?.contents ?? []) {
     if (actor?.type !== "pokemon") continue;
     if (typeof actor.synchronizeConditionFlags === "function") {
@@ -1162,6 +1324,7 @@ Hooks.once("ready", async () => {
 
 Hooks.on("canvasReady", async (canvasDocument) => {
   await clearSceneScopedMoveDisableEffects(canvasDocument?.scene?.id ?? canvas?.scene?.id ?? null);
+  await clearSceneScopedCopiedMoves(canvasDocument?.scene?.id ?? canvas?.scene?.id ?? null);
 });
 
 Hooks.on("updateCombat", async (combat, changed) => {
@@ -1172,6 +1335,14 @@ Hooks.on("updateCombat", async (combat, changed) => {
     await clearCombatDelayedEffectQueue(combat);
     await processCombatSpecialDurationEvent(combat, "combat-end");
     await clearCombatScopedTemporaryEffects(combat);
+    await combat.unsetFlag?.(POKROLE.ID, "combat.sideFieldEntries");
+    for (const combatant of combat.combatants ?? []) {
+      const actor = combatant?.actor ?? null;
+      if (!actor) continue;
+      if (typeof actor._clearBideState === "function") {
+        await actor._clearBideState();
+      }
+    }
     LAST_COMBAT_TURN_STATE.delete(`${combat?.id ?? ""}`);
     return;
   }
@@ -1307,6 +1478,9 @@ Hooks.on("deleteCombat", async (combat) => {
     const actor = combatant?.actor ?? null;
     if (!actor || typeof actor.clearMultiTurnState !== "function") continue;
     await actor.clearMultiTurnState();
+    if (typeof actor._clearBideState === "function") {
+      await actor._clearBideState();
+    }
   }
   LAST_COMBAT_TURN_STATE.delete(`${combat?.id ?? ""}`);
 });

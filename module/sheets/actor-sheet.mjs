@@ -239,6 +239,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.effectTypeOptions = {
       condition: "POKROLE.Move.Secondary.Type.Condition",
       stat: "POKROLE.Move.Secondary.Type.Stat",
+      cleanse: "POKROLE.Move.Secondary.Type.Cleanse",
       damage: "POKROLE.Move.Secondary.Type.Damage",
       heal: "POKROLE.Move.Secondary.Type.Heal",
       will: "POKROLE.Move.Secondary.Type.Will",
@@ -1649,6 +1650,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         condition: "Condition",
         "active-effect": "ActiveEffect",
         stat: "Stat",
+        cleanse: "Cleanse",
         weather: "Weather",
         damage: "Damage",
         heal: "Heal",
@@ -1757,7 +1759,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     toggleSection("amount", ["stat", "damage", "heal", "will"].includes(effectType));
     toggleSection("duration", effectType === "condition" || effectType === "stat");
     toggleSection("specialDuration", effectType === "condition" || effectType === "stat");
-    toggleSection("notes", effectType === "custom");
+    toggleSection("notes", effectType === "custom" || effectType === "cleanse");
     toggleSection(
       "passiveCondition",
       ["self-has-condition", "self-missing-condition", "target-has-condition", "target-missing-condition"].includes(passiveTrigger)

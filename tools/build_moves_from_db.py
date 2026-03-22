@@ -1,4 +1,5 @@
 import importlib.util
+import csv
 import json
 import re
 from collections import Counter, defaultdict
@@ -11,7 +12,13 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 MOVE_SEEDS_PATH = OUT_DIR / "move-seeds.mjs"
 MOVE_REPORT_JSON_PATH = OUT_DIR / "move-automation-report.json"
 MOVE_REPORT_MD_PATH = OUT_DIR / "move-automation-report.md"
+MOVE_REPORT_BACKLOG_CSV_PATH = OUT_DIR / "move-automation-backlog.csv"
+MOVE_REPORT_PARTIAL_CSV_PATH = OUT_DIR / "move-automation-partial.csv"
+MOVE_REPORT_MANUAL_CSV_PATH = OUT_DIR / "move-automation-manual.csv"
 HELPERS_PATH = ROOT / "tools" / "build_compendium_seeds.py"
+EXTERNAL_MOVE_JSON_DIR_CANDIDATES = [
+    ROOT.parent / "external-references" / "Pokerole-Data" / "v3.0" / "Moves",
+]
 MOVE_DB_CANDIDATES = [
     ROOT / "tools" / "sources" / "moves.db",
     ROOT / "_upstream" / "foundry-pokerole" / "packs" / "moves.db",
@@ -34,18 +41,24 @@ MOVE_TARGET_TO_SECONDARY_TARGET = {
 }
 
 UPSTREAM_AILMENT_TO_CONDITION = {
+    "burn": "burn",
     "burn1": "burn",
     "burn2": "burn2",
     "burn3": "burn3",
+    "paralyze": "paralyzed",
     "paralysis": "paralyzed",
     "poison": "poisoned",
+    "badlypoison": "badly-poisoned",
     "badlypoisoned": "badly-poisoned",
     "freeze": "frozen",
     "frozen": "frozen",
     "sleep": "sleep",
     "flinch": "flinch",
+    "confuse": "confused",
     "confused": "confused",
+    "disable": "disabled",
     "disabled": "disabled",
+    "infatuate": "infatuated",
     "infatuated": "infatuated",
     "fainted": "fainted",
 }
@@ -150,11 +163,49 @@ HANDLED_DELAYED_MOVE_SEED_IDS = {
     "move-yawn",
 }
 HANDLED_EXTERNAL_RULE_MOVE_SEED_IDS = {
+    "move-bide",
+    "move-clash",
+    "move-evasion",
+    "move-fling",
+    "move-hidden-power",
+    "move-judgment",
     "move-shed-tail",
+    "move-snatch",
     "move-substitute",
 }
+HANDLED_DYNAMIC_POWER_MOVE_SEED_IDS = {
+    "move-fickle-beam",
+    "move-judgment",
+    "move-magnitude",
+}
+HANDLED_DYNAMIC_TYPE_MOVE_SEED_IDS = {
+    "move-hidden-power",
+    "move-judgment",
+}
 HANDLED_USER_FAINTS_MOVE_SEED_IDS = {
+    "move-destiny-bond",
+    "move-healing-wish",
+    "move-lunar-dance",
     "move-grudge",
+    "move-memento",
+}
+HANDLED_COPY_MOVE_SEED_IDS = {
+    "move-copycat",
+    "move-instruct",
+    "move-ivy-cudgel",
+    "move-me-first",
+    "move-mimic",
+    "move-mirror-move",
+    "move-raging-bull",
+    "move-sketch",
+}
+HANDLED_DESTROY_SHIELD_MOVE_SEED_IDS = {
+    "move-brick-break",
+    "move-defog",
+    "move-psychic-fangs",
+}
+HANDLED_STORED_DAMAGE_MOVE_SEED_IDS = {
+    "move-bide",
 }
 
 SPECIAL_MOVE_EFFECT_OVERRIDES = {
@@ -279,6 +330,9 @@ HELPERS = load_helper_module()
 
 
 def find_moves_db_path():
+    for candidate in EXTERNAL_MOVE_JSON_DIR_CANDIDATES:
+        if candidate.is_dir() and any(candidate.glob("*.json")):
+            return candidate
     for candidate in [*MOVE_DB_CANDIDATES, MOVE_DB_FALLBACK_RELATIVE_PATH]:
         if candidate.exists():
             return candidate
@@ -286,6 +340,9 @@ def find_moves_db_path():
 
 
 def load_move_rows(db_path):
+    if db_path.is_dir():
+        return load_external_move_rows(db_path)
+
     rows = []
     with db_path.open("r", encoding="utf-8") as handle:
         for line_number, raw_line in enumerate(handle, 1):
@@ -296,6 +353,238 @@ def load_move_rows(db_path):
                 rows.append(json.loads(line))
             except json.JSONDecodeError as error:
                 raise ValueError(f"Invalid JSON in {db_path} on line {line_number}: {error}") from error
+    return rows
+
+
+def split_dual_field(value):
+    parts = [clean_text(part) for part in str(value or "").split("/")]
+    parts = [part for part in parts if part]
+    if not parts:
+        return "", ""
+    if len(parts) == 1:
+        return parts[0], ""
+    return parts[0], parts[1]
+
+
+def normalize_external_attributes(raw_attributes, raw_category="", effect_text=""):
+    attributes = raw_attributes if isinstance(raw_attributes, dict) else {}
+    normalized = {}
+
+    def raw_bool(key):
+        return bool(attributes.get(key, False))
+
+    normalized["accuracyReduction"] = abs(parse_number(attributes.get("AccuracyReduction"), 0))
+    normalized["reactionMove"] = parse_number(attributes.get("Reaction"), 0)
+    normalized["lateReactionMove"] = parse_number(attributes.get("LateReaction"), 0)
+    if not normalized["reactionMove"] and attributes.get("Priority") is not None:
+        normalized["reactionMove"] = parse_number(attributes.get("Priority"), 0)
+
+    raw_switcher_move = attributes.get("SwitcherMove")
+    if isinstance(raw_switcher_move, str):
+        switcher_value = slugify(raw_switcher_move) or True
+    elif raw_switcher_move:
+        switcher_value = "foe" if attributes.get("SwitcherMoveForFoe") else "user"
+    elif attributes.get("SwitcherMoveForFoe"):
+        switcher_value = "foe"
+    else:
+        switcher_value = False
+
+    normalized["highCritical"] = raw_bool("HighCritical")
+    normalized["neverFail"] = raw_bool("NeverMiss")
+    normalized["shieldMove"] = raw_bool("ShieldMove")
+    normalized["charge"] = raw_bool("Charge")
+    normalized["mustRecharge"] = raw_bool("MustRecharge")
+    normalized["rampage"] = raw_bool("Rampage")
+    normalized["recoil"] = raw_bool("Recoil")
+    normalized["switcherMove"] = switcher_value
+    normalized["ignoreDefenses"] = raw_bool("IgnoreDefenses")
+    normalized["destroyShield"] = raw_bool("DestroyShield")
+    normalized["userFaints"] = raw_bool("UserFaints")
+    normalized["alwaysCrit"] = raw_bool("AlwaysCrit")
+    normalized["resistedWithDefense"] = raw_bool("ResistedWithDefense")
+    normalized["physicalRanged"] = raw_bool("PhysicalRanged") or (
+        normalize_move_category(raw_category) == "physical"
+        and (raw_bool("Ranged") or raw_bool("ProjectileMove"))
+    )
+    normalized["soundBased"] = raw_bool("SoundMove")
+    normalized["biteMove"] = raw_bool("BiteMove")
+    normalized["cutterMove"] = raw_bool("CutterMove")
+    normalized["fistBased"] = raw_bool("FistMove")
+    normalized["powderMove"] = raw_bool("PowderMove")
+    normalized["windMove"] = raw_bool("WindMove")
+    normalized["projectileMove"] = raw_bool("ProjectileMove")
+    normalized["ignoreShield"] = raw_bool("IgnoreShield")
+    normalized["forceField"] = raw_bool("ForceField")
+    normalized["blockDamagePool"] = raw_bool("BlockDamagePool")
+    normalized["entryHazard"] = raw_bool("EntryHazard")
+    normalized["ongoingDamage"] = raw_bool("OngoingDamage")
+    normalized["resetTerrain"] = raw_bool("ResetTerrain")
+    normalized["copyMove"] = raw_bool("CopyMove")
+    normalized["doubleAction"] = raw_bool("DoubleAction")
+    normalized["tripleAction"] = raw_bool("TripleAction")
+    normalized["successiveActions"] = raw_bool("SuccessiveActions")
+    normalized["unique"] = raw_bool("Unique")
+    normalized["zMove"] = raw_bool("ZMove")
+    normalized["maxMove"] = raw_bool("MaxMove")
+    normalized["lethal"] = raw_bool("Lethal")
+    normalized["duration"] = parse_number(attributes.get("Duration"), 0)
+    normalized["vulnerable"] = clean_text(attributes.get("Vulnerable"))
+    normalized["abilityChange"] = clean_text(attributes.get("AbilityChange"))
+    normalized["blocks"] = clean_text(attributes.get("Blocks"))
+    normalized["hurtBonus"] = parse_number(attributes.get("HurtBonus"), 0)
+    normalized["hurtPenalty"] = parse_number(attributes.get("HurtPenalty"), 0)
+    normalized["hateBonus"] = parse_number(attributes.get("HateBonus"), 0)
+
+    effect_text_lower = clean_text(effect_text).lower()
+    if not normalized["highCritical"] and "high critical" in effect_text_lower:
+        normalized["highCritical"] = True
+    if not normalized["neverFail"] and ("never miss" in effect_text_lower or "never fails" in effect_text_lower):
+        normalized["neverFail"] = True
+    if not normalized["shieldMove"] and "shield move" in effect_text_lower:
+        normalized["shieldMove"] = True
+
+    return {key: value for key, value in normalized.items() if value not in {"", None, False}}
+
+
+def normalize_external_effect_groups(added_effects):
+    if not isinstance(added_effects, dict):
+        return []
+
+    groups = []
+
+    def build_condition_group(chance_dice):
+        chance_value = max(parse_number(chance_dice, 0), 0)
+        if chance_value > 0:
+            return {"type": "chanceDice", "amount": chance_value}
+        return {"type": "none"}
+
+    for stat_change in added_effects.get("StatChanges", []) or []:
+        if not isinstance(stat_change, dict):
+            continue
+        stats = [
+            clean_text(stat)
+            for stat in stat_change.get("Stats", []) or []
+            if clean_text(stat)
+        ]
+        effects = []
+        for stat in stats:
+            effects.append({
+                "type": "statChange",
+                "affects": slugify(stat_change.get("Affects", "targets")) or "targets",
+                "stat": stat,
+                "amount": parse_number(stat_change.get("Stages"), 0),
+            })
+        if effects:
+            groups.append({
+                "condition": build_condition_group(stat_change.get("ChanceDice")),
+                "effects": effects,
+            })
+
+    for ailment in added_effects.get("Ailments", []) or []:
+        if not isinstance(ailment, dict):
+            continue
+        ailment_type = clean_text(ailment.get("Type"))
+        if normalize_upstream_condition(ailment_type) == "none":
+            continue
+        groups.append({
+            "condition": build_condition_group(ailment.get("ChanceDice")),
+            "effects": [{
+                "type": "ailment",
+                "affects": slugify(ailment.get("Affects", "targets")) or "targets",
+                "ailment": ailment_type,
+                "amount": 0,
+            }],
+        })
+
+    return groups
+
+
+def normalize_external_heal(added_effects):
+    if not isinstance(added_effects, dict):
+        return {}
+    heal = added_effects.get("Heal")
+    if not isinstance(heal, dict) or not heal:
+        return {}
+
+    normalized = {
+        "type": slugify(heal.get("Type", "none")),
+        "target": slugify(heal.get("Target", "targets")) or "targets",
+        "willPointCost": parse_number(heal.get("WillPointCost"), 0),
+    }
+    if heal.get("Percentage") is not None:
+        normalized["amount"] = heal.get("Percentage")
+    return normalized
+
+
+def normalize_external_ailment_heal(added_effects):
+    if not isinstance(added_effects, dict):
+        return []
+
+    normalized = []
+    for raw_entry in added_effects.get("AilmentHeal", []) or []:
+        entry_text = clean_text(raw_entry)
+        if not entry_text:
+            continue
+        if entry_text.lower() == "all":
+            if "all" not in normalized:
+                normalized.append("all")
+            continue
+        condition_key = normalize_upstream_condition(entry_text)
+        if condition_key == "none":
+            continue
+        if condition_key not in normalized:
+            normalized.append(condition_key)
+    return normalized
+
+
+def normalize_external_move_row(move_data):
+    if not isinstance(move_data, dict):
+        return None
+
+    accuracy_attr_1, accuracy_attr_2 = split_dual_field(move_data.get("Accuracy1"))
+    accuracy_skill_1, accuracy_skill_2 = split_dual_field(move_data.get("Accuracy2"))
+
+    system = {
+        "type": clean_text(move_data.get("Type")),
+        "power": move_data.get("Power"),
+        "dmgMod1": clean_text(move_data.get("Damage1")),
+        "dmgMod1var": clean_text(move_data.get("Damage2")),
+        "accAttr1": accuracy_attr_1,
+        "accAttr1var": accuracy_attr_2,
+        "accSkill1": accuracy_skill_1,
+        "accSkill1var": accuracy_skill_2,
+        "target": clean_text(move_data.get("Target")),
+        "effect": clean_text(move_data.get("Effect")),
+        "description": clean_text(move_data.get("Description")),
+        "source": "Pokerole-Data v3.0",
+        "category": clean_text(move_data.get("Category")),
+        "attributes": normalize_external_attributes(
+            move_data.get("Attributes"),
+            move_data.get("Category"),
+            move_data.get("Effect"),
+        ),
+        "effectGroups": normalize_external_effect_groups(move_data.get("AddedEffects")),
+        "heal": normalize_external_heal(move_data.get("AddedEffects")),
+        "ailmentHeal": normalize_external_ailment_heal(move_data.get("AddedEffects")),
+    }
+
+    return {
+        "name": clean_text(move_data.get("Name")),
+        "_id": clean_text(move_data.get("_id")),
+        "system": system,
+    }
+
+
+def load_external_move_rows(source_dir):
+    rows = []
+    for path in sorted(source_dir.glob("*.json"), key=lambda item: item.name.lower()):
+        try:
+            move_data = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as error:
+            raise ValueError(f"Invalid JSON in {path}: {error}") from error
+        row = normalize_external_move_row(move_data)
+        if row:
+            rows.append(row)
     return rows
 
 
@@ -363,13 +652,13 @@ def resolve_move_priority(move_system, effect_text="", seed_id=""):
     attributes = system.get("attributes", {}) or {}
     reaction_priority = parse_number(attributes.get("reactionMove"), 0)
     if reaction_priority:
-        return clamp(int(reaction_priority), -3, 5)
+        return clamp(int(reaction_priority), -99, 99)
 
     late_reaction_priority = parse_number(attributes.get("lateReactionMove"), 0)
     if late_reaction_priority:
-        return clamp(-int(late_reaction_priority), -3, 5)
+        return clamp(-int(late_reaction_priority), -99, 99)
 
-    return clamp(parse_priority_from_effect(effect_text), -3, 5)
+    return clamp(parse_priority_from_effect(effect_text), -99, 99)
 
 
 def infer_action_tag(effect_text, attributes):
@@ -402,6 +691,7 @@ def make_secondary_signature(effect):
         effect.get("healMode", "fixed"),
         effect.get("conditional", False),
         effect.get("activationCondition", "").strip().lower(),
+        effect.get("notes", "").strip().lower(),
     ], ensure_ascii=True)
 
 
@@ -509,6 +799,10 @@ def build_move_formula_config(move_system, category_key, effect_text="", descrip
     normalized_power = raw_power.lower()
     if normalized_power == "happiness + loyalty":
         power_formula = "source.happiness + source.loyalty"
+    elif clean_text(move_system.get("dmgMod1var", "")).lower() == "happiness":
+        power_formula = "move.power + min(source.happiness, 5)"
+    elif clean_text(move_system.get("dmgMod1var", "")).lower() == "missing happiness":
+        power_formula = "move.power + min(max(5 - source.happiness, 0), 5)"
     elif re.search(r"last damage pool rolled against the user plus 2", combined_text):
         damage_base_formula = "source.lastDamagePoolTaken + 2"
     elif re.search(r"according to the user's rank", combined_text):
@@ -524,6 +818,8 @@ def build_move_formula_config(move_system, category_key, effect_text="", descrip
         damage_base_formula = "min(10, floor(target.hpCurrent / 2))"
     elif re.search(r"damage dice equal to the target's total hp", combined_text):
         damage_base_formula = "target.hpMax"
+    elif clean_text(move_system.get("dmgMod1", "")).lower() == "target'sremaininghp":
+        damage_base_formula = "source.hpCurrent"
 
     return {
         "accuracyFormula": accuracy_formula,
@@ -598,6 +894,42 @@ def make_heal_effect(target, heal_type="basic", heal_mode="fixed", amount=0, con
         "notes": "",
     }
     return effect
+
+
+def build_cleanse_effect(target, ailment_tokens):
+    normalized_tokens = []
+    for token in ailment_tokens:
+        cleaned = clean_text(token).lower()
+        if not cleaned:
+            continue
+        if cleaned == "all":
+            normalized_tokens = ["all"]
+            break
+        normalized_condition = normalize_upstream_condition(cleaned)
+        if normalized_condition == "none":
+            continue
+        if normalized_condition not in normalized_tokens:
+            normalized_tokens.append(normalized_condition)
+    if not normalized_tokens:
+        return None
+    return {
+        "section": 0,
+        "label": "",
+        "trigger": "on-hit",
+        "chance": 0,
+        "target": target,
+        "effectType": "cleanse",
+        "condition": "none",
+        "weather": "none",
+        "terrain": "none",
+        "stat": "none",
+        "amount": 0,
+        "healType": "basic",
+        "healMode": "fixed",
+        "conditional": False,
+        "activationCondition": "",
+        "notes": "|".join(normalized_tokens),
+    }
 
 
 def split_condition_tokens(expression):
@@ -748,6 +1080,29 @@ def build_heal_effects(move_name, move_system, move_target_key, report_reasons):
     return dedupe_secondary_effects(conditional_effects)
 
 
+def build_status_cleanse_effects(move_name, move_system, move_target_key, report_reasons):
+    move_seed_id = f"move-{slugify(move_name)}"
+    if move_seed_id in {"move-healing-wish"}:
+        return []
+
+    ailment_tokens = list(move_system.get("ailmentHeal", []) or [])
+    effect_text = clean_text(move_system.get("effect", ""))
+    lower_effect = effect_text.lower()
+    if not ailment_tokens and re.search(r"(heal|cure).+status ailment", lower_effect):
+        ailment_tokens = ["all"]
+
+    if not ailment_tokens:
+        return []
+
+    target = make_secondary_target(move_target_key, "targets")
+    cleanse_effect = build_cleanse_effect(target, ailment_tokens)
+    if not cleanse_effect:
+        return []
+
+    report_reasons.discard("status-cleanse")
+    return [cleanse_effect]
+
+
 def parse_weather_key(effect_text):
     normalized = (effect_text or "").lower()
     for raw_key, weather_key in WEATHER_KEY_ALIASES.items():
@@ -866,13 +1221,45 @@ def infer_automation_reasons(row, target_key, formula_config=None):
         if not clean_text(formula_config.get("powerFormula", "")):
             reasons.add("dynamic-power-formula")
 
-    for variant_key in ("accAttr1var", "accSkill1var", "dmgMod1var"):
-        if clean_text(system.get(variant_key, "")):
-            if not clean_text(formula_config.get("accuracyFormula", "")) and not clean_text(
-                formula_config.get("damageBaseFormula", "")
-            ):
-                reasons.add("alternative-trait-formula")
-            break
+    primary_acc_attr = normalize_accuracy_attribute(normalize_move_category(system.get("category")), system.get("accAttr1"))
+    primary_acc_skill = normalize_accuracy_skill(normalize_move_category(system.get("category")), system.get("accSkill1"))
+    alt_acc_attr_raw = clean_text(system.get("accAttr1var", ""))
+    alt_acc_skill_raw = clean_text(system.get("accSkill1var", ""))
+    resolved_alt_acc_attr = (
+        normalize_accuracy_attribute(normalize_move_category(system.get("category")), alt_acc_attr_raw)
+        if alt_acc_attr_raw else primary_acc_attr
+    )
+    resolved_alt_acc_skill = (
+        normalize_accuracy_skill(normalize_move_category(system.get("category")), alt_acc_skill_raw)
+        if alt_acc_skill_raw else primary_acc_skill
+    )
+    primary_acc_combo = f"{primary_acc_attr}:{primary_acc_skill}"
+    alt_acc_combo = f"{resolved_alt_acc_attr}:{resolved_alt_acc_skill}"
+    needs_accuracy_formula = (
+        bool(alt_acc_attr_raw or alt_acc_skill_raw) and
+        primary_acc_combo != alt_acc_combo and
+        not clean_text(formula_config.get("accuracyFormula", ""))
+    )
+    primary_damage_attr = resolve_damage_attribute_formula_key(
+        normalize_move_category(system.get("category")),
+        normalize_damage_attribute(normalize_move_category(system.get("category")), system.get("dmgMod1"))
+    )
+    alt_damage_raw = clean_text(system.get("dmgMod1var", ""))
+    alt_damage_attr = resolve_damage_attribute_formula_key(
+        normalize_move_category(system.get("category")),
+        normalize_damage_attribute(normalize_move_category(system.get("category")), alt_damage_raw)
+    )
+    needs_damage_formula = (
+        bool(primary_damage_attr and alt_damage_attr and primary_damage_attr != alt_damage_attr) and
+        not clean_text(formula_config.get("damageBaseFormula", ""))
+    )
+    needs_power_variant_formula = (
+        bool(alt_damage_raw and not alt_damage_attr) and
+        not clean_text(formula_config.get("powerFormula", "")) and
+        not clean_text(formula_config.get("damageBaseFormula", ""))
+    )
+    if needs_accuracy_formula or needs_damage_formula or needs_power_variant_formula:
+        reasons.add("alternative-trait-formula")
 
     if normalize_move_type(system.get("type")) == "none":
         reasons.add("dynamic-type")
@@ -919,7 +1306,9 @@ def infer_automation_reasons(row, target_key, formula_config=None):
         reasons.add("dynamic-type")
         reasons.add("dynamic-power-formula")
         reasons.add("external-rule-reference")
-    if clean_text(system.get("dmgMod1", "")).lower() == "target'sremaininghp":
+    if clean_text(system.get("dmgMod1", "")).lower() == "target'sremaininghp" and not clean_text(
+        formula_config.get("damageBaseFormula", "")
+    ):
         reasons.add("dynamic-power-formula")
 
     if seed_id in HANDLED_TERRAIN_MOVE_SEED_IDS:
@@ -931,8 +1320,18 @@ def infer_automation_reasons(row, target_key, formula_config=None):
         reasons.discard("delayed-effect")
     if seed_id in HANDLED_EXTERNAL_RULE_MOVE_SEED_IDS:
         reasons.discard("external-rule-reference")
+    if seed_id in HANDLED_DYNAMIC_POWER_MOVE_SEED_IDS:
+        reasons.discard("dynamic-power-formula")
+    if seed_id in HANDLED_DYNAMIC_TYPE_MOVE_SEED_IDS:
+        reasons.discard("dynamic-type")
     if seed_id in HANDLED_USER_FAINTS_MOVE_SEED_IDS:
         reasons.discard("user-faints")
+    if seed_id in HANDLED_COPY_MOVE_SEED_IDS:
+        reasons.discard("copied-move-dependent")
+    if seed_id in HANDLED_DESTROY_SHIELD_MOVE_SEED_IDS:
+        reasons.discard("destroy-shield")
+    if seed_id in HANDLED_STORED_DAMAGE_MOVE_SEED_IDS:
+        reasons.discard("stored-damage-formula")
     if seed_id in {"move-misty-terrain", "move-max-starfall"}:
         reasons.discard("status-cleanse")
     if attributes.get("alwaysCrit"):
@@ -995,6 +1394,7 @@ def build_move_entry(row):
     secondary_effects.extend(convert_effect_groups(system.get("effectGroups", []), target_key))
     secondary_effects.extend(build_special_move_effects(row))
     secondary_effects.extend(build_heal_effects(row.get("name", ""), system, target_key, automation_reasons))
+    secondary_effects.extend(build_status_cleanse_effects(row.get("name", ""), system, target_key, automation_reasons))
     secondary_effects.extend(build_weather_effects(system))
     secondary_effects.extend(build_terrain_effects(row.get("name", ""), system, automation_reasons))
     secondary_effects = dedupe_secondary_effects(secondary_effects)
@@ -1009,9 +1409,21 @@ def build_move_entry(row):
         automation_reasons.discard("delayed-effect")
     if seed_id in HANDLED_EXTERNAL_RULE_MOVE_SEED_IDS:
         automation_reasons.discard("external-rule-reference")
+    if seed_id in HANDLED_DYNAMIC_POWER_MOVE_SEED_IDS:
+        automation_reasons.discard("dynamic-power-formula")
+    if seed_id in HANDLED_DYNAMIC_TYPE_MOVE_SEED_IDS:
+        automation_reasons.discard("dynamic-type")
     if seed_id in HANDLED_USER_FAINTS_MOVE_SEED_IDS:
         automation_reasons.discard("user-faints")
+    if seed_id in HANDLED_COPY_MOVE_SEED_IDS:
+        automation_reasons.discard("copied-move-dependent")
+    if seed_id in HANDLED_DESTROY_SHIELD_MOVE_SEED_IDS:
+        automation_reasons.discard("destroy-shield")
+    if seed_id == "move-roost":
+        automation_reasons.discard("temporary-type-immunity-change")
     if seed_id in {"move-misty-terrain", "move-max-starfall"}:
+        automation_reasons.discard("status-cleanse")
+    if any(effect.get("effectType") == "cleanse" for effect in secondary_effects):
         automation_reasons.discard("status-cleanse")
 
     has_primary_damage_definition = (
@@ -1120,11 +1532,51 @@ def write_report(report_rows, db_path):
 
     MOVE_REPORT_MD_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
+    csv_rows = []
+    for row in report_rows:
+        csv_rows.append({
+            "name": row["name"],
+            "seedId": row["seedId"],
+            "status": row["status"],
+            "reasons": ", ".join(row["reasons"]),
+            "reasonsCount": len(row["reasons"]),
+            "type": row["type"],
+            "category": row["category"],
+            "target": row["target"],
+            "secondaryEffects": row["secondaryEffects"],
+        })
+
+    fieldnames = [
+        "name",
+        "seedId",
+        "status",
+        "reasons",
+        "reasonsCount",
+        "type",
+        "category",
+        "target",
+        "secondaryEffects",
+    ]
+
+    def write_csv(path, rows):
+        with path.open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(rows)
+
+    backlog_rows = [row for row in csv_rows if row["status"] in {"partial", "manual"}]
+    partial_rows = [row for row in csv_rows if row["status"] == "partial"]
+    manual_rows = [row for row in csv_rows if row["status"] == "manual"]
+
+    write_csv(MOVE_REPORT_BACKLOG_CSV_PATH, backlog_rows)
+    write_csv(MOVE_REPORT_PARTIAL_CSV_PATH, partial_rows)
+    write_csv(MOVE_REPORT_MANUAL_CSV_PATH, manual_rows)
+
 
 def main():
     db_path = find_moves_db_path()
     if not db_path:
-        raise FileNotFoundError("moves.db not found in any known location.")
+        raise FileNotFoundError("No external move JSON source or moves.db found in any known location.")
 
     rows = load_move_rows(db_path)
     entries = []

@@ -1,1 +1,5 @@
 name,seedId,status,reasons,reasonsCount,type,category,target,secondaryEffects
+Behemoth Bash,move-behemoth-bash,partial,dynamax-rule,1,steel,physical,foe,0
+Behemoth Blade,move-behemoth-blade,partial,dynamax-rule,1,steel,physical,foe,0
+Dynamax Cannon,move-dynamax-cannon,partial,dynamax-rule,1,dragon,special,foe,0
+Max Guard,move-max-guard,partial,dynamax-rule,1,normal,physical,self,0

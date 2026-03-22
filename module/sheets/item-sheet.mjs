@@ -332,6 +332,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       condition: "POKROLE.Move.Secondary.Type.Condition",
       "active-effect": "POKROLE.Move.Secondary.Type.ActiveEffect",
       stat: "POKROLE.Move.Secondary.Type.Stat",
+      cleanse: "POKROLE.Move.Secondary.Type.Cleanse",
       weather: "POKROLE.Move.Secondary.Type.Weather",
       terrain: "POKROLE.Move.Secondary.Type.Terrain",
       damage: "POKROLE.Move.Secondary.Type.Damage",
@@ -341,6 +342,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     };
     context.secondaryEffectTypeOptionsExtra = {
       "active-effect": "POKROLE.Move.Secondary.Type.ActiveEffect",
+      cleanse: "POKROLE.Move.Secondary.Type.Cleanse",
       weather: "POKROLE.Move.Secondary.Type.Weather",
       terrain: "POKROLE.Move.Secondary.Type.Terrain",
       damage: "POKROLE.Move.Secondary.Type.Damage",
@@ -940,7 +942,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
         effectType === "stat" ||
         effectType === "weather" ||
         effectType === "terrain",
-      showNotesField: effectType === "custom"
+      showNotesField: effectType === "custom" || effectType === "cleanse"
     };
   }
 
@@ -1207,7 +1209,7 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
         effectType === "weather" ||
         effectType === "terrain"
     );
-    toggleSection("notes", effectType === "custom");
+    toggleSection("notes", effectType === "custom" || effectType === "cleanse");
   }
 
   _getSecondaryConditionLabelPath(conditionKey) {

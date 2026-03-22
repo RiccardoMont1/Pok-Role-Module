@@ -162,6 +162,14 @@ const CONDITION_KEYS = Object.freeze([
   ),
   "dead"
 ]);
+const DEFAULT_CLEANSE_CONDITION_KEYS = Object.freeze([
+  "burn",
+  "frozen",
+  "paralyzed",
+  "poisoned",
+  "badly-poisoned",
+  "sleep"
+]);
 const CONDITION_FIELD_BY_KEY = Object.freeze({
   sleep: "sleep",
   burn: "burn",
@@ -215,12 +223,14 @@ const HEALING_TRACK_FLAG_KEY = "combat.healingTrack";
 const TREATMENT_BLOCK_FLAG_KEY = "combat.treatmentBlockedRound";
 const SHIELD_STREAK_FLAG_KEY = "combat.shieldStreak";
 const ACTIVE_SHIELDS_FLAG_KEY = "combat.activeShields";
+const SIDE_FIELD_ENTRIES_FLAG_KEY = "combat.sideFieldEntries";
 const SLEEP_RESIST_TRACK_FLAG_KEY = "combat.sleepResistTrack";
 const BURN_TRACK_FLAG_KEY = "combat.burnTrack";
 const PARALYSIS_TURN_CHECK_FLAG_KEY = "combat.paralysisTurnCheck";
 const CONFUSION_BYPASS_FLAG_KEY = "combat.confusionBypassRound";
 const INFATUATION_BYPASS_FLAG_KEY = "combat.infatuationBypassRound";
 const FROZEN_SHELL_FLAG_KEY = "combat.frozenShell";
+const ROOST_GROUNDED_ROUND_FLAG_KEY = "combat.roostGroundedRound";
 const LAST_USED_MOVE_FLAG_KEY = "combat.lastUsedMove";
 const LAST_RECEIVED_ATTACK_FLAG_KEY = "combat.lastReceivedAttack";
 const MULTI_TURN_STATE_FLAG_KEY = "combat.multiTurnState";
@@ -228,6 +238,14 @@ const SPECIAL_DAMAGE_UNIQUE_TARGETS_FLAG_KEY = "combat.specialDamageUniqueTarget
 const CHOICE_LOCKED_MOVE_FLAG = "combat.choiceLockedMove";
 const BATTLE_SLOT_FLAG_KEY = "combat.battleSlotId";
 const SUBSTITUTE_DECOY_FLAG_KEY = "combat.substituteDecoy";
+const DESTINY_BOND_STATE_FLAG_KEY = "combat.destinyBond";
+const BIDE_STATE_FLAG_KEY = "combat.bideState";
+const TEMPORARY_COPIED_MOVE_FLAG_KEY = "automation.temporaryCopiedMove";
+const SUPPORT_USER_FAINT_MOVE_SEED_IDS = new Set([
+  "move-healing-wish",
+  "move-lunar-dance",
+  "move-memento"
+]);
 const BATON_PASS_LOCK_FLAG_KEY = "combat.batonPassLock";
 const ENTRY_REACTION_BONUS_FLAG_KEY = "combat.entryReactionBonusRound";
 const DELAYED_EFFECTS_FLAG_KEY = "combat.delayedEffects";
@@ -273,6 +291,9 @@ const SPECIAL_DAMAGE_MOVE_RULES = Object.freeze({
     ignoresCover: true,
     ignoresShield: true,
     ignoresSubstitute: true
+  }),
+  "move-hidden-power": Object.freeze({
+    forceSuperEffective: true
   }),
   "move-hyperspace-hole": Object.freeze({
     ignoresShield: true,
@@ -655,6 +676,137 @@ const DELAYED_MOVE_RUNTIME_RULES = Object.freeze({
     kind: "yawn",
     triggerPhase: "round-start",
     delayRounds: 1
+  })
+});
+const COPY_MOVE_RUNTIME_RULES = Object.freeze({
+  "move-copycat": Object.freeze({
+    kind: "copy-last-used-target"
+  }),
+  "move-instruct": Object.freeze({
+    kind: "repeat-last-used-target"
+  }),
+  "move-me-first": Object.freeze({
+    kind: "copy-queued-target",
+    disallowSupport: true
+  }),
+  "move-mimic": Object.freeze({
+    kind: "replace-self-with-last-used-target",
+    temporarySceneScoped: true
+  }),
+  "move-mirror-move": Object.freeze({
+    kind: "copy-last-used-target"
+  }),
+  "move-sketch": Object.freeze({
+    kind: "replace-self-with-last-used-target",
+    permanent: true
+  })
+});
+const MOVE_DYNAMIC_TYPE_RUNTIME_RULES = Object.freeze({
+  "move-hidden-power": Object.freeze({
+    mode: "best-against-target"
+  }),
+  "move-ivy-cudgel": Object.freeze({
+    mode: "secondary-else-primary"
+  }),
+  "move-judgment": Object.freeze({
+    mode: "prompted"
+  }),
+  "move-raging-bull": Object.freeze({
+    mode: "secondary-else-primary"
+  })
+});
+const MOVE_DYNAMIC_POWER_RUNTIME_RULES = Object.freeze({
+  "move-fickle-beam": Object.freeze({
+    mode: "d6-table",
+    table: Object.freeze({
+      1: 3,
+      2: 3,
+      3: 3,
+      4: 3,
+      5: 3,
+      6: 6
+    })
+  }),
+  "move-judgment": Object.freeze({
+    mode: "prompt"
+  }),
+  "move-magnitude": Object.freeze({
+    mode: "d6-table",
+    table: Object.freeze({
+      1: 1,
+      2: 2,
+      3: 3,
+      4: 4,
+      5: 5,
+      6: 6
+    })
+  })
+});
+const SIDE_FIELD_MOVE_RUNTIME_RULES = Object.freeze({
+  "move-aurora-veil": Object.freeze({
+    create: Object.freeze([
+      { kind: "force-field", side: "source", protection: "physical-special", durationRounds: 4 }
+    ])
+  }),
+  "move-baddy-bad": Object.freeze({
+    requiresHit: true,
+    create: Object.freeze([
+      { kind: "force-field", side: "source", protection: "physical", durationRounds: 4 }
+    ])
+  }),
+  "move-court-change": Object.freeze({
+    swapSideFields: true
+  }),
+  "move-defog": Object.freeze({
+    clearForceFields: "all",
+    clearHazards: "all"
+  }),
+  "move-glitzy-glow": Object.freeze({
+    requiresHit: true,
+    create: Object.freeze([
+      { kind: "force-field", side: "source", protection: "special", durationRounds: 4 }
+    ])
+  }),
+  "move-grass-pledge": Object.freeze({
+    create: Object.freeze([
+      { kind: "hazard", side: "foe", hazard: "grass-pledge", durationRounds: 4 }
+    ])
+  }),
+  "move-light-screen": Object.freeze({
+    create: Object.freeze([
+      { kind: "force-field", side: "source", protection: "special", durationRounds: 4 }
+    ])
+  }),
+  "move-mortal-spin": Object.freeze({
+    clearHazards: "source-side"
+  }),
+  "move-rapid-spin": Object.freeze({
+    clearHazards: "source-side"
+  }),
+  "move-reflect": Object.freeze({
+    create: Object.freeze([
+      { kind: "force-field", side: "source", protection: "physical", durationRounds: 4 }
+    ])
+  }),
+  "move-spider-web": Object.freeze({
+    create: Object.freeze([
+      { kind: "hazard", side: "foe", hazard: "spider-web", durationRounds: 0 }
+    ])
+  }),
+  "move-spikes": Object.freeze({
+    create: Object.freeze([
+      { kind: "hazard", side: "foe", hazard: "spikes", durationRounds: 0 }
+    ])
+  }),
+  "move-stealth-rock": Object.freeze({
+    create: Object.freeze([
+      { kind: "hazard", side: "foe", hazard: "stealth-rock", durationRounds: 0 }
+    ])
+  }),
+  "move-sticky-web": Object.freeze({
+    create: Object.freeze([
+      { kind: "hazard", side: "foe", hazard: "sticky-web", durationRounds: 0 }
+    ])
   })
 });
 const CHARGE_MOVE_PROFILE_OVERRIDES = Object.freeze({
@@ -1092,7 +1244,34 @@ export class PokRoleActor extends Actor {
     return data;
   }
 
+  async _requestCombatMutation(operation, payload = {}) {
+    const requestMutation = game.pokrole?.requestCombatMutation;
+    if (typeof requestMutation !== "function") {
+      throw new Error(`${POKROLE.ID} | Combat mutation relay is not available.`);
+    }
+    return requestMutation(operation, {
+      ...payload,
+      requesterActorId: this.id ?? null,
+      requesterUserId: game.user?.id ?? null
+    });
+  }
+
   async _switchCombatantToActor(combat, outgoingCombatant, incomingActor, options = {}) {
+    if (!combat || !outgoingCombatant || !incomingActor) return null;
+    if (!game.user?.isGM) {
+      const response = await this._requestCombatMutation("switchCombatantToActor", {
+        combatId: combat.id ?? null,
+        outgoingCombatantId: outgoingCombatant.id ?? null,
+        incomingActorId: incomingActor.id ?? null,
+        options
+      });
+      const createdCombatantId = `${response?.combatantId ?? ""}`.trim();
+      return createdCombatantId ? combat.combatants.get(createdCombatantId) ?? null : null;
+    }
+    return this._switchCombatantToActorLocal(combat, outgoingCombatant, incomingActor, options);
+  }
+
+  async _switchCombatantToActorLocal(combat, outgoingCombatant, incomingActor, options = {}) {
     if (!combat || !outgoingCombatant || !incomingActor) return null;
     const outgoingActor = outgoingCombatant.actor ?? null;
     const slotId = await this._ensureCombatantBattleSlotId(outgoingCombatant);
@@ -1342,6 +1521,158 @@ export class PokRoleActor extends Actor {
       return null;
     }
     return lock;
+  }
+
+  _normalizeSideFieldKind(value = "hazard") {
+    const normalized = `${value ?? "hazard"}`.trim().toLowerCase();
+    return ["force-field", "hazard"].includes(normalized) ? normalized : "hazard";
+  }
+
+  _normalizeForceFieldProtection(value = "physical") {
+    const normalized = `${value ?? "physical"}`.trim().toLowerCase();
+    if (["physical", "special", "physical-special"].includes(normalized)) return normalized;
+    return "physical";
+  }
+
+  _normalizeSideFieldEntry(entry = {}) {
+    const kind = this._normalizeSideFieldKind(entry?.kind);
+    const sideDisposition = this._normalizeTerrainSideDisposition(entry?.sideDisposition, 0);
+    if (sideDisposition === 0) return null;
+    return {
+      id: `${entry?.id ?? foundry.utils.randomID()}`.trim() || foundry.utils.randomID(),
+      kind,
+      sideDisposition,
+      protection: kind === "force-field" ? this._normalizeForceFieldProtection(entry?.protection) : "physical",
+      hazard: kind === "hazard" ? `${entry?.hazard ?? "generic"}`.trim().toLowerCase() || "generic" : "",
+      durationRounds: Math.max(Math.floor(toNumber(entry?.durationRounds, 0)), 0),
+      roundSet: Math.max(Math.floor(toNumber(entry?.roundSet, 0)), 0),
+      sourceActorId: `${entry?.sourceActorId ?? ""}`.trim() || null,
+      sourceActorName: `${entry?.sourceActorName ?? ""}`.trim(),
+      sourceMoveId: `${entry?.sourceMoveId ?? ""}`.trim() || null,
+      sourceMoveName: `${entry?.sourceMoveName ?? ""}`.trim()
+    };
+  }
+
+  _getCombatSideFieldEntries(combat = game.combat) {
+    if (!combat) return [];
+    const currentRound = Math.max(Math.floor(toNumber(combat.round, 0)), 0);
+    const rawEntries = combat.getFlag(POKROLE.ID, SIDE_FIELD_ENTRIES_FLAG_KEY);
+    return (Array.isArray(rawEntries) ? rawEntries : [])
+      .map((entry) => this._normalizeSideFieldEntry(entry))
+      .filter((entry) => {
+        if (!entry) return false;
+        if (entry.durationRounds <= 0) return true;
+        return entry.roundSet + entry.durationRounds - 1 >= currentRound;
+      });
+  }
+
+  async _setCombatSideFieldEntries(combat = game.combat, entries = []) {
+    if (!combat) return [];
+    const normalizedEntries = (Array.isArray(entries) ? entries : [])
+      .map((entry) => this._normalizeSideFieldEntry(entry))
+      .filter(Boolean);
+    await combat.setFlag(POKROLE.ID, SIDE_FIELD_ENTRIES_FLAG_KEY, normalizedEntries);
+    return normalizedEntries;
+  }
+
+  getActiveSideFieldEntries(actor = this, options = {}) {
+    const combat = options.combat ?? game.combat;
+    if (!combat) return [];
+    const sideDisposition =
+      options.all === true
+        ? null
+        : this._normalizeTerrainSideDisposition(
+            options.sideDisposition,
+            this._getActorCombatSideDisposition(actor, combat)
+          );
+    const kindFilter = `${options.kind ?? ""}`.trim().toLowerCase();
+    return this._getCombatSideFieldEntries(combat).filter((entry) => {
+      if (sideDisposition !== null && entry.sideDisposition !== sideDisposition) return false;
+      if (kindFilter && entry.kind !== kindFilter) return false;
+      return true;
+    });
+  }
+
+  async registerSideFieldEntry(entry = {}, combat = game.combat) {
+    if (!combat) return null;
+    const normalizedEntry = this._normalizeSideFieldEntry({
+      ...entry,
+      roundSet: Math.max(Math.floor(toNumber(combat.round, 0)), 0),
+      sourceActorId: entry?.sourceActorId ?? this.id ?? null,
+      sourceActorName: entry?.sourceActorName ?? this.name ?? ""
+    });
+    if (!normalizedEntry) return null;
+    const currentEntries = this._getCombatSideFieldEntries(combat).filter((candidate) => {
+      if (candidate.kind !== normalizedEntry.kind) return true;
+      if (candidate.sideDisposition !== normalizedEntry.sideDisposition) return true;
+      if (normalizedEntry.kind === "force-field") {
+        return candidate.protection !== normalizedEntry.protection;
+      }
+      return candidate.hazard !== normalizedEntry.hazard;
+    });
+    currentEntries.push(normalizedEntry);
+    await this._setCombatSideFieldEntries(combat, currentEntries);
+    return normalizedEntry;
+  }
+
+  async clearSideFieldEntries(options = {}, combat = game.combat) {
+    if (!combat) return 0;
+    const clearAll = options.all === true;
+    const sideDisposition =
+      clearAll
+        ? null
+        : this._normalizeTerrainSideDisposition(
+            options.sideDisposition,
+            this._getActorCombatSideDisposition(this, combat)
+          );
+    const clearKind = `${options.kind ?? ""}`.trim().toLowerCase();
+    const hazardKey = `${options.hazard ?? ""}`.trim().toLowerCase();
+    const protection = this._normalizeForceFieldProtection(options.protection ?? "");
+    const currentEntries = this._getCombatSideFieldEntries(combat);
+    const nextEntries = currentEntries.filter((entry) => {
+      if (sideDisposition !== null && entry.sideDisposition !== sideDisposition) return true;
+      if (clearKind && entry.kind !== clearKind) return true;
+      if (entry.kind === "hazard" && hazardKey && entry.hazard !== hazardKey) return true;
+      if (entry.kind === "force-field" && options.protection && entry.protection !== protection) return true;
+      return false;
+    });
+    const clearedCount = currentEntries.length - nextEntries.length;
+    if (clearedCount > 0) {
+      await this._setCombatSideFieldEntries(combat, nextEntries);
+    }
+    return clearedCount;
+  }
+
+  async clearSideFieldsForActorSide(actor = this, options = {}) {
+    const combat = game.combat;
+    if (!combat) return 0;
+    return this.clearSideFieldEntries({
+      sideDisposition: this._getActorCombatSideDisposition(actor, combat),
+      kind: options.kind ?? "",
+      all: false
+    }, combat);
+  }
+
+  async swapSideFieldEntries(actor = this, combat = game.combat) {
+    if (!combat) return false;
+    const sourceSide = this._getActorCombatSideDisposition(actor, combat);
+    if (sourceSide === 0) return false;
+    const foeSide = sourceSide === 1 ? -1 : 1;
+    let changed = false;
+    const nextEntries = this._getCombatSideFieldEntries(combat).map((entry) => {
+      if (entry.sideDisposition === sourceSide) {
+        changed = true;
+        return { ...entry, sideDisposition: foeSide };
+      }
+      if (entry.sideDisposition === foeSide) {
+        changed = true;
+        return { ...entry, sideDisposition: sourceSide };
+      }
+      return entry;
+    });
+    if (!changed) return false;
+    await this._setCombatSideFieldEntries(combat, nextEntries);
+    return true;
   }
 
   getActiveTerrainEntries(options = {}) {
@@ -1923,14 +2254,54 @@ export class PokRoleActor extends Actor {
     return seedId ? DELAYED_MOVE_RUNTIME_RULES[seedId] ?? null : null;
   }
 
+  _getCopyMoveRuntimeRule(move) {
+    const seedId = this._getMoveSeedId(move);
+    return seedId ? COPY_MOVE_RUNTIME_RULES[seedId] ?? null : null;
+  }
+
+  _getDynamicTypeMoveRuntimeRule(move) {
+    const seedId = this._getMoveSeedId(move);
+    return seedId ? MOVE_DYNAMIC_TYPE_RUNTIME_RULES[seedId] ?? null : null;
+  }
+
+  _getDynamicPowerMoveRuntimeRule(move) {
+    const seedId = this._getMoveSeedId(move);
+    return seedId ? MOVE_DYNAMIC_POWER_RUNTIME_RULES[seedId] ?? null : null;
+  }
+
+  _getSideFieldMoveRuntimeRule(move) {
+    const seedId = this._getMoveSeedId(move);
+    return seedId ? SIDE_FIELD_MOVE_RUNTIME_RULES[seedId] ?? null : null;
+  }
+
+  _isRoostGroundedThisRound(targetActor) {
+    const actor = targetActor ?? null;
+    if (!(actor instanceof PokRoleActor)) return false;
+    const activeRoundKey = getCurrentCombatRoundKey();
+    if (!activeRoundKey) return false;
+    const storedRoundKey = `${actor.getFlag(POKROLE.ID, ROOST_GROUNDED_ROUND_FLAG_KEY) ?? ""}`.trim();
+    return Boolean(storedRoundKey) && storedRoundKey === activeRoundKey;
+  }
+
+  _getEffectiveDefenderTypesForInteraction(targetActor, moveType = "none") {
+    let defenderTypes = [
+      targetActor?.system?.types?.primary,
+      targetActor?.system?.types?.secondary
+    ].filter((typeKey) => typeKey && typeKey !== "none");
+    if (this._normalizeTypeKey(moveType) === "ground" && this._isRoostGroundedThisRound(targetActor)) {
+      defenderTypes = defenderTypes.filter((typeKey) => this._normalizeTypeKey(typeKey) !== "flying");
+    }
+    return defenderTypes;
+  }
+
   _getGroundImmunityInteraction(targetActor) {
     if (!targetActor) {
       return { immune: false, weaknessBonus: 0, resistancePenalty: 0, label: "POKROLE.Chat.TypeEffect.Neutral" };
     }
-    return this._evaluateTypeInteractionAgainstTypes("ground", [
-      targetActor?.system?.types?.primary,
-      targetActor?.system?.types?.secondary
-    ]);
+    return this._evaluateTypeInteractionAgainstTypes(
+      "ground",
+      this._getEffectiveDefenderTypesForInteraction(targetActor, "ground")
+    );
   }
 
   _isActorGroundedForTerrain(actor = this) {
@@ -1957,12 +2328,218 @@ export class PokRoleActor extends Actor {
       const resolvedPriority = isActive
         ? runtimeRule.conditionalPriority.active
         : runtimeRule.conditionalPriority.inactive;
-      return clamp(Math.floor(toNumber(resolvedPriority, 0)), -3, 5);
+      return clamp(Math.floor(toNumber(resolvedPriority, 0)), -99, 99);
     }
-    return clamp(Math.floor(toNumber(move?.system?.priority, 0)), -3, 5);
+    return clamp(Math.floor(toNumber(move?.system?.priority, 0)), -99, 99);
   }
 
-  _resolveEffectiveMoveType(move, actor = this) {
+  _getWeatherBlockedMoveTypes(weatherKey = this.getActiveWeatherKey()) {
+    const activeWeather = `${weatherKey ?? ""}`.trim().toLowerCase();
+    if (activeWeather === "harsh-sunlight") return new Set(["water"]);
+    if (activeWeather === "typhoon") return new Set(["fire"]);
+    return new Set();
+  }
+
+  _isMoveTypeBlockedByWeather(moveType, weatherKey = this.getActiveWeatherKey()) {
+    const normalizedMoveType = this._normalizeTypeKey(moveType);
+    if (!normalizedMoveType || normalizedMoveType === "none") return false;
+    return this._getWeatherBlockedMoveTypes(weatherKey).has(normalizedMoveType);
+  }
+
+  _getBestOffensiveTypeAgainstTarget(targetActor, options = {}) {
+    if (!(targetActor instanceof PokRoleActor)) {
+      return this._normalizeTypeKey(options.fallbackType || "normal");
+    }
+
+    const blockedTypes = options.blockedTypes instanceof Set
+      ? new Set([...options.blockedTypes].map((typeKey) => this._normalizeTypeKey(typeKey)))
+      : new Set();
+    const fallbackType = this._normalizeTypeKey(options.fallbackType || "normal");
+    const candidateTypes = Object.keys(TYPE_EFFECTIVENESS).filter((typeKey) => !blockedTypes.has(typeKey));
+
+    let bestType = "";
+    let bestScore = Number.NEGATIVE_INFINITY;
+    let bestWeaknessBonus = -1;
+    let bestResistancePenalty = Number.POSITIVE_INFINITY;
+
+    for (const candidateType of candidateTypes) {
+      const interaction = this._evaluateTypeInteraction(candidateType, targetActor);
+      if (interaction.immune) continue;
+      const score = interaction.weaknessBonus - interaction.resistancePenalty;
+      if (score > bestScore) {
+        bestType = candidateType;
+        bestScore = score;
+        bestWeaknessBonus = interaction.weaknessBonus;
+        bestResistancePenalty = interaction.resistancePenalty;
+        continue;
+      }
+      if (score !== bestScore) continue;
+      if (interaction.weaknessBonus > bestWeaknessBonus) {
+        bestType = candidateType;
+        bestWeaknessBonus = interaction.weaknessBonus;
+        bestResistancePenalty = interaction.resistancePenalty;
+        continue;
+      }
+      if (
+        interaction.weaknessBonus === bestWeaknessBonus &&
+        interaction.resistancePenalty < bestResistancePenalty
+      ) {
+        bestType = candidateType;
+        bestResistancePenalty = interaction.resistancePenalty;
+      }
+    }
+
+    return bestType || fallbackType || "normal";
+  }
+
+  async _promptDynamicMoveRuntimeConfiguration(move, options = {}) {
+    const availableTypes = Object.keys(TYPE_EFFECTIVENESS)
+      .filter((typeKey) => typeKey !== "none")
+      .map((typeKey) => ({ key: typeKey, label: this.localizeTrait(typeKey) }));
+    const selectedType = this._normalizeTypeKey(
+      options.defaultType ||
+      this._resolveEffectiveMoveType(move, this)
+    );
+    const selectedPower = clamp(Math.floor(toNumber(options.defaultPower, 5)), 0, 10);
+    const typeOptions = availableTypes.map((entry) =>
+      `<option value="${entry.key}" ${entry.key === selectedType ? "selected" : ""}>${entry.label}</option>`
+    ).join("");
+    const content = `
+      <form>
+        <div class="form-group">
+          <label>${game.i18n.localize("POKROLE.Move.Type")}</label>
+          <select name="moveType">${typeOptions}</select>
+        </div>
+        <div class="form-group">
+          <label>${game.i18n.localize("POKROLE.Move.Power")}</label>
+          <input type="number" name="movePower" min="0" max="10" step="1" value="${selectedPower}">
+        </div>
+      </form>
+    `;
+    const result = await foundry.applications.api.DialogV2.wait({
+      window: {
+        title: game.i18n.format("POKROLE.Chat.DynamicMove.ConfigureTitle", {
+          move: move?.name ?? game.i18n.localize("POKROLE.Common.Unknown")
+        })
+      },
+      content,
+      buttons: [
+        {
+          action: "confirm",
+          label: game.i18n.localize("POKROLE.Common.Submit"),
+          callback: (event, button) => ({
+            moveType: button.form?.elements?.moveType?.value ?? selectedType,
+            power: button.form?.elements?.movePower?.value ?? selectedPower
+          })
+        },
+        {
+          action: "cancel",
+          label: game.i18n.localize("POKROLE.Common.Cancel")
+        }
+      ]
+    });
+    if (!result) return null;
+    return {
+      moveType: this._normalizeTypeKey(result.moveType || selectedType || "normal"),
+      power: clamp(Math.floor(toNumber(result.power, selectedPower)), 0, 10)
+    };
+  }
+
+  async _prepareDynamicMoveRuntime(move, options = {}) {
+    const runtime = {
+      moveType: "",
+      power: null,
+      results: []
+    };
+    const targetActor = options.targetActor instanceof PokRoleActor ? options.targetActor : null;
+    const activeWeather = `${options.activeWeather ?? this.getActiveWeatherKey() ?? ""}`.trim().toLowerCase();
+    const dynamicTypeRule = this._getDynamicTypeMoveRuntimeRule(move);
+    const dynamicPowerRule = this._getDynamicPowerMoveRuntimeRule(move);
+
+    if (dynamicTypeRule?.mode === "best-against-target") {
+      runtime.moveType = this._getBestOffensiveTypeAgainstTarget(targetActor, {
+        blockedTypes: this._getWeatherBlockedMoveTypes(activeWeather),
+        fallbackType: this._normalizeTypeKey(move?.system?.type || "normal")
+      });
+      runtime.results.push({
+        label: game.i18n.localize("POKROLE.Chat.DynamicMove.Label"),
+        targetName: this.name,
+        applied: true,
+        detail: game.i18n.format("POKROLE.Chat.DynamicMove.TypeResolved", {
+          type: this.localizeTrait(runtime.moveType)
+        })
+      });
+    }
+
+    if (dynamicTypeRule?.mode === "prompted" || dynamicPowerRule?.mode === "prompt") {
+      const configuredRuntime = await this._promptDynamicMoveRuntimeConfiguration(move, {
+        defaultType: runtime.moveType || this._normalizeTypeKey(move?.system?.type || "normal"),
+        defaultPower: runtime.power ?? 5
+      });
+      if (!configuredRuntime) return null;
+      runtime.moveType = configuredRuntime.moveType;
+      runtime.power = configuredRuntime.power;
+      runtime.results.push({
+        label: game.i18n.localize("POKROLE.Chat.DynamicMove.Label"),
+        targetName: this.name,
+        applied: true,
+        detail: game.i18n.format("POKROLE.Chat.DynamicMove.TypeAndPowerResolved", {
+          type: this.localizeTrait(runtime.moveType),
+          power: runtime.power
+        })
+      });
+    }
+
+    if (dynamicPowerRule?.mode === "d6-table") {
+      const powerRoll = await new Roll("1d6").evaluate({ async: true });
+      const rolledValue = Math.max(Math.floor(toNumber(powerRoll.total, 0)), 1);
+      await powerRoll.toMessage({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        flavor: game.i18n.format("POKROLE.Chat.DynamicMove.PowerRollFlavor", {
+          actor: this.name,
+          move: move?.name ?? game.i18n.localize("POKROLE.Common.Unknown")
+        })
+      });
+      runtime.power = Math.max(
+        Math.floor(toNumber(dynamicPowerRule.table?.[rolledValue], move?.system?.power ?? 0)),
+        0
+      );
+      runtime.results.push({
+        label: game.i18n.localize("POKROLE.Chat.DynamicMove.Label"),
+        targetName: this.name,
+        applied: true,
+        detail: game.i18n.format("POKROLE.Chat.DynamicMove.PowerResolved", {
+          roll: rolledValue,
+          power: runtime.power
+        })
+      });
+    }
+
+    return runtime;
+  }
+
+  _resolveEffectiveMoveType(move, actor = this, options = {}) {
+    const runtimeOverrideType = `${options?.runtimeOverride?.moveType ?? ""}`.trim();
+    if (runtimeOverrideType) {
+      return this._normalizeTypeKey(runtimeOverrideType);
+    }
+    const dynamicTypeRule = this._getDynamicTypeMoveRuntimeRule(move);
+    if (dynamicTypeRule?.mode === "secondary-else-primary") {
+      const secondaryType = this._normalizeTypeKey(actor?.system?.types?.secondary || "none");
+      const primaryType = this._normalizeTypeKey(actor?.system?.types?.primary || "normal");
+      if (secondaryType && secondaryType !== "none") {
+        return secondaryType;
+      }
+      return primaryType;
+    }
+    if (dynamicTypeRule?.mode === "best-against-target") {
+      const targetActor = options?.targetActor ?? null;
+      const activeWeather = options?.activeWeather ?? this.getActiveWeatherKey();
+      return this._getBestOffensiveTypeAgainstTarget(targetActor, {
+        blockedTypes: this._getWeatherBlockedMoveTypes(activeWeather),
+        fallbackType: move?.system?.type || "normal"
+      });
+    }
     const runtimeRule = this._getTerrainRuntimeMoveRule(move);
     if (runtimeRule?.typeMatchesPreferredTerrain) {
       const preferredTerrain = this.getPreferredTerrainKeyForActor(actor, {
@@ -3187,20 +3764,30 @@ export class PokRoleActor extends Actor {
       moveId: `${record?.moveId ?? ""}`.trim(),
       moveName: `${record?.moveName ?? ""}`.trim(),
       moveUuid: `${record?.moveUuid ?? ""}`.trim(),
+      moveSeedId: `${record?.moveSeedId ?? ""}`.trim().toLowerCase(),
       sceneId: `${record?.sceneId ?? ""}`.trim(),
       roundKey: `${record?.roundKey ?? ""}`.trim(),
+      targetActorIds: Array.isArray(record?.targetActorIds)
+        ? [...new Set(record.targetActorIds.map((value) => `${value ?? ""}`.trim()).filter(Boolean))]
+        : [],
+      targetMode: this._normalizeMoveTargetKey(record?.targetMode),
       usedAt: Math.max(toNumber(record?.usedAt, 0), 0)
     };
   }
 
-  async _recordLastUsedMove(move) {
+  async _recordLastUsedMove(move, context = {}) {
     if (!move?.id) return;
     await this.setFlag(POKROLE.ID, LAST_USED_MOVE_FLAG_KEY, {
       moveId: move.id,
       moveName: move.name ?? "",
       moveUuid: move.uuid ?? "",
+      moveSeedId: this._getMoveSeedId(move),
       sceneId: canvas?.scene?.id ?? "",
       roundKey: this._getCurrentRoundKey(0) ?? "",
+      targetActorIds: Array.isArray(context?.targetActors)
+        ? context.targetActors.map((actor) => `${actor?.id ?? ""}`.trim()).filter(Boolean)
+        : [],
+      targetMode: this._normalizeMoveTargetKey(context?.moveTargetKey),
       usedAt: Date.now()
     });
   }
@@ -3243,6 +3830,59 @@ export class PokRoleActor extends Actor {
       damagePool: Math.max(toNumber(damagePool, 0), 0),
       recordedAt: Date.now()
     });
+  }
+
+  _getBideState() {
+    const rawState = this.getFlag(POKROLE.ID, BIDE_STATE_FLAG_KEY) ?? {};
+    const combatId = `${rawState?.combatId ?? ""}`.trim();
+    const activeCombatId = `${game.combat?.id ?? ""}`.trim();
+    if (!combatId || !activeCombatId || combatId !== activeCombatId) {
+      return {
+        combatId: activeCombatId,
+        targetActorId: "",
+        targetActorName: "",
+        moveId: "",
+        moveName: "",
+        remainingHits: 0,
+        storedDamage: 0,
+        roundKey: ""
+      };
+    }
+    return {
+      combatId,
+      targetActorId: `${rawState?.targetActorId ?? ""}`.trim(),
+      targetActorName: `${rawState?.targetActorName ?? ""}`.trim(),
+      moveId: `${rawState?.moveId ?? ""}`.trim(),
+      moveName: `${rawState?.moveName ?? ""}`.trim(),
+      remainingHits: Math.max(Math.floor(toNumber(rawState?.remainingHits, 0)), 0),
+      storedDamage: Math.max(Math.floor(toNumber(rawState?.storedDamage, 0)), 0),
+      roundKey: `${rawState?.roundKey ?? ""}`.trim()
+    };
+  }
+
+  _hasActiveBideState() {
+    return this._getBideState().remainingHits > 0;
+  }
+
+  async _setBideState(state = {}) {
+    const combatId = `${game.combat?.id ?? ""}`.trim();
+    if (!combatId) return null;
+    const nextState = {
+      combatId,
+      targetActorId: `${state?.targetActorId ?? ""}`.trim(),
+      targetActorName: `${state?.targetActorName ?? ""}`.trim(),
+      moveId: `${state?.moveId ?? ""}`.trim(),
+      moveName: `${state?.moveName ?? ""}`.trim(),
+      remainingHits: Math.max(Math.floor(toNumber(state?.remainingHits, 0)), 0),
+      storedDamage: Math.max(Math.floor(toNumber(state?.storedDamage, 0)), 0),
+      roundKey: `${state?.roundKey ?? this._getCurrentRoundKey(0) ?? ""}`.trim()
+    };
+    await this.setFlag(POKROLE.ID, BIDE_STATE_FLAG_KEY, nextState);
+    return nextState;
+  }
+
+  async _clearBideState() {
+    await this.unsetFlag(POKROLE.ID, BIDE_STATE_FLAG_KEY);
   }
 
   _getSpecialDamageUniqueTargetsState() {
@@ -4680,7 +5320,12 @@ export class PokRoleActor extends Actor {
     if (context.advanceAction !== false) {
       await this._advanceActionCounter(actionNumber, roundKey);
     }
-    await this._recordLastUsedMove(move);
+    if (options.skipLastUsedRecord !== true) {
+      await this._recordLastUsedMove(move, {
+        targetActors,
+        moveTargetKey
+      });
+    }
 
     const chargeLines = [
       game.i18n.format("POKROLE.Chat.MultiTurn.ChargeStarted", {
@@ -4872,6 +5517,10 @@ export class PokRoleActor extends Actor {
 
   async rollEvasion(actionNumber = null, options = {}) {
     await this.synchronizeConditionalActiveEffects();
+    if (this._hasActiveBideState()) {
+      ui.notifications.warn("Bide prevents Evasion and Clash until it resolves.");
+      return null;
+    }
     const actionCheck = await this._assertCanAct("evasion");
     if (!actionCheck.allowed) {
       ui.notifications.warn(actionCheck.reason);
@@ -4906,6 +5555,10 @@ export class PokRoleActor extends Actor {
   async rollClash(moveId, actionNumber = null, options = {}) {
     await this.synchronizeConditionalActiveEffects();
     if (this.type !== "pokemon") return null;
+    if (this._hasActiveBideState()) {
+      ui.notifications.warn("Bide prevents Evasion and Clash until it resolves.");
+      return null;
+    }
     const actionCheck = await this._assertCanAct("clash");
     if (!actionCheck.allowed) {
       ui.notifications.warn(actionCheck.reason);
@@ -4991,6 +5644,18 @@ export class PokRoleActor extends Actor {
   }
 
   async _removeCombatantFromBattle(combat, combatant) {
+    if (!combat || !combatant) return false;
+    if (!game.user?.isGM) {
+      const response = await this._requestCombatMutation("removeCombatantFromBattle", {
+        combatId: combat.id ?? null,
+        combatantId: combatant.id ?? null
+      });
+      return Boolean(response?.removed);
+    }
+    return this._removeCombatantFromBattleLocal(combat, combatant);
+  }
+
+  async _removeCombatantFromBattleLocal(combat, combatant) {
     if (!combat || !combatant) return false;
     const combatantId = `${combatant.id ?? ""}`.trim();
     if (!combatantId) return false;
@@ -5618,6 +6283,804 @@ export class PokRoleActor extends Actor {
     }
   }
 
+  _getCombatMoveQueueEntries(combat = game.combat) {
+    if (!combat) return [];
+    const rawQueue = combat.getFlag(POKROLE.ID, COMBAT_FLAG_KEYS.MOVE_QUEUE);
+    return (Array.isArray(rawQueue) ? rawQueue : []).map((entry, index) => ({
+      id: `${entry?.id ?? foundry.utils.randomID()}`.trim() || foundry.utils.randomID(),
+      actorId: `${entry?.actorId ?? ""}`.trim(),
+      combatantId: `${entry?.combatantId ?? ""}`.trim(),
+      moveId: `${entry?.moveId ?? ""}`.trim(),
+      moveName: `${entry?.moveName ?? ""}`.trim(),
+      targetActorIds: Array.isArray(entry?.targetActorIds)
+        ? [...new Set(entry.targetActorIds.map((value) => `${value ?? ""}`.trim()).filter(Boolean))]
+        : [],
+      targetMode: this._normalizeMoveTargetKey(entry?.targetMode),
+      declaredRound: Math.max(Math.floor(toNumber(entry?.declaredRound, Math.floor(toNumber(combat.round, 0)))), 0),
+      declaredAt: Math.max(Math.floor(toNumber(entry?.declaredAt, Date.now() + index)), 0)
+    }));
+  }
+
+  _getQueuedMoveEntryForActor(actor, combat = game.combat) {
+    const actorId = `${actor?.id ?? ""}`.trim();
+    if (!combat || !actorId) return null;
+    const currentRound = Math.max(Math.floor(toNumber(combat.round, 0)), 0);
+    return this._getCombatMoveQueueEntries(combat)
+      .filter((entry) => entry.actorId === actorId && entry.declaredRound === currentRound && entry.moveId)
+      .sort((left, right) => left.declaredAt - right.declaredAt)[0] ?? null;
+  }
+
+  _getRecordedMoveDocument(actor, record = {}) {
+    const moveId = `${record?.moveId ?? ""}`.trim();
+    if (!actor || !moveId) return null;
+    const directItem = actor.items?.get(moveId) ?? null;
+    if (directItem?.type === "move") return directItem;
+    return null;
+  }
+
+  _canResolveCopiedMoveDocument(moveDocument, options = {}) {
+    if (!moveDocument || moveDocument.type !== "move") {
+      return game.i18n.localize("POKROLE.Errors.UnknownMove");
+    }
+    const sourceAttributes = this._getMoveSourceAttributes(moveDocument);
+    if (sourceAttributes?.unique) {
+      return "Unique moves cannot be copied.";
+    }
+    if (sourceAttributes?.copyMove) {
+      return "Moves that copy other moves cannot be copied again.";
+    }
+    if (options.disallowSupport && this._normalizeMoveCombatCategory(moveDocument.system?.category) === "support") {
+      return "Support moves cannot be copied here.";
+    }
+    return "";
+  }
+
+  async _executeTemporaryCopiedMove(copiedMove, options = {}) {
+    if (!copiedMove || copiedMove.type !== "move") return null;
+    const tempData = copiedMove.toObject();
+    delete tempData._id;
+    tempData.name = copiedMove.name;
+    tempData.img = copiedMove.img;
+    tempData.flags ??= {};
+    tempData.flags[POKROLE.ID] = {
+      ...(tempData.flags?.[POKROLE.ID] ?? {}),
+      temporaryCopiedMoveExecution: true
+    };
+    const [temporaryMove] = await this.createEmbeddedDocuments("Item", [tempData]);
+    if (!temporaryMove) return null;
+    try {
+      return await this.rollMove(temporaryMove.id, {
+        targetActorIds: Array.isArray(options?.targetActorIds) ? options.targetActorIds : [],
+        roundKey: options?.roundKey ?? getCurrentCombatRoundKey(),
+        actionNumber: options?.actionNumber ?? null,
+        advanceAction: false,
+        skipActionCheck: true,
+        skipLastUsedRecord: true,
+        executeFromCopy: true
+      });
+    } finally {
+      await this.deleteEmbeddedDocuments("Item", [temporaryMove.id]);
+    }
+  }
+
+  async _replaceMoveWithCopiedMove(sourceMove, copiedMove, options = {}) {
+    if (!sourceMove?.id || !copiedMove || copiedMove.type !== "move") return false;
+    const copiedData = copiedMove.toObject();
+    const updateData = {
+      name: copiedData.name,
+      img: copiedData.img,
+      system: copiedData.system,
+      [`flags.${POKROLE.ID}.seedId`]: this._getMoveSeedId(copiedMove),
+      [`flags.${POKROLE.ID}.sourceDbId`]:
+        foundry.utils.getProperty(copiedData, `flags.${POKROLE.ID}.sourceDbId`) ?? null,
+      [`flags.${POKROLE.ID}.automationStatus`]:
+        foundry.utils.getProperty(copiedData, `flags.${POKROLE.ID}.automationStatus`) ?? null,
+      [`flags.${POKROLE.ID}.automationReasons`]:
+        foundry.utils.getProperty(copiedData, `flags.${POKROLE.ID}.automationReasons`) ?? [],
+      [`flags.${POKROLE.ID}.sourceAttributes`]:
+        foundry.utils.getProperty(copiedData, `flags.${POKROLE.ID}.sourceAttributes`) ?? {}
+    };
+    if (options.temporarySceneScoped) {
+      updateData[`flags.${POKROLE.ID}.${TEMPORARY_COPIED_MOVE_FLAG_KEY}`] = {
+        sceneId: `${canvas?.scene?.id ?? ""}`.trim(),
+        originalData: sourceMove.toObject()
+      };
+    } else {
+      updateData[`flags.${POKROLE.ID}.${TEMPORARY_COPIED_MOVE_FLAG_KEY}`] = null;
+    }
+    await sourceMove.update(updateData);
+    return true;
+  }
+
+  async clearSceneScopedCopiedMoves(currentSceneId = null) {
+    const normalizedSceneId = `${currentSceneId ?? canvas?.scene?.id ?? ""}`.trim();
+    if (!normalizedSceneId) return 0;
+    let restored = 0;
+    for (const move of this.items?.contents ?? []) {
+      if (move?.type !== "move") continue;
+      const temporaryCopy = move.getFlag?.(POKROLE.ID, TEMPORARY_COPIED_MOVE_FLAG_KEY) ?? null;
+      const storedSceneId = `${temporaryCopy?.sceneId ?? ""}`.trim();
+      const originalData = temporaryCopy?.originalData ?? null;
+      if (!storedSceneId || storedSceneId === normalizedSceneId || !originalData || typeof originalData !== "object") {
+        continue;
+      }
+      const restoredData = foundry.utils.deepClone(originalData);
+      delete restoredData._id;
+      await move.update({
+        name: restoredData.name,
+        img: restoredData.img,
+        system: restoredData.system,
+        flags: restoredData.flags ?? {}
+      });
+      restored += 1;
+    }
+    return restored;
+  }
+
+  _getHealingWishCandidates(options = {}) {
+    const includeFainted = options.includeFainted === true;
+    const trainer = this._getTrainerActorForPokemon(this);
+    if (!trainer) return [];
+    const partyIds = Array.isArray(trainer.system?.party) ? trainer.system.party : [];
+    return partyIds
+      .map((actorId) => game.actors.get(actorId))
+      .filter((actor) => {
+        if (!actor || actor.type !== "pokemon" || actor.id === this.id) return false;
+        if (actor._isConditionActive?.("dead")) return false;
+        if (!includeFainted && actor._isConditionActive?.("fainted")) return false;
+        return true;
+      });
+  }
+
+  _getDestinyBondState() {
+    const rawState = this.getFlag(POKROLE.ID, DESTINY_BOND_STATE_FLAG_KEY) ?? {};
+    return {
+      activeRound: Math.max(Math.floor(toNumber(rawState?.activeRound, 0)), 0),
+      lastUsedRound: Math.max(Math.floor(toNumber(rawState?.lastUsedRound, 0)), 0)
+    };
+  }
+
+  async _setDestinyBondState(state = {}) {
+    await this.setFlag(POKROLE.ID, DESTINY_BOND_STATE_FLAG_KEY, {
+      activeRound: Math.max(Math.floor(toNumber(state?.activeRound, 0)), 0),
+      lastUsedRound: Math.max(Math.floor(toNumber(state?.lastUsedRound, 0)), 0)
+    });
+  }
+
+  _getSpecialSupportMoveFailureReason(move) {
+    const seedId = this._getMoveSeedId(move);
+    if (seedId === "move-destiny-bond" && game.combat) {
+      const currentRound = Math.max(Math.floor(toNumber(game.combat.round, 0)), 0);
+      const state = this._getDestinyBondState();
+      if (state.lastUsedRound > 0 && state.lastUsedRound === currentRound - 1) {
+        return "Destiny Bond fails if it was used in the previous round.";
+      }
+    }
+    return "";
+  }
+
+  _isDedicatedReactionMove(move) {
+    const seedId = this._getMoveSeedId(move);
+    return seedId === "move-clash" || seedId === "move-evasion";
+  }
+
+  _moveCanBeClashed(move) {
+    const seedId = this._getMoveSeedId(move);
+    return seedId !== "move-judgment";
+  }
+
+  _moveIgnoresDamagePrevention(move) {
+    return this._getMoveSeedId(move) === "move-judgment";
+  }
+
+  async _promptFlingBonusDice(move, heldItemName = "") {
+    const defaultBonus = clamp(
+      Math.max(Math.floor(toNumber(this._getHeldItemData()?.damageBonusDice, 0)), 0),
+      0,
+      4
+    );
+    const result = await foundry.applications.api.DialogV2.wait({
+      window: {
+        title: `${move?.name ?? game.i18n.localize("POKROLE.Common.Unknown")}`
+      },
+      content: `
+        <form>
+          <div class="form-group">
+            <label>Held Item</label>
+            <div class="form-fields">
+              <span>${heldItemName || game.i18n.localize("POKROLE.Common.None")}</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Bonus damage dice (0-4)</label>
+            <div class="form-fields">
+              <input type="number" name="bonusDice" min="0" max="4" step="1" value="${defaultBonus}" />
+            </div>
+          </div>
+        </form>
+      `,
+      buttons: [
+        {
+          action: "confirm",
+          label: game.i18n.localize("POKROLE.Common.Submit"),
+          callback: (event, button) => button.form?.elements?.bonusDice?.value ?? `${defaultBonus}`
+        },
+        {
+          action: "cancel",
+          label: game.i18n.localize("POKROLE.Common.Cancel")
+        }
+      ]
+    });
+    if (result === null || result === undefined) return null;
+    return clamp(Math.floor(toNumber(result, defaultBonus)), 0, 4);
+  }
+
+  async _consumeHeldBattleItem() {
+    if (this.type !== "pokemon") return false;
+    const battleItemId = `${this.system?.battleItem ?? ""}`.trim();
+    if (!battleItemId) return false;
+    let item = game.items.get(battleItemId);
+    if (!item) item = this.items.get(battleItemId);
+    if (!item || item.type !== "gear") return false;
+    const currentQty = Math.max(Math.floor(toNumber(item.system?.quantity, 1)), 1);
+    if (currentQty > 1) {
+      await item.update({ "system.quantity": currentQty - 1 });
+    } else {
+      await this.update({ "system.battleItem": "" });
+    }
+    return true;
+  }
+
+  async _prepareExternalMoveRuntime(move, context = {}) {
+    const moveSeedId = this._getMoveSeedId(move);
+    const runtime = {
+      skipImmediateDamage: false,
+      attackOverrides: {},
+      results: [],
+      consumeHeldItem: false
+    };
+
+    if (moveSeedId === "move-bide") {
+      const targetActor = context?.targetActor instanceof PokRoleActor ? context.targetActor : null;
+      if (targetActor) {
+        await this._setBideState({
+          targetActorId: targetActor.id,
+          targetActorName: targetActor.name ?? "",
+          moveId: move.id ?? "",
+          moveName: move.name ?? "",
+          remainingHits: 2,
+          storedDamage: 0,
+          roundKey: `${context?.roundKey ?? this._getCurrentRoundKey(0) ?? ""}`.trim()
+        });
+        runtime.results.push({
+          label: "Bide",
+          targetName: targetActor.name,
+          applied: true,
+          detail: `${this.name} is storing damage for the next 2 damaging hits.`
+        });
+      } else {
+        runtime.results.push({
+          label: "Bide",
+          targetName: game.i18n.localize("POKROLE.Chat.NoTarget"),
+          applied: false,
+          detail: game.i18n.localize("POKROLE.Errors.InvalidMoveTargetSelection")
+        });
+      }
+      runtime.skipImmediateDamage = true;
+      return runtime;
+    }
+
+    if (moveSeedId === "move-fling") {
+      const battleItemId = `${this.system?.battleItem ?? ""}`.trim();
+      let heldItem = battleItemId ? game.items.get(battleItemId) ?? this.items.get(battleItemId) ?? null : null;
+      if (heldItem?.type !== "gear") heldItem = null;
+      if (heldItem) {
+        const bonusDice = await this._promptFlingBonusDice(move, heldItem.name ?? "");
+        if (bonusDice === null) return null;
+        runtime.attackOverrides.extraDamageDice = bonusDice;
+        runtime.consumeHeldItem = true;
+        runtime.results.push({
+          label: "Fling",
+          targetName: heldItem.name ?? game.i18n.localize("POKROLE.Common.Unknown"),
+          applied: true,
+          detail: `${heldItem.name} was thrown${bonusDice > 0 ? ` (+${bonusDice} dice)` : ""}.`
+        });
+      } else {
+        runtime.results.push({
+          label: "Fling",
+          targetName: this.name,
+          applied: false,
+          detail: "No held item: Fling gains no extra damage."
+        });
+      }
+      return runtime;
+    }
+
+    if (moveSeedId === "move-judgment") {
+      runtime.attackOverrides = {
+        ignoreCover: true,
+        ignoreShield: true,
+        ignoreSubstitute: true,
+        ignoreWeather: true,
+        ignoreTypeImmunity: true
+      };
+      return runtime;
+    }
+
+    return runtime;
+  }
+
+  async _applyHealingWishStyleRuntime(move, options = {}) {
+    const includeFainted = options.includeFainted === true;
+    const candidates = this._getHealingWishCandidates({ includeFainted });
+    if (candidates.length <= 0) {
+      return [{
+        label: "Support",
+        targetName: this.name,
+        applied: false,
+        detail: "No valid allied target is available."
+      }];
+    }
+    const chosenTarget = await this._promptActorChoice(move?.name ?? "Support", candidates, {
+      label: "Choose the allied target"
+    });
+    if (!(chosenTarget instanceof PokRoleActor)) {
+      return [{
+        label: "Support",
+        targetName: this.name,
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Common.Cancel")
+      }];
+    }
+
+    const hpMax = Math.max(Math.floor(toNumber(chosenTarget.system?.resources?.hp?.max, 1)), 1);
+    const hpCurrent = Math.max(Math.floor(toNumber(chosenTarget.system?.resources?.hp?.value, 0)), 0);
+    const healResult = await this._safeApplyHeal(chosenTarget, Math.max(hpMax - hpCurrent, 0), {
+      healingCategory: "unlimited",
+      restoreAwareness: includeFainted,
+      ignoreBattleLimit: true
+    });
+    await this._applyCleanseEffectToActor({ notes: "all" }, chosenTarget);
+    if (includeFainted) {
+      const willMax = Math.max(Math.floor(toNumber(chosenTarget.system?.resources?.will?.max, 0)), 0);
+      if (willMax > 0) {
+        await chosenTarget.update({ "system.resources.will.value": willMax });
+      }
+    }
+
+    const combat = game.combat;
+    const targetCombatant = this._getCombatantForActor(chosenTarget, combat);
+    const selfCombatant = this._getCombatantForActor(this, combat);
+    if (!targetCombatant && selfCombatant) {
+      const switched = await this._switchCombatantToActor(combat, selfCombatant, chosenTarget, {
+        initiative: selfCombatant.initiative,
+        skipVolatileClear: true
+      });
+      if (switched) {
+        await chosenTarget.update({
+          "system.combat.actionNumber": clamp(Math.floor(toNumber(options?.actionNumber, 1)) + 1, 1, 5)
+        });
+      }
+    }
+
+    const selfHp = Math.max(Math.floor(toNumber(this.system?.resources?.hp?.value, 0)), 0);
+    if (selfHp > 0) {
+      await this._safeApplyDamage(this, selfHp, { applyDeadOnZero: false });
+    }
+
+    return [{
+      label: "Support",
+      targetName: chosenTarget.name,
+      applied: true,
+      detail: `${chosenTarget.name} recovered ${Math.max(toNumber(healResult?.healedApplied, 0), 0)} HP${includeFainted ? " and all Will" : ""}; ${this.name} fainted.`
+    }];
+  }
+
+  async _transferSnatchableModifierEffects(targetActor) {
+    if (!(targetActor instanceof PokRoleActor)) return 0;
+    const modifierEffects = (targetActor.effects?.contents ?? []).filter((effectDocument) => {
+      if (!effectDocument || effectDocument.disabled) return false;
+      const automationFlags = effectDocument.getFlag?.(POKROLE.ID, "automation") ?? {};
+      if (!automationFlags?.managed) return false;
+      if (`${automationFlags?.effectType ?? ""}`.trim().toLowerCase() !== "modifier") return false;
+      const path = `${automationFlags?.path ?? ""}`.trim();
+      return path.startsWith("system.attributes.");
+    });
+    if (modifierEffects.length <= 0) return 0;
+
+    const clonedEffects = modifierEffects.map((effectDocument) => {
+      const effectData = effectDocument.toObject();
+      delete effectData._id;
+      delete effectData.id;
+      effectData.transfer = false;
+      effectData.disabled = false;
+      return effectData;
+    });
+    await this.createEmbeddedDocuments("ActiveEffect", clonedEffects);
+    await targetActor.deleteEmbeddedDocuments("ActiveEffect", modifierEffects.map((effectDocument) => effectDocument.id).filter(Boolean));
+    return clonedEffects.length;
+  }
+
+  async _transferSnatchableShieldEffects(targetActor, roundKey = null) {
+    if (!(targetActor instanceof PokRoleActor)) return 0;
+    const currentRoundKey = `${roundKey ?? this._getCurrentRoundKey(0) ?? ""}`.trim();
+    if (!currentRoundKey) return 0;
+    const targetEntries = targetActor._getActiveShieldEntries(currentRoundKey);
+    if (targetEntries.length <= 0) return 0;
+
+    const sourceEntries = this._getActiveShieldEntries();
+    const preservedTargetEntries = targetActor._getActiveShieldEntries().filter((entry) => entry.roundKey !== currentRoundKey);
+    const incomingEntries = targetEntries.map((entry) => ({
+      ...foundry.utils.deepClone(entry),
+      id: foundry.utils.randomID(),
+      sourceActorId: this.id,
+      sourceActorName: this.name ?? entry.sourceActorName ?? ""
+    }));
+    await this._setActiveShieldEntries([...sourceEntries, ...incomingEntries]);
+    await targetActor._setActiveShieldEntries(preservedTargetEntries);
+    return incomingEntries.length;
+  }
+
+  async _transferSnatchableSideFieldEffects(targetActor) {
+    const combat = game.combat;
+    if (!(targetActor instanceof PokRoleActor) || !combat) return 0;
+    const targetSide = this._getActorCombatSideDisposition(targetActor, combat);
+    const sourceSide = this._getActorCombatSideDisposition(this, combat);
+    if (targetSide === 0 || sourceSide === 0 || targetSide === sourceSide) return 0;
+    const entries = this._getCombatSideFieldEntries(combat);
+    let transferred = 0;
+    const nextEntries = entries.map((entry) => {
+      if (entry.sideDisposition !== targetSide) return entry;
+      transferred += 1;
+      return {
+        ...entry,
+        sideDisposition: sourceSide,
+        sourceActorId: this.id ?? entry.sourceActorId ?? null,
+        sourceActorName: this.name ?? entry.sourceActorName ?? ""
+      };
+    });
+    if (transferred > 0) {
+      await this._setCombatSideFieldEntries(combat, nextEntries);
+    }
+    return transferred;
+  }
+
+  async _transferSnatchableHealingEffects(targetActor) {
+    const combat = game.combat;
+    if (!(targetActor instanceof PokRoleActor) || !combat) return 0;
+    const queue = this._getDelayedEffectQueue(combat);
+    if (queue.length <= 0) return 0;
+    const sourceCombatant = this._getCombatantForActor(this, combat);
+    const sourceSideDisposition = this._getActorCombatSideDisposition(this, combat);
+    let moved = 0;
+    const nextQueue = queue.map((entry) => {
+      if (entry.kind !== "wish") return entry;
+      if (`${entry.targetActorId ?? ""}`.trim() !== `${targetActor.id ?? ""}`.trim()) return entry;
+      moved += 1;
+      return {
+        ...entry,
+        targetActorId: this.id ?? null,
+        targetCombatantId: sourceCombatant?.id ?? null,
+        targetSideDisposition: sourceSideDisposition
+      };
+    });
+    if (moved > 0) {
+      await this._setDelayedEffectQueue(combat, nextQueue);
+    }
+    return moved;
+  }
+
+  async _applySnatchRuntime(targetActor, move = null, options = {}) {
+    if (!(targetActor instanceof PokRoleActor)) {
+      return [{
+        label: "Snatch",
+        targetName: game.i18n.localize("POKROLE.Chat.NoTarget"),
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Errors.InvalidMoveTargetSelection")
+      }];
+    }
+    const modifierCount = await this._transferSnatchableModifierEffects(targetActor);
+    const shieldCount = await this._transferSnatchableShieldEffects(targetActor, options?.roundKey ?? null);
+    const sideFieldCount = await this._transferSnatchableSideFieldEffects(targetActor);
+    const healingCount = await this._transferSnatchableHealingEffects(targetActor);
+    const totalTransferred = modifierCount + shieldCount + sideFieldCount + healingCount;
+
+    return [{
+      label: "Snatch",
+      targetName: targetActor.name,
+      applied: totalTransferred > 0,
+      detail:
+        totalTransferred > 0
+          ? `${this.name} stole ${totalTransferred} effect(s) from ${targetActor.name}.`
+          : `${targetActor.name} had nothing snatchable.`
+    }];
+  }
+
+  async _handleBideIncomingAttack({
+    attackerActor = null,
+    attackMove = null,
+    category = "support",
+    finalDamage = 0,
+    roundKey = null
+  } = {}) {
+    const bideState = this._getBideState();
+    if (bideState.remainingHits <= 0) return [];
+    const normalizedCategory = this._normalizeMoveCombatCategory(category);
+    if (!["physical", "special"].includes(normalizedCategory)) return [];
+
+    const nextState = {
+      ...bideState,
+      remainingHits: Math.max(bideState.remainingHits - 1, 0),
+      storedDamage: Math.max(bideState.storedDamage + Math.max(Math.floor(toNumber(finalDamage, 0)), 0), 0)
+    };
+    if (nextState.remainingHits > 0) {
+      await this._setBideState(nextState);
+      return [{
+        label: "Bide",
+        targetName: this.name,
+        applied: true,
+        detail: `${this.name} is still biding (${nextState.remainingHits} hit(s) left).`
+      }];
+    }
+
+    await this._clearBideState();
+    const retaliateTarget =
+      game.actors.get(nextState.targetActorId) ??
+      game.combat?.combatants?.find?.((entry) => entry.actor?.id === nextState.targetActorId)?.actor ??
+      null;
+    if (!(retaliateTarget instanceof PokRoleActor)) {
+      return [{
+        label: "Bide",
+        targetName: nextState.targetActorName || game.i18n.localize("POKROLE.Chat.NoTarget"),
+        applied: false,
+        detail: `${this.name} released Bide, but the original target is no longer available.`
+      }];
+    }
+    if (Math.max(toNumber(this.system?.resources?.hp?.value, 0), 0) <= 0) {
+      return [{
+        label: "Bide",
+        targetName: retaliateTarget.name,
+        applied: false,
+        detail: `${this.name} fainted before releasing Bide.`
+      }];
+    }
+
+    const retaliateDice = Math.max(nextState.storedDamage * 2, 0);
+    if (retaliateDice <= 0) {
+      return [{
+        label: "Bide",
+        targetName: retaliateTarget.name,
+        applied: false,
+        detail: `${this.name} stored no damage for Bide.`
+      }];
+    }
+
+    const bideMove = nextState.moveId ? this.items.get(nextState.moveId) ?? null : null;
+    if (!bideMove) {
+      return [{
+        label: "Bide",
+        targetName: retaliateTarget.name,
+        applied: false,
+        detail: `${this.name} can not find Bide on its sheet.`
+      }];
+    }
+
+    const damageResult = await this._resolveMoveDamageAgainstTarget({
+      move: bideMove,
+      targetActor: retaliateTarget,
+      painPenalty: this.getPainPenalty(),
+      critical: false,
+      isHoldingBackHalf: false,
+      canInflictDeathOnKo: false,
+      actionNumber: 1,
+      roundKey,
+      attackOverrides: {
+        moveType: "normal",
+        category: "physical",
+        fixedDamagePool: retaliateDice,
+        ignoreDefenses: true,
+        ignoreStab: true,
+        ignoreWeather: false,
+        ignoreTerrain: false
+      }
+    });
+
+    return [{
+      label: "Bide",
+      targetName: retaliateTarget.name,
+      applied: true,
+      detail: `${this.name} released Bide for ${retaliateDice} damage dice${damageResult?.hpBefore !== null && damageResult?.hpAfter !== null ? ` (${damageResult.hpBefore} -> ${damageResult.hpAfter})` : ""}.`
+    }];
+  }
+
+  async _applySpecialSupportMoveRuntime(move, options = {}) {
+    const seedId = this._getMoveSeedId(move);
+    const hit = options.hit !== false;
+    if (!hit) return [];
+    if (seedId === "move-destiny-bond" && game.combat) {
+      const currentRound = Math.max(Math.floor(toNumber(game.combat.round, 0)), 0);
+      await this._setDestinyBondState({
+        activeRound: currentRound,
+        lastUsedRound: currentRound
+      });
+      return [{
+        label: "Support",
+        targetName: this.name,
+        applied: true,
+        detail: `${this.name} is bound by Destiny Bond until the end of the round.`
+      }];
+    }
+    if (seedId === "move-healing-wish") {
+      return this._applyHealingWishStyleRuntime(move, {
+        actionNumber: options?.actionNumber ?? 1,
+        includeFainted: false
+      });
+    }
+    if (seedId === "move-lunar-dance") {
+      return this._applyHealingWishStyleRuntime(move, {
+        actionNumber: options?.actionNumber ?? 1,
+        includeFainted: true
+      });
+    }
+    if (seedId === "move-snatch") {
+      return this._applySnatchRuntime(options?.targetActor ?? options?.targetActors?.[0] ?? null, move, {
+        roundKey: options?.roundKey ?? null
+      });
+    }
+    return [];
+  }
+
+  async _applyCopyMoveRuntime(move, options = {}) {
+    const rule = this._getCopyMoveRuntimeRule(move);
+    if (!rule || options.hit === false) return [];
+    const primaryTarget = options.primaryTarget instanceof PokRoleActor ? options.primaryTarget : null;
+    const roundKey = `${options?.roundKey ?? getCurrentCombatRoundKey() ?? ""}`.trim();
+    let copiedMove = null;
+    let copiedMoveOwner = null;
+    let copiedTargetIds = [];
+
+    if (rule.kind === "copy-last-used-target" || rule.kind === "replace-self-with-last-used-target") {
+      const lastUsedRecord = primaryTarget?._getLastUsedMoveRecord?.() ?? {};
+      copiedMoveOwner = primaryTarget;
+      copiedMove = this._getRecordedMoveDocument(primaryTarget, lastUsedRecord);
+      copiedTargetIds = Array.isArray(lastUsedRecord?.targetActorIds) ? lastUsedRecord.targetActorIds : [];
+    } else if (rule.kind === "copy-queued-target") {
+      const queueEntry = this._getQueuedMoveEntryForActor(primaryTarget, game.combat);
+      copiedMoveOwner = primaryTarget;
+      copiedMove = queueEntry?.moveId ? primaryTarget?.items?.get(queueEntry.moveId) ?? null : null;
+      copiedTargetIds = Array.isArray(queueEntry?.targetActorIds) ? queueEntry.targetActorIds : [];
+    } else if (rule.kind === "repeat-last-used-target") {
+      const lastUsedRecord = primaryTarget?._getLastUsedMoveRecord?.() ?? {};
+      copiedMoveOwner = primaryTarget;
+      copiedMove = this._getRecordedMoveDocument(primaryTarget, lastUsedRecord);
+      copiedTargetIds = Array.isArray(lastUsedRecord?.targetActorIds) ? lastUsedRecord.targetActorIds : [];
+      const validationError = this._canResolveCopiedMoveDocument(copiedMove, rule);
+      if (validationError) {
+        return [{
+          label: "Copy",
+          targetName: primaryTarget?.name ?? game.i18n.localize("POKROLE.Common.None"),
+          applied: false,
+          detail: validationError
+        }];
+      }
+      const repeated = await primaryTarget.rollMove(copiedMove.id, {
+        targetActorIds: copiedTargetIds,
+        roundKey,
+        advanceAction: false,
+        skipActionCheck: true,
+        executeFromCopy: true
+      });
+      return [{
+        label: "Copy",
+        targetName: primaryTarget?.name ?? game.i18n.localize("POKROLE.Common.None"),
+        applied: Boolean(repeated),
+        detail: repeated ? `${primaryTarget.name} repeated ${copiedMove.name}.` : game.i18n.localize("POKROLE.Chat.SecondaryEffectFailed")
+      }];
+    }
+
+    const validationError = this._canResolveCopiedMoveDocument(copiedMove, rule);
+    if (validationError) {
+      return [{
+        label: "Copy",
+        targetName: primaryTarget?.name ?? game.i18n.localize("POKROLE.Common.None"),
+        applied: false,
+        detail: validationError
+      }];
+    }
+
+    if (rule.kind === "replace-self-with-last-used-target") {
+      const replaced = await this._replaceMoveWithCopiedMove(move, copiedMove, {
+        temporarySceneScoped: rule.temporarySceneScoped === true
+      });
+      return [{
+        label: "Copy",
+        targetName: this.name,
+        applied: replaced,
+        detail: replaced
+          ? `${move.name} became ${copiedMove.name}${rule.permanent ? " permanently" : " for this scene"}.`
+          : game.i18n.localize("POKROLE.Chat.SecondaryEffectFailed")
+      }];
+    }
+
+    const copiedResult = await this._executeTemporaryCopiedMove(copiedMove, {
+      targetActorIds: copiedTargetIds,
+      roundKey
+    });
+    return [{
+      label: "Copy",
+      targetName: copiedMoveOwner?.name ?? game.i18n.localize("POKROLE.Common.None"),
+      applied: Boolean(copiedResult),
+      detail: copiedResult ? `${this.name} copied ${copiedMove.name}.` : game.i18n.localize("POKROLE.Chat.SecondaryEffectFailed")
+    }];
+  }
+
+  async _applySideFieldMoveRuntime(move, options = {}) {
+    const rule = this._getSideFieldMoveRuntimeRule(move);
+    if (!rule) return [];
+    const hit = options.hit !== false;
+    if (rule.requiresHit && !hit) return [];
+    const combat = game.combat;
+    if (!combat) return [];
+    const results = [];
+    for (const entry of rule.create ?? []) {
+      const sideDisposition =
+        entry.side === "foe" && options.primaryTarget instanceof PokRoleActor
+          ? this._getActorCombatSideDisposition(options.primaryTarget, combat)
+          : this._getActorCombatSideDisposition(this, combat);
+      const payload = await this.registerSideFieldEntry({
+        kind: entry.kind,
+        sideDisposition,
+        protection: entry.protection,
+        hazard: entry.hazard,
+        durationRounds: Math.max(Math.floor(toNumber(entry.durationRounds, 0)), 0),
+        sourceMoveId: move?.id ?? null,
+        sourceMoveName: move?.name ?? ""
+      }, combat);
+      results.push({
+        label: "Field",
+        targetName: sideDisposition === this._getActorCombatSideDisposition(this, combat) ? this.name : options.primaryTarget?.name ?? this.name,
+        applied: Boolean(payload),
+        detail: payload
+          ? payload.kind === "force-field"
+            ? `${move.name} created a ${payload.protection} force field.`
+            : `${move.name} created the ${payload.hazard} hazard.`
+          : game.i18n.localize("POKROLE.Chat.SecondaryEffectFailed")
+      });
+    }
+
+    if (rule.swapSideFields) {
+      const swapped = await this.swapSideFieldEntries(this, combat);
+      results.push({
+        label: "Field",
+        targetName: game.i18n.localize("POKROLE.Move.TargetValues.Battlefield"),
+        applied: swapped,
+        detail: swapped ? `${move.name} swapped side field effects.` : game.i18n.localize("POKROLE.Common.None")
+      });
+    }
+
+    if (rule.clearForceFields || rule.clearHazards) {
+      let cleared = 0;
+      if (rule.clearForceFields === "all") {
+        cleared += await this.clearSideFieldEntries({ all: true, kind: "force-field" }, combat);
+      } else if (rule.clearForceFields === "source-side") {
+        cleared += await this.clearSideFieldsForActorSide(this, { kind: "force-field" });
+      }
+      if (rule.clearHazards === "all") {
+        cleared += await this.clearSideFieldEntries({ all: true, kind: "hazard" }, combat);
+      } else if (rule.clearHazards === "source-side") {
+        cleared += await this.clearSideFieldsForActorSide(this, { kind: "hazard" });
+      }
+      results.push({
+        label: "Field",
+        targetName: game.i18n.localize("POKROLE.Move.TargetValues.Battlefield"),
+        applied: cleared > 0,
+        detail: cleared > 0 ? `${move.name} cleared ${cleared} field effect(s).` : game.i18n.localize("POKROLE.Common.None")
+      });
+    }
+
+    return results;
+  }
+
   async queueMove(moveId, options = {}) {
     const combat = game.combat ?? null;
     if (!combat) {
@@ -5631,14 +7094,20 @@ export class PokRoleActor extends Actor {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownMove"));
       return null;
     }
-
-    const actionCheck = await this._assertCanAct("move", {
-      moveId: move.id,
-      moveName: move.name
-    });
-    if (!actionCheck.allowed) {
-      ui.notifications.warn(actionCheck.reason);
+    if (this._isDedicatedReactionMove(move)) {
+      ui.notifications.warn("Use Clash and Evasion only through the reaction prompt.");
       return null;
+    }
+
+    if (!options.skipActionCheck) {
+      const actionCheck = await this._assertCanAct("move", {
+        moveId: move.id,
+        moveName: move.name
+      });
+      if (!actionCheck.allowed) {
+        ui.notifications.warn(actionCheck.reason);
+        return null;
+      }
     }
 
     const currentCombatantActorId = `${combat.combatant?.actor?.id ?? ""}`.trim();
@@ -5726,6 +7195,10 @@ export class PokRoleActor extends Actor {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownMove"));
       return null;
     }
+    if (this._isDedicatedReactionMove(move)) {
+      ui.notifications.warn("Use Clash and Evasion only through the reaction prompt.");
+      return null;
+    }
     const actionCheck = await this._assertCanAct("move", {
       moveId: move.id,
       moveName: move.name
@@ -5756,18 +7229,6 @@ export class PokRoleActor extends Actor {
     const canInflictDeathOnKo = inflictLethalDamage && !isHoldingBackHalf;
     const actionNumber = await this._resolveActionRequirement(options.actionNumber, roundKey);
     const activeWeather = this.getActiveWeatherKey();
-    const moveType = this._resolveEffectiveMoveType(move, this);
-    const weatherBlocksMove =
-      (activeWeather === "harsh-sunlight" && moveType === "water") ||
-      (activeWeather === "typhoon" && moveType === "fire");
-    if (weatherBlocksMove) {
-      ui.notifications.warn(
-        game.i18n.format("POKROLE.Errors.MoveBlockedByWeather", {
-          weather: this._localizeWeatherName(activeWeather)
-        })
-      );
-      return null;
-    }
     // Choice Band / Choice Specs / Choice Scarf: lock to one move
     const choiceHeldData = this._getHeldItemData();
     if (choiceHeldData?.choiceType) {
@@ -5820,9 +7281,46 @@ export class PokRoleActor extends Actor {
       ui.notifications.warn(targetValidation.message);
       return null;
     }
+    const specialSupportFailureReason = this._getSpecialSupportMoveFailureReason(move);
+    if (specialSupportFailureReason) {
+      ui.notifications.warn(specialSupportFailureReason);
+      return null;
+    }
     const specialDamageFailureReason = this._getSpecialDamageMoveFailureReason(move, targetActors);
     if (specialDamageFailureReason) {
       ui.notifications.warn(specialDamageFailureReason);
+      return null;
+    }
+    const primaryTargetActor = targetActors[0] ?? null;
+    const externalMoveRuntime = await this._prepareExternalMoveRuntime(move, {
+      targetActors,
+      targetActor: primaryTargetActor,
+      roundKey,
+      actionNumber
+    });
+    if (externalMoveRuntime === null) {
+      return null;
+    }
+    const dynamicMoveRuntime = await this._prepareDynamicMoveRuntime(move, {
+      targetActors,
+      targetActor: primaryTargetActor,
+      actionNumber,
+      activeWeather
+    });
+    if (dynamicMoveRuntime === null) {
+      return null;
+    }
+    const moveType = this._resolveEffectiveMoveType(move, this, {
+      targetActor: primaryTargetActor,
+      activeWeather,
+      runtimeOverride: dynamicMoveRuntime
+    });
+    if (!this._moveIgnoresDamagePrevention(move) && this._isMoveTypeBlockedByWeather(moveType, activeWeather)) {
+      ui.notifications.warn(
+        game.i18n.format("POKROLE.Errors.MoveBlockedByWeather", {
+          weather: this._localizeWeatherName(activeWeather)
+        })
+      );
       return null;
     }
 
@@ -5833,6 +7331,7 @@ export class PokRoleActor extends Actor {
         willCost,
         willBefore: Math.max(Math.floor(toNumber(this.system?.resources?.will?.value, 0)), 0),
         willAfter: Math.max(Math.floor(toNumber(this.system?.resources?.will?.value, 0)), 0),
+        runtimeOverride: dynamicMoveRuntime,
         advanceAction: options.advanceAction !== false
       });
     }
@@ -5961,6 +7460,9 @@ export class PokRoleActor extends Actor {
         skippedSecondaryEffectSignatures.add(signature);
       }
     }
+    const skipImmediateDamage =
+      Boolean(delayedMoveAutomation.skipImmediateDamage) ||
+      Boolean(externalMoveRuntime.skipImmediateDamage);
     let reaction = {
       attempted: false,
       type: "none",
@@ -6016,7 +7518,12 @@ export class PokRoleActor extends Actor {
     let damageAttributeLabel = this.localizeTrait("none");
     const damageTargetResults = [];
 
-    if (hit && isDamagingMove && !reaction.clashResolved && !delayedMoveAutomation.skipImmediateDamage) {
+    if (
+      hit &&
+      isDamagingMove &&
+      !reaction.clashResolved &&
+      !skipImmediateDamage
+    ) {
       const damageTargets = this._resolveDamageTargets(moveTargetKey, targetActors, move);
       const targetsToDamage = damageTargets.length > 0 ? damageTargets : targetActor ? [targetActor] : [];
 
@@ -6029,7 +7536,12 @@ export class PokRoleActor extends Actor {
           isHoldingBackHalf,
           canInflictDeathOnKo,
           actionNumber,
-          roundKey
+          roundKey,
+          attackOverrides: {
+            moveType,
+            runtimeOverride: dynamicMoveRuntime,
+            ...(externalMoveRuntime.attackOverrides ?? {})
+          }
         });
         damageTargetResults.push(damageResult);
       }
@@ -6093,6 +7605,8 @@ export class PokRoleActor extends Actor {
     });
     const secondaryEffectResults = [
       ...(recoilResult ? [recoilResult] : []),
+      ...(Array.isArray(externalMoveRuntime?.results) ? externalMoveRuntime.results : []),
+      ...(Array.isArray(dynamicMoveRuntime?.results) ? dynamicMoveRuntime.results : []),
       ...(Array.isArray(delayedMoveAutomation.results) ? delayedMoveAutomation.results : []),
       ...moveSecondaryEffectResults,
       ...abilitySecondaryEffectResults
@@ -6102,6 +7616,11 @@ export class PokRoleActor extends Actor {
       hit
     });
     secondaryEffectResults.push(...terrainFieldMoveResults);
+    const sideFieldMoveResults = await this._applySideFieldMoveRuntime(move, {
+      hit,
+      primaryTarget: targetActor
+    });
+    secondaryEffectResults.push(...sideFieldMoveResults);
     const switcherMoveResults = await this._executeSwitcherMoveRuntime({
       move,
       moveTargetKey,
@@ -6110,6 +7629,21 @@ export class PokRoleActor extends Actor {
       roundKey
     });
     secondaryEffectResults.push(...switcherMoveResults);
+    const supportMoveRuntimeResults = await this._applySpecialSupportMoveRuntime(move, {
+      hit,
+      targetActors,
+      targetActor,
+      actionNumber,
+      roundKey
+    });
+    secondaryEffectResults.push(...supportMoveRuntimeResults);
+    const copyMoveRuntimeResults = await this._applyCopyMoveRuntime(move, {
+      hit,
+      primaryTarget: targetActor,
+      targetActors,
+      roundKey
+    });
+    secondaryEffectResults.push(...copyMoveRuntimeResults);
     const accuracyDiceModifierLabel =
       accuracyDiceModifier > 0 ? `+${accuracyDiceModifier}` : `${accuracyDiceModifier}`;
     const accuracyFlatModifierLabel =
@@ -6161,7 +7695,7 @@ export class PokRoleActor extends Actor {
         infatuated,
         activeWeather,
         isDamagingMove,
-        showDamageSection: hit && isDamagingMove && !reaction.clashResolved,
+        showDamageSection: hit && isDamagingMove && !reaction.clashResolved && !skipImmediateDamage,
         damageAttributeLabel,
         poolBeforeDefense,
         defense,
@@ -6199,11 +7733,13 @@ export class PokRoleActor extends Actor {
       content: summaryHtml
     });
 
-    if (
-      moveSourceAttributes?.userFaints &&
-      isDamagingMove &&
-      damageTargetResults.some((entry) => Math.max(toNumber(entry?.finalDamage, 0), 0) > 0)
-    ) {
+    if (externalMoveRuntime.consumeHeldItem) {
+      await this._consumeHeldBattleItem();
+    }
+
+    await this._applyPostMoveRuntimeState(move, { hit, roundKey });
+
+    if (this._shouldFaintAfterMoveUse(move, { isDamagingMove, hit, damageTargetResults })) {
       const selfHp = Math.max(toNumber(this.system?.resources?.hp?.value, 0), 0);
       if (selfHp > 0) {
         await this._safeApplyDamage(this, selfHp, { applyDeadOnZero: false });
@@ -6299,6 +7835,31 @@ export class PokRoleActor extends Actor {
     }
 
     return result;
+  }
+
+  _shouldFaintAfterMoveUse(move, context = {}) {
+    const moveSourceAttributes = this._getMoveSourceAttributes(move);
+    if (!moveSourceAttributes?.userFaints) return false;
+    const seedId = this._getMoveSeedId(move);
+    if (SUPPORT_USER_FAINT_MOVE_SEED_IDS.has(seedId)) {
+      if (["move-healing-wish", "move-lunar-dance"].includes(seedId)) {
+        return false;
+      }
+      return Boolean(context?.hit);
+    }
+    return Boolean(context?.isDamagingMove) &&
+      (Array.isArray(context?.damageTargetResults)
+        ? context.damageTargetResults.some((entry) => Math.max(toNumber(entry?.finalDamage, 0), 0) > 0)
+        : false);
+  }
+
+  async _applyPostMoveRuntimeState(move, context = {}) {
+    const seedId = this._getMoveSeedId(move);
+    if (seedId !== "move-roost" || !game.combat || !context?.hit) return false;
+    const roundKey = `${context?.roundKey ?? getCurrentCombatRoundKey() ?? ""}`.trim();
+    if (!roundKey) return false;
+    await this.setFlag(POKROLE.ID, ROOST_GROUNDED_ROUND_FLAG_KEY, roundKey);
+    return true;
   }
 
   _normalizeMoveTargetKey(targetKey) {
@@ -6434,12 +7995,16 @@ export class PokRoleActor extends Actor {
     const terrainPowerOverride = this._getTerrainPowerOverride(move, this);
     const power =
       terrainPowerOverride === null
-        ? this._resolveMovePower(move, targetActor, actionNumber)
+        ? this._resolveMovePower(move, targetActor, actionNumber, {
+            runtimeOverride: attackOverrides?.runtimeOverride ?? null
+          })
         : terrainPowerOverride;
     const damagePainPenalty = damageBaseSetup.ignoresPainPenalty ? 0 : painPenalty;
     const criticalDice = critical ? 2 : 0;
     const stabDice = attackOverrides?.ignoreStab ? 0 : (this.hasType(moveType) ? 1 : 0);
-    const heldItemBonus = this._getHeldItemDamageBonus(moveType, category);
+    const heldItemBonus =
+      this._getHeldItemDamageBonus(moveType, category) +
+      Math.max(Math.floor(toNumber(attackOverrides?.extraDamageDice, 0)), 0);
     const activeWeather = this.getActiveWeatherKey();
     const weatherBonusDice = attackOverrides?.ignoreWeather
       ? 0
@@ -6491,6 +8056,46 @@ export class PokRoleActor extends Actor {
         label: "POKROLE.Chat.TypeEffect.Neutral"
       };
     }
+    if (attackOverrides?.ignoreTypeImmunity && typeInteraction.immune) {
+      let label = "POKROLE.Chat.TypeEffect.Neutral";
+      if (typeInteraction.weaknessBonus > typeInteraction.resistancePenalty) {
+        label = "POKROLE.Chat.TypeEffect.Super";
+      } else if (typeInteraction.resistancePenalty > typeInteraction.weaknessBonus) {
+        label = "POKROLE.Chat.TypeEffect.Resist";
+      }
+      typeInteraction = {
+        ...typeInteraction,
+        immune: false,
+        label
+      };
+    }
+    if (
+      specialDamageRule?.forceSuperEffective &&
+      !typeInteraction.immune &&
+      typeInteraction.weaknessBonus <= typeInteraction.resistancePenalty
+    ) {
+      typeInteraction = {
+        ...typeInteraction,
+        weaknessBonus: Math.max(typeInteraction.resistancePenalty + 1, 1),
+        label: "POKROLE.Chat.TypeEffect.Super"
+      };
+    }
+    const moveSeedId = this._getMoveSeedId(move);
+    let destroyedForceFieldCount = 0;
+    let destroyShieldBonusDice = 0;
+    if (
+      targetActor instanceof PokRoleActor &&
+      moveSourceAttributes?.destroyShield &&
+      ["move-brick-break", "move-psychic-fangs"].includes(moveSeedId)
+    ) {
+      destroyedForceFieldCount = await this.clearSideFieldEntries({
+        sideDisposition: this._getActorCombatSideDisposition(targetActor, game.combat),
+        kind: "force-field"
+      });
+      if (destroyedForceFieldCount > 0 && moveSeedId === "move-brick-break") {
+        destroyShieldBonusDice = 2;
+      }
+    }
     const expertBeltBonus = (!typeInteraction.immune && typeInteraction.weaknessBonus > 0)
       ? (this._getHeldItemData()?.superEffectiveBonusDice ?? 0)
       : 0;
@@ -6510,6 +8115,7 @@ export class PokRoleActor extends Actor {
       terrainBonusDice +
       weatherBonusDice +
       expertBeltBonus +
+      destroyShieldBonusDice +
       metronomeBonus -
       damagePainPenalty;
     const fixedFinalDamage =
@@ -6540,7 +8146,10 @@ export class PokRoleActor extends Actor {
     let shieldPreventedDamage = false;
     let shieldDamageReduction = 0;
     let shieldAddedEffectsBlocked = false;
-    let shieldDetail = "";
+    let shieldDetail =
+      destroyedForceFieldCount > 0
+        ? `${move.name} shattered ${destroyedForceFieldCount} Force Field effect(s).${destroyShieldBonusDice > 0 ? ` +${destroyShieldBonusDice} damage dice.` : ""}`
+        : "";
     let coverAbsorbedDamage = false;
     let shieldResponse =
       targetActor instanceof PokRoleActor
@@ -6681,7 +8290,10 @@ export class PokRoleActor extends Actor {
     if (targetActor && finalDamage > 0) {
       const hpChange = await this._safeApplyDamage(targetActor, finalDamage, {
         applyDeadOnZero: Boolean(canInflictDeathOnKo),
-        sourceMove: move
+        sourceMove: move,
+        sourceActor: this,
+        sourceActorId: this.id,
+        sourceCategory: category
       });
       hpBefore = hpChange?.hpBefore ?? null;
       hpAfter = hpChange?.hpAfter ?? null;
@@ -6716,6 +8328,18 @@ export class PokRoleActor extends Actor {
       });
       if (Array.isArray(chargeHitResults) && chargeHitResults.length > 0) {
         shieldDetail = [shieldDetail, ...chargeHitResults.map((entry) => entry?.detail).filter(Boolean)]
+          .filter(Boolean)
+          .join(" | ");
+      }
+      const bideResults = await targetActor._handleBideIncomingAttack({
+        attackerActor: this,
+        attackMove: move,
+        category,
+        finalDamage,
+        roundKey
+      });
+      if (Array.isArray(bideResults) && bideResults.length > 0) {
+        shieldDetail = [shieldDetail, ...bideResults.map((entry) => entry?.detail).filter(Boolean)]
           .filter(Boolean)
           .join(" | ");
       }
@@ -8256,6 +9880,20 @@ export class PokRoleActor extends Actor {
   async _updateCombatantActor(combatant, replacementActor) {
     const combat = game.combat;
     if (!combat || !combatant || !replacementActor) return false;
+    if (!game.user?.isGM) {
+      const response = await this._requestCombatMutation("updateCombatantActor", {
+        combatId: combat.id ?? null,
+        combatantId: combatant.id ?? null,
+        replacementActorId: replacementActor.id ?? null
+      });
+      return Boolean(response?.updated);
+    }
+    return this._updateCombatantActorLocal(combatant, replacementActor);
+  }
+
+  async _updateCombatantActorLocal(combatant, replacementActor) {
+    const combat = game.combat;
+    if (!combat || !combatant || !replacementActor) return false;
     const replacementToken = replacementActor.getActiveTokens?.(true)?.[0]?.document ?? null;
     const updateData = {
       _id: combatant.id,
@@ -8273,6 +9911,20 @@ export class PokRoleActor extends Actor {
   }
 
   async _swapCombatantActors(firstCombatant, secondCombatant) {
+    const combat = game.combat;
+    if (!combat || !firstCombatant || !secondCombatant) return false;
+    if (!game.user?.isGM) {
+      const response = await this._requestCombatMutation("swapCombatantActors", {
+        combatId: combat.id ?? null,
+        firstCombatantId: firstCombatant.id ?? null,
+        secondCombatantId: secondCombatant.id ?? null
+      });
+      return Boolean(response?.swapped);
+    }
+    return this._swapCombatantActorsLocal(firstCombatant, secondCombatant);
+  }
+
+  async _swapCombatantActorsLocal(firstCombatant, secondCombatant) {
     const combat = game.combat;
     if (!combat || !firstCombatant || !secondCombatant) return false;
     const firstActor = firstCombatant.actor ?? null;
@@ -8812,6 +10464,13 @@ export class PokRoleActor extends Actor {
       const amountText = effect.amount > 0 ? `+${effect.amount}` : `${effect.amount}`;
       return `${effectTypeLabel}: ${this._localizeSecondaryStatName(effect.stat)} ${amountText}`;
     }
+    if (normalizedType === "cleanse") {
+      const cleanseConditionKeys = this._getCleanseConditionKeys(effect);
+      if (cleanseConditionKeys.length <= 0) return effectTypeLabel;
+      return `${effectTypeLabel}: ${cleanseConditionKeys
+        .map((conditionKey) => this._localizeConditionName(conditionKey))
+        .join(", ")}`;
+    }
     if (normalizedType === "heal") {
       const healMode = this._normalizeSecondaryHealMode(
         effect.healMode,
@@ -8837,6 +10496,7 @@ export class PokRoleActor extends Actor {
       condition: "Condition",
       "active-effect": "ActiveEffect",
       stat: "Stat",
+      cleanse: "Cleanse",
       weather: "Weather",
       terrain: "Terrain",
       damage: "Damage",
@@ -8986,6 +10646,11 @@ export class PokRoleActor extends Actor {
           return game.i18n.localize("POKROLE.Chat.SecondaryEffectNoConditionConfigured");
         }
         return game.i18n.localize("POKROLE.Chat.SecondaryEffectFailed");
+      case "cleanse":
+        if (this._getCleanseConditionKeys(effect).length <= 0) {
+          return game.i18n.localize("POKROLE.Chat.SecondaryEffectNoCleanseConfigured");
+        }
+        return game.i18n.localize("POKROLE.Chat.SecondaryEffectNoRemovableCondition");
       case "weather":
         if (this._normalizeSecondaryWeatherKey(effect?.weather) === "none") {
           return game.i18n.localize("POKROLE.Chat.SecondaryEffectNoWeatherConfigured");
@@ -9044,6 +10709,11 @@ export class PokRoleActor extends Actor {
           { ...effect, effectType: normalizedType },
           targetActor,
           sourceMove
+        );
+      case "cleanse":
+        return this._applyCleanseEffectToActor(
+          { ...effect, effectType: normalizedType },
+          targetActor
         );
       case "weather":
         return this._applyWeatherEffect({ ...effect, effectType: normalizedType }, sourceMove);
@@ -9142,15 +10812,69 @@ export class PokRoleActor extends Actor {
     return Math.max(numericAmount, 0);
   }
 
+  _getCleanseConditionKeys(effect = {}) {
+    const rawNotes = `${effect?.notes ?? ""}`.trim().toLowerCase();
+    if (!rawNotes || rawNotes === "all") {
+      return [...DEFAULT_CLEANSE_CONDITION_KEYS];
+    }
+
+    const rawTokens = rawNotes
+      .split(/[|,]/)
+      .map((token) => `${token ?? ""}`.trim())
+      .filter(Boolean);
+    const normalizedKeys = [];
+    for (const token of rawTokens) {
+      const normalizedCondition = this._normalizeConditionKey(token);
+      if (normalizedCondition === "none") continue;
+      if (!normalizedKeys.includes(normalizedCondition)) normalizedKeys.push(normalizedCondition);
+    }
+    return normalizedKeys;
+  }
+
+  async _applyCleanseEffectToActor(effect, targetActor) {
+    const cleanseConditionKeys = this._getCleanseConditionKeys(effect);
+    if (cleanseConditionKeys.length <= 0) {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectNoCleanseConfigured")
+      };
+    }
+
+    const clearedConditionLabels = [];
+    for (const conditionKey of cleanseConditionKeys) {
+      if (!targetActor?._isConditionActive?.(conditionKey)) continue;
+      const clearResult = await targetActor.toggleQuickCondition(conditionKey, { active: false });
+      if (!clearResult?.applied) continue;
+      clearedConditionLabels.push(this._localizeConditionName(conditionKey));
+    }
+
+    if (clearedConditionLabels.length <= 0) {
+      return {
+        applied: false,
+        detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectNoRemovableCondition")
+      };
+    }
+
+    return {
+      applied: true,
+      detail: clearedConditionLabels.join(", ")
+    };
+  }
+
   async _resolveFrozenBreakoutMove(move, options = {}) {
     const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
     const normalizedAction = clamp(toNumber(options.actionNumber, 1), 1, 5);
+    const runtimeOverride = options.runtimeOverride ?? null;
     const frozenShellBefore = await this._initializeFrozenShell();
     const shellDefense =
       move.system.category === "special"
         ? frozenShellBefore.specialDefense
         : frozenShellBefore.defense;
-    const effectiveMoveType = this._resolveEffectiveMoveType(move, this);
+    const effectiveMoveType = this._resolveEffectiveMoveType(move, this, {
+      targetActor: this,
+      activeWeather: this.getActiveWeatherKey(),
+      runtimeOverride
+    });
     const typeInteraction = this._evaluateTypeInteractionAgainstTypes(effectiveMoveType || "normal", [
       "ice"
     ]);
@@ -9161,7 +10885,9 @@ export class PokRoleActor extends Actor {
     const terrainPowerOverride = this._getTerrainPowerOverride(move, this);
     const movePower =
       terrainPowerOverride === null
-        ? this._resolveMovePower(move, this, normalizedAction)
+        ? this._resolveMovePower(move, this, normalizedAction, {
+            runtimeOverride
+          })
         : terrainPowerOverride;
     const stabDice = this.hasType(effectiveMoveType) ? 1 : 0;
     const terrainBonusDice = this._getTerrainDamageBonusDice(move, this);
@@ -11789,7 +13515,7 @@ export class PokRoleActor extends Actor {
     const healingCategory = this._normalizeHealingCategory(options?.healingCategory);
     let allowedHeal = normalizedHeal;
     let track = null;
-    if (game.combat && targetActor instanceof PokRoleActor) {
+    if (game.combat && targetActor instanceof PokRoleActor && options?.ignoreBattleLimit !== true) {
       track = targetActor._getHealingTrack();
       const perRoundLimit = this._getHealingRoundLimit(healingCategory);
       const remainingHeal = Math.max(perRoundLimit - track.healedThisRound, 0);
@@ -12248,8 +13974,26 @@ export class PokRoleActor extends Actor {
   }) {
     const socialAccuracyMove = this._isSocialAccuracyMove(move);
     const moveCanBeEvaded = !socialAccuracyMove && !move.system.neverFail;
-    const moveCanBeClashed = !socialAccuracyMove;
+    const moveCanBeClashed = !socialAccuracyMove && this._moveCanBeClashed(move);
     const incomingMoveCategory = this._normalizeMoveCombatCategory(move?.system?.category);
+    if (
+      targetActor instanceof PokRoleActor &&
+      targetActor._hasActiveBideState?.() &&
+      ["physical", "special"].includes(incomingMoveCategory)
+    ) {
+      return {
+        attempted: false,
+        type: "none",
+        success: false,
+        evaded: false,
+        clashResolved: false,
+        clashMoveName: "",
+        netSuccesses: 0,
+        attackerDamage: 0,
+        targetDamage: 0,
+        label: "POKROLE.Chat.Reaction.None"
+      };
+    }
 
     const choice = await this._promptDefensiveReaction({
       targetActor,
@@ -12940,6 +14684,32 @@ export class PokRoleActor extends Actor {
     return retaliationDetails;
   }
 
+  async _triggerDestinyBondOnKo(targetActor, options = {}) {
+    if (!(targetActor instanceof PokRoleActor) || !game.combat) return false;
+    const currentRound = Math.max(Math.floor(toNumber(game.combat.round, 0)), 0);
+    const state = targetActor._getDestinyBondState?.() ?? { activeRound: 0, lastUsedRound: 0 };
+    if (state.activeRound !== currentRound) return false;
+    const sourceCategory = `${options?.sourceCategory ?? ""}`.trim().toLowerCase();
+    if (!["physical", "special"].includes(sourceCategory)) return false;
+    const sourceActor =
+      options?.sourceActor instanceof PokRoleActor
+        ? options.sourceActor
+        : game.actors.get(`${options?.sourceActorId ?? ""}`.trim()) ?? null;
+    if (!(sourceActor instanceof PokRoleActor)) return false;
+    const sourceHp = Math.max(Math.floor(toNumber(sourceActor.system?.resources?.hp?.value, 0)), 0);
+    if (sourceHp <= 0) return false;
+    await this._safeApplyDamage(sourceActor, sourceHp, { applyDeadOnZero: false });
+    await targetActor._setDestinyBondState({
+      activeRound: 0,
+      lastUsedRound: state.lastUsedRound
+    });
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+      content: `${targetActor.name}'s Destiny Bond brought down ${sourceActor.name}.`
+    });
+    return true;
+  }
+
   _sanitizeShieldMoveSecondaryEffects(move, effectList = []) {
     if (!move?.system?.shieldMove || !Array.isArray(effectList) || effectList.length === 0) {
       return effectList;
@@ -13151,6 +14921,9 @@ export class PokRoleActor extends Actor {
       if (hpAfter <= 0 && typeof targetActor.clearMultiTurnState === "function") {
         await targetActor.clearMultiTurnState();
       }
+      if (hpAfter <= 0 && typeof targetActor._clearBideState === "function") {
+        await targetActor._clearBideState();
+      }
       if (isLethalKo) {
         if (
           typeof targetActor._setConditionFlagState === "function" &&
@@ -13164,6 +14937,13 @@ export class PokRoleActor extends Actor {
         if (typeof targetActor.toggleQuickCondition === "function" && targetActor._isConditionActive?.("fainted")) {
           await targetActor.toggleQuickCondition("fainted", { active: false });
         }
+      }
+      if (hpAfter <= 0) {
+        await this._triggerDestinyBondOnKo(targetActor, {
+          sourceActor: options?.sourceActor ?? null,
+          sourceActorId: options?.sourceActorId ?? "",
+          sourceCategory: options?.sourceCategory ?? ""
+        });
       }
     } catch (error) {
       console.error(`${POKROLE.ID} | Failed to apply damage`, error);
@@ -13240,10 +15020,7 @@ export class PokRoleActor extends Actor {
   }
 
   _evaluateTypeInteraction(moveType, targetActor) {
-    const defenderTypes = [
-      targetActor?.system?.types?.primary,
-      targetActor?.system?.types?.secondary
-    ].filter((typeKey) => typeKey && typeKey !== "none");
+    const defenderTypes = this._getEffectiveDefenderTypesForInteraction(targetActor, moveType);
     const interaction = this._evaluateTypeInteractionAgainstTypes(moveType, defenderTypes);
     // Ring Target: remove type immunities from the defender
     if (interaction.immune && targetActor?._getHeldItemData?.()?.removeTypeImmunities) {
@@ -13452,10 +15229,15 @@ export class PokRoleActor extends Actor {
     };
   }
 
-  _resolveMovePower(move, targetActor = null, actionNumber = 1) {
+  _resolveMovePower(move, targetActor = null, actionNumber = 1, options = {}) {
     let basePower;
+    const runtimeOverridePower = options?.runtimeOverride && Number.isFinite(Number(options.runtimeOverride.power))
+      ? Math.max(Math.floor(toNumber(options.runtimeOverride.power, 0)), 0)
+      : null;
     const powerFormula = `${move?.system?.powerFormula ?? ""}`.trim();
-    if (powerFormula) {
+    if (runtimeOverridePower !== null) {
+      basePower = runtimeOverridePower;
+    } else if (powerFormula) {
       basePower = Math.max(
         Math.floor(
           evaluateNumericFormula(

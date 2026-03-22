@@ -204,6 +204,7 @@ export const MOVE_SECONDARY_EFFECT_TYPE_KEYS = Object.freeze([
   "condition",
   "active-effect",
   "stat",
+  "cleanse",
   "combat-stat",
   "weather",
   "terrain",

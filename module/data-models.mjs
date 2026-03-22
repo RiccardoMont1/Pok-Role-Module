@@ -357,7 +357,7 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
         choices: moveDurationChoices
       }),
       durationValue: integerField(1, { min: 1, max: 999 }),
-      priority: integerField(0, { min: -3, max: 5 }),
+      priority: integerField(0, { min: -99, max: 99 }),
       highCritical: new BooleanField({ required: true, initial: false }),
       neverFail: new BooleanField({ required: true, initial: false }),
       lethal: new BooleanField({ required: true, initial: false }),
