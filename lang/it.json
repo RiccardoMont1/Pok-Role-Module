@@ -771,6 +771,7 @@
       "Attribute": "Attributo",
       "Accuracy": "Precisione",
       "NoTarget": "Nessun bersaglio selezionato",
+      "SwitchedTo": "ha mandato in campo {name}!",
       "AttributeFlavor": "{actor} tira {trait}",
       "SkillFlavor": "{actor} tira {trait}",
       "InitiativeFlavor": "{actor} tira iniziativa (valore {score})",
@@ -945,7 +946,9 @@
         "ForcedSwitched": "{target} viene forzato a uscire e {replacement} entra in campo.",
         "AllySwapped": "{source} scambia posizione con {target}.",
         "BatonPass": "Baton Pass",
-        "BatonPassTransferred": "{source} passa {count} aumenti statistica a {target}."
+        "BatonPassTransferred": "{source} passa {count} aumenti statistica a {target}.",
+        "EjectButtonTitle": "Eject Button: Scegli il sostituto",
+        "RedCardTitle": "Red Card: Scegli il sostituto"
       },
       "ShieldMove": {
         "Label": "Mossa Scudo"

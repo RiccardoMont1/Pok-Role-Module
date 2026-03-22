@@ -1094,9 +1094,20 @@ export class PokRoleActor extends Actor {
 
   async _switchCombatantToActor(combat, outgoingCombatant, incomingActor, options = {}) {
     if (!combat || !outgoingCombatant || !incomingActor) return null;
+    const outgoingActor = outgoingCombatant.actor ?? null;
     const slotId = await this._ensureCombatantBattleSlotId(outgoingCombatant);
     const currentTurnIndex = Number.isInteger(combat.turn) ? combat.turn : null;
     const outgoingIsCurrent = currentTurnIndex !== null && combat.turns?.[currentTurnIndex]?.id === outgoingCombatant.id;
+
+    // 1. Clear volatile conditions on outgoing Pokémon
+    if (outgoingActor && options.skipVolatileClear !== true) {
+      await this._clearVolatileConditions(outgoingActor);
+    }
+
+    // 2. Token replacement on the map
+    const tokenResult = await this._performTokenSwitch(outgoingActor, incomingActor);
+
+    // 3. Combat tracker: create new combatant, delete old
     const initiative = Math.max(toNumber(options.initiative ?? outgoingCombatant.initiative, 0), 0);
     await combat.createEmbeddedDocuments("Combatant", [
       this._buildCombatantCreateData(incomingActor, slotId, initiative)
@@ -1115,7 +1126,115 @@ export class PokRoleActor extends Actor {
         await combat.update({ turn: nextTurnIndex });
       }
     }
+
+    // 4. Roll initiative for incoming Pokémon
+    if (typeof incomingActor.rollInitiative === "function") {
+      try {
+        await incomingActor.rollInitiative({ silent: true, skipActionCheck: true });
+      } catch (err) {
+        console.warn(`${POKROLE.ID} | Failed to roll initiative for ${incomingActor.name}:`, err);
+      }
+    }
+
+    // 5. Reset action counter for incoming Pokémon
+    if (typeof incomingActor.resetActionCounter === "function") {
+      await incomingActor.resetActionCounter({ resetInitiative: false });
+    }
+
+    // 6. Chat notification
+    const trainerActor = this._getPokemonTrainerActor(incomingActor) ?? this._getPokemonTrainerActor(outgoingActor) ?? null;
+    const trainerName = trainerActor?.name ?? game.i18n.localize("POKROLE.Common.Unknown");
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: trainerActor ?? incomingActor }),
+      content: `<strong>${trainerName}</strong> ${game.i18n.format("POKROLE.Chat.SwitchedTo", { name: incomingActor.name })}`
+    });
+
     return createdCombatant;
+  }
+
+  async _clearVolatileConditions(actor) {
+    if (!actor) return;
+    const volatileConditions = ["confused", "flinch", "infatuated", "disabled"];
+    for (const condition of volatileConditions) {
+      if (typeof actor._isConditionActive === "function" && actor._isConditionActive(condition)) {
+        try {
+          await actor.toggleQuickCondition(condition, { active: false });
+        } catch (err) {
+          console.warn(`${POKROLE.ID} | Failed to clear ${condition} on ${actor.name}:`, err);
+        }
+      }
+    }
+    // Remove non-persistent temporary Active Effects
+    const persistentConditions = new Set([
+      "sleep", "burn", "burn2", "burn3", "frozen", "paralyzed",
+      "poisoned", "badly-poisoned", "fainted", "dead"
+    ]);
+    const effectsToRemove = (actor.effects?.contents ?? []).filter((effect) => {
+      if (!effect || effect.disabled) return false;
+      const automationFlags = effect.getFlag?.(POKROLE.ID, "automation") ?? {};
+      if (!automationFlags?.managed) return false;
+      const conditionKey = `${automationFlags?.conditionKey ?? ""}`.trim().toLowerCase();
+      if (persistentConditions.has(conditionKey)) return false;
+      const effectType = `${automationFlags?.effectType ?? ""}`.trim().toLowerCase();
+      return effectType === "modifier" || effectType === "condition" || effectType === "move-disabled";
+    });
+    if (effectsToRemove.length > 0) {
+      const ids = effectsToRemove.map((e) => e.id).filter(Boolean);
+      if (ids.length > 0) {
+        try {
+          await actor.deleteEmbeddedDocuments("ActiveEffect", ids);
+        } catch (err) {
+          console.warn(`${POKROLE.ID} | Failed to remove volatile effects from ${actor.name}:`, err);
+        }
+      }
+    }
+  }
+
+  async _performTokenSwitch(outgoingActor, incomingActor) {
+    if (!outgoingActor || !incomingActor) return { success: false };
+    const scene = canvas?.scene ?? null;
+    if (!scene) return { success: false };
+    const outgoingToken = outgoingActor.getActiveTokens?.(true)?.[0] ?? null;
+    if (!outgoingToken) return { success: false };
+    const outgoingTokenDoc = outgoingToken.document ?? outgoingToken;
+    const position = { x: outgoingTokenDoc.x, y: outgoingTokenDoc.y };
+
+    // Check if incoming actor already has a token on the scene
+    const existingIncomingToken = incomingActor.getActiveTokens?.(true)?.[0] ?? null;
+
+    if (existingIncomingToken) {
+      // Swap positions between existing tokens
+      const existingDoc = existingIncomingToken.document ?? existingIncomingToken;
+      const incomingPos = { x: existingDoc.x, y: existingDoc.y };
+      try {
+        await outgoingTokenDoc.update({ x: incomingPos.x, y: incomingPos.y });
+        await existingDoc.update({ x: position.x, y: position.y });
+        return { success: true, tokenDoc: existingDoc };
+      } catch (err) {
+        console.warn(`${POKROLE.ID} | Failed to swap tokens:`, err);
+        return { success: false };
+      }
+    }
+
+    // Delete outgoing token and create new one at same position
+    try {
+      await outgoingTokenDoc.delete();
+      const newTokenData = await incomingActor.getTokenDocument?.({
+        x: position.x,
+        y: position.y,
+        actorLink: true
+      }) ?? { actorId: incomingActor.id, x: position.x, y: position.y, actorLink: true };
+      const tokenObj = newTokenData instanceof foundry.abstract.Document
+        ? newTokenData.toObject()
+        : newTokenData;
+      tokenObj.x = position.x;
+      tokenObj.y = position.y;
+      const created = await scene.createEmbeddedDocuments("Token", [tokenObj]);
+      return { success: true, tokenDoc: created?.[0] ?? null };
+    } catch (err) {
+      console.warn(`${POKROLE.ID} | Failed to perform token switch:`, err);
+      return { success: false };
+    }
   }
 
   async _refundActionCounter(actionNumber = 1) {
@@ -6673,22 +6792,54 @@ export class PokRoleActor extends Actor {
       });
     }
 
-    // Eject Button: notify trainer to switch after taking damage
+    // Eject Button: switch out the holder after taking damage
     if (targetHeldData?.ejectButton && finalDamage > 0 && targetActor) {
       await targetActor.update({ "system.battleItem": "" });
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: targetActor }),
-        content: `<strong>${targetActor.name}'s</strong> Eject Button activated! The trainer should switch ${targetActor.name} out.`
+        content: `<strong>${targetActor.name}'s</strong> Eject Button activated!`
       });
+      const ejectCombat = game.combat;
+      if (ejectCombat) {
+        const ejectCombatant = this._getCombatantForActor(targetActor, ejectCombat);
+        if (ejectCombatant) {
+          const ejectReplacement = await this._chooseReservePokemonForActor(targetActor, {
+            combat: ejectCombat,
+            title: game.i18n.localize("POKROLE.Combat.Switcher.EjectButtonTitle")
+          });
+          if (ejectReplacement) {
+            await this._switchCombatantToActor(ejectCombat, ejectCombatant, ejectReplacement, {
+              initiative: ejectCombatant.initiative
+            });
+          }
+        }
+      }
     }
 
-    // Red Card: notify that attacker should be switched after damage
+    // Red Card: force the attacker to switch out after damage
     if (targetHeldData?.redCard && finalDamage > 0 && targetActor) {
       await targetActor.update({ "system.battleItem": "" });
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: targetActor }),
-        content: `<strong>${targetActor.name}'s</strong> Red Card activated! <strong>${this.name}</strong> should be switched out by its trainer.`
+        content: `<strong>${targetActor.name}'s</strong> Red Card activated! <strong>${this.name}</strong> is forced out!`
       });
+      const redCardCombat = game.combat;
+      if (redCardCombat) {
+        const redCardCombatant = this._getCombatantForActor(this, redCardCombat);
+        if (redCardCombatant) {
+          const redCardReplacement = await this._chooseReservePokemonForActor(this, {
+            combat: redCardCombat,
+            title: game.i18n.localize("POKROLE.Combat.Switcher.RedCardTitle")
+          });
+          if (redCardReplacement) {
+            await this._switchCombatantToActor(redCardCombat, redCardCombatant, redCardReplacement, {
+              initiative: redCardCombatant.initiative
+            });
+          } else {
+            await this._removeCombatantFromBattle(redCardCombat, redCardCombatant);
+          }
+        }
+      }
     }
 
     const retaliationResults =

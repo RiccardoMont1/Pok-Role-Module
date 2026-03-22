@@ -759,6 +759,7 @@
       "Attribute": "Attribute",
       "Accuracy": "Accuracy",
       "NoTarget": "No target selected",
+      "SwitchedTo": "switched to {name}!",
       "AttributeFlavor": "{actor} rolls {trait}",
       "SkillFlavor": "{actor} rolls {trait}",
       "InitiativeFlavor": "{actor} rolls initiative (score {score})",
@@ -933,7 +934,9 @@
         "ForcedSwitched": "{target} is forced out and {replacement} enters battle.",
         "AllySwapped": "{source} swaps places with {target}.",
         "BatonPass": "Baton Pass",
-        "BatonPassTransferred": "{source} passes {count} stat boosts to {target}."
+        "BatonPassTransferred": "{source} passes {count} stat boosts to {target}.",
+        "EjectButtonTitle": "Eject Button: Choose replacement",
+        "RedCardTitle": "Red Card: Choose replacement"
       },
       "ShieldMove": {
         "Label": "Shield Move"
