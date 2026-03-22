@@ -8227,13 +8227,13 @@ export class PokRoleActor extends Actor {
     const content = `
       <form class="pok-role-switch-dialog">
         <div class="form-group">
-          <label>${foundry.utils.escapeHTML(prompt ?? game.i18n.localize("POKROLE.Combat.Switcher.SelectReplacement"))}</label>
+          <label>${foundry.utils.escapeHTML(prompt ?? (game.i18n.localize("POKROLE.Combat.Switcher.SelectReplacement") !== "POKROLE.Combat.Switcher.SelectReplacement" ? game.i18n.localize("POKROLE.Combat.Switcher.SelectReplacement") : "Seleziona il Pokémon da far entrare in campo"))}</label>
           <select name="switchCandidateId">${optionsHtml}</select>
         </div>
       </form>
     `;
     const result = await foundry.applications.api.DialogV2.wait({
-      window: { title: title ?? game.i18n.localize("POKROLE.Combat.Switcher.SelectTitle") },
+      window: { title: title ?? (game.i18n.localize("POKROLE.Combat.Switcher.SelectTitle") !== "POKROLE.Combat.Switcher.SelectTitle" ? game.i18n.localize("POKROLE.Combat.Switcher.SelectTitle") : "Sostituzione Pokémon") },
       content,
       buttons: [
         {
@@ -8469,7 +8469,7 @@ export class PokRoleActor extends Actor {
 
     if (rule.batonPass) {
       const chosenReplacement = await this._promptSwitchCandidateSelection({
-        title: game.i18n.localize("POKROLE.Combat.Switcher.BatonPass"),
+        title: game.i18n.localize("POKROLE.Combat.Switcher.SelectTitle"),
         prompt: game.i18n.localize("POKROLE.Combat.Switcher.SelectReplacement"),
         choices: this._getSwitcherMoveCandidates(move, {
           sourceActor: this,
@@ -8550,7 +8550,7 @@ export class PokRoleActor extends Actor {
       }
 
       const chosenReplacement = await this._promptSwitchCandidateSelection({
-        title: game.i18n.localize("POKROLE.Combat.Switcher.SelfSwitch"),
+        title: game.i18n.localize("POKROLE.Combat.Switcher.SelectTitle"),
         prompt: game.i18n.localize("POKROLE.Combat.Switcher.SelectReplacement"),
         choices: this._getSwitcherMoveCandidates(move, {
           sourceActor: this,
@@ -8613,7 +8613,7 @@ export class PokRoleActor extends Actor {
       }
 
       const chosenReplacement = await this._promptSwitchCandidateSelection({
-        title: game.i18n.localize("POKROLE.Combat.Switcher.ForcedSwitch"),
+        title: game.i18n.localize("POKROLE.Combat.Switcher.SelectTitle"),
         prompt: game.i18n.localize("POKROLE.Combat.Switcher.SelectReplacement"),
         choices: this._getSwitcherMoveCandidates(move, {
           sourceActor: this,
