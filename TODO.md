@@ -1,3 +1,5 @@
+Capire il motivo per il quale il player non ha i permessi per usare le mosse dei pokémon
+
 Automatizazione delle mosse:
 
 - terrain/field engine
