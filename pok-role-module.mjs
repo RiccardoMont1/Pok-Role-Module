@@ -37,6 +37,32 @@ import {
 import { PokRoleActorSheet } from "./module/sheets/actor-sheet.mjs";
 import { PokRoleMoveSheet } from "./module/sheets/item-sheet.mjs";
 
+/**
+ * Custom Combat class that overrides nextTurn() to loop back to the first
+ * combatant without advancing the round. Use "Next Round" to advance rounds.
+ */
+class PokRoleCombat extends Combat {
+  async nextTurn() {
+    const turn = this.turn ?? 0;
+    const skip = this.settings.skipDefeated;
+
+    // Find the next valid turn
+    let next = null;
+    for (let i = 1; i <= this.turns.length; i++) {
+      const idx = (turn + i) % this.turns.length;
+      if (skip && this.turns[idx]?.isDefeated) continue;
+      next = idx;
+      break;
+    }
+
+    // If no valid turn found, just stay
+    if (next === null) return this;
+
+    // Always stay in the same round - just update the turn
+    return this.update({ turn: next });
+  }
+}
+
 async function clearCombatScopedTemporaryEffects(combat) {
   if (!combat) return;
   const combatId = `${combat.id ?? ""}`.trim();
@@ -923,6 +949,7 @@ Hooks.once("init", () => {
 
   CONFIG.Actor.documentClass = PokRoleActor;
   CONFIG.Item.documentClass = PokRoleItem;
+  CONFIG.Combat.documentClass = PokRoleCombat;
 
   CONFIG.Actor.dataModels = {
     trainer: TrainerDataModel,
