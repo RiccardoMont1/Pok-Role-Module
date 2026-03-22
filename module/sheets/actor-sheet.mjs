@@ -2264,9 +2264,13 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           const skillLimit = rankBonuses.skillLimit;
 
           if (totalAttr > 0 || totalSocial > 0 || totalSkill > 0) {
+            // Only pass age/rank fields, not the entire form (which includes old attribute values)
+            const ageRankData = {};
+            if ("system.age" in formData) ageRankData["system.age"] = formData["system.age"];
+            if ("system.cardRank" in formData) ageRankData["system.cardRank"] = formData["system.cardRank"];
             const confirmed = await this._showPointDistributionDialog(totalAttr, totalSocial, totalSkill, skillLimit, {
               trackRank: rank,
-              pendingFormData: formData
+              pendingFormData: ageRankData
             });
             if (confirmed) {
               await this.actor.setFlag("pok-role-system", "rankDistributions", {});
