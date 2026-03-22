@@ -61,6 +61,48 @@ class PokRoleCombat extends Combat {
     // Always stay in the same round - just update the turn
     return this.update({ turn: next });
   }
+
+  async nextRound() {
+    const result = await super.nextRound();
+
+    // Re-roll initiative for all combatants at the start of each new round
+    const initiativeUpdates = [];
+    for (const combatant of this.combatants ?? []) {
+      const actor = combatant.actor;
+      if (!actor || typeof actor.rollInitiative !== "function") continue;
+      try {
+        const roll = await actor.rollInitiative({
+          silent: true,
+          updateCombatant: false,
+          setTurnOnRoll: false,
+          skipActionCheck: true
+        });
+        const score = Math.max(
+          Number(actor.system?.combat?.initiative ?? roll?.total ?? 0) || 0,
+          0
+        );
+        initiativeUpdates.push({ _id: combatant.id, initiative: score });
+      } catch (err) {
+        console.warn(`PokRole | Failed to re-roll initiative for ${actor.name}:`, err);
+      }
+    }
+
+    if (initiativeUpdates.length > 0) {
+      await this.updateEmbeddedDocuments("Combatant", initiativeUpdates);
+      if (typeof this.setupTurns === "function") {
+        await this.setupTurns();
+      }
+      // Set turn to highest initiative (first non-defeated)
+      const rankedTurns = Array.from(this.turns ?? []);
+      let highestIdx = rankedTurns.findIndex((c) => Boolean(c) && !c.defeated);
+      if (highestIdx < 0 && rankedTurns.length > 0) highestIdx = 0;
+      if (highestIdx >= 0 && this.turn !== highestIdx) {
+        await this.update({ turn: highestIdx });
+      }
+    }
+
+    return result;
+  }
 }
 
 async function clearCombatScopedTemporaryEffects(combat) {
@@ -1159,90 +1201,54 @@ Hooks.on("updateCombat", async (combat, changed) => {
     return;
   }
   const roundKey = `${combat.id}:${combat.round ?? 0}`;
-  const initiativeUpdates = [];
 
   for (const combatant of combat.combatants ?? []) {
     const actor = combatant.actor;
     if (!actor) continue;
 
-    if (typeof actor.synchronizeConditionalActiveEffects === "function") {
-      await actor.synchronizeConditionalActiveEffects();
-    }
-
-    if (typeof actor.advanceManagedAutomationEffectsRound === "function") {
-      await actor.advanceManagedAutomationEffectsRound(combat.id);
-    }
-
-    if (typeof actor.advanceTemporaryEffectsRound === "function") {
-      await actor.advanceTemporaryEffectsRound(combat.id);
-    }
-
-    if (typeof actor.resetTurnState === "function") {
-      await actor.resetTurnState({ roundKey, resetInitiative: false });
-    }
-    if (typeof actor.rollInitiative !== "function") continue;
-
     try {
-      const initiativeRoll = await actor.rollInitiative({
-        silent: true,
-        updateCombatant: false,
-        setTurnOnRoll: false,
-        skipActionCheck: true
-      });
-      const rolledScore = Math.max(
-        Number(actor.system?.combat?.initiative ?? initiativeRoll?.total ?? 0) || 0,
-        0
-      );
-      initiativeUpdates.push({ _id: combatant.id, initiative: rolledScore });
+      if (typeof actor.synchronizeConditionalActiveEffects === "function") {
+        await actor.synchronizeConditionalActiveEffects();
+      }
+
+      if (typeof actor.advanceManagedAutomationEffectsRound === "function") {
+        await actor.advanceManagedAutomationEffectsRound(combat.id);
+      }
+
+      if (typeof actor.advanceTemporaryEffectsRound === "function") {
+        await actor.advanceTemporaryEffectsRound(combat.id);
+      }
+
+      if (typeof actor.resetTurnState === "function") {
+        await actor.resetTurnState({ roundKey, resetInitiative: false });
+      }
     } catch (err) {
-      console.warn(`PokRole | Failed to re-roll initiative for ${actor.name}:`, err);
+      console.warn(`PokRole | Round-start processing failed for ${actor.name}:`, err);
     }
   }
 
-  if (initiativeUpdates.length > 0) {
-    await combat.updateEmbeddedDocuments("Combatant", initiativeUpdates);
-  }
-  if (typeof combat.setupTurns === "function") {
-    await combat.setupTurns();
-  }
-
-  const rankedTurns = Array.from(combat.turns ?? []);
-  let highestTurnIndex = rankedTurns.findIndex((combatant) => Boolean(combatant) && !combatant.defeated);
-  if (highestTurnIndex < 0 && rankedTurns.length > 0) {
-    highestTurnIndex = 0;
-  }
-
-  const highestActor =
-    highestTurnIndex >= 0 ? rankedTurns[highestTurnIndex]?.actor ?? null : null;
-  if (highestTurnIndex >= 0) {
-    LAST_COMBAT_TURN_STATE.set(combatId, {
-      turn: highestTurnIndex,
-      round: Number.isInteger(combat.round) ? combat.round : null
-    });
-    if (combat.turn !== highestTurnIndex) {
-      await combat.update({ turn: highestTurnIndex });
-    }
-  }
+  // Initiative re-roll is handled by PokRoleCombat.nextRound()
 
   await processCombatDelayedEffectPhase(combat, "round-start", combat.round ?? 0);
 
+  const currentActor = combat.turns?.[combat.turn ?? 0]?.actor ?? null;
   if (
-    highestActor &&
-    highestActor.documentName === "Actor" &&
-    typeof highestActor.processTemporaryEffectSpecialDuration === "function"
+    currentActor &&
+    currentActor.documentName === "Actor" &&
+    typeof currentActor.processTemporaryEffectSpecialDuration === "function"
   ) {
-    await highestActor.processTemporaryEffectSpecialDuration("turn-start", { combatId });
+    await currentActor.processTemporaryEffectSpecialDuration("turn-start", { combatId });
   }
   if (
-    highestActor &&
-    highestActor.documentName === "Actor" &&
-    typeof highestActor.processTurnStartStatusAutomation === "function"
+    currentActor &&
+    currentActor.documentName === "Actor" &&
+    typeof currentActor.processTurnStartStatusAutomation === "function"
   ) {
-    await highestActor.processTurnStartStatusAutomation();
+    await currentActor.processTurnStartStatusAutomation();
   }
 
   LAST_COMBAT_TURN_STATE.set(combatId, {
-    turn: highestTurnIndex >= 0 ? highestTurnIndex : Number.isInteger(combat.turn) ? combat.turn : null,
+    turn: Number.isInteger(combat.turn) ? combat.turn : null,
     round: Number.isInteger(combat.round) ? combat.round : null
   });
 });
