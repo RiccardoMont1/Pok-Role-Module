@@ -197,6 +197,9 @@ async function handleCombatMutationSocketRequest(message = {}) {
 class PokRoleCombat extends Combat {
   static MAX_CYCLES = 5;
 
+  /** Tracks which rounds have already had their end-of-round effects processed. */
+  static _processedRoundEnds = new Set();
+
   /** Current cycle (turno) within the round, 1-based. */
   get cycle() {
     return Math.max(Math.floor(Number(this.getFlag(POKROLE.ID, "cycle")) || 0), 1);
@@ -253,6 +256,20 @@ class PokRoleCombat extends Combat {
   }
 
   async nextRound() {
+    // Process round-end effects BEFORE advancing the round
+    // (done here instead of relying on the async updateCombat hook which Foundry does not await)
+    const roundEndKey = `${this.id}:${this.round}`;
+    if ((this.round ?? 0) >= 1) {
+      PokRoleCombat._processedRoundEnds.add(roundEndKey);
+      await processRoundEndCombatAutomation(this);
+      await advanceCombatWeatherDuration(this);
+      await advanceCombatTerrainDuration(this);
+      const referenceActor = this.combatants?.find?.((c) => c.actor)?.actor ?? null;
+      if (referenceActor && typeof referenceActor.synchronizeTerrainEffectsForCombat === "function") {
+        await referenceActor.synchronizeTerrainEffectsForCombat(this);
+      }
+    }
+
     // Reset cycle counter for the new round
     await this.setFlag(POKROLE.ID, "cycle", 1);
     const result = await super.nextRound();
@@ -1247,10 +1264,8 @@ function renderActiveEffectAutomationConfig(app, html) {
 }
 
 // Force actorLink=true by default on all new actors so token data stays in sync
-Hooks.on("preCreateActor", (actor, data) => {
-  if (!foundry.utils.hasProperty(data, "prototypeToken.actorLink")) {
-    actor.updateSource({ "prototypeToken.actorLink": true });
-  }
+Hooks.on("preCreateActor", (actor) => {
+  actor.updateSource({ "prototypeToken.actorLink": true });
 });
 
 Hooks.once("init", () => {
@@ -1524,14 +1539,21 @@ Hooks.on("updateCombat", async (combat, changed) => {
     return;
   }
   if (Number.isFinite(previousRound) && previousRound >= 1) {
+    const roundEndKey = `${combatId}:${previousRound}`;
+    const alreadyProcessed = PokRoleCombat._processedRoundEnds.has(roundEndKey);
+    if (alreadyProcessed) {
+      PokRoleCombat._processedRoundEnds.delete(roundEndKey);
+    }
     await processCombatSpecialDurationEvent(combat, "round-end");
     await processCombatDelayedEffectPhase(combat, "round-end", previousRound);
-    await processRoundEndCombatAutomation(combat);
-    await advanceCombatWeatherDuration(combat);
-    await advanceCombatTerrainDuration(combat);
-    const referenceActor = combat.combatants?.find?.((combatant) => combatant.actor)?.actor ?? null;
-    if (referenceActor && typeof referenceActor.synchronizeTerrainEffectsForCombat === "function") {
-      await referenceActor.synchronizeTerrainEffectsForCombat(combat);
+    if (!alreadyProcessed) {
+      await processRoundEndCombatAutomation(combat);
+      await advanceCombatWeatherDuration(combat);
+      await advanceCombatTerrainDuration(combat);
+      const referenceActor = combat.combatants?.find?.((combatant) => combatant.actor)?.actor ?? null;
+      if (referenceActor && typeof referenceActor.synchronizeTerrainEffectsForCombat === "function") {
+        await referenceActor.synchronizeTerrainEffectsForCombat(combat);
+      }
     }
   }
   await clearCombatMoveQueue(combat);
