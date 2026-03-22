@@ -346,6 +346,7 @@ export const MOVE_TYPE_KEYS = Object.freeze([
 ]);
 
 export const POKEMON_TIER_KEYS = Object.freeze([
+  "none",
   "starter",
   "rookie",
   "standard",

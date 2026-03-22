@@ -253,6 +253,7 @@
       "VulnerabilitiesQuad": "Vulnerabilities x4",
       "Immunities": "Immunities",
       "TierValues": {
+        "None": "None",
         "Starter": "Starter",
         "Rookie": "Rookie",
         "Standard": "Standard",

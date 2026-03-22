@@ -2623,6 +2623,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
   _getPokemonTierBonuses(tier) {
     const table = {
+      none:     { attr: 0,  social: 0,  skill: 0,  skillLimit: 0 },
       starter:  { attr: 0,  social: 0,  skill: 0,  skillLimit: 1 },
       rookie:   { attr: 2,  social: 1,  skill: 2,  skillLimit: 2 },
       standard: { attr: 4,  social: 2,  skill: 4,  skillLimit: 3 },
@@ -2632,7 +2633,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       master:   { attr: 12, social: 6,  skill: 12, skillLimit: 5 },
       champion: { attr: 14, social: 8,  skill: 14, skillLimit: 5 }
     };
-    return table[tier] ?? table.starter;
+    return table[tier] ?? table.none;
   }
 
   async _applyPokemonTierDowngrade(oldTier, newTier, tierOrder) {

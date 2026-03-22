@@ -224,7 +224,7 @@ export class PokemonDataModel extends BaseCharacterDataModel {
       tier: new StringField({
         required: true,
         blank: false,
-        initial: "starter",
+        initial: "none",
         choices: POKEMON_TIER_KEYS
       }),
       evolutionTime: new StringField({

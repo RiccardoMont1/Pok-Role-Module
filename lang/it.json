@@ -253,6 +253,7 @@
       "VulnerabilitiesQuad": "Vulnerabilita x4",
       "Immunities": "Immunita",
       "TierValues": {
+        "None": "Nessuno",
         "Starter": "Esordiente",
         "Rookie": "Novizio",
         "Standard": "Standard",
