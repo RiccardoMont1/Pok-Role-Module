@@ -71,6 +71,7 @@
   {{#if showDamageSection}}
   <section class="chat-card-section">
     <h4>{{localize "POKROLE.Chat.DamageSetup"}}</h4>
+    <p><strong>{{localize "POKROLE.Move.Power"}}:</strong> {{movePower}} | <strong>{{damageAttributeLabel}}:</strong> {{damageBaseValue}}</p>
     <p>{{localize "POKROLE.Chat.PoolBeforeDefense"}} {{poolBeforeDefense}} | {{localize "POKROLE.Chat.TargetDefense"}} {{defense}} | {{localize "POKROLE.Chat.FinalPool"}} {{damagePool}}</p>
     <p>{{localize "POKROLE.Chat.DamageSuccesses"}}: {{damageSuccesses}} | STAB: +{{stabDice}}{{#if heldItemBonus}} | {{localize "POKROLE.Chat.HeldItemBonus"}}: +{{heldItemBonus}}{{/if}} | {{localize "POKROLE.Chat.CriticalBonusDice"}}: +{{criticalDice}}</p>
     <p><strong>{{localize "POKROLE.Chat.TypeEffect.Label"}}:</strong> {{typeLabel}}</p>

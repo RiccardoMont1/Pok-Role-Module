@@ -8841,6 +8841,8 @@ export class PokRoleActor extends Actor {
     let stabDice = 0;
     let heldItemBonus = 0;
     let criticalDice = critical ? 2 : 0;
+    let movePower = Math.max(Math.floor(toNumber(move.system?.power, 0)), 0);
+    let damageBaseValue = 0;
     let damageAttributeLabel = this.localizeTrait("none");
     const damageTargetResults = [];
 
@@ -8888,6 +8890,8 @@ export class PokRoleActor extends Actor {
         heldItemBonus = firstDamageResult.heldItemBonus ?? 0;
         criticalDice = firstDamageResult.criticalDice;
         critical = firstDamageResult.effectiveCritical === true;
+        movePower = Math.max(Math.floor(toNumber(firstDamageResult.movePower, movePower)), 0);
+        damageBaseValue = Math.max(Math.floor(toNumber(firstDamageResult.damageAttributeValue, 0)), 0);
         damageAttributeLabel = firstDamageResult.damageAttributeLabel;
       }
 
@@ -9033,6 +9037,8 @@ export class PokRoleActor extends Actor {
         isDamagingMove,
         showDamageSection: hit && isDamagingMove && !reaction.clashResolved && !skipImmediateDamage,
         damageAttributeLabel,
+        damageBaseValue,
+        movePower,
         poolBeforeDefense,
         defense,
         damagePool,
@@ -9331,7 +9337,7 @@ export class PokRoleActor extends Actor {
     const specialDamageRule = this._getMoveSpecialDamageRule(move);
     const damageBaseSetup = this._resolveMoveDamageBase(move, targetActor, actionNumber);
     const damageAttributeLabel = damageBaseSetup.label;
-    const damageAttributeValue = damageBaseSetup.value;
+    const damageAttributeValue = Math.max(Math.floor(toNumber(damageBaseSetup.value, 0)), 0);
     const terrainPowerOverride = this._getTerrainPowerOverride(move, this);
     const power =
       terrainPowerOverride === null
@@ -9339,6 +9345,7 @@ export class PokRoleActor extends Actor {
             runtimeOverride: attackOverrides?.runtimeOverride ?? null
           })
         : terrainPowerOverride;
+    const movePower = Math.max(Math.floor(toNumber(power, 0)), 0);
     const damagePainPenalty = damageBaseSetup.ignoresPainPenalty ? 0 : painPenalty;
     const targetProtectedByLuckyChant =
       targetActor instanceof PokRoleActor && targetActor._hasLuckyChantProtection?.(targetActor, { combatId: game.combat?.id ?? null });
@@ -9451,7 +9458,7 @@ export class PokRoleActor extends Actor {
         ? fixedDamagePool
         :
       damageAttributeValue +
-      power +
+      movePower +
       stabDice +
       criticalDice +
       heldItemBonus +
@@ -9874,6 +9881,8 @@ export class PokRoleActor extends Actor {
       heldItemBonus,
       expertBeltBonus,
       metronomeBonus,
+      movePower,
+      damageAttributeValue,
       damageAttributeLabel
     };
   }
