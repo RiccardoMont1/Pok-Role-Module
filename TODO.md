@@ -14,10 +14,6 @@ PokèBall e sistema di cattura e owernship della scheda (Nuove pokè, Velox Ball
 
 Sostuire il campo "Progressione Evoluzione" con il tasto "Evoluzione" nella scheda del pokémon per effettuare l'evoluzione del pokémon. Tasto visibile solo al Game Master
 
-Modificare il combat tracker in modo tale che anche se arrivi all'ultimo pokémon e clicchi il tasto "Next Turn", semplicemente torna al primo pokémon del turn order. Per andare al prossimo round, si deve cliccare il tasto Next Round e solo in quel momento i pokémon ritireranno l'iniziativa
-
-Rimuovere il tasto "Imposta Meteo" dalla scheda dell'allenatore
-
 # Cambiamente Estetici
 - Cambiare la pausa mettendo una Poké Ball che gira
 - Se possibile, modificare il tema di Foundry per renderlo più Pokémon
