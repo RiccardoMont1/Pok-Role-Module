@@ -973,6 +973,13 @@ function renderActiveEffectAutomationConfig(app, html) {
   refreshPassiveVisibility();
 }
 
+// Force actorLink=true by default on all new actors so token data stays in sync
+Hooks.on("preCreateActor", (actor, data) => {
+  if (!foundry.utils.hasProperty(data, "prototypeToken.actorLink")) {
+    actor.updateSource({ "prototypeToken.actorLink": true });
+  }
+});
+
 Hooks.once("init", () => {
   console.log(`${POKROLE.ID} | Initializing ${POKROLE.TITLE}`);
   registerTemplateHelpers();
