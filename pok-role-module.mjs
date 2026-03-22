@@ -42,6 +42,13 @@ import { PokRoleMoveSheet } from "./module/sheets/item-sheet.mjs";
  * combatant without advancing the round. Use "Next Round" to advance rounds.
  */
 class PokRoleCombat extends Combat {
+  static MAX_CYCLES = 5;
+
+  /** Current cycle (turno) within the round, 1-based. */
+  get cycle() {
+    return Math.max(Math.floor(Number(this.getFlag(POKROLE.ID, "cycle")) || 0), 1);
+  }
+
   async previousTurn() {
     const turn = this.turn ?? 0;
     const skip = this.settings.skipDefeated;
@@ -66,7 +73,7 @@ class PokRoleCombat extends Combat {
     const turn = this.turn ?? 0;
     const skip = this.settings.skipDefeated;
 
-    // Find the next valid turn
+    // Find the next valid turn index (wrapping around)
     let next = null;
     for (let i = 1; i <= this.turns.length; i++) {
       const idx = (turn + i) % this.turns.length;
@@ -78,11 +85,23 @@ class PokRoleCombat extends Combat {
     // If no valid turn found, just stay
     if (next === null) return this;
 
-    // Always stay in the same round - just update the turn
+    // Detect wrap-around: next index is <= current turn means we looped
+    const wrapping = next <= turn;
+    if (wrapping) {
+      const currentCycle = this.cycle;
+      if (currentCycle >= PokRoleCombat.MAX_CYCLES) {
+        // Max cycles reached — stay on the last combatant
+        return this;
+      }
+      await this.setFlag(POKROLE.ID, "cycle", currentCycle + 1);
+    }
+
     return this.update({ turn: next });
   }
 
   async nextRound() {
+    // Reset cycle counter for the new round
+    await this.setFlag(POKROLE.ID, "cycle", 1);
     const result = await super.nextRound();
 
     // Re-roll initiative for all combatants at the start of each new round
@@ -1302,6 +1321,20 @@ Hooks.on("updateCombat", () => {
 
 Hooks.on("deleteCombat", () => {
   void renderMoveQueueOverlay();
+});
+
+// Display "(Turno X)" next to "Round N" in the combat tracker header
+Hooks.on("renderCombatTracker", (app, html) => {
+  const combat = game.combat;
+  if (!combat || !(combat instanceof PokRoleCombat)) return;
+  const cycle = combat.cycle;
+  const roundEl = html instanceof HTMLElement
+    ? html.querySelector(".encounter-title .round")
+    : html.find?.(".encounter-title .round")?.[0];
+  if (!roundEl) return;
+  if (!roundEl.textContent.includes("(Turno")) {
+    roundEl.textContent = `${roundEl.textContent.trim()} (Turno ${cycle})`;
+  }
 });
 
 Hooks.on("getSceneControlButtons", (controls) => {
