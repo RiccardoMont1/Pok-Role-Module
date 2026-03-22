@@ -2338,6 +2338,65 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         return;
       }
     }
+    if (this.actor.type === "pokemon") {
+      const tierChanged = ("system.tier" in formData) &&
+        formData["system.tier"] !== this.actor.system.tier;
+
+      if (tierChanged) {
+        const newTier = formData["system.tier"];
+        const oldTier = this.actor.system.tier;
+        const tierOrder = POKEMON_TIER_KEYS;
+        const oldIdx = tierOrder.indexOf(oldTier);
+        const newIdx = tierOrder.indexOf(newTier);
+
+        if (newIdx > oldIdx) {
+          // Tier upgrade
+          const newBonuses = this._getPokemonTierBonuses(newTier);
+          const oldBonuses = this._getPokemonTierBonuses(oldTier);
+          const diffAttr = newBonuses.attr - oldBonuses.attr;
+          const diffSocial = newBonuses.social - oldBonuses.social;
+          const diffSkill = newBonuses.skill - oldBonuses.skill;
+          const skillLimit = newBonuses.skillLimit;
+
+          if (diffAttr > 0 || diffSocial > 0 || diffSkill > 0) {
+            const currentAttrBase = {};
+            for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
+              currentAttrBase[key] = Number(this.actor.system.attributes?.[key] ?? 1);
+            }
+            const currentSocialBase = {};
+            for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) {
+              currentSocialBase[key] = Number(this.actor.system.attributes?.[key] ?? 1);
+            }
+            const currentSkillBase = {};
+            for (const { key } of SKILL_DEFINITIONS) {
+              currentSkillBase[key] = Number(this.actor.system.skills?.[key] ?? 0);
+            }
+            const currentExtraSkills = Array.isArray(this.actor.system.extraSkills)
+              ? this.actor.system.extraSkills : [];
+            for (let i = 0; i < currentExtraSkills.length; i++) {
+              currentSkillBase[`extra_${i}`] = Number(currentExtraSkills[i].value ?? 0);
+            }
+            const confirmed = await this._showPointDistributionDialog(diffAttr, diffSocial, diffSkill, skillLimit, {
+              attrBase: currentAttrBase,
+              socialBase: currentSocialBase,
+              skillBase: currentSkillBase,
+              trackRank: newTier,
+              pendingFormData: { "system.tier": newTier },
+              attrMax: 12
+            });
+            // If cancelled, tier stays at oldTier
+          } else {
+            await this.actor.update(formData);
+          }
+        } else if (newIdx < oldIdx) {
+          // Tier downgrade
+          await this.actor.update(formData);
+          await this._applyPokemonTierDowngrade(oldTier, newTier, tierOrder);
+        }
+        return;
+      }
+    }
+
     return super._updateObject(event, formData);
   }
 
@@ -2365,7 +2424,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   async _showPointDistributionDialog(totalAttrPoints, totalSocialPoints, totalSkillPoints, skillLimit, options = {}) {
-    const { attrBase = {}, socialBase = {}, skillBase = {}, trackRank = null, pendingFormData = null } = options;
+    const { attrBase = {}, socialBase = {}, skillBase = {}, trackRank = null, pendingFormData = null, attrMax = 5 } = options;
     const loc = (key) => game.i18n.localize(key);
 
     const coreAttrs = CORE_ATTRIBUTE_DEFINITIONS.map((a) => ({
@@ -2498,7 +2557,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             skill: totalSkillPoints
           };
           const maxByCategory = {
-            attr: 5,
+            attr: attrMax,
             social: 5,
             skill: skillLimit
           };
@@ -2560,6 +2619,87 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       });
       dlg.render(true);
     });
+  }
+
+  _getPokemonTierBonuses(tier) {
+    const table = {
+      starter:  { attr: 0,  social: 0,  skill: 0,  skillLimit: 1 },
+      rookie:   { attr: 2,  social: 1,  skill: 2,  skillLimit: 2 },
+      standard: { attr: 4,  social: 2,  skill: 4,  skillLimit: 3 },
+      advanced: { attr: 6,  social: 3,  skill: 6,  skillLimit: 4 },
+      expert:   { attr: 8,  social: 4,  skill: 8,  skillLimit: 5 },
+      ace:      { attr: 10, social: 5,  skill: 10, skillLimit: 5 },
+      master:   { attr: 12, social: 6,  skill: 12, skillLimit: 5 },
+      champion: { attr: 14, social: 8,  skill: 14, skillLimit: 5 }
+    };
+    return table[tier] ?? table.starter;
+  }
+
+  async _applyPokemonTierDowngrade(oldTier, newTier, tierOrder) {
+    const allDist = this.actor.getFlag("pok-role-system", "rankDistributions") ?? {};
+    const oldIdx = tierOrder.indexOf(oldTier);
+    const newIdx = tierOrder.indexOf(newTier);
+
+    const toRemove = { attr: {}, social: {}, skill: {} };
+    for (let i = oldIdx; i > newIdx; i--) {
+      const tierKey = tierOrder[i];
+      const dist = allDist[tierKey];
+      if (!dist) continue;
+      for (const category of ["attr", "social", "skill"]) {
+        if (!dist[category]) continue;
+        for (const [key, val] of Object.entries(dist[category])) {
+          toRemove[category][key] = (toRemove[category][key] ?? 0) + val;
+        }
+      }
+    }
+
+    const updateData = {};
+    for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
+      const current = Number(this.actor.system.attributes?.[key] ?? 1);
+      const remove = toRemove.attr[key] ?? 0;
+      updateData[`system.attributes.${key}`] = Math.max(current - remove, 1);
+    }
+    for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) {
+      const current = Number(this.actor.system.attributes?.[key] ?? 1);
+      const remove = toRemove.social[key] ?? 0;
+      updateData[`system.attributes.${key}`] = Math.max(current - remove, 1);
+    }
+    for (const { key } of SKILL_DEFINITIONS) {
+      const current = Number(this.actor.system.skills?.[key] ?? 0);
+      const remove = toRemove.skill[key] ?? 0;
+      updateData[`system.skills.${key}`] = Math.max(current - remove, 0);
+    }
+
+    const currentExtraSkills = Array.isArray(this.actor.system.extraSkills)
+      ? foundry.utils.deepClone(this.actor.system.extraSkills) : [];
+    for (let i = 0; i < currentExtraSkills.length; i++) {
+      const extraKey = `extra_${i}`;
+      const remove = toRemove.skill[extraKey] ?? 0;
+      if (remove > 0) {
+        currentExtraSkills[i].value = Math.max((currentExtraSkills[i].value ?? 0) - remove, 0);
+      }
+    }
+
+    const newSkillLimit = this._getPokemonTierBonuses(newTier).skillLimit;
+    for (const { key } of SKILL_DEFINITIONS) {
+      if (updateData[`system.skills.${key}`] > newSkillLimit) {
+        updateData[`system.skills.${key}`] = newSkillLimit;
+      }
+    }
+    for (const es of currentExtraSkills) {
+      if (es.value > newSkillLimit) es.value = newSkillLimit;
+    }
+
+    updateData["system.extraSkills"] = currentExtraSkills;
+    await this.actor.update(updateData);
+
+    const newDist = { ...allDist };
+    for (let i = oldIdx; i > newIdx; i--) {
+      delete newDist[tierOrder[i]];
+    }
+    await this.actor.setFlag("pok-role-system", "rankDistributions", newDist);
+
+    ui.notifications.info(game.i18n.localize("POKROLE.Dialog.PointsDistributed"));
   }
 
   async _applyRankDowngrade(oldRank, newRank, rankOrder) {
