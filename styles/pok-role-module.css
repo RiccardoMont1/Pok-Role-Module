@@ -4179,19 +4179,14 @@ form.editable.pok-role-sheet.trainer-sheet {
   padding: 0 12px 10px;
   margin-bottom: 10px;
   background: #d6dceb;
-  display: block;
 }
 
-.point-distribution-dialog .point-dist-section legend {
+.point-distribution-dialog .point-dist-header {
   font-weight: bold;
   font-size: 0.95em;
-  padding: 6px 0 4px;
+  padding: 8px 0 6px;
   color: #2c3e50;
   white-space: nowrap;
-  display: block;
-  width: 100%;
-  float: none;
-  margin: 0;
   border-bottom: 1px solid #a3abba;
   margin-bottom: 6px;
 }

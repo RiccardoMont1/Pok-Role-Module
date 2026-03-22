@@ -2359,26 +2359,26 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           ${loc("POKROLE.Dialog.SkillLimit")}: <strong>${skillLimit}</strong>
         </p>
 
-        <fieldset class="point-dist-section">
-          <legend>${loc("POKROLE.Dialog.AttributePoints")}
+        <div class="point-dist-section">
+          <div class="point-dist-header">${loc("POKROLE.Dialog.AttributePoints")}
             &mdash; <span class="point-dist-remaining" data-pool="attr">${totalAttrPoints}</span> ${loc("POKROLE.Dialog.Remaining")}
-          </legend>
+          </div>
           ${buildRows(coreAttrs, "attr")}
-        </fieldset>
+        </div>
 
-        <fieldset class="point-dist-section">
-          <legend>${loc("POKROLE.Dialog.SocialPoints")}
+        <div class="point-dist-section">
+          <div class="point-dist-header">${loc("POKROLE.Dialog.SocialPoints")}
             &mdash; <span class="point-dist-remaining" data-pool="social">${totalSocialPoints}</span> ${loc("POKROLE.Dialog.Remaining")}
-          </legend>
+          </div>
           ${buildRows(socialAttrs, "social")}
-        </fieldset>
+        </div>
 
-        <fieldset class="point-dist-section">
-          <legend>${loc("POKROLE.Dialog.SkillPoints")}
+        <div class="point-dist-section">
+          <div class="point-dist-header">${loc("POKROLE.Dialog.SkillPoints")}
             &mdash; <span class="point-dist-remaining" data-pool="skill">${totalSkillPoints}</span> ${loc("POKROLE.Dialog.Remaining")}
-          </legend>
+          </div>
           ${buildRows(skills, "skill")}
-        </fieldset>
+        </div>
       </form>
     `;
 
