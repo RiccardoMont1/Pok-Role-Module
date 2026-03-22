@@ -11,6 +11,7 @@ Corkscrew Crash,move-corkscrew-crash,manual,"external-rule-reference, mixed-cate
 Devastating Drake,move-devastating-drake,manual,"external-rule-reference, mixed-category, suggested-effects",3,dragon,support,foe,0
 Dynamax Cannon,move-dynamax-cannon,partial,dynamax-rule,1,dragon,special,foe,0
 Gigavolt Havoc,move-gigavolt-havoc,manual,"external-rule-reference, mixed-category, suggested-effects",3,electric,support,foe,0
+Hold Hands,move-hold-hands,manual,external-rule-reference,1,normal,support,foe,0
 Hydro Vortex,move-hydro-vortex,manual,"external-rule-reference, mixed-category, suggested-effects",3,water,support,foe,0
 Inferno Overdrive,move-inferno-overdrive,manual,"external-rule-reference, mixed-category, suggested-effects",3,fire,support,foe,0
 Max Guard,move-max-guard,partial,dynamax-rule,1,normal,physical,self,0
@@ -20,4 +21,6 @@ Shattered Psyche,move-shattered-psyche,manual,"external-rule-reference, mixed-ca
 Subzero Slammer,move-subzero-slammer,manual,"external-rule-reference, mixed-category, suggested-effects",3,ice,support,foe,0
 Supersonic Skystrike,move-supersonic-skystrike,manual,"external-rule-reference, mixed-category, suggested-effects",3,flying,support,foe,0
 Tectonic Rage,move-tectonic-rage,manual,"external-rule-reference, mixed-category, suggested-effects",3,ground,support,foe,0
+Tera Blast,move-tera-blast,manual,"dynamic-type, external-rule-reference",2,normal,physical,foe,0
+Tera Starstorm,move-tera-starstorm,manual,"dynamic-type, external-rule-reference",2,normal,physical,all-foes,0
 Twinkle Tackle,move-twinkle-tackle,manual,"external-rule-reference, mixed-category, suggested-effects",3,fairy,support,foe,0

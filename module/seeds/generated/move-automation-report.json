@@ -2,15 +2,16 @@
   "source": "D:\\DeskTop\\Script\\Pok\u00e8Role Module\\external-references\\Pokerole-Data\\v3.0\\Moves",
   "totalMoves": 894,
   "statusTotals": {
-    "full": 872,
-    "manual": 18,
+    "full": 869,
+    "manual": 21,
     "partial": 4
   },
   "reasonTotals": {
-    "external-rule-reference": 18,
+    "external-rule-reference": 21,
     "mixed-category": 18,
     "suggested-effects": 18,
-    "dynamax-rule": 4
+    "dynamax-rule": 4,
+    "dynamic-type": 2
   },
   "moves": [
     {
@@ -3588,8 +3589,10 @@
     {
       "name": "Hold Hands",
       "seedId": "move-hold-hands",
-      "status": "full",
-      "reasons": [],
+      "status": "manual",
+      "reasons": [
+        "external-rule-reference"
+      ],
       "type": "normal",
       "category": "support",
       "target": "foe",
@@ -8152,8 +8155,11 @@
     {
       "name": "Tera Blast",
       "seedId": "move-tera-blast",
-      "status": "full",
-      "reasons": [],
+      "status": "manual",
+      "reasons": [
+        "dynamic-type",
+        "external-rule-reference"
+      ],
       "type": "normal",
       "category": "physical",
       "target": "foe",
@@ -8162,8 +8168,11 @@
     {
       "name": "Tera Starstorm",
       "seedId": "move-tera-starstorm",
-      "status": "full",
-      "reasons": [],
+      "status": "manual",
+      "reasons": [
+        "dynamic-type",
+        "external-rule-reference"
+      ],
       "type": "normal",
       "category": "physical",
       "target": "all-foes",

@@ -149,7 +149,25 @@ export function getCombatMoveQueue(combat = getCurrentCombat()) {
   return queue.map((entry, index) => normalizeQueueEntry(entry, index));
 }
 
-export async function setCombatMoveQueue(combat, queue = []) {
+async function requestMoveQueueMutation(operation, combat, payload = {}) {
+  const combatId = `${combat?.id ?? ""}`.trim();
+  if (!combatId) return getCombatMoveQueue(combat);
+  const entryCombatantId = `${payload?.entry?.combatantId ?? ""}`.trim();
+  const combatantActorId = entryCombatantId
+    ? `${combat?.combatants?.get?.(entryCombatantId)?.actor?.id ?? ""}`.trim()
+    : "";
+  const requesterActorId =
+    `${payload?.requesterActorId ?? payload?.entry?.actorId ?? ""}`.trim() ||
+    combatantActorId;
+  await game.pokrole?.requestCombatMutation?.(operation, {
+    ...payload,
+    combatId,
+    requesterActorId: requesterActorId || null
+  });
+  return getCombatMoveQueue(combat);
+}
+
+export async function setCombatMoveQueueLocal(combat, queue = []) {
   if (!combat) return [];
   const normalizedQueue = Array.isArray(queue)
     ? queue.map((entry, index) => normalizeQueueEntry(entry, index))
@@ -163,21 +181,55 @@ export async function setCombatMoveQueue(combat, queue = []) {
   return normalizedQueue;
 }
 
+export async function setCombatMoveQueue(combat, queue = []) {
+  if (!combat) return [];
+  if (!game.user?.isGM) return getCombatMoveQueue(combat);
+  return setCombatMoveQueueLocal(combat, queue);
+}
+
+export async function clearCombatMoveQueueLocal(combat = getCurrentCombat()) {
+  if (!combat) return [];
+  return setCombatMoveQueueLocal(combat, []);
+}
+
 export async function clearCombatMoveQueue(combat = getCurrentCombat()) {
   if (!combat) return [];
   if (!game.user?.isGM) return getCombatMoveQueue(combat);
-  return setCombatMoveQueue(combat, []);
+  return clearCombatMoveQueueLocal(combat);
 }
 
-export async function enqueueCombatMoveDeclaration(entry, combat = getCurrentCombat()) {
+export async function enqueueCombatMoveDeclarationLocal(entry, combat = getCurrentCombat()) {
   if (!combat) return null;
   const normalizedEntry = normalizeQueueEntry(entry);
   const queue = getCombatMoveQueue(combat);
   const insertIndex = queue.findIndex((existing) => shouldEntryComeBefore(normalizedEntry, existing));
   if (insertIndex === -1) queue.push(normalizedEntry);
   else queue.splice(insertIndex, 0, normalizedEntry);
-  await setCombatMoveQueue(combat, queue);
+  await setCombatMoveQueueLocal(combat, queue);
   return normalizedEntry;
+}
+
+export async function enqueueCombatMoveDeclaration(entry, combat = getCurrentCombat()) {
+  if (!combat) return null;
+  const normalizedEntry = normalizeQueueEntry(entry);
+  if (!game.user?.isGM) {
+    await requestMoveQueueMutation("enqueueCombatMoveDeclaration", combat, {
+      entry: normalizedEntry,
+      requesterActorId: normalizedEntry.actorId || null
+    });
+    return normalizedEntry;
+  }
+  await enqueueCombatMoveDeclarationLocal(normalizedEntry, combat);
+  return normalizedEntry;
+}
+
+export async function removeCombatMoveEntryLocal(combat, entryId) {
+  if (!combat) return [];
+  const normalizedEntryId = `${entryId ?? ""}`.trim();
+  if (!normalizedEntryId) return getCombatMoveQueue(combat);
+  const queue = getCombatMoveQueue(combat);
+  const nextQueue = queue.filter((candidate) => candidate.id !== normalizedEntryId);
+  return setCombatMoveQueueLocal(combat, nextQueue);
 }
 
 export async function removeCombatMoveEntry(combat, entryId) {
@@ -187,12 +239,18 @@ export async function removeCombatMoveEntry(combat, entryId) {
   const queue = getCombatMoveQueue(combat);
   const entry = queue.find((candidate) => candidate.id === normalizedEntryId);
   if (!entry || !canManageQueueEntry(entry, combat)) return queue;
-  const nextQueue = queue.filter((candidate) => candidate.id !== normalizedEntryId);
-  return setCombatMoveQueue(combat, nextQueue);
+  if (!game.user?.isGM) {
+    await requestMoveQueueMutation("removeCombatMoveEntry", combat, {
+      entryId: normalizedEntryId,
+      requesterActorId: entry.actorId || null
+    });
+    return queue.filter((candidate) => candidate.id !== normalizedEntryId);
+  }
+  return removeCombatMoveEntryLocal(combat, normalizedEntryId);
 }
 
-export async function moveCombatMoveEntry(combat, entryId, targetIndex) {
-  if (!combat || !canReorderQueue()) return getCombatMoveQueue(combat);
+export async function moveCombatMoveEntryLocal(combat, entryId, targetIndex) {
+  if (!combat) return getCombatMoveQueue(combat);
   const normalizedEntryId = `${entryId ?? ""}`.trim();
   const queue = getCombatMoveQueue(combat);
   const currentIndex = queue.findIndex((entry) => entry.id === normalizedEntryId);
@@ -207,7 +265,12 @@ export async function moveCombatMoveEntry(combat, entryId, targetIndex) {
   const [entry] = queue.splice(currentIndex, 1);
   const insertionIndex = currentIndex < boundedIndex ? boundedIndex - 1 : boundedIndex;
   queue.splice(insertionIndex, 0, entry);
-  return setCombatMoveQueue(combat, queue);
+  return setCombatMoveQueueLocal(combat, queue);
+}
+
+export async function moveCombatMoveEntry(combat, entryId, targetIndex) {
+  if (!combat || !canReorderQueue()) return getCombatMoveQueue(combat);
+  return moveCombatMoveEntryLocal(combat, entryId, targetIndex);
 }
 
 export async function executeCombatMoveEntry(combat, entryId) {

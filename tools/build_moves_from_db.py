@@ -415,7 +415,7 @@ def normalize_external_attributes(raw_attributes, raw_category="", effect_text="
     normalized["projectileMove"] = raw_bool("ProjectileMove")
     normalized["ignoreShield"] = raw_bool("IgnoreShield")
     normalized["forceField"] = raw_bool("ForceField")
-    normalized["blockDamagePool"] = raw_bool("BlockDamagePool")
+    normalized["blockDamagePool"] = parse_number(attributes.get("BlockDamagePool"), 0)
     normalized["entryHazard"] = raw_bool("EntryHazard")
     normalized["ongoingDamage"] = raw_bool("OngoingDamage")
     normalized["resetTerrain"] = raw_bool("ResetTerrain")
@@ -1305,6 +1305,11 @@ def infer_automation_reasons(row, target_key, formula_config=None):
     if "type, power and extra added effects are decided by storyteller" in combined_text:
         reasons.add("dynamic-type")
         reasons.add("dynamic-power-formula")
+        reasons.add("external-rule-reference")
+    if seed_id == "move-hold-hands":
+        reasons.add("external-rule-reference")
+    if seed_id in {"move-tera-blast", "move-tera-starstorm"}:
+        reasons.add("dynamic-type")
         reasons.add("external-rule-reference")
     if clean_text(system.get("dmgMod1", "")).lower() == "target'sremaininghp" and not clean_text(
         formula_config.get("damageBaseFormula", "")

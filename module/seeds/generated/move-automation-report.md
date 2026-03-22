@@ -6,16 +6,17 @@ Total moves: **894**
 
 ## Status Totals
 
-- `full`: 872
+- `full`: 869
 - `partial`: 4
-- `manual`: 18
+- `manual`: 21
 
 ## Reason Totals
 
-- `external-rule-reference`: 18
+- `external-rule-reference`: 21
 - `mixed-category`: 18
 - `suggested-effects`: 18
 - `dynamax-rule`: 4
+- `dynamic-type`: 2
 
 ## Manual Moves
 
@@ -28,6 +29,7 @@ Total moves: **894**
 - **Corkscrew Crash**: external-rule-reference, mixed-category, suggested-effects
 - **Devastating Drake**: external-rule-reference, mixed-category, suggested-effects
 - **Gigavolt Havoc**: external-rule-reference, mixed-category, suggested-effects
+- **Hold Hands**: external-rule-reference
 - **Hydro Vortex**: external-rule-reference, mixed-category, suggested-effects
 - **Inferno Overdrive**: external-rule-reference, mixed-category, suggested-effects
 - **Never-Ending Nightmare**: external-rule-reference, mixed-category, suggested-effects
@@ -36,6 +38,8 @@ Total moves: **894**
 - **Subzero Slammer**: external-rule-reference, mixed-category, suggested-effects
 - **Supersonic Skystrike**: external-rule-reference, mixed-category, suggested-effects
 - **Tectonic Rage**: external-rule-reference, mixed-category, suggested-effects
+- **Tera Blast**: dynamic-type, external-rule-reference
+- **Tera Starstorm**: dynamic-type, external-rule-reference
 - **Twinkle Tackle**: external-rule-reference, mixed-category, suggested-effects
 
 ## Partial Moves

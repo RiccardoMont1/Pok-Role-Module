@@ -1,5 +1,6 @@
 import {
   ATTRIBUTE_DEFINITIONS,
+  COMBAT_FLAG_KEYS,
   EFFECT_PASSIVE_TRIGGER_KEYS,
   getSystemAssetPath,
   MOVE_SECONDARY_CONDITION_KEYS,
@@ -28,9 +29,14 @@ import {
 } from "./module/documents.mjs";
 import {
   clearCombatMoveQueue,
+  clearCombatMoveQueueLocal,
   enqueueCombatMoveDeclaration,
+  enqueueCombatMoveDeclarationLocal,
   executeCombatMoveEntry,
+  getCombatMoveQueue,
   moveCombatMoveEntry,
+  moveCombatMoveEntryLocal,
+  removeCombatMoveEntryLocal,
   removeCombatMoveEntry,
   renderMoveQueueOverlay
 } from "./module/move-queue.mjs";
@@ -48,6 +54,17 @@ function canUserRequestCombatMutation(user, requesterActor) {
   if (user.isGM) return true;
   if (!(requesterActor instanceof Actor)) return false;
   return requesterActor.testUserPermission?.(user, CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) === true;
+}
+
+function getQueueEntryActor(entry, combat) {
+  const combatantId = `${entry?.combatantId ?? ""}`.trim();
+  if (combatantId) {
+    const combatantActor = combat?.combatants?.get(combatantId)?.actor ?? null;
+    if (combatantActor) return combatantActor;
+  }
+  const actorId = `${entry?.actorId ?? ""}`.trim();
+  if (!actorId) return null;
+  return game.actors?.get(actorId) ?? null;
 }
 
 async function handleCombatMutationSocketRequest(message = {}) {
@@ -110,6 +127,56 @@ async function handleCombatMutationSocketRequest(message = {}) {
         const secondCombatant = combat.combatants.get(`${payload?.secondCombatantId ?? ""}`.trim()) ?? null;
         const swapped = await dispatcherActor._swapCombatantActorsLocal(firstCombatant, secondCombatant);
         return { ok: true, swapped: Boolean(swapped) };
+      }
+      case "enqueueCombatMoveDeclaration": {
+        const entry = payload?.entry ?? {};
+        const queueActor = getQueueEntryActor(entry, combat);
+        if (!canUserRequestCombatMutation(requesterUser, queueActor)) {
+          return { ok: false, error: "Requester lacks permission to queue that move." };
+        }
+        const queuedEntry = await enqueueCombatMoveDeclarationLocal(entry, combat);
+        return { ok: true, entryId: queuedEntry?.id ?? null };
+      }
+      case "removeCombatMoveEntry": {
+        const entryId = `${payload?.entryId ?? ""}`.trim();
+        const queueEntry = getCombatMoveQueue(combat).find((entry) => entry.id === entryId) ?? null;
+        if (!queueEntry) return { ok: true, removed: false };
+        const queueActor = getQueueEntryActor(queueEntry, combat);
+        if (!canUserRequestCombatMutation(requesterUser, queueActor)) {
+          return { ok: false, error: "Requester lacks permission to remove that queue entry." };
+        }
+        await removeCombatMoveEntryLocal(combat, entryId);
+        return { ok: true, removed: true };
+      }
+      case "moveCombatMoveEntry": {
+        if (!requesterUser?.isGM) {
+          return { ok: false, error: "Only the GM can reorder the move queue." };
+        }
+        const entryId = `${payload?.entryId ?? ""}`.trim();
+        const targetIndex = Number(payload?.targetIndex ?? 0);
+        await moveCombatMoveEntryLocal(combat, entryId, targetIndex);
+        return { ok: true };
+      }
+      case "clearCombatMoveQueue": {
+        if (!requesterUser?.isGM) {
+          return { ok: false, error: "Only the GM can clear the move queue." };
+        }
+        await clearCombatMoveQueueLocal(combat);
+        return { ok: true };
+      }
+      case "setDelayedEffectQueue": {
+        const queue = Array.isArray(payload?.queue) ? payload.queue : [];
+        if (queue.length > 0) {
+          await combat.setFlag(POKROLE.ID, COMBAT_FLAG_KEYS.DELAYED_EFFECT_QUEUE, queue);
+        } else {
+          await combat.unsetFlag(POKROLE.ID, COMBAT_FLAG_KEYS.DELAYED_EFFECT_QUEUE);
+        }
+        return { ok: true, count: queue.length };
+      }
+      case "setCombatSideFieldEntries": {
+        const entries = Array.isArray(payload?.entries) ? payload.entries : [];
+        await combat.setFlag(POKROLE.ID, "combat.sideFieldEntries", entries);
+        return { ok: true, count: entries.length };
       }
       default:
         return { ok: false, error: `Unknown combat mutation operation: ${operation}` };
@@ -631,6 +698,60 @@ async function clearSceneScopedCopiedMoves(sceneId = null) {
   for (const actor of actorsByKey.values()) {
     if (typeof actor.clearSceneScopedCopiedMoves !== "function") continue;
     await actor.clearSceneScopedCopiedMoves(normalizedSceneId);
+  }
+}
+
+async function clearSceneScopedManagedEffects(sceneId = null) {
+  if (!game) return;
+  const normalizedSceneId = `${sceneId ?? canvas?.scene?.id ?? ""}`.trim();
+  if (!normalizedSceneId) return;
+
+  const actorsByKey = new Map();
+  const rememberActor = (actor) => {
+    if (!actor || actor.documentName !== "Actor") return;
+    const actorKey = `${actor.uuid ?? actor.id ?? ""}`.trim();
+    if (!actorKey) return;
+    actorsByKey.set(actorKey, actor);
+  };
+
+  for (const actor of game.actors?.contents ?? []) {
+    rememberActor(actor);
+  }
+
+  for (const token of canvas?.tokens?.placeables ?? []) {
+    rememberActor(token?.actor ?? null);
+  }
+
+  for (const actor of actorsByKey.values()) {
+    if (typeof actor.clearSceneScopedManagedEffects !== "function") continue;
+    await actor.clearSceneScopedManagedEffects(normalizedSceneId);
+  }
+}
+
+async function clearSceneScopedTransformState(sceneId = null) {
+  if (!game) return;
+  const normalizedSceneId = `${sceneId ?? canvas?.scene?.id ?? ""}`.trim();
+  if (!normalizedSceneId) return;
+
+  const actorsByKey = new Map();
+  const rememberActor = (actor) => {
+    if (!actor || actor.documentName !== "Actor") return;
+    const actorKey = `${actor.uuid ?? actor.id ?? ""}`.trim();
+    if (!actorKey) return;
+    actorsByKey.set(actorKey, actor);
+  };
+
+  for (const actor of game.actors?.contents ?? []) {
+    rememberActor(actor);
+  }
+
+  for (const token of canvas?.tokens?.placeables ?? []) {
+    rememberActor(token?.actor ?? null);
+  }
+
+  for (const actor of actorsByKey.values()) {
+    if (typeof actor.clearSceneScopedTransformState !== "function") continue;
+    await actor.clearSceneScopedTransformState(normalizedSceneId);
   }
 }
 
@@ -1272,6 +1393,8 @@ Hooks.once("ready", async () => {
   await synchronizeAllActorEffectTokenIcons();
   await clearSceneScopedMoveDisableEffects(canvas?.scene?.id ?? null);
   await clearSceneScopedCopiedMoves(canvas?.scene?.id ?? null);
+  await clearSceneScopedManagedEffects(canvas?.scene?.id ?? null);
+  await clearSceneScopedTransformState(canvas?.scene?.id ?? null);
   for (const actor of game.actors?.contents ?? []) {
     if (actor?.type !== "pokemon") continue;
     if (typeof actor.synchronizeConditionFlags === "function") {
@@ -1325,6 +1448,8 @@ Hooks.once("ready", async () => {
 Hooks.on("canvasReady", async (canvasDocument) => {
   await clearSceneScopedMoveDisableEffects(canvasDocument?.scene?.id ?? canvas?.scene?.id ?? null);
   await clearSceneScopedCopiedMoves(canvasDocument?.scene?.id ?? canvas?.scene?.id ?? null);
+  await clearSceneScopedManagedEffects(canvasDocument?.scene?.id ?? canvas?.scene?.id ?? null);
+  await clearSceneScopedTransformState(canvasDocument?.scene?.id ?? canvas?.scene?.id ?? null);
 });
 
 Hooks.on("updateCombat", async (combat, changed) => {

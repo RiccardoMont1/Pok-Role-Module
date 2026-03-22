@@ -3161,7 +3161,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
         "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
-          "blockDamagePool": true,
+          "blockDamagePool": 2,
           "ongoingDamage": true,
           "duration": 4
         }
@@ -6175,7 +6175,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
         "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 2,
-          "blockDamagePool": true,
+          "blockDamagePool": 2,
           "ongoingDamage": true,
           "duration": 4
         }
@@ -13606,7 +13606,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
         "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 2,
-          "blockDamagePool": true,
+          "blockDamagePool": 2,
           "ongoingDamage": true,
           "duration": 4
         }
@@ -18711,8 +18711,10 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-hold-hands",
         "sourceDbId": "hold-hands",
-        "automationStatus": "full",
-        "automationReasons": [],
+        "automationStatus": "manual",
+        "automationReasons": [
+          "external-rule-reference"
+        ],
         "sourceAttributes": {}
       }
     }
@@ -20565,7 +20567,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
         "automationStatus": "full",
         "automationReasons": [],
         "sourceAttributes": {
-          "blockDamagePool": true,
+          "blockDamagePool": 2,
           "ongoingDamage": true,
           "duration": 4
         }
@@ -23244,7 +23246,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
         "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 2,
-          "blockDamagePool": true,
+          "blockDamagePool": 3,
           "lethal": true,
           "duration": 4
         }
@@ -34301,7 +34303,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
         "sourceAttributes": {
           "accuracyReduction": 2,
           "physicalRanged": true,
-          "blockDamagePool": true,
+          "blockDamagePool": 2,
           "ongoingDamage": true,
           "duration": 4
         }
@@ -43036,8 +43038,11 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-tera-blast",
         "sourceDbId": "tera-blast",
-        "automationStatus": "full",
-        "automationReasons": [],
+        "automationStatus": "manual",
+        "automationReasons": [
+          "dynamic-type",
+          "external-rule-reference"
+        ],
         "sourceAttributes": {}
       }
     }
@@ -43078,8 +43083,11 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "move-tera-starstorm",
         "sourceDbId": "tera-starstorm",
-        "automationStatus": "full",
-        "automationReasons": [],
+        "automationStatus": "manual",
+        "automationReasons": [
+          "dynamic-type",
+          "external-rule-reference"
+        ],
         "sourceAttributes": {
           "unique": true
         }
@@ -46429,7 +46437,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
         "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 2,
-          "blockDamagePool": true,
+          "blockDamagePool": 2,
           "ongoingDamage": true,
           "duration": 4
         }
@@ -47223,7 +47231,7 @@ export const MOVE_COMPENDIUM_ENTRIES = Object.freeze([
         "automationReasons": [],
         "sourceAttributes": {
           "accuracyReduction": 1,
-          "blockDamagePool": true,
+          "blockDamagePool": 2,
           "ongoingDamage": true,
           "duration": 4
         }
