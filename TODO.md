@@ -14,8 +14,6 @@ PokèBall e sistema di cattura e owernship della scheda (Nuove pokè, Velox Ball
 
 Sostuire il campo "Progressione Evoluzione" con il tasto "Evoluzione" nella scheda del pokémon per effettuare l'evoluzione del pokémon. Tasto visibile solo al Game Master
 
-Automatizzazione assegnazione punti extra per attributi o skill in base all'età (Alla Creazione del allenatore farti aggiungere +2 agli attributi e +2 alle social skill) ed in base al rank
-
 Modificare il combat tracker in modo tale che anche se arrivi all'ultimo pokémon e clicchi il tasto "Next Turn", semplicemente torna al primo pokémon del turn order. Per andare al prossimo round, si deve cliccare il tasto Next Round e solo in quel momento i pokémon ritireranno l'iniziativa
 
 Rimuovere il tasto "Imposta Meteo" dalla scheda dell'allenatore
