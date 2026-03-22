@@ -102,6 +102,15 @@ class BaseCharacterDataModel extends foundry.abstract.TypeDataModel {
 }
 
 export class TrainerDataModel extends BaseCharacterDataModel {
+  /** @override */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    const vitality = Math.max(Math.floor(Number(this.attributes?.vitality) || 0), 0);
+    const insight = Math.max(Math.floor(Number(this.attributes?.insight) || 0), 0);
+    this.resources.hp.max = 4 + vitality;
+    this.resources.will.max = insight + 3;
+  }
+
   static defineSchema() {
     const base = super.defineSchema();
     return {

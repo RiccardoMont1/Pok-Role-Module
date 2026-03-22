@@ -42,6 +42,26 @@ import { PokRoleMoveSheet } from "./module/sheets/item-sheet.mjs";
  * combatant without advancing the round. Use "Next Round" to advance rounds.
  */
 class PokRoleCombat extends Combat {
+  async previousTurn() {
+    const turn = this.turn ?? 0;
+    const skip = this.settings.skipDefeated;
+
+    // Find the previous valid turn within the same round
+    let prev = null;
+    for (let i = 1; i <= this.turns.length; i++) {
+      const idx = (turn - i + this.turns.length) % this.turns.length;
+      // Stop if we've wrapped past the first combatant
+      if (idx >= turn) break;
+      if (skip && this.turns[idx]?.isDefeated) continue;
+      prev = idx;
+      break;
+    }
+
+    // If no valid previous turn, stay where we are (never go back a round)
+    if (prev === null) return this;
+    return this.update({ turn: prev });
+  }
+
   async nextTurn() {
     const turn = this.turn ?? 0;
     const skip = this.settings.skipDefeated;
