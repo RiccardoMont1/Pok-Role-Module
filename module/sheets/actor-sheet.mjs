@@ -2307,6 +2307,12 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
               for (const { key } of SKILL_DEFINITIONS) {
                 currentSkillBase[key] = Number(this.actor.system.skills?.[key] ?? 0);
               }
+              // Include extra skills in skill base
+              const currentExtraSkills = Array.isArray(this.actor.system.extraSkills)
+                ? this.actor.system.extraSkills : [];
+              for (let i = 0; i < currentExtraSkills.length; i++) {
+                currentSkillBase[`extra_${i}`] = Number(currentExtraSkills[i].value ?? 0);
+              }
               await this._showPointDistributionDialog(diffAttr, diffSocial, diffSkill, skillLimit, {
                 attrBase: currentAttrBase,
                 socialBase: currentSocialBase,
@@ -2362,6 +2368,15 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       key: s.key, label: loc(s.label), value: skillBase[s.key] ?? 0
     }));
 
+    // Include extra skills
+    const extraSkills = Array.isArray(this.actor.system.extraSkills)
+      ? this.actor.system.extraSkills : [];
+    const extraSkillItems = extraSkills.map((es, idx) => ({
+      key: `extra_${idx}`,
+      label: es.name || `Extra ${idx + 1}`,
+      value: skillBase[`extra_${idx}`] ?? es.value ?? 0
+    }));
+
     const buildRows = (items, category) => items.map((item) =>
       `<div class="point-dist-row" data-category="${category}" data-key="${item.key}">
         <span class="point-dist-label">${item.label}</span>
@@ -2396,6 +2411,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             &mdash; <span class="point-dist-remaining" data-pool="skill">${totalSkillPoints}</span> ${loc("POKROLE.Dialog.Remaining")}
           </div>
           ${buildRows(skills, "skill")}
+          ${extraSkillItems.length > 0 ? buildRows(extraSkillItems, "skill") : ""}
         </div>
       </form>
     `;
@@ -2409,6 +2425,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     for (const a of CORE_ATTRIBUTE_DEFINITIONS) state.values[`attr:${a.key}`] = attrBase[a.key] ?? 1;
     for (const a of SOCIAL_ATTRIBUTE_DEFINITIONS) state.values[`social:${a.key}`] = socialBase[a.key] ?? 1;
     for (const s of SKILL_DEFINITIONS) state.values[`skill:${s.key}`] = skillBase[s.key] ?? 0;
+    for (const es of extraSkillItems) state.values[`skill:${es.key}`] = es.value;
 
     return new Promise((resolve) => {
       const dlg = new Dialog({
@@ -2421,6 +2438,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             callback: async () => {
               const updateData = {};
               const distributed = { attr: {}, social: {}, skill: {} };
+              const updatedExtraSkills = foundry.utils.deepClone(extraSkills);
               for (const [compositeKey, val] of Object.entries(state.values)) {
                 const [category, key] = compositeKey.split(":");
                 const base = category === "attr" ? (attrBase[key] ?? 1)
@@ -2428,11 +2446,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
                   : (skillBase[key] ?? 0);
                 if (category === "attr" || category === "social") {
                   updateData[`system.attributes.${key}`] = val;
+                } else if (key.startsWith("extra_")) {
+                  const idx = parseInt(key.replace("extra_", ""), 10);
+                  if (updatedExtraSkills[idx]) updatedExtraSkills[idx].value = val;
                 } else {
                   updateData[`system.skills.${key}`] = val;
                 }
                 const added = val - base;
                 if (added > 0) distributed[category][key] = added;
+              }
+              if (extraSkills.length > 0) {
+                updateData["system.extraSkills"] = updatedExtraSkills;
               }
               await this.actor.update(updateData);
               if (trackRank) {
@@ -2470,6 +2494,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           for (const a of SOCIAL_ATTRIBUTE_DEFINITIONS) socialBaseByKey[a.key] = socialBase[a.key] ?? 1;
           const skillBaseByKey = {};
           for (const s of SKILL_DEFINITIONS) skillBaseByKey[s.key] = skillBase[s.key] ?? 0;
+          for (const es of extraSkillItems) skillBaseByKey[es.key] = es.value;
 
           const confirmBtn = html.closest(".dialog").find("button[data-button='confirm']");
           confirmBtn.prop("disabled", true);
@@ -2560,6 +2585,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       updateData[`system.skills.${key}`] = Math.max(current - remove, 0);
     }
 
+    // Handle extra skills
+    const currentExtraSkills = Array.isArray(this.actor.system.extraSkills)
+      ? foundry.utils.deepClone(this.actor.system.extraSkills) : [];
+    for (let i = 0; i < currentExtraSkills.length; i++) {
+      const extraKey = `extra_${i}`;
+      const remove = toRemove.skill[extraKey] ?? 0;
+      if (remove > 0) {
+        currentExtraSkills[i].value = Math.max((currentExtraSkills[i].value ?? 0) - remove, 0);
+      }
+    }
+
     // Also enforce the new skill limit
     const newSkillLimit = this._getRankBonuses(newRank).skillLimit;
     for (const { key } of SKILL_DEFINITIONS) {
@@ -2567,7 +2603,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         updateData[`system.skills.${key}`] = newSkillLimit;
       }
     }
+    for (const es of currentExtraSkills) {
+      if (es.value > newSkillLimit) es.value = newSkillLimit;
+    }
 
+    updateData["system.extraSkills"] = currentExtraSkills;
     await this.actor.update(updateData);
 
     // Remove distribution history for removed ranks
