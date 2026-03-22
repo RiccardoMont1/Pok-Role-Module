@@ -2252,24 +2252,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         const rank = formData["system.cardRank"] ?? this.actor.system.cardRank;
         // Save old rank BEFORE updating
         const oldRank = this.actor.system.cardRank;
-        const oldRankBonuses = this._getRankBonuses(oldRank);
 
         const ageBonuses = this._getAgeBonuses(age);
         const rankBonuses = this._getRankBonuses(rank);
-
-        // Snapshot current values BEFORE updating
-        const currentAttrValues = {};
-        for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
-          currentAttrValues[key] = Number(this.actor.system.attributes?.[key] ?? 1);
-        }
-        const currentSocialValues = {};
-        for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) {
-          currentSocialValues[key] = Number(this.actor.system.attributes?.[key] ?? 1);
-        }
-        const currentSkillValues = {};
-        for (const { key } of SKILL_DEFINITIONS) {
-          currentSkillValues[key] = Number(this.actor.system.skills?.[key] ?? 0);
-        }
 
         // Save the age/rank change
         await this.actor.update(formData);
@@ -2281,8 +2266,13 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           const totalSkill = rankBonuses.skill;
           const skillLimit = rankBonuses.skillLimit;
 
+          // Clear all rank distribution history
+          await this.actor.setFlag("pok-role-system", "rankDistributions", {});
+
           if (totalAttr > 0 || totalSocial > 0 || totalSkill > 0) {
-            await this._showPointDistributionDialog(totalAttr, totalSocial, totalSkill, skillLimit);
+            await this._showPointDistributionDialog(totalAttr, totalSocial, totalSkill, skillLimit, {
+              trackRank: rank
+            });
           } else {
             const resetData = {};
             for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) resetData[`system.attributes.${key}`] = 1;
@@ -2291,30 +2281,42 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             await this.actor.update(resetData);
           }
         } else {
-          // Only rank changed: calculate DIFFERENCE between old and new rank
-          const diffAttr = rankBonuses.attr - oldRankBonuses.attr;
-          const diffSocial = rankBonuses.social - oldRankBonuses.social;
-          const diffSkill = rankBonuses.skill - oldRankBonuses.skill;
-          const skillLimit = rankBonuses.skillLimit;
+          // Only rank changed
+          const rankOrder = ["none", "starter", "rookie", "standard", "advanced", "expert", "ace", "master", "champion"];
+          const oldIdx = rankOrder.indexOf(oldRank);
+          const newIdx = rankOrder.indexOf(rank);
 
-          if (diffAttr > 0 || diffSocial > 0 || diffSkill > 0) {
-            // Upgrade: distribute only the extra points on top of current values
-            await this._showPointDistributionDialog(diffAttr, diffSocial, diffSkill, skillLimit, {
-              attrBase: currentAttrValues,
-              socialBase: currentSocialValues,
-              skillBase: currentSkillValues
-            });
-          } else if (diffAttr < 0 || diffSocial < 0 || diffSkill < 0) {
-            // Downgrade: show dialog to remove excess points
-            await this._showPointRemovalDialog(
-              Math.abs(Math.min(diffAttr, 0)),
-              Math.abs(Math.min(diffSocial, 0)),
-              Math.abs(Math.min(diffSkill, 0)),
-              skillLimit,
-              currentAttrValues,
-              currentSocialValues,
-              currentSkillValues
-            );
+          if (newIdx > oldIdx) {
+            // Upgrade: calculate difference and distribute extra points
+            const oldRankBonuses = this._getRankBonuses(oldRank);
+            const diffAttr = rankBonuses.attr - oldRankBonuses.attr;
+            const diffSocial = rankBonuses.social - oldRankBonuses.social;
+            const diffSkill = rankBonuses.skill - oldRankBonuses.skill;
+            const skillLimit = rankBonuses.skillLimit;
+
+            if (diffAttr > 0 || diffSocial > 0 || diffSkill > 0) {
+              const currentAttrBase = {};
+              for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
+                currentAttrBase[key] = Number(this.actor.system.attributes?.[key] ?? 1);
+              }
+              const currentSocialBase = {};
+              for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) {
+                currentSocialBase[key] = Number(this.actor.system.attributes?.[key] ?? 1);
+              }
+              const currentSkillBase = {};
+              for (const { key } of SKILL_DEFINITIONS) {
+                currentSkillBase[key] = Number(this.actor.system.skills?.[key] ?? 0);
+              }
+              await this._showPointDistributionDialog(diffAttr, diffSocial, diffSkill, skillLimit, {
+                attrBase: currentAttrBase,
+                socialBase: currentSocialBase,
+                skillBase: currentSkillBase,
+                trackRank: rank
+              });
+            }
+          } else if (newIdx < oldIdx) {
+            // Downgrade: automatically remove points that were distributed for ranks above the new rank
+            await this._applyRankDowngrade(oldRank, rank, rankOrder);
           }
         }
         return;
@@ -2347,7 +2349,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   async _showPointDistributionDialog(totalAttrPoints, totalSocialPoints, totalSkillPoints, skillLimit, options = {}) {
-    const { attrBase = {}, socialBase = {}, skillBase = {} } = options;
+    const { attrBase = {}, socialBase = {}, skillBase = {}, trackRank = null } = options;
     const loc = (key) => game.i18n.localize(key);
 
     const coreAttrs = CORE_ATTRIBUTE_DEFINITIONS.map((a) => ({
@@ -2418,15 +2420,26 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             label: loc("POKROLE.Common.Confirm"),
             callback: async () => {
               const updateData = {};
+              const distributed = { attr: {}, social: {}, skill: {} };
               for (const [compositeKey, val] of Object.entries(state.values)) {
                 const [category, key] = compositeKey.split(":");
+                const base = category === "attr" ? (attrBase[key] ?? 1)
+                  : category === "social" ? (socialBase[key] ?? 1)
+                  : (skillBase[key] ?? 0);
                 if (category === "attr" || category === "social") {
                   updateData[`system.attributes.${key}`] = val;
                 } else {
                   updateData[`system.skills.${key}`] = val;
                 }
+                const added = val - base;
+                if (added > 0) distributed[category][key] = added;
               }
               await this.actor.update(updateData);
+              if (trackRank) {
+                const allDist = this.actor.getFlag("pok-role-system", "rankDistributions") ?? {};
+                allDist[trackRank] = distributed;
+                await this.actor.setFlag("pok-role-system", "rankDistributions", allDist);
+              }
               ui.notifications.info(loc("POKROLE.Dialog.PointsDistributed"));
               state.resolved = true;
               resolve(true);
@@ -2510,166 +2523,60 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     });
   }
 
-  async _showPointRemovalDialog(removeAttr, removeSocial, removeSkill, skillLimit, currentAttr, currentSocial, currentSkill) {
-    const loc = (key) => game.i18n.localize(key);
-    const ageBonuses = this._getAgeBonuses(Number(this.actor.system.age) || 0);
+  async _applyRankDowngrade(oldRank, newRank, rankOrder) {
+    const allDist = this.actor.getFlag("pok-role-system", "rankDistributions") ?? {};
+    const oldIdx = rankOrder.indexOf(oldRank);
+    const newIdx = rankOrder.indexOf(newRank);
 
-    const coreAttrs = CORE_ATTRIBUTE_DEFINITIONS.map((a) => ({
-      key: a.key, label: loc(a.label), value: currentAttr[a.key] ?? 1
-    }));
-    const socialAttrs = SOCIAL_ATTRIBUTE_DEFINITIONS.map((a) => ({
-      key: a.key, label: loc(a.label), value: currentSocial[a.key] ?? 1
-    }));
-    const skills = SKILL_DEFINITIONS.map((s) => ({
-      key: s.key, label: loc(s.label), value: currentSkill[s.key] ?? 0
-    }));
-
-    const buildRows = (items, category) => items.map((item) =>
-      `<div class="point-dist-row" data-category="${category}" data-key="${item.key}">
-        <span class="point-dist-label">${item.label}</span>
-        <button type="button" class="point-dist-btn point-dist-minus" data-dir="-1">-</button>
-        <span class="point-dist-value">${item.value}</span>
-        <button type="button" class="point-dist-btn point-dist-plus" data-dir="1">+</button>
-      </div>`
-    ).join("");
-
-    const content = `
-      <form class="point-distribution-dialog">
-        <p style="margin-bottom:8px;font-style:italic;color:#c0392b;">
-          ${loc("POKROLE.Dialog.RemovePoints")}
-        </p>
-        <p style="margin-bottom:8px;font-style:italic;">
-          ${loc("POKROLE.Dialog.SkillLimit")}: <strong>${skillLimit}</strong>
-        </p>
-
-        ${removeAttr > 0 ? `<div class="point-dist-section">
-          <div class="point-dist-header">${loc("POKROLE.Dialog.AttributePoints")}
-            &mdash; <span class="point-dist-remaining" data-pool="attr">${removeAttr}</span> ${loc("POKROLE.Dialog.ToRemove")}
-          </div>
-          ${buildRows(coreAttrs, "attr")}
-        </div>` : ""}
-
-        ${removeSocial > 0 ? `<div class="point-dist-section">
-          <div class="point-dist-header">${loc("POKROLE.Dialog.SocialPoints")}
-            &mdash; <span class="point-dist-remaining" data-pool="social">${removeSocial}</span> ${loc("POKROLE.Dialog.ToRemove")}
-          </div>
-          ${buildRows(socialAttrs, "social")}
-        </div>` : ""}
-
-        ${removeSkill > 0 ? `<div class="point-dist-section">
-          <div class="point-dist-header">${loc("POKROLE.Dialog.SkillPoints")}
-            &mdash; <span class="point-dist-remaining" data-pool="skill">${removeSkill}</span> ${loc("POKROLE.Dialog.ToRemove")}
-          </div>
-          ${buildRows(skills, "skill")}
-        </div>` : ""}
-      </form>
-    `;
-
-    const state = { values: {}, resolved: false };
-    for (const a of CORE_ATTRIBUTE_DEFINITIONS) state.values[`attr:${a.key}`] = currentAttr[a.key] ?? 1;
-    for (const a of SOCIAL_ATTRIBUTE_DEFINITIONS) state.values[`social:${a.key}`] = currentSocial[a.key] ?? 1;
-    for (const s of SKILL_DEFINITIONS) state.values[`skill:${s.key}`] = currentSkill[s.key] ?? 0;
-
-    return new Promise((resolve) => {
-      const dlg = new Dialog({
-        title: loc("POKROLE.Dialog.DistributePoints"),
-        content,
-        buttons: {
-          confirm: {
-            icon: '<i class="fas fa-check"></i>',
-            label: loc("POKROLE.Common.Confirm"),
-            callback: async () => {
-              const updateData = {};
-              for (const [compositeKey, val] of Object.entries(state.values)) {
-                const [category, key] = compositeKey.split(":");
-                if (category === "attr" || category === "social") {
-                  updateData[`system.attributes.${key}`] = val;
-                } else {
-                  updateData[`system.skills.${key}`] = val;
-                }
-              }
-              await this.actor.update(updateData);
-              ui.notifications.info(loc("POKROLE.Dialog.PointsDistributed"));
-              state.resolved = true;
-              resolve(true);
-            }
-          },
-          cancel: {
-            icon: '<i class="fas fa-times"></i>',
-            label: loc("POKROLE.Common.Cancel"),
-            callback: () => { state.resolved = true; resolve(false); }
-          }
-        },
-        default: "confirm",
-        close: () => { if (!state.resolved) resolve(false); },
-        render: (html) => {
-          const pools = {
-            attr: removeAttr,
-            social: removeSocial,
-            skill: removeSkill
-          };
-          // Min values: base 1 for attrs, 0 for skills
-          const attrMinByKey = {};
-          for (const a of CORE_ATTRIBUTE_DEFINITIONS) attrMinByKey[a.key] = 1;
-          const socialMinByKey = {};
-          for (const a of SOCIAL_ATTRIBUTE_DEFINITIONS) socialMinByKey[a.key] = 1;
-
-          const confirmBtn = html.closest(".dialog").find("button[data-button='confirm']");
-          confirmBtn.prop("disabled", true);
-
-          const updateConfirmButton = () => {
-            const allRemoved = (removeAttr <= 0 || pools.attr === 0) &&
-              (removeSocial <= 0 || pools.social === 0) &&
-              (removeSkill <= 0 || pools.skill === 0);
-            confirmBtn.prop("disabled", !allRemoved);
-          };
-
-          const updateRemaining = () => {
-            for (const [pool, remaining] of Object.entries(pools)) {
-              html.find(`.point-dist-remaining[data-pool="${pool}"]`).text(remaining);
-            }
-            updateConfirmButton();
-          };
-
-          // In removal mode, - decreases value (removes a point), + increases (restores)
-          html.find(".point-dist-btn").on("click", (event) => {
-            event.preventDefault();
-            const btn = $(event.currentTarget);
-            const row = btn.closest(".point-dist-row");
-            const category = row.data("category");
-            const key = row.data("key");
-            const dir = Number(btn.data("dir"));
-            const valueEl = row.find(".point-dist-value");
-            const current = Number(valueEl.text());
-            const original = category === "attr" ? (currentAttr[key] ?? 1)
-              : category === "social" ? (currentSocial[key] ?? 1)
-              : (currentSkill[key] ?? 0);
-            const min = category === "attr" ? 1 : category === "social" ? 1 : 0;
-            const newVal = current + dir;
-
-            // Can't go below minimum or above original
-            if (newVal < min || newVal > original) return;
-            // dir=-1 means removing a point: pool must have remaining to remove
-            if (dir < 0 && pools[category] <= 0) return;
-            // dir=+1 means restoring a point: pool count goes up (more to remove)
-            if (dir > 0 && current >= original) return;
-
-            valueEl.text(newVal);
-            // Removing a point (-1) decreases "to remove" count; restoring (+1) increases it
-            pools[category] += dir;
-            state.values[`${category}:${key}`] = newVal;
-            updateRemaining();
-          });
-
-          updateConfirmButton();
+    // Collect all points distributed for ranks that are being removed
+    const toRemove = { attr: {}, social: {}, skill: {} };
+    for (let i = oldIdx; i > newIdx; i--) {
+      const rankKey = rankOrder[i];
+      const dist = allDist[rankKey];
+      if (!dist) continue;
+      for (const category of ["attr", "social", "skill"]) {
+        if (!dist[category]) continue;
+        for (const [key, val] of Object.entries(dist[category])) {
+          toRemove[category][key] = (toRemove[category][key] ?? 0) + val;
         }
-      }, {
-        width: 420,
-        height: "auto",
-        resizable: true,
-        classes: ["pok-role", "point-distribution"]
-      });
-      dlg.render(true);
-    });
+      }
+    }
+
+    // Apply the removal to current values
+    const updateData = {};
+    for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
+      const current = Number(this.actor.system.attributes?.[key] ?? 1);
+      const remove = toRemove.attr[key] ?? 0;
+      updateData[`system.attributes.${key}`] = Math.max(current - remove, 1);
+    }
+    for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) {
+      const current = Number(this.actor.system.attributes?.[key] ?? 1);
+      const remove = toRemove.social[key] ?? 0;
+      updateData[`system.attributes.${key}`] = Math.max(current - remove, 1);
+    }
+    for (const { key } of SKILL_DEFINITIONS) {
+      const current = Number(this.actor.system.skills?.[key] ?? 0);
+      const remove = toRemove.skill[key] ?? 0;
+      updateData[`system.skills.${key}`] = Math.max(current - remove, 0);
+    }
+
+    // Also enforce the new skill limit
+    const newSkillLimit = this._getRankBonuses(newRank).skillLimit;
+    for (const { key } of SKILL_DEFINITIONS) {
+      if (updateData[`system.skills.${key}`] > newSkillLimit) {
+        updateData[`system.skills.${key}`] = newSkillLimit;
+      }
+    }
+
+    await this.actor.update(updateData);
+
+    // Remove distribution history for removed ranks
+    const newDist = { ...allDist };
+    for (let i = oldIdx; i > newIdx; i--) {
+      delete newDist[rankOrder[i]];
+    }
+    await this.actor.setFlag("pok-role-system", "rankDistributions", newDist);
+
+    ui.notifications.info(game.i18n.localize("POKROLE.Dialog.PointsDistributed"));
   }
 }
