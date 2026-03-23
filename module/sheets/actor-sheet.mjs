@@ -2497,13 +2497,33 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const { attrBase = {}, socialBase = {}, skillBase = {}, trackRank = null, pendingFormData = null, attrMax = 5 } = options;
     const loc = (key) => game.i18n.localize(key);
 
-    const coreAttrs = CORE_ATTRIBUTE_DEFINITIONS.map((a) => ({
+    const isTrainer = this.actor.type === "trainer";
+    const filteredCoreAttrDefs = isTrainer
+      ? CORE_ATTRIBUTE_DEFINITIONS.filter((a) => a.key !== "special")
+      : CORE_ATTRIBUTE_DEFINITIONS;
+    const trainerSkillOrder = [
+      "brawl", "channel", "clash", "evasion",
+      "alert", "athletic", "nature", "stealth",
+      "empathy", "etiquette", "intimidate", "perform",
+      "crafts", "lore", "medicine", "science"
+    ];
+    const pokemonSkillOrder = [
+      "brawl", "channel", "clash", "evasion",
+      "alert", "athletic", "nature", "stealth",
+      "charm", "etiquette", "intimidate", "perform"
+    ];
+    const skillOrder = isTrainer ? trainerSkillOrder : pokemonSkillOrder;
+    const filteredSkillDefs = skillOrder
+      .map((key) => SKILL_DEFINITIONS.find((s) => s.key === key))
+      .filter(Boolean);
+
+    const coreAttrs = filteredCoreAttrDefs.map((a) => ({
       key: a.key, label: loc(a.label), value: attrBase[a.key] ?? 1
     }));
     const socialAttrs = SOCIAL_ATTRIBUTE_DEFINITIONS.map((a) => ({
       key: a.key, label: loc(a.label), value: socialBase[a.key] ?? 1
     }));
-    const skills = SKILL_DEFINITIONS.map((s) => ({
+    const skills = filteredSkillDefs.map((s) => ({
       key: s.key, label: loc(s.label), value: skillBase[s.key] ?? 0
     }));
 
@@ -2561,9 +2581,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       resolved: false
     };
     // Initialize with base values
-    for (const a of CORE_ATTRIBUTE_DEFINITIONS) state.values[`attr:${a.key}`] = attrBase[a.key] ?? 1;
+    for (const a of filteredCoreAttrDefs) state.values[`attr:${a.key}`] = attrBase[a.key] ?? 1;
     for (const a of SOCIAL_ATTRIBUTE_DEFINITIONS) state.values[`social:${a.key}`] = socialBase[a.key] ?? 1;
-    for (const s of SKILL_DEFINITIONS) state.values[`skill:${s.key}`] = skillBase[s.key] ?? 0;
+    for (const s of filteredSkillDefs) state.values[`skill:${s.key}`] = skillBase[s.key] ?? 0;
     for (const es of extraSkillItems) state.values[`skill:${es.key}`] = es.value;
 
     return new Promise((resolve) => {
@@ -2632,11 +2652,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             skill: skillLimit
           };
           const attrBaseByKey = {};
-          for (const a of CORE_ATTRIBUTE_DEFINITIONS) attrBaseByKey[a.key] = attrBase[a.key] ?? 1;
+          for (const a of filteredCoreAttrDefs) attrBaseByKey[a.key] = attrBase[a.key] ?? 1;
           const socialBaseByKey = {};
           for (const a of SOCIAL_ATTRIBUTE_DEFINITIONS) socialBaseByKey[a.key] = socialBase[a.key] ?? 1;
           const skillBaseByKey = {};
-          for (const s of SKILL_DEFINITIONS) skillBaseByKey[s.key] = skillBase[s.key] ?? 0;
+          for (const s of filteredSkillDefs) skillBaseByKey[s.key] = skillBase[s.key] ?? 0;
           for (const es of extraSkillItems) skillBaseByKey[es.key] = es.value;
 
           const confirmBtn = html.closest(".dialog").find("button[data-button='confirm']");
