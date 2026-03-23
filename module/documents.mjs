@@ -2353,7 +2353,7 @@ export class PokRoleActor extends Actor {
           results.push(`${actor.name} ignored Toxic Spikes due to Ground immunity.`);
           continue;
         }
-        const toxicRoll = await new Roll("1d6").evaluate({ async: true });
+        const toxicRoll = await new Roll("1d6").evaluate();
         const conditionKey = Math.max(toNumber(toxicRoll.total, 0), 0) >= 6 ? "badly-poisoned" : "poisoned";
         const applyResult = await this._applyConditionEffectToActor(
           {
@@ -3199,7 +3199,7 @@ export class PokRoleActor extends Actor {
     }
 
     if (dynamicPowerRule?.mode === "d6-table") {
-      const powerRoll = await new Roll("1d6").evaluate({ async: true });
+      const powerRoll = await new Roll("1d6").evaluate();
       const rolledValue = Math.max(Math.floor(toNumber(powerRoll.total, 0)), 1);
       await powerRoll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this }),
@@ -3386,7 +3386,7 @@ export class PokRoleActor extends Actor {
     }
 
     const dicePool = Math.max(this.getTraitValue("insight"), 1);
-    const roll = await new Roll(successPoolFormula(dicePool)).evaluate({ async: true });
+    const roll = await new Roll(successPoolFormula(dicePool)).evaluate();
     const rawSuccesses = Math.max(Math.floor(toNumber(roll.total, 0)), 0);
     const removedSuccesses = this.getPainPenalty();
     const netSuccesses = Math.max(rawSuccesses - removedSuccesses, 0);
@@ -3438,7 +3438,7 @@ export class PokRoleActor extends Actor {
       };
     }
 
-    const roll = await new Roll(successPoolFormula(2)).evaluate({ async: true });
+    const roll = await new Roll(successPoolFormula(2)).evaluate();
     const rawSuccesses = Math.max(Math.floor(toNumber(roll.total, 0)), 0);
     const canAct = rawSuccesses > 0;
 
@@ -3563,7 +3563,7 @@ export class PokRoleActor extends Actor {
       return { wokeUp: previousTotal >= 5, totalSuccesses: previousTotal, gainedSuccesses: 0 };
     }
     const dicePool = Math.max(this.getTraitValue("insight"), 1);
-    const roll = await new Roll(successPoolFormula(dicePool)).evaluate({ async: true });
+    const roll = await new Roll(successPoolFormula(dicePool)).evaluate();
     const rawSuccesses = Math.max(Math.floor(toNumber(roll.total, 0)), 0);
     const removedSuccesses = this.getPainPenalty();
     const gainedSuccesses = Math.max(rawSuccesses - removedSuccesses, 0);
@@ -5135,7 +5135,7 @@ export class PokRoleActor extends Actor {
           results
         };
       }
-      const chanceRoll = await new Roll("5d6").evaluate({ async: true });
+      const chanceRoll = await new Roll("5d6").evaluate();
       const rolledValues = chanceRoll.dice.flatMap((die) =>
         Array.isArray(die?.results)
           ? die.results.map((result) => Math.floor(toNumber(result?.result, 0)))
@@ -5546,7 +5546,7 @@ export class PokRoleActor extends Actor {
         };
       }
       const loyaltyValue = Math.max(Math.floor(toNumber(baseTargetActor.system?.loyalty, 0)), 0);
-      const roll = await new Roll(`${Math.max(loyaltyValue, 1)}d6cs>=${POKROLE.SUCCESS_TARGET}`).evaluate({ async: true });
+      const roll = await new Roll(`${Math.max(loyaltyValue, 1)}d6cs>=${POKROLE.SUCCESS_TARGET}`).evaluate();
       const successes = Math.max(Math.floor(toNumber(roll.total, 0)), 0);
       const success = successes >= 3;
       if (!success) {
@@ -5567,7 +5567,7 @@ export class PokRoleActor extends Actor {
       if (!targetActor) return result;
       const loyaltyValue = Math.max(Math.floor(toNumber(targetActor.system?.loyalty, 0)), 0);
       const difficulty = Math.max(Math.floor(toNumber(payload.difficulty, 3)), 1);
-      const roll = await new Roll(`${Math.max(loyaltyValue, 1)}d6cs>=${POKROLE.SUCCESS_TARGET}`).evaluate({ async: true });
+      const roll = await new Roll(`${Math.max(loyaltyValue, 1)}d6cs>=${POKROLE.SUCCESS_TARGET}`).evaluate();
       const successes = Math.max(Math.floor(toNumber(roll.total, 0)), 0);
       const failed = successes < difficulty;
       if (failed) {
@@ -6348,7 +6348,7 @@ export class PokRoleActor extends Actor {
     const roll = await new Roll(POKROLE.INITIATIVE_FORMULA, {
       dexterity: this.getTraitValue("dexterity"),
       alert: this.getSkillValue("alert")
-    }).evaluate({ async: true });
+    }).evaluate();
     const baseInitiative = Math.max(toNumber(roll.total, 0), 0);
     const rolledInitiative = this._isConditionActive("paralyzed")
       ? Math.floor(baseInitiative / 2)
@@ -6915,7 +6915,7 @@ export class PokRoleActor extends Actor {
         let poisonApplied = false;
         let poisonDetail = game.i18n.localize("POKROLE.Common.None");
         if (targetActor) {
-          const chanceRoll = await new Roll("5d6").evaluate({ async: true });
+          const chanceRoll = await new Roll("5d6").evaluate();
           const chanceResults = chanceRoll.dice.flatMap((die) =>
             Array.isArray(die?.results) ? die.results.map((result) => Math.floor(toNumber(result?.result, 0))) : []
           );
@@ -7034,7 +7034,7 @@ export class PokRoleActor extends Actor {
       if (targetActor._isConditionActive?.("dead") || targetActor._isConditionActive?.("fainted")) continue;
       const interaction = this._evaluateTypeInteraction(damageType, targetActor);
       if (interaction.immune) continue;
-      const damageRoll = await new Roll(successPoolFormula(damageDice)).evaluate({ async: true });
+      const damageRoll = await new Roll(successPoolFormula(damageDice)).evaluate();
       const damage = Math.max(toNumber(damageRoll.total, 0), 0);
       if (damage > 0) {
         await this._safeApplyDamage(targetActor, damage, { applyDeadOnZero: false });
@@ -7059,7 +7059,7 @@ export class PokRoleActor extends Actor {
       return { keep: false, detail: "Sappy Seed ended because source or target left battle." };
     }
     const damageDice = Math.max(Math.floor(toNumber(entry?.payload?.damageDice, 2)), 0);
-    const roll = await new Roll(successPoolFormula(damageDice)).evaluate({ async: true });
+    const roll = await new Roll(successPoolFormula(damageDice)).evaluate();
     const damage = Math.max(toNumber(roll.total, 0), 0);
     if (damage > 0) {
       await sourceActor._safeApplyDamage(targetActor, damage, { applyDeadOnZero: false });
@@ -7085,7 +7085,7 @@ export class PokRoleActor extends Actor {
       return { keep: false, detail: "Malignant Chain ended because the poison was healed." };
     }
     const loyaltyDice = Math.max(toNumber(targetActor.system?.loyalty, 0), 0);
-    const roll = await new Roll(successPoolFormula(Math.max(loyaltyDice, 1))).evaluate({ async: true });
+    const roll = await new Roll(successPoolFormula(Math.max(loyaltyDice, 1))).evaluate();
     const successes = Math.max(toNumber(roll.total, 0), 0);
     const targetCombatant = this._getCombatantForActor(targetActor, combat);
     if (successes < 3 && targetCombatant) {
@@ -7110,7 +7110,7 @@ export class PokRoleActor extends Actor {
     }
     const difficulty = Math.max(Math.floor(toNumber(entry?.payload?.difficulty, 1)), 1);
     const loyaltyDice = Math.max(Math.floor(toNumber(targetActor.system?.loyalty, 0)), 1);
-    const roll = await new Roll(successPoolFormula(loyaltyDice)).evaluate({ async: true });
+    const roll = await new Roll(successPoolFormula(loyaltyDice)).evaluate();
     const successes = Math.max(toNumber(roll.total, 0), 0);
     if (successes < difficulty) {
       const hpValue = Math.max(toNumber(targetActor.system?.resources?.hp?.value, 0), 0);
@@ -8108,8 +8108,8 @@ export class PokRoleActor extends Actor {
   async _getMetronomeMoveDocument() {
     const movesPack = this._getMoveCompendiumCollection();
     if (!movesPack) return null;
-    const categoryRoll = await new Roll("1d6").evaluate({ async: true });
-    const powerRoll = await new Roll("1d6").evaluate({ async: true });
+    const categoryRoll = await new Roll("1d6").evaluate();
+    const powerRoll = await new Roll("1d6").evaluate();
     const desiredCategory = Math.max(toNumber(categoryRoll.total, 0), 0) >= 4 ? "special" : "physical";
     const desiredPower = Math.max(Math.floor(toNumber(powerRoll.total, 0)), 1);
     const index = await movesPack.getIndex({
@@ -9083,6 +9083,7 @@ export class PokRoleActor extends Actor {
     let damageBaseValue = 0;
     let damageAttributeLabel = this.localizeTrait("none");
     const damageTargetResults = [];
+    let firstDamageResult = null;
 
     if (
       hit &&
@@ -9112,7 +9113,7 @@ export class PokRoleActor extends Actor {
         damageTargetResults.push(damageResult);
       }
 
-      const firstDamageResult = damageTargetResults[0];
+      firstDamageResult = damageTargetResults[0];
       if (firstDamageResult) {
         damageRoll = firstDamageResult.damageRoll;
         damageSuccesses = firstDamageResult.damageSuccesses;
@@ -9723,7 +9724,7 @@ export class PokRoleActor extends Actor {
     if (fixedFinalDamage > 0) {
       damageSuccesses = fixedFinalDamage;
     } else if (damagePool > 0) {
-      damageRoll = await new Roll(successPoolFormula(damagePool)).evaluate({ async: true });
+      damageRoll = await new Roll(successPoolFormula(damagePool)).evaluate();
       damageSuccesses = toNumber(damageRoll.total, 0);
       await damageRoll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this }),
@@ -9952,7 +9953,7 @@ export class PokRoleActor extends Actor {
     // Life Orb recoil: deal recoil damage to attacker after dealing damage
     const attackerHeldData = this._getHeldItemData();
     if (attackerHeldData?.lifeOrb && damageSuccesses > 0) {
-      const recoilRoll = await new Roll(successPoolFormula(damageSuccesses)).evaluate({ async: true });
+      const recoilRoll = await new Roll(successPoolFormula(damageSuccesses)).evaluate();
       const recoilDamage = toNumber(recoilRoll.total, 0);
       if (recoilDamage > 0) {
         await this._safeApplyDamage(this, recoilDamage, { applyDeadOnZero: false });
@@ -9987,7 +9988,7 @@ export class PokRoleActor extends Actor {
 
     // King's Rock: chance to flinch on any damaging hit
     if (attackerHeldData?.flinchOnHit && finalDamage > 0 && targetActor) {
-      const flinchRoll = await new Roll("1d6").evaluate({ async: true });
+      const flinchRoll = await new Roll("1d6").evaluate();
       const flinchResult = toNumber(flinchRoll.total, 0);
       if (flinchResult >= 6) {
         await targetActor.toggleQuickCondition("flinch", { active: true });
@@ -11128,7 +11129,7 @@ export class PokRoleActor extends Actor {
       let chanceRollResults = [];
       let chanceSucceeded = true;
       if (chanceDice > 0 && baseChanceDice > 0) {
-        const chanceRoll = await new Roll(`${chanceDice}d6`).evaluate({ async: true });
+        const chanceRoll = await new Roll(`${chanceDice}d6`).evaluate();
         chanceRollResults = chanceRoll.dice.flatMap((die) =>
           Array.isArray(die?.results)
             ? die.results.map((result) => Math.floor(toNumber(result?.result, 0)))
@@ -11306,7 +11307,7 @@ export class PokRoleActor extends Actor {
       };
     }
 
-    const recoilRoll = await new Roll(successPoolFormula(totalDamageDealt)).evaluate({ async: true });
+    const recoilRoll = await new Roll(successPoolFormula(totalDamageDealt)).evaluate();
     const recoilDamage = Math.max(toNumber(recoilRoll.total, 0), 0);
     if (recoilDamage > 0) {
       await this._safeApplyDamage(this, recoilDamage, { applyDeadOnZero: false });
@@ -12522,7 +12523,7 @@ export class PokRoleActor extends Actor {
 
     if (!shellDestroyed && isDamagingMove && !typeInteraction.immune) {
       if (damagePool > 0) {
-        const damageRoll = await new Roll(successPoolFormula(damagePool)).evaluate({ async: true });
+        const damageRoll = await new Roll(successPoolFormula(damagePool)).evaluate();
         damageSuccesses = Math.max(Math.floor(toNumber(damageRoll.total, 0)), 0);
         await damageRoll.toMessage({
           speaker: ChatMessage.getSpeaker({ actor: this }),
@@ -15614,10 +15615,10 @@ export class PokRoleActor extends Actor {
 
     const selfRoll = await new Roll(
       successPoolFormula(this.getTraitValue("dexterity") + this.getSkillValue("athletic"))
-    ).evaluate({ async: true });
+    ).evaluate();
     const foeRoll = await new Roll(
       successPoolFormula(foeActor.getTraitValue("dexterity") + foeActor.getSkillValue("athletic"))
-    ).evaluate({ async: true });
+    ).evaluate();
     const selfNet = toNumber(selfRoll.total, 0) - this.getPainPenalty();
     const foeNet = toNumber(foeRoll.total, 0) - foeActor.getPainPenalty();
     const escaped = selfNet > foeNet;
@@ -17024,7 +17025,7 @@ export class PokRoleActor extends Actor {
     if (normalizedSuccesses >= normalizedPool) {
       return { bonusSuccesses: 0, reroll: null };
     }
-    const reroll = await new Roll(`1d6cs>=${POKROLE.SUCCESS_TARGET}`).evaluate({ async: true });
+    const reroll = await new Roll(`1d6cs>=${POKROLE.SUCCESS_TARGET}`).evaluate();
     const bonusSuccesses = Math.max(Math.floor(toNumber(reroll.total, 0)), 0);
     await reroll.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: this }),
