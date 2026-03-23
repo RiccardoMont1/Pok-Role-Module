@@ -5286,9 +5286,35 @@ export class PokRoleActor extends Actor {
 
   async _resolveDelayedEffectEntry(entry, phaseRound = 0) {
     const combat = game.combat ?? null;
-    const sourceActor = game.actors?.get?.(entry.sourceActorId) ?? null;
-    const sourceMove = sourceActor?.items?.get?.(entry.moveId) ?? null;
-    const baseTargetActor = game.actors?.get?.(entry.targetActorId) ?? null;
+    const sourceCombatant =
+      `${entry.sourceCombatantId ?? ""}`.trim() && combat
+        ? combat.combatants?.get?.(`${entry.sourceCombatantId}`.trim()) ??
+          combat.combatants?.find?.((combatant) => `${combatant?.id ?? ""}`.trim() === `${entry.sourceCombatantId}`.trim()) ??
+          null
+        : null;
+    const targetCombatant =
+      `${entry.targetCombatantId ?? ""}`.trim() && combat
+        ? combat.combatants?.get?.(`${entry.targetCombatantId}`.trim()) ??
+          combat.combatants?.find?.((combatant) => `${combatant?.id ?? ""}`.trim() === `${entry.targetCombatantId}`.trim()) ??
+          null
+        : null;
+    const sourceActor =
+      sourceCombatant?.actor ??
+      game.actors?.get?.(entry.sourceActorId) ??
+      null;
+    let sourceMove = sourceActor?.items?.get?.(entry.moveId) ?? null;
+    if (!sourceMove && sourceActor) {
+      const delayedSeedId = `${entry.moveSeedId ?? ""}`.trim().toLowerCase();
+      if (delayedSeedId) {
+        sourceMove =
+          sourceActor.items?.find?.((item) => item?.type === "move" && this._getMoveSeedId(item) === delayedSeedId) ??
+          null;
+      }
+    }
+    const baseTargetActor =
+      targetCombatant?.actor ??
+      game.actors?.get?.(entry.targetActorId) ??
+      null;
     const targetSideDisposition = clamp(Math.sign(Math.trunc(toNumber(entry.targetSideDisposition, 0))), -1, 1);
     const payload = entry.payload ?? {};
     const result = {

@@ -2,7 +2,7 @@
 
 - Misty Terrain non fa proccare correttamente gli status, ma li mette nella sezione Effetti Disabilitati. Non dovrebbero nemmeno essere disabilitati, si devono cancellare istantaneamente. Inoltre rimuove correttamente la Potenza dalle mosse di tipo Drago, ma lo fa anche per il proprio pokémon
 
-Electric Terrain dovrebbe rimuovere lo status addormentato se il pokémon non ha l'immunità alla terra. Non succede
+- Electric Terrain dovrebbe rimuovere lo status addormentato se il pokémon non ha l'immunità alla terra. Non succede
 
 Wish al round successivo non cura
 
