@@ -1,12 +1,6 @@
-- Grassy Terrain dà gli effetti anche al nemico -
+Inoltre ho notato che nella scheda dell'allenatore è presente il campo Speciale, rimuovilo in quanto è un campo esclusivo per la scheda del pokémon
 
-- Misty Terrain non fa proccare correttamente gli status, ma li mette nella sezione Effetti Disabilitati. Non dovrebbero nemmeno essere disabilitati, si devono cancellare istantaneamente. Inoltre rimuove correttamente la Potenza dalle mosse di tipo Drago, ma lo fa anche per il proprio pokémon
-
-- Electric Terrain dovrebbe rimuovere lo status addormentato se il pokémon non ha l'immunità alla terra. Non succede
-
-- Wish al round successivo non cura
-
-- Toxic Spike quando sostituisco il pokémon, il pokémon che entra non diventa avvelenato (Inoltre dovrebbe tirare un change dice e se fa 6 invece di avvelenato dovrebbe essere gravemente avvelenato) Suppongo che dià lo stesso problema per Spikes e Stealth Rock
+Modificare il campo Abilità nella scheda del pokémon rendendolo un menù a tendina
 
 Import delle abilità e dei pokémon e rimozione del compendio "Pokédex"
 
@@ -29,8 +23,6 @@ Non includere la meccanica di Over-Ranking
 Aggiungere il tasto Retrain alla scheda del pokémon/allenatore. Rimanendo allo stesso rank, rimuovere tutti i punti che sono stati distribuiti dati dai vari Rank ed apre una finestra di dialogo nella quale inserire tutti i punti dal rank più basso fino all'attuale. (Il costo del Retrain è a pagina 112)
 
 In pratica il tasto deve cambiare la scheda attuale con quella dell'evoluzione del pokémon. Inoltre può portare fino ad un massimo di 3 mosse che il pokémon ha imparato nello stadio evolutivo precedente e che non sarebbero disponibili nel nuovo stadio evolutivo. Inoltre deve anche fare la stessa cosa del Retrain, senza però consumare i Punti Allenamento.
-
-Inoltre ho notato che nella scheda dell'allenatore è presente il campo Speciale, rimuovilo in quanto è un campo esclusivo per la scheda del pokémon
 
 # Cambiamente Estetici
 - Cambiare la pausa mettendo una Poké Ball che gira
