@@ -22,7 +22,9 @@ import {
   POKEMON_TIER_LABEL_BY_KEY,
   SKILL_DEFINITIONS,
   TRAIT_LABEL_BY_KEY,
-  TYPE_OPTIONS
+  TYPE_OPTIONS,
+  ABILITY_TRIGGER_KEYS,
+  ABILITY_TARGET_KEYS
 } from "../constants.mjs";
 import { getMoveTypeIcon } from "../move-type-icons.mjs";
 
@@ -206,6 +208,86 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
         passive: "POKROLE.Playable.Ability.Type.Passive",
         active: "POKROLE.Playable.Ability.Type.Active",
         hidden: "POKROLE.Playable.Ability.Type.Hidden"
+      };
+      context.abilityTriggerOptions = Object.fromEntries(
+        ABILITY_TRIGGER_KEYS.map((key) => [key, `POKROLE.Ability.Trigger.${key.split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join("")}`])
+      );
+      context.abilityTargetOptions = Object.fromEntries(
+        ABILITY_TARGET_KEYS.map((key) => [key, `POKROLE.Ability.Target.${key.split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join("")}`])
+      );
+      context.secondaryConditionOptions = Object.fromEntries(
+        MOVE_SECONDARY_CONDITION_KEYS.map((k) => [k, this._getSecondaryConditionLabelPath(k)])
+      );
+      context.secondaryWeatherOptions = Object.fromEntries(
+        MOVE_SECONDARY_WEATHER_KEYS.map((k) => [k, this._getSecondaryWeatherLabelPath(k)])
+      );
+      context.secondaryTerrainOptions = Object.fromEntries(
+        MOVE_SECONDARY_TERRAIN_KEYS.map((k) => [k, this._getSecondaryTerrainLabelPath(k)])
+      );
+      context.secondaryEffects = this._getAbilitySecondaryEffectsForDisplay();
+      context.secondaryTriggerOptions = {
+        "on-hit": "POKROLE.Move.Secondary.Trigger.OnHit",
+        "on-hit-damage": "POKROLE.Move.Secondary.Trigger.OnHitDamage",
+        "on-miss": "POKROLE.Move.Secondary.Trigger.OnMiss",
+        always: "POKROLE.Move.Secondary.Trigger.Always"
+      };
+      context.secondaryTargetOptions = {
+        target: "POKROLE.Move.Secondary.Target.Target",
+        self: "POKROLE.Move.Secondary.Target.Self",
+        "all-targets": "POKROLE.Move.Secondary.Target.AllTargets",
+        "all-allies": "POKROLE.Move.Secondary.Target.AllAllies",
+        "all-foes": "POKROLE.Move.Secondary.Target.AllFoes"
+      };
+      context.secondaryEffectTypeOptions = {
+        condition: "POKROLE.Move.Secondary.Type.Condition",
+        "active-effect": "POKROLE.Move.Secondary.Type.ActiveEffect",
+        stat: "POKROLE.Move.Secondary.Type.Stat",
+        cleanse: "POKROLE.Move.Secondary.Type.Cleanse",
+        weather: "POKROLE.Move.Secondary.Type.Weather",
+        terrain: "POKROLE.Move.Secondary.Type.Terrain",
+        damage: "POKROLE.Move.Secondary.Type.Damage",
+        heal: "POKROLE.Move.Secondary.Type.Heal",
+        will: "POKROLE.Move.Secondary.Type.Will",
+        custom: "POKROLE.Move.Secondary.Type.Custom"
+      };
+      context.secondaryDurationModeOptions = {
+        manual: "POKROLE.Move.Secondary.Duration.Mode.Manual",
+        rounds: "POKROLE.Move.Secondary.Duration.Mode.Rounds"
+      };
+      context.secondaryHealTypeOptions = {
+        basic: "POKROLE.Move.Secondary.HealType.Basic",
+        complete: "POKROLE.Move.Secondary.HealType.Complete",
+        "basic-numeric": "POKROLE.Move.Secondary.HealType.BasicNumeric",
+        "complete-numeric": "POKROLE.Move.Secondary.HealType.CompleteNumeric"
+      };
+      context.secondaryHealModeOptions = {
+        fixed: "POKROLE.Move.Secondary.HealMode.Fixed",
+        "max-hp-percent": "POKROLE.Move.Secondary.HealMode.MaxHpPercent",
+        "damage-percent": "POKROLE.Move.Secondary.HealMode.DamagePercent"
+      };
+      context.secondaryStatOptions = Object.fromEntries(
+        MOVE_SECONDARY_STAT_KEYS.map((k) => [k, this._getSecondaryStatLabelPath(k)])
+      );
+      context.secondarySpecialDurationOptions = {
+        "turn-start": "POKROLE.Move.Secondary.Duration.Special.TurnStart",
+        "turn-end": "POKROLE.Move.Secondary.Duration.Special.TurnEnd",
+        "round-end": "POKROLE.Move.Secondary.Duration.Special.RoundEnd",
+        "combat-end": "POKROLE.Move.Secondary.Duration.Special.CombatEnd",
+        "next-action": "POKROLE.Move.Secondary.Duration.Special.NextAction",
+        "next-attack": "POKROLE.Move.Secondary.Duration.Special.NextAttack",
+        "next-hit": "POKROLE.Move.Secondary.Duration.Special.NextHit",
+        "is-attacked": "POKROLE.Move.Secondary.Duration.Special.IsAttacked",
+        "is-damaged": "POKROLE.Move.Secondary.Duration.Special.IsDamaged",
+        "is-hit": "POKROLE.Move.Secondary.Duration.Special.IsHit"
+      };
+      const abilityTab = this._moveActiveTab === "details" ? "details" : "description";
+      context.abilityTabDescriptionActive = abilityTab === "description";
+      context.abilityTabDetailsActive = abilityTab === "details";
+      context.abilitySidebarSummary = {
+        type: game.i18n.localize(context.abilityTypeOptions[context.system?.abilityType] ?? "POKROLE.Common.Unknown"),
+        trigger: game.i18n.localize(context.abilityTriggerOptions[context.system?.abilityTrigger] ?? "POKROLE.Common.Unknown"),
+        target: game.i18n.localize(context.abilityTargetOptions[context.system?.abilityTarget] ?? "POKROLE.Common.Unknown"),
+        frequency: context.system?.frequency || "—"
       };
       return context;
     }
@@ -436,31 +518,38 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
 
   activateListeners(html) {
     super.activateListeners(html);
-    if (this.item.type !== "move") return;
+    const isMove = this.item.type === "move";
+    const isAbility = this.item.type === "ability";
+    if (!isMove && !isAbility) return;
 
     html.find("[data-action='switch-move-tab']").on("click", (event) =>
       this._onSwitchMoveTab(event, html)
     );
-    html.find("select[name='system.type']").on("change", (event) => {
-      const typeKey = event.currentTarget.value || "none";
-      const iconPath = getMoveTypeIcon(typeKey);
-      const imageElement = html.find(".profile-img");
-      imageElement.attr("src", iconPath);
-    });
-    html.find("select[name='system.durationType']").on("change", (event) =>
-      this._onDurationTypeChanged(event, html)
-    );
-    html.find("select[name='system.primaryMode'], select[name='system.category']").on("change", () =>
-      this._onPrimaryDamageModeChanged(html)
-    );
+
+    if (isMove) {
+      html.find("select[name='system.type']").on("change", (event) => {
+        const typeKey = event.currentTarget.value || "none";
+        const iconPath = getMoveTypeIcon(typeKey);
+        const imageElement = html.find(".profile-img");
+        imageElement.attr("src", iconPath);
+      });
+      html.find("select[name='system.durationType']").on("change", (event) =>
+        this._onDurationTypeChanged(event, html)
+      );
+      html.find("select[name='system.primaryMode'], select[name='system.category']").on("change", () =>
+        this._onPrimaryDamageModeChanged(html)
+      );
+      html.find("[data-action='add-secondary-effect-section']").on("click", (event) =>
+        this._onAddSecondaryEffectSection(event)
+      );
+      html.find("[data-action='remove-secondary-effect-section']").on("click", (event) =>
+        this._onRemoveSecondaryEffectSection(event)
+      );
+    }
+
+    // Shared secondary effect listeners (move + ability)
     html.find("[data-action='add-secondary-effect']").on("click", (event) =>
       this._onAddSecondaryEffect(event)
-    );
-    html.find("[data-action='add-secondary-effect-section']").on("click", (event) =>
-      this._onAddSecondaryEffectSection(event)
-    );
-    html.find("[data-action='remove-secondary-effect-section']").on("click", (event) =>
-      this._onRemoveSecondaryEffectSection(event)
     );
     html.find("[data-action='remove-secondary-effect']").on("click", (event) =>
       this._onRemoveSecondaryEffect(event)
@@ -484,8 +573,10 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       this._refreshSecondaryEffectRowVisibility(row)
     );
     this._applyMoveTabState(html, this._moveActiveTab);
-    this._onDurationTypeChanged(null, html);
-    this._onPrimaryDamageModeChanged(html);
+    if (isMove) {
+      this._onDurationTypeChanged(null, html);
+      this._onPrimaryDamageModeChanged(html);
+    }
   }
 
   async _updateObject(event, formData) {
@@ -519,6 +610,17 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       );
       formData["system.secondaryEffects"] = secondaryEffects;
     }
+    if (this.item.type === "ability") {
+      const expanded = foundry.utils.expandObject(formData);
+      const abilitySystem = expanded.system ?? {};
+      const secondaryEffects = this._normalizeSecondaryEffects(abilitySystem.secondaryEffects);
+      for (const key of Object.keys(formData)) {
+        if (key.startsWith("system.secondaryEffects.")) {
+          delete formData[key];
+        }
+      }
+      formData["system.secondaryEffects"] = secondaryEffects;
+    }
     if (this.item.type === "gear") {
       const pocket = `${formData["system.pocket"] ?? "main"}`.trim().toLowerCase();
       if (pocket === "held") {
@@ -529,6 +631,17 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
   }
 
   _getMoveSecondaryEffectsForDisplay() {
+    const rawEffects = Array.isArray(this.item.system?.secondaryEffects)
+      ? this.item.system.secondaryEffects
+      : [];
+    const normalizedEffects = this._normalizeSecondaryEffects(rawEffects);
+    return normalizedEffects.map((effect, index) => ({
+      index,
+      ...this._decorateSecondaryEffectForDisplay(effect)
+    }));
+  }
+
+  _getAbilitySecondaryEffectsForDisplay() {
     const rawEffects = Array.isArray(this.item.system?.secondaryEffects)
       ? this.item.system.secondaryEffects
       : [];

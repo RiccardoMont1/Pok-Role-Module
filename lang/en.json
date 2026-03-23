@@ -620,6 +620,53 @@
         "Stat": "Stat Increased"
       }
     },
+    "Ability": {
+      "DetailsTab": "Details",
+      "ConfigTitle": "Configuration",
+      "TriggerLabel": "Trigger",
+      "TargetLabel": "Target",
+      "TriggerConditionType": "Trigger Type",
+      "TriggerConditionWeather": "Trigger Weather",
+      "EffectsTitle": "Automated Effects",
+      "EffectsEmpty": "No automated effects configured. Add one to enable automation.",
+      "Trigger": {
+        "Always": "Always",
+        "EnterBattle": "Enter Battle",
+        "RoundStart": "Round Start",
+        "RoundEnd": "Round End",
+        "TurnStart": "Turn Start",
+        "TurnEnd": "Turn End",
+        "OnHitByPhysical": "Hit by Physical",
+        "OnHitBySpecial": "Hit by Special",
+        "OnHitByAny": "Hit by Any Move",
+        "OnHitByContact": "Hit by Contact",
+        "OnHitByType": "Hit by Type",
+        "OnDealDamage": "Deal Damage",
+        "OnCriticalHitReceived": "Critical Hit Received",
+        "OnCriticalHitDealt": "Critical Hit Dealt",
+        "OnFoeFaint": "Foe Faints",
+        "OnAllyFaint": "Ally Faints",
+        "OnSelfFaint": "Self Faints",
+        "SelfHpHalfOrLess": "Self HP ≤ 50%",
+        "SelfHpQuarterOrLess": "Self HP ≤ 25%",
+        "SelfHpFull": "Self HP Full",
+        "SelfHasCondition": "Self Has Condition",
+        "SelfMissingCondition": "Self Missing Condition",
+        "TargetHasCondition": "Target Has Condition",
+        "WeatherActive": "Weather Active",
+        "TerrainActive": "Terrain Active",
+        "Custom": "Custom"
+      },
+      "Target": {
+        "Self": "Self",
+        "Foe": "Foe",
+        "AllFoes": "All Foes",
+        "Ally": "Ally",
+        "AllAllies": "All Allies",
+        "AllInRange": "All in Range",
+        "Attacker": "Attacker"
+      }
+    },
     "Playable": {
       "Ability": {
         "Name": "Ability Name",
@@ -632,7 +679,9 @@
         "Trigger": "Trigger",
         "Frequency": "Frequency",
         "Target": "Target",
-        "Effect": "Effect"
+        "Effect": "Effect",
+        "EffectPlaceholder": "Describe the mechanical effect of this ability...",
+        "DescriptionPlaceholder": "Flavor text and description..."
       },
       "Weather": {
         "Name": "Weather Name",

@@ -1,53 +1,342 @@
-<form class="{{cssClass}} pok-role-sheet reference-sheet ability-sheet" autocomplete="off">
-  <header class="sheet-header">
-    <img
-      class="profile-img"
-      src="{{item.img}}"
-      data-edit="img"
-      title="{{item.name}}"
-    />
-    <div class="header-fields">
-      <h1 class="charname">
-        <input
-          name="name"
-          type="text"
-          value="{{item.name}}"
-          placeholder="{{localize 'POKROLE.Playable.Ability.Name'}}"
-        />
-      </h1>
-    </div>
-  </header>
+<form class="{{cssClass}} pok-role-sheet move-sheet ability-sheet" autocomplete="off">
+  <div class="move-sheet-shell">
+    <aside class="move-side-card">
+      <img
+        class="profile-img"
+        src="{{item.img}}"
+        data-edit="img"
+        title="{{item.name}}"
+      />
+      <div class="move-side-stats">
+        <div class="move-side-summary-row">
+          <span>{{localize "POKROLE.Playable.Ability.Type.Label"}}</span>
+          <strong>{{abilitySidebarSummary.type}}</strong>
+        </div>
+        <div class="move-side-summary-row">
+          <span>{{localize "POKROLE.Ability.TriggerLabel"}}</span>
+          <strong>{{abilitySidebarSummary.trigger}}</strong>
+        </div>
+        <div class="move-side-summary-row">
+          <span>{{localize "POKROLE.Ability.TargetLabel"}}</span>
+          <strong>{{abilitySidebarSummary.target}}</strong>
+        </div>
+        <div class="move-side-summary-row">
+          <span>{{localize "POKROLE.Playable.Ability.Frequency"}}</span>
+          <strong>{{abilitySidebarSummary.frequency}}</strong>
+        </div>
+      </div>
+    </aside>
 
-  <section class="sheet-section">
-    <div class="form-grid two-col">
-      <label>
-        <span>{{localize "POKROLE.Playable.Ability.Type.Label"}}</span>
-        <select name="system.abilityType">
-          {{selectOptions abilityTypeOptions selected=system.abilityType localize=true}}
-        </select>
-      </label>
-      <label>
-        <span>{{localize "POKROLE.Playable.Ability.Frequency"}}</span>
-        <input type="text" name="system.frequency" value="{{system.frequency}}" />
-      </label>
-      <label>
-        <span>{{localize "POKROLE.Playable.Ability.Trigger"}}</span>
-        <input type="text" name="system.trigger" value="{{system.trigger}}" />
-      </label>
-      <label>
-        <span>{{localize "POKROLE.Playable.Ability.Target"}}</span>
-        <input type="text" name="system.target" value="{{system.target}}" />
-      </label>
-    </div>
-  </section>
+    <section class="move-main-card">
+      <header class="move-main-header">
+        <h1 class="charname">
+          <input
+            name="name"
+            type="text"
+            value="{{item.name}}"
+            placeholder="{{localize 'POKROLE.Playable.Ability.Name'}}"
+          />
+        </h1>
+      </header>
 
-  <section class="sheet-section">
-    <h2>{{localize "POKROLE.Playable.Ability.Effect"}}</h2>
-    <textarea name="system.effect" rows="6">{{system.effect}}</textarea>
-  </section>
+      <nav class="move-sheet-tabs">
+        <button type="button" class="{{#if abilityTabDescriptionActive}}is-active{{/if}}" data-action="switch-move-tab" data-tab="description">
+          {{localize "POKROLE.Common.Description"}}
+        </button>
+        <button type="button" class="{{#if abilityTabDetailsActive}}is-active{{/if}}" data-action="switch-move-tab" data-tab="details">
+          {{localize "POKROLE.Ability.DetailsTab"}}
+        </button>
+      </nav>
 
-  <section class="sheet-section">
-    <h2>{{localize "POKROLE.Common.Description"}}</h2>
-    <textarea name="system.description" rows="6">{{system.description}}</textarea>
-  </section>
+      <div class="move-tab-panel {{#if abilityTabDescriptionActive}}is-active{{/if}}" data-tab="description">
+        <section class="sheet-section">
+          <h2>{{localize "POKROLE.Playable.Ability.Effect"}}</h2>
+          <textarea
+            name="system.effect"
+            rows="8"
+            placeholder="{{localize 'POKROLE.Playable.Ability.EffectPlaceholder'}}"
+          >{{system.effect}}</textarea>
+        </section>
+        <section class="sheet-section">
+          <h2>{{localize "POKROLE.Common.Description"}}</h2>
+          <textarea
+            name="system.description"
+            rows="8"
+            placeholder="{{localize 'POKROLE.Playable.Ability.DescriptionPlaceholder'}}"
+          >{{system.description}}</textarea>
+        </section>
+      </div>
+
+      <div class="move-tab-panel {{#if abilityTabDetailsActive}}is-active{{/if}}" data-tab="details">
+        <section class="sheet-section">
+          <h2>{{localize "POKROLE.Ability.ConfigTitle"}}</h2>
+          <div class="form-grid two-col">
+            <label>
+              <span>{{localize "POKROLE.Playable.Ability.Type.Label"}}</span>
+              <select name="system.abilityType">
+                {{safeSelectOptions abilityTypeOptions selected=system.abilityType localize=true}}
+              </select>
+            </label>
+            <label>
+              <span>{{localize "POKROLE.Ability.TriggerLabel"}}</span>
+              <select name="system.abilityTrigger">
+                {{safeSelectOptions abilityTriggerOptions selected=system.abilityTrigger localize=true}}
+              </select>
+            </label>
+            <label>
+              <span>{{localize "POKROLE.Ability.TargetLabel"}}</span>
+              <select name="system.abilityTarget">
+                {{safeSelectOptions abilityTargetOptions selected=system.abilityTarget localize=true}}
+              </select>
+            </label>
+            <label>
+              <span>{{localize "POKROLE.Playable.Ability.Frequency"}}</span>
+              <input type="text" name="system.frequency" value="{{system.frequency}}" />
+            </label>
+            <label>
+              <span>{{localize "POKROLE.Ability.TriggerConditionType"}}</span>
+              <input type="text" name="system.triggerConditionType" value="{{system.triggerConditionType}}" placeholder="fire, electric..." />
+            </label>
+            <label>
+              <span>{{localize "POKROLE.Ability.TriggerConditionWeather"}}</span>
+              <input type="text" name="system.triggerConditionWeather" value="{{system.triggerConditionWeather}}" placeholder="sunny, rain..." />
+            </label>
+          </div>
+        </section>
+
+        <section class="sheet-section move-effect-section">
+          <div class="section-title-row">
+            <h2>{{localize "POKROLE.Ability.EffectsTitle"}}</h2>
+            <div class="button-row">
+              <button type="button" data-action="add-secondary-effect" data-section-index="0">
+                <i class="fas fa-plus"></i>
+                {{localize "POKROLE.Move.Secondary.Add"}}
+              </button>
+            </div>
+          </div>
+
+          {{#if secondaryEffects.length}}
+          <div class="move-secondary-effect-list">
+            {{#each secondaryEffects as |effect|}}
+            <div class="move-secondary-effect-row">
+              <input
+                type="hidden"
+                name="system.secondaryEffects.{{effect.index}}.section"
+                value="0"
+                data-dtype="Number"
+              />
+              <label>
+                <span>{{localize "POKROLE.Move.Secondary.Label"}}</span>
+                <input
+                  type="text"
+                  name="system.secondaryEffects.{{effect.index}}.label"
+                  value="{{effect.label}}"
+                />
+              </label>
+              <label>
+                <span>{{localize "POKROLE.Move.Secondary.Trigger.Label"}}</span>
+                <select name="system.secondaryEffects.{{effect.index}}.trigger">
+                  {{safeSelectOptions @root.secondaryTriggerOptions selected=effect.trigger localize=true}}
+                </select>
+              </label>
+              <label>
+                <span>{{localize "POKROLE.Move.Secondary.Chance"}}</span>
+                <input
+                  type="number"
+                  name="system.secondaryEffects.{{effect.index}}.chance"
+                  value="{{effect.chance}}"
+                  min="0"
+                  max="20"
+                  data-dtype="Number"
+                />
+              </label>
+              <label>
+                <span>{{localize "POKROLE.Move.Secondary.Target.Label"}}</span>
+                <select name="system.secondaryEffects.{{effect.index}}.target">
+                  {{safeSelectOptions @root.secondaryTargetOptions selected=effect.target localize=true}}
+                </select>
+              </label>
+              <label>
+                <span>{{localize "POKROLE.Move.Secondary.Type.Label"}}</span>
+                <select name="system.secondaryEffects.{{effect.index}}.effectType">
+                  {{safeSelectOptions @root.secondaryEffectTypeOptions selected=effect.effectType localize=true}}
+                </select>
+              </label>
+              <fieldset data-effect-visible="duration" class="move-duration-fields {{#unless effect.showDurationField}}is-hidden{{/unless}}">
+                <legend>{{localize "POKROLE.Move.Secondary.Duration.Mode.Label"}}</legend>
+                <label>
+                  <span>{{localize "POKROLE.Move.Secondary.Duration.Mode.Label"}}</span>
+                  <select name="system.secondaryEffects.{{effect.index}}.durationMode">
+                    {{safeSelectOptions @root.secondaryDurationModeOptions selected=effect.durationMode localize=true}}
+                  </select>
+                </label>
+                <label>
+                  <span>{{localize "POKROLE.Move.Secondary.Duration.Rounds"}}</span>
+                  <input
+                    type="number"
+                    name="system.secondaryEffects.{{effect.index}}.durationRounds"
+                    value="{{effect.durationRounds}}"
+                    min="1"
+                    max="99"
+                    data-dtype="Number"
+                  />
+                </label>
+                <label>
+                  <span>{{localize "POKROLE.Move.Secondary.Duration.Special.Label"}}</span>
+                  <div class="move-special-duration-list">
+                    {{#if effect.specialDurationRows.length}}
+                    {{#each effect.specialDurationRows as |durationRow|}}
+                    <div class="move-special-duration-row">
+                      <select
+                        name="system.secondaryEffects.{{../index}}.specialDuration.{{durationRow.index}}"
+                      >
+                        {{#each durationRow.options as |option|}}
+                        <option value="{{option.value}}" {{#if option.selected}}selected{{/if}}>
+                          {{localize option.label}}
+                        </option>
+                        {{/each}}
+                      </select>
+                      <button
+                        type="button"
+                        class="icon-button danger"
+                        data-action="remove-secondary-special-duration"
+                        data-secondary-index="{{../index}}"
+                        data-duration-index="{{durationRow.index}}"
+                        title="{{localize 'POKROLE.Actions.Delete'}}"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                    {{/each}}
+                    {{else}}
+                    <p class="empty-state">{{localize "POKROLE.Move.Secondary.Duration.Special.Empty"}}</p>
+                    {{/if}}
+                  </div>
+                  <button
+                    type="button"
+                    class="small-button"
+                    data-action="add-secondary-special-duration"
+                    data-secondary-index="{{effect.index}}"
+                  >
+                    <i class="fas fa-plus"></i>
+                    {{localize "POKROLE.Move.Secondary.Duration.Special.Add"}}
+                  </button>
+                </label>
+              </fieldset>
+              <label data-effect-visible="condition" class="{{#unless effect.showConditionField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.Condition.Label"}}</span>
+                <select name="system.secondaryEffects.{{effect.index}}.condition">
+                  {{safeSelectOptions @root.secondaryConditionOptions selected=effect.condition localize=true}}
+                </select>
+              </label>
+              <label data-effect-visible="weather" class="{{#unless effect.showWeatherField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.Weather.Label"}}</span>
+                <select name="system.secondaryEffects.{{effect.index}}.weather">
+                  {{safeSelectOptions @root.secondaryWeatherOptions selected=effect.weather localize=true}}
+                </select>
+              </label>
+              <label data-effect-visible="terrain" class="{{#unless effect.showTerrainField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.Terrain.Label"}}</span>
+                <select name="system.secondaryEffects.{{effect.index}}.terrain">
+                  {{safeSelectOptions @root.secondaryTerrainOptions selected=effect.terrain localize=true}}
+                </select>
+              </label>
+              <div data-effect-visible="active-effect" class="move-linked-active-effect {{#unless effect.showActiveEffectField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.ActiveEffect.Label"}}</span>
+                <p class="linked-effect-name">{{effect.linkedEffectName}}</p>
+                <div class="button-row">
+                  <button
+                    type="button"
+                    data-action="configure-secondary-active-effect"
+                    data-secondary-index="{{effect.index}}"
+                  >
+                    <i class="fas fa-wrench"></i>
+                    {{localize "POKROLE.Move.Secondary.ActiveEffect.Configure"}}
+                  </button>
+                  {{#if effect.hasLinkedEffect}}
+                  <button
+                    type="button"
+                    class="danger"
+                    data-action="unlink-secondary-active-effect"
+                    data-secondary-index="{{effect.index}}"
+                    title="{{localize 'POKROLE.Actions.Delete'}}"
+                  >
+                    <i class="fas fa-unlink"></i>
+                  </button>
+                  {{/if}}
+                </div>
+              </div>
+              <label data-effect-visible="stat" class="{{#unless effect.showStatField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.Stat.Label"}}</span>
+                <select name="system.secondaryEffects.{{effect.index}}.stat">
+                  {{safeSelectOptions @root.secondaryStatOptions selected=effect.stat localize=true}}
+                </select>
+              </label>
+              <label data-effect-visible="heal-type" class="{{#unless effect.showHealTypeField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.HealType.Label"}}</span>
+                <select name="system.secondaryEffects.{{effect.index}}.healType">
+                  {{safeSelectOptions @root.secondaryHealTypeOptions selected=effect.healType localize=true}}
+                </select>
+              </label>
+              <label class="checkbox-row {{#unless effect.showConditionalField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.Conditional.Label"}}</span>
+                <input
+                  type="checkbox"
+                  name="system.secondaryEffects.{{effect.index}}.conditional"
+                  {{checked effect.conditional}}
+                />
+              </label>
+              <label class="{{#unless effect.showActivationConditionField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.ActivationCondition.Label"}}</span>
+                <input
+                  type="text"
+                  name="system.secondaryEffects.{{effect.index}}.activationCondition"
+                  value="{{effect.activationCondition}}"
+                  placeholder="{{localize 'POKROLE.Move.Secondary.ActivationCondition.Placeholder'}}"
+                />
+              </label>
+              <label data-effect-visible="heal-mode" class="{{#unless effect.showHealModeField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.HealMode.Label"}}</span>
+                <select name="system.secondaryEffects.{{effect.index}}.healMode">
+                  {{safeSelectOptions @root.secondaryHealModeOptions selected=effect.healMode localize=true}}
+                </select>
+              </label>
+              <label data-effect-visible="amount" class="{{#unless effect.showAmountField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.Amount"}}</span>
+                <input
+                  type="number"
+                  name="system.secondaryEffects.{{effect.index}}.amount"
+                  value="{{effect.amount}}"
+                  min="-999"
+                  max="999"
+                  data-dtype="Number"
+                />
+              </label>
+              <label data-effect-visible="notes" class="{{#unless effect.showNotesField}}is-hidden{{/unless}}">
+                <span>{{localize "POKROLE.Move.Secondary.Notes"}}</span>
+                <input
+                  type="text"
+                  name="system.secondaryEffects.{{effect.index}}.notes"
+                  value="{{effect.notes}}"
+                />
+              </label>
+              <button
+                type="button"
+                class="icon-button danger"
+                data-action="remove-secondary-effect"
+                data-secondary-index="{{effect.index}}"
+                title="{{localize 'POKROLE.Actions.Delete'}}"
+              >
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+            {{/each}}
+          </div>
+          {{else}}
+          <p class="empty-state">{{localize "POKROLE.Ability.EffectsEmpty"}}</p>
+          {{/if}}
+        </section>
+      </div>
+    </section>
+  </div>
 </form>

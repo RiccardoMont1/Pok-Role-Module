@@ -20,7 +20,9 @@ import {
   POKEMON_TIER_KEYS,
   SKILL_DEFINITIONS,
   TRAINER_CARD_RANK_KEYS,
-  TYPE_OPTIONS
+  TYPE_OPTIONS,
+  ABILITY_TRIGGER_KEYS,
+  ABILITY_TARGET_KEYS
 } from "./constants.mjs";
 
 const { ArrayField, BooleanField, NumberField, SchemaField, StringField } = foundry.data.fields;
@@ -32,6 +34,104 @@ function integerField(initial, options = {}) {
     initial,
     ...options
   });
+}
+
+function secondaryEffectsField() {
+  return new ArrayField(
+    new SchemaField({
+      section: integerField(0, { min: 0, max: 99 }),
+      label: trimmedStringField(""),
+      trigger: new StringField({
+        required: true,
+        blank: false,
+        initial: "on-hit",
+        choices: MOVE_SECONDARY_TRIGGER_KEYS
+      }),
+      chance: integerField(0, { min: 0, max: 100 }),
+      target: new StringField({
+        required: true,
+        blank: false,
+        initial: "target",
+        choices: MOVE_SECONDARY_TARGET_KEYS
+      }),
+      effectType: new StringField({
+        required: true,
+        blank: false,
+        initial: "condition",
+        choices: MOVE_SECONDARY_EFFECT_TYPE_KEYS
+      }),
+      durationMode: new StringField({
+        required: true,
+        blank: false,
+        initial: "manual",
+        choices: MOVE_SECONDARY_DURATION_MODE_KEYS
+      }),
+      durationRounds: integerField(1, { min: 1, max: 99 }),
+      specialDuration: new ArrayField(
+        new StringField({
+          required: true,
+          blank: false,
+          initial: "none",
+          choices: MOVE_SECONDARY_SPECIAL_DURATION_KEYS
+        }),
+        { required: true, initial: () => [] }
+      ),
+      conditional: new BooleanField({ required: true, initial: false }),
+      activationCondition: trimmedStringField(""),
+      condition: new StringField({
+        required: true,
+        blank: false,
+        initial: "none",
+        choices: MOVE_SECONDARY_CONDITION_KEYS
+      }),
+      weather: new StringField({
+        required: true,
+        blank: false,
+        initial: "none",
+        choices: MOVE_SECONDARY_WEATHER_KEYS
+      }),
+      terrain: new StringField({
+        required: true,
+        blank: false,
+        initial: "none",
+        choices: MOVE_SECONDARY_TERRAIN_KEYS
+      }),
+      stat: new StringField({
+        required: true,
+        blank: false,
+        initial: "none",
+        choices: MOVE_SECONDARY_STAT_KEYS
+      }),
+      amount: integerField(0, { min: -999, max: 999 }),
+      healType: new StringField({
+        required: true,
+        blank: false,
+        initial: "basic",
+        choices: MOVE_SECONDARY_HEAL_TYPE_KEYS
+      }),
+      healMode: new StringField({
+        required: true,
+        blank: false,
+        initial: "fixed",
+        choices: MOVE_SECONDARY_HEAL_MODE_KEYS
+      }),
+      healProfile: new StringField({
+        required: true,
+        blank: false,
+        initial: "standard",
+        choices: MOVE_SECONDARY_HEAL_PROFILE_KEYS
+      }),
+      healingCategory: new StringField({
+        required: true,
+        blank: false,
+        initial: "standard",
+        choices: HEALING_CATEGORY_KEYS
+      }),
+      notes: trimmedStringField(""),
+      linkedEffectId: trimmedStringField("")
+    }),
+    { required: true, initial: () => [] }
+  );
 }
 
 function resourceField(initial) {
@@ -368,107 +468,7 @@ export class MoveDataModel extends foundry.abstract.TypeDataModel {
       shieldMove: new BooleanField({ required: true, initial: false }),
       isRanged: new BooleanField({ required: true, initial: false }),
       isUsable: new BooleanField({ required: true, initial: true }),
-      secondaryEffects: new ArrayField(
-        new SchemaField({
-          section: integerField(0, { min: 0, max: 99 }),
-          label: trimmedStringField(""),
-          trigger: new StringField({
-            required: true,
-            blank: false,
-            initial: "on-hit",
-            choices: MOVE_SECONDARY_TRIGGER_KEYS
-          }),
-          chance: integerField(0, { min: 0, max: 100 }),
-          target: new StringField({
-            required: true,
-            blank: false,
-            initial: "target",
-            choices: MOVE_SECONDARY_TARGET_KEYS
-          }),
-          effectType: new StringField({
-            required: true,
-            blank: false,
-            initial: "condition",
-            choices: MOVE_SECONDARY_EFFECT_TYPE_KEYS
-          }),
-          durationMode: new StringField({
-            required: true,
-            blank: false,
-            initial: "manual",
-            choices: MOVE_SECONDARY_DURATION_MODE_KEYS
-          }),
-          durationRounds: integerField(1, { min: 1, max: 99 }),
-          specialDuration: new ArrayField(
-            new StringField({
-              required: true,
-              blank: false,
-              initial: "none",
-              choices: MOVE_SECONDARY_SPECIAL_DURATION_KEYS
-            }),
-            {
-              required: true,
-              initial: () => []
-            }
-          ),
-          conditional: new BooleanField({ required: true, initial: false }),
-          activationCondition: trimmedStringField(""),
-          condition: new StringField({
-            required: true,
-            blank: false,
-            initial: "none",
-            choices: MOVE_SECONDARY_CONDITION_KEYS
-          }),
-          weather: new StringField({
-            required: true,
-            blank: false,
-            initial: "none",
-            choices: MOVE_SECONDARY_WEATHER_KEYS
-          }),
-          terrain: new StringField({
-            required: true,
-            blank: false,
-            initial: "none",
-            choices: MOVE_SECONDARY_TERRAIN_KEYS
-          }),
-          stat: new StringField({
-            required: true,
-            blank: false,
-            initial: "none",
-            choices: MOVE_SECONDARY_STAT_KEYS
-          }),
-          amount: integerField(0, { min: -999, max: 999 }),
-          healType: new StringField({
-            required: true,
-            blank: false,
-            initial: "basic",
-            choices: MOVE_SECONDARY_HEAL_TYPE_KEYS
-          }),
-          healMode: new StringField({
-            required: true,
-            blank: false,
-            initial: "fixed",
-            choices: MOVE_SECONDARY_HEAL_MODE_KEYS
-          }),
-          healProfile: new StringField({
-            required: true,
-            blank: false,
-            initial: "standard",
-            choices: MOVE_SECONDARY_HEAL_PROFILE_KEYS
-          }),
-          healingCategory: new StringField({
-            required: true,
-            blank: false,
-            initial: "standard",
-            choices: HEALING_CATEGORY_KEYS
-          }),
-          notes: trimmedStringField(""),
-          linkedEffectId: trimmedStringField("")
-        }),
-        {
-          required: true,
-          initial: () => []
-        }
-      ),
+      secondaryEffects: secondaryEffectsField(),
       description: trimmedStringField("")
     };
   }
@@ -660,10 +660,24 @@ export class AbilityDataModel extends foundry.abstract.TypeDataModel {
         initial: "passive",
         choices: ["passive", "active", "hidden"]
       }),
-      trigger: trimmedStringField(""),
+      abilityTrigger: new StringField({
+        required: true,
+        blank: false,
+        initial: "always",
+        choices: ABILITY_TRIGGER_KEYS
+      }),
+      abilityTarget: new StringField({
+        required: true,
+        blank: false,
+        initial: "self",
+        choices: ABILITY_TARGET_KEYS
+      }),
+      triggerConditionType: trimmedStringField(""),
+      triggerConditionWeather: trimmedStringField(""),
+      triggerConditionTerrain: trimmedStringField(""),
       frequency: trimmedStringField(""),
-      target: trimmedStringField(""),
       effect: trimmedStringField(""),
+      secondaryEffects: secondaryEffectsField(),
       description: trimmedStringField("")
     };
   }

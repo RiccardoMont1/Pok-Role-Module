@@ -292,6 +292,45 @@ export const EFFECT_PASSIVE_TRIGGER_KEYS = Object.freeze([
   "target-missing-condition"
 ]);
 
+export const ABILITY_TRIGGER_KEYS = Object.freeze([
+  "always",
+  "enter-battle",
+  "round-start",
+  "round-end",
+  "turn-start",
+  "turn-end",
+  "on-hit-by-physical",
+  "on-hit-by-special",
+  "on-hit-by-any",
+  "on-hit-by-contact",
+  "on-hit-by-type",
+  "on-deal-damage",
+  "on-critical-hit-received",
+  "on-critical-hit-dealt",
+  "on-foe-faint",
+  "on-ally-faint",
+  "on-self-faint",
+  "self-hp-half-or-less",
+  "self-hp-quarter-or-less",
+  "self-hp-full",
+  "self-has-condition",
+  "self-missing-condition",
+  "target-has-condition",
+  "weather-active",
+  "terrain-active",
+  "custom"
+]);
+
+export const ABILITY_TARGET_KEYS = Object.freeze([
+  "self",
+  "foe",
+  "all-foes",
+  "ally",
+  "all-allies",
+  "all-in-range",
+  "attacker"
+]);
+
 export const MOVE_SECONDARY_CONDITION_KEYS = Object.freeze([
   "none",
   "sleep",

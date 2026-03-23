@@ -632,6 +632,53 @@
         "Stat": "Statistica Aumentata"
       }
     },
+    "Ability": {
+      "DetailsTab": "Dettagli",
+      "ConfigTitle": "Configurazione",
+      "TriggerLabel": "Attivazione",
+      "TargetLabel": "Bersaglio",
+      "TriggerConditionType": "Tipo Attivazione",
+      "TriggerConditionWeather": "Meteo Attivazione",
+      "EffectsTitle": "Effetti Automatizzati",
+      "EffectsEmpty": "Nessun effetto automatizzato configurato. Aggiungine uno per abilitare l'automazione.",
+      "Trigger": {
+        "Always": "Sempre",
+        "EnterBattle": "Entrata in Battaglia",
+        "RoundStart": "Inizio Round",
+        "RoundEnd": "Fine Round",
+        "TurnStart": "Inizio Turno",
+        "TurnEnd": "Fine Turno",
+        "OnHitByPhysical": "Colpito da Fisico",
+        "OnHitBySpecial": "Colpito da Speciale",
+        "OnHitByAny": "Colpito da Qualsiasi Mossa",
+        "OnHitByContact": "Colpito da Contatto",
+        "OnHitByType": "Colpito da Tipo",
+        "OnDealDamage": "Infligge Danno",
+        "OnCriticalHitReceived": "Colpo Critico Ricevuto",
+        "OnCriticalHitDealt": "Colpo Critico Inflitto",
+        "OnFoeFaint": "Nemico Svenuto",
+        "OnAllyFaint": "Alleato Svenuto",
+        "OnSelfFaint": "Svenimento Proprio",
+        "SelfHpHalfOrLess": "HP Propri ≤ 50%",
+        "SelfHpQuarterOrLess": "HP Propri ≤ 25%",
+        "SelfHpFull": "HP Propri Pieni",
+        "SelfHasCondition": "Ha Condizione",
+        "SelfMissingCondition": "Manca Condizione",
+        "TargetHasCondition": "Bersaglio Ha Condizione",
+        "WeatherActive": "Meteo Attivo",
+        "TerrainActive": "Terreno Attivo",
+        "Custom": "Personalizzato"
+      },
+      "Target": {
+        "Self": "Se Stesso",
+        "Foe": "Nemico",
+        "AllFoes": "Tutti i Nemici",
+        "Ally": "Alleato",
+        "AllAllies": "Tutti gli Alleati",
+        "AllInRange": "Tutti nel Raggio",
+        "Attacker": "Attaccante"
+      }
+    },
     "Playable": {
       "Ability": {
         "Name": "Nome Abilita",
@@ -644,7 +691,9 @@
         "Trigger": "Innesco",
         "Frequency": "Frequenza",
         "Target": "Bersaglio",
-        "Effect": "Effetto"
+        "Effect": "Effetto",
+        "EffectPlaceholder": "Descrivi l'effetto meccanico di questa abilita...",
+        "DescriptionPlaceholder": "Testo descrittivo e narrativo..."
       },
       "Weather": {
         "Name": "Nome Meteo",
