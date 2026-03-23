@@ -52,8 +52,7 @@ export const SOCIAL_ATTRIBUTE_DEFINITIONS = Object.freeze([
   { key: "beauty", label: "POKROLE.Attributes.Beauty" },
   { key: "cool", label: "POKROLE.Attributes.Cool" },
   { key: "cute", label: "POKROLE.Attributes.Cute" },
-  { key: "clever", label: "POKROLE.Attributes.Clever" },
-  { key: "allure", label: "POKROLE.Attributes.Allure" }
+  { key: "clever", label: "POKROLE.Attributes.Clever" }
 ]);
 
 export const SOCIAL_ATTRIBUTE_KEYS = Object.freeze(
@@ -105,7 +104,6 @@ export const TRAIT_LABEL_BY_KEY = Object.freeze({
   cool: "POKROLE.Attributes.Cool",
   cute: "POKROLE.Attributes.Cute",
   clever: "POKROLE.Attributes.Clever",
-  allure: "POKROLE.Attributes.Allure",
   alert: "POKROLE.Skills.Alert",
   athletic: "POKROLE.Skills.Athletic",
   brawl: "POKROLE.Skills.Brawl",

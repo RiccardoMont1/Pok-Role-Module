@@ -309,8 +309,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         "beauty",
         "cool",
         "cute",
-        "clever",
-        "allure"
+        "clever"
       ]);
       context.partyMembers = this._buildPartyMembers();
       context.canAddToParty = (this.actor.system.party?.length ?? 0) < 6;
@@ -360,8 +359,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         "beauty",
         "cool",
         "cute",
-        "clever",
-        "allure"
+        "clever"
       ], trackMax.attributes, 1);
       context.pokemonSkillRows = this._buildSkillRows(pokemonSkillKeys, trackMax.skills, 0);
       context.pokemonExtraTrack = this._buildTrack(this.actor.system.extra, trackMax.extra, 0);

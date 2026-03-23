@@ -4342,7 +4342,8 @@ export class PokRoleActor extends Actor {
       value: this.getTraitValue(key)
     }));
     const physicalMentalAttributes = attributes.filter(
-      (trait) => !SOCIAL_ATTRIBUTE_KEYS.includes(trait.key)
+      (trait) => !SOCIAL_ATTRIBUTE_KEYS.includes(trait.key) &&
+        !(this.type === "trainer" && trait.key === "special")
     );
     const socialAttributes = attributes.filter((trait) =>
       SOCIAL_ATTRIBUTE_KEYS.includes(trait.key)
