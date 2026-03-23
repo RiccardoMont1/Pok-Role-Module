@@ -1,7 +1,3 @@
-Inoltre ho notato che nella scheda dell'allenatore è presente il campo Speciale, rimuovilo in quanto è un campo esclusivo per la scheda del pokémon
-
-Modificare il campo Abilità nella scheda del pokémon rendendolo un menù a tendina
-
 Import delle abilità e dei pokémon e rimozione del compendio "Pokédex"
 
 Per le abilità dei pokémon, le abilità attualmente non hanno immagini. Non ci sono immagini per le abilità
