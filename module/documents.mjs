@@ -503,7 +503,7 @@ const TERRAIN_RUNTIME_MOVE_RULES = Object.freeze({
   }),
   "move-electric-terrain": Object.freeze({
     terrain: "electric",
-    terrainScope: "battlefield"
+    terrainScope: "side"
   }),
   "move-expanding-force": Object.freeze({
     requiredTerrain: "psychic",
@@ -523,7 +523,7 @@ const TERRAIN_RUNTIME_MOVE_RULES = Object.freeze({
   }),
   "move-max-lightning": Object.freeze({
     terrain: "electric",
-    terrainScope: "battlefield"
+    terrainScope: "side"
   }),
   "move-max-mindstorm": Object.freeze({
     terrain: "psychic",
@@ -535,11 +535,11 @@ const TERRAIN_RUNTIME_MOVE_RULES = Object.freeze({
   }),
   "move-max-starfall": Object.freeze({
     terrain: "misty",
-    terrainScope: "battlefield"
+    terrainScope: "side"
   }),
   "move-misty-terrain": Object.freeze({
     terrain: "misty",
-    terrainScope: "battlefield"
+    terrainScope: "side"
   }),
   "move-misty-explosion": Object.freeze({
     requiredTerrain: "misty",
@@ -1271,6 +1271,14 @@ export class PokRoleActor extends Actor {
     if (Number.isFinite(delayedSideOverride) && delayedSideOverride !== 0) {
       return clamp(Math.sign(Math.trunc(delayedSideOverride)), -1, 1);
     }
+    const trainerActor =
+      normalizedActor.type === "pokemon"
+        ? this._getPokemonTrainerActor(normalizedActor)
+        : null;
+    const trainerCombatant =
+      trainerActor
+        ? combat.combatants?.find?.((entry) => entry.actor?.id === trainerActor.id) ?? null
+        : null;
     const combatant =
       combat.combatants?.find?.((entry) => entry.actor?.id === normalizedActor.id) ?? null;
     const possibleDispositions = [
@@ -1278,13 +1286,48 @@ export class PokRoleActor extends Actor {
       combatant?.token?.disposition,
       combatant?.token?.document?.disposition,
       normalizedActor.getActiveTokens?.(true)?.[0]?.document?.disposition,
-      normalizedActor.getActiveTokens?.()?.[0]?.document?.disposition
+      normalizedActor.getActiveTokens?.()?.[0]?.document?.disposition,
+      trainerCombatant?.getFlag?.(POKROLE.ID, "forcedDisposition"),
+      trainerCombatant?.token?.disposition,
+      trainerCombatant?.token?.document?.disposition,
+      trainerActor?.getActiveTokens?.(true)?.[0]?.document?.disposition,
+      trainerActor?.getActiveTokens?.()?.[0]?.document?.disposition
     ];
     for (const rawDisposition of possibleDispositions) {
       const numericValue = Number(rawDisposition);
       if (!Number.isFinite(numericValue)) continue;
       return clamp(Math.sign(Math.trunc(numericValue)), -1, 1);
     }
+    if (trainerActor?.id) {
+      const alliedDisposition = (combat.combatants ?? [])
+        .filter((entry) => entry?.actor?.id && entry.actor.id !== normalizedActor.id)
+        .filter((entry) => `${entry.actor?.system?.currentTrainer ?? ""}`.trim() === trainerActor.id)
+        .map((entry) => [
+          entry?.getFlag?.(POKROLE.ID, "forcedDisposition"),
+          entry?.token?.disposition,
+          entry?.token?.document?.disposition
+        ])
+        .flat()
+        .map((rawDisposition) => Number(rawDisposition))
+        .filter((numericValue) => Number.isFinite(numericValue))
+        .map((numericValue) => clamp(Math.sign(Math.trunc(numericValue)), -1, 1))
+        .find((value) => value !== 0);
+      if (alliedDisposition) return alliedDisposition;
+    }
+    return 0;
+  }
+
+  _getOpposingCombatSideDisposition(actor = this, combat = game.combat) {
+    if (!combat) return 0;
+    const ownDisposition = this._getActorCombatSideDisposition(actor, combat);
+    if (ownDisposition !== 0) return ownDisposition * -1;
+    const knownDispositions = [...new Set(
+      (combat.combatants ?? [])
+        .map((entry) => this._getActorCombatSideDisposition(entry?.actor ?? null, combat))
+        .filter((value) => value !== 0)
+    )];
+    if (knownDispositions.length === 1) return knownDispositions[0] * -1;
+    if (knownDispositions.length >= 2) return knownDispositions[0] * -1;
     return 0;
   }
 
@@ -2431,32 +2474,19 @@ export class PokRoleActor extends Actor {
   async synchronizeTerrainEffectsForCombat(combat = game.combat) {
     if (!combat) return 0;
     let updates = 0;
-    const battlefieldTerrain = this.getActiveTerrainKey();
 
     for (const combatant of combat.combatants ?? []) {
       const actor = combatant.actor;
       if (!actor || actor.documentName !== "Actor") continue;
 
       if (
-        battlefieldTerrain === "electric" &&
+        this.hasActiveTerrainForActor(actor, "electric", { combat }) &&
         actor.type === "pokemon" &&
         actor._isConditionActive?.("sleep") &&
         actor._isActorGroundedForTerrain?.(actor)
       ) {
         await actor.toggleQuickCondition("sleep", { active: false });
         updates += 1;
-      }
-
-      if (
-        battlefieldTerrain === "misty" &&
-        actor._isActorGroundedForTerrain?.(actor)
-      ) {
-        for (const conditionKey of CONDITION_KEYS) {
-          if (["dead", "fainted"].includes(conditionKey)) continue;
-          if (!actor._isConditionActive?.(conditionKey)) continue;
-          await actor.toggleQuickCondition(conditionKey, { active: false });
-          updates += 1;
-        }
       }
     }
 
@@ -3085,9 +3115,14 @@ export class PokRoleActor extends Actor {
     return bonusDice;
   }
 
-  _getTerrainPowerOverride(move, actor = this) {
+  _getTerrainPowerOverride(move, actor = this, targetActor = null) {
     const effectiveType = this._resolveEffectiveMoveType(move, actor);
-    if (effectiveType === "dragon" && this.hasActiveTerrainForActor(actor, "misty")) {
+    if (
+      effectiveType === "dragon" &&
+      targetActor &&
+      this.hasActiveTerrainForActor(targetActor, "misty") &&
+      this._isActorGroundedForTerrain(targetActor)
+    ) {
       return 0;
     }
     return null;
@@ -4734,7 +4769,11 @@ export class PokRoleActor extends Actor {
     const round = Math.max(Math.floor(toNumber(game.combat.round, 0)), 0);
     const sourceCombatant = game.combat.combatants?.find?.((combatant) => combatant.actor?.id === this.id) ?? null;
     const targetActors = Array.isArray(context.targetActors) ? context.targetActors.filter(Boolean) : [];
-    const primaryTarget = context.targetActor ?? targetActors[0] ?? null;
+    const moveTargetKey = this._normalizeMoveTargetKey(context.moveTargetKey ?? move?.system?.target);
+    const primaryTarget =
+      context.targetActor ??
+      targetActors[0] ??
+      (moveTargetKey === "self" || this._getMoveSeedId(move) === "move-wish" ? this : null);
     const sourceSideDisposition = this._getActorCombatSideDisposition(this, game.combat);
     const targetSideDisposition = primaryTarget
       ? this._getActorCombatSideDisposition(primaryTarget, game.combat)
@@ -8327,11 +8366,14 @@ export class PokRoleActor extends Actor {
     const combat = game.combat;
     if (!combat) return [];
     const results = [];
+    const ownSideDisposition = this._getActorCombatSideDisposition(this, combat);
     for (const entry of rule.create ?? []) {
       const sideDisposition =
         entry.side === "foe" && options.primaryTarget instanceof PokRoleActor
           ? this._getActorCombatSideDisposition(options.primaryTarget, combat)
-          : this._getActorCombatSideDisposition(this, combat);
+          : entry.side === "foe"
+            ? this._getOpposingCombatSideDisposition(this, combat)
+            : ownSideDisposition;
       const payload = await this.registerSideFieldEntry({
         kind: entry.kind,
         sideDisposition,
@@ -8343,7 +8385,7 @@ export class PokRoleActor extends Actor {
       }, combat);
       results.push({
         label: "Field",
-        targetName: sideDisposition === this._getActorCombatSideDisposition(this, combat) ? this.name : options.primaryTarget?.name ?? this.name,
+        targetName: sideDisposition === ownSideDisposition ? this.name : options.primaryTarget?.name ?? "Opposing Side",
         applied: Boolean(payload),
         detail: payload
           ? payload.kind === "force-field"
@@ -9338,7 +9380,7 @@ export class PokRoleActor extends Actor {
     const damageBaseSetup = this._resolveMoveDamageBase(move, targetActor, actionNumber);
     const damageAttributeLabel = damageBaseSetup.label;
     const damageAttributeValue = Math.max(Math.floor(toNumber(damageBaseSetup.value, 0)), 0);
-    const terrainPowerOverride = this._getTerrainPowerOverride(move, this);
+    const terrainPowerOverride = this._getTerrainPowerOverride(move, this, targetActor);
     const power =
       terrainPowerOverride === null
         ? this._resolveMovePower(move, targetActor, actionNumber, {
