@@ -1725,15 +1725,21 @@ export class PokRoleActor extends Actor {
     return candidates[selectedIndex] ?? null;
   }
 
-  _buildCombatantCreateData(actor, slotId = "", initiative = 0) {
+  _buildCombatantCreateData(actor, slotId = "", initiative = 0, options = {}) {
     const tokenDoc = actor?.getActiveTokens?.(true)?.[0]?.document ?? actor?.getActiveTokens?.()?.[0]?.document ?? null;
     const data = tokenDoc
       ? { tokenId: tokenDoc.id, sceneId: tokenDoc.parent?.id, actorId: actor.id }
       : { actorId: actor.id };
     data.initiative = Math.max(toNumber(initiative, 0), 0);
+    const forcedDisposition = clamp(
+      Math.sign(Math.trunc(toNumber(options?.forcedDisposition, 0))),
+      -1,
+      1
+    );
     data.flags = {
       [POKROLE.ID]: {
-        [BATTLE_SLOT_FLAG_KEY]: `${slotId ?? ""}`.trim() || foundry.utils.randomID()
+        [BATTLE_SLOT_FLAG_KEY]: `${slotId ?? ""}`.trim() || foundry.utils.randomID(),
+        ...(forcedDisposition !== 0 ? { forcedDisposition } : {})
       }
     };
     return data;
@@ -1770,6 +1776,8 @@ export class PokRoleActor extends Actor {
     if (!combat || !outgoingCombatant || !incomingActor) return null;
     const outgoingActor = outgoingCombatant.actor ?? null;
     const slotId = await this._ensureCombatantBattleSlotId(outgoingCombatant);
+    const outgoingCombatantId = `${outgoingCombatant?.id ?? ""}`.trim();
+    const outgoingSideDisposition = this._getActorCombatSideDisposition(outgoingActor ?? this, combat);
     const currentTurnIndex = Number.isInteger(combat.turn) ? combat.turn : null;
     const outgoingIsCurrent = currentTurnIndex !== null && combat.turns?.[currentTurnIndex]?.id === outgoingCombatant.id;
 
@@ -1784,13 +1792,23 @@ export class PokRoleActor extends Actor {
     // 3. Combat tracker: create new combatant, delete old
     const initiative = Math.max(toNumber(options.initiative ?? outgoingCombatant.initiative, 0), 0);
     await combat.createEmbeddedDocuments("Combatant", [
-      this._buildCombatantCreateData(incomingActor, slotId, initiative)
+      this._buildCombatantCreateData(incomingActor, slotId, initiative, {
+        forcedDisposition: outgoingSideDisposition
+      })
     ]);
     const createdCombatant = combat.combatants.find((entry) =>
       entry.actor?.id === incomingActor.id &&
       this._getCombatantBattleSlotId(entry) === slotId
     ) ?? null;
-    await combat.deleteEmbeddedDocuments("Combatant", [outgoingCombatant.id]);
+    const existingOutgoingCombatant =
+      outgoingCombatantId
+        ? combat.combatants.get(outgoingCombatantId) ??
+          combat.combatants.find((entry) => `${entry?.id ?? ""}`.trim() === outgoingCombatantId) ??
+          null
+        : null;
+    if (existingOutgoingCombatant) {
+      await combat.deleteEmbeddedDocuments("Combatant", [outgoingCombatantId]);
+    }
     if (typeof combat.setupTurns === "function") {
       await combat.setupTurns();
     }
