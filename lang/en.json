@@ -16,7 +16,10 @@
       "Miss": "Miss",
       "Confirm": "Confirm",
       "Other": "Other",
-      "Any": "Any"
+      "Any": "Any",
+      "Submit": "Submit",
+      "Select": "Select",
+      "Target": "Target"
     },
     "Dialog": {
       "DistributePoints": "Distribute Points",
@@ -775,7 +778,8 @@
         "BatonPass": "Baton Pass",
         "BatonPassTransferred": "{source} passes {count} stat boosts to {target}.",
         "EjectButtonTitle": "Eject Button: Choose replacement",
-        "RedCardTitle": "Red Card: Choose replacement"
+        "RedCardTitle": "Red Card: Choose replacement",
+        "SubstituteDecoy": "Substitute"
       },
       "Delayed": {
         "Retarget": {
@@ -989,7 +993,8 @@
       "SpecialDamage": {
         "UserFainted": "{actor} fainted after using {move}."
       },
-      "SecondaryEffectHealingBlocked": "Healing is blocked on this target."
+      "SecondaryEffectHealingBlocked": "Healing is blocked on this target.",
+      "Damage": "Damage"
     },
     "Types": {
       "None": "None",

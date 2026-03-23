@@ -16,7 +16,10 @@
       "Miss": "Mancato",
       "Confirm": "Conferma",
       "Other": "Altro",
-      "Any": "Qualsiasi"
+      "Any": "Qualsiasi",
+      "Submit": "Conferma",
+      "Select": "Seleziona",
+      "Target": "Bersaglio"
     },
     "Dialog": {
       "DistributePoints": "Distribuisci Punti",
@@ -787,7 +790,8 @@
         "BatonPass": "Baton Pass",
         "BatonPassTransferred": "{source} passa {count} aumenti statistica a {target}.",
         "EjectButtonTitle": "Eject Button: Scegli il sostituto",
-        "RedCardTitle": "Red Card: Scegli il sostituto"
+        "RedCardTitle": "Red Card: Scegli il sostituto",
+        "SubstituteDecoy": "Sostituto"
       },
       "Delayed": {
         "Retarget": {
@@ -1001,7 +1005,8 @@
       "SpecialDamage": {
         "UserFainted": "{actor} e svenuto dopo aver usato {move}."
       },
-      "SecondaryEffectHealingBlocked": "La guarigione su questo bersaglio e bloccata."
+      "SecondaryEffectHealingBlocked": "La guarigione su questo bersaglio e bloccata.",
+      "Damage": "Danno"
     },
     "Types": {
       "None": "Nessuno",

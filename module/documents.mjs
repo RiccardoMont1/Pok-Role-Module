@@ -503,7 +503,7 @@ const TERRAIN_RUNTIME_MOVE_RULES = Object.freeze({
   }),
   "move-electric-terrain": Object.freeze({
     terrain: "electric",
-    terrainScope: "side"
+    terrainScope: "battlefield"
   }),
   "move-expanding-force": Object.freeze({
     requiredTerrain: "psychic",
@@ -523,7 +523,7 @@ const TERRAIN_RUNTIME_MOVE_RULES = Object.freeze({
   }),
   "move-max-lightning": Object.freeze({
     terrain: "electric",
-    terrainScope: "side"
+    terrainScope: "battlefield"
   }),
   "move-max-mindstorm": Object.freeze({
     terrain: "psychic",
@@ -535,11 +535,11 @@ const TERRAIN_RUNTIME_MOVE_RULES = Object.freeze({
   }),
   "move-max-starfall": Object.freeze({
     terrain: "misty",
-    terrainScope: "side"
+    terrainScope: "battlefield"
   }),
   "move-misty-terrain": Object.freeze({
     terrain: "misty",
-    terrainScope: "side"
+    terrainScope: "battlefield"
   }),
   "move-misty-explosion": Object.freeze({
     requiredTerrain: "misty",
@@ -1270,6 +1270,7 @@ export class PokRoleActor extends Actor {
       .filter(Boolean);
     await combat.setFlag(POKROLE.ID, TERRAIN_ENTRIES_FLAG_KEY, normalizedEntries);
     await this._syncLegacyTerrainFlag(combat, normalizedEntries, options);
+    await this._syncTerrainTrackerEffectsForCombat(combat, normalizedEntries);
     return normalizedEntries;
   }
 
@@ -2640,6 +2641,8 @@ export class PokRoleActor extends Actor {
   async synchronizeTerrainEffectsForCombat(combat = game.combat) {
     if (!combat) return 0;
     let updates = 0;
+
+    updates += await this._syncTerrainTrackerEffectsForCombat(combat);
 
     for (const combatant of combat.combatants ?? []) {
       const actor = combatant.actor;
@@ -5023,7 +5026,7 @@ export class PokRoleActor extends Actor {
       };
       await this._scheduleDelayedEffect(game.combat, delayedPayload);
       results.push({
-        label: game.i18n.localize("POKROLE.Move.Secondary.Type.Heal.Label"),
+        label: this._localizeSecondaryEffectTypeLabel("heal"),
         targetName: primaryTarget.name,
         applied: true,
         detail: game.i18n.localize("POKROLE.Chat.DelayedEffect.Scheduled")
@@ -5051,7 +5054,7 @@ export class PokRoleActor extends Actor {
       };
       await this._scheduleDelayedEffect(game.combat, delayedPayload);
       results.push({
-        label: game.i18n.localize("POKROLE.Move.Secondary.Type.Condition.Label"),
+        label: this._localizeSecondaryEffectTypeLabel("condition"),
         targetName: primaryTarget.name,
         applied: true,
         detail: game.i18n.localize("POKROLE.Chat.DelayedEffect.Scheduled")
@@ -5143,7 +5146,7 @@ export class PokRoleActor extends Actor {
       );
       const success = rolledValues.some((value) => value === 6);
       results.push({
-        label: game.i18n.localize("POKROLE.Move.Secondary.Type.Condition.Label"),
+        label: this._localizeSecondaryEffectTypeLabel("condition"),
         targetName: primaryTarget.name,
         applied: success,
         detail: success
@@ -5598,10 +5601,11 @@ export class PokRoleActor extends Actor {
   async processDelayedEffectPhase(phase, options = {}) {
     const normalizedPhase = this._normalizeDelayedEffectPhase(phase);
     if (!normalizedPhase) return [];
-    const phaseRound = Math.max(Math.floor(toNumber(options.phaseRound, currentRoundNumber(game.combat))), 0);
-    if (phaseRound <= 0) return [];
     const combat = options.combat ?? game.combat ?? null;
     if (!combat) return [];
+    const fallbackRound = Math.max(Math.floor(toNumber(combat.round, 0)), 0);
+    const phaseRound = Math.max(Math.floor(toNumber(options.phaseRound, fallbackRound)), 0);
+    if (phaseRound <= 0) return [];
     const lockKey = `${combat.id}:${normalizedPhase}:${phaseRound}`;
     if (DELAYED_EFFECT_PROCESS_LOCKS.has(lockKey)) return [];
     DELAYED_EFFECT_PROCESS_LOCKS.add(lockKey);
@@ -8946,9 +8950,7 @@ export class PokRoleActor extends Actor {
     const reducedAccuracy = Math.max(toNumber(move.system.reducedAccuracy, 0) - heldReducedLowAccuracy, 0) + shieldPenalty;
     const targetBrightPowder = targetActors[0]?._getHeldItemData?.()?.accuracyPenaltyToAttacker ?? 0;
     const requiredSuccesses = actionNumber;
-    const accuracyRoll = await new Roll(successPoolFormula(accuracyDicePool)).evaluate({
-      async: true
-    });
+    const accuracyRoll = await new Roll(successPoolFormula(accuracyDicePool)).evaluate();
     let rawAccuracySuccesses = toNumber(accuracyRoll.total, 0);
     const luckyChantAccuracyReroll = await this._applyLuckyChantReroll(
       rawAccuracySuccesses,
@@ -9289,6 +9291,7 @@ export class PokRoleActor extends Actor {
         expertBeltBonus: firstDamageResult?.expertBeltBonus ?? 0,
         destroyShieldBonusDice: firstDamageResult?.destroyShieldBonusDice ?? 0,
         metronomeBonus: firstDamageResult?.metronomeBonus ?? 0,
+        damagePainPenalty: firstDamageResult?.damagePainPenalty ?? 0,
         criticalDice,
         typeLabel: game.i18n.localize(typeInteraction.label),
         finalDamage,
@@ -10126,6 +10129,7 @@ export class PokRoleActor extends Actor {
       expertBeltBonus,
       destroyShieldBonusDice,
       metronomeBonus,
+      damagePainPenalty,
       movePower,
       damageAttributeValue,
       damageAttributeLabel
@@ -14354,7 +14358,7 @@ export class PokRoleActor extends Actor {
     if (requiresHit && !hit) return [];
 
     const results = [];
-    const effectLabel = game.i18n.localize("POKROLE.Move.Secondary.Type.Terrain.Label");
+    const effectLabel = this._localizeSecondaryEffectTypeLabel("terrain");
     const targetLabel = this._localizeMoveTarget(move?.system?.target);
 
     if (runtimeRule.terrainScope && runtimeRule.terrain) {
@@ -14556,6 +14560,112 @@ export class PokRoleActor extends Actor {
       ? entries.filter((entry) => entry && typeof entry === "object")
       : [];
     await targetActor.setFlag(POKROLE.ID, TEMPORARY_EFFECTS_FLAG, normalizedEntries);
+  }
+
+  _isTerrainTrackerTemporaryEntry(entry, combatId = game.combat?.id ?? null) {
+    const effectType = `${entry?.effectType ?? ""}`.trim().toLowerCase();
+    const isTracker = entry?.terrainTracker === true || effectType === "terrain-track";
+    if (!isTracker) return false;
+    const normalizedCombatId = `${combatId ?? ""}`.trim();
+    if (!normalizedCombatId) return true;
+    const entryCombatId = `${entry?.combatId ?? ""}`.trim();
+    return !entryCombatId || entryCombatId === normalizedCombatId;
+  }
+
+  _buildTerrainTrackerTemporaryEntry(terrainEntry, existingEntry = null) {
+    const combat = game.combat ?? null;
+    const terrainKey = this._normalizeTerrainKey(terrainEntry?.terrain);
+    if (terrainKey === "none") return null;
+
+    const durationRounds = Math.max(Math.floor(toNumber(terrainEntry?.durationRounds, 0)), 0);
+    const durationMode = durationRounds > 0 ? "rounds" : "combat";
+    const scope = this._normalizeTerrainScope(terrainEntry?.scope ?? "battlefield");
+    const scopeLabel =
+      scope === "side"
+        ? game.i18n.localize("POKROLE.Chat.TerrainScopeSide")
+        : game.i18n.localize("POKROLE.Chat.TerrainScopeBattlefield");
+    const effectLabel = this._localizeSecondaryEffectTypeLabel("terrain");
+
+    return {
+      id:
+        `${existingEntry?.id ?? ""}`.trim() ||
+        `terrain-tracker-${`${terrainEntry?.id ?? ""}`.trim() || foundry.utils.randomID()}`,
+      label: `${effectLabel}: ${this._localizeTerrainName(terrainKey)} (${scopeLabel})`,
+      effectType: "terrain-track",
+      terrainTracker: true,
+      terrainKey,
+      terrainScope: scope,
+      terrainEntryId: `${terrainEntry?.id ?? ""}`.trim() || null,
+      sourceMoveId: terrainEntry?.sourceMoveId ?? null,
+      sourceMoveName: terrainEntry?.sourceMoveName ?? "",
+      sourceActorId: terrainEntry?.sourceActorId ?? this.id ?? null,
+      sourceActorName: terrainEntry?.sourceActorName ?? this.name ?? "",
+      durationMode,
+      remainingRounds: durationMode === "rounds" ? durationRounds : null,
+      specialDuration: [],
+      expiresWithCombat: true,
+      combatId: combat?.id ?? null,
+      appliedRound: Math.max(Math.floor(toNumber(terrainEntry?.roundSet, combat?.round ?? 0)), 0),
+      createdAt: Number(existingEntry?.createdAt ?? Date.now()),
+      changes: []
+    };
+  }
+
+  async _syncTerrainTrackerEffectsForCombat(
+    combat = game.combat,
+    terrainEntries = this._getCombatTerrainEntries(combat)
+  ) {
+    if (!combat) return 0;
+
+    const normalizedCombatId = `${combat.id ?? ""}`.trim();
+    const normalizedEntries = (Array.isArray(terrainEntries) ? terrainEntries : [])
+      .map((entry) => this._normalizeTerrainEntry(entry))
+      .filter((entry) => entry && this._normalizeTerrainKey(entry.terrain) !== "none");
+
+    const candidateActors = new Map();
+    for (const combatant of combat.combatants ?? []) {
+      const actor = combatant?.actor ?? null;
+      if (!actor?.id) continue;
+      candidateActors.set(actor.id, actor);
+    }
+    for (const entry of normalizedEntries) {
+      const sourceActorId = `${entry?.sourceActorId ?? ""}`.trim();
+      if (!sourceActorId || candidateActors.has(sourceActorId)) continue;
+      const sourceActor = game.actors?.get?.(sourceActorId) ?? null;
+      if (sourceActor?.id) candidateActors.set(sourceActor.id, sourceActor);
+    }
+
+    let updates = 0;
+    for (const actor of candidateActors.values()) {
+      if (!actor) continue;
+      if (!game.user?.isGM && !actor.isOwner) continue;
+
+      const currentEntries = this._getTemporaryEffectEntries(actor);
+      const currentTrackersByTerrainEntryId = new Map(
+        currentEntries
+          .filter((entry) => this._isTerrainTrackerTemporaryEntry(entry, normalizedCombatId))
+          .map((entry) => [`${entry?.terrainEntryId ?? entry?.id ?? ""}`.trim(), entry])
+      );
+      const preservedEntries = currentEntries.filter(
+        (entry) => !this._isTerrainTrackerTemporaryEntry(entry, normalizedCombatId)
+      );
+      const desiredEntries = normalizedEntries
+        .filter((entry) => `${entry?.sourceActorId ?? ""}`.trim() === actor.id)
+        .map((entry) =>
+          this._buildTerrainTrackerTemporaryEntry(
+            entry,
+            currentTrackersByTerrainEntryId.get(`${entry?.id ?? ""}`.trim()) ?? null
+          )
+        )
+        .filter(Boolean);
+      const nextEntries = [...preservedEntries, ...desiredEntries];
+
+      if (JSON.stringify(nextEntries) === JSON.stringify(currentEntries)) continue;
+      await this._setTemporaryEffectEntries(actor, nextEntries);
+      updates += 1;
+    }
+
+    return updates;
   }
 
   async _trackTemporaryConditionEffect({
@@ -17048,9 +17158,7 @@ export class PokRoleActor extends Actor {
       game.i18n.format("POKROLE.Chat.GenericRollFlavor", {
         actor: this.name
       });
-    const roll = await new Roll(successPoolFormula(normalizedDicePool)).evaluate({
-      async: true
-    });
+    const roll = await new Roll(successPoolFormula(normalizedDicePool)).evaluate();
     let rawSuccesses = toNumber(roll.total, 0);
     const luckyChantReroll = await this._applyLuckyChantReroll(
       rawSuccesses,
