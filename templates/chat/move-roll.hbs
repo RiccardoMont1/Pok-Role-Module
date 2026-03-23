@@ -72,8 +72,19 @@
   <section class="chat-card-section">
     <h4>{{localize "POKROLE.Chat.DamageSetup"}}</h4>
     <p><strong>{{localize "POKROLE.Move.Power"}}:</strong> {{movePower}} | <strong>{{damageAttributeLabel}}:</strong> {{damageBaseValue}}</p>
+    <p>
+      <strong>Bonus Dice:</strong>
+      STAB +{{stabDice}}
+      {{#if terrainBonusDice}} | Terrain +{{terrainBonusDice}}{{/if}}
+      {{#if weatherBonusDice}} | Weather +{{weatherBonusDice}}{{/if}}
+      {{#if heldItemBonus}} | {{localize "POKROLE.Chat.HeldItemBonus"}} +{{heldItemBonus}}{{/if}}
+      {{#if expertBeltBonus}} | Expert Belt +{{expertBeltBonus}}{{/if}}
+      {{#if destroyShieldBonusDice}} | Shield Break +{{destroyShieldBonusDice}}{{/if}}
+      {{#if metronomeBonus}} | Metronome +{{metronomeBonus}}{{/if}}
+      {{#if criticalDice}} | {{localize "POKROLE.Chat.CriticalBonusDice"}} +{{criticalDice}}{{/if}}
+    </p>
     <p>{{localize "POKROLE.Chat.PoolBeforeDefense"}} {{poolBeforeDefense}} | {{localize "POKROLE.Chat.TargetDefense"}} {{defense}} | {{localize "POKROLE.Chat.FinalPool"}} {{damagePool}}</p>
-    <p>{{localize "POKROLE.Chat.DamageSuccesses"}}: {{damageSuccesses}} | STAB: +{{stabDice}}{{#if heldItemBonus}} | {{localize "POKROLE.Chat.HeldItemBonus"}}: +{{heldItemBonus}}{{/if}} | {{localize "POKROLE.Chat.CriticalBonusDice"}}: +{{criticalDice}}</p>
+    <p>{{localize "POKROLE.Chat.DamageSuccesses"}}: {{damageSuccesses}}</p>
     <p><strong>{{localize "POKROLE.Chat.TypeEffect.Label"}}:</strong> {{typeLabel}}</p>
     <p><strong>{{localize "POKROLE.Chat.FinalDamage"}}:</strong> {{finalDamage}} {{#if targetName}}({{targetName}}){{/if}}</p>
     {{#if shieldDetail}}

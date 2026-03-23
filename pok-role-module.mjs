@@ -375,6 +375,10 @@ function normalizeCombatTerrainEntry(entry) {
     id: `${entry?.id ?? foundry.utils.randomID()}`.trim() || foundry.utils.randomID(),
     terrain,
     scope,
+    sideKey:
+      scope === "side"
+        ? (`${entry?.sideKey ?? ""}`.trim() || null)
+        : null,
     sideDisposition:
       scope === "side"
         ? Math.max(-1, Math.min(1, Math.sign(Math.trunc(Number(entry?.sideDisposition ?? 0) || 0))))

@@ -1172,6 +1172,11 @@ export class PokRoleActor extends Actor {
     return clamp(Math.sign(Math.trunc(numericValue)), -1, 1);
   }
 
+  _normalizeCombatSideKey(value) {
+    const normalized = `${value ?? ""}`.trim();
+    return normalized || null;
+  }
+
   _normalizeTerrainEntry(entry) {
     const normalizedTerrain = this._normalizeTerrainKey(entry?.terrain ?? entry?.condition);
     if (normalizedTerrain === "none") return null;
@@ -1180,6 +1185,10 @@ export class PokRoleActor extends Actor {
       id: `${entry?.id ?? foundry.utils.randomID()}`.trim() || foundry.utils.randomID(),
       terrain: normalizedTerrain,
       scope,
+      sideKey:
+        scope === "side"
+          ? this._normalizeCombatSideKey(entry?.sideKey)
+          : null,
       sideDisposition:
         scope === "side"
           ? this._normalizeTerrainSideDisposition(entry?.sideDisposition, 0)
@@ -1329,6 +1338,136 @@ export class PokRoleActor extends Actor {
     if (knownDispositions.length === 1) return knownDispositions[0] * -1;
     if (knownDispositions.length >= 2) return knownDispositions[0] * -1;
     return 0;
+  }
+
+  _hasReliableCombatDispositionSplit(combat = game.combat) {
+    if (!combat) return false;
+    const knownDispositions = new Set(
+      (combat.combatants ?? [])
+        .map((entry) => this._getActorCombatSideDisposition(entry?.actor ?? null, combat))
+        .filter((value) => value !== 0)
+    );
+    return knownDispositions.size >= 2;
+  }
+
+  _getActorTrainerSideKey(actor = this) {
+    const normalizedActor = actor ?? null;
+    if (!normalizedActor) return null;
+    if (normalizedActor.type === "trainer" && normalizedActor.id) {
+      return this._normalizeCombatSideKey(`trainer:${normalizedActor.id}`);
+    }
+    const trainerActor = this._getTrainerActorForPokemon(normalizedActor);
+    if (trainerActor?.id) {
+      return this._normalizeCombatSideKey(`trainer:${trainerActor.id}`);
+    }
+    const trainerId = `${normalizedActor?.system?.currentTrainer ?? ""}`.trim();
+    if (trainerId) {
+      return this._normalizeCombatSideKey(`trainer:${trainerId}`);
+    }
+    return null;
+  }
+
+  _getActorCombatSideKey(actor = this, combat = game.combat) {
+    const normalizedActor = actor ?? null;
+    if (!normalizedActor) return null;
+
+    const overrideKey = this._normalizeCombatSideKey(
+      normalizedActor.getFlag?.(POKROLE.ID, "combat.sideKeyOverride")
+    );
+    if (overrideKey) return overrideKey;
+
+    if (this._hasReliableCombatDispositionSplit(combat)) {
+      const disposition = this._getActorCombatSideDisposition(normalizedActor, combat);
+      if (disposition !== 0) {
+        return this._normalizeCombatSideKey(`disposition:${disposition}`);
+      }
+    }
+
+    const trainerSideKey = this._getActorTrainerSideKey(normalizedActor);
+    if (trainerSideKey) return trainerSideKey;
+
+    const disposition = this._getActorCombatSideDisposition(normalizedActor, combat);
+    if (disposition !== 0) {
+      return this._normalizeCombatSideKey(`disposition:${disposition}`);
+    }
+
+    const combatant = this._getCombatantForActor(normalizedActor, combat);
+    if (combatant?.id) {
+      return this._normalizeCombatSideKey(`combatant:${combatant.id}`);
+    }
+
+    if (normalizedActor.id) {
+      return this._normalizeCombatSideKey(`actor:${normalizedActor.id}`);
+    }
+    return null;
+  }
+
+  _getActorCombatSideReference(actor = this, combat = game.combat) {
+    return {
+      sideKey: this._getActorCombatSideKey(actor, combat),
+      sideDisposition: this._getActorCombatSideDisposition(actor, combat)
+    };
+  }
+
+  _doesCombatSideEntryMatchReference(entry, sideReference = {}) {
+    const entrySideKey = this._normalizeCombatSideKey(entry?.sideKey);
+    const entrySideDisposition = this._normalizeTerrainSideDisposition(entry?.sideDisposition, 0);
+    const referenceSideKey = this._normalizeCombatSideKey(sideReference?.sideKey);
+    const referenceSideDisposition = this._normalizeTerrainSideDisposition(
+      sideReference?.sideDisposition,
+      0
+    );
+    if (entrySideKey && referenceSideKey) {
+      return entrySideKey === referenceSideKey;
+    }
+    if (entrySideDisposition !== 0 && referenceSideDisposition !== 0) {
+      return entrySideDisposition === referenceSideDisposition;
+    }
+    if (entrySideKey && !referenceSideKey) return false;
+    if (!entrySideKey && referenceSideKey) return false;
+    return false;
+  }
+
+  _getOpposingCombatSideReference(actor = this, combat = game.combat) {
+    if (!combat) {
+      return { sideKey: null, sideDisposition: 0 };
+    }
+    const ownReference = this._getActorCombatSideReference(actor, combat);
+    const opposingReferences = [];
+    for (const combatant of combat.combatants ?? []) {
+      const combatantActor = combatant?.actor ?? null;
+      if (!combatantActor || combatantActor.id === actor?.id) continue;
+      const sideReference = this._getActorCombatSideReference(combatantActor, combat);
+      if (sideReference.sideKey && ownReference.sideKey && sideReference.sideKey === ownReference.sideKey) {
+        continue;
+      }
+      if (
+        !sideReference.sideKey &&
+        !ownReference.sideKey &&
+        sideReference.sideDisposition !== 0 &&
+        sideReference.sideDisposition === ownReference.sideDisposition
+      ) {
+        continue;
+      }
+      opposingReferences.push(sideReference);
+    }
+    const uniqueReferences = opposingReferences.filter((candidate, index, entries) =>
+      entries.findIndex((entry) =>
+        this._normalizeCombatSideKey(entry?.sideKey) === this._normalizeCombatSideKey(candidate?.sideKey) &&
+        this._normalizeTerrainSideDisposition(entry?.sideDisposition, 0) ===
+          this._normalizeTerrainSideDisposition(candidate?.sideDisposition, 0)
+      ) === index
+    );
+    if (uniqueReferences.length > 0) return uniqueReferences[0];
+
+    const ownDisposition = this._getActorCombatSideDisposition(actor, combat);
+    if (ownDisposition !== 0) {
+      return {
+        sideKey: this._normalizeCombatSideKey(`disposition:${ownDisposition * -1}`),
+        sideDisposition: ownDisposition * -1
+      };
+    }
+    return { sideKey: null, sideDisposition: 0 };
   }
 
   _getCombatantForActor(actor = this, combat = game.combat) {
@@ -1894,10 +2033,12 @@ export class PokRoleActor extends Actor {
   _normalizeSideFieldEntry(entry = {}) {
     const kind = this._normalizeSideFieldKind(entry?.kind);
     const sideDisposition = this._normalizeTerrainSideDisposition(entry?.sideDisposition, 0);
-    if (sideDisposition === 0) return null;
+    const sideKey = this._normalizeCombatSideKey(entry?.sideKey);
+    if (sideDisposition === 0 && !sideKey) return null;
     return {
       id: `${entry?.id ?? foundry.utils.randomID()}`.trim() || foundry.utils.randomID(),
       kind,
+      sideKey,
       sideDisposition,
       protection: kind === "force-field" ? this._normalizeForceFieldProtection(entry?.protection) : "physical",
       hazard: kind === "hazard" ? `${entry?.hazard ?? "generic"}`.trim().toLowerCase() || "generic" : "",
@@ -1942,16 +2083,21 @@ export class PokRoleActor extends Actor {
   getActiveSideFieldEntries(actor = this, options = {}) {
     const combat = options.combat ?? game.combat;
     if (!combat) return [];
-    const sideDisposition =
+    const sideReference =
       options.all === true
         ? null
-        : this._normalizeTerrainSideDisposition(
-            options.sideDisposition,
-            this._getActorCombatSideDisposition(actor, combat)
-          );
+        : {
+            sideKey: this._normalizeCombatSideKey(
+              options.sideKey ?? this._getActorCombatSideKey(actor, combat)
+            ),
+            sideDisposition: this._normalizeTerrainSideDisposition(
+              options.sideDisposition,
+              this._getActorCombatSideDisposition(actor, combat)
+            )
+          };
     const kindFilter = `${options.kind ?? ""}`.trim().toLowerCase();
     return this._getCombatSideFieldEntries(combat).filter((entry) => {
-      if (sideDisposition !== null && entry.sideDisposition !== sideDisposition) return false;
+      if (sideReference !== null && !this._doesCombatSideEntryMatchReference(entry, sideReference)) return false;
       if (kindFilter && entry.kind !== kindFilter) return false;
       return true;
     });
@@ -1968,7 +2114,7 @@ export class PokRoleActor extends Actor {
     if (!normalizedEntry) return null;
     const currentEntries = this._getCombatSideFieldEntries(combat).filter((candidate) => {
       if (candidate.kind !== normalizedEntry.kind) return true;
-      if (candidate.sideDisposition !== normalizedEntry.sideDisposition) return true;
+      if (!this._doesCombatSideEntryMatchReference(candidate, normalizedEntry)) return true;
       if (normalizedEntry.kind === "force-field") {
         return candidate.protection !== normalizedEntry.protection;
       }
@@ -1982,19 +2128,24 @@ export class PokRoleActor extends Actor {
   async clearSideFieldEntries(options = {}, combat = game.combat) {
     if (!combat) return 0;
     const clearAll = options.all === true;
-    const sideDisposition =
+    const sideReference =
       clearAll
         ? null
-        : this._normalizeTerrainSideDisposition(
-            options.sideDisposition,
-            this._getActorCombatSideDisposition(this, combat)
-          );
+        : {
+            sideKey: this._normalizeCombatSideKey(
+              options.sideKey ?? this._getActorCombatSideKey(this, combat)
+            ),
+            sideDisposition: this._normalizeTerrainSideDisposition(
+              options.sideDisposition,
+              this._getActorCombatSideDisposition(this, combat)
+            )
+          };
     const clearKind = `${options.kind ?? ""}`.trim().toLowerCase();
     const hazardKey = `${options.hazard ?? ""}`.trim().toLowerCase();
     const protection = this._normalizeForceFieldProtection(options.protection ?? "");
     const currentEntries = this._getCombatSideFieldEntries(combat);
     const nextEntries = currentEntries.filter((entry) => {
-      if (sideDisposition !== null && entry.sideDisposition !== sideDisposition) return true;
+      if (sideReference !== null && !this._doesCombatSideEntryMatchReference(entry, sideReference)) return true;
       if (clearKind && entry.kind !== clearKind) return true;
       if (entry.kind === "hazard" && hazardKey && entry.hazard !== hazardKey) return true;
       if (entry.kind === "force-field" && options.protection && entry.protection !== protection) return true;
@@ -2010,8 +2161,10 @@ export class PokRoleActor extends Actor {
   async clearSideFieldsForActorSide(actor = this, options = {}) {
     const combat = game.combat;
     if (!combat) return 0;
+    const sideReference = this._getActorCombatSideReference(actor, combat);
     return this.clearSideFieldEntries({
-      sideDisposition: this._getActorCombatSideDisposition(actor, combat),
+      sideKey: sideReference.sideKey,
+      sideDisposition: sideReference.sideDisposition,
       kind: options.kind ?? "",
       all: false
     }, combat);
@@ -2019,18 +2172,19 @@ export class PokRoleActor extends Actor {
 
   async swapSideFieldEntries(actor = this, combat = game.combat) {
     if (!combat) return false;
-    const sourceSide = this._getActorCombatSideDisposition(actor, combat);
-    if (sourceSide === 0) return false;
-    const foeSide = sourceSide === 1 ? -1 : 1;
+    const sourceSide = this._getActorCombatSideReference(actor, combat);
+    const foeSide = this._getOpposingCombatSideReference(actor, combat);
+    if (!sourceSide.sideKey && sourceSide.sideDisposition === 0) return false;
+    if (!foeSide.sideKey && foeSide.sideDisposition === 0) return false;
     let changed = false;
     const nextEntries = this._getCombatSideFieldEntries(combat).map((entry) => {
-      if (entry.sideDisposition === sourceSide) {
+      if (this._doesCombatSideEntryMatchReference(entry, sourceSide)) {
         changed = true;
-        return { ...entry, sideDisposition: foeSide };
+        return { ...entry, sideKey: foeSide.sideKey, sideDisposition: foeSide.sideDisposition };
       }
-      if (entry.sideDisposition === foeSide) {
+      if (this._doesCombatSideEntryMatchReference(entry, foeSide)) {
         changed = true;
-        return { ...entry, sideDisposition: sourceSide };
+        return { ...entry, sideKey: sourceSide.sideKey, sideDisposition: sourceSide.sideDisposition };
       }
       return entry;
     });
@@ -2233,14 +2387,14 @@ export class PokRoleActor extends Actor {
   getActiveTerrainKeysForActor(actor = this, options = {}) {
     const combat = options.combat ?? game.combat;
     const terrainEntries = this._getCombatTerrainEntries(combat);
-    const sideDisposition = this._getActorCombatSideDisposition(actor, combat);
+    const sideReference = this._getActorCombatSideReference(actor, combat);
     const keys = [];
     for (const entry of terrainEntries) {
       if (entry.scope === "battlefield") {
         keys.push(entry.terrain);
         continue;
       }
-      if (entry.scope === "side" && entry.sideDisposition === sideDisposition) {
+      if (entry.scope === "side" && this._doesCombatSideEntryMatchReference(entry, sideReference)) {
         keys.push(entry.terrain);
       }
     }
@@ -2250,13 +2404,13 @@ export class PokRoleActor extends Actor {
   getPreferredTerrainKeyForActor(actor = this, options = {}) {
     const combat = options.combat ?? game.combat;
     const terrainEntries = this._getCombatTerrainEntries(combat);
-    const sideDisposition = this._getActorCombatSideDisposition(actor, combat);
+    const sideReference = this._getActorCombatSideReference(actor, combat);
     const preferBattlefield = options.preferBattlefield !== false;
     const battlefieldEntry =
       terrainEntries.find((entry) => entry.scope === "battlefield") ?? null;
     const sideEntry =
       terrainEntries.find(
-        (entry) => entry.scope === "side" && entry.sideDisposition === sideDisposition
+        (entry) => entry.scope === "side" && this._doesCombatSideEntryMatchReference(entry, sideReference)
       ) ?? null;
     const preferredEntry = preferBattlefield
       ? battlefieldEntry ?? sideEntry
@@ -2346,17 +2500,22 @@ export class PokRoleActor extends Actor {
     const normalized = this._normalizeTerrainKey(terrainKey);
     const durationRounds = Math.max(Math.floor(toNumber(options.durationRounds, 0)), 0);
     const scope = this._normalizeTerrainScope(options.scope ?? "battlefield");
-    const sideDisposition =
+    const sideReference =
       scope === "side"
-        ? this._normalizeTerrainSideDisposition(
-            options.sideDisposition,
-            this._getActorCombatSideDisposition(this, combat)
-          )
+        ? {
+            sideKey: this._normalizeCombatSideKey(
+              options.sideKey ?? this._getActorCombatSideKey(this, combat)
+            ),
+            sideDisposition: this._normalizeTerrainSideDisposition(
+              options.sideDisposition,
+              this._getActorCombatSideDisposition(this, combat)
+            )
+          }
         : null;
     let terrainEntries = this._getCombatTerrainEntries(combat).filter((entry) => {
       if (scope === "battlefield") return entry.scope !== "battlefield";
       if (scope === "side") {
-        return !(entry.scope === "side" && entry.sideDisposition === sideDisposition);
+        return !(entry.scope === "side" && this._doesCombatSideEntryMatchReference(entry, sideReference));
       }
       return true;
     });
@@ -2368,7 +2527,8 @@ export class PokRoleActor extends Actor {
             id: options.id ?? foundry.utils.randomID(),
             terrain: normalized,
             scope,
-            sideDisposition,
+            sideKey: sideReference?.sideKey ?? null,
+            sideDisposition: sideReference?.sideDisposition ?? null,
             durationRounds,
             roundSet: Math.max(Math.floor(toNumber(combat.round, 0)), 0),
             sourceActorId: this.id ?? null,
@@ -2392,12 +2552,17 @@ export class PokRoleActor extends Actor {
     if (!combat) return false;
     const clearAll = options.all === true;
     const scope = this._normalizeTerrainScope(options.scope ?? "battlefield");
-    const sideDisposition =
+    const sideReference =
       scope === "side"
-        ? this._normalizeTerrainSideDisposition(
-            options.sideDisposition,
-            this._getActorCombatSideDisposition(this, combat)
-          )
+        ? {
+            sideKey: this._normalizeCombatSideKey(
+              options.sideKey ?? this._getActorCombatSideKey(this, combat)
+            ),
+            sideDisposition: this._normalizeTerrainSideDisposition(
+              options.sideDisposition,
+              this._getActorCombatSideDisposition(this, combat)
+            )
+          }
         : null;
     const terrainKey = this._normalizeTerrainKey(options.terrain);
     const currentEntries = this._getCombatTerrainEntries(combat);
@@ -2407,7 +2572,7 @@ export class PokRoleActor extends Actor {
           if (scope === "battlefield" && entry.scope !== "battlefield") return true;
           if (scope === "side") {
             if (entry.scope !== "side") return true;
-            if (entry.sideDisposition !== sideDisposition) return true;
+            if (!this._doesCombatSideEntryMatchReference(entry, sideReference)) return true;
           }
           if (terrainKey !== "none" && entry.terrain !== terrainKey) return true;
           return false;
@@ -2423,11 +2588,11 @@ export class PokRoleActor extends Actor {
   async clearTerrainsForActorSide(actor = this, options = {}) {
     const combat = game.combat;
     if (!combat) return false;
-    const sideDisposition = this._getActorCombatSideDisposition(actor, combat);
+    const sideReference = this._getActorCombatSideReference(actor, combat);
     const includeBattlefield = options.includeBattlefield === true;
     const currentEntries = this._getCombatTerrainEntries(combat);
     const nextEntries = currentEntries.filter((entry) => {
-      if (entry.scope === "side" && entry.sideDisposition === sideDisposition) return false;
+      if (entry.scope === "side" && this._doesCombatSideEntryMatchReference(entry, sideReference)) return false;
       if (includeBattlefield && entry.scope === "battlefield") return false;
       return true;
     });
@@ -2446,20 +2611,21 @@ export class PokRoleActor extends Actor {
   async swapTerrainSides(actor = this) {
     const combat = game.combat;
     if (!combat) return false;
-    const sourceSide = this._getActorCombatSideDisposition(actor, combat);
-    if (sourceSide === 0) return false;
-    const foeSide = sourceSide === 1 ? -1 : 1;
+    const sourceSide = this._getActorCombatSideReference(actor, combat);
+    const foeSide = this._getOpposingCombatSideReference(actor, combat);
+    if (!sourceSide.sideKey && sourceSide.sideDisposition === 0) return false;
+    if (!foeSide.sideKey && foeSide.sideDisposition === 0) return false;
     const currentEntries = this._getCombatTerrainEntries(combat);
     let changed = false;
     const nextEntries = currentEntries.map((entry) => {
       if (entry.scope !== "side") return entry;
-      if (entry.sideDisposition === sourceSide) {
+      if (this._doesCombatSideEntryMatchReference(entry, sourceSide)) {
         changed = true;
-        return { ...entry, sideDisposition: foeSide };
+        return { ...entry, sideKey: foeSide.sideKey, sideDisposition: foeSide.sideDisposition };
       }
-      if (entry.sideDisposition === foeSide) {
+      if (this._doesCombatSideEntryMatchReference(entry, foeSide)) {
         changed = true;
-        return { ...entry, sideDisposition: sourceSide };
+        return { ...entry, sideKey: sourceSide.sideKey, sideDisposition: sourceSide.sideDisposition };
       }
       return entry;
     });
@@ -4765,6 +4931,13 @@ export class PokRoleActor extends Actor {
         results: []
       };
     }
+    if (context?.hit === false) {
+      return {
+        skipImmediateDamage: false,
+        skipMoveSecondaryEffectSignatures: new Set(),
+        results: []
+      };
+    }
 
     const round = Math.max(Math.floor(toNumber(game.combat.round, 0)), 0);
     const sourceCombatant = game.combat.combatants?.find?.((combatant) => combatant.actor?.id === this.id) ?? null;
@@ -6551,6 +6724,7 @@ export class PokRoleActor extends Actor {
     const runtimeRule = this._getSwitcherMoveRuntimeRule(move);
     if (!runtimeRule) return [];
     const hit = options.hit !== false;
+    if (!hit) return [];
     if (runtimeRule.requiresHit && !hit) {
       return [{
         label: "Switch",
@@ -7447,17 +7621,24 @@ export class PokRoleActor extends Actor {
   async _transferSnatchableSideFieldEffects(targetActor) {
     const combat = game.combat;
     if (!(targetActor instanceof PokRoleActor) || !combat) return 0;
-    const targetSide = this._getActorCombatSideDisposition(targetActor, combat);
-    const sourceSide = this._getActorCombatSideDisposition(this, combat);
-    if (targetSide === 0 || sourceSide === 0 || targetSide === sourceSide) return 0;
+    const targetSide = this._getActorCombatSideReference(targetActor, combat);
+    const sourceSide = this._getActorCombatSideReference(this, combat);
+    if (
+      (!targetSide.sideKey && targetSide.sideDisposition === 0) ||
+      (!sourceSide.sideKey && sourceSide.sideDisposition === 0) ||
+      this._doesCombatSideEntryMatchReference(targetSide, sourceSide)
+    ) {
+      return 0;
+    }
     const entries = this._getCombatSideFieldEntries(combat);
     let transferred = 0;
     const nextEntries = entries.map((entry) => {
-      if (entry.sideDisposition !== targetSide) return entry;
+      if (!this._doesCombatSideEntryMatchReference(entry, targetSide)) return entry;
       transferred += 1;
       return {
         ...entry,
-        sideDisposition: sourceSide,
+        sideKey: sourceSide.sideKey,
+        sideDisposition: sourceSide.sideDisposition,
         sourceActorId: this.id ?? entry.sourceActorId ?? null,
         sourceActorName: this.name ?? entry.sourceActorName ?? ""
       };
@@ -8361,22 +8542,24 @@ export class PokRoleActor extends Actor {
   async _applySideFieldMoveRuntime(move, options = {}) {
     const rule = this._getSideFieldMoveRuntimeRule(move);
     if (!rule) return [];
+    if (options?.hit === false) return [];
     const hit = options.hit !== false;
     if (rule.requiresHit && !hit) return [];
     const combat = game.combat;
     if (!combat) return [];
     const results = [];
-    const ownSideDisposition = this._getActorCombatSideDisposition(this, combat);
+    const ownSideReference = this._getActorCombatSideReference(this, combat);
     for (const entry of rule.create ?? []) {
-      const sideDisposition =
+      const sideReference =
         entry.side === "foe" && options.primaryTarget instanceof PokRoleActor
-          ? this._getActorCombatSideDisposition(options.primaryTarget, combat)
+          ? this._getActorCombatSideReference(options.primaryTarget, combat)
           : entry.side === "foe"
-            ? this._getOpposingCombatSideDisposition(this, combat)
-            : ownSideDisposition;
+            ? this._getOpposingCombatSideReference(this, combat)
+            : ownSideReference;
       const payload = await this.registerSideFieldEntry({
         kind: entry.kind,
-        sideDisposition,
+        sideKey: sideReference?.sideKey ?? null,
+        sideDisposition: sideReference?.sideDisposition ?? 0,
         protection: entry.protection,
         hazard: entry.hazard,
         durationRounds: Math.max(Math.floor(toNumber(entry.durationRounds, 0)), 0),
@@ -8385,7 +8568,10 @@ export class PokRoleActor extends Actor {
       }, combat);
       results.push({
         label: "Field",
-        targetName: sideDisposition === ownSideDisposition ? this.name : options.primaryTarget?.name ?? "Opposing Side",
+        targetName:
+          this._doesCombatSideEntryMatchReference(sideReference, ownSideReference)
+            ? this.name
+            : options.primaryTarget?.name ?? "Opposing Side",
         applied: Boolean(payload),
         detail: payload
           ? payload.kind === "force-field"
@@ -8753,10 +8939,7 @@ export class PokRoleActor extends Actor {
     }
     let willBefore = currentWill;
     let willAfter = currentWill;
-    if (willCost > 0) {
-      willAfter = Math.max(currentWill - willCost, 0);
-      await this.update({ "system.resources.will.value": willAfter });
-    }
+    let appliedWillCost = 0;
 
     const confusionPenalty = this._hasConfusionPenaltyThisRound() ? 1 : 0;
     const heldReducedLowAccuracy = this._getHeldItemData()?.reducedLowAccuracy ?? 0;
@@ -8862,6 +9045,19 @@ export class PokRoleActor extends Actor {
 
       if (reaction.evaded) {
         hit = false;
+      }
+    }
+
+    if (hit && willCost > 0) {
+      appliedWillCost = willCost;
+      willAfter = Math.max(currentWill - willCost, 0);
+      try {
+        await this.update({ "system.resources.will.value": willAfter });
+      } catch (error) {
+        console.error(`${POKROLE.ID} | Failed to apply Will cost`, error);
+        ui.notifications.warn(game.i18n.localize("POKROLE.Errors.HPUpdateFailed"));
+        willAfter = currentWill;
+        appliedWillCost = 0;
       }
     }
 
@@ -9041,7 +9237,7 @@ export class PokRoleActor extends Actor {
         categoryLabel: game.i18n.localize(
           MOVE_CATEGORY_LABEL_BY_KEY[category] ?? "POKROLE.Common.Unknown"
         ),
-        willCost,
+        willCost: appliedWillCost,
         willBefore,
         willAfter,
         accuracyDicePoolBase,
@@ -9087,6 +9283,11 @@ export class PokRoleActor extends Actor {
         damageSuccesses,
         stabDice,
         heldItemBonus,
+        terrainBonusDice: firstDamageResult?.terrainBonusDice ?? 0,
+        weatherBonusDice: firstDamageResult?.weatherBonusDice ?? 0,
+        expertBeltBonus: firstDamageResult?.expertBeltBonus ?? 0,
+        destroyShieldBonusDice: firstDamageResult?.destroyShieldBonusDice ?? 0,
+        metronomeBonus: firstDamageResult?.metronomeBonus ?? 0,
         criticalDice,
         typeLabel: game.i18n.localize(typeInteraction.label),
         finalDamage,
@@ -9922,6 +10123,7 @@ export class PokRoleActor extends Actor {
       effectiveCritical,
       heldItemBonus,
       expertBeltBonus,
+      destroyShieldBonusDice,
       metronomeBonus,
       movePower,
       damageAttributeValue,
@@ -9970,7 +10172,21 @@ export class PokRoleActor extends Actor {
       combined.push(normalizedEffect);
     }
 
-    return this._sanitizeShieldMoveSecondaryEffects(move, combined);
+    return this._sanitizeRuntimeHandledSecondaryEffects(
+      move,
+      this._sanitizeShieldMoveSecondaryEffects(move, combined)
+    );
+  }
+
+  _sanitizeRuntimeHandledSecondaryEffects(move, effectList = []) {
+    const effects = Array.isArray(effectList) ? [...effectList] : [];
+    const terrainRule = this._getTerrainRuntimeMoveRule(move);
+    if (terrainRule?.terrainScope && terrainRule?.terrain) {
+      return effects.filter(
+        (effect) => this._normalizeSecondaryEffectType(effect?.effectType) !== "terrain"
+      );
+    }
+    return effects;
   }
 
   _normalizeSecondaryEffectDefinitions(effectList) {
@@ -11843,9 +12059,7 @@ export class PokRoleActor extends Actor {
     if (effect.label) return effect.label;
     const normalizedType = this._normalizeSecondaryEffectType(effect.effectType);
 
-    const effectTypeLabel = game.i18n.localize(
-      `POKROLE.Move.Secondary.Type.${this._toSecondaryTypeLabelSuffix(normalizedType)}`
-    );
+    const effectTypeLabel = this._localizeSecondaryEffectTypeLabel(normalizedType);
     if (normalizedType === "condition" && effect.condition !== "none") {
       const conditionLabel =
         this._normalizeConditionKey(effect.condition) === "burn"
@@ -11904,6 +12118,15 @@ export class PokRoleActor extends Actor {
       custom: "Custom"
     };
     return suffixByType[effectType] ?? "Custom";
+  }
+
+  _localizeSecondaryEffectTypeLabel(effectType) {
+    const suffix = this._toSecondaryTypeLabelSuffix(effectType);
+    const labelKey = `POKROLE.Move.Secondary.Type.${suffix}.Label`;
+    if (game.i18n.has?.(labelKey)) {
+      return game.i18n.localize(labelKey);
+    }
+    return game.i18n.localize(`POKROLE.Move.Secondary.Type.${suffix}`);
   }
 
   _localizeConditionName(conditionKey) {
@@ -14122,6 +14345,7 @@ export class PokRoleActor extends Actor {
   async _applyTerrainFieldMoveRuntime({ move, hit }) {
     const runtimeRule = this._getTerrainRuntimeMoveRule(move);
     if (!runtimeRule || !game.combat) return [];
+    if (hit === false) return [];
 
     const moveCategory = this._normalizeMoveCombatCategory(move?.system?.category);
     const movePrimaryMode = this._normalizeMovePrimaryMode(move?.system?.primaryMode);
@@ -14949,15 +15173,21 @@ export class PokRoleActor extends Actor {
     const durationMode = this._normalizeSecondaryDurationMode(effect.durationMode, "terrain");
     const durationRounds = this._normalizeSecondaryDurationRounds(effect.durationRounds);
     const terrainDurationRounds = durationMode === "rounds" ? durationRounds : 0;
+    const terrainTargetReference =
+      moveTargetKey === "foe-battlefield"
+        ? this._getOpposingCombatSideReference(this, game.combat)
+        : this._getActorCombatSideReference(this, game.combat);
     const terrainScope = this._normalizeTerrainScope(
       runtimeRule?.terrainScope ??
-        (this._normalizeMoveTargetKey(sourceMove?.system?.target) === "ally-battlefield"
+        (["ally-battlefield", "foe-battlefield"].includes(moveTargetKey)
           ? "side"
           : "battlefield")
     );
     const payload = await this.setActiveTerrain(terrainKey, {
       durationRounds: terrainDurationRounds,
       scope: terrainScope,
+      sideKey: terrainScope === "side" ? terrainTargetReference.sideKey : null,
+      sideDisposition: terrainScope === "side" ? terrainTargetReference.sideDisposition : null,
       sourceMoveId: sourceMove?.id ?? null,
       sourceMoveName: sourceMove?.name ?? ""
     });
