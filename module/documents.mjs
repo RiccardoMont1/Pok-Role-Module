@@ -4348,11 +4348,25 @@ export class PokRoleActor extends Actor {
     const socialAttributes = attributes.filter((trait) =>
       SOCIAL_ATTRIBUTE_KEYS.includes(trait.key)
     );
-    const skills = Object.keys(this.system.skills ?? {}).map((key) => ({
-      key,
-      label: this.localizeTrait(key),
-      value: this.getSkillValue(key)
-    }));
+    const trainerSkillOrder = [
+      "brawl", "channel", "clash", "evasion",
+      "alert", "athletic", "nature", "stealth",
+      "empathy", "etiquette", "intimidate", "perform",
+      "crafts", "lore", "medicine", "science"
+    ];
+    const pokemonSkillOrder = [
+      "brawl", "channel", "clash", "evasion",
+      "alert", "athletic", "nature", "stealth",
+      "charm", "etiquette", "intimidate", "perform"
+    ];
+    const skillOrder = this.type === "trainer" ? trainerSkillOrder : pokemonSkillOrder;
+    const skills = skillOrder
+      .filter((key) => key in (this.system.skills ?? {}))
+      .map((key) => ({
+        key,
+        label: this.localizeTrait(key),
+        value: this.getSkillValue(key)
+      }));
     const renderTraitOptions = (traits) =>
       traits
         .map(
