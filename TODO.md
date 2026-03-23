@@ -6,7 +6,7 @@
 
 - Wish al round successivo non cura
 
-Toxic Spike quando sostituisco il pokémon, il pokémon che entra non diventa avvelenato (Inoltre dovrebbe tirare un change dice e se fa 6 invece di avvelenato dovrebbe essere gravemente avvelenato) Suppongo che dià lo stesso problema per Spikes e Stealth Rock
+- Toxic Spike quando sostituisco il pokémon, il pokémon che entra non diventa avvelenato (Inoltre dovrebbe tirare un change dice e se fa 6 invece di avvelenato dovrebbe essere gravemente avvelenato) Suppongo che dià lo stesso problema per Spikes e Stealth Rock
 
 Import delle abilità e dei pokémon e rimozione del compendio "Pokédex"
 
