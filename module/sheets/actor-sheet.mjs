@@ -177,6 +177,23 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       value: Number(this.actor.system.skills?.[skill.key] ?? 0),
       track: this._buildTrack(this.actor.system.skills?.[skill.key], 5, 0)
     }));
+    if (this.actor.type === "trainer") {
+      const trainerSkillOrder = [
+        "brawl", "channel", "clash", "evasion",
+        "alert", "athletic", "nature", "stealth",
+        "empathy", "etiquette", "intimidate", "perform",
+        "crafts", "lore", "medicine", "science"
+      ];
+      context.skillDefinitions = trainerSkillOrder.map((key) => {
+        const def = SKILL_DEFINITIONS.find((s) => s.key === key);
+        return {
+          key,
+          label: def?.label ?? key,
+          value: Number(this.actor.system.skills?.[key] ?? 0),
+          track: this._buildTrack(this.actor.system.skills?.[key], 5, 0)
+        };
+      });
+    }
     context.initiativeScore = Number(this.actor.system.combat?.initiative ?? 0);
     context.baseInitiativeScore = this.actor.getInitiativeScore();
     context.defense = this.actor.getDefense("physical");
@@ -343,6 +360,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         "athletic",
         "nature",
         "stealth",
+        "charm",
         "etiquette",
         "intimidate",
         "perform"

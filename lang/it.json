@@ -294,6 +294,7 @@
       "Brawl": "Lotta",
       "Channel": "Canalizzare",
       "Clash": "Clash",
+      "Charm": "Fascino",
       "Crafts": "Artigianato",
       "Empathy": "Empatia",
       "Etiquette": "Etichetta",
@@ -304,9 +305,7 @@
       "Nature": "Natura",
       "Perform": "Esibizione",
       "Science": "Scienza",
-      "Stealth": "Furtivita",
-      "Throw": "Lancio",
-      "Weapons": "Armi"
+      "Stealth": "Furtivita"
     },
     "Move": {
       "TitlePlural": "Mosse",

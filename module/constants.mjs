@@ -64,6 +64,7 @@ export const SKILL_DEFINITIONS = Object.freeze([
   { key: "athletic", label: "POKROLE.Skills.Athletic" },
   { key: "brawl", label: "POKROLE.Skills.Brawl" },
   { key: "channel", label: "POKROLE.Skills.Channel" },
+  { key: "charm", label: "POKROLE.Skills.Charm" },
   { key: "clash", label: "POKROLE.Skills.Clash" },
   { key: "crafts", label: "POKROLE.Skills.Crafts" },
   { key: "empathy", label: "POKROLE.Skills.Empathy" },
@@ -75,9 +76,7 @@ export const SKILL_DEFINITIONS = Object.freeze([
   { key: "nature", label: "POKROLE.Skills.Nature" },
   { key: "perform", label: "POKROLE.Skills.Perform" },
   { key: "science", label: "POKROLE.Skills.Science" },
-  { key: "stealth", label: "POKROLE.Skills.Stealth" },
-  { key: "throw", label: "POKROLE.Skills.Throw" },
-  { key: "weapons", label: "POKROLE.Skills.Weapons" }
+  { key: "stealth", label: "POKROLE.Skills.Stealth" }
 ]);
 
 export const ATTRIBUTE_DEFINITIONS = Object.freeze([
@@ -108,6 +107,7 @@ export const TRAIT_LABEL_BY_KEY = Object.freeze({
   athletic: "POKROLE.Skills.Athletic",
   brawl: "POKROLE.Skills.Brawl",
   channel: "POKROLE.Skills.Channel",
+  charm: "POKROLE.Skills.Charm",
   clash: "POKROLE.Skills.Clash",
   crafts: "POKROLE.Skills.Crafts",
   empathy: "POKROLE.Skills.Empathy",
@@ -120,8 +120,6 @@ export const TRAIT_LABEL_BY_KEY = Object.freeze({
   perform: "POKROLE.Skills.Perform",
   science: "POKROLE.Skills.Science",
   stealth: "POKROLE.Skills.Stealth",
-  throw: "POKROLE.Skills.Throw",
-  weapons: "POKROLE.Skills.Weapons",
   auto: "POKROLE.Move.DamageAttributeAuto",
   none: "POKROLE.Move.NoStat",
   normal: "POKROLE.Types.Normal",

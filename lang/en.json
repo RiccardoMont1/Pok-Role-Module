@@ -294,6 +294,7 @@
       "Brawl": "Brawl",
       "Channel": "Channel",
       "Clash": "Clash",
+      "Charm": "Charm",
       "Crafts": "Crafts",
       "Empathy": "Empathy",
       "Etiquette": "Etiquette",
@@ -304,9 +305,7 @@
       "Nature": "Nature",
       "Perform": "Perform",
       "Science": "Science",
-      "Stealth": "Stealth",
-      "Throw": "Throw",
-      "Weapons": "Weapons"
+      "Stealth": "Stealth"
     },
     "Move": {
       "TitlePlural": "Moves",
