@@ -198,6 +198,11 @@
         "Unknown": "Sconosciuto"
       },
       "Ability": "Abilita",
+      "PossibleAbilitiesTitle": "Abilita Possibili",
+      "PossibleAbilities": "Abilita",
+      "HiddenAbilities": "Abilita Nascoste",
+      "HiddenAbilityShort": "Nascosta",
+      "PossibleAbilitiesHint": "Separa i nomi con virgole, punto e virgola o nuove righe.",
       "Rank": "Rank",
       "Nature": "Natura",
       "NaturePlaceholder": "Audace, Calma, Timida...",

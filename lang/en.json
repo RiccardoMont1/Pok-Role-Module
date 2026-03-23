@@ -198,6 +198,11 @@
         "Unknown": "Unknown"
       },
       "Ability": "Ability",
+      "PossibleAbilitiesTitle": "Possible Abilities",
+      "PossibleAbilities": "Abilities",
+      "HiddenAbilities": "Hidden Abilities",
+      "HiddenAbilityShort": "Hidden",
+      "PossibleAbilitiesHint": "Separate names with commas, semicolons, or line breaks.",
       "Rank": "Rank",
       "Nature": "Nature",
       "NaturePlaceholder": "Brave, Calm, Timid...",

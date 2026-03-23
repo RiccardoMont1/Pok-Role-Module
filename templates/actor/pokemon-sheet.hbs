@@ -165,7 +165,12 @@
             </label>
             <label>
               <span>{{localize "POKROLE.Pokemon.Ability"}}</span>
-              <input type="text" name="system.ability" value="{{system.ability}}" />
+              <select name="system.ability">
+                <option value="">&mdash;</option>
+                {{#each pokemonAbilityOptions as |option|}}
+                <option value="{{option.value}}" {{#if option.selected}}selected{{/if}}>{{option.label}}</option>
+                {{/each}}
+              </select>
             </label>
             <div class="pokemon-battle-item-drop" data-action="drop-battle-item">
               <span class="pokemon-trainer-drop-label">{{localize "POKROLE.Pokemon.BattleItem"}}</span>
@@ -1251,6 +1256,30 @@
                 max="99"
                 data-dtype="Number"
               />
+            </label>
+          </div>
+        </section>
+      </div>
+
+      <div class="pokemon-settings-grid" style="margin-top:12px;">
+        <section class="pokemon-settings-block">
+          <h3>{{localize "POKROLE.Pokemon.PossibleAbilitiesTitle"}}</h3>
+          <div class="pokemon-settings-list">
+            <label>
+              <span>{{localize "POKROLE.Pokemon.PossibleAbilities"}}</span>
+              <textarea
+                name="system.availableAbilities.regular"
+                rows="3"
+                placeholder="{{localize 'POKROLE.Pokemon.PossibleAbilitiesHint'}}"
+              >{{pokemonRegularAbilityList}}</textarea>
+            </label>
+            <label>
+              <span>{{localize "POKROLE.Pokemon.HiddenAbilities"}}</span>
+              <textarea
+                name="system.availableAbilities.hidden"
+                rows="2"
+                placeholder="{{localize 'POKROLE.Pokemon.PossibleAbilitiesHint'}}"
+              >{{pokemonHiddenAbilityList}}</textarea>
             </label>
           </div>
         </section>

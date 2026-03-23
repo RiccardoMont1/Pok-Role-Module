@@ -202,6 +202,10 @@ export class PokemonDataModel extends BaseCharacterDataModel {
         choices: ["male", "female", "genderless", "unknown"]
       }),
       ability: trimmedStringField(""),
+      availableAbilities: new SchemaField({
+        regular: trimmedStringField(""),
+        hidden: trimmedStringField("")
+      }),
       nature: trimmedStringField(""),
       battleItem: trimmedStringField(""),
       accessory: trimmedStringField(""),

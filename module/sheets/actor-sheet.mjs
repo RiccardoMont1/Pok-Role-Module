@@ -302,8 +302,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         "strength",
         "vitality",
         "dexterity",
-        "insight",
-        "special"
+        "insight"
       ]);
       context.trainerSocialAttributes = this._buildAttributeRows([
         "tough",
@@ -366,6 +365,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       ], trackMax.attributes, 1);
       context.pokemonSkillRows = this._buildSkillRows(pokemonSkillKeys, trackMax.skills, 0);
       context.pokemonExtraTrack = this._buildTrack(this.actor.system.extra, trackMax.extra, 0);
+      context.pokemonAbilityOptions = this._buildPokemonAbilityOptions();
+      context.pokemonRegularAbilityList = `${this.actor.system.availableAbilities?.regular ?? ""}`.trim();
+      context.pokemonHiddenAbilityList = `${this.actor.system.availableAbilities?.hidden ?? ""}`.trim();
       const pokemonExtraSkills = Array.isArray(this.actor.system.extraSkills)
         ? this.actor.system.extraSkills
         : [];
@@ -1457,6 +1459,56 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       )
       .join(", ");
     return `${baseLabel} + ${label}`;
+  }
+
+  _buildPokemonAbilityOptions() {
+    const regularAbilityNames = this._parsePokemonAbilityList(
+      this.actor.system?.availableAbilities?.regular
+    );
+    const hiddenAbilityNames = this._parsePokemonAbilityList(
+      this.actor.system?.availableAbilities?.hidden
+    );
+    const embeddedAbilityNames = this.actor.items
+      .filter((item) => item.type === "ability")
+      .map((item) => `${item.name ?? ""}`.trim())
+      .filter(Boolean);
+    const currentAbility = `${this.actor.system?.ability ?? ""}`.trim();
+    const seen = new Set();
+    const options = [];
+
+    const appendOption = (abilityName, labelSuffix = "") => {
+      const normalizedName = `${abilityName ?? ""}`.trim();
+      if (!normalizedName || seen.has(normalizedName)) return;
+      seen.add(normalizedName);
+      options.push({
+        value: normalizedName,
+        label: labelSuffix ? `${normalizedName} ${labelSuffix}` : normalizedName,
+        selected: normalizedName === currentAbility
+      });
+    };
+
+    const hiddenLabelSuffix = `(${game.i18n.localize("POKROLE.Pokemon.HiddenAbilityShort")})`;
+
+    for (const abilityName of regularAbilityNames) appendOption(abilityName);
+    for (const abilityName of hiddenAbilityNames) appendOption(abilityName, hiddenLabelSuffix);
+    for (const abilityName of embeddedAbilityNames) appendOption(abilityName);
+    appendOption(currentAbility);
+
+    return options;
+  }
+
+  _parsePokemonAbilityList(rawValue) {
+    const normalizedValue = `${rawValue ?? ""}`;
+    if (!normalizedValue.trim()) return [];
+    const seen = new Set();
+    return normalizedValue
+      .split(/[\r\n,;]+/)
+      .map((entry) => `${entry ?? ""}`.trim())
+      .filter((entry) => {
+        if (!entry || seen.has(entry)) return false;
+        seen.add(entry);
+        return true;
+      });
   }
 
   _prepareMoveData(move) {
