@@ -1573,18 +1573,21 @@ async function restoreLock(pack, shouldRelock) {
   }
 }
 
-export async function seedCompendia({ force = false, notify = true } = {}) {
+export async function seedCompendia({ force = false, forcePacks = null, notify = true } = {}) {
   if (!game.user?.isGM) {
     if (notify) ui.notifications?.warn("Only a GM can seed compendia.");
     return { totalCreated: 0, createdByPack: {} };
   }
 
+  const forcePackSet = Array.isArray(forcePacks) ? new Set(forcePacks) : null;
   const createdByPack = {};
   let totalCreated = 0;
 
   for (const pack of game.packs.values()) {
     if (pack.metadata?.packageName !== POKROLE.ID) continue;
-    const seeds = getSeedCollection(pack.metadata.name, pack.documentName).map((seed) =>
+    const packName = pack.metadata.name;
+    const forceThisPack = force || (forcePackSet?.has(packName) ?? false);
+    const seeds = getSeedCollection(packName, pack.documentName).map((seed) =>
       normalizeSeedDocument(seed)
     );
     if (!seeds.length) continue;
@@ -1592,14 +1595,14 @@ export async function seedCompendia({ force = false, notify = true } = {}) {
     const shouldRelock = await ensureUnlocked(pack);
     try {
       const index = await pack.getIndex({ fields: ["flags", "type"] });
-      if (force && index.length > 0) {
+      if (forceThisPack && index.length > 0) {
         const ids = index.map((entry) => entry._id).filter(Boolean);
         if (ids.length > 0) {
           await pack.documentClass.deleteDocuments(ids, { pack: pack.collection });
         }
       }
 
-      if (!force && pack.documentName === "Item") {
+      if (!forceThisPack && pack.documentName === "Item") {
         const incompatibleIds = index
           .filter((entry) => !VALID_ITEM_TYPES.has(`${entry.type ?? ""}`))
           .map((entry) => entry._id)
@@ -1609,7 +1612,7 @@ export async function seedCompendia({ force = false, notify = true } = {}) {
         }
       }
 
-      if (!force && pack.documentName === "Actor") {
+      if (!forceThisPack && pack.documentName === "Actor") {
         const incompatibleIds = index
           .filter((entry) => !VALID_ACTOR_TYPES.has(`${entry.type ?? ""}`))
           .map((entry) => entry._id)
@@ -1619,14 +1622,14 @@ export async function seedCompendia({ force = false, notify = true } = {}) {
         }
       }
 
-      const freshIndex = force ? [] : await pack.getIndex({ fields: ["flags", "type"] });
+      const freshIndex = forceThisPack ? [] : await pack.getIndex({ fields: ["flags", "type"] });
       const seedIdsInCode = new Set(
         seeds
           .map((seed) => seed.flags?.[POKROLE.ID]?.seedId)
           .filter((value) => typeof value === "string" && value.length > 0)
       );
 
-      if (!force) {
+      if (!forceThisPack) {
         const staleSeededDocumentIds = freshIndex
           .filter((entry) => {
             const seedId = entry.flags?.[POKROLE.ID]?.seedId;
@@ -1641,7 +1644,7 @@ export async function seedCompendia({ force = false, notify = true } = {}) {
       }
 
       const existingSeedIds = new Set(
-        (force ? [] : await pack.getIndex({ fields: ["flags"] }))
+        (forceThisPack ? [] : await pack.getIndex({ fields: ["flags"] }))
           .map((entry) => entry.flags?.[POKROLE.ID]?.seedId)
           .filter((value) => typeof value === "string" && value.length > 0)
       );
