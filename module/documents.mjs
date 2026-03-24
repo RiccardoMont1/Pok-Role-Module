@@ -1,4 +1,6 @@
 import {
+  ABILITY_TRIGGER_KEYS,
+  ABILITY_TARGET_KEYS,
   COMBAT_FLAG_KEYS,
   getSystemAssetPath,
   HEALING_CATEGORY_KEYS,
@@ -9234,13 +9236,39 @@ export class PokRoleActor extends Actor {
       roundKey,
       blockedTargetIds
     });
+    // Defender ability effects (e.g. Flame Body, Static, Poison Point on being hit)
+    const defenderAbilityResults = [];
+    if (hit && isDamagingMove) {
+      for (const damageResult of damageTargetResults) {
+        const defenderActor = damageResult?.targetActor;
+        if (
+          defenderActor instanceof PokRoleActor &&
+          defenderActor.id !== this.id &&
+          typeof defenderActor._applyDefenderAbilityEffects === "function"
+        ) {
+          const defResults = await defenderActor._applyDefenderAbilityEffects({
+            attackerActor: this,
+            move,
+            moveTargetKey,
+            hit,
+            isDamagingMove,
+            finalDamage: toNumber(damageResult?.finalDamage, 0),
+            damageTargetResults,
+            roundKey,
+            critical: damageResult?.effectiveCritical === true
+          });
+          defenderAbilityResults.push(...defResults);
+        }
+      }
+    }
     const secondaryEffectResults = [
       ...(recoilResult ? [recoilResult] : []),
       ...(Array.isArray(externalMoveRuntime?.results) ? externalMoveRuntime.results : []),
       ...(Array.isArray(dynamicMoveRuntime?.results) ? dynamicMoveRuntime.results : []),
       ...(Array.isArray(delayedMoveAutomation.results) ? delayedMoveAutomation.results : []),
       ...moveSecondaryEffectResults,
-      ...abilitySecondaryEffectResults
+      ...abilitySecondaryEffectResults,
+      ...defenderAbilityResults
     ];
     const terrainFieldMoveResults = await this._applyTerrainFieldMoveRuntime({
       move,
@@ -11999,6 +12027,255 @@ export class PokRoleActor extends Actor {
     return results;
   }
 
+  // ── Ability Runtime ──────────────────────────────────────────────────
+
+  /**
+   * Get all ability items on this actor that have automation (secondaryEffects).
+   */
+  _getAbilityItemsWithAutomation() {
+    return this.items.filter((item) => {
+      if (item.type !== "ability") return false;
+      const effects = item.system?.secondaryEffects;
+      return Array.isArray(effects) && effects.length > 0;
+    });
+  }
+
+  /**
+   * Get the secondary effects for an ability item.
+   * Prefers the new structured secondaryEffects array; falls back to legacy JSON payload in effect text.
+   */
+  _getAbilitySecondaryEffects(abilityItem) {
+    const structuredEffects = abilityItem.system?.secondaryEffects;
+    if (Array.isArray(structuredEffects) && structuredEffects.length > 0) {
+      return structuredEffects.map((effect) =>
+        this._normalizeSecondaryEffectDefinition({
+          ...effect,
+          label: `${effect?.label ?? ""}`.trim() || abilityItem.name
+        })
+      );
+    }
+    // Legacy fallback: parse JSON payload from effect text
+    const payloadEffects = this._parseAbilityAutomationPayload(abilityItem.system?.effect);
+    if (payloadEffects.length > 0) {
+      return payloadEffects.map((effect) =>
+        this._normalizeSecondaryEffectDefinition({
+          ...effect,
+          label: `${effect?.label ?? ""}`.trim() || abilityItem.name
+        })
+      );
+    }
+    return [];
+  }
+
+  /**
+   * Check if an ability trigger matches a given trigger key.
+   */
+  _abilityTriggerMatches(abilityItem, triggerKey, context = {}) {
+    const abilityTrigger = `${abilityItem.system?.abilityTrigger ?? "always"}`.trim().toLowerCase();
+
+    // Legacy: if ability uses old trigger field instead of abilityTrigger
+    if (!ABILITY_TRIGGER_KEYS.includes(abilityTrigger)) {
+      const legacyTrigger = `${abilityItem.system?.trigger ?? ""}`.trim().toLowerCase();
+      return !legacyTrigger ||
+        legacyTrigger.includes("always") ||
+        (context.hit && legacyTrigger.includes("hit")) ||
+        (!context.hit && legacyTrigger.includes("miss"));
+    }
+
+    switch (abilityTrigger) {
+      case "always":
+        // "always" abilities fire on enter-battle (to apply initial effects)
+        // and during move resolution (attacker ability context where triggerKey is "always")
+        return triggerKey === "enter-battle" || triggerKey === "always";
+      case "enter-battle":
+        return triggerKey === "enter-battle";
+      case "round-start":
+        return triggerKey === "round-start";
+      case "round-end":
+        return triggerKey === "round-end";
+      case "turn-start":
+        return triggerKey === "turn-start";
+      case "turn-end":
+        return triggerKey === "turn-end";
+      case "on-hit-by-physical":
+        return triggerKey === "on-hit-by" && context.moveCategory === "physical";
+      case "on-hit-by-special":
+        return triggerKey === "on-hit-by" && context.moveCategory === "special";
+      case "on-hit-by-any":
+        return triggerKey === "on-hit-by";
+      case "on-hit-by-contact":
+        return triggerKey === "on-hit-by" && context.moveCategory === "physical";
+      case "on-hit-by-type": {
+        if (triggerKey !== "on-hit-by") return false;
+        const condType = `${abilityItem.system?.triggerConditionType ?? ""}`.trim().toLowerCase();
+        if (!condType) return true;
+        const moveType = `${context.moveType ?? ""}`.trim().toLowerCase();
+        return condType.split(",").map((t) => t.trim()).filter(Boolean).includes(moveType);
+      }
+      case "on-deal-damage":
+        return triggerKey === "on-deal-damage" && context.hit && toNumber(context.finalDamage, 0) > 0;
+      case "on-critical-hit-received":
+        return triggerKey === "on-hit-by" && context.critical === true;
+      case "on-critical-hit-dealt":
+        return triggerKey === "on-deal-damage" && context.critical === true;
+      case "on-foe-faint":
+        return triggerKey === "on-foe-faint";
+      case "on-ally-faint":
+        return triggerKey === "on-ally-faint";
+      case "on-self-faint":
+        return triggerKey === "on-self-faint";
+      case "self-hp-half-or-less": {
+        if (!["enter-battle", "round-start", "on-hit-by", "always"].includes(triggerKey)) return false;
+        const hp = toNumber(this.system?.resources?.hp?.value, 0);
+        const hpMax = Math.max(toNumber(this.system?.resources?.hp?.max, 1), 1);
+        return hp > 0 && hp <= Math.floor(hpMax / 2);
+      }
+      case "self-hp-quarter-or-less": {
+        if (!["enter-battle", "round-start", "on-hit-by", "always"].includes(triggerKey)) return false;
+        const hp = toNumber(this.system?.resources?.hp?.value, 0);
+        const hpMax = Math.max(toNumber(this.system?.resources?.hp?.max, 1), 1);
+        return hp > 0 && hp <= Math.floor(hpMax / 4);
+      }
+      case "self-hp-full": {
+        if (!["enter-battle", "round-start", "always"].includes(triggerKey)) return false;
+        const hp = toNumber(this.system?.resources?.hp?.value, 0);
+        const hpMax = Math.max(toNumber(this.system?.resources?.hp?.max, 1), 1);
+        return hp >= hpMax;
+      }
+      case "self-has-condition": {
+        if (!["enter-battle", "round-start", "round-end", "turn-start", "always"].includes(triggerKey)) return false;
+        const condKey = `${abilityItem.system?.triggerConditionType ?? ""}`.trim().toLowerCase();
+        return condKey ? this._isConditionActive(condKey) : false;
+      }
+      case "self-missing-condition": {
+        if (!["enter-battle", "round-start", "round-end", "turn-start", "always"].includes(triggerKey)) return false;
+        const condKey = `${abilityItem.system?.triggerConditionType ?? ""}`.trim().toLowerCase();
+        return condKey ? !this._isConditionActive(condKey) : true;
+      }
+      case "target-has-condition": {
+        if (!["enter-battle", "round-start", "round-end", "always"].includes(triggerKey)) return false;
+        const condKey = `${abilityItem.system?.triggerConditionType ?? ""}`.trim().toLowerCase();
+        const target = context.targetActor ?? null;
+        return condKey && target ? target._isConditionActive?.(condKey) : false;
+      }
+      case "weather-active": {
+        if (!["enter-battle", "round-start", "always"].includes(triggerKey)) return false;
+        const condWeather = `${abilityItem.system?.triggerConditionWeather ?? ""}`.trim().toLowerCase();
+        if (!condWeather) return false;
+        const currentWeather = `${this.getActiveWeatherKey?.() ?? ""}`.trim().toLowerCase();
+        return condWeather.split(",").map((w) => w.trim()).filter(Boolean).includes(currentWeather);
+      }
+      case "terrain-active": {
+        if (!["enter-battle", "round-start", "always"].includes(triggerKey)) return false;
+        const condTerrain = `${abilityItem.system?.triggerConditionTerrain ?? ""}`.trim().toLowerCase();
+        if (!condTerrain) return false;
+        const activeTerrain = this.getActiveTerrainKey?.() ?? "";
+        return condTerrain.split(",").map((t) => t.trim()).filter(Boolean).includes(activeTerrain);
+      }
+      case "custom":
+        return triggerKey === "custom";
+      default:
+        return false;
+    }
+  }
+
+  /**
+   * Resolve target actors for an ability based on its abilityTarget field.
+   * Unlike move secondary targets, abilities need to resolve foes/allies from combat context.
+   */
+  _resolveAbilityTargetActors(abilityItem, context = {}) {
+    const abilityTarget = `${abilityItem.system?.abilityTarget ?? "self"}`.trim().toLowerCase();
+    const combat = context.combat ?? game.combat ?? null;
+    const uniqueActors = new Map();
+    const addActor = (actor) => {
+      if (!actor) return;
+      const key = actor.id ?? actor.uuid ?? actor.name;
+      if (!uniqueActors.has(key)) uniqueActors.set(key, actor);
+    };
+
+    // If context provides explicit target actors, use them
+    if (context.targetActors?.length > 0 && ["foe", "attacker"].includes(abilityTarget)) {
+      for (const actor of context.targetActors) addActor(actor);
+      return [...uniqueActors.values()];
+    }
+
+    switch (abilityTarget) {
+      case "self":
+        addActor(this);
+        break;
+      case "attacker":
+        if (context.attackerActor) addActor(context.attackerActor);
+        break;
+      case "foe":
+        if (context.attackerActor) {
+          addActor(context.attackerActor);
+        } else if (combat) {
+          const foes = this._getCombatActorsByDisposition(combat, "opposing");
+          if (foes.length > 0) addActor(foes[0]);
+        }
+        break;
+      case "all-foes":
+        if (combat) {
+          for (const foe of this._getCombatActorsByDisposition(combat, "opposing")) addActor(foe);
+        }
+        break;
+      case "ally":
+        addActor(this);
+        break;
+      case "all-allies":
+        if (combat) {
+          for (const ally of this._getCombatActorsByDisposition(combat, "same")) addActor(ally);
+        } else {
+          addActor(this);
+        }
+        break;
+      case "all-in-range":
+        if (combat) {
+          for (const combatant of combat.combatants ?? []) {
+            if (combatant.actor && !combatant.actor._isConditionActive?.("fainted")) {
+              addActor(combatant.actor);
+            }
+          }
+        } else {
+          addActor(this);
+        }
+        break;
+      default:
+        addActor(this);
+        break;
+    }
+
+    return [...uniqueActors.values()];
+  }
+
+  /**
+   * Get combat actors by disposition relative to this actor.
+   * @param {Combat} combat
+   * @param {"same"|"opposing"} side
+   * @returns {Actor[]}
+   */
+  _getCombatActorsByDisposition(combat, side = "opposing") {
+    if (!combat) return [];
+    const ownDisposition = this._getActorCombatSideDisposition(this, combat);
+    const actors = [];
+    for (const combatant of combat.combatants ?? []) {
+      const actor = combatant.actor;
+      if (!actor || actor.id === this.id) continue;
+      if (actor._isConditionActive?.("fainted") || actor._isConditionActive?.("dead")) continue;
+      const actorDisposition = this._getActorCombatSideDisposition(actor, combat);
+      if (side === "opposing" && actorDisposition !== ownDisposition && actorDisposition !== 0) {
+        actors.push(actor);
+      } else if (side === "same" && (actorDisposition === ownDisposition || actorDisposition === 0)) {
+        actors.push(actor);
+      }
+    }
+    return actors;
+  }
+
+  /**
+   * Apply ability secondary effects from the ATTACKER's abilities during move resolution.
+   * Called from rollMove() after damage and move secondary effects.
+   */
   async _applyAbilityAutomationEffects({
     move,
     moveTargetKey,
@@ -12014,32 +12291,34 @@ export class PokRoleActor extends Actor {
     if (!abilityItems.length) return [];
 
     const results = [];
+    const category = `${move?.system?.category ?? "physical"}`.trim().toLowerCase();
+    const moveType = `${move?.system?.type ?? ""}`.trim().toLowerCase();
+
     for (const abilityItem of abilityItems) {
-      const triggerText = `${abilityItem.system?.trigger ?? ""}`.trim().toLowerCase();
-      const triggerAllows =
-        !triggerText ||
-        triggerText.includes("always") ||
-        (hit && triggerText.includes("hit")) ||
-        (!hit && triggerText.includes("miss"));
-      if (!triggerAllows) continue;
+      // Check for "always" trigger or on-deal-damage trigger for attacker abilities
+      const triggerKey = hit && isDamagingMove && toNumber(finalDamage, 0) > 0 ? "on-deal-damage" : "always";
+      const matchesAlways = this._abilityTriggerMatches(abilityItem, "always", { hit, moveCategory: category, moveType });
+      const matchesDealDamage = triggerKey === "on-deal-damage" && this._abilityTriggerMatches(abilityItem, "on-deal-damage", {
+        hit, moveCategory: category, moveType, finalDamage, critical: damageTargetResults[0]?.effectiveCritical === true
+      });
 
-      const payloadEffects = this._parseAbilityAutomationPayload(abilityItem.system?.effect);
-      if (!payloadEffects.length) continue;
+      if (!matchesAlways && !matchesDealDamage) continue;
 
-      const normalizedEffects = payloadEffects.map((effect) =>
-        this._normalizeSecondaryEffectDefinition({
-          ...effect,
-          label: `${effect?.label ?? ""}`.trim() || abilityItem.name
-        })
-      );
+      const normalizedEffects = this._getAbilitySecondaryEffects(abilityItem);
+      if (!normalizedEffects.length) continue;
+
+      const abilityTargets = this._resolveAbilityTargetActors(abilityItem, {
+        targetActors,
+        combat: game.combat
+      });
 
       const effectResults = await this._applyMoveSecondaryEffects({
         move,
         sourceItem: abilityItem,
         moveTargetKey,
         secondaryEffects: normalizedEffects,
-        targetActors,
-        hit,
+        targetActors: abilityTargets,
+        hit: true,
         isDamagingMove,
         finalDamage,
         damageTargetResults,
@@ -12050,6 +12329,215 @@ export class PokRoleActor extends Actor {
     }
 
     return results;
+  }
+
+  /**
+   * Apply DEFENDER's ability effects when this actor is hit by a move.
+   * Called from rollMove() on each target actor after damage resolution.
+   */
+  async _applyDefenderAbilityEffects({
+    attackerActor,
+    move,
+    moveTargetKey,
+    hit,
+    isDamagingMove,
+    finalDamage,
+    damageTargetResults = [],
+    roundKey = null,
+    critical = false
+  }) {
+    if (!hit || !isDamagingMove) return [];
+    const abilityItems = this.items.filter((item) => item.type === "ability");
+    if (!abilityItems.length) return [];
+
+    const results = [];
+    const category = `${move?.system?.category ?? "physical"}`.trim().toLowerCase();
+    const moveType = `${move?.system?.type ?? ""}`.trim().toLowerCase();
+
+    for (const abilityItem of abilityItems) {
+      if (!this._abilityTriggerMatches(abilityItem, "on-hit-by", {
+        hit: true,
+        moveCategory: category,
+        moveType,
+        critical
+      })) continue;
+
+      const normalizedEffects = this._getAbilitySecondaryEffects(abilityItem);
+      if (!normalizedEffects.length) continue;
+
+      const abilityTargets = this._resolveAbilityTargetActors(abilityItem, {
+        attackerActor,
+        targetActors: attackerActor ? [attackerActor] : [],
+        combat: game.combat
+      });
+
+      for (const effect of normalizedEffects) {
+        // Roll chance dice for the effect
+        const baseChanceDice = this._normalizeSecondaryChanceDice(effect.chance);
+        let chanceSucceeded = true;
+        let chanceRollResults = [];
+        if (baseChanceDice > 0) {
+          const chanceRoll = await new Roll(`${baseChanceDice}d6`).evaluate();
+          chanceRollResults = chanceRoll.dice.flatMap((die) =>
+            Array.isArray(die?.results)
+              ? die.results.map((r) => Math.floor(toNumber(r?.result, 0)))
+              : []
+          );
+          chanceSucceeded = chanceRollResults.some((r) => r === 6);
+        }
+
+        if (!chanceSucceeded) {
+          results.push({
+            label: `${abilityItem.name}`,
+            targetName: game.i18n.localize("POKROLE.Common.None"),
+            applied: false,
+            detail: game.i18n.format("POKROLE.Chat.SecondaryEffectChanceFailed", {
+              rolls: chanceRollResults.join(", "),
+              dice: baseChanceDice
+            })
+          });
+          continue;
+        }
+
+        for (const targetActor of abilityTargets) {
+          const applyResult = await this._applySecondaryEffectToActor(effect, targetActor, abilityItem, {
+            moveTargetKey,
+            hit: true,
+            isDamagingMove,
+            finalDamage,
+            totalDamageDealt: toNumber(finalDamage, 0),
+            damageTargetResults
+          });
+          results.push({
+            label: `${abilityItem.name}`,
+            targetName: targetActor.name,
+            applied: applyResult.applied,
+            detail: applyResult.applied
+              ? applyResult.detail
+              : this._resolveSecondaryEffectFailureDetail(effect, targetActor, applyResult, {
+                  finalDamage,
+                  totalDamageDealt: toNumber(finalDamage, 0),
+                  damageTargetResults
+                })
+          });
+        }
+      }
+    }
+
+    return results;
+  }
+
+  /**
+   * Process ability effects for a given combat trigger phase.
+   * Called from combat hooks for enter-battle, round-start/end, turn-start/end, foe-faint, etc.
+   * @param {string} triggerKey - One of ABILITY_TRIGGER_KEYS
+   * @param {object} context - Additional context for trigger evaluation
+   * @returns {Array} Array of result objects
+   */
+  async processAbilityTriggerEffects(triggerKey, context = {}) {
+    if (this._isConditionActive?.("fainted") || this._isConditionActive?.("dead")) return [];
+
+    const abilityItems = this.items.filter((item) => item.type === "ability");
+    if (!abilityItems.length) return [];
+
+    const results = [];
+    for (const abilityItem of abilityItems) {
+      if (!this._abilityTriggerMatches(abilityItem, triggerKey, context)) continue;
+
+      const normalizedEffects = this._getAbilitySecondaryEffects(abilityItem);
+      if (!normalizedEffects.length) continue;
+
+      const abilityTargets = this._resolveAbilityTargetActors(abilityItem, {
+        combat: context.combat ?? game.combat,
+        attackerActor: context.attackerActor ?? null,
+        targetActors: context.targetActors ?? []
+      });
+
+      for (const effect of normalizedEffects) {
+        const baseChanceDice = this._normalizeSecondaryChanceDice(effect.chance);
+        let chanceSucceeded = true;
+        let chanceRollResults = [];
+        if (baseChanceDice > 0) {
+          const chanceRoll = await new Roll(`${baseChanceDice}d6`).evaluate();
+          chanceRollResults = chanceRoll.dice.flatMap((die) =>
+            Array.isArray(die?.results)
+              ? die.results.map((r) => Math.floor(toNumber(r?.result, 0)))
+              : []
+          );
+          chanceSucceeded = chanceRollResults.some((r) => r === 6);
+        }
+
+        if (!chanceSucceeded) {
+          results.push({
+            label: `${abilityItem.name}`,
+            targetName: game.i18n.localize("POKROLE.Common.None"),
+            applied: false,
+            detail: game.i18n.format("POKROLE.Chat.SecondaryEffectChanceFailed", {
+              rolls: chanceRollResults.join(", "),
+              dice: baseChanceDice
+            })
+          });
+          continue;
+        }
+
+        for (const targetActor of abilityTargets) {
+          const applyResult = await this._applySecondaryEffectToActor(effect, targetActor, abilityItem, {
+            moveTargetKey: "self",
+            hit: true,
+            isDamagingMove: false,
+            finalDamage: 0,
+            totalDamageDealt: 0,
+            damageTargetResults: []
+          });
+          results.push({
+            label: `${abilityItem.name}`,
+            targetName: targetActor.name,
+            applied: applyResult.applied,
+            detail: applyResult.applied
+              ? applyResult.detail
+              : this._resolveSecondaryEffectFailureDetail(effect, targetActor, applyResult, {
+                  finalDamage: 0,
+                  totalDamageDealt: 0,
+                  damageTargetResults: []
+                })
+          });
+        }
+      }
+    }
+
+    if (results.length > 0 && results.some((r) => r.applied)) {
+      await this._postAbilityTriggerChatMessage(triggerKey, results);
+    }
+
+    return results;
+  }
+
+  /**
+   * Post a chat message summarizing ability trigger effects.
+   */
+  async _postAbilityTriggerChatMessage(triggerKey, results = []) {
+    const appliedResults = results.filter((r) => r.applied);
+    if (!appliedResults.length) return;
+
+    const triggerLabel = game.i18n.localize(`POKROLE.Ability.Trigger.${triggerKey}`) || triggerKey;
+    const sections = appliedResults.map((r) =>
+      `<p><strong>${r.label}</strong> → ${r.targetName}: ${r.detail}</p>`
+    ).join("");
+
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `
+        <div class="pok-role-chat-card arcade-blue">
+          <header class="chat-card-header">
+            <h3>${game.i18n.localize("POKROLE.Chat.AbilityTrigger")}: ${triggerLabel}</h3>
+          </header>
+          <section class="chat-card-section">
+            <p><strong>${this.name}</strong></p>
+            ${sections}
+          </section>
+        </div>
+      `
+    });
   }
 
   _parseAbilityAutomationPayload(effectText) {
@@ -16832,6 +17320,8 @@ export class PokRoleActor extends Actor {
           sourceActorId: options?.sourceActorId ?? "",
           sourceCategory: options?.sourceCategory ?? ""
         });
+        // Ability faint triggers: on-foe-faint for the attacker, on-self-faint for the target
+        await this._processAbilityFaintTriggers(targetActor, options);
       }
     } catch (error) {
       console.error(`${POKROLE.ID} | Failed to apply damage`, error);
@@ -16846,6 +17336,54 @@ export class PokRoleActor extends Actor {
       hpBefore: hpValue,
       hpAfter
     };
+  }
+
+  /**
+   * Process ability faint triggers when a Pokémon is KO'd.
+   * Triggers on-foe-faint for the source actor, on-self-faint for the target, on-ally-faint for allies.
+   */
+  async _processAbilityFaintTriggers(faintedActor, options = {}) {
+    const combat = game.combat ?? null;
+    if (!combat) return;
+
+    const sourceActor = options?.sourceActor ?? null;
+
+    // on-foe-faint for the attacker
+    if (sourceActor && typeof sourceActor.processAbilityTriggerEffects === "function") {
+      try {
+        await sourceActor.processAbilityTriggerEffects("on-foe-faint", { combat });
+      } catch (err) {
+        console.warn(`PokRole | on-foe-faint ability processing failed for ${sourceActor.name}:`, err);
+      }
+    }
+
+    // on-self-faint for the fainted actor
+    if (faintedActor && typeof faintedActor.processAbilityTriggerEffects === "function") {
+      try {
+        await faintedActor.processAbilityTriggerEffects("on-self-faint", { combat });
+      } catch (err) {
+        console.warn(`PokRole | on-self-faint ability processing failed for ${faintedActor.name}:`, err);
+      }
+    }
+
+    // on-ally-faint for allies of the fainted actor
+    if (faintedActor && combat) {
+      const faintedDisposition = this._getActorCombatSideDisposition(faintedActor, combat);
+      for (const combatant of combat.combatants ?? []) {
+        const allyActor = combatant.actor;
+        if (!allyActor || allyActor.id === faintedActor.id) continue;
+        if (allyActor._isConditionActive?.("fainted") || allyActor._isConditionActive?.("dead")) continue;
+        const allyDisposition = this._getActorCombatSideDisposition(allyActor, combat);
+        if (allyDisposition !== faintedDisposition) continue;
+        if (typeof allyActor.processAbilityTriggerEffects === "function") {
+          try {
+            await allyActor.processAbilityTriggerEffects("on-ally-faint", { combat });
+          } catch (err) {
+            console.warn(`PokRole | on-ally-faint ability processing failed for ${allyActor.name}:`, err);
+          }
+        }
+      }
+    }
   }
 
   _evaluateTypeInteractionAgainstTypes(moveType, defenderTypes = []) {

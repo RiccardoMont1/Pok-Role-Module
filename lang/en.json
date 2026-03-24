@@ -893,6 +893,8 @@
       "RunAwaySuccess": "Escaped successfully.",
       "RunAwayFailed": "Could not escape.",
       "RoundEndAutomation": "Round End Automation",
+      "AbilityTrigger": "Ability",
+      "AbilityEnterBattle": "Enter Battle Abilities",
       "DelayedEffect": {
         "RoundStart": "Delayed Effects - Round Start",
         "RoundEnd": "Delayed Effects - Round End",

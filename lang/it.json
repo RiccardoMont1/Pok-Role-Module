@@ -905,6 +905,8 @@
       "RunAwaySuccess": "Fuga riuscita.",
       "RunAwayFailed": "Fuga fallita.",
       "RoundEndAutomation": "Automazione Fine Round",
+      "AbilityTrigger": "Abilità",
+      "AbilityEnterBattle": "Abilità Ingresso Battaglia",
       "DelayedEffect": {
         "RoundStart": "Effetti Ritardati - Inizio Round",
         "RoundEnd": "Effetti Ritardati - Fine Round",

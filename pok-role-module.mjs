@@ -453,6 +453,10 @@ async function processRoundEndCombatAutomation(combat) {
     const actor = combatant.actor;
     if (!actor || typeof actor.processRoundEndCombatAutomation !== "function") continue;
     await actor.processRoundEndCombatAutomation({ weatherKey, combatId: combat.id });
+    // Ability round-end triggers (e.g. Rain Dish, Speed Boost, Bad Dreams)
+    if (typeof actor.processAbilityTriggerEffects === "function") {
+      await actor.processAbilityTriggerEffects("round-end", { combat });
+    }
   }
 }
 
@@ -1513,6 +1517,15 @@ Hooks.on("updateCombat", async (combat, changed) => {
     ) {
       await previousActor.processTemporaryEffectSpecialDuration("turn-end", { combatId });
     }
+    // Ability turn-end triggers
+    if (
+      previousActor &&
+      previousActor.documentName === "Actor" &&
+      previousTurn !== currentTurn &&
+      typeof previousActor.processAbilityTriggerEffects === "function"
+    ) {
+      await previousActor.processAbilityTriggerEffects("turn-end", { combat });
+    }
 
     const currentActor = currentTurn !== null ? combat.turns?.[currentTurn]?.actor ?? null : null;
     if (
@@ -1532,6 +1545,16 @@ Hooks.on("updateCombat", async (combat, changed) => {
       typeof currentActor.processTurnStartStatusAutomation === "function"
     ) {
       await currentActor.processTurnStartStatusAutomation();
+    }
+    // Ability turn-start triggers
+    if (
+      !hasRoundChange &&
+      currentActor &&
+      currentActor.documentName === "Actor" &&
+      previousTurn !== currentTurn &&
+      typeof currentActor.processAbilityTriggerEffects === "function"
+    ) {
+      await currentActor.processAbilityTriggerEffects("turn-start", { combat });
     }
   }
 
@@ -1570,6 +1593,19 @@ Hooks.on("updateCombat", async (combat, changed) => {
   }
   const roundKey = `${combat.id}:${combat.round ?? 0}`;
 
+  // Enter-battle ability triggers when combat first starts (round 1)
+  if ((combat.round ?? 0) === 1 && previousRound === 0) {
+    for (const combatant of combat.combatants ?? []) {
+      const actor = combatant.actor;
+      if (!actor || typeof actor.processAbilityTriggerEffects !== "function") continue;
+      try {
+        await actor.processAbilityTriggerEffects("enter-battle", { combat });
+      } catch (err) {
+        console.warn(`PokRole | Enter-battle ability processing failed for ${actor.name}:`, err);
+      }
+    }
+  }
+
   for (const combatant of combat.combatants ?? []) {
     const actor = combatant.actor;
     if (!actor) continue;
@@ -1589,6 +1625,11 @@ Hooks.on("updateCombat", async (combat, changed) => {
 
       if (typeof actor.resetTurnState === "function") {
         await actor.resetTurnState({ roundKey, resetInitiative: false });
+      }
+
+      // Ability round-start triggers
+      if (typeof actor.processAbilityTriggerEffects === "function") {
+        await actor.processAbilityTriggerEffects("round-start", { combat });
       }
     } catch (err) {
       console.warn(`PokRole | Round-start processing failed for ${actor.name}:`, err);
@@ -1614,6 +1655,14 @@ Hooks.on("updateCombat", async (combat, changed) => {
   ) {
     await currentActor.processTurnStartStatusAutomation();
   }
+  // Ability turn-start triggers for the first combatant of the new round
+  if (
+    currentActor &&
+    currentActor.documentName === "Actor" &&
+    typeof currentActor.processAbilityTriggerEffects === "function"
+  ) {
+    await currentActor.processAbilityTriggerEffects("turn-start", { combat });
+  }
 
   LAST_COMBAT_TURN_STATE.set(combatId, {
     turn: Number.isInteger(combat.turn) ? combat.turn : null,
@@ -1638,6 +1687,20 @@ Hooks.on("deleteCombat", async (combat) => {
 
 Hooks.on("createCombat", () => {
   void renderMoveQueueOverlay();
+});
+
+// Enter-battle ability triggers when a combatant is added to combat
+Hooks.on("createCombatant", async (combatant) => {
+  const combat = combatant?.combat ?? game.combat;
+  if (!combat || !combat.active || (combat.round ?? 0) < 1) return;
+  const actor = combatant?.actor ?? null;
+  if (!actor || actor.documentName !== "Actor") return;
+  if (typeof actor.processAbilityTriggerEffects !== "function") return;
+  try {
+    await actor.processAbilityTriggerEffects("enter-battle", { combat });
+  } catch (err) {
+    console.warn(`PokRole | Enter-battle ability processing failed for ${actor.name}:`, err);
+  }
 });
 
 Hooks.on("updateCombat", () => {
