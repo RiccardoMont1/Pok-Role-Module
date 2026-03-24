@@ -12041,6 +12041,36 @@ export class PokRoleActor extends Actor {
   }
 
   /**
+   * Get the active ability items for this actor.
+   * Returns only the ability matching system.ability (the currently selected ability).
+   * Looks first in embedded items, then falls back to searching the abilities compendium.
+   */
+  async _getActiveAbilityItems() {
+    const activeAbilityName = `${this.system?.ability ?? ""}`.trim();
+    if (!activeAbilityName) return [];
+
+    // Check embedded items first
+    const embeddedMatch = this.items.find(
+      (item) => item.type === "ability" && item.name === activeAbilityName
+    );
+    if (embeddedMatch) return [embeddedMatch];
+
+    // Fallback: search compendium packs for the ability
+    for (const pack of game.packs.filter((p) => p.documentName === "Item")) {
+      const index = await pack.getIndex();
+      const entry = index.find(
+        (e) => e.type === "ability" && e.name === activeAbilityName
+      );
+      if (entry) {
+        const doc = await pack.getDocument(entry._id);
+        if (doc) return [doc];
+      }
+    }
+
+    return [];
+  }
+
+  /**
    * Get the secondary effects for an ability item.
    * Prefers the new structured secondaryEffects array; falls back to legacy JSON payload in effect text.
    */
@@ -12287,7 +12317,7 @@ export class PokRoleActor extends Actor {
     roundKey = null,
     blockedTargetIds = null
   }) {
-    const abilityItems = this.items.filter((item) => item.type === "ability");
+    const abilityItems = await this._getActiveAbilityItems();
     if (!abilityItems.length) return [];
 
     const results = [];
@@ -12347,7 +12377,7 @@ export class PokRoleActor extends Actor {
     critical = false
   }) {
     if (!hit || !isDamagingMove) return [];
-    const abilityItems = this.items.filter((item) => item.type === "ability");
+    const abilityItems = await this._getActiveAbilityItems();
     if (!abilityItems.length) return [];
 
     const results = [];
@@ -12437,7 +12467,7 @@ export class PokRoleActor extends Actor {
   async processAbilityTriggerEffects(triggerKey, context = {}) {
     if (this._isConditionActive?.("fainted") || this._isConditionActive?.("dead")) return [];
 
-    const abilityItems = this.items.filter((item) => item.type === "ability");
+    const abilityItems = await this._getActiveAbilityItems();
     if (!abilityItems.length) return [];
 
     const results = [];
