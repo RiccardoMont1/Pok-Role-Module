@@ -384,6 +384,19 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       context.pokemonAbilityOptions = this._buildPokemonAbilityOptions();
       context.pokemonRegularAbilityList = `${this.actor.system.availableAbilities?.regular ?? ""}`.trim();
       context.pokemonHiddenAbilityList = `${this.actor.system.availableAbilities?.hidden ?? ""}`.trim();
+
+      const embeddedAbilities = this.actor.items.filter((i) => i.type === "ability");
+      const activeAbilityName = `${this.actor.system?.ability ?? ""}`.trim();
+      const activeItem = embeddedAbilities.find((i) => i.name === activeAbilityName) ?? null;
+      context.activeAbilityData = activeItem
+        ? { id: activeItem.id, name: activeItem.name, img: activeItem.img }
+        : null;
+      context.regularAbilityItems = embeddedAbilities
+        .filter((i) => i.getFlag?.("pok-role-system", "abilitySlot") !== "hidden")
+        .map((i) => ({ id: i.id, name: i.name, img: i.img }));
+      context.hiddenAbilityItems = embeddedAbilities
+        .filter((i) => i.getFlag?.("pok-role-system", "abilitySlot") === "hidden")
+        .map((i) => ({ id: i.id, name: i.name, img: i.img }));
       const pokemonExtraSkills = Array.isArray(this.actor.system.extraSkills)
         ? this.actor.system.extraSkills
         : [];
@@ -641,6 +654,15 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     );
     html.find("[data-action='clear-battle-item']").on("click", (event) =>
       this._onClearBattleItem(event)
+    );
+    html.find("[data-action='open-ability-item']").on("click", (event) =>
+      this._onOpenAbilityItem(event)
+    );
+    html.find("[data-action='remove-ability-item']").on("click", (event) =>
+      this._onRemoveAbilityItem(event)
+    );
+    html.find("[data-action='clear-active-ability']").on("click", (event) =>
+      this._onClearActiveAbility(event)
     );
 
     html.find("[data-action='create-move']").on("click", (event) =>
@@ -2092,6 +2114,26 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const learnsetZone = event.target.closest(".learnset-rank-drop-zone");
     if (learnsetZone) return;
 
+    // Handle ability drop
+    const abilityDrop = event.target.closest("[data-action='drop-ability']");
+    if (abilityDrop && this.actor.type === "pokemon") {
+      let data;
+      try {
+        data = JSON.parse(event.dataTransfer.getData("text/plain"));
+      } catch {
+        return;
+      }
+      if (data.type !== "Item") return;
+      const item = await fromUuid(data.uuid);
+      if (!item || item.type !== "ability") {
+        ui.notifications.warn(game.i18n.localize("POKROLE.Pokemon.DropAbilityOnly"));
+        return;
+      }
+      const slot = abilityDrop.dataset.abilitySlot || "regular";
+      await this._handleAbilityDrop(item, slot);
+      return;
+    }
+
     // Handle battle item drop
     const battleItemDrop = event.target.closest("[data-action='drop-battle-item']");
     if (battleItemDrop && this.actor.type === "pokemon") {
@@ -2141,6 +2183,69 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     event.preventDefault();
     if (this.actor.type !== "pokemon") return;
     await this.actor.update({ "system.battleItem": "" });
+  }
+
+  async _handleAbilityDrop(sourceItem, slot) {
+    const existing = this.actor.items.find(
+      (i) => i.type === "ability" && i.name === sourceItem.name
+    );
+    if (existing) {
+      ui.notifications.info(game.i18n.format("POKROLE.Pokemon.AbilityAlreadyExists", { name: sourceItem.name }));
+      if (slot === "active") {
+        await this.actor.update({ "system.ability": sourceItem.name });
+      }
+      return;
+    }
+    const itemData = sourceItem.toObject();
+    foundry.utils.setProperty(itemData, "flags.pok-role-system.abilitySlot", slot === "hidden" ? "hidden" : "regular");
+    const created = await this.actor.createEmbeddedDocuments("Item", [itemData]);
+    if (slot === "active" && created?.[0]) {
+      await this.actor.update({ "system.ability": created[0].name });
+    }
+    await this._syncAbilityTextFields();
+  }
+
+  async _onOpenAbilityItem(event) {
+    event.preventDefault();
+    const itemId = event.currentTarget.dataset.itemId;
+    if (!itemId) return;
+    const item = this.actor.items.get(itemId);
+    if (item) item.sheet.render(true);
+  }
+
+  async _onRemoveAbilityItem(event) {
+    event.preventDefault();
+    if (this.actor.type !== "pokemon") return;
+    const itemId = event.currentTarget.dataset.itemId;
+    if (!itemId) return;
+    const item = this.actor.items.get(itemId);
+    if (!item || item.type !== "ability") return;
+    const currentAbility = `${this.actor.system?.ability ?? ""}`.trim();
+    if (item.name === currentAbility) {
+      await this.actor.update({ "system.ability": "" });
+    }
+    await item.delete();
+    await this._syncAbilityTextFields();
+  }
+
+  async _onClearActiveAbility(event) {
+    event.preventDefault();
+    if (this.actor.type !== "pokemon") return;
+    await this.actor.update({ "system.ability": "" });
+  }
+
+  async _syncAbilityTextFields() {
+    const abilities = this.actor.items.filter((i) => i.type === "ability");
+    const regular = abilities
+      .filter((i) => i.getFlag?.("pok-role-system", "abilitySlot") !== "hidden")
+      .map((i) => i.name);
+    const hidden = abilities
+      .filter((i) => i.getFlag?.("pok-role-system", "abilitySlot") === "hidden")
+      .map((i) => i.name);
+    await this.actor.update({
+      "system.availableAbilities.regular": regular.join(", "),
+      "system.availableAbilities.hidden": hidden.join(", ")
+    });
   }
 
   async _onClearTrainerField(event) {

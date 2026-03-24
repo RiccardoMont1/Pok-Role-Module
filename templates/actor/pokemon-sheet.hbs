@@ -163,15 +163,26 @@
                 placeholder="{{localize 'POKROLE.Pokemon.NaturePlaceholder'}}"
               />
             </label>
-            <label>
-              <span>{{localize "POKROLE.Pokemon.Ability"}}</span>
+            <div class="pokemon-ability-active-drop" data-action="drop-ability" data-ability-slot="active">
+              <span class="pokemon-trainer-drop-label">{{localize "POKROLE.Pokemon.Ability"}}</span>
+              {{#if activeAbilityData}}
+              <div class="pokemon-trainer-drop-value">
+                <img src="{{activeAbilityData.img}}" width="24" height="24" />
+                <a class="pokemon-ability-link" data-action="open-ability-item" data-item-id="{{activeAbilityData.id}}">{{activeAbilityData.name}}</a>
+                <button type="button" class="icon-button pokemon-trainer-clear" data-action="clear-active-ability" title="{{localize 'POKROLE.Actions.Delete'}}">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              {{else}}
+              {{!-- Fallback: select from embedded abilities --}}
               <select name="system.ability">
                 <option value="">&mdash;</option>
                 {{#each pokemonAbilityOptions as |option|}}
                 <option value="{{option.value}}" {{#if option.selected}}selected{{/if}}>{{option.label}}</option>
                 {{/each}}
               </select>
-            </label>
+              {{/if}}
+            </div>
             <div class="pokemon-battle-item-drop" data-action="drop-battle-item">
               <span class="pokemon-trainer-drop-label">{{localize "POKROLE.Pokemon.BattleItem"}}</span>
               {{#if battleItemData}}
@@ -1264,23 +1275,47 @@
       <div class="pokemon-settings-grid" style="margin-top:12px;">
         <section class="pokemon-settings-block">
           <h3>{{localize "POKROLE.Pokemon.PossibleAbilitiesTitle"}}</h3>
-          <div class="pokemon-settings-list">
-            <label>
-              <span>{{localize "POKROLE.Pokemon.PossibleAbilities"}}</span>
-              <textarea
-                name="system.availableAbilities.regular"
-                rows="3"
-                placeholder="{{localize 'POKROLE.Pokemon.PossibleAbilitiesHint'}}"
-              >{{pokemonRegularAbilityList}}</textarea>
-            </label>
-            <label>
-              <span>{{localize "POKROLE.Pokemon.HiddenAbilities"}}</span>
-              <textarea
-                name="system.availableAbilities.hidden"
-                rows="2"
-                placeholder="{{localize 'POKROLE.Pokemon.PossibleAbilitiesHint'}}"
-              >{{pokemonHiddenAbilityList}}</textarea>
-            </label>
+          <div class="pokemon-settings-list pokemon-ability-settings">
+            <div class="pokemon-ability-drop-zone" data-action="drop-ability" data-ability-slot="regular">
+              <span class="pokemon-trainer-drop-label">{{localize "POKROLE.Pokemon.PossibleAbilities"}}</span>
+              {{#if regularAbilityItems.length}}
+              <div class="pokemon-ability-item-list">
+                {{#each regularAbilityItems as |ab|}}
+                <div class="pokemon-ability-item-row">
+                  <img src="{{ab.img}}" width="20" height="20" />
+                  <a class="pokemon-ability-link" data-action="open-ability-item" data-item-id="{{ab.id}}">{{ab.name}}</a>
+                  <button type="button" class="icon-button pokemon-trainer-clear" data-action="remove-ability-item" data-item-id="{{ab.id}}" title="{{localize 'POKROLE.Actions.Delete'}}">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+                {{/each}}
+              </div>
+              {{/if}}
+              <div class="pokemon-ability-drop-placeholder">
+                <i class="fas fa-hand-point-down"></i>
+                <span>{{localize "POKROLE.Pokemon.DropAbilityHint"}}</span>
+              </div>
+            </div>
+            <div class="pokemon-ability-drop-zone" data-action="drop-ability" data-ability-slot="hidden">
+              <span class="pokemon-trainer-drop-label">{{localize "POKROLE.Pokemon.HiddenAbilities"}}</span>
+              {{#if hiddenAbilityItems.length}}
+              <div class="pokemon-ability-item-list">
+                {{#each hiddenAbilityItems as |ab|}}
+                <div class="pokemon-ability-item-row">
+                  <img src="{{ab.img}}" width="20" height="20" />
+                  <a class="pokemon-ability-link" data-action="open-ability-item" data-item-id="{{ab.id}}">{{ab.name}}</a>
+                  <button type="button" class="icon-button pokemon-trainer-clear" data-action="remove-ability-item" data-item-id="{{ab.id}}" title="{{localize 'POKROLE.Actions.Delete'}}">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+                {{/each}}
+              </div>
+              {{/if}}
+              <div class="pokemon-ability-drop-placeholder">
+                <i class="fas fa-hand-point-down"></i>
+                <span>{{localize "POKROLE.Pokemon.DropAbilityHint"}}</span>
+              </div>
+            </div>
           </div>
         </section>
       </div>
