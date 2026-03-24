@@ -1,0 +1,516 @@
+/**
+ * Script to generate ability-seeds.mjs from all_abilities.json
+ * Run with: node scripts/generate-ability-seeds.mjs
+ */
+import { readFileSync, writeFileSync } from "fs";
+import { resolve, dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const abilitiesPath = resolve(__dirname, "../../all_abilities.json");
+const outputPath = resolve(__dirname, "../module/seeds/generated/ability-seeds.mjs");
+
+const abilities = JSON.parse(readFileSync(abilitiesPath, "utf-8"));
+
+// ---- AUTOMATION DEFINITIONS for Category A (fully automatable) ----
+
+const AUTOMATIONS = {
+  // --- Condition immunities ---
+  "insomnia": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: sleep" },
+  "vital-spirit": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: sleep" },
+  "limber": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: paralyzed" },
+  "magma-armor": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: frozen" },
+  "own-tempo": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: confused" },
+  "water-veil": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: burn" },
+  "oblivious": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: infatuated" },
+  "immunity": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: poisoned, badly-poisoned" },
+  "inner-focus": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: flinch. Intimidate has no effect." },
+
+  // --- Stat boost with HP ≤ 50% ---
+  "anger-shell": {
+    type: "passive", trigger: "self-hp-half-or-less", target: "self",
+    effects: [
+      { effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" },
+      { effectType: "stat", stat: "special", amount: 1, trigger: "always", target: "self" },
+      { effectType: "stat", stat: "dexterity", amount: 1, trigger: "always", target: "self" },
+      { effectType: "combat-stat", stat: "defense", amount: -1, trigger: "always", target: "self" },
+      { effectType: "combat-stat", stat: "specialDefense", amount: -1, trigger: "always", target: "self" }
+    ]
+  },
+  "berserk": {
+    type: "passive", trigger: "self-hp-half-or-less", target: "self",
+    effects: [{ effectType: "stat", stat: "special", amount: 2, trigger: "always", target: "self" }]
+  },
+
+  // --- Stat boost with condition ---
+  "flare-boost": {
+    type: "passive", trigger: "self-has-condition", target: "self",
+    triggerConditionType: "burn",
+    effects: [{ effectType: "stat", stat: "special", amount: 2, trigger: "always", target: "self" }]
+  },
+  "guts": {
+    type: "passive", trigger: "self-has-condition", target: "self",
+    triggerConditionType: "burn,frozen,paralyzed,poisoned,sleep",
+    effects: [{ effectType: "stat", stat: "strength", amount: 2, trigger: "always", target: "self" }]
+  },
+  "marvel-scale": {
+    type: "passive", trigger: "self-has-condition", target: "self",
+    triggerConditionType: "burn,frozen,paralyzed,poisoned,sleep",
+    effects: [{ effectType: "stat", stat: "defense", amount: 2, trigger: "always", target: "self" }]
+  },
+  "quick-feet": {
+    type: "passive", trigger: "self-has-condition", target: "self",
+    triggerConditionType: "burn,frozen,paralyzed,poisoned,sleep",
+    effects: [{ effectType: "stat", stat: "dexterity", amount: 2, trigger: "always", target: "self" }]
+  },
+  "toxic-boost": {
+    type: "passive", trigger: "self-has-condition", target: "self",
+    triggerConditionType: "poisoned,badly-poisoned",
+    effects: [{ effectType: "stat", stat: "strength", amount: 2, trigger: "always", target: "self" }]
+  },
+
+  // --- Always-on stat boosts ---
+  "huge-power": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" }]
+  },
+  "pure-power": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" }]
+  },
+
+  // --- Weather on entry ---
+  "drizzle": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "weather", weather: "rain", trigger: "always", target: "self" }]
+  },
+  "drought": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "weather", weather: "sunny", trigger: "always", target: "self" }]
+  },
+  "sand-stream": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "weather", weather: "sandstorm", trigger: "always", target: "self" }]
+  },
+  "snow-warning": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "weather", weather: "hail", trigger: "always", target: "self" }]
+  },
+  "delta-stream": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "weather", weather: "strong-winds", trigger: "always", target: "self" }]
+  },
+  "desolate-land": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "weather", weather: "harsh-sunlight", trigger: "always", target: "self" }]
+  },
+  "primordial-sea": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "weather", weather: "typhoon", trigger: "always", target: "self" }]
+  },
+
+  // --- Terrain on entry ---
+  "electric-surge": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "terrain", terrain: "electric", trigger: "always", target: "self" }]
+  },
+  "grassy-surge": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "terrain", terrain: "grassy", trigger: "always", target: "self" }]
+  },
+  "misty-surge": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "terrain", terrain: "misty", trigger: "always", target: "self" }]
+  },
+  "psychic-surge": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "terrain", terrain: "psychic", trigger: "always", target: "self" }]
+  },
+
+  // --- Weather + stat combos on entry ---
+  "orichalcum-pulse": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [
+      { effectType: "weather", weather: "sunny", trigger: "always", target: "self" },
+      { effectType: "stat", stat: "strength", amount: 2, trigger: "always", target: "self", notes: "While Sunny Weather is active" }
+    ]
+  },
+  "hadron-engine": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [
+      { effectType: "terrain", terrain: "electric", trigger: "always", target: "self" },
+      { effectType: "stat", stat: "special", amount: 2, trigger: "always", target: "self", notes: "While Electric Terrain is active" }
+    ]
+  },
+
+  // --- Stat changes on entry (on foes or self) ---
+  "intimidate": {
+    type: "passive", trigger: "enter-battle", target: "all-foes",
+    effects: [{ effectType: "stat", stat: "strength", amount: -1, trigger: "always", target: "all-foes", durationMode: "combat" }]
+  },
+  "intrepid-sword": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "stat", stat: "strength", amount: 2, trigger: "always", target: "self" }]
+  },
+  "dauntless-shield": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "stat", stat: "defense", amount: 2, trigger: "always", target: "self" }]
+  },
+
+  // --- Stat change on being hit (first-time trigger) ---
+  "competitive": {
+    type: "passive", trigger: "on-hit-by-any", target: "self",
+    effects: [{ effectType: "stat", stat: "special", amount: 2, trigger: "always", target: "self" }],
+    notes: "First time this Pokemon gets an Attribute reduced by a foe"
+  },
+  "defiant": {
+    type: "passive", trigger: "on-hit-by-any", target: "self",
+    effects: [{ effectType: "stat", stat: "strength", amount: 2, trigger: "always", target: "self" }],
+    notes: "First time this Pokemon has an Attribute reduced"
+  },
+  "anger-point": {
+    type: "passive", trigger: "on-critical-hit-received", target: "self",
+    effects: [{ effectType: "stat", stat: "strength", amount: 3, trigger: "always", target: "self" }]
+  },
+  "stamina": {
+    type: "passive", trigger: "on-hit-by-any", target: "self",
+    effects: [
+      { effectType: "stat", stat: "defense", amount: 1, trigger: "always", target: "self" },
+      { effectType: "stat", stat: "specialDefense", amount: 1, trigger: "always", target: "self" }
+    ],
+    notes: "First time this Pokemon receives damage"
+  },
+  "weak-armor": {
+    type: "passive", trigger: "on-hit-by-physical", target: "self",
+    effects: [
+      { effectType: "stat", stat: "dexterity", amount: 1, trigger: "always", target: "self" },
+      { effectType: "stat", stat: "defense", amount: -1, trigger: "always", target: "self" }
+    ],
+    notes: "First time hit by any Physical Move"
+  },
+  "steadfast": {
+    type: "passive", trigger: "on-hit-by-any", target: "self",
+    effects: [{ effectType: "stat", stat: "dexterity", amount: 1, trigger: "always", target: "self" }],
+    notes: "First time affected by Flinch"
+  },
+  "gooey": {
+    type: "passive", trigger: "on-hit-by-contact", target: "attacker",
+    effects: [{ effectType: "stat", stat: "dexterity", amount: -1, trigger: "always", target: "target" }],
+    notes: "First time foe hits with Non-Ranged Physical"
+  },
+  "tangling-hair": {
+    type: "passive", trigger: "on-hit-by-contact", target: "attacker",
+    effects: [{ effectType: "stat", stat: "dexterity", amount: -1, trigger: "always", target: "target" }],
+    notes: "First time foe hits with Non-Ranged Physical"
+  },
+
+  // --- Stat change on hit by type ---
+  "justified": {
+    type: "passive", trigger: "on-hit-by-type", target: "self",
+    triggerConditionType: "dark",
+    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" }],
+    notes: "Up to 3 points"
+  },
+  "rattled": {
+    type: "passive", trigger: "on-hit-by-type", target: "self",
+    triggerConditionType: "bug,dark,ghost",
+    effects: [{ effectType: "stat", stat: "dexterity", amount: 1, trigger: "always", target: "self" }],
+    notes: "First time hit, or foe has Intimidate"
+  },
+  "steam-engine": {
+    type: "passive", trigger: "on-hit-by-type", target: "self",
+    triggerConditionType: "fire,water",
+    effects: [{ effectType: "stat", stat: "dexterity", amount: 3, trigger: "always", target: "self" }],
+    notes: "First time hit by Fire or Water"
+  },
+  "thermal-exchange": {
+    type: "passive", trigger: "on-hit-by-type", target: "self",
+    triggerConditionType: "fire",
+    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" }],
+    notes: "IMMUNE: burn. First time hit by Fire"
+  },
+
+  // --- Condition application on contact (with chance dice) ---
+  "flame-body": {
+    type: "passive", trigger: "on-hit-by-contact", target: "attacker",
+    effects: [{ effectType: "condition", condition: "burn2", chance: 3, trigger: "always", target: "target" }]
+  },
+  "static": {
+    type: "passive", trigger: "on-hit-by-contact", target: "attacker",
+    effects: [{ effectType: "condition", condition: "paralyzed", chance: 3, trigger: "always", target: "target" }]
+  },
+  "poison-point": {
+    type: "passive", trigger: "on-hit-by-contact", target: "attacker",
+    effects: [{ effectType: "condition", condition: "poisoned", chance: 3, trigger: "always", target: "target" }]
+  },
+  "poison-touch": {
+    type: "passive", trigger: "on-deal-damage", target: "foe",
+    effects: [{ effectType: "condition", condition: "poisoned", chance: 2, trigger: "on-hit", target: "target" }],
+    notes: "When hitting with Non-Ranged Physical Move"
+  },
+  "cute-charm": {
+    type: "passive", trigger: "on-hit-by-contact", target: "attacker",
+    effects: [{ effectType: "condition", condition: "infatuated", chance: 3, trigger: "always", target: "target" }]
+  },
+  "effect-spore": {
+    type: "passive", trigger: "on-hit-by-contact", target: "attacker",
+    effects: [{ effectType: "condition", condition: "poisoned", chance: 3, trigger: "always", target: "target" }],
+    notes: "Random: Poison, Paralyze, or Sleep"
+  },
+  "stench": {
+    type: "passive", trigger: "on-hit-by-contact", target: "attacker",
+    effects: [{ effectType: "condition", condition: "flinch", chance: 1, trigger: "always", target: "target" }]
+  },
+  "toxic-chain": {
+    type: "passive", trigger: "on-deal-damage", target: "foe",
+    effects: [{ effectType: "condition", condition: "badly-poisoned", chance: 3, trigger: "on-hit", target: "target" }],
+    notes: "When hitting with Non-Ranged Physical Move"
+  },
+  "synchronize": {
+    type: "passive", trigger: "on-hit-by-any", target: "attacker",
+    effects: [],
+    notes: "Mirror any status inflicted by foe onto foe"
+  },
+  "cursed-body": {
+    type: "passive", trigger: "on-hit-by-any", target: "attacker",
+    effects: [{ effectType: "condition", condition: "disabled", chance: 3, trigger: "always", target: "target" }],
+    notes: "Up to 3 Moves may be disabled"
+  },
+  "poison-puppeteer": {
+    type: "passive", trigger: "on-deal-damage", target: "foe",
+    effects: [{ effectType: "condition", condition: "confused", trigger: "always", target: "target" }],
+    notes: "Only if move caused Poison or Badly Poison"
+  },
+
+  // --- Heal/Damage effects ---
+  "rain-dish": {
+    type: "passive", trigger: "round-end", target: "self",
+    effects: [{ effectType: "heal", amount: 1, healType: "basic-numeric", healMode: "fixed", trigger: "always", target: "self" }],
+    notes: "While Rain Weather is active"
+  },
+  "ice-body": {
+    type: "passive", trigger: "round-end", target: "self",
+    effects: [{ effectType: "heal", amount: 1, healType: "basic-numeric", healMode: "fixed", trigger: "always", target: "self" }],
+    notes: "While Hail/Snow Weather is active. IMMUNE: hail weather damage"
+  },
+  "solar-power": {
+    type: "passive", trigger: "round-end", target: "self",
+    triggerConditionWeather: "sunny",
+    effects: [
+      { effectType: "stat", stat: "special", amount: 2, trigger: "always", target: "self" },
+      { effectType: "damage", amount: 1, trigger: "always", target: "self" }
+    ],
+    notes: "While Sunny Weather is active"
+  },
+  "bad-dreams": {
+    type: "passive", trigger: "round-end", target: "all-foes",
+    effects: [{ effectType: "damage", amount: 1, trigger: "always", target: "all-foes" }],
+    notes: "Only targets with Sleep Status Condition"
+  },
+  "aftermath": {
+    type: "passive", trigger: "on-self-faint", target: "attacker",
+    effects: [{ effectType: "damage", amount: 2, trigger: "always", target: "target" }],
+    notes: "Only if fainted due to Non-Ranged Physical Move"
+  },
+  "innards-out": {
+    type: "passive", trigger: "on-self-faint", target: "attacker",
+    effects: [{ effectType: "damage", amount: 0, trigger: "always", target: "target" }],
+    notes: "Damage = remaining HP before fainting"
+  },
+  "pressure": {
+    type: "passive", trigger: "enter-battle", target: "all-foes",
+    effects: [{ effectType: "will", amount: -50, trigger: "always", target: "all-foes" }],
+    notes: "Foes spend half (rounded up) of remaining Will"
+  },
+  "hospitality": {
+    type: "passive", trigger: "enter-battle", target: "ally",
+    effects: [{ effectType: "heal", amount: 3, healType: "basic-numeric", healMode: "fixed", trigger: "always", target: "self" }],
+    notes: "Heal up to 3 HP to a damaged Ally. Costs 1 Will. No Lethal healing"
+  },
+
+  // --- Cleanse effects ---
+  "hydration": {
+    type: "passive", trigger: "round-end", target: "self",
+    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "all" }],
+    notes: "While Rain Weather is active"
+  },
+  "natural-cure": {
+    type: "passive", trigger: "round-end", target: "self",
+    effects: [{ effectType: "cleanse", trigger: "always", target: "self", chance: 3, notes: "all" }],
+    notes: "Roll 3 Chance Dice to heal"
+  },
+  "shed-skin": {
+    type: "passive", trigger: "round-end", target: "self",
+    effects: [{ effectType: "cleanse", trigger: "always", target: "self", chance: 3, notes: "random one" }],
+    notes: "Roll 3 Chance Dice. One ailment healed at random"
+  },
+  "healer": {
+    type: "passive", trigger: "round-end", target: "ally",
+    effects: [{ effectType: "cleanse", trigger: "always", target: "self", chance: 3, notes: "ally ailment" }],
+    notes: "3 Chance Dice to heal ally's Status Ailment"
+  },
+
+  // --- Stat on foe faint ---
+  "moxie": {
+    type: "passive", trigger: "on-foe-faint", target: "self",
+    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" }],
+    notes: "Up to 3 points"
+  },
+  "chilling-neigh": {
+    type: "passive", trigger: "on-foe-faint", target: "self",
+    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" }],
+    notes: "Up to 3 points"
+  },
+  "grim-neigh": {
+    type: "passive", trigger: "on-foe-faint", target: "self",
+    effects: [{ effectType: "stat", stat: "special", amount: 1, trigger: "always", target: "self" }],
+    notes: "Up to 3 points"
+  },
+  "soul-heart": {
+    type: "passive", trigger: "on-foe-faint", target: "self",
+    effects: [{ effectType: "stat", stat: "special", amount: 1, trigger: "always", target: "self" }],
+    notes: "Up to 3 points"
+  },
+  "beast-boost": {
+    type: "passive", trigger: "on-foe-faint", target: "self",
+    effects: [{ effectType: "stat", stat: "none", amount: 1, trigger: "always", target: "self" }],
+    notes: "Increase highest Attribute by 1. Up to 3 points"
+  },
+  "supreme-overlord": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [
+      { effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" },
+      { effectType: "stat", stat: "special", amount: 1, trigger: "always", target: "self" }
+    ],
+    notes: "+1 STR and SPC per fainted ally. Up to 3 points"
+  },
+
+  // --- Round-end stat boost ---
+  "speed-boost": {
+    type: "passive", trigger: "round-end", target: "self",
+    effects: [{ effectType: "stat", stat: "dexterity", amount: 1, trigger: "always", target: "self" }],
+    notes: "Up to 3 points may be added"
+  },
+  "moody": {
+    type: "passive", trigger: "round-end", target: "self",
+    effects: [
+      { effectType: "stat", stat: "none", amount: -1, trigger: "always", target: "self" },
+      { effectType: "stat", stat: "none", amount: 1, trigger: "always", target: "self" }
+    ],
+    notes: "Reset previous Moody changes, then random -1 and +1"
+  },
+
+  // --- Field-wide stat reductions (Ruin abilities) ---
+  "beads-of-ruin": {
+    type: "passive", trigger: "enter-battle", target: "all-in-range",
+    effects: [{ effectType: "stat", stat: "specialDefense", amount: -2, trigger: "always", target: "all-foes", durationMode: "combat" }],
+    notes: "Reduce SpDEF of everyone except self. Immune to other Ruin abilities"
+  },
+  "sword-of-ruin": {
+    type: "passive", trigger: "enter-battle", target: "all-in-range",
+    effects: [{ effectType: "stat", stat: "defense", amount: -2, trigger: "always", target: "all-foes", durationMode: "combat" }],
+    notes: "Reduce DEF of everyone except self. Immune to other Ruin abilities"
+  },
+  "tablets-of-ruin": {
+    type: "passive", trigger: "enter-battle", target: "all-in-range",
+    effects: [{ effectType: "stat", stat: "strength", amount: -2, trigger: "always", target: "all-foes", durationMode: "combat" }],
+    notes: "Reduce STR of everyone except self. Immune to other Ruin abilities"
+  },
+  "vessel-of-ruin": {
+    type: "passive", trigger: "enter-battle", target: "all-in-range",
+    effects: [{ effectType: "stat", stat: "special", amount: -2, trigger: "always", target: "all-foes", durationMode: "combat" }],
+    notes: "Reduce SPC of everyone except self. Immune to other Ruin abilities"
+  },
+
+  // --- Condition immunity + additional effect combos ---
+  "pastel-veil": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [], notes: "IMMUNE: poisoned, badly-poisoned (self + allies in range)"
+  },
+  "sweet-veil": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [], notes: "IMMUNE: sleep (self + allies in range)"
+  },
+  "comatose": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [{ effectType: "condition", condition: "sleep", trigger: "always", target: "self", chance: 0 }],
+    notes: "Permanent Sleep but immune to its effects. Can't have other ailments"
+  },
+
+  // --- Misc entry effects ---
+  "gorilla-tactics": {
+    type: "active", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" }],
+    notes: "Choose one Move; can only use that Move in battle (up to 5x/round)"
+  },
+  "unburden": {
+    type: "passive", trigger: "custom", target: "self",
+    effects: [{ effectType: "stat", stat: "dexterity", amount: 2, trigger: "always", target: "self" }],
+    notes: "First time this Pokemon spends or loses its held item"
+  },
+};
+
+// ---- BUILD ENTRIES ----
+
+function buildSecondaryEffect(e) {
+  return {
+    section: 0,
+    label: e.label ?? "",
+    trigger: e.trigger ?? "always",
+    chance: e.chance ?? 0,
+    target: e.target ?? "self",
+    effectType: e.effectType ?? "custom",
+    durationMode: e.durationMode ?? "combat",
+    durationRounds: e.durationRounds ?? 1,
+    specialDuration: e.specialDuration ?? [],
+    conditional: e.conditional ?? false,
+    activationCondition: e.activationCondition ?? "",
+    condition: e.condition ?? "none",
+    weather: e.weather ?? "none",
+    terrain: e.terrain ?? "none",
+    stat: e.stat ?? "none",
+    amount: e.amount ?? 0,
+    healType: e.healType ?? "basic",
+    healMode: e.healMode ?? "fixed",
+    healProfile: e.healProfile ?? "standard",
+    healingCategory: e.healingCategory ?? "standard",
+    notes: e.notes ?? "",
+    linkedEffectId: ""
+  };
+}
+
+const entries = abilities.map((ability) => {
+  const id = ability._id;
+  const auto = AUTOMATIONS[id];
+
+  const system = {
+    abilityType: auto?.type ?? "passive",
+    abilityTrigger: auto?.trigger ?? "always",
+    abilityTarget: auto?.target ?? "self",
+    triggerConditionType: auto?.triggerConditionType ?? "",
+    triggerConditionWeather: auto?.triggerConditionWeather ?? "",
+    frequency: "",
+    effect: ability.Effect,
+    secondaryEffects: auto?.effects?.length ? auto.effects.map(buildSecondaryEffect) : [],
+    description: ability.Description
+  };
+
+  return {
+    name: ability.Name,
+    type: "ability",
+    img: "icons/svg/aura.svg",
+    system,
+    flags: {
+      "pok-role-system": {
+        seedId: `ability-${id}`,
+        automationStatus: auto ? (auto.effects?.length ? "full" : "partial") : "none",
+        automationNotes: auto?.notes ?? ""
+      }
+    }
+  };
+});
+
+// ---- WRITE ----
+const output = `export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze(${JSON.stringify(entries, null, 2)});\n`;
+writeFileSync(outputPath, output, "utf-8");
+console.log(`Generated ${entries.length} ability entries to ${outputPath}`);
