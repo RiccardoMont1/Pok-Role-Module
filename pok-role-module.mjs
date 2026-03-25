@@ -9,8 +9,7 @@ import {
   SKILL_DEFINITIONS
 } from "./module/constants.mjs";
 import {
-  seedCompendia,
-  COMPENDIUM_SEED_VERSION
+  seedCompendia
 } from "./module/seeds/compendium-seed.mjs";
 import {
   AbilityDataModel,
@@ -1279,15 +1278,6 @@ Hooks.on("preCreateActor", (actor) => {
 
 Hooks.once("init", () => {
   console.log(`${POKROLE.ID} | Initializing ${POKROLE.TITLE}`);
-
-  game.settings.register(POKROLE.ID, "lastSeedVersion", {
-    name: "Last Compendium Seed Version",
-    scope: "world",
-    config: false,
-    type: String,
-    default: ""
-  });
-
   registerTemplateHelpers();
 
   // Replace Foundry's default token status effects with PokRole condition flags.
@@ -1403,17 +1393,6 @@ Hooks.once("ready", async () => {
     });
   };
   game.pokrole.seedCompendia = async (options = {}) => seedCompendia(options);
-
-  // Auto-seed compendia when seed version changes (force only the changed packs)
-  if (game.user?.isGM) {
-    const lastSeedVersion = game.settings.get(POKROLE.ID, "lastSeedVersion") ?? "";
-    if (lastSeedVersion !== COMPENDIUM_SEED_VERSION) {
-      console.log(`${POKROLE.ID} | Seed version changed (${lastSeedVersion} -> ${COMPENDIUM_SEED_VERSION}), re-seeding compendia...`);
-      await seedCompendia({ forcePacks: ["abilities"], notify: true });
-      await game.settings.set(POKROLE.ID, "lastSeedVersion", COMPENDIUM_SEED_VERSION);
-    }
-  }
-
   game.pokrole.renderMoveQueueOverlay = async () => renderMoveQueueOverlay();
   game.pokrole.enqueueCombatMoveDeclaration = async (entry, combat = game.combat ?? null) =>
     enqueueCombatMoveDeclaration(entry, combat);

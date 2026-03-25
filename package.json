@@ -1,0 +1,24 @@
+{
+  "name": "pok-role-module",
+  "version": "1.0.0",
+  "description": "Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RiccardoMont1/Pok-Role-Module.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/RiccardoMont1/Pok-Role-Module/issues"
+  },
+  "homepage": "https://github.com/RiccardoMont1/Pok-Role-Module#readme",
+  "dependencies": {
+    "classic-level": "^3.0.0"
+  }
+}
