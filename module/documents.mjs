@@ -9926,6 +9926,21 @@ export class PokRoleActor extends Actor {
       });
     }
 
+    // Sturdy: survive lethal damage at 1 HP when at full HP
+    if (finalDamage > 0 && hpValue > 0 && finalDamage >= hpValue) {
+      const hpMax = Math.max(toNumber(targetActor.system?.resources?.hp?.max, 1), 1);
+      if (hpValue >= hpMax) {
+        const activeAbilityName = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
+        if (activeAbilityName === "sturdy") {
+          finalDamage = Math.max(hpValue - 1, 0);
+          await ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+            content: `<strong>${targetActor.name}'s</strong> Sturdy prevented it from fainting!`
+          });
+        }
+      }
+    }
+
     let substituteBlocked = false;
     let substituteDamageAbsorbed = 0;
     if (
@@ -12251,6 +12266,11 @@ export class PokRoleActor extends Actor {
       case "on-hit-by-contact":
         return triggerKey === "on-hit-by" && context.moveCategory === "physical";
       case "on-hit-by-type": {
+        // Also triggers on stat-lowered for abilities like Rattled (Intimidate interaction)
+        if (triggerKey === "on-stat-lowered") {
+          const abilityNotes = `${abilityItem.getFlag?.("pok-role-system", "automationNotes") ?? ""}`.trim().toLowerCase();
+          return abilityNotes.includes("intimidate");
+        }
         if (triggerKey !== "on-hit-by") return false;
         const condType = `${abilityItem.system?.triggerConditionType ?? ""}`.trim().toLowerCase();
         if (!condType) return true;
@@ -12289,13 +12309,15 @@ export class PokRoleActor extends Actor {
       }
       case "self-has-condition": {
         if (!["enter-battle", "round-start", "round-end", "turn-start", "always"].includes(triggerKey)) return false;
-        const condKey = `${abilityItem.system?.triggerConditionType ?? ""}`.trim().toLowerCase();
-        return condKey ? this._isConditionActive(condKey) : false;
+        const condKeys = `${abilityItem.system?.triggerConditionType ?? ""}`.trim().toLowerCase()
+          .split(",").map((k) => k.trim()).filter(Boolean);
+        return condKeys.length > 0 ? condKeys.some((k) => this._isConditionActive(k)) : false;
       }
       case "self-missing-condition": {
         if (!["enter-battle", "round-start", "round-end", "turn-start", "always"].includes(triggerKey)) return false;
-        const condKey = `${abilityItem.system?.triggerConditionType ?? ""}`.trim().toLowerCase();
-        return condKey ? !this._isConditionActive(condKey) : true;
+        const condKeys = `${abilityItem.system?.triggerConditionType ?? ""}`.trim().toLowerCase()
+          .split(",").map((k) => k.trim()).filter(Boolean);
+        return condKeys.length > 0 ? condKeys.every((k) => !this._isConditionActive(k)) : true;
       }
       case "target-has-condition": {
         if (!["enter-battle", "round-start", "round-end", "always"].includes(triggerKey)) return false;
@@ -12317,6 +12339,8 @@ export class PokRoleActor extends Actor {
         const activeTerrain = this.getActiveTerrainKey?.() ?? "";
         return condTerrain.split(",").map((t) => t.trim()).filter(Boolean).includes(activeTerrain);
       }
+      case "on-stat-lowered":
+        return triggerKey === "on-stat-lowered";
       case "custom":
         return triggerKey === "custom";
       default:
@@ -13693,7 +13717,18 @@ export class PokRoleActor extends Actor {
       return { applied: false, detail: `${targetActor.name}'s Clear Amulet blocked the stat reduction.` };
     }
 
-    const statKey = this._normalizeSecondaryStatKey(effect.stat);
+    let statKey = this._normalizeSecondaryStatKey(effect.stat);
+    // Random stat selection for abilities like Moody
+    if (statKey === "none" && targetActor) {
+      const coreStats = ["strength", "dexterity", "vitality", "special", "insight"];
+      const availableStats = coreStats.filter((s) =>
+        Object.prototype.hasOwnProperty.call(targetActor.system.attributes ?? {}, s)
+      );
+      if (availableStats.length > 0) {
+        const randomIndex = Math.floor(Math.random() * availableStats.length);
+        statKey = availableStats[randomIndex];
+      }
+    }
     if (statKey === "none") {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.Unknown") };
     }
@@ -15608,6 +15643,18 @@ export class PokRoleActor extends Actor {
         }
       }
     ]);
+
+    // Trigger on-stat-lowered for abilities like Defiant/Competitive
+    if (appliedAmount < 0 && targetActor !== this && typeof targetActor.processAbilityTriggerEffects === "function") {
+      try {
+        await targetActor.processAbilityTriggerEffects("on-stat-lowered", {
+          combat: game.combat,
+          attackerActor: this
+        });
+      } catch (e) {
+        console.warn(`PokRole | on-stat-lowered ability processing failed for ${targetActor.name}:`, e);
+      }
+    }
 
     const durationLabel = this._localizeTemporaryDuration(
       mergedAutomationFlags.durationMode,

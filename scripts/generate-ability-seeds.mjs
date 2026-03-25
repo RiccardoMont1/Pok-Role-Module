@@ -193,16 +193,16 @@ const AUTOMATIONS = {
     effects: [{ effectType: "stat", stat: "defense", amount: 2, trigger: "always", target: "self" }]
   },
 
-  // --- Stat change on being hit (first-time trigger) ---
+  // --- Stat change when stat is lowered by foe ---
   "competitive": {
-    type: "passive", trigger: "on-hit-by-any", target: "self",
+    type: "passive", trigger: "on-stat-lowered", target: "self",
     effects: [{ effectType: "stat", stat: "special", amount: 2, trigger: "always", target: "self" }],
-    notes: "First time this Pokemon gets an Attribute reduced by a foe"
+    notes: "When an Attribute is reduced by a foe"
   },
   "defiant": {
-    type: "passive", trigger: "on-hit-by-any", target: "self",
+    type: "passive", trigger: "on-stat-lowered", target: "self",
     effects: [{ effectType: "stat", stat: "strength", amount: 2, trigger: "always", target: "self" }],
-    notes: "First time this Pokemon has an Attribute reduced"
+    notes: "When an Attribute is reduced by a foe"
   },
   "anger-point": {
     type: "passive", trigger: "on-critical-hit-received", target: "self",
@@ -251,7 +251,7 @@ const AUTOMATIONS = {
     type: "passive", trigger: "on-hit-by-type", target: "self",
     triggerConditionType: "bug,dark,ghost",
     effects: [{ effectType: "stat", stat: "dexterity", amount: 1, trigger: "always", target: "self" }],
-    notes: "First time hit, or foe has Intimidate"
+    notes: "Also triggers when Intimidate lowers stats"
   },
   "steam-engine": {
     type: "passive", trigger: "on-hit-by-type", target: "self",
@@ -483,6 +483,13 @@ const AUTOMATIONS = {
     type: "passive", trigger: "custom", target: "self",
     effects: [{ effectType: "stat", stat: "dexterity", amount: 2, trigger: "always", target: "self" }],
     notes: "First time this Pokemon spends or loses its held item"
+  },
+
+  // --- Damage survival ---
+  "sturdy": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Survives lethal damage at 1 HP when at full HP. Automated in damage calculation."
   },
 };
 

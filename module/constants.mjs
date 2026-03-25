@@ -318,6 +318,7 @@ export const ABILITY_TRIGGER_KEYS = Object.freeze([
   "target-has-condition",
   "weather-active",
   "terrain-active",
+  "on-stat-lowered",
   "custom"
 ]);
 

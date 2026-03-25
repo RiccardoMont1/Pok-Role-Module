@@ -1052,7 +1052,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "on-hit-by-any",
+      "abilityTrigger": "on-stat-lowered",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
@@ -1091,7 +1091,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "ability-competitive",
         "automationStatus": "full",
-        "automationNotes": "First time this Pokemon gets an Attribute reduced by a foe"
+        "automationNotes": "When an Attribute is reduced by a foe"
       }
     }
   },
@@ -1524,7 +1524,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "on-hit-by-any",
+      "abilityTrigger": "on-stat-lowered",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
@@ -1563,7 +1563,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "ability-defiant",
         "automationStatus": "full",
-        "automationNotes": "First time this Pokemon has an Attribute reduced"
+        "automationNotes": "When an Attribute is reduced by a foe"
       }
     }
   },
@@ -5987,7 +5987,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "ability-rattled",
         "automationStatus": "full",
-        "automationNotes": "First time hit, or foe has Intimidate"
+        "automationNotes": "Also triggers when Intimidate lowers stats"
       }
     }
   },
@@ -7610,8 +7610,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-sturdy",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Survives lethal damage at 1 HP when at full HP. Automated in damage calculation."
       }
     }
   },
