@@ -1714,44 +1714,60 @@ Hooks.on("deleteCombat", async (combat) => {
   console.log(`PokRole | Combat ended (${combatId}), cleaning up ${actorsToClean.size} actors (${cachedActors.length} cached)`);
 
   for (const actor of actorsToClean.values()) {
-    // Find ALL managed effects with expiresWithCombat OR any automation flag
-    const combatEffectIds = (actor.effects?.contents ?? [])
+    const allEffects = actor.effects?.contents ?? [];
+
+    // Debug: log ALL effects and their automation flags
+    for (const e of allEffects) {
+      const flags = e.getFlag?.("pok-role-system", "automation") ?? {};
+      const hasManagedFlag = Boolean(flags?.managed);
+      const hasExpireFlag = Boolean(flags?.expiresWithCombat);
+      const sourceType = flags?.sourceItemType ?? "none";
+      const effectType = flags?.effectType ?? "unknown";
+      console.log(`PokRole | ${actor.name} effect "${e.name}" [id=${e.id}]: managed=${hasManagedFlag}, expiresWithCombat=${hasExpireFlag}, sourceItemType=${sourceType}, effectType=${effectType}, durationMode=${flags?.durationMode ?? "?"}, combatId=${flags?.combatId ?? "?"}`);
+    }
+
+    // Find effects to remove: expiresWithCombat OR ability-sourced managed effects
+    const combatEffectIds = allEffects
       .filter((e) => {
-        if (e?.disabled) return false;
         const flags = e.getFlag?.("pok-role-system", "automation") ?? {};
-        return Boolean(flags?.expiresWithCombat);
+        if (!flags || typeof flags !== "object") return false;
+        // Remove if expiresWithCombat
+        if (flags.expiresWithCombat) return true;
+        // Remove any managed ability-sourced effect (abilities are always combat-scoped)
+        if (flags.managed && flags.sourceItemType === "ability") return true;
+        // Remove any managed modifier with matching combatId
+        if (flags.managed && flags.combatId === combatId) return true;
+        return false;
       })
       .map((e) => e.id)
       .filter(Boolean);
 
-    if (combatEffectIds.length === 0) continue;
-
-    console.log(`PokRole | ${actor.name}: removing ${combatEffectIds.length} combat-scoped effects`);
-
-    // Remove all combat-scoped effects directly
-    try {
-      await actor.deleteEmbeddedDocuments("ActiveEffect", combatEffectIds);
-    } catch (e) {
-      console.warn(`PokRole | Failed to remove combat effects for ${actor.name}:`, e);
+    if (combatEffectIds.length > 0) {
+      console.log(`PokRole | ${actor.name}: removing ${combatEffectIds.length} combat-scoped effects`);
+      try {
+        await actor.deleteEmbeddedDocuments("ActiveEffect", combatEffectIds);
+      } catch (e) {
+        console.warn(`PokRole | Failed to remove combat effects for ${actor.name}:`, e);
+      }
     }
 
-    // Also process special durations and clear state
+    // Always run cleanup methods (not conditional on finding effects above)
     if (typeof actor.processTemporaryEffectSpecialDuration === "function") {
-      try { await actor.processTemporaryEffectSpecialDuration("combat-end", { combatId }); } catch (e) { /* */ }
+      try { await actor.processTemporaryEffectSpecialDuration("combat-end", { combatId }); } catch (_e) { /* */ }
     }
     if (typeof actor.clearCombatTemporaryEffects === "function") {
-      try { await actor.clearCombatTemporaryEffects(combatId); } catch (e) { /* */ }
+      try { await actor.clearCombatTemporaryEffects(combatId); } catch (_e) { /* */ }
     }
     if (typeof actor.clearMultiTurnState === "function") {
-      try { await actor.clearMultiTurnState(); } catch (e) { /* */ }
+      try { await actor.clearMultiTurnState(); } catch (_e) { /* */ }
     }
     if (typeof actor._clearBideState === "function") {
-      try { await actor._clearBideState(); } catch (e) { /* */ }
+      try { await actor._clearBideState(); } catch (_e) { /* */ }
     }
 
     // Sync condition flags after cleanup
     if (typeof actor._synchronizeConditionFlagsFromTemporaryEffects === "function") {
-      try { await actor._synchronizeConditionFlagsFromTemporaryEffects(actor); } catch (e) { /* */ }
+      try { await actor._synchronizeConditionFlagsFromTemporaryEffects(actor); } catch (_e) { /* */ }
     }
 
     if (actor.sheet?.rendered) actor.sheet.render(false);
