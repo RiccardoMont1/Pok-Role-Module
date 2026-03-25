@@ -10981,6 +10981,55 @@ export class PokRoleActor extends Actor {
     return "";
   }
 
+  async _removeConditionByAbilityImmunity(targetActor, conditionKey) {
+    if (!targetActor) return;
+    const statusId = `pokrole-condition-${conditionKey}`;
+    const conditionEffect = (targetActor.effects?.contents ?? []).find((e) => {
+      if (e?.disabled) return false;
+      const statuses = [...(e.statuses ?? [])].map((s) => `${s ?? ""}`.trim().toLowerCase());
+      if (statuses.includes(statusId)) return true;
+      const flags = e.getFlag?.(POKROLE.ID, "automation") ?? {};
+      return `${flags.conditionKey ?? ""}`.trim().toLowerCase() === conditionKey;
+    });
+    if (conditionEffect) {
+      try {
+        await targetActor.deleteEmbeddedDocuments("ActiveEffect", [conditionEffect.id]);
+        await this._setConditionFlagState(targetActor, conditionKey, false);
+        const abilityName = `${targetActor.system?.ability ?? ""}`.trim();
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+          content: `<strong>${targetActor.name}</strong>'s <strong>${abilityName}</strong> removed ${this._localizeConditionName(conditionKey)}!`
+        });
+      } catch (err) {
+        console.warn(`PokRole | Failed to remove ${conditionKey} by ability immunity:`, err);
+      }
+    }
+  }
+
+  async cleanseAbilityImmuneConditions() {
+    if (!this || this.type !== "pokemon") return;
+    const activeAbilityName = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    if (!activeAbilityName) return;
+    const detail = this._getAbilityConditionImmunityDetail(this, "sleep");
+    const ABILITY_CONDITION_IMMUNITY = {
+      "insomnia": ["sleep"],
+      "vital-spirit": ["sleep"], "vital spirit": ["sleep"],
+      "sweet-veil": ["sleep"], "sweet veil": ["sleep"],
+      "limber": ["paralyzed"],
+      "magma-armor": ["frozen"], "magma armor": ["frozen"],
+      "water-veil": ["burn"], "water veil": ["burn"],
+      "immunity": ["poisoned", "badly-poisoned"],
+      "pastel-veil": ["poisoned", "badly-poisoned"], "pastel veil": ["poisoned", "badly-poisoned"],
+      "oblivious": ["infatuated"],
+      "own-tempo": ["confused"], "own tempo": ["confused"],
+      "inner-focus": ["flinch"], "inner focus": ["flinch"]
+    };
+    const immuneConditions = ABILITY_CONDITION_IMMUNITY[activeAbilityName] ?? [];
+    for (const conditionKey of immuneConditions) {
+      await this._removeConditionByAbilityImmunity(this, conditionKey);
+    }
+  }
+
   _normalizeSecondaryStatKey(statKey) {
     const normalized = `${statKey ?? ""}`
       .trim()
@@ -12144,6 +12193,26 @@ export class PokRoleActor extends Actor {
   }
 
   /**
+   * Runtime maxStacks lookup for abilities with stacking stat caps.
+   * Used as fallback when embedded item data doesn't include maxStacks.
+   */
+  _getAbilityRuntimeMaxStacks(abilityItem) {
+    const name = `${abilityItem?.name ?? ""}`.trim().toLowerCase();
+    const ABILITY_MAX_STACKS = {
+      "speed boost": 3,
+      "moxie": 3,
+      "chilling neigh": 3,
+      "grim neigh": 3,
+      "soul heart": 3,
+      "beast boost": 3,
+      "supreme overlord": 3,
+      "justified": 3,
+      "rattled": 3
+    };
+    return ABILITY_MAX_STACKS[name] ?? 0;
+  }
+
+  /**
    * Check if an ability trigger matches a given trigger key.
    */
   _abilityTriggerMatches(abilityItem, triggerKey, context = {}) {
@@ -12516,6 +12585,11 @@ export class PokRoleActor extends Actor {
       if (this._isConditionActive?.("fainted") || this._isConditionActive?.("dead")) return [];
     }
 
+    // On enter-battle, cleanse conditions the active ability is immune to (e.g. Insomnia removes sleep)
+    if (triggerKey === "enter-battle" && typeof this.cleanseAbilityImmuneConditions === "function") {
+      try { await this.cleanseAbilityImmuneConditions(); } catch (e) { console.warn("PokRole | cleanseAbilityImmuneConditions failed:", e); }
+    }
+
     const abilityItems = await this._getActiveAbilityItems();
     if (!abilityItems.length) return [];
 
@@ -12525,6 +12599,17 @@ export class PokRoleActor extends Actor {
 
       const normalizedEffects = this._getAbilitySecondaryEffects(abilityItem);
       if (!normalizedEffects.length) continue;
+
+      // Inject runtime maxStacks for abilities with stacking caps.
+      // Ensures the cap works even if the embedded item is a stale copy without maxStacks.
+      const runtimeMaxStacks = this._getAbilityRuntimeMaxStacks(abilityItem);
+      if (runtimeMaxStacks > 0) {
+        for (const eff of normalizedEffects) {
+          if (eff.effectType === "stat" && (eff.maxStacks ?? 0) === 0) {
+            eff.maxStacks = runtimeMaxStacks;
+          }
+        }
+      }
 
       const abilityTargets = this._resolveAbilityTargetActors(abilityItem, {
         combat: context.combat ?? game.combat,
@@ -13327,6 +13412,8 @@ export class PokRoleActor extends Actor {
       }
     }
     if (this._isConditionImmune(targetActor, conditionKey)) {
+      // Also remove the condition if it already exists (e.g. Insomnia removes existing sleep)
+      await this._removeConditionByAbilityImmunity(targetActor, conditionKey);
       return {
         applied: false,
         detail: this._getConditionBlockedDetail(targetActor, conditionKey)
@@ -15437,11 +15524,15 @@ export class PokRoleActor extends Actor {
 
     // Enforce maxStacks for same-ability stacking (e.g. Speed Boost caps at 3)
     if (maxStacks > 0) {
-      const sourceItemName = `${sourceMove?.name ?? ""}`.trim();
-      const existingSameSourceCount = sameDirectionModifiers.filter((effectDocument) => {
+      const sourceItemName = `${sourceMove?.name ?? ""}`.trim().toLowerCase();
+      // Re-query current effects (after any deletions above) to get accurate count
+      const currentPathModifiers = this._getManagedModifierEffectsForPath(targetActor, path);
+      const existingSameSourceCount = currentPathModifiers.filter((effectDocument) => {
         const flags = effectDocument.getFlag(POKROLE.ID, "automation") ?? {};
-        return `${flags.sourceItemName ?? ""}`.trim() === sourceItemName;
+        const flagName = `${flags.sourceItemName ?? ""}`.trim().toLowerCase();
+        return flagName === sourceItemName && `${flags.sourceItemType ?? ""}`.trim().toLowerCase() === "ability";
       }).length;
+      console.log(`PokRole | maxStacks check: ${sourceMove?.name} has ${existingSameSourceCount}/${maxStacks} stacks on ${path}`);
       if (existingSameSourceCount >= maxStacks) {
         return {
           applied: false,

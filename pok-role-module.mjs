@@ -1688,17 +1688,49 @@ Hooks.on("deleteCombat", async (combat) => {
 
   await clearCombatDelayedEffectQueue(combat);
 
-  console.log(`PokRole | Combat ended (${combatId}), cleaning up ${cachedActors.length} actors`);
-
-  // Use cached actors for cleanup since combat.combatants may be empty after deletion
+  // Collect ALL actors that might have combat-scoped effects:
+  // 1) cached combatant actors, 2) all game actors as fallback
+  const actorsToClean = new Map();
   for (const actor of cachedActors) {
+    if (actor?.id) actorsToClean.set(actor.id, actor);
+  }
+  for (const actor of game.actors ?? []) {
+    if (actor?.id && !actorsToClean.has(actor.id)) {
+      actorsToClean.set(actor.id, actor);
+    }
+  }
+
+  console.log(`PokRole | Combat ended (${combatId}), cleaning up ${actorsToClean.size} actors (${cachedActors.length} cached)`);
+
+  for (const actor of actorsToClean.values()) {
     const effectsBefore = actor.effects?.contents?.length ?? 0;
+    // Skip actors with no combat-scoped effects for performance
+    const hasCombatEffects = (actor.effects?.contents ?? []).some((e) => {
+      const flags = e.getFlag?.("pok-role-system", "automation") ?? {};
+      return Boolean(flags?.expiresWithCombat) || Boolean(flags?.managed);
+    });
+    if (!hasCombatEffects && effectsBefore === 0) continue;
+
     if (typeof actor.processTemporaryEffectSpecialDuration === "function") {
       try { await actor.processTemporaryEffectSpecialDuration("combat-end", { combatId }); } catch (e) { console.warn(`PokRole | combat-end special duration failed for ${actor.name}:`, e); }
     }
     if (typeof actor.clearCombatTemporaryEffects === "function") {
       try { await actor.clearCombatTemporaryEffects(combatId); } catch (e) { console.warn(`PokRole | clearCombatTemporaryEffects failed for ${actor.name}:`, e); }
     }
+
+    // Nuclear fallback: remove ANY remaining ActiveEffect with expiresWithCombat flag
+    const remainingCombatEffects = (actor.effects?.contents ?? [])
+      .filter((e) => {
+        const flags = e.getFlag?.("pok-role-system", "automation") ?? {};
+        return Boolean(flags?.expiresWithCombat);
+      })
+      .map((e) => e.id)
+      .filter(Boolean);
+    if (remainingCombatEffects.length > 0) {
+      console.warn(`PokRole | ${actor.name}: force-removing ${remainingCombatEffects.length} remaining combat effects`);
+      try { await actor.deleteEmbeddedDocuments("ActiveEffect", remainingCombatEffects); } catch (e) { console.warn(`PokRole | force-remove failed for ${actor.name}:`, e); }
+    }
+
     if (typeof actor.clearMultiTurnState === "function") {
       try { await actor.clearMultiTurnState(); } catch (e) { console.warn(`PokRole | clearMultiTurnState failed for ${actor.name}:`, e); }
     }
@@ -1706,8 +1738,9 @@ Hooks.on("deleteCombat", async (combat) => {
       try { await actor._clearBideState(); } catch (e) { console.warn(`PokRole | _clearBideState failed for ${actor.name}:`, e); }
     }
     const effectsAfter = actor.effects?.contents?.length ?? 0;
-    console.log(`PokRole | ${actor.name}: effects ${effectsBefore} -> ${effectsAfter}`);
-    // Force sheet re-render to reflect cleared effects
+    if (effectsBefore !== effectsAfter) {
+      console.log(`PokRole | ${actor.name}: effects ${effectsBefore} -> ${effectsAfter}`);
+    }
     if (actor.sheet?.rendered) actor.sheet.render(false);
   }
 
