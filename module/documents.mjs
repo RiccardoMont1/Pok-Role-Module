@@ -12159,20 +12159,8 @@ export class PokRoleActor extends Actor {
     const activeAbilityName = `${this.system?.ability ?? ""}`.trim();
     if (!activeAbilityName) return [];
 
-    // Check embedded items first — but only use if it has automation data (secondaryEffects)
-    const embeddedMatch = this.items.find(
-      (item) => item.type === "ability" && item.name === activeAbilityName
-    );
-    if (embeddedMatch) {
-      const embeddedEffects = embeddedMatch.system?.secondaryEffects;
-      if (Array.isArray(embeddedEffects) && embeddedEffects.length > 0) {
-        return [embeddedMatch];
-      }
-      // Embedded item exists but has no secondaryEffects — try compendium for updated version
-      console.log(`PokRole | [_getActiveAbilityItems] Embedded "${activeAbilityName}" has no secondaryEffects, checking compendium`);
-    }
-
-    // Fallback: search compendium packs for the ability
+    // Always prefer compendium version — it has the latest automation data.
+    // Embedded items may be stale (imported before trigger/effect updates).
     for (const pack of game.packs.filter((p) => p.documentName === "Item")) {
       const index = await pack.getIndex();
       const entry = index.find(
@@ -12184,7 +12172,10 @@ export class PokRoleActor extends Actor {
       }
     }
 
-    // Last resort: return embedded item even without effects (for non-automated abilities)
+    // Fallback: use embedded item if compendium doesn't have it
+    const embeddedMatch = this.items.find(
+      (item) => item.type === "ability" && item.name === activeAbilityName
+    );
     if (embeddedMatch) return [embeddedMatch];
 
     return [];
@@ -14141,12 +14132,53 @@ export class PokRoleActor extends Actor {
     await this._setConditionFlagState(this, normalizedCondition, false);
     await this._clearConditionAuxiliaryState(this, normalizedCondition);
     await this._removeTrackedConditionEffects(this, normalizedCondition, { revert: false });
+
+    // Remove ability effects that were triggered by condition-based abilities (Guts, Quick Feet, etc.)
+    // If this actor's ability has trigger "self-has-condition" and the condition is no longer active,
+    // clean up the stat modifiers that were applied by that ability.
+    await this._cleanupConditionTriggeredAbilityEffects();
+
     return {
       applied: true,
       detail: game.i18n.format("POKROLE.Chat.ConditionCleared", {
         condition: this._localizeConditionName(normalizedCondition)
       })
     };
+  }
+
+  async _cleanupConditionTriggeredAbilityEffects() {
+    // Find the active ability and check if it's condition-triggered
+    const abilityItems = await this._getActiveAbilityItems();
+    if (!abilityItems.length) return;
+
+    for (const abilityItem of abilityItems) {
+      const abilityTrigger = `${abilityItem.system?.abilityTrigger ?? ""}`.trim().toLowerCase();
+      if (abilityTrigger !== "self-has-condition") continue;
+
+      // Check if any of the ability's trigger conditions are still active
+      const condKeys = `${abilityItem.system?.triggerConditionType ?? ""}`.trim().toLowerCase()
+        .split(",").map((k) => k.trim()).filter(Boolean);
+      const anyConditionStillActive = condKeys.some((k) => this._isConditionActive(k));
+
+      if (!anyConditionStillActive) {
+        // Remove all managed modifier effects from this ability
+        const abilityName = `${abilityItem.name ?? ""}`.trim();
+        const effectIdsToRemove = (this.effects?.contents ?? [])
+          .filter((e) => {
+            const flags = e.getFlag?.(POKROLE.ID, "automation") ?? {};
+            return flags?.managed &&
+              `${flags?.sourceItemName ?? ""}`.trim() === abilityName &&
+              `${flags?.sourceItemType ?? ""}`.trim().toLowerCase() === "ability";
+          })
+          .map((e) => e.id)
+          .filter(Boolean);
+
+        if (effectIdsToRemove.length > 0) {
+          console.log(`PokRole | Removing ${effectIdsToRemove.length} ability effects from "${abilityName}" (condition no longer active)`);
+          await this.deleteEmbeddedDocuments("ActiveEffect", effectIdsToRemove);
+        }
+      }
+    }
   }
 
   async removeTemporaryEffect(effectId, options = {}) {
