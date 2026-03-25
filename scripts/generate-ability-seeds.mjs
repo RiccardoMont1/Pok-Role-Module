@@ -15,50 +15,50 @@ const abilities = JSON.parse(readFileSync(abilitiesPath, "utf-8"));
 // ---- AUTOMATION DEFINITIONS for Category A (fully automatable) ----
 
 const AUTOMATIONS = {
-  // --- Condition immunities ---
+  // --- Condition immunities (runtime immunity handled by _getAbilityConditionImmunityDetail) ---
   "insomnia": {
-    type: "passive", trigger: "enter-battle", target: "self",
-    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "sleep" }],
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
     notes: "IMMUNE: sleep"
   },
   "vital-spirit": {
-    type: "passive", trigger: "enter-battle", target: "self",
-    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "sleep" }],
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
     notes: "IMMUNE: sleep"
   },
   "limber": {
-    type: "passive", trigger: "enter-battle", target: "self",
-    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "paralyzed" }],
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
     notes: "IMMUNE: paralyzed"
   },
   "magma-armor": {
-    type: "passive", trigger: "enter-battle", target: "self",
-    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "frozen" }],
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
     notes: "IMMUNE: frozen"
   },
   "own-tempo": {
-    type: "passive", trigger: "enter-battle", target: "self",
-    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "confused" }],
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
     notes: "IMMUNE: confused"
   },
   "water-veil": {
-    type: "passive", trigger: "enter-battle", target: "self",
-    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "burn" }],
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
     notes: "IMMUNE: burn"
   },
   "oblivious": {
-    type: "passive", trigger: "enter-battle", target: "self",
-    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "infatuated" }],
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
     notes: "IMMUNE: infatuated"
   },
   "immunity": {
-    type: "passive", trigger: "enter-battle", target: "self",
-    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "poisoned,badly-poisoned" }],
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
     notes: "IMMUNE: poisoned, badly-poisoned"
   },
   "inner-focus": {
-    type: "passive", trigger: "enter-battle", target: "self",
-    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "flinch" }],
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
     notes: "IMMUNE: flinch. Intimidate has no effect."
   },
 
@@ -244,7 +244,7 @@ const AUTOMATIONS = {
   "justified": {
     type: "passive", trigger: "on-hit-by-type", target: "self",
     triggerConditionType: "dark",
-    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" }],
+    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self", maxStacks: 3 }],
     notes: "Up to 3 points"
   },
   "rattled": {
@@ -389,34 +389,34 @@ const AUTOMATIONS = {
   // --- Stat on foe faint ---
   "moxie": {
     type: "passive", trigger: "on-foe-faint", target: "self",
-    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" }],
+    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self", maxStacks: 3 }],
     notes: "Up to 3 points"
   },
   "chilling-neigh": {
     type: "passive", trigger: "on-foe-faint", target: "self",
-    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" }],
+    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self", maxStacks: 3 }],
     notes: "Up to 3 points"
   },
   "grim-neigh": {
     type: "passive", trigger: "on-foe-faint", target: "self",
-    effects: [{ effectType: "stat", stat: "special", amount: 1, trigger: "always", target: "self" }],
+    effects: [{ effectType: "stat", stat: "special", amount: 1, trigger: "always", target: "self", maxStacks: 3 }],
     notes: "Up to 3 points"
   },
   "soul-heart": {
     type: "passive", trigger: "on-foe-faint", target: "self",
-    effects: [{ effectType: "stat", stat: "special", amount: 1, trigger: "always", target: "self" }],
+    effects: [{ effectType: "stat", stat: "special", amount: 1, trigger: "always", target: "self", maxStacks: 3 }],
     notes: "Up to 3 points"
   },
   "beast-boost": {
     type: "passive", trigger: "on-foe-faint", target: "self",
-    effects: [{ effectType: "stat", stat: "none", amount: 1, trigger: "always", target: "self" }],
+    effects: [{ effectType: "stat", stat: "none", amount: 1, trigger: "always", target: "self", maxStacks: 3 }],
     notes: "Increase highest Attribute by 1. Up to 3 points"
   },
   "supreme-overlord": {
     type: "passive", trigger: "enter-battle", target: "self",
     effects: [
-      { effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" },
-      { effectType: "stat", stat: "special", amount: 1, trigger: "always", target: "self" }
+      { effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self", maxStacks: 3 },
+      { effectType: "stat", stat: "special", amount: 1, trigger: "always", target: "self", maxStacks: 3 }
     ],
     notes: "+1 STR and SPC per fainted ally. Up to 3 points"
   },
@@ -424,7 +424,7 @@ const AUTOMATIONS = {
   // --- Round-end stat boost ---
   "speed-boost": {
     type: "passive", trigger: "round-end", target: "self",
-    effects: [{ effectType: "stat", stat: "dexterity", amount: 1, trigger: "always", target: "self" }],
+    effects: [{ effectType: "stat", stat: "dexterity", amount: 1, trigger: "always", target: "self", maxStacks: 3 }],
     notes: "Up to 3 points may be added"
   },
   "moody": {
@@ -511,6 +511,7 @@ function buildSecondaryEffect(e) {
     healProfile: e.healProfile ?? "standard",
     healingCategory: e.healingCategory ?? "standard",
     notes: e.notes ?? "",
+    maxStacks: e.maxStacks ?? 0,
     linkedEffectId: ""
   };
 }

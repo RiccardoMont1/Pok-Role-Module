@@ -10367,6 +10367,7 @@ export class PokRoleActor extends Actor {
       healProfile,
       healingCategory: normalizedHealConfiguration.healingCategory,
       notes: `${rawEffect.notes ?? ""}`.trim(),
+      maxStacks: Math.max(Math.floor(toNumber(rawEffect.maxStacks, 0)), 0),
       linkedEffectId: `${rawEffect.linkedEffectId ?? ""}`.trim()
     };
   }
@@ -10932,11 +10933,52 @@ export class PokRoleActor extends Actor {
       }
     }
 
+    // Ability-based condition immunity
+    const abilityImmunityDetail = this._getAbilityConditionImmunityDetail(targetActor, normalizedCondition);
+    if (abilityImmunityDetail) return abilityImmunityDetail;
+
     return "";
   }
 
   _isConditionImmune(targetActor, conditionKey) {
     return Boolean(this._getConditionBlockedDetail(targetActor, conditionKey));
+  }
+
+  _getAbilityConditionImmunityDetail(targetActor, conditionKey) {
+    if (!targetActor || targetActor.type !== "pokemon") return "";
+    const activeAbilityName = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
+    if (!activeAbilityName) return "";
+    const ABILITY_CONDITION_IMMUNITY = {
+      "insomnia": ["sleep"],
+      "vital-spirit": ["sleep"],
+      "vital spirit": ["sleep"],
+      "sweet-veil": ["sleep"],
+      "sweet veil": ["sleep"],
+      "limber": ["paralyzed"],
+      "magma-armor": ["frozen"],
+      "magma armor": ["frozen"],
+      "water-veil": ["burn"],
+      "water veil": ["burn"],
+      "immunity": ["poisoned", "badly-poisoned"],
+      "pastel-veil": ["poisoned", "badly-poisoned"],
+      "pastel veil": ["poisoned", "badly-poisoned"],
+      "oblivious": ["infatuated"],
+      "own-tempo": ["confused"],
+      "own tempo": ["confused"],
+      "inner-focus": ["flinch"],
+      "inner focus": ["flinch"],
+      "shield-dust": ["flinch"],
+      "shield dust": ["flinch"],
+      "comatose": ["burn", "frozen", "paralyzed", "sleep", "poisoned", "badly-poisoned"],
+      "purifying-salt": ["burn", "frozen", "paralyzed", "sleep", "poisoned", "badly-poisoned"],
+      "purifying salt": ["burn", "frozen", "paralyzed", "sleep", "poisoned", "badly-poisoned"]
+    };
+    const immuneConditions = ABILITY_CONDITION_IMMUNITY[activeAbilityName] ?? [];
+    if (immuneConditions.includes(conditionKey)) {
+      const abilityDisplay = `${targetActor.system?.ability ?? activeAbilityName}`;
+      return `${targetActor.name}'s ${abilityDisplay} prevents ${this._localizeConditionName(conditionKey)}!`;
+    }
+    return "";
   }
 
   _normalizeSecondaryStatKey(statKey) {
@@ -12469,7 +12511,10 @@ export class PokRoleActor extends Actor {
    * @returns {Array} Array of result objects
    */
   async processAbilityTriggerEffects(triggerKey, context = {}) {
-    if (this._isConditionActive?.("fainted") || this._isConditionActive?.("dead")) return [];
+    // Allow on-self-faint to fire even when fainted (e.g. Aftermath)
+    if (triggerKey !== "on-self-faint") {
+      if (this._isConditionActive?.("fainted") || this._isConditionActive?.("dead")) return [];
+    }
 
     const abilityItems = await this._getActiveAbilityItems();
     if (!abilityItems.length) return [];
@@ -13533,7 +13578,7 @@ export class PokRoleActor extends Actor {
     const effectNotes = `${effect.notes ?? ""}`.trim().toLowerCase();
     if (effectNotes.includes("rank-expert-double") && targetActor) {
       const EXPERT_RANKS = new Set(["expert", "ace", "master", "champion"]);
-      const rank = `${targetActor.system?.rank ?? ""}`.trim().toLowerCase();
+      const rank = `${targetActor.system?.tier ?? ""}`.trim().toLowerCase();
       if (EXPERT_RANKS.has(rank)) {
         amount = amount * 2;
       }
@@ -13597,7 +13642,8 @@ export class PokRoleActor extends Actor {
         detailLabel: this.localizeTrait(resolvedKey),
         durationMode: effect.durationMode,
         durationRounds: effect.durationRounds,
-        specialDuration: effect.specialDuration
+        specialDuration: effect.specialDuration,
+        maxStacks: effect.maxStacks ?? 0
       });
     } else if (Object.prototype.hasOwnProperty.call(targetActor.system.skills ?? {}, resolvedKey)) {
       statResult = await this._applyTemporaryTrackedModifier({
@@ -13611,7 +13657,8 @@ export class PokRoleActor extends Actor {
         detailLabel: this.localizeTrait(resolvedKey),
         durationMode: effect.durationMode,
         durationRounds: effect.durationRounds,
-        specialDuration: effect.specialDuration
+        specialDuration: effect.specialDuration,
+        maxStacks: effect.maxStacks ?? 0
       });
     }
 
@@ -15346,7 +15393,8 @@ export class PokRoleActor extends Actor {
     durationMode = "combat",
     durationRounds = 1,
     specialDuration = [],
-    automationOverrides = {}
+    automationOverrides = {},
+    maxStacks = 0
   }) {
     const numericAmount = Math.floor(toNumber(amount, 0));
     if (!targetActor || !path || numericAmount === 0) {
@@ -15385,6 +15433,21 @@ export class PokRoleActor extends Actor {
       .filter((effectId) => effectId);
     if (weakerSameDirectionIds.length > 0) {
       await targetActor.deleteEmbeddedDocuments("ActiveEffect", weakerSameDirectionIds);
+    }
+
+    // Enforce maxStacks for same-ability stacking (e.g. Speed Boost caps at 3)
+    if (maxStacks > 0) {
+      const sourceItemName = `${sourceMove?.name ?? ""}`.trim();
+      const existingSameSourceCount = sameDirectionModifiers.filter((effectDocument) => {
+        const flags = effectDocument.getFlag(POKROLE.ID, "automation") ?? {};
+        return `${flags.sourceItemName ?? ""}`.trim() === sourceItemName;
+      }).length;
+      if (existingSameSourceCount >= maxStacks) {
+        return {
+          applied: false,
+          detail: game.i18n.localize("POKROLE.Chat.SecondaryEffectNoStatChange")
+        };
+      }
     }
 
     const currentValue = toNumber(foundry.utils.getProperty(targetActor, path), 0);

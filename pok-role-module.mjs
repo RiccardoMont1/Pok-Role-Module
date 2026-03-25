@@ -1688,20 +1688,27 @@ Hooks.on("deleteCombat", async (combat) => {
 
   await clearCombatDelayedEffectQueue(combat);
 
+  console.log(`PokRole | Combat ended (${combatId}), cleaning up ${cachedActors.length} actors`);
+
   // Use cached actors for cleanup since combat.combatants may be empty after deletion
   for (const actor of cachedActors) {
+    const effectsBefore = actor.effects?.contents?.length ?? 0;
     if (typeof actor.processTemporaryEffectSpecialDuration === "function") {
-      try { await actor.processTemporaryEffectSpecialDuration("combat-end", { combatId }); } catch (_e) { /* */ }
+      try { await actor.processTemporaryEffectSpecialDuration("combat-end", { combatId }); } catch (e) { console.warn(`PokRole | combat-end special duration failed for ${actor.name}:`, e); }
     }
     if (typeof actor.clearCombatTemporaryEffects === "function") {
-      try { await actor.clearCombatTemporaryEffects(combatId); } catch (_e) { /* */ }
+      try { await actor.clearCombatTemporaryEffects(combatId); } catch (e) { console.warn(`PokRole | clearCombatTemporaryEffects failed for ${actor.name}:`, e); }
     }
     if (typeof actor.clearMultiTurnState === "function") {
-      try { await actor.clearMultiTurnState(); } catch (_e) { /* */ }
+      try { await actor.clearMultiTurnState(); } catch (e) { console.warn(`PokRole | clearMultiTurnState failed for ${actor.name}:`, e); }
     }
     if (typeof actor._clearBideState === "function") {
-      try { await actor._clearBideState(); } catch (_e) { /* */ }
+      try { await actor._clearBideState(); } catch (e) { console.warn(`PokRole | _clearBideState failed for ${actor.name}:`, e); }
     }
+    const effectsAfter = actor.effects?.contents?.length ?? 0;
+    console.log(`PokRole | ${actor.name}: effects ${effectsBefore} -> ${effectsAfter}`);
+    // Force sheet re-render to reflect cleared effects
+    if (actor.sheet?.rendered) actor.sheet.render(false);
   }
 
   LAST_COMBAT_TURN_STATE.delete(combatId);
