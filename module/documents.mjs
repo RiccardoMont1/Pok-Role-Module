@@ -13716,8 +13716,11 @@ export class PokRoleActor extends Actor {
         resolvedKey
       );
       const configuredMax = this._resolveAttributeMaximum(targetActor, resolvedKey);
-      const maxValue = isCoreAttribute ? Math.min(configuredMax, 10) : configuredMax;
+      const baseMaxValue = isCoreAttribute ? Math.min(configuredMax, 10) : configuredMax;
       const minValue = isCoreAttribute ? 1 : 0;
+      // Ability buffs with maxStacks can temporarily exceed the attribute cap
+      const abilityMaxStacks = effect.maxStacks ?? 0;
+      const maxValue = abilityMaxStacks > 0 ? baseMaxValue + abilityMaxStacks : baseMaxValue;
       statResult = await this._applyTemporaryTrackedModifier({
         targetActor,
         path: `system.attributes.${resolvedKey}`,
@@ -13730,7 +13733,7 @@ export class PokRoleActor extends Actor {
         durationMode: effect.durationMode,
         durationRounds: effect.durationRounds,
         specialDuration: effect.specialDuration,
-        maxStacks: effect.maxStacks ?? 0
+        maxStacks: abilityMaxStacks
       });
     } else if (Object.prototype.hasOwnProperty.call(targetActor.system.skills ?? {}, resolvedKey)) {
       statResult = await this._applyTemporaryTrackedModifier({
