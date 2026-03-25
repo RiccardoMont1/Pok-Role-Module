@@ -12308,7 +12308,7 @@ export class PokRoleActor extends Actor {
         return hp >= hpMax;
       }
       case "self-has-condition": {
-        if (!["enter-battle", "round-start", "round-end", "turn-start", "always"].includes(triggerKey)) return false;
+        if (!["enter-battle", "round-start", "round-end", "turn-start", "always", "condition-applied"].includes(triggerKey)) return false;
         const condKeys = `${abilityItem.system?.triggerConditionType ?? ""}`.trim().toLowerCase()
           .split(",").map((k) => k.trim()).filter(Boolean);
         return condKeys.length > 0 ? condKeys.some((k) => this._isConditionActive(k)) : false;
@@ -12623,6 +12623,22 @@ export class PokRoleActor extends Actor {
 
       const normalizedEffects = this._getAbilitySecondaryEffects(abilityItem);
       if (!normalizedEffects.length) continue;
+
+      // Moody-style: remove previous round's effects from the same ability before applying new ones
+      const abilityNotes = `${abilityItem.getFlag?.("pok-role-system", "automationNotes") ?? ""}`.trim().toLowerCase();
+      if (abilityNotes.includes("reset previous") || abilityNotes.includes("moody")) {
+        const abilityName = `${abilityItem.name ?? ""}`.trim();
+        const previousEffectIds = (this.effects?.contents ?? [])
+          .filter((e) => {
+            const flags = e.getFlag?.("pok-role-system", "automation") ?? {};
+            return flags?.managed && flags?.sourceItemName === abilityName && flags?.sourceItemType === "ability";
+          })
+          .map((e) => e.id)
+          .filter(Boolean);
+        if (previousEffectIds.length > 0) {
+          await this.deleteEmbeddedDocuments("ActiveEffect", previousEffectIds);
+        }
+      }
 
       // Inject runtime maxStacks for abilities with stacking caps.
       // Ensures the cap works even if the embedded item is a stale copy without maxStacks.
@@ -14086,7 +14102,14 @@ export class PokRoleActor extends Actor {
       if (normalizedCondition === "sleep") {
         await this._initializeSleepResistanceTrack();
       }
-      return this._ensureConditionEffectFromFlag(this, normalizedCondition, { burnStage });
+      const condResult = await this._ensureConditionEffectFromFlag(this, normalizedCondition, { burnStage });
+      // Trigger condition-based abilities (Guts, Quick Feet, etc.)
+      if (typeof this.processAbilityTriggerEffects === "function" && game.combat) {
+        try {
+          await this.processAbilityTriggerEffects("condition-applied", { combat: game.combat });
+        } catch (_e) { /* */ }
+      }
+      return condResult;
     }
 
     await this._setConditionFlagState(this, normalizedCondition, false);
@@ -15645,12 +15668,14 @@ export class PokRoleActor extends Actor {
     ]);
 
     // Trigger on-stat-lowered for abilities like Defiant/Competitive
-    if (appliedAmount < 0 && targetActor !== this && typeof targetActor.processAbilityTriggerEffects === "function") {
+    if (appliedAmount < 0 && typeof targetActor.processAbilityTriggerEffects === "function") {
+      console.log(`PokRole | Stat lowered on ${targetActor.name} (${path} ${appliedAmount}), firing on-stat-lowered`);
       try {
-        await targetActor.processAbilityTriggerEffects("on-stat-lowered", {
+        const statLowerResults = await targetActor.processAbilityTriggerEffects("on-stat-lowered", {
           combat: game.combat,
           attackerActor: this
         });
+        console.log(`PokRole | on-stat-lowered results for ${targetActor.name}:`, statLowerResults);
       } catch (e) {
         console.warn(`PokRole | on-stat-lowered ability processing failed for ${targetActor.name}:`, e);
       }
