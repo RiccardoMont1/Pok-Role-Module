@@ -1686,7 +1686,7 @@ Hooks.on("deleteCombat", async (combat) => {
   const cachedActors = COMBAT_ACTOR_CACHE.get(combatId) ?? [];
   COMBAT_ACTOR_CACHE.delete(combatId);
 
-  await clearCombatDelayedEffectQueue(combat);
+  try { await clearCombatDelayedEffectQueue(combat); } catch (_e) { /* combat already deleted */ }
 
   // Collect ALL actors that might have combat-scoped effects:
   // 1) cached combatant actors (from preDeleteCombat)
