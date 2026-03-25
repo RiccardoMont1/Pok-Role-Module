@@ -3111,7 +3111,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
           "healMode": "fixed",
           "healProfile": "standard",
           "healingCategory": "standard",
-          "notes": "",
+          "notes": "rank-expert-double",
           "linkedEffectId": ""
         }
       ],
@@ -3388,19 +3388,44 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "enter-battle",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
       "frequency": "",
       "effect": "This Pokemon does not receive damage from Poison and Badly Poisoned Status Ailments.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "cleanse",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "none",
+          "amount": 0,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "poisoned,badly-poisoned",
+          "linkedEffectId": ""
+        }
+      ],
       "description": "The Pokemon has a very strong immune system and will rarely get sick. It could even eat rotten food without getting sick."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-immunity",
-        "automationStatus": "partial",
+        "automationStatus": "full",
         "automationNotes": "IMMUNE: poisoned, badly-poisoned"
       }
     }
@@ -3505,19 +3530,44 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "enter-battle",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
       "frequency": "",
       "effect": "This Pokemon does not Flinch. The Ability Intimidate does not have any effect against this Pokemon. Outside of battle this Pokemon is able to resist intimidation tactics, fear and stress better than others.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "cleanse",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "none",
+          "amount": 0,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "flinch",
+          "linkedEffectId": ""
+        }
+      ],
       "description": "The Pokemon is extrmely serious and focused on everything it does. It remains calm and never backs down, even if it's getting severly injured."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-inner-focus",
-        "automationStatus": "partial",
+        "automationStatus": "full",
         "automationNotes": "IMMUNE: flinch. Intimidate has no effect."
       }
     }
@@ -3528,19 +3578,44 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "enter-battle",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
       "frequency": "",
       "effect": "This Pokemon is immune to the Sleep Status. Moves and Items that self-inflict Sleep will fail.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "cleanse",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "none",
+          "amount": 0,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "sleep",
+          "linkedEffectId": ""
+        }
+      ],
       "description": "The Pokemon does not ever sleep, it will be awake no matter the hour. Maybe it doesn't need to or maybe it's just worried."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-insomnia",
-        "automationStatus": "partial",
+        "automationStatus": "full",
         "automationNotes": "IMMUNE: sleep"
       }
     }
@@ -3902,19 +3977,44 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "enter-battle",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
       "frequency": "",
       "effect": "This Pokemon is immune to Paralysis Status Ailment.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "cleanse",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "none",
+          "amount": 0,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "paralyzed",
+          "linkedEffectId": ""
+        }
+      ],
       "description": "The muscles of this Pokemon are incredibly flexible and elastic. Easing their movement, agility, and grace."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-limber",
-        "automationStatus": "partial",
+        "automationStatus": "full",
         "automationNotes": "IMMUNE: paralyzed"
       }
     }
@@ -4086,19 +4186,44 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "enter-battle",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
       "frequency": "",
       "effect": "This Pokemon is immune to the Frozen Status Ailment. ",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "cleanse",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "none",
+          "amount": 0,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "frozen",
+          "linkedEffectId": ""
+        }
+      ],
       "description": "The body of the Pokemon is always hot to the touch, it can heat a large room just by standing inside and can also endure high temperatures."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-magma-armor",
-        "automationStatus": "partial",
+        "automationStatus": "full",
         "automationNotes": "IMMUNE: frozen"
       }
     }
@@ -4764,19 +4889,44 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "enter-battle",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
       "frequency": "",
       "effect": "This Pokemon is not affected by the Love Status. It is immune to the effects of moves that affect its feelings such as Taunt, Charm, Captivate etc. at Storyteller's discretion.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "cleanse",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "none",
+          "amount": 0,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "infatuated",
+          "linkedEffectId": ""
+        }
+      ],
       "description": "This Pokemon will rarely have a satisfactory social interaction; too self-absorbed to take hints or cues in any relationship."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-oblivious",
-        "automationStatus": "partial",
+        "automationStatus": "full",
         "automationNotes": "IMMUNE: infatuated"
       }
     }
@@ -4928,19 +5078,44 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "enter-battle",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
       "frequency": "",
       "effect": "This Pokemon is not affected by the Confused Status Condition.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "cleanse",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "none",
+          "amount": 0,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "confused",
+          "linkedEffectId": ""
+        }
+      ],
       "description": "This Pokemon will do everything at its own pace, peer pressure will be ignored. Its behavior reflexive and calm... maybe too calm."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-own-tempo",
-        "automationStatus": "partial",
+        "automationStatus": "full",
         "automationNotes": "IMMUNE: confused"
       }
     }
@@ -5658,7 +5833,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
           "healMode": "fixed",
           "healProfile": "standard",
           "healingCategory": "standard",
-          "notes": "",
+          "notes": "rank-expert-double",
           "linkedEffectId": ""
         }
       ],
@@ -8694,19 +8869,44 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "enter-battle",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
       "frequency": "",
       "effect": "This Pokemon is immune to the Sleep status. Moves or Items that self-inflict Sleep will fail.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "cleanse",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "none",
+          "amount": 0,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "sleep",
+          "linkedEffectId": ""
+        }
+      ],
       "description": "The Pokemon is incredibly active and energetic. It needs constant activity and exercise or else it will act destructive. It never sleeps."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-vital-spirit",
-        "automationStatus": "partial",
+        "automationStatus": "full",
         "automationNotes": "IMMUNE: sleep"
       }
     }
@@ -8832,19 +9032,44 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "enter-battle",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
       "frequency": "",
       "effect": "The Pokemon is immune to all Burn degrees.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "cleanse",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "none",
+          "amount": 0,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "burn",
+          "linkedEffectId": ""
+        }
+      ],
       "description": "This Pokemon is always wet and producing water to keep itself moist. Thanks to this, the Pokemon can stay away from a body of water for a long time."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-water-veil",
-        "automationStatus": "partial",
+        "automationStatus": "full",
         "automationNotes": "IMMUNE: burn"
       }
     }

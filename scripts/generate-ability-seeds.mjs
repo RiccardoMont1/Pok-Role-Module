@@ -16,15 +16,51 @@ const abilities = JSON.parse(readFileSync(abilitiesPath, "utf-8"));
 
 const AUTOMATIONS = {
   // --- Condition immunities ---
-  "insomnia": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: sleep" },
-  "vital-spirit": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: sleep" },
-  "limber": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: paralyzed" },
-  "magma-armor": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: frozen" },
-  "own-tempo": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: confused" },
-  "water-veil": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: burn" },
-  "oblivious": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: infatuated" },
-  "immunity": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: poisoned, badly-poisoned" },
-  "inner-focus": { type: "passive", trigger: "always", target: "self", effects: [], notes: "IMMUNE: flinch. Intimidate has no effect." },
+  "insomnia": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "sleep" }],
+    notes: "IMMUNE: sleep"
+  },
+  "vital-spirit": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "sleep" }],
+    notes: "IMMUNE: sleep"
+  },
+  "limber": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "paralyzed" }],
+    notes: "IMMUNE: paralyzed"
+  },
+  "magma-armor": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "frozen" }],
+    notes: "IMMUNE: frozen"
+  },
+  "own-tempo": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "confused" }],
+    notes: "IMMUNE: confused"
+  },
+  "water-veil": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "burn" }],
+    notes: "IMMUNE: burn"
+  },
+  "oblivious": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "infatuated" }],
+    notes: "IMMUNE: infatuated"
+  },
+  "immunity": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "poisoned,badly-poisoned" }],
+    notes: "IMMUNE: poisoned, badly-poisoned"
+  },
+  "inner-focus": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [{ effectType: "cleanse", trigger: "always", target: "self", notes: "flinch" }],
+    notes: "IMMUNE: flinch. Intimidate has no effect."
+  },
 
   // --- Stat boost with HP ≤ 50% ---
   "anger-shell": {
@@ -72,11 +108,11 @@ const AUTOMATIONS = {
   // --- Always-on stat boosts ---
   "huge-power": {
     type: "passive", trigger: "always", target: "self",
-    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" }]
+    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self", notes: "rank-expert-double" }]
   },
   "pure-power": {
     type: "passive", trigger: "always", target: "self",
-    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" }]
+    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self", notes: "rank-expert-double" }]
   },
 
   // --- Weather on entry ---

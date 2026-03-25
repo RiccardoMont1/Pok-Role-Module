@@ -1691,19 +1691,41 @@ Hooks.on("updateCombat", async (combat, changed) => {
   });
 });
 
-Hooks.on("deleteCombat", async (combat) => {
-  await clearCombatDelayedEffectQueue(combat);
-  await processCombatSpecialDurationEvent(combat, "combat-end");
-  await clearCombatScopedTemporaryEffects(combat);
+// Cache combatant actors before combat deletion (combatants may be empty after delete)
+const COMBAT_ACTOR_CACHE = new Map();
+Hooks.on("preDeleteCombat", (combat) => {
+  const actors = [];
   for (const combatant of combat?.combatants ?? []) {
     const actor = combatant?.actor ?? null;
-    if (!actor || typeof actor.clearMultiTurnState !== "function") continue;
-    await actor.clearMultiTurnState();
+    if (actor) actors.push(actor);
+  }
+  if (actors.length > 0) COMBAT_ACTOR_CACHE.set(combat.id, actors);
+});
+
+Hooks.on("deleteCombat", async (combat) => {
+  const combatId = `${combat?.id ?? ""}`.trim();
+  const cachedActors = COMBAT_ACTOR_CACHE.get(combatId) ?? [];
+  COMBAT_ACTOR_CACHE.delete(combatId);
+
+  await clearCombatDelayedEffectQueue(combat);
+
+  // Use cached actors for cleanup since combat.combatants may be empty after deletion
+  for (const actor of cachedActors) {
+    if (typeof actor.processTemporaryEffectSpecialDuration === "function") {
+      try { await actor.processTemporaryEffectSpecialDuration("combat-end", { combatId }); } catch (_e) { /* */ }
+    }
+    if (typeof actor.clearCombatTemporaryEffects === "function") {
+      try { await actor.clearCombatTemporaryEffects(combatId); } catch (_e) { /* */ }
+    }
+    if (typeof actor.clearMultiTurnState === "function") {
+      try { await actor.clearMultiTurnState(); } catch (_e) { /* */ }
+    }
     if (typeof actor._clearBideState === "function") {
-      await actor._clearBideState();
+      try { await actor._clearBideState(); } catch (_e) { /* */ }
     }
   }
-  LAST_COMBAT_TURN_STATE.delete(`${combat?.id ?? ""}`);
+
+  LAST_COMBAT_TURN_STATE.delete(combatId);
 });
 
 Hooks.on("createCombat", () => {

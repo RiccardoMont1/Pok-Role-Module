@@ -170,7 +170,11 @@ const DEFAULT_CLEANSE_CONDITION_KEYS = Object.freeze([
   "paralyzed",
   "poisoned",
   "badly-poisoned",
-  "sleep"
+  "sleep",
+  "confused",
+  "disabled",
+  "infatuated",
+  "flinch"
 ]);
 const CONDITION_FIELD_BY_KEY = Object.freeze({
   sleep: "sleep",
@@ -13524,7 +13528,16 @@ export class PokRoleActor extends Actor {
   }
 
   async _applyStatEffectToActor(effect, targetActor, sourceMove = null) {
-    const amount = Math.floor(toNumber(effect.amount, 0));
+    let amount = Math.floor(toNumber(effect.amount, 0));
+    // Rank-based scaling: double the amount for Expert rank and above
+    const effectNotes = `${effect.notes ?? ""}`.trim().toLowerCase();
+    if (effectNotes.includes("rank-expert-double") && targetActor) {
+      const EXPERT_RANKS = new Set(["expert", "ace", "master", "champion"]);
+      const rank = `${targetActor.system?.rank ?? ""}`.trim().toLowerCase();
+      if (EXPERT_RANKS.has(rank)) {
+        amount = amount * 2;
+      }
+    }
     if (amount === 0) {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
     }
@@ -15462,10 +15475,11 @@ export class PokRoleActor extends Actor {
     if (leftSourceType === "transfer" || rightSourceType === "transfer") {
       return true;
     }
-    return (
-      (leftSourceType === "move" && rightSourceType === "ability") ||
-      (leftSourceType === "ability" && rightSourceType === "move")
-    );
+    // Abilities stack with moves and with other ability applications (e.g. Speed Boost each round)
+    if (leftSourceType === "ability" || rightSourceType === "ability") {
+      return true;
+    }
+    return false;
   }
 
   _localizeTemporaryDuration(durationMode, rounds = 1, specialDuration = []) {
@@ -15781,12 +15795,16 @@ export class PokRoleActor extends Actor {
 
   async _applyWillEffectToActor(effect, targetActor) {
     const maxWill = Math.max(toNumber(targetActor.system.resources?.will?.max, 1), 1);
-    const amount = Math.floor(toNumber(effect.amount, 0));
+    const currentWill = Math.max(toNumber(targetActor.system.resources?.will?.value, 0), 0);
+    const rawAmount = Math.floor(toNumber(effect.amount, 0));
+    // Negative values <= -2 are treated as percentage reduction (e.g. -50 = lose 50% of current will)
+    const amount = rawAmount <= -2
+      ? -Math.ceil(currentWill * Math.abs(rawAmount) / 100)
+      : rawAmount;
     if (amount === 0) {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
     }
 
-    const currentWill = Math.max(toNumber(targetActor.system.resources?.will?.value, 0), 0);
     const nextWill = clamp(currentWill + amount, 0, maxWill);
     if (nextWill === currentWill) {
       return {
@@ -15845,10 +15863,13 @@ export class PokRoleActor extends Actor {
       };
     }
 
+    // Abilities can always set terrain (no move validation needed)
+    const isAbilitySource = `${sourceMove?.type ?? ""}`.trim().toLowerCase() === "ability";
     const runtimeRule = this._getTerrainRuntimeMoveRule(sourceMove);
     const moveTargetKey = this._normalizeMoveTargetKey(sourceMove?.system?.target);
     const movePrimaryMode = this._normalizeMovePrimaryMode(sourceMove?.system?.primaryMode);
     const canCreateTerrain =
+      isAbilitySource ||
       Boolean(runtimeRule?.terrainScope) ||
       ["battlefield", "ally-battlefield", "foe-battlefield", "battlefield-area"].includes(moveTargetKey) ||
       movePrimaryMode === "effect-only";
@@ -17387,10 +17408,13 @@ export class PokRoleActor extends Actor {
       }
     }
 
-    // on-self-faint for the fainted actor
+    // on-self-faint for the fainted actor (pass attacker for target resolution)
     if (faintedActor && typeof faintedActor.processAbilityTriggerEffects === "function") {
       try {
-        await faintedActor.processAbilityTriggerEffects("on-self-faint", { combat });
+        await faintedActor.processAbilityTriggerEffects("on-self-faint", {
+          combat,
+          attackerActor: sourceActor
+        });
       } catch (err) {
         console.warn(`PokRole | on-self-faint ability processing failed for ${faintedActor.name}:`, err);
       }
