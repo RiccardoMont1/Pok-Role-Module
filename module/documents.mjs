@@ -12159,11 +12159,18 @@ export class PokRoleActor extends Actor {
     const activeAbilityName = `${this.system?.ability ?? ""}`.trim();
     if (!activeAbilityName) return [];
 
-    // Check embedded items first
+    // Check embedded items first — but only use if it has automation data (secondaryEffects)
     const embeddedMatch = this.items.find(
       (item) => item.type === "ability" && item.name === activeAbilityName
     );
-    if (embeddedMatch) return [embeddedMatch];
+    if (embeddedMatch) {
+      const embeddedEffects = embeddedMatch.system?.secondaryEffects;
+      if (Array.isArray(embeddedEffects) && embeddedEffects.length > 0) {
+        return [embeddedMatch];
+      }
+      // Embedded item exists but has no secondaryEffects — try compendium for updated version
+      console.log(`PokRole | [_getActiveAbilityItems] Embedded "${activeAbilityName}" has no secondaryEffects, checking compendium`);
+    }
 
     // Fallback: search compendium packs for the ability
     for (const pack of game.packs.filter((p) => p.documentName === "Item")) {
@@ -12176,6 +12183,9 @@ export class PokRoleActor extends Actor {
         if (doc) return [doc];
       }
     }
+
+    // Last resort: return embedded item even without effects (for non-automated abilities)
+    if (embeddedMatch) return [embeddedMatch];
 
     return [];
   }
@@ -12311,7 +12321,9 @@ export class PokRoleActor extends Actor {
         if (!["enter-battle", "round-start", "round-end", "turn-start", "always", "condition-applied"].includes(triggerKey)) return false;
         const condKeys = `${abilityItem.system?.triggerConditionType ?? ""}`.trim().toLowerCase()
           .split(",").map((k) => k.trim()).filter(Boolean);
-        return condKeys.length > 0 ? condKeys.some((k) => this._isConditionActive(k)) : false;
+        const condActiveResults = condKeys.map((k) => ({ key: k, active: this._isConditionActive(k) }));
+        console.log(`PokRole | [triggerMatch] self-has-condition: triggerKey="${triggerKey}" condKeys=${JSON.stringify(condKeys)} activeResults=${JSON.stringify(condActiveResults)}`);
+        return condKeys.length > 0 ? condActiveResults.some((r) => r.active) : false;
       }
       case "self-missing-condition": {
         if (!["enter-battle", "round-start", "round-end", "turn-start", "always"].includes(triggerKey)) return false;
@@ -12604,9 +12616,15 @@ export class PokRoleActor extends Actor {
    * @returns {Array} Array of result objects
    */
   async processAbilityTriggerEffects(triggerKey, context = {}) {
+    console.log(`PokRole | [processAbilityTrigger] Actor="${this.name}" triggerKey="${triggerKey}"`);
     // Allow on-self-faint to fire even when fainted (e.g. Aftermath)
     if (triggerKey !== "on-self-faint") {
-      if (this._isConditionActive?.("fainted") || this._isConditionActive?.("dead")) return [];
+      const isFainted = this._isConditionActive?.("fainted");
+      const isDead = this._isConditionActive?.("dead");
+      if (isFainted || isDead) {
+        console.log(`PokRole | [processAbilityTrigger] EARLY RETURN: fainted=${isFainted} dead=${isDead}`);
+        return [];
+      }
     }
 
     // On enter-battle, cleanse conditions the active ability is immune to (e.g. Insomnia removes sleep)
@@ -12615,13 +12633,17 @@ export class PokRoleActor extends Actor {
     }
 
     const abilityItems = await this._getActiveAbilityItems();
+    console.log(`PokRole | [processAbilityTrigger] Found ${abilityItems.length} active ability items: [${abilityItems.map((a) => `${a.name} (trigger=${a.system?.abilityTrigger})`).join(", ")}]`);
     if (!abilityItems.length) return [];
 
     const results = [];
     for (const abilityItem of abilityItems) {
-      if (!this._abilityTriggerMatches(abilityItem, triggerKey, context)) continue;
+      const triggerMatches = this._abilityTriggerMatches(abilityItem, triggerKey, context);
+      console.log(`PokRole | [processAbilityTrigger] Ability="${abilityItem.name}" abilityTrigger="${abilityItem.system?.abilityTrigger}" vs triggerKey="${triggerKey}" => matches=${triggerMatches}`);
+      if (!triggerMatches) continue;
 
       const normalizedEffects = this._getAbilitySecondaryEffects(abilityItem);
+      console.log(`PokRole | [processAbilityTrigger] Ability="${abilityItem.name}" has ${normalizedEffects.length} secondary effects`);
       if (!normalizedEffects.length) continue;
 
       // Moody-style: remove previous round's effects from the same ability before applying new ones
@@ -14104,10 +14126,14 @@ export class PokRoleActor extends Actor {
       }
       const condResult = await this._ensureConditionEffectFromFlag(this, normalizedCondition, { burnStage });
       // Trigger condition-based abilities (Guts, Quick Feet, etc.)
-      if (typeof this.processAbilityTriggerEffects === "function" && game.combat) {
+      console.log(`PokRole | [condition-applied] Condition "${normalizedCondition}" applied on ${this.name}. game.combat=${!!game.combat}, hasMethod=${typeof this.processAbilityTriggerEffects === "function"}`);
+      if (typeof this.processAbilityTriggerEffects === "function") {
         try {
-          await this.processAbilityTriggerEffects("condition-applied", { combat: game.combat });
-        } catch (_e) { /* */ }
+          const condTriggerResults = await this.processAbilityTriggerEffects("condition-applied", { combat: game.combat ?? null });
+          console.log(`PokRole | [condition-applied] Results for ${this.name}:`, condTriggerResults);
+        } catch (_e) {
+          console.warn(`PokRole | [condition-applied] Failed for ${this.name}:`, _e);
+        }
       }
       return condResult;
     }
