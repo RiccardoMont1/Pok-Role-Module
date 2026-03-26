@@ -2792,13 +2792,58 @@ export class PokRoleActor extends Actor {
   /**
    * Returns whether a held item is compatible with this Pokemon's species restrictions.
    */
+  _normalizeHeldItemCompatibilityKey(value) {
+    return `${value ?? ""}`
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/['’]/g, "")
+      .replace(/[^a-z0-9]+/gi, " ")
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  _getHeldItemCompatibilitySpeciesKeys() {
+    const keys = new Set();
+    const addKey = (value) => {
+      const normalized = this._normalizeHeldItemCompatibilityKey(value);
+      if (!normalized) return;
+      keys.add(normalized);
+      const withoutFormSuffix = normalized
+        .replace(/\b(alolan|galarian|hisuian|paldean)\s+form\b/g, "$1")
+        .replace(/\b(form|forme)\b/g, "")
+        .trim()
+        .replace(/\s+/g, " ");
+      if (withoutFormSuffix) keys.add(withoutFormSuffix);
+    };
+
+    addKey(this.system?.species);
+    addKey(this.name);
+
+    const actorSeedId = `${this.getFlag?.(POKROLE.ID, "seedId") ?? ""}`.trim().toLowerCase();
+    const actorSeedMatch = actorSeedId.match(/^actor-pokemon-\d+-(.+)$/);
+    if (actorSeedMatch?.[1]) addKey(actorSeedMatch[1]);
+
+    return Array.from(keys);
+  }
+
   _heldItemMatchesCompatiblePokemon(item) {
     if (!item || this.type !== "pokemon") return false;
-    const compatiblePokemon = `${item.system?.held?.compatiblePokemon ?? ""}`.trim().toLowerCase();
-    if (!compatiblePokemon) return true;
-    const species = `${this.system?.species || this.name || ""}`.trim().toLowerCase();
-    if (!species) return false;
-    return species.includes(compatiblePokemon) || compatiblePokemon.includes(species);
+    const rawCompatiblePokemon = `${item.system?.held?.compatiblePokemon ?? ""}`.trim();
+    if (!rawCompatiblePokemon) return true;
+    const speciesKeys = this._getHeldItemCompatibilitySpeciesKeys();
+    if (!speciesKeys.length) return false;
+
+    const compatibleEntries = rawCompatiblePokemon
+      .split(/[,\n;]+/)
+      .map((entry) => this._normalizeHeldItemCompatibilityKey(entry))
+      .filter(Boolean);
+
+    if (!compatibleEntries.length) return true;
+
+    return compatibleEntries.some((compatibleEntry) => speciesKeys.some((speciesKey) => (
+      speciesKey === compatibleEntry || speciesKey.startsWith(`${compatibleEntry} `)
+    )));
   }
 
   _getGearSeedId(item) {
