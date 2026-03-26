@@ -9242,9 +9242,11 @@ export class PokRoleActor extends Actor {
     });
     // Defender ability effects (e.g. Flame Body, Static, Poison Point on being hit)
     const defenderAbilityResults = [];
+    console.log(`PokRole | [defenderAbilityFlow] hit=${hit} isDamagingMove=${isDamagingMove} damageTargetResults=${damageTargetResults.length}`);
     if (hit && isDamagingMove) {
       for (const damageResult of damageTargetResults) {
         const defenderActor = damageResult?.targetActor;
+        console.log(`PokRole | [defenderAbilityFlow] defenderActor="${defenderActor?.name}" isPokRoleActor=${defenderActor instanceof PokRoleActor} defenderHP=${defenderActor?.system?.resources?.hp?.value}/${defenderActor?.system?.resources?.hp?.max}`);
         if (
           defenderActor instanceof PokRoleActor &&
           defenderActor.id !== this.id &&
@@ -12293,13 +12295,14 @@ export class PokRoleActor extends Actor {
       case "on-self-faint":
         return triggerKey === "on-self-faint";
       case "self-hp-half-or-less": {
-        if (!["enter-battle", "round-start", "on-hit-by", "always"].includes(triggerKey)) return false;
+        if (!["enter-battle", "round-start", "turn-start", "on-hit-by", "always"].includes(triggerKey)) return false;
         const hp = toNumber(this.system?.resources?.hp?.value, 0);
         const hpMax = Math.max(toNumber(this.system?.resources?.hp?.max, 1), 1);
+        console.log(`PokRole | [HP trigger] self-hp-half-or-less check: hp=${hp} hpMax=${hpMax} threshold=${Math.floor(hpMax / 2)} pass=${hp > 0 && hp <= Math.floor(hpMax / 2)}`);
         return hp > 0 && hp <= Math.floor(hpMax / 2);
       }
       case "self-hp-quarter-or-less": {
-        if (!["enter-battle", "round-start", "on-hit-by", "always"].includes(triggerKey)) return false;
+        if (!["enter-battle", "round-start", "turn-start", "on-hit-by", "always"].includes(triggerKey)) return false;
         const hp = toNumber(this.system?.resources?.hp?.value, 0);
         const hpMax = Math.max(toNumber(this.system?.resources?.hp?.max, 1), 1);
         return hp > 0 && hp <= Math.floor(hpMax / 4);
