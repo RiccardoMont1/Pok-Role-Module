@@ -670,6 +670,34 @@ const AUTOMATIONS = {
     effects: [],
     notes: "IMMUNE: recoil damage. This Pokemon will not receive damage from Recoil."
   },
+
+  // --- Weather/Terrain conditional immunity ---
+  "leaf-guard": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "While Sunny Weather is active: IMMUNE to all Status Ailments and Conditions. Automated in condition immunity check."
+  },
+
+  // --- On-hit-by-contact debuff to ALL foes ---
+  "cotton-down": {
+    type: "passive", trigger: "on-hit-by-contact", target: "all-foes",
+    effects: [{ effectType: "stat", stat: "dexterity", amount: -1, trigger: "always", target: "all-foes", durationMode: "combat" }],
+    notes: "When hit by Non-Ranged Physical: reduce Dexterity of all nearby Pokemon"
+  },
+
+  // --- Highest-stat weather/terrain boosts ---
+  "protosynthesis": {
+    type: "passive", trigger: "weather-active", target: "self",
+    triggerConditionWeather: "sunny,harsh-sunlight",
+    effects: [{ effectType: "stat", stat: "highest", amount: 1, trigger: "always", target: "self" }],
+    notes: "While Sunny Weather is active: +1 to highest Attribute (+2 if Dexterity)"
+  },
+  "quark-drive": {
+    type: "passive", trigger: "terrain-active", target: "self",
+    triggerConditionTerrain: "electric",
+    effects: [{ effectType: "stat", stat: "highest", amount: 1, trigger: "always", target: "self" }],
+    notes: "While Electric Terrain is active: +1 to highest Attribute (+2 if Dexterity)"
+  },
 };
 
 // ---- BUILD ENTRIES ----

@@ -1255,21 +1255,47 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
-      "abilityTarget": "self",
+      "abilityTrigger": "on-hit-by-contact",
+      "abilityTarget": "all-foes",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
       "triggerConditionTerrain": "",
       "frequency": "",
       "effect": "If Pokemon is hit with a Non-Ranged Physical Move, reduce the speed of all Pokemon in an Area close to it.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "all-foes",
+          "effectType": "stat",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "dexterity",
+          "amount": -1,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "",
+          "maxStacks": 0,
+          "linkedEffectId": ""
+        }
+      ],
       "description": "The cotton fluff on this pokemon's body is constantly being shed, it can be used to make beautiful clothes but it's also bothersome to walk on."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-cotton-down",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "full",
+        "automationNotes": "When hit by Non-Ranged Physical: reduce Dexterity of all nearby Pokemon"
       }
     }
   },
@@ -4116,8 +4142,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-leaf-guard",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "While Sunny Weather is active: IMMUNE to all Status Ailments and Conditions. Automated in condition immunity check."
       }
     }
   },
@@ -5979,21 +6005,47 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "weather-active",
       "abilityTarget": "self",
       "triggerConditionType": "",
-      "triggerConditionWeather": "",
+      "triggerConditionWeather": "sunny,harsh-sunlight",
       "triggerConditionTerrain": "",
       "frequency": "",
       "effect": "While Sunny Weather is active, increase this Pokemon's highest Attribute by 1. If their highest Attribute is Dexterity, increase it by 2. Unique Ability.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "stat",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "highest",
+          "amount": 1,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "",
+          "maxStacks": 0,
+          "linkedEffectId": ""
+        }
+      ],
       "description": "This Pokemon's primal energy is barely contained. Sunlight powers them up and brings up a wilder and savage behaviour."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-protosynthesis",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "full",
+        "automationNotes": "While Sunny Weather is active: +1 to highest Attribute (+2 if Dexterity)"
       }
     }
   },
@@ -6151,21 +6203,47 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "terrain-active",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
-      "triggerConditionTerrain": "",
+      "triggerConditionTerrain": "electric",
       "frequency": "",
       "effect": "If Electric Terrain is active, increase this Pokemon's highest Attribute by 1. If their highest Attribute is Dexterity, increase it by 2. Unique Ability.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "stat",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "highest",
+          "amount": 1,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "",
+          "maxStacks": 0,
+          "linkedEffectId": ""
+        }
+      ],
       "description": "This Pokemon is energized to a sub-atomic level, its power barely contained. A power grid could destabilize their elecron charge out of this dimension."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-quark-drive",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "full",
+        "automationNotes": "While Electric Terrain is active: +1 to highest Attribute (+2 if Dexterity)"
       }
     }
   },

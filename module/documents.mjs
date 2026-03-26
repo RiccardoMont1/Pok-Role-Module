@@ -10999,6 +10999,14 @@ export class PokRoleActor extends Actor {
       const abilityDisplay = `${targetActor.system?.ability ?? activeAbilityName}`;
       return `${targetActor.name}'s ${abilityDisplay} prevents ${this._localizeConditionName(conditionKey)}!`;
     }
+    // Leaf Guard: immune to all conditions while Sunny weather is active
+    if (["leaf-guard", "leaf guard"].includes(activeAbilityName)) {
+      const currentWeather = `${this.getActiveWeatherKey?.() ?? targetActor.getActiveWeatherKey?.() ?? ""}`.trim().toLowerCase();
+      if (["sunny", "harsh-sunlight"].includes(currentWeather)) {
+        const abilityDisplay = `${targetActor.system?.ability ?? "Leaf Guard"}`;
+        return `${targetActor.name}'s ${abilityDisplay} prevents ${this._localizeConditionName(conditionKey)} in sunny weather!`;
+      }
+    }
     return "";
   }
 
@@ -11060,6 +11068,7 @@ export class PokRoleActor extends Actor {
       .replace(/[^a-z0-9]+/g, "");
     const mapped = LEGACY_EFFECT_STAT_MAP[normalized] ?? normalized;
     if (MOVE_SECONDARY_STAT_KEYS.includes(mapped)) return mapped;
+    if (mapped === "highest") return "highest";
     if (mapped.includes("specialdef")) return "specialDefense";
     if (mapped.includes("def")) return "defense";
     if (mapped.includes("attack")) return "strength";
@@ -13767,6 +13776,21 @@ export class PokRoleActor extends Actor {
     }
 
     let statKey = this._normalizeSecondaryStatKey(effect.stat);
+    // Highest stat selection for abilities like Protosynthesis / Quark Drive
+    if (statKey === "highest" && targetActor) {
+      const coreStats = ["strength", "dexterity", "vitality", "special", "insight"];
+      let bestStat = null;
+      let bestValue = -Infinity;
+      for (const s of coreStats) {
+        const val = Math.floor(toNumber(targetActor.system?.attributes?.[s]?.value, 0));
+        if (val > bestValue) { bestValue = val; bestStat = s; }
+      }
+      if (bestStat) {
+        statKey = bestStat;
+        // Protosynthesis / Quark Drive: +2 if highest is Dexterity, +1 otherwise
+        if (bestStat === "dexterity" && amount === 1) amount = 2;
+      }
+    }
     // Random stat selection for abilities like Moody
     if (statKey === "none" && targetActor) {
       const coreStats = ["strength", "dexterity", "vitality", "special", "insight"];
