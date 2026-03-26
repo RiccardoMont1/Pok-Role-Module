@@ -25,6 +25,7 @@ import {
   TYPE_EFFECTIVENESS
 } from "./constants.mjs";
 import { evaluateNumericFormula } from "./formula-engine.mjs";
+import { EVIOLITE_ELIGIBLE_SPECIES } from "./seeds/generated/eviolite-species.mjs";
 
 function toNumber(value, fallback = 0) {
   const numericValue = Number(value);
@@ -1077,7 +1078,7 @@ export class PokRoleActor extends Actor {
     const weather = this.getActiveWeatherKey?.() ?? "none";
     const weatherBonus = this._getWeatherDefenseBonusForStat(category, weather);
     const defKey = category === "special" ? "spDef" : "def";
-    const heldDefBonus = this._getHeldItemStatBonus(defKey);
+    const heldDefBonus = this._getHeldItemStatBonus(defKey) + this._getHeldItemEvioliteDefenseBonus();
     return base + weatherBonus + heldDefBonus;
   }
 
@@ -2819,6 +2820,19 @@ export class PokRoleActor extends Actor {
     return item;
   }
 
+  _getHeldItemSeedId(options = {}) {
+    const heldItem = this._getHeldItemDocument(options);
+    return `${heldItem?.getFlag?.(POKROLE.ID, "seedId") ?? foundry.utils.getProperty(heldItem, `flags.${POKROLE.ID}.seedId`) ?? ""}`
+      .trim()
+      .toLowerCase();
+  }
+
+  _hasEquippedHeldItemSeed(seedId, options = {}) {
+    const normalizedSeedId = `${seedId ?? ""}`.trim().toLowerCase();
+    if (!normalizedSeedId) return false;
+    return this._getHeldItemSeedId(options) === normalizedSeedId;
+  }
+
   async _setEquippedHeldItemId(itemId = "") {
     if (this.type !== "pokemon") return "";
     const normalizedItemId = `${itemId ?? ""}`.trim();
@@ -2921,6 +2935,51 @@ export class PokRoleActor extends Actor {
     const staticBonus = Math.floor(toNumber(held.statBonuses?.initiative, 0));
     if (staticBonus !== 0) return staticBonus;
     return Math.floor(toNumber(held.choiceInitiativeBonus, 0));
+  }
+
+  _isEvioliteEligibleSpecies() {
+    if (this.type !== "pokemon") return false;
+    const species = `${this.system?.species || this.name || ""}`.trim().toLowerCase();
+    if (!species) return false;
+    return EVIOLITE_ELIGIBLE_SPECIES.has(species);
+  }
+
+  _getHeldItemEvioliteDefenseBonus() {
+    if (this.type !== "pokemon") return 0;
+    if (!this._hasEquippedHeldItemSeed("held-eviolite")) return 0;
+    return this._isEvioliteEligibleSpecies() ? 1 : 0;
+  }
+
+  _hasActiveAirBalloon() {
+    return this.type === "pokemon" && this._hasEquippedHeldItemSeed("held-air-balloon");
+  }
+
+  _heldItemRemovesGroundTypeImmunity() {
+    return this.type === "pokemon" && this._hasEquippedHeldItemSeed("held-iron-ball");
+  }
+
+  _preventsContactTriggers(move = null) {
+    if (this.type !== "pokemon") return false;
+    if (!this._hasEquippedHeldItemSeed("held-protective-pads")) return false;
+    const category = this._normalizeMoveCombatCategory(move?.system?.category);
+    return category === "physical" && !this._isMoveRanged(move);
+  }
+
+  _getHeldItemFlinchProfile(move = null) {
+    if (this.type !== "pokemon") return null;
+    const heldItem = this._getHeldItemDocument({ requireCompatible: true });
+    const heldSeedId = this._getHeldItemSeedId({ requireCompatible: true });
+    const held = heldItem?.system?.held ?? null;
+    if (!heldItem || (!held?.flinchOnHit && heldSeedId !== "held-razor-fang")) return null;
+
+    const category = this._normalizeMoveCombatCategory(move?.system?.category);
+    if (heldSeedId === "held-kings-rock" && category !== "special") return null;
+    if (heldSeedId === "held-razor-fang" && category !== "physical") return null;
+
+    return {
+      itemName: heldItem.name ?? game.i18n.localize("POKROLE.Move.HeldItemBonus"),
+      chanceDice: 1
+    };
   }
 
   _getHeldItemChoicePriorityBonus(move = null) {
@@ -3197,8 +3256,13 @@ export class PokRoleActor extends Actor {
       targetActor?.system?.types?.primary,
       targetActor?.system?.types?.secondary
     ].filter((typeKey) => typeKey && typeKey !== "none");
-    if (this._normalizeTypeKey(moveType) === "ground" && this._isRoostGroundedThisRound(targetActor)) {
-      defenderTypes = defenderTypes.filter((typeKey) => this._normalizeTypeKey(typeKey) !== "flying");
+    if (this._normalizeTypeKey(moveType) === "ground") {
+      if (
+        this._isRoostGroundedThisRound(targetActor) ||
+        targetActor?._heldItemRemovesGroundTypeImmunity?.()
+      ) {
+        defenderTypes = defenderTypes.filter((typeKey) => this._normalizeTypeKey(typeKey) !== "flying");
+      }
     }
     return defenderTypes;
   }
@@ -10094,6 +10158,9 @@ export class PokRoleActor extends Actor {
 
     // Focus Sash: survive lethal damage at 1 HP (once)
     const targetHeldData = targetActor?._getHeldItemData?.() ?? null;
+    const targetHeldItem = targetActor?._getHeldItemDocument?.({ requireCompatible: true }) ?? null;
+    const isContactAttack = category === "physical" && !this._isMoveRanged(move);
+    const attackerSuppressesContactTriggers = this._preventsContactTriggers(move);
     if (finalDamage > 0 && targetHeldData?.focusSash && hpValue > 0 && finalDamage >= hpValue) {
       finalDamage = Math.max(hpValue - 1, 0);
       // Consume the Focus Sash
@@ -10183,6 +10250,18 @@ export class PokRoleActor extends Actor {
       if (rangedAttack && !ignoresCover) {
         await this._degradeCoverOnHit(targetActor);
       }
+      if (
+        targetActor instanceof PokRoleActor &&
+        targetHeldItem &&
+        targetActor._hasActiveAirBalloon()
+      ) {
+        const poppedItemName = targetHeldItem.name ?? "Air Balloon";
+        await targetActor._consumeHeldBattleItem();
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+          content: `<strong>${targetActor.name}'s</strong> ${poppedItemName} popped!`
+        });
+      }
     }
 
     const attackLandedOnTarget = !typeInteraction.immune && Boolean(targetActor) && !substituteBlocked;
@@ -10254,7 +10333,7 @@ export class PokRoleActor extends Actor {
     }
 
     // Rocky Helmet: deal 1 damage to attacker on non-ranged physical contact
-    if (targetHeldData?.rockyHelmet && finalDamage > 0 && !this._isMoveRanged(move) && category === "physical") {
+    if (targetHeldData?.rockyHelmet && finalDamage > 0 && isContactAttack && !attackerSuppressesContactTriggers) {
       await this._safeApplyDamage(this, 1, { applyDeadOnZero: false });
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: targetActor }),
@@ -10263,7 +10342,7 @@ export class PokRoleActor extends Actor {
     }
 
     // Sticky Barb: transfer to attacker on non-ranged physical contact
-    if (targetHeldData?.stickyBarb && finalDamage > 0 && !this._isMoveRanged(move) && category === "physical") {
+    if (targetHeldData?.stickyBarb && finalDamage > 0 && isContactAttack && !attackerSuppressesContactTriggers) {
       const targetBattleItemId = `${targetActor.system?.battleItem ?? ""}`.trim();
       if (targetBattleItemId) {
         await targetActor._transferHeldItemToActor(this);
@@ -10274,15 +10353,16 @@ export class PokRoleActor extends Actor {
       }
     }
 
-    // King's Rock: chance to flinch on any damaging hit
-    if (attackerHeldData?.flinchOnHit && finalDamage > 0 && targetActor) {
-      const flinchRoll = await new Roll("1d6").evaluate();
+    // Held-item flinch: King's Rock on Special moves, Razor Fang on Physical moves.
+    const heldFlinchProfile = this._getHeldItemFlinchProfile(move);
+    if (heldFlinchProfile && finalDamage > 0 && targetActor) {
+      const flinchRoll = await new Roll(`${Math.max(toNumber(heldFlinchProfile.chanceDice, 1), 1)}d6`).evaluate();
       const flinchResult = toNumber(flinchRoll.total, 0);
-      if (flinchResult >= 6) {
+      if (flinchRoll.dice?.some((die) => die.results?.some((result) => toNumber(result?.result, 0) >= 6))) {
         await targetActor.toggleQuickCondition("flinch", { active: true });
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor: this }),
-          content: `<strong>${this.name}'s</strong> King's Rock caused <strong>${targetActor.name}</strong> to flinch! (rolled ${flinchResult})`
+          content: `<strong>${this.name}'s</strong> ${heldFlinchProfile.itemName} caused <strong>${targetActor.name}</strong> to flinch! (rolled ${flinchResult})`
         });
       }
     }
@@ -12474,7 +12554,10 @@ export class PokRoleActor extends Actor {
       case "on-hit-by-any":
         return triggerKey === "on-hit-by";
       case "on-hit-by-contact":
-        return triggerKey === "on-hit-by" && context.moveCategory === "physical";
+        return triggerKey === "on-hit-by" &&
+          context.moveCategory === "physical" &&
+          context.isContact === true &&
+          context.contactTriggersSuppressed !== true;
       case "on-hit-by-type": {
         // Also triggers on stat-lowered for abilities like Rattled (Intimidate interaction)
         if (triggerKey === "on-stat-lowered") {
@@ -12741,6 +12824,8 @@ export class PokRoleActor extends Actor {
         hit: true,
         moveCategory: category,
         moveType,
+        isContact: category === "physical" && !attackerActor?._isMoveRanged?.(move),
+        contactTriggersSuppressed: attackerActor?._preventsContactTriggers?.(move) ?? false,
         critical
       });
       console.log(`PokRole | [defenderAbility] Ability="${abilityItem.name}" trigger="${abilityItem.system?.abilityTrigger}" vs "on-hit-by" => matches=${triggerMatches}`);
@@ -17482,7 +17567,8 @@ export class PokRoleActor extends Actor {
       priority: movePriority,
       hasPriority: movePriority !== 0,
       destroysShield: Boolean(moveSourceAttributes?.destroyShield),
-      ignoresShield: Boolean(specialChargeRule?.ignoresShield)
+      ignoresShield: Boolean(specialChargeRule?.ignoresShield),
+      preventsContactTriggers: Boolean(attackerActor?._preventsContactTriggers?.(move))
     };
   }
 
@@ -17504,6 +17590,7 @@ export class PokRoleActor extends Actor {
     if (!entry?.retaliation) return false;
     if (!attackContext?.isDamagingMove) return false;
     if (attackContext.category !== "physical") return false;
+    if (attackContext.preventsContactTriggers) return false;
     return !attackContext.isRanged;
   }
 
@@ -18045,6 +18132,19 @@ export class PokRoleActor extends Actor {
   }
 
   _evaluateTypeInteraction(moveType, targetActor) {
+    const normalizedMoveType = this._normalizeTypeKey(moveType);
+    if (
+      normalizedMoveType === "ground" &&
+      targetActor instanceof PokRoleActor &&
+      targetActor._hasActiveAirBalloon()
+    ) {
+      return {
+        immune: true,
+        weaknessBonus: 0,
+        resistancePenalty: 0,
+        label: "POKROLE.Chat.TypeEffect.Immune"
+      };
+    }
     const defenderTypes = this._getEffectiveDefenderTypesForInteraction(targetActor, moveType);
     const interaction = this._evaluateTypeInteractionAgainstTypes(moveType, defenderTypes);
     // Ring Target: remove type immunities from the defender
