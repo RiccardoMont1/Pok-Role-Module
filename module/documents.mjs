@@ -10984,6 +10984,8 @@ export class PokRoleActor extends Actor {
       "inner focus": ["flinch"],
       "shield-dust": ["flinch"],
       "shield dust": ["flinch"],
+      "quick-feet": ["paralyzed"],
+      "quick feet": ["paralyzed"],
       "comatose": ["burn", "frozen", "paralyzed", "sleep", "poisoned", "badly-poisoned"],
       "purifying-salt": ["burn", "frozen", "paralyzed", "sleep", "poisoned", "badly-poisoned"],
       "purifying salt": ["burn", "frozen", "paralyzed", "sleep", "poisoned", "badly-poisoned"]
@@ -12527,15 +12529,27 @@ export class PokRoleActor extends Actor {
     const moveType = `${move?.system?.type ?? ""}`.trim().toLowerCase();
 
     for (const abilityItem of abilityItems) {
-      if (!this._abilityTriggerMatches(abilityItem, "on-hit-by", {
+      const triggerMatches = this._abilityTriggerMatches(abilityItem, "on-hit-by", {
         hit: true,
         moveCategory: category,
         moveType,
         critical
-      })) continue;
+      });
+      console.log(`PokRole | [defenderAbility] Ability="${abilityItem.name}" trigger="${abilityItem.system?.abilityTrigger}" vs "on-hit-by" => matches=${triggerMatches}`);
+      if (!triggerMatches) continue;
 
       const normalizedEffects = this._getAbilitySecondaryEffects(abilityItem);
       if (!normalizedEffects.length) continue;
+
+      // Inject runtime maxStacks for abilities with stacking caps (e.g. Justified)
+      const runtimeMaxStacks = this._getAbilityRuntimeMaxStacks(abilityItem);
+      if (runtimeMaxStacks > 0) {
+        for (const eff of normalizedEffects) {
+          if (eff.effectType === "stat" && (eff.maxStacks ?? 0) === 0) {
+            eff.maxStacks = runtimeMaxStacks;
+          }
+        }
+      }
 
       const abilityTargets = this._resolveAbilityTargetActors(abilityItem, {
         attackerActor,
