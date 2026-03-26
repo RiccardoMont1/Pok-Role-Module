@@ -565,6 +565,111 @@ const AUTOMATIONS = {
     ],
     notes: "At half or less HP: -2 Strength and -2 Special"
   },
+
+  // --- Type-absorb abilities (stat boost/heal on hit by type; type immunity noted) ---
+  "water-compaction": {
+    type: "passive", trigger: "on-hit-by-type", target: "self",
+    triggerConditionType: "water",
+    effects: [{ effectType: "stat", stat: "defense", amount: 2, trigger: "always", target: "self" }],
+    notes: "IMMUNE: Water-type damage. First time hit by Water: +2 Defense"
+  },
+  "well-baked-body": {
+    type: "passive", trigger: "on-hit-by-type", target: "self",
+    triggerConditionType: "fire",
+    effects: [{ effectType: "stat", stat: "defense", amount: 2, trigger: "always", target: "self" }],
+    notes: "IMMUNE: Fire-type damage. First time hit by Fire: +2 Defense"
+  },
+  "sap-sipper": {
+    type: "passive", trigger: "on-hit-by-type", target: "self",
+    triggerConditionType: "grass",
+    effects: [{ effectType: "stat", stat: "strength", amount: 1, trigger: "always", target: "self" }],
+    notes: "IMMUNE: Grass-type damage. First time hit by Grass: +1 Strength"
+  },
+  "motor-drive": {
+    type: "passive", trigger: "on-hit-by-type", target: "self",
+    triggerConditionType: "electric",
+    effects: [{ effectType: "stat", stat: "dexterity", amount: 1, trigger: "always", target: "self" }],
+    notes: "IMMUNE: Electric-type damage. First time hit by Electric: +1 Dexterity"
+  },
+  "lightning-rod": {
+    type: "passive", trigger: "on-hit-by-type", target: "self",
+    triggerConditionType: "electric",
+    effects: [{ effectType: "stat", stat: "special", amount: 1, trigger: "always", target: "self" }],
+    notes: "IMMUNE: Electric-type damage. Redirects single-target Electric moves. First hit by Electric: +1 Special"
+  },
+  "storm-drain": {
+    type: "passive", trigger: "on-hit-by-type", target: "self",
+    triggerConditionType: "water",
+    effects: [{ effectType: "stat", stat: "special", amount: 1, trigger: "always", target: "self" }],
+    notes: "IMMUNE: Water-type damage. Redirects single-target Water moves. First hit by Water: +1 Special"
+  },
+  "volt-absorb": {
+    type: "passive", trigger: "on-hit-by-type", target: "self",
+    triggerConditionType: "electric",
+    effects: [{ effectType: "heal", amount: 1, healType: "basic-numeric", healMode: "fixed", trigger: "always", target: "self" }],
+    notes: "IMMUNE: Electric-type damage. Heal 1 HP when hit by Electric"
+  },
+  "water-absorb": {
+    type: "passive", trigger: "on-hit-by-type", target: "self",
+    triggerConditionType: "water",
+    effects: [{ effectType: "heal", amount: 1, healType: "basic-numeric", healMode: "fixed", trigger: "always", target: "self" }],
+    notes: "IMMUNE: Water-type damage. Heal 1 HP when hit by Water"
+  },
+  "earth-eater": {
+    type: "passive", trigger: "on-hit-by-type", target: "self",
+    triggerConditionType: "ground",
+    effects: [{ effectType: "heal", amount: 1, healType: "basic-numeric", healMode: "fixed", trigger: "always", target: "self" }],
+    notes: "IMMUNE: Ground-type damage. Heal 1 HP when hit by Ground"
+  },
+
+  // --- Stat prevention abilities (runtime prevention in _applyTemporaryTrackedModifier) ---
+  "big-pecks": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "PREVENT: defense reduction. Cannot have Defense reduced."
+  },
+  "hyper-cutter": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "PREVENT: strength reduction. Cannot have Strength reduced by others."
+  },
+  "clear-body": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "PREVENT: all stat changes by others. Cannot have Attributes changed by others."
+  },
+  "full-metal-body": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "PREVENT: all stat reduction by others. Cannot have Attributes reduced by others."
+  },
+  "white-smoke": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "PREVENT: all stat reduction by others. Cannot have Attributes reduced by others."
+  },
+
+  // --- Damage survival / passive flags ---
+  "battle-armor": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Critical Hits don't grant bonus dice to foe's damage pool. Automated in damage calculation."
+  },
+  "shell-armor": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Critical Hits don't grant bonus dice to foe's damage pool. Automated in damage calculation."
+  },
+  "overcoat": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "IMMUNE: weather damage. This Pokemon won't receive damage from active weather."
+  },
+  "rock-head": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "IMMUNE: recoil damage. This Pokemon will not receive damage from Recoil."
+  },
 };
 
 // ---- BUILD ENTRIES ----

@@ -15627,6 +15627,44 @@ export class PokRoleActor extends Actor {
       return { applied: false, detail: game.i18n.localize("POKROLE.Common.None") };
     }
 
+    // --- Stat prevention check: ability-based protection against stat changes ---
+    if (targetActor !== this && targetActor.type === "pokemon") {
+      const preventAbility = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
+      if (preventAbility) {
+        const ABILITY_STAT_PREVENTION = {
+          "big-pecks": { stats: ["defense"], direction: "reduction" },
+          "big pecks": { stats: ["defense"], direction: "reduction" },
+          "hyper-cutter": { stats: ["strength"], direction: "reduction" },
+          "hyper cutter": { stats: ["strength"], direction: "reduction" },
+          "clear-body": { stats: null, direction: "any" },
+          "clear body": { stats: null, direction: "any" },
+          "full-metal-body": { stats: null, direction: "reduction" },
+          "full metal body": { stats: null, direction: "reduction" },
+          "white-smoke": { stats: null, direction: "reduction" },
+          "white smoke": { stats: null, direction: "reduction" }
+        };
+        const prevention = ABILITY_STAT_PREVENTION[preventAbility];
+        if (prevention) {
+          const isReduction = numericAmount < 0;
+          const blocked = prevention.direction === "any"
+            ? true
+            : (prevention.direction === "reduction" && isReduction);
+          if (blocked) {
+            const statFromPath = `${path}`.split(".").pop() ?? "";
+            const statMatches = prevention.stats === null || prevention.stats.includes(statFromPath);
+            if (statMatches) {
+              const abilityDisplay = `${targetActor.system?.ability ?? preventAbility}`;
+              await ChatMessage.create({
+                speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+                content: `<strong>${targetActor.name}'s</strong> <strong>${abilityDisplay}</strong> prevents stat changes!`
+              });
+              return { applied: false, detail: `${abilityDisplay} prevents stat changes` };
+            }
+          }
+        }
+      }
+    }
+
     const existingPathModifiers = this._getManagedModifierEffectsForPath(targetActor, path);
     const incomingSourceType = this._getAutomationSourceItemType({
       sourceItemType: `${sourceMove?.type ?? ""}`.trim().toLowerCase(),

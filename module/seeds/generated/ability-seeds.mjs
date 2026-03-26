@@ -606,8 +606,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-battle-armor",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Critical Hits don't grant bonus dice to foe's damage pool. Automated in damage calculation."
       }
     }
   },
@@ -780,8 +780,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-big-pecks",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "PREVENT: defense reduction. Cannot have Defense reduced."
       }
     }
   },
@@ -976,8 +976,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-clear-body",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "PREVENT: all stat changes by others. Cannot have Attributes changed by others."
       }
     }
   },
@@ -2018,21 +2018,47 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "on-hit-by-type",
       "abilityTarget": "self",
-      "triggerConditionType": "",
+      "triggerConditionType": "ground",
       "triggerConditionWeather": "",
       "triggerConditionTerrain": "",
       "frequency": "",
       "effect": "Whenever this Pokemon is hit by a Ground-Type Move, you may Heal 1 HP instead of receiving damage. Ground-type moves do not deal damage to this Pokemon.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "heal",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "none",
+          "amount": 1,
+          "healType": "basic-numeric",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "",
+          "maxStacks": 0,
+          "linkedEffectId": ""
+        }
+      ],
       "description": "This Pokemon feeds on the minerals on earth, it loves mud baths and spends most of the time burrowed underneath the ground."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-earth-eater",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "full",
+        "automationNotes": "IMMUNE: Ground-type damage. Heal 1 HP when hit by Ground"
       }
     }
   },
@@ -2567,8 +2593,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-full-metal-body",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "PREVENT: all stat reduction by others. Cannot have Attributes reduced by others."
       }
     }
   },
@@ -3478,8 +3504,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-hyper-cutter",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "PREVENT: strength reduction. Cannot have Strength reduced by others."
       }
     }
   },
@@ -4173,21 +4199,47 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "on-hit-by-type",
       "abilityTarget": "self",
-      "triggerConditionType": "",
+      "triggerConditionType": "electric",
       "triggerConditionWeather": "",
       "triggerConditionTerrain": "",
       "frequency": "",
       "effect": "This Pokemon is immune to Electric-Type Damage. If anyone on the field uses a Single-Target Electric-Type Move, it will be redirected towards this Pokemon. The first time this Pokemon is hit by an Electric-Type move, Increase its Special by 1.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "stat",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "special",
+          "amount": 1,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "",
+          "maxStacks": 0,
+          "linkedEffectId": ""
+        }
+      ],
       "description": "This Pokemon will attract lightning and electricity to itself to charge its power. Great for preventing power surges. Bad for your electricity bill."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-lightning-rod",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "full",
+        "automationNotes": "IMMUNE: Electric-type damage. Redirects single-target Electric moves. First hit by Electric: +1 Special"
       }
     }
   },
@@ -4780,21 +4832,47 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "on-hit-by-type",
       "abilityTarget": "self",
-      "triggerConditionType": "",
+      "triggerConditionType": "electric",
       "triggerConditionWeather": "",
       "triggerConditionTerrain": "",
       "frequency": "",
       "effect": "The first time this Pokemon is hit by an Electric-type move, Increase 1 Point to its Dexterity Attribute. This Pokemon doesn't receive damage from Electric-type moves.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "stat",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "dexterity",
+          "amount": 1,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "",
+          "maxStacks": 0,
+          "linkedEffectId": ""
+        }
+      ],
       "description": "This Pokemon absorbs electricity and stores it as energy to run faster or to power up machinery. An electric car's best friend."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-motor-drive",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "full",
+        "automationNotes": "IMMUNE: Electric-type damage. First time hit by Electric: +1 Dexterity"
       }
     }
   },
@@ -5232,8 +5310,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-overcoat",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "IMMUNE: weather damage. This Pokemon won't receive damage from active weather."
       }
     }
   },
@@ -6476,8 +6554,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-rock-head",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "IMMUNE: recoil damage. This Pokemon will not receive damage from Recoil."
       }
     }
   },
@@ -6783,21 +6861,47 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "on-hit-by-type",
       "abilityTarget": "self",
-      "triggerConditionType": "",
+      "triggerConditionType": "grass",
       "triggerConditionWeather": "",
       "triggerConditionTerrain": "",
       "frequency": "",
       "effect": "The first time this Pokemon is hit by a Grass-type attack, Increase its Strength Attribute by 1 instead of dealing damage. Grass-type moves do not deal damage to this Pokemon.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "stat",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "strength",
+          "amount": 1,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "",
+          "maxStacks": 0,
+          "linkedEffectId": ""
+        }
+      ],
       "description": "This Pokemon's diet consists strickly of plants, it is particularly fond of sweet sap for nourishment."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-sap-sipper",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "full",
+        "automationNotes": "IMMUNE: Grass-type damage. First time hit by Grass: +1 Strength"
       }
     }
   },
@@ -7112,8 +7216,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-shell-armor",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Critical Hits don't grant bonus dice to foe's damage pool. Automated in damage calculation."
       }
     }
   },
@@ -8057,21 +8161,47 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "on-hit-by-type",
       "abilityTarget": "self",
-      "triggerConditionType": "",
+      "triggerConditionType": "water",
       "triggerConditionWeather": "",
       "triggerConditionTerrain": "",
       "frequency": "",
       "effect": "This Pokémon is immune to Water-Type Damage. If another Pokémon on the field uses a Single-Target Water-Type Move, it will be redirected towards this Pokémon. The first time this Pokémon is hit by a Water-Type move, Increase its Special by 1.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "stat",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "special",
+          "amount": 1,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "",
+          "maxStacks": 0,
+          "linkedEffectId": ""
+        }
+      ],
       "description": "The Pokemon absorbs moisture and liquids like a sponge, then uses them to increase its power and last more time outside of water."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-storm-drain",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "full",
+        "automationNotes": "IMMUNE: Water-type damage. Redirects single-target Water moves. First hit by Water: +1 Special"
       }
     }
   },
@@ -9400,21 +9530,47 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "on-hit-by-type",
       "abilityTarget": "self",
-      "triggerConditionType": "",
+      "triggerConditionType": "electric",
       "triggerConditionWeather": "",
       "triggerConditionTerrain": "",
       "frequency": "",
       "effect": "When this Pokemon is hit by an Electric-Type Move, you may restore 1 HP instead of receiving damage. Electric-Type Moves do not deal damage to this Pokemon.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "heal",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "none",
+          "amount": 1,
+          "healType": "basic-numeric",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "",
+          "maxStacks": 0,
+          "linkedEffectId": ""
+        }
+      ],
       "description": "This Pokemon's body is practically a battery that is always happy to become charged to full capacity."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-volt-absorb",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "full",
+        "automationNotes": "IMMUNE: Electric-type damage. Heal 1 HP when hit by Electric"
       }
     }
   },
@@ -9448,21 +9604,47 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "on-hit-by-type",
       "abilityTarget": "self",
-      "triggerConditionType": "",
+      "triggerConditionType": "water",
       "triggerConditionWeather": "",
       "triggerConditionTerrain": "",
       "frequency": "",
       "effect": "When this Pokemon is hit by a Water-Type Move, you may restore 1 HP instead of receiving damage. Water-Type Moves do not deal damage to this Pokemon.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "heal",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "none",
+          "amount": 1,
+          "healType": "basic-numeric",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "",
+          "maxStacks": 0,
+          "linkedEffectId": ""
+        }
+      ],
       "description": "The Pokemon's body is mostly made of water, it stores water inside itself and uses it for nourishment."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-water-absorb",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "full",
+        "automationNotes": "IMMUNE: Water-type damage. Heal 1 HP when hit by Water"
       }
     }
   },
@@ -9496,21 +9678,47 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "on-hit-by-type",
       "abilityTarget": "self",
-      "triggerConditionType": "",
+      "triggerConditionType": "water",
       "triggerConditionWeather": "",
       "triggerConditionTerrain": "",
       "frequency": "",
       "effect": "The fist time this Pokemon is hit by a Water-Type Move, Increase its Defense by 2. Water-type moves do not deal damage to this Pokemon.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "stat",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "defense",
+          "amount": 2,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "",
+          "maxStacks": 0,
+          "linkedEffectId": ""
+        }
+      ],
       "description": "The body of the Pokemon can absorb water at an astounding rate, its body hardens as it quickly dries."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-water-compaction",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "full",
+        "automationNotes": "IMMUNE: Water-type damage. First time hit by Water: +2 Defense"
       }
     }
   },
@@ -9619,21 +9827,47 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "on-hit-by-type",
       "abilityTarget": "self",
-      "triggerConditionType": "",
+      "triggerConditionType": "fire",
       "triggerConditionWeather": "",
       "triggerConditionTerrain": "",
       "frequency": "",
       "effect": "The first time this Pokemon is hit by a Fire-Type Move, Increase its Defense by 2. Fire-type moves do not deal damage to this Pokemon.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "stat",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "defense",
+          "amount": 2,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "",
+          "maxStacks": 0,
+          "linkedEffectId": ""
+        }
+      ],
       "description": "This Pokemon's body develops a thick bread-like crust when it is exposed to heat, filling the air with a buttery aroma."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-well-baked-body",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "full",
+        "automationNotes": "IMMUNE: Fire-type damage. First time hit by Fire: +2 Defense"
       }
     }
   },
@@ -9656,8 +9890,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-white-smoke",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "PREVENT: all stat reduction by others. Cannot have Attributes reduced by others."
       }
     }
   },
