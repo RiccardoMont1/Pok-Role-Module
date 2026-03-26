@@ -188,7 +188,7 @@
       "DropTrainerHere": "Trascina qui la scheda dell'allenatore",
       "DropTrainerOnly": "Solo le schede allenatore possono essere trascinate qui.",
       "DropItemOnly": "Solo gli oggetti possono essere trascinati qui.",
-      "DropHeldItemOnly": "Qui puoi trascinare solo Held Item.",
+      "DropHeldItemOnly": "Qui puoi trascinare solo Held Item o Berry.",
       "DropAbilityOnly": "Solo le abilita possono essere trascinate qui.",
       "DropAbilityHint": "Trascina un'abilita qui",
       "AbilityAlreadyExists": "{name} e gia presente su questo Pokemon.",

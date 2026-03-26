@@ -2801,6 +2801,26 @@ export class PokRoleActor extends Actor {
     return species.includes(compatiblePokemon) || compatiblePokemon.includes(species);
   }
 
+  _getGearSeedId(item) {
+    return `${item?.getFlag?.(POKROLE.ID, "seedId") ?? foundry.utils.getProperty(item, `flags.${POKROLE.ID}.seedId`) ?? ""}`
+      .trim()
+      .toLowerCase();
+  }
+
+  _isBattleBerryDocument(item) {
+    if (!item || item.type !== "gear") return false;
+    return this._getGearSeedId(item).startsWith("berry-");
+  }
+
+  _isValidBattleItemDocument(item, options = {}) {
+    if (!item || item.type !== "gear") return false;
+    const category = `${item.system?.category ?? ""}`.trim().toLowerCase();
+    if (category === "held") {
+      return options?.requireCompatible === false || this._heldItemMatchesCompatiblePokemon(item);
+    }
+    return this._isBattleBerryDocument(item);
+  }
+
   /**
    * Resolve the currently equipped held item document.
    * Prefers the actor-owned embedded item and only falls back to a world item for legacy references.
@@ -2813,10 +2833,7 @@ export class PokRoleActor extends Actor {
     const actorOwnedItem = this.items.get(battleItemId) ?? null;
     const worldItem = actorOwnedItem ? null : game.items.get(battleItemId) ?? null;
     const item = actorOwnedItem ?? worldItem;
-    if (!item || item.type !== "gear") return null;
-    const category = `${item.system?.category ?? ""}`.trim().toLowerCase();
-    if (category !== "held") return null;
-    if (requireCompatible && !this._heldItemMatchesCompatiblePokemon(item)) return null;
+    if (!this._isValidBattleItemDocument(item, { requireCompatible })) return null;
     return item;
   }
 
@@ -2859,8 +2876,7 @@ export class PokRoleActor extends Actor {
     const sourceId = `${sourceItem.id ?? ""}`.trim();
     return (
       this.items.find((item) => {
-        if (item.type !== "gear") return false;
-        if (`${item.system?.category ?? ""}`.trim().toLowerCase() !== "held") return false;
+        if (!this._isValidBattleItemDocument(item, { requireCompatible: false })) return false;
         const itemFlags = item.getFlag?.(POKROLE.ID, "heldItemSource") ?? {};
         if (sourceUuid && `${itemFlags?.uuid ?? ""}`.trim() === sourceUuid) return true;
         return sourceId && `${itemFlags?.id ?? ""}`.trim() === sourceId;
@@ -2870,8 +2886,7 @@ export class PokRoleActor extends Actor {
 
   async _createLocalHeldItemCopy(sourceItem, options = {}) {
     if (!(sourceItem instanceof Item) || this.type !== "pokemon") return null;
-    if (sourceItem.type !== "gear") return null;
-    if (`${sourceItem.system?.category ?? ""}`.trim().toLowerCase() !== "held") return null;
+    if (!this._isValidBattleItemDocument(sourceItem, { requireCompatible: false })) return null;
     const quantity = Math.max(Math.floor(toNumber(options?.quantity ?? 1, 1)), 1);
     const itemData = sourceItem.toObject();
     delete itemData._id;
@@ -2893,8 +2908,7 @@ export class PokRoleActor extends Actor {
 
   async _equipHeldItemFromSource(sourceItem) {
     if (this.type !== "pokemon" || !(sourceItem instanceof Item)) return null;
-    if (sourceItem.type !== "gear") return null;
-    if (`${sourceItem.system?.category ?? ""}`.trim().toLowerCase() !== "held") return null;
+    if (!this._isValidBattleItemDocument(sourceItem, { requireCompatible: false })) return null;
     const localItem =
       this._findExistingLocalHeldItemCopy(sourceItem) ??
       await this._createLocalHeldItemCopy(sourceItem, { quantity: 1 });

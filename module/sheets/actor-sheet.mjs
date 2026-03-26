@@ -2140,11 +2140,20 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       }
       if (data.type !== "Item") return;
       const item = await fromUuid(data.uuid);
-      if (
-        !item ||
-        item.type !== "gear" ||
-        `${item.system?.category ?? ""}`.trim().toLowerCase() !== "held"
-      ) {
+      const isValidBattleItem =
+        typeof this.actor._isValidBattleItemDocument === "function"
+          ? this.actor._isValidBattleItemDocument(item, { requireCompatible: false })
+          : (
+              item?.type === "gear" &&
+              (
+                `${item.system?.category ?? ""}`.trim().toLowerCase() === "held" ||
+                `${item.getFlag?.(POKROLE.ID, "seedId") ?? foundry.utils.getProperty(item, `flags.${POKROLE.ID}.seedId`) ?? ""}`
+                  .trim()
+                  .toLowerCase()
+                  .startsWith("berry-")
+              )
+            );
+      if (!isValidBattleItem) {
         ui.notifications.warn(game.i18n.localize("POKROLE.Pokemon.DropHeldItemOnly"));
         return;
       }

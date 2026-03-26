@@ -188,7 +188,7 @@
       "DropTrainerHere": "Drag a trainer sheet here",
       "DropTrainerOnly": "Only trainer sheets can be dropped here.",
       "DropItemOnly": "Only items can be dropped here.",
-      "DropHeldItemOnly": "Only held items can be dropped here.",
+      "DropHeldItemOnly": "Only held items or berries can be dropped here.",
       "DropAbilityOnly": "Only ability items can be dropped here.",
       "DropAbilityHint": "Drag an ability here",
       "AbilityAlreadyExists": "{name} is already on this Pokemon.",
