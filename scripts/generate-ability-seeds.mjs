@@ -491,6 +491,80 @@ const AUTOMATIONS = {
     effects: [],
     notes: "Survives lethal damage at 1 HP when at full HP. Automated in damage calculation."
   },
+
+  // --- On-hit-by-contact damage to attacker ---
+  "rough-skin": {
+    type: "passive", trigger: "on-hit-by-contact", target: "attacker",
+    effects: [{ effectType: "damage", amount: 1, trigger: "always", target: "target" }],
+    notes: "Deal 1 damage to attacker when hit by Non-Ranged Physical Move"
+  },
+  "iron-barbs": {
+    type: "passive", trigger: "on-hit-by-contact", target: "attacker",
+    effects: [{ effectType: "damage", amount: 1, trigger: "always", target: "target" }],
+    notes: "Deal 1 damage to attacker when hit by Non-Ranged Physical Move"
+  },
+
+  // --- Weather/Terrain set on hit ---
+  "sand-spit": {
+    type: "passive", trigger: "on-hit-by-contact", target: "self",
+    effects: [{ effectType: "weather", weather: "sandstorm", trigger: "always", target: "self" }],
+    notes: "Start Sandstorm when hit by Non-Ranged Physical Move"
+  },
+  "seed-sower": {
+    type: "passive", trigger: "on-hit-by-any", target: "self",
+    effects: [{ effectType: "terrain", terrain: "grassy", trigger: "always", target: "self" }],
+    notes: "Start Grassy Terrain when hit by Physical or Special Move"
+  },
+
+  // --- Weather-active stat boosts ---
+  "chlorophyll": {
+    type: "passive", trigger: "weather-active", target: "self",
+    triggerConditionWeather: "sunny,harsh-sunlight",
+    effects: [{ effectType: "stat", stat: "dexterity", amount: 2, trigger: "always", target: "self" }],
+    notes: "While Sunny Weather is active: +2 Dexterity"
+  },
+  "swift-swim": {
+    type: "passive", trigger: "weather-active", target: "self",
+    triggerConditionWeather: "rain,typhoon",
+    effects: [{ effectType: "stat", stat: "dexterity", amount: 2, trigger: "always", target: "self" }],
+    notes: "While Rain Weather is active: +2 Dexterity"
+  },
+  "sand-rush": {
+    type: "passive", trigger: "weather-active", target: "self",
+    triggerConditionWeather: "sandstorm",
+    effects: [{ effectType: "stat", stat: "dexterity", amount: 1, trigger: "always", target: "self" }],
+    notes: "While Sandstorm is active: +1 Dexterity. Immune to Sandstorm damage"
+  },
+  "slush-rush": {
+    type: "passive", trigger: "weather-active", target: "self",
+    triggerConditionWeather: "hail,snow",
+    effects: [{ effectType: "stat", stat: "dexterity", amount: 1, trigger: "always", target: "self" }],
+    notes: "While Hail/Snow is active: +1 Dexterity. Immune to Hail damage"
+  },
+
+  // --- Terrain-active stat boosts ---
+  "surge-surfer": {
+    type: "passive", trigger: "terrain-active", target: "self",
+    triggerConditionTerrain: "electric",
+    effects: [{ effectType: "stat", stat: "dexterity", amount: 2, trigger: "always", target: "self" }],
+    notes: "While Electric Terrain is active: +2 Dexterity"
+  },
+  "grass-pelt": {
+    type: "passive", trigger: "terrain-active", target: "self",
+    triggerConditionTerrain: "grassy",
+    effects: [{ effectType: "stat", stat: "defense", amount: 2, trigger: "always", target: "self" }],
+    notes: "While Grassy Terrain is active: +2 Defense"
+  },
+
+  // --- HP threshold debuff ---
+  "defeatist": {
+    type: "passive", trigger: "self-hp-half-or-less", target: "self",
+    effects: [
+      { effectType: "stat", stat: "strength", amount: -2, trigger: "always", target: "self" },
+      { effectType: "stat", stat: "special", amount: -2, trigger: "always", target: "self" }
+    ],
+    notes: "At half or less HP: -2 Strength and -2 Special"
+  },
 };
 
 // ---- BUILD ENTRIES ----
@@ -533,6 +607,7 @@ const entries = abilities.map((ability) => {
     abilityTarget: auto?.target ?? "self",
     triggerConditionType: auto?.triggerConditionType ?? "",
     triggerConditionWeather: auto?.triggerConditionWeather ?? "",
+    triggerConditionTerrain: auto?.triggerConditionTerrain ?? "",
     frequency: "",
     effect: ability.Effect,
     secondaryEffects: auto?.effects?.length ? auto.effects.map(buildSecondaryEffect) : [],

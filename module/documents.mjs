@@ -10988,6 +10988,8 @@ export class PokRoleActor extends Actor {
       "shield dust": ["flinch"],
       "quick-feet": ["paralyzed"],
       "quick feet": ["paralyzed"],
+      "thermal-exchange": ["burn"],
+      "thermal exchange": ["burn"],
       "comatose": ["burn", "frozen", "paralyzed", "sleep", "poisoned", "badly-poisoned"],
       "purifying-salt": ["burn", "frozen", "paralyzed", "sleep", "poisoned", "badly-poisoned"],
       "purifying salt": ["burn", "frozen", "paralyzed", "sleep", "poisoned", "badly-poisoned"]
@@ -11041,7 +11043,8 @@ export class PokRoleActor extends Actor {
       "pastel-veil": ["poisoned", "badly-poisoned"], "pastel veil": ["poisoned", "badly-poisoned"],
       "oblivious": ["infatuated"],
       "own-tempo": ["confused"], "own tempo": ["confused"],
-      "inner-focus": ["flinch"], "inner focus": ["flinch"]
+      "inner-focus": ["flinch"], "inner focus": ["flinch"],
+      "thermal-exchange": ["burn"], "thermal exchange": ["burn"]
     };
     const immuneConditions = ABILITY_CONDITION_IMMUNITY[activeAbilityName] ?? [];
     for (const conditionKey of immuneConditions) {
