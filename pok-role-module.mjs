@@ -1783,9 +1783,17 @@ Hooks.on("createCombat", () => {
 // Enter-battle ability triggers when a combatant is added to combat
 Hooks.on("createCombatant", async (combatant) => {
   const combat = combatant?.combat ?? game.combat;
-  if (!combat || !combat.active || (combat.round ?? 0) < 1) return;
+  if (!combat || !combat.active) return;
   const actor = combatant?.actor ?? null;
   if (!actor || actor.documentName !== "Actor") return;
+  if ((combat.round ?? 0) < 1 && typeof actor._applyHeldItemEntryEffects === "function") {
+    try {
+      await actor._applyHeldItemEntryEffects({ combat });
+    } catch (err) {
+      console.warn(`PokRole | Held item entry processing failed for ${actor.name}:`, err);
+    }
+  }
+  if ((combat.round ?? 0) < 1) return;
   if (typeof actor.processAbilityTriggerEffects !== "function") return;
   try {
     await actor.processAbilityTriggerEffects("enter-battle", { combat });

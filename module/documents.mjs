@@ -1066,7 +1066,8 @@ export class PokRoleActor extends Actor {
   getInitiativeScore() {
     const dexterity = this.getTraitValue("dexterity");
     const alert = this.getSkillValue("alert");
-    return Math.max(toNumber(dexterity, 0) + toNumber(alert, 0), 0);
+    const heldInitiativeBonus = this._getHeldItemInitiativeBonus();
+    return Math.max(toNumber(dexterity, 0) + toNumber(alert, 0) + heldInitiativeBonus, 0);
   }
 
   getDefense(category = "physical") {
@@ -1840,6 +1841,9 @@ export class PokRoleActor extends Actor {
     }
 
     await this._applyEntryHazardsForActor(incomingActor, { combat });
+    if (typeof incomingActor._applyHeldItemEntryEffects === "function") {
+      await incomingActor._applyHeldItemEntryEffects({ combat });
+    }
 
     // 6. Chat notification
     const trainerActor = this._getPokemonTrainerActor(incomingActor) ?? this._getPokemonTrainerActor(outgoingActor) ?? null;
@@ -2248,6 +2252,14 @@ export class PokRoleActor extends Actor {
     if (!sideEntries.length) return [];
 
     const results = [];
+    if (typeof actor._hasHeldItemHazardImmunity === "function" && actor._hasHeldItemHazardImmunity()) {
+      const heldItemName =
+        actor._getHeldItemDocument?.({ requireCompatible: false })?.name ??
+        game.i18n.localize("POKROLE.Pokemon.BattleItem");
+      results.push(`${actor.name} ignored entry hazards due to ${heldItemName}.`);
+      await this._createEntryHazardChatMessage(actor, results);
+      return results;
+    }
     const groundImmune = this._isGroundHazardImmune(actor);
     for (const entry of sideEntries) {
       const hazardKey = `${entry?.hazard ?? ""}`.trim().toLowerCase();
@@ -2777,22 +2789,200 @@ export class PokRoleActor extends Actor {
   }
 
   /**
+   * Returns whether a held item is compatible with this Pokemon's species restrictions.
+   */
+  _heldItemMatchesCompatiblePokemon(item) {
+    if (!item || this.type !== "pokemon") return false;
+    const compatiblePokemon = `${item.system?.held?.compatiblePokemon ?? ""}`.trim().toLowerCase();
+    if (!compatiblePokemon) return true;
+    const species = `${this.system?.species || this.name || ""}`.trim().toLowerCase();
+    if (!species) return false;
+    return species.includes(compatiblePokemon) || compatiblePokemon.includes(species);
+  }
+
+  /**
+   * Resolve the currently equipped held item document.
+   * Prefers the actor-owned embedded item and only falls back to a world item for legacy references.
+   */
+  _getHeldItemDocument(options = {}) {
+    if (this.type !== "pokemon") return null;
+    const battleItemId = `${this.system?.battleItem ?? ""}`.trim();
+    if (!battleItemId) return null;
+    const requireCompatible = options?.requireCompatible !== false;
+    const actorOwnedItem = this.items.get(battleItemId) ?? null;
+    const worldItem = actorOwnedItem ? null : game.items.get(battleItemId) ?? null;
+    const item = actorOwnedItem ?? worldItem;
+    if (!item || item.type !== "gear") return null;
+    const category = `${item.system?.category ?? ""}`.trim().toLowerCase();
+    if (category !== "held") return null;
+    if (requireCompatible && !this._heldItemMatchesCompatiblePokemon(item)) return null;
+    return item;
+  }
+
+  async _setEquippedHeldItemId(itemId = "") {
+    if (this.type !== "pokemon") return "";
+    const normalizedItemId = `${itemId ?? ""}`.trim();
+    await this.update({ "system.battleItem": normalizedItemId });
+    const held = normalizedItemId
+      ? this._getHeldItemDocument({ requireCompatible: false })
+      : null;
+    if (!held?.system?.held?.choiceType) {
+      try {
+        await this.unsetFlag(POKROLE.ID, CHOICE_LOCKED_MOVE_FLAG);
+      } catch (_error) {
+        // Ignore stale flag cleanup failures.
+      }
+    }
+    return normalizedItemId;
+  }
+
+  _findExistingLocalHeldItemCopy(sourceItem) {
+    if (!sourceItem || this.type !== "pokemon") return null;
+    if (sourceItem.parent?.id === this.id) {
+      return this.items.get(sourceItem.id) ?? sourceItem;
+    }
+    const sourceUuid = `${sourceItem.uuid ?? ""}`.trim();
+    const sourceId = `${sourceItem.id ?? ""}`.trim();
+    return (
+      this.items.find((item) => {
+        if (item.type !== "gear") return false;
+        if (`${item.system?.category ?? ""}`.trim().toLowerCase() !== "held") return false;
+        const itemFlags = item.getFlag?.(POKROLE.ID, "heldItemSource") ?? {};
+        if (sourceUuid && `${itemFlags?.uuid ?? ""}`.trim() === sourceUuid) return true;
+        return sourceId && `${itemFlags?.id ?? ""}`.trim() === sourceId;
+      }) ?? null
+    );
+  }
+
+  async _createLocalHeldItemCopy(sourceItem, options = {}) {
+    if (!(sourceItem instanceof Item) || this.type !== "pokemon") return null;
+    if (sourceItem.type !== "gear") return null;
+    if (`${sourceItem.system?.category ?? ""}`.trim().toLowerCase() !== "held") return null;
+    const quantity = Math.max(Math.floor(toNumber(options?.quantity ?? 1, 1)), 1);
+    const itemData = sourceItem.toObject();
+    delete itemData._id;
+    delete itemData.folder;
+    itemData.system = foundry.utils.deepClone(itemData.system ?? {});
+    itemData.system.quantity = quantity;
+    itemData.flags = foundry.utils.mergeObject(foundry.utils.deepClone(itemData.flags ?? {}), {
+      [POKROLE.ID]: {
+        heldItemSource: {
+          uuid: `${sourceItem.uuid ?? ""}`.trim(),
+          id: `${sourceItem.id ?? ""}`.trim(),
+          name: `${sourceItem.name ?? ""}`.trim()
+        }
+      }
+    }, { inplace: false });
+    const [createdItem] = await this.createEmbeddedDocuments("Item", [itemData]);
+    return createdItem ?? null;
+  }
+
+  async _equipHeldItemFromSource(sourceItem) {
+    if (this.type !== "pokemon" || !(sourceItem instanceof Item)) return null;
+    if (sourceItem.type !== "gear") return null;
+    if (`${sourceItem.system?.category ?? ""}`.trim().toLowerCase() !== "held") return null;
+    const localItem =
+      this._findExistingLocalHeldItemCopy(sourceItem) ??
+      await this._createLocalHeldItemCopy(sourceItem, { quantity: 1 });
+    if (!localItem) return null;
+    await this._setEquippedHeldItemId(localItem.id);
+    return localItem;
+  }
+
+  async _transferHeldItemToActor(targetActor, itemDocument = null) {
+    if (!(targetActor instanceof PokRoleActor) || targetActor.type !== "pokemon") return null;
+    const sourceItem = itemDocument ?? this._getHeldItemDocument({ requireCompatible: false });
+    if (!(sourceItem instanceof Item)) return null;
+    if (sourceItem.type !== "gear") return null;
+    if (`${sourceItem.system?.category ?? ""}`.trim().toLowerCase() !== "held") return null;
+
+    const targetItem = await targetActor._equipHeldItemFromSource(sourceItem);
+    if (!targetItem) return null;
+
+    const sourceIsEmbedded = sourceItem.parent?.id === this.id;
+    if (sourceIsEmbedded) {
+      const sourceQuantity = Math.max(Math.floor(toNumber(sourceItem.system?.quantity, 1)), 1);
+      if (sourceQuantity > 1) {
+        await sourceItem.update({ "system.quantity": sourceQuantity - 1 });
+      } else {
+        await this._setEquippedHeldItemId("");
+        await sourceItem.delete();
+      }
+    } else if (`${this.system?.battleItem ?? ""}`.trim() === `${sourceItem.id ?? ""}`.trim()) {
+      await this._setEquippedHeldItemId("");
+    }
+
+    return targetItem;
+  }
+
+  _getHeldItemInitiativeBonus() {
+    const held = this._getHeldItemData();
+    if (!held) return 0;
+    const staticBonus = Math.floor(toNumber(held.statBonuses?.initiative, 0));
+    if (staticBonus !== 0) return staticBonus;
+    return Math.floor(toNumber(held.choiceInitiativeBonus, 0));
+  }
+
+  _getHeldItemChoicePriorityBonus(move = null) {
+    const held = this._getHeldItemData();
+    if (!held?.choiceType) return 0;
+    const lockedMoveId = `${this.getFlag(POKROLE.ID, CHOICE_LOCKED_MOVE_FLAG) ?? ""}`.trim();
+    if (!lockedMoveId || lockedMoveId !== `${move?.id ?? ""}`.trim()) return 0;
+    return Math.floor(toNumber(held.choicePriorityBonus, 0));
+  }
+
+  _hasHeldItemHazardImmunity() {
+    return Boolean(this._getHeldItemData()?.immuneToHazards);
+  }
+
+  _hasHeldItemSporeImmunity() {
+    return Boolean(this._getHeldItemData()?.immuneToSpore);
+  }
+
+  _moveHasSporePowderPollenKeywords(move) {
+    const haystack = `${move?.name ?? ""} ${move?.system?.description ?? ""}`.trim().toLowerCase();
+    if (!haystack) return false;
+    return ["spore", "powder", "pollen"].some((keyword) => haystack.includes(keyword));
+  }
+
+  async _applyHeldItemEntryEffects(options = {}) {
+    if (this.type !== "pokemon") return [];
+    const heldItem = this._getHeldItemDocument({ requireCompatible: true });
+    const held = heldItem?.system?.held ?? null;
+    const statusToApply = `${held?.onEnterBattleStatus ?? ""}`.trim().toLowerCase();
+    if (!statusToApply) return [];
+
+    const conditionKey = statusToApply === "poison" ? "poisoned" : this._normalizeConditionKey(statusToApply);
+    if (conditionKey === "none" || this._isConditionActive(conditionKey)) return [];
+
+    const applyResult = await this._applyConditionEffectToActor(
+      {
+        effectType: "condition",
+        condition: conditionKey,
+        durationMode: "manual",
+        durationRounds: 1,
+        specialDuration: []
+      },
+      this,
+      heldItem,
+      { sourceActor: this }
+    );
+    if (applyResult?.applied) {
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        content: `<strong>${this.name}'s</strong> ${heldItem.name} applied ${this._localizeConditionName(conditionKey)} on entry.`
+      });
+    }
+    return [applyResult].filter(Boolean);
+  }
+
+  /**
    * Get a stat bonus from the held battle item (e.g. Light Ball gives +1 Str/Spe to Pikachu).
    */
   _getHeldItemStatBonus(statKey) {
     if (this.type !== "pokemon") return 0;
-    const battleItemId = this.system.battleItem || "";
-    if (!battleItemId) return 0;
-    let item = game.items.get(battleItemId);
-    if (!item) item = this.items.get(battleItemId);
-    if (!item || item.type !== "gear") return 0;
-    const held = item.system.held ?? {};
-    // Check compatible pokemon
-    const compatiblePokemon = (held.compatiblePokemon || "").toLowerCase().trim();
-    if (compatiblePokemon) {
-      const species = (this.system.species || this.name || "").toLowerCase().trim();
-      if (!species.includes(compatiblePokemon) && !compatiblePokemon.includes(species)) return 0;
-    }
+    const held = this._getHeldItemData();
+    if (!held) return 0;
     const bonuses = held.statBonuses ?? {};
     return toNumber(bonuses[statKey], 0);
   }
@@ -2804,13 +2994,8 @@ export class PokRoleActor extends Actor {
    */
   _getHeldItemDamageBonus(moveType, moveCategory) {
     if (this.type !== "pokemon") return 0;
-    const battleItemId = this.system.battleItem || "";
-    if (!battleItemId) return 0;
-    // Try world items first, then actor's owned items
-    let item = game.items.get(battleItemId);
-    if (!item) item = this.items.get(battleItemId);
-    if (!item || item.type !== "gear") return 0;
-    const held = item.system.held ?? {};
+    const held = this._getHeldItemData();
+    if (!held) return 0;
     const bonusDice = held.damageBonusDice ?? 0;
     if (bonusDice <= 0) return 0;
     const normalizedMoveType = this._normalizeTypeKey(moveType);
@@ -2820,12 +3005,6 @@ export class PokRoleActor extends Actor {
     // Check category condition (if specified)
     const requiredCategory = (held.damageBonusCategory || "").toLowerCase();
     if (requiredCategory && requiredCategory !== moveCategory.toLowerCase()) return 0;
-    // Check compatible pokemon (if specified)
-    const compatiblePokemon = (held.compatiblePokemon || "").toLowerCase().trim();
-    if (compatiblePokemon) {
-      const species = (this.system.species || this.name || "").toLowerCase().trim();
-      if (!species.includes(compatiblePokemon) && !compatiblePokemon.includes(species)) return 0;
-    }
     return bonusDice;
   }
 
@@ -2834,13 +3013,8 @@ export class PokRoleActor extends Actor {
    * Returns null if no valid held item is equipped.
    */
   _getHeldItemData() {
-    if (this.type !== "pokemon") return null;
-    const battleItemId = this.system.battleItem || "";
-    if (!battleItemId) return null;
-    let item = game.items.get(battleItemId);
-    if (!item) item = this.items.get(battleItemId);
-    if (!item || item.type !== "gear") return null;
-    return item.system.held ?? null;
+    const item = this._getHeldItemDocument({ requireCompatible: true });
+    return item?.system?.held ?? null;
   }
 
   /**
@@ -3057,15 +3231,25 @@ export class PokRoleActor extends Actor {
 
   _resolveEffectiveMovePriority(move, actor = this) {
     const runtimeRule = this._getTerrainRuntimeMoveRule(move);
+    const heldChoicePriorityBonus =
+      actor instanceof PokRoleActor ? actor._getHeldItemChoicePriorityBonus(move) : 0;
     if (runtimeRule?.conditionalPriority) {
       const requiredTerrain = this._normalizeTerrainKey(runtimeRule.conditionalPriority.terrain);
       const isActive = this.hasActiveTerrainForActor(actor, requiredTerrain);
       const resolvedPriority = isActive
         ? runtimeRule.conditionalPriority.active
         : runtimeRule.conditionalPriority.inactive;
-      return clamp(Math.floor(toNumber(resolvedPriority, 0)), -99, 99);
+      return clamp(
+        Math.floor(toNumber(resolvedPriority, 0)) + heldChoicePriorityBonus,
+        -99,
+        99
+      );
     }
-    return clamp(Math.floor(toNumber(move?.system?.priority, 0)), -99, 99);
+    return clamp(
+      Math.floor(toNumber(move?.system?.priority, 0)) + heldChoicePriorityBonus,
+      -99,
+      99
+    );
   }
 
   _getWeatherBlockedMoveTypes(weatherKey = this.getActiveWeatherKey()) {
@@ -6226,7 +6410,7 @@ export class PokRoleActor extends Actor {
       );
     }
     if (chargeProfile.skipReason === "power-herb") {
-      await this.update({ "system.battleItem": "" });
+      await this._consumeHeldBattleItem();
       bypassLines.push(
         game.i18n.format("POKROLE.Chat.MultiTurn.ChargeSkippedPowerHerb", {
           actor: this.name,
@@ -6414,9 +6598,10 @@ export class PokRoleActor extends Actor {
         return null;
       }
     }
-    const roll = await new Roll(POKROLE.INITIATIVE_FORMULA, {
+    const roll = await new Roll("1d6 + @dexterity + @alert + @heldInitiative", {
       dexterity: this.getTraitValue("dexterity"),
-      alert: this.getSkillValue("alert")
+      alert: this.getSkillValue("alert"),
+      heldInitiative: this._getHeldItemInitiativeBonus()
     }).evaluate();
     const baseInitiative = Math.max(toNumber(roll.total, 0), 0);
     const rolledInitiative = this._isConditionActive("paralyzed")
@@ -7467,16 +7652,21 @@ export class PokRoleActor extends Actor {
 
   async _consumeHeldBattleItem() {
     if (this.type !== "pokemon") return false;
-    const battleItemId = `${this.system?.battleItem ?? ""}`.trim();
-    if (!battleItemId) return false;
-    let item = game.items.get(battleItemId);
-    if (!item) item = this.items.get(battleItemId);
-    if (!item || item.type !== "gear") return false;
+    const item = this._getHeldItemDocument({ requireCompatible: false });
+    if (!item) {
+      if (`${this.system?.battleItem ?? ""}`.trim()) {
+        await this._setEquippedHeldItemId("");
+      }
+      return false;
+    }
     const currentQty = Math.max(Math.floor(toNumber(item.system?.quantity, 1)), 1);
-    if (currentQty > 1) {
+    if (item.parent?.id === this.id && currentQty > 1) {
       await item.update({ "system.quantity": currentQty - 1 });
-    } else {
-      await this.update({ "system.battleItem": "" });
+      return true;
+    }
+    await this._setEquippedHeldItemId("");
+    if (item.parent?.id === this.id) {
+      await item.delete();
     }
     return true;
   }
@@ -7521,9 +7711,7 @@ export class PokRoleActor extends Actor {
     }
 
     if (moveSeedId === "move-fling") {
-      const battleItemId = `${this.system?.battleItem ?? ""}`.trim();
-      let heldItem = battleItemId ? game.items.get(battleItemId) ?? this.items.get(battleItemId) ?? null : null;
-      if (heldItem?.type !== "gear") heldItem = null;
+      const heldItem = this._getHeldItemDocument({ requireCompatible: false });
       if (heldItem) {
         const bonusDice = await this._promptFlingBonusDice(move, heldItem.name ?? "");
         if (bonusDice === null) return null;
@@ -9457,7 +9645,7 @@ export class PokRoleActor extends Actor {
           this,
           move
         );
-        await this.update({ "system.battleItem": "" });
+        await this._consumeHeldBattleItem();
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor: this }),
           content: `<strong>${this.name}'s</strong> Throat Spray activated! Special increased by 1.`
@@ -9909,18 +10097,8 @@ export class PokRoleActor extends Actor {
     if (finalDamage > 0 && targetHeldData?.focusSash && hpValue > 0 && finalDamage >= hpValue) {
       finalDamage = Math.max(hpValue - 1, 0);
       // Consume the Focus Sash
-      const targetBattleItemId = targetActor.system.battleItem || "";
-      if (targetBattleItemId) {
-        let sashItem = game.items.get(targetBattleItemId);
-        if (!sashItem) sashItem = targetActor.items.get(targetBattleItemId);
-        if (sashItem) {
-          const currentQty = toNumber(sashItem.system?.quantity, 1);
-          if (currentQty > 1) {
-            await sashItem.update({ "system.quantity": currentQty - 1 });
-          } else {
-            await targetActor.update({ "system.battleItem": "" });
-          }
-        }
+      if (`${targetActor.system?.battleItem ?? ""}`.trim()) {
+        await targetActor._consumeHeldBattleItem();
       }
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: targetActor }),
@@ -10086,10 +10264,9 @@ export class PokRoleActor extends Actor {
 
     // Sticky Barb: transfer to attacker on non-ranged physical contact
     if (targetHeldData?.stickyBarb && finalDamage > 0 && !this._isMoveRanged(move) && category === "physical") {
-      const targetBattleItemId = targetActor.system.battleItem || "";
+      const targetBattleItemId = `${targetActor.system?.battleItem ?? ""}`.trim();
       if (targetBattleItemId) {
-        await targetActor.update({ "system.battleItem": "" });
-        await this.update({ "system.battleItem": targetBattleItemId });
+        await targetActor._transferHeldItemToActor(this);
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor: targetActor }),
           content: `<strong>${targetActor.name}'s</strong> Sticky Barb transferred to <strong>${this.name}</strong>!`
@@ -10122,7 +10299,7 @@ export class PokRoleActor extends Actor {
         targetActor,
         move
       );
-      await targetActor.update({ "system.battleItem": "" });
+      await targetActor._consumeHeldBattleItem();
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: targetActor }),
         content: `<strong>${targetActor.name}'s</strong> Weakness Policy activated! Strength and Special increased by 1.`
@@ -10131,7 +10308,7 @@ export class PokRoleActor extends Actor {
 
     // Eject Button: switch out the holder after taking damage
     if (targetHeldData?.ejectButton && finalDamage > 0 && targetActor) {
-      await targetActor.update({ "system.battleItem": "" });
+      await targetActor._consumeHeldBattleItem();
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: targetActor }),
         content: `<strong>${targetActor.name}'s</strong> Eject Button activated!`
@@ -10155,7 +10332,7 @@ export class PokRoleActor extends Actor {
 
     // Red Card: force the attacker to switch out after damage
     if (targetHeldData?.redCard && finalDamage > 0 && targetActor) {
-      await targetActor.update({ "system.battleItem": "" });
+      await targetActor._consumeHeldBattleItem();
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: targetActor }),
         content: `<strong>${targetActor.name}'s</strong> Red Card activated! <strong>${this.name}</strong> is forced out!`
@@ -11390,7 +11567,7 @@ export class PokRoleActor extends Actor {
         continue;
       }
 
-      if (normalizedEffectType === "terrain") {
+    if (normalizedEffectType === "terrain") {
         const applyResult = await this._applySecondaryEffectToActor(
           { ...effect, effectType: "terrain" },
           this,
@@ -11410,11 +11587,11 @@ export class PokRoleActor extends Actor {
               })
         });
         continue;
-      }
+    }
 
-      const effectTargets = this._resolveActorsForSecondaryTarget(effect.target, {
-        moveTargetKey,
-        targetActors
+    const effectTargets = this._resolveActorsForSecondaryTarget(effect.target, {
+      moveTargetKey,
+      targetActors
       });
       if (!effectTargets.length) {
         results.push({
@@ -11427,6 +11604,19 @@ export class PokRoleActor extends Actor {
       }
 
       for (const targetActor of effectTargets) {
+        if (
+          targetActor instanceof PokRoleActor &&
+          targetActor._hasHeldItemSporeImmunity?.() &&
+          this._moveHasSporePowderPollenKeywords(move)
+        ) {
+          results.push({
+            label: this._formatSecondaryEffectLabel(effect),
+            targetName: targetActor.name,
+            applied: false,
+            detail: `${targetActor.name} ignored the added effect due to its held item.`
+          });
+          continue;
+        }
         if (
           targetActor instanceof PokRoleActor &&
           targetActor.id !== this.id &&
@@ -11736,6 +11926,9 @@ export class PokRoleActor extends Actor {
     try {
       await combat.updateEmbeddedDocuments("Combatant", [updateData]);
       await this._applyEntryHazardsForActor(replacementActor, { combat });
+      if (typeof replacementActor._applyHeldItemEntryEffects === "function") {
+        await replacementActor._applyHeldItemEntryEffects({ combat });
+      }
       return true;
     } catch (error) {
       console.warn(`${POKROLE.ID} | Failed to update combatant actor`, error);
@@ -13873,7 +14066,7 @@ export class PokRoleActor extends Actor {
         if (effectIds.length > 0) {
           await targetActor.deleteEmbeddedDocuments("ActiveEffect", effectIds);
         }
-        await targetActor.update({ "system.battleItem": "" });
+        await targetActor._consumeHeldBattleItem();
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor: targetActor }),
           content: `<strong>${targetActor.name}'s</strong> White Herb restored its lowered stats!`
@@ -15333,7 +15526,7 @@ export class PokRoleActor extends Actor {
           parts.push(`Leftovers healed ${healAmount} HP (use ${currentUses + 1}/${maxUses})`);
         }
         if (currentUses + 1 >= maxUses) {
-          await this.update({ "system.battleItem": "" });
+          await this._consumeHeldBattleItem();
           parts.push("Leftovers consumed!");
         }
       }
@@ -15345,23 +15538,6 @@ export class PokRoleActor extends Actor {
       await this._safeApplyDamage(this, damage, { applyDeadOnZero: false });
       totalDamage += damage;
       parts.push(`Sticky Barb dealt ${damage} damage`);
-    }
-
-    // Flame Orb / Toxic Orb: apply status on first round
-    if (held.onEnterBattleStatus) {
-      const flagKey = "combat.orbStatusApplied";
-      const alreadyApplied = this.getFlag(POKROLE.ID, flagKey);
-      if (!alreadyApplied) {
-        await this.setFlag(POKROLE.ID, flagKey, true);
-        const statusToApply = held.onEnterBattleStatus.toLowerCase().trim();
-        if (statusToApply === "burn" && !this._isConditionActive("burn")) {
-          await this.toggleQuickCondition("burn", { active: true });
-          parts.push("Flame Orb inflicted burn!");
-        } else if (statusToApply === "poison" && !this._isConditionActive("poisoned")) {
-          await this.toggleQuickCondition("poisoned", { active: true });
-          parts.push("Toxic Orb inflicted poison!");
-        }
-      }
     }
 
     return {

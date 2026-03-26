@@ -449,17 +449,12 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       context.isGM = game.user.isGM;
 
       // Battle Item (held item drop zone)
-      const battleItemId = this.actor.system.battleItem || "";
-      if (battleItemId) {
-        // Try world items first, then compendium packs
-        let battleItem = game.items.get(battleItemId);
-        if (!battleItem) {
-          // Search in actor's owned items
-          battleItem = this.actor.items.get(battleItemId);
-        }
-        if (battleItem) {
-          context.battleItemData = { id: battleItem.id, name: battleItem.name, img: battleItem.img };
-        }
+      const battleItem =
+        typeof this.actor._getHeldItemDocument === "function"
+          ? this.actor._getHeldItemDocument({ requireCompatible: false })
+          : null;
+      if (battleItem) {
+        context.battleItemData = { id: battleItem.id, name: battleItem.name, img: battleItem.img };
       }
     }
     if (this.actor.type === "pokemon") {
@@ -2145,11 +2140,19 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       }
       if (data.type !== "Item") return;
       const item = await fromUuid(data.uuid);
-      if (!item || item.type !== "gear") {
-        ui.notifications.warn(game.i18n.localize("POKROLE.Pokemon.DropItemOnly"));
+      if (
+        !item ||
+        item.type !== "gear" ||
+        `${item.system?.category ?? ""}`.trim().toLowerCase() !== "held"
+      ) {
+        ui.notifications.warn(game.i18n.localize("POKROLE.Pokemon.DropHeldItemOnly"));
         return;
       }
-      await this.actor.update({ "system.battleItem": item.id });
+      if (typeof this.actor._equipHeldItemFromSource === "function") {
+        await this.actor._equipHeldItemFromSource(item);
+      } else {
+        await this.actor.update({ "system.battleItem": item.id });
+      }
       return;
     }
 
@@ -2182,6 +2185,10 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   async _onClearBattleItem(event) {
     event.preventDefault();
     if (this.actor.type !== "pokemon") return;
+    if (typeof this.actor._setEquippedHeldItemId === "function") {
+      await this.actor._setEquippedHeldItemId("");
+      return;
+    }
     await this.actor.update({ "system.battleItem": "" });
   }
 
