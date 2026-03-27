@@ -2,8 +2,6 @@ Import delle abilità e dei pokémon e rimozione del compendio "Pokédex"
 
 Per le abilità dei pokémon, le abilità attualmente non hanno immagini. Non ci sono immagini per le abilità
 
-Sistemare le automazioni degli held items
-
 Creazione sistema di cattura ed automatizzare le varie ball
 
 Sostituire il field "Progressione Evoluzione" con il tasto "Evoluzione"
