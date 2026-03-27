@@ -351,6 +351,7 @@ export const MOVE_SECONDARY_CONDITION_KEYS = Object.freeze([
 
 export const MOVE_SECONDARY_STAT_KEYS = Object.freeze([
   "none",
+  "highest",
   ...ATTRIBUTE_DEFINITIONS.map((attribute) => attribute.key),
   ...SKILL_DEFINITIONS.map((skill) => skill.key),
   "defense",

@@ -12911,8 +12911,10 @@ export class PokRoleActor extends Actor {
       chosenStat = "special";
     } else {
       // Tied: pick based on own higher stat between Strength and Special
-      const selfStr = Math.max(toNumber(this.system?.attributes?.strength?.value, 0), 0);
-      const selfSpc = Math.max(toNumber(this.system?.attributes?.special?.value, 0), 0);
+      const rawStr = this.system?.attributes?.strength;
+      const selfStr = Math.max(toNumber(typeof rawStr === "object" && rawStr !== null ? rawStr?.value : rawStr, 0), 0);
+      const rawSpc = this.system?.attributes?.special;
+      const selfSpc = Math.max(toNumber(typeof rawSpc === "object" && rawSpc !== null ? rawSpc?.value : rawSpc, 0), 0);
       if (selfStr > selfSpc) {
         chosenStat = "strength";
       } else if (selfSpc > selfStr) {
