@@ -157,6 +157,7 @@ const CONDITION_ALIASES = Object.freeze({
 });
 
 const TEMPORARY_EFFECTS_FLAG = "automation.temporaryEffects";
+const HELD_ITEM_COMBAT_RUNTIME_FLAG = "combat.heldItemRuntime";
 const CONFIGURED_EFFECTS_FLAG = "automation.configuredEffects";
 const CONDITION_FLAGS_FLAG = "automation.conditionFlags";
 const CONDITION_KEYS = Object.freeze([
@@ -2928,6 +2929,90 @@ export class PokRoleActor extends Actor {
     return normalizedItemId;
   }
 
+  _getHeldItemCombatRuntimeState(combat = game.combat) {
+    const combatId = `${combat?.id ?? ""}`.trim();
+    const rawState =
+      foundry.utils.deepClone(this.getFlag?.(POKROLE.ID, HELD_ITEM_COMBAT_RUNTIME_FLAG) ?? {}) ?? {};
+    const stateCombatId = `${rawState?.combatId ?? ""}`.trim();
+    const matchesCombat = combatId && stateCombatId === combatId;
+    return {
+      combatId: matchesCombat ? stateCombatId : combatId,
+      airBalloonPopped: matchesCombat ? Boolean(rawState?.airBalloonPopped) : false,
+      orbEffectIds: matchesCombat && Array.isArray(rawState?.orbEffectIds)
+        ? rawState.orbEffectIds.filter((effectId) => `${effectId ?? ""}`.trim())
+        : []
+    };
+  }
+
+  async _setHeldItemCombatRuntimeState(patch = {}, combat = game.combat) {
+    if (this.type !== "pokemon") return this._getHeldItemCombatRuntimeState(combat);
+    const combatId = `${combat?.id ?? ""}`.trim();
+    if (!combatId) return this._getHeldItemCombatRuntimeState(combat);
+    const currentState = this._getHeldItemCombatRuntimeState(combat);
+    const nextState = {
+      combatId,
+      airBalloonPopped:
+        patch?.airBalloonPopped === undefined
+          ? currentState.airBalloonPopped
+          : Boolean(patch.airBalloonPopped),
+      orbEffectIds: Array.isArray(patch?.orbEffectIds)
+        ? patch.orbEffectIds.filter((effectId) => `${effectId ?? ""}`.trim())
+        : currentState.orbEffectIds
+    };
+    await this.setFlag(POKROLE.ID, HELD_ITEM_COMBAT_RUNTIME_FLAG, nextState);
+    return nextState;
+  }
+
+  async _trackHeldItemCombatEffectId(effectId, combat = game.combat) {
+    const normalizedEffectId = `${effectId ?? ""}`.trim();
+    if (!normalizedEffectId) return this._getHeldItemCombatRuntimeState(combat);
+    const currentState = this._getHeldItemCombatRuntimeState(combat);
+    if (currentState.orbEffectIds.includes(normalizedEffectId)) return currentState;
+    return this._setHeldItemCombatRuntimeState(
+      {
+        orbEffectIds: [...currentState.orbEffectIds, normalizedEffectId]
+      },
+      combat
+    );
+  }
+
+  async _clearHeldItemCombatRuntimeState(combatId = null) {
+    if (this.type !== "pokemon") return false;
+    const normalizedCombatId = `${combatId ?? game.combat?.id ?? ""}`.trim();
+    const storedState = this.getFlag?.(POKROLE.ID, HELD_ITEM_COMBAT_RUNTIME_FLAG) ?? null;
+    const storedCombatId = `${storedState?.combatId ?? ""}`.trim();
+    if (normalizedCombatId && storedCombatId && storedCombatId !== normalizedCombatId) {
+      return false;
+    }
+    await this.unsetFlag(POKROLE.ID, HELD_ITEM_COMBAT_RUNTIME_FLAG);
+    return true;
+  }
+
+  _getHeldItemSourceLabel(options = {}) {
+    const heldItem = this._getHeldItemDocument(options);
+    return `${heldItem?.name ?? game.i18n.localize("POKROLE.Pokemon.BattleItem")}`.trim();
+  }
+
+  async _markAirBalloonPopped(combat = game.combat) {
+    if (!this._hasEquippedHeldItemSeed("held-air-balloon")) return false;
+    const currentState = this._getHeldItemCombatRuntimeState(combat);
+    if (currentState.airBalloonPopped) return false;
+    await this._setHeldItemCombatRuntimeState({ airBalloonPopped: true }, combat);
+    return true;
+  }
+
+  async _popAirBalloonOnSuccessfulHit(combat = game.combat) {
+    if (!this._hasActiveAirBalloon()) return false;
+    const popped = await this._markAirBalloonPopped(combat);
+    if (!popped) return false;
+    const poppedItemName = this._getHeldItemDocument({ requireCompatible: false })?.name ?? "Air Balloon";
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `<strong>${this.name}'s</strong> ${poppedItemName} popped!`
+    });
+    return true;
+  }
+
   _findExistingLocalHeldItemCopy(sourceItem) {
     if (!sourceItem || this.type !== "pokemon") return null;
     if (sourceItem.parent?.id === this.id) {
@@ -3026,7 +3111,10 @@ export class PokRoleActor extends Actor {
   }
 
   _hasActiveAirBalloon() {
-    return this.type === "pokemon" && this._hasEquippedHeldItemSeed("held-air-balloon");
+    if (this.type !== "pokemon" || !this._hasEquippedHeldItemSeed("held-air-balloon")) return false;
+    const combat = game.combat ?? null;
+    if (!combat) return true;
+    return !this._getHeldItemCombatRuntimeState(combat).airBalloonPopped;
   }
 
   _heldItemRemovesGroundTypeImmunity() {
@@ -3093,14 +3181,17 @@ export class PokRoleActor extends Actor {
       {
         effectType: "condition",
         condition: conditionKey,
-        durationMode: "manual",
-        durationRounds: 1,
+        durationMode: "combat",
+        durationRounds: 0,
         specialDuration: []
       },
       this,
       heldItem,
       { sourceActor: this }
     );
+    if (applyResult?.effectId) {
+      await this._trackHeldItemCombatEffectId(applyResult.effectId, options?.combat ?? game.combat);
+    }
     if (applyResult?.applied) {
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: this }),
@@ -3149,6 +3240,58 @@ export class PokRoleActor extends Actor {
   _getHeldItemData() {
     const item = this._getHeldItemDocument({ requireCompatible: true });
     return item?.system?.held ?? null;
+  }
+
+  _getDerivedTraitDisplayState(traitKey) {
+    const normalizedKey = `${traitKey ?? ""}`.trim();
+    const baseValue = Math.max(Math.floor(toNumber(this.system?.attributes?.[normalizedKey], 0)), 0);
+    const heldBonus = Math.floor(toNumber(this._getHeldItemStatBonus(normalizedKey), 0));
+    const modifiers = [];
+    if (heldBonus !== 0) {
+      modifiers.push({
+        sourceKind: "held-item",
+        sourceLabel: this._getHeldItemSourceLabel({ requireCompatible: true }),
+        amount: heldBonus
+      });
+    }
+    const totalModifier = modifiers.reduce((sum, modifier) => sum + toNumber(modifier?.amount, 0), 0);
+    const effectiveValue = Math.max(baseValue + totalModifier, 0);
+    return {
+      key: normalizedKey,
+      baseValue,
+      effectiveValue,
+      totalModifier,
+      modifiers,
+      hasOverride: totalModifier !== 0
+    };
+  }
+
+  _getDerivedMoveDisplayState(move) {
+    const baseHighCritical = Boolean(move?.system?.highCritical);
+    const heldHighCritical = this._checkHeldItemHighCritical(move);
+    const heldSourceLabel = heldHighCritical ? this._getHeldItemSourceLabel({ requireCompatible: true }) : "";
+    const effectiveHighCritical = baseHighCritical || heldHighCritical;
+    return {
+      effective: {
+        highCritical: effectiveHighCritical,
+        neverFail: Boolean(move?.system?.neverFail),
+        priority: Number(move?.system?.priority ?? 0)
+      },
+      locks: {
+        highCritical:
+          heldHighCritical && !baseHighCritical
+            ? {
+                locked: true,
+                sourceKind: "held-item",
+                sourceLabel: heldSourceLabel
+              }
+            : null
+      }
+    };
+  }
+
+  getDerivedMoveDisplayState(move) {
+    return this._getDerivedMoveDisplayState(move);
   }
 
   /**
@@ -10168,7 +10311,6 @@ export class PokRoleActor extends Actor {
       heldItemBonus +
       terrainBonusDice +
       weatherBonusDice +
-      expertBeltBonus +
       destroyShieldBonusDice +
       metronomeBonus +
       pinchAbilityBonus -
@@ -10236,9 +10378,10 @@ export class PokRoleActor extends Actor {
         baseDamage + weaknessBonus - typeInteraction.resistancePenalty,
         1
       );
+      const resolvedDamageWithHeldFlatBonus = Math.max(resolvedDamage + expertBeltBonus, 1);
       finalDamage = isHoldingBackHalf
-        ? Math.max(Math.floor(resolvedDamage / 2), 1)
-        : resolvedDamage;
+        ? Math.max(Math.floor(resolvedDamageWithHeldFlatBonus / 2), 1)
+        : resolvedDamageWithHeldFlatBonus;
       finalDamage = this._applyWeatherDamageReduction(finalDamage, weatherFlatReduction, {
         immune: typeInteraction.immune
       });
@@ -10317,7 +10460,6 @@ export class PokRoleActor extends Actor {
 
     // Focus Sash: survive lethal damage at 1 HP (once)
     const targetHeldData = targetActor?._getHeldItemData?.() ?? null;
-    const targetHeldItem = targetActor?._getHeldItemDocument?.({ requireCompatible: true }) ?? null;
     const isContactAttack = category === "physical" && !this._isMoveRanged(move);
     const attackerSuppressesContactTriggers = this._preventsContactTriggers(move);
     if (finalDamage > 0 && targetHeldData?.focusSash && hpValue > 0 && finalDamage >= hpValue) {
@@ -10409,21 +10551,12 @@ export class PokRoleActor extends Actor {
       if (rangedAttack && !ignoresCover) {
         await this._degradeCoverOnHit(targetActor);
       }
-      if (
-        targetActor instanceof PokRoleActor &&
-        targetHeldItem &&
-        targetActor._hasActiveAirBalloon()
-      ) {
-        const poppedItemName = targetHeldItem.name ?? "Air Balloon";
-        await targetActor._consumeHeldBattleItem();
-        await ChatMessage.create({
-          speaker: ChatMessage.getSpeaker({ actor: targetActor }),
-          content: `<strong>${targetActor.name}'s</strong> ${poppedItemName} popped!`
-        });
-      }
     }
 
     const attackLandedOnTarget = !typeInteraction.immune && Boolean(targetActor) && !substituteBlocked;
+    if (attackLandedOnTarget && targetActor instanceof PokRoleActor) {
+      await targetActor._popAirBalloonOnSuccessfulHit(game.combat ?? null);
+    }
     if (targetActor instanceof PokRoleActor && attackLandedOnTarget && damagePool > 0) {
       await targetActor._recordLastReceivedAttack({
         sourceActor: this,
@@ -10512,20 +10645,6 @@ export class PokRoleActor extends Actor {
       }
     }
 
-    // Held-item flinch: King's Rock on Special moves, Razor Fang on Physical moves.
-    const heldFlinchProfile = this._getHeldItemFlinchProfile(move);
-    if (heldFlinchProfile && finalDamage > 0 && targetActor) {
-      const flinchRoll = await new Roll(`${Math.max(toNumber(heldFlinchProfile.chanceDice, 1), 1)}d6`).evaluate();
-      const flinchResult = toNumber(flinchRoll.total, 0);
-      if (flinchRoll.dice?.some((die) => die.results?.some((result) => toNumber(result?.result, 0) >= 6))) {
-        await targetActor.toggleQuickCondition("flinch", { active: true });
-        await ChatMessage.create({
-          speaker: ChatMessage.getSpeaker({ actor: this }),
-          content: `<strong>${this.name}'s</strong> ${heldFlinchProfile.itemName} caused <strong>${targetActor.name}</strong> to flinch! (rolled ${flinchResult})`
-        });
-      }
-    }
-
     // Weakness Policy: +1 strength and +1 special after taking super-effective damage
     if (targetHeldData?.weaknessPolicy && finalDamage > 0 && typeInteraction.weaknessBonus > 0 && targetActor) {
       await this._applyStatEffectToActor(
@@ -10547,7 +10666,6 @@ export class PokRoleActor extends Actor {
 
     // Eject Button: switch out the holder after taking damage
     if (targetHeldData?.ejectButton && finalDamage > 0 && targetActor) {
-      await targetActor._consumeHeldBattleItem();
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: targetActor }),
         content: `<strong>${targetActor.name}'s</strong> Eject Button activated!`
@@ -10571,7 +10689,6 @@ export class PokRoleActor extends Actor {
 
     // Red Card: force the attacker to switch out after damage
     if (targetHeldData?.redCard && finalDamage > 0 && targetActor) {
-      await targetActor._consumeHeldBattleItem();
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: targetActor }),
         content: `<strong>${targetActor.name}'s</strong> Red Card activated! <strong>${this.name}</strong> is forced out!`
@@ -10656,7 +10773,8 @@ export class PokRoleActor extends Actor {
       damagePainPenalty,
       movePower,
       damageAttributeValue,
-      damageAttributeLabel
+      damageAttributeLabel,
+      attackLandedOnTarget
     };
   }
 
@@ -10701,10 +10819,74 @@ export class PokRoleActor extends Actor {
       combined.push(normalizedEffect);
     }
 
+    const heldAdjustedEffects = this._augmentSecondaryEffectsWithHeldItemBonuses(move, combined);
     return this._sanitizeRuntimeHandledSecondaryEffects(
       move,
-      this._sanitizeShieldMoveSecondaryEffects(move, combined)
+      this._sanitizeShieldMoveSecondaryEffects(move, heldAdjustedEffects)
     );
+  }
+
+  _augmentSecondaryEffectsWithHeldItemBonuses(move, effectList = []) {
+    const baseEffects = Array.isArray(effectList)
+      ? effectList.map((effect) => foundry.utils.deepClone(effect))
+      : [];
+    const heldFlinchProfile = this._getHeldItemFlinchProfile(move);
+    if (!heldFlinchProfile) return baseEffects;
+
+    const flinchEffect = baseEffects.find((effect) => {
+      return (
+        this._normalizeSecondaryEffectType(effect?.effectType) === "condition" &&
+        this._normalizeConditionKey(effect?.condition) === "flinch"
+      );
+    });
+    const chanceSourceEntry = {
+      sourceKind: "held-item",
+      sourceLabel: heldFlinchProfile.itemName,
+      dice: Math.max(toNumber(heldFlinchProfile.chanceDice, 0), 0)
+    };
+
+    if (flinchEffect) {
+      const baseChance = this._normalizeSecondaryChanceDice(flinchEffect.chance);
+      if (baseChance > 0) {
+        flinchEffect.chance = baseChance + chanceSourceEntry.dice;
+      }
+      flinchEffect.bonusChanceSources = [
+        ...(Array.isArray(flinchEffect.bonusChanceSources) ? flinchEffect.bonusChanceSources : []),
+        chanceSourceEntry
+      ];
+      return baseEffects;
+    }
+
+    if (chanceSourceEntry.dice <= 0) return baseEffects;
+
+    const syntheticEffect = this._normalizeSecondaryEffectDefinition({
+      label: `${game.i18n.localize("POKROLE.Chat.HeldItemBonus")}: ${this._localizeConditionName("flinch")}`,
+      trigger: "on-hit-damage",
+      chance: chanceSourceEntry.dice,
+      target: "target",
+      effectType: "condition",
+      condition: "flinch"
+    });
+    syntheticEffect.bonusChanceSources = [chanceSourceEntry];
+    baseEffects.push(syntheticEffect);
+    return baseEffects;
+  }
+
+  _formatSecondaryEffectChanceSourceDetail(effect = {}) {
+    const sources = Array.isArray(effect?.bonusChanceSources)
+      ? effect.bonusChanceSources.filter(
+          (source) => `${source?.sourceLabel ?? ""}`.trim() && Math.max(toNumber(source?.dice, 0), 0) > 0
+        )
+      : [];
+    if (sources.length <= 0) return "";
+    return sources
+      .map((source) =>
+        game.i18n.format("POKROLE.Chat.SecondaryEffectChanceBonusFromSource", {
+          source: source.sourceLabel,
+          dice: Math.max(toNumber(source.dice, 0), 0)
+        })
+      )
+      .join(" | ");
   }
 
   _sanitizeRuntimeHandledSecondaryEffects(move, effectList = []) {
@@ -11771,15 +11953,20 @@ export class PokRoleActor extends Actor {
         chanceSucceeded = chanceRollResults.some((result) => result === 6);
       }
 
+      const chanceSourceDetail = this._formatSecondaryEffectChanceSourceDetail(effect);
+
       if (!chanceSucceeded) {
         results.push({
           label: this._formatSecondaryEffectLabel(effect),
           targetName: game.i18n.localize("POKROLE.Common.None"),
           applied: false,
-          detail: game.i18n.format("POKROLE.Chat.SecondaryEffectChanceFailed", {
-            rolls: chanceRollResults.join(", "),
-            dice: chanceDice
-          })
+          detail: [
+            game.i18n.format("POKROLE.Chat.SecondaryEffectChanceFailed", {
+              rolls: chanceRollResults.join(", "),
+              dice: chanceDice
+            }),
+            chanceSourceDetail
+          ].filter(Boolean).join(" | ")
         });
         continue;
       }
@@ -11795,13 +11982,16 @@ export class PokRoleActor extends Actor {
           label: this._formatSecondaryEffectLabel(effect),
           targetName: this._localizeMoveTarget("battlefield"),
           applied: applyResult.applied,
-          detail: applyResult.applied
-            ? applyResult.detail
-            : this._resolveSecondaryEffectFailureDetail(effect, this, applyResult, {
-                finalDamage,
-                totalDamageDealt,
-                damageTargetResults
-              })
+          detail: [
+            applyResult.applied
+              ? applyResult.detail
+              : this._resolveSecondaryEffectFailureDetail(effect, this, applyResult, {
+                  finalDamage,
+                  totalDamageDealt,
+                  damageTargetResults
+                }),
+            chanceSourceDetail
+          ].filter(Boolean).join(" | ")
         });
         continue;
       }
@@ -11817,13 +12007,16 @@ export class PokRoleActor extends Actor {
           label: this._formatSecondaryEffectLabel(effect),
           targetName: this._localizeMoveTarget(moveTargetKey),
           applied: applyResult.applied,
-          detail: applyResult.applied
-            ? applyResult.detail
-            : this._resolveSecondaryEffectFailureDetail(effect, this, applyResult, {
-                finalDamage,
-                totalDamageDealt,
-                damageTargetResults
-              })
+          detail: [
+            applyResult.applied
+              ? applyResult.detail
+              : this._resolveSecondaryEffectFailureDetail(effect, this, applyResult, {
+                  finalDamage,
+                  totalDamageDealt,
+                  damageTargetResults
+                }),
+            chanceSourceDetail
+          ].filter(Boolean).join(" | ")
         });
         continue;
     }
@@ -11920,13 +12113,16 @@ export class PokRoleActor extends Actor {
           label: this._formatSecondaryEffectLabel(effect),
           targetName: targetActor.name,
           applied: applyResult.applied,
-          detail: applyResult.applied
-            ? applyResult.detail
-            : this._resolveSecondaryEffectFailureDetail(effect, targetActor, applyResult, {
-                finalDamage,
-                totalDamageDealt,
-                damageTargetResults
-              })
+          detail: [
+            applyResult.applied
+              ? applyResult.detail
+              : this._resolveSecondaryEffectFailureDetail(effect, targetActor, applyResult, {
+                  finalDamage,
+                  totalDamageDealt,
+                  damageTargetResults
+                }),
+            chanceSourceDetail
+          ].filter(Boolean).join(" | ")
         });
       }
     }
@@ -14081,7 +14277,7 @@ export class PokRoleActor extends Actor {
       automationFlags.durationMode,
       automationFlags.durationRounds
     );
-    await targetActor.createEmbeddedDocuments("ActiveEffect", [
+    const [createdEffect] = await targetActor.createEmbeddedDocuments("ActiveEffect", [
       {
         name: effectLabel,
         img: this._getConditionIconPath(conditionKey) || sourceMove?.img || "icons/svg/aura.svg",
@@ -14135,6 +14331,7 @@ export class PokRoleActor extends Actor {
         : this._localizeConditionName(conditionKey);
     return {
       applied: true,
+      effectId: createdEffect?.id ?? null,
       detail: `${conditionLabel} (${this._localizeTemporaryDuration(
         automationFlags.durationMode,
         automationFlags.durationRounds,

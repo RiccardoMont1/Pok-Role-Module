@@ -1547,6 +1547,10 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   _prepareMoveData(move) {
     const category = move.system.category || "physical";
     const moveType = move.system.type || "normal";
+    const derivedMoveState =
+      typeof this.actor.getDerivedMoveDisplayState === "function"
+        ? this.actor.getDerivedMoveDisplayState(move)
+        : { effective: {}, locks: {} };
     const reducedAccuracy = Number(move.system.reducedAccuracy ?? 0);
     const categoryLabel = game.i18n.localize(
       MOVE_CATEGORY_LABEL_BY_KEY[category] ?? "POKROLE.Common.Unknown"
@@ -1568,8 +1572,12 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       : game.i18n.localize("POKROLE.Move.NoDirectDamage");
 
     const flags = [];
-    if (move.system.highCritical) flags.push(game.i18n.localize("POKROLE.Move.HighCritical"));
-    if (move.system.neverFail) flags.push(game.i18n.localize("POKROLE.Move.NeverFail"));
+    if (derivedMoveState?.effective?.highCritical) {
+      flags.push(game.i18n.localize("POKROLE.Move.HighCritical"));
+    }
+    if (derivedMoveState?.effective?.neverFail ?? move.system.neverFail) {
+      flags.push(game.i18n.localize("POKROLE.Move.NeverFail"));
+    }
     const isRanged = move.system.isRanged || category === "special";
     if (isRanged) flags.push(game.i18n.localize("POKROLE.Move.IsRanged"));
     const priority = Number(move.system.priority ?? 0);
@@ -1614,7 +1622,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         flags.length > 0
           ? flags.join(", ")
           : game.i18n.localize("POKROLE.Common.None"),
-      system: move.system
+      system: move.system,
+      derivedMoveState
     };
   }
 
@@ -1910,6 +1919,10 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   _buildAttributeRows(attributeKeys, trackMaxByKey = null, minValue = 0) {
     return attributeKeys.map((attributeKey) => {
       const value = Number(this.actor.system.attributes?.[attributeKey] ?? 0);
+      const derivedState =
+        typeof this.actor._getDerivedTraitDisplayState === "function"
+          ? this.actor._getDerivedTraitDisplayState(attributeKey)
+          : null;
       const maxValue = this._resolveTrackMax(trackMaxByKey?.[attributeKey], 5);
       const track = this._buildTrack(value, maxValue, minValue);
       return {
@@ -1917,8 +1930,29 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         label: TRAIT_LABEL_BY_KEY[attributeKey] ?? "POKROLE.Common.Unknown",
         value: track.value,
         fieldPath: `system.attributes.${attributeKey}`,
-        track
+        track,
+        effectiveValue: derivedState?.effectiveValue ?? track.value,
+        derivedModifiers: Array.isArray(derivedState?.modifiers) ? derivedState.modifiers : [],
+        hasDerivedOverride: Boolean(derivedState?.hasOverride),
+        derivedDisplay: this._formatDerivedTraitDisplay(derivedState)
       };
+    });
+  }
+
+  _formatDerivedTraitDisplay(derivedState) {
+    if (!derivedState?.hasOverride) return "";
+    const modifierLabel = (derivedState.modifiers ?? [])
+      .map((modifier) => {
+        const amount = Number(modifier?.amount ?? 0) || 0;
+        if (!amount) return "";
+        const signedAmount = amount > 0 ? `+${amount}` : `${amount}`;
+        return `${signedAmount} ${modifier.sourceLabel}`;
+      })
+      .filter(Boolean)
+      .join(", ");
+    return game.i18n.format("POKROLE.Pokemon.EffectiveValueWithSources", {
+      effective: derivedState.effectiveValue,
+      details: modifierLabel
     });
   }
 

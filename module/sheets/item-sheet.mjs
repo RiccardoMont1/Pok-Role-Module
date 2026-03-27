@@ -395,6 +395,25 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
     context.moveHasAccuracyFormula = Boolean(`${context.system?.accuracyFormula ?? ""}`.trim());
     context.moveHasPowerFormula = Boolean(`${context.system?.powerFormula ?? ""}`.trim());
     context.moveHasDamageBaseFormula = Boolean(`${context.system?.damageBaseFormula ?? ""}`.trim());
+    const ownerActor =
+      this.item.parent?.documentName === "Actor" && this.item.parent?.type === "pokemon"
+        ? this.item.parent
+        : null;
+    const derivedMoveState =
+      ownerActor && typeof ownerActor.getDerivedMoveDisplayState === "function"
+        ? ownerActor.getDerivedMoveDisplayState(this.item)
+        : { effective: {}, locks: {} };
+    context.moveDerivedState = derivedMoveState;
+    context.moveDisplaySystem = foundry.utils.mergeObject(
+      foundry.utils.deepClone(context.system ?? {}),
+      {
+        highCritical:
+          derivedMoveState?.effective?.highCritical ?? Boolean(context.system?.highCritical),
+        neverFail:
+          derivedMoveState?.effective?.neverFail ?? Boolean(context.system?.neverFail)
+      },
+      { inplace: false }
+    );
     context.secondaryEffects = this._getMoveSecondaryEffectsForDisplay();
     context.moveEffectSections = this._buildMoveEffectSections(context.secondaryEffects);
     context.secondaryTriggerOptions = {
@@ -507,8 +526,8 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       properties: [
         context.moveHasAccuracyFormula ? "POKROLE.Move.AccuracyFormula" : null,
         context.moveHasDamageBaseFormula ? "POKROLE.Move.DamageBaseFormula" : null,
-        context.system?.highCritical ? "POKROLE.Move.HighCritical" : null,
-        context.system?.neverFail ? "POKROLE.Move.NeverFail" : null,
+        context.moveDisplaySystem?.highCritical ? "POKROLE.Move.HighCritical" : null,
+        context.moveDisplaySystem?.neverFail ? "POKROLE.Move.NeverFail" : null,
         context.system?.shieldMove ? "POKROLE.Move.ShieldMove" : null,
         (context.system?.isRanged || context.system?.category === "special") ? "POKROLE.Move.IsRanged" : null
       ].filter((entry) => entry)

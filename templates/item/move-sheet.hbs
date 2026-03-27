@@ -144,15 +144,19 @@
               <input
                 type="checkbox"
                 name="system.highCritical"
-                {{checked system.highCritical}}
+                {{checked moveDisplaySystem.highCritical}}
+                {{#if moveDerivedState.locks.highCritical}}disabled{{/if}}
               />
               <span>{{localize "POKROLE.Move.HighCritical"}}</span>
             </label>
+            {{#if moveDerivedState.locks.highCritical}}
+            <p class="move-override-note">{{localize "POKROLE.Move.OverriddenBySource" source=moveDerivedState.locks.highCritical.sourceLabel}}</p>
+            {{/if}}
             <label class="checkbox-row">
               <input
                 type="checkbox"
                 name="system.neverFail"
-                {{checked system.neverFail}}
+                {{checked moveDisplaySystem.neverFail}}
               />
               <span>{{localize "POKROLE.Move.NeverFail"}}</span>
             </label>

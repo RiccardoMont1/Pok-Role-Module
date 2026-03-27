@@ -1774,7 +1774,7 @@
   --pk-outline: #3a342d;
   --pk-ink: #272c34;
   --pk-light: #ecf0ff;
-  --pk-bar: #b3bde0;
+  --pk-bar: #f3f4f7;
   background: transparent !important;
   color: var(--pk-ink);
   font-family: "Agency FB", "Trebuchet MS", "Tahoma", sans-serif;
@@ -2378,6 +2378,21 @@
   background: #1aaec3;
 }
 
+.pokemon-sheet .attribute-label-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.pokemon-sheet .attribute-derived-note {
+  display: block;
+  font-size: 0.68rem;
+  line-height: 1.2;
+  color: rgba(30, 37, 46, 0.82);
+  white-space: normal;
+}
+
 .pokemon-sheet .pokemon-attributes-card .trait-zone:last-child .attribute-row:nth-child(1) {
   background: #ebe688;
 }
@@ -2544,6 +2559,12 @@
   color: #ffffff;
   border-bottom-color: rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
+}
+
+.pok-role.sheet.item .move-override-note {
+  margin: -4px 0 6px 26px;
+  font-size: 0.74rem;
+  color: #7f2f22;
 }
 
 .pokemon-sheet .pokemon-moves-section .moves-rank-group {

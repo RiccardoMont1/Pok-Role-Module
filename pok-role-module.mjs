@@ -1761,6 +1761,9 @@ Hooks.on("deleteCombat", async (combat) => {
     if (typeof actor.clearMultiTurnState === "function") {
       try { await actor.clearMultiTurnState(); } catch (_e) { /* */ }
     }
+    if (typeof actor._clearHeldItemCombatRuntimeState === "function") {
+      try { await actor._clearHeldItemCombatRuntimeState(combatId); } catch (_e) { /* */ }
+    }
     if (typeof actor._clearBideState === "function") {
       try { await actor._clearBideState(); } catch (_e) { /* */ }
     }

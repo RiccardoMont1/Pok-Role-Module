@@ -78,12 +78,14 @@
       {{#if terrainBonusDice}} | Terrain +{{terrainBonusDice}}{{/if}}
       {{#if weatherBonusDice}} | Weather +{{weatherBonusDice}}{{/if}}
       {{#if heldItemBonus}} | {{localize "POKROLE.Chat.HeldItemBonus"}} +{{heldItemBonus}}{{/if}}
-      {{#if expertBeltBonus}} | Expert Belt +{{expertBeltBonus}}{{/if}}
       {{#if destroyShieldBonusDice}} | Shield Break +{{destroyShieldBonusDice}}{{/if}}
       {{#if metronomeBonus}} | Metronome +{{metronomeBonus}}{{/if}}
       {{#if criticalDice}} | {{localize "POKROLE.Chat.CriticalBonusDice"}} +{{criticalDice}}{{/if}}
       {{#if damagePainPenalty}} | Pain -{{damagePainPenalty}}{{/if}}
     </p>
+    {{#if expertBeltBonus}}
+    <p><strong>{{localize "POKROLE.Chat.FlatDamageBonus"}}:</strong> Expert Belt +{{expertBeltBonus}}</p>
+    {{/if}}
     <p>{{localize "POKROLE.Chat.PoolBeforeDefense"}} {{poolBeforeDefense}} | {{localize "POKROLE.Chat.TargetDefense"}} {{defense}} | {{localize "POKROLE.Chat.FinalPool"}} {{damagePool}}</p>
     <p>{{localize "POKROLE.Chat.DamageSuccesses"}}: {{damageSuccesses}}</p>
     <p><strong>{{localize "POKROLE.Chat.TypeEffect.Label"}}:</strong> {{typeLabel}}</p>

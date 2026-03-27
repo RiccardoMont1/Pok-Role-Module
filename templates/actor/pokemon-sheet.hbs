@@ -457,7 +457,12 @@
           <div class="attribute-grid">
             {{#each pokemonPhysicalMentalRows as |attribute|}}
             <div class="attribute-row">
-              <label>{{localize attribute.label}}</label>
+              <div class="attribute-label-stack">
+                <label>{{localize attribute.label}}</label>
+                {{#if attribute.hasDerivedOverride}}
+                <small class="attribute-derived-note">{{attribute.derivedDisplay}}</small>
+                {{/if}}
+              </div>
               <input
                 type="hidden"
                 name="{{attribute.fieldPath}}"
@@ -497,7 +502,12 @@
           <div class="attribute-grid">
             {{#each pokemonSocialRows as |attribute|}}
             <div class="attribute-row">
-              <label>{{localize attribute.label}}</label>
+              <div class="attribute-label-stack">
+                <label>{{localize attribute.label}}</label>
+                {{#if attribute.hasDerivedOverride}}
+                <small class="attribute-derived-note">{{attribute.derivedDisplay}}</small>
+                {{/if}}
+              </div>
               <input
                 type="hidden"
                 name="{{attribute.fieldPath}}"
