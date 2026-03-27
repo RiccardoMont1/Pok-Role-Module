@@ -6021,7 +6021,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
           "target": "self",
           "effectType": "stat",
           "durationMode": "combat",
-          "durationRounds": 1,
+          "durationRounds": 0,
           "specialDuration": [],
           "conditional": false,
           "activationCondition": "",
@@ -6035,7 +6035,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
           "healProfile": "standard",
           "healingCategory": "standard",
           "notes": "",
-          "maxStacks": 0,
+          "maxStacks": 1,
           "linkedEffectId": ""
         }
       ],
@@ -6219,7 +6219,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
           "target": "self",
           "effectType": "stat",
           "durationMode": "combat",
-          "durationRounds": 1,
+          "durationRounds": 0,
           "specialDuration": [],
           "conditional": false,
           "activationCondition": "",
@@ -6233,7 +6233,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
           "healProfile": "standard",
           "healingCategory": "standard",
           "notes": "",
-          "maxStacks": 0,
+          "maxStacks": 1,
           "linkedEffectId": ""
         }
       ],

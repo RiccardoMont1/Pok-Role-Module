@@ -12936,7 +12936,8 @@ export class PokRoleActor extends Actor {
       }
     }
     const statEffect = this._normalizeSecondaryEffectDefinition({
-      effectType: "stat", stat: chosenStat, amount: 1, trigger: "always", target: "self"
+      effectType: "stat", stat: chosenStat, amount: 1, trigger: "always", target: "self",
+      durationMode: "combat", durationRounds: 0
     });
     const applyResult = await this._applySecondaryEffectToActor(statEffect, this, null, {
       moveTargetKey: "self", hit: true, isDamagingMove: false, finalDamage: 0, totalDamageDealt: 0, damageTargetResults: []

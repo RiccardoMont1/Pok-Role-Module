@@ -778,13 +778,13 @@ const AUTOMATIONS = {
   "protosynthesis": {
     type: "passive", trigger: "weather-active", target: "self",
     triggerConditionWeather: "sunny,harsh-sunlight",
-    effects: [{ effectType: "stat", stat: "highest", amount: 1, trigger: "always", target: "self" }],
+    effects: [{ effectType: "stat", stat: "highest", amount: 1, trigger: "always", target: "self", maxStacks: 1, durationMode: "combat", durationRounds: 0 }],
     notes: "While Sunny Weather is active: +1 to highest Attribute (+2 if Dexterity)"
   },
   "quark-drive": {
     type: "passive", trigger: "terrain-active", target: "self",
     triggerConditionTerrain: "electric",
-    effects: [{ effectType: "stat", stat: "highest", amount: 1, trigger: "always", target: "self" }],
+    effects: [{ effectType: "stat", stat: "highest", amount: 1, trigger: "always", target: "self", maxStacks: 1, durationMode: "combat", durationRounds: 0 }],
     notes: "While Electric Terrain is active: +1 to highest Attribute (+2 if Dexterity)"
   },
 };
