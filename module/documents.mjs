@@ -10170,6 +10170,22 @@ export class PokRoleActor extends Actor {
           })
         : terrainPowerOverride;
     const movePower = Math.max(Math.floor(toNumber(power, 0)), 0);
+    // Blaze/Overgrow/Swarm/Torrent: compute early so it's available for pain penalty
+    let pinchAbilityBonus = 0;
+    let pinchAbilityIgnoresPain = false;
+    const PINCH_ABILITY_TYPE_MAP = {
+      "blaze": "fire", "overgrow": "grass", "swarm": "bug", "torrent": "water"
+    };
+    const attackerAbilityPinch = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    const pinchType = PINCH_ABILITY_TYPE_MAP[attackerAbilityPinch];
+    if (pinchType && `${moveType ?? ""}`.trim().toLowerCase() === pinchType) {
+      const attackerHp = Math.max(toNumber(this.system?.resources?.hp?.value, 0), 0);
+      const attackerHpMax = Math.max(toNumber(this.system?.resources?.hp?.max, 1), 1);
+      if (attackerHp <= Math.floor(attackerHpMax / 2)) {
+        pinchAbilityBonus = 2;
+        pinchAbilityIgnoresPain = true;
+      }
+    }
     const damagePainPenalty = (damageBaseSetup.ignoresPainPenalty || pinchAbilityIgnoresPain) ? 0 : painPenalty;
     const targetProtectedByLuckyChant =
       targetActor instanceof PokRoleActor && targetActor._hasLuckyChantProtection?.(targetActor, { combatId: game.combat?.id ?? null });
@@ -10297,23 +10313,7 @@ export class PokRoleActor extends Actor {
       ? (this._getHeldItemData()?.superEffectiveBonusDice ?? 0)
       : 0;
     const metronomeBonus = (this._getHeldItemData()?.metronomeBonus && actionNumber > 1) ? 1 : 0;
-    // Blaze/Overgrow/Swarm/Torrent: +2 damage dice when HP ≤ half and using a matching type
-    // Also ignores pain penalty for moves of the matching type
-    let pinchAbilityBonus = 0;
-    let pinchAbilityIgnoresPain = false;
-    const PINCH_ABILITY_TYPE_MAP = {
-      "blaze": "fire", "overgrow": "grass", "swarm": "bug", "torrent": "water"
-    };
-    const attackerAbilityPinch = `${this.system?.ability ?? ""}`.trim().toLowerCase();
-    const pinchType = PINCH_ABILITY_TYPE_MAP[attackerAbilityPinch];
-    if (pinchType && `${moveType ?? ""}`.trim().toLowerCase() === pinchType) {
-      const attackerHp = Math.max(toNumber(this.system?.resources?.hp?.value, 0), 0);
-      const attackerHpMax = Math.max(toNumber(this.system?.resources?.hp?.max, 1), 1);
-      if (attackerHp <= Math.floor(attackerHpMax / 2)) {
-        pinchAbilityBonus = 2;
-        pinchAbilityIgnoresPain = true;
-      }
-    }
+    // pinchAbilityBonus and pinchAbilityIgnoresPain already computed above (before damagePainPenalty)
     const fixedDamagePool = Number.isFinite(Number(attackOverrides?.fixedDamagePool))
       ? Math.max(Math.floor(toNumber(attackOverrides.fixedDamagePool, 0)), 0)
       : null;
@@ -14507,7 +14507,9 @@ export class PokRoleActor extends Actor {
       let bestStat = null;
       let bestValue = -Infinity;
       for (const s of coreStats) {
-        const val = Math.floor(toNumber(targetActor.system?.attributes?.[s]?.value, 0));
+        // Pokemon attributes are plain numbers (e.g. system.attributes.strength = 3), not objects
+        const raw = targetActor.system?.attributes?.[s];
+        const val = Math.floor(toNumber(typeof raw === "object" && raw !== null ? raw?.value : raw, 0));
         if (val > bestValue) { bestValue = val; bestStat = s; }
       }
       if (bestStat) {
