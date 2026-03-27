@@ -1798,11 +1798,13 @@ export class PokRoleActor extends Actor {
     // Regenerator: heal 1 HP when switching out
     if (outgoingActor && outgoingActor.type === "pokemon") {
       const switchAbility = `${outgoingActor.system?.ability ?? ""}`.trim().toLowerCase();
+      console.log(`PokRole | [switch] outgoing=${outgoingActor.name} ability="${switchAbility}"`);
       if (["regenerator"].includes(switchAbility)) {
         const outHp = Math.max(toNumber(outgoingActor.system?.resources?.hp?.value, 0), 0);
         const outHpMax = Math.max(toNumber(outgoingActor.system?.resources?.hp?.max, 0), 0);
+        console.log(`PokRole | [Regenerator] HP=${outHp}/${outHpMax}`);
         if (outHp > 0 && outHp < outHpMax) {
-          await this._safeApplyHeal(outgoingActor, 1, { healingCategory: "unlimited" });
+          await outgoingActor._safeApplyHeal(outgoingActor, 1, { healingCategory: "unlimited" });
           await ChatMessage.create({
             speaker: ChatMessage.getSpeaker({ actor: outgoingActor }),
             content: `<strong>${outgoingActor.name}'s</strong> Regenerator healed 1 HP on switch-out!`
@@ -9339,7 +9341,18 @@ export class PokRoleActor extends Actor {
     }
     const shieldPenalty = isShieldMove ? this._getShieldMoveAccuracyPenalty(roundKey) : 0;
     const willCost = Math.max(Math.floor(toNumber(move.system?.willCost, 0)), 0);
-    const painPenalty = this.getPainPenalty();
+    let painPenalty = this.getPainPenalty();
+    // Blaze/Overgrow/Swarm/Torrent ignore pain penalty for matching type moves
+    if (painPenalty > 0) {
+      const pinchAbilityName = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+      const PINCH_MAP = { "blaze": "fire", "overgrow": "grass", "swarm": "bug", "torrent": "water" };
+      const pinchMoveType = PINCH_MAP[pinchAbilityName];
+      if (pinchMoveType && `${move.system?.type ?? ""}`.trim().toLowerCase() === pinchMoveType) {
+        const pHp = Math.max(toNumber(this.system?.resources?.hp?.value, 0), 0);
+        const pHpMax = Math.max(toNumber(this.system?.resources?.hp?.max, 1), 1);
+        if (pHp <= Math.floor(pHpMax / 2)) painPenalty = 0;
+      }
+    }
     const multiTurnState = this._getMultiTurnState();
     const explicitTargetActorIds =
       Array.isArray(options.targetActorIds) && options.targetActorIds.length > 0
@@ -10157,7 +10170,7 @@ export class PokRoleActor extends Actor {
           })
         : terrainPowerOverride;
     const movePower = Math.max(Math.floor(toNumber(power, 0)), 0);
-    const damagePainPenalty = damageBaseSetup.ignoresPainPenalty ? 0 : painPenalty;
+    const damagePainPenalty = (damageBaseSetup.ignoresPainPenalty || pinchAbilityIgnoresPain) ? 0 : painPenalty;
     const targetProtectedByLuckyChant =
       targetActor instanceof PokRoleActor && targetActor._hasLuckyChantProtection?.(targetActor, { combatId: game.combat?.id ?? null });
     const effectiveCritical = Boolean(critical) && !targetProtectedByLuckyChant;
@@ -10284,8 +10297,10 @@ export class PokRoleActor extends Actor {
       ? (this._getHeldItemData()?.superEffectiveBonusDice ?? 0)
       : 0;
     const metronomeBonus = (this._getHeldItemData()?.metronomeBonus && actionNumber > 1) ? 1 : 0;
-    // Blaze/Overgrow/Swarm/Torrent: +1 damage die when HP ≤ half and using a matching type
+    // Blaze/Overgrow/Swarm/Torrent: +2 damage dice when HP ≤ half and using a matching type
+    // Also ignores pain penalty for moves of the matching type
     let pinchAbilityBonus = 0;
+    let pinchAbilityIgnoresPain = false;
     const PINCH_ABILITY_TYPE_MAP = {
       "blaze": "fire", "overgrow": "grass", "swarm": "bug", "torrent": "water"
     };
@@ -10295,7 +10310,8 @@ export class PokRoleActor extends Actor {
       const attackerHp = Math.max(toNumber(this.system?.resources?.hp?.value, 0), 0);
       const attackerHpMax = Math.max(toNumber(this.system?.resources?.hp?.max, 1), 1);
       if (attackerHp <= Math.floor(attackerHpMax / 2)) {
-        pinchAbilityBonus = 1;
+        pinchAbilityBonus = 2;
+        pinchAbilityIgnoresPain = true;
       }
     }
     const fixedDamagePool = Number.isFinite(Number(attackOverrides?.fixedDamagePool))
@@ -10439,7 +10455,7 @@ export class PokRoleActor extends Actor {
       // Fur Coat: reduce physical move damage by 1
       if (["fur-coat", "fur coat", "furcoat"].includes(defAbility)) {
         if (category === "physical") {
-          abilityDamageReduction = Math.max(abilityDamageReduction, 1);
+          abilityDamageReduction = Math.max(abilityDamageReduction, 2);
         }
       }
       // Fluffy: reduce contact move damage by 1, but +1 damage from Fire moves
@@ -12803,10 +12819,11 @@ export class PokRoleActor extends Actor {
 
     // Always prefer compendium version — it has the latest automation data.
     // Embedded items may be stale (imported before trigger/effect updates).
+    const abilityNameLower = activeAbilityName.toLowerCase();
     for (const pack of game.packs.filter((p) => p.documentName === "Item")) {
       const index = await pack.getIndex();
       const entry = index.find(
-        (e) => e.type === "ability" && e.name === activeAbilityName
+        (e) => e.type === "ability" && `${e.name ?? ""}`.trim().toLowerCase() === abilityNameLower
       );
       if (entry) {
         const doc = await pack.getDocument(entry._id);
@@ -12816,7 +12833,7 @@ export class PokRoleActor extends Actor {
 
     // Fallback: use embedded item if compendium doesn't have it
     const embeddedMatch = this.items.find(
-      (item) => item.type === "ability" && item.name === activeAbilityName
+      (item) => item.type === "ability" && `${item.name ?? ""}`.trim().toLowerCase() === abilityNameLower
     );
     if (embeddedMatch) return [embeddedMatch];
 
@@ -12876,7 +12893,6 @@ export class PokRoleActor extends Actor {
   async _applyDownloadAbility(context = {}) {
     const combat = context.combat ?? game.combat;
     if (!combat) return { applied: false, detail: "No active combat." };
-    // Find the first opposing combatant
     const selfDisposition = this._getActorCombatSideDisposition(this, combat);
     const foeCombatant = combat.combatants.find((c) => {
       if (!c.actor || c.actor.id === this.id) return false;
@@ -12885,20 +12901,49 @@ export class PokRoleActor extends Actor {
     });
     const foe = foeCombatant?.actor ?? null;
     if (!foe) return { applied: false, detail: "No foe found for Download." };
-    const foeVitality = Math.max(toNumber(foe.system?.attributes?.vitality?.value, 0), 0);
-    const foeInsight = Math.max(toNumber(foe.system?.attributes?.insight?.value, 0), 0);
-    // If Vitality ≤ Insight → +1 Strength (physical defense is lower); otherwise +1 Special
-    const chosenStat = foeVitality <= foeInsight ? "strength" : "special";
+    // Check foe's Defense vs Special Defense
+    const foeDef = typeof foe.getDefense === "function" ? foe.getDefense("physical") : Math.max(toNumber(foe.system?.attributes?.vitality?.value, 0), 0);
+    const foeSpDef = typeof foe.getDefense === "function" ? foe.getDefense("special") : Math.max(toNumber(foe.system?.attributes?.insight?.value, 0), 0);
+    let chosenStat;
+    if (foeDef < foeSpDef) {
+      chosenStat = "strength";
+    } else if (foeSpDef < foeDef) {
+      chosenStat = "special";
+    } else {
+      // Tied: pick based on own higher stat between Strength and Special
+      const selfStr = Math.max(toNumber(this.system?.attributes?.strength?.value, 0), 0);
+      const selfSpc = Math.max(toNumber(this.system?.attributes?.special?.value, 0), 0);
+      if (selfStr > selfSpc) {
+        chosenStat = "strength";
+      } else if (selfSpc > selfStr) {
+        chosenStat = "special";
+      } else {
+        // Both tied: prompt for choice
+        chosenStat = await new Promise((resolve) => {
+          new Dialog({
+            title: `${this.name}'s Download`,
+            content: `<p>${foe.name}'s Defense and Sp.Defense are equal, and your Strength and Special are equal. Choose which stat to increase:</p>`,
+            buttons: {
+              strength: { label: "Strength", callback: () => resolve("strength") },
+              special: { label: "Special", callback: () => resolve("special") }
+            },
+            default: "strength",
+            close: () => resolve("strength")
+          }).render(true);
+        });
+      }
+    }
     const statEffect = this._normalizeSecondaryEffectDefinition({
       effectType: "stat", stat: chosenStat, amount: 1, trigger: "always", target: "self"
     });
     const applyResult = await this._applySecondaryEffectToActor(statEffect, this, null, {
       moveTargetKey: "self", hit: true, isDamagingMove: false, finalDamage: 0, totalDamageDealt: 0, damageTargetResults: []
     });
+    const reason = foeDef < foeSpDef ? "foe's Defense is lower" : foeSpDef < foeDef ? "foe's Sp.Defense is lower" : "tied defenses";
     return {
       applied: applyResult.applied,
       detail: applyResult.applied
-        ? `Download: +1 ${chosenStat.charAt(0).toUpperCase() + chosenStat.slice(1)} (foe's ${foeVitality <= foeInsight ? "Vitality" : "Insight"} is lower)`
+        ? `Download: +1 ${chosenStat.charAt(0).toUpperCase() + chosenStat.slice(1)} (${reason})`
         : applyResult.detail
     };
   }
