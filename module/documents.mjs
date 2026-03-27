@@ -13393,6 +13393,21 @@ export class PokRoleActor extends Actor {
       console.log(`PokRole | [processAbilityTrigger] Ability="${abilityItem.name}" has ${normalizedEffects.length} secondary effects`);
       if (!normalizedEffects.length) continue;
 
+      // Weather-active / Terrain-active abilities (e.g. Protosynthesis, Quark Drive):
+      // Only apply once — skip if there's already an active effect from this ability
+      const abilityTriggerType = `${abilityItem.system?.abilityTrigger ?? ""}`.trim().toLowerCase();
+      if (["weather-active", "terrain-active"].includes(abilityTriggerType)) {
+        const abilityNameForCheck = `${abilityItem.name ?? ""}`.trim();
+        const alreadyHasEffect = (this.effects?.contents ?? []).some((e) => {
+          const flags = e.getFlag?.("pok-role-system", "automation") ?? {};
+          return flags?.managed && flags?.sourceItemName === abilityNameForCheck && flags?.sourceItemType === "ability" && !e.disabled;
+        });
+        if (alreadyHasEffect) {
+          console.log(`PokRole | [processAbilityTrigger] Skipping "${abilityNameForCheck}" — already has active effect`);
+          continue;
+        }
+      }
+
       // Moody-style: remove previous round's effects from the same ability before applying new ones
       const abilityNotes = `${abilityItem.getFlag?.("pok-role-system", "automationNotes") ?? ""}`.trim().toLowerCase();
       if (abilityNotes.includes("reset previous") || abilityNotes.includes("moody")) {
