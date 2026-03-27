@@ -18355,11 +18355,7 @@ export class PokRoleActor extends Actor {
       updates["system.quantity"] = nextQuantity;
     }
 
-    if (nextQuantity <= 0 && gearItem.parent?.id === this.id) {
-      await gearItem.delete();
-    } else {
-      await gearItem.update(updates);
-    }
+    await gearItem.update(updates);
 
     return {
       quantity: nextQuantity,
