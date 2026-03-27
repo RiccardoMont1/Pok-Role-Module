@@ -227,12 +227,14 @@ const ITEM_SEEDS = Object.freeze({
       category: "travel",
       consumable: false,
       target: "trainer",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/big-camping-tent.png",
       description: "A spacious tent for a group to spend a cozy night. Made with repellent materials against wild Pokemon."
     }),
     makeGear("trainer-small-camping-tent", "Small Camping Tent", {
       category: "travel",
       consumable: false,
       target: "trainer",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/small-camping-tent.png",
       description: "A comfortable space for one or two people. Made with repellent materials against wild Pokemon."
     }),
     makeGear("trainer-sleeping-bag", "Sleeping Bag", {
@@ -257,12 +259,14 @@ const ITEM_SEEDS = Object.freeze({
       category: "travel",
       consumable: false,
       target: "trainer",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/regional-map.png",
       description: "A map with the marked routes, cities and Pokemon Centers of the region you are in."
     }),
     makeGear("trainer-mountain-bike", "Mountain Bike", {
       category: "travel",
       consumable: false,
       target: "trainer",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/mountain-bike.png",
       description: "You will travel twice as fast with this awesome all-terrain bike. Now at an insane price!"
     }),
     makeGear("trainer-inflatable-boat", "Inflatable Boat", {
@@ -275,6 +279,7 @@ const ITEM_SEEDS = Object.freeze({
       category: "travel",
       consumable: false,
       target: "trainer",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/fishing-rod.png",
       description: "A fishing rod to catch Pokemon living underwater. Make sure to get the right bait or they won't bite."
     }),
     makeGear("trainer-saddle", "Saddle", {
@@ -301,12 +306,14 @@ const ITEM_SEEDS = Object.freeze({
       category: "key",
       consumable: false,
       target: "trainer",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/pokedex.png",
       description: "A digital encyclopedia with basic information about regional Pokemon. You may add your own research."
     }),
     makeGear("trainer-pokedex-upgrade", "Pokedex Upgrade", {
       category: "key",
       consumable: true,
       target: "trainer",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/pokedex.png",
       description: "Upgrade your Pokedex with the information of the Pokemon on a new region."
     }),
 
@@ -321,12 +328,14 @@ const ITEM_SEEDS = Object.freeze({
       category: "other",
       consumable: true,
       target: "trainer",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/pokedolls.png",
       description: "Life-size decoy used to escape wild Pokemon. Some people like to collect them."
     }),
     makeGear("trainer-pokemon-repel", "Pokémon Repel", {
       category: "other",
       consumable: true,
       target: "trainer",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/repel.png",
       description: "Most Pokemon won't come near you for about eight hours. The smell is now machine-washable."
     }),
     makeGear("trainer-pepper-spray-can", "Pepper Spray Can", {
@@ -334,6 +343,7 @@ const ITEM_SEEDS = Object.freeze({
       consumable: true,
       target: "trainer",
       units: { value: 5, max: 5 },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/smoke-bomb.png",
       description: "Scares away small Pokemon, but it may enrage the bigger ones. Good for 5 uses."
     }),
     makeGear("trainer-honey", "Honey", {
@@ -347,18 +357,21 @@ const ITEM_SEEDS = Object.freeze({
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 4, specialEffect: "none" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/pokeball.png",
       description: "Seal potency of 4 dice. A basic ball used for catching Pokemon and carrying heavy items."
     }),
     makeGear("trainer-greatball", "Greatball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 6, specialEffect: "none" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/greatball.png",
       description: "Seal potency of 6 dice. A sturdier barrier protects the seal so you have an easier time catching Pokemon."
     }),
     makeGear("trainer-ultraball", "Ultraball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 8, specialEffect: "none" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/ultraball.png",
       description: "Seal potency of 8 dice. The best seal in the market to ensure the catch of stronger Pokemon."
     }),
     makeGear("trainer-masterball", "Masterball", {
@@ -366,12 +379,14 @@ const ITEM_SEEDS = Object.freeze({
       consumable: false,
       canUseInBattle: true,
       pokeball: { sealPower: 20, specialEffect: "none" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/masterball.png",
       description: "It's been long rumored that a mighty pokeball with the strongest seal in existance is in development. But no one has truly seen it in action."
     }),
     makeGear("trainer-old-pokeball", "Old Pokeball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 3, specialEffect: "old" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/pokeball.png",
       description: "Rare. An old model of Pokeball, now a collector's item."
     }),
     makeGear("trainer-dusk-ball", "Dusk Ball", {
@@ -423,6 +438,7 @@ const ITEM_SEEDS = Object.freeze({
       canUseInBattle: true,
       target: "any",
       heal: { hp: 1, restoreAwareness: true },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/revive.png",
       description: "A small energy shard that brings a fainted Human or Pokemon back into conciousness and stabilizes all their wounds. Restore conciousness & 1 HP."
     }),
     makeGear("trainer-max-revive", "Max Revive", {
@@ -430,6 +446,7 @@ const ITEM_SEEDS = Object.freeze({
       canUseInBattle: true,
       target: "any",
       heal: { fullHp: true, restoreAwareness: true },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/max-revive.png",
       description: "A bigger rock shard with enhaced effects. Found raw in deep caves. Very rare to find. Not available in stores. Restore conciousness & Full HP."
     })
   ],
@@ -443,6 +460,7 @@ const ITEM_SEEDS = Object.freeze({
       target: "any",
       units: { value: 2, max: 2 },
       heal: { hp: 1 },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/potion.png",
       description: "A pocket sized spray potion to relieve the pain and heal bruises."
     }),
     makeGear("heal-super-potion", "Super Potion", {
@@ -452,6 +470,7 @@ const ITEM_SEEDS = Object.freeze({
       target: "any",
       units: { value: 4, max: 4 },
       heal: { hp: 1 },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/super-potion.png",
       description: "A regular can of concentrated formula spray. This potion can close open wounds and even heal a cracked bone."
     }),
     makeGear("heal-hyper-potion", "Hyper Potion", {
@@ -461,6 +480,7 @@ const ITEM_SEEDS = Object.freeze({
       target: "any",
       units: { value: 14, max: 14 },
       heal: { hp: 1 },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/hyper-potion.png",
       description: "Best value pack. It can be rationed for smaller injuries on the team, or used all at once on a serious wound."
     }),
     makeGear("heal-max-potion", "Max Potion", {
@@ -469,6 +489,7 @@ const ITEM_SEEDS = Object.freeze({
       canUseInBattle: true,
       target: "any",
       heal: { fullHp: true, battleHealingCategory: "unlimited" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/max-potion.png",
       description: "A single-use capsule of formula. The Pokemon won't be able to restore health further until the next day."
     }),
     makeGear("heal-full-restore", "Full Restore", {
@@ -478,6 +499,7 @@ const ITEM_SEEDS = Object.freeze({
       target: "any",
       heal: { fullHp: true, battleHealingCategory: "unlimited" },
       status: { all: true },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/full-restore.png",
       description: "A single-use capsule of deluxe formula. The Pokemon won't be able to restore health further until the next day. Restore Full HP & Heal Status."
     }),
 
@@ -487,6 +509,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "potions",
       canUseInBattle: true,
       status: { poison: true },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/antidote.png",
       description: "A shot that quickly eliminates toxins, reduces fever, and relieves the pain. Heal Poison & Badly Poison."
     }),
     makeGear("heal-awakening", "Awakening", {
@@ -494,6 +517,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "potions",
       canUseInBattle: true,
       status: { sleep: true },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/awakening.png",
       description: "Sprays a water-based solution to awake a drowsy pokemon. Heal Sleep."
     }),
     makeGear("heal-burn-heal", "Burn Heal", {
@@ -501,6 +525,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "potions",
       canUseInBattle: true,
       status: { burn: true },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/burn-heal.png",
       description: "A powder that extinguishes the fire and aids with the healing of the burnt area. Heal all Burn degrees."
     }),
     makeGear("heal-ice-heal", "Ice Heal", {
@@ -508,6 +533,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "potions",
       canUseInBattle: true,
       status: { frozen: true },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/ice-heal.png",
       description: "A heat-inducing device that recovers the normal temperature of the Pokemon and heals frost biting. Heal Frozen Solid."
     }),
     makeGear("heal-paralyze-heal", "Paralyze Heal", {
@@ -515,6 +541,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "potions",
       canUseInBattle: true,
       status: { paralysis: true },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/paralyze-heal.png",
       description: "This ointment relaxes the muscles and stops the cramping. Heal Paralysis."
     }),
     makeGear("heal-full-heal", "Full Heal", {
@@ -522,6 +549,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "potions",
       canUseInBattle: true,
       status: { all: true },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/full-heal.png",
       description: "A superior spray formula that can heal any and all Status Ailments in a second. Heal all Status Ailments."
     }),
     makeGear("heal-remedy", "Remedy", {
@@ -529,6 +557,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "potions",
       canUseInBattle: true,
       status: { all: true },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/heal-powder.png",
       description: "This powder leaves a horrid aftertaste. Pokemon will only eat it if they are injured, and even so, they'll resent you for days."
     }),
 
@@ -538,7 +567,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       heal: { hp: 1 },
-      img: "systems/pok-role-system/assets/items/berries/oran-berry.png",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/oran-berry.png",
       description: "A delicious citric berry that numbs pain away."
     }),
     makeGear("berry-sitrus", "Sitrus Berry", {
@@ -546,7 +575,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       heal: { hp: 3, lethal: 1 },
-      img: "systems/pok-role-system/assets/items/berries/sitrus-berry.png",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/sitrus-berry.png",
       description: "A bigger berry from the Oran family but scarcer in the wild. It can also heal up to 1 Lethal Damage."
     }),
     makeGear("berry-pecha", "Pecha Berry", {
@@ -554,7 +583,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       status: { poison: true },
-      img: "systems/pok-role-system/assets/items/berries/pecha-berry.png",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/pecha-berry.png",
       description: "This berry's sweet pulp will absorb simple poison out of the bloodstream. Heal Poison."
     }),
     makeGear("berry-cheri", "Cheri Berry", {
@@ -562,7 +591,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       status: { paralysis: true },
-      img: "systems/pok-role-system/assets/items/berries/cheri-berry.png",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/cheri-berry.png",
       description: "Its spicy flavor reinvigorates the muscles and stops the cramping. Heal Paralysis."
     }),
     makeGear("berry-chesto", "Chesto Berry", {
@@ -570,7 +599,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       status: { sleep: true },
-      img: "systems/pok-role-system/assets/items/berries/chesto-berry.png",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/chesto-berry.png",
       description: "It is difficult to eat, so tough and dry that it will heal the drowsiness. Heal Sleep."
     }),
     makeGear("berry-rawst", "Rawst Berry", {
@@ -578,7 +607,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       status: { burn: true },
-      img: "systems/pok-role-system/assets/items/berries/rawst-berry.png",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/rawst-berry.png",
       description: "Its liquid pulp is ideal to stop fire from spreading and numbs the pain on the area. It is quite bitter, though. Heal 1st & 2nd Degree Burn."
     }),
     makeGear("berry-aspear", "Aspear Berry", {
@@ -586,7 +615,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       status: { frozen: true },
-      img: "systems/pok-role-system/assets/items/berries/aspear-berry.png",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/aspear-berry.png",
       description: "This sour berry shakes the body and rises its temperature, thawing any ice surrounding it. Heal Frozen Solid."
     }),
     makeGear("berry-persim", "Persim Berry", {
@@ -594,7 +623,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       status: { confusion: true },
-      img: "systems/pok-role-system/assets/items/berries/persim-berry.png",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/persim-berry.png",
       description: "A multi-flavored berry to snap out of confusion. Heal Confusion."
     }),
     makeGear("berry-lum", "Lum Berry", {
@@ -602,7 +631,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       status: { all: true },
-      img: "systems/pok-role-system/assets/items/berries/lum-berry.png",
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/lum-berry.png",
       description: "This berry is said to cure everything; however it's very rare to find. Heal all Status Ailments."
     }),
 
@@ -612,6 +641,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "potions",
       canUseInBattle: true,
       heal: { hp: 14 },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/energy-root.png",
       description: "A nasty-tasting root with healing properties. It can be eaten whole or turned into up to 4 batches of Remedy. (Requires Medicine Skill check)"
     }),
     makeGear("herb-heal-powder", "Heal Powder", {
@@ -619,6 +649,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "potions",
       canUseInBattle: true,
       status: { all: true },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/heal-powder.png",
       description: "A mix of the most foul-tasting herbs you can find can make this cure-all powder. Heal all Status Ailments."
     }),
     makeGear("herb-revival-herb", "Revival Herb", {
@@ -626,6 +657,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "potions",
       canUseInBattle: true,
       heal: { fullHp: true, restoreAwareness: true },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/revival-herb.png",
       description: "It may be its magical properties or just its awful flavor, but this herb will get you back into consciousness numbing all the pain away. Very rare to find. Restore conciousness & Full HP."
     }),
 
@@ -635,6 +667,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "main",
       canUseInBattle: false,
       heal: { hp: 2 },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/berry-juice.png",
       description: "This mixed drink of various berries is also quite refreshing. Some Pokemon produce it naturally. Cannot be used in Battle."
     }),
     makeGear("drink-fresh-water", "Fresh Water", {
@@ -642,6 +675,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "main",
       canUseInBattle: false,
       heal: { hp: 4 },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/fresh-water.png",
       description: "Pure H2O and just the right amount of sodium. Remember to drink 8 glasses daily! Cannot be used in Battle."
     }),
     makeGear("drink-soda-pop", "Soda Pop", {
@@ -649,6 +683,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "main",
       canUseInBattle: false,
       heal: { hp: 5 },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/sodapop.png",
       description: "This sugary drink gives you a quick shot of energy. Enjoy the fizz on a hot day. Cannot be used in Battle."
     }),
     makeGear("drink-lemonade", "Lemonade", {
@@ -656,6 +691,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "main",
       canUseInBattle: false,
       heal: { hp: 6 },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/lemonade.png",
       description: "The citric boost and added vitamins make this a favorite after exercise. Cannot be used in Battle."
     }),
     makeGear("drink-moomoo-milk", "Moomoo Milk", {
@@ -663,6 +699,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "main",
       canUseInBattle: false,
       heal: { hp: 7 },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/moomoo-milk.png",
       description: "Right out of the Miltank! Fresh and organic. Excellent to grow healthy! Cannot be used in Battle."
     }),
     makeGear("drink-max-honey", "Max Honey", {
@@ -721,48 +758,56 @@ const ITEM_SEEDS = Object.freeze({
       category: "vitamin",
       pocket: "main",
       vitamin: { stat: "strength" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/protein.png",
       description: "A tasty milkshake that aids in the growth of bigger and stronger muscles."
     }),
     makeGear("vitamin-iron", "Iron", {
       category: "vitamin",
       pocket: "main",
       vitamin: { stat: "vitality" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/iron.png",
       description: "An iron capsule that reduces feebleness and gives you a healthy glow."
     }),
     makeGear("vitamin-calcium", "Calcium", {
       category: "vitamin",
       pocket: "main",
       vitamin: { stat: "special" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/calcium.png",
       description: "Add this effervescent pills in a drink to help grow stronger bones."
     }),
     makeGear("vitamin-zinc", "Zinc", {
       category: "vitamin",
       pocket: "main",
       vitamin: { stat: "insight" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/zinc.png",
       description: "Zinc capsules aid on brain development."
     }),
     makeGear("vitamin-carbos", "Carbos", {
       category: "vitamin",
       pocket: "main",
       vitamin: { stat: "dexterity" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/carbos.png",
       description: "A healthy syrup that fills you with energy!"
     }),
     makeGear("vitamin-hp-up", "HP Up", {
       category: "vitamin",
       pocket: "main",
       vitamin: { stat: "hp" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/hp-up.png",
       description: "A compendium of vitamins and minerals to help your Pokemon grow as big and healthy as it can be."
     }),
     makeGear("vitamin-pp-up", "PP Up", {
       category: "vitamin",
       pocket: "main",
       vitamin: { stat: "will" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/pp-up.png",
       description: "It is rumored they are just sugar pills. Who really knows?"
     }),
     makeGear("vitamin-rare-candy", "Rare Candy", {
       category: "vitamin",
       pocket: "main",
       vitamin: { stat: "none" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/rare-candy.png",
       description: "You should never accept candy from strangers. ...but maybe just this once."
     }),
     makeGear("vitamin-power-increasers", "Power Increasers", {
@@ -798,60 +843,70 @@ const ITEM_SEEDS = Object.freeze({
       category: "evolution",
       pocket: "main",
       evolution: { compatiblePokemon: "" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/fire-stone.png",
       description: "This Stone has a flame inside, it's hot to the touch. Usually found at the base of volcanoes."
     }),
     makeGear("evo-thunder-stone", "Thunder Stone", {
       category: "evolution",
       pocket: "main",
       evolution: { compatiblePokemon: "" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/thunder-stone.png",
       description: "It glows in the dark and can be used to power small electronics. They are created after thunder strikes."
     }),
     makeGear("evo-water-stone", "Water Stone", {
       category: "evolution",
       pocket: "main",
       evolution: { compatiblePokemon: "" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/water-stone.png",
       description: "Sparkly fresh water is trapped inside. This stone can be found at the bottom of the sea and some lakes."
     }),
     makeGear("evo-leaf-stone", "Leaf Stone", {
       category: "evolution",
       pocket: "main",
       evolution: { compatiblePokemon: "" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/leaf-stone.png",
       description: "It is said that the leaf encrusted into it came from a tree of life. Relatively common in forests and jungles."
     }),
     makeGear("evo-moon-stone", "Moon Stone", {
       category: "evolution",
       pocket: "main",
       evolution: { compatiblePokemon: "" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/moon-stone.png",
       description: "Looks like a common rock until the moon shines upon it, giving it a aether glow. Commonly found in caves."
     }),
     makeGear("evo-sun-stone", "Sun Stone", {
       category: "evolution",
       pocket: "main",
       evolution: { compatiblePokemon: "" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/sun-stone.png",
       description: "A red stone, that becomes extra bright when the sun shines on it. Can be found at deserts and plains."
     }),
     makeGear("evo-shiny-stone", "Shiny Stone", {
       category: "evolution",
       pocket: "main",
       evolution: { compatiblePokemon: "" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/shiny-stone.png",
       description: "Its polished surface allows you to see a ball of light inside. Rare to find, considered a good luck charm."
     }),
     makeGear("evo-dusk-stone", "Dusk Stone", {
       category: "evolution",
       pocket: "main",
       evolution: { compatiblePokemon: "" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/dusk-stone.png",
       description: "This stone seems to suck the light and happiness off a room like a small dark hole. Very rare to find."
     }),
     makeGear("evo-dawn-stone", "Dawn Stone", {
       category: "evolution",
       pocket: "main",
       evolution: { compatiblePokemon: "" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/dawn-stone.png",
       description: "This cerulean stone shines with blinding light for a minute during sunrise. Very rare to find."
     }),
     makeGear("evo-ice-stone", "Ice Stone", {
       category: "evolution",
       pocket: "main",
       evolution: { compatiblePokemon: "" },
+      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/ice-stone.png",
       description: "Looks like a piece of ice that won't melt, very cold to the touch. Only found near artic regions."
     })
   ],
