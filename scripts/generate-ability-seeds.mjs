@@ -774,6 +774,80 @@ const AUTOMATIONS = {
     notes: "When hit by Non-Ranged Physical: reduce Dexterity of all nearby Pokemon"
   },
 
+  // --- Damage calc hardcoded abilities ---
+  "battle-armor": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Blocks critical hits. Hardcoded in damage calculation."
+  },
+  "shell-armor": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Blocks critical hits. Hardcoded in damage calculation."
+  },
+  "rock-head": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Immune to recoil damage. Hardcoded in recoil damage processing."
+  },
+  "overcoat": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Immune to weather damage. Hardcoded in weather damage processing."
+  },
+  "keen-eye": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Prevents Accuracy reduction. Hardcoded in stat prevention."
+  },
+  "heatproof": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Reduces Fire-type damage by 2. Hardcoded in damage calculation."
+  },
+  "water-bubble": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Reduces Fire-type damage by 2 (defender). +1 Water damage die (attacker). Hardcoded in damage calculation."
+  },
+  "dry-skin": {
+    type: "passive", trigger: "on-hit-by-type", target: "self",
+    triggerConditionType: "water",
+    effects: [{ effectType: "heal", amount: 1, healType: "basic-numeric", healMode: "fixed", trigger: "always", target: "self" }],
+    notes: "IMMUNE: Water-type damage. Heal 1 HP when hit by Water. Takes extra Fire damage (hardcoded in damage calc)."
+  },
+  "flash-fire": {
+    type: "passive", trigger: "on-hit-by-type", target: "self",
+    triggerConditionType: "fire",
+    effects: [{ effectType: "stat", stat: "damage", amount: 1, trigger: "always", target: "self", durationMode: "combat", durationRounds: 0, maxStacks: 1 }],
+    notes: "IMMUNE: Fire-type damage. Boosts Fire-type move damage by +1 when hit by Fire."
+  },
+  "adaptability": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "STAB bonus is +2 instead of +1. Hardcoded in damage calculation."
+  },
+  "sniper": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Critical hit bonus is +3 dice instead of +2. Hardcoded in damage calculation."
+  },
+  "compound-eyes": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "+1 Accuracy die. Hardcoded in accuracy calculation."
+  },
+  "technician": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "+1 damage die for moves with power ≤ 2. Hardcoded in damage calculation."
+  },
+  "reckless": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "+1 damage die for recoil moves. Hardcoded in damage calculation."
+  },
+
   // --- Highest-stat weather/terrain boosts ---
   "protosynthesis": {
     type: "passive", trigger: "weather-active", target: "self",

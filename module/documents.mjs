@@ -9472,7 +9472,11 @@ export class PokRoleActor extends Actor {
       99
     );
     const heldAccuracyBonus = this._getHeldItemData()?.accuracyBonusDice ?? 0;
-    const accuracyDicePool = Math.max(accuracyDicePoolBase + accuracyDiceModifier + heldAccuracyBonus, 1);
+    // Compound Eyes: +1 Accuracy die
+    const abilityAccuracyBonus = ["compound-eyes", "compound eyes", "compoundeyes"].includes(
+      `${this.system?.ability ?? ""}`.trim().toLowerCase()
+    ) ? 1 : 0;
+    const accuracyDicePool = Math.max(accuracyDicePoolBase + accuracyDiceModifier + heldAccuracyBonus + abilityAccuracyBonus, 1);
 
     if (!Number.isFinite(accuracyDicePoolBase)) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.UnknownMoveTraits"));
@@ -10189,9 +10193,26 @@ export class PokRoleActor extends Actor {
     const damagePainPenalty = (damageBaseSetup.ignoresPainPenalty || pinchAbilityIgnoresPain) ? 0 : painPenalty;
     const targetProtectedByLuckyChant =
       targetActor instanceof PokRoleActor && targetActor._hasLuckyChantProtection?.(targetActor, { combatId: game.combat?.id ?? null });
-    const effectiveCritical = Boolean(critical) && !targetProtectedByLuckyChant;
-    const criticalDice = effectiveCritical ? 2 : 0;
-    const stabDice = attackOverrides?.ignoreStab ? 0 : (this.hasType(moveType) ? 1 : 0);
+    // Battle Armor / Shell Armor: block critical hits
+    let effectiveCritical = Boolean(critical) && !targetProtectedByLuckyChant;
+    if (effectiveCritical && targetActor) {
+      const defAbilityCrit = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
+      if (["battle-armor", "battle armor", "battlearmor", "shell-armor", "shell armor", "shellarmor"].includes(defAbilityCrit)) {
+        effectiveCritical = false;
+      }
+    }
+    // Sniper: crit dice +3 instead of +2
+    let criticalDice = effectiveCritical ? 2 : 0;
+    if (effectiveCritical) {
+      const atkAbilitySniper = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+      if (["sniper"].includes(atkAbilitySniper)) {
+        criticalDice = 3;
+      }
+    }
+    // Adaptability: STAB +2 instead of +1
+    const atkAbilityAdapt = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    const baseStab = this.hasType(moveType) ? 1 : 0;
+    const stabDice = attackOverrides?.ignoreStab ? 0 : (baseStab > 0 && ["adaptability"].includes(atkAbilityAdapt) ? 2 : baseStab);
     const heldItemBonus =
       this._getHeldItemDamageBonus(moveType, category) +
       Math.max(Math.floor(toNumber(attackOverrides?.extraDamageDice, 0)), 0);
@@ -10282,6 +10303,15 @@ export class PokRoleActor extends Actor {
         }
       }
     }
+    // Dry Skin: +1 weakness bonus from Fire moves (takes extra damage)
+    if (!typeInteraction.immune && targetActor) {
+      const targetAbilityDS = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
+      if (["dry-skin", "dry skin", "dryskin"].includes(targetAbilityDS)) {
+        if (`${moveType ?? ""}`.trim().toLowerCase() === "fire") {
+          typeInteraction = { ...typeInteraction, weaknessBonus: typeInteraction.weaknessBonus + 1 };
+        }
+      }
+    }
     if (
       specialDamageRule?.forceSuperEffective &&
       !typeInteraction.immune &&
@@ -10314,6 +10344,21 @@ export class PokRoleActor extends Actor {
       : 0;
     const metronomeBonus = (this._getHeldItemData()?.metronomeBonus && actionNumber > 1) ? 1 : 0;
     // pinchAbilityBonus and pinchAbilityIgnoresPain already computed above (before damagePainPenalty)
+    // Technician: +1 damage die for moves with power ≤ 2
+    let technicianBonus = 0;
+    if (["technician"].includes(attackerAbilityPinch) && movePower > 0 && movePower <= 2) {
+      technicianBonus = 1;
+    }
+    // Reckless: +1 damage die for recoil moves
+    let recklessBonus = 0;
+    if (["reckless"].includes(attackerAbilityPinch) && moveSourceAttributes?.recoil) {
+      recklessBonus = 1;
+    }
+    // Water Bubble: +1 damage die for Water moves
+    let waterBubbleAtkBonus = 0;
+    if (["water-bubble", "water bubble", "waterbubble"].includes(attackerAbilityPinch) && `${moveType ?? ""}`.trim().toLowerCase() === "water") {
+      waterBubbleAtkBonus = 1;
+    }
     const fixedDamagePool = Number.isFinite(Number(attackOverrides?.fixedDamagePool))
       ? Math.max(Math.floor(toNumber(attackOverrides.fixedDamagePool, 0)), 0)
       : null;
@@ -10330,7 +10375,10 @@ export class PokRoleActor extends Actor {
       weatherBonusDice +
       destroyShieldBonusDice +
       metronomeBonus +
-      pinchAbilityBonus -
+      pinchAbilityBonus +
+      technicianBonus +
+      recklessBonus +
+      waterBubbleAtkBonus -
       damagePainPenalty;
     const fixedFinalDamage =
       fixedDamagePool !== null
@@ -10468,6 +10516,18 @@ export class PokRoleActor extends Actor {
         if (moveTypeLower === "fire") {
           abilityDamageReduction = Math.max(abilityDamageReduction - 1, 0);
           finalDamage += 1;
+        }
+      }
+      // Heatproof: reduce Fire move damage by 2
+      if (["heatproof", "heat-proof", "heat proof"].includes(defAbility)) {
+        if (`${moveType ?? ""}`.trim().toLowerCase() === "fire") {
+          abilityDamageReduction = Math.max(abilityDamageReduction, 2);
+        }
+      }
+      // Water Bubble (defender): reduce Fire move damage by 2
+      if (["water-bubble", "water bubble", "waterbubble"].includes(defAbility)) {
+        if (`${moveType ?? ""}`.trim().toLowerCase() === "fire") {
+          abilityDamageReduction = Math.max(abilityDamageReduction, 2);
         }
       }
       if (abilityDamageReduction > 0) {
@@ -12147,6 +12207,15 @@ export class PokRoleActor extends Actor {
   async _applyMoveRecoilDamage(move, damageTargetResults = []) {
     const moveSourceAttributes = this._getMoveSourceAttributes(move);
     if (!moveSourceAttributes?.recoil) return null;
+    // Rock Head: immune to recoil damage
+    const recoilAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    if (["rock-head", "rock head", "rockhead"].includes(recoilAbility)) {
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        content: `<strong>${this.name}'s</strong> Rock Head prevents recoil damage!`
+      });
+      return { label: game.i18n.localize("POKROLE.Chat.Recoil"), targetName: this.name, applied: false, damage: 0, dice: 0, detail: "Rock Head prevents recoil" };
+    }
 
     const totalDamageDealt = (Array.isArray(damageTargetResults) ? damageTargetResults : []).reduce(
       (sum, result) => sum + Math.max(toNumber(result?.finalDamage, 0), 0),
@@ -16226,6 +16295,14 @@ export class PokRoleActor extends Actor {
         label: game.i18n.format("POKROLE.Chat.WeatherNoDamage", { weather: localizedWeather })
       };
     }
+    // Overcoat: immune to weather damage
+    const weatherAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    if (["overcoat", "over-coat", "over coat"].includes(weatherAbility)) {
+      return {
+        totalDamage: 0,
+        label: game.i18n.format("POKROLE.Chat.WeatherNoDamage", { weather: localizedWeather })
+      };
+    }
     const isPokemon = this.type === "pokemon";
     let damage = 0;
     if (weather === "sandstorm" && isPokemon && !this.hasType("rock") && !this.hasType("ground") && !this.hasType("steel")) {
@@ -16479,7 +16556,9 @@ export class PokRoleActor extends Actor {
           "full-metal-body": { stats: null, direction: "reduction" },
           "full metal body": { stats: null, direction: "reduction" },
           "white-smoke": { stats: null, direction: "reduction" },
-          "white smoke": { stats: null, direction: "reduction" }
+          "white smoke": { stats: null, direction: "reduction" },
+          "keen-eye": { stats: ["accuracy"], direction: "reduction" },
+          "keen eye": { stats: ["accuracy"], direction: "reduction" }
         };
         const prevention = ABILITY_STAT_PREVENTION[preventAbility];
         if (prevention) {

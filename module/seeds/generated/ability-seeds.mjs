@@ -18,8 +18,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-adaptability",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "STAB bonus is +2 instead of +1. Hardcoded in damage calculation."
       }
     }
   },
@@ -607,7 +607,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "ability-battle-armor",
         "automationStatus": "partial",
-        "automationNotes": "Critical Hits don't grant bonus dice to foe's damage pool. Automated in damage calculation."
+        "automationNotes": "Blocks critical hits. Hardcoded in damage calculation."
       }
     }
   },
@@ -1172,8 +1172,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-compound-eyes",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "+1 Accuracy die. Hardcoded in accuracy calculation."
       }
     }
   },
@@ -1996,21 +1996,47 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "on-hit-by-type",
       "abilityTarget": "self",
-      "triggerConditionType": "",
+      "triggerConditionType": "water",
       "triggerConditionWeather": "",
       "triggerConditionTerrain": "",
       "frequency": "",
       "effect": "While Sunny Weather is active, this Pokemon will receive 1 damage at the end of each round. Fire attacks will deal 1 additional Damage to this Pokemon. Water attacks may heal 1 HP to this Pokemon instead of dealing damage.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "heal",
+          "durationMode": "combat",
+          "durationRounds": 1,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "none",
+          "amount": 1,
+          "healType": "basic-numeric",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "",
+          "maxStacks": 0,
+          "linkedEffectId": ""
+        }
+      ],
       "description": "The skin of this Pokemon needs special care as it is very dry and brittle, it'll require constant hydration and protection against the sun."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-dry-skin",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "full",
+        "automationNotes": "IMMUNE: Water-type damage. Heal 1 HP when hit by Water. Takes extra Fire damage (hardcoded in damage calc)."
       }
     }
   },
@@ -2414,21 +2440,47 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "on-hit-by-type",
       "abilityTarget": "self",
-      "triggerConditionType": "",
+      "triggerConditionType": "fire",
       "triggerConditionWeather": "",
       "triggerConditionTerrain": "",
       "frequency": "",
       "effect": "The first time this Pokemon is hit by a Fire-Type move, add 1 Extra die to the Damage Pool of Fire-type Moves this Pokemon uses until the end of the scene. Fire-type moves do not deal damage to this Pokemon.",
-      "secondaryEffects": [],
+      "secondaryEffects": [
+        {
+          "section": 0,
+          "label": "",
+          "trigger": "always",
+          "chance": 0,
+          "target": "self",
+          "effectType": "stat",
+          "durationMode": "combat",
+          "durationRounds": 0,
+          "specialDuration": [],
+          "conditional": false,
+          "activationCondition": "",
+          "condition": "none",
+          "weather": "none",
+          "terrain": "none",
+          "stat": "damage",
+          "amount": 1,
+          "healType": "basic",
+          "healMode": "fixed",
+          "healProfile": "standard",
+          "healingCategory": "standard",
+          "notes": "",
+          "maxStacks": 1,
+          "linkedEffectId": ""
+        }
+      ],
       "description": "This Pokemon is capable of consuming other fire sources and adding them to its own. Walking through embers, fire, lava and hell feel like a breeze to it."
     },
     "flags": {
       "pok-role-system": {
         "seedId": "ability-flash-fire",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "full",
+        "automationNotes": "IMMUNE: Fire-type damage. Boosts Fire-type move damage by +1 when hit by Fire."
       }
     }
   },
@@ -3260,8 +3312,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-heatproof",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Reduces Fire-type damage by 2. Hardcoded in damage calculation."
       }
     }
   },
@@ -4094,8 +4146,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-keen-eye",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Prevents Accuracy reduction. Hardcoded in stat prevention."
       }
     }
   },
@@ -5337,7 +5389,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "ability-overcoat",
         "automationStatus": "partial",
-        "automationNotes": "IMMUNE: weather damage. This Pokemon won't receive damage from active weather."
+        "automationNotes": "Immune to weather damage. Hardcoded in weather damage processing."
       }
     }
   },
@@ -6512,8 +6564,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-reckless",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "+1 damage die for recoil moves. Hardcoded in damage calculation."
       }
     }
   },
@@ -6633,7 +6685,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "ability-rock-head",
         "automationStatus": "partial",
-        "automationNotes": "IMMUNE: recoil damage. This Pokemon will not receive damage from Recoil."
+        "automationNotes": "Immune to recoil damage. Hardcoded in recoil damage processing."
       }
     }
   },
@@ -7295,7 +7347,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
       "pok-role-system": {
         "seedId": "ability-shell-armor",
         "automationStatus": "partial",
-        "automationNotes": "Critical Hits don't grant bonus dice to foe's damage pool. Automated in damage calculation."
+        "automationNotes": "Blocks critical hits. Hardcoded in damage calculation."
       }
     }
   },
@@ -7488,8 +7540,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-sniper",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Critical hit bonus is +3 dice instead of +2. Hardcoded in damage calculation."
       }
     }
   },
@@ -8867,8 +8919,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-technician",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "+1 damage die for moves with power ≤ 2. Hardcoded in damage calculation."
       }
     }
   },
@@ -9745,8 +9797,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-water-bubble",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Reduces Fire-type damage by 2 (defender). +1 Water damage die (attacker). Hardcoded in damage calculation."
       }
     }
   },
