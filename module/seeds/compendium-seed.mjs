@@ -538,6 +538,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       heal: { hp: 1 },
+      img: "systems/pok-role-system/assets/items/berries/oran-berry.png",
       description: "A delicious citric berry that numbs pain away."
     }),
     makeGear("berry-sitrus", "Sitrus Berry", {
@@ -545,6 +546,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       heal: { hp: 3, lethal: 1 },
+      img: "systems/pok-role-system/assets/items/berries/sitrus-berry.png",
       description: "A bigger berry from the Oran family but scarcer in the wild. It can also heal up to 1 Lethal Damage."
     }),
     makeGear("berry-pecha", "Pecha Berry", {
@@ -552,6 +554,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       status: { poison: true },
+      img: "systems/pok-role-system/assets/items/berries/pecha-berry.png",
       description: "This berry's sweet pulp will absorb simple poison out of the bloodstream. Heal Poison."
     }),
     makeGear("berry-cheri", "Cheri Berry", {
@@ -559,6 +562,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       status: { paralysis: true },
+      img: "systems/pok-role-system/assets/items/berries/cheri-berry.png",
       description: "Its spicy flavor reinvigorates the muscles and stops the cramping. Heal Paralysis."
     }),
     makeGear("berry-chesto", "Chesto Berry", {
@@ -566,6 +570,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       status: { sleep: true },
+      img: "systems/pok-role-system/assets/items/berries/chesto-berry.png",
       description: "It is difficult to eat, so tough and dry that it will heal the drowsiness. Heal Sleep."
     }),
     makeGear("berry-rawst", "Rawst Berry", {
@@ -573,6 +578,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       status: { burn: true },
+      img: "systems/pok-role-system/assets/items/berries/rawst-berry.png",
       description: "Its liquid pulp is ideal to stop fire from spreading and numbs the pain on the area. It is quite bitter, though. Heal 1st & 2nd Degree Burn."
     }),
     makeGear("berry-aspear", "Aspear Berry", {
@@ -580,6 +586,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       status: { frozen: true },
+      img: "systems/pok-role-system/assets/items/berries/aspear-berry.png",
       description: "This sour berry shakes the body and rises its temperature, thawing any ice surrounding it. Heal Frozen Solid."
     }),
     makeGear("berry-persim", "Persim Berry", {
@@ -587,6 +594,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       status: { confusion: true },
+      img: "systems/pok-role-system/assets/items/berries/persim-berry.png",
       description: "A multi-flavored berry to snap out of confusion. Heal Confusion."
     }),
     makeGear("berry-lum", "Lum Berry", {
@@ -594,6 +602,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "small",
       canUseInBattle: true,
       status: { all: true },
+      img: "systems/pok-role-system/assets/items/berries/lum-berry.png",
       description: "This berry is said to cure everything; however it's very rare to find. Heal all Status Ailments."
     }),
 

@@ -14850,6 +14850,12 @@ export class PokRoleActor extends Actor {
           console.warn(`PokRole | [condition-applied] Failed for ${this.name}:`, _e);
         }
       }
+      // Auto-use status-curing berry immediately when condition is inflicted
+      try {
+        await this._tryAutoUseStatusBerry(normalizedCondition);
+      } catch (_e) {
+        console.warn(`PokRole | [auto-berry] Status berry check failed for ${this.name}:`, _e);
+      }
       return condResult;
     }
 
@@ -14868,6 +14874,76 @@ export class PokRoleActor extends Actor {
         condition: this._localizeConditionName(normalizedCondition)
       })
     };
+  }
+
+  /**
+   * Auto-use a status-curing berry when a condition is applied.
+   * "Berries that heal Status Ailments and conditions will be used the moment it is inflicted."
+   */
+  async _tryAutoUseStatusBerry(conditionKey) {
+    if (this.type !== "pokemon" || !conditionKey) return false;
+    const STATUS_BERRY_MAP = {
+      "poisoned": ["berry-pecha", "berry-lum"],
+      "badly-poisoned": ["berry-pecha", "berry-lum"],
+      "paralyzed": ["berry-cheri", "berry-lum"],
+      "sleep": ["berry-chesto", "berry-lum"],
+      "burn": ["berry-rawst", "berry-lum"],
+      "frozen": ["berry-aspear", "berry-lum"],
+      "confused": ["berry-persim", "berry-lum"]
+    };
+    const validSeeds = STATUS_BERRY_MAP[conditionKey];
+    if (!validSeeds) return false;
+    const berryItem = this.items.find((item) => {
+      if (item.type !== "gear") return false;
+      const seedId = `${item.getFlag?.(POKROLE.ID, "seedId") ?? ""}`.trim().toLowerCase();
+      if (!validSeeds.includes(seedId)) return false;
+      return Math.max(toNumber(item.system?.quantity, 0), 0) > 0;
+    });
+    if (!berryItem) return false;
+    // Remove the condition
+    await this.toggleQuickCondition(conditionKey, { active: false });
+    // Consume the berry
+    if (berryItem.system?.consumable) {
+      await this._consumeGearItem(berryItem);
+    }
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `<strong>${this.name}</strong> ate its <strong>${berryItem.name}</strong> and cured ${this._localizeConditionName(conditionKey)}!`
+    });
+    return true;
+  }
+
+  /**
+   * Auto-use a healing berry when HP drops below 50%.
+   * "Berries that Heal Damage will be used as soon as the Pokemon gets below half of their total HP rounded down."
+   */
+  async _tryAutoUseHealingBerry() {
+    if (this.type !== "pokemon") return false;
+    const hpValue = Math.max(toNumber(this.system?.resources?.hp?.value, 0), 0);
+    const hpMax = Math.max(toNumber(this.system?.resources?.hp?.max, 1), 1);
+    const halfHp = Math.floor(hpMax / 2);
+    if (hpValue > halfHp || hpValue <= 0) return false;
+    const HEALING_BERRY_SEEDS = ["berry-oran", "berry-sitrus"];
+    const berryItem = this.items.find((item) => {
+      if (item.type !== "gear") return false;
+      const seedId = `${item.getFlag?.(POKROLE.ID, "seedId") ?? ""}`.trim().toLowerCase();
+      if (!HEALING_BERRY_SEEDS.includes(seedId)) return false;
+      return Math.max(toNumber(item.system?.quantity, 0), 0) > 0;
+    });
+    if (!berryItem) return false;
+    const healAmount = Math.max(toNumber(berryItem.system?.heal?.hp, 0), 0);
+    if (healAmount <= 0) return false;
+    const healResult = await this._safeApplyHeal(this, healAmount, { healingCategory: "standard" });
+    const healedApplied = Math.max(toNumber(healResult?.healedApplied, 0), 0);
+    // Consume the berry
+    if (berryItem.system?.consumable) {
+      await this._consumeGearItem(berryItem);
+    }
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `<strong>${this.name}</strong> ate its <strong>${berryItem.name}</strong> and recovered ${healedApplied} HP!`
+    });
+    return true;
   }
 
   async _cleanupConditionTriggeredAbilityEffects() {
@@ -18426,6 +18502,14 @@ export class PokRoleActor extends Actor {
         });
         // Ability faint triggers: on-foe-faint for the attacker, on-self-faint for the target
         await this._processAbilityFaintTriggers(targetActor, options);
+      }
+      // Auto-use healing berry when HP drops below 50%
+      if (hpAfter > 0 && targetActor instanceof PokRoleActor && typeof targetActor._tryAutoUseHealingBerry === "function") {
+        try {
+          await targetActor._tryAutoUseHealingBerry();
+        } catch (_e) {
+          console.warn(`${POKROLE.ID} | Auto healing berry check failed for ${targetActor.name}:`, _e);
+        }
       }
     } catch (error) {
       console.error(`${POKROLE.ID} | Failed to apply damage`, error);
