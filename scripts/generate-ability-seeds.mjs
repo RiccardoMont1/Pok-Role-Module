@@ -671,6 +671,95 @@ const AUTOMATIONS = {
     notes: "IMMUNE: recoil damage. This Pokemon will not receive damage from Recoil."
   },
 
+  // --- Damage calc abilities (hardcoded in damage resolution) ---
+  "wonder-guard": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Only super-effective moves can deal damage to this Pokemon. Automated in damage calculation."
+  },
+  "thick-fat": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Reduces damage from Fire and Ice-type moves. Automated in damage calculation."
+  },
+  "ice-scales": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Reduces damage from Special moves. Automated in damage calculation."
+  },
+  "filter": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Reduces super-effective damage. Automated in damage calculation."
+  },
+  "solid-rock": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Reduces super-effective damage. Automated in damage calculation."
+  },
+  "prism-armor": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Reduces super-effective damage. Automated in damage calculation."
+  },
+  "multiscale": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Halves damage when at full HP. Automated in damage calculation."
+  },
+  "shadow-shield": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Halves damage when at full HP. Automated in damage calculation."
+  },
+  "fur-coat": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Reduces damage from Physical moves. Automated in damage calculation."
+  },
+  "fluffy": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Reduces damage from contact moves, but takes extra damage from Fire moves. Automated in damage calculation."
+  },
+  "blaze": {
+    type: "passive", trigger: "self-hp-half-or-less", target: "self",
+    effects: [],
+    notes: "When HP ≤ half: +1 damage die for Fire-type moves. Automated in damage calculation."
+  },
+  "overgrow": {
+    type: "passive", trigger: "self-hp-half-or-less", target: "self",
+    effects: [],
+    notes: "When HP ≤ half: +1 damage die for Grass-type moves. Automated in damage calculation."
+  },
+  "swarm": {
+    type: "passive", trigger: "self-hp-half-or-less", target: "self",
+    effects: [],
+    notes: "When HP ≤ half: +1 damage die for Bug-type moves. Automated in damage calculation."
+  },
+  "torrent": {
+    type: "passive", trigger: "self-hp-half-or-less", target: "self",
+    effects: [],
+    notes: "When HP ≤ half: +1 damage die for Water-type moves. Automated in damage calculation."
+  },
+
+  // --- Special mechanics (hardcoded) ---
+  "download": {
+    type: "passive", trigger: "enter-battle", target: "self",
+    effects: [],
+    notes: "On entry: scans foes and grants +1 to Strength or Special based on foe's lower defensive stat. Automated in enter-battle processing."
+  },
+  "poison-heal": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "If poisoned or badly poisoned: heals 1 HP per round instead of taking damage. Automated in poison damage processing."
+  },
+  "regenerator": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Heals 1 HP when switching out. Automated in switch-out processing."
+  },
+
   // --- Weather/Terrain conditional immunity ---
   "leaf-guard": {
     type: "passive", trigger: "always", target: "self",

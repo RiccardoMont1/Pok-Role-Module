@@ -791,7 +791,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "self-hp-half-or-less",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
@@ -804,8 +804,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-blaze",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "When HP ≤ half: +1 damage die for Fire-type moves. Automated in damage calculation."
       }
     }
   },
@@ -1848,7 +1848,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "enter-battle",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
@@ -1861,8 +1861,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-download",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "On entry: scans foes and grants +1 to Strength or Special based on foe's lower defensive stat. Automated in enter-battle processing."
       }
     }
   },
@@ -2303,8 +2303,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-filter",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Reduces super-effective damage. Automated in damage calculation."
       }
     }
   },
@@ -2499,8 +2499,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-fluffy",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Reduces damage from contact moves, but takes extra damage from Fire moves. Automated in damage calculation."
       }
     }
   },
@@ -2643,8 +2643,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-fur-coat",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Reduces damage from Physical moves. Automated in damage calculation."
       }
     }
   },
@@ -3628,8 +3628,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-ice-scales",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Reduces damage from Special moves. Automated in damage calculation."
       }
     }
   },
@@ -4971,8 +4971,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-multiscale",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Halves damage when at full HP. Automated in damage calculation."
       }
     }
   },
@@ -5347,7 +5347,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "self-hp-half-or-less",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
@@ -5360,8 +5360,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-overgrow",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "When HP ≤ half: +1 damage die for Grass-type moves. Automated in damage calculation."
       }
     }
   },
@@ -5576,8 +5576,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-poison-heal",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "If poisoned or badly poisoned: heals 1 HP per round instead of taking damage. Automated in poison damage processing."
       }
     }
   },
@@ -5946,8 +5946,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-prism-armor",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Reduces super-effective damage. Automated in damage calculation."
       }
     }
   },
@@ -6560,8 +6560,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-regenerator",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Heals 1 HP when switching out. Automated in switch-out processing."
       }
     }
   },
@@ -7148,8 +7148,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-shadow-shield",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Halves damage when at full HP. Automated in damage calculation."
       }
     }
   },
@@ -7661,8 +7661,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-solid-rock",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Reduces super-effective damage. Automated in damage calculation."
       }
     }
   },
@@ -8534,7 +8534,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "self-hp-half-or-less",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
@@ -8547,8 +8547,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-swarm",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "When HP ≤ half: +1 damage die for Bug-type moves. Automated in damage calculation."
       }
     }
   },
@@ -9061,8 +9061,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-thick-fat",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Reduces damage from Fire and Ice-type moves. Automated in damage calculation."
       }
     }
   },
@@ -9096,7 +9096,7 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "img": "icons/svg/aura.svg",
     "system": {
       "abilityType": "passive",
-      "abilityTrigger": "always",
+      "abilityTrigger": "self-hp-half-or-less",
       "abilityTarget": "self",
       "triggerConditionType": "",
       "triggerConditionWeather": "",
@@ -9109,8 +9109,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-torrent",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "When HP ≤ half: +1 damage die for Water-type moves. Automated in damage calculation."
       }
     }
   },
@@ -10064,8 +10064,8 @@ export const ABILITY_COMPENDIUM_ENTRIES = Object.freeze([
     "flags": {
       "pok-role-system": {
         "seedId": "ability-wonder-guard",
-        "automationStatus": "none",
-        "automationNotes": ""
+        "automationStatus": "partial",
+        "automationNotes": "Only super-effective moves can deal damage to this Pokemon. Automated in damage calculation."
       }
     }
   },

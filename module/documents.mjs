@@ -1794,6 +1794,22 @@ export class PokRoleActor extends Actor {
       await this._clearVolatileConditions(outgoingActor);
     }
 
+    // Regenerator: heal 1 HP when switching out
+    if (outgoingActor && outgoingActor.type === "pokemon") {
+      const switchAbility = `${outgoingActor.system?.ability ?? ""}`.trim().toLowerCase();
+      if (["regenerator"].includes(switchAbility)) {
+        const outHp = Math.max(toNumber(outgoingActor.system?.resources?.hp?.value, 0), 0);
+        const outHpMax = Math.max(toNumber(outgoingActor.system?.resources?.hp?.max, 0), 0);
+        if (outHp > 0 && outHp < outHpMax) {
+          await this._safeApplyHeal(outgoingActor, 1, { healingCategory: "unlimited" });
+          await ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: outgoingActor }),
+            content: `<strong>${outgoingActor.name}'s</strong> Regenerator healed 1 HP on switch-out!`
+          });
+        }
+      }
+    }
+
     // 2. Token replacement on the map
     const tokenResult = await this._performTokenSwitch(outgoingActor, incomingActor);
 
@@ -10070,6 +10086,29 @@ export class PokRoleActor extends Actor {
         label
       };
     }
+    // Wonder Guard: immune unless the move is super effective
+    if (!typeInteraction.immune && targetActor) {
+      const targetAbilityWG = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
+      if (["wonder-guard", "wonder guard", "wonderguard"].includes(targetAbilityWG)) {
+        if (typeInteraction.weaknessBonus <= typeInteraction.resistancePenalty) {
+          typeInteraction = { ...typeInteraction, immune: true, label: "POKROLE.Chat.TypeEffect.Immune" };
+          await ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+            content: `<strong>${targetActor.name}'s</strong> Wonder Guard made it immune!`
+          });
+        }
+      }
+    }
+    // Thick Fat: halve damage from Fire and Ice moves (add 1 resistance penalty)
+    if (!typeInteraction.immune && targetActor) {
+      const targetAbilityTF = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
+      if (["thick-fat", "thick fat", "thickfat"].includes(targetAbilityTF)) {
+        const moveTypeLower = `${moveType ?? ""}`.trim().toLowerCase();
+        if (["fire", "ice"].includes(moveTypeLower)) {
+          typeInteraction = { ...typeInteraction, resistancePenalty: typeInteraction.resistancePenalty + 1 };
+        }
+      }
+    }
     if (
       specialDamageRule?.forceSuperEffective &&
       !typeInteraction.immune &&
@@ -10101,6 +10140,20 @@ export class PokRoleActor extends Actor {
       ? (this._getHeldItemData()?.superEffectiveBonusDice ?? 0)
       : 0;
     const metronomeBonus = (this._getHeldItemData()?.metronomeBonus && actionNumber > 1) ? 1 : 0;
+    // Blaze/Overgrow/Swarm/Torrent: +1 damage die when HP ≤ half and using a matching type
+    let pinchAbilityBonus = 0;
+    const PINCH_ABILITY_TYPE_MAP = {
+      "blaze": "fire", "overgrow": "grass", "swarm": "bug", "torrent": "water"
+    };
+    const attackerAbilityPinch = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    const pinchType = PINCH_ABILITY_TYPE_MAP[attackerAbilityPinch];
+    if (pinchType && `${moveType ?? ""}`.trim().toLowerCase() === pinchType) {
+      const attackerHp = Math.max(toNumber(this.system?.resources?.hp?.value, 0), 0);
+      const attackerHpMax = Math.max(toNumber(this.system?.resources?.hp?.max, 1), 1);
+      if (attackerHp <= Math.floor(attackerHpMax / 2)) {
+        pinchAbilityBonus = 1;
+      }
+    }
     const fixedDamagePool = Number.isFinite(Number(attackOverrides?.fixedDamagePool))
       ? Math.max(Math.floor(toNumber(attackOverrides.fixedDamagePool, 0)), 0)
       : null;
@@ -10117,7 +10170,8 @@ export class PokRoleActor extends Actor {
       weatherBonusDice +
       expertBeltBonus +
       destroyShieldBonusDice +
-      metronomeBonus -
+      metronomeBonus +
+      pinchAbilityBonus -
       damagePainPenalty;
     const fixedFinalDamage =
       fixedDamagePool !== null
@@ -10213,6 +10267,52 @@ export class PokRoleActor extends Actor {
         shield: shieldResponse.endureEntry.moveName,
         target: targetActor.name
       });
+    }
+
+    // Defensive ability damage reduction
+    if (finalDamage > 0 && targetActor) {
+      const defAbility = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
+      let abilityDamageReduction = 0;
+      // Multiscale: halve damage when at full HP
+      if (["multiscale", "multi-scale", "multi scale", "shadow-shield", "shadow shield"].includes(defAbility)) {
+        const tHpMax = Math.max(toNumber(targetActor.system?.resources?.hp?.max, 1), 1);
+        if (hpValue >= tHpMax) {
+          abilityDamageReduction = Math.max(Math.floor(finalDamage / 2), 0);
+        }
+      }
+      // Filter / Solid Rock: reduce super-effective damage by 1
+      if (["filter", "solid-rock", "solid rock", "solidrock", "prism-armor", "prism armor"].includes(defAbility)) {
+        if (typeInteraction.weaknessBonus > typeInteraction.resistancePenalty) {
+          abilityDamageReduction = Math.max(abilityDamageReduction, 1);
+        }
+      }
+      // Ice Scales: reduce special move damage by 1
+      if (["ice-scales", "ice scales", "icescales"].includes(defAbility)) {
+        if (category === "special") {
+          abilityDamageReduction = Math.max(abilityDamageReduction, 1);
+        }
+      }
+      // Fur Coat: reduce physical move damage by 1
+      if (["fur-coat", "fur coat", "furcoat"].includes(defAbility)) {
+        if (category === "physical") {
+          abilityDamageReduction = Math.max(abilityDamageReduction, 1);
+        }
+      }
+      // Fluffy: reduce contact move damage by 1, but +1 damage from Fire moves
+      if (["fluffy"].includes(defAbility)) {
+        const moveTypeLower = `${moveType ?? ""}`.trim().toLowerCase();
+        const isContact = category === "physical" && !this._isMoveRanged(move);
+        if (isContact) {
+          abilityDamageReduction = Math.max(abilityDamageReduction, 1);
+        }
+        if (moveTypeLower === "fire") {
+          abilityDamageReduction = Math.max(abilityDamageReduction - 1, 0);
+          finalDamage += 1;
+        }
+      }
+      if (abilityDamageReduction > 0) {
+        finalDamage = Math.max(finalDamage - abilityDamageReduction, 1);
+      }
     }
 
     // Focus Sash: survive lethal damage at 1 HP (once)
@@ -12577,6 +12677,39 @@ export class PokRoleActor extends Actor {
   }
 
   /**
+   * Download: on enter-battle, scan foe's Vitality vs Insight and grant +1 STR or SPC.
+   */
+  async _applyDownloadAbility(context = {}) {
+    const combat = context.combat ?? game.combat;
+    if (!combat) return { applied: false, detail: "No active combat." };
+    // Find the first opposing combatant
+    const selfDisposition = this._getActorCombatSideDisposition(this, combat);
+    const foeCombatant = combat.combatants.find((c) => {
+      if (!c.actor || c.actor.id === this.id) return false;
+      const foeDisp = this._getActorCombatSideDisposition(c.actor, combat);
+      return foeDisp !== selfDisposition;
+    });
+    const foe = foeCombatant?.actor ?? null;
+    if (!foe) return { applied: false, detail: "No foe found for Download." };
+    const foeVitality = Math.max(toNumber(foe.system?.attributes?.vitality?.value, 0), 0);
+    const foeInsight = Math.max(toNumber(foe.system?.attributes?.insight?.value, 0), 0);
+    // If Vitality ≤ Insight → +1 Strength (physical defense is lower); otherwise +1 Special
+    const chosenStat = foeVitality <= foeInsight ? "strength" : "special";
+    const statEffect = this._normalizeSecondaryEffectDefinition({
+      effectType: "stat", stat: chosenStat, amount: 1, trigger: "always", target: "self"
+    });
+    const applyResult = await this._applySecondaryEffectToActor(statEffect, this, null, {
+      moveTargetKey: "self", hit: true, isDamagingMove: false, finalDamage: 0, totalDamageDealt: 0, damageTargetResults: []
+    });
+    return {
+      applied: applyResult.applied,
+      detail: applyResult.applied
+        ? `Download: +1 ${chosenStat.charAt(0).toUpperCase() + chosenStat.slice(1)} (foe's ${foeVitality <= foeInsight ? "Vitality" : "Insight"} is lower)`
+        : applyResult.detail
+    };
+  }
+
+  /**
    * Check if an ability trigger matches a given trigger key.
    */
   _abilityTriggerMatches(abilityItem, triggerKey, context = {}) {
@@ -12999,6 +13132,21 @@ export class PokRoleActor extends Actor {
       console.log(`PokRole | [processAbilityTrigger] Ability="${abilityItem.name}" abilityTrigger="${abilityItem.system?.abilityTrigger}" vs triggerKey="${triggerKey}" => matches=${triggerMatches}`);
       if (!triggerMatches) continue;
 
+      // Download: hardcoded enter-battle logic — scan foe's stats and grant +1 STR or SPC
+      const abilityNameLower = `${abilityItem.name ?? ""}`.trim().toLowerCase();
+      if (abilityNameLower === "download" && triggerKey === "enter-battle") {
+        const downloadResult = await this._applyDownloadAbility(context);
+        if (downloadResult) {
+          results.push({
+            label: abilityItem.name,
+            targetName: this.name,
+            applied: downloadResult.applied,
+            detail: downloadResult.detail
+          });
+        }
+        continue;
+      }
+
       const normalizedEffects = this._getAbilitySecondaryEffects(abilityItem);
       console.log(`PokRole | [processAbilityTrigger] Ability="${abilityItem.name}" has ${normalizedEffects.length} secondary effects`);
       if (!normalizedEffects.length) continue;
@@ -13102,7 +13250,7 @@ export class PokRoleActor extends Actor {
     const appliedResults = results.filter((r) => r.applied);
     if (!appliedResults.length) return;
 
-    const triggerLabel = game.i18n.localize(`POKROLE.Ability.Trigger.${triggerKey}`) || triggerKey;
+    const triggerLabel = game.i18n.localize(`POKROLE.Chat.AbilityTriggerLabel.${triggerKey}`) || triggerKey;
     const sections = appliedResults.map((r) =>
       `<p><strong>${r.label}</strong> → ${r.targetName}: ${r.detail}</p>`
     ).join("");
@@ -15710,8 +15858,18 @@ export class PokRoleActor extends Actor {
     };
 
     await applyDamage("burn", this._getBurnRoundDamage(this._getBurnTrack().stage));
-    await applyDamage("poisoned", 1);
-    await applyDamage("badly-poisoned", 1);
+    // Poison Heal: heal instead of taking poison damage
+    const activeAbilityPH = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    if (["poison-heal", "poison heal", "poisonheal"].includes(activeAbilityPH)) {
+      if (conditionFlags?.poisoned || conditionFlags?.["badly-poisoned"]) {
+        const healResult = await this._safeApplyHeal(this, 1, { healingCategory: "unlimited" });
+        const healed = Math.max(toNumber(healResult?.healedApplied, 0), 0);
+        if (healed > 0) statusParts.push(`Poison Heal +${healed} HP`);
+      }
+    } else {
+      await applyDamage("poisoned", 1);
+      await applyDamage("badly-poisoned", 1);
+    }
 
     if (!statusParts.length) {
       return { totalDamage: 0, label: game.i18n.localize("POKROLE.Common.None") };
