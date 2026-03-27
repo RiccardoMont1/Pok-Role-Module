@@ -3006,6 +3006,7 @@ export class PokRoleActor extends Actor {
     const popped = await this._markAirBalloonPopped(combat);
     if (!popped) return false;
     const poppedItemName = this._getHeldItemDocument({ requireCompatible: false })?.name ?? "Air Balloon";
+    await this._consumeHeldBattleItem();
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: this }),
       content: `<strong>${this.name}'s</strong> ${poppedItemName} popped!`
@@ -10554,9 +10555,6 @@ export class PokRoleActor extends Actor {
     }
 
     const attackLandedOnTarget = !typeInteraction.immune && Boolean(targetActor) && !substituteBlocked;
-    if (attackLandedOnTarget && targetActor instanceof PokRoleActor) {
-      await targetActor._popAirBalloonOnSuccessfulHit(game.combat ?? null);
-    }
     if (targetActor instanceof PokRoleActor && attackLandedOnTarget && damagePool > 0) {
       await targetActor._recordLastReceivedAttack({
         sourceActor: this,
@@ -17002,6 +17000,17 @@ export class PokRoleActor extends Actor {
     }
     try {
       await targetActor.update({ "system.resources.hp.value": hpAfter });
+      const sourceMove = options?.sourceMove ?? null;
+      const sourceActorId = `${options?.sourceActorId ?? options?.sourceActor?.id ?? ""}`.trim();
+      if (
+        targetActor instanceof PokRoleActor &&
+        normalizedDamage > 0 &&
+        sourceMove &&
+        sourceActorId &&
+        sourceActorId !== `${targetActor.id ?? ""}`.trim()
+      ) {
+        await targetActor._popAirBalloonOnSuccessfulHit(game.combat ?? null);
+      }
       if (track && healedApplied > 0) {
         track.healedThisRound += healedApplied;
         if (healingCategory !== "standard") {
