@@ -17000,17 +17000,6 @@ export class PokRoleActor extends Actor {
     }
     try {
       await targetActor.update({ "system.resources.hp.value": hpAfter });
-      const sourceMove = options?.sourceMove ?? null;
-      const sourceActorId = `${options?.sourceActorId ?? options?.sourceActor?.id ?? ""}`.trim();
-      if (
-        targetActor instanceof PokRoleActor &&
-        normalizedDamage > 0 &&
-        sourceMove &&
-        sourceActorId &&
-        sourceActorId !== `${targetActor.id ?? ""}`.trim()
-      ) {
-        await targetActor._popAirBalloonOnSuccessfulHit(game.combat ?? null);
-      }
       if (track && healedApplied > 0) {
         track.healedThisRound += healedApplied;
         if (healingCategory !== "standard") {
@@ -18400,6 +18389,15 @@ export class PokRoleActor extends Actor {
     }
     try {
       await targetActor.update({ "system.resources.hp.value": hpAfter });
+      // Air Balloon: pop when taking damage from a move
+      if (
+        targetActor instanceof PokRoleActor &&
+        normalizedDamage > 0 &&
+        options?.sourceMove &&
+        `${options?.sourceActorId ?? options?.sourceActor?.id ?? ""}`.trim() !== `${targetActor.id ?? ""}`.trim()
+      ) {
+        await targetActor._popAirBalloonOnSuccessfulHit(game.combat ?? null);
+      }
       if (hpAfter <= 0 && typeof targetActor.clearMultiTurnState === "function") {
         await targetActor.clearMultiTurnState();
       }
