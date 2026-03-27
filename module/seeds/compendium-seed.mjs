@@ -1211,6 +1211,28 @@ export async function seedCompendia({ force = false, forcePacks = null, notify =
         await pack.documentClass.createDocuments(toCreate, { pack: pack.collection });
       }
 
+      // Update existing items with new seed data (images, descriptions, etc.)
+      if (!forceThisPack) {
+        const currentIndex = await pack.getIndex({ fields: ["flags"] });
+        const seedBySeedId = new Map(
+          seeds.map((s) => [s.flags?.[POKROLE.ID]?.seedId, s]).filter(([k]) => k)
+        );
+        for (const entry of currentIndex) {
+          const entrySeedId = entry.flags?.[POKROLE.ID]?.seedId;
+          if (!entrySeedId) continue;
+          const seedData = seedBySeedId.get(entrySeedId);
+          if (!seedData) continue;
+          const seedImg = `${seedData.img ?? ""}`.trim();
+          if (!seedImg || seedImg === "icons/svg/item-bag.svg") continue;
+          const doc = await pack.getDocument(entry._id);
+          if (!doc) continue;
+          const currentImg = `${doc.img ?? ""}`.trim();
+          if (currentImg !== seedImg) {
+            await doc.update({ img: seedImg });
+          }
+        }
+      }
+
       createdByPack[pack.metadata.name] = toCreate.length;
       totalCreated += toCreate.length;
     } catch (error) {
