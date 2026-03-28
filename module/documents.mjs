@@ -9472,10 +9472,11 @@ export class PokRoleActor extends Actor {
       99
     );
     const heldAccuracyBonus = this._getHeldItemData()?.accuracyBonusDice ?? 0;
-    // Compound Eyes: +1 Accuracy die
-    const abilityAccuracyBonus = ["compound-eyes", "compound eyes", "compoundeyes"].includes(
+    // Compound Eyes: +2 Accuracy dice and ignore Reduced Accuracy
+    const hasCompoundEyes = ["compound-eyes", "compound eyes", "compoundeyes"].includes(
       `${this.system?.ability ?? ""}`.trim().toLowerCase()
-    ) ? 1 : 0;
+    );
+    const abilityAccuracyBonus = hasCompoundEyes ? 2 : 0;
     const accuracyDicePool = Math.max(accuracyDicePoolBase + accuracyDiceModifier + heldAccuracyBonus + abilityAccuracyBonus, 1);
 
     if (!Number.isFinite(accuracyDicePoolBase)) {
@@ -9500,7 +9501,9 @@ export class PokRoleActor extends Actor {
 
     const confusionPenalty = this._hasConfusionPenaltyThisRound() ? 1 : 0;
     const heldReducedLowAccuracy = this._getHeldItemData()?.reducedLowAccuracy ?? 0;
-    const reducedAccuracy = Math.max(toNumber(move.system.reducedAccuracy, 0) - heldReducedLowAccuracy, 0) + shieldPenalty;
+    // Compound Eyes ignores Reduced Accuracy on the move (but still shown on the item)
+    const baseReducedAccuracy = hasCompoundEyes ? 0 : Math.max(toNumber(move.system.reducedAccuracy, 0) - heldReducedLowAccuracy, 0);
+    const reducedAccuracy = baseReducedAccuracy + shieldPenalty;
     const targetBrightPowder = targetActors[0]?._getHeldItemData?.()?.accuracyPenaltyToAttacker ?? 0;
     const requiredSuccesses = actionNumber;
     const accuracyRoll = await new Roll(successPoolFormula(accuracyDicePool)).evaluate();
@@ -10387,7 +10390,13 @@ export class PokRoleActor extends Actor {
     if (["water-bubble", "water bubble", "waterbubble"].includes(attackerAbilityName) && `${moveType ?? ""}`.trim().toLowerCase() === "water") {
       waterBubbleAtkBonus = 2;
     }
-    console.log(`PokRole | [damageCalc] abilityBonuses: technician=${technicianBonus} reckless=${recklessBonus} waterBubble=${waterBubbleAtkBonus} pinch=${pinchAbilityBonus}`);
+    // Flash Fire: +1 damage die for Fire moves (combat profile damage is set by on-hit-by-type trigger)
+    let flashFireBonus = 0;
+    if (["flash-fire", "flash fire", "flashfire"].includes(attackerAbilityName) && `${moveType ?? ""}`.trim().toLowerCase() === "fire") {
+      const combatDamageBonus = Math.max(Math.floor(toNumber(this.system?.combatProfile?.damage, 0)), 0);
+      flashFireBonus = Math.max(combatDamageBonus, 0);
+    }
+    console.log(`PokRole | [damageCalc] abilityBonuses: technician=${technicianBonus} reckless=${recklessBonus} waterBubble=${waterBubbleAtkBonus} pinch=${pinchAbilityBonus} flashFire=${flashFireBonus}`);
     const fixedDamagePool = Number.isFinite(Number(attackOverrides?.fixedDamagePool))
       ? Math.max(Math.floor(toNumber(attackOverrides.fixedDamagePool, 0)), 0)
       : null;
@@ -10407,6 +10416,7 @@ export class PokRoleActor extends Actor {
       pinchAbilityBonus +
       technicianBonus +
       recklessBonus +
+      flashFireBonus +
       waterBubbleAtkBonus -
       damagePainPenalty;
     const fixedFinalDamage =
@@ -16295,7 +16305,15 @@ export class PokRoleActor extends Actor {
       statusParts.push(`${label} -${amount}`);
     };
 
-    await applyDamage("burn", this._getBurnRoundDamage(this._getBurnTrack().stage));
+    // Heatproof: immune to burn damage at end of round
+    const burnAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    if (["heatproof", "heat-proof", "heat proof"].includes(burnAbility)) {
+      if (conditionFlags?.burn) {
+        statusParts.push(`Heatproof negates burn damage`);
+      }
+    } else {
+      await applyDamage("burn", this._getBurnRoundDamage(this._getBurnTrack().stage));
+    }
     // Poison Heal: heal instead of taking poison damage
     const activeAbilityPH = `${this.system?.ability ?? ""}`.trim().toLowerCase();
     if (["poison-heal", "poison heal", "poisonheal"].includes(activeAbilityPH)) {
@@ -16307,6 +16325,16 @@ export class PokRoleActor extends Actor {
     } else {
       await applyDamage("poisoned", 1);
       await applyDamage("badly-poisoned", 1);
+    }
+
+    // Dry Skin: takes 1 damage at end of each round
+    const drySkinAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    if (["dry-skin", "dry skin", "dryskin"].includes(drySkinAbility)) {
+      const drySkinResult = await this._safeApplyDamage(this, 1, { applyDeadOnZero: false });
+      if (drySkinResult) {
+        totalDamage += 1;
+        statusParts.push(`Dry Skin -1`);
+      }
     }
 
     if (!statusParts.length) {
