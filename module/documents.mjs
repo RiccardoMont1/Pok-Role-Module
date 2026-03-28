@@ -10390,7 +10390,7 @@ export class PokRoleActor extends Actor {
         label
       };
     }
-    // Bulletproof: immune to ball/bomb moves
+    // Bulletproof: reduce damage from ball/bomb moves by 1 (+1 resistance penalty)
     if (!typeInteraction.immune && targetActor && !hasMoldBreaker) {
       if (["bulletproof", "bullet-proof", "bullet proof"].includes(defenderAbilityName)) {
         const BALL_BOMB_KEYWORDS = ["ball", "bomb", "bullet", "cannon", "seed bomb", "sludge bomb", "shadow ball",
@@ -10401,25 +10401,6 @@ export class PokRoleActor extends Actor {
         const moveDesc = `${move?.system?.description ?? ""}`.toLowerCase();
         const isBallBomb = BALL_BOMB_KEYWORDS.some((kw) => moveName.includes(kw) || moveDesc.includes(kw));
         if (isBallBomb) {
-          typeInteraction = { ...typeInteraction, immune: true, label: "POKROLE.Chat.TypeEffect.Immune" };
-          await ChatMessage.create({
-            speaker: ChatMessage.getSpeaker({ actor: targetActor }),
-            content: `<strong>${targetActor.name}'s</strong> Bulletproof blocked the move!`
-          });
-        }
-      }
-    }
-    // Soundproof: reduce damage from sound-based moves by 1 (+1 resistance penalty)
-    if (!typeInteraction.immune && targetActor && !hasMoldBreaker) {
-      if (["soundproof", "sound-proof", "sound proof"].includes(defenderAbilityName)) {
-        const SOUND_KEYWORDS = ["sound", "cry", "voice", "sing", "roar", "screech", "growl", "howl",
-          "chatter", "echo", "hyper voice", "boomburst", "uproar", "snore", "round", "relic song",
-          "snarl", "disarming voice", "bug buzz", "grass whistle", "metal sound", "perish song",
-          "noble roar", "parting shot", "sparkling aria", "clangorous", "overdrive", "eerie spell"];
-        const moveName = `${move?.name ?? ""}`.toLowerCase();
-        const moveDesc = `${move?.system?.description ?? ""}`.toLowerCase();
-        const isSoundMove = SOUND_KEYWORDS.some((kw) => moveName.includes(kw) || moveDesc.includes(kw));
-        if (isSoundMove) {
           const newResistance = (typeInteraction.resistancePenalty ?? 0) + 1;
           typeInteraction = {
             ...typeInteraction,
@@ -10430,7 +10411,26 @@ export class PokRoleActor extends Actor {
           };
           await ChatMessage.create({
             speaker: ChatMessage.getSpeaker({ actor: targetActor }),
-            content: `<strong>${targetActor.name}'s</strong> Soundproof reduced the sound-based move's damage!`
+            content: `<strong>${targetActor.name}'s</strong> Bulletproof reduced the ball/bomb move's damage!`
+          });
+        }
+      }
+    }
+    // Soundproof: immune to sound-based moves
+    if (!typeInteraction.immune && targetActor && !hasMoldBreaker) {
+      if (["soundproof", "sound-proof", "sound proof"].includes(defenderAbilityName)) {
+        const SOUND_KEYWORDS = ["sound", "cry", "voice", "sing", "roar", "screech", "growl", "howl",
+          "chatter", "echo", "hyper voice", "boomburst", "uproar", "snore", "round", "relic song",
+          "snarl", "disarming voice", "bug buzz", "grass whistle", "metal sound", "perish song",
+          "noble roar", "parting shot", "sparkling aria", "clangorous", "overdrive", "eerie spell"];
+        const moveName = `${move?.name ?? ""}`.toLowerCase();
+        const moveDesc = `${move?.system?.description ?? ""}`.toLowerCase();
+        const isSoundMove = SOUND_KEYWORDS.some((kw) => moveName.includes(kw) || moveDesc.includes(kw));
+        if (isSoundMove) {
+          typeInteraction = { ...typeInteraction, immune: true, label: "POKROLE.Chat.TypeEffect.Immune" };
+          await ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+            content: `<strong>${targetActor.name}'s</strong> Soundproof blocked the sound-based move!`
           });
         }
       }
@@ -19607,22 +19607,16 @@ export class PokRoleActor extends Actor {
 
   _evaluateTypeInteraction(moveType, targetActor, { ignoreDefensiveAbilities = false } = {}) {
     const normalizedMoveType = this._normalizeTypeKey(moveType);
-    // Levitate: reduce Ground-type damage (+1 resistance penalty instead of full immunity)
-    // Mold Breaker / Turboblaze / Teravolt bypass Levitate
+    // Levitate: immune to Ground-type moves (Mold Breaker / Turboblaze / Teravolt bypass)
     if (normalizedMoveType === "ground" && targetActor instanceof PokRoleActor && !ignoreDefensiveAbilities) {
       const defAbilityLev = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
       if (["levitate"].includes(defAbilityLev)) {
-        const defenderTypes = this._getEffectiveDefenderTypesForInteraction(targetActor, moveType);
-        const baseInteraction = this._evaluateTypeInteractionAgainstTypes(moveType, defenderTypes);
-        // Override any Ground immunity from types and add +1 resistance
-        baseInteraction.immune = false;
-        baseInteraction.resistancePenalty += 1;
-        baseInteraction.label = baseInteraction.weaknessBonus > baseInteraction.resistancePenalty
-          ? "POKROLE.Chat.TypeEffect.Super"
-          : baseInteraction.resistancePenalty > baseInteraction.weaknessBonus
-            ? "POKROLE.Chat.TypeEffect.Resisted"
-            : "POKROLE.Chat.TypeEffect.Neutral";
-        return baseInteraction;
+        return {
+          immune: true,
+          weaknessBonus: 0,
+          resistancePenalty: 0,
+          label: "POKROLE.Chat.TypeEffect.Immune"
+        };
       }
     }
     if (
