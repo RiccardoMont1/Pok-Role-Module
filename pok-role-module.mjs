@@ -1813,7 +1813,7 @@ Hooks.on("deleteCombat", async (combat) => {
       try { await actor.processTemporaryEffectSpecialDuration("combat-end", { combatId }); } catch (_e) { /* */ }
     }
     if (typeof actor.clearCombatTemporaryEffects === "function") {
-      try { await actor.clearCombatTemporaryEffects(combatId); } catch (_e) { /* */ }
+      try { await actor.clearCombatTemporaryEffects(combatId); } catch (e) { console.warn(`PokRole | clearCombatTemporaryEffects failed for ${actor.name}:`, e); }
     }
     if (typeof actor.clearMultiTurnState === "function") {
       try { await actor.clearMultiTurnState(); } catch (_e) { /* */ }

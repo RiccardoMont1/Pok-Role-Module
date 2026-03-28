@@ -9442,11 +9442,13 @@ export class PokRoleActor extends Actor {
       activeWeather,
       runtimeOverride: dynamicMoveRuntime
     });
-    // Protean / Libero: change attacker's type to match the move's type before attacking
+    // Protean / Libero: change attacker's type to match the move's type (mono-type) before attacking
     const proteanAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
     if (["protean", "libero"].includes(proteanAbility) && moveType !== "none" && this.type === "pokemon") {
       const currentPrimary = this._normalizeTypeKey(this.system?.types?.primary || "none");
-      if (currentPrimary !== moveType) {
+      const currentSecondary = this._normalizeTypeKey(this.system?.types?.secondary || "none");
+      const needsChange = currentPrimary !== moveType || (currentSecondary !== "none" && currentSecondary !== "");
+      if (needsChange) {
         // Save original types before first Protean/Libero change (so they can be restored at combat end)
         const existingOriginal = this.getFlag(POKROLE.ID, "proteanOriginalTypes");
         if (!existingOriginal) {
@@ -9454,6 +9456,7 @@ export class PokRoleActor extends Actor {
             primary: this.system?.types?.primary || "none",
             secondary: this.system?.types?.secondary || "none"
           });
+          console.log(`PokRole | [Protean] Saved original types for ${this.name}: ${this.system?.types?.primary}/${this.system?.types?.secondary}`);
         }
         await this.update({ "system.types.primary": moveType, "system.types.secondary": "none" });
         await ChatMessage.create({
@@ -16053,15 +16056,19 @@ export class PokRoleActor extends Actor {
 
     // Protean / Libero: restore original types at combat end
     const proteanOriginal = this.getFlag(POKROLE.ID, "proteanOriginalTypes");
+    console.log(`PokRole | [Protean cleanup] ${this.name}: proteanOriginalTypes flag =`, proteanOriginal);
     if (proteanOriginal) {
+      const restorePrimary = proteanOriginal.primary || "none";
+      const restoreSecondary = proteanOriginal.secondary || "none";
+      console.log(`PokRole | [Protean cleanup] Restoring ${this.name} types to ${restorePrimary}/${restoreSecondary}`);
       await this.update({
-        "system.types.primary": proteanOriginal.primary || "none",
-        "system.types.secondary": proteanOriginal.secondary || "none"
+        "system.types.primary": restorePrimary,
+        "system.types.secondary": restoreSecondary
       });
       await this.unsetFlag(POKROLE.ID, "proteanOriginalTypes");
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: this }),
-        content: `<strong>${this.name}'s</strong> types were restored to their original values.`
+        content: `<strong>${this.name}'s</strong> types were restored to <strong>${restorePrimary}</strong>/<strong>${restoreSecondary}</strong>.`
       });
     }
 
