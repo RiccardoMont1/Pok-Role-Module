@@ -2607,7 +2607,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
               skillBase: currentSkillBase,
               trackRank: newTier,
               pendingFormData: { "system.tier": newTier },
-              attrMax: 12
+              attrMaxByKey: this._getPokemonTrackMaxConfig().attributes
             });
             // If cancelled, tier stays at oldTier
           } else {
@@ -2649,7 +2649,15 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   async _showPointDistributionDialog(totalAttrPoints, totalSocialPoints, totalSkillPoints, skillLimit, options = {}) {
-    const { attrBase = {}, socialBase = {}, skillBase = {}, trackRank = null, pendingFormData = null, attrMax = 5 } = options;
+    const {
+      attrBase = {},
+      socialBase = {},
+      skillBase = {},
+      trackRank = null,
+      pendingFormData = null,
+      attrMax = 5,
+      attrMaxByKey = null
+    } = options;
     const loc = (key) => game.i18n.localize(key);
 
     const isTrainer = this.actor.type === "trainer";
@@ -2750,6 +2758,46 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             icon: '<i class="fas fa-check"></i>',
             label: loc("POKROLE.Common.Confirm"),
             callback: async () => {
+              const getMaxForEntry = (category, key) => {
+                if (category === "attr") {
+                  if (attrMaxByKey && typeof attrMaxByKey === "object") {
+                    const configuredMax = Number(attrMaxByKey?.[key]);
+                    return Number.isFinite(configuredMax)
+                      ? Math.min(Math.max(Math.floor(configuredMax), 1), 12)
+                      : attrMax;
+                  }
+                  return attrMax;
+                }
+                if (category === "social") return 5;
+                return skillLimit;
+              };
+              if (pools.attr !== 0 || pools.social !== 0 || pools.skill !== 0) {
+                ui.notifications.warn(loc("POKROLE.Dialog.MustSpendAllPoints"));
+                return false;
+              }
+              for (const [compositeKey, val] of Object.entries(state.values)) {
+                const [category, key] = compositeKey.split(":");
+                const base = category === "attr" ? (attrBase[key] ?? 1)
+                  : category === "social" ? (socialBase[key] ?? 1)
+                  : (skillBase[key] ?? 0);
+                const maxAllowed = getMaxForEntry(category, key);
+                if (val > maxAllowed && val > base) {
+                  const label = category === "attr"
+                    ? loc(filteredCoreAttrDefs.find((entry) => entry.key === key)?.label ?? key)
+                    : category === "social"
+                      ? loc(SOCIAL_ATTRIBUTE_DEFINITIONS.find((entry) => entry.key === key)?.label ?? key)
+                      : key.startsWith("extra_")
+                        ? (extraSkillItems.find((entry) => entry.key === key)?.label ?? key)
+                        : loc(filteredSkillDefs.find((entry) => entry.key === key)?.label ?? key);
+                  ui.notifications.warn(
+                    game.i18n.format("POKROLE.Dialog.PointCapExceeded", {
+                      label,
+                      max: maxAllowed
+                    })
+                  );
+                  return false;
+                }
+              }
               const updateData = {};
               const distributed = { attr: {}, social: {}, skill: {} };
               const updatedExtraSkills = foundry.utils.deepClone(extraSkills);
@@ -2802,9 +2850,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             skill: totalSkillPoints
           };
           const maxByCategory = {
-            attr: attrMax,
             social: 5,
             skill: skillLimit
+          };
+          const getAttrMax = (key) => {
+            if (attrMaxByKey && typeof attrMaxByKey === "object") {
+              const configuredMax = Number(attrMaxByKey?.[key]);
+              if (Number.isFinite(configuredMax)) {
+                return Math.min(Math.max(Math.floor(configuredMax), 1), 12);
+              }
+            }
+            return attrMax;
           };
           const attrBaseByKey = {};
           for (const a of filteredCoreAttrDefs) attrBaseByKey[a.key] = attrBase[a.key] ?? 1;
@@ -2841,7 +2897,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             const base = category === "attr" ? (attrBaseByKey[key] ?? 1)
               : category === "social" ? (socialBaseByKey[key] ?? 1)
               : (skillBaseByKey[key] ?? 0);
-            const max = maxByCategory[category];
+            const max = category === "attr" ? getAttrMax(key) : maxByCategory[category];
             const newVal = current + dir;
 
             if (newVal < base || newVal > max) return;

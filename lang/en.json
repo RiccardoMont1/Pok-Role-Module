@@ -30,7 +30,9 @@
       "Remaining": "Remaining",
       "ToRemove": "To Remove",
       "RemovePoints": "You need to remove points due to a rank downgrade.",
-      "PointsDistributed": "Points distributed successfully"
+      "PointsDistributed": "Points distributed successfully",
+      "MustSpendAllPoints": "You must spend all available points before confirming.",
+      "PointCapExceeded": "{label} cannot exceed {max}."
     },
     "AgeGroup": {
       "Child": "Child",
