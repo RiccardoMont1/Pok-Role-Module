@@ -845,7 +845,122 @@ const AUTOMATIONS = {
   "reckless": {
     type: "passive", trigger: "always", target: "self",
     effects: [],
-    notes: "+1 damage die for recoil moves. Hardcoded in damage calculation."
+    notes: "+2 damage dice for recoil moves. Hardcoded in damage calculation."
+  },
+
+  // --- Type-changing abilities (Normal → type + STAB) ---
+  "aerilate": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Normal-type moves become Flying-type and gain STAB. Hardcoded in _resolveEffectiveMoveType and damage calc."
+  },
+  "pixilate": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Normal-type moves become Fairy-type and gain STAB. Hardcoded in _resolveEffectiveMoveType and damage calc."
+  },
+  "galvanize": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Normal-type moves become Electric-type and gain STAB. Hardcoded in _resolveEffectiveMoveType and damage calc."
+  },
+  "refrigerate": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Normal-type moves become Ice-type and gain STAB. Hardcoded in _resolveEffectiveMoveType and damage calc."
+  },
+
+  // --- Type-changing attacker abilities ---
+  "protean": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Changes Pokémon's type to the move's type before attacking. Hardcoded in rollMove."
+  },
+  "libero": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Changes Pokémon's type to the move's type before attacking. Hardcoded in rollMove."
+  },
+
+  // --- Attack override abilities ---
+  "scrappy": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Normal and Fighting-type moves can hit Ghost-type Pokémon. Hardcoded in _evaluateTypeInteraction."
+  },
+  "mold-breaker": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Ignores defensive abilities. Hardcoded in damage calc."
+  },
+  "turboblaze": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Ignores defensive abilities. Hardcoded in damage calc (same as Mold Breaker)."
+  },
+  "teravolt": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Ignores defensive abilities. Hardcoded in damage calc (same as Mold Breaker)."
+  },
+  "tinted-lens": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Halves resistance penalty on resisted moves. Hardcoded in damage calc."
+  },
+  "sheer-force": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "+2 damage dice, removes all secondary effects. Hardcoded in damage calc and _applyMoveSecondaryEffects."
+  },
+  "parental-bond": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Hits twice — second hit at half damage. Hardcoded in rollMove damage loop."
+  },
+  "serene-grace": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Doubles chance dice for secondary effects. Hardcoded in _applyMoveSecondaryEffects."
+  },
+
+  // --- Defensive immunity abilities ---
+  "levitate": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Immune to Ground-type moves. Hardcoded in _evaluateTypeInteraction."
+  },
+  "bulletproof": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Immune to ball/bomb moves. Hardcoded in damage calc."
+  },
+  "soundproof": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Immune to sound-based moves. Hardcoded in damage calc."
+  },
+  "magic-guard": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Immune to indirect damage (weather, status, recoil, confusion). Hardcoded in multiple damage functions."
+  },
+
+  // --- Stat change modifier abilities ---
+  "contrary": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Inverts all stat changes. Hardcoded in _applyStatEffectToActor."
+  },
+  "simple": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Doubles all stat changes. Hardcoded in _applyStatEffectToActor."
+  },
+  "unaware": {
+    type: "passive", trigger: "always", target: "self",
+    effects: [],
+    notes: "Ignores target's stat changes when calculating damage. Hardcoded in damage calc defense."
   },
 
   // --- Highest-stat weather/terrain boosts ---

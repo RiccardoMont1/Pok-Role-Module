@@ -3753,7 +3753,17 @@ export class PokRoleActor extends Actor {
         return preferredTerrain;
       }
     }
-    return this._normalizeTypeKey(move?.system?.type || "normal");
+    // Aerilate/Pixilate/Galvanize/Refrigerate: Normal moves become another type
+    const baseType = this._normalizeTypeKey(move?.system?.type || "normal");
+    if (baseType === "normal" && actor?.type === "pokemon") {
+      const ateAbility = `${actor.system?.ability ?? ""}`.trim().toLowerCase();
+      const ATE_ABILITY_TYPE_MAP = {
+        "aerilate": "flying", "pixilate": "fairy", "galvanize": "electric", "refrigerate": "ice"
+      };
+      const ateType = ATE_ABILITY_TYPE_MAP[ateAbility];
+      if (ateType) return ateType;
+    }
+    return baseType;
   }
 
   _getTerrainDamageBonusDice(move, actor = this) {
@@ -9411,6 +9421,18 @@ export class PokRoleActor extends Actor {
       activeWeather,
       runtimeOverride: dynamicMoveRuntime
     });
+    // Protean / Libero: change attacker's type to match the move's type before attacking
+    const proteanAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    if (["protean", "libero"].includes(proteanAbility) && moveType !== "none" && this.type === "pokemon") {
+      const currentPrimary = this._normalizeTypeKey(this.system?.types?.primary || "none");
+      if (currentPrimary !== moveType) {
+        await this.update({ "system.types.primary": moveType, "system.types.secondary": "none" });
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this }),
+          content: `<strong>${this.name}'s</strong> ${this.system?.ability} changed its type to <strong>${moveType}</strong>!`
+        });
+      }
+    }
     if (!this._moveIgnoresDamagePrevention(move) && this._isMoveTypeBlockedByWeather(moveType, activeWeather)) {
       ui.notifications.warn(
         game.i18n.format("POKROLE.Errors.MoveBlockedByWeather", {
@@ -9669,6 +9691,33 @@ export class PokRoleActor extends Actor {
         damageTargetResults.push(damageResult);
       }
 
+      // Parental Bond: second hit at half damage
+      const parentalBondAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+      if (["parental-bond", "parental bond", "parentalbond"].includes(parentalBondAbility)) {
+        for (const actorTarget of targetsToDamage) {
+          const secondHit = await this._resolveMoveDamageAgainstTarget({
+            move,
+            targetActor: actorTarget,
+            painPenalty,
+            critical: false,
+            isHoldingBackHalf: true,
+            canInflictDeathOnKo,
+            actionNumber,
+            roundKey,
+            attackOverrides: {
+              moveType,
+              runtimeOverride: dynamicMoveRuntime,
+              ...(externalMoveRuntime.attackOverrides ?? {})
+            }
+          });
+          damageTargetResults.push(secondHit);
+          await ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: this }),
+            content: `<strong>${this.name}'s</strong> Parental Bond — second hit deals ${secondHit.finalDamage} damage!`
+          });
+        }
+      }
+
       firstDamageResult = damageTargetResults[0];
       if (firstDamageResult) {
         damageRoll = firstDamageResult.damageRoll;
@@ -9695,7 +9744,8 @@ export class PokRoleActor extends Actor {
     recoilResult = await this._applyMoveRecoilDamage(move, damageTargetResults);
 
     let confusionSelfDamage = null;
-    if (confusionPenalty > 0 && !hit) {
+    const confusionAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    if (confusionPenalty > 0 && !hit && !["magic-guard", "magic guard", "magicguard"].includes(confusionAbility)) {
       confusionSelfDamage = await this._safeApplyDamage(this, 1);
     }
 
@@ -10198,10 +10248,12 @@ export class PokRoleActor extends Actor {
     const attackerAbilityName = `${this.system?.ability ?? ""}`.trim().toLowerCase();
     // --- Defender ability name ---
     const defenderAbilityName = targetActor ? `${targetActor.system?.ability ?? ""}`.trim().toLowerCase() : "";
+    // Mold Breaker / Turboblaze / Teravolt: ignores defensive abilities
+    const hasMoldBreaker = ["mold-breaker", "mold breaker", "moldbreaker", "turboblaze", "turbo-blaze", "teravolt", "tera-volt"].includes(attackerAbilityName);
     console.log(`PokRole | [damageCalc] attacker="${this.name}" abilityName="${attackerAbilityName}" target="${targetActor?.name}" defAbility="${defenderAbilityName}" critical=${critical} moveType=${moveType}`);
     // Battle Armor / Shell Armor: block critical hits
     let effectiveCritical = Boolean(critical) && !targetProtectedByLuckyChant;
-    if (effectiveCritical && targetActor) {
+    if (effectiveCritical && targetActor && !hasMoldBreaker) {
       if (["battle-armor", "battle armor", "battlearmor", "shell-armor", "shell armor", "shellarmor"].includes(defenderAbilityName)) {
         effectiveCritical = false;
         console.log(`PokRole | [damageCalc] ${targetActor.name}'s ${defenderAbilityName} blocked critical hit`);
@@ -10213,7 +10265,10 @@ export class PokRoleActor extends Actor {
       criticalDice = 3;
     }
     // Adaptability: STAB +2 instead of +1
-    const baseStab = this.hasType(moveType) ? 1 : 0;
+    // Aerilate/Pixilate/Galvanize/Refrigerate: always get STAB on converted moves
+    const isAteAbility = ["aerilate", "pixilate", "galvanize", "refrigerate"].includes(attackerAbilityName);
+    const ateConverted = isAteAbility && this._normalizeTypeKey(move?.system?.type || "normal") === "normal" && moveType !== "normal";
+    const baseStab = (this.hasType(moveType) || ateConverted) ? 1 : 0;
     const stabDice = attackOverrides?.ignoreStab ? 0 : (baseStab > 0 && ["adaptability"].includes(attackerAbilityName) ? 2 : baseStab);
     console.log(`PokRole | [damageCalc] stab: hasType=${this.hasType(moveType)} baseStab=${baseStab} stabDice=${stabDice} adaptability=${["adaptability"].includes(attackerAbilityName)}`);
     const heldItemBonus =
@@ -10251,8 +10306,12 @@ export class PokRoleActor extends Actor {
     const weatherDefenseBonus = targetActor?.type === "pokemon"
       ? targetActor._getWeatherDefenseBonusForStat(defenseCategory, activeWeather)
       : 0;
+    // Unaware: ignore target's stat changes when calculating defense
+    const hasUnaware = ["unaware"].includes(attackerAbilityName);
     const defense = targetActor
-      ? (ignoresDefenses ? 0 : this._getTargetDefense(targetActor, defenseCategory)) + coverDefenseBonus
+      ? (ignoresDefenses ? 0 : (hasUnaware
+          ? this._getTargetDefenseIgnoringModifiers(targetActor, defenseCategory)
+          : this._getTargetDefense(targetActor, defenseCategory))) + coverDefenseBonus
       : 0;
     let typeInteraction = targetActor
       ? this._evaluateTypeInteraction(moveType, targetActor)
@@ -10282,6 +10341,44 @@ export class PokRoleActor extends Actor {
         immune: false,
         label
       };
+    }
+    // Bulletproof: immune to ball/bomb moves
+    if (!typeInteraction.immune && targetActor && !hasMoldBreaker) {
+      if (["bulletproof", "bullet-proof", "bullet proof"].includes(defenderAbilityName)) {
+        const BALL_BOMB_KEYWORDS = ["ball", "bomb", "bullet", "cannon", "seed bomb", "sludge bomb", "shadow ball",
+          "energy ball", "aura sphere", "weather ball", "gyro ball", "electro ball", "ice ball",
+          "mist ball", "acid spray", "octazooka", "barrage", "egg bomb", "zap cannon",
+          "focus blast", "pyro ball", "pollen puff"];
+        const moveName = `${move?.name ?? ""}`.toLowerCase();
+        const moveDesc = `${move?.system?.description ?? ""}`.toLowerCase();
+        const isBallBomb = BALL_BOMB_KEYWORDS.some((kw) => moveName.includes(kw) || moveDesc.includes(kw));
+        if (isBallBomb) {
+          typeInteraction = { ...typeInteraction, immune: true, label: "POKROLE.Chat.TypeEffect.Immune" };
+          await ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+            content: `<strong>${targetActor.name}'s</strong> Bulletproof blocked the move!`
+          });
+        }
+      }
+    }
+    // Soundproof: immune to sound-based moves
+    if (!typeInteraction.immune && targetActor && !hasMoldBreaker) {
+      if (["soundproof", "sound-proof", "sound proof"].includes(defenderAbilityName)) {
+        const SOUND_KEYWORDS = ["sound", "cry", "voice", "sing", "roar", "screech", "growl", "howl",
+          "chatter", "echo", "hyper voice", "boomburst", "uproar", "snore", "round", "relic song",
+          "snarl", "disarming voice", "bug buzz", "grass whistle", "metal sound", "perish song",
+          "noble roar", "parting shot", "sparkling aria", "clangorous", "overdrive", "eerie spell"];
+        const moveName = `${move?.name ?? ""}`.toLowerCase();
+        const moveDesc = `${move?.system?.description ?? ""}`.toLowerCase();
+        const isSoundMove = SOUND_KEYWORDS.some((kw) => moveName.includes(kw) || moveDesc.includes(kw));
+        if (isSoundMove) {
+          typeInteraction = { ...typeInteraction, immune: true, label: "POKROLE.Chat.TypeEffect.Immune" };
+          await ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+            content: `<strong>${targetActor.name}'s</strong> Soundproof blocked the sound-based move!`
+          });
+        }
+      }
     }
     // Dry Skin: immune to Water-type moves (healed via on-hit-by-type trigger in seeds)
     if (!typeInteraction.immune && targetActor) {
@@ -10395,7 +10492,12 @@ export class PokRoleActor extends Actor {
       // Flash Fire caps at +1 regardless of how many fire hits were absorbed
       flashFireBonus = combatDamageBonus > 0 ? 1 : 0;
     }
-    console.log(`PokRole | [damageCalc] abilityBonuses: technician=${technicianBonus} reckless=${recklessBonus} waterBubble=${waterBubbleAtkBonus} pinch=${pinchAbilityBonus} flashFire=${flashFireBonus}`);
+    // Sheer Force: +2 damage dice (secondary effects removed in _applyMoveSecondaryEffects)
+    let sheerForceBonus = 0;
+    if (["sheer-force", "sheer force", "sheerforce"].includes(attackerAbilityName)) {
+      sheerForceBonus = 2;
+    }
+    console.log(`PokRole | [damageCalc] abilityBonuses: technician=${technicianBonus} reckless=${recklessBonus} waterBubble=${waterBubbleAtkBonus} pinch=${pinchAbilityBonus} flashFire=${flashFireBonus} sheerForce=${sheerForceBonus}`);
     const fixedDamagePool = Number.isFinite(Number(attackOverrides?.fixedDamagePool))
       ? Math.max(Math.floor(toNumber(attackOverrides.fixedDamagePool, 0)), 0)
       : null;
@@ -10416,7 +10518,8 @@ export class PokRoleActor extends Actor {
       technicianBonus +
       recklessBonus +
       flashFireBonus +
-      waterBubbleAtkBonus -
+      waterBubbleAtkBonus +
+      sheerForceBonus -
       damagePainPenalty;
     const fixedFinalDamage =
       fixedDamagePool !== null
@@ -10475,6 +10578,10 @@ export class PokRoleActor extends Actor {
       };
     }
     shieldAddedEffectsBlocked = Boolean(shieldResponse?.blocksAddedEffects);
+    // Tinted Lens: halve resistance penalty (reduce by half, rounded down, minimum 0)
+    if (["tinted-lens", "tinted lens", "tintedlens"].includes(attackerAbilityName) && typeInteraction.resistancePenalty > 0) {
+      typeInteraction = { ...typeInteraction, resistancePenalty: Math.max(Math.floor(typeInteraction.resistancePenalty / 2), 0) };
+    }
     if (!typeInteraction.immune) {
       const weaknessBonus = damageSuccesses >= 1 ? typeInteraction.weaknessBonus : 0;
       const resolvedDamage = Math.max(
@@ -10515,8 +10622,8 @@ export class PokRoleActor extends Actor {
       });
     }
 
-    // Defensive ability damage reduction
-    if (finalDamage > 0 && targetActor) {
+    // Defensive ability damage reduction (skipped by Mold Breaker / Turboblaze / Teravolt)
+    if (finalDamage > 0 && targetActor && !hasMoldBreaker) {
       const defAbility = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
       let abilityDamageReduction = 0;
       // Multiscale: halve damage when at full HP
@@ -12023,6 +12130,11 @@ export class PokRoleActor extends Actor {
     if (!Array.isArray(secondaryEffects) || secondaryEffects.length === 0) {
       return [];
     }
+    // Sheer Force: skip all secondary effects
+    const sheerForceAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    if (["sheer-force", "sheer force", "sheerforce"].includes(sheerForceAbility)) {
+      return [];
+    }
 
     const effectSourceItem = sourceItem ?? move ?? null;
     const activeWeather = this.getActiveWeatherKey();
@@ -12056,7 +12168,10 @@ export class PokRoleActor extends Actor {
       );
       // Loaded Dice: +2 chance dice for secondary effects
       const loadedDiceBonus = this._getHeldItemData()?.loadedDice ? 2 : 0;
-      const chanceDice = Math.max(baseChanceDice + weatherChanceBonusDice + loadedDiceBonus, 0);
+      // Serene Grace: double base chance dice
+      const sereneGraceAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+      const sereneGraceBonus = ["serene-grace", "serene grace", "serenegrace"].includes(sereneGraceAbility) ? baseChanceDice : 0;
+      const chanceDice = Math.max(baseChanceDice + weatherChanceBonusDice + loadedDiceBonus + sereneGraceBonus, 0);
       let chanceRollResults = [];
       let chanceSucceeded = true;
       if (chanceDice > 0 && baseChanceDice > 0) {
@@ -12249,8 +12364,11 @@ export class PokRoleActor extends Actor {
   async _applyMoveRecoilDamage(move, damageTargetResults = []) {
     const moveSourceAttributes = this._getMoveSourceAttributes(move);
     if (!moveSourceAttributes?.recoil) return null;
-    // Rock Head: immune to recoil damage
+    // Magic Guard / Rock Head: immune to recoil damage
     const recoilAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    if (["magic-guard", "magic guard", "magicguard"].includes(recoilAbility)) {
+      return { label: game.i18n.localize("POKROLE.Chat.Recoil"), targetName: this.name, applied: false, damage: 0, dice: 0, detail: "Magic Guard prevents recoil" };
+    }
     if (["rock-head", "rock head", "rockhead"].includes(recoilAbility)) {
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: this }),
@@ -14597,6 +14715,17 @@ export class PokRoleActor extends Actor {
 
   async _applyStatEffectToActor(effect, targetActor, sourceMove = null) {
     let amount = Math.floor(toNumber(effect.amount, 0));
+    // Contrary: invert stat changes
+    if (targetActor?.type === "pokemon") {
+      const targetAbilityConSim = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
+      if (["contrary"].includes(targetAbilityConSim)) {
+        amount = -amount;
+      }
+      // Simple: double stat changes
+      if (["simple"].includes(targetAbilityConSim)) {
+        amount = amount * 2;
+      }
+    }
     // Rank-based scaling: double the amount for Expert rank and above
     const effectNotes = `${effect.notes ?? ""}`.trim().toLowerCase();
     if (effectNotes.includes("rank-expert-double") && targetActor) {
@@ -16286,6 +16415,11 @@ export class PokRoleActor extends Actor {
   }
 
   async _applyRoundEndStatusDamage() {
+    // Magic Guard: immune to all status damage
+    const magicGuardAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    if (["magic-guard", "magic guard", "magicguard"].includes(magicGuardAbility)) {
+      return { totalDamage: 0, label: "Magic Guard prevents status damage" };
+    }
     const conditionFlags = this.getConditionFlags();
     let totalDamage = 0;
     const statusParts = [];
@@ -16347,6 +16481,14 @@ export class PokRoleActor extends Actor {
     const localizedWeather = this._localizeWeatherName(weather);
     if (weather === "none") {
       return { totalDamage: 0, label: game.i18n.localize("POKROLE.Common.None") };
+    }
+    // Magic Guard: immune to weather damage
+    const weatherAbilityMG = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    if (["magic-guard", "magic guard", "magicguard"].includes(weatherAbilityMG)) {
+      return {
+        totalDamage: 0,
+        label: game.i18n.format("POKROLE.Chat.WeatherNoDamage", { weather: localizedWeather })
+      };
     }
     // Umbrella: immune to weather damage
     if (this._getHeldItemData()?.immuneToWeather) {
@@ -18846,6 +18988,18 @@ export class PokRoleActor extends Actor {
 
   _evaluateTypeInteraction(moveType, targetActor) {
     const normalizedMoveType = this._normalizeTypeKey(moveType);
+    // Levitate: immune to Ground-type moves
+    if (normalizedMoveType === "ground" && targetActor instanceof PokRoleActor) {
+      const defAbilityLev = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
+      if (["levitate"].includes(defAbilityLev)) {
+        return {
+          immune: true,
+          weaknessBonus: 0,
+          resistancePenalty: 0,
+          label: "POKROLE.Chat.TypeEffect.Immune"
+        };
+      }
+    }
     if (
       normalizedMoveType === "ground" &&
       targetActor instanceof PokRoleActor &&
@@ -18860,6 +19014,14 @@ export class PokRoleActor extends Actor {
     }
     const defenderTypes = this._getEffectiveDefenderTypesForInteraction(targetActor, moveType);
     const interaction = this._evaluateTypeInteractionAgainstTypes(moveType, defenderTypes);
+    // Scrappy: Normal/Fighting moves hit Ghost types (remove immunity)
+    if (interaction.immune && ["normal", "fighting"].includes(normalizedMoveType)) {
+      const atkAbilityScrappy = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+      if (["scrappy"].includes(atkAbilityScrappy)) {
+        interaction.immune = false;
+        interaction.label = "POKROLE.Chat.TypeEffect.Neutral";
+      }
+    }
     // Ring Target: remove type immunities from the defender
     if (interaction.immune && targetActor?._getHeldItemData?.()?.removeTypeImmunities) {
       interaction.immune = false;
@@ -18870,6 +19032,30 @@ export class PokRoleActor extends Actor {
           : "POKROLE.Chat.TypeEffect.Neutral";
     }
     return interaction;
+  }
+
+  // Unaware: get defense ignoring all stat modifiers on the target
+  _getTargetDefenseIgnoringModifiers(targetActor, category) {
+    const normalizedCategory = this._normalizeMoveCombatCategory(category);
+    if (targetActor instanceof PokRoleActor) {
+      const defAttr = normalizedCategory === "special" ? "insight" : "vitality";
+      const currentValue = Math.max(toNumber(targetActor.system?.attributes?.[defAttr], 0), 0);
+      // Subtract all managed modifier effects on this attribute
+      const modifiers = this._getManagedModifierEffectsForPath(targetActor, `system.attributes.${defAttr}`);
+      let totalModifier = 0;
+      for (const mod of modifiers) {
+        const flags = mod.getFlag?.(POKROLE.ID, "automation") ?? {};
+        totalModifier += Math.floor(toNumber(flags?.amountApplied, 0));
+      }
+      const baseValue = Math.max(currentValue - totalModifier, 0);
+      // Still add weather bonus and held item bonus
+      const weather = targetActor.getActiveWeatherKey?.() ?? "none";
+      const weatherBonus = targetActor._getWeatherDefenseBonusForStat?.(normalizedCategory, weather) ?? 0;
+      const defKey = normalizedCategory === "special" ? "spDef" : "def";
+      const heldDefBonus = (targetActor._getHeldItemStatBonus?.(defKey) ?? 0) + (targetActor._getHeldItemEvioliteDefenseBonus?.() ?? 0);
+      return baseValue + weatherBonus + heldDefBonus;
+    }
+    return this._getTargetDefense(targetActor, category);
   }
 
   _getTargetDefense(targetActor, category) {
