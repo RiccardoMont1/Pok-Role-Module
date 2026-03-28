@@ -605,6 +605,21 @@
         "Paralysis": "Paralysis",
         "Confusion": "Confusion"
       },
+      "Pokeball": {
+        "Title": "Pokeball Settings",
+        "SealPower": "Seal Potency",
+        "SpecialEffect": "Special Effect",
+        "HealsOnCapture": "Heal On Capture",
+        "EffectNone": "None",
+        "EffectQuick": "Quick Ball (Round 1: 9, -2/round)",
+        "EffectNet": "Sub Ball (Water: Great Ball power)",
+        "EffectHeal": "Heal Ball (Heals on capture)",
+        "EffectDusk": "Dusk Ball",
+        "EffectFast": "Fast Ball",
+        "EffectHeavy": "Heavy Ball",
+        "EffectLuxury": "Luxury Ball",
+        "EffectOld": "Old Pokeball"
+      },
       "Held": {
         "Title": "Held Item",
         "PassiveEffect": "Passive Effect",
@@ -921,7 +936,7 @@
       "CaptureDuskContextPrompt": "Is the current scene considered a cave/underground area for {item}?",
       "CaptureSealBase": "Base seal potency",
       "CaptureSealQuick": "Quick Ball round {round}",
-      "CaptureSealNet": "Net Ball vs Water-type target",
+      "CaptureSealNet": "Sub Ball vs Water-type target",
       "CaptureSealDuskCave": "Cave bonus",
       "CaptureSealDuskNight": "Night bonus",
       "CaptureSealFast": "Fast Ball uses target Dexterity",

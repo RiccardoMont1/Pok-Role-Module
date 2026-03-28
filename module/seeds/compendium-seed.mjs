@@ -5,10 +5,26 @@ import { ABILITY_COMPENDIUM_ENTRIES } from "./generated/ability-seeds.mjs";
 import { POKEMON_ACTOR_COMPENDIUM_ENTRIES } from "./generated/pokemon-actor-seeds.mjs";
 import { HELD_ITEM_COMPENDIUM_ENTRIES } from "./generated/held-item-seeds.mjs";
 
-export const COMPENDIUM_SEED_VERSION = "2026-03-26-held-items-v3";
+export const COMPENDIUM_SEED_VERSION = "2026-03-28-pokeball-sub-ball-v1";
 const VALID_ITEM_TYPES = new Set(["move", "gear", "ability", "weather", "status", "pokedex"]);
 const VALID_ACTOR_TYPES = new Set(["trainer", "pokemon"]);
 const LEGACY_SYSTEM_FLAG_KEYS = Object.freeze(["pok-role-module", "pok-role-system"]);
+const RAW_ITEM_SPRITES_BASE = "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites";
+const ITEM_SPRITE_FALLBACK_BY_FILENAME = Object.freeze({
+  "old-pokeball.png": "pokeball.png",
+  "dusk-ball.png": "pokeball.png",
+  "fast-ball.png": "pokeball.png",
+  "quick-ball.png": "greatball.png",
+  "luxury-ball.png": "pokeball.png",
+  "heavy-ball.png": "greatball.png",
+  "heal-ball.png": "pokeball.png"
+});
+
+function getUpstreamItemSpritePath(filename, fallbackFilename = "pokeball.png") {
+  const normalizedFilename = `${filename ?? ""}`.trim() || fallbackFilename;
+  const resolvedFilename = ITEM_SPRITE_FALLBACK_BY_FILENAME[normalizedFilename] ?? normalizedFilename;
+  return `${RAW_ITEM_SPRITES_BASE}/${resolvedFilename}`;
+}
 
 function getSystemRootPath() {
   return `${game.system?.path ?? `systems/${POKROLE.ID}`}`.replace(/\/+$/, "");
@@ -357,78 +373,84 @@ const ITEM_SEEDS = Object.freeze({
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 4, specialEffect: "none" },
-      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/pokeball.png",
+      img: getUpstreamItemSpritePath("pokeball.png"),
       description: "Seal potency of 4 dice. A basic ball used for catching Pokemon and carrying heavy items."
     }),
     makeGear("trainer-greatball", "Greatball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 6, specialEffect: "none" },
-      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/greatball.png",
+      img: getUpstreamItemSpritePath("greatball.png"),
       description: "Seal potency of 6 dice. A sturdier barrier protects the seal so you have an easier time catching Pokemon."
     }),
     makeGear("trainer-ultraball", "Ultraball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 8, specialEffect: "none" },
-      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/ultraball.png",
+      img: getUpstreamItemSpritePath("ultraball.png"),
       description: "Seal potency of 8 dice. The best seal in the market to ensure the catch of stronger Pokemon."
     }),
     makeGear("trainer-masterball", "Masterball", {
       category: "pokeball",
-      consumable: false,
       canUseInBattle: true,
       pokeball: { sealPower: 20, specialEffect: "none" },
-      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/masterball.png",
+      img: getUpstreamItemSpritePath("masterball.png"),
       description: "It's been long rumored that a mighty pokeball with the strongest seal in existance is in development. But no one has truly seen it in action."
     }),
     makeGear("trainer-old-pokeball", "Old Pokeball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 3, specialEffect: "old" },
-      img: "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites/pokeball.png",
+      img: getUpstreamItemSpritePath("old-pokeball.png", "pokeball.png"),
       description: "Rare. An old model of Pokeball, now a collector's item."
     }),
     makeGear("trainer-dusk-ball", "Dusk Ball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 6, specialEffect: "dusk" },
+      img: getUpstreamItemSpritePath("dusk-ball.png", "pokeball.png"),
       description: "Uncommon. The seal on this ball gets stronger the darker it gets. Increase seal potency by 4 if you are in a cave and/or by 5 if it's night time."
     }),
     makeGear("trainer-fast-ball", "Fast Ball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 5, specialEffect: "fast" },
+      img: getUpstreamItemSpritePath("fast-ball.png", "pokeball.png"),
       description: "Uncommon. This seal potency is equal to the Dexterity Score of the Pokemon you are trying to catch. Up to 9 dice."
     }),
     makeGear("trainer-heavy-ball", "Heavy Ball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 6, specialEffect: "heavy" },
+      img: getUpstreamItemSpritePath("heavy-ball.png", "greatball.png"),
       description: "Uncommon. Increase seal potency by 1 for every 50 lbs/25kg, on the Pokemon you are trying to catch. Up to 5 dice may be added this way."
     }),
     makeGear("trainer-luxury-ball", "Luxury Ball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 4, specialEffect: "luxury" },
+      img: getUpstreamItemSpritePath("luxury-ball.png", "pokeball.png"),
       description: "Very Rare. Any Pokemon caught with this ball will have their Happiness Score increased by 1."
     }),
     makeGear("trainer-quick-ball", "Quick Ball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 9, specialEffect: "quick" },
+      img: getUpstreamItemSpritePath("quick-ball.png", "greatball.png"),
       description: "Uncommon. The seal on this ball works on a timer. Starting with a max potency of 9 dice on the first Round of battle and reducing the seal potency by 2 each Round that passes."
     }),
-    makeGear("trainer-net-ball", "Net Ball", {
+    makeGear("trainer-net-ball", "Sub Ball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 4, specialEffect: "net" },
+      img: getUpstreamItemSpritePath("pokeball.png"),
       description: "Uncommon. Normally has the seal potency of a Pokeball (4 dice), but against Water-type Pokemon it has the seal potency of a Greatball (6 dice)."
     }),
     makeGear("trainer-heal-ball", "Heal Ball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 4, specialEffect: "heal", healsOnCapture: true },
+      img: getUpstreamItemSpritePath("pokeball.png"),
       description: "Uncommon. Has the seal potency of a Pokeball (4 dice) but fully heals the Pokemon once captured."
     }),
 

@@ -17766,10 +17766,6 @@ export class PokRoleActor extends Actor {
       await resolvedTrainerActor._removeCombatantFromBattleLocal(combat, targetCombatant);
     }
 
-    if (resolvedGearItem?.system?.consumable) {
-      await resolvedTrainerActor._consumeGearItem(resolvedGearItem);
-    }
-
     return {
       addedToParty,
       partyFull: !canAddToParty,
@@ -17860,9 +17856,8 @@ export class PokRoleActor extends Actor {
           combat: options?.combat ?? game.combat ?? null
         });
       }
-    } else if (criticalFailure && resolvedGearItem.system?.consumable) {
-      await resolvedTrainerActor._consumeGearItem(resolvedGearItem);
     }
+    await resolvedTrainerActor._consumeGearItem(resolvedGearItem);
 
     const outcomeKey = captured
       ? "POKROLE.Chat.CaptureOutcomeCaught"
@@ -17872,9 +17867,6 @@ export class PokRoleActor extends Actor {
           ? "POKROLE.Chat.CaptureOutcomeAlmost"
           : "POKROLE.Chat.CaptureOutcomeMissed";
     const notes = [];
-    if (!captured && !criticalFailure) {
-      notes.push(game.i18n.localize("POKROLE.Chat.CaptureBallRecoverable"));
-    }
     if (criticalFailure) {
       notes.push(game.i18n.localize("POKROLE.Chat.CaptureBallBroken"));
     }
@@ -17965,7 +17957,8 @@ export class PokRoleActor extends Actor {
     const gearCategory = `${gearItem.system?.category ?? ""}`.trim().toLowerCase();
     const pocket = `${gearItem.system.pocket ?? "main"}`.toLowerCase();
     const pocketUsableInBattle = pocket === "potions" || pocket === "small" || gearCategory === "pokeball";
-    if (game.combat && (!pocketUsableInBattle || !gearItem.system.canUseInBattle)) {
+    const battleUsable = gearCategory === "pokeball" ? true : Boolean(gearItem.system.canUseInBattle);
+    if (game.combat && (!pocketUsableInBattle || !battleUsable)) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.GearNotUsableInBattle"));
       return null;
     }

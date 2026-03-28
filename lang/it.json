@@ -933,7 +933,7 @@
       "CaptureDuskContextPrompt": "La scena corrente conta come grotta/area sotterranea per {item}?",
       "CaptureSealBase": "Potenza sigillo base",
       "CaptureSealQuick": "Quick Ball round {round}",
-      "CaptureSealNet": "Net Ball contro bersaglio Acqua",
+      "CaptureSealNet": "Sub Ball contro bersaglio Acqua",
       "CaptureSealDuskCave": "Bonus grotta",
       "CaptureSealDuskNight": "Bonus notte",
       "CaptureSealFast": "La Fast Ball usa la Destrezza del bersaglio",

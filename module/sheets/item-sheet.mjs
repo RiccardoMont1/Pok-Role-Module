@@ -645,6 +645,11 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
       if (pocket === "held") {
         formData["system.pocket"] = "main";
       }
+      const gearCategory = `${formData["system.category"] ?? this.item.system?.category ?? "other"}`.trim().toLowerCase();
+      if (gearCategory === "pokeball") {
+        formData["system.consumable"] = true;
+        formData["system.canUseInBattle"] = true;
+      }
     }
     return super._updateObject(event, formData);
   }
