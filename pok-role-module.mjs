@@ -83,6 +83,45 @@ async function handleCombatMutationSocketRequest(message = {}) {
     ? game.actors?.get(`${payload.requesterActorId}`.trim()) ?? null
     : null;
 
+  if (operation === "capturePokemon") {
+    if (!canUserRequestCombatMutation(requesterUser, requesterActor)) {
+      return { ok: false, error: "Requester lacks permission to resolve capture." };
+    }
+    const trainerActor =
+      game.actors?.get(`${payload?.trainerActorId ?? ""}`.trim()) ??
+      requesterActor ??
+      null;
+    const targetActor = game.actors?.get(`${payload?.targetActorId ?? ""}`.trim()) ?? null;
+    const gearItem = trainerActor?.items?.get?.(`${payload?.gearItemId ?? ""}`.trim()) ?? null;
+    const captureCombat = combatId ? game.combats?.get(combatId) ?? null : null;
+    if (!(trainerActor instanceof PokRoleActor) || trainerActor.type !== "trainer") {
+      return { ok: false, error: "Trainer actor not found for capture." };
+    }
+    if (!(targetActor instanceof PokRoleActor) || targetActor.type !== "pokemon") {
+      return { ok: false, error: "Pokemon target not found for capture." };
+    }
+    if (!gearItem || gearItem.type !== "gear") {
+      return { ok: false, error: "Pokeball item not found for capture." };
+    }
+    try {
+      const result = await trainerActor._applyPokeballCaptureSuccessLocal(
+        trainerActor,
+        targetActor,
+        gearItem,
+        {
+          ...(payload?.options ?? {}),
+          combat: captureCombat
+        }
+      );
+      return { ok: true, ...result };
+    } catch (error) {
+      return {
+        ok: false,
+        error: error instanceof Error ? error.message : `${error ?? "Capture failed"}`
+      };
+    }
+  }
+
   if (!combat) {
     return { ok: false, error: `Combat ${combatId} not found.` };
   }

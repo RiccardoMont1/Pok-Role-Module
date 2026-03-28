@@ -166,6 +166,27 @@ const CONDITION_KEYS = Object.freeze([
   ),
   "dead"
 ]);
+const CAPTURE_AILMENT_BONUS_KEYS = Object.freeze([
+  "burn",
+  "frozen",
+  "paralyzed",
+  "poisoned",
+  "badly-poisoned",
+  "sleep",
+  "confused",
+  "infatuated"
+]);
+const CAPTURE_REQUIRED_SUCCESSES_BY_TIER = Object.freeze({
+  none: 3,
+  starter: 3,
+  rookie: 4,
+  standard: 6,
+  advanced: 8,
+  expert: 9,
+  ace: 10,
+  master: 12,
+  champion: 14
+});
 const DEFAULT_CLEANSE_CONDITION_KEYS = Object.freeze([
   "burn",
   "frozen",
@@ -17444,6 +17465,490 @@ export class PokRoleActor extends Actor {
     };
   }
 
+  _getPokeballCaptureRequiredSuccesses(targetActor) {
+    const tierKey = `${targetActor?.system?.tier ?? "starter"}`.trim().toLowerCase();
+    return CAPTURE_REQUIRED_SUCCESSES_BY_TIER[tierKey] ?? CAPTURE_REQUIRED_SUCCESSES_BY_TIER.starter;
+  }
+
+  _getPokeballCaptureBonusSuccesses(targetActor) {
+    if (!(targetActor instanceof PokRoleActor)) {
+      return { total: 0, entries: [] };
+    }
+    const hpValue = Math.max(toNumber(targetActor.system?.resources?.hp?.value, 0), 0);
+    const hpMax = Math.max(toNumber(targetActor.system?.resources?.hp?.max, 1), 1);
+    const isFainted = hpValue <= 0 || targetActor._isConditionActive?.("fainted") || targetActor._isConditionActive?.("dead");
+    if (isFainted) {
+      return {
+        total: 0,
+        entries: [{
+          label: game.i18n.localize("POKROLE.Chat.CaptureBonusFainted"),
+          value: 0
+        }]
+      };
+    }
+
+    const entries = [];
+    let total = 0;
+    if (hpValue <= Math.floor(hpMax / 2)) {
+      total += 1;
+      entries.push({
+        label: game.i18n.localize("POKROLE.Chat.CaptureBonusHalfHp"),
+        value: 1
+      });
+    }
+    if (hpValue <= 1) {
+      total += 2;
+      entries.push({
+        label: game.i18n.localize("POKROLE.Chat.CaptureBonusOneHp"),
+        value: 2
+      });
+    }
+
+    for (const conditionKey of CAPTURE_AILMENT_BONUS_KEYS) {
+      if (!targetActor._isConditionActive?.(conditionKey)) continue;
+      total += 1;
+      entries.push({
+        label: game.i18n.format("POKROLE.Chat.CaptureBonusStatus", {
+          condition: this._localizeConditionName(conditionKey)
+        }),
+        value: 1
+      });
+    }
+
+    return { total, entries };
+  }
+
+  _getPokeballThrowAttributeKey() {
+    const dexterity = Math.max(toNumber(this.getTraitValue?.("dexterity"), 0), 0);
+    const strength = Math.max(toNumber(this.getTraitValue?.("strength"), 0), 0);
+    return dexterity >= strength ? "dexterity" : "strength";
+  }
+
+  _isSceneNightForCapture(scene = canvas?.scene ?? game.scenes?.current ?? null) {
+    return toNumber(scene?.darkness, 0) >= 0.5;
+  }
+
+  async _promptPokeballCaveCheck(ballName) {
+    const dialogApi = foundry?.applications?.api?.DialogV2;
+    if (typeof dialogApi?.wait === "function") {
+      const choice = await dialogApi.wait({
+        window: {
+          title: game.i18n.format("POKROLE.Chat.CaptureDuskContextTitle", { item: ballName })
+        },
+        content: `<p>${game.i18n.format("POKROLE.Chat.CaptureDuskContextPrompt", { item: ballName })}</p>`,
+        buttons: [
+          {
+            action: "yes",
+            label: game.i18n.localize("POKROLE.Common.Yes"),
+            default: true,
+            callback: () => true
+          },
+          {
+            action: "no",
+            label: game.i18n.localize("POKROLE.Common.No"),
+            callback: () => false
+          }
+        ]
+      });
+      return choice === true;
+    }
+
+    return new Promise((resolve) => {
+      new Dialog({
+        title: game.i18n.format("POKROLE.Chat.CaptureDuskContextTitle", { item: ballName }),
+        content: `<p>${game.i18n.format("POKROLE.Chat.CaptureDuskContextPrompt", { item: ballName })}</p>`,
+        buttons: {
+          yes: {
+            icon: "<i class='fas fa-check'></i>",
+            label: game.i18n.localize("POKROLE.Common.Yes"),
+            callback: () => resolve(true)
+          },
+          no: {
+            icon: "<i class='fas fa-times'></i>",
+            label: game.i18n.localize("POKROLE.Common.No"),
+            callback: () => resolve(false)
+          }
+        },
+        default: "yes",
+        close: () => resolve(false)
+      }, { classes: ["pok-role-dialog"] }).render(true);
+    });
+  }
+
+  async _resolvePokeballSealSetup(gearItem, targetActor, options = {}) {
+    const specialEffect = `${gearItem?.system?.pokeball?.specialEffect ?? "none"}`.trim().toLowerCase();
+    let sealPower = Math.max(toNumber(gearItem?.system?.pokeball?.sealPower, 0), 0);
+    const entries = [];
+
+    switch (specialEffect) {
+      case "quick": {
+        const roundNumber = Math.max(Math.floor(toNumber(options?.combat?.round ?? game.combat?.round, 1)), 1);
+        sealPower = Math.max(9 - ((roundNumber - 1) * 2), 0);
+        entries.push({
+          label: game.i18n.format("POKROLE.Chat.CaptureSealQuick", { round: roundNumber }),
+          value: sealPower
+        });
+        break;
+      }
+      case "net": {
+        const againstWater = targetActor?.hasType?.("water") === true;
+        sealPower = againstWater ? 6 : sealPower;
+        if (againstWater) {
+          entries.push({
+            label: game.i18n.localize("POKROLE.Chat.CaptureSealNet"),
+            value: 6
+          });
+        }
+        break;
+      }
+      case "dusk": {
+        const scene = options?.scene ?? canvas?.scene ?? game.scenes?.current ?? null;
+        const isNight = options?.isNight === true || this._isSceneNightForCapture(scene);
+        const isCave = options?.isCave === true || await this._promptPokeballCaveCheck(gearItem?.name ?? "Dusk Ball");
+        const caveBonus = isCave ? 4 : 0;
+        const nightBonus = isNight ? 5 : 0;
+        sealPower += caveBonus + nightBonus;
+        entries.push({
+          label: game.i18n.localize("POKROLE.Chat.CaptureSealBase"),
+          value: Math.max(toNumber(gearItem?.system?.pokeball?.sealPower, 0), 0)
+        });
+        if (caveBonus > 0) {
+          entries.push({
+            label: game.i18n.localize("POKROLE.Chat.CaptureSealDuskCave"),
+            value: caveBonus
+          });
+        }
+        if (nightBonus > 0) {
+          entries.push({
+            label: game.i18n.localize("POKROLE.Chat.CaptureSealDuskNight"),
+            value: nightBonus
+          });
+        }
+        break;
+      }
+      case "fast": {
+        sealPower = clamp(Math.max(toNumber(targetActor?.getTraitValue?.("dexterity"), 0), 0), 0, 9);
+        entries.push({
+          label: game.i18n.localize("POKROLE.Chat.CaptureSealFast"),
+          value: sealPower
+        });
+        break;
+      }
+      case "heavy": {
+        const weightKg = Math.max(this._parseWeightKg(targetActor?.system?.weight), 0);
+        const bonus = clamp(Math.floor(weightKg / 25), 0, 5);
+        sealPower += bonus;
+        entries.push({
+          label: game.i18n.localize("POKROLE.Chat.CaptureSealBase"),
+          value: Math.max(toNumber(gearItem?.system?.pokeball?.sealPower, 0), 0)
+        });
+        if (bonus > 0) {
+          entries.push({
+            label: game.i18n.format("POKROLE.Chat.CaptureSealHeavy", { weight: weightKg }),
+            value: bonus
+          });
+        }
+        break;
+      }
+      default: {
+        entries.push({
+          label: game.i18n.localize("POKROLE.Chat.CaptureSealBase"),
+          value: sealPower
+        });
+        break;
+      }
+    }
+
+    return {
+      specialEffect,
+      sealPower,
+      entries
+    };
+  }
+
+  async _syncPokemonOwnershipFromTrainerLocal(pokemonActor, trainerActor = this) {
+    if (!(pokemonActor instanceof PokRoleActor) || pokemonActor.type !== "pokemon") return false;
+    if (!(trainerActor instanceof PokRoleActor) || trainerActor.type !== "trainer") return false;
+    const trainerOwnership = trainerActor.ownership ?? {};
+    const pokemonOwnership = foundry.utils.deepClone(pokemonActor.ownership ?? {});
+    let changed = false;
+    for (const [userId, level] of Object.entries(trainerOwnership)) {
+      if (userId === "default") continue;
+      if (level === CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER && pokemonOwnership[userId] !== CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) {
+        pokemonOwnership[userId] = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
+        changed = true;
+      }
+    }
+    if (changed) {
+      await pokemonActor.update({ ownership: pokemonOwnership });
+    }
+    return changed;
+  }
+
+  async _setPokemonTokensFriendlyLocal(pokemonActor) {
+    if (!(pokemonActor instanceof PokRoleActor) || pokemonActor.type !== "pokemon") return 0;
+    const friendlyDisposition = CONST.TOKEN_DISPOSITIONS?.FRIENDLY ?? 1;
+    let updated = 0;
+    const prototypeDisposition = Number(
+      pokemonActor.prototypeToken?.disposition
+        ?? pokemonActor._source?.prototypeToken?.disposition
+    );
+    if (prototypeDisposition !== friendlyDisposition) {
+      await pokemonActor.update({ "prototypeToken.disposition": friendlyDisposition });
+      updated += 1;
+    }
+    const scene = canvas?.scene ?? null;
+    if (!scene) return updated;
+    const matchingTokens = (scene.tokens ?? [])
+      .filter((tokenDoc) => {
+        const actorId = `${tokenDoc?.actorId ?? tokenDoc?.actor?.id ?? ""}`.trim();
+        return actorId === pokemonActor.id;
+      });
+    for (const tokenDoc of matchingTokens) {
+      if (Number(tokenDoc?.disposition) === friendlyDisposition) continue;
+      await tokenDoc.update({ disposition: friendlyDisposition });
+      updated += 1;
+    }
+    return updated;
+  }
+
+  async _applyPokeballCaptureSuccessLocal(trainerActor, targetActor, gearItem, options = {}) {
+    const resolvedTrainerActor = game.actors?.get(`${trainerActor?.id ?? ""}`.trim()) ?? trainerActor ?? null;
+    const resolvedTargetActor = game.actors?.get(`${targetActor?.id ?? ""}`.trim()) ?? targetActor ?? null;
+    const resolvedGearItem = resolvedTrainerActor?.items?.get?.(`${gearItem?.id ?? ""}`.trim()) ?? gearItem ?? null;
+    if (!(resolvedTrainerActor instanceof PokRoleActor) || resolvedTrainerActor.type !== "trainer") {
+      throw new Error(game.i18n.localize("POKROLE.Errors.CaptureRequiresTrainer"));
+    }
+    if (!(resolvedTargetActor instanceof PokRoleActor) || resolvedTargetActor.type !== "pokemon") {
+      throw new Error(game.i18n.localize("POKROLE.Errors.CaptureNeedsPokemonTarget"));
+    }
+    const caughtWhileFainted = Boolean(options?.caughtWhileFainted);
+    const ballSpecialEffect = `${resolvedGearItem?.system?.pokeball?.specialEffect ?? "none"}`.trim().toLowerCase();
+    const partyIds = Array.isArray(resolvedTrainerActor.system?.party) ? [...resolvedTrainerActor.system.party] : [];
+    const alreadyInParty = partyIds.includes(resolvedTargetActor.id);
+    const canAddToParty = alreadyInParty || partyIds.length < 6;
+    const baseHappiness = caughtWhileFainted ? 0 : 2;
+    const baseLoyalty = caughtWhileFainted ? 0 : 1;
+    const happinessValue = clamp(baseHappiness + (ballSpecialEffect === "luxury" ? 1 : 0), 0, 5);
+    const loyaltyValue = clamp(baseLoyalty, 0, 5);
+    const updates = {
+      "system.currentTrainer": resolvedTrainerActor.id,
+      "system.happiness": happinessValue,
+      "system.loyalty": loyaltyValue
+    };
+    if (!`${resolvedTargetActor.system?.caughtBy ?? ""}`.trim()) {
+      updates["system.caughtBy"] = resolvedTrainerActor.id;
+    }
+    await resolvedTargetActor.update(updates);
+    await resolvedTrainerActor._syncPokemonOwnershipFromTrainerLocal(resolvedTargetActor, resolvedTrainerActor);
+    await resolvedTrainerActor._setPokemonTokensFriendlyLocal(resolvedTargetActor);
+
+    let addedToParty = false;
+    if (!alreadyInParty && canAddToParty) {
+      partyIds.push(resolvedTargetActor.id);
+      await resolvedTrainerActor.update({ "system.party": partyIds });
+      addedToParty = true;
+    }
+
+    if (ballSpecialEffect === "heal" || resolvedGearItem?.system?.pokeball?.healsOnCapture) {
+      const hpCurrent = Math.max(toNumber(resolvedTargetActor.system?.resources?.hp?.value, 0), 0);
+      const hpMax = Math.max(toNumber(resolvedTargetActor.system?.resources?.hp?.max, 1), 1);
+      await resolvedTrainerActor._safeApplyHeal(resolvedTargetActor, Math.max(hpMax - hpCurrent, 0), {
+        healingCategory: "complete",
+        ignoreBattleLimit: true,
+        restoreAwareness: true
+      });
+    }
+
+    const combat = options?.combat ?? game.combat ?? null;
+    const targetCombatant = combat ? resolvedTrainerActor._getCombatantForActor(resolvedTargetActor, combat) : null;
+    if (combat && targetCombatant) {
+      await resolvedTrainerActor._removeCombatantFromBattleLocal(combat, targetCombatant);
+    }
+
+    if (resolvedGearItem?.system?.consumable) {
+      await resolvedTrainerActor._consumeGearItem(resolvedGearItem);
+    }
+
+    return {
+      addedToParty,
+      partyFull: !canAddToParty,
+      happinessValue,
+      loyaltyValue,
+      healApplied: Boolean(ballSpecialEffect === "heal" || gearItem?.system?.pokeball?.healsOnCapture),
+      removedFromCombat: Boolean(targetCombatant)
+    };
+  }
+
+  async _capturePokemonWithPokeball(gearItem, targetActor, options = {}) {
+    const resolvedTrainerActor = game.actors?.get(`${this?.id ?? ""}`.trim()) ?? this;
+    const resolvedTargetActor = game.actors?.get(`${targetActor?.id ?? ""}`.trim()) ?? targetActor ?? null;
+    const resolvedGearItem = resolvedTrainerActor?.items?.get?.(`${gearItem?.id ?? ""}`.trim()) ?? gearItem ?? null;
+    if (resolvedTrainerActor.type !== "trainer") {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.CaptureRequiresTrainer"));
+      return null;
+    }
+    if (!(resolvedTargetActor instanceof PokRoleActor) || resolvedTargetActor.type !== "pokemon") {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.CaptureNeedsPokemonTarget"));
+      return null;
+    }
+
+    const currentTrainerId = `${resolvedTargetActor.system?.currentTrainer ?? ""}`.trim();
+    if (currentTrainerId) {
+      ui.notifications.warn(
+        game.i18n.localize(
+          currentTrainerId === resolvedTrainerActor.id
+            ? "POKROLE.Errors.CaptureTargetAlreadyOwned"
+            : "POKROLE.Errors.CaptureTargetNotWild"
+        )
+      );
+      return null;
+    }
+    if (resolvedTargetActor._isConditionActive?.("dead")) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.CaptureTargetDead"));
+      return null;
+    }
+
+    const throwAttributeKey = resolvedTrainerActor._getPokeballThrowAttributeKey();
+    const throwSkillValue = Math.max(toNumber(resolvedTrainerActor.getSkillValue?.("throw"), 0), 0);
+    const throwAttributeValue = Math.max(toNumber(resolvedTrainerActor.getTraitValue?.(throwAttributeKey), 0), 0);
+    const throwDicePool = Math.max(throwAttributeValue + throwSkillValue, 1);
+    const throwRemoved = resolvedTrainerActor.getPainPenalty?.() ?? 0;
+    const throwRequired = 1;
+    const throwRoll = await new Roll(successPoolFormula(throwDicePool)).evaluate();
+    const throwRawSuccesses = Math.max(toNumber(throwRoll.total, 0), 0);
+    const throwNetSuccesses = throwRawSuccesses - Math.max(toNumber(throwRemoved, 0), 0);
+    const throwHit = throwNetSuccesses >= throwRequired;
+
+    const captureRequired = resolvedTrainerActor._getPokeballCaptureRequiredSuccesses(resolvedTargetActor);
+    const captureBonus = resolvedTrainerActor._getPokeballCaptureBonusSuccesses(resolvedTargetActor);
+    const sealSetup = throwHit
+      ? await resolvedTrainerActor._resolvePokeballSealSetup(resolvedGearItem, resolvedTargetActor, {
+          combat: options?.combat ?? game.combat ?? null,
+          scene: options?.scene ?? canvas?.scene ?? null
+        })
+      : { sealPower: 0, entries: [], specialEffect: "none" };
+    const normalizedSealPower = Math.max(toNumber(sealSetup.sealPower, 0), 0);
+    const sealRoll = throwHit && normalizedSealPower > 0
+      ? await new Roll(successPoolFormula(normalizedSealPower)).evaluate()
+      : null;
+    const sealRawSuccesses = Math.max(toNumber(sealRoll?.total, 0), 0);
+    const captureTotalSuccesses = throwHit ? sealRawSuccesses + captureBonus.total : 0;
+    const captured = throwHit && captureTotalSuccesses >= captureRequired;
+    const criticalFailure = throwHit && captureTotalSuccesses <= (captureRequired - 3);
+    const caughtWhileFainted =
+      Math.max(toNumber(resolvedTargetActor.system?.resources?.hp?.value, 0), 0) <= 0 ||
+      resolvedTargetActor._isConditionActive?.("fainted");
+    let captureMutationResult = null;
+
+    if (captured) {
+      if (!game.user?.isGM) {
+        const response = await resolvedTrainerActor._requestCombatMutation("capturePokemon", {
+          combatId: game.combat?.id ?? null,
+          trainerActorId: resolvedTrainerActor.id,
+          targetActorId: resolvedTargetActor.id,
+          gearItemId: resolvedGearItem.id,
+          options: {
+            caughtWhileFainted,
+            combatId: game.combat?.id ?? null
+          }
+        });
+        captureMutationResult = response ?? null;
+      } else {
+        captureMutationResult = await resolvedTrainerActor._applyPokeballCaptureSuccessLocal(resolvedTrainerActor, resolvedTargetActor, resolvedGearItem, {
+          caughtWhileFainted,
+          combat: options?.combat ?? game.combat ?? null
+        });
+      }
+    } else if (criticalFailure && resolvedGearItem.system?.consumable) {
+      await resolvedTrainerActor._consumeGearItem(resolvedGearItem);
+    }
+
+    const outcomeKey = captured
+      ? "POKROLE.Chat.CaptureOutcomeCaught"
+      : criticalFailure
+        ? "POKROLE.Chat.CaptureOutcomeBrokeFree"
+        : throwHit
+          ? "POKROLE.Chat.CaptureOutcomeAlmost"
+          : "POKROLE.Chat.CaptureOutcomeMissed";
+    const notes = [];
+    if (!captured && !criticalFailure) {
+      notes.push(game.i18n.localize("POKROLE.Chat.CaptureBallRecoverable"));
+    }
+    if (criticalFailure) {
+      notes.push(game.i18n.localize("POKROLE.Chat.CaptureBallBroken"));
+    }
+    if (captureMutationResult?.healApplied) {
+      notes.push(game.i18n.localize("POKROLE.Chat.CaptureHealBall"));
+    }
+    if (captureMutationResult?.addedToParty) {
+      notes.push(game.i18n.localize("POKROLE.Chat.CaptureAddedToParty"));
+    }
+    if (captureMutationResult?.partyFull) {
+      notes.push(game.i18n.localize("POKROLE.Chat.CapturePartyFull"));
+    }
+    if (sealSetup.specialEffect === "luxury" && captured) {
+      notes.push(game.i18n.localize("POKROLE.Chat.CaptureLuxuryBall"));
+    }
+    if (caughtWhileFainted && captured) {
+      notes.push(game.i18n.localize("POKROLE.Chat.CaptureCaughtWhileFainted"));
+    }
+
+    const throwTraitLabel = resolvedTrainerActor.localizeTrait(throwAttributeKey);
+    const sealEntriesHtml = (sealSetup.entries ?? [])
+      .map((entry) => `<li>${entry.label}: ${entry.value >= 0 ? `+${entry.value}` : `${entry.value}`}</li>`)
+      .join("");
+    const bonusEntriesHtml = (captureBonus.entries ?? [])
+      .map((entry) => `<li>${entry.label}: ${entry.value >= 0 ? `+${entry.value}` : `${entry.value}`}</li>`)
+      .join("");
+    const notesHtml = notes.map((note) => `<li>${note}</li>`).join("");
+
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: resolvedTrainerActor }),
+      content: `
+        <div class="pok-role-chat-card arcade-red">
+          <header class="chat-card-header">
+            <h3>${resolvedGearItem.name}</h3>
+          </header>
+          <section class="chat-card-section">
+            <p><strong>${game.i18n.localize("POKROLE.Chat.Actor")}:</strong> ${resolvedTrainerActor.name}</p>
+            <p><strong>${game.i18n.localize("POKROLE.Chat.Target")}:</strong> ${resolvedTargetActor.name}</p>
+            <hr />
+            <p><strong>${game.i18n.localize("POKROLE.Chat.CaptureThrow")}</strong></p>
+            <p>${throwTraitLabel} + ${resolvedTrainerActor.localizeTrait("throw")}: ${throwDicePool}</p>
+            <p>${game.i18n.localize("POKROLE.Chat.RawSuccesses")}: ${throwRawSuccesses} | ${game.i18n.localize("POKROLE.Chat.RemovedSuccesses")}: ${throwRemoved} | ${game.i18n.localize("POKROLE.Chat.NetSuccesses")}: ${throwNetSuccesses}</p>
+            <p>${game.i18n.localize("POKROLE.Chat.RequiredSuccesses")}: ${throwRequired}</p>
+            <hr />
+            <p><strong>${game.i18n.localize("POKROLE.Chat.CaptureSeal")}</strong></p>
+            <p>${game.i18n.localize("POKROLE.Chat.CaptureSealPower")}: ${sealSetup.sealPower}</p>
+            ${sealEntriesHtml ? `<ul>${sealEntriesHtml}</ul>` : ""}
+            <p>${game.i18n.localize("POKROLE.Chat.RawSuccesses")}: ${sealRawSuccesses}</p>
+            <p>${game.i18n.localize("POKROLE.Chat.CaptureBonusSuccesses")}: ${captureBonus.total}</p>
+            ${bonusEntriesHtml ? `<ul>${bonusEntriesHtml}</ul>` : ""}
+            <p>${game.i18n.localize("POKROLE.Chat.CaptureTotalSuccesses")}: ${captureTotalSuccesses} / ${captureRequired}</p>
+            <p><strong>${game.i18n.localize("POKROLE.Chat.Result")}:</strong> ${game.i18n.localize(outcomeKey)}</p>
+            ${notesHtml ? `<hr /><ul>${notesHtml}</ul>` : ""}
+          </section>
+        </div>
+      `
+    });
+
+    return {
+      targetActor: resolvedTargetActor,
+      throwHit,
+      throwRawSuccesses,
+      throwNetSuccesses,
+      sealPower: sealSetup.sealPower,
+      sealRawSuccesses,
+      captureBonusSuccesses: captureBonus.total,
+      captureTotalSuccesses,
+      captureRequired,
+      captured,
+      criticalFailure,
+      captureMutationResult
+    };
+  }
+
   async useGearItem(itemId, options = {}) {
     const gearItem = this.items.get(itemId);
     if (!gearItem || gearItem.type !== "gear") {
@@ -17457,14 +17962,18 @@ export class PokRoleActor extends Actor {
       return null;
     }
 
+    const gearCategory = `${gearItem.system?.category ?? ""}`.trim().toLowerCase();
     const pocket = `${gearItem.system.pocket ?? "main"}`.toLowerCase();
-    const pocketUsableInBattle = pocket === "potions" || pocket === "small";
+    const pocketUsableInBattle = pocket === "potions" || pocket === "small" || gearCategory === "pokeball";
     if (game.combat && (!pocketUsableInBattle || !gearItem.system.canUseInBattle)) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.GearNotUsableInBattle"));
       return null;
     }
 
-    const targetActor = options.targetActor ?? getTargetActorFromUserSelection() ?? this;
+    const targetActor = options.targetActor ?? getTargetActorFromUserSelection() ?? (gearCategory === "pokeball" ? null : this);
+    if (gearCategory === "pokeball") {
+      return this._capturePokemonWithPokeball(gearItem, targetActor, options);
+    }
     if (gearItem.system.target === "trainer" && targetActor.type !== "trainer") {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.GearWrongTarget"));
       return null;
@@ -17596,6 +18105,7 @@ export class PokRoleActor extends Actor {
     const candidateItems = this.items
       .filter((item) => item.type === "gear")
       .filter((item) => Boolean(item.system?.canUseInBattle))
+      .filter((item) => `${item.system?.category ?? ""}`.trim().toLowerCase() !== "pokeball")
       .filter((item) => Math.max(toNumber(item.system?.quantity, 0), 0) > 0);
     if (!candidateItems.length) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.TrainerNoBattleItems"));
