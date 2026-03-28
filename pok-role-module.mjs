@@ -1825,6 +1825,28 @@ Hooks.on("deleteCombat", async (combat) => {
       try { await actor._clearBideState(); } catch (_e) { /* */ }
     }
 
+    // Protean / Libero: restore original types at combat end
+    try {
+      const proteanOriginal = actor.getFlag?.("pok-role-system", "proteanOriginalTypes");
+      console.log(`PokRole | [deleteCombat] ${actor.name}: proteanOriginalTypes =`, proteanOriginal);
+      if (proteanOriginal) {
+        const restorePrimary = proteanOriginal.primary || "none";
+        const restoreSecondary = proteanOriginal.secondary || "none";
+        console.log(`PokRole | [deleteCombat] Restoring ${actor.name} types to ${restorePrimary}/${restoreSecondary}`);
+        await actor.update({
+          "system.types.primary": restorePrimary,
+          "system.types.secondary": restoreSecondary
+        });
+        await actor.unsetFlag("pok-role-system", "proteanOriginalTypes");
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor }),
+          content: `<strong>${actor.name}'s</strong> types were restored to <strong>${restorePrimary}</strong>/<strong>${restoreSecondary}</strong>.`
+        });
+      }
+    } catch (e) {
+      console.warn(`PokRole | Protean type restore failed for ${actor.name}:`, e);
+    }
+
     // Sync condition flags after cleanup
     if (typeof actor._synchronizeConditionFlagsFromTemporaryEffects === "function") {
       try { await actor._synchronizeConditionFlagsFromTemporaryEffects(actor); } catch (_e) { /* */ }
