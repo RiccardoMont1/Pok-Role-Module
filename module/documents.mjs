@@ -13401,18 +13401,14 @@ export class PokRoleActor extends Actor {
     if (!targetActor || !(targetActor instanceof PokRoleActor)) return false;
     const defAbility = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
 
-    // Disguise: absorbs any first hit
+    // Disguise: absorbs any first hit with ZERO damage
     if (["disguise"].includes(defAbility)) {
       const active = targetActor.getFlag(POKROLE.ID, "disguiseActive");
       if (active) {
         await targetActor.unsetFlag(POKROLE.ID, "disguiseActive");
-        // Deal 1/8 max HP recoil to the Disguise user
-        const maxHp = Math.max(toNumber(targetActor.system?.resources?.hp?.max, 1), 1);
-        const recoil = Math.max(Math.floor(maxHp / 8), 1);
-        await this._safeApplyDamage(targetActor, recoil);
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor: targetActor }),
-          content: `<strong>${targetActor.name}'s</strong> Disguise absorbed the hit! (Disguise busted, took ${recoil} damage)`
+          content: `<strong>${targetActor.name}'s</strong> Disguise absorbed the hit completely! (Disguise busted)`
         });
         return true;
       }
@@ -13460,6 +13456,15 @@ export class PokRoleActor extends Actor {
       speaker: ChatMessage.getSpeaker({ actor: this }),
       content: `<strong>${this.name}'s</strong> Trace copied <strong>${randomFoe.name}'s</strong> <strong>${copiedAbility}</strong>!`
     });
+
+    // Now trigger the copied ability's enter-battle effect so it actually applies
+    try {
+      const copiedResults = await this.processAbilityTriggerEffects("enter-battle", context);
+      console.log(`PokRole | [Trace] Triggered enter-battle for copied ability "${copiedAbility}":`, copiedResults);
+    } catch (e) {
+      console.warn(`PokRole | [Trace] Failed to trigger copied ability effects:`, e);
+    }
+
     return { applied: true, detail: `Traced ${copiedAbility} from ${randomFoe.name}.` };
   }
 
@@ -13527,31 +13532,101 @@ export class PokRoleActor extends Actor {
    * Stores the disguise info and shows a fake name/image in chat.
    */
   async _applyIllusionAbility(context = {}) {
-    // Find the trainer/owner's other Pokémon to disguise as
     const combat = context.combat ?? game.combat;
-    const selfDisposition = combat ? this._getActorCombatSideDisposition(this, combat) : 0;
-    const allies = combat
-      ? (combat.combatants ?? [])
-          .map((c) => c?.actor)
-          .filter((a) => a instanceof PokRoleActor && a.id !== this.id &&
-            a.type === "pokemon" &&
-            this._getActorCombatSideDisposition(a, combat) === selfDisposition)
-      : [];
-    // Disguise as a random ally (or last one in list, like the games)
-    const disguiseTarget = allies.length > 0 ? allies[allies.length - 1] : null;
-    if (!disguiseTarget) return { applied: false, detail: "No ally to disguise as." };
+
+    // Determine the disguise target based on party order or wild status
+    let disguiseTarget = null;
+    const trainer = this._getTrainerActorForPokemon(this);
+
+    if (trainer) {
+      // Trainer-owned: use party order — first slot unless self is first, then second, etc.
+      const partyIds = Array.isArray(trainer.system?.party) ? trainer.system.party : [];
+      for (const partyId of partyIds) {
+        if (partyId === this.id) continue; // skip self
+        const candidate = game.actors.get(partyId);
+        if (candidate && candidate.type === "pokemon") {
+          disguiseTarget = candidate;
+          break;
+        }
+      }
+    } else {
+      // Wild Pokémon: pick a random non-legendary from the pokedex compendium
+      try {
+        const pokedexPack = game.packs.get(`${POKROLE.ID}.pokedex`);
+        if (pokedexPack) {
+          const index = await pokedexPack.getIndex();
+          const allEntries = index.contents ?? [...index];
+          // Filter out legendaries by loading documents and checking tier
+          const candidates = [];
+          for (const entry of allEntries) {
+            const doc = await pokedexPack.getDocument(entry._id);
+            if (!doc) continue;
+            const tier = `${doc.system?.tier ?? ""}`.trim().toLowerCase();
+            if (!["legendary", "mythical"].includes(tier)) {
+              candidates.push(doc);
+            }
+          }
+          if (candidates.length > 0) {
+            disguiseTarget = candidates[Math.floor(Math.random() * candidates.length)];
+          }
+        }
+      } catch (e) {
+        console.warn("PokRole | [Illusion] Failed to fetch pokedex compendium:", e);
+      }
+
+      // Fallback: try pokemon-actors compendium
+      if (!disguiseTarget) {
+        try {
+          const actorsPack = game.packs.get(`${POKROLE.ID}.pokemon-actors`);
+          if (actorsPack) {
+            const index = await actorsPack.getIndex();
+            const allEntries = index.contents ?? [...index];
+            if (allEntries.length > 0) {
+              const randomEntry = allEntries[Math.floor(Math.random() * allEntries.length)];
+              disguiseTarget = await actorsPack.getDocument(randomEntry._id);
+            }
+          }
+        } catch (e) {
+          console.warn("PokRole | [Illusion] Failed to fetch pokemon-actors compendium:", e);
+        }
+      }
+    }
+
+    if (!disguiseTarget) return { applied: false, detail: "No target to disguise as." };
+
+    // Get the token image from the disguise target
+    const disguiseTokenImg = disguiseTarget.prototypeToken?.texture?.src
+      ?? disguiseTarget.img
+      ?? "icons/svg/mystery-man.svg";
+    const disguiseName = disguiseTarget.name ?? "???";
+
+    // Save original token image and name for restoration
+    const selfToken = this.getActiveTokens?.(true)?.[0] ?? null;
+    const originalTokenImg = selfToken?.document?.texture?.src
+      ?? this.prototypeToken?.texture?.src
+      ?? this.img;
 
     await this.setFlag(POKROLE.ID, "illusionDisguise", {
-      name: disguiseTarget.name,
-      img: disguiseTarget.img,
+      name: disguiseName,
+      img: disguiseTokenImg,
       originalName: this.name,
-      originalImg: this.img
+      originalImg: this.img,
+      originalTokenImg: originalTokenImg
     });
+
+    // Change the token image on the scene to match the disguise
+    if (selfToken?.document) {
+      await selfToken.document.update({
+        "texture.src": disguiseTokenImg,
+        "name": disguiseName
+      });
+    }
+
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: this }),
-      content: `<em>${disguiseTarget.name} entered the battle!</em> <span style="color:#888;font-size:0.85em">(Illusion)</span>`
+      content: `<em>${disguiseName} entered the battle!</em> <span style="color:#888;font-size:0.85em">(Illusion)</span>`
     });
-    return { applied: true, detail: `Disguised as ${disguiseTarget.name}.` };
+    return { applied: true, detail: `Disguised as ${disguiseName}.` };
   }
 
   /**
@@ -13562,6 +13637,17 @@ export class PokRoleActor extends Actor {
     const disguise = actor.getFlag(POKROLE.ID, "illusionDisguise");
     if (!disguise) return;
     await actor.unsetFlag(POKROLE.ID, "illusionDisguise");
+
+    // Restore the original token image and name
+    const selfToken = actor.getActiveTokens?.(true)?.[0] ?? null;
+    if (selfToken?.document) {
+      const restoreImg = disguise.originalTokenImg ?? actor.prototypeToken?.texture?.src ?? actor.img;
+      await selfToken.document.update({
+        "texture.src": restoreImg,
+        "name": disguise.originalName ?? actor.name
+      });
+    }
+
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor }),
       content: `<strong>${disguise.name}'s</strong> illusion broke! It's actually <strong>${disguise.originalName}</strong>!`
@@ -16606,6 +16692,15 @@ export class PokRoleActor extends Actor {
     const illusionDisguise = this.getFlag(POKROLE.ID, "illusionDisguise");
     if (illusionDisguise) {
       console.log(`PokRole | [Illusion cleanup] Removing illusion for ${this.name}`);
+      // Restore token image and name
+      const selfToken = this.getActiveTokens?.(true)?.[0] ?? null;
+      if (selfToken?.document) {
+        const restoreImg = illusionDisguise.originalTokenImg ?? this.prototypeToken?.texture?.src ?? this.img;
+        await selfToken.document.update({
+          "texture.src": restoreImg,
+          "name": illusionDisguise.originalName ?? this.name
+        });
+      }
       await this.unsetFlag(POKROLE.ID, "illusionDisguise");
     }
 

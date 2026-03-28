@@ -1869,7 +1869,18 @@ Hooks.on("deleteCombat", async (combat) => {
     // Illusion: clear disguise
     try {
       const illusionDisguise = actor.getFlag?.("pok-role-system", "illusionDisguise");
-      if (illusionDisguise) await actor.unsetFlag("pok-role-system", "illusionDisguise");
+      if (illusionDisguise) {
+        // Restore token image and name
+        const selfToken = actor.getActiveTokens?.(true)?.[0] ?? null;
+        if (selfToken?.document) {
+          const restoreImg = illusionDisguise.originalTokenImg ?? actor.prototypeToken?.texture?.src ?? actor.img;
+          await selfToken.document.update({
+            "texture.src": restoreImg,
+            "name": illusionDisguise.originalName ?? actor.name
+          });
+        }
+        await actor.unsetFlag("pok-role-system", "illusionDisguise");
+      }
     } catch (e) {
       console.warn(`PokRole | Illusion cleanup failed for ${actor.name}:`, e);
     }
