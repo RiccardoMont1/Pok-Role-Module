@@ -1847,6 +1847,52 @@ Hooks.on("deleteCombat", async (combat) => {
       console.warn(`PokRole | Protean type restore failed for ${actor.name}:`, e);
     }
 
+    // Trace: restore original ability
+    try {
+      const traceOriginal = actor.getFlag?.("pok-role-system", "traceOriginalAbility");
+      if (traceOriginal) {
+        await actor.update({ "system.ability": traceOriginal });
+        await actor.unsetFlag("pok-role-system", "traceOriginalAbility");
+      }
+    } catch (e) {
+      console.warn(`PokRole | Trace ability restore failed for ${actor.name}:`, e);
+    }
+
+    // Neutralizing Gas: clear flag
+    try {
+      const ngActive = actor.getFlag?.("pok-role-system", "neutralizingGasActive");
+      if (ngActive) await actor.unsetFlag("pok-role-system", "neutralizingGasActive");
+    } catch (e) {
+      console.warn(`PokRole | Neutralizing Gas cleanup failed for ${actor.name}:`, e);
+    }
+
+    // Illusion: clear disguise
+    try {
+      const illusionDisguise = actor.getFlag?.("pok-role-system", "illusionDisguise");
+      if (illusionDisguise) await actor.unsetFlag("pok-role-system", "illusionDisguise");
+    } catch (e) {
+      console.warn(`PokRole | Illusion cleanup failed for ${actor.name}:`, e);
+    }
+
+    // Disguise / Ice Face: clear shield flags
+    try {
+      if (actor.getFlag?.("pok-role-system", "disguiseActive") != null) await actor.unsetFlag("pok-role-system", "disguiseActive");
+      if (actor.getFlag?.("pok-role-system", "iceFaceActive") != null) await actor.unsetFlag("pok-role-system", "iceFaceActive");
+    } catch (e) {
+      console.warn(`PokRole | Disguise/Ice Face cleanup failed for ${actor.name}:`, e);
+    }
+
+    // Form changes: restore original form
+    try {
+      const originalForm = actor.getFlag?.("pok-role-system", "originalForm");
+      if (originalForm) {
+        await actor.update({ "system.form": originalForm });
+        await actor.unsetFlag("pok-role-system", "originalForm");
+      }
+    } catch (e) {
+      console.warn(`PokRole | Form restore failed for ${actor.name}:`, e);
+    }
+
     // Sync condition flags after cleanup
     if (typeof actor._synchronizeConditionFlagsFromTemporaryEffects === "function") {
       try { await actor._synchronizeConditionFlagsFromTemporaryEffects(actor); } catch (_e) { /* */ }

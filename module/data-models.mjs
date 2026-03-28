@@ -295,6 +295,7 @@ export class PokemonDataModel extends BaseCharacterDataModel {
       caughtBy: trimmedStringField(""),
       currentTrainer: trimmedStringField(""),
       species: trimmedStringField(""),
+      form: trimmedStringField(""),
       gender: new StringField({
         required: true,
         blank: false,

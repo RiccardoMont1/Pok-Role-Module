@@ -10030,6 +10030,9 @@ export class PokRoleActor extends Actor {
 
     await this._recordLastUsedMove(move);
 
+    // Stance Change: switch between Blade/Shield forme based on move used
+    await this._checkConditionalFormChange(this, "move-used", { move });
+
     // Throat Spray: +1 special after using a sound-based move
     const postMoveHeldData = this._getHeldItemData();
     if (postMoveHeldData?.throatSpray && hit) {
@@ -10295,9 +10298,12 @@ export class PokRoleActor extends Actor {
     const targetProtectedByLuckyChant =
       targetActor instanceof PokRoleActor && targetActor._hasLuckyChantProtection?.(targetActor, { combatId: game.combat?.id ?? null });
     // --- Attacker ability name (used for multiple ability checks below) ---
-    const attackerAbilityName = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    let attackerAbilityName = `${this.system?.ability ?? ""}`.trim().toLowerCase();
     // --- Defender ability name ---
-    const defenderAbilityName = targetActor ? `${targetActor.system?.ability ?? ""}`.trim().toLowerCase() : "";
+    let defenderAbilityName = targetActor ? `${targetActor.system?.ability ?? ""}`.trim().toLowerCase() : "";
+    // Neutralizing Gas: suppress abilities (except the NG user itself)
+    if (this._isAbilitySuppressedByNeutralizingGas(this)) attackerAbilityName = "";
+    if (targetActor && this._isAbilitySuppressedByNeutralizingGas(targetActor)) defenderAbilityName = "";
     // Mold Breaker / Turboblaze / Teravolt: ignores defensive abilities
     const hasMoldBreaker = ["mold-breaker", "mold breaker", "moldbreaker", "turboblaze", "turbo-blaze", "teravolt", "tera-volt"].includes(attackerAbilityName);
     console.log(`PokRole | [damageCalc] attacker="${this.name}" abilityName="${attackerAbilityName}" target="${targetActor?.name}" defAbility="${defenderAbilityName}" critical=${critical} moveType=${moveType}`);
@@ -10682,6 +10688,21 @@ export class PokRoleActor extends Actor {
       });
     }
 
+    // Disguise / Ice Face: absorb the first hit (set damage to 0)
+    if (finalDamage > 0 && targetActor && !hasMoldBreaker) {
+      const absorbed = await this._checkAbilityShieldAbsorb(targetActor, category);
+      if (absorbed) {
+        finalDamage = 0;
+      }
+    }
+
+    // Illusion: break disguise when the Pokémon takes damage
+    if (finalDamage > 0 && targetActor) {
+      await this._breakIllusion(targetActor);
+    }
+
+    // Form change triggers: Zen Mode, Schooling, Shields Down (will be checked after HP change below)
+
     const rangedAttack = this._isMoveRanged(move);
     const targetCover = `${targetActor?.getTrainerCover?.() ?? "none"}`.trim().toLowerCase();
     if (!ignoresCover && rangedAttack && targetCover === "full" && finalDamage > 0) {
@@ -10855,6 +10876,8 @@ export class PokRoleActor extends Actor {
       });
       hpBefore = hpChange?.hpBefore ?? null;
       hpAfter = hpChange?.hpAfter ?? null;
+      // Conditional form changes on HP change (Zen Mode, Schooling, Shields Down)
+      await this._checkConditionalFormChange(targetActor, "hp-changed");
       if (rangedAttack && !ignoresCover) {
         await this._degradeCoverOnHit(targetActor);
       }
@@ -13239,6 +13262,420 @@ export class PokRoleActor extends Actor {
   /**
    * Download: on enter-battle, scan foe's Vitality vs Insight and grant +1 STR or SPC.
    */
+  // ═══════════════════════════════════════════════════════════════════════
+  // HIGH-COMPLEXITY ABILITY IMPLEMENTATIONS
+  // ═══════════════════════════════════════════════════════════════════════
+
+  /**
+   * Arena Trap / Shadow Tag / Magnet Pull: apply switch-lock on all foes at enter-battle.
+   * Magnet Pull only traps Steel-type foes.
+   * Arena Trap does not trap Flying types or Pokémon with Levitate.
+   */
+  async _applyTrappingAbility(abilityName, context = {}) {
+    const combat = context.combat ?? game.combat;
+    if (!combat) return { applied: false, detail: "No active combat." };
+    const selfDisposition = this._getActorCombatSideDisposition(this, combat);
+    const foes = (combat.combatants ?? [])
+      .map((c) => c?.actor)
+      .filter((a) => a instanceof PokRoleActor && a.id !== this.id &&
+        this._getActorCombatSideDisposition(a, combat) !== selfDisposition &&
+        !a._isConditionActive?.("fainted") && !a._isConditionActive?.("dead"));
+    if (!foes.length) return { applied: false, detail: "No foes to trap." };
+
+    const isMagnetPull = abilityName.includes("magnet");
+    const isArenaTrap = abilityName.includes("arena");
+    let trappedCount = 0;
+    for (const foe of foes) {
+      // Magnet Pull: only traps Steel-type
+      if (isMagnetPull) {
+        const foeTypes = [
+          this._normalizeTypeKey(foe.system?.types?.primary || "none"),
+          this._normalizeTypeKey(foe.system?.types?.secondary || "none")
+        ];
+        if (!foeTypes.includes("steel")) continue;
+      }
+      // Arena Trap: doesn't trap Flying types or Levitate
+      if (isArenaTrap) {
+        const foeTypes = [
+          this._normalizeTypeKey(foe.system?.types?.primary || "none"),
+          this._normalizeTypeKey(foe.system?.types?.secondary || "none")
+        ];
+        const foeAbility = `${foe.system?.ability ?? ""}`.trim().toLowerCase();
+        if (foeTypes.includes("flying") || ["levitate"].includes(foeAbility)) continue;
+      }
+      // Ghost types are immune to trapping
+      const foeTypes = [
+        this._normalizeTypeKey(foe.system?.types?.primary || "none"),
+        this._normalizeTypeKey(foe.system?.types?.secondary || "none")
+      ];
+      if (foeTypes.includes("ghost") && !isArenaTrap) continue; // Shadow Tag blocked by Ghost
+
+      await foe.createEmbeddedDocuments("ActiveEffect", [{
+        name: `Trapped (${this.system?.ability ?? abilityName})`,
+        img: "icons/svg/net.svg",
+        transfer: false,
+        disabled: false,
+        statuses: [],
+        flags: {
+          [POKROLE.ID]: {
+            automation: {
+              managed: true,
+              effectType: "switch-lock",
+              blocksSwitch: true,
+              blocksForcedSwitch: false,
+              expiresWithCombat: true,
+              combatId: combat.id,
+              anchorActorId: this.id,
+              sourceItemType: "ability",
+              sourceItemName: this.system?.ability ?? abilityName
+            }
+          }
+        }
+      }]);
+      trappedCount++;
+    }
+    if (trappedCount > 0) {
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        content: `<strong>${this.name}'s</strong> ${this.system?.ability} prevents ${trappedCount} foe(s) from switching!`
+      });
+    }
+    return { applied: trappedCount > 0, detail: `Trapped ${trappedCount} foe(s).` };
+  }
+
+  /**
+   * Magic Bounce: reflect status moves back at the user.
+   * Called from _applySecondaryEffectToActor when the target has Magic Bounce.
+   * Returns true if the effect was bounced.
+   */
+  async _checkMagicBounce(effect, targetActor, sourceActor, sourceMove) {
+    if (!targetActor || !sourceActor || targetActor.id === sourceActor.id) return false;
+    if (!(targetActor instanceof PokRoleActor)) return false;
+    const targetAbility = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
+    if (!["magic bounce", "magic-bounce", "magicbounce"].includes(targetAbility)) return false;
+    // Only bounce status effects from moves (not abilities, items, etc.)
+    if (!sourceMove || sourceMove.type !== "move") return false;
+    // Check if attacker has Mold Breaker
+    if (sourceActor instanceof PokRoleActor) {
+      const attackerAbility = `${sourceActor.system?.ability ?? ""}`.trim().toLowerCase();
+      if (["mold-breaker", "mold breaker", "moldbreaker", "turboblaze", "turbo-blaze", "teravolt", "tera-volt"].includes(attackerAbility)) return false;
+    }
+    // Only bounce condition/stat effects targeting the defender (not self-buffs, weather, terrain)
+    const bounceable = ["condition", "stat"].includes(effect.effectType);
+    if (!bounceable) return false;
+
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+      content: `<strong>${targetActor.name}'s</strong> Magic Bounce reflected the move's effect back at <strong>${sourceActor.name}</strong>!`
+    });
+    // Apply the effect to the original attacker instead
+    await sourceActor._applySecondaryEffectToActor(effect, sourceActor, sourceMove, {
+      moveTargetKey: "self", hit: true, isDamagingMove: false, finalDamage: 0
+    });
+    return true;
+  }
+
+  /**
+   * Disguise / Ice Face: set up an ability shield that absorbs the first hit.
+   * Disguise absorbs any attack. Ice Face absorbs only physical attacks.
+   */
+  async _applyAbilityShield(abilityName, context = {}) {
+    const isIceFace = abilityName.includes("ice");
+    const shieldKey = isIceFace ? "iceFaceActive" : "disguiseActive";
+    // Only set up if not already active
+    const existingShield = this.getFlag(POKROLE.ID, shieldKey);
+    if (existingShield) return { applied: false, detail: "Shield already active." };
+    await this.setFlag(POKROLE.ID, shieldKey, true);
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `<strong>${this.name}'s</strong> ${this.system?.ability} is ready to absorb a hit!`
+    });
+    return { applied: true, detail: `${this.system?.ability} shield activated.` };
+  }
+
+  /**
+   * Check and consume Disguise/Ice Face shield before damage is applied.
+   * Returns true if the hit was absorbed (damage should be set to 0).
+   */
+  async _checkAbilityShieldAbsorb(targetActor, category) {
+    if (!targetActor || !(targetActor instanceof PokRoleActor)) return false;
+    const defAbility = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
+
+    // Disguise: absorbs any first hit
+    if (["disguise"].includes(defAbility)) {
+      const active = targetActor.getFlag(POKROLE.ID, "disguiseActive");
+      if (active) {
+        await targetActor.unsetFlag(POKROLE.ID, "disguiseActive");
+        // Deal 1/8 max HP recoil to the Disguise user
+        const maxHp = Math.max(toNumber(targetActor.system?.resources?.hp?.max, 1), 1);
+        const recoil = Math.max(Math.floor(maxHp / 8), 1);
+        await this._safeApplyDamage(targetActor, recoil);
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+          content: `<strong>${targetActor.name}'s</strong> Disguise absorbed the hit! (Disguise busted, took ${recoil} damage)`
+        });
+        return true;
+      }
+    }
+
+    // Ice Face: absorbs first physical hit only
+    if (["ice face", "ice-face", "iceface"].includes(defAbility)) {
+      const active = targetActor.getFlag(POKROLE.ID, "iceFaceActive");
+      const normalizedCat = this._normalizeMoveCombatCategory(category);
+      if (active && normalizedCat === "physical") {
+        await targetActor.unsetFlag(POKROLE.ID, "iceFaceActive");
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+          content: `<strong>${targetActor.name}'s</strong> Ice Face absorbed the physical hit! (Ice Face broken)`
+        });
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Trace: copy a random foe's ability on enter-battle.
+   */
+  async _applyTraceAbility(context = {}) {
+    const combat = context.combat ?? game.combat;
+    if (!combat) return { applied: false, detail: "No active combat." };
+    const selfDisposition = this._getActorCombatSideDisposition(this, combat);
+    const foes = (combat.combatants ?? [])
+      .map((c) => c?.actor)
+      .filter((a) => a instanceof PokRoleActor && a.id !== this.id &&
+        this._getActorCombatSideDisposition(a, combat) !== selfDisposition &&
+        !a._isConditionActive?.("fainted") && !a._isConditionActive?.("dead"));
+    if (!foes.length) return { applied: false, detail: "No foes to trace." };
+    const randomFoe = foes[Math.floor(Math.random() * foes.length)];
+    const copiedAbility = `${randomFoe.system?.ability ?? ""}`.trim();
+    if (!copiedAbility) return { applied: false, detail: "Foe has no ability." };
+
+    // Save original ability for restoration
+    if (!this.getFlag(POKROLE.ID, "traceOriginalAbility")) {
+      await this.setFlag(POKROLE.ID, "traceOriginalAbility", `${this.system?.ability ?? ""}`.trim());
+    }
+    await this.update({ "system.ability": copiedAbility });
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `<strong>${this.name}'s</strong> Trace copied <strong>${randomFoe.name}'s</strong> <strong>${copiedAbility}</strong>!`
+    });
+    return { applied: true, detail: `Traced ${copiedAbility} from ${randomFoe.name}.` };
+  }
+
+  /**
+   * Imposter: transform into the opposing Pokémon on enter-battle (like Transform move).
+   */
+  async _applyImposterAbility(context = {}) {
+    const combat = context.combat ?? game.combat;
+    if (!combat) return { applied: false, detail: "No active combat." };
+    const selfDisposition = this._getActorCombatSideDisposition(this, combat);
+    const foes = (combat.combatants ?? [])
+      .map((c) => c?.actor)
+      .filter((a) => a instanceof PokRoleActor && a.id !== this.id &&
+        this._getActorCombatSideDisposition(a, combat) !== selfDisposition &&
+        !a._isConditionActive?.("fainted") && !a._isConditionActive?.("dead"));
+    if (!foes.length) return { applied: false, detail: "No foes to copy." };
+    // Transform into the first active foe (like Transform move)
+    const targetFoe = foes[0];
+    const transformResults = await this._applyTransformRuntime(
+      { name: "Imposter", system: {} },
+      { targetActor: targetFoe }
+    );
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `<strong>${this.name}'s</strong> Imposter transformed it into <strong>${targetFoe.name}</strong>!`
+    });
+    return { applied: true, detail: `Transformed into ${targetFoe.name}.` };
+  }
+
+  /**
+   * Neutralizing Gas: suppress all other abilities while this Pokémon is in combat.
+   * Sets a flag on the combat, checked before any ability processing.
+   */
+  async _applyNeutralizingGas(context = {}) {
+    const combat = context.combat ?? game.combat;
+    if (!combat) return { applied: false, detail: "No active combat." };
+    // Store the neutralizing gas source on this actor
+    await this.setFlag(POKROLE.ID, "neutralizingGasActive", true);
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `<strong>${this.name}'s</strong> Neutralizing Gas suppresses all other abilities!`
+    });
+    return { applied: true, detail: "Neutralizing Gas activated." };
+  }
+
+  /**
+   * Check if Neutralizing Gas is active in the current combat (any combatant has the flag).
+   * Returns true if abilities should be suppressed for the given actor.
+   */
+  _isAbilitySuppressedByNeutralizingGas(actor = this) {
+    const combat = game.combat;
+    if (!combat) return false;
+    for (const combatant of combat.combatants ?? []) {
+      const combatActor = combatant?.actor;
+      if (!combatActor || combatActor.id === actor?.id) continue;
+      if (combatActor._isConditionActive?.("fainted") || combatActor._isConditionActive?.("dead")) continue;
+      const ngActive = combatActor.getFlag?.(POKROLE.ID, "neutralizingGasActive");
+      if (ngActive) return true;
+    }
+    return false;
+  }
+
+  /**
+   * Illusion: disguise as another Pokémon on enter-battle.
+   * Stores the disguise info and shows a fake name/image in chat.
+   */
+  async _applyIllusionAbility(context = {}) {
+    // Find the trainer/owner's other Pokémon to disguise as
+    const combat = context.combat ?? game.combat;
+    const selfDisposition = combat ? this._getActorCombatSideDisposition(this, combat) : 0;
+    const allies = combat
+      ? (combat.combatants ?? [])
+          .map((c) => c?.actor)
+          .filter((a) => a instanceof PokRoleActor && a.id !== this.id &&
+            a.type === "pokemon" &&
+            this._getActorCombatSideDisposition(a, combat) === selfDisposition)
+      : [];
+    // Disguise as a random ally (or last one in list, like the games)
+    const disguiseTarget = allies.length > 0 ? allies[allies.length - 1] : null;
+    if (!disguiseTarget) return { applied: false, detail: "No ally to disguise as." };
+
+    await this.setFlag(POKROLE.ID, "illusionDisguise", {
+      name: disguiseTarget.name,
+      img: disguiseTarget.img,
+      originalName: this.name,
+      originalImg: this.img
+    });
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `<em>${disguiseTarget.name} entered the battle!</em> <span style="color:#888;font-size:0.85em">(Illusion)</span>`
+    });
+    return { applied: true, detail: `Disguised as ${disguiseTarget.name}.` };
+  }
+
+  /**
+   * Break Illusion when the Pokémon takes damage.
+   */
+  async _breakIllusion(actor) {
+    if (!actor || !(actor instanceof PokRoleActor)) return;
+    const disguise = actor.getFlag(POKROLE.ID, "illusionDisguise");
+    if (!disguise) return;
+    await actor.unsetFlag(POKROLE.ID, "illusionDisguise");
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor }),
+      content: `<strong>${disguise.name}'s</strong> illusion broke! It's actually <strong>${disguise.originalName}</strong>!`
+    });
+  }
+
+  /**
+   * Stance Change / Zen Mode / Schooling / Shields Down: conditional form changes.
+   * These are checked at various points (move use, HP change, etc.)
+   */
+  async _checkConditionalFormChange(actor, triggerType = "move-used", context = {}) {
+    if (!actor || !(actor instanceof PokRoleActor) || actor.type !== "pokemon") return;
+    const ability = `${actor.system?.ability ?? ""}`.trim().toLowerCase();
+
+    // Helper: save original form if not already saved
+    const _saveOriginalForm = async () => {
+      const existing = actor.getFlag(POKROLE.ID, "originalForm");
+      if (!existing && existing !== "") {
+        await actor.setFlag(POKROLE.ID, "originalForm", actor.system?.form ?? "");
+      }
+    };
+
+    // Stance Change: Blade Forme when using attack, Shield Forme when using King's Shield
+    if (["stance change", "stance-change", "stancechange"].includes(ability) && triggerType === "move-used") {
+      const move = context.move;
+      if (!move) return;
+      const moveName = `${move.name ?? ""}`.trim().toLowerCase();
+      const isKingsShield = moveName.includes("king") && moveName.includes("shield");
+      const isAttack = (move.system?.category ?? "").toLowerCase() !== "support";
+      const currentForm = `${actor.system?.form ?? ""}`.trim().toLowerCase();
+
+      if (isKingsShield && !currentForm.includes("shield")) {
+        await _saveOriginalForm();
+        await actor.update({ "system.form": "Shield Forme" });
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor }),
+          content: `<strong>${actor.name}</strong> changed to <strong>Shield Forme</strong>!`
+        });
+      } else if (isAttack && !currentForm.includes("blade")) {
+        await _saveOriginalForm();
+        await actor.update({ "system.form": "Blade Forme" });
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor }),
+          content: `<strong>${actor.name}</strong> changed to <strong>Blade Forme</strong>!`
+        });
+      }
+    }
+
+    // Zen Mode: change form when HP ≤ 50%
+    if (["zen mode", "zen-mode", "zenmode"].includes(ability) && triggerType === "hp-changed") {
+      const hp = toNumber(actor.system?.resources?.hp?.value, 0);
+      const maxHp = Math.max(toNumber(actor.system?.resources?.hp?.max, 1), 1);
+      const currentForm = `${actor.system?.form ?? ""}`.trim().toLowerCase();
+      if (hp <= Math.floor(maxHp / 2) && hp > 0 && !currentForm.includes("zen")) {
+        await _saveOriginalForm();
+        await actor.update({ "system.form": "Zen Mode" });
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor }),
+          content: `<strong>${actor.name}</strong> entered <strong>Zen Mode</strong>!`
+        });
+      } else if (hp > Math.floor(maxHp / 2) && currentForm.includes("zen")) {
+        await actor.update({ "system.form": "" });
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor }),
+          content: `<strong>${actor.name}</strong> reverted from Zen Mode!`
+        });
+      }
+    }
+
+    // Schooling: School Form when HP > 25%, Solo Form when HP ≤ 25%
+    if (["schooling"].includes(ability) && triggerType === "hp-changed") {
+      const hp = toNumber(actor.system?.resources?.hp?.value, 0);
+      const maxHp = Math.max(toNumber(actor.system?.resources?.hp?.max, 1), 1);
+      const currentForm = `${actor.system?.form ?? ""}`.trim().toLowerCase();
+      if (hp > Math.floor(maxHp / 4) && !currentForm.includes("school")) {
+        await _saveOriginalForm();
+        await actor.update({ "system.form": "School Form" });
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor }),
+          content: `<strong>${actor.name}</strong> formed a <strong>School</strong>!`
+        });
+      } else if (hp <= Math.floor(maxHp / 4) && hp > 0 && currentForm.includes("school")) {
+        await _saveOriginalForm();
+        await actor.update({ "system.form": "Solo Form" });
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor }),
+          content: `<strong>${actor.name}'s</strong> school broke apart!`
+        });
+      }
+    }
+
+    // Shields Down: Meteor Form when HP > 50%, Core Form when HP ≤ 50%
+    if (["shields down", "shields-down", "shieldsdown"].includes(ability) && triggerType === "hp-changed") {
+      const hp = toNumber(actor.system?.resources?.hp?.value, 0);
+      const maxHp = Math.max(toNumber(actor.system?.resources?.hp?.max, 1), 1);
+      const currentForm = `${actor.system?.form ?? ""}`.trim().toLowerCase();
+      if (hp > Math.floor(maxHp / 2) && !currentForm.includes("meteor")) {
+        await _saveOriginalForm();
+        await actor.update({ "system.form": "Meteor Form" });
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor }),
+          content: `<strong>${actor.name}'s</strong> shields are up! (<strong>Meteor Form</strong>)`
+        });
+      } else if (hp <= Math.floor(maxHp / 2) && hp > 0 && !currentForm.includes("core")) {
+        await _saveOriginalForm();
+        await actor.update({ "system.form": "Core Form" });
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor }),
+          content: `<strong>${actor.name}'s</strong> shields went down! (<strong>Core Form</strong>)`
+        });
+      }
+    }
+  }
+
   async _applyDownloadAbility(context = {}) {
     const combat = context.combat ?? game.combat;
     if (!combat) return { applied: false, detail: "No active combat." };
@@ -13713,6 +14150,17 @@ export class PokRoleActor extends Actor {
       try { await this.cleanseAbilityImmuneConditions(); } catch (e) { console.warn("PokRole | cleanseAbilityImmuneConditions failed:", e); }
     }
 
+    // Neutralizing Gas: suppress all abilities except Neutralizing Gas itself
+    // We must still allow Neutralizing Gas to activate on enter-battle
+    if (this._isAbilitySuppressedByNeutralizingGas(this)) {
+      const ownAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+      const isNeutralizingGasUser = ["neutralizing gas", "neutralizing-gas", "neutralizinggas"].includes(ownAbility);
+      if (!isNeutralizingGasUser) {
+        console.log(`PokRole | [processAbilityTrigger] ${this.name}'s abilities are suppressed by Neutralizing Gas — skipping`);
+        return [];
+      }
+    }
+
     const abilityItems = await this._getActiveAbilityItems();
     console.log(`PokRole | [processAbilityTrigger] Found ${abilityItems.length} active ability items: [${abilityItems.map((a) => `${a.name} (trigger=${a.system?.abilityTrigger})`).join(", ")}]`);
     if (!abilityItems.length) return [];
@@ -13723,8 +14171,64 @@ export class PokRoleActor extends Actor {
       console.log(`PokRole | [processAbilityTrigger] Ability="${abilityItem.name}" abilityTrigger="${abilityItem.system?.abilityTrigger}" vs triggerKey="${triggerKey}" => matches=${triggerMatches}`);
       if (!triggerMatches) continue;
 
-      // Download: hardcoded enter-battle logic — scan foe's stats and grant +1 STR or SPC
       const abilityNameLower = `${abilityItem.name ?? ""}`.trim().toLowerCase();
+
+      // ═══════════════════════════════════════════════════════════════
+      // Arena Trap / Shadow Tag / Magnet Pull: apply switch-lock to foes on enter-battle
+      // ═══════════════════════════════════════════════════════════════
+      if (["arena trap", "arena-trap", "arenatrap", "shadow tag", "shadow-tag", "shadowtag",
+           "magnet pull", "magnet-pull", "magnetpull"].includes(abilityNameLower) && triggerKey === "enter-battle") {
+        const trapResult = await this._applyTrappingAbility(abilityNameLower, context);
+        if (trapResult) results.push(trapResult);
+        continue;
+      }
+
+      // ═══════════════════════════════════════════════════════════════
+      // Trace: copy a random foe's ability on enter-battle
+      // ═══════════════════════════════════════════════════════════════
+      if (["trace"].includes(abilityNameLower) && triggerKey === "enter-battle") {
+        const traceResult = await this._applyTraceAbility(context);
+        if (traceResult) results.push(traceResult);
+        continue;
+      }
+
+      // ═══════════════════════════════════════════════════════════════
+      // Imposter: transform into the opposing Pokémon on enter-battle
+      // ═══════════════════════════════════════════════════════════════
+      if (["imposter"].includes(abilityNameLower) && triggerKey === "enter-battle") {
+        const imposterResult = await this._applyImposterAbility(context);
+        if (imposterResult) results.push(imposterResult);
+        continue;
+      }
+
+      // ═══════════════════════════════════════════════════════════════
+      // Neutralizing Gas: suppress all other abilities while in combat
+      // ═══════════════════════════════════════════════════════════════
+      if (["neutralizing gas", "neutralizing-gas", "neutralizinggas"].includes(abilityNameLower) && triggerKey === "enter-battle") {
+        const ngResult = await this._applyNeutralizingGas(context);
+        if (ngResult) results.push(ngResult);
+        continue;
+      }
+
+      // ═══════════════════════════════════════════════════════════════
+      // Illusion: disguise as the last Pokémon in the party on enter-battle
+      // ═══════════════════════════════════════════════════════════════
+      if (["illusion"].includes(abilityNameLower) && triggerKey === "enter-battle") {
+        const illusionResult = await this._applyIllusionAbility(context);
+        if (illusionResult) results.push(illusionResult);
+        continue;
+      }
+
+      // ═══════════════════════════════════════════════════════════════
+      // Disguise / Ice Face: set up the shield on enter-battle
+      // ═══════════════════════════════════════════════════════════════
+      if (["disguise", "ice face", "ice-face", "iceface"].includes(abilityNameLower) && triggerKey === "enter-battle") {
+        const shieldResult = await this._applyAbilityShield(abilityNameLower, context);
+        if (shieldResult) results.push(shieldResult);
+        continue;
+      }
+
+      // Download: hardcoded enter-battle logic — scan foe's stats and grant +1 STR or SPC
       if (abilityNameLower === "download" && triggerKey === "enter-battle") {
         const downloadResult = await this._applyDownloadAbility(context);
         if (downloadResult) {
@@ -14188,6 +14692,13 @@ export class PokRoleActor extends Actor {
   }
 
   async _applySecondaryEffectToActor(effect, targetActor, sourceMove = null, context = {}) {
+    // Magic Bounce: reflect status effects back at the attacker
+    if (targetActor && targetActor.id !== this.id && sourceMove?.type === "move") {
+      const bounced = await this._checkMagicBounce(effect, targetActor, this, sourceMove);
+      if (bounced) {
+        return { applied: false, detail: `Magic Bounce reflected the effect!` };
+      }
+    }
     const activationCheck = this._evaluateSecondaryActivationCondition(
       effect,
       targetActor,
@@ -16069,6 +16580,55 @@ export class PokRoleActor extends Actor {
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: this }),
         content: `<strong>${this.name}'s</strong> types were restored to <strong>${restorePrimary}</strong>/<strong>${restoreSecondary}</strong>.`
+      });
+    }
+
+    // Trace: restore original ability
+    const traceOriginal = this.getFlag(POKROLE.ID, "traceOriginalAbility");
+    if (traceOriginal) {
+      console.log(`PokRole | [Trace cleanup] Restoring ${this.name}'s ability to ${traceOriginal}`);
+      await this.update({ "system.ability": traceOriginal });
+      await this.unsetFlag(POKROLE.ID, "traceOriginalAbility");
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        content: `<strong>${this.name}'s</strong> Trace ended — ability restored to <strong>${traceOriginal}</strong>.`
+      });
+    }
+
+    // Neutralizing Gas: clear the active flag
+    const ngActive = this.getFlag(POKROLE.ID, "neutralizingGasActive");
+    if (ngActive) {
+      console.log(`PokRole | [Neutralizing Gas cleanup] Clearing flag for ${this.name}`);
+      await this.unsetFlag(POKROLE.ID, "neutralizingGasActive");
+    }
+
+    // Illusion: remove disguise
+    const illusionDisguise = this.getFlag(POKROLE.ID, "illusionDisguise");
+    if (illusionDisguise) {
+      console.log(`PokRole | [Illusion cleanup] Removing illusion for ${this.name}`);
+      await this.unsetFlag(POKROLE.ID, "illusionDisguise");
+    }
+
+    // Disguise / Ice Face: clear shield flags
+    const disguiseActive = this.getFlag(POKROLE.ID, "disguiseActive");
+    if (disguiseActive !== undefined && disguiseActive !== null) {
+      await this.unsetFlag(POKROLE.ID, "disguiseActive");
+    }
+    const iceFaceActive = this.getFlag(POKROLE.ID, "iceFaceActive");
+    if (iceFaceActive !== undefined && iceFaceActive !== null) {
+      await this.unsetFlag(POKROLE.ID, "iceFaceActive");
+    }
+
+    // Imposter / Transform: clear transform state (handled by existing transform cleanup if any)
+    // Form changes (Stance Change, Zen Mode, Schooling, Shields Down): reset form at combat end
+    const originalForm = this.getFlag(POKROLE.ID, "originalForm");
+    if (originalForm) {
+      console.log(`PokRole | [Form cleanup] Restoring ${this.name}'s form to ${originalForm}`);
+      await this.update({ "system.form": originalForm });
+      await this.unsetFlag(POKROLE.ID, "originalForm");
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        content: `<strong>${this.name}</strong> reverted to its original form.`
       });
     }
 
@@ -19614,8 +20174,10 @@ export class PokRoleActor extends Actor {
 
   _evaluateTypeInteraction(moveType, targetActor, { ignoreDefensiveAbilities = false } = {}) {
     const normalizedMoveType = this._normalizeTypeKey(moveType);
+    // Neutralizing Gas also suppresses defensive abilities in type interaction
+    const ngSuppressed = targetActor instanceof PokRoleActor && this._isAbilitySuppressedByNeutralizingGas(targetActor);
     // Levitate: immune to Ground-type moves (Mold Breaker / Turboblaze / Teravolt bypass)
-    if (normalizedMoveType === "ground" && targetActor instanceof PokRoleActor && !ignoreDefensiveAbilities) {
+    if (normalizedMoveType === "ground" && targetActor instanceof PokRoleActor && !ignoreDefensiveAbilities && !ngSuppressed) {
       const defAbilityLev = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
       if (["levitate"].includes(defAbilityLev)) {
         return {
@@ -19641,7 +20203,8 @@ export class PokRoleActor extends Actor {
     const defenderTypes = this._getEffectiveDefenderTypesForInteraction(targetActor, moveType);
     const interaction = this._evaluateTypeInteractionAgainstTypes(moveType, defenderTypes);
     // Scrappy: Normal/Fighting moves hit Ghost types (remove immunity)
-    if (interaction.immune && ["normal", "fighting"].includes(normalizedMoveType)) {
+    const atkNgSuppressed = this._isAbilitySuppressedByNeutralizingGas(this);
+    if (interaction.immune && ["normal", "fighting"].includes(normalizedMoveType) && !atkNgSuppressed) {
       const atkAbilityScrappy = `${this.system?.ability ?? ""}`.trim().toLowerCase();
       if (["scrappy"].includes(atkAbilityScrappy)) {
         interaction.immune = false;
