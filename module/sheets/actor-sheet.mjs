@@ -179,7 +179,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     }));
     if (this.actor.type === "trainer") {
       const trainerSkillOrder = [
-        "brawl", "channel", "clash", "evasion",
+        "brawl", "throw", "weapon", "evasion",
         "alert", "athletic", "nature", "stealth",
         "empathy", "etiquette", "intimidate", "perform",
         "crafts", "lore", "medicine", "science"

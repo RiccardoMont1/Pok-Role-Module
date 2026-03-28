@@ -310,7 +310,9 @@
       "Nature": "Nature",
       "Perform": "Perform",
       "Science": "Science",
-      "Stealth": "Stealth"
+      "Stealth": "Stealth",
+      "Throw": "Throw",
+      "Weapon": "Weapon"
     },
     "Move": {
       "TitlePlural": "Moves",

@@ -76,7 +76,9 @@ export const SKILL_DEFINITIONS = Object.freeze([
   { key: "nature", label: "POKROLE.Skills.Nature" },
   { key: "perform", label: "POKROLE.Skills.Perform" },
   { key: "science", label: "POKROLE.Skills.Science" },
-  { key: "stealth", label: "POKROLE.Skills.Stealth" }
+  { key: "stealth", label: "POKROLE.Skills.Stealth" },
+  { key: "throw", label: "POKROLE.Skills.Throw" },
+  { key: "weapon", label: "POKROLE.Skills.Weapon" }
 ]);
 
 export const ATTRIBUTE_DEFINITIONS = Object.freeze([
@@ -120,6 +122,8 @@ export const TRAIT_LABEL_BY_KEY = Object.freeze({
   perform: "POKROLE.Skills.Perform",
   science: "POKROLE.Skills.Science",
   stealth: "POKROLE.Skills.Stealth",
+  throw: "POKROLE.Skills.Throw",
+  weapon: "POKROLE.Skills.Weapon",
   auto: "POKROLE.Move.DamageAttributeAuto",
   none: "POKROLE.Move.NoStat",
   normal: "POKROLE.Types.Normal",
