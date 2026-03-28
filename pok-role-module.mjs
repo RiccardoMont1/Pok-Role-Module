@@ -1970,6 +1970,33 @@ Hooks.on("renderCombatTracker", (app, html) => {
     cycle,
     max: maxCycles
   });
+
+  // Illusion: mask combatant name and image in the combat tracker
+  for (const combatant of combat.combatants ?? []) {
+    const actor = combatant?.actor;
+    if (!actor) continue;
+    const disguise = actor.getFlag?.("pok-role-system", "illusionDisguise");
+    if (!disguise) continue;
+
+    // Find the combatant's list item in the tracker DOM
+    const combatantEl = html instanceof HTMLElement
+      ? html.querySelector(`[data-combatant-id="${combatant.id}"]`)
+      : html.find?.(`[data-combatant-id="${combatant.id}"]`)?.[0];
+    if (!combatantEl) continue;
+
+    // Replace the name text
+    const nameEl = combatantEl.querySelector(".token-name h4")
+      ?? combatantEl.querySelector(".token-name .name")
+      ?? combatantEl.querySelector(".combatant-name")
+      ?? combatantEl.querySelector("h4");
+    if (nameEl) nameEl.textContent = disguise.name;
+
+    // Replace the token image
+    const imgEl = combatantEl.querySelector(".token-image img")
+      ?? combatantEl.querySelector("img.token-image")
+      ?? combatantEl.querySelector("img");
+    if (imgEl && disguise.img) imgEl.src = disguise.img;
+  }
 });
 
 Hooks.on("getSceneControlButtons", (controls) => {
@@ -2046,6 +2073,23 @@ Hooks.on("getSceneControlButtons", (controls) => {
       ).render(true);
     }
   };
+});
+
+// Illusion: when a token with the Illusion ability is placed on the scene, apply disguise
+Hooks.on("createToken", async (tokenDocument) => {
+  const actor = tokenDocument?.actor ?? null;
+  if (!actor || actor.type !== "pokemon") return;
+  const ability = `${actor.system?.ability ?? ""}`.trim().toLowerCase();
+  if (ability !== "illusion") return;
+  // Don't re-apply if already disguised
+  const existing = actor.getFlag?.("pok-role-system", "illusionDisguise");
+  if (existing) return;
+  if (typeof actor._applyIllusionAbility !== "function") return;
+  try {
+    await actor._applyIllusionAbility({ tokenDocument });
+  } catch (e) {
+    console.warn(`PokRole | [Illusion] createToken hook failed for ${actor.name}:`, e);
+  }
 });
 
 Hooks.on("applyTokenStatusEffect", (token, statusId, isActive) => {

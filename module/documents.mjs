@@ -13528,11 +13528,13 @@ export class PokRoleActor extends Actor {
   }
 
   /**
-   * Illusion: disguise as another Pokémon on enter-battle.
-   * Stores the disguise info and shows a fake name/image in chat.
+   * Illusion: disguise as another Pokémon when entering battle or placed on scene.
+   * Stores the disguise info and swaps the token image/name.
+   * @param {object} context - Optional context with combat, tokenDocument, etc.
    */
   async _applyIllusionAbility(context = {}) {
     const combat = context.combat ?? game.combat;
+    const externalTokenDoc = context.tokenDocument ?? null;
 
     // Determine the disguise target based on party order or wild status
     let disguiseTarget = null;
@@ -13602,7 +13604,8 @@ export class PokRoleActor extends Actor {
 
     // Save original token image and name for restoration
     const selfToken = this.getActiveTokens?.(true)?.[0] ?? null;
-    const originalTokenImg = selfToken?.document?.texture?.src
+    const tokenDoc = externalTokenDoc ?? selfToken?.document ?? null;
+    const originalTokenImg = tokenDoc?.texture?.src
       ?? this.prototypeToken?.texture?.src
       ?? this.img;
 
@@ -13615,8 +13618,8 @@ export class PokRoleActor extends Actor {
     });
 
     // Change the token image on the scene to match the disguise
-    if (selfToken?.document) {
-      await selfToken.document.update({
+    if (tokenDoc) {
+      await tokenDoc.update({
         "texture.src": disguiseTokenImg,
         "name": disguiseName
       });
@@ -13624,7 +13627,7 @@ export class PokRoleActor extends Actor {
 
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: this }),
-      content: `<em>${disguiseName} entered the battle!</em> <span style="color:#888;font-size:0.85em">(Illusion)</span>`
+      content: `<em>${disguiseName} appeared!</em> <span style="color:#888;font-size:0.85em">(Illusion)</span>`
     });
     return { applied: true, detail: `Disguised as ${disguiseName}.` };
   }
