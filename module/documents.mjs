@@ -10193,26 +10193,28 @@ export class PokRoleActor extends Actor {
     const damagePainPenalty = (damageBaseSetup.ignoresPainPenalty || pinchAbilityIgnoresPain) ? 0 : painPenalty;
     const targetProtectedByLuckyChant =
       targetActor instanceof PokRoleActor && targetActor._hasLuckyChantProtection?.(targetActor, { combatId: game.combat?.id ?? null });
+    // --- Attacker ability name (used for multiple ability checks below) ---
+    const attackerAbilityName = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+    // --- Defender ability name ---
+    const defenderAbilityName = targetActor ? `${targetActor.system?.ability ?? ""}`.trim().toLowerCase() : "";
+    console.log(`PokRole | [damageCalc] attacker="${this.name}" abilityName="${attackerAbilityName}" target="${targetActor?.name}" defAbility="${defenderAbilityName}" critical=${critical} moveType=${moveType}`);
     // Battle Armor / Shell Armor: block critical hits
     let effectiveCritical = Boolean(critical) && !targetProtectedByLuckyChant;
     if (effectiveCritical && targetActor) {
-      const defAbilityCrit = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
-      if (["battle-armor", "battle armor", "battlearmor", "shell-armor", "shell armor", "shellarmor"].includes(defAbilityCrit)) {
+      if (["battle-armor", "battle armor", "battlearmor", "shell-armor", "shell armor", "shellarmor"].includes(defenderAbilityName)) {
         effectiveCritical = false;
+        console.log(`PokRole | [damageCalc] ${targetActor.name}'s ${defenderAbilityName} blocked critical hit`);
       }
     }
     // Sniper: crit dice +3 instead of +2
     let criticalDice = effectiveCritical ? 2 : 0;
-    if (effectiveCritical) {
-      const atkAbilitySniper = `${this.system?.ability ?? ""}`.trim().toLowerCase();
-      if (["sniper"].includes(atkAbilitySniper)) {
-        criticalDice = 3;
-      }
+    if (effectiveCritical && ["sniper"].includes(attackerAbilityName)) {
+      criticalDice = 3;
     }
     // Adaptability: STAB +2 instead of +1
-    const atkAbilityAdapt = `${this.system?.ability ?? ""}`.trim().toLowerCase();
     const baseStab = this.hasType(moveType) ? 1 : 0;
-    const stabDice = attackOverrides?.ignoreStab ? 0 : (baseStab > 0 && ["adaptability"].includes(atkAbilityAdapt) ? 2 : baseStab);
+    const stabDice = attackOverrides?.ignoreStab ? 0 : (baseStab > 0 && ["adaptability"].includes(attackerAbilityName) ? 2 : baseStab);
+    console.log(`PokRole | [damageCalc] stab: hasType=${this.hasType(moveType)} baseStab=${baseStab} stabDice=${stabDice} adaptability=${["adaptability"].includes(attackerAbilityName)}`);
     const heldItemBonus =
       this._getHeldItemDamageBonus(moveType, category) +
       Math.max(Math.floor(toNumber(attackOverrides?.extraDamageDice, 0)), 0);
@@ -10280,6 +10282,32 @@ export class PokRoleActor extends Actor {
         label
       };
     }
+    // Dry Skin: immune to Water-type moves (healed via on-hit-by-type trigger in seeds)
+    if (!typeInteraction.immune && targetActor) {
+      const targetAbilityDSImm = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
+      if (["dry-skin", "dry skin", "dryskin"].includes(targetAbilityDSImm)) {
+        if (`${moveType ?? ""}`.trim().toLowerCase() === "water") {
+          typeInteraction = { ...typeInteraction, immune: true, label: "POKROLE.Chat.TypeEffect.Immune" };
+          await ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+            content: `<strong>${targetActor.name}'s</strong> Dry Skin absorbs the Water-type move!`
+          });
+        }
+      }
+    }
+    // Flash Fire: immune to Fire-type moves (boost granted via on-hit-by-type trigger in seeds)
+    if (!typeInteraction.immune && targetActor) {
+      const targetAbilityFF = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
+      if (["flash-fire", "flash fire", "flashfire"].includes(targetAbilityFF)) {
+        if (`${moveType ?? ""}`.trim().toLowerCase() === "fire") {
+          typeInteraction = { ...typeInteraction, immune: true, label: "POKROLE.Chat.TypeEffect.Immune" };
+          await ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+            content: `<strong>${targetActor.name}'s</strong> Flash Fire absorbed the Fire-type move!`
+          });
+        }
+      }
+    }
     // Wonder Guard: immune unless the move is super effective
     if (!typeInteraction.immune && targetActor) {
       const targetAbilityWG = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
@@ -10346,19 +10374,20 @@ export class PokRoleActor extends Actor {
     // pinchAbilityBonus and pinchAbilityIgnoresPain already computed above (before damagePainPenalty)
     // Technician: +1 damage die for moves with power ≤ 2
     let technicianBonus = 0;
-    if (["technician"].includes(attackerAbilityPinch) && movePower > 0 && movePower <= 2) {
+    if (["technician"].includes(attackerAbilityName) && movePower > 0 && movePower <= 2) {
       technicianBonus = 1;
     }
-    // Reckless: +1 damage die for recoil moves
+    // Reckless: +2 damage dice for recoil moves
     let recklessBonus = 0;
-    if (["reckless"].includes(attackerAbilityPinch) && moveSourceAttributes?.recoil) {
-      recklessBonus = 1;
+    if (["reckless"].includes(attackerAbilityName) && moveSourceAttributes?.recoil) {
+      recklessBonus = 2;
     }
-    // Water Bubble: +1 damage die for Water moves
+    // Water Bubble: +2 damage dice for Water moves
     let waterBubbleAtkBonus = 0;
-    if (["water-bubble", "water bubble", "waterbubble"].includes(attackerAbilityPinch) && `${moveType ?? ""}`.trim().toLowerCase() === "water") {
-      waterBubbleAtkBonus = 1;
+    if (["water-bubble", "water bubble", "waterbubble"].includes(attackerAbilityName) && `${moveType ?? ""}`.trim().toLowerCase() === "water") {
+      waterBubbleAtkBonus = 2;
     }
+    console.log(`PokRole | [damageCalc] abilityBonuses: technician=${technicianBonus} reckless=${recklessBonus} waterBubble=${waterBubbleAtkBonus} pinch=${pinchAbilityBonus}`);
     const fixedDamagePool = Number.isFinite(Number(attackOverrides?.fixedDamagePool))
       ? Math.max(Math.floor(toNumber(attackOverrides.fixedDamagePool, 0)), 0)
       : null;
@@ -10524,10 +10553,10 @@ export class PokRoleActor extends Actor {
           abilityDamageReduction = Math.max(abilityDamageReduction, 2);
         }
       }
-      // Water Bubble (defender): reduce Fire move damage by 2
+      // Water Bubble (defender): reduce Fire move damage by 1
       if (["water-bubble", "water bubble", "waterbubble"].includes(defAbility)) {
         if (`${moveType ?? ""}`.trim().toLowerCase() === "fire") {
-          abilityDamageReduction = Math.max(abilityDamageReduction, 2);
+          abilityDamageReduction = Math.max(abilityDamageReduction, 1);
         }
       }
       if (abilityDamageReduction > 0) {
@@ -11664,7 +11693,10 @@ export class PokRoleActor extends Actor {
       "thermal exchange": ["burn"],
       "comatose": ["burn", "frozen", "paralyzed", "sleep", "poisoned", "badly-poisoned"],
       "purifying-salt": ["burn", "frozen", "paralyzed", "sleep", "poisoned", "badly-poisoned"],
-      "purifying salt": ["burn", "frozen", "paralyzed", "sleep", "poisoned", "badly-poisoned"]
+      "purifying salt": ["burn", "frozen", "paralyzed", "sleep", "poisoned", "badly-poisoned"],
+      "water-bubble": ["burn", "burn2"],
+      "water bubble": ["burn", "burn2"],
+      "waterbubble": ["burn", "burn2"]
     };
     const immuneConditions = ABILITY_CONDITION_IMMUNITY[activeAbilityName] ?? [];
     if (immuneConditions.includes(conditionKey)) {
@@ -11724,7 +11756,8 @@ export class PokRoleActor extends Actor {
       "oblivious": ["infatuated"],
       "own-tempo": ["confused"], "own tempo": ["confused"],
       "inner-focus": ["flinch"], "inner focus": ["flinch"],
-      "thermal-exchange": ["burn"], "thermal exchange": ["burn"]
+      "thermal-exchange": ["burn"], "thermal exchange": ["burn"],
+      "water-bubble": ["burn", "burn2"], "water bubble": ["burn", "burn2"], "waterbubble": ["burn", "burn2"]
     };
     const immuneConditions = ABILITY_CONDITION_IMMUNITY[activeAbilityName] ?? [];
     for (const conditionKey of immuneConditions) {
