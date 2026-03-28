@@ -9447,6 +9447,14 @@ export class PokRoleActor extends Actor {
     if (["protean", "libero"].includes(proteanAbility) && moveType !== "none" && this.type === "pokemon") {
       const currentPrimary = this._normalizeTypeKey(this.system?.types?.primary || "none");
       if (currentPrimary !== moveType) {
+        // Save original types before first Protean/Libero change (so they can be restored at combat end)
+        const existingOriginal = this.getFlag(POKROLE.ID, "proteanOriginalTypes");
+        if (!existingOriginal) {
+          await this.setFlag(POKROLE.ID, "proteanOriginalTypes", {
+            primary: this.system?.types?.primary || "none",
+            secondary: this.system?.types?.secondary || "none"
+          });
+        }
         await this.update({ "system.types.primary": moveType, "system.types.secondary": "none" });
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor: this }),
@@ -9712,16 +9720,24 @@ export class PokRoleActor extends Actor {
         damageTargetResults.push(damageResult);
       }
 
-      // Parental Bond: second hit at half damage
+      // Parental Bond: roll damage a second time and keep the HIGHER result
       const parentalBondAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
       if (["parental-bond", "parental bond", "parentalbond"].includes(parentalBondAbility)) {
-        for (const actorTarget of targetsToDamage) {
-          const secondHit = await this._resolveMoveDamageAgainstTarget({
+        const newDamageTargetResults = [];
+        for (let pbIdx = 0; pbIdx < damageTargetResults.length; pbIdx++) {
+          const firstRoll = damageTargetResults[pbIdx];
+          const actorTarget = firstRoll.targetActor;
+          // Undo the first hit's HP change so the second roll starts from the same HP
+          if (actorTarget && firstRoll.finalDamage > 0) {
+            const currentHp = toNumber(actorTarget.system?.resources?.hp?.value, 0);
+            await actorTarget.update({ "system.resources.hp.value": currentHp + firstRoll.finalDamage });
+          }
+          const secondRoll = await this._resolveMoveDamageAgainstTarget({
             move,
             targetActor: actorTarget,
             painPenalty,
-            critical: false,
-            isHoldingBackHalf: true,
+            critical,
+            isHoldingBackHalf,
             canInflictDeathOnKo,
             actionNumber,
             roundKey,
@@ -9731,12 +9747,22 @@ export class PokRoleActor extends Actor {
               ...(externalMoveRuntime.attackOverrides ?? {})
             }
           });
-          damageTargetResults.push(secondHit);
+          // Pick the higher damage result
+          const useSecond = secondRoll.finalDamage > firstRoll.finalDamage;
+          const chosen = useSecond ? secondRoll : firstRoll;
+          const discarded = useSecond ? firstRoll : secondRoll;
+          // If we chose the first roll, undo the second roll's HP change and re-apply the first
+          if (!useSecond && actorTarget) {
+            const hpAfterSecond = toNumber(actorTarget.system?.resources?.hp?.value, 0);
+            await actorTarget.update({ "system.resources.hp.value": hpAfterSecond + secondRoll.finalDamage - firstRoll.finalDamage });
+          }
+          newDamageTargetResults.push(chosen);
           await ChatMessage.create({
             speaker: ChatMessage.getSpeaker({ actor: this }),
-            content: `<strong>${this.name}'s</strong> Parental Bond — second hit deals ${secondHit.finalDamage} damage!`
+            content: `<strong>${this.name}'s</strong> Parental Bond — rolled ${firstRoll.finalDamage} and ${secondRoll.finalDamage} damage, kept the higher (${chosen.finalDamage})!`
           });
         }
+        damageTargetResults = newDamageTargetResults;
       }
 
       firstDamageResult = damageTargetResults[0];
@@ -10286,10 +10312,11 @@ export class PokRoleActor extends Actor {
       criticalDice = 3;
     }
     // Adaptability: STAB +2 instead of +1
-    // Aerilate/Pixilate/Galvanize/Refrigerate: always get STAB on converted moves
+    // Aerilate/Pixilate/Galvanize/Refrigerate: +1 extra damage die on converted Normal→type moves (STAB only if Pokémon naturally has the type)
     const isAteAbility = ["aerilate", "pixilate", "galvanize", "refrigerate"].includes(attackerAbilityName);
     const ateConverted = isAteAbility && this._normalizeTypeKey(move?.system?.type || "normal") === "normal" && moveType !== "normal";
-    const baseStab = (this.hasType(moveType) || ateConverted) ? 1 : 0;
+    const ateConversionBonus = ateConverted ? 1 : 0;
+    const baseStab = this.hasType(moveType) ? 1 : 0;
     const stabDice = attackOverrides?.ignoreStab ? 0 : (baseStab > 0 && ["adaptability"].includes(attackerAbilityName) ? 2 : baseStab);
     console.log(`PokRole | [damageCalc] stab: hasType=${this.hasType(moveType)} baseStab=${baseStab} stabDice=${stabDice} adaptability=${["adaptability"].includes(attackerAbilityName)}`);
     const heldItemBonus =
@@ -10335,7 +10362,7 @@ export class PokRoleActor extends Actor {
           : this._getTargetDefense(targetActor, defenseCategory))) + coverDefenseBonus
       : 0;
     let typeInteraction = targetActor
-      ? this._evaluateTypeInteraction(moveType, targetActor)
+      ? this._evaluateTypeInteraction(moveType, targetActor, { ignoreDefensiveAbilities: hasMoldBreaker })
       : {
           immune: false,
           weaknessBonus: 0,
@@ -10382,7 +10409,7 @@ export class PokRoleActor extends Actor {
         }
       }
     }
-    // Soundproof: immune to sound-based moves
+    // Soundproof: reduce damage from sound-based moves by 1 (+1 resistance penalty)
     if (!typeInteraction.immune && targetActor && !hasMoldBreaker) {
       if (["soundproof", "sound-proof", "sound proof"].includes(defenderAbilityName)) {
         const SOUND_KEYWORDS = ["sound", "cry", "voice", "sing", "roar", "screech", "growl", "howl",
@@ -10393,16 +10420,23 @@ export class PokRoleActor extends Actor {
         const moveDesc = `${move?.system?.description ?? ""}`.toLowerCase();
         const isSoundMove = SOUND_KEYWORDS.some((kw) => moveName.includes(kw) || moveDesc.includes(kw));
         if (isSoundMove) {
-          typeInteraction = { ...typeInteraction, immune: true, label: "POKROLE.Chat.TypeEffect.Immune" };
+          const newResistance = (typeInteraction.resistancePenalty ?? 0) + 1;
+          typeInteraction = {
+            ...typeInteraction,
+            resistancePenalty: newResistance,
+            label: newResistance > (typeInteraction.weaknessBonus ?? 0)
+              ? "POKROLE.Chat.TypeEffect.Resisted"
+              : typeInteraction.label
+          };
           await ChatMessage.create({
             speaker: ChatMessage.getSpeaker({ actor: targetActor }),
-            content: `<strong>${targetActor.name}'s</strong> Soundproof blocked the sound-based move!`
+            content: `<strong>${targetActor.name}'s</strong> Soundproof reduced the sound-based move's damage!`
           });
         }
       }
     }
     // Dry Skin: immune to Water-type moves (healed via on-hit-by-type trigger in seeds)
-    if (!typeInteraction.immune && targetActor) {
+    if (!typeInteraction.immune && targetActor && !hasMoldBreaker) {
       const targetAbilityDSImm = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
       if (["dry-skin", "dry skin", "dryskin"].includes(targetAbilityDSImm)) {
         if (`${moveType ?? ""}`.trim().toLowerCase() === "water") {
@@ -10415,7 +10449,7 @@ export class PokRoleActor extends Actor {
       }
     }
     // Flash Fire: immune to Fire-type moves (boost granted via on-hit-by-type trigger in seeds)
-    if (!typeInteraction.immune && targetActor) {
+    if (!typeInteraction.immune && targetActor && !hasMoldBreaker) {
       const targetAbilityFF = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
       if (["flash-fire", "flash fire", "flashfire"].includes(targetAbilityFF)) {
         if (`${moveType ?? ""}`.trim().toLowerCase() === "fire") {
@@ -10513,12 +10547,38 @@ export class PokRoleActor extends Actor {
       // Flash Fire caps at +1 regardless of how many fire hits were absorbed
       flashFireBonus = combatDamageBonus > 0 ? 1 : 0;
     }
-    // Sheer Force: +2 damage dice (secondary effects removed in _applyMoveSecondaryEffects)
+    // Sheer Force: +2 damage dice if user chooses to skip secondary effects (dialog asked in _applyMoveSecondaryEffects)
+    // We check if sheerForceActivated flag was set before this damage calc (set during the dialog in secondary effects)
+    // Since damage calc runs before secondary effects, we need to ask here
     let sheerForceBonus = 0;
+    let sheerForceActivated = false;
     if (["sheer-force", "sheer force", "sheerforce"].includes(attackerAbilityName)) {
-      sheerForceBonus = 2;
+      sheerForceActivated = await new Promise((resolve) => {
+        const d = new Dialog({
+          title: game.i18n.localize("POKROLE.Abilities.SheerForce") || "Sheer Force",
+          content: `<p><strong>${this.name}'s</strong> Sheer Force: skip secondary effects for +2 damage dice?</p>`,
+          buttons: {
+            yes: {
+              icon: '<i class="fas fa-check"></i>',
+              label: game.i18n.localize("POKROLE.Common.Yes") || "Yes (+2 dice, no effects)",
+              callback: () => resolve(true)
+            },
+            no: {
+              icon: '<i class="fas fa-times"></i>',
+              label: game.i18n.localize("POKROLE.Common.No") || "No (normal effects)",
+              callback: () => resolve(false)
+            }
+          },
+          default: "yes",
+          close: () => resolve(true)
+        });
+        d.render(true);
+      });
+      if (sheerForceActivated) {
+        sheerForceBonus = 2;
+      }
     }
-    console.log(`PokRole | [damageCalc] abilityBonuses: technician=${technicianBonus} reckless=${recklessBonus} waterBubble=${waterBubbleAtkBonus} pinch=${pinchAbilityBonus} flashFire=${flashFireBonus} sheerForce=${sheerForceBonus}`);
+    console.log(`PokRole | [damageCalc] abilityBonuses: technician=${technicianBonus} reckless=${recklessBonus} waterBubble=${waterBubbleAtkBonus} pinch=${pinchAbilityBonus} flashFire=${flashFireBonus} sheerForce=${sheerForceBonus} ateConversion=${ateConversionBonus}`);
     const fixedDamagePool = Number.isFinite(Number(attackOverrides?.fixedDamagePool))
       ? Math.max(Math.floor(toNumber(attackOverrides.fixedDamagePool, 0)), 0)
       : null;
@@ -10540,7 +10600,8 @@ export class PokRoleActor extends Actor {
       recklessBonus +
       flashFireBonus +
       waterBubbleAtkBonus +
-      sheerForceBonus -
+      sheerForceBonus +
+      ateConversionBonus -
       damagePainPenalty;
     const fixedFinalDamage =
       fixedDamagePool !== null
@@ -11014,7 +11075,8 @@ export class PokRoleActor extends Actor {
       movePower,
       damageAttributeValue,
       damageAttributeLabel,
-      attackLandedOnTarget
+      attackLandedOnTarget,
+      sheerForceActivated
     };
   }
 
@@ -12151,10 +12213,15 @@ export class PokRoleActor extends Actor {
     if (!Array.isArray(secondaryEffects) || secondaryEffects.length === 0) {
       return [];
     }
-    // Sheer Force: skip all secondary effects
+    // Sheer Force: if activated during damage calc (user chose +2 dice), skip secondary effects
     const sheerForceAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
     if (["sheer-force", "sheer force", "sheerforce"].includes(sheerForceAbility)) {
-      return [];
+      // Check if any damage result has sheerForceActivated flag
+      const sheerForceWasActivated = (Array.isArray(damageTargetResults) ? damageTargetResults : [])
+        .some((r) => r?.sheerForceActivated === true);
+      if (sheerForceWasActivated) {
+        return [];
+      }
     }
 
     const effectSourceItem = sourceItem ?? move ?? null;
@@ -12189,9 +12256,9 @@ export class PokRoleActor extends Actor {
       );
       // Loaded Dice: +2 chance dice for secondary effects
       const loadedDiceBonus = this._getHeldItemData()?.loadedDice ? 2 : 0;
-      // Serene Grace: double base chance dice
+      // Serene Grace: +2 chance dice
       const sereneGraceAbility = `${this.system?.ability ?? ""}`.trim().toLowerCase();
-      const sereneGraceBonus = ["serene-grace", "serene grace", "serenegrace"].includes(sereneGraceAbility) ? baseChanceDice : 0;
+      const sereneGraceBonus = ["serene-grace", "serene grace", "serenegrace"].includes(sereneGraceAbility) ? 2 : 0;
       const chanceDice = Math.max(baseChanceDice + weatherChanceBonusDice + loadedDiceBonus + sereneGraceBonus, 0);
       let chanceRollResults = [];
       let chanceSucceeded = true;
@@ -12288,6 +12355,35 @@ export class PokRoleActor extends Actor {
       }
 
       for (const targetActor of effectTargets) {
+        // Soundproof: block sound-based move effects on the target (status moves like Sing, Grasswhistle, etc.)
+        if (
+          targetActor instanceof PokRoleActor &&
+          targetActor.id !== this.id &&
+          move
+        ) {
+          const targetAbilitySP = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
+          // Check if attacker has Mold Breaker to bypass Soundproof
+          const attackerAbilitySP = `${this.system?.ability ?? ""}`.trim().toLowerCase();
+          const attackerHasMoldBreaker = ["mold-breaker", "mold breaker", "moldbreaker", "turboblaze", "turbo-blaze", "teravolt", "tera-volt"].includes(attackerAbilitySP);
+          if (["soundproof", "sound-proof", "sound proof"].includes(targetAbilitySP) && !attackerHasMoldBreaker) {
+            const SOUND_KEYWORDS = ["sound", "cry", "voice", "sing", "roar", "screech", "growl", "howl",
+              "chatter", "echo", "hyper voice", "boomburst", "uproar", "snore", "round", "relic song",
+              "snarl", "disarming voice", "bug buzz", "grass whistle", "metal sound", "perish song",
+              "noble roar", "parting shot", "sparkling aria", "clangorous", "overdrive", "eerie spell"];
+            const moveName = `${move?.name ?? ""}`.toLowerCase();
+            const moveDesc = `${move?.system?.description ?? ""}`.toLowerCase();
+            const isSoundMove = SOUND_KEYWORDS.some((kw) => moveName.includes(kw) || moveDesc.includes(kw));
+            if (isSoundMove) {
+              results.push({
+                label: this._formatSecondaryEffectLabel(effect),
+                targetName: targetActor.name,
+                applied: false,
+                detail: `${targetActor.name}'s Soundproof blocked the sound-based move!`
+              });
+              continue;
+            }
+          }
+        }
         if (
           targetActor instanceof PokRoleActor &&
           targetActor._hasHeldItemSporeImmunity?.() &&
@@ -14740,7 +14836,13 @@ export class PokRoleActor extends Actor {
     if (targetActor?.type === "pokemon") {
       const targetAbilityConSim = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
       if (["contrary"].includes(targetAbilityConSim)) {
+        const originalAmount = amount;
         amount = -amount;
+        console.log(`PokRole | [Contrary] ${targetActor.name}: stat ${effect.stat} original=${originalAmount} inverted=${amount}`);
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: targetActor }),
+          content: `<strong>${targetActor.name}'s</strong> Contrary inverted the stat change: ${effect.stat} ${originalAmount > 0 ? "+" : ""}${originalAmount} → ${amount > 0 ? "+" : ""}${amount}`
+        });
       }
       // Simple: double stat changes
       if (["simple"].includes(targetAbilityConSim)) {
@@ -15947,6 +16049,20 @@ export class PokRoleActor extends Actor {
     if (clearedCount > 0 || remainingEntries.length !== currentEntries.length) {
       await this._setTemporaryEffectEntries(this, remainingEntries);
       await this._synchronizeConditionFlagsFromTemporaryEffects(this);
+    }
+
+    // Protean / Libero: restore original types at combat end
+    const proteanOriginal = this.getFlag(POKROLE.ID, "proteanOriginalTypes");
+    if (proteanOriginal) {
+      await this.update({
+        "system.types.primary": proteanOriginal.primary || "none",
+        "system.types.secondary": proteanOriginal.secondary || "none"
+      });
+      await this.unsetFlag(POKROLE.ID, "proteanOriginalTypes");
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        content: `<strong>${this.name}'s</strong> types were restored to their original values.`
+      });
     }
 
     return clearedCount + managedEffectsToDelete.length;
@@ -19489,18 +19605,24 @@ export class PokRoleActor extends Actor {
     };
   }
 
-  _evaluateTypeInteraction(moveType, targetActor) {
+  _evaluateTypeInteraction(moveType, targetActor, { ignoreDefensiveAbilities = false } = {}) {
     const normalizedMoveType = this._normalizeTypeKey(moveType);
-    // Levitate: immune to Ground-type moves
-    if (normalizedMoveType === "ground" && targetActor instanceof PokRoleActor) {
+    // Levitate: reduce Ground-type damage (+1 resistance penalty instead of full immunity)
+    // Mold Breaker / Turboblaze / Teravolt bypass Levitate
+    if (normalizedMoveType === "ground" && targetActor instanceof PokRoleActor && !ignoreDefensiveAbilities) {
       const defAbilityLev = `${targetActor.system?.ability ?? ""}`.trim().toLowerCase();
       if (["levitate"].includes(defAbilityLev)) {
-        return {
-          immune: true,
-          weaknessBonus: 0,
-          resistancePenalty: 0,
-          label: "POKROLE.Chat.TypeEffect.Immune"
-        };
+        const defenderTypes = this._getEffectiveDefenderTypesForInteraction(targetActor, moveType);
+        const baseInteraction = this._evaluateTypeInteractionAgainstTypes(moveType, defenderTypes);
+        // Override any Ground immunity from types and add +1 resistance
+        baseInteraction.immune = false;
+        baseInteraction.resistancePenalty += 1;
+        baseInteraction.label = baseInteraction.weaknessBonus > baseInteraction.resistancePenalty
+          ? "POKROLE.Chat.TypeEffect.Super"
+          : baseInteraction.resistancePenalty > baseInteraction.weaknessBonus
+            ? "POKROLE.Chat.TypeEffect.Resisted"
+            : "POKROLE.Chat.TypeEffect.Neutral";
+        return baseInteraction;
       }
     }
     if (
