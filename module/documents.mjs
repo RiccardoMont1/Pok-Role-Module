@@ -9501,9 +9501,7 @@ export class PokRoleActor extends Actor {
 
     const confusionPenalty = this._hasConfusionPenaltyThisRound() ? 1 : 0;
     const heldReducedLowAccuracy = this._getHeldItemData()?.reducedLowAccuracy ?? 0;
-    // Compound Eyes ignores Reduced Accuracy on the move (but still shown on the item)
-    const baseReducedAccuracy = hasCompoundEyes ? 0 : Math.max(toNumber(move.system.reducedAccuracy, 0) - heldReducedLowAccuracy, 0);
-    const reducedAccuracy = baseReducedAccuracy + shieldPenalty;
+    const reducedAccuracy = Math.max(toNumber(move.system.reducedAccuracy, 0) - heldReducedLowAccuracy, 0) + shieldPenalty;
     const targetBrightPowder = targetActors[0]?._getHeldItemData?.()?.accuracyPenaltyToAttacker ?? 0;
     const requiredSuccesses = actionNumber;
     const accuracyRoll = await new Roll(successPoolFormula(accuracyDicePool)).evaluate();
@@ -10394,7 +10392,8 @@ export class PokRoleActor extends Actor {
     let flashFireBonus = 0;
     if (["flash-fire", "flash fire", "flashfire"].includes(attackerAbilityName) && `${moveType ?? ""}`.trim().toLowerCase() === "fire") {
       const combatDamageBonus = Math.max(Math.floor(toNumber(this.system?.combatProfile?.damage, 0)), 0);
-      flashFireBonus = Math.max(combatDamageBonus, 0);
+      // Flash Fire caps at +1 regardless of how many fire hits were absorbed
+      flashFireBonus = combatDamageBonus > 0 ? 1 : 0;
     }
     console.log(`PokRole | [damageCalc] abilityBonuses: technician=${technicianBonus} reckless=${recklessBonus} waterBubble=${waterBubbleAtkBonus} pinch=${pinchAbilityBonus} flashFire=${flashFireBonus}`);
     const fixedDamagePool = Number.isFinite(Number(attackOverrides?.fixedDamagePool))
