@@ -13602,28 +13602,15 @@ export class PokRoleActor extends Actor {
       ?? "icons/svg/mystery-man.svg";
     const disguiseName = disguiseTarget.name ?? "???";
 
-    // Save original token image and name for restoration
-    const originalTokenImg = this.prototypeToken?.texture?.src ?? this.img;
-
+    // Save disguise info (actor.img is the species image, always reliable for restore)
     await this.setFlag(POKROLE.ID, "illusionDisguise", {
       name: disguiseName,
       img: disguiseTokenImg,
       originalName: this.name,
-      originalImg: this.img,
-      originalTokenImg: originalTokenImg
+      originalImg: this.img
     });
 
-    // Update the actor's prototypeToken (linked tokens sync from here)
-    try {
-      await this.update({
-        "prototypeToken.texture.src": disguiseTokenImg,
-        "prototypeToken.name": disguiseName
-      });
-    } catch (e) {
-      console.warn(`PokRole | [Illusion] prototypeToken update failed:`, e);
-    }
-
-    // Update all placed tokens on every scene
+    // Update all placed tokens on every scene (Image Path = texture.src)
     for (const scene of game.scenes ?? []) {
       const sceneTokens = scene.tokens?.filter(t => t.actorId === this.id) ?? [];
       for (const tokenDoc of sceneTokens) {
@@ -13638,7 +13625,7 @@ export class PokRoleActor extends Actor {
       }
     }
 
-    // If called from createToken hook with an external token doc, update it too
+    // If called from createToken hook, update the newly created token too
     if (externalTokenDoc) {
       try {
         await externalTokenDoc.update({
@@ -13670,21 +13657,15 @@ export class PokRoleActor extends Actor {
     const disguise = actor.getFlag(POKROLE.ID, "illusionDisguise");
     if (!disguise) return;
 
-    const restoreImg = disguise.originalTokenImg ?? actor.prototypeToken?.texture?.src ?? actor.img;
-    const restoreName = disguise.originalName ?? actor.name;
-    console.log(`PokRole | [Illusion break] ${actor.name}: restoring to "${restoreName}" img="${restoreImg}"`);
+    // Use actor.img (the actor portrait = species image) as the definitive restore source
+    const restoreImg = actor.img || "icons/svg/mystery-man.svg";
+    const restoreName = actor.name;
+    console.log(`PokRole | [Illusion break] Restoring token to "${restoreName}" img="${restoreImg}"`);
 
-    // 1. Update the actor's prototypeToken (linked tokens sync from here)
-    try {
-      await actor.update({
-        "prototypeToken.texture.src": restoreImg,
-        "prototypeToken.name": restoreName
-      });
-    } catch (e) {
-      console.warn(`PokRole | [Illusion break] prototypeToken update failed:`, e);
-    }
+    // Clear the flag FIRST so the renderCombatTracker hook stops masking
+    await actor.unsetFlag(POKROLE.ID, "illusionDisguise");
 
-    // 2. Update all placed tokens on every scene
+    // Update all placed tokens on every scene (Image Path = texture.src)
     for (const scene of game.scenes ?? []) {
       const sceneTokens = scene.tokens?.filter(t => t.actorId === actor.id) ?? [];
       for (const tokenDoc of sceneTokens) {
@@ -13699,16 +13680,13 @@ export class PokRoleActor extends Actor {
       }
     }
 
-    // 3. Now clear the flag
-    await actor.unsetFlag(POKROLE.ID, "illusionDisguise");
-
-    // 4. The break message is public — everyone should see the reveal
+    // Public reveal message
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor }),
       content: `<strong>${disguise.name}'s</strong> illusion broke! It's actually <strong>${restoreName}</strong>!`
     });
 
-    // 5. Force combat tracker re-render
+    // Force combat tracker re-render
     if (ui.combat) ui.combat.render();
   }
 
@@ -16750,16 +16728,10 @@ export class PokRoleActor extends Actor {
     const illusionDisguise = this.getFlag(POKROLE.ID, "illusionDisguise");
     if (illusionDisguise) {
       console.log(`PokRole | [Illusion cleanup] Removing illusion for ${this.name}`);
-      const restoreImg = illusionDisguise.originalTokenImg ?? this.prototypeToken?.texture?.src ?? this.img;
-      const restoreName = illusionDisguise.originalName ?? this.name;
-      // Restore prototypeToken
-      try {
-        await this.update({
-          "prototypeToken.texture.src": restoreImg,
-          "prototypeToken.name": restoreName
-        });
-      } catch (e) { console.warn(`PokRole | [Illusion cleanup] prototypeToken restore failed:`, e); }
-      // Restore all scene tokens
+      const restoreImg = this.img || "icons/svg/mystery-man.svg";
+      const restoreName = this.name;
+      await this.unsetFlag(POKROLE.ID, "illusionDisguise");
+      // Restore all scene tokens using actor.img (species image)
       for (const scene of game.scenes ?? []) {
         for (const tokenDoc of (scene.tokens?.filter(t => t.actorId === this.id) ?? [])) {
           try {
@@ -16767,7 +16739,6 @@ export class PokRoleActor extends Actor {
           } catch (e) { console.warn(`PokRole | [Illusion cleanup] Scene token restore failed:`, e); }
         }
       }
-      await this.unsetFlag(POKROLE.ID, "illusionDisguise");
     }
 
     // Disguise / Ice Face: clear shield flags

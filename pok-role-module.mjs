@@ -1870,14 +1870,10 @@ Hooks.on("deleteCombat", async (combat) => {
     try {
       const illusionDisguise = actor.getFlag?.("pok-role-system", "illusionDisguise");
       if (illusionDisguise) {
-        const restoreImg = illusionDisguise.originalTokenImg ?? actor.prototypeToken?.texture?.src ?? actor.img;
-        const restoreName = illusionDisguise.originalName ?? actor.name;
-        // Restore prototypeToken
-        await actor.update({
-          "prototypeToken.texture.src": restoreImg,
-          "prototypeToken.name": restoreName
-        });
-        // Restore all scene tokens
+        const restoreImg = actor.img || "icons/svg/mystery-man.svg";
+        const restoreName = actor.name;
+        await actor.unsetFlag("pok-role-system", "illusionDisguise");
+        // Restore all scene tokens using actor.img (species image)
         for (const scene of game.scenes ?? []) {
           for (const tokenDoc of (scene.tokens?.filter(t => t.actorId === actor.id) ?? [])) {
             try {
@@ -1885,7 +1881,6 @@ Hooks.on("deleteCombat", async (combat) => {
             } catch (_e) { /* */ }
           }
         }
-        await actor.unsetFlag("pok-role-system", "illusionDisguise");
       }
     } catch (e) {
       console.warn(`PokRole | Illusion cleanup failed for ${actor.name}:`, e);
