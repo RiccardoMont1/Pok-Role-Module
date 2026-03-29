@@ -1870,14 +1870,14 @@ Hooks.on("deleteCombat", async (combat) => {
     try {
       const illusionDisguise = actor.getFlag?.("pok-role-system", "illusionDisguise");
       if (illusionDisguise) {
-        // Restore token image and name
+        // Restore token image and name (no animation)
         const selfToken = actor.getActiveTokens?.(true)?.[0] ?? null;
         if (selfToken?.document) {
           const restoreImg = illusionDisguise.originalTokenImg ?? actor.prototypeToken?.texture?.src ?? actor.img;
           await selfToken.document.update({
             "texture.src": restoreImg,
             "name": illusionDisguise.originalName ?? actor.name
-          });
+          }, { animate: false });
         }
         await actor.unsetFlag("pok-role-system", "illusionDisguise");
       }

@@ -10696,8 +10696,8 @@ export class PokRoleActor extends Actor {
       }
     }
 
-    // Illusion: break disguise when the Pokémon takes damage
-    if (finalDamage > 0 && targetActor) {
+    // Illusion: break disguise when the Pokémon is hit (any attack, regardless of damage)
+    if (targetActor) {
       await this._breakIllusion(targetActor);
     }
 
@@ -13622,7 +13622,7 @@ export class PokRoleActor extends Actor {
       await tokenDoc.update({
         "texture.src": disguiseTokenImg,
         "name": disguiseName
-      });
+      }, { animate: false });
     }
 
     await ChatMessage.create({
@@ -13641,14 +13641,14 @@ export class PokRoleActor extends Actor {
     if (!disguise) return;
     await actor.unsetFlag(POKROLE.ID, "illusionDisguise");
 
-    // Restore the original token image and name
+    // Restore the original token image and name (no animation)
     const selfToken = actor.getActiveTokens?.(true)?.[0] ?? null;
     if (selfToken?.document) {
       const restoreImg = disguise.originalTokenImg ?? actor.prototypeToken?.texture?.src ?? actor.img;
       await selfToken.document.update({
         "texture.src": restoreImg,
         "name": disguise.originalName ?? actor.name
-      });
+      }, { animate: false });
     }
 
     await ChatMessage.create({
@@ -16695,14 +16695,14 @@ export class PokRoleActor extends Actor {
     const illusionDisguise = this.getFlag(POKROLE.ID, "illusionDisguise");
     if (illusionDisguise) {
       console.log(`PokRole | [Illusion cleanup] Removing illusion for ${this.name}`);
-      // Restore token image and name
+      // Restore token image and name (no animation)
       const selfToken = this.getActiveTokens?.(true)?.[0] ?? null;
       if (selfToken?.document) {
         const restoreImg = illusionDisguise.originalTokenImg ?? this.prototypeToken?.texture?.src ?? this.img;
         await selfToken.document.update({
           "texture.src": restoreImg,
           "name": illusionDisguise.originalName ?? this.name
-        });
+        }, { animate: false });
       }
       await this.unsetFlag(POKROLE.ID, "illusionDisguise");
     }
