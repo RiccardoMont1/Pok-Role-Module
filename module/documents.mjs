@@ -13603,11 +13603,7 @@ export class PokRoleActor extends Actor {
     const disguiseName = disguiseTarget.name ?? "???";
 
     // Save original token image and name for restoration
-    const selfToken = this.getActiveTokens?.(true)?.[0] ?? null;
-    const tokenDoc = externalTokenDoc ?? selfToken?.document ?? null;
-    const originalTokenImg = tokenDoc?.texture?.src
-      ?? this.prototypeToken?.texture?.src
-      ?? this.img;
+    const originalTokenImg = this.prototypeToken?.texture?.src ?? this.img;
 
     await this.setFlag(POKROLE.ID, "illusionDisguise", {
       name: disguiseName,
@@ -13617,12 +13613,41 @@ export class PokRoleActor extends Actor {
       originalTokenImg: originalTokenImg
     });
 
-    // Change the token image on the scene to match the disguise
-    if (tokenDoc) {
-      await tokenDoc.update({
-        "texture.src": disguiseTokenImg,
-        "name": disguiseName
-      }, { animate: false });
+    // Update the actor's prototypeToken (linked tokens sync from here)
+    try {
+      await this.update({
+        "prototypeToken.texture.src": disguiseTokenImg,
+        "prototypeToken.name": disguiseName
+      });
+    } catch (e) {
+      console.warn(`PokRole | [Illusion] prototypeToken update failed:`, e);
+    }
+
+    // Update all placed tokens on every scene
+    for (const scene of game.scenes ?? []) {
+      const sceneTokens = scene.tokens?.filter(t => t.actorId === this.id) ?? [];
+      for (const tokenDoc of sceneTokens) {
+        try {
+          await tokenDoc.update({
+            "texture.src": disguiseTokenImg,
+            "name": disguiseName
+          }, { animate: false });
+        } catch (e) {
+          console.warn(`PokRole | [Illusion] Scene token update failed:`, e);
+        }
+      }
+    }
+
+    // If called from createToken hook with an external token doc, update it too
+    if (externalTokenDoc) {
+      try {
+        await externalTokenDoc.update({
+          "texture.src": disguiseTokenImg,
+          "name": disguiseName
+        }, { animate: false });
+      } catch (e) {
+        console.warn(`PokRole | [Illusion] External token update failed:`, e);
+      }
     }
 
     // Private message: whisper only to the token owner(s) and GM
@@ -13634,7 +13659,7 @@ export class PokRoleActor extends Actor {
       content: `<em>${this.name}</em> is disguised as <strong>${disguiseName}</strong>! <span style="color:#888;font-size:0.85em">(Illusion)</span>`,
       whisper: whisperIds
     });
-    return { applied: true, detail: `Disguised as ${disguiseName}.` };
+    return { applied: true, detail: `Disguised as ${disguiseName}.`, label: "Illusion", targetName: this.name, private: true };
   }
 
   /**
@@ -13645,54 +13670,45 @@ export class PokRoleActor extends Actor {
     const disguise = actor.getFlag(POKROLE.ID, "illusionDisguise");
     if (!disguise) return;
 
-    // Restore the original token image and name BEFORE clearing the flag
-    // (clearing the flag triggers an actor update that could re-render things)
     const restoreImg = disguise.originalTokenImg ?? actor.prototypeToken?.texture?.src ?? actor.img;
     const restoreName = disguise.originalName ?? actor.name;
+    console.log(`PokRole | [Illusion break] ${actor.name}: restoring to "${restoreName}" img="${restoreImg}"`);
 
-    // Try all active tokens on any scene, not just the viewed one
-    const allTokens = actor.getActiveTokens?.(false) ?? [];
-    console.log(`PokRole | [Illusion break] ${actor.name}: found ${allTokens.length} active tokens, restoring to "${restoreName}" img="${restoreImg}"`);
-    for (const token of allTokens) {
-      const doc = token?.document ?? token;
-      if (doc?.update) {
+    // 1. Update the actor's prototypeToken (linked tokens sync from here)
+    try {
+      await actor.update({
+        "prototypeToken.texture.src": restoreImg,
+        "prototypeToken.name": restoreName
+      });
+    } catch (e) {
+      console.warn(`PokRole | [Illusion break] prototypeToken update failed:`, e);
+    }
+
+    // 2. Update all placed tokens on every scene
+    for (const scene of game.scenes ?? []) {
+      const sceneTokens = scene.tokens?.filter(t => t.actorId === actor.id) ?? [];
+      for (const tokenDoc of sceneTokens) {
         try {
-          await doc.update({
+          await tokenDoc.update({
             "texture.src": restoreImg,
             "name": restoreName
           }, { animate: false });
         } catch (e) {
-          console.warn(`PokRole | [Illusion break] Token update failed:`, e);
+          console.warn(`PokRole | [Illusion break] Scene token update failed:`, e);
         }
       }
     }
 
-    // Also update the prototype token so the combat tracker picks it up
-    // (combat tracker may read from combatant.token rather than active tokens)
-    if (game.combat) {
-      const combatant = game.combat.combatants.find(c => c.actor?.id === actor.id);
-      if (combatant?.token) {
-        try {
-          await combatant.token.update({
-            "texture.src": restoreImg,
-            "name": restoreName
-          }, { animate: false });
-        } catch (e) {
-          console.warn(`PokRole | [Illusion break] Combatant token update failed:`, e);
-        }
-      }
-    }
-
-    // Now clear the flag
+    // 3. Now clear the flag
     await actor.unsetFlag(POKROLE.ID, "illusionDisguise");
 
-    // The break message is public — everyone should see the reveal
+    // 4. The break message is public — everyone should see the reveal
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor }),
       content: `<strong>${disguise.name}'s</strong> illusion broke! It's actually <strong>${restoreName}</strong>!`
     });
 
-    // Re-render combat tracker to update name/image
+    // 5. Force combat tracker re-render
     if (ui.combat) ui.combat.render();
   }
 
@@ -14485,7 +14501,7 @@ export class PokRoleActor extends Actor {
    * Post a chat message summarizing ability trigger effects.
    */
   async _postAbilityTriggerChatMessage(triggerKey, results = []) {
-    const appliedResults = results.filter((r) => r.applied);
+    const appliedResults = results.filter((r) => r.applied && !r.private);
     if (!appliedResults.length) return;
 
     const triggerLabel = game.i18n.localize(`POKROLE.Chat.AbilityTriggerLabel.${triggerKey}`) || triggerKey;
@@ -16734,14 +16750,22 @@ export class PokRoleActor extends Actor {
     const illusionDisguise = this.getFlag(POKROLE.ID, "illusionDisguise");
     if (illusionDisguise) {
       console.log(`PokRole | [Illusion cleanup] Removing illusion for ${this.name}`);
-      // Restore token image and name (no animation)
-      const selfToken = this.getActiveTokens?.(true)?.[0] ?? null;
-      if (selfToken?.document) {
-        const restoreImg = illusionDisguise.originalTokenImg ?? this.prototypeToken?.texture?.src ?? this.img;
-        await selfToken.document.update({
-          "texture.src": restoreImg,
-          "name": illusionDisguise.originalName ?? this.name
-        }, { animate: false });
+      const restoreImg = illusionDisguise.originalTokenImg ?? this.prototypeToken?.texture?.src ?? this.img;
+      const restoreName = illusionDisguise.originalName ?? this.name;
+      // Restore prototypeToken
+      try {
+        await this.update({
+          "prototypeToken.texture.src": restoreImg,
+          "prototypeToken.name": restoreName
+        });
+      } catch (e) { console.warn(`PokRole | [Illusion cleanup] prototypeToken restore failed:`, e); }
+      // Restore all scene tokens
+      for (const scene of game.scenes ?? []) {
+        for (const tokenDoc of (scene.tokens?.filter(t => t.actorId === this.id) ?? [])) {
+          try {
+            await tokenDoc.update({ "texture.src": restoreImg, "name": restoreName }, { animate: false });
+          } catch (e) { console.warn(`PokRole | [Illusion cleanup] Scene token restore failed:`, e); }
+        }
       }
       await this.unsetFlag(POKROLE.ID, "illusionDisguise");
     }

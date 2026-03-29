@@ -1870,14 +1870,20 @@ Hooks.on("deleteCombat", async (combat) => {
     try {
       const illusionDisguise = actor.getFlag?.("pok-role-system", "illusionDisguise");
       if (illusionDisguise) {
-        // Restore token image and name (no animation)
-        const selfToken = actor.getActiveTokens?.(true)?.[0] ?? null;
-        if (selfToken?.document) {
-          const restoreImg = illusionDisguise.originalTokenImg ?? actor.prototypeToken?.texture?.src ?? actor.img;
-          await selfToken.document.update({
-            "texture.src": restoreImg,
-            "name": illusionDisguise.originalName ?? actor.name
-          }, { animate: false });
+        const restoreImg = illusionDisguise.originalTokenImg ?? actor.prototypeToken?.texture?.src ?? actor.img;
+        const restoreName = illusionDisguise.originalName ?? actor.name;
+        // Restore prototypeToken
+        await actor.update({
+          "prototypeToken.texture.src": restoreImg,
+          "prototypeToken.name": restoreName
+        });
+        // Restore all scene tokens
+        for (const scene of game.scenes ?? []) {
+          for (const tokenDoc of (scene.tokens?.filter(t => t.actorId === actor.id) ?? [])) {
+            try {
+              await tokenDoc.update({ "texture.src": restoreImg, "name": restoreName }, { animate: false });
+            } catch (_e) { /* */ }
+          }
         }
         await actor.unsetFlag("pok-role-system", "illusionDisguise");
       }
