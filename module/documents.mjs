@@ -13625,9 +13625,14 @@ export class PokRoleActor extends Actor {
       }, { animate: false });
     }
 
+    // Private message: whisper only to the token owner(s) and GM
+    const ownerIds = Object.entries(this.ownership ?? {}).filter(([, level]) => level >= CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER).map(([uid]) => uid);
+    const gmIds = game.users.filter(u => u.isGM).map(u => u.id);
+    const whisperIds = [...new Set([...ownerIds, ...gmIds])].filter(id => id !== "default");
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: this }),
-      content: `<em>${disguiseName} appeared!</em> <span style="color:#888;font-size:0.85em">(Illusion)</span>`
+      content: `<em>${this.name}</em> is disguised as <strong>${disguiseName}</strong>! <span style="color:#888;font-size:0.85em">(Illusion)</span>`,
+      whisper: whisperIds
     });
     return { applied: true, detail: `Disguised as ${disguiseName}.` };
   }
@@ -13639,22 +13644,56 @@ export class PokRoleActor extends Actor {
     if (!actor || !(actor instanceof PokRoleActor)) return;
     const disguise = actor.getFlag(POKROLE.ID, "illusionDisguise");
     if (!disguise) return;
-    await actor.unsetFlag(POKROLE.ID, "illusionDisguise");
 
-    // Restore the original token image and name (no animation)
-    const selfToken = actor.getActiveTokens?.(true)?.[0] ?? null;
-    if (selfToken?.document) {
-      const restoreImg = disguise.originalTokenImg ?? actor.prototypeToken?.texture?.src ?? actor.img;
-      await selfToken.document.update({
-        "texture.src": restoreImg,
-        "name": disguise.originalName ?? actor.name
-      }, { animate: false });
+    // Restore the original token image and name BEFORE clearing the flag
+    // (clearing the flag triggers an actor update that could re-render things)
+    const restoreImg = disguise.originalTokenImg ?? actor.prototypeToken?.texture?.src ?? actor.img;
+    const restoreName = disguise.originalName ?? actor.name;
+
+    // Try all active tokens on any scene, not just the viewed one
+    const allTokens = actor.getActiveTokens?.(false) ?? [];
+    console.log(`PokRole | [Illusion break] ${actor.name}: found ${allTokens.length} active tokens, restoring to "${restoreName}" img="${restoreImg}"`);
+    for (const token of allTokens) {
+      const doc = token?.document ?? token;
+      if (doc?.update) {
+        try {
+          await doc.update({
+            "texture.src": restoreImg,
+            "name": restoreName
+          }, { animate: false });
+        } catch (e) {
+          console.warn(`PokRole | [Illusion break] Token update failed:`, e);
+        }
+      }
     }
 
+    // Also update the prototype token so the combat tracker picks it up
+    // (combat tracker may read from combatant.token rather than active tokens)
+    if (game.combat) {
+      const combatant = game.combat.combatants.find(c => c.actor?.id === actor.id);
+      if (combatant?.token) {
+        try {
+          await combatant.token.update({
+            "texture.src": restoreImg,
+            "name": restoreName
+          }, { animate: false });
+        } catch (e) {
+          console.warn(`PokRole | [Illusion break] Combatant token update failed:`, e);
+        }
+      }
+    }
+
+    // Now clear the flag
+    await actor.unsetFlag(POKROLE.ID, "illusionDisguise");
+
+    // The break message is public — everyone should see the reveal
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor }),
-      content: `<strong>${disguise.name}'s</strong> illusion broke! It's actually <strong>${disguise.originalName}</strong>!`
+      content: `<strong>${disguise.name}'s</strong> illusion broke! It's actually <strong>${restoreName}</strong>!`
     });
+
+    // Re-render combat tracker to update name/image
+    if (ui.combat) ui.combat.render();
   }
 
   /**
