@@ -1,6 +1,6 @@
 Import dei pokémon
 
-Correzione sistema di cattura ed automatizzare le varie ball
+Correzione sistema di cattura ed automatizzare le varie ball (Preferirei che venissero lanciati i dadi invece di richiamare la funzione random() )
 
 Sostituire il field "Progressione Evoluzione" con il tasto "Evoluzione"
 
@@ -8,7 +8,7 @@ Aggiungere il sistema di allenamento della versione 3.0 (Escluso l'imparare nuov
 
 Con il pulsante Sessione di Allenamento nella scheda del Pokémon/Allenatore deve aprire la finestra di dialogo per selezionare Attributi/Attributi Sociali + Skill (Che deciderà in quel momento il master). Aggiungere il numero di successi in un count di Punti Allenamento.
 
-Aggiungere un tasto Rank-UP per aumentare il Rank del pokémon/allenatore, rendendo il div "header-fields", label "Rank" non modificabile dal player. (Il costo di Rank-UP è visibile alla pagina 107)
+Aggiungere un tasto Rank-UP per aumentare il Rank del pokémon/allenatore, rendendo il div "header-fields", label "Rank" non modificabile dal player. (Il costo di Rank-UP è visibile alla pagina 107) (Una volta implementato per bene il tasto, rendere il field attuale del rank non modificabile)
 
 Non includere la meccanica di Over-Ranking
 
