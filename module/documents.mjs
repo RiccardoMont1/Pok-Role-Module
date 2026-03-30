@@ -18280,6 +18280,85 @@ export class PokRoleActor extends Actor {
     };
   }
 
+  async _promptPokeballTargetSelection() {
+    // Gather wild Pokémon candidates from the current scene or combat
+    const candidates = [];
+    const seenIds = new Set();
+
+    // From combat combatants
+    if (game.combat) {
+      const selfDisposition = this._getActorCombatSideDisposition(this, game.combat);
+      for (const combatant of game.combat.combatants ?? []) {
+        const actor = combatant?.actor;
+        if (!actor || actor.type !== "pokemon" || seenIds.has(actor.id)) continue;
+        // Only show foes (different disposition) that are wild (no trainer)
+        const foeDisp = this._getActorCombatSideDisposition(actor, game.combat);
+        if (foeDisp === selfDisposition) continue;
+        const trainerId = `${actor.system?.currentTrainer ?? ""}`.trim();
+        if (trainerId) continue;
+        if (actor._isConditionActive?.("dead")) continue;
+        seenIds.add(actor.id);
+        candidates.push(actor);
+      }
+    }
+
+    // From scene tokens (outside combat or if combat had no valid targets)
+    if (candidates.length === 0 && canvas?.scene) {
+      for (const tokenDoc of canvas.scene.tokens ?? []) {
+        const actor = tokenDoc.actor;
+        if (!actor || actor.type !== "pokemon" || seenIds.has(actor.id)) continue;
+        const trainerId = `${actor.system?.currentTrainer ?? ""}`.trim();
+        if (trainerId) continue;
+        if (actor._isConditionActive?.("dead")) continue;
+        seenIds.add(actor.id);
+        candidates.push(actor);
+      }
+    }
+
+    if (candidates.length === 0) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Errors.CaptureNeedsPokemonTarget"));
+      return null;
+    }
+
+    // If only one candidate, use it directly
+    if (candidates.length === 1) return candidates[0];
+
+    // Prompt the player to choose
+    const optionsHtml = candidates.map(a =>
+      `<option value="${a.id}">${a.name}${a.system?.species ? ` (${a.system.species})` : ""}</option>`
+    ).join("");
+
+    return new Promise((resolve) => {
+      new Dialog({
+        title: game.i18n.localize("POKROLE.Chat.CaptureThrow"),
+        content: `
+          <form>
+            <div class="form-group">
+              <label>${game.i18n.localize("POKROLE.Chat.Target")}</label>
+              <select name="targetId">${optionsHtml}</select>
+            </div>
+          </form>`,
+        buttons: {
+          ok: {
+            icon: '<i class="fas fa-check"></i>',
+            label: game.i18n.localize("POKROLE.Common.Confirm"),
+            callback: (html) => {
+              const targetId = html.find("[name=targetId]").val();
+              resolve(game.actors.get(targetId) ?? null);
+            }
+          },
+          cancel: {
+            icon: '<i class="fas fa-times"></i>',
+            label: game.i18n.localize("POKROLE.Common.Cancel"),
+            callback: () => resolve(null)
+          }
+        },
+        default: "ok",
+        close: () => resolve(null)
+      }).render(true);
+    });
+  }
+
   _getPokeballCaptureRequiredSuccesses(targetActor) {
     const tierKey = `${targetActor?.system?.tier ?? "starter"}`.trim().toLowerCase();
     return CAPTURE_REQUIRED_SUCCESSES_BY_TIER[tierKey] ?? CAPTURE_REQUIRED_SUCCESSES_BY_TIER.starter;
@@ -18710,8 +18789,13 @@ export class PokRoleActor extends Actor {
       .join("");
     const notesHtml = notes.map((note) => `<li>${note}</li>`).join("");
 
+    // Collect rolls to display dice in chat
+    const captureRolls = [throwRoll];
+    if (sealRoll) captureRolls.push(sealRoll);
+
     await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: resolvedTrainerActor }),
+      rolls: captureRolls,
       content: `
         <div class="pok-role-chat-card arcade-red">
           <header class="chat-card-header">
@@ -18722,12 +18806,12 @@ export class PokRoleActor extends Actor {
             <p><strong>${game.i18n.localize("POKROLE.Chat.Target")}:</strong> ${resolvedTargetActor.name}</p>
             <hr />
             <p><strong>${game.i18n.localize("POKROLE.Chat.CaptureThrow")}</strong></p>
-            <p>${throwTraitLabel} + ${resolvedTrainerActor.localizeTrait("throw")}: ${throwDicePool}</p>
+            <p>${throwTraitLabel} + ${resolvedTrainerActor.localizeTrait("throw")}: ${throwDicePool}d6</p>
             <p>${game.i18n.localize("POKROLE.Chat.RawSuccesses")}: ${throwRawSuccesses} | ${game.i18n.localize("POKROLE.Chat.RemovedSuccesses")}: ${throwRemoved} | ${game.i18n.localize("POKROLE.Chat.NetSuccesses")}: ${throwNetSuccesses}</p>
             <p>${game.i18n.localize("POKROLE.Chat.RequiredSuccesses")}: ${throwRequired}</p>
             <hr />
             <p><strong>${game.i18n.localize("POKROLE.Chat.CaptureSeal")}</strong></p>
-            <p>${game.i18n.localize("POKROLE.Chat.CaptureSealPower")}: ${sealSetup.sealPower}</p>
+            <p>${game.i18n.localize("POKROLE.Chat.CaptureSealPower")}: ${normalizedSealPower}d6</p>
             ${sealEntriesHtml ? `<ul>${sealEntriesHtml}</ul>` : ""}
             <p>${game.i18n.localize("POKROLE.Chat.RawSuccesses")}: ${sealRawSuccesses}</p>
             <p>${game.i18n.localize("POKROLE.Chat.CaptureBonusSuccesses")}: ${captureBonus.total}</p>
@@ -18778,8 +18862,13 @@ export class PokRoleActor extends Actor {
       return null;
     }
 
-    const targetActor = options.targetActor ?? getTargetActorFromUserSelection() ?? (gearCategory === "pokeball" ? null : this);
+    let targetActor = options.targetActor ?? getTargetActorFromUserSelection() ?? (gearCategory === "pokeball" ? null : this);
     if (gearCategory === "pokeball") {
+      // If no target selected, prompt the player to choose a wild Pokémon
+      if (!targetActor || !(targetActor instanceof PokRoleActor) || targetActor.type !== "pokemon") {
+        targetActor = await this._promptPokeballTargetSelection();
+        if (!targetActor) return null;
+      }
       return this._capturePokemonWithPokeball(gearItem, targetActor, options);
     }
     if (gearItem.system.target === "trainer" && targetActor.type !== "trainer") {
