@@ -2665,7 +2665,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       ? CORE_ATTRIBUTE_DEFINITIONS.filter((a) => a.key !== "special")
       : CORE_ATTRIBUTE_DEFINITIONS;
     const trainerSkillOrder = [
-      "brawl", "channel", "clash", "evasion",
+      "brawl", "throw", "weapon", "evasion",
       "alert", "athletic", "nature", "stealth",
       "empathy", "etiquette", "intimidate", "perform",
       "crafts", "lore", "medicine", "science"
