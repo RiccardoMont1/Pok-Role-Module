@@ -2743,6 +2743,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       values: {},
       resolved: false
     };
+    const pools = { attr: totalAttrPoints, social: totalSocialPoints, skill: totalSkillPoints };
     // Initialize with base values
     for (const a of filteredCoreAttrDefs) state.values[`attr:${a.key}`] = attrBase[a.key] ?? 1;
     for (const a of SOCIAL_ATTRIBUTE_DEFINITIONS) state.values[`social:${a.key}`] = socialBase[a.key] ?? 1;
@@ -2862,11 +2863,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           }
         },
         render: (html) => {
-          const pools = {
-            attr: totalAttrPoints,
-            social: totalSocialPoints,
-            skill: totalSkillPoints
-          };
+          pools.attr = totalAttrPoints;
+          pools.social = totalSocialPoints;
+          pools.skill = totalSkillPoints;
           const maxByCategory = {
             social: 5,
             skill: skillLimit
