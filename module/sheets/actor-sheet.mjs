@@ -2757,7 +2757,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           confirm: {
             icon: '<i class="fas fa-check"></i>',
             label: loc("POKROLE.Common.Confirm"),
-            callback: async () => {
+            callback: () => {
               const getMaxForEntry = (category, key) => {
                 if (category === "attr") {
                   if (attrMaxByKey && typeof attrMaxByKey === "object") {
@@ -2798,6 +2798,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
                   return false;
                 }
               }
+              // Build update data synchronously so it's ready before the dialog closes
               const updateData = {};
               const distributed = { attr: {}, social: {}, skill: {} };
               const updatedExtraSkills = foundry.utils.deepClone(extraSkills);
@@ -2820,29 +2821,46 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
               if (extraSkills.length > 0) {
                 updateData["system.extraSkills"] = updatedExtraSkills;
               }
-              // Include pending form data (rank/age change) in the same update
               if (pendingFormData) {
                 Object.assign(updateData, pendingFormData);
               }
-              await this.actor.update(updateData);
-              if (trackRank) {
-                const allDist = this.actor.getFlag("pok-role-system", "rankDistributions") ?? {};
-                allDist[trackRank] = distributed;
-                await this.actor.setFlag("pok-role-system", "rankDistributions", allDist);
-              }
-              ui.notifications.info(loc("POKROLE.Dialog.PointsDistributed"));
+              // Store data in state for the close handler to apply
+              state.updateData = updateData;
+              state.distributed = distributed;
               state.resolved = true;
-              resolve(true);
             }
           },
           cancel: {
             icon: '<i class="fas fa-times"></i>',
             label: loc("POKROLE.Common.Cancel"),
-            callback: () => { state.resolved = true; resolve(false); }
+            callback: () => { state.resolved = true; state.cancelled = true; }
           }
         },
         default: "confirm",
-        close: () => { if (!state.resolved) resolve(false); },
+        close: async () => {
+          if (state.cancelled || !state.resolved) {
+            resolve(false);
+            return;
+          }
+          // Apply the update data that was prepared in the confirm callback
+          if (state.updateData) {
+            try {
+              await this.actor.update(state.updateData);
+              if (trackRank && state.distributed) {
+                const allDist = this.actor.getFlag("pok-role-system", "rankDistributions") ?? {};
+                allDist[trackRank] = state.distributed;
+                await this.actor.setFlag("pok-role-system", "rankDistributions", allDist);
+              }
+              ui.notifications.info(loc("POKROLE.Dialog.PointsDistributed"));
+              resolve(true);
+            } catch (e) {
+              console.error("PokRole | Point distribution update failed:", e);
+              resolve(false);
+            }
+          } else {
+            resolve(false);
+          }
+        },
         render: (html) => {
           const pools = {
             attr: totalAttrPoints,
