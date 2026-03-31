@@ -21021,11 +21021,7 @@ export class PokRoleActor extends Actor {
    * Only GM can rank up.
    */
   async rankUp() {
-    console.log("[rankUp] Called on", this.name, "type:", this.type, "isGM:", game.user?.isGM);
-    if (!game.user?.isGM) {
-      console.warn("[rankUp] Not GM, returning");
-      return;
-    }
+    if (!game.user?.isGM) return;
 
     const RANK_UP_COSTS = {
       starter: 5,
@@ -21040,7 +21036,6 @@ export class PokRoleActor extends Actor {
     if (this.type === "pokemon") {
       const currentTier = `${this.system?.tier ?? "none"}`.trim();
       const tierIndex = POKEMON_TIER_KEYS.indexOf(currentTier);
-      console.log("[rankUp] Pokemon tier:", currentTier, "tierIndex:", tierIndex, "maxIndex:", POKEMON_TIER_KEYS.length - 1);
       if (tierIndex < 0 || tierIndex >= POKEMON_TIER_KEYS.length - 1) {
         ui.notifications.warn(game.i18n.localize("POKROLE.Training.RankUpMaxReached"));
         return;
@@ -21052,10 +21047,8 @@ export class PokRoleActor extends Actor {
       // Check if pokemon's rank would exceed trainer's rank
       const trainerId = `${this.system?.currentTrainer ?? ""}`.trim();
       const trainerActor = trainerId ? game.actors?.get?.(trainerId) : null;
-      console.log("[rankUp] trainerId:", trainerId, "trainerActor:", trainerActor?.name, "nextTier:", nextTier, "cost:", cost, "currentTP:", currentTP);
       if (trainerActor) {
         const trainerRankIndex = POKEMON_TIER_KEYS.indexOf(`${trainerActor.system?.cardRank ?? "none"}`.trim());
-        console.log("[rankUp] trainerRank:", trainerActor.system?.cardRank, "trainerRankIndex:", trainerRankIndex, "tierIndex+1:", tierIndex + 1);
         if (tierIndex + 1 > trainerRankIndex) {
           ui.notifications.warn(game.i18n.localize("POKROLE.Training.RankUpExceedsTrainer"));
           return;
@@ -21068,10 +21061,9 @@ export class PokRoleActor extends Actor {
       }
 
       // Confirm dialog
-      console.log("[rankUp] About to show confirm dialog...");
       const confirmed = await new Promise((resolve) => {
         let result = false;
-        const d = new Dialog({
+        new Dialog({
           title: game.i18n.localize("POKROLE.Training.RankUp"),
           content: `<p>${game.i18n.format("POKROLE.Training.RankUpConfirm", {
             name: this.name,
@@ -21084,21 +21076,18 @@ export class PokRoleActor extends Actor {
             confirm: {
               icon: "<i class='fas fa-check'></i>",
               label: game.i18n.localize("POKROLE.Common.Confirm"),
-              callback: () => { console.log("[rankUp] Confirm clicked"); result = true; }
+              callback: () => { result = true; }
             },
             cancel: {
               icon: "<i class='fas fa-times'></i>",
               label: game.i18n.localize("POKROLE.Common.Cancel"),
-              callback: () => { console.log("[rankUp] Cancel clicked"); result = false; }
+              callback: () => { result = false; }
             }
           },
           default: "confirm",
-          close: () => { console.log("[rankUp] Dialog closed, result:", result); resolve(result); }
-        });
-        console.log("[rankUp] Dialog created, rendering...");
-        d.render(true);
+          close: () => resolve(result)
+        }).render(true);
       });
-      console.log("[rankUp] confirmed:", confirmed);
 
       if (!confirmed) return;
 
