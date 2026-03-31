@@ -20903,7 +20903,7 @@ export class PokRoleActor extends Actor {
 
     const diff = pokemonTierIndex - trainerRankIndex;
     if (diff <= 0) return "none";
-    if (happiness > 3 && loyalty > 3) return "none";
+    if (happiness >= 3 && loyalty >= 3) return "none";
     if (diff === 1) return "low";
     return "high";
   }
