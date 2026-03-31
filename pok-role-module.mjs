@@ -1392,6 +1392,9 @@ Hooks.once("init", () => {
 
 Hooks.once("ready", async () => {
   game.pokrole ??= {};
+  // Pending mutation responses keyed by requestId
+  const _pendingMutationRequests = new Map();
+
   game.pokrole.requestCombatMutation = async (operation, payload = {}) => {
     if (game.user?.isGM) {
       const directResult = await handleCombatMutationSocketRequest({
@@ -1410,27 +1413,43 @@ Hooks.once("ready", async () => {
     if (!activeGm) {
       throw new Error("No active GM is available to process the combat mutation.");
     }
+    const requestId = `${game.user?.id ?? "anon"}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
     return new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => {
+        _pendingMutationRequests.delete(requestId);
+        reject(new Error("Combat mutation timed out (no GM response after 15s)."));
+      }, 15000);
+      _pendingMutationRequests.set(requestId, { resolve, reject, timeout });
       game.socket.emit(
         COMBAT_MUTATION_SOCKET_EVENT,
         {
           type: "combat-mutation",
           operation,
+          requestId,
           payload: {
             ...payload,
             requesterUserId: payload?.requesterUserId ?? game.user?.id ?? null
           }
-        },
-        (response = {}) => {
-          if (!response?.ok) {
-            reject(new Error(response?.error ?? "Combat mutation failed."));
-            return;
-          }
-          resolve(response);
         }
       );
     });
   };
+
+  // Listen for GM responses to mutation requests
+  game.socket.on(COMBAT_MUTATION_SOCKET_EVENT, (message = {}) => {
+    if (`${message?.type ?? ""}`.trim() !== "combat-mutation-response") return;
+    const requestId = `${message?.requestId ?? ""}`.trim();
+    if (!requestId) return;
+    const pending = _pendingMutationRequests.get(requestId);
+    if (!pending) return;
+    _pendingMutationRequests.delete(requestId);
+    clearTimeout(pending.timeout);
+    if (!message?.ok) {
+      pending.reject(new Error(message?.error ?? "Combat mutation failed."));
+    } else {
+      pending.resolve(message);
+    }
+  });
   game.pokrole.seedCompendia = async (options = {}) => seedCompendia(options);
 
   // Auto-update compendia images when system version changes
@@ -1461,13 +1480,21 @@ Hooks.once("ready", async () => {
     moveCombatMoveEntry(combat, entryId, targetIndex);
   game.pokrole.executeCombatMoveEntry = async (entryId, combat = game.combat ?? null) =>
     executeCombatMoveEntry(combat, entryId);
-  game.socket.on(COMBAT_MUTATION_SOCKET_EVENT, async (message = {}, respond = null) => {
+  game.socket.on(COMBAT_MUTATION_SOCKET_EVENT, async (message = {}) => {
     if (`${message?.type ?? ""}`.trim() !== "combat-mutation") return;
+    if (!game.user?.isGM) return;
     const activeGm = getPrimaryActiveGm();
-    if (!game.user?.isGM || (activeGm?.id && activeGm.id !== game.user.id)) return;
+    if (activeGm?.id && activeGm.id !== game.user.id) return;
+    const requestId = `${message?.requestId ?? ""}`.trim();
+    console.log(`PokRole | [GM socket] Received mutation request: op=${message?.operation}, requestId=${requestId}`);
     const response = await handleCombatMutationSocketRequest(message);
-    if (typeof respond === "function") {
-      respond(response);
+    // Send response back to the requester via socket
+    if (requestId) {
+      game.socket.emit(COMBAT_MUTATION_SOCKET_EVENT, {
+        type: "combat-mutation-response",
+        requestId,
+        ...response
+      });
     }
   });
   await synchronizeAllActorEffectTokenIcons();
