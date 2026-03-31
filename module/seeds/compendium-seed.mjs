@@ -1233,7 +1233,7 @@ export async function seedCompendia({ force = false, forcePacks = null, notify =
         await pack.documentClass.createDocuments(toCreate, { pack: pack.collection });
       }
 
-      // Update existing items with new seed data (images, descriptions, etc.)
+      // Update existing items with new seed data (images, system data, etc.)
       if (!forceThisPack) {
         const currentIndex = await pack.getIndex({ fields: ["flags"] });
         const seedBySeedId = new Map(
@@ -1244,13 +1244,35 @@ export async function seedCompendia({ force = false, forcePacks = null, notify =
           if (!entrySeedId) continue;
           const seedData = seedBySeedId.get(entrySeedId);
           if (!seedData) continue;
-          const seedImg = `${seedData.img ?? ""}`.trim();
-          if (!seedImg || seedImg === "icons/svg/item-bag.svg") continue;
           const doc = await pack.getDocument(entry._id);
           if (!doc) continue;
-          const currentImg = `${doc.img ?? ""}`.trim();
-          if (currentImg !== seedImg) {
-            await doc.update({ img: seedImg });
+          const updates = {};
+          // Update image if changed
+          const seedImg = `${seedData.img ?? ""}`.trim();
+          if (seedImg && seedImg !== "icons/svg/item-bag.svg") {
+            const currentImg = `${doc.img ?? ""}`.trim();
+            if (currentImg !== seedImg) {
+              updates.img = seedImg;
+            }
+          }
+          // Update system data if the seed provides it
+          if (seedData.system && typeof seedData.system === "object") {
+            for (const [key, value] of Object.entries(seedData.system)) {
+              const currentValue = doc.system?.[key];
+              if (typeof value === "object" && value !== null && !Array.isArray(value)) {
+                // Deep compare for nested objects (e.g. pokeball: { sealPower, specialEffect })
+                for (const [subKey, subValue] of Object.entries(value)) {
+                  if (currentValue?.[subKey] !== subValue) {
+                    updates[`system.${key}.${subKey}`] = subValue;
+                  }
+                }
+              } else if (currentValue !== value) {
+                updates[`system.${key}`] = value;
+              }
+            }
+          }
+          if (Object.keys(updates).length > 0) {
+            await doc.update(updates);
           }
         }
       }
