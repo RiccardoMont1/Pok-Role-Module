@@ -21226,6 +21226,58 @@ export class PokRoleActor extends Actor {
   }
 
   /**
+   * Retrain: reset all distributed rank points and redistribute from scratch.
+   * Costs TP for Pokemon (based on current tier), free for Trainers.
+   * No GM approval needed.
+   */
+  async retrain() {
+    const RETRAIN_COSTS = {
+      none: 0, starter: 1, rookie: 10, standard: 20, advanced: 25,
+      expert: 30, ace: 35, master: 40, champion: 45
+    };
+
+    if (this.type === "pokemon") {
+      const currentTier = `${this.system?.tier ?? "none"}`.trim();
+      const cost = RETRAIN_COSTS[currentTier] ?? 0;
+      const currentTP = toNumber(this.system?.trainingPoints, 0);
+
+      if (cost > 0 && currentTP < cost) {
+        ui.notifications.warn(game.i18n.format("POKROLE.Training.RetrainNotEnoughTP", { current: currentTP, required: cost }));
+        return;
+      }
+
+      const sheet = this.sheet;
+      if (!sheet || typeof sheet.performPokemonRetrain !== "function") {
+        ui.notifications.error("Open the Pokémon sheet first!");
+        return;
+      }
+
+      const success = await sheet.performPokemonRetrain(cost);
+      if (success) {
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this }),
+          content: `<strong>${this.name}</strong> ${game.i18n.format("POKROLE.Training.RetrainSuccess", { cost: cost })}`
+        });
+      }
+
+    } else if (this.type === "trainer") {
+      const sheet = this.sheet;
+      if (!sheet || typeof sheet.performTrainerRetrain !== "function") {
+        ui.notifications.error("Open the Trainer sheet first!");
+        return;
+      }
+
+      const success = await sheet.performTrainerRetrain();
+      if (success) {
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this }),
+          content: `<strong>${this.name}</strong> ${game.i18n.localize("POKROLE.Training.RetrainSuccessTrainer")}`
+        });
+      }
+    }
+  }
+
+  /**
    * Start a training session for one of this trainer's party pokemon.
    * Only works for trainer actors and only when called by GM.
    */

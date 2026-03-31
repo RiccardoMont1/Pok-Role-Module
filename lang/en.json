@@ -1274,7 +1274,14 @@
       "RankUpPlayerRequest": "wants to Rank-Up {pokemon}",
       "RankUpTrainerPlayerRequest": "wants to Rank-Up their character ({trainer})",
       "RankUpRequestSent": "Rank-Up request sent to the GM!",
-      "RankUpApprovedMsg": "Rank-Up approved for {name}! Distribute your points."
+      "RankUpApprovedMsg": "Rank-Up approved for {name}! Distribute your points.",
+      "Retrain": "Retrain",
+      "RetrainConfirm": "Retrain {name}? This will reset all distributed points. Cost: {cost} TP (Available: {available} TP)",
+      "RetrainConfirmTrainer": "Retrain? This will reset all distributed attribute, social and skill points so you can redistribute them.",
+      "RetrainSuccess": "completed retraining! (-{cost} TP)",
+      "RetrainSuccessTrainer": "completed retraining!",
+      "RetrainNotEnoughTP": "Not enough Training Points to retrain! (Have: {current}, Need: {required})",
+      "RetrainNoPoints": "No points to redistribute at this rank!"
     }
   },
   "TYPES": {

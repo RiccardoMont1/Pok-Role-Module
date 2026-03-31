@@ -1271,7 +1271,14 @@
       "RankUpPlayerRequest": "vuole fare il Rank-UP a {pokemon}",
       "RankUpTrainerPlayerRequest": "vuole fare il Rank-UP del proprio personaggio ({trainer})",
       "RankUpRequestSent": "Richiesta di Rank-Up inviata al Master!",
-      "RankUpApprovedMsg": "Rank-Up approvato per {name}! Distribuisci i tuoi punti."
+      "RankUpApprovedMsg": "Rank-Up approvato per {name}! Distribuisci i tuoi punti.",
+      "Retrain": "Riallenamento",
+      "RetrainConfirm": "Riallenare {name}? Tutti i punti distribuiti verranno azzerati. Costo: {cost} PA (Disponibili: {available} PA)",
+      "RetrainConfirmTrainer": "Riallenamento? Tutti i punti attributo, sociali e abilità verranno azzerati e potrai ridistribuirli.",
+      "RetrainSuccess": "ha completato il riallenamento! (-{cost} PA)",
+      "RetrainSuccessTrainer": "ha completato il riallenamento!",
+      "RetrainNotEnoughTP": "Punti Allenamento insufficienti per il riallenamento! (Hai: {current}, Servono: {required})",
+      "RetrainNoPoints": "Nessun punto da ridistribuire a questo rango!"
     }
   },
   "TYPES": {

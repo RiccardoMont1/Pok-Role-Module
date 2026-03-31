@@ -595,6 +595,16 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         this.actor.startTrainingSession();
       }
     });
+    html.find("[data-action='retrain']").on("click", async () => {
+      try {
+        if (typeof this.actor.retrain === "function") {
+          await this.actor.retrain();
+        }
+      } catch (err) {
+        console.error("[retrain] Error:", err);
+        ui.notifications.error("Retrain error: " + err.message);
+      }
+    });
     html.find("[data-action='rank-up']").on("click", async () => {
       try {
         if (typeof this.actor.rankUp === "function") {
@@ -3066,6 +3076,128 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       }
       return true;
     }
+  }
+
+  /**
+   * Retrain a pokemon: reset all distributed points to base, deduct TP, then
+   * open a full point distribution dialog with ALL cumulative points for the current tier.
+   */
+  async performPokemonRetrain(tpCost) {
+    const currentTier = this.actor.system.tier;
+    const currentTP = Number(this.actor.system?.trainingPoints ?? 0);
+    const bonuses = this._getPokemonTierBonuses(currentTier);
+    const totalAttr = bonuses.attr;
+    const totalSocial = bonuses.social;
+    const totalSkill = bonuses.skill;
+    const skillLimit = bonuses.skillLimit;
+
+    if (totalAttr <= 0 && totalSocial <= 0 && totalSkill <= 0) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Training.RetrainNoPoints"));
+      return false;
+    }
+
+    // Confirm
+    const confirmed = await new Promise((resolve) => {
+      let result = false;
+      new Dialog({
+        title: game.i18n.localize("POKROLE.Training.Retrain"),
+        content: `<p>${game.i18n.format("POKROLE.Training.RetrainConfirm", {
+          name: this.actor.name,
+          cost: tpCost,
+          available: currentTP
+        })}</p>`,
+        buttons: {
+          confirm: {
+            icon: "<i class='fas fa-check'></i>",
+            label: game.i18n.localize("POKROLE.Common.Confirm"),
+            callback: () => { result = true; }
+          },
+          cancel: {
+            icon: "<i class='fas fa-times'></i>",
+            label: game.i18n.localize("POKROLE.Common.Cancel"),
+            callback: () => { result = false; }
+          }
+        },
+        default: "confirm",
+        close: () => resolve(result)
+      }).render(true);
+    });
+    if (!confirmed) return false;
+
+    // Reset all stats to base, deduct TP, clear rank distributions
+    const resetData = { "system.trainingPoints": currentTP - tpCost };
+    for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) resetData[`system.attributes.${key}`] = 1;
+    for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) resetData[`system.attributes.${key}`] = 1;
+    for (const { key } of SKILL_DEFINITIONS) resetData[`system.skills.${key}`] = 0;
+    await this.actor.update(resetData);
+    await this.actor.setFlag("pok-role-system", "rankDistributions", {});
+
+    // Open full distribution dialog with all cumulative points, base at 0
+    const success = await this._showPointDistributionDialog(totalAttr, totalSocial, totalSkill, skillLimit, {
+      trackRank: currentTier,
+      pendingFormData: {},
+      attrMaxByKey: this._getPokemonTrackMaxConfig().attributes
+    });
+    return Boolean(success);
+  }
+
+  /**
+   * Retrain a trainer: reset all distributed points to base, then
+   * open a full point distribution dialog with ALL cumulative points for the current rank + age.
+   */
+  async performTrainerRetrain() {
+    const currentRank = this.actor.system.cardRank;
+    const age = Number(this.actor.system.age) || 0;
+    const rankBonuses = this._getRankBonuses(currentRank);
+    const ageBonuses = this._getAgeBonuses(age);
+    const totalAttr = rankBonuses.attr + ageBonuses.attr;
+    const totalSocial = rankBonuses.social + ageBonuses.social;
+    const totalSkill = rankBonuses.skill;
+    const skillLimit = rankBonuses.skillLimit;
+
+    if (totalAttr <= 0 && totalSocial <= 0 && totalSkill <= 0) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Training.RetrainNoPoints"));
+      return false;
+    }
+
+    // Confirm
+    const confirmed = await new Promise((resolve) => {
+      let result = false;
+      new Dialog({
+        title: game.i18n.localize("POKROLE.Training.Retrain"),
+        content: `<p>${game.i18n.localize("POKROLE.Training.RetrainConfirmTrainer")}</p>`,
+        buttons: {
+          confirm: {
+            icon: "<i class='fas fa-check'></i>",
+            label: game.i18n.localize("POKROLE.Common.Confirm"),
+            callback: () => { result = true; }
+          },
+          cancel: {
+            icon: "<i class='fas fa-times'></i>",
+            label: game.i18n.localize("POKROLE.Common.Cancel"),
+            callback: () => { result = false; }
+          }
+        },
+        default: "confirm",
+        close: () => resolve(result)
+      }).render(true);
+    });
+    if (!confirmed) return false;
+
+    // Reset all stats to base, clear rank distributions
+    const resetData = {};
+    for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) resetData[`system.attributes.${key}`] = 1;
+    for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) resetData[`system.attributes.${key}`] = 1;
+    for (const { key } of SKILL_DEFINITIONS) resetData[`system.skills.${key}`] = 0;
+    await this.actor.update(resetData);
+    await this.actor.setFlag("pok-role-system", "rankDistributions", {});
+
+    // Open full distribution dialog with all cumulative points
+    const success = await this._showPointDistributionDialog(totalAttr, totalSocial, totalSkill, skillLimit, {
+      trackRank: currentRank,
+      pendingFormData: {}
+    });
+    return Boolean(success);
   }
 
   _getPokemonTierBonuses(tier) {
