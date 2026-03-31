@@ -18707,23 +18707,29 @@ export class PokRoleActor extends Actor {
     const throwDicePool = Math.max(throwAttributeValue + throwSkillValue, 1);
     const throwRemoved = resolvedTrainerActor.getPainPenalty?.() ?? 0;
     const throwRequired = 1;
+    console.log(`PokRole | [capture] throwAttr=${throwAttributeKey}(${throwAttributeValue}), throwSkill=${throwSkillValue}, pool=${throwDicePool}, formula=${successPoolFormula(throwDicePool)}`);
     const throwRoll = await new Roll(successPoolFormula(throwDicePool)).evaluate();
+    console.log(`PokRole | [capture] throwRoll done — total=${throwRoll.total}`);
     const throwRawSuccesses = Math.max(toNumber(throwRoll.total, 0), 0);
     const throwNetSuccesses = throwRawSuccesses - Math.max(toNumber(throwRemoved, 0), 0);
     const throwHit = throwNetSuccesses >= throwRequired;
+    console.log(`PokRole | [capture] throwHit=${throwHit}, raw=${throwRawSuccesses}, net=${throwNetSuccesses}, required=${throwRequired}`);
 
     const captureRequired = resolvedTrainerActor._getPokeballCaptureRequiredSuccesses(resolvedTargetActor);
     const captureBonus = resolvedTrainerActor._getPokeballCaptureBonusSuccesses(resolvedTargetActor);
+    console.log(`PokRole | [capture] captureRequired=${captureRequired}, captureBonus=${captureBonus.total}`);
     const sealSetup = throwHit
       ? await resolvedTrainerActor._resolvePokeballSealSetup(resolvedGearItem, resolvedTargetActor, {
           combat: options?.combat ?? game.combat ?? null,
           scene: options?.scene ?? canvas?.scene ?? null
         })
       : { sealPower: 0, entries: [], specialEffect: "none" };
+    console.log(`PokRole | [capture] sealSetup done — sealPower=${sealSetup.sealPower}, specialEffect=${sealSetup.specialEffect}`);
     const normalizedSealPower = Math.max(toNumber(sealSetup.sealPower, 0), 0);
     const sealRoll = throwHit && normalizedSealPower > 0
       ? await new Roll(successPoolFormula(normalizedSealPower)).evaluate()
       : null;
+    console.log(`PokRole | [capture] sealRoll done — total=${sealRoll?.total ?? "N/A"}`);
     const sealRawSuccesses = Math.max(toNumber(sealRoll?.total, 0), 0);
     const captureTotalSuccesses = throwHit ? sealRawSuccesses + captureBonus.total : 0;
     const captured = throwHit && captureTotalSuccesses >= captureRequired;
@@ -18732,9 +18738,11 @@ export class PokRoleActor extends Actor {
       Math.max(toNumber(resolvedTargetActor.system?.resources?.hp?.value, 0), 0) <= 0 ||
       resolvedTargetActor._isConditionActive?.("fainted");
     let captureMutationResult = null;
+    console.log(`PokRole | [capture] captured=${captured}, critFail=${criticalFailure}, isGM=${game.user?.isGM}`);
 
     if (captured) {
       if (!game.user?.isGM) {
+        console.log(`PokRole | [capture] Sending capturePokemon socket to GM...`);
         const response = await resolvedTrainerActor._requestCombatMutation("capturePokemon", {
           combatId: game.combat?.id ?? null,
           trainerActorId: resolvedTrainerActor.id,
@@ -18745,6 +18753,7 @@ export class PokRoleActor extends Actor {
             combatId: game.combat?.id ?? null
           }
         });
+        console.log(`PokRole | [capture] Socket response:`, response);
         captureMutationResult = response ?? null;
       } else {
         captureMutationResult = await resolvedTrainerActor._applyPokeballCaptureSuccessLocal(resolvedTrainerActor, resolvedTargetActor, resolvedGearItem, {
@@ -18753,7 +18762,9 @@ export class PokRoleActor extends Actor {
         });
       }
     }
+    console.log(`PokRole | [capture] Consuming gear item...`);
     await resolvedTrainerActor._consumeGearItem(resolvedGearItem);
+    console.log(`PokRole | [capture] Creating chat message...`);
 
     const outcomeKey = captured
       ? "POKROLE.Chat.CaptureOutcomeCaught"
