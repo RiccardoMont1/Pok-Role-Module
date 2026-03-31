@@ -2130,6 +2130,17 @@ Hooks.on("createChatMessage", async (chatMessage) => {
       caughtWhileFainted: Boolean(caughtWhileFainted),
       combat
     });
+    // Remove captured pokemon tokens from the scene
+    for (const scene of game.scenes ?? []) {
+      const capturedTokens = scene.tokens?.filter(t => t.actorId === targetActor.id) ?? [];
+      for (const tokenDoc of capturedTokens) {
+        try {
+          await tokenDoc.delete();
+        } catch (e) {
+          console.warn(`PokRole | [GM capture hook] Failed to remove token:`, e);
+        }
+      }
+    }
     console.log(`PokRole | [GM capture hook] Successfully processed capture of ${targetActor.name} by ${trainerActor.name}`);
   } catch (e) {
     console.error(`PokRole | [GM capture hook] Failed to process capture:`, e);

@@ -18422,7 +18422,7 @@ export class PokRoleActor extends Actor {
     return toNumber(scene?.darkness, 0) >= 0.5;
   }
 
-  async _promptPokeballCaveCheck(ballName) {
+  async _promptPokeballDuskContext(ballName) {
     const dialogApi = foundry?.applications?.api?.DialogV2;
     if (typeof dialogApi?.wait === "function") {
       const choice = await dialogApi.wait({
@@ -18432,19 +18432,24 @@ export class PokRoleActor extends Actor {
         content: `<p>${game.i18n.format("POKROLE.Chat.CaptureDuskContextPrompt", { item: ballName })}</p>`,
         buttons: [
           {
-            action: "yes",
-            label: game.i18n.localize("POKROLE.Common.Yes"),
-            default: true,
-            callback: () => true
+            action: "cave",
+            label: game.i18n.localize("POKROLE.Chat.CaptureDuskOptionCave"),
+            callback: () => "cave"
           },
           {
-            action: "no",
-            label: game.i18n.localize("POKROLE.Common.No"),
-            callback: () => false
+            action: "night",
+            label: game.i18n.localize("POKROLE.Chat.CaptureDuskOptionNight"),
+            callback: () => "night"
+          },
+          {
+            action: "normal",
+            label: game.i18n.localize("POKROLE.Chat.CaptureDuskOptionNormal"),
+            default: true,
+            callback: () => "normal"
           }
         ]
       });
-      return choice === true;
+      return choice ?? "normal";
     }
 
     return new Promise((resolve) => {
@@ -18452,19 +18457,24 @@ export class PokRoleActor extends Actor {
         title: game.i18n.format("POKROLE.Chat.CaptureDuskContextTitle", { item: ballName }),
         content: `<p>${game.i18n.format("POKROLE.Chat.CaptureDuskContextPrompt", { item: ballName })}</p>`,
         buttons: {
-          yes: {
-            icon: "<i class='fas fa-check'></i>",
-            label: game.i18n.localize("POKROLE.Common.Yes"),
-            callback: () => resolve(true)
+          cave: {
+            icon: "<i class='fas fa-mountain'></i>",
+            label: game.i18n.localize("POKROLE.Chat.CaptureDuskOptionCave"),
+            callback: () => resolve("cave")
           },
-          no: {
-            icon: "<i class='fas fa-times'></i>",
-            label: game.i18n.localize("POKROLE.Common.No"),
-            callback: () => resolve(false)
+          night: {
+            icon: "<i class='fas fa-moon'></i>",
+            label: game.i18n.localize("POKROLE.Chat.CaptureDuskOptionNight"),
+            callback: () => resolve("night")
+          },
+          normal: {
+            icon: "<i class='fas fa-sun'></i>",
+            label: game.i18n.localize("POKROLE.Chat.CaptureDuskOptionNormal"),
+            callback: () => resolve("normal")
           }
         },
-        default: "yes",
-        close: () => resolve(false)
+        default: "normal",
+        close: () => resolve("normal")
       }, { classes: ["pok-role-dialog"] }).render(true);
     });
   }
@@ -18496,11 +18506,9 @@ export class PokRoleActor extends Actor {
         break;
       }
       case "dusk": {
-        const scene = options?.scene ?? canvas?.scene ?? game.scenes?.current ?? null;
-        const isNight = options?.isNight === true || this._isSceneNightForCapture(scene);
-        const isCave = options?.isCave === true || await this._promptPokeballCaveCheck(gearItem?.name ?? "Dusk Ball");
-        const caveBonus = isCave ? 4 : 0;
-        const nightBonus = isNight ? 5 : 0;
+        const duskContext = options?.duskContext ?? await this._promptPokeballDuskContext(gearItem?.name ?? "Dusk Ball");
+        const caveBonus = duskContext === "cave" ? 4 : 0;
+        const nightBonus = duskContext === "night" ? 5 : 0;
         sealPower += caveBonus + nightBonus;
         entries.push({
           label: game.i18n.localize("POKROLE.Chat.CaptureSealBase"),
@@ -18624,7 +18632,7 @@ export class PokRoleActor extends Actor {
     const baseHappiness = caughtWhileFainted ? 0 : 2;
     const baseLoyalty = caughtWhileFainted ? 0 : 1;
     const happinessValue = clamp(baseHappiness + (ballSpecialEffect === "luxury" ? 1 : 0), 0, 5);
-    const loyaltyValue = clamp(baseLoyalty, 0, 5);
+    const loyaltyValue = clamp(baseLoyalty + (ballSpecialEffect === "luxury" ? 1 : 0), 0, 5);
     const updates = {
       "system.currentTrainer": resolvedTrainerActor.id,
       "system.happiness": happinessValue,
@@ -18652,6 +18660,17 @@ export class PokRoleActor extends Actor {
         ignoreBattleLimit: true,
         restoreAwareness: true
       });
+      if (typeof resolvedTargetActor.toggleQuickCondition === "function") {
+        for (const conditionKey of CONDITION_KEYS) {
+          if (resolvedTargetActor._isConditionActive?.(conditionKey)) {
+            try {
+              await resolvedTargetActor.toggleQuickCondition(conditionKey, { active: false });
+            } catch (err) {
+              console.warn(`${POKROLE.ID} | Heal Ball: failed to clear ${conditionKey} on ${resolvedTargetActor.name}:`, err);
+            }
+          }
+        }
+      }
     }
 
     const combat = options?.combat ?? game.combat ?? null;

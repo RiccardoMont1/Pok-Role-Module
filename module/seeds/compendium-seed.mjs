@@ -407,7 +407,7 @@ const ITEM_SEEDS = Object.freeze({
     makeGear("trainer-dusk-ball", "Dusk Ball", {
       category: "pokeball",
       canUseInBattle: true,
-      pokeball: { sealPower: 6, specialEffect: "dusk" },
+      pokeball: { sealPower: 4, specialEffect: "dusk" },
       img: getUpstreamItemSpritePath("dusk-ball.png", "pokeball.png"),
       description: "Uncommon. The seal on this ball gets stronger the darker it gets. Increase seal potency by 4 if you are in a cave and/or by 5 if it's night time."
     }),
@@ -421,7 +421,7 @@ const ITEM_SEEDS = Object.freeze({
     makeGear("trainer-heavy-ball", "Heavy Ball", {
       category: "pokeball",
       canUseInBattle: true,
-      pokeball: { sealPower: 6, specialEffect: "heavy" },
+      pokeball: { sealPower: 4, specialEffect: "heavy" },
       img: getUpstreamItemSpritePath("heavy-ball.png", "greatball.png"),
       description: "Uncommon. Increase seal potency by 1 for every 50 lbs/25kg, on the Pokemon you are trying to catch. Up to 5 dice may be added this way."
     }),
