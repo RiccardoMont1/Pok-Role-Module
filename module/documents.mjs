@@ -21013,6 +21013,178 @@ export class PokRoleActor extends Actor {
   }
 
   /**
+   * Rank up this actor (trainer or pokemon).
+   * Trainers: spend training points from a selected pokemon.
+   * Pokemon: spend their own training points.
+   * Only GM can rank up.
+   */
+  async rankUp() {
+    if (!game.user?.isGM) return;
+
+    const RANK_UP_COSTS = {
+      starter: 5,
+      rookie: 15,
+      standard: 25,
+      advanced: 30,
+      expert: 35,
+      ace: 40,
+      master: 50
+    };
+
+    if (this.type === "pokemon") {
+      const currentTier = `${this.system?.tier ?? "none"}`.trim();
+      const tierIndex = POKEMON_TIER_KEYS.indexOf(currentTier);
+      if (tierIndex < 0 || tierIndex >= POKEMON_TIER_KEYS.length - 1) {
+        ui.notifications.warn(game.i18n.localize("POKROLE.Training.RankUpMaxReached"));
+        return;
+      }
+      const nextTier = POKEMON_TIER_KEYS[tierIndex + 1];
+      const cost = RANK_UP_COSTS[currentTier] ?? 999;
+      const currentTP = toNumber(this.system?.trainingPoints, 0);
+
+      // Check if pokemon's rank would exceed trainer's rank
+      const trainerId = `${this.system?.currentTrainer ?? ""}`.trim();
+      const trainerActor = trainerId ? game.actors?.get?.(trainerId) : null;
+      if (trainerActor) {
+        const trainerRankIndex = POKEMON_TIER_KEYS.indexOf(`${trainerActor.system?.cardRank ?? "none"}`.trim());
+        if (tierIndex + 1 > trainerRankIndex) {
+          ui.notifications.warn(game.i18n.localize("POKROLE.Training.RankUpExceedsTrainer"));
+          return;
+        }
+      }
+
+      if (currentTP < cost) {
+        ui.notifications.warn(game.i18n.format("POKROLE.Training.RankUpNotEnoughTP", { current: currentTP, required: cost }));
+        return;
+      }
+
+      // Confirm dialog
+      const confirmed = await new Promise((resolve) => {
+        let result = false;
+        new Dialog({
+          title: game.i18n.localize("POKROLE.Training.RankUp"),
+          content: `<p>${game.i18n.format("POKROLE.Training.RankUpConfirm", {
+            name: this.name,
+            current: game.i18n.localize(POKEMON_TIER_LABEL_BY_KEY[currentTier] ?? currentTier),
+            next: game.i18n.localize(POKEMON_TIER_LABEL_BY_KEY[nextTier] ?? nextTier),
+            cost: cost,
+            available: currentTP
+          })}</p>`,
+          buttons: {
+            confirm: {
+              icon: "<i class='fas fa-check'></i>",
+              label: game.i18n.localize("POKROLE.Common.Confirm"),
+              callback: () => { result = true; }
+            },
+            cancel: {
+              icon: "<i class='fas fa-times'></i>",
+              label: game.i18n.localize("POKROLE.Common.Cancel"),
+              callback: () => { result = false; }
+            }
+          },
+          default: "confirm",
+          close: () => resolve(result)
+        }).render(true);
+      });
+
+      if (!confirmed) return;
+
+      await this.update({
+        "system.tier": nextTier,
+        "system.trainingPoints": currentTP - cost
+      });
+
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        content: `<strong>${this.name}</strong> ${game.i18n.format("POKROLE.Training.RankUpSuccess", {
+          next: game.i18n.localize(POKEMON_TIER_LABEL_BY_KEY[nextTier] ?? nextTier),
+          cost: cost
+        })}`
+      });
+
+    } else if (this.type === "trainer") {
+      const currentRank = `${this.system?.cardRank ?? "none"}`.trim();
+      const rankIndex = POKEMON_TIER_KEYS.indexOf(currentRank);
+      if (rankIndex < 0 || rankIndex >= POKEMON_TIER_KEYS.length - 1) {
+        ui.notifications.warn(game.i18n.localize("POKROLE.Training.RankUpMaxReached"));
+        return;
+      }
+      const nextRank = POKEMON_TIER_KEYS[rankIndex + 1];
+      const cost = RANK_UP_COSTS[currentRank] ?? 999;
+
+      // Trainer rank up — select which pokemon's training points to spend
+      const partyIds = Array.isArray(this.system?.party) ? this.system.party : [];
+      const partyPokemon = partyIds
+        .map((id) => game.actors?.get?.(`${id ?? ""}`.trim()))
+        .filter((a) => a && a.type === "pokemon");
+
+      const eligiblePokemon = partyPokemon.filter((p) => toNumber(p.system?.trainingPoints, 0) >= cost);
+
+      if (eligiblePokemon.length === 0) {
+        ui.notifications.warn(game.i18n.format("POKROLE.Training.RankUpNoEligiblePokemon", { required: cost }));
+        return;
+      }
+
+      const pokemonOptionsHtml = eligiblePokemon
+        .map((p) => `<option value="${p.id}">${p.name} (TP: ${toNumber(p.system?.trainingPoints, 0)})</option>`)
+        .join("");
+
+      const choiceResult = await new Promise((resolve) => {
+        let result = null;
+        new Dialog({
+          title: game.i18n.localize("POKROLE.Training.RankUp"),
+          content: `
+            <p>${game.i18n.format("POKROLE.Training.RankUpTrainerConfirm", {
+              name: this.name,
+              current: game.i18n.localize(TRAINER_CARD_RANK_LABEL_BY_KEY[currentRank] ?? currentRank),
+              next: game.i18n.localize(TRAINER_CARD_RANK_LABEL_BY_KEY[nextRank] ?? nextRank),
+              cost: cost
+            })}</p>
+            <form class="pok-role-combined-roll">
+              <div class="form-group">
+                <label>${game.i18n.localize("POKROLE.Training.RankUpSelectPokemon")}</label>
+                <select name="pokemonId">${pokemonOptionsHtml}</select>
+              </div>
+            </form>
+          `,
+          buttons: {
+            confirm: {
+              icon: "<i class='fas fa-check'></i>",
+              label: game.i18n.localize("POKROLE.Common.Confirm"),
+              callback: (html) => { result = html.find("[name='pokemonId']").val(); }
+            },
+            cancel: {
+              icon: "<i class='fas fa-times'></i>",
+              label: game.i18n.localize("POKROLE.Common.Cancel"),
+              callback: () => { result = null; }
+            }
+          },
+          default: "confirm",
+          close: () => resolve(result)
+        }).render(true);
+      });
+
+      if (!choiceResult) return;
+      const selectedPokemon = game.actors.get(choiceResult);
+      if (!selectedPokemon) return;
+
+      const pokemonTP = toNumber(selectedPokemon.system?.trainingPoints, 0);
+      if (pokemonTP < cost) return;
+
+      await this.update({ "system.cardRank": nextRank });
+      await selectedPokemon.update({ "system.trainingPoints": pokemonTP - cost });
+
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        content: `<strong>${this.name}</strong> ${game.i18n.format("POKROLE.Training.RankUpSuccess", {
+          next: game.i18n.localize(TRAINER_CARD_RANK_LABEL_BY_KEY[nextRank] ?? nextRank),
+          cost: cost
+        })} (${game.i18n.format("POKROLE.Training.RankUpTPFrom", { pokemon: selectedPokemon.name })})`
+      });
+    }
+  }
+
+  /**
    * Start a training session for one of this trainer's party pokemon.
    * Only works for trainer actors and only when called by GM.
    */

@@ -1260,7 +1260,17 @@
       "BattleOutcome": "How did the battle end?",
       "FaintedOrSwitched": "Did this Pokemon faint or get switched out?",
       "ParticipatedWholeRound": "Did this Pokemon participate in battle for at least one full Round?",
-      "NoBattlePointsNoRound": "No points: did not participate for a full Round"
+      "NoBattlePointsNoRound": "No points: did not participate for a full Round",
+      "RankUp": "Rank Up",
+      "RankUpConfirm": "{name}: Rank up from {current} to {next}? Cost: {cost} TP (Available: {available} TP)",
+      "RankUpTrainerConfirm": "{name}: Rank up from {current} to {next}? Cost: {cost} TP. Select which Pokémon's Training Points to spend:",
+      "RankUpSuccess": "ranked up to {next}! (-{cost} TP)",
+      "RankUpTPFrom": "TP from {pokemon}",
+      "RankUpSelectPokemon": "Spend TP from which Pokémon?",
+      "RankUpMaxReached": "Already at maximum rank!",
+      "RankUpNotEnoughTP": "Not enough Training Points! (Have: {current}, Need: {required})",
+      "RankUpNoEligiblePokemon": "No Pokémon in the party has enough Training Points ({required} required)",
+      "RankUpExceedsTrainer": "Cannot raise Pokémon's rank beyond the Trainer's rank!"
     }
   },
   "TYPES": {

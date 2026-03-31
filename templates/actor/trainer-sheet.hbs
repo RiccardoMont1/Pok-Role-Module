@@ -69,9 +69,13 @@
       <div class="trainer-id-controls">
         <label class="trainer-control trainer-control-rank">
           <span>{{localize "POKROLE.Trainer.CardRank"}}</span>
+          {{#if isGM}}
           <select name="system.cardRank">
             {{selectOptions trainerRankOptions selected=system.cardRank localize=true}}
           </select>
+          {{else}}
+          <input type="text" value="{{cardRankLabel}}" readonly />
+          {{/if}}
         </label>
         <label class="trainer-control trainer-control-gender">
           <span>{{localize "POKROLE.Trainer.Gender"}}</span>
@@ -136,6 +140,10 @@
           <button type="button" data-action="training-session">
             <i class="fas fa-dumbbell"></i>
             {{localize "POKROLE.Training.SessionButton"}}
+          </button>
+          <button type="button" data-action="rank-up">
+            <i class="fas fa-arrow-up"></i>
+            {{localize "POKROLE.Training.RankUp"}}
           </button>
           {{/if}}
         </div>

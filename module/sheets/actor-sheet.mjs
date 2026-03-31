@@ -202,6 +202,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     context.actionTrack = this._buildTrack(this.actor.system.combat?.actionNumber, 5, 1);
     context.badgesTrack = this._buildTrack(this.actor.system.badges, 8, 0);
     context.trainerRankOptions = TRAINER_CARD_RANK_LABEL_BY_KEY;
+    const cardRankKey = `${this.actor.system?.cardRank ?? "none"}`.trim();
+    context.cardRankLabel = game.i18n.localize(TRAINER_CARD_RANK_LABEL_BY_KEY[cardRankKey] ?? "POKROLE.Common.Unknown");
     const trainerGenderValue = `${this.actor.system.gender ?? "male"}`.trim().toLowerCase();
     const trainerGender = trainerGenderValue === "female" ? "female" : "male";
     context.trainerGender = trainerGender;
@@ -237,6 +239,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       ])
     );
     context.pokemonTierOptions = POKEMON_TIER_LABEL_BY_KEY;
+    const tierKey = `${this.actor.system?.tier ?? "none"}`.trim();
+    context.tierLabel = game.i18n.localize(POKEMON_TIER_LABEL_BY_KEY[tierKey] ?? "POKROLE.Common.Unknown");
     context.conditionChips = this._buildConditionChips();
     context.temporaryEffects = this._buildTemporaryEffects();
     context.actorConfiguredEffects = this._buildActorConfiguredEffects();
@@ -589,6 +593,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     html.find("[data-action='training-session']").on("click", () => {
       if (typeof this.actor.startTrainingSession === "function") {
         this.actor.startTrainingSession();
+      }
+    });
+    html.find("[data-action='rank-up']").on("click", () => {
+      if (typeof this.actor.rankUp === "function") {
+        this.actor.rankUp();
       }
     });
     html.find("[data-action='trainer-set-weather']").on("click", (event) =>

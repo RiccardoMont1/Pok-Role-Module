@@ -1257,7 +1257,17 @@
       "BattleOutcome": "Come e finita la battaglia?",
       "FaintedOrSwitched": "Questo Pokemon e svenuto o e stato ritirato?",
       "ParticipatedWholeRound": "Questo Pokemon ha partecipato alla battaglia per almeno un Round completo?",
-      "NoBattlePointsNoRound": "Nessun punto: non ha partecipato per un Round intero"
+      "NoBattlePointsNoRound": "Nessun punto: non ha partecipato per un Round intero",
+      "RankUp": "Rank Up",
+      "RankUpConfirm": "{name}: Salire da {current} a {next}? Costo: {cost} PA (Disponibili: {available} PA)",
+      "RankUpTrainerConfirm": "{name}: Salire da {current} a {next}? Costo: {cost} PA. Seleziona da quale Pokémon spendere i Punti Allenamento:",
+      "RankUpSuccess": "è salito al rango {next}! (-{cost} PA)",
+      "RankUpTPFrom": "PA da {pokemon}",
+      "RankUpSelectPokemon": "Spendi PA da quale Pokémon?",
+      "RankUpMaxReached": "Già al rango massimo!",
+      "RankUpNotEnoughTP": "Punti Allenamento insufficienti! (Hai: {current}, Servono: {required})",
+      "RankUpNoEligiblePokemon": "Nessun Pokémon nel party ha abbastanza Punti Allenamento ({required} richiesti)",
+      "RankUpExceedsTrainer": "Non puoi alzare il rango del Pokémon oltre quello dell'Allenatore!"
     }
   },
   "TYPES": {

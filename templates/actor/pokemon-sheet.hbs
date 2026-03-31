@@ -150,9 +150,13 @@
             </label>
             <label>
               <span>{{localize "POKROLE.Pokemon.Rank"}}</span>
+              {{#if isGM}}
               <select name="system.tier">
                 {{selectOptions pokemonTierOptions selected=system.tier localize=true}}
               </select>
+              {{else}}
+              <input type="text" value="{{tierLabel}}" readonly />
+              {{/if}}
             </label>
             <label>
               <span>{{localize "POKROLE.Pokemon.Nature"}}</span>
@@ -287,6 +291,17 @@
             <i class="fas fa-bed"></i>
             <span>{{localize "POKROLE.Actions.Rest"}}</span>
           </button>
+          {{#if isGM}}
+          <button
+            type="button"
+            class="pokemon-quick-action"
+            data-action="rank-up"
+            title="{{localize 'POKROLE.Training.RankUp'}}"
+          >
+            <i class="fas fa-arrow-up"></i>
+            <span>{{localize "POKROLE.Training.RankUp"}}</span>
+          </button>
+          {{/if}}
         </div>
       </div>
       <div class="resource-grid">
