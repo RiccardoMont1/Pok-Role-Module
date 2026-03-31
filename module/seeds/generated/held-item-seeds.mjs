@@ -426,7 +426,7 @@ export const HELD_ITEM_COMPENDIUM_ENTRIES = [
   {
     "name": "Fairy Wings",
     "type": "gear",
-    "img": "icons/svg/item-bag.svg",
+    "img": "systems/pok-role-system/assets/items/gear/fairy-wings.png",
     "system": {
       "category": "held",
       "pocket": "main",
@@ -532,7 +532,7 @@ export const HELD_ITEM_COMPENDIUM_ENTRIES = [
   {
     "name": "Hard Stone",
     "type": "gear",
-    "img": "icons/svg/item-bag.svg",
+    "img": "systems/pok-role-system/assets/items/gear/hard-stone.png",
     "system": {
       "category": "held",
       "pocket": "main",
@@ -2864,7 +2864,7 @@ export const HELD_ITEM_COMPENDIUM_ENTRIES = [
   {
     "name": "Clear Amulet",
     "type": "gear",
-    "img": "icons/svg/item-bag.svg",
+    "img": "systems/pok-role-system/assets/items/gear/clear-amulet.png",
     "system": {
       "category": "held",
       "pocket": "main",
@@ -3182,7 +3182,7 @@ export const HELD_ITEM_COMPENDIUM_ENTRIES = [
   {
     "name": "Eviolite",
     "type": "gear",
-    "img": "icons/svg/item-bag.svg",
+    "img": "systems/pok-role-system/assets/items/gear/eviolite.png",
     "system": {
       "category": "held",
       "pocket": "main",
@@ -4242,7 +4242,7 @@ export const HELD_ITEM_COMPENDIUM_ENTRIES = [
   {
     "name": "Loaded Dice",
     "type": "gear",
-    "img": "icons/svg/item-bag.svg",
+    "img": "systems/pok-role-system/assets/items/gear/loaded-dice.png",
     "system": {
       "category": "held",
       "pocket": "main",
@@ -5726,7 +5726,7 @@ export const HELD_ITEM_COMPENDIUM_ENTRIES = [
   {
     "name": "Toxic Orb",
     "type": "gear",
-    "img": "icons/svg/item-bag.svg",
+    "img": "systems/pok-role-system/assets/items/gear/toxic-orb.png",
     "system": {
       "category": "held",
       "pocket": "main",

@@ -5,7 +5,7 @@ import { ABILITY_COMPENDIUM_ENTRIES } from "./generated/ability-seeds.mjs";
 import { POKEMON_ACTOR_COMPENDIUM_ENTRIES } from "./generated/pokemon-actor-seeds.mjs";
 import { HELD_ITEM_COMPENDIUM_ENTRIES } from "./generated/held-item-seeds.mjs";
 
-export const COMPENDIUM_SEED_VERSION = "2026-03-28-pokeball-sub-ball-v1";
+export const COMPENDIUM_SEED_VERSION = "2026-03-31-item-sprites-v1";
 const VALID_ITEM_TYPES = new Set(["move", "gear", "ability", "weather", "status", "pokedex"]);
 const VALID_ACTOR_TYPES = new Set(["trainer", "pokemon"]);
 const LEGACY_SYSTEM_FLAG_KEYS = Object.freeze(["pok-role-module", "pok-role-system"]);
@@ -257,17 +257,20 @@ const ITEM_SEEDS = Object.freeze({
       category: "travel",
       consumable: false,
       target: "trainer",
+      img: "systems/pok-role-system/assets/items/gear/sleeping-bag.png",
       description: "Not too comfortable. You'll be able to sleep warm and dry but after a few nights your back may hurt."
     }),
     makeGear("trainer-camping-stove-cookware", "Camping Stove & Cookware", {
       category: "travel",
       consumable: false,
       target: "trainer",
+      img: "systems/pok-role-system/assets/items/gear/camping-stove.png",
       description: "Forget about hunting and eating roots like a savage. With this luxury set you'll always have a gourmet meal."
     }),
     makeGear("trainer-compass", "Compass", {
       category: "travel",
       consumable: false,
+      img: "systems/pok-role-system/assets/items/gear/compass.png",
       target: "trainer",
       description: "A useful compass to point you in the right direction. Warning: Keep away from magnets."
     }),
@@ -289,6 +292,7 @@ const ITEM_SEEDS = Object.freeze({
       category: "travel",
       consumable: false,
       target: "trainer",
+      img: "systems/pok-role-system/assets/items/gear/inflatable-boat.png",
       description: "A small boat for two persons. Your Pokemon can pull you through the water or you can use the oars."
     }),
     makeGear("trainer-fishing-rod", "Fishing Rod", {
@@ -302,18 +306,21 @@ const ITEM_SEEDS = Object.freeze({
       category: "travel",
       consumable: false,
       target: "trainer",
+      img: "systems/pok-role-system/assets/items/gear/saddle.png",
       description: "A secure seat to strap on a Pokemon large enough to carry you. Riding a Pokemon sure is exciting!"
     }),
     makeGear("trainer-sled", "Sled", {
       category: "travel",
       consumable: false,
       target: "trainer",
+      img: "systems/pok-role-system/assets/items/gear/sled.png",
       description: "Strap one large Pokemon or several small ones to pull you through snow, sand or any smooth surface!"
     }),
     makeGear("trainer-hang-glider", "Hang Glider", {
       category: "travel",
       consumable: false,
       target: "trainer",
+      img: "systems/pok-role-system/assets/items/gear/hang-glider.png",
       description: "You will catch more Pokemon with honey than with vinegar. Wild Pokemon will come in hordes tracking it's scent, or you can enjoy it as a sweet treat!"
     }),
 
@@ -338,6 +345,7 @@ const ITEM_SEEDS = Object.freeze({
       category: "other",
       consumable: true,
       target: "trainer",
+      img: "systems/pok-role-system/assets/items/gear/meal-rations.png",
       description: "Nothing fancy but there's no need to travel on an empty stomach. One ration is enough for one day."
     }),
     makeGear("trainer-pokedoll", "PokeDoll", {
@@ -365,7 +373,8 @@ const ITEM_SEEDS = Object.freeze({
     makeGear("trainer-honey", "Honey", {
       category: "other",
       consumable: true,
-      description: "A sweet treat to gain the affection of someone special. It melts in your mouth with each bite. Cannot be used in Battle."
+      img: "systems/pok-role-system/assets/items/gear/honey.png",
+      description: "You will catch more Pokemon with honey than with vinegar. Wild Pokemon will come in hordes tracking it's scent, or you can enjoy it as a sweet treat!"
     }),
 
     // --- Pokeball items ---
@@ -401,56 +410,56 @@ const ITEM_SEEDS = Object.freeze({
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 3, specialEffect: "old" },
-      img: getUpstreamItemSpritePath("old-pokeball.png", "pokeball.png"),
+      img: "systems/pok-role-system/assets/items/pokeballs/old-poke-ball.png",
       description: "Rare. An old model of Pokeball, now a collector's item."
     }),
     makeGear("trainer-dusk-ball", "Dusk Ball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 4, specialEffect: "dusk" },
-      img: getUpstreamItemSpritePath("dusk-ball.png", "pokeball.png"),
+      img: "systems/pok-role-system/assets/items/pokeballs/dusk-ball.png",
       description: "Uncommon. The seal on this ball gets stronger the darker it gets. Increase seal potency by 4 if you are in a cave and/or by 5 if it's night time."
     }),
     makeGear("trainer-fast-ball", "Fast Ball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 5, specialEffect: "fast" },
-      img: getUpstreamItemSpritePath("fast-ball.png", "pokeball.png"),
+      img: "systems/pok-role-system/assets/items/pokeballs/fast-ball.png",
       description: "Uncommon. This seal potency is equal to the Dexterity Score of the Pokemon you are trying to catch. Up to 9 dice."
     }),
     makeGear("trainer-heavy-ball", "Heavy Ball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 4, specialEffect: "heavy" },
-      img: getUpstreamItemSpritePath("heavy-ball.png", "greatball.png"),
+      img: "systems/pok-role-system/assets/items/pokeballs/heavy-ball.png",
       description: "Uncommon. Increase seal potency by 1 for every 50 lbs/25kg, on the Pokemon you are trying to catch. Up to 5 dice may be added this way."
     }),
     makeGear("trainer-luxury-ball", "Luxury Ball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 4, specialEffect: "luxury" },
-      img: getUpstreamItemSpritePath("luxury-ball.png", "pokeball.png"),
+      img: "systems/pok-role-system/assets/items/pokeballs/luxury-ball.png",
       description: "Very Rare. Any Pokemon caught with this ball will have their Happiness Score increased by 1."
     }),
     makeGear("trainer-quick-ball", "Quick Ball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 9, specialEffect: "quick" },
-      img: getUpstreamItemSpritePath("quick-ball.png", "greatball.png"),
+      img: "systems/pok-role-system/assets/items/pokeballs/quick-ball.png",
       description: "Uncommon. The seal on this ball works on a timer. Starting with a max potency of 9 dice on the first Round of battle and reducing the seal potency by 2 each Round that passes."
     }),
     makeGear("trainer-net-ball", "Sub Ball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 4, specialEffect: "net" },
-      img: getUpstreamItemSpritePath("pokeball.png"),
+      img: "systems/pok-role-system/assets/items/pokeballs/sub-ball.png",
       description: "Uncommon. Normally has the seal potency of a Pokeball (4 dice), but against Water-type Pokemon it has the seal potency of a Greatball (6 dice)."
     }),
     makeGear("trainer-heal-ball", "Heal Ball", {
       category: "pokeball",
       canUseInBattle: true,
       pokeball: { sealPower: 4, specialEffect: "heal", healsOnCapture: true },
-      img: getUpstreamItemSpritePath("pokeball.png"),
+      img: "systems/pok-role-system/assets/items/pokeballs/heal-ball.png",
       description: "Uncommon. Has the seal potency of a Pokeball (4 dice) but fully heals the Pokemon once captured."
     }),
 
@@ -729,6 +738,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "main",
       canUseInBattle: false,
       heal: { hp: 10 },
+      img: "systems/pok-role-system/assets/items/gear/max-honey.png",
       description: "An exquisite honey made by a Vespiquen. It's unbelievably healthy and said to grant true happiness. But the only way to obtain it is to defeat the whole swarm in battle. Cannot be used in Battle."
     }),
     makeGear("drink-ice-cream", "Ice Cream", {
@@ -736,6 +746,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "main",
       canUseInBattle: false,
       heal: { hp: 3 },
+      img: "systems/pok-role-system/assets/items/gear/ice-cream.png",
       description: "A delicious vanilla cone that looks just like a Vanillish. Perfect for a sunny day at the park. Cannot be used in Battle."
     }),
     makeGear("drink-chocolate", "Chocolate", {
@@ -743,6 +754,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "main",
       canUseInBattle: false,
       heal: { hp: 2 },
+      img: "systems/pok-role-system/assets/items/gear/chocolate.png",
       description: "A sweet treat to gain the affection of someone special. It melts in your mouth with each bite. Cannot be used in Battle."
     }),
     makeGear("drink-baked-goods", "Baked Goods", {
@@ -750,6 +762,7 @@ const ITEM_SEEDS = Object.freeze({
       pocket: "main",
       canUseInBattle: false,
       heal: { hp: 2 },
+      img: "systems/pok-role-system/assets/items/gear/baked-goods.png",
       description: "Malasadas, Lava Cookies, Lumiose Galette, Jubilife Muffins, Pewter Crunchies, and More! Right out of the oven! Cannot be used in Battle."
     })
   ],
@@ -760,18 +773,21 @@ const ITEM_SEEDS = Object.freeze({
       category: "other",
       pocket: "main",
       consumable: true,
+      img: "systems/pok-role-system/assets/items/gear/dry-food.png",
       description: "Dry kibble for your Pokemon. Nothing special. Enough for one day."
     }),
     makeGear("care-gourmet-food", "Gourmet Food", {
       category: "other",
       pocket: "main",
       consumable: true,
+      img: "systems/pok-role-system/assets/items/gear/gourmet-food.png",
       description: "Made with Premium ingredients. If you feed this on a regular basis the Pokemon's happiness will increase faster."
     }),
     makeGear("care-high-performance-food", "High-Performance Food", {
       category: "other",
       pocket: "main",
       consumable: true,
+      img: "systems/pok-role-system/assets/items/gear/high-performance-food.png",
       description: "High-protein kibble, made for athletes! Add 2 dice to the next Training Roll of the Pokemon."
     }),
 
@@ -836,6 +852,7 @@ const ITEM_SEEDS = Object.freeze({
       category: "vitamin",
       pocket: "main",
       vitamin: { stat: "none" },
+      img: "systems/pok-role-system/assets/items/gear/power-increasers.png",
       description: "Weighted gear, that Reduce Dexterity by 1 but grant an Increase of 2 on another Attribute/Trait of your choice."
     }),
 
@@ -844,18 +861,21 @@ const ITEM_SEEDS = Object.freeze({
       category: "grooming",
       pocket: "main",
       consumable: false,
+      img: "systems/pok-role-system/assets/items/gear/grooming-kit.png",
       description: "No more matted hair, unruly leaves, flaky scales, rough rocks, unpolished steel ...you get the idea."
     }),
     makeGear("grooming-costume", "Pokemon Costume", {
       category: "grooming",
       pocket: "main",
       consumable: false,
+      img: "systems/pok-role-system/assets/items/gear/pokemon-costume.png",
       description: "Fashionable clothes. Your companions will look amazing in these costumes and they will love it too!"
     }),
     makeGear("grooming-accessory-piece", "Piece of Accessory", {
       category: "grooming",
       pocket: "main",
       consumable: false,
+      img: "systems/pok-role-system/assets/items/gear/piece-of-accessory.png",
       description: "Ribbons, hats, collars and everything you need to make your companion look super special."
     })
   ],
