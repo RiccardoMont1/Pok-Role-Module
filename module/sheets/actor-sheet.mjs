@@ -2966,6 +2966,104 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     });
   }
 
+  /**
+   * Perform a pokemon rank-up: deduct TP, then open the point distribution dialog.
+   * Called from actor.rankUp() to reuse the existing distribution logic.
+   */
+  async performPokemonRankUp(newTier, tpCost) {
+    const oldTier = this.actor.system.tier;
+    const currentTP = Number(this.actor.system?.trainingPoints ?? 0);
+
+    const newBonuses = this._getPokemonTierBonuses(newTier);
+    const oldBonuses = this._getPokemonTierBonuses(oldTier);
+    const diffAttr = newBonuses.attr - oldBonuses.attr;
+    const diffSocial = newBonuses.social - oldBonuses.social;
+    const diffSkill = newBonuses.skill - oldBonuses.skill;
+    const skillLimit = newBonuses.skillLimit;
+
+    if (diffAttr > 0 || diffSocial > 0 || diffSkill > 0) {
+      const currentAttrBase = {};
+      for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
+        currentAttrBase[key] = Number(this.actor.system.attributes?.[key] ?? 1);
+      }
+      const currentSocialBase = {};
+      for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) {
+        currentSocialBase[key] = Number(this.actor.system.attributes?.[key] ?? 1);
+      }
+      const currentSkillBase = {};
+      for (const { key } of SKILL_DEFINITIONS) {
+        currentSkillBase[key] = Number(this.actor.system.skills?.[key] ?? 0);
+      }
+      const currentExtraSkills = Array.isArray(this.actor.system.extraSkills)
+        ? this.actor.system.extraSkills : [];
+      for (let i = 0; i < currentExtraSkills.length; i++) {
+        currentSkillBase[`extra_${i}`] = Number(currentExtraSkills[i].value ?? 0);
+      }
+      const confirmed = await this._showPointDistributionDialog(diffAttr, diffSocial, diffSkill, skillLimit, {
+        attrBase: currentAttrBase,
+        socialBase: currentSocialBase,
+        skillBase: currentSkillBase,
+        trackRank: newTier,
+        pendingFormData: { "system.tier": newTier, "system.trainingPoints": currentTP - tpCost },
+        attrMaxByKey: this._getPokemonTrackMaxConfig().attributes
+      });
+      return confirmed;
+    } else {
+      // No points to distribute, just update directly
+      await this.actor.update({ "system.tier": newTier, "system.trainingPoints": currentTP - tpCost });
+      return true;
+    }
+  }
+
+  /**
+   * Perform a trainer rank-up: deduct TP from selected pokemon, then open the point distribution dialog.
+   * Called from actor.rankUp() to reuse the existing distribution logic.
+   */
+  async performTrainerRankUp(newRank, selectedPokemonId, tpCost) {
+    const oldRank = this.actor.system.cardRank;
+    const selectedPokemon = game.actors.get(selectedPokemonId);
+    if (!selectedPokemon) return false;
+
+    const pokemonTP = Number(selectedPokemon.system?.trainingPoints ?? 0);
+
+    const newBonuses = this._getRankBonuses(newRank);
+    const oldBonuses = this._getRankBonuses(oldRank);
+    const diffAttr = newBonuses.attr - oldBonuses.attr;
+    const diffSocial = newBonuses.social - oldBonuses.social;
+    const diffSkill = newBonuses.skill - oldBonuses.skill;
+    const skillLimit = newBonuses.skillLimit;
+
+    if (diffAttr > 0 || diffSocial > 0 || diffSkill > 0) {
+      const currentAttrBase = {};
+      for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
+        currentAttrBase[key] = Number(this.actor.system.attributes?.[key] ?? 1);
+      }
+      const currentSocialBase = {};
+      for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) {
+        currentSocialBase[key] = Number(this.actor.system.attributes?.[key] ?? 1);
+      }
+      const currentSkillBase = {};
+      for (const { key } of SKILL_DEFINITIONS) {
+        currentSkillBase[key] = Number(this.actor.system.skills?.[key] ?? 0);
+      }
+      const confirmed = await this._showPointDistributionDialog(diffAttr, diffSocial, diffSkill, skillLimit, {
+        attrBase: currentAttrBase,
+        socialBase: currentSocialBase,
+        skillBase: currentSkillBase,
+        trackRank: newRank,
+        pendingFormData: { "system.cardRank": newRank }
+      });
+      if (confirmed) {
+        await selectedPokemon.update({ "system.trainingPoints": pokemonTP - tpCost });
+      }
+      return confirmed;
+    } else {
+      await this.actor.update({ "system.cardRank": newRank });
+      await selectedPokemon.update({ "system.trainingPoints": pokemonTP - tpCost });
+      return true;
+    }
+  }
+
   _getPokemonTierBonuses(tier) {
     const table = {
       none:     { attr: 0,  social: 0,  skill: 0,  skillLimit: 0 },

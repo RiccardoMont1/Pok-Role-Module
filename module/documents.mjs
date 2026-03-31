@@ -21060,49 +21060,23 @@ export class PokRoleActor extends Actor {
         return;
       }
 
-      // Confirm dialog
-      const confirmed = await new Promise((resolve) => {
-        let result = false;
-        new Dialog({
-          title: game.i18n.localize("POKROLE.Training.RankUp"),
-          content: `<p>${game.i18n.format("POKROLE.Training.RankUpConfirm", {
-            name: this.name,
-            current: game.i18n.localize(POKEMON_TIER_LABEL_BY_KEY[currentTier] ?? currentTier),
+      // Find the open sheet and use its point distribution system
+      const sheet = this.sheet;
+      if (!sheet || typeof sheet.performPokemonRankUp !== "function") {
+        ui.notifications.error("Open the Pokémon sheet first!");
+        return;
+      }
+
+      const success = await sheet.performPokemonRankUp(nextTier, cost);
+      if (success) {
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this }),
+          content: `<strong>${this.name}</strong> ${game.i18n.format("POKROLE.Training.RankUpSuccess", {
             next: game.i18n.localize(POKEMON_TIER_LABEL_BY_KEY[nextTier] ?? nextTier),
-            cost: cost,
-            available: currentTP
-          })}</p>`,
-          buttons: {
-            confirm: {
-              icon: "<i class='fas fa-check'></i>",
-              label: game.i18n.localize("POKROLE.Common.Confirm"),
-              callback: () => { result = true; }
-            },
-            cancel: {
-              icon: "<i class='fas fa-times'></i>",
-              label: game.i18n.localize("POKROLE.Common.Cancel"),
-              callback: () => { result = false; }
-            }
-          },
-          default: "confirm",
-          close: () => resolve(result)
-        }).render(true);
-      });
-
-      if (!confirmed) return;
-
-      await this.update({
-        "system.tier": nextTier,
-        "system.trainingPoints": currentTP - cost
-      });
-
-      await ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ actor: this }),
-        content: `<strong>${this.name}</strong> ${game.i18n.format("POKROLE.Training.RankUpSuccess", {
-          next: game.i18n.localize(POKEMON_TIER_LABEL_BY_KEY[nextTier] ?? nextTier),
-          cost: cost
-        })}`
-      });
+            cost: cost
+          })}`
+        });
+      }
 
     } else if (this.type === "trainer") {
       const currentRank = `${this.system?.cardRank ?? "none"}`.trim();
@@ -21173,16 +21147,23 @@ export class PokRoleActor extends Actor {
       const pokemonTP = toNumber(selectedPokemon.system?.trainingPoints, 0);
       if (pokemonTP < cost) return;
 
-      await this.update({ "system.cardRank": nextRank });
-      await selectedPokemon.update({ "system.trainingPoints": pokemonTP - cost });
+      // Find the open sheet and use its point distribution system
+      const sheet = this.sheet;
+      if (!sheet || typeof sheet.performTrainerRankUp !== "function") {
+        ui.notifications.error("Open the Trainer sheet first!");
+        return;
+      }
 
-      await ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ actor: this }),
-        content: `<strong>${this.name}</strong> ${game.i18n.format("POKROLE.Training.RankUpSuccess", {
-          next: game.i18n.localize(TRAINER_CARD_RANK_LABEL_BY_KEY[nextRank] ?? nextRank),
-          cost: cost
-        })} (${game.i18n.format("POKROLE.Training.RankUpTPFrom", { pokemon: selectedPokemon.name })})`
-      });
+      const success = await sheet.performTrainerRankUp(nextRank, choiceResult, cost);
+      if (success) {
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this }),
+          content: `<strong>${this.name}</strong> ${game.i18n.format("POKROLE.Training.RankUpSuccess", {
+            next: game.i18n.localize(TRAINER_CARD_RANK_LABEL_BY_KEY[nextRank] ?? nextRank),
+            cost: cost
+          })} (${game.i18n.format("POKROLE.Training.RankUpTPFrom", { pokemon: selectedPokemon.name })})`
+        });
+      }
     }
   }
 
