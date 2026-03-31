@@ -2113,6 +2113,29 @@ Hooks.on("getSceneControlButtons", (controls) => {
   };
 });
 
+// Capture: when a chat message with a capture flag is created, the GM auto-processes it
+Hooks.on("createChatMessage", async (chatMessage) => {
+  if (!game.user?.isGM) return;
+  const captureRequest = chatMessage.getFlag?.(POKROLE.ID, "captureRequest");
+  if (!captureRequest) return;
+  const { trainerActorId, targetActorId, gearItemId, caughtWhileFainted, combatId } = captureRequest;
+  const trainerActor = game.actors?.get(trainerActorId);
+  const targetActor = game.actors?.get(targetActorId);
+  const gearItem = trainerActor?.items?.get(gearItemId);
+  if (!(trainerActor instanceof PokRoleActor) || trainerActor.type !== "trainer") return;
+  if (!(targetActor instanceof PokRoleActor) || targetActor.type !== "pokemon") return;
+  try {
+    const combat = combatId ? game.combats?.get(combatId) ?? null : null;
+    await trainerActor._applyPokeballCaptureSuccessLocal(trainerActor, targetActor, gearItem, {
+      caughtWhileFainted: Boolean(caughtWhileFainted),
+      combat
+    });
+    console.log(`PokRole | [GM capture hook] Successfully processed capture of ${targetActor.name} by ${trainerActor.name}`);
+  } catch (e) {
+    console.error(`PokRole | [GM capture hook] Failed to process capture:`, e);
+  }
+});
+
 // Illusion: when a token with the Illusion ability is placed on the scene, apply disguise
 Hooks.on("createToken", async (tokenDocument) => {
   const actor = tokenDocument?.actor ?? null;

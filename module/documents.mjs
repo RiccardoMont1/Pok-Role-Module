@@ -18671,11 +18671,9 @@ export class PokRoleActor extends Actor {
   }
 
   async _capturePokemonWithPokeball(gearItem, targetActor, options = {}) {
-    console.log(`PokRole | [capture] START — trainer=${this?.name}, target=${targetActor?.name}, gearItem=${gearItem?.name}, isGM=${game.user?.isGM}`);
     const resolvedTrainerActor = game.actors?.get(`${this?.id ?? ""}`.trim()) ?? this;
     const resolvedTargetActor = game.actors?.get(`${targetActor?.id ?? ""}`.trim()) ?? targetActor ?? null;
     const resolvedGearItem = resolvedTrainerActor?.items?.get?.(`${gearItem?.id ?? ""}`.trim()) ?? gearItem ?? null;
-    console.log(`PokRole | [capture] resolved: trainer=${resolvedTrainerActor?.name}(${resolvedTrainerActor?.type}), target=${resolvedTargetActor?.name}(${resolvedTargetActor?.type}), gear=${resolvedGearItem?.name}, currentTrainer=${resolvedTargetActor?.system?.currentTrainer ?? "none"}`);
     if (resolvedTrainerActor.type !== "trainer") {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.CaptureRequiresTrainer"));
       return null;
@@ -18707,29 +18705,23 @@ export class PokRoleActor extends Actor {
     const throwDicePool = Math.max(throwAttributeValue + throwSkillValue, 1);
     const throwRemoved = resolvedTrainerActor.getPainPenalty?.() ?? 0;
     const throwRequired = 1;
-    console.log(`PokRole | [capture] throwAttr=${throwAttributeKey}(${throwAttributeValue}), throwSkill=${throwSkillValue}, pool=${throwDicePool}, formula=${successPoolFormula(throwDicePool)}`);
     const throwRoll = await new Roll(successPoolFormula(throwDicePool)).evaluate();
-    console.log(`PokRole | [capture] throwRoll done — total=${throwRoll.total}`);
     const throwRawSuccesses = Math.max(toNumber(throwRoll.total, 0), 0);
     const throwNetSuccesses = throwRawSuccesses - Math.max(toNumber(throwRemoved, 0), 0);
     const throwHit = throwNetSuccesses >= throwRequired;
-    console.log(`PokRole | [capture] throwHit=${throwHit}, raw=${throwRawSuccesses}, net=${throwNetSuccesses}, required=${throwRequired}`);
 
     const captureRequired = resolvedTrainerActor._getPokeballCaptureRequiredSuccesses(resolvedTargetActor);
     const captureBonus = resolvedTrainerActor._getPokeballCaptureBonusSuccesses(resolvedTargetActor);
-    console.log(`PokRole | [capture] captureRequired=${captureRequired}, captureBonus=${captureBonus.total}`);
     const sealSetup = throwHit
       ? await resolvedTrainerActor._resolvePokeballSealSetup(resolvedGearItem, resolvedTargetActor, {
           combat: options?.combat ?? game.combat ?? null,
           scene: options?.scene ?? canvas?.scene ?? null
         })
       : { sealPower: 0, entries: [], specialEffect: "none" };
-    console.log(`PokRole | [capture] sealSetup done — sealPower=${sealSetup.sealPower}, specialEffect=${sealSetup.specialEffect}`);
     const normalizedSealPower = Math.max(toNumber(sealSetup.sealPower, 0), 0);
     const sealRoll = throwHit && normalizedSealPower > 0
       ? await new Roll(successPoolFormula(normalizedSealPower)).evaluate()
       : null;
-    console.log(`PokRole | [capture] sealRoll done — total=${sealRoll?.total ?? "N/A"}`);
     const sealRawSuccesses = Math.max(toNumber(sealRoll?.total, 0), 0);
     const captureTotalSuccesses = throwHit ? sealRawSuccesses + captureBonus.total : 0;
     const captured = throwHit && captureTotalSuccesses >= captureRequired;
@@ -18738,34 +18730,11 @@ export class PokRoleActor extends Actor {
       Math.max(toNumber(resolvedTargetActor.system?.resources?.hp?.value, 0), 0) <= 0 ||
       resolvedTargetActor._isConditionActive?.("fainted");
     let captureMutationResult = null;
-    console.log(`PokRole | [capture] captured=${captured}, critFail=${criticalFailure}, isGM=${game.user?.isGM}`);
 
-    if (captured) {
-      if (!game.user?.isGM) {
-        console.log(`PokRole | [capture] Sending capturePokemon socket to GM...`);
-        const response = await resolvedTrainerActor._requestCombatMutation("capturePokemon", {
-          combatId: game.combat?.id ?? null,
-          trainerActorId: resolvedTrainerActor.id,
-          targetActorId: resolvedTargetActor.id,
-          gearItemId: resolvedGearItem.id,
-          options: {
-            caughtWhileFainted,
-            combatId: game.combat?.id ?? null
-          }
-        });
-        console.log(`PokRole | [capture] Socket response:`, response);
-        captureMutationResult = response ?? null;
-      } else {
-        captureMutationResult = await resolvedTrainerActor._applyPokeballCaptureSuccessLocal(resolvedTrainerActor, resolvedTargetActor, resolvedGearItem, {
-          caughtWhileFainted,
-          combat: options?.combat ?? game.combat ?? null
-        });
-      }
-    }
-    console.log(`PokRole | [capture] Consuming gear item...`);
+    // 1. Consume the ball FIRST (player owns the trainer, so this works locally)
     await resolvedTrainerActor._consumeGearItem(resolvedGearItem);
-    console.log(`PokRole | [capture] Creating chat message...`);
 
+    // 2. Build and send the chat message BEFORE any socket calls
     const outcomeKey = captured
       ? "POKROLE.Chat.CaptureOutcomeCaught"
       : criticalFailure
@@ -18776,15 +18745,6 @@ export class PokRoleActor extends Actor {
     const notes = [];
     if (criticalFailure) {
       notes.push(game.i18n.localize("POKROLE.Chat.CaptureBallBroken"));
-    }
-    if (captureMutationResult?.healApplied) {
-      notes.push(game.i18n.localize("POKROLE.Chat.CaptureHealBall"));
-    }
-    if (captureMutationResult?.addedToParty) {
-      notes.push(game.i18n.localize("POKROLE.Chat.CaptureAddedToParty"));
-    }
-    if (captureMutationResult?.partyFull) {
-      notes.push(game.i18n.localize("POKROLE.Chat.CapturePartyFull"));
     }
     if (sealSetup.specialEffect === "luxury" && captured) {
       notes.push(game.i18n.localize("POKROLE.Chat.CaptureLuxuryBall"));
@@ -18802,11 +18762,11 @@ export class PokRoleActor extends Actor {
       .join("");
     const notesHtml = notes.map((note) => `<li>${note}</li>`).join("");
 
-    // Collect rolls to display dice in chat
     const captureRolls = [throwRoll];
     if (sealRoll) captureRolls.push(sealRoll);
 
-    await ChatMessage.create({
+    // Create the chat message with a flag for the GM to process capture
+    const chatData = {
       speaker: ChatMessage.getSpeaker({ actor: resolvedTrainerActor }),
       rolls: captureRolls,
       content: `
@@ -18835,7 +18795,34 @@ export class PokRoleActor extends Actor {
           </section>
         </div>
       `
-    });
+    };
+    // If captured, attach a flag so the GM's client can auto-process the capture
+    if (captured) {
+      chatData.flags = {
+        [POKROLE.ID]: {
+          captureRequest: {
+            trainerActorId: resolvedTrainerActor.id,
+            targetActorId: resolvedTargetActor.id,
+            gearItemId: resolvedGearItem.id,
+            caughtWhileFainted,
+            combatId: game.combat?.id ?? null
+          }
+        }
+      };
+    }
+    await ChatMessage.create(chatData);
+
+    // 3. Apply capture effects
+    if (captured) {
+      if (game.user?.isGM) {
+        // GM can apply directly
+        captureMutationResult = await resolvedTrainerActor._applyPokeballCaptureSuccessLocal(resolvedTrainerActor, resolvedTargetActor, resolvedGearItem, {
+          caughtWhileFainted,
+          combat: options?.combat ?? game.combat ?? null
+        });
+      }
+      // For players: the GM's client will auto-process via the createChatMessage hook (see pok-role-module.mjs)
+    }
 
     return {
       targetActor: resolvedTargetActor,
@@ -18876,15 +18863,12 @@ export class PokRoleActor extends Actor {
     }
 
     let targetActor = options.targetActor ?? getTargetActorFromUserSelection() ?? (gearCategory === "pokeball" ? null : this);
-    console.log(`PokRole | [useGearItem] category=${gearCategory}, targetActor=${targetActor?.name ?? "null"} (type=${targetActor?.type ?? "?"}), isGM=${game.user?.isGM}`);
     if (gearCategory === "pokeball") {
       // If no target selected, prompt the player to choose a wild Pokémon
       if (!targetActor || !(targetActor instanceof PokRoleActor) || targetActor.type !== "pokemon") {
-        console.log(`PokRole | [useGearItem] No valid pokemon target, prompting selection...`);
         targetActor = await this._promptPokeballTargetSelection();
         if (!targetActor) return null;
       }
-      console.log(`PokRole | [useGearItem] Launching capture with target=${targetActor.name}`);
       return this._capturePokemonWithPokeball(gearItem, targetActor, options);
     }
     if (gearItem.system.target === "trainer" && targetActor.type !== "trainer") {
