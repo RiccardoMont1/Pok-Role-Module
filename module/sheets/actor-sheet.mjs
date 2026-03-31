@@ -3021,10 +3021,12 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
    */
   async performTrainerRankUp(newRank, selectedPokemonId, tpCost) {
     const oldRank = this.actor.system.cardRank;
-    const selectedPokemon = game.actors.get(selectedPokemonId);
-    if (!selectedPokemon) return false;
+    const selectedPokemon = selectedPokemonId ? game.actors.get(selectedPokemonId) : null;
 
-    const pokemonTP = Number(selectedPokemon.system?.trainingPoints ?? 0);
+    // If TP cost is required but no pokemon found, abort
+    if (tpCost > 0 && !selectedPokemon) return false;
+
+    const pokemonTP = selectedPokemon ? Number(selectedPokemon.system?.trainingPoints ?? 0) : 0;
 
     const newBonuses = this._getRankBonuses(newRank);
     const oldBonuses = this._getRankBonuses(oldRank);
@@ -3053,13 +3055,15 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         trackRank: newRank,
         pendingFormData: { "system.cardRank": newRank }
       });
-      if (confirmed) {
+      if (confirmed && selectedPokemon && tpCost > 0) {
         await selectedPokemon.update({ "system.trainingPoints": pokemonTP - tpCost });
       }
       return confirmed;
     } else {
       await this.actor.update({ "system.cardRank": newRank });
-      await selectedPokemon.update({ "system.trainingPoints": pokemonTP - tpCost });
+      if (selectedPokemon && tpCost > 0) {
+        await selectedPokemon.update({ "system.trainingPoints": pokemonTP - tpCost });
+      }
       return true;
     }
   }

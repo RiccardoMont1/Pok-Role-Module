@@ -141,11 +141,11 @@
             <i class="fas fa-dumbbell"></i>
             {{localize "POKROLE.Training.SessionButton"}}
           </button>
+          {{/if}}
           <button type="button" data-action="rank-up">
             <i class="fas fa-arrow-up"></i>
             {{localize "POKROLE.Training.RankUp"}}
           </button>
-          {{/if}}
         </div>
         <small class="trainer-quick-meta">
           {{localize "POKROLE.Combat.TrainerState.InFray"}}: {{#if trainerInFray}}{{localize "POKROLE.Common.Hit"}}{{else}}{{localize "POKROLE.Common.None"}}{{/if}}

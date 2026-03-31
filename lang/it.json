@@ -1267,7 +1267,11 @@
       "RankUpMaxReached": "Già al rango massimo!",
       "RankUpNotEnoughTP": "Punti Allenamento insufficienti! (Hai: {current}, Servono: {required})",
       "RankUpNoEligiblePokemon": "Nessun Pokémon nel party ha abbastanza Punti Allenamento ({required} richiesti)",
-      "RankUpExceedsTrainer": "Non puoi alzare il rango del Pokémon oltre quello dell'Allenatore!"
+      "RankUpExceedsTrainer": "Non puoi alzare il rango del Pokémon oltre quello dell'Allenatore!",
+      "RankUpPlayerRequest": "vuole fare il Rank-UP a {pokemon}",
+      "RankUpTrainerPlayerRequest": "vuole fare il Rank-UP del proprio personaggio ({trainer})",
+      "RankUpRequestSent": "Richiesta di Rank-Up inviata al Master!",
+      "RankUpApprovedMsg": "Rank-Up approvato per {name}! Distribuisci i tuoi punti."
     }
   },
   "TYPES": {

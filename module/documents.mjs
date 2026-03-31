@@ -21018,21 +21018,83 @@ export class PokRoleActor extends Actor {
    * Rank up this actor (trainer or pokemon).
    * Trainers: spend training points from a selected pokemon.
    * Pokemon: spend their own training points.
-   * Only GM can rank up.
+   * GM: directly opens point distribution dialog.
+   * Player: sends a request to the GM for approval via ChatMessage flag.
    */
   async rankUp() {
-    if (!game.user?.isGM) return;
-
     const RANK_UP_COSTS = {
-      starter: 5,
-      rookie: 15,
-      standard: 25,
-      advanced: 30,
-      expert: 35,
-      ace: 40,
-      master: 50
+      starter: 5, rookie: 15, standard: 25, advanced: 30,
+      expert: 35, ace: 40, master: 50
     };
 
+    // ── Player flow: send request to GM ──
+    if (!game.user?.isGM) {
+      if (this.type === "pokemon") {
+        const currentTier = `${this.system?.tier ?? "none"}`.trim();
+        const tierIndex = POKEMON_TIER_KEYS.indexOf(currentTier);
+        if (tierIndex < 0 || tierIndex >= POKEMON_TIER_KEYS.length - 1) {
+          ui.notifications.warn(game.i18n.localize("POKROLE.Training.RankUpMaxReached"));
+          return;
+        }
+        const nextTier = POKEMON_TIER_KEYS[tierIndex + 1];
+        const cost = RANK_UP_COSTS[currentTier] ?? 999;
+        const currentTP = toNumber(this.system?.trainingPoints, 0);
+
+        if (currentTP < cost) {
+          ui.notifications.warn(game.i18n.format("POKROLE.Training.RankUpNotEnoughTP", { current: currentTP, required: cost }));
+          return;
+        }
+
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this }),
+          content: `<p><strong>${game.user.name}</strong> ${game.i18n.format("POKROLE.Training.RankUpPlayerRequest", { pokemon: this.name })}</p>`,
+          flags: {
+            [POKROLE.ID]: {
+              rankUpRequest: {
+                actorId: this.id,
+                actorType: "pokemon",
+                userId: game.user.id,
+                userName: game.user.name,
+                actorName: this.name,
+                nextTier: nextTier,
+                cost: cost
+              }
+            }
+          }
+        });
+        ui.notifications.info(game.i18n.localize("POKROLE.Training.RankUpRequestSent"));
+
+      } else if (this.type === "trainer") {
+        const currentRank = `${this.system?.cardRank ?? "none"}`.trim();
+        const rankIndex = POKEMON_TIER_KEYS.indexOf(currentRank);
+        if (rankIndex < 0 || rankIndex >= POKEMON_TIER_KEYS.length - 1) {
+          ui.notifications.warn(game.i18n.localize("POKROLE.Training.RankUpMaxReached"));
+          return;
+        }
+        const nextRank = POKEMON_TIER_KEYS[rankIndex + 1];
+
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this }),
+          content: `<p><strong>${game.user.name}</strong> ${game.i18n.format("POKROLE.Training.RankUpTrainerPlayerRequest", { trainer: this.name })}</p>`,
+          flags: {
+            [POKROLE.ID]: {
+              rankUpRequest: {
+                actorId: this.id,
+                actorType: "trainer",
+                userId: game.user.id,
+                userName: game.user.name,
+                actorName: this.name,
+                nextRank: nextRank
+              }
+            }
+          }
+        });
+        ui.notifications.info(game.i18n.localize("POKROLE.Training.RankUpRequestSent"));
+      }
+      return;
+    }
+
+    // ── GM flow: direct rank-up with point distribution ──
     if (this.type === "pokemon") {
       const currentTier = `${this.system?.tier ?? "none"}`.trim();
       const tierIndex = POKEMON_TIER_KEYS.indexOf(currentTier);
@@ -21044,7 +21106,6 @@ export class PokRoleActor extends Actor {
       const cost = RANK_UP_COSTS[currentTier] ?? 999;
       const currentTP = toNumber(this.system?.trainingPoints, 0);
 
-      // Check if pokemon's rank would exceed trainer's rank
       const trainerId = `${this.system?.currentTrainer ?? ""}`.trim();
       const trainerActor = trainerId ? game.actors?.get?.(trainerId) : null;
       if (trainerActor) {
@@ -21060,7 +21121,6 @@ export class PokRoleActor extends Actor {
         return;
       }
 
-      // Find the open sheet and use its point distribution system
       const sheet = this.sheet;
       if (!sheet || typeof sheet.performPokemonRankUp !== "function") {
         ui.notifications.error("Open the Pokémon sheet first!");
@@ -21088,7 +21148,6 @@ export class PokRoleActor extends Actor {
       const nextRank = POKEMON_TIER_KEYS[rankIndex + 1];
       const cost = RANK_UP_COSTS[currentRank] ?? 999;
 
-      // Trainer rank up — select which pokemon's training points to spend
       const partyIds = Array.isArray(this.system?.party) ? this.system.party : [];
       const partyPokemon = partyIds
         .map((id) => game.actors?.get?.(`${id ?? ""}`.trim()))
@@ -21147,7 +21206,6 @@ export class PokRoleActor extends Actor {
       const pokemonTP = toNumber(selectedPokemon.system?.trainingPoints, 0);
       if (pokemonTP < cost) return;
 
-      // Find the open sheet and use its point distribution system
       const sheet = this.sheet;
       if (!sheet || typeof sheet.performTrainerRankUp !== "function") {
         ui.notifications.error("Open the Trainer sheet first!");

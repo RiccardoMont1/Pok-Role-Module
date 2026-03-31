@@ -1270,7 +1270,11 @@
       "RankUpMaxReached": "Already at maximum rank!",
       "RankUpNotEnoughTP": "Not enough Training Points! (Have: {current}, Need: {required})",
       "RankUpNoEligiblePokemon": "No Pokémon in the party has enough Training Points ({required} required)",
-      "RankUpExceedsTrainer": "Cannot raise Pokémon's rank beyond the Trainer's rank!"
+      "RankUpExceedsTrainer": "Cannot raise Pokémon's rank beyond the Trainer's rank!",
+      "RankUpPlayerRequest": "wants to Rank-Up {pokemon}",
+      "RankUpTrainerPlayerRequest": "wants to Rank-Up their character ({trainer})",
+      "RankUpRequestSent": "Rank-Up request sent to the GM!",
+      "RankUpApprovedMsg": "Rank-Up approved for {name}! Distribute your points."
     }
   },
   "TYPES": {

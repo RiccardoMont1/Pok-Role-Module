@@ -2310,6 +2310,108 @@ Hooks.on("createChatMessage", async (chatMessage) => {
   }
 });
 
+// Rank-Up request: GM receives player's rank-up request and shows approval dialog
+Hooks.on("createChatMessage", async (chatMessage) => {
+  if (!game.user?.isGM) return;
+  const rankUpRequest = chatMessage.getFlag?.(POKROLE.ID, "rankUpRequest");
+  if (!rankUpRequest) return;
+  const { actorId, actorType, userId, userName, actorName, nextTier, nextRank, cost } = rankUpRequest;
+
+  let dialogContent;
+  if (actorType === "pokemon") {
+    dialogContent = `<p><strong>${userName}</strong> ${game.i18n.format("POKROLE.Training.RankUpPlayerRequest", { pokemon: actorName })}</p>`;
+  } else {
+    dialogContent = `<p><strong>${userName}</strong> ${game.i18n.format("POKROLE.Training.RankUpTrainerPlayerRequest", { trainer: actorName })}</p>`;
+  }
+
+  const approved = await new Promise((resolve) => {
+    let result = false;
+    new Dialog({
+      title: game.i18n.localize("POKROLE.Training.RankUp"),
+      content: dialogContent,
+      buttons: {
+        yes: {
+          icon: "<i class='fas fa-check'></i>",
+          label: game.i18n.localize("POKROLE.Common.Yes"),
+          callback: () => { result = true; }
+        },
+        no: {
+          icon: "<i class='fas fa-times'></i>",
+          label: game.i18n.localize("POKROLE.Common.No"),
+          callback: () => { result = false; }
+        }
+      },
+      default: "yes",
+      close: () => resolve(result)
+    }).render(true);
+  });
+
+  if (!approved) return;
+
+  // Send approval back via ChatMessage flag so the player's client processes it
+  await ChatMessage.create({
+    speaker: { alias: "System" },
+    content: `<p>${game.i18n.format("POKROLE.Training.RankUpApprovedMsg", { name: actorName })}</p>`,
+    flags: {
+      [POKROLE.ID]: {
+        rankUpApproved: {
+          actorId,
+          actorType,
+          userId,
+          nextTier: nextTier ?? null,
+          nextRank: nextRank ?? null,
+          cost: cost ?? 0
+        }
+      }
+    }
+  });
+});
+
+// Rank-Up approved: player receives GM approval and opens point distribution dialog
+Hooks.on("createChatMessage", async (chatMessage) => {
+  const rankUpApproved = chatMessage.getFlag?.(POKROLE.ID, "rankUpApproved");
+  if (!rankUpApproved) return;
+  const { actorId, actorType, userId, nextTier, nextRank, cost } = rankUpApproved;
+
+  // Only the requesting player processes this
+  if (game.user?.id !== userId) return;
+
+  const actor = game.actors?.get(actorId);
+  if (!actor) return;
+
+  const sheet = actor.sheet;
+  if (!sheet) {
+    // Try to render the sheet if not open
+    await actor.sheet.render(true);
+    await new Promise(r => setTimeout(r, 500));
+  }
+  const activeSheet = actor.sheet;
+
+  if (actorType === "pokemon" && typeof activeSheet?.performPokemonRankUp === "function") {
+    const success = await activeSheet.performPokemonRankUp(nextTier, cost);
+    if (success) {
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor }),
+        content: `<strong>${actor.name}</strong> ${game.i18n.format("POKROLE.Training.RankUpSuccess", {
+          next: game.i18n.localize(`POKROLE.Pokemon.TierValues.${nextTier[0].toUpperCase()}${nextTier.slice(1)}`),
+          cost: cost
+        })}`
+      });
+    }
+  } else if (actorType === "trainer" && typeof activeSheet?.performTrainerRankUp === "function") {
+    const success = await activeSheet.performTrainerRankUp(nextRank, null, 0);
+    if (success) {
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor }),
+        content: `<strong>${actor.name}</strong> ${game.i18n.format("POKROLE.Training.RankUpSuccess", {
+          next: game.i18n.localize(`POKROLE.Trainer.RankValues.${nextRank[0].toUpperCase()}${nextRank.slice(1)}`),
+          cost: 0
+        })}`
+      });
+    }
+  }
+});
+
 // Illusion: when a token with the Illusion ability is placed on the scene, apply disguise
 Hooks.on("createToken", async (tokenDocument) => {
   const actor = tokenDocument?.actor ?? null;
