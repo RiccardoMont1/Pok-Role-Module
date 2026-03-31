@@ -21068,9 +21068,10 @@ export class PokRoleActor extends Actor {
       }
 
       // Confirm dialog
+      console.log("[rankUp] About to show confirm dialog...");
       const confirmed = await new Promise((resolve) => {
         let result = false;
-        new Dialog({
+        const d = new Dialog({
           title: game.i18n.localize("POKROLE.Training.RankUp"),
           content: `<p>${game.i18n.format("POKROLE.Training.RankUpConfirm", {
             name: this.name,
@@ -21083,18 +21084,21 @@ export class PokRoleActor extends Actor {
             confirm: {
               icon: "<i class='fas fa-check'></i>",
               label: game.i18n.localize("POKROLE.Common.Confirm"),
-              callback: () => { result = true; }
+              callback: () => { console.log("[rankUp] Confirm clicked"); result = true; }
             },
             cancel: {
               icon: "<i class='fas fa-times'></i>",
               label: game.i18n.localize("POKROLE.Common.Cancel"),
-              callback: () => { result = false; }
+              callback: () => { console.log("[rankUp] Cancel clicked"); result = false; }
             }
           },
           default: "confirm",
-          close: () => resolve(result)
-        }).render(true);
+          close: () => { console.log("[rankUp] Dialog closed, result:", result); resolve(result); }
+        });
+        console.log("[rankUp] Dialog created, rendering...");
+        d.render(true);
       });
+      console.log("[rankUp] confirmed:", confirmed);
 
       if (!confirmed) return;
 
