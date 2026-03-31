@@ -18702,17 +18702,19 @@ export class PokRoleActor extends Actor {
     const ballSpecialEffect = `${resolvedGearItem?.system?.pokeball?.specialEffect ?? "none"}`.trim().toLowerCase();
     const isMasterBall = ballSpecialEffect === "master";
 
-    // Master Ball: guaranteed capture, no rolls needed
-    let throwAttributeKey = "";
-    let throwSkillValue = 0;
-    let throwAttributeValue = 0;
-    let throwDicePool = 0;
-    let throwRemoved = 0;
-    let throwRequired = 1;
-    let throwRoll = null;
-    let throwRawSuccesses = 0;
-    let throwNetSuccesses = 0;
-    let throwHit = true;
+    // Throw roll (always performed, even for Master Ball)
+    const throwAttributeKey = resolvedTrainerActor._getPokeballThrowAttributeKey();
+    const throwSkillValue = Math.max(toNumber(resolvedTrainerActor.getSkillValue?.("throw"), 0), 0);
+    const throwAttributeValue = Math.max(toNumber(resolvedTrainerActor.getTraitValue?.(throwAttributeKey), 0), 0);
+    const throwDicePool = Math.max(throwAttributeValue + throwSkillValue, 1);
+    const throwRemoved = resolvedTrainerActor.getPainPenalty?.() ?? 0;
+    const throwRequired = 1;
+    const throwRoll = await new Roll(successPoolFormula(throwDicePool)).evaluate();
+    const throwRawSuccesses = Math.max(toNumber(throwRoll.total, 0), 0);
+    const throwNetSuccesses = throwRawSuccesses - Math.max(toNumber(throwRemoved, 0), 0);
+    const throwHit = throwNetSuccesses >= throwRequired;
+
+    // Master Ball: guaranteed capture, skip seal roll
     let captureRequired = 0;
     let captureBonus = { total: 0, entries: [] };
     let sealSetup = { sealPower: 0, entries: [], specialEffect: "master" };
@@ -18720,21 +18722,10 @@ export class PokRoleActor extends Actor {
     let sealRoll = null;
     let sealRawSuccesses = 0;
     let captureTotalSuccesses = 0;
-    let captured = true;
+    let captured = isMasterBall ? true : false;
     let criticalFailure = false;
 
     if (!isMasterBall) {
-      throwAttributeKey = resolvedTrainerActor._getPokeballThrowAttributeKey();
-      throwSkillValue = Math.max(toNumber(resolvedTrainerActor.getSkillValue?.("throw"), 0), 0);
-      throwAttributeValue = Math.max(toNumber(resolvedTrainerActor.getTraitValue?.(throwAttributeKey), 0), 0);
-      throwDicePool = Math.max(throwAttributeValue + throwSkillValue, 1);
-      throwRemoved = resolvedTrainerActor.getPainPenalty?.() ?? 0;
-      throwRequired = 1;
-      throwRoll = await new Roll(successPoolFormula(throwDicePool)).evaluate();
-      throwRawSuccesses = Math.max(toNumber(throwRoll.total, 0), 0);
-      throwNetSuccesses = throwRawSuccesses - Math.max(toNumber(throwRemoved, 0), 0);
-      throwHit = throwNetSuccesses >= throwRequired;
-
       captureRequired = resolvedTrainerActor._getPokeballCaptureRequiredSuccesses(resolvedTargetActor);
       captureBonus = resolvedTrainerActor._getPokeballCaptureBonusSuccesses(resolvedTargetActor);
       sealSetup = throwHit
@@ -18787,6 +18778,7 @@ export class PokRoleActor extends Actor {
 
     // Build chat content — Master Ball gets a simpler message
     let chatContent;
+    const throwTraitLabel = resolvedTrainerActor.localizeTrait(throwAttributeKey);
     if (isMasterBall) {
       chatContent = `
         <div class="pok-role-chat-card arcade-red">
@@ -18797,13 +18789,17 @@ export class PokRoleActor extends Actor {
             <p><strong>${game.i18n.localize("POKROLE.Chat.Actor")}:</strong> ${resolvedTrainerActor.name}</p>
             <p><strong>${game.i18n.localize("POKROLE.Chat.Target")}:</strong> ${resolvedTargetActor.name}</p>
             <hr />
+            <p><strong>${game.i18n.localize("POKROLE.Chat.CaptureThrow")}</strong></p>
+            <p>${throwTraitLabel} + ${resolvedTrainerActor.localizeTrait("throw")}: ${throwDicePool}d6</p>
+            <p>${game.i18n.localize("POKROLE.Chat.RawSuccesses")}: ${throwRawSuccesses} | ${game.i18n.localize("POKROLE.Chat.RemovedSuccesses")}: ${throwRemoved} | ${game.i18n.localize("POKROLE.Chat.NetSuccesses")}: ${throwNetSuccesses}</p>
+            <p>${game.i18n.localize("POKROLE.Chat.RequiredSuccesses")}: ${throwRequired}</p>
+            <hr />
             <p><strong>${game.i18n.localize("POKROLE.Chat.Result")}:</strong> ${game.i18n.localize(outcomeKey)}</p>
             ${notesHtml ? `<hr /><ul>${notesHtml}</ul>` : ""}
           </section>
         </div>
       `;
     } else {
-      const throwTraitLabel = resolvedTrainerActor.localizeTrait(throwAttributeKey);
       const sealEntriesHtml = (sealSetup.entries ?? [])
         .map((entry) => `<li>${entry.label}: ${entry.value >= 0 ? `+${entry.value}` : `${entry.value}`}</li>`)
         .join("");
