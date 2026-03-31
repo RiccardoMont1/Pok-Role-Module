@@ -170,7 +170,8 @@ export class PokRoleMoveSheet extends foundry.appv1.sheets.ItemSheet {
           fast: "POKROLE.Gear.Pokeball.EffectFast",
           heavy: "POKROLE.Gear.Pokeball.EffectHeavy",
           luxury: "POKROLE.Gear.Pokeball.EffectLuxury",
-          old: "POKROLE.Gear.Pokeball.EffectOld"
+          old: "POKROLE.Gear.Pokeball.EffectOld",
+          master: "POKROLE.Gear.Pokeball.EffectMaster"
         };
       }
 

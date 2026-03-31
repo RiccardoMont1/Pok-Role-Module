@@ -615,7 +615,8 @@
         "EffectFast": "Fast Ball",
         "EffectHeavy": "Heavy Ball",
         "EffectLuxury": "Luxury Ball",
-        "EffectOld": "Old Pokeball"
+        "EffectOld": "Old Pokeball",
+        "EffectMaster": "Master Ball"
       },
       "Held": {
         "Title": "Strumento Tenuto",
