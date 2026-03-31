@@ -393,7 +393,7 @@ const ITEM_SEEDS = Object.freeze({
     makeGear("trainer-masterball", "Masterball", {
       category: "pokeball",
       canUseInBattle: true,
-      pokeball: { sealPower: 20, specialEffect: "none" },
+      pokeball: { sealPower: 0, specialEffect: "master" },
       img: getUpstreamItemSpritePath("masterball.png"),
       description: "It's been long rumored that a mighty pokeball with the strongest seal in existance is in development. But no one has truly seen it in action."
     }),

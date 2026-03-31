@@ -18699,33 +18699,59 @@ export class PokRoleActor extends Actor {
       return null;
     }
 
-    const throwAttributeKey = resolvedTrainerActor._getPokeballThrowAttributeKey();
-    const throwSkillValue = Math.max(toNumber(resolvedTrainerActor.getSkillValue?.("throw"), 0), 0);
-    const throwAttributeValue = Math.max(toNumber(resolvedTrainerActor.getTraitValue?.(throwAttributeKey), 0), 0);
-    const throwDicePool = Math.max(throwAttributeValue + throwSkillValue, 1);
-    const throwRemoved = resolvedTrainerActor.getPainPenalty?.() ?? 0;
-    const throwRequired = 1;
-    const throwRoll = await new Roll(successPoolFormula(throwDicePool)).evaluate();
-    const throwRawSuccesses = Math.max(toNumber(throwRoll.total, 0), 0);
-    const throwNetSuccesses = throwRawSuccesses - Math.max(toNumber(throwRemoved, 0), 0);
-    const throwHit = throwNetSuccesses >= throwRequired;
+    const ballSpecialEffect = `${resolvedGearItem?.system?.pokeball?.specialEffect ?? "none"}`.trim().toLowerCase();
+    const isMasterBall = ballSpecialEffect === "master";
 
-    const captureRequired = resolvedTrainerActor._getPokeballCaptureRequiredSuccesses(resolvedTargetActor);
-    const captureBonus = resolvedTrainerActor._getPokeballCaptureBonusSuccesses(resolvedTargetActor);
-    const sealSetup = throwHit
-      ? await resolvedTrainerActor._resolvePokeballSealSetup(resolvedGearItem, resolvedTargetActor, {
-          combat: options?.combat ?? game.combat ?? null,
-          scene: options?.scene ?? canvas?.scene ?? null
-        })
-      : { sealPower: 0, entries: [], specialEffect: "none" };
-    const normalizedSealPower = Math.max(toNumber(sealSetup.sealPower, 0), 0);
-    const sealRoll = throwHit && normalizedSealPower > 0
-      ? await new Roll(successPoolFormula(normalizedSealPower)).evaluate()
-      : null;
-    const sealRawSuccesses = Math.max(toNumber(sealRoll?.total, 0), 0);
-    const captureTotalSuccesses = throwHit ? sealRawSuccesses + captureBonus.total : 0;
-    const captured = throwHit && captureTotalSuccesses >= captureRequired;
-    const criticalFailure = throwHit && captureTotalSuccesses <= (captureRequired - 3);
+    // Master Ball: guaranteed capture, no rolls needed
+    let throwAttributeKey = "";
+    let throwSkillValue = 0;
+    let throwAttributeValue = 0;
+    let throwDicePool = 0;
+    let throwRemoved = 0;
+    let throwRequired = 1;
+    let throwRoll = null;
+    let throwRawSuccesses = 0;
+    let throwNetSuccesses = 0;
+    let throwHit = true;
+    let captureRequired = 0;
+    let captureBonus = { total: 0, entries: [] };
+    let sealSetup = { sealPower: 0, entries: [], specialEffect: "master" };
+    let normalizedSealPower = 0;
+    let sealRoll = null;
+    let sealRawSuccesses = 0;
+    let captureTotalSuccesses = 0;
+    let captured = true;
+    let criticalFailure = false;
+
+    if (!isMasterBall) {
+      throwAttributeKey = resolvedTrainerActor._getPokeballThrowAttributeKey();
+      throwSkillValue = Math.max(toNumber(resolvedTrainerActor.getSkillValue?.("throw"), 0), 0);
+      throwAttributeValue = Math.max(toNumber(resolvedTrainerActor.getTraitValue?.(throwAttributeKey), 0), 0);
+      throwDicePool = Math.max(throwAttributeValue + throwSkillValue, 1);
+      throwRemoved = resolvedTrainerActor.getPainPenalty?.() ?? 0;
+      throwRequired = 1;
+      throwRoll = await new Roll(successPoolFormula(throwDicePool)).evaluate();
+      throwRawSuccesses = Math.max(toNumber(throwRoll.total, 0), 0);
+      throwNetSuccesses = throwRawSuccesses - Math.max(toNumber(throwRemoved, 0), 0);
+      throwHit = throwNetSuccesses >= throwRequired;
+
+      captureRequired = resolvedTrainerActor._getPokeballCaptureRequiredSuccesses(resolvedTargetActor);
+      captureBonus = resolvedTrainerActor._getPokeballCaptureBonusSuccesses(resolvedTargetActor);
+      sealSetup = throwHit
+        ? await resolvedTrainerActor._resolvePokeballSealSetup(resolvedGearItem, resolvedTargetActor, {
+            combat: options?.combat ?? game.combat ?? null,
+            scene: options?.scene ?? canvas?.scene ?? null
+          })
+        : { sealPower: 0, entries: [], specialEffect: "none" };
+      normalizedSealPower = Math.max(toNumber(sealSetup.sealPower, 0), 0);
+      sealRoll = throwHit && normalizedSealPower > 0
+        ? await new Roll(successPoolFormula(normalizedSealPower)).evaluate()
+        : null;
+      sealRawSuccesses = Math.max(toNumber(sealRoll?.total, 0), 0);
+      captureTotalSuccesses = throwHit ? sealRawSuccesses + captureBonus.total : 0;
+      captured = throwHit && captureTotalSuccesses >= captureRequired;
+      criticalFailure = throwHit && captureTotalSuccesses <= (captureRequired - 3);
+    }
     const caughtWhileFainted =
       Math.max(toNumber(resolvedTargetActor.system?.resources?.hp?.value, 0), 0) <= 0 ||
       resolvedTargetActor._isConditionActive?.("fainted");
@@ -18753,23 +18779,38 @@ export class PokRoleActor extends Actor {
       notes.push(game.i18n.localize("POKROLE.Chat.CaptureCaughtWhileFainted"));
     }
 
-    const throwTraitLabel = resolvedTrainerActor.localizeTrait(throwAttributeKey);
-    const sealEntriesHtml = (sealSetup.entries ?? [])
-      .map((entry) => `<li>${entry.label}: ${entry.value >= 0 ? `+${entry.value}` : `${entry.value}`}</li>`)
-      .join("");
-    const bonusEntriesHtml = (captureBonus.entries ?? [])
-      .map((entry) => `<li>${entry.label}: ${entry.value >= 0 ? `+${entry.value}` : `${entry.value}`}</li>`)
-      .join("");
     const notesHtml = notes.map((note) => `<li>${note}</li>`).join("");
 
-    const captureRolls = [throwRoll];
+    const captureRolls = [];
+    if (throwRoll) captureRolls.push(throwRoll);
     if (sealRoll) captureRolls.push(sealRoll);
 
-    // Create the chat message with a flag for the GM to process capture
-    const chatData = {
-      speaker: ChatMessage.getSpeaker({ actor: resolvedTrainerActor }),
-      rolls: captureRolls,
-      content: `
+    // Build chat content — Master Ball gets a simpler message
+    let chatContent;
+    if (isMasterBall) {
+      chatContent = `
+        <div class="pok-role-chat-card arcade-red">
+          <header class="chat-card-header">
+            <h3>${resolvedGearItem.name}</h3>
+          </header>
+          <section class="chat-card-section">
+            <p><strong>${game.i18n.localize("POKROLE.Chat.Actor")}:</strong> ${resolvedTrainerActor.name}</p>
+            <p><strong>${game.i18n.localize("POKROLE.Chat.Target")}:</strong> ${resolvedTargetActor.name}</p>
+            <hr />
+            <p><strong>${game.i18n.localize("POKROLE.Chat.Result")}:</strong> ${game.i18n.localize(outcomeKey)}</p>
+            ${notesHtml ? `<hr /><ul>${notesHtml}</ul>` : ""}
+          </section>
+        </div>
+      `;
+    } else {
+      const throwTraitLabel = resolvedTrainerActor.localizeTrait(throwAttributeKey);
+      const sealEntriesHtml = (sealSetup.entries ?? [])
+        .map((entry) => `<li>${entry.label}: ${entry.value >= 0 ? `+${entry.value}` : `${entry.value}`}</li>`)
+        .join("");
+      const bonusEntriesHtml = (captureBonus.entries ?? [])
+        .map((entry) => `<li>${entry.label}: ${entry.value >= 0 ? `+${entry.value}` : `${entry.value}`}</li>`)
+        .join("");
+      chatContent = `
         <div class="pok-role-chat-card arcade-red">
           <header class="chat-card-header">
             <h3>${resolvedGearItem.name}</h3>
@@ -18794,7 +18835,14 @@ export class PokRoleActor extends Actor {
             ${notesHtml ? `<hr /><ul>${notesHtml}</ul>` : ""}
           </section>
         </div>
-      `
+      `;
+    }
+
+    // Create the chat message with a flag for the GM to process capture
+    const chatData = {
+      speaker: ChatMessage.getSpeaker({ actor: resolvedTrainerActor }),
+      rolls: captureRolls,
+      content: chatContent
     };
     // If captured, attach a flag so the GM's client can auto-process the capture
     if (captured) {

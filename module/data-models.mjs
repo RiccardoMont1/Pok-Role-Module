@@ -544,7 +544,7 @@ export class GearDataModel extends foundry.abstract.TypeDataModel {
           required: true,
           blank: false,
           initial: "none",
-          choices: ["none", "quick", "net", "heal", "dusk", "fast", "heavy", "luxury", "old"]
+          choices: ["none", "quick", "net", "heal", "dusk", "fast", "heavy", "luxury", "old", "master"]
         }),
         healsOnCapture: new BooleanField({ required: true, initial: false })
       }),
