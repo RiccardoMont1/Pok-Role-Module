@@ -930,7 +930,7 @@
       "CaptureBonusHalfHp": "PS del bersaglio a meta o meno",
       "CaptureBonusOneHp": "Bersaglio a 1 PS",
       "CaptureBonusStatus": "Status alterato: {condition}",
-      "BattleDisobedienceLoyaltyCheck": "{pokemon} tira Lealta per obbedire agli ordini di {trainer} (3+ successi).",
+      "BattleDisobedienceLoyaltyCheck": "{pokemon} tira Felicita + Lealta per obbedire agli ordini di {trainer} (3+ successi).",
       "CaptureBonusFainted": "Bersaglio svenuto: tutti i successi bonus rimossi",
       "CaptureDuskContextTitle": "{item}: bonus ambiente",
       "CaptureDuskContextPrompt": "Qual e l'ambiente corrente per {item}?",

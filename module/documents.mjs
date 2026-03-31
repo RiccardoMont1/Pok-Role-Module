@@ -20903,7 +20903,7 @@ export class PokRoleActor extends Actor {
 
     const diff = pokemonTierIndex - trainerRankIndex;
     if (diff <= 0) return "none";
-    if (happiness >= 3 || loyalty >= 3) return "none";
+    if (happiness > 3 && loyalty > 3) return "none";
     if (diff === 1) return "low";
     return "high";
   }
@@ -20975,8 +20975,10 @@ export class PokRoleActor extends Actor {
           };
     }
 
-    const loyaltyDice = Math.max(Math.floor(toNumber(this.system?.loyalty, 0)), 1);
-    const roll = await new Roll(successPoolFormula(loyaltyDice)).evaluate();
+    const happinessDice = Math.max(Math.floor(toNumber(this.system?.happiness, 0)), 0);
+    const loyaltyDice = Math.max(Math.floor(toNumber(this.system?.loyalty, 0)), 0);
+    const obedienceDicePool = Math.max(happinessDice + loyaltyDice, 1);
+    const roll = await new Roll(successPoolFormula(obedienceDicePool)).evaluate();
     const successes = Math.max(Math.floor(toNumber(roll.total, 0)), 0);
     const obeys = successes >= 3;
 

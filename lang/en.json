@@ -933,7 +933,7 @@
       "CaptureBonusHalfHp": "Target HP at or below half",
       "CaptureBonusOneHp": "Target at 1 HP",
       "CaptureBonusStatus": "Status ailment: {condition}",
-      "BattleDisobedienceLoyaltyCheck": "{pokemon} rolls Loyalty to obey {trainer}'s orders (3+ successes).",
+      "BattleDisobedienceLoyaltyCheck": "{pokemon} rolls Happiness + Loyalty to obey {trainer}'s orders (3+ successes).",
       "CaptureBonusFainted": "Target fainted: all bonus successes removed",
       "CaptureDuskContextTitle": "{item}: environment bonus",
       "CaptureDuskContextPrompt": "What is the current environment for {item}?",
