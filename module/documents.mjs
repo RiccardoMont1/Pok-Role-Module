@@ -18671,9 +18671,11 @@ export class PokRoleActor extends Actor {
   }
 
   async _capturePokemonWithPokeball(gearItem, targetActor, options = {}) {
+    console.log(`PokRole | [capture] START — trainer=${this?.name}, target=${targetActor?.name}, gearItem=${gearItem?.name}, isGM=${game.user?.isGM}`);
     const resolvedTrainerActor = game.actors?.get(`${this?.id ?? ""}`.trim()) ?? this;
     const resolvedTargetActor = game.actors?.get(`${targetActor?.id ?? ""}`.trim()) ?? targetActor ?? null;
     const resolvedGearItem = resolvedTrainerActor?.items?.get?.(`${gearItem?.id ?? ""}`.trim()) ?? gearItem ?? null;
+    console.log(`PokRole | [capture] resolved: trainer=${resolvedTrainerActor?.name}(${resolvedTrainerActor?.type}), target=${resolvedTargetActor?.name}(${resolvedTargetActor?.type}), gear=${resolvedGearItem?.name}, currentTrainer=${resolvedTargetActor?.system?.currentTrainer ?? "none"}`);
     if (resolvedTrainerActor.type !== "trainer") {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.CaptureRequiresTrainer"));
       return null;
@@ -18863,12 +18865,15 @@ export class PokRoleActor extends Actor {
     }
 
     let targetActor = options.targetActor ?? getTargetActorFromUserSelection() ?? (gearCategory === "pokeball" ? null : this);
+    console.log(`PokRole | [useGearItem] category=${gearCategory}, targetActor=${targetActor?.name ?? "null"} (type=${targetActor?.type ?? "?"}), isGM=${game.user?.isGM}`);
     if (gearCategory === "pokeball") {
       // If no target selected, prompt the player to choose a wild Pokémon
       if (!targetActor || !(targetActor instanceof PokRoleActor) || targetActor.type !== "pokemon") {
+        console.log(`PokRole | [useGearItem] No valid pokemon target, prompting selection...`);
         targetActor = await this._promptPokeballTargetSelection();
         if (!targetActor) return null;
       }
+      console.log(`PokRole | [useGearItem] Launching capture with target=${targetActor.name}`);
       return this._capturePokemonWithPokeball(gearItem, targetActor, options);
     }
     if (gearItem.system.target === "trainer" && targetActor.type !== "trainer") {

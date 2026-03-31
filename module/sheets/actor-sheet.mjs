@@ -1153,7 +1153,12 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     event.preventDefault();
     const { itemId } = event.currentTarget.dataset;
     if (!itemId) return;
-    await this.actor.useGearItem(itemId);
+    try {
+      await this.actor.useGearItem(itemId);
+    } catch (err) {
+      console.error("PokRole | _onUseGear error:", err);
+      ui.notifications.error(`Gear use failed: ${err.message ?? err}`);
+    }
   }
 
   async _onDeleteGear(event) {
