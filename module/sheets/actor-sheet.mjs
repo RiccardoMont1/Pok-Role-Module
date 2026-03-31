@@ -595,9 +595,16 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         this.actor.startTrainingSession();
       }
     });
-    html.find("[data-action='rank-up']").on("click", () => {
-      if (typeof this.actor.rankUp === "function") {
-        this.actor.rankUp();
+    html.find("[data-action='rank-up']").on("click", async () => {
+      try {
+        if (typeof this.actor.rankUp === "function") {
+          await this.actor.rankUp();
+        } else {
+          console.warn("[rankUp] rankUp is not a function on", this.actor);
+        }
+      } catch (err) {
+        console.error("[rankUp] Error:", err);
+        ui.notifications.error("Rank-Up error: " + err.message);
       }
     });
     html.find("[data-action='trainer-set-weather']").on("click", (event) =>
