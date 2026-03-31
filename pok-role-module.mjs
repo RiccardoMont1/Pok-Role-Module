@@ -2017,6 +2017,34 @@ Hooks.on("deleteCombat", async (combat) => {
           for (const pokemon of friendlyPokemon) {
             const pokemonTier = `${pokemon.system?.tier ?? "none"}`.trim();
             const pokemonTierIndex = POKEMON_TIER_KEYS.indexOf(pokemonTier);
+            const participatedWholeRound = await new Promise((resolve) => {
+              let result = false;
+              new Dialog({
+                title: `${pokemon.name}`,
+                content: `<p>${game.i18n.localize("POKROLE.Training.ParticipatedWholeRound")}</p>`,
+                buttons: {
+                  yes: {
+                    icon: "<i class='fas fa-check'></i>",
+                    label: game.i18n.localize("POKROLE.Common.Yes"),
+                    callback: () => { result = true; }
+                  },
+                  no: {
+                    icon: "<i class='fas fa-times'></i>",
+                    label: game.i18n.localize("POKROLE.Common.No"),
+                    callback: () => { result = false; }
+                  }
+                },
+                default: "yes",
+                close: () => resolve(result)
+              }).render(true);
+            });
+
+            if (!participatedWholeRound) {
+              summaryLines.push(
+                `<strong>${pokemon.name}</strong>: +0 TP (${game.i18n.localize("POKROLE.Training.NoBattlePointsNoRound")})`
+              );
+              continue;
+            }
 
             // Rank comparison points
             let rankPoints = 0;
@@ -2063,40 +2091,13 @@ Hooks.on("deleteCombat", async (combat) => {
 
             let totalPoints = rankPoints + outcomePoints + multipleFoesBonus;
 
-            // Disobedience check
-            const trainerId = `${pokemon.system?.currentTrainer ?? ""}`.trim();
-            const trainerActor = trainerId ? (game.actors?.get?.(trainerId) ?? null) : null;
-            let disobedienceNote = "";
-
-            if (trainerActor) {
-              const happiness = Math.max(Math.floor(Number(pokemon.system?.happiness ?? 0)), 0);
-              const loyalty = Math.max(Math.floor(Number(pokemon.system?.loyalty ?? 0)), 0);
-              let disobedience = "none";
-
-              if (!(happiness >= 3 && loyalty >= 3)) {
-                const trainerRank = `${trainerActor.system?.cardRank ?? "none"}`.trim();
-                const trainerRankIndex = POKEMON_TIER_KEYS.indexOf(trainerRank);
-                const diff = pokemonTierIndex - trainerRankIndex;
-                if (diff === 1) disobedience = "low";
-                else if (diff >= 2) disobedience = "high";
-              }
-
-              if (disobedience === "high") {
-                totalPoints = 0;
-                disobedienceNote = ` (${game.i18n.localize("POKROLE.Training.DisobedienceHighBattle")})`;
-              } else if (disobedience === "low") {
-                totalPoints = Math.floor(totalPoints / 2);
-                disobedienceNote = ` (${game.i18n.localize("POKROLE.Training.DisobedienceLow")})`;
-              }
-            }
-
             // Award points
             if (totalPoints > 0) {
               const currentTP = Math.max(Math.floor(Number(pokemon.system?.trainingPoints ?? 0)), 0);
               await pokemon.update({ "system.trainingPoints": currentTP + totalPoints });
             }
 
-            summaryLines.push(`<strong>${pokemon.name}</strong>: +${totalPoints} TP${disobedienceNote}`);
+            summaryLines.push(`<strong>${pokemon.name}</strong>: +${totalPoints} TP`);
           }
 
           // Summary chat message

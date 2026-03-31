@@ -1,4 +1,5 @@
 import {
+  ATTRIBUTE_DEFINITIONS,
   ABILITY_TRIGGER_KEYS,
   ABILITY_TARGET_KEYS,
   COMBAT_FLAG_KEYS,
@@ -21,6 +22,7 @@ import {
   EFFECT_PASSIVE_TRIGGER_KEYS,
   POKROLE,
   POKEMON_TIER_KEYS,
+  SKILL_DEFINITIONS,
   SOCIAL_ATTRIBUTE_KEYS,
   TRAIT_LABEL_BY_KEY,
   TYPE_EFFECTIVENESS
@@ -251,6 +253,7 @@ const TERRAIN_ENTRIES_FLAG_KEY = "combat.terrainEntries";
 const TRAINER_STATE_FLAG_KEY = "combat.trainerState";
 const HEALING_TRACK_FLAG_KEY = "combat.healingTrack";
 const TREATMENT_BLOCK_FLAG_KEY = "combat.treatmentBlockedRound";
+const BATTLE_DISOBEDIENCE_CHECK_FLAG_KEY = "combat.disobedienceCheck";
 const SHIELD_STREAK_FLAG_KEY = "combat.shieldStreak";
 const ACTIVE_SHIELDS_FLAG_KEY = "combat.activeShields";
 const SIDE_FIELD_ENTRIES_FLAG_KEY = "combat.sideFieldEntries";
@@ -6972,6 +6975,11 @@ export class PokRoleActor extends Actor {
       return null;
     }
     const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
+    const obedienceCheck = await this._assertBattleObedience(roundKey, game.combat);
+    if (!obedienceCheck.allowed) {
+      ui.notifications.warn(obedienceCheck.reason);
+      return null;
+    }
     if (!options.ignoreRoundLimit && !this._canUseReactionThisRound("evasion", roundKey)) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.EvasionAlreadyUsedThisRound"));
       return null;
@@ -7011,6 +7019,11 @@ export class PokRoleActor extends Actor {
     }
 
     const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
+    const obedienceCheck = await this._assertBattleObedience(roundKey, game.combat);
+    if (!obedienceCheck.allowed) {
+      ui.notifications.warn(obedienceCheck.reason);
+      return null;
+    }
     if (!options.ignoreRoundLimit && !this._canUseReactionThisRound("clash", roundKey)) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.ClashAlreadyUsedThisRound"));
       return null;
@@ -9255,6 +9268,13 @@ export class PokRoleActor extends Actor {
       return null;
     }
 
+    const declarationRoundKey = getCurrentCombatRoundKey();
+    const obedienceCheck = await this._assertBattleObedience(declarationRoundKey, combat);
+    if (!obedienceCheck.allowed) {
+      ui.notifications.warn(obedienceCheck.reason);
+      return null;
+    }
+
     const enqueueMove = game.pokrole?.enqueueCombatMoveDeclaration;
     if (typeof enqueueMove !== "function") {
       return this.rollMove(moveId, options);
@@ -9325,6 +9345,11 @@ export class PokRoleActor extends Actor {
       return null;
     }
     const roundKey = options.roundKey ?? getCurrentCombatRoundKey();
+    const obedienceCheck = await this._assertBattleObedience(roundKey, game.combat);
+    if (!obedienceCheck.allowed) {
+      ui.notifications.warn(obedienceCheck.reason);
+      return null;
+    }
     const frozenBreakoutActive = this._isConditionActive("frozen");
     const moveTargetKey = this._resolveMoveTargetKeyForMove(move);
     const infatuated =
@@ -20870,8 +20895,6 @@ export class PokRoleActor extends Actor {
     if (!pokemonActor || !trainerActor) return "none";
     const happiness = toNumber(pokemonActor.system?.happiness, 0);
     const loyalty = toNumber(pokemonActor.system?.loyalty, 0);
-    if (happiness >= 3 && loyalty >= 3) return "none";
-
     const pokemonTier = `${pokemonActor.system?.tier ?? "none"}`.trim();
     const trainerRank = `${trainerActor.system?.cardRank ?? "none"}`.trim();
     const pokemonTierIndex = POKEMON_TIER_KEYS.indexOf(pokemonTier);
@@ -20880,8 +20903,111 @@ export class PokRoleActor extends Actor {
 
     const diff = pokemonTierIndex - trainerRankIndex;
     if (diff <= 0) return "none";
+    if (happiness >= 3 || loyalty >= 3) return "none";
     if (diff === 1) return "low";
     return "high";
+  }
+
+  _getBattleDisobedienceCheckState(roundKey = null, combat = game.combat) {
+    const normalizedRoundKey = `${roundKey ?? getCurrentCombatRoundKey() ?? ""}`.trim();
+    const combatId = `${combat?.id ?? ""}`.trim();
+    const rawState =
+      foundry.utils.deepClone(this.getFlag?.(POKROLE.ID, BATTLE_DISOBEDIENCE_CHECK_FLAG_KEY) ?? {}) ?? {};
+    const matchesCombat = combatId && `${rawState?.combatId ?? ""}`.trim() === combatId;
+    const matchesRound = matchesCombat && normalizedRoundKey && `${rawState?.roundKey ?? ""}`.trim() === normalizedRoundKey;
+    return {
+      combatId,
+      roundKey: normalizedRoundKey,
+      checked: matchesRound ? Boolean(rawState?.checked) : false,
+      obeys: matchesRound && rawState?.checked ? Boolean(rawState?.obeys) : null,
+      successes: matchesRound ? Math.max(Math.floor(toNumber(rawState?.successes, 0)), 0) : 0
+    };
+  }
+
+  async _setBattleDisobedienceCheckState(patch = {}, roundKey = null, combat = game.combat) {
+    if (this.type !== "pokemon") return this._getBattleDisobedienceCheckState(roundKey, combat);
+    const combatId = `${combat?.id ?? ""}`.trim();
+    const normalizedRoundKey = `${roundKey ?? getCurrentCombatRoundKey() ?? ""}`.trim();
+    if (!combatId || !normalizedRoundKey) {
+      return this._getBattleDisobedienceCheckState(roundKey, combat);
+    }
+    const currentState = this._getBattleDisobedienceCheckState(normalizedRoundKey, combat);
+    const nextState = {
+      combatId,
+      roundKey: normalizedRoundKey,
+      checked: patch?.checked === undefined ? currentState.checked : Boolean(patch.checked),
+      obeys: patch?.obeys === undefined ? currentState.obeys : Boolean(patch.obeys),
+      successes:
+        patch?.successes === undefined
+          ? currentState.successes
+          : Math.max(Math.floor(toNumber(patch.successes, 0)), 0)
+    };
+    await this.setFlag(POKROLE.ID, BATTLE_DISOBEDIENCE_CHECK_FLAG_KEY, nextState);
+    return nextState;
+  }
+
+  async _assertBattleObedience(roundKey = null, combat = game.combat) {
+    if (this.type !== "pokemon" || !combat) return { allowed: true, level: "none" };
+    const trainerActor = this._getPokemonTrainerActor(this);
+    if (!trainerActor) return { allowed: true, level: "none" };
+
+    const disobedience = trainerActor._checkDisobedience(this, trainerActor);
+    if (disobedience === "none") {
+      return { allowed: true, level: "none" };
+    }
+    if (disobedience === "high") {
+      return {
+        allowed: false,
+        level: "high",
+        reason: game.i18n.localize("POKROLE.Errors.ActorDisobedientHighBattle")
+      };
+    }
+
+    const state = this._getBattleDisobedienceCheckState(roundKey, combat);
+    if (state.checked) {
+      return state.obeys
+        ? { allowed: true, level: "low", successes: state.successes }
+        : {
+            allowed: false,
+            level: "low",
+            successes: state.successes,
+            reason: game.i18n.localize("POKROLE.Errors.ActorDisobedientLowBattle")
+          };
+    }
+
+    const loyaltyDice = Math.max(Math.floor(toNumber(this.system?.loyalty, 0)), 1);
+    const roll = await new Roll(successPoolFormula(loyaltyDice)).evaluate();
+    const successes = Math.max(Math.floor(toNumber(roll.total, 0)), 0);
+    const obeys = successes >= 3;
+
+    await roll.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      flavor: game.i18n.format("POKROLE.Chat.BattleDisobedienceLoyaltyCheck", {
+        pokemon: this.name,
+        trainer: trainerActor.name,
+        threshold: 3
+      })
+    });
+
+    await this._setBattleDisobedienceCheckState(
+      {
+        checked: true,
+        obeys,
+        successes
+      },
+      state.roundKey,
+      combat
+    );
+
+    if (obeys) {
+      return { allowed: true, level: "low", successes };
+    }
+    return {
+      allowed: false,
+      level: "low",
+      successes,
+      reason: game.i18n.localize("POKROLE.Errors.ActorDisobedientLowBattle")
+    };
   }
 
   /**
@@ -20951,8 +21077,8 @@ export class PokRoleActor extends Actor {
     }
 
     // Pokemon attributes and skills for dropdowns
-    const pokemonAttributes = ["strength", "dexterity", "vitality", "special", "insight"];
-    const pokemonSkills = ["brawl", "channel", "clash", "evasion", "alert", "athletic", "nature", "stealth"];
+    const pokemonAttributes = ATTRIBUTE_DEFINITIONS.map((attribute) => attribute.key);
+    const pokemonSkills = SKILL_DEFINITIONS.map((skill) => skill.key);
 
     const pokemonAttrOptions = pokemonAttributes
       .map((key) => `<option value="${key}">${game.i18n.localize(TRAIT_LABEL_BY_KEY[key] ?? key)}</option>`)
@@ -20978,7 +21104,7 @@ export class PokRoleActor extends Actor {
             </div>
             <div class="form-group">
               <label>${game.i18n.localize("POKROLE.Training.TaskDifficulty")}</label>
-              <input type="number" name="difficulty" value="1" min="1" max="5" />
+              <input type="number" name="difficulty" value="1" min="1" max="99" />
             </div>
           </form>
         `,
@@ -20990,7 +21116,7 @@ export class PokRoleActor extends Actor {
               result = {
                 attribute: html.find("[name='attribute']").val(),
                 skill: html.find("[name='skill']").val(),
-                difficulty: Math.max(Math.min(parseInt(html.find("[name='difficulty']").val()) || 1, 5), 1)
+                difficulty: Math.max(Math.min(parseInt(html.find("[name='difficulty']").val()) || 1, 99), 1)
               };
             }
           },
@@ -21050,8 +21176,8 @@ export class PokRoleActor extends Actor {
     }
 
     // Step 3: Trainer Training Roll
-    const trainerAttributes = ["strength", "dexterity", "vitality", "insight", "tough", "cool", "beauty", "clever", "cute"];
-    const trainerSkills = ["brawl", "throw", "weapon", "evasion", "alert", "athletic", "nature", "stealth", "empathy", "etiquette", "intimidate", "perform", "crafts", "lore", "medicine", "science"];
+    const trainerAttributes = ATTRIBUTE_DEFINITIONS.map((attribute) => attribute.key);
+    const trainerSkills = SKILL_DEFINITIONS.map((skill) => skill.key);
 
     const trainerAttrOptions = trainerAttributes
       .map((key) => `<option value="${key}">${game.i18n.localize(TRAIT_LABEL_BY_KEY[key] ?? key)}</option>`)
@@ -21102,14 +21228,15 @@ export class PokRoleActor extends Actor {
 
     const trainerAttrValue = this.getTraitValue(trainerChoices.attribute);
     const trainerSkillValue = this.getSkillValue(trainerChoices.skill);
-    const trainerDicePool = Math.max(toNumber(trainerAttrValue, 0) + toNumber(trainerSkillValue, 0) + taskDifficulty, 1);
+    const trainerDicePool = Math.max(toNumber(trainerAttrValue, 0) + toNumber(trainerSkillValue, 0), 1);
 
     const trainerRoll = await new Roll(successPoolFormula(trainerDicePool)).evaluate();
-    let trainingPoints = Math.max(toNumber(trainerRoll.total, 0), 0);
+    const trainerBaseSuccesses = Math.max(toNumber(trainerRoll.total, 0), 0);
+    let trainingPoints = trainerBaseSuccesses + taskDifficulty;
 
     await trainerRoll.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: this }),
-      flavor: `${game.i18n.localize("POKROLE.Training.TrainerRoll")} - ${trainingPoints} ${game.i18n.localize("POKROLE.Training.PointsEarned")}`
+      flavor: `${game.i18n.localize("POKROLE.Training.TrainerRoll")} (${trainerBaseSuccesses} + ${taskDifficulty}) - ${trainingPoints} ${game.i18n.localize("POKROLE.Training.PointsEarned")}`
     });
 
     // Apply disobedience penalty

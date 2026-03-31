@@ -933,6 +933,7 @@
       "CaptureBonusHalfHp": "Target HP at or below half",
       "CaptureBonusOneHp": "Target at 1 HP",
       "CaptureBonusStatus": "Status ailment: {condition}",
+      "BattleDisobedienceLoyaltyCheck": "{pokemon} rolls Loyalty to obey {trainer}'s orders (3+ successes).",
       "CaptureBonusFainted": "Target fainted: all bonus successes removed",
       "CaptureDuskContextTitle": "{item}: environment bonus",
       "CaptureDuskContextPrompt": "What is the current environment for {item}?",
@@ -1217,6 +1218,8 @@
       "ActorChargingMoveLocked": "Must finish charging {move} before using another move.",
       "ActorRampagingMoveLocked": "Rampage continues: must keep using {move}.",
       "ActorRampagingNoReaction": "Rampaging Pokemon cannot use Evasion or Clash while {move} continues.",
+      "ActorDisobedientLowBattle": "This Pokemon ignores orders for this round.",
+      "ActorDisobedientHighBattle": "This Pokemon refuses its trainer's orders in this battle.",
       "ActorSkyDropCarried": "{carrier} is carrying this Pokemon with Sky Drop.",
       "SpecialDamageNeedsTarget": "This move requires one target.",
       "SpecialDamageNeedsRetaliationTarget": "{move} can only target the actor that last hit {actor}.",
@@ -1228,28 +1231,14 @@
       "Actor": "PokeRole Actor Sheet",
       "Move": "PokeRole Move Sheet",
       "Item": "PokeRole Item Sheet"
-    }
-  },
-  "TYPES": {
-    "Actor": {
-      "trainer": "Trainer",
-      "pokemon": "Pokemon"
-    },
-    "Item": {
-      "move": "Move",
-      "gear": "Item",
-      "ability": "Ability",
-      "weather": "Weather",
-      "status": "Status",
-      "pokedex": "Pokedex Entry"
     },
     "Training": {
       "SessionButton": "Training Session",
-      "SelectPokemon": "Select Pokémon to Train",
-      "PokemonTask": "Pokémon Task",
+      "SelectPokemon": "Select Pokemon to Train",
+      "PokemonTask": "Pokemon Task",
       "TaskDifficulty": "Task Difficulty",
-      "TaskAttribute": "Pokémon Attribute",
-      "TaskSkill": "Pokémon Skill",
+      "TaskAttribute": "Pokemon Attribute",
+      "TaskSkill": "Pokemon Skill",
       "TrainerRoll": "Trainer Training Roll",
       "TrainerAttribute": "Trainer Attribute",
       "TrainerSkill": "Trainer Skill",
@@ -1266,10 +1255,26 @@
       "BattleSkip": "Skip",
       "MultipleFoes": "Multiple foes at the same time?",
       "DisobedienceLow": "Low Disobedience: training points halved",
-      "DisobedienceHigh": "High Disobedience: Pokémon refuses to train!",
+      "DisobedienceHigh": "High Disobedience: Pokemon refuses to train!",
       "DisobedienceHighBattle": "High Disobedience: no training points earned",
       "BattleOutcome": "How did the battle end?",
-      "FaintedOrSwitched": "Did this Pokémon faint or get switched out?"
+      "FaintedOrSwitched": "Did this Pokemon faint or get switched out?",
+      "ParticipatedWholeRound": "Did this Pokemon participate in battle for at least one full Round?",
+      "NoBattlePointsNoRound": "No points: did not participate for a full Round"
+    }
+  },
+  "TYPES": {
+    "Actor": {
+      "trainer": "Trainer",
+      "pokemon": "Pokemon"
+    },
+    "Item": {
+      "move": "Move",
+      "gear": "Item",
+      "ability": "Ability",
+      "weather": "Weather",
+      "status": "Status",
+      "pokedex": "Pokedex Entry"
     }
   }
 }
