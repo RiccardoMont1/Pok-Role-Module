@@ -239,6 +239,7 @@
       "EvolutionProgress": "Progresso Evoluzione",
       "EvolutionAvailable": "Evoluzione Disponibile",
       "EvolutionAvailableNotice": "{name} puo evolversi ora.",
+      "TrainingPoints": "Punti Allenamento",
       "Extra": "Extra",
       "MainSheetTab": "Scheda Principale",
       "LearnableMovesTab": "Mosse Apprendibili",
@@ -1238,6 +1239,34 @@
       "weather": "Meteo",
       "status": "Stato",
       "pokedex": "Voce Pokedex"
+    },
+    "Training": {
+      "SessionButton": "Sessione di Allenamento",
+      "SelectPokemon": "Seleziona Pokémon da Allenare",
+      "PokemonTask": "Compito del Pokémon",
+      "TaskDifficulty": "Difficoltà del Compito",
+      "TaskAttribute": "Attributo Pokémon",
+      "TaskSkill": "Abilità Pokémon",
+      "TrainerRoll": "Tiro di Allenamento",
+      "TrainerAttribute": "Attributo Allenatore",
+      "TrainerSkill": "Abilità Allenatore",
+      "PointsEarned": "Punti Allenamento Guadagnati",
+      "SessionSuccess": "Sessione di Allenamento Riuscita!",
+      "SessionFailed": "Sessione di Allenamento Fallita",
+      "SecondChance": "Seconda Possibilità!",
+      "TaskPassed": "Compito Superato!",
+      "TaskFailed": "Compito Fallito!",
+      "WillRecovered": "Recuperati 2 Punti Volontà",
+      "BattlePointsTitle": "Punti Allenamento Battaglia",
+      "BattleVictory": "Vittoria",
+      "BattleDefeat": "Sconfitta",
+      "BattleSkip": "Salta",
+      "MultipleFoes": "C'erano più nemici contemporaneamente?",
+      "DisobedienceLow": "Disobbedienza Bassa: punti allenamento dimezzati",
+      "DisobedienceHigh": "Disobbedienza Alta: Il Pokémon rifiuta di allenarsi!",
+      "DisobedienceHighBattle": "Disobbedienza Alta: nessun punto allenamento guadagnato",
+      "BattleOutcome": "Come è finita la battaglia?",
+      "FaintedOrSwitched": "Questo Pokémon è svenuto o è stato ritirato?"
     }
   }
 }

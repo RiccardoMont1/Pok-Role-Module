@@ -330,6 +330,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       ]);
       context.partyMembers = this._buildPartyMembers();
       context.canAddToParty = (this.actor.system.party?.length ?? 0) < 6;
+      context.isGM = game.user.isGM;
     }
     if (this.actor.type === "pokemon") {
       const pokemonGenderValue = `${this.actor.system.gender ?? "unknown"}`.trim().toLowerCase();
@@ -585,6 +586,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     html.find("[data-action='trainer-run-away']").on("click", (event) =>
       this._onTrainerRunAway(event)
     );
+    html.find("[data-action='training-session']").on("click", () => {
+      if (typeof this.actor.startTrainingSession === "function") {
+        this.actor.startTrainingSession();
+      }
+    });
     html.find("[data-action='trainer-set-weather']").on("click", (event) =>
       this._onTrainerSetWeather(event)
     );

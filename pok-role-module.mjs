@@ -6,6 +6,7 @@ import {
   MOVE_SECONDARY_CONDITION_KEYS,
   MOVE_SECONDARY_SPECIAL_DURATION_KEYS,
   POKROLE,
+  POKEMON_TIER_KEYS,
   SKILL_DEFINITIONS
 } from "./module/constants.mjs";
 import {
@@ -1951,6 +1952,167 @@ Hooks.on("deleteCombat", async (combat) => {
   }
 
   LAST_COMBAT_TURN_STATE.delete(combatId);
+
+  // --- Battle Training Points ---
+  // Only GM awards training points
+  if (game.user?.isGM && cachedActors.length > 0) {
+    try {
+      // Separate friendly (has trainer) vs hostile (no trainer / wild) pokemon
+      const friendlyPokemon = cachedActors.filter(
+        (a) => a?.type === "pokemon" && `${a.system?.currentTrainer ?? ""}`.trim()
+      );
+      const hostilePokemon = cachedActors.filter(
+        (a) => a?.type === "pokemon" && !`${a.system?.currentTrainer ?? ""}`.trim()
+      );
+
+      if (friendlyPokemon.length > 0 && hostilePokemon.length > 0) {
+        // Find highest tier among hostile pokemon
+        let highestHostileTierIndex = 0;
+        for (const foe of hostilePokemon) {
+          const foeTier = `${foe.system?.tier ?? "none"}`.trim();
+          const foeTierIndex = POKEMON_TIER_KEYS.indexOf(foeTier);
+          if (foeTierIndex > highestHostileTierIndex) highestHostileTierIndex = foeTierIndex;
+        }
+
+        // Show battle outcome dialog
+        const battleResult = await new Promise((resolve) => {
+          let result = null;
+          new Dialog({
+            title: game.i18n.localize("POKROLE.Training.BattlePointsTitle"),
+            content: `
+              <form class="pok-role-combined-roll">
+                <p><strong>${game.i18n.localize("POKROLE.Training.BattleOutcome")}</strong></p>
+                <div class="form-group">
+                  <label>${game.i18n.localize("POKROLE.Training.MultipleFoes")}</label>
+                  <input type="checkbox" name="multipleFoes" />
+                </div>
+              </form>
+            `,
+            buttons: {
+              victory: {
+                icon: "<i class='fas fa-trophy'></i>",
+                label: game.i18n.localize("POKROLE.Training.BattleVictory"),
+                callback: (html) => { result = { outcome: "victory", multipleFoes: html.find("[name='multipleFoes']").is(":checked") }; }
+              },
+              defeat: {
+                icon: "<i class='fas fa-heart-broken'></i>",
+                label: game.i18n.localize("POKROLE.Training.BattleDefeat"),
+                callback: (html) => { result = { outcome: "defeat", multipleFoes: html.find("[name='multipleFoes']").is(":checked") }; }
+              },
+              skip: {
+                icon: "<i class='fas fa-forward'></i>",
+                label: game.i18n.localize("POKROLE.Training.BattleSkip"),
+                callback: () => { result = null; }
+              }
+            },
+            default: "victory",
+            close: () => resolve(result)
+          }).render(true);
+        });
+
+        if (battleResult) {
+          // For each friendly pokemon, ask if fainted/switched and calculate points
+          const summaryLines = [];
+
+          for (const pokemon of friendlyPokemon) {
+            const pokemonTier = `${pokemon.system?.tier ?? "none"}`.trim();
+            const pokemonTierIndex = POKEMON_TIER_KEYS.indexOf(pokemonTier);
+
+            // Rank comparison points
+            let rankPoints = 0;
+            const rankDiff = highestHostileTierIndex - pokemonTierIndex;
+            if (rankDiff < 0) rankPoints = 0;       // pokemon rank higher than foe
+            else if (rankDiff === 0) rankPoints = 1; // equal
+            else if (rankDiff === 1) rankPoints = 2; // one below
+            else rankPoints = 3;                     // two or more below
+
+            // Battle outcome points
+            let outcomePoints = 0;
+            if (battleResult.outcome === "victory") {
+              // Ask if this pokemon fainted or was switched out
+              const faintedOrSwitched = await new Promise((resolve) => {
+                let result = false;
+                new Dialog({
+                  title: `${pokemon.name}`,
+                  content: `<p>${game.i18n.localize("POKROLE.Training.FaintedOrSwitched")}</p>`,
+                  buttons: {
+                    yes: {
+                      icon: "<i class='fas fa-check'></i>",
+                      label: game.i18n.localize("POKROLE.Common.Yes"),
+                      callback: () => { result = true; }
+                    },
+                    no: {
+                      icon: "<i class='fas fa-times'></i>",
+                      label: game.i18n.localize("POKROLE.Common.No"),
+                      callback: () => { result = false; }
+                    }
+                  },
+                  default: "no",
+                  close: () => resolve(result)
+                }).render(true);
+              });
+
+              outcomePoints = faintedOrSwitched ? 1 : 2;
+            } else {
+              // Defeat
+              outcomePoints = 1;
+            }
+
+            // Multiple foes bonus
+            const multipleFoesBonus = battleResult.multipleFoes ? 2 : 0;
+
+            let totalPoints = rankPoints + outcomePoints + multipleFoesBonus;
+
+            // Disobedience check
+            const trainerId = `${pokemon.system?.currentTrainer ?? ""}`.trim();
+            const trainerActor = trainerId ? (game.actors?.get?.(trainerId) ?? null) : null;
+            let disobedienceNote = "";
+
+            if (trainerActor) {
+              const happiness = Math.max(Math.floor(Number(pokemon.system?.happiness ?? 0)), 0);
+              const loyalty = Math.max(Math.floor(Number(pokemon.system?.loyalty ?? 0)), 0);
+              let disobedience = "none";
+
+              if (!(happiness >= 3 && loyalty >= 3)) {
+                const trainerRank = `${trainerActor.system?.cardRank ?? "none"}`.trim();
+                const trainerRankIndex = POKEMON_TIER_KEYS.indexOf(trainerRank);
+                const diff = pokemonTierIndex - trainerRankIndex;
+                if (diff === 1) disobedience = "low";
+                else if (diff >= 2) disobedience = "high";
+              }
+
+              if (disobedience === "high") {
+                totalPoints = 0;
+                disobedienceNote = ` (${game.i18n.localize("POKROLE.Training.DisobedienceHighBattle")})`;
+              } else if (disobedience === "low") {
+                totalPoints = Math.floor(totalPoints / 2);
+                disobedienceNote = ` (${game.i18n.localize("POKROLE.Training.DisobedienceLow")})`;
+              }
+            }
+
+            // Award points
+            if (totalPoints > 0) {
+              const currentTP = Math.max(Math.floor(Number(pokemon.system?.trainingPoints ?? 0)), 0);
+              await pokemon.update({ "system.trainingPoints": currentTP + totalPoints });
+            }
+
+            summaryLines.push(`<strong>${pokemon.name}</strong>: +${totalPoints} TP${disobedienceNote}`);
+          }
+
+          // Summary chat message
+          await ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ alias: "Training" }),
+            content: `
+              <strong>${game.i18n.localize("POKROLE.Training.BattlePointsTitle")}</strong><br>
+              ${summaryLines.join("<br>")}
+            `
+          });
+        }
+      }
+    } catch (e) {
+      console.warn("PokRole | Battle training points failed:", e);
+    }
+  }
 });
 
 Hooks.on("createCombat", () => {

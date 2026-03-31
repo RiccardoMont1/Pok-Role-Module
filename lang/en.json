@@ -239,6 +239,7 @@
       "EvolutionProgress": "Evolution Progress",
       "EvolutionAvailable": "Evolution Available",
       "EvolutionAvailableNotice": "{name} can evolve now.",
+      "TrainingPoints": "Training Points",
       "Extra": "Extra",
       "MainSheetTab": "Main Sheet",
       "LearnableMovesTab": "Learnable Moves",
@@ -1241,6 +1242,34 @@
       "weather": "Weather",
       "status": "Status",
       "pokedex": "Pokedex Entry"
+    },
+    "Training": {
+      "SessionButton": "Training Session",
+      "SelectPokemon": "Select Pokémon to Train",
+      "PokemonTask": "Pokémon Task",
+      "TaskDifficulty": "Task Difficulty",
+      "TaskAttribute": "Pokémon Attribute",
+      "TaskSkill": "Pokémon Skill",
+      "TrainerRoll": "Trainer Training Roll",
+      "TrainerAttribute": "Trainer Attribute",
+      "TrainerSkill": "Trainer Skill",
+      "PointsEarned": "Training Points Earned",
+      "SessionSuccess": "Training Session Successful!",
+      "SessionFailed": "Training Session Failed",
+      "SecondChance": "Second Chance!",
+      "TaskPassed": "Task Passed!",
+      "TaskFailed": "Task Failed!",
+      "WillRecovered": "Recovered 2 Will Points",
+      "BattlePointsTitle": "Battle Training Points",
+      "BattleVictory": "Victory",
+      "BattleDefeat": "Defeat",
+      "BattleSkip": "Skip",
+      "MultipleFoes": "Multiple foes at the same time?",
+      "DisobedienceLow": "Low Disobedience: training points halved",
+      "DisobedienceHigh": "High Disobedience: Pokémon refuses to train!",
+      "DisobedienceHighBattle": "High Disobedience: no training points earned",
+      "BattleOutcome": "How did the battle end?",
+      "FaintedOrSwitched": "Did this Pokémon faint or get switched out?"
     }
   }
 }

@@ -409,6 +409,10 @@
             <input type="number" value="{{evolutionThreshold}}" readonly />
           </div>
         </label>
+        <label>
+          <span>{{localize "POKROLE.Pokemon.TrainingPoints"}}</span>
+          <input type="number" name="system.trainingPoints" value="{{system.trainingPoints}}" min="0" data-dtype="Number" />
+        </label>
       </div>
       {{#if evolutionReady}}
       <div class="button-row" style="margin-top:8px;">

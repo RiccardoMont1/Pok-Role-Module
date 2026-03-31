@@ -20,6 +20,7 @@ import {
   MOVE_TARGET_KEYS,
   EFFECT_PASSIVE_TRIGGER_KEYS,
   POKROLE,
+  POKEMON_TIER_KEYS,
   SOCIAL_ATTRIBUTE_KEYS,
   TRAIT_LABEL_BY_KEY,
   TYPE_EFFECTIVENESS
@@ -20857,6 +20858,291 @@ export class PokRoleActor extends Actor {
       requiredSuccesses,
       success
     };
+  }
+
+  // --- Training Session (Part 4 + 5) ---
+
+  /**
+   * Check disobedience level of a pokemon relative to a trainer.
+   * Returns "none", "low", or "high".
+   */
+  _checkDisobedience(pokemonActor, trainerActor) {
+    if (!pokemonActor || !trainerActor) return "none";
+    const happiness = toNumber(pokemonActor.system?.happiness, 0);
+    const loyalty = toNumber(pokemonActor.system?.loyalty, 0);
+    if (happiness >= 3 && loyalty >= 3) return "none";
+
+    const pokemonTier = `${pokemonActor.system?.tier ?? "none"}`.trim();
+    const trainerRank = `${trainerActor.system?.cardRank ?? "none"}`.trim();
+    const pokemonTierIndex = POKEMON_TIER_KEYS.indexOf(pokemonTier);
+    const trainerRankIndex = POKEMON_TIER_KEYS.indexOf(trainerRank);
+    if (pokemonTierIndex < 0 || trainerRankIndex < 0) return "none";
+
+    const diff = pokemonTierIndex - trainerRankIndex;
+    if (diff <= 0) return "none";
+    if (diff === 1) return "low";
+    return "high";
+  }
+
+  /**
+   * Start a training session for one of this trainer's party pokemon.
+   * Only works for trainer actors and only when called by GM.
+   */
+  async startTrainingSession() {
+    if (this.type !== "trainer") return;
+    if (!game.user?.isGM) return;
+
+    const partyIds = Array.isArray(this.system?.party) ? this.system.party : [];
+    const partyPokemon = partyIds
+      .map((id) => game.actors?.get?.(`${id ?? ""}`.trim()))
+      .filter((actor) => actor && actor.type === "pokemon");
+
+    if (partyPokemon.length === 0) {
+      ui.notifications.warn("No pokemon in party.");
+      return;
+    }
+
+    // Step 1: Select pokemon
+    const pokemonOptionsHtml = partyPokemon
+      .map((actor, i) => `<option value="${actor.id}"${i === 0 ? " selected" : ""}>${actor.name}</option>`)
+      .join("");
+
+    const selectedPokemonId = await new Promise((resolve) => {
+      let result = null;
+      new Dialog({
+        title: game.i18n.localize("POKROLE.Training.SelectPokemon"),
+        content: `
+          <form class="pok-role-combined-roll">
+            <div class="form-group">
+              <label>${game.i18n.localize("POKROLE.Training.SelectPokemon")}</label>
+              <select name="pokemon">${pokemonOptionsHtml}</select>
+            </div>
+          </form>
+        `,
+        buttons: {
+          confirm: {
+            icon: "<i class='fas fa-check'></i>",
+            label: game.i18n.localize("POKROLE.Common.Confirm"),
+            callback: (html) => { result = html.find("[name='pokemon']").val(); }
+          },
+          cancel: {
+            icon: "<i class='fas fa-times'></i>",
+            label: game.i18n.localize("POKROLE.Common.Cancel"),
+            callback: () => { result = null; }
+          }
+        },
+        default: "confirm",
+        close: () => resolve(result)
+      }).render(true);
+    });
+
+    if (!selectedPokemonId) return;
+    const pokemon = game.actors.get(selectedPokemonId);
+    if (!pokemon) return;
+
+    // Step 5 (check early): Disobedience
+    const disobedience = this._checkDisobedience(pokemon, this);
+    if (disobedience === "high") {
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        content: `<strong>${pokemon.name}</strong>: ${game.i18n.localize("POKROLE.Training.DisobedienceHigh")}`
+      });
+      return;
+    }
+
+    // Pokemon attributes and skills for dropdowns
+    const pokemonAttributes = ["strength", "dexterity", "vitality", "special", "insight"];
+    const pokemonSkills = ["brawl", "channel", "clash", "evasion", "alert", "athletic", "nature", "stealth"];
+
+    const pokemonAttrOptions = pokemonAttributes
+      .map((key) => `<option value="${key}">${game.i18n.localize(TRAIT_LABEL_BY_KEY[key] ?? key)}</option>`)
+      .join("");
+    const pokemonSkillOptions = pokemonSkills
+      .map((key) => `<option value="${key}">${game.i18n.localize(TRAIT_LABEL_BY_KEY[key] ?? key)}</option>`)
+      .join("");
+
+    // Step 2: Pokemon Task Roll
+    const taskChoices = await new Promise((resolve) => {
+      let result = null;
+      new Dialog({
+        title: game.i18n.localize("POKROLE.Training.PokemonTask"),
+        content: `
+          <form class="pok-role-combined-roll">
+            <div class="form-group">
+              <label>${game.i18n.localize("POKROLE.Training.TaskAttribute")}</label>
+              <select name="attribute">${pokemonAttrOptions}</select>
+            </div>
+            <div class="form-group">
+              <label>${game.i18n.localize("POKROLE.Training.TaskSkill")}</label>
+              <select name="skill">${pokemonSkillOptions}</select>
+            </div>
+            <div class="form-group">
+              <label>${game.i18n.localize("POKROLE.Training.TaskDifficulty")}</label>
+              <input type="number" name="difficulty" value="1" min="1" max="5" />
+            </div>
+          </form>
+        `,
+        buttons: {
+          confirm: {
+            icon: "<i class='fas fa-check'></i>",
+            label: game.i18n.localize("POKROLE.Common.Confirm"),
+            callback: (html) => {
+              result = {
+                attribute: html.find("[name='attribute']").val(),
+                skill: html.find("[name='skill']").val(),
+                difficulty: Math.max(Math.min(parseInt(html.find("[name='difficulty']").val()) || 1, 5), 1)
+              };
+            }
+          },
+          cancel: {
+            icon: "<i class='fas fa-times'></i>",
+            label: game.i18n.localize("POKROLE.Common.Cancel"),
+            callback: () => { result = null; }
+          }
+        },
+        default: "confirm",
+        close: () => resolve(result)
+      }).render(true);
+    });
+
+    if (!taskChoices) return;
+
+    const pokemonAttrValue = pokemon.getTraitValue(taskChoices.attribute);
+    const pokemonSkillValue = pokemon.getSkillValue(taskChoices.skill);
+    const taskDicePool = Math.max(toNumber(pokemonAttrValue, 0) + toNumber(pokemonSkillValue, 0), 1);
+    const taskDifficulty = taskChoices.difficulty;
+
+    // First attempt
+    const taskRoll1 = await new Roll(successPoolFormula(taskDicePool)).evaluate();
+    const taskSuccesses1 = Math.max(toNumber(taskRoll1.total, 0), 0);
+    const taskPassed1 = taskSuccesses1 >= taskDifficulty;
+
+    await taskRoll1.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor: pokemon }),
+      flavor: `${game.i18n.localize("POKROLE.Training.PokemonTask")} (${taskSuccesses1}/${taskDifficulty}) - ${taskPassed1 ? game.i18n.localize("POKROLE.Training.TaskPassed") : game.i18n.localize("POKROLE.Training.TaskFailed")}`
+    });
+
+    let taskPassed = taskPassed1;
+
+    // Second chance if failed
+    if (!taskPassed) {
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: pokemon }),
+        content: `<strong>${pokemon.name}</strong>: ${game.i18n.localize("POKROLE.Training.SecondChance")}`
+      });
+
+      const taskRoll2 = await new Roll(successPoolFormula(taskDicePool)).evaluate();
+      const taskSuccesses2 = Math.max(toNumber(taskRoll2.total, 0), 0);
+      taskPassed = taskSuccesses2 >= taskDifficulty;
+
+      await taskRoll2.toMessage({
+        speaker: ChatMessage.getSpeaker({ actor: pokemon }),
+        flavor: `${game.i18n.localize("POKROLE.Training.SecondChance")} (${taskSuccesses2}/${taskDifficulty}) - ${taskPassed ? game.i18n.localize("POKROLE.Training.TaskPassed") : game.i18n.localize("POKROLE.Training.TaskFailed")}`
+      });
+    }
+
+    if (!taskPassed) {
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        content: `<strong>${game.i18n.localize("POKROLE.Training.SessionFailed")}</strong><br>${pokemon.name} could not complete the task.`
+      });
+      return;
+    }
+
+    // Step 3: Trainer Training Roll
+    const trainerAttributes = ["strength", "dexterity", "vitality", "insight", "tough", "cool", "beauty", "clever", "cute"];
+    const trainerSkills = ["brawl", "throw", "weapon", "evasion", "alert", "athletic", "nature", "stealth", "empathy", "etiquette", "intimidate", "perform", "crafts", "lore", "medicine", "science"];
+
+    const trainerAttrOptions = trainerAttributes
+      .map((key) => `<option value="${key}">${game.i18n.localize(TRAIT_LABEL_BY_KEY[key] ?? key)}</option>`)
+      .join("");
+    const trainerSkillOptions = trainerSkills
+      .map((key) => `<option value="${key}">${game.i18n.localize(TRAIT_LABEL_BY_KEY[key] ?? key)}</option>`)
+      .join("");
+
+    const trainerChoices = await new Promise((resolve) => {
+      let result = null;
+      new Dialog({
+        title: game.i18n.localize("POKROLE.Training.TrainerRoll"),
+        content: `
+          <form class="pok-role-combined-roll">
+            <div class="form-group">
+              <label>${game.i18n.localize("POKROLE.Training.TrainerAttribute")}</label>
+              <select name="attribute">${trainerAttrOptions}</select>
+            </div>
+            <div class="form-group">
+              <label>${game.i18n.localize("POKROLE.Training.TrainerSkill")}</label>
+              <select name="skill">${trainerSkillOptions}</select>
+            </div>
+          </form>
+        `,
+        buttons: {
+          confirm: {
+            icon: "<i class='fas fa-check'></i>",
+            label: game.i18n.localize("POKROLE.Common.Confirm"),
+            callback: (html) => {
+              result = {
+                attribute: html.find("[name='attribute']").val(),
+                skill: html.find("[name='skill']").val()
+              };
+            }
+          },
+          cancel: {
+            icon: "<i class='fas fa-times'></i>",
+            label: game.i18n.localize("POKROLE.Common.Cancel"),
+            callback: () => { result = null; }
+          }
+        },
+        default: "confirm",
+        close: () => resolve(result)
+      }).render(true);
+    });
+
+    if (!trainerChoices) return;
+
+    const trainerAttrValue = this.getTraitValue(trainerChoices.attribute);
+    const trainerSkillValue = this.getSkillValue(trainerChoices.skill);
+    const trainerDicePool = Math.max(toNumber(trainerAttrValue, 0) + toNumber(trainerSkillValue, 0) + taskDifficulty, 1);
+
+    const trainerRoll = await new Roll(successPoolFormula(trainerDicePool)).evaluate();
+    let trainingPoints = Math.max(toNumber(trainerRoll.total, 0), 0);
+
+    await trainerRoll.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      flavor: `${game.i18n.localize("POKROLE.Training.TrainerRoll")} - ${trainingPoints} ${game.i18n.localize("POKROLE.Training.PointsEarned")}`
+    });
+
+    // Apply disobedience penalty
+    let disobedienceNote = "";
+    if (disobedience === "low") {
+      trainingPoints = Math.floor(trainingPoints / 2);
+      disobedienceNote = `<br>${game.i18n.localize("POKROLE.Training.DisobedienceLow")} (${trainingPoints})`;
+    }
+
+    // Step 4: Award training points and recover Will
+    const currentTP = toNumber(pokemon.system?.trainingPoints, 0);
+    await pokemon.update({ "system.trainingPoints": currentTP + trainingPoints });
+
+    // Recover 2 Will Points for both trainer and pokemon
+    const trainerWill = toNumber(this.system?.resources?.will?.value, 0);
+    const trainerWillMax = toNumber(this.system?.resources?.will?.max, 0);
+    const newTrainerWill = Math.min(trainerWill + 2, trainerWillMax);
+    await this.update({ "system.resources.will.value": newTrainerWill });
+
+    const pokemonWill = toNumber(pokemon.system?.resources?.will?.value, 0);
+    const pokemonWillMax = toNumber(pokemon.system?.resources?.will?.max, 0);
+    const newPokemonWill = Math.min(pokemonWill + 2, pokemonWillMax);
+    await pokemon.update({ "system.resources.will.value": newPokemonWill });
+
+    // Step 5: Summary chat message
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: `
+        <strong>${game.i18n.localize("POKROLE.Training.SessionSuccess")}</strong><br>
+        ${pokemon.name}: <strong>+${trainingPoints}</strong> ${game.i18n.localize("POKROLE.Training.PointsEarned")}${disobedienceNote}<br>
+        ${game.i18n.localize("POKROLE.Training.WillRecovered")} (${this.name} & ${pokemon.name})
+      `
+    });
   }
 }
 
