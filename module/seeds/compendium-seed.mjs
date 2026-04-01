@@ -5,7 +5,7 @@ import { ABILITY_COMPENDIUM_ENTRIES } from "./generated/ability-seeds.mjs";
 import { POKEMON_ACTOR_COMPENDIUM_ENTRIES } from "./generated/pokemon-actor-seeds.mjs";
 import { HELD_ITEM_COMPENDIUM_ENTRIES } from "./generated/held-item-seeds.mjs";
 
-export const COMPENDIUM_SEED_VERSION = "2026-04-02-embedded-abilities-v1";
+export const COMPENDIUM_SEED_VERSION = "2026-04-02-embedded-abilities-v2";
 const VALID_ITEM_TYPES = new Set(["move", "gear", "ability", "weather", "status", "pokedex"]);
 const VALID_ACTOR_TYPES = new Set(["trainer", "pokemon"]);
 const LEGACY_SYSTEM_FLAG_KEYS = Object.freeze(["pok-role-module", "pok-role-system"]);
@@ -1293,6 +1293,24 @@ export async function seedCompendia({ force = false, forcePacks = null, notify =
           }
           if (Object.keys(updates).length > 0) {
             await doc.update(updates);
+          }
+
+          // Sync embedded items (e.g. ability items on pokemon actors)
+          if (pack.documentName === "Actor" && Array.isArray(seedData.items)) {
+            const seedAbilities = seedData.items.filter(i => i.type === "ability");
+            if (seedAbilities.length > 0) {
+              const existingAbilities = doc.items.filter(i => i.type === "ability");
+              const existingNames = new Set(existingAbilities.map(i => i.name.toLowerCase()));
+              const toAdd = seedAbilities.filter(i => !existingNames.has(i.name.toLowerCase()));
+              if (toAdd.length > 0) {
+                const normalized = toAdd.map(i => {
+                  const obj = foundry.utils.deepClone(i);
+                  delete obj._id;
+                  return obj;
+                });
+                await doc.createEmbeddedDocuments("Item", normalized, { pack: pack.collection });
+              }
+            }
           }
         }
       }
