@@ -21559,7 +21559,7 @@ export class PokRoleActor extends Actor {
     }
 
     const evolutions = (Array.isArray(this.system?.evolutions) ? this.system.evolutions : [])
-      .filter(e => e.to && e.to.trim() !== "");
+      .filter(e => e.to && e.to.trim() !== "" && e.kind !== "mega");
     if (evolutions.length === 0) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Pokemon.EvolveNoEvolutions"));
       return;
