@@ -1192,15 +1192,29 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const currentTier = actor.system.tier ?? "none";
     const tierKeys = ["starter", "rookie", "standard", "advanced", "expert", "ace", "master", "champion"];
     const tierIdx = tierKeys.indexOf(currentTier);
+    // Use lowercase keys to avoid case-sensitive duplicates
+    const newMoveNamesLower = new Set();
     const newMoveNames = new Set();
     for (let i = 0; i <= tierIdx; i++) {
       const rankMoves = newLearnset[tierKeys[i]] ?? "";
-      rankMoves.split(",").map(m => m.trim()).filter(Boolean).forEach(m => newMoveNames.add(m));
+      for (const m of rankMoves.split(",").map(s => s.trim()).filter(Boolean)) {
+        const key = m.toLowerCase();
+        if (!newMoveNamesLower.has(key)) {
+          newMoveNamesLower.add(key);
+          newMoveNames.add(m);
+        }
+      }
     }
 
-    // Add kept old moves
+    // Add kept old moves (skip if already in new learnset)
     if (Array.isArray(keptOldMoveNames)) {
-      keptOldMoveNames.forEach(m => newMoveNames.add(m));
+      for (const m of keptOldMoveNames) {
+        const key = m.toLowerCase();
+        if (!newMoveNamesLower.has(key)) {
+          newMoveNamesLower.add(key);
+          newMoveNames.add(m);
+        }
+      }
     }
 
     // --- Build update data ---
@@ -1247,7 +1261,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         if (entry) {
           const doc = await movePack.getDocument(entry._id);
           if (doc) {
-            moveDocsToCreate.push(doc.toObject());
+            const obj = doc.toObject();
+            delete obj._id;
+            moveDocsToCreate.push(obj);
           }
         }
       }
