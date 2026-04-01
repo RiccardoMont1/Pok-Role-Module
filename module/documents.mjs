@@ -1097,10 +1097,7 @@ export class PokRoleActor extends Actor {
     if (!traitKey || traitKey === "none") return 0;
     const value = toNumber(this.system.attributes?.[traitKey], Number.NaN);
     if (isNaN(value)) return value;
-    if (this.type !== "pokemon" || !CORE_ATTRIBUTE_KEYS.includes(`${traitKey}`.trim())) {
-      return value;
-    }
-    return Math.min(value, 10);
+    return value;
   }
 
   getInitiativeScore() {
@@ -3226,7 +3223,8 @@ export class PokRoleActor extends Actor {
     const currentHeldAmount = this._getHeldItemManagedAmountForStat(normalizedKey);
     const currentEffectiveValue = Math.floor(toNumber(foundry.utils.getProperty(this, path), 0));
     const effectiveWithoutHeld = currentEffectiveValue - currentHeldAmount;
-    const remainingRoom = Math.max(10 - effectiveWithoutHeld, 0);
+    const runtimeMaximum = this._resolveRuntimeAttributeMaximum(this, normalizedKey);
+    const remainingRoom = Math.max(runtimeMaximum - effectiveWithoutHeld, 0);
     desiredAmount = Math.min(desiredAmount, remainingRoom);
     return desiredAmount;
   }
@@ -15852,8 +15850,10 @@ export class PokRoleActor extends Actor {
     let statResult = null;
     if (Object.prototype.hasOwnProperty.call(targetActor.system.attributes ?? {}, resolvedKey)) {
       const isCoreAttribute = CORE_ATTRIBUTE_KEYS.includes(resolvedKey);
-      const configuredMax = this._resolveAttributeMaximum(targetActor, resolvedKey);
-      const baseMaxValue = isCoreAttribute ? 10 : configuredMax;
+      const configuredMax = isCoreAttribute
+        ? this._resolveRuntimeAttributeMaximum(targetActor, resolvedKey)
+        : this._resolveAttributeMaximum(targetActor, resolvedKey);
+      const baseMaxValue = configuredMax;
       const minValue = isCoreAttribute ? 1 : 0;
       const abilityMaxStacks = effect.maxStacks ?? 0;
       const maxValue = baseMaxValue;
@@ -15927,6 +15927,17 @@ export class PokRoleActor extends Actor {
       );
     }
     return 5;
+  }
+
+  _resolveRuntimeAttributeMaximum(targetActor, attributeKey) {
+    const baseMaximum = this._resolveAttributeMaximum(targetActor, attributeKey);
+    if (
+      targetActor?.type === "pokemon" &&
+      CORE_ATTRIBUTE_KEYS.includes(`${attributeKey ?? ""}`.trim())
+    ) {
+      return Math.max(baseMaximum, 10);
+    }
+    return baseMaximum;
   }
 
   getConditionFlags() {

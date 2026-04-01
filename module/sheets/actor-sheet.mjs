@@ -376,7 +376,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         "dexterity",
         "insight",
         "special"
-      ], trackMax.attributes, 1, { overflowMax: 10 });
+      ], trackMax.attributes, 1, { overflowToEffective: true });
       context.pokemonSocialRows = this._buildAttributeRows([
         "tough",
         "beauty",
@@ -2070,9 +2070,6 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   }
 
   _buildAttributeRows(attributeKeys, trackMaxByKey = null, minValue = 0, options = {}) {
-    const overflowMax = Number.isFinite(Number(options?.overflowMax))
-      ? Math.max(Math.floor(Number(options.overflowMax)), 0)
-      : null;
     return attributeKeys.map((attributeKey) => {
       const rawValue = Number(
         this.actor._source?.system?.attributes?.[attributeKey] ??
@@ -2089,6 +2086,26 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         this.actor.system.attributes?.[attributeKey] ??
         rawValue
       );
+      let overflowMax = null;
+      if (typeof options?.overflowMax === "function") {
+        overflowMax = Number(
+          options.overflowMax({
+            attributeKey,
+            maxValue,
+            rawValue,
+            effectiveValue,
+            derivedState
+          })
+        );
+      } else if (Number.isFinite(Number(options?.overflowMax))) {
+        overflowMax = Math.max(Math.floor(Number(options.overflowMax)), 0);
+      } else if (options?.overflowToEffective) {
+        overflowMax = Math.max(
+          maxValue,
+          Math.floor(Number.isFinite(rawValue) ? rawValue : minValue),
+          Math.floor(Number.isFinite(effectiveValue) ? effectiveValue : rawValue)
+        );
+      }
       const track = this._buildTrack(rawValue, maxValue, minValue, effectiveValue, overflowMax);
       return {
         key: attributeKey,
@@ -2139,20 +2156,21 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   _buildTrack(currentValue, maxValue, minValue = 1, effectiveValue = currentValue, overflowMax = null) {
     const numericCurrent = Number(currentValue);
     const normalizedCurrent = Number.isFinite(numericCurrent) ? numericCurrent : minValue;
-    const clampedCurrent = Math.min(Math.max(normalizedCurrent, minValue), maxValue);
     const numericEffective = Number(effectiveValue);
-    const normalizedEffective = Number.isFinite(numericEffective) ? numericEffective : clampedCurrent;
+    const normalizedEffective = Number.isFinite(numericEffective) ? numericEffective : normalizedCurrent;
     const effectiveCeiling = Number.isFinite(Number(overflowMax))
       ? Math.max(Math.floor(Number(overflowMax)), maxValue)
       : maxValue;
+    const clampedCurrent = Math.min(Math.max(normalizedCurrent, minValue), effectiveCeiling);
     const clampedEffective = Math.min(Math.max(normalizedEffective, minValue), effectiveCeiling);
+    const clampedTrackCurrent = Math.min(clampedCurrent, maxValue);
     const clampedTrackEffective = Math.min(clampedEffective, maxValue);
     const slots = [];
     for (let slotValue = 1; slotValue <= maxValue; slotValue += 1) {
       slots.push({
         value: slotValue,
         active: slotValue <= clampedTrackEffective,
-        bonus: slotValue <= clampedEffective && slotValue > clampedCurrent
+        bonus: slotValue <= clampedEffective && slotValue > clampedTrackCurrent
       });
     }
     const overflowSlots = [];
@@ -2161,7 +2179,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         overflowSlots.push({
           value: slotValue,
           active: slotValue <= clampedEffective,
-          bonus: slotValue <= clampedEffective
+          bonus: slotValue <= clampedEffective && slotValue > clampedCurrent
         });
       }
     }
@@ -2275,6 +2293,64 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     }
 
     return { attrBase, socialBase, skillBase };
+  }
+
+  _getPokemonPointDistributionSkillDefinitions() {
+    const pokemonSkillOrder = [
+      "brawl", "channel", "clash", "evasion",
+      "alert", "athletic", "nature", "stealth",
+      "charm", "etiquette", "intimidate", "perform"
+    ];
+    return pokemonSkillOrder
+      .map((key) => SKILL_DEFINITIONS.find((skill) => skill.key === key))
+      .filter(Boolean);
+  }
+
+  _getEffectivePokemonPointPools(totalAttrPoints, totalSocialPoints, totalSkillPoints, skillLimit, options = {}) {
+    const {
+      attrBase = {},
+      socialBase = {},
+      skillBase = {},
+      attrMax = 5,
+      attrMaxByKey = null
+    } = options;
+
+    const getAttrMax = (key) => {
+      if (attrMaxByKey && typeof attrMaxByKey === "object") {
+        const configuredMax = Number(attrMaxByKey?.[key]);
+        if (Number.isFinite(configuredMax)) {
+          return Math.min(Math.max(Math.floor(configuredMax), 1), 12);
+        }
+      }
+      return Math.min(Math.max(Math.floor(Number(attrMax) || 5), 1), 12);
+    };
+
+    const attrRoom = CORE_ATTRIBUTE_DEFINITIONS.reduce((sum, { key }) => {
+      const current = Math.max(Math.floor(Number(attrBase?.[key] ?? 1) || 1), 1);
+      return sum + Math.max(getAttrMax(key) - current, 0);
+    }, 0);
+
+    const socialRoom = SOCIAL_ATTRIBUTE_DEFINITIONS.reduce((sum, { key }) => {
+      const current = Math.max(Math.floor(Number(socialBase?.[key] ?? 1) || 1), 1);
+      return sum + Math.max(5 - current, 0);
+    }, 0);
+
+    const skillRoom = this._getPokemonPointDistributionSkillDefinitions().reduce((sum, { key }) => {
+      const current = Math.max(Math.floor(Number(skillBase?.[key] ?? 0) || 0), 0);
+      return sum + Math.max(skillLimit - current, 0);
+    }, 0);
+
+    const extraSkills = Array.isArray(this.actor.system.extraSkills) ? this.actor.system.extraSkills : [];
+    const extraSkillRoom = extraSkills.reduce((sum, _entry, index) => {
+      const current = Math.max(Math.floor(Number(skillBase?.[`extra_${index}`] ?? 0) || 0), 0);
+      return sum + Math.max(skillLimit - current, 0);
+    }, 0);
+
+    return {
+      attr: Math.max(Math.min(totalAttrPoints, attrRoom), 0),
+      social: Math.max(Math.min(totalSocialPoints, socialRoom), 0),
+      skill: Math.max(Math.min(totalSkillPoints, skillRoom + extraSkillRoom), 0)
+    };
   }
 
   _toTitleCaseKey(value) {
@@ -2849,7 +2925,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
               socialBase: currentSocialBase,
               skillBase: currentSkillBase
             } = this._getPokemonRankDistributionBaseState();
-            const confirmed = await this._showPointDistributionDialog(diffAttr, diffSocial, diffSkill, skillLimit, {
+            const effectivePools = this._getEffectivePokemonPointPools(diffAttr, diffSocial, diffSkill, skillLimit, {
+              attrBase: currentAttrBase,
+              socialBase: currentSocialBase,
+              skillBase: currentSkillBase,
+              attrMaxByKey: this._getPokemonTrackMaxConfig().attributes
+            });
+            if (effectivePools.attr <= 0 && effectivePools.social <= 0 && effectivePools.skill <= 0) {
+              await this.actor.update(formData);
+              return;
+            }
+            await this._showPointDistributionDialog(effectivePools.attr, effectivePools.social, effectivePools.skill, skillLimit, {
               attrBase: currentAttrBase,
               socialBase: currentSocialBase,
               skillBase: currentSkillBase,
@@ -2948,6 +3034,20 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       value: skillBase[`extra_${idx}`] ?? es.value ?? 0
     }));
 
+    const effectivePools = this.actor.type === "pokemon"
+      ? this._getEffectivePokemonPointPools(totalAttrPoints, totalSocialPoints, totalSkillPoints, skillLimit, {
+          attrBase,
+          socialBase,
+          skillBase,
+          attrMax,
+          attrMaxByKey
+        })
+      : {
+          attr: totalAttrPoints,
+          social: totalSocialPoints,
+          skill: totalSkillPoints
+        };
+
     const buildRows = (items, category) => items.map((item) =>
       `<div class="point-dist-row" data-category="${category}" data-key="${item.key}">
         <span class="point-dist-label">${item.label}</span>
@@ -2965,21 +3065,21 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
         <div class="point-dist-section">
           <div class="point-dist-header">${loc("POKROLE.Dialog.AttributePoints")}
-            &mdash; <span class="point-dist-remaining" data-pool="attr">${totalAttrPoints}</span> ${loc("POKROLE.Dialog.Remaining")}
+            &mdash; <span class="point-dist-remaining" data-pool="attr">${effectivePools.attr}</span> ${loc("POKROLE.Dialog.Remaining")}
           </div>
           ${buildRows(coreAttrs, "attr")}
         </div>
 
         <div class="point-dist-section">
           <div class="point-dist-header">${loc("POKROLE.Dialog.SocialPoints")}
-            &mdash; <span class="point-dist-remaining" data-pool="social">${totalSocialPoints}</span> ${loc("POKROLE.Dialog.Remaining")}
+            &mdash; <span class="point-dist-remaining" data-pool="social">${effectivePools.social}</span> ${loc("POKROLE.Dialog.Remaining")}
           </div>
           ${buildRows(socialAttrs, "social")}
         </div>
 
         <div class="point-dist-section">
           <div class="point-dist-header">${loc("POKROLE.Dialog.SkillPoints")}
-            &mdash; <span class="point-dist-remaining" data-pool="skill">${totalSkillPoints}</span> ${loc("POKROLE.Dialog.Remaining")}
+            &mdash; <span class="point-dist-remaining" data-pool="skill">${effectivePools.skill}</span> ${loc("POKROLE.Dialog.Remaining")}
           </div>
           ${buildRows(skills, "skill")}
           ${extraSkillItems.length > 0 ? buildRows(extraSkillItems, "skill") : ""}
@@ -2992,7 +3092,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       values: {},
       resolved: false
     };
-    const pools = { attr: totalAttrPoints, social: totalSocialPoints, skill: totalSkillPoints };
+    const pools = { attr: effectivePools.attr, social: effectivePools.social, skill: effectivePools.skill };
     // Initialize with base values
     for (const a of filteredCoreAttrDefs) state.values[`attr:${a.key}`] = attrBase[a.key] ?? 1;
     for (const a of SOCIAL_ATTRIBUTE_DEFINITIONS) state.values[`social:${a.key}`] = socialBase[a.key] ?? 1;
@@ -3114,9 +3214,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           }
         },
         render: (html) => {
-          pools.attr = totalAttrPoints;
-          pools.social = totalSocialPoints;
-          pools.skill = totalSkillPoints;
+          pools.attr = effectivePools.attr;
+          pools.social = effectivePools.social;
+          pools.skill = effectivePools.skill;
           const maxByCategory = {
             social: 5,
             skill: skillLimit
@@ -3211,7 +3311,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         socialBase: currentSocialBase,
         skillBase: currentSkillBase
       } = this._getPokemonRankDistributionBaseState();
-      const confirmed = await this._showPointDistributionDialog(diffAttr, diffSocial, diffSkill, skillLimit, {
+      const effectivePools = this._getEffectivePokemonPointPools(diffAttr, diffSocial, diffSkill, skillLimit, {
+        attrBase: currentAttrBase,
+        socialBase: currentSocialBase,
+        skillBase: currentSkillBase,
+        attrMaxByKey: this._getPokemonTrackMaxConfig().attributes
+      });
+      if (effectivePools.attr <= 0 && effectivePools.social <= 0 && effectivePools.skill <= 0) {
+        await this.actor.update({ "system.tier": newTier, "system.trainingPoints": currentTP - tpCost });
+        return true;
+      }
+      const confirmed = await this._showPointDistributionDialog(effectivePools.attr, effectivePools.social, effectivePools.skill, skillLimit, {
         attrBase: currentAttrBase,
         socialBase: currentSocialBase,
         skillBase: currentSkillBase,
@@ -3331,9 +3441,19 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       socialBase,
       skillBase
     } = this._getPokemonRetrainBaseState();
+    const effectivePools = this._getEffectivePokemonPointPools(totalAttr, totalSocial, totalSkill, skillLimit, {
+      attrBase,
+      socialBase,
+      skillBase,
+      attrMaxByKey: this._getPokemonTrackMaxConfig().attributes
+    });
+    if (effectivePools.attr <= 0 && effectivePools.social <= 0 && effectivePools.skill <= 0) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Training.RetrainNoPoints"));
+      return false;
+    }
 
     // Open full distribution dialog using the species base values as floor.
-    const success = await this._showPointDistributionDialog(totalAttr, totalSocial, totalSkill, skillLimit, {
+    const success = await this._showPointDistributionDialog(effectivePools.attr, effectivePools.social, effectivePools.skill, skillLimit, {
       trackRank: currentTier,
       attrBase,
       socialBase,

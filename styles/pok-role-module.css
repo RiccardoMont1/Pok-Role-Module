@@ -2517,6 +2517,13 @@
   letter-spacing: 0.01em;
 }
 
+.pokemon-sheet .attribute-track-stack {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
 .pokemon-sheet .track-bar {
   display: grid;
   grid-template-columns: repeat(var(--track-columns, 5), 16px);

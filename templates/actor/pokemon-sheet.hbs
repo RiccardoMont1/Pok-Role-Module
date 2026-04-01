@@ -486,30 +486,32 @@
                 value="{{attribute.value}}"
                 data-dtype="Number"
               />
-              <div class="track-bar compact" style="{{attribute.track.style}}">
-                {{#each attribute.track.slots as |slot|}}
-                <button
-                  type="button"
-                  class="track-box {{#if slot.active}}is-active{{/if}} {{#if slot.bonus}}is-bonus{{/if}}"
-                  data-action="set-track"
-                  data-track-field="{{../fieldPath}}"
-                  data-track-value="{{slot.value}}"
-                  data-track-min="{{../track.min}}"
-                  data-track-max="{{../track.max}}"
-                  title="{{localize ../label}} {{slot.value}}"
-                ></button>
-                {{/each}}
+              <div class="attribute-track-stack">
+                <div class="track-bar compact" style="{{attribute.track.style}}">
+                  {{#each attribute.track.slots as |slot|}}
+                  <button
+                    type="button"
+                    class="track-box {{#if slot.active}}is-active{{/if}} {{#if slot.bonus}}is-bonus{{/if}}"
+                    data-action="set-track"
+                    data-track-field="{{../fieldPath}}"
+                    data-track-value="{{slot.value}}"
+                    data-track-min="{{../track.min}}"
+                    data-track-max="{{../track.max}}"
+                    title="{{localize ../label}} {{slot.value}}"
+                  ></button>
+                  {{/each}}
+                </div>
+                {{#if attribute.track.overflowSlots.length}}
+                <div class="track-bar compact track-overflow" style="--track-columns:{{attribute.track.overflowSlots.length}};">
+                  {{#each attribute.track.overflowSlots as |slot|}}
+                  <span
+                    class="track-box {{#if slot.active}}is-active{{/if}} {{#if slot.bonus}}is-bonus{{/if}}"
+                    title="{{localize ../label}} {{slot.value}}"
+                  ></span>
+                  {{/each}}
+                </div>
+                {{/if}}
               </div>
-              {{#if attribute.track.overflowSlots.length}}
-              <div class="track-bar compact track-overflow" style="--track-columns:{{attribute.track.overflowSlots.length}};">
-                {{#each attribute.track.overflowSlots as |slot|}}
-                <span
-                  class="track-box {{#if slot.active}}is-active{{/if}} {{#if slot.bonus}}is-bonus{{/if}}"
-                  title="{{localize ../label}} {{slot.value}}"
-                ></span>
-                {{/each}}
-              </div>
-              {{/if}}
               <button
                 type="button"
                 class="icon-button"
