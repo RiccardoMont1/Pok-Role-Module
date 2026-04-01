@@ -392,8 +392,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
       let embeddedAbilities = this.actor.items.filter((i) => i.type === "ability");
 
-      // Auto-populate abilities from compendium if none embedded
-      if (embeddedAbilities.length === 0 && game.user?.isGM) {
+      // Auto-populate abilities from compendium if none embedded (skip during evolution)
+      if (embeddedAbilities.length === 0 && game.user?.isGM && !this._isEvolving) {
         const species = `${this.actor.system.species ?? this.actor.name}`.trim();
         if (species) {
           const pokemonPack = game.packs.get("pok-role-system.pokemon-actors");
@@ -476,7 +476,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
       // Auto-populate evolutions from compendium if actor has none stored
       const rawEvolutions = Array.isArray(this.actor.system.evolutions) ? this.actor.system.evolutions : [];
-      if (rawEvolutions.length === 0 && game.user?.isGM) {
+      if (rawEvolutions.length === 0 && game.user?.isGM && !this._isEvolving) {
         const species = `${this.actor.system.species ?? this.actor.name}`.trim();
         if (species) {
           const pokemonPack = game.packs.get("pok-role-system.pokemon-actors");
@@ -1184,6 +1184,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
    * Called by evolve() in documents.mjs after GM picks target + player picks old moves.
    */
   async performEvolution(targetSeedData, keptOldMoveNames) {
+    this._isEvolving = true;
     const actor = this.actor;
 
     // --- Build new learnset moves (all moves up to current tier) ---
@@ -1299,6 +1300,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     // --- Free retrain (no TP cost) ---
     await this.performPokemonRetrain(0);
 
+    this._isEvolving = false;
     return true;
   }
 
