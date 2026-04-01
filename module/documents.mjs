@@ -21278,6 +21278,193 @@ export class PokRoleActor extends Actor {
   }
 
   /**
+   * Evolve this Pokemon. GM only.
+   * 1. Pick evolution target from evolutions array
+   * 2. Look up target species in pokemon-actors compendium
+   * 3. Ask player to pick up to 3 old unique moves to keep
+   * 4. Delegate to sheet.performEvolution()
+   */
+  async evolve() {
+    if (this.type !== "pokemon") return;
+    if (!game.user?.isGM) {
+      ui.notifications.warn("Only the GM can trigger evolution.");
+      return;
+    }
+
+    const evolutions = Array.isArray(this.system?.evolutions) ? this.system.evolutions : [];
+    if (evolutions.length === 0) {
+      ui.notifications.warn(game.i18n.localize("POKROLE.Pokemon.EvolveNoEvolutions"));
+      return;
+    }
+
+    // TP cost check
+    const EVOLUTION_COSTS = { fast: 10, medium: 30, slow: 50 };
+    const evolutionTime = `${this.system.evolutionTime ?? "medium"}`.toLowerCase();
+    const tpCost = EVOLUTION_COSTS[evolutionTime] ?? 30;
+    const currentTP = toNumber(this.system?.trainingPoints, 0);
+    if (currentTP < tpCost) {
+      ui.notifications.warn(game.i18n.format("POKROLE.Pokemon.EvolveNotEnoughTP", { current: currentTP, required: tpCost }));
+      return;
+    }
+
+    // Step 1: Pick evolution target
+    let targetSpecies;
+    if (evolutions.length === 1) {
+      targetSpecies = evolutions[0].to;
+    } else {
+      const evoOptionsHtml = evolutions
+        .map((evo, i) => {
+          const label = evo.to + (evo.kind !== "level" ? ` (${evo.kind}${evo.item ? ": " + evo.item : ""}${evo.special ? ": " + evo.special : ""})` : "");
+          return `<option value="${i}"${i === 0 ? " selected" : ""}>${label}</option>`;
+        })
+        .join("");
+
+      const chosenIdx = await new Promise((resolve) => {
+        let result = null;
+        new Dialog({
+          title: game.i18n.localize("POKROLE.Pokemon.EvolveChooseTarget"),
+          content: `<form><div class="form-group"><label>${game.i18n.localize("POKROLE.Pokemon.EvolveChooseTarget")}</label><select id="evo-target">${evoOptionsHtml}</select></div></form>`,
+          buttons: {
+            ok: {
+              icon: '<i class="fas fa-check"></i>',
+              label: game.i18n.localize("POKROLE.Common.Confirm"),
+              callback: (html) => { result = Number(html.find("#evo-target").val()); }
+            },
+            cancel: {
+              icon: '<i class="fas fa-times"></i>',
+              label: game.i18n.localize("POKROLE.Common.Cancel")
+            }
+          },
+          default: "ok",
+          close: () => resolve(result)
+        }).render(true);
+      });
+
+      if (chosenIdx === null || chosenIdx === undefined) return;
+      targetSpecies = evolutions[chosenIdx].to;
+    }
+
+    if (!targetSpecies) {
+      ui.notifications.error("No target species specified.");
+      return;
+    }
+
+    // Step 2: Look up target in pokemon-actors compendium
+    const pokemonPack = game.packs.get("pok-role-system.pokemon-actors");
+    if (!pokemonPack) {
+      ui.notifications.error("Pokemon Actors compendium not found.");
+      return;
+    }
+
+    const pokemonIndex = await pokemonPack.getIndex();
+    const targetEntry = pokemonIndex.find(e => e.name.toLowerCase() === targetSpecies.toLowerCase());
+    if (!targetEntry) {
+      ui.notifications.error(`Species "${targetSpecies}" not found in compendium.`);
+      return;
+    }
+
+    const targetDoc = await pokemonPack.getDocument(targetEntry._id);
+    if (!targetDoc) {
+      ui.notifications.error(`Could not load "${targetSpecies}" from compendium.`);
+      return;
+    }
+
+    const targetSeedData = {
+      species: targetDoc.system.species ?? targetDoc.name,
+      _img: targetDoc.img,
+      manualCoreBase: foundry.utils.deepClone(targetDoc.system.manualCoreBase ?? {}),
+      sheetSettings: foundry.utils.deepClone(targetDoc.system.sheetSettings ?? {}),
+      learnsetByRank: foundry.utils.deepClone(targetDoc.system.learnsetByRank ?? {}),
+      ability: targetDoc.system.ability ?? "",
+      availableAbilities: foundry.utils.deepClone(targetDoc.system.availableAbilities ?? {}),
+      evolutionTime: targetDoc.system.evolutionTime ?? "medium",
+      evolutions: foundry.utils.deepClone(targetDoc.system.evolutions ?? []),
+      types: foundry.utils.deepClone(targetDoc.system.types ?? {}),
+      size: targetDoc.system.size ?? "",
+      weight: targetDoc.system.weight ?? ""
+    };
+
+    // Step 3: Determine old unique moves (moves the evolved form doesn't learn up to current tier)
+    const currentTier = this.system.tier ?? "none";
+    const tierKeys = ["starter", "rookie", "standard", "advanced", "expert", "ace", "master", "champion"];
+    const tierIdx = tierKeys.indexOf(currentTier);
+    const newMoveNames = new Set();
+    for (let i = 0; i <= tierIdx; i++) {
+      const rankMoves = targetSeedData.learnsetByRank[tierKeys[i]] ?? "";
+      rankMoves.split(",").map(m => m.trim()).filter(Boolean).forEach(m => newMoveNames.add(m.toLowerCase()));
+    }
+
+    const existingMoves = this.items.filter(i => i.type === "move");
+    const oldUniqueMoves = existingMoves.filter(m => !newMoveNames.has(m.name.toLowerCase()));
+
+    let keptOldMoveNames = [];
+    if (oldUniqueMoves.length > 0) {
+      // Ask which old moves to keep (max 3)
+      const checkboxesHtml = oldUniqueMoves
+        .map((m, i) => `<div class="form-group"><label><input type="checkbox" name="old-move-${i}" value="${m.name}" ${i < 3 ? "checked" : ""} /> ${m.name}</label></div>`)
+        .join("");
+
+      keptOldMoveNames = await new Promise((resolve) => {
+        let result = [];
+        new Dialog({
+          title: game.i18n.localize("POKROLE.Pokemon.EvolveKeepMoves"),
+          content: `<form><p>${game.i18n.format("POKROLE.Pokemon.EvolveKeepMovesDesc", { max: 3 })}</p>${checkboxesHtml}</form>`,
+          buttons: {
+            ok: {
+              icon: '<i class="fas fa-check"></i>',
+              label: game.i18n.localize("POKROLE.Common.Confirm"),
+              callback: (html) => {
+                const checked = [];
+                html.find("input[type='checkbox']:checked").each(function () {
+                  checked.push($(this).val());
+                });
+                if (checked.length > 3) {
+                  ui.notifications.warn(game.i18n.localize("POKROLE.Pokemon.EvolveMaxMoves"));
+                  checked.splice(3);
+                }
+                result = checked;
+              }
+            },
+            cancel: {
+              icon: '<i class="fas fa-times"></i>',
+              label: game.i18n.localize("POKROLE.Common.Cancel")
+            }
+          },
+          default: "ok",
+          close: () => resolve(result)
+        }).render(true);
+      });
+
+      if (keptOldMoveNames === null) return; // cancelled
+    }
+
+    // Step 4: Delegate to sheet
+    const sheet = this.sheet;
+    if (!sheet || typeof sheet.performEvolution !== "function") {
+      ui.notifications.error("Open the Pokémon sheet first!");
+      return;
+    }
+
+    const oldName = this.name;
+    const success = await sheet.performEvolution(targetSeedData, keptOldMoveNames);
+    if (success) {
+      // Notify connected players to refresh the sheet
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: this }),
+        content: `<strong>${oldName}</strong> ${game.i18n.format("POKROLE.Pokemon.EvolutionChatMsg", { species: targetSeedData.species })}`,
+        flags: {
+          [POKROLE.ID]: {
+            evolutionComplete: {
+              actorId: this.id,
+              species: targetSeedData.species
+            }
+          }
+        }
+      });
+    }
+  }
+
+  /**
    * Start a training session for one of this trainer's party pokemon.
    * Only works for trainer actors and only when called by GM.
    */

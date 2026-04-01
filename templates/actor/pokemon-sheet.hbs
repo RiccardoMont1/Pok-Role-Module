@@ -424,25 +424,19 @@
           </select>
         </label>
         <label>
-          <span>{{localize "POKROLE.Pokemon.EvolutionProgress"}}</span>
-          <div class="pair-input">
-            <input type="number" value="{{evolutionProgressValue}}" readonly />
-            <span>/</span>
-            <input type="number" value="{{evolutionThreshold}}" readonly />
-          </div>
-        </label>
-        <label>
           <span>{{localize "POKROLE.Pokemon.TrainingPoints"}}</span>
           <input type="number" name="system.trainingPoints" value="{{system.trainingPoints}}" min="0" data-dtype="Number" />
         </label>
       </div>
-      {{#if evolutionReady}}
+      {{#if isGM}}
+      {{#if hasEvolutions}}
       <div class="button-row" style="margin-top:8px;">
-        <button type="button" data-action="evolution-available">
-          <i class="fas fa-star"></i>
-          {{localize "POKROLE.Pokemon.EvolutionAvailable"}}
+        <button type="button" data-action="evolve">
+          <i class="fas fa-dna"></i>
+          {{localize "POKROLE.Pokemon.Evolve"}}
         </button>
       </div>
+      {{/if}}
       {{/if}}
     </section>
 

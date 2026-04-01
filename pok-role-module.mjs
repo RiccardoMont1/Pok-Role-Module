@@ -2412,6 +2412,19 @@ Hooks.on("createChatMessage", async (chatMessage) => {
   }
 });
 
+// Evolution complete: when a player sees the evolution chat message, re-render the sheet
+Hooks.on("createChatMessage", async (chatMessage) => {
+  const evolutionComplete = chatMessage.getFlag?.(POKROLE.ID, "evolutionComplete");
+  if (!evolutionComplete) return;
+  const { actorId } = evolutionComplete;
+  const actor = game.actors?.get(actorId);
+  if (!actor) return;
+  // Re-render the sheet for all connected clients
+  if (actor.sheet?.rendered) {
+    actor.sheet.render(true);
+  }
+});
+
 // Illusion: when a token with the Illusion ability is placed on the scene, apply disguise
 Hooks.on("createToken", async (tokenDocument) => {
   const actor = tokenDocument?.actor ?? null;

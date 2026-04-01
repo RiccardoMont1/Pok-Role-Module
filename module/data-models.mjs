@@ -366,6 +366,22 @@ export class PokemonDataModel extends BaseCharacterDataModel {
         })
       }),
       learnsetByRank: rankLearnsetSchema(),
+      evolutions: new ArrayField(
+        new SchemaField({
+          to: trimmedStringField(""),
+          kind: new StringField({
+            required: true,
+            blank: false,
+            initial: "level",
+            choices: ["level", "stone", "stat", "special", "other"]
+          }),
+          item: trimmedStringField(""),
+          stat: trimmedStringField(""),
+          value: integerField(0),
+          special: trimmedStringField("")
+        }),
+        { required: true, initial: () => [] }
+      ),
       combatProfile: new SchemaField({
         accuracy: integerField(0, { min: 0, max: 99 }),
         damage: integerField(0, { min: 0, max: 99 }),

@@ -440,11 +440,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         medium: "POKROLE.Pokemon.EvolutionMedium",
         slow: "POKROLE.Pokemon.EvolutionSlow"
       };
-      const evolutionThresholdByTime = { fast: 5, medium: 15, slow: 45 };
-      const evolutionTimeKey = `${this.actor.system.evolutionTime ?? "medium"}`.toLowerCase();
-      context.evolutionThreshold = evolutionThresholdByTime[evolutionTimeKey] ?? 15;
-      context.evolutionProgressValue = Math.max(Number(this.actor.system.victories ?? 0), 0);
-      context.evolutionReady = context.evolutionProgressValue >= context.evolutionThreshold;
+      const evolutions = Array.isArray(this.actor.system.evolutions) ? this.actor.system.evolutions : [];
+      context.hasEvolutions = evolutions.length > 0;
       const caughtById = this.actor.system.caughtBy || "";
       const currentTrainerId = this.actor.system.currentTrainer || "";
       const caughtByActor = caughtById ? game.actors.get(caughtById) : null;
@@ -744,9 +741,14 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     html.find("[data-action='switch-trainer-tab']").on("click", (event) =>
       this._onSwitchTrainerTab(event, html)
     );
-    html.find("[data-action='evolution-available']").on("click", (event) =>
-      this._onEvolutionAvailable(event)
-    );
+    html.find("[data-action='evolve']").on("click", async () => {
+      try {
+        if (typeof this.actor.evolve === "function") await this.actor.evolve();
+      } catch (err) {
+        console.error("[evolve] Error:", err);
+        ui.notifications.error("Evolution error: " + err.message);
+      }
+    });
     html.find(".actor-effect-row").each((_index, row) => this._refreshActorEffectRowVisibility(row));
 
     if (this.actor.type === "pokemon") {
@@ -1123,12 +1125,105 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     this._applyTrainerTabState(html, this._trainerActiveView);
   }
 
-  _onEvolutionAvailable(event) {
-    event.preventDefault();
-    if (this.actor.type !== "pokemon") return;
-    ui.notifications.info(
-      game.i18n.format("POKROLE.Pokemon.EvolutionAvailableNotice", { name: this.actor.name })
-    );
+  /**
+   * Perform the evolution: update actor data and open free retrain dialog.
+   * Called by evolve() in documents.mjs after GM picks target + player picks old moves.
+   */
+  async performEvolution(targetSeedData, keptOldMoveNames) {
+    const actor = this.actor;
+    const EVOLUTION_COSTS = { fast: 10, medium: 30, slow: 50 };
+    const evolutionTime = `${actor.system.evolutionTime ?? "medium"}`.toLowerCase();
+    const tpCost = EVOLUTION_COSTS[evolutionTime] ?? 30;
+    const currentTP = Number(actor.system.trainingPoints ?? 0);
+
+    // --- Build new learnset moves (all moves up to current tier) ---
+    const newLearnset = targetSeedData.learnsetByRank ?? {};
+    const currentTier = actor.system.tier ?? "none";
+    const tierKeys = ["starter", "rookie", "standard", "advanced", "expert", "ace", "master", "champion"];
+    const tierIdx = tierKeys.indexOf(currentTier);
+    const newMoveNames = new Set();
+    for (let i = 0; i <= tierIdx; i++) {
+      const rankMoves = newLearnset[tierKeys[i]] ?? "";
+      rankMoves.split(",").map(m => m.trim()).filter(Boolean).forEach(m => newMoveNames.add(m));
+    }
+
+    // Add kept old moves
+    if (Array.isArray(keptOldMoveNames)) {
+      keptOldMoveNames.forEach(m => newMoveNames.add(m));
+    }
+
+    // --- Resolve ability ---
+    const oldAbility = `${actor.system.ability ?? ""}`.trim().toLowerCase();
+    const oldHidden = `${actor.system.availableAbilities?.hidden ?? ""}`.trim().toLowerCase();
+    const isHidden = oldHidden && oldAbility === oldHidden;
+    let newAbility;
+    if (isHidden && targetSeedData.availableAbilities?.hidden) {
+      newAbility = targetSeedData.availableAbilities.hidden;
+    } else {
+      newAbility = targetSeedData.availableAbilities?.regular ?? targetSeedData.ability ?? actor.system.ability;
+    }
+
+    // --- Build update data ---
+    const updateData = {
+      name: targetSeedData.species ?? actor.name,
+      img: targetSeedData._img ?? actor.img,
+      "system.species": targetSeedData.species ?? "",
+      "system.manualCoreBase": targetSeedData.manualCoreBase ?? {},
+      "system.sheetSettings.trackMax.attributes": targetSeedData.sheetSettings?.trackMax?.attributes ?? {},
+      "system.learnsetByRank": newLearnset,
+      "system.ability": newAbility,
+      "system.availableAbilities.regular": targetSeedData.availableAbilities?.regular ?? "",
+      "system.availableAbilities.hidden": targetSeedData.availableAbilities?.hidden ?? "",
+      "system.evolutionTime": targetSeedData.evolutionTime ?? "medium",
+      "system.evolutions": targetSeedData.evolutions ?? [],
+      "system.types.primary": targetSeedData.types?.primary ?? actor.system.types?.primary ?? "normal",
+      "system.types.secondary": targetSeedData.types?.secondary ?? actor.system.types?.secondary ?? "none",
+      "system.size": targetSeedData.size ?? "",
+      "system.weight": targetSeedData.weight ?? "",
+      "system.trainingPoints": currentTP - tpCost
+    };
+
+    await actor.update(updateData);
+
+    // --- Update token image in scenes ---
+    for (const scene of game.scenes) {
+      const tokens = scene.tokens.filter(t => t.actorId === actor.id && t.actorLink);
+      for (const token of tokens) {
+        await token.update({
+          "texture.src": updateData.img
+        });
+      }
+    }
+
+    // --- Replace embedded move items ---
+    const existingMoves = actor.items.filter(i => i.type === "move");
+    if (existingMoves.length > 0) {
+      await actor.deleteEmbeddedDocuments("Item", existingMoves.map(i => i.id));
+    }
+
+    // Find moves in compendium
+    const movePack = game.packs.get("pok-role-system.moves");
+    if (movePack) {
+      const moveIndex = await movePack.getIndex();
+      const moveDocsToCreate = [];
+      for (const moveName of newMoveNames) {
+        const entry = moveIndex.find(e => e.name.toLowerCase() === moveName.toLowerCase());
+        if (entry) {
+          const doc = await movePack.getDocument(entry._id);
+          if (doc) {
+            moveDocsToCreate.push(doc.toObject());
+          }
+        }
+      }
+      if (moveDocsToCreate.length > 0) {
+        await actor.createEmbeddedDocuments("Item", moveDocsToCreate);
+      }
+    }
+
+    // --- Free retrain (no TP cost) ---
+    await this.performPokemonRetrain(0);
+
+    return true;
   }
 
   async _onCreateGear(event) {
