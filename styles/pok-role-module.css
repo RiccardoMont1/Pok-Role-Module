@@ -2523,6 +2523,10 @@
   gap: 4px;
 }
 
+.pokemon-sheet .track-bar.track-overflow {
+  margin-left: 4px;
+}
+
 .pokemon-sheet .track-box {
   width: 16px;
   height: 16px;

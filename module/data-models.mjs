@@ -373,7 +373,7 @@ export class PokemonDataModel extends BaseCharacterDataModel {
             required: true,
             blank: false,
             initial: "level",
-            choices: ["level", "stone", "stat", "special", "other"]
+            choices: ["level", "stone", "item", "stat", "special", "trade", "form", "mega", "other"]
           }),
           item: trimmedStringField(""),
           stat: trimmedStringField(""),

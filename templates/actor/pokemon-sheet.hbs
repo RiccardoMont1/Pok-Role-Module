@@ -500,6 +500,16 @@
                 ></button>
                 {{/each}}
               </div>
+              {{#if attribute.track.overflowSlots.length}}
+              <div class="track-bar compact track-overflow" style="--track-columns:{{attribute.track.overflowSlots.length}};">
+                {{#each attribute.track.overflowSlots as |slot|}}
+                <span
+                  class="track-box {{#if slot.active}}is-active{{/if}} {{#if slot.bonus}}is-bonus{{/if}}"
+                  title="{{localize ../label}} {{slot.value}}"
+                ></span>
+                {{/each}}
+              </div>
+              {{/if}}
               <button
                 type="button"
                 class="icon-button"

@@ -1100,8 +1100,7 @@ export class PokRoleActor extends Actor {
     if (this.type !== "pokemon" || !CORE_ATTRIBUTE_KEYS.includes(`${traitKey}`.trim())) {
       return value;
     }
-    const configuredMax = this._resolveAttributeMaximum(this, `${traitKey}`.trim());
-    return Math.min(value, Math.min(configuredMax, 10));
+    return Math.min(value, 10);
   }
 
   getInitiativeScore() {
@@ -3227,8 +3226,7 @@ export class PokRoleActor extends Actor {
     const currentHeldAmount = this._getHeldItemManagedAmountForStat(normalizedKey);
     const currentEffectiveValue = Math.floor(toNumber(foundry.utils.getProperty(this, path), 0));
     const effectiveWithoutHeld = currentEffectiveValue - currentHeldAmount;
-    const configuredMax = Math.min(this._resolveAttributeMaximum(this, normalizedKey), 10);
-    const remainingRoom = Math.max(configuredMax - effectiveWithoutHeld, 0);
+    const remainingRoom = Math.max(10 - effectiveWithoutHeld, 0);
     desiredAmount = Math.min(desiredAmount, remainingRoom);
     return desiredAmount;
   }
@@ -10122,11 +10120,9 @@ export class PokRoleActor extends Actor {
     });
     // Defender ability effects (e.g. Flame Body, Static, Poison Point on being hit)
     const defenderAbilityResults = [];
-    console.log(`PokRole | [defenderAbilityFlow] hit=${hit} isDamagingMove=${isDamagingMove} damageTargetResults=${damageTargetResults.length}`);
     if (hit && isDamagingMove) {
       for (const damageResult of damageTargetResults) {
         const defenderActor = damageResult?.targetActor;
-        console.log(`PokRole | [defenderAbilityFlow] defenderActor="${defenderActor?.name}" isPokRoleActor=${defenderActor instanceof PokRoleActor} defenderHP=${defenderActor?.system?.resources?.hp?.value}/${defenderActor?.system?.resources?.hp?.max}`);
         if (
           defenderActor instanceof PokRoleActor &&
           defenderActor.id !== this.id &&
@@ -15857,7 +15853,7 @@ export class PokRoleActor extends Actor {
     if (Object.prototype.hasOwnProperty.call(targetActor.system.attributes ?? {}, resolvedKey)) {
       const isCoreAttribute = CORE_ATTRIBUTE_KEYS.includes(resolvedKey);
       const configuredMax = this._resolveAttributeMaximum(targetActor, resolvedKey);
-      const baseMaxValue = isCoreAttribute ? Math.min(configuredMax, 10) : configuredMax;
+      const baseMaxValue = isCoreAttribute ? 10 : configuredMax;
       const minValue = isCoreAttribute ? 1 : 0;
       const abilityMaxStacks = effect.maxStacks ?? 0;
       const maxValue = baseMaxValue;

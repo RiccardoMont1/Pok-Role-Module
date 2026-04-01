@@ -376,7 +376,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         "dexterity",
         "insight",
         "special"
-      ], trackMax.attributes, 1);
+      ], trackMax.attributes, 1, { overflowMax: 10 });
       context.pokemonSocialRows = this._buildAttributeRows([
         "tough",
         "beauty",
@@ -2069,7 +2069,10 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     return normalized;
   }
 
-  _buildAttributeRows(attributeKeys, trackMaxByKey = null, minValue = 0) {
+  _buildAttributeRows(attributeKeys, trackMaxByKey = null, minValue = 0, options = {}) {
+    const overflowMax = Number.isFinite(Number(options?.overflowMax))
+      ? Math.max(Math.floor(Number(options.overflowMax)), 0)
+      : null;
     return attributeKeys.map((attributeKey) => {
       const rawValue = Number(
         this.actor._source?.system?.attributes?.[attributeKey] ??
@@ -2086,7 +2089,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         this.actor.system.attributes?.[attributeKey] ??
         rawValue
       );
-      const track = this._buildTrack(rawValue, maxValue, minValue, effectiveValue);
+      const track = this._buildTrack(rawValue, maxValue, minValue, effectiveValue, overflowMax);
       return {
         key: attributeKey,
         label: TRAIT_LABEL_BY_KEY[attributeKey] ?? "POKROLE.Common.Unknown",
@@ -2133,20 +2136,34 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     });
   }
 
-  _buildTrack(currentValue, maxValue, minValue = 1, effectiveValue = currentValue) {
+  _buildTrack(currentValue, maxValue, minValue = 1, effectiveValue = currentValue, overflowMax = null) {
     const numericCurrent = Number(currentValue);
     const normalizedCurrent = Number.isFinite(numericCurrent) ? numericCurrent : minValue;
     const clampedCurrent = Math.min(Math.max(normalizedCurrent, minValue), maxValue);
     const numericEffective = Number(effectiveValue);
     const normalizedEffective = Number.isFinite(numericEffective) ? numericEffective : clampedCurrent;
-    const clampedEffective = Math.min(Math.max(normalizedEffective, minValue), maxValue);
+    const effectiveCeiling = Number.isFinite(Number(overflowMax))
+      ? Math.max(Math.floor(Number(overflowMax)), maxValue)
+      : maxValue;
+    const clampedEffective = Math.min(Math.max(normalizedEffective, minValue), effectiveCeiling);
+    const clampedTrackEffective = Math.min(clampedEffective, maxValue);
     const slots = [];
     for (let slotValue = 1; slotValue <= maxValue; slotValue += 1) {
       slots.push({
         value: slotValue,
-        active: slotValue <= clampedEffective,
+        active: slotValue <= clampedTrackEffective,
         bonus: slotValue <= clampedEffective && slotValue > clampedCurrent
       });
+    }
+    const overflowSlots = [];
+    if (effectiveCeiling > maxValue) {
+      for (let slotValue = maxValue + 1; slotValue <= effectiveCeiling; slotValue += 1) {
+        overflowSlots.push({
+          value: slotValue,
+          active: slotValue <= clampedEffective,
+          bonus: slotValue <= clampedEffective
+        });
+      }
     }
     return {
       min: minValue,
@@ -2154,6 +2171,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       value: clampedCurrent,
       effectiveValue: clampedEffective,
       slots,
+      overflowSlots,
       style: `--track-columns:${maxValue};`
     };
   }
