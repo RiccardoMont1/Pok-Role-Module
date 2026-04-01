@@ -440,7 +440,28 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         medium: "POKROLE.Pokemon.EvolutionMedium",
         slow: "POKROLE.Pokemon.EvolutionSlow"
       };
-      const evolutions = Array.isArray(this.actor.system.evolutions) ? this.actor.system.evolutions : [];
+      let evolutions = Array.isArray(this.actor.system.evolutions) ? this.actor.system.evolutions : [];
+
+      // Auto-populate evolutions from compendium if empty
+      if (evolutions.length === 0 && game.user?.isGM) {
+        const species = `${this.actor.system.species ?? this.actor.name}`.trim();
+        if (species) {
+          const pokemonPack = game.packs.get("pok-role-system.pokemon-actors");
+          if (pokemonPack) {
+            const idx = await pokemonPack.getIndex();
+            const entry = idx.find(e => e.name.toLowerCase() === species.toLowerCase());
+            if (entry) {
+              const doc = await pokemonPack.getDocument(entry._id);
+              const compEvolutions = Array.isArray(doc?.system?.evolutions) ? doc.system.evolutions : [];
+              if (compEvolutions.length > 0) {
+                await this.actor.update({ "system.evolutions": compEvolutions });
+                evolutions = compEvolutions;
+              }
+            }
+          }
+        }
+      }
+
       context.hasEvolutions = evolutions.length > 0;
       const caughtById = this.actor.system.caughtBy || "";
       const currentTrainerId = this.actor.system.currentTrainer || "";
