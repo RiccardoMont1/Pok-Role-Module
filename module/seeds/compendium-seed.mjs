@@ -5,7 +5,7 @@ import { ABILITY_COMPENDIUM_ENTRIES } from "./generated/ability-seeds.mjs";
 import { POKEMON_ACTOR_COMPENDIUM_ENTRIES } from "./generated/pokemon-actor-seeds.mjs";
 import { HELD_ITEM_COMPENDIUM_ENTRIES } from "./generated/held-item-seeds.mjs";
 
-export const COMPENDIUM_SEED_VERSION = "2026-04-02-ability-dedup-v1";
+export const COMPENDIUM_SEED_VERSION = "2026-04-02-ability-slots-fix-v1";
 const VALID_ITEM_TYPES = new Set(["move", "gear", "ability", "weather", "status", "pokedex"]);
 const VALID_ACTOR_TYPES = new Set(["trainer", "pokemon"]);
 const LEGACY_SYSTEM_FLAG_KEYS = Object.freeze(["pok-role-module", "pok-role-system"]);
@@ -1295,32 +1295,13 @@ export async function seedCompendia({ force = false, forcePacks = null, notify =
             await doc.update(updates);
           }
 
-          // Sync embedded ability items on pokemon actors
+          // Sync embedded items (e.g. ability items on pokemon actors)
           if (pack.documentName === "Actor" && Array.isArray(seedData.items)) {
             const seedAbilities = seedData.items.filter(i => i.type === "ability");
-            const existingAbilities = doc.items.filter(i => i.type === "ability");
-
-            // Remove duplicate abilities (same name)
-            const seenNames = new Set();
-            const dupeIds = [];
-            for (const ab of existingAbilities) {
-              const key = ab.name.toLowerCase();
-              if (seenNames.has(key)) {
-                dupeIds.push(ab.id);
-              } else {
-                seenNames.add(key);
-              }
-            }
-            if (dupeIds.length > 0) {
-              await doc.deleteEmbeddedDocuments("Item", dupeIds, { pack: pack.collection });
-            }
-
-            // Add missing abilities from seed
             if (seedAbilities.length > 0) {
-              const currentNames = new Set(
-                doc.items.filter(i => i.type === "ability").map(i => i.name.toLowerCase())
-              );
-              const toAdd = seedAbilities.filter(i => !currentNames.has(i.name.toLowerCase()));
+              const existingAbilities = doc.items.filter(i => i.type === "ability");
+              const existingNames = new Set(existingAbilities.map(i => i.name.toLowerCase()));
+              const toAdd = seedAbilities.filter(i => !existingNames.has(i.name.toLowerCase()));
               if (toAdd.length > 0) {
                 const normalized = toAdd.map(i => {
                   const obj = foundry.utils.deepClone(i);
