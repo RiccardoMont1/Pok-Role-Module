@@ -5,7 +5,7 @@ import { ABILITY_COMPENDIUM_ENTRIES } from "./generated/ability-seeds.mjs";
 import { POKEMON_ACTOR_COMPENDIUM_ENTRIES } from "./generated/pokemon-actor-seeds.mjs";
 import { HELD_ITEM_COMPENDIUM_ENTRIES } from "./generated/held-item-seeds.mjs";
 
-export const COMPENDIUM_SEED_VERSION = "2026-04-02-ability-slots-fix-v2";
+export const COMPENDIUM_SEED_VERSION = "2026-04-02-ability-dedup";
 const VALID_ITEM_TYPES = new Set(["move", "gear", "ability", "weather", "status", "pokedex"]);
 const VALID_ACTOR_TYPES = new Set(["trainer", "pokemon"]);
 const LEGACY_SYSTEM_FLAG_KEYS = Object.freeze(["pok-role-module", "pok-role-system"]);
@@ -1300,7 +1300,32 @@ export async function seedCompendia({ force = false, forcePacks = null, notify =
             const seedAbilities = seedData.items.filter(i => i.type === "ability");
             if (seedAbilities.length > 0) {
               const existingAbilities = doc.items.filter(i => i.type === "ability");
-              const existingNames = new Set(existingAbilities.map(i => i.name.toLowerCase()));
+
+              // Remove duplicate abilities (same name appearing more than once)
+              const nameCounts = new Map();
+              for (const ab of existingAbilities) {
+                const key = ab.name.toLowerCase();
+                nameCounts.set(key, (nameCounts.get(key) ?? 0) + 1);
+              }
+              const dupeIdsToRemove = [];
+              const seenForDedup = new Set();
+              for (const ab of existingAbilities) {
+                const key = ab.name.toLowerCase();
+                if (nameCounts.get(key) > 1) {
+                  if (seenForDedup.has(key)) {
+                    dupeIdsToRemove.push(ab.id);
+                  } else {
+                    seenForDedup.add(key);
+                  }
+                }
+              }
+              if (dupeIdsToRemove.length > 0) {
+                await doc.deleteEmbeddedDocuments("Item", dupeIdsToRemove, { pack: pack.collection });
+              }
+
+              // Add missing abilities
+              const remainingAbilities = doc.items.filter(i => i.type === "ability");
+              const existingNames = new Set(remainingAbilities.map(i => i.name.toLowerCase()));
               const toAdd = seedAbilities.filter(i => !existingNames.has(i.name.toLowerCase()));
               if (toAdd.length > 0) {
                 const normalized = toAdd.map(i => {

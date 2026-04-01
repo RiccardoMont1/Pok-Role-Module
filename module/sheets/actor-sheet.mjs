@@ -1271,11 +1271,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         if (targetDoc) {
           const targetAbilities = targetDoc.items.filter(i => i.type === "ability");
           if (targetAbilities.length > 0) {
-            const abilityData = targetAbilities.map(i => {
+            // Deduplicate by name to avoid duplicates from compendium
+            const seen = new Set();
+            const abilityData = [];
+            for (const i of targetAbilities) {
+              const key = i.name.toLowerCase();
+              if (seen.has(key)) continue;
+              seen.add(key);
               const obj = i.toObject();
               delete obj._id;
-              return obj;
-            });
+              abilityData.push(obj);
+            }
             await actor.createEmbeddedDocuments("Item", abilityData);
           }
         }
