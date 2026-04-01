@@ -390,7 +390,36 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       context.pokemonRegularAbilityList = `${this.actor.system.availableAbilities?.regular ?? ""}`.trim();
       context.pokemonHiddenAbilityList = `${this.actor.system.availableAbilities?.hidden ?? ""}`.trim();
 
-      const embeddedAbilities = this.actor.items.filter((i) => i.type === "ability");
+      let embeddedAbilities = this.actor.items.filter((i) => i.type === "ability");
+
+      // Auto-populate abilities from compendium if none embedded
+      if (embeddedAbilities.length === 0 && game.user?.isGM) {
+        const species = `${this.actor.system.species ?? this.actor.name}`.trim();
+        if (species) {
+          const pokemonPack = game.packs.get("pok-role-system.pokemon-actors");
+          if (pokemonPack) {
+            const idx = await pokemonPack.getIndex();
+            const compEntry = idx.find(e => e.name.toLowerCase() === species.toLowerCase());
+            if (compEntry) {
+              const compDoc = await pokemonPack.getDocument(compEntry._id);
+              if (compDoc) {
+                const compAbilities = compDoc.items.filter(i => i.type === "ability");
+                if (compAbilities.length > 0) {
+                  const itemsData = compAbilities.map(i => {
+                    const obj = i.toObject();
+                    delete obj._id;
+                    return obj;
+                  });
+                  await this.actor.createEmbeddedDocuments("Item", itemsData);
+                  await this._syncAbilityTextFields();
+                  embeddedAbilities = this.actor.items.filter((i) => i.type === "ability");
+                }
+              }
+            }
+          }
+        }
+      }
+
       const activeAbilityName = `${this.actor.system?.ability ?? ""}`.trim();
       const activeItem = embeddedAbilities.find((i) => i.name === activeAbilityName) ?? null;
       context.activeAbilityData = activeItem
