@@ -1202,17 +1202,6 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       keptOldMoveNames.forEach(m => newMoveNames.add(m));
     }
 
-    // --- Resolve ability ---
-    const oldAbility = `${actor.system.ability ?? ""}`.trim().toLowerCase();
-    const oldHidden = `${actor.system.availableAbilities?.hidden ?? ""}`.trim().toLowerCase();
-    const isHidden = oldHidden && oldAbility === oldHidden;
-    let newAbility;
-    if (isHidden && targetSeedData.availableAbilities?.hidden) {
-      newAbility = targetSeedData.availableAbilities.hidden;
-    } else {
-      newAbility = targetSeedData.availableAbilities?.regular ?? targetSeedData.ability ?? actor.system.ability;
-    }
-
     // --- Build update data ---
     const updateData = {
       name: targetSeedData.species ?? actor.name,
@@ -1221,9 +1210,6 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       "system.manualCoreBase": targetSeedData.manualCoreBase ?? {},
       "system.sheetSettings.trackMax.attributes": targetSeedData.sheetSettings?.trackMax?.attributes ?? {},
       "system.learnsetByRank": newLearnset,
-      "system.ability": newAbility,
-      "system.availableAbilities.regular": targetSeedData.availableAbilities?.regular ?? "",
-      "system.availableAbilities.hidden": targetSeedData.availableAbilities?.hidden ?? "",
       "system.evolutionTime": targetSeedData.evolutionTime ?? "medium",
       "system.evolutions": targetSeedData.evolutions ?? [],
       "system.types.primary": targetSeedData.types?.primary ?? actor.system.types?.primary ?? "normal",
@@ -1268,6 +1254,41 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         await actor.createEmbeddedDocuments("Item", moveDocsToCreate);
       }
     }
+
+    // --- Replace embedded ability items with target's abilities ---
+    const existingAbilities = actor.items.filter(i => i.type === "ability");
+    if (existingAbilities.length > 0) {
+      await actor.deleteEmbeddedDocuments("Item", existingAbilities.map(i => i.id));
+    }
+
+    // Copy abilities from target compendium entry
+    const pokemonPack = game.packs.get("pok-role-system.pokemon-actors");
+    if (pokemonPack) {
+      const pkIdx = await pokemonPack.getIndex();
+      const targetEntry = pkIdx.find(e => e.name.toLowerCase() === (targetSeedData.species ?? "").toLowerCase());
+      if (targetEntry) {
+        const targetDoc = await pokemonPack.getDocument(targetEntry._id);
+        if (targetDoc) {
+          const targetAbilities = targetDoc.items.filter(i => i.type === "ability");
+          if (targetAbilities.length > 0) {
+            const abilityData = targetAbilities.map(i => {
+              const obj = i.toObject();
+              delete obj._id;
+              return obj;
+            });
+            await actor.createEmbeddedDocuments("Item", abilityData);
+          }
+        }
+      }
+    }
+
+    // Set active ability to the first regular ability of the evolved form
+    const newEmbeddedAbilities = actor.items.filter(i => i.type === "ability");
+    const firstRegular = newEmbeddedAbilities.find(i => i.getFlag?.("pok-role-system", "abilitySlot") !== "hidden");
+    if (firstRegular) {
+      await actor.update({ "system.ability": firstRegular.name });
+    }
+    await this._syncAbilityTextFields();
 
     // --- Free retrain (no TP cost) ---
     await this.performPokemonRetrain(0);
