@@ -21558,19 +21558,10 @@ export class PokRoleActor extends Actor {
       return;
     }
 
-    const evolutions = Array.isArray(this.system?.evolutions) ? this.system.evolutions : [];
+    const evolutions = (Array.isArray(this.system?.evolutions) ? this.system.evolutions : [])
+      .filter(e => e.to && e.to.trim() !== "");
     if (evolutions.length === 0) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Pokemon.EvolveNoEvolutions"));
-      return;
-    }
-
-    // TP cost check
-    const EVOLUTION_COSTS = { fast: 10, medium: 30, slow: 50 };
-    const evolutionTime = `${this.system.evolutionTime ?? "medium"}`.toLowerCase();
-    const tpCost = EVOLUTION_COSTS[evolutionTime] ?? 30;
-    const currentTP = toNumber(this.system?.trainingPoints, 0);
-    if (currentTP < tpCost) {
-      ui.notifications.warn(game.i18n.format("POKROLE.Pokemon.EvolveNotEnoughTP", { current: currentTP, required: tpCost }));
       return;
     }
 

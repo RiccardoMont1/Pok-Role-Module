@@ -4383,3 +4383,15 @@ form.editable.pok-role-sheet.trainer-sheet {
   color: #34495e;
   margin: 0 0 8px 0;
 }
+
+.pokemon-sheet .pokemon-combat-card button[data-action="evolve"] {
+  border: 3px solid var(--pk-outline);
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: #2f342d;
+  color: #f4f6fb;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}

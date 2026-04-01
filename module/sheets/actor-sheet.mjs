@@ -372,10 +372,10 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       ];
       context.pokemonPhysicalMentalRows = this._buildAttributeRows([
         "strength",
-        "vitality",
         "dexterity",
-        "insight",
-        "special"
+        "vitality",
+        "special",
+        "insight"
       ], trackMax.attributes, 1, { overflowToEffective: true });
       context.pokemonSocialRows = this._buildAttributeRows([
         "tough",
@@ -440,7 +440,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         medium: "POKROLE.Pokemon.EvolutionMedium",
         slow: "POKROLE.Pokemon.EvolutionSlow"
       };
-      let evolutions = Array.isArray(this.actor.system.evolutions) ? this.actor.system.evolutions : [];
+      let evolutions = Array.isArray(this.actor.system.evolutions)
+        ? this.actor.system.evolutions.filter(e => e.to && e.to.trim() !== "")
+        : [];
 
       // Auto-populate evolutions from compendium if empty
       if (evolutions.length === 0 && game.user?.isGM) {
@@ -1152,10 +1154,6 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
    */
   async performEvolution(targetSeedData, keptOldMoveNames) {
     const actor = this.actor;
-    const EVOLUTION_COSTS = { fast: 10, medium: 30, slow: 50 };
-    const evolutionTime = `${actor.system.evolutionTime ?? "medium"}`.toLowerCase();
-    const tpCost = EVOLUTION_COSTS[evolutionTime] ?? 30;
-    const currentTP = Number(actor.system.trainingPoints ?? 0);
 
     // --- Build new learnset moves (all moves up to current tier) ---
     const newLearnset = targetSeedData.learnsetByRank ?? {};
@@ -1200,8 +1198,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       "system.types.primary": targetSeedData.types?.primary ?? actor.system.types?.primary ?? "normal",
       "system.types.secondary": targetSeedData.types?.secondary ?? actor.system.types?.secondary ?? "none",
       "system.size": targetSeedData.size ?? "",
-      "system.weight": targetSeedData.weight ?? "",
-      "system.trainingPoints": currentTP - tpCost
+      "system.weight": targetSeedData.weight ?? ""
     };
 
     await actor.update(updateData);
