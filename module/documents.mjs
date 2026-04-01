@@ -54,6 +54,14 @@ function successPoolFormula(dicePool) {
 }
 
 const DELAYED_EFFECT_PROCESS_LOCKS = new Set();
+const CORE_ATTRIBUTE_KEYS = Object.freeze(["strength", "dexterity", "vitality", "special", "insight"]);
+const HELD_ITEM_MANAGED_STAT_KEYS = Object.freeze([
+  ...CORE_ATTRIBUTE_KEYS,
+  "def",
+  "spDef",
+  "initiative"
+]);
+const HELD_ITEM_DERIVED_FLAG_ROOT = `flags.${POKROLE.ID}.heldItemDerived`;
 
 const TYPE_KEY_ALIASES = Object.freeze({
   normale: "normal",
@@ -1087,9 +1095,13 @@ export class PokRoleActor extends Actor {
 
   getTraitValue(traitKey) {
     if (!traitKey || traitKey === "none") return 0;
-    const base = toNumber(this.system.attributes?.[traitKey], Number.NaN);
-    const heldBonus = this._getHeldItemStatBonus(traitKey);
-    return isNaN(base) ? base : base + heldBonus;
+    const value = toNumber(this.system.attributes?.[traitKey], Number.NaN);
+    if (isNaN(value)) return value;
+    if (this.type !== "pokemon" || !CORE_ATTRIBUTE_KEYS.includes(`${traitKey}`.trim())) {
+      return value;
+    }
+    const configuredMax = this._resolveAttributeMaximum(this, `${traitKey}`.trim());
+    return Math.min(value, Math.min(configuredMax, 10));
   }
 
   getInitiativeScore() {
@@ -1106,7 +1118,7 @@ export class PokRoleActor extends Actor {
     const weather = this.getActiveWeatherKey?.() ?? "none";
     const weatherBonus = this._getWeatherDefenseBonusForStat(category, weather);
     const defKey = category === "special" ? "spDef" : "def";
-    const heldDefBonus = this._getHeldItemStatBonus(defKey) + this._getHeldItemEvioliteDefenseBonus();
+    const heldDefBonus = this._getHeldItemStatBonus(defKey);
     return base + weatherBonus + heldDefBonus;
   }
 
@@ -2945,6 +2957,9 @@ export class PokRoleActor extends Actor {
     if (this.type !== "pokemon") return "";
     const normalizedItemId = `${itemId ?? ""}`.trim();
     await this.update({ "system.battleItem": normalizedItemId });
+    if (game.user?.isGM && typeof this.synchronizeHeldItemStatEffects === "function") {
+      await this.synchronizeHeldItemStatEffects();
+    }
     const held = normalizedItemId
       ? this._getHeldItemDocument({ requireCompatible: false })
       : null;
@@ -3119,10 +3134,256 @@ export class PokRoleActor extends Actor {
     return targetItem;
   }
 
+  _getSourceAttributeValue(traitKey) {
+    const normalizedKey = `${traitKey ?? ""}`.trim();
+    return Math.max(
+      Math.floor(
+        toNumber(
+          this._source?.system?.attributes?.[normalizedKey],
+          this.system?.attributes?.[normalizedKey]
+        )
+      ),
+      0
+    );
+  }
+
+  _getHeldItemManagedEffectPath(statKey) {
+    const normalizedKey = `${statKey ?? ""}`.trim();
+    if (CORE_ATTRIBUTE_KEYS.includes(normalizedKey)) {
+      return `system.attributes.${normalizedKey}`;
+    }
+    if (["def", "spDef", "initiative"].includes(normalizedKey)) {
+      return `${HELD_ITEM_DERIVED_FLAG_ROOT}.${normalizedKey}`;
+    }
+    return "";
+  }
+
+  _getHeldItemManagedEffects() {
+    return (this.effects?.contents ?? []).filter((effectDocument) => {
+      if (effectDocument?.disabled) return false;
+      const automationFlags = effectDocument.getFlag?.(POKROLE.ID, "automation") ?? {};
+      if (!automationFlags?.managed) return false;
+      if (`${automationFlags?.effectType ?? ""}`.trim().toLowerCase() !== "modifier") return false;
+      return Boolean(automationFlags?.heldItemManaged);
+    });
+  }
+
+  _getHeldItemManagedEffectsForPath(path) {
+    const normalizedPath = `${path ?? ""}`.trim();
+    if (!normalizedPath) return [];
+    return this._getHeldItemManagedEffects().filter((effectDocument) => {
+      const automationFlags = effectDocument.getFlag?.(POKROLE.ID, "automation") ?? {};
+      return `${automationFlags?.path ?? ""}`.trim() === normalizedPath;
+    });
+  }
+
+  _getHeldItemManagedAmountForStat(statKey) {
+    const path = this._getHeldItemManagedEffectPath(statKey);
+    if (!path) return 0;
+    return this._getHeldItemManagedEffectsForPath(path).reduce((sum, effectDocument) => {
+      const automationFlags = effectDocument.getFlag?.(POKROLE.ID, "automation") ?? {};
+      return sum + Math.floor(toNumber(automationFlags?.amountApplied, 0));
+    }, 0);
+  }
+
+  _getExistingManagedModifierEffectsForHeldItemSync(path) {
+    const normalizedPath = `${path ?? ""}`.trim();
+    if (!normalizedPath) return [];
+    return this._getManagedModifierEffectsForPath(this, normalizedPath).filter((effectDocument) => {
+      const automationFlags = effectDocument.getFlag?.(POKROLE.ID, "automation") ?? {};
+      return !automationFlags?.heldItemManaged;
+    });
+  }
+
+  _getDesiredHeldItemManagedAmount(statKey, configuredAmount) {
+    const normalizedKey = `${statKey ?? ""}`.trim();
+    const path = this._getHeldItemManagedEffectPath(normalizedKey);
+    const baseAmount = Math.floor(toNumber(configuredAmount, 0));
+    if (!path || baseAmount === 0) return 0;
+
+    if (!CORE_ATTRIBUTE_KEYS.includes(normalizedKey)) {
+      return baseAmount;
+    }
+
+    const sameDirectionModifiers = this._getExistingManagedModifierEffectsForHeldItemSync(path).filter(
+      (effectDocument) => {
+        const automationFlags = effectDocument.getFlag?.(POKROLE.ID, "automation") ?? {};
+        const appliedAmount = Math.floor(toNumber(automationFlags?.amountApplied, 0));
+        return appliedAmount !== 0 && Math.sign(appliedAmount) === Math.sign(baseAmount);
+      }
+    );
+    const strongestConflictingModifier = sameDirectionModifiers.reduce((strongest, effectDocument) => {
+      const automationFlags = effectDocument.getFlag?.(POKROLE.ID, "automation") ?? {};
+      const existingSourceType = this._getAutomationSourceItemType(automationFlags);
+      if (this._canStackTrackedModifierSources("held-item", existingSourceType)) return strongest;
+      const appliedAmount = Math.floor(toNumber(automationFlags?.amountApplied, 0));
+      return Math.max(strongest, Math.abs(appliedAmount));
+    }, 0);
+
+    let desiredAmount =
+      Math.sign(baseAmount) * Math.max(Math.abs(baseAmount) - strongestConflictingModifier, 0);
+    if (desiredAmount <= 0) return desiredAmount;
+
+    const currentHeldAmount = this._getHeldItemManagedAmountForStat(normalizedKey);
+    const currentEffectiveValue = Math.floor(toNumber(foundry.utils.getProperty(this, path), 0));
+    const effectiveWithoutHeld = currentEffectiveValue - currentHeldAmount;
+    const configuredMax = Math.min(this._resolveAttributeMaximum(this, normalizedKey), 10);
+    const remainingRoom = Math.max(configuredMax - effectiveWithoutHeld, 0);
+    desiredAmount = Math.min(desiredAmount, remainingRoom);
+    return desiredAmount;
+  }
+
+  async synchronizeHeldItemStatEffects() {
+    if (this.type !== "pokemon") return 0;
+    if (this.__pokroleHeldItemStatSyncInProgress) return 0;
+    this.__pokroleHeldItemStatSyncInProgress = true;
+
+    try {
+      const heldItem = this._getHeldItemDocument({ requireCompatible: true });
+      const heldBonuses = heldItem?.system?.held?.statBonuses ?? {};
+      const heldSeedId = `${heldItem?.getFlag?.(POKROLE.ID, "seedId") ?? ""}`.trim().toLowerCase();
+      const desiredEntries = new Map();
+
+      for (const statKey of HELD_ITEM_MANAGED_STAT_KEYS) {
+        let configuredAmount = heldBonuses?.[statKey];
+        if (heldSeedId === "held-eviolite" && this._isEvioliteEligibleSpecies() && ["def", "spDef"].includes(statKey)) {
+          configuredAmount = toNumber(configuredAmount, 0) + 1;
+        }
+        const desiredAmount = this._getDesiredHeldItemManagedAmount(statKey, configuredAmount);
+        if (!desiredAmount) continue;
+        const path = this._getHeldItemManagedEffectPath(statKey);
+        if (!path) continue;
+        desiredEntries.set(statKey, {
+          statKey,
+          path,
+          amount: desiredAmount,
+          label:
+            statKey === "def"
+              ? game.i18n.localize("POKROLE.Combat.Defense")
+              : statKey === "spDef"
+                ? game.i18n.localize("POKROLE.Combat.SpecialDefense")
+                : statKey === "initiative"
+                  ? game.i18n.localize("POKROLE.Combat.InitiativeScore")
+                  : game.i18n.localize(TRAIT_LABEL_BY_KEY[statKey] ?? "POKROLE.Common.Unknown")
+        });
+      }
+
+      const existingEffects = this._getHeldItemManagedEffects();
+      const existingByStatKey = new Map();
+      const duplicateDeleteIds = [];
+      for (const effectDocument of existingEffects) {
+        const automationFlags = effectDocument.getFlag?.(POKROLE.ID, "automation") ?? {};
+        const statKey = `${automationFlags?.heldItemStatKey ?? ""}`.trim();
+        if (!statKey) continue;
+        if (existingByStatKey.has(statKey)) {
+          duplicateDeleteIds.push(effectDocument.id);
+          continue;
+        }
+        existingByStatKey.set(statKey, effectDocument);
+      }
+
+      const deleteIds = [...duplicateDeleteIds];
+      const updatePayloads = [];
+      const createPayloads = [];
+
+      for (const [statKey, effectDocument] of existingByStatKey.entries()) {
+        const desiredEntry = desiredEntries.get(statKey);
+        if (!desiredEntry) {
+          deleteIds.push(effectDocument.id);
+          continue;
+        }
+        const automationFlags = effectDocument.getFlag?.(POKROLE.ID, "automation") ?? {};
+        const currentAmount = Math.floor(toNumber(automationFlags?.amountApplied, 0));
+        const currentPath = `${automationFlags?.path ?? ""}`.trim();
+        const desiredName = `${heldItem?.name ?? game.i18n.localize("POKROLE.Pokemon.BattleItem")} (${desiredEntry.label})`;
+        if (
+          currentAmount !== desiredEntry.amount ||
+          currentPath !== desiredEntry.path ||
+          `${effectDocument.name ?? ""}`.trim() !== desiredName
+        ) {
+          updatePayloads.push({
+            _id: effectDocument.id,
+            name: desiredName,
+            img: heldItem?.img ?? effectDocument.img ?? "icons/svg/aura.svg",
+            changes: [
+              {
+                key: desiredEntry.path,
+                mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+                value: `${desiredEntry.amount}`,
+                priority: 20
+              }
+            ],
+            [`flags.${POKROLE.ID}.automation.path`]: desiredEntry.path,
+            [`flags.${POKROLE.ID}.automation.amountApplied`]: desiredEntry.amount,
+            [`flags.${POKROLE.ID}.automation.sourceItemType`]: "held-item",
+            [`flags.${POKROLE.ID}.automation.sourceItemId`]: heldItem?.id ?? null,
+            [`flags.${POKROLE.ID}.automation.sourceItemName`]: heldItem?.name ?? "",
+            [`flags.${POKROLE.ID}.automation.heldItemStatKey`]: statKey
+          });
+        }
+        desiredEntries.delete(statKey);
+      }
+
+      for (const desiredEntry of desiredEntries.values()) {
+        createPayloads.push({
+          name: `${heldItem?.name ?? game.i18n.localize("POKROLE.Pokemon.BattleItem")} (${desiredEntry.label})`,
+          img: heldItem?.img ?? "icons/svg/aura.svg",
+          origin: heldItem?.uuid ?? null,
+          transfer: false,
+          disabled: false,
+          statuses: [],
+          duration: {},
+          changes: [
+            {
+              key: desiredEntry.path,
+              mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+              value: `${desiredEntry.amount}`,
+              priority: 20
+            }
+          ],
+          flags: {
+            [POKROLE.ID]: {
+              automation: {
+                managed: true,
+                sourceType: "automation",
+                effectType: "modifier",
+                durationMode: "manual",
+                durationRounds: 0,
+                specialDuration: [],
+                expiresWithCombat: false,
+                path: desiredEntry.path,
+                amountApplied: desiredEntry.amount,
+                sourceItemType: "held-item",
+                sourceItemId: heldItem?.id ?? null,
+                sourceItemName: heldItem?.name ?? "",
+                heldItemManaged: true,
+                heldItemStatKey: desiredEntry.statKey
+              }
+            }
+          }
+        });
+      }
+
+      if (deleteIds.length > 0) {
+        await this.deleteEmbeddedDocuments("ActiveEffect", deleteIds);
+      }
+      if (updatePayloads.length > 0) {
+        await this.updateEmbeddedDocuments("ActiveEffect", updatePayloads);
+      }
+      if (createPayloads.length > 0) {
+        await this.createEmbeddedDocuments("ActiveEffect", createPayloads);
+      }
+
+      return deleteIds.length + updatePayloads.length + createPayloads.length;
+    } finally {
+      this.__pokroleHeldItemStatSyncInProgress = false;
+    }
+  }
+
   _getHeldItemInitiativeBonus() {
     const held = this._getHeldItemData();
     if (!held) return 0;
-    const staticBonus = Math.floor(toNumber(held.statBonuses?.initiative, 0));
+    const staticBonus = this._getHeldItemManagedAmountForStat("initiative");
     if (staticBonus !== 0) return staticBonus;
     return Math.floor(toNumber(held.choiceInitiativeBonus, 0));
   }
@@ -3135,9 +3396,7 @@ export class PokRoleActor extends Actor {
   }
 
   _getHeldItemEvioliteDefenseBonus() {
-    if (this.type !== "pokemon") return 0;
-    if (!this._hasEquippedHeldItemSeed("held-eviolite")) return 0;
-    return this._isEvioliteEligibleSpecies() ? 1 : 0;
+    return 0;
   }
 
   _hasActiveAirBalloon() {
@@ -3236,10 +3495,11 @@ export class PokRoleActor extends Actor {
    */
   _getHeldItemStatBonus(statKey) {
     if (this.type !== "pokemon") return 0;
-    const held = this._getHeldItemData();
-    if (!held) return 0;
-    const bonuses = held.statBonuses ?? {};
-    return toNumber(bonuses[statKey], 0);
+    const normalizedKey = `${statKey ?? ""}`.trim();
+    if (CORE_ATTRIBUTE_KEYS.includes(normalizedKey)) return 0;
+    return Math.floor(
+      toNumber(foundry.utils.getProperty(this, `${HELD_ITEM_DERIVED_FLAG_ROOT}.${normalizedKey}`), 0)
+    );
   }
 
   /**
@@ -3274,18 +3534,21 @@ export class PokRoleActor extends Actor {
 
   _getDerivedTraitDisplayState(traitKey) {
     const normalizedKey = `${traitKey ?? ""}`.trim();
-    const baseValue = Math.max(Math.floor(toNumber(this.system?.attributes?.[normalizedKey], 0)), 0);
-    const heldBonus = Math.floor(toNumber(this._getHeldItemStatBonus(normalizedKey), 0));
-    const modifiers = [];
-    if (heldBonus !== 0) {
-      modifiers.push({
-        sourceKind: "held-item",
-        sourceLabel: this._getHeldItemSourceLabel({ requireCompatible: true }),
-        amount: heldBonus
-      });
-    }
-    const totalModifier = modifiers.reduce((sum, modifier) => sum + toNumber(modifier?.amount, 0), 0);
-    const effectiveValue = Math.max(baseValue + totalModifier, 0);
+    const baseValue = this._getSourceAttributeValue(normalizedKey);
+    const effectiveValue = Math.max(Math.floor(toNumber(this.getTraitValue(normalizedKey), baseValue)), 0);
+    const modifiers = this._getManagedModifierEffectsForPath(this, `system.attributes.${normalizedKey}`)
+      .map((effectDocument) => {
+        const automationFlags = effectDocument.getFlag?.(POKROLE.ID, "automation") ?? {};
+        const amount = Math.floor(toNumber(automationFlags?.amountApplied, 0));
+        if (!amount) return null;
+        return {
+          sourceKind: this._getAutomationSourceItemType(automationFlags) || "effect",
+          sourceLabel: `${automationFlags?.sourceItemName ?? effectDocument.name ?? game.i18n.localize("POKROLE.Common.Unknown")}`.trim(),
+          amount
+        };
+      })
+      .filter(Boolean);
+    const totalModifier = effectiveValue - baseValue;
     return {
       key: normalizedKey,
       baseValue,
@@ -15592,15 +15855,12 @@ export class PokRoleActor extends Actor {
 
     let statResult = null;
     if (Object.prototype.hasOwnProperty.call(targetActor.system.attributes ?? {}, resolvedKey)) {
-      const isCoreAttribute = ["strength", "dexterity", "vitality", "special", "insight"].includes(
-        resolvedKey
-      );
+      const isCoreAttribute = CORE_ATTRIBUTE_KEYS.includes(resolvedKey);
       const configuredMax = this._resolveAttributeMaximum(targetActor, resolvedKey);
       const baseMaxValue = isCoreAttribute ? Math.min(configuredMax, 10) : configuredMax;
       const minValue = isCoreAttribute ? 1 : 0;
-      // Ability buffs with maxStacks can temporarily exceed the attribute cap
       const abilityMaxStacks = effect.maxStacks ?? 0;
-      const maxValue = abilityMaxStacks > 0 ? baseMaxValue + abilityMaxStacks : baseMaxValue;
+      const maxValue = baseMaxValue;
       statResult = await this._applyTemporaryTrackedModifier({
         targetActor,
         path: `system.attributes.${resolvedKey}`,
@@ -17793,7 +18053,7 @@ export class PokRoleActor extends Actor {
 
   _getAutomationSourceItemType(automationFlags = {}) {
     const explicitType = `${automationFlags?.sourceItemType ?? ""}`.trim().toLowerCase();
-    if (["move", "ability"].includes(explicitType)) return explicitType;
+    if (["move", "ability", "held-item", "transfer"].includes(explicitType)) return explicitType;
     const legacyMoveId = `${automationFlags?.sourceMoveId ?? ""}`.trim();
     if (legacyMoveId) return "move";
     return "";

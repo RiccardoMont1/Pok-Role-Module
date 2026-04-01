@@ -479,9 +479,6 @@
             <div class="attribute-row">
               <div class="attribute-label-stack">
                 <label>{{localize attribute.label}}</label>
-                {{#if attribute.hasDerivedOverride}}
-                <small class="attribute-derived-note">{{attribute.derivedDisplay}}</small>
-                {{/if}}
               </div>
               <input
                 type="hidden"
@@ -493,7 +490,7 @@
                 {{#each attribute.track.slots as |slot|}}
                 <button
                   type="button"
-                  class="track-box {{#if slot.active}}is-active{{/if}}"
+                  class="track-box {{#if slot.active}}is-active{{/if}} {{#if slot.bonus}}is-bonus{{/if}}"
                   data-action="set-track"
                   data-track-field="{{../fieldPath}}"
                   data-track-value="{{slot.value}}"
@@ -524,9 +521,6 @@
             <div class="attribute-row">
               <div class="attribute-label-stack">
                 <label>{{localize attribute.label}}</label>
-                {{#if attribute.hasDerivedOverride}}
-                <small class="attribute-derived-note">{{attribute.derivedDisplay}}</small>
-                {{/if}}
               </div>
               <input
                 type="hidden"
@@ -538,7 +532,7 @@
                 {{#each attribute.track.slots as |slot|}}
                 <button
                   type="button"
-                  class="track-box {{#if slot.active}}is-active{{/if}}"
+                  class="track-box {{#if slot.active}}is-active{{/if}} {{#if slot.bonus}}is-bonus{{/if}}"
                   data-action="set-track"
                   data-track-field="{{../fieldPath}}"
                   data-track-value="{{slot.value}}"

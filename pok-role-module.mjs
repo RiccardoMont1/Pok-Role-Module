@@ -1458,6 +1458,18 @@ Hooks.once("ready", async () => {
     }
   }
 
+  if (game.user?.isGM) {
+    for (const actorDocument of game.actors?.contents ?? []) {
+      if (actorDocument?.type !== "pokemon") continue;
+      if (typeof actorDocument.synchronizeHeldItemStatEffects !== "function") continue;
+      try {
+        await actorDocument.synchronizeHeldItemStatEffects();
+      } catch (error) {
+        console.warn(`${POKROLE.ID} | Failed to synchronize held item stat effects for ${actorDocument.name}`, error);
+      }
+    }
+  }
+
   game.pokrole.renderMoveQueueOverlay = async () => renderMoveQueueOverlay();
   game.pokrole.enqueueCombatMoveDeclaration = async (entry, combat = game.combat ?? null) =>
     enqueueCombatMoveDeclaration(entry, combat);
@@ -2453,6 +2465,16 @@ Hooks.on("applyTokenStatusEffect", (token, statusId, isActive) => {
 
 Hooks.on("updateActor", (actorDocument, changedData) => {
   if (!actorDocument || actorDocument.documentName !== "Actor") return;
+  const canSynchronizeHeldItems = game.user?.isGM === true;
+  const heldItemWasUpdated = foundry.utils.hasProperty(changedData ?? {}, "system.battleItem");
+  if (
+    canSynchronizeHeldItems &&
+    actorDocument.type === "pokemon" &&
+    heldItemWasUpdated &&
+    typeof actorDocument.synchronizeHeldItemStatEffects === "function"
+  ) {
+    void actorDocument.synchronizeHeldItemStatEffects();
+  }
   const hpWasUpdated =
     foundry.utils.hasProperty(changedData ?? {}, "system.resources.hp") ||
     foundry.utils.hasProperty(changedData ?? {}, "system.resources.hp.value");
@@ -2466,6 +2488,48 @@ Hooks.on("updateActor", (actorDocument, changedData) => {
   if (typeof actorDocument.synchronizeConditionalActiveEffects === "function") {
     void actorDocument.synchronizeConditionalActiveEffects();
   }
+});
+
+Hooks.on("createItem", (itemDocument) => {
+  if (!game.user?.isGM) return;
+  const actor = itemDocument?.parent ?? null;
+  if (!actor || actor.documentName !== "Actor" || actor.type !== "pokemon") return;
+  const isHeldItem = itemDocument.type === "gear" && `${itemDocument.system?.category ?? ""}`.trim().toLowerCase() === "held";
+  if (!isHeldItem || typeof actor.synchronizeHeldItemStatEffects !== "function") return;
+  void actor.synchronizeHeldItemStatEffects();
+});
+
+Hooks.on("updateItem", (itemDocument, changedData) => {
+  if (!game.user?.isGM) return;
+  const actor = itemDocument?.parent ?? null;
+  if (!actor || actor.documentName !== "Actor" || actor.type !== "pokemon") return;
+  const isHeldItem = itemDocument.type === "gear" && `${itemDocument.system?.category ?? ""}`.trim().toLowerCase() === "held";
+  const itemAffectsHeldSync =
+    isHeldItem &&
+    (
+      foundry.utils.hasProperty(changedData ?? {}, "system.held.statBonuses") ||
+      foundry.utils.hasProperty(changedData ?? {}, "system.held.statBonuses.strength") ||
+      foundry.utils.hasProperty(changedData ?? {}, "system.held.statBonuses.dexterity") ||
+      foundry.utils.hasProperty(changedData ?? {}, "system.held.statBonuses.vitality") ||
+      foundry.utils.hasProperty(changedData ?? {}, "system.held.statBonuses.special") ||
+      foundry.utils.hasProperty(changedData ?? {}, "system.held.statBonuses.insight") ||
+      foundry.utils.hasProperty(changedData ?? {}, "system.held.statBonuses.def") ||
+      foundry.utils.hasProperty(changedData ?? {}, "system.held.statBonuses.spDef") ||
+      foundry.utils.hasProperty(changedData ?? {}, "system.held.statBonuses.initiative") ||
+      foundry.utils.hasProperty(changedData ?? {}, "name") ||
+      foundry.utils.hasProperty(changedData ?? {}, "img")
+    );
+  const isEquippedHeldItem = `${actor.system?.battleItem ?? ""}`.trim() === `${itemDocument.id ?? ""}`.trim();
+  if (!itemAffectsHeldSync || !isEquippedHeldItem || typeof actor.synchronizeHeldItemStatEffects !== "function") return;
+  void actor.synchronizeHeldItemStatEffects();
+});
+
+Hooks.on("deleteItem", (itemDocument) => {
+  if (!game.user?.isGM) return;
+  const actor = itemDocument?.parent ?? null;
+  if (!actor || actor.documentName !== "Actor" || actor.type !== "pokemon") return;
+  if (typeof actor.synchronizeHeldItemStatEffects !== "function") return;
+  void actor.synchronizeHeldItemStatEffects();
 });
 
 Hooks.on("createActiveEffect", (effectDocument) => {
@@ -2484,6 +2548,9 @@ Hooks.on("createActiveEffect", (effectDocument) => {
   }
   if (typeof actor.synchronizeConditionalActiveEffects === "function") {
     void actor.synchronizeConditionalActiveEffects();
+  }
+  if (game.user?.isGM && actor.type === "pokemon" && typeof actor.synchronizeHeldItemStatEffects === "function") {
+    void actor.synchronizeHeldItemStatEffects();
   }
 });
 
@@ -2508,6 +2575,9 @@ Hooks.on("updateActiveEffect", (effectDocument, changedData) => {
   if (typeof actor.synchronizeConditionalActiveEffects === "function") {
     void actor.synchronizeConditionalActiveEffects();
   }
+  if (game.user?.isGM && actor.type === "pokemon" && typeof actor.synchronizeHeldItemStatEffects === "function") {
+    void actor.synchronizeHeldItemStatEffects();
+  }
 });
 
 Hooks.on("deleteActiveEffect", (effectDocument) => {
@@ -2522,6 +2592,9 @@ Hooks.on("deleteActiveEffect", (effectDocument) => {
   }
   if (typeof actor.synchronizeConditionalActiveEffects === "function") {
     void actor.synchronizeConditionalActiveEffects();
+  }
+  if (game.user?.isGM && actor.type === "pokemon" && typeof actor.synchronizeHeldItemStatEffects === "function") {
+    void actor.synchronizeHeldItemStatEffects();
   }
 });
 

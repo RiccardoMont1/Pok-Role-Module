@@ -2540,6 +2540,11 @@
   background: linear-gradient(180deg, #f89679 0%, #e26d4d 100%);
 }
 
+.pokemon-sheet .track-box.is-active.is-bonus {
+  border-color: #247bd1;
+  background: linear-gradient(180deg, #54b8ff 0%, #2f77dd 100%);
+}
+
 .pokemon-sheet .icon-button {
   width: 28px;
   height: 28px;

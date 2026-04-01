@@ -2071,22 +2071,31 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
   _buildAttributeRows(attributeKeys, trackMaxByKey = null, minValue = 0) {
     return attributeKeys.map((attributeKey) => {
-      const value = Number(this.actor.system.attributes?.[attributeKey] ?? 0);
+      const rawValue = Number(
+        this.actor._source?.system?.attributes?.[attributeKey] ??
+        this.actor.system.attributes?.[attributeKey] ??
+        0
+      );
       const derivedState =
         typeof this.actor._getDerivedTraitDisplayState === "function"
           ? this.actor._getDerivedTraitDisplayState(attributeKey)
           : null;
       const maxValue = this._resolveTrackMax(trackMaxByKey?.[attributeKey], 5);
-      const track = this._buildTrack(value, maxValue, minValue);
+      const effectiveValue = Number(
+        derivedState?.effectiveValue ??
+        this.actor.system.attributes?.[attributeKey] ??
+        rawValue
+      );
+      const track = this._buildTrack(rawValue, maxValue, minValue, effectiveValue);
       return {
         key: attributeKey,
         label: TRAIT_LABEL_BY_KEY[attributeKey] ?? "POKROLE.Common.Unknown",
         value: track.value,
         fieldPath: `system.attributes.${attributeKey}`,
         track,
-        effectiveValue: derivedState?.effectiveValue ?? track.value,
+        effectiveValue: track.effectiveValue,
         derivedModifiers: Array.isArray(derivedState?.modifiers) ? derivedState.modifiers : [],
-        hasDerivedOverride: Boolean(derivedState?.hasOverride),
+        hasDerivedOverride: Boolean(track.effectiveValue !== track.value),
         derivedDisplay: this._formatDerivedTraitDisplay(derivedState)
       };
     });
@@ -2124,21 +2133,26 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     });
   }
 
-  _buildTrack(currentValue, maxValue, minValue = 1) {
+  _buildTrack(currentValue, maxValue, minValue = 1, effectiveValue = currentValue) {
     const numericCurrent = Number(currentValue);
     const normalizedCurrent = Number.isFinite(numericCurrent) ? numericCurrent : minValue;
     const clampedCurrent = Math.min(Math.max(normalizedCurrent, minValue), maxValue);
+    const numericEffective = Number(effectiveValue);
+    const normalizedEffective = Number.isFinite(numericEffective) ? numericEffective : clampedCurrent;
+    const clampedEffective = Math.min(Math.max(normalizedEffective, minValue), maxValue);
     const slots = [];
     for (let slotValue = 1; slotValue <= maxValue; slotValue += 1) {
       slots.push({
         value: slotValue,
-        active: slotValue <= clampedCurrent
+        active: slotValue <= clampedEffective,
+        bonus: slotValue <= clampedEffective && slotValue > clampedCurrent
       });
     }
     return {
       min: minValue,
       max: maxValue,
       value: clampedCurrent,
+      effectiveValue: clampedEffective,
       slots,
       style: `--track-columns:${maxValue};`
     };
@@ -2168,6 +2182,81 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     );
     const extra = 5;
     return { attributes, skills, extra };
+  }
+
+  _getPokemonManualCoreBaseMap() {
+    const baseMap = {};
+    for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
+      const configuredBase = Number(this.actor.system.manualCoreBase?.[key]);
+      const currentValue = Number(this.actor.system.attributes?.[key]);
+      const fallbackValue = Number.isFinite(currentValue) ? currentValue : 1;
+      baseMap[key] = Math.max(
+        Math.floor(Number.isFinite(configuredBase) ? configuredBase : fallbackValue),
+        1
+      );
+    }
+    return baseMap;
+  }
+
+  _getPokemonRankDistributionBaseState() {
+    const manualCoreBase = this._getPokemonManualCoreBaseMap();
+    const attrBase = {};
+    for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
+      const currentValue = Number(this.actor.system.attributes?.[key]);
+      const normalizedCurrent = Number.isFinite(currentValue)
+        ? Math.max(Math.floor(currentValue), manualCoreBase[key] ?? 1)
+        : manualCoreBase[key] ?? 1;
+      attrBase[key] = normalizedCurrent;
+    }
+
+    const socialBase = {};
+    for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) {
+      const currentValue = Number(this.actor.system.attributes?.[key]);
+      socialBase[key] = Math.max(
+        Math.floor(Number.isFinite(currentValue) ? currentValue : 1),
+        1
+      );
+    }
+
+    const skillBase = {};
+    for (const { key } of SKILL_DEFINITIONS) {
+      const currentValue = Number(this.actor.system.skills?.[key]);
+      skillBase[key] = Math.max(
+        Math.floor(Number.isFinite(currentValue) ? currentValue : 0),
+        0
+      );
+    }
+
+    const currentExtraSkills = Array.isArray(this.actor.system.extraSkills)
+      ? this.actor.system.extraSkills
+      : [];
+    for (let index = 0; index < currentExtraSkills.length; index += 1) {
+      skillBase[`extra_${index}`] = Math.max(
+        Math.floor(Number(currentExtraSkills[index]?.value ?? 0) || 0),
+        0
+      );
+    }
+
+    return { attrBase, socialBase, skillBase };
+  }
+
+  _getPokemonRetrainBaseState() {
+    const attrBase = this._getPokemonManualCoreBaseMap();
+    const socialBase = Object.fromEntries(
+      SOCIAL_ATTRIBUTE_DEFINITIONS.map(({ key }) => [key, 1])
+    );
+    const skillBase = Object.fromEntries(
+      SKILL_DEFINITIONS.map(({ key }) => [key, 0])
+    );
+
+    const currentExtraSkills = Array.isArray(this.actor.system.extraSkills)
+      ? this.actor.system.extraSkills
+      : [];
+    for (let index = 0; index < currentExtraSkills.length; index += 1) {
+      skillBase[`extra_${index}`] = 0;
+    }
+
+    return { attrBase, socialBase, skillBase };
   }
 
   _toTitleCaseKey(value) {
@@ -2737,23 +2826,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           const skillLimit = newBonuses.skillLimit;
 
           if (diffAttr > 0 || diffSocial > 0 || diffSkill > 0) {
-            const currentAttrBase = {};
-            for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
-              currentAttrBase[key] = Number(this.actor.system.attributes?.[key] ?? 1);
-            }
-            const currentSocialBase = {};
-            for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) {
-              currentSocialBase[key] = Number(this.actor.system.attributes?.[key] ?? 1);
-            }
-            const currentSkillBase = {};
-            for (const { key } of SKILL_DEFINITIONS) {
-              currentSkillBase[key] = Number(this.actor.system.skills?.[key] ?? 0);
-            }
-            const currentExtraSkills = Array.isArray(this.actor.system.extraSkills)
-              ? this.actor.system.extraSkills : [];
-            for (let i = 0; i < currentExtraSkills.length; i++) {
-              currentSkillBase[`extra_${i}`] = Number(currentExtraSkills[i].value ?? 0);
-            }
+            const {
+              attrBase: currentAttrBase,
+              socialBase: currentSocialBase,
+              skillBase: currentSkillBase
+            } = this._getPokemonRankDistributionBaseState();
             const confirmed = await this._showPointDistributionDialog(diffAttr, diffSocial, diffSkill, skillLimit, {
               attrBase: currentAttrBase,
               socialBase: currentSocialBase,
@@ -2809,7 +2886,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       trackRank = null,
       pendingFormData = null,
       attrMax = 5,
-      attrMaxByKey = null
+      attrMaxByKey = null,
+      replaceTrackedDistributions = false
     } = options;
     const loc = (key) => game.i18n.localize(key);
 
@@ -3001,7 +3079,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             try {
               await this.actor.update(state.updateData);
               if (trackRank && state.distributed) {
-                const allDist = this.actor.getFlag("pok-role-system", "rankDistributions") ?? {};
+                const allDist = replaceTrackedDistributions
+                  ? {}
+                  : (this.actor.getFlag("pok-role-system", "rankDistributions") ?? {});
                 allDist[trackRank] = state.distributed;
                 await this.actor.setFlag("pok-role-system", "rankDistributions", allDist);
               }
@@ -3108,23 +3188,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const skillLimit = newBonuses.skillLimit;
 
     if (diffAttr > 0 || diffSocial > 0 || diffSkill > 0) {
-      const currentAttrBase = {};
-      for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
-        currentAttrBase[key] = Number(this.actor.system.attributes?.[key] ?? 1);
-      }
-      const currentSocialBase = {};
-      for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) {
-        currentSocialBase[key] = Number(this.actor.system.attributes?.[key] ?? 1);
-      }
-      const currentSkillBase = {};
-      for (const { key } of SKILL_DEFINITIONS) {
-        currentSkillBase[key] = Number(this.actor.system.skills?.[key] ?? 0);
-      }
-      const currentExtraSkills = Array.isArray(this.actor.system.extraSkills)
-        ? this.actor.system.extraSkills : [];
-      for (let i = 0; i < currentExtraSkills.length; i++) {
-        currentSkillBase[`extra_${i}`] = Number(currentExtraSkills[i].value ?? 0);
-      }
+      const {
+        attrBase: currentAttrBase,
+        socialBase: currentSocialBase,
+        skillBase: currentSkillBase
+      } = this._getPokemonRankDistributionBaseState();
       const confirmed = await this._showPointDistributionDialog(diffAttr, diffSocial, diffSkill, skillLimit, {
         attrBase: currentAttrBase,
         socialBase: currentSocialBase,
@@ -3240,19 +3308,21 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     });
     if (!confirmed) return false;
 
-    // Reset all stats to base, deduct TP, clear rank distributions
-    const resetData = { "system.trainingPoints": currentTP - tpCost };
-    for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) resetData[`system.attributes.${key}`] = 1;
-    for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) resetData[`system.attributes.${key}`] = 1;
-    for (const { key } of SKILL_DEFINITIONS) resetData[`system.skills.${key}`] = 0;
-    await this.actor.update(resetData);
-    await this.actor.setFlag("pok-role-system", "rankDistributions", {});
+    const {
+      attrBase,
+      socialBase,
+      skillBase
+    } = this._getPokemonRetrainBaseState();
 
-    // Open full distribution dialog with all cumulative points, base at 0
+    // Open full distribution dialog using the species base values as floor.
     const success = await this._showPointDistributionDialog(totalAttr, totalSocial, totalSkill, skillLimit, {
       trackRank: currentTier,
-      pendingFormData: {},
-      attrMaxByKey: this._getPokemonTrackMaxConfig().attributes
+      attrBase,
+      socialBase,
+      skillBase,
+      pendingFormData: { "system.trainingPoints": currentTP - tpCost },
+      attrMaxByKey: this._getPokemonTrackMaxConfig().attributes,
+      replaceTrackedDistributions: true
     });
     return Boolean(success);
   }
@@ -3335,6 +3405,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const allDist = this.actor.getFlag("pok-role-system", "rankDistributions") ?? {};
     const oldIdx = tierOrder.indexOf(oldTier);
     const newIdx = tierOrder.indexOf(newTier);
+    const manualCoreBase = this._getPokemonManualCoreBaseMap();
 
     const toRemove = { attr: {}, social: {}, skill: {} };
     for (let i = oldIdx; i > newIdx; i--) {
@@ -3353,7 +3424,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
       const current = Number(this.actor.system.attributes?.[key] ?? 1);
       const remove = toRemove.attr[key] ?? 0;
-      updateData[`system.attributes.${key}`] = Math.max(current - remove, 1);
+      updateData[`system.attributes.${key}`] = Math.max(current - remove, manualCoreBase[key] ?? 1);
     }
     for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) {
       const current = Number(this.actor.system.attributes?.[key] ?? 1);
