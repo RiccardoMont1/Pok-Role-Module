@@ -59,6 +59,10 @@ body.pok-role-arcade-ui #sidebar .directory-list .directory-item,
 body.pok-role-arcade-ui #sidebar .directory-list .scene,
 body.pok-role-arcade-ui #sidebar .directory-list .combatant,
 body.pok-role-arcade-ui #sidebar .directory-list .message,
+body.pok-role-arcade-ui .sidebar-popout.directory .directory-list .directory-item,
+body.pok-role-arcade-ui .sidebar-popout.directory .directory-list .scene,
+body.pok-role-arcade-ui .sidebar-popout.directory .directory-list .combatant,
+body.pok-role-arcade-ui .sidebar-popout.directory .directory-list .message,
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory .directory-list .directory-item,
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory .directory-list .scene,
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory .directory-list .combatant,
@@ -72,6 +76,7 @@ body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory .directory-lis
 }
 
 body.pok-role-arcade-ui #sidebar .directory-list .folder,
+body.pok-role-arcade-ui .sidebar-popout.directory .directory-list .folder,
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory .directory-list .folder {
   margin: 0 6px 8px;
   border: none;
@@ -81,6 +86,7 @@ body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory .directory-lis
 }
 
 body.pok-role-arcade-ui #sidebar .directory-list .folder > .folder-header,
+body.pok-role-arcade-ui .sidebar-popout.directory .directory-list .folder > .folder-header,
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory .directory-list .folder > .folder-header {
   border: 2px solid rgba(61, 39, 32, 0.22);
   border-radius: 14px;
@@ -90,6 +96,7 @@ body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory .directory-lis
 }
 
 body.pok-role-arcade-ui #sidebar .directory-header,
+body.pok-role-arcade-ui .sidebar-popout.directory .directory-header,
 body.pok-role-arcade-ui #sidebar .combat-tracker-header,
 body.pok-role-arcade-ui #sidebar .encounter-controls,
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory.flexcol .directory-header,
@@ -99,6 +106,7 @@ body.pok-role-arcade-ui .app.window-app:not(.pok-role) .encounter-controls {
 }
 
 body.pok-role-arcade-ui #sidebar .directory-header,
+body.pok-role-arcade-ui .sidebar-popout.directory .directory-header,
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory.flexcol .directory-header,
 body.pok-role-arcade-ui .directory .directory-header {
   margin-block: 0;
@@ -110,6 +118,7 @@ body.pok-role-arcade-ui .directory .directory-header {
 }
 
 body.pok-role-arcade-ui #sidebar .directory-header > *,
+body.pok-role-arcade-ui .sidebar-popout.directory .directory-header > *,
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory.flexcol .directory-header > * {
   margin-top: 0;
 }
@@ -117,6 +126,9 @@ body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory.flexcol .direc
 body.pok-role-arcade-ui #sidebar .directory-item.active,
 body.pok-role-arcade-ui #sidebar .directory-item.current,
 body.pok-role-arcade-ui #sidebar .combatant.active,
+body.pok-role-arcade-ui .sidebar-popout.directory .directory-item.active,
+body.pok-role-arcade-ui .sidebar-popout.directory .directory-item.current,
+body.pok-role-arcade-ui .sidebar-popout.directory .combatant.active,
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory .directory-item.active,
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory .directory-item.current,
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory .combatant.active {
@@ -167,10 +179,10 @@ body.pok-role-arcade-ui #players {
 body.pok-role-arcade-ui #hotbar #action-bar,
 body.pok-role-arcade-ui #players #players-active,
 body.pok-role-arcade-ui #players #players-inactive {
-  border: 3px solid var(--arcade-ui-outline);
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(31, 45, 69, 0.95) 0%, rgba(25, 34, 51, 0.95) 100%);
-  box-shadow: 0 14px 24px rgba(33, 20, 15, 0.28);
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 body.pok-role-arcade-ui #hotbar #action-bar .slot {
@@ -226,6 +238,11 @@ body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory.flexcol {
   height: 100%;
   padding: 10px;
   color: var(--arcade-ui-ink);
+}
+
+body.pok-role-arcade-ui .app.window-app.compendium-directory .directory.flexcol,
+body.pok-role-arcade-ui .sidebar-popout.directory.compendium-directory .directory.flexcol {
+  padding-top: 0;
 }
 
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory.flexcol .directory-list {
@@ -360,13 +377,21 @@ body.pok-role-arcade-ui .directory .inline-control.collapse-all {
 
 body.pok-role-arcade-ui .directory .inline-control.collapse-all {
   font-size: 0.84rem;
-  font-family: var(--font-awesome-duotone);
-  position: relative;
+  font-family: var(--font-awesome) !important;
+  font-weight: 900;
   --fa-primary-opacity: 1;
   --fa-secondary-opacity: 0;
 }
 
+body.pok-role-arcade-ui .directory .inline-control.collapse-all::before {
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+  line-height: 1 !important;
+}
+
 body.pok-role-arcade-ui .directory .inline-control.collapse-all::after {
+  content: none !important;
   display: none !important;
 }
 
@@ -495,6 +520,12 @@ body.pok-role-arcade-ui .compendium.directory .directory-header .compendium-name
   color: #fffaf5;
   border: 2px solid rgba(255, 244, 232, 0.34);
   text-shadow: none;
+}
+
+body.pok-role-arcade-ui .compendium.directory .directory-header.compendium-header,
+body.pok-role-arcade-ui .sidebar-popout.directory.compendium-directory .directory-header.compendium-header {
+  padding-top: 0;
+  margin-top: 0;
 }
 
 body.pok-role-arcade-ui .compendium.directory .directory-header .compendium-name strong,
