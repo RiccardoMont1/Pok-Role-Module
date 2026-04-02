@@ -2133,12 +2133,16 @@ Hooks.on("deleteCombat", async (combat) => {
 Hooks.on("renderPause", (_app, html) => {
   const pauseRoot = html instanceof jQuery ? html : $(html);
   pauseRoot.addClass("pok-role-arcade-pause");
-  const pauseImage = pauseRoot.find("img");
+  pauseRoot.find("img, i, svg").not(".pok-role-pause-ball").remove();
+  const pauseImage = pauseRoot.find(".pok-role-pause-ball");
   if (pauseImage.length) {
-    pauseImage.attr({
+    pauseImage.attr("src", getSystemAssetPath("assets/icons/pause-pokeball.svg"));
+  } else {
+    $("<img>", {
+      class: "pok-role-pause-ball",
       src: getSystemAssetPath("assets/icons/pause-pokeball.svg"),
       alt: "Pokeball"
-    });
+    }).prependTo(pauseRoot);
   }
 });
 
