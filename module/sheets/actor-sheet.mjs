@@ -1289,6 +1289,22 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       }
     }
 
+    // --- Deduplicate moves (safety net for race conditions) ---
+    const allMoves = actor.items.filter(i => i.type === "move");
+    const seenMoves = new Set();
+    const dupeMoveIds = [];
+    for (const m of allMoves) {
+      const key = m.name.toLowerCase();
+      if (seenMoves.has(key)) {
+        dupeMoveIds.push(m.id);
+      } else {
+        seenMoves.add(key);
+      }
+    }
+    if (dupeMoveIds.length > 0) {
+      await actor.deleteEmbeddedDocuments("Item", dupeMoveIds);
+    }
+
     // --- Replace embedded ability items with target's abilities ---
     const existingAbilities = actor.items.filter(i => i.type === "ability");
     if (existingAbilities.length > 0) {
