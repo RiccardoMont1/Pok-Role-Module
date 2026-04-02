@@ -23,6 +23,18 @@
       "Yes": "Si",
       "No": "No"
     },
+    "Settings": {
+      "ArcadeTheme": {
+        "Name": "Tema Arcade UI",
+        "Hint": "Seleziona la palette personale dell'interfaccia arcade del sistema.",
+        "Choices": {
+          "CyanLight": "Celeste - Chiaro",
+          "CyanDark": "Celeste - Scuro",
+          "RedLight": "Rosso - Chiaro",
+          "RedDark": "Rosso - Scuro"
+        }
+      }
+    },
     "Dialog": {
       "DistributePoints": "Distribuisci Punti",
       "AttributePoints": "Punti Attributo",

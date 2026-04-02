@@ -45,6 +45,27 @@ import { PokRoleActorSheet } from "./module/sheets/actor-sheet.mjs";
 import { PokRoleMoveSheet } from "./module/sheets/item-sheet.mjs";
 
 const COMBAT_MUTATION_SOCKET_EVENT = `system.${POKROLE.ID}`;
+const ARCADE_UI_THEME_SETTING_KEY = "arcadeUiTheme";
+const ARCADE_UI_THEME_KEYS = ["cyan-light", "cyan-dark", "red-light", "red-dark"];
+
+function normalizeArcadeUiTheme(theme) {
+  const value = `${theme ?? ""}`.trim().toLowerCase();
+  return ARCADE_UI_THEME_KEYS.includes(value) ? value : "cyan-light";
+}
+
+function applyArcadeUiTheme(theme = null) {
+  const body = document.body;
+  if (!body) return;
+  body.classList.add("pok-role-arcade-ui");
+  for (const key of ARCADE_UI_THEME_KEYS) {
+    body.classList.remove(`pok-role-arcade-theme-${key}`);
+  }
+  const resolvedTheme = normalizeArcadeUiTheme(
+    theme ?? game.settings?.get?.(POKROLE.ID, ARCADE_UI_THEME_SETTING_KEY) ?? "cyan-light"
+  );
+  body.classList.add(`pok-role-arcade-theme-${resolvedTheme}`);
+  body.dataset.pokRoleArcadeTheme = resolvedTheme;
+}
 
 function getPrimaryActiveGm() {
   return game.users?.activeGM ?? game.users?.find?.((user) => user?.isGM && user?.active) ?? null;
@@ -1320,6 +1341,24 @@ Hooks.once("init", () => {
   console.log(`${POKROLE.ID} | Initializing ${POKROLE.TITLE}`);
   registerTemplateHelpers();
 
+  game.settings.register(POKROLE.ID, ARCADE_UI_THEME_SETTING_KEY, {
+    name: "POKROLE.Settings.ArcadeTheme.Name",
+    hint: "POKROLE.Settings.ArcadeTheme.Hint",
+    scope: "client",
+    config: true,
+    type: String,
+    choices: {
+      "cyan-light": game.i18n.localize("POKROLE.Settings.ArcadeTheme.Choices.CyanLight"),
+      "cyan-dark": game.i18n.localize("POKROLE.Settings.ArcadeTheme.Choices.CyanDark"),
+      "red-light": game.i18n.localize("POKROLE.Settings.ArcadeTheme.Choices.RedLight"),
+      "red-dark": game.i18n.localize("POKROLE.Settings.ArcadeTheme.Choices.RedDark")
+    },
+    default: "cyan-light",
+    onChange: (value) => {
+      applyArcadeUiTheme(value);
+    }
+  });
+
   // Replace Foundry's default token status effects with PokRole condition flags.
   CONFIG.statusEffects = buildHudConditionStatuses();
   try {
@@ -1392,7 +1431,7 @@ Hooks.once("init", () => {
 });
 
 Hooks.once("ready", async () => {
-  document.body?.classList.add("pok-role-arcade-ui");
+  applyArcadeUiTheme();
 
   game.pokrole ??= {};
   // Pending mutation responses keyed by requestId

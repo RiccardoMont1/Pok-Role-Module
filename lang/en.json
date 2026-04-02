@@ -23,6 +23,18 @@
       "Yes": "Yes",
       "No": "No"
     },
+    "Settings": {
+      "ArcadeTheme": {
+        "Name": "Arcade UI Theme",
+        "Hint": "Choose your personal arcade interface palette for this system.",
+        "Choices": {
+          "CyanLight": "Cyan - Light",
+          "CyanDark": "Cyan - Dark",
+          "RedLight": "Red - Light",
+          "RedDark": "Red - Dark"
+        }
+      }
+    },
     "Dialog": {
       "DistributePoints": "Distribute Points",
       "AttributePoints": "Attribute Points",
