@@ -21642,18 +21642,17 @@ export class PokRoleActor extends Actor {
       weight: targetDoc.system.weight ?? ""
     };
 
-    // Step 3: Determine old unique moves (moves the evolved form doesn't learn up to current tier)
-    const currentTier = this.system.tier ?? "none";
+    // Step 3: Determine old unique moves (moves the evolved form doesn't learn at ANY rank)
     const tierKeys = ["starter", "rookie", "standard", "advanced", "expert", "ace", "master", "champion"];
-    const tierIdx = tierKeys.indexOf(currentTier);
-    const newMoveNames = new Set();
-    for (let i = 0; i <= tierIdx; i++) {
-      const rankMoves = targetSeedData.learnsetByRank[tierKeys[i]] ?? "";
-      rankMoves.split(",").map(m => m.trim()).filter(Boolean).forEach(m => newMoveNames.add(m.toLowerCase()));
+    // Build set of ALL moves the target learns at any rank (for dialog filtering)
+    const allTargetMoveNames = new Set();
+    for (const key of tierKeys) {
+      const rankMoves = targetSeedData.learnsetByRank[key] ?? "";
+      rankMoves.split(",").map(m => m.trim()).filter(Boolean).forEach(m => allTargetMoveNames.add(m.toLowerCase()));
     }
 
     const existingMoves = this.items.filter(i => i.type === "move");
-    const oldUniqueMoves = existingMoves.filter(m => !newMoveNames.has(m.name.toLowerCase()));
+    const oldUniqueMoves = existingMoves.filter(m => !allTargetMoveNames.has(m.name.toLowerCase()));
 
     let keptOldMoveNames = [];
     if (oldUniqueMoves.length > 0) {
