@@ -1,12 +1,11 @@
 import { POKROLE } from "../constants.mjs";
 import { MOVE_COMPENDIUM_ENTRIES } from "./generated/move-seeds.mjs";
-import { POKEDEX_COMPENDIUM_ENTRIES } from "./generated/pokedex-seeds.mjs";
 import { ABILITY_COMPENDIUM_ENTRIES } from "./generated/ability-seeds.mjs";
 import { POKEMON_ACTOR_COMPENDIUM_ENTRIES } from "./generated/pokemon-actor-seeds.mjs";
 import { HELD_ITEM_COMPENDIUM_ENTRIES } from "./generated/held-item-seeds.mjs";
 
 export const COMPENDIUM_SEED_VERSION = "2026-04-02-ability-dedup";
-const VALID_ITEM_TYPES = new Set(["move", "gear", "ability", "weather", "status", "pokedex"]);
+const VALID_ITEM_TYPES = new Set(["move", "gear", "ability", "weather", "status"]);
 const VALID_ACTOR_TYPES = new Set(["trainer", "pokemon"]);
 const LEGACY_SYSTEM_FLAG_KEYS = Object.freeze(["pok-role-module", "pok-role-system"]);
 const RAW_ITEM_SPRITES_BASE = "https://raw.githubusercontent.com/Pokerole-Software-Development/Pokerole-Data/master/images/ItemSprites";
