@@ -1392,6 +1392,8 @@ Hooks.once("init", () => {
 });
 
 Hooks.once("ready", async () => {
+  document.body?.classList.add("pok-role-arcade-ui");
+
   game.pokrole ??= {};
   // Pending mutation responses keyed by requestId
   const _pendingMutationRequests = new Map();
@@ -2125,6 +2127,18 @@ Hooks.on("deleteCombat", async (combat) => {
     } catch (e) {
       console.warn("PokRole | Battle training points failed:", e);
     }
+  }
+});
+
+Hooks.on("renderPause", (_app, html) => {
+  const pauseRoot = html instanceof jQuery ? html : $(html);
+  pauseRoot.addClass("pok-role-arcade-pause");
+  const pauseImage = pauseRoot.find("img");
+  if (pauseImage.length) {
+    pauseImage.attr({
+      src: getSystemAssetPath("assets/icons/pause-pokeball.svg"),
+      alt: "Pokeball"
+    });
   }
 });
 

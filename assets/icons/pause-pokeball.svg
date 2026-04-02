@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <radialGradient id="ballGlow" cx="50%" cy="38%" r="70%">
+      <stop offset="0%" stop-color="#fff8ef"/>
+      <stop offset="100%" stop-color="#f6ead9"/>
+    </radialGradient>
+    <linearGradient id="ballTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff8b62"/>
+      <stop offset="48%" stop-color="#eb5332"/>
+      <stop offset="100%" stop-color="#bf321d"/>
+    </linearGradient>
+    <linearGradient id="ballBottom" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#dbe4ef"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#111827" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <circle cx="128" cy="128" r="112" fill="url(#ballGlow)" filter="url(#shadow)"/>
+  <clipPath id="ballClip">
+    <circle cx="128" cy="128" r="104"/>
+  </clipPath>
+
+  <g clip-path="url(#ballClip)">
+    <path d="M24 128C24 70.562 70.562 24 128 24s104 46.562 104 104H24z" fill="url(#ballTop)"/>
+    <path d="M24 128h208v104H24z" fill="url(#ballBottom)"/>
+    <rect x="12" y="116" width="232" height="24" rx="12" fill="#222831"/>
+    <rect x="12" y="124" width="232" height="8" rx="4" fill="#4b5563"/>
+  </g>
+
+  <circle cx="128" cy="128" r="35" fill="#222831"/>
+  <circle cx="128" cy="128" r="25" fill="#f8fafc"/>
+  <circle cx="128" cy="128" r="11" fill="#dbeafe"/>
+  <circle cx="104" cy="88" r="14" fill="#ffffff" opacity="0.32"/>
+  <circle cx="90" cy="72" r="7" fill="#ffffff" opacity="0.55"/>
+  <circle cx="128" cy="128" r="110" fill="none" stroke="#2f1e18" stroke-width="10"/>
+</svg>
