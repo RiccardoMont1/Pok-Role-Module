@@ -2133,6 +2133,7 @@ Hooks.on("deleteCombat", async (combat) => {
 Hooks.on("renderPause", (_app, html) => {
   const pauseRoot = html instanceof jQuery ? html : $(html);
   pauseRoot.addClass("pok-role-arcade-pause");
+  pauseRoot.children().not("figcaption,.pok-role-pause-ball").remove();
   pauseRoot.find("img, i, svg").not(".pok-role-pause-ball").remove();
   const pauseImage = pauseRoot.find(".pok-role-pause-ball");
   if (pauseImage.length) {
