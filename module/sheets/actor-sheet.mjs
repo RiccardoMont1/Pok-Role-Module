@@ -3227,7 +3227,19 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
                 if (category === "social") return 5;
                 return skillLimit;
               };
-              if (pools.attr !== 0 || pools.social !== 0 || pools.skill !== 0) {
+              // Check if remaining points can still be spent (room left in any stat of that pool)
+              const hasRoomInPool = (poolCategory) => {
+                for (const [compositeKey, val] of Object.entries(state.values)) {
+                  const [cat, key] = compositeKey.split(":");
+                  if (cat !== poolCategory) continue;
+                  const max = getMaxForEntry(cat, key);
+                  if (val < max) return true;
+                }
+                return false;
+              };
+              if ((pools.attr !== 0 && hasRoomInPool("attr")) ||
+                  (pools.social !== 0 && hasRoomInPool("social")) ||
+                  (pools.skill !== 0 && hasRoomInPool("skill"))) {
                 ui.notifications.warn(loc("POKROLE.Dialog.MustSpendAllPoints"));
                 return false;
               }
@@ -3348,8 +3360,19 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           confirmBtn.prop("disabled", true);
 
           const updateConfirmButton = () => {
-            const allSpent = pools.attr === 0 && pools.social === 0 && pools.skill === 0;
-            confirmBtn.prop("disabled", !allSpent);
+            // Allow confirming if all pools are 0, or if remaining points have no room to be spent
+            const poolCanBeSpent = (poolCategory) => {
+              if (pools[poolCategory] <= 0) return false;
+              for (const [compositeKey, val] of Object.entries(state.values)) {
+                const [cat, key] = compositeKey.split(":");
+                if (cat !== poolCategory) continue;
+                const max = cat === "attr" ? getAttrMax(key) : maxByCategory[cat];
+                if (val < max) return true;
+              }
+              return false;
+            };
+            const canStillSpend = poolCanBeSpent("attr") || poolCanBeSpent("social") || poolCanBeSpent("skill");
+            confirmBtn.prop("disabled", canStillSpend);
           };
 
           const updateRemaining = () => {
