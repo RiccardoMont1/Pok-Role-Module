@@ -1441,17 +1441,17 @@ Hooks.once("ready", async () => {
   // (handles both GM-side requests AND player-side responses)
   game.pokrole.seedCompendia = async (options = {}) => seedCompendia(options);
 
-  // Auto-update compendia images when system version changes
+  // Auto-update compendia only when COMPENDIUM_SEED_VERSION changes (not on every system version bump)
   if (game.user?.isGM) {
-    const SEED_VERSION_KEY = "pok-role-system.lastSeededVersion";
-    const currentVersion = `${game.system?.version ?? ""}`.trim();
+    const SEED_VERSION_KEY = "pok-role-system.lastCompendiumSeedVersion";
+    const { COMPENDIUM_SEED_VERSION } = await import("./module/seeds/compendium-seed.mjs");
     const lastSeeded = game.settings.storage?.get("world")?.getItem(SEED_VERSION_KEY) ?? "";
-    if (currentVersion && currentVersion !== lastSeeded) {
-      console.log(`PokRole | System version changed (${lastSeeded || "none"} -> ${currentVersion}), updating compendia...`);
+    if (COMPENDIUM_SEED_VERSION && COMPENDIUM_SEED_VERSION !== lastSeeded) {
+      console.log(`PokRole | Compendium seed version changed (${lastSeeded || "none"} -> ${COMPENDIUM_SEED_VERSION}), updating compendia...`);
       try {
         await seedCompendia({ force: false, notify: false });
-        game.settings.storage?.get("world")?.setItem(SEED_VERSION_KEY, currentVersion);
-        console.log(`PokRole | Compendia updated for version ${currentVersion}`);
+        game.settings.storage?.get("world")?.setItem(SEED_VERSION_KEY, COMPENDIUM_SEED_VERSION);
+        console.log(`PokRole | Compendia updated for seed version ${COMPENDIUM_SEED_VERSION}`);
       } catch (e) {
         console.error(`PokRole | Failed to update compendia:`, e);
       }

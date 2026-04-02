@@ -1206,6 +1206,23 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       }
     }
 
+    // Build set of ALL moves the target learns at any rank
+    const allTargetMovesLower = new Set();
+    for (const key of tierKeys) {
+      const rankMoves = newLearnset[key] ?? "";
+      rankMoves.split(",").map(s => s.trim()).filter(Boolean).forEach(m => allTargetMovesLower.add(m.toLowerCase()));
+    }
+
+    // Auto-retain moves the pokemon currently knows that the target also learns (at any rank)
+    const existingMoveItems = actor.items.filter(i => i.type === "move");
+    for (const m of existingMoveItems) {
+      const key = m.name.toLowerCase();
+      if (allTargetMovesLower.has(key) && !newMoveNamesLower.has(key)) {
+        newMoveNamesLower.add(key);
+        newMoveNames.add(m.name);
+      }
+    }
+
     // Add kept old moves (skip if already in new learnset)
     if (Array.isArray(keptOldMoveNames)) {
       for (const m of keptOldMoveNames) {
