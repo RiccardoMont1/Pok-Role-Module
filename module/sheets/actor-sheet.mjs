@@ -1187,14 +1187,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     this._isEvolving = true;
     const actor = this.actor;
 
-    // --- Build new learnset moves (all moves up to the higher of current or target tier) ---
+    // --- Build new learnset moves (all moves up to current tier) ---
     const newLearnset = targetSeedData.learnsetByRank ?? {};
     const currentTier = actor.system.tier ?? "none";
-    const targetTier = targetSeedData.tier ?? "starter";
     const tierKeys = ["starter", "rookie", "standard", "advanced", "expert", "ace", "master", "champion"];
-    const currentTierIdx = tierKeys.indexOf(currentTier);
-    const targetTierIdx = tierKeys.indexOf(targetTier);
-    const tierIdx = Math.max(currentTierIdx, targetTierIdx);
+    const tierIdx = tierKeys.indexOf(currentTier);
     // Use lowercase keys to avoid case-sensitive duplicates
     const newMoveNamesLower = new Set();
     const newMoveNames = new Set();
@@ -1238,12 +1235,10 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     }
 
     // --- Build update data ---
-    const effectiveTier = tierKeys[tierIdx] ?? currentTier;
     const updateData = {
       name: targetSeedData.species ?? actor.name,
       img: targetSeedData._img ?? actor.img,
       "system.species": targetSeedData.species ?? "",
-      "system.tier": effectiveTier,
       "system.manualCoreBase": targetSeedData.manualCoreBase ?? {},
       "system.sheetSettings.trackMax.attributes": targetSeedData.sheetSettings?.trackMax?.attributes ?? {},
       "system.learnsetByRank": newLearnset,
