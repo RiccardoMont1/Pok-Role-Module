@@ -2,7 +2,7 @@
   "id": "pok-role-system",
   "title": "Poké Role System",
   "description": "MVP Foundry VTT v13 system scaffold for PokeRole 2.0 inspired campaigns.",
-  "version": "0.35.4",
+  "version": "0.35.5",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -77,6 +77,10 @@
       "path": "packs/pokemon-actors",
       "type": "Actor",
       "private": false,
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OBSERVER"
+      },
       "flags": {
         "core": {
           "locked": true
