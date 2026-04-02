@@ -8011,20 +8011,39 @@ export class PokRoleActor extends Actor {
 
   _getCombatMoveQueueEntries(combat = game.combat) {
     if (!combat) return [];
-    const rawQueue = combat.getFlag(POKROLE.ID, COMBAT_FLAG_KEYS.MOVE_QUEUE);
-    return (Array.isArray(rawQueue) ? rawQueue : []).map((entry, index) => ({
-      id: `${entry?.id ?? foundry.utils.randomID()}`.trim() || foundry.utils.randomID(),
-      actorId: `${entry?.actorId ?? ""}`.trim(),
-      combatantId: `${entry?.combatantId ?? ""}`.trim(),
-      moveId: `${entry?.moveId ?? ""}`.trim(),
-      moveName: `${entry?.moveName ?? ""}`.trim(),
-      targetActorIds: Array.isArray(entry?.targetActorIds)
-        ? [...new Set(entry.targetActorIds.map((value) => `${value ?? ""}`.trim()).filter(Boolean))]
-        : [],
-      targetMode: this._normalizeMoveTargetKey(entry?.targetMode),
-      declaredRound: Math.max(Math.floor(toNumber(entry?.declaredRound, Math.floor(toNumber(combat.round, 0)))), 0),
-      declaredAt: Math.max(Math.floor(toNumber(entry?.declaredAt, Date.now() + index)), 0)
-    }));
+    const seenActorIds = new Set();
+    const entries = [];
+    for (const combatant of combat.combatants ?? []) {
+      const actor = combatant?.actor ?? null;
+      const actorId = `${actor?.id ?? ""}`.trim();
+      if (!actor || !actorId || seenActorIds.has(actorId)) continue;
+      seenActorIds.add(actorId);
+      const rawEntry = actor.getFlag?.(POKROLE.ID, "combat.moveQueueEntry") ?? null;
+      if (!rawEntry || typeof rawEntry !== "object") continue;
+      if (`${rawEntry?.declaredCombatId ?? ""}`.trim() !== `${combat?.id ?? ""}`.trim()) continue;
+      entries.push({
+        id: `${rawEntry?.id ?? foundry.utils.randomID()}`.trim() || foundry.utils.randomID(),
+        actorId,
+        combatantId: `${rawEntry?.combatantId ?? combatant?.id ?? ""}`.trim(),
+        moveId: `${rawEntry?.moveId ?? ""}`.trim(),
+        moveName: `${rawEntry?.moveName ?? ""}`.trim(),
+        targetActorIds: Array.isArray(rawEntry?.targetActorIds)
+          ? [...new Set(rawEntry.targetActorIds.map((value) => `${value ?? ""}`.trim()).filter(Boolean))]
+          : [],
+        targetMode: this._normalizeMoveTargetKey(rawEntry?.targetMode),
+        declaredRound: Math.max(Math.floor(toNumber(rawEntry?.declaredRound, Math.floor(toNumber(combat.round, 0)))), 0),
+        declaredAt: Math.max(Math.floor(toNumber(rawEntry?.declaredAt, Date.now() + entries.length)), 0),
+        sortOrder: Number.isFinite(Number(rawEntry?.sortOrder)) ? Number(rawEntry.sortOrder) : null
+      });
+    }
+    return entries.sort((left, right) => {
+      const leftSort = Number.isFinite(left?.sortOrder) ? Number(left.sortOrder) : null;
+      const rightSort = Number.isFinite(right?.sortOrder) ? Number(right.sortOrder) : null;
+      if (leftSort !== null && rightSort !== null && leftSort !== rightSort) return leftSort - rightSort;
+      if (leftSort !== null && rightSort === null) return -1;
+      if (leftSort === null && rightSort !== null) return 1;
+      return left.declaredAt - right.declaredAt;
+    });
   }
 
   _getQueuedMoveEntryForActor(actor, combat = game.combat) {

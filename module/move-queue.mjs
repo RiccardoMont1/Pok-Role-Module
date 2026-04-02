@@ -1,5 +1,4 @@
 import {
-  COMBAT_FLAG_KEYS,
   getSystemAssetPath,
   MOVE_CATEGORY_LABEL_BY_KEY,
   MOVE_TARGET_LABEL_BY_KEY,
@@ -12,6 +11,7 @@ const MOVE_QUEUE_STATE = {
   minimized: false,
   dragEntryId: ""
 };
+const MOVE_QUEUE_ACTOR_FLAG = "combat.moveQueueEntry";
 
 function toNumber(value, fallback = 0) {
   const numericValue = Number(value);
@@ -34,8 +34,32 @@ function getCombatantForQueueEntry(entry, combat = getCurrentCombat()) {
   return combat.combatants?.get?.(combatantId) ?? combat.combatants?.find?.((candidate) => candidate.id === combatantId) ?? null;
 }
 
-function getQueueFlagKey() {
-  return COMBAT_FLAG_KEYS.MOVE_QUEUE ?? "combat.moveQueue";
+function getQueueActorFlagKey() {
+  return MOVE_QUEUE_ACTOR_FLAG;
+}
+
+function getCombatQueueActors(combat = getCurrentCombat()) {
+  if (!isActiveCombat(combat)) return [];
+  const seen = new Set();
+  const actors = [];
+  for (const combatant of combat.combatants ?? []) {
+    const actor = combatant?.actor ?? null;
+    const actorId = `${actor?.id ?? ""}`.trim();
+    if (!actor || !actorId || seen.has(actorId)) continue;
+    seen.add(actorId);
+    actors.push(actor);
+  }
+  return actors;
+}
+
+function getActorQueueEntry(actor, combat = getCurrentCombat()) {
+  if (!actor || !isActiveCombat(combat)) return null;
+  const rawEntry = actor.getFlag?.(POKROLE.ID, getQueueActorFlagKey()) ?? null;
+  if (!rawEntry || typeof rawEntry !== "object") return null;
+  const normalized = normalizeQueueEntry(rawEntry);
+  if (`${normalized.declaredCombatId ?? ""}`.trim() !== `${combat?.id ?? ""}`.trim()) return null;
+  if (normalized.actorId && normalized.actorId !== actor.id) return null;
+  return normalized;
 }
 
 function normalizeQueueEntry(entry = {}, index = 0) {
@@ -58,8 +82,39 @@ function normalizeQueueEntry(entry = {}, index = 0) {
     targetMode: `${entry.targetMode ?? "foe"}`.trim().toLowerCase() || "foe",
     declaredAt: Math.max(Math.floor(toNumber(entry.declaredAt, Date.now() + index)), 0),
     declaredRound: Math.max(Math.floor(toNumber(entry.declaredRound, 0)), 0),
-    declaredTurn: Math.max(Math.floor(toNumber(entry.declaredTurn, 0)), 0)
+    declaredTurn: Math.max(Math.floor(toNumber(entry.declaredTurn, 0)), 0),
+    declaredCombatId: `${entry.declaredCombatId ?? ""}`.trim(),
+    sortOrder: Number.isFinite(Number(entry.sortOrder)) ? Number(entry.sortOrder) : null
   };
+}
+
+function compareQueueEntries(left, right) {
+  const leftSort = Number.isFinite(left?.sortOrder) ? Number(left.sortOrder) : null;
+  const rightSort = Number.isFinite(right?.sortOrder) ? Number(right.sortOrder) : null;
+  if (leftSort !== null && rightSort !== null && leftSort !== rightSort) return leftSort - rightSort;
+  if (leftSort !== null && rightSort === null) return -1;
+  if (leftSort === null && rightSort !== null) return 1;
+
+  const leftPriority = toNumber(left?.priority, 0);
+  const rightPriority = toNumber(right?.priority, 0);
+  if (leftPriority !== rightPriority) return rightPriority - leftPriority;
+
+  const leftInitiative = toNumber(left?.initiative, 0);
+  const rightInitiative = toNumber(right?.initiative, 0);
+  if (leftInitiative !== rightInitiative) return rightInitiative - leftInitiative;
+
+  return toNumber(left?.declaredAt, 0) - toNumber(right?.declaredAt, 0);
+}
+
+function resolveInsertedSortOrder(queue = [], insertIndex = 0) {
+  const previous = insertIndex > 0 ? queue[insertIndex - 1] ?? null : null;
+  const next = insertIndex < queue.length ? queue[insertIndex] ?? null : null;
+  const previousSort = Number.isFinite(previous?.sortOrder) ? Number(previous.sortOrder) : null;
+  const nextSort = Number.isFinite(next?.sortOrder) ? Number(next.sortOrder) : null;
+  if (previousSort !== null && nextSort !== null) return (previousSort + nextSort) / 2;
+  if (previousSort !== null) return previousSort + 1;
+  if (nextSort !== null) return nextSort - 1;
+  return insertIndex;
 }
 
 function getActorForQueueEntry(entry, combat = getCurrentCombat()) {
@@ -144,41 +199,36 @@ function getDecoratedQueueEntries(combat) {
 
 export function getCombatMoveQueue(combat = getCurrentCombat()) {
   if (!isActiveCombat(combat)) return [];
-  const queue = combat.getFlag(POKROLE.ID, getQueueFlagKey());
-  if (!Array.isArray(queue)) return [];
-  return queue.map((entry, index) => normalizeQueueEntry(entry, index));
-}
-
-async function requestMoveQueueMutation(operation, combat, payload = {}) {
-  const combatId = `${combat?.id ?? ""}`.trim();
-  if (!combatId) return getCombatMoveQueue(combat);
-  const entryCombatantId = `${payload?.entry?.combatantId ?? ""}`.trim();
-  const combatantActorId = entryCombatantId
-    ? `${combat?.combatants?.get?.(entryCombatantId)?.actor?.id ?? ""}`.trim()
-    : "";
-  const requesterActorId =
-    `${payload?.requesterActorId ?? payload?.entry?.actorId ?? ""}`.trim() ||
-    combatantActorId;
-  await game.pokrole?.requestCombatMutation?.(operation, {
-    ...payload,
-    combatId,
-    requesterActorId: requesterActorId || null
-  });
-  return getCombatMoveQueue(combat);
+  return getCombatQueueActors(combat)
+    .map((actor) => getActorQueueEntry(actor, combat))
+    .filter(Boolean)
+    .sort(compareQueueEntries);
 }
 
 export async function setCombatMoveQueueLocal(combat, queue = []) {
   if (!combat) return [];
   const normalizedQueue = Array.isArray(queue)
-    ? queue.map((entry, index) => normalizeQueueEntry(entry, index))
+    ? queue.map((entry, index) => normalizeQueueEntry({
+      ...entry,
+      declaredCombatId: `${combat?.id ?? ""}`.trim(),
+      sortOrder: index
+    }, index))
     : [];
-  if (normalizedQueue.length <= 0) {
-    await combat.unsetFlag(POKROLE.ID, getQueueFlagKey());
-  } else {
-    await combat.setFlag(POKROLE.ID, getQueueFlagKey(), normalizedQueue);
+  const queueByActorId = new Map(
+    normalizedQueue
+      .map((entry) => [`${entry.actorId ?? ""}`.trim(), entry])
+      .filter(([actorId]) => Boolean(actorId))
+  );
+  for (const actor of getCombatQueueActors(combat)) {
+    const nextEntry = queueByActorId.get(actor.id) ?? null;
+    if (nextEntry) {
+      await actor.setFlag(POKROLE.ID, getQueueActorFlagKey(), nextEntry);
+    } else {
+      await actor.unsetFlag(POKROLE.ID, getQueueActorFlagKey()).catch(() => null);
+    }
   }
   await renderMoveQueueOverlay();
-  return normalizedQueue;
+  return getCombatMoveQueue(combat);
 }
 
 export async function setCombatMoveQueue(combat, queue = []) {
@@ -201,35 +251,40 @@ export async function clearCombatMoveQueue(combat = getCurrentCombat()) {
 export async function enqueueCombatMoveDeclarationLocal(entry, combat = getCurrentCombat()) {
   if (!combat) return null;
   const normalizedEntry = normalizeQueueEntry(entry);
-  const queue = getCombatMoveQueue(combat);
+  const actor = getActorForQueueEntry(normalizedEntry, combat);
+  if (!actor) return null;
+  const queue = getCombatMoveQueue(combat).filter((existing) => existing.actorId !== normalizedEntry.actorId);
   const insertIndex = queue.findIndex((existing) => shouldEntryComeBefore(normalizedEntry, existing));
-  if (insertIndex === -1) queue.push(normalizedEntry);
-  else queue.splice(insertIndex, 0, normalizedEntry);
-  await setCombatMoveQueueLocal(combat, queue);
-  return normalizedEntry;
+  const boundedInsertIndex = insertIndex === -1 ? queue.length : insertIndex;
+  const queuedEntry = normalizeQueueEntry({
+    ...normalizedEntry,
+    declaredCombatId: `${combat?.id ?? ""}`.trim(),
+    sortOrder: resolveInsertedSortOrder(queue, boundedInsertIndex)
+  });
+  await actor.setFlag(POKROLE.ID, getQueueActorFlagKey(), queuedEntry);
+  await renderMoveQueueOverlay();
+  return queuedEntry;
 }
 
 export async function enqueueCombatMoveDeclaration(entry, combat = getCurrentCombat()) {
   if (!combat) return null;
   const normalizedEntry = normalizeQueueEntry(entry);
-  if (!game.user?.isGM) {
-    await requestMoveQueueMutation("enqueueCombatMoveDeclaration", combat, {
-      entry: normalizedEntry,
-      requesterActorId: normalizedEntry.actorId || null
-    });
-    return normalizedEntry;
-  }
-  await enqueueCombatMoveDeclarationLocal(normalizedEntry, combat);
-  return normalizedEntry;
+  const actor = getActorForQueueEntry(normalizedEntry, combat);
+  if (!actor || !(game.user?.isGM || actor.isOwner)) return null;
+  return enqueueCombatMoveDeclarationLocal(normalizedEntry, combat);
 }
 
 export async function removeCombatMoveEntryLocal(combat, entryId) {
   if (!combat) return [];
   const normalizedEntryId = `${entryId ?? ""}`.trim();
   if (!normalizedEntryId) return getCombatMoveQueue(combat);
-  const queue = getCombatMoveQueue(combat);
-  const nextQueue = queue.filter((candidate) => candidate.id !== normalizedEntryId);
-  return setCombatMoveQueueLocal(combat, nextQueue);
+  const entry = getCombatMoveQueue(combat).find((candidate) => candidate.id === normalizedEntryId) ?? null;
+  if (!entry) return getCombatMoveQueue(combat);
+  const actor = getActorForQueueEntry(entry, combat);
+  if (!actor) return getCombatMoveQueue(combat);
+  await actor.unsetFlag(POKROLE.ID, getQueueActorFlagKey()).catch(() => null);
+  await renderMoveQueueOverlay();
+  return getCombatMoveQueue(combat);
 }
 
 export async function removeCombatMoveEntry(combat, entryId) {
@@ -239,13 +294,6 @@ export async function removeCombatMoveEntry(combat, entryId) {
   const queue = getCombatMoveQueue(combat);
   const entry = queue.find((candidate) => candidate.id === normalizedEntryId);
   if (!entry || !canManageQueueEntry(entry, combat)) return queue;
-  if (!game.user?.isGM) {
-    await requestMoveQueueMutation("removeCombatMoveEntry", combat, {
-      entryId: normalizedEntryId,
-      requesterActorId: entry.actorId || null
-    });
-    return queue.filter((candidate) => candidate.id !== normalizedEntryId);
-  }
   return removeCombatMoveEntryLocal(combat, normalizedEntryId);
 }
 

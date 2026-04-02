@@ -2179,6 +2179,18 @@ Hooks.on("createCombat", () => {
   void renderMoveQueueOverlay();
 });
 
+Hooks.on("updateActor", (actor, changed) => {
+  if (actor?.type !== "pokemon") return;
+  const combat = game.combat ?? null;
+  const inActiveCombat = Boolean(combat?.active !== false && combat?.combatants?.some?.((entry) => entry.actor?.id === actor.id));
+  if (!inActiveCombat) return;
+  void renderMoveQueueOverlay();
+});
+
+Hooks.on("deleteCombatant", () => {
+  void renderMoveQueueOverlay();
+});
+
 // Enter-battle ability triggers when a combatant is added to combat
 Hooks.on("createCombatant", async (combatant) => {
   const combat = combatant?.combat ?? game.combat;
