@@ -1458,18 +1458,6 @@ Hooks.once("ready", async () => {
     }
   }
 
-  // Lock the Pokemon Actors compendium so entries cannot be accidentally edited
-  if (game.user?.isGM) {
-    const pokemonPack = game.packs.get("pok-role-system.pokemon-actors");
-    if (pokemonPack && !pokemonPack.locked) {
-      try {
-        await pokemonPack.configure({ locked: true });
-      } catch (e) {
-        console.warn(`${POKROLE.ID} | Could not lock pokemon-actors compendium`, e);
-      }
-    }
-  }
-
   if (game.user?.isGM) {
     for (const actorDocument of game.actors?.contents ?? []) {
       if (actorDocument?.type !== "pokemon") continue;
