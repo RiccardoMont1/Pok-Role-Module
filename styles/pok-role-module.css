@@ -245,6 +245,13 @@ body.pok-role-arcade-ui .sidebar-popout.directory.compendium-directory .director
   padding-top: 0;
 }
 
+body.pok-role-arcade-ui .app.window-app.compendium-directory .window-header,
+body.pok-role-arcade-ui .sidebar-popout.directory.compendium-directory .window-header {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory.flexcol .directory-list {
   background: transparent;
 }
@@ -525,7 +532,7 @@ body.pok-role-arcade-ui .compendium.directory .directory-header .compendium-name
 body.pok-role-arcade-ui .compendium.directory .directory-header.compendium-header,
 body.pok-role-arcade-ui .sidebar-popout.directory.compendium-directory .directory-header.compendium-header {
   padding-top: 0;
-  margin-top: 0;
+  margin-top: calc(var(--header-height) * -1);
 }
 
 body.pok-role-arcade-ui .compendium.directory .directory-header .compendium-name strong,
