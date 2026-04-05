@@ -1151,6 +1151,16 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const item = await Item.implementation.fromDropData(data);
     if (!item || item.type !== "move") return;
 
+    // Rank validation: prevent adding moves to a rank higher than the Pokémon's current tier
+    const currentTier = this.actor.system.tier ?? "none";
+    const currentTierIndex = POKEMON_TIER_KEYS.indexOf(currentTier);
+    const targetRankIndex = POKEMON_TIER_KEYS.indexOf(rank);
+    if (targetRankIndex > currentTierIndex && currentTierIndex >= 0) {
+      const tierLabel = POKEMON_TIER_LABEL_BY_KEY[currentTier] ?? currentTier;
+      ui.notifications.warn(`${this.actor.name} is ${tierLabel} rank and cannot learn moves from a higher rank.`);
+      return;
+    }
+
     const moveName = item.name;
     const raw = `${this.actor.system.learnsetByRank?.[rank] ?? ""}`;
     const moves = raw.split(",").map((s) => s.trim()).filter(Boolean);

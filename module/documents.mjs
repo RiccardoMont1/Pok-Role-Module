@@ -14296,7 +14296,7 @@ export class PokRoleActor extends Actor {
     // Build the attribute values: manualCoreBase + any distributed points for this form
     const distributions = targetData.rankDistributions ?? {};
     const updateData = {
-      "system.form": targetFormLabel,
+      "system.form": revertToOriginal ? (targetData.formLabel ?? targetFormLabel) : targetFormLabel,
       "system.baseHp": targetData.baseHp ?? 4,
       "system.combatProfile.accuracy": targetData.combatProfile?.accuracy ?? 0,
       "system.combatProfile.damage": targetData.combatProfile?.damage ?? 0,
