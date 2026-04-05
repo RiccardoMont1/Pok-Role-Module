@@ -1,189 +1,258 @@
-# Pok-Role-Module
+﻿# Pok-Role-Module
 
-Foundry VTT v13 system scaffold aligned to PokeRole 2.0 core combat rules.
+<p align="center">
+  <strong>Foundry VTT v13 system for PokeRole 3.0</strong><br>
+  Custom sheets, prebuilt compendia, battle automation, capture flow, progression tools, and an arcade UI that players can theme per-user.
+</p>
 
-## Current MVP
+<p align="center">
+  <img alt="Foundry VTT v13" src="https://img.shields.io/badge/Foundry-v13-f36f24?style=for-the-badge">
+  <img alt="System version 1.3.0" src="https://img.shields.io/badge/System-1.3.0-2d7ff9?style=for-the-badge">
+  <img alt="PokeRole 3.0" src="https://img.shields.io/badge/PokeRole-3.0-d94b3d?style=for-the-badge">
+  <img alt="Languages EN and IT" src="https://img.shields.io/badge/Languages-EN%20%7C%20IT-00a7c4?style=for-the-badge">
+</p>
 
-- Actor types: `trainer`, `pokemon`
-- Item types: `move`, `gear`, `ability`, `weather`, `status`, `pokedex`
-- Compendia (configured):
-  - `Trainer Items` (`Item`)
-  - `Healing Items` (`Item`)
-  - `Pokemon Care Items` (`Item`)
-  - `Evolutionary Items` (`Item`)
-  - `Held Items` (`Item`)
-  - `Pokedex` (`Item`)
-  - `Pokemon Actors` (`Actor`)
-  - `Moves` (`Item`)
-  - `Weather Conditions` (`Item`)
-  - `Pokemon Status` (`Item`)
-  - `Abilities` (`Item`)
-- Compendium build model:
-  - Compendium data is prepared externally via `tools/build_compendium_seeds.py` and stored in `module/seeds/generated/`.
-  - Move compendium data can also be rebuilt from upstream `moves.db` via `tools/build_moves_from_db.py`.
-  - Foundry packs are precompiled into `packs/*` (LevelDB) via `tools/build_static_compendia.mjs`.
-  - No automatic seeding/generation runs at world startup.
-  - Item seeds include all listed Corebook items from `Trainer's Basics`, `Healing Items`, `Items for Pokemon Care`, `Evolutionary Items`, and `Held Items` (p.76-85, 107 total item entries).
-  - `Moves` compendium is rebuilt from upstream Pokerole move data (`moves.db`) into `888` static move items.
-  - Move rebuilds generate `module/seeds/generated/move-automation-report.json` and `.md` with `full/partial/manual` automation coverage.
-  - Move icons are auto-assigned by move type (`assets/types/*.svg`).
-  - `Abilities` compendium is rebuilt from Corebook pages `434-471` (257 ability items), each with effect text and `Corebook p.X` in description.
-  - `Pokedex` compendium is fully seeded with `#001-#890` plus supported regional/mega/primal forms (1022 pokedex items).
-  - `Pokemon Actors` compendium is seeded as playable `Actor` entries (`type: pokemon`) from Corebook-aligned Pokédex data (HP/WILL, suggested rank, attributes, typing, learnset).
-  - Pokemon actor moves are embedded by default and grouped into `learnsetByRank`; all imported moves start as `isUsable: false` (learned-only until selected).
-  - Rank mapping now uses official manual tiers directly (1:1): `starter`, `rookie`, `standard`, `advanced`, `expert`, `ace`, `master`, `champion`.
-  - `Pokedex` and `Pokemon Actors` entries auto-bind artwork from `assets/pokemon/book/book/*.png` (identifier/form-aware fallback matching).
-  - Manual GM-only seed command remains available in browser console for maintenance/debug:
-    - `await game.pokrole.seedCompendia()`
-    - `await game.pokrole.seedCompendia({ force: true })` (rebuild from seed data)
-- Bilingual UI: English + Italian (`lang/en.json`, `lang/it.json`)
-- Custom sheets:
-  - Trainer sheet
-  - Pokemon sheet
-  - Pokemon `Settings` tab for per-actor track maximums (saved on that actor only)
-  - Pokemon attribute cap rules: `Strength/Dexterity/Vitality/Special/Insight` configurable per actor (up to `12`); social attributes fixed `0-5`, skills and `Extra` fixed `0-5`
-  - Pokemon settings include per-actor `manual core base` fields and `learnable moves by rank` notes
-  - Ailment quick toggles (Sleep, Burn, Frozen, Paralyzed, Poisoned, Fainted) on Trainer and Pokemon sheets, with icon chips
-  - Pokemon matchup panel rendered with multiplier icons (`1/2`, `1/4`, `x2`, `x4`, `x0`) plus type icons
-  - Move item sheet
-    - `Target` field (manual move-card target definitions)
-    - `Secondary Effects` editor (trigger/chance/target/type/stat/condition/amount)
-  - Gear item sheet
-  - Playable reference item sheets: `ability`, `weather`, `status`, `pokedex`
-- Pokemon progression:
-  - Uses `Tier` (Starter, Beginner, Amateur, Ace, Pro, Master, Champion)
-- Automation:
-  - Success-pool rolls (`Xd6`, success on `4+`)
-  - Initiative roll (`1d6 + Dexterity + Alert`)
-  - Evasion roll (`Dexterity + Evasion`)
-  - Clash roll (`Strength/Special + Clash`, using move damage trait)
-  - Combined Roll button (multi-select attributes/skills on Trainer and Pokemon sheet)
-  - Inventory by embedded `gear` items:
-    - Backpack pocket model (`potions`, `small`, `main`, `badge`, `held`)
-    - Item categories for healing/status/revive/pokeball/travel/battle/etc.
-    - Battle usage restrictions (main pocket items blocked in combat)
-    - Consumable stock handling with optional per-item units (Potion Unit style)
-    - One-click use from trainer sheet with chat summary
-  - Successive action tracking per round:
-    - each new action by the same actor in the same round requires `+1` success (Action Number `1..5`)
-    - the same move can be used multiple times in the same round
-    - manual reset button available on sheets (`Reset Actions`)
-    - at each new combat round, all combatants reset `Action Number` and reroll initiative
-  - Move accuracy resolution:
-    - Accuracy pool = `Accuracy Attribute + Accuracy Skill`
-    - Reduced Accuracy + Pain penalization remove successes
-    - Required successes are automatically taken from current `Action Number`
-  - Move target definitions (p.347-348):
-    - supports `Foe`, `Random Foe`, `All Foes`, `Self`, `Ally`, `User and Allies`, `Area`, `Battlefield`, `Foe's Battlefield`, `Ally's Battlefield`, `Battlefield and Area`
-  - Defensive reaction flow (Step 2.5):
-    - prompts optional target reaction on hit
-    - Evasion/Clash once per round each
-    - social-attribute accuracy moves cannot be evaded/clashed
-    - never-fail moves cannot be evaded (but can be clashed)
-    - clash can only use damaging moves
-    - clash success replaces normal damage with clash damage rules
-  - Move damage resolution:
-    - Damage pool = `Damage Attribute + Power + STAB + Critical - Pain - DEF/S.DEF`
-    - Physical moves use target `DEF` (`Vitality`)
-    - Special moves use target `S.DEF` (`Insight`)
-    - Minimum `1` damage on hit if the target is not immune, including resisted hits
-  - Holding Back support (p.53):
-    - choose before resolving a damaging move
-    - option to deal half damage (rounded down)
-    - lethal moves can be restrained to deal regular (non-lethal) damage
-  - Critical hit support:
-    - `+3` net successes over requirement (`+2` if `High Critical`)
-    - Adds `+2` dice to damage pool
-  - Type effectiveness support:
-    - Weakness: `+1` damage per weakness (only if damage roll has at least 1 success)
-    - Resistance: `-1` damage per resistance
-    - Immunity: `0` damage
-  - Automatic HP subtraction on selected target token(s) based on move target mode
-  - Secondary effects automation:
-    - executes configured secondary effects after move resolution (conditions, stat changes, combat-profile changes, HP heal/damage, Will change, custom notes)
-    - supports chance-dice based effects (`Xd6`, effect triggers if any die shows `6`) and trigger modes (`on-hit`, `on-hit-damage`, `on-miss`, `always`)
-    - supports multi-target secondary effects (`target`, `self`, `all-targets`, `all-allies`, `all-foes`)
-    - supports conditional secondary effects with expressions such as `weather=sunny or weather=harsh-sunlight`
-    - supports weather activation and simplified terrain activation as first-class secondary effect types
-    - fallback inference from move description text for common patterns (status chance, stat stage up/down, half-max HP heal, fraction-of-max HP damage)
-    - legacy upstream `effectGroups` are converted into this format during seed generation/import
-    - optional ability automation hook: embedded `ability` items can run the same effect engine when `system.effect` contains JSON effect payload(s)
+---
 
-## Install (local dev)
+## Overview
 
-1. Place this folder inside your Foundry `Data/systems/` directory.
-2. Ensure the folder name matches your system id (default: `pok-role-system`).
-3. Start Foundry, create a world with system `Poké Role System`.
+`Pok-Role-Module` is a Foundry VTT system built around the current PokeRole 3.0 data pipeline and a custom battle workflow.
 
-## Install (manifest URL)
+It ships with:
 
-Use this URL in Foundry "Install System":
+- custom `trainer` and `pokemon` actor sheets
+- custom sheets for `move`, `gear`, `ability`, `weather`, `status`, and `pokedex` items
+- precompiled compendia grouped for gameplay use
+- a large move automation layer with a generated coverage report
+- held item runtime automation
+- Pokeball capture flow
+- training points, rank-up, retrain, and evolution support
+- an arcade UI skin with 4 per-user color themes
 
-`https://raw.githubusercontent.com/RiccardoMont1/Pok-Role-Module/main/system.json`
+## Highlights
 
-Important: do not use the GitHub `.../blob/...` URL, because Foundry expects raw JSON and `blob` returns HTML.
+| Area | What is already implemented |
+| --- | --- |
+| Sheets | Dedicated Trainer and Pokemon sheets, progression controls, learnset/evolution handling, held item slot, temporary effect visibility |
+| Combat | Success-pool rolls, initiative, accuracy, pain, STAB, criticals, weakness/resistance/immunity, Evasion, Clash, holding back, multi-action penalties |
+| Queue | Move declarations stored on actor flags to avoid Combat permission issues for players |
+| Effects | Secondary effect engine, conditions, stat stages, weather, terrain, hazards, delayed effects, side-field interactions |
+| Items | Battle gear, healing items, Pokeballs, and held item runtime behavior |
+| Progression | Training Points, battle-training rewards, retrain, rank-up, form-aware evolution flow |
+| Capture | Pokeball throw + seal flow, ball-specific behavior, caught-by/current-trainer updates, token friendliness updates |
+| UI | Arcade skin, pause styling, themed directories, per-user palette selection |
+| Content pipeline | Generated seeds, static compendium build, upstream Pokerole-Data integration |
 
-## Project Structure
+## Included Compendia
 
-- `system.json`: Foundry system manifest
-- `pok-role-module.mjs`: system bootstrap
-- `module/`: data models, documents, sheets
-- `assets/`: static assets (Pokeball pattern, move type icons, ailments, generic icon set)
-- `module/seeds/generated/`: generated datasets for `moves`, `abilities`, `pokedex`, and `pokemon actor` compendia
-- `module/seeds/generated/move-automation-report.json` / `.md`: move import coverage report from `moves.db`
-- `packs/`: compendium pack databases (v13 LevelDB folders)
-- `templates/`: handlebars sheets/chat card
-- `styles/`: sheet styles
-- `lang/`: localization files
-- `tools/build_compendium_seeds.py`: regenerates `moves`, `abilities`, `pokedex`, and `pokemon actor` seed modules
-- `tools/build_moves_from_db.py`: rebuilds the `moves` seed module from upstream `moves.db` and writes an automation coverage report
-- `tools/build_static_compendia.mjs`: compiles hard-coded seed data into static `packs/*` LevelDB compendia
+The system currently ships with **10 precompiled packs** in `packs/`.
 
-Asset source:
-- `assets/types`, `assets/ailments`, `assets/icons` are sourced from `Pokerole-Software-Development/foundry-pokerole` (`images/` at commit `2aa9834587ff02a91789fb2ff61e8472d18d31c6`).
+| Group | Packs |
+| --- | --- |
+| Trainer Gear | `trainer-items`, `healing-items`, `pokemon-care-items`, `evolutionary-items`, `held-items` |
+| Battle Rules | `moves`, `abilities`, `weather-conditions`, `pokemon-status` |
+| Pokemon | `pokemon-actors` |
 
-## Compendia Usage
+The packs are defined in [system.json](system.json) and grouped into `packFolders` for a cleaner sidebar layout.
 
-- The system now defines 11 compendium packs in `system.json`.
-- Packs are shipped precompiled and populated by default.
-- If you regenerate data:
-  1. Run `python tools/build_compendium_seeds.py` for items/abilities/pokedex/pokemon actors.
-  2. Run `python tools/build_moves_from_db.py` for the move compendium rebuild from `moves.db`.
-  3. Run `node tools/build_static_compendia.mjs`.
-  4. Publish the updated `packs/*` content in your release/zip.
+## Automation Snapshot
 
-Compendium grouping and rules mapping (PokeRole 2.0 PDF):
-- Trainer/Travel/Healing Items: p.76-80
-- Pokemon Care Items: p.81-82
-- Evolutionary and Held Items: p.83-85
-- Pokedex roster: p.90-345
-- Moves roster: p.349-423
-- Weather conditions: p.56-57
-- Pokemon status conditions: p.58-59
-- Move reference/icons: p.347-348
-- Abilities roster: p.434-471
+Current move automation report:
 
-## Rules Mapping (PokeRole 2.0 PDF)
+- total moves: `894`
+- full automation: `869`
+- partial automation: `4`
+- manual handling still required: `21`
 
-- Core action roll and successes: p.29
-- Type interaction damage modifiers: p.42-43
-- Battle flow, initiative, accuracy, damage, evasion/clash: p.44-45
-- Pain penalizations: p.47
-- Multiple Actions required successes: p.49
-- Evasion/Clash details: p.50
-- STAB and low accuracy moves: p.51
-- Critical hit threshold and bonus dice: p.52
-- Priority/Low Priority semantics: p.53
-- Move card structure and icons: p.346-348
-- Backpack layout and inventory pockets: p.20
-- Item inventory categories and item effects: p.76-85
+Source:
 
-## Current Limits
+- [move-automation-report.json](module/seeds/generated/move-automation-report.json)
+- [move-automation-report.md](module/seeds/generated/move-automation-report.md)
 
-- Some moves still require manual handling or custom overrides; see `module/seeds/generated/move-automation-report.md`.
-- Delayed / future-resolution moves (`Wish`, `Future Sight`, `Doom Desire`, etc.) are not fully automated yet.
-- Terrain support is simplified to a single active combat terrain and does not yet model side-specific battlefield ownership.
-- Extra conditions not present in `system.conditions` (for example `Flinch`, `Disabled`, `Infatuated`) are tracked as actor flags.
-- Priority/Low Priority does not reorder combat turns automatically yet.
-- Shield-chain penalty (`-2` each consecutive round) is not auto-tracked yet.
-- Rampage specialized move logic is not fully automated yet.
+The remaining gaps are mostly concentrated in:
+
+- Z-Moves
+- Dynamax-specific rules
+- a small set of external-rule or storyteller-driven edge cases
+
+## UI And Themes
+
+The system includes an arcade UI layer on top of Foundry.
+
+Each user can select their own palette from Foundry client settings:
+
+- `Celeste - Chiaro`
+- `Celeste - Scuro`
+- `Rosso - Chiaro`
+- `Rosso - Scuro`
+
+The theme is client-scoped, so one player can use a dark palette while another keeps the light version.
+
+## Installation
+
+### Manifest URL
+
+Use this in Foundry's **Install System** dialog:
+
+```text
+https://raw.githubusercontent.com/RiccardoMont1/Pok-Role-Module/main/system.json
+```
+
+### Direct download
+
+```text
+https://github.com/RiccardoMont1/Pok-Role-Module/archive/refs/heads/main.zip
+```
+
+### Local development install
+
+1. Place the repository inside your Foundry `Data/systems/` directory.
+2. Ensure the folder name matches the system id in [system.json](system.json): `pok-role-system`.
+3. Launch Foundry and create or open a world using `Poke Role System`.
+
+## Current Feature Scope
+
+### Actors and items
+
+- Actor types:
+  - `trainer`
+  - `pokemon`
+- Item types:
+  - `move`
+  - `gear`
+  - `ability`
+  - `weather`
+  - `status`
+  - `pokedex`
+
+### Combat and battle flow
+
+Implemented battle workflow includes:
+
+- success-pool rolls (`Xd6`, success on `4+`)
+- initiative formula from [system.json](system.json)
+- accuracy resolution with pain and reduced-accuracy handling
+- STAB, critical hits, and type effectiveness
+- Evasion and Clash reactions
+- holding back / non-lethal resolution
+- side-field effects, hazards, terrain, weather, and delayed effects
+- player-side move declaration queue without direct Combat writes
+
+### Progression and management
+
+Implemented progression systems include:
+
+- Training Points
+- battle-training rewards
+- rank-up and retrain dialogs
+- evolution flow and form-aware updates
+- learnset / move usability management
+- obedience checks for training and battle
+
+### Capture and Pokeballs
+
+Capture flow includes:
+
+- Pokeball throw + seal resolution using Foundry rolls
+- ball-specific effects
+- trainer ownership updates on successful capture
+- current trainer / caught-by data updates
+- scene token friendliness updates on capture
+
+### Held items
+
+Held items are not just static data.
+
+The runtime currently supports:
+
+- stat bonuses
+- damage modifiers
+- high-critical overrides
+- on-enter behavior
+- hazard immunity and similar protections
+- many standard held item reactions and effects
+
+The system also uses Active Effects to reflect held-item-derived stat changes in the Pokemon sheet.
+
+## Development Pipeline
+
+The project uses generated seeds plus static pack compilation.
+
+### Main scripts
+
+- [build_compendium_seeds.py](tools/build_compendium_seeds.py)
+- [build_moves_from_db.py](tools/build_moves_from_db.py)
+- [build_held_items_from_external.mjs](tools/build_held_items_from_external.mjs)
+- [build_static_compendia.mjs](tools/build_static_compendia.mjs)
+
+### Typical rebuild flow
+
+```bash
+python tools/build_compendium_seeds.py
+python tools/build_moves_from_db.py
+node tools/build_held_items_from_external.mjs
+node tools/build_static_compendia.mjs
+```
+
+### Seeded/generated data lives in
+
+- [module/seeds/generated](module/seeds/generated)
+
+### Static packs live in
+
+- [packs](packs)
+
+### Auto-update behavior
+
+On GM startup, the system checks the current seed version in [compendium-seed.mjs](module/seeds/compendium-seed.mjs) and updates compendia when the seed version changes.
+
+There is also a manual API for maintenance/debug:
+
+```js
+await game.pokrole.seedCompendia()
+await game.pokrole.seedCompendia({ force: true })
+```
+
+## Repository Layout
+
+| Path | Purpose |
+| --- | --- |
+| [system.json](system.json) | Foundry manifest |
+| [pok-role-module.mjs](pok-role-module.mjs) | bootstrap, hooks, socket/relay flow, startup tasks |
+| [module](module) | data models, documents, sheets, automation logic |
+| [templates](templates) | Handlebars sheets and chat cards |
+| [styles](styles) | system and UI theming |
+| [lang](lang) | English and Italian localization |
+| [assets](assets) | icons, sprites, banners, UI visuals |
+| [tools](tools) | data builders and audit utilities |
+| [reports](reports) | analysis output and supporting reports |
+
+## Known Boundaries
+
+This README is intentionally honest about what is still incomplete.
+
+Current boundaries include:
+
+- Z-Moves are not fully automated yet
+- Dynamax handling is still partial
+- some storyteller-driven or external-rule moves remain manual by design
+- the project does not ship an automated test suite yet
+
+## Credits
+
+Data and assets are derived from the broader Pokerole ecosystem and the project-specific import/build pipeline in this repository.
+
+Notable sources referenced in code and build flow include:
+
+- Pokerole-Data v3.0 move and item sources
+- upstream Pokerole image/sprite repositories used by the compendium builders
+- Foundry VTT v13
+
+## License / project state
+
+This repository is currently best read as an actively developed system project rather than a finished, frozen release line.
+
+If you want to contribute or open issues:
+
+- repo: `https://github.com/RiccardoMont1/Pok-Role-Module`
+- issues: `https://github.com/RiccardoMont1/Pok-Role-Module/issues`
