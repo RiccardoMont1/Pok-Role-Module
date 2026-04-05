@@ -14344,7 +14344,19 @@ export class PokRoleActor extends Actor {
       }
     }
 
+    // Lock HP/Will max: capture pre-change max, keep it as floor so it never decreases
+    const prevHpMax = toNumber(actor.system?.resources?.hp?.max, 1);
+    const prevWillMax = toNumber(actor.system?.resources?.will?.max, 1);
+    const curLockHp = toNumber(actor.getFlag(POKROLE.ID, "formLockedHpMax"), 0);
+    const curLockWill = toNumber(actor.getFlag(POKROLE.ID, "formLockedWillMax"), 0);
+    const newLockHp = Math.max(prevHpMax, curLockHp);
+    const newLockWill = Math.max(prevWillMax, curLockWill);
+
     await actor.update(updateData);
+
+    // Persist the lock flags (triggers prepareDerivedData which will use them)
+    await actor.setFlag(POKROLE.ID, "formLockedHpMax", newLockHp);
+    await actor.setFlag(POKROLE.ID, "formLockedWillMax", newLockWill);
 
     // Update token image if linked
     const linkedTokens = actor.getActiveTokens(true);
@@ -14415,8 +14427,6 @@ export class PokRoleActor extends Actor {
           speaker: ChatMessage.getSpeaker({ actor }),
           content: `<strong>${actor.name}</strong> reverted from Zen Mode!`
         });
-        await actor.unsetFlag(POKROLE.ID, "originalFormStats");
-        await actor.unsetFlag(POKROLE.ID, "originalForm");
       }
     }
 
@@ -14438,8 +14448,6 @@ export class PokRoleActor extends Actor {
           speaker: ChatMessage.getSpeaker({ actor }),
           content: `<strong>${actor.name}'s</strong> school broke apart!`
         });
-        await actor.unsetFlag(POKROLE.ID, "originalFormStats");
-        await actor.unsetFlag(POKROLE.ID, "originalForm");
       }
     }
 
@@ -14454,8 +14462,6 @@ export class PokRoleActor extends Actor {
           speaker: ChatMessage.getSpeaker({ actor }),
           content: `<strong>${actor.name}'s</strong> shields are up! (<strong>Meteor Form</strong>)`
         });
-        await actor.unsetFlag(POKROLE.ID, "originalFormStats");
-        await actor.unsetFlag(POKROLE.ID, "originalForm");
       } else if (hp <= Math.floor(maxHp / 2) && hp > 0 && !currentForm.includes("core")) {
         await this._saveOriginalFormStats(actor);
         await this._applyFormChange(actor, "Core Form");
@@ -17434,38 +17440,30 @@ export class PokRoleActor extends Actor {
     // Form changes (Stance Change, Zen Mode, Schooling, Shields Down): full stat restoration at combat end
     const originalFormStats = this.getFlag(POKROLE.ID, "originalFormStats");
     if (originalFormStats) {
-      console.log(`PokRole | [Form cleanup] Restoring ${this.name}'s full form stats`);
-      await this._applyFormChange(this, originalFormStats.formLabel ?? "", true);
-      await this.unsetFlag(POKROLE.ID, "originalFormStats");
-      await this.unsetFlag(POKROLE.ID, "originalForm");
-      await ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ actor: this }),
-        content: `<strong>${this.name}</strong> reverted to its original form.`
-      });
-    } else {
-      // Fallback: check if the actor has a baseFormStats flag and is currently in a different form
-      const baseFormStats = this.getFlag(POKROLE.ID, "baseFormStats");
-      const currentForm = `${this.system?.form ?? ""}`.trim();
-      if (baseFormStats && currentForm) {
-        // Actor is in an alternate form, revert using baseFormStats
-        console.log(`PokRole | [Form cleanup] Restoring ${this.name}'s form using baseFormStats`);
-        await this._applyFormChange(this, "", true);
+      try {
+        console.log(`PokRole | [Form cleanup] Restoring ${this.name}'s full form stats from snapshot`);
+        await this._applyFormChange(this, originalFormStats.formLabel ?? "", true);
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor: this }),
           content: `<strong>${this.name}</strong> reverted to its original form.`
         });
-      } else {
-        // Legacy fallback: only form string
-        const originalForm = this.getFlag(POKROLE.ID, "originalForm");
-        if (originalForm) {
-          console.log(`PokRole | [Form cleanup] Restoring ${this.name}'s form to ${originalForm}`);
-          await this.update({ "system.form": originalForm });
-          await this.unsetFlag(POKROLE.ID, "originalForm");
-          await ChatMessage.create({
-            speaker: ChatMessage.getSpeaker({ actor: this }),
-            content: `<strong>${this.name}</strong> reverted to its original form.`
-          });
-        }
+      } catch (e) {
+        console.error(`PokRole | [Form cleanup] Error restoring ${this.name}:`, e);
+      }
+      // Always clean up form flags
+      try { await this.unsetFlag(POKROLE.ID, "originalFormStats"); } catch (_e) { /* */ }
+      try { await this.unsetFlag(POKROLE.ID, "originalForm"); } catch (_e) { /* */ }
+    } else {
+      // Legacy fallback: only form string
+      const originalForm = this.getFlag(POKROLE.ID, "originalForm");
+      if (originalForm) {
+        console.log(`PokRole | [Form cleanup] Restoring ${this.name}'s form to ${originalForm}`);
+        await this.update({ "system.form": originalForm });
+        try { await this.unsetFlag(POKROLE.ID, "originalForm"); } catch (_e) { /* */ }
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this }),
+          content: `<strong>${this.name}</strong> reverted to its original form.`
+        });
       }
     }
 

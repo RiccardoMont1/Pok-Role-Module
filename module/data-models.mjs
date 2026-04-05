@@ -275,39 +275,22 @@ export class PokemonDataModel extends BaseCharacterDataModel {
     const baseHp = Math.max(Math.floor(Number(this.baseHp) || 0), 1);
     const vitality = Math.max(Math.floor(Number(this.attributes?.vitality) || 0), 0);
     const insight = Math.max(Math.floor(Number(this.attributes?.insight) || 0), 0);
-    let bestHpMax = baseHp + vitality;
-    let bestWillMax = insight + 3;
+    let hpMax = baseHp + vitality;
+    let willMax = insight + 3;
 
-    // HP & Will = max across ALL forms (both forms share HP & Will, pick highest)
+    // Form-change Pokémon: HP & Will are locked to the highest value across forms
     try {
       const actor = this.parent;
-      // Collect all form data sources: alt forms + base form stats
-      const allFormSources = [];
-      const altForms = actor?.getFlag?.("pok-role-system", "alternateForms") ?? {};
-      for (const formData of Object.values(altForms)) allFormSources.push(formData);
-      const baseFormStats = actor?.getFlag?.("pok-role-system", "baseFormStats");
-      if (baseFormStats) allFormSources.push(baseFormStats);
-
-      for (const formData of allFormSources) {
-        // Compute that form's vitality and insight from base + distributions
-        const fBase = formData.manualCoreBase ?? formData.attributes ?? {};
-        const fDist = formData.rankDistributions ?? {};
-        let fVit = Math.max(Math.floor(Number(fBase.vitality) || 0), 0);
-        let fIns = Math.max(Math.floor(Number(fBase.insight) || 0), 0);
-        for (const rankDist of Object.values(fDist)) {
-          fVit += Math.max(Math.floor(Number(rankDist?.attr?.vitality) || 0), 0);
-          fIns += Math.max(Math.floor(Number(rankDist?.attr?.insight) || 0), 0);
-        }
-        const fBaseHp = Math.max(Math.floor(Number(formData.baseHp) || 0), 1);
-        bestHpMax = Math.max(bestHpMax, fBaseHp + fVit);
-        bestWillMax = Math.max(bestWillMax, fIns + 3);
-      }
+      const lockedHp = actor?.getFlag?.("pok-role-system", "formLockedHpMax");
+      const lockedWill = actor?.getFlag?.("pok-role-system", "formLockedWillMax");
+      if (lockedHp != null) hpMax = Math.max(hpMax, lockedHp);
+      if (lockedWill != null) willMax = Math.max(willMax, lockedWill);
     } catch (e) {
       // Flags may not be accessible during initial data preparation
     }
 
-    this.resources.hp.max = bestHpMax;
-    this.resources.will.max = bestWillMax;
+    this.resources.hp.max = hpMax;
+    this.resources.will.max = willMax;
     if (this.resources.hp.value > this.resources.hp.max) {
       this.resources.hp.value = this.resources.hp.max;
     }
