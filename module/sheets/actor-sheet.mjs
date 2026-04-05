@@ -3099,7 +3099,8 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       attrMaxByKey = null,
       replaceTrackedDistributions = false,
       dialogTitle = null,
-      returnDistributionsOnly = false
+      returnDistributionsOnly = false,
+      attributesOnly = false
     } = options;
     const loc = (key) => game.i18n.localize(key);
 
@@ -3167,9 +3168,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
     const content = `
       <form class="point-distribution-dialog">
-        <p style="margin-bottom:8px;font-style:italic;">
+        ${attributesOnly ? "" : `<p style="margin-bottom:8px;font-style:italic;">
           ${loc("POKROLE.Dialog.SkillLimit")}: <strong>${skillLimit}</strong>
-        </p>
+        </p>`}
 
         <div class="point-dist-section">
           <div class="point-dist-header">${loc("POKROLE.Dialog.AttributePoints")}
@@ -3178,7 +3179,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           ${buildRows(coreAttrs, "attr")}
         </div>
 
-        <div class="point-dist-section">
+        ${attributesOnly ? "" : `<div class="point-dist-section">
           <div class="point-dist-header">${loc("POKROLE.Dialog.SocialPoints")}
             &mdash; <span class="point-dist-remaining" data-pool="social">${effectivePools.social}</span> ${loc("POKROLE.Dialog.Remaining")}
           </div>
@@ -3191,7 +3192,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           </div>
           ${buildRows(skills, "skill")}
           ${extraSkillItems.length > 0 ? buildRows(extraSkillItems, "skill") : ""}
-        </div>
+        </div>`}
       </form>
     `;
 
@@ -3540,16 +3541,17 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             attrMaxByKey: altAttrMaxByKey
           });
 
-          if (altPools.attr <= 0 && altPools.social <= 0 && altPools.skill <= 0) continue;
+          if (altPools.attr <= 0) continue;
 
           const altResult = await this._showPointDistributionDialog(
-            altPools.attr, altPools.social, altPools.skill, skillLimit, {
+            altPools.attr, 0, 0, skillLimit, {
               attrBase: altAttrBase,
               socialBase: altSocialBase,
               skillBase: altSkillBase,
               trackRank: newTier,
               attrMaxByKey: altAttrMaxByKey,
               returnDistributionsOnly: true,
+              attributesOnly: true,
               dialogTitle: `${loc("POKROLE.Dialog.DistributePoints")} — ${formLabel}`
             }
           );
@@ -3741,7 +3743,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         });
 
         const altResult = await this._showPointDistributionDialog(
-          altPools.attr, altPools.social, altPools.skill, skillLimit, {
+          altPools.attr, 0, 0, skillLimit, {
             attrBase: altAttrBase,
             socialBase: altSocialBase,
             skillBase: altSkillBase,
@@ -3749,6 +3751,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
             attrMaxByKey: altAttrMaxByKey,
             replaceTrackedDistributions: true,
             returnDistributionsOnly: true,
+            attributesOnly: true,
             dialogTitle: `${loc("POKROLE.Dialog.DistributePoints")} — ${formLabel}`
           }
         );

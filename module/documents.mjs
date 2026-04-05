@@ -14127,6 +14127,7 @@ export class PokRoleActor extends Actor {
       img: actor.img ?? "",
       manualCoreBase: {},
       attributes: {},
+      trackMax: {},
       combatProfile: {
         accuracy: toNumber(actor.system?.combatProfile?.accuracy, 0),
         damage: toNumber(actor.system?.combatProfile?.damage, 0),
@@ -14142,6 +14143,8 @@ export class PokRoleActor extends Actor {
     for (const key of CORE_ATTRIBUTE_KEYS) {
       snapshot.attributes[key] = toNumber(actor.system?.attributes?.[key], 1);
       snapshot.manualCoreBase[key] = toNumber(actor.system?.manualCoreBase?.[key], 1);
+      const tmVal = Number(actor.system?.sheetSettings?.trackMax?.attributes?.[key]);
+      snapshot.trackMax[key] = Number.isFinite(tmVal) ? tmVal : 12;
     }
     await actor.setFlag(POKROLE.ID, "originalFormStats", snapshot);
     // Also keep the legacy originalForm flag for backward compat
@@ -14232,13 +14235,21 @@ export class PokRoleActor extends Actor {
       if (!revertToOriginal) {
         updateData[`system.manualCoreBase.${key}`] = baseVal;
       }
+      // Swap trackMax (attribute limits) for each core attribute
+      const trackMaxVal = targetData.trackMax?.[key];
+      if (trackMaxVal !== undefined) {
+        updateData[`system.sheetSettings.trackMax.attributes.${key}`] = trackMaxVal;
+      }
     }
 
-    // For reverting, restore manualCoreBase and full attributes from snapshot
+    // For reverting, restore manualCoreBase, full attributes, and trackMax from snapshot
     if (revertToOriginal && targetData.attributes) {
       for (const key of CORE_ATTRIBUTE_KEYS) {
         updateData[`system.attributes.${key}`] = toNumber(targetData.attributes[key], 1);
         updateData[`system.manualCoreBase.${key}`] = toNumber(targetData.manualCoreBase?.[key], 1);
+        if (targetData.trackMax?.[key] !== undefined) {
+          updateData[`system.sheetSettings.trackMax.attributes.${key}`] = targetData.trackMax[key];
+        }
       }
     }
 
@@ -14259,7 +14270,7 @@ export class PokRoleActor extends Actor {
 
   /**
    * Stance Change / Zen Mode / Schooling / Shields Down: conditional form changes.
-   * These are checked at various points (move use, HP change, etc.)
+   * Trigger types: "move-used", "hp-changed", "round-start", "enter-battle"
    */
   async _checkConditionalFormChange(actor, triggerType = "move-used", context = {}) {
     if (!actor || !(actor instanceof PokRoleActor) || actor.type !== "pokemon") return;
@@ -14291,8 +14302,8 @@ export class PokRoleActor extends Actor {
       }
     }
 
-    // Zen Mode: change form when HP ≤ 50%
-    if (["zen mode", "zen-mode", "zenmode"].includes(ability) && triggerType === "hp-changed") {
+    // Zen Mode: check form at round-start or on HP change
+    if (["zen mode", "zen-mode", "zenmode"].includes(ability) && (triggerType === "round-start" || triggerType === "hp-changed")) {
       const hp = toNumber(actor.system?.resources?.hp?.value, 0);
       const maxHp = Math.max(toNumber(actor.system?.resources?.hp?.max, 1), 1);
       const currentForm = `${actor.system?.form ?? ""}`.trim().toLowerCase();
@@ -14314,8 +14325,8 @@ export class PokRoleActor extends Actor {
       }
     }
 
-    // Schooling: School Form when HP > 25%, Solo Form when HP ≤ 25%
-    if (["schooling"].includes(ability) && triggerType === "hp-changed") {
+    // Schooling: School Form on enter-battle (if HP > 25%), Solo Form when HP ≤ 25%
+    if (["schooling"].includes(ability) && (triggerType === "enter-battle" || triggerType === "hp-changed")) {
       const hp = toNumber(actor.system?.resources?.hp?.value, 0);
       const maxHp = Math.max(toNumber(actor.system?.resources?.hp?.max, 1), 1);
       const currentForm = `${actor.system?.form ?? ""}`.trim().toLowerCase();
@@ -18857,6 +18868,15 @@ export class PokRoleActor extends Actor {
     } catch (error) {
       console.error(`${POKROLE.ID} | Failed to apply heal`, error);
       ui.notifications.warn(game.i18n.localize("POKROLE.Errors.HPUpdateFailed"));
+    }
+
+    // Trigger conditional form changes on HP change (Zen Mode, Schooling, Shields Down)
+    if (healedApplied > 0 && targetActor instanceof PokRoleActor) {
+      try {
+        await this._checkConditionalFormChange(targetActor, "hp-changed");
+      } catch (e) {
+        console.warn(`PokRole | [Heal] Form change check failed:`, e);
+      }
     }
 
     return {

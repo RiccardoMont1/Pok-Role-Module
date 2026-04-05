@@ -1757,6 +1757,10 @@ Hooks.on("updateCombat", async (combat, changed) => {
       if (!actor || typeof actor.processAbilityTriggerEffects !== "function") continue;
       try {
         await actor.processAbilityTriggerEffects("enter-battle", { combat });
+        // Conditional form changes on enter-battle (Schooling)
+        if (typeof actor._checkConditionalFormChange === "function") {
+          await actor._checkConditionalFormChange(actor, "enter-battle", { combat });
+        }
       } catch (err) {
         console.warn(`PokRole | Enter-battle ability processing failed for ${actor.name}:`, err);
       }
@@ -1787,6 +1791,10 @@ Hooks.on("updateCombat", async (combat, changed) => {
       // Ability round-start triggers
       if (typeof actor.processAbilityTriggerEffects === "function") {
         await actor.processAbilityTriggerEffects("round-start", { combat });
+      }
+      // Conditional form changes on round-start (Zen Mode)
+      if (typeof actor._checkConditionalFormChange === "function") {
+        await actor._checkConditionalFormChange(actor, "round-start", { combat });
       }
     } catch (err) {
       console.warn(`PokRole | Round-start processing failed for ${actor.name}:`, err);
@@ -2216,6 +2224,10 @@ Hooks.on("createCombatant", async (combatant) => {
   if (typeof actor.processAbilityTriggerEffects !== "function") return;
   try {
     await actor.processAbilityTriggerEffects("enter-battle", { combat });
+    // Conditional form changes on enter-battle (Schooling)
+    if (typeof actor._checkConditionalFormChange === "function") {
+      await actor._checkConditionalFormChange(actor, "enter-battle", { combat });
+    }
   } catch (err) {
     console.warn(`PokRole | Enter-battle ability processing failed for ${actor.name}:`, err);
   }
