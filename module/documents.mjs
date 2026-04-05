@@ -184,8 +184,43 @@ function isFormChangeAbility(abilityName) {
 }
 
 /**
+ * Build a form data object from an actor's CURRENT system values (not from seed).
+ */
+function buildFormDataFromActor(actor) {
+  const manualCoreBase = {};
+  const trackMax = {};
+  const attributes = {};
+  for (const key of CORE_ATTRIBUTE_KEYS) {
+    manualCoreBase[key] = Math.max(Math.floor(toNumber(actor.system?.manualCoreBase?.[key], 1)), 1);
+    attributes[key] = Math.max(Math.floor(toNumber(actor.system?.attributes?.[key], 1)), 1);
+    const tmVal = Number(actor.system?.sheetSettings?.trackMax?.attributes?.[key]);
+    trackMax[key] = Number.isFinite(tmVal) ? Math.min(Math.max(Math.floor(tmVal), 1), 12) : 12;
+  }
+  return {
+    label: actor.name ?? "",
+    img: actor.img ?? "",
+    manualCoreBase,
+    attributes,
+    combatProfile: {
+      accuracy: toNumber(actor.system?.combatProfile?.accuracy, 0),
+      damage: toNumber(actor.system?.combatProfile?.damage, 0),
+      evasion: toNumber(actor.system?.combatProfile?.evasion, 0),
+      clash: toNumber(actor.system?.combatProfile?.clash, 0)
+    },
+    types: {
+      primary: actor.system?.types?.primary ?? "normal",
+      secondary: actor.system?.types?.secondary ?? "none"
+    },
+    baseHp: toNumber(actor.system?.baseHp, 4),
+    trackMax,
+    rankDistributions: {}
+  };
+}
+
+/**
  * Auto-setup alternate form data on a pokemon actor.
  * Looks up the alternate form(s) in the seed data and stores them as flags.
+ * Also stores the base form's data for HP/Will max calculation.
  */
 async function setupAlternateFormData(actor) {
   if (!actor || actor.type !== "pokemon") return;
@@ -203,6 +238,9 @@ async function setupAlternateFormData(actor) {
     }
     if (Object.keys(altForms).length > 0) {
       await actor.setFlag(POKROLE.ID, "alternateForms", altForms);
+      // Also store the base form's data for HP/Will max calculation
+      const baseData = buildFormDataFromActor(actor);
+      await actor.setFlag(POKROLE.ID, "baseFormStats", baseData);
       console.log(`PokRole | Setup alternate forms for ${actor.name}:`, Object.keys(altForms));
     }
   } else {
@@ -219,9 +257,47 @@ async function setupAlternateFormData(actor) {
     const formData = buildFormDataFromSeed(primarySeed);
     if (formData) {
       await actor.setFlag(POKROLE.ID, "alternateForms", { [formData.label]: formData });
+      // Also store the base form's data for HP/Will max calculation
+      const baseData = buildFormDataFromActor(actor);
+      await actor.setFlag(POKROLE.ID, "baseFormStats", baseData);
       console.log(`PokRole | Setup alternate forms for ${actor.name} (reverse):`, [formData.label]);
     }
   }
+}
+
+/**
+ * Ensure alternate form data is set up on an actor. Lazy initialization.
+ * Returns true if the actor has alternate forms configured.
+ */
+async function ensureAlternateFormData(actor) {
+  if (!actor || actor.type !== "pokemon") return false;
+  const existing = actor.getFlag(POKROLE.ID, "alternateForms");
+  if (existing && Object.keys(existing).length > 0) {
+    // Ensure baseFormStats also exists
+    if (!actor.getFlag(POKROLE.ID, "baseFormStats")) {
+      // Try to build from seed data for the current species
+      const speciesName = actor.system?.species || actor.name;
+      const seed = findPokemonSeedByName(speciesName);
+      if (seed) {
+        const baseData = buildFormDataFromSeed(seed);
+        if (baseData) await actor.setFlag(POKROLE.ID, "baseFormStats", baseData);
+      } else {
+        const baseData = buildFormDataFromActor(actor);
+        await actor.setFlag(POKROLE.ID, "baseFormStats", baseData);
+      }
+    }
+    return true;
+  }
+  // Check if this actor should have alternate forms
+  const evolutions = actor.system?.evolutions ?? [];
+  const hasFormEvo = evolutions.some((evo) => evo.kind === "form");
+  if (!hasFormEvo) {
+    // Also check by ability name — some actors might have form-change abilities without form evolutions
+    const abilityName = `${actor.system?.ability ?? ""}`.trim().toLowerCase();
+    if (!FORM_CHANGE_ABILITIES.includes(abilityName)) return false;
+  }
+  await setupAlternateFormData(actor);
+  return !!(actor.getFlag(POKROLE.ID, "alternateForms"));
 }
 
 function hasPainPenaltyException(primaryTraitKey, secondaryTraitKey) {
@@ -14160,6 +14236,8 @@ export class PokRoleActor extends Actor {
    * For reverting to original form, uses the originalFormStats flag.
    */
   async _applyFormChange(actor, targetFormLabel, revertToOriginal = false) {
+    // Lazy setup: ensure alternate form data exists
+    await ensureAlternateFormData(actor);
     const altForms = actor.getFlag(POKROLE.ID, "alternateForms") ?? {};
     const originalStats = actor.getFlag(POKROLE.ID, "originalFormStats");
 
@@ -14275,6 +14353,10 @@ export class PokRoleActor extends Actor {
   async _checkConditionalFormChange(actor, triggerType = "move-used", context = {}) {
     if (!actor || !(actor instanceof PokRoleActor) || actor.type !== "pokemon") return;
     const ability = `${actor.system?.ability ?? ""}`.trim().toLowerCase();
+    if (!FORM_CHANGE_ABILITIES.includes(ability)) return;
+
+    // Lazy setup: ensure alternate form data exists
+    await ensureAlternateFormData(actor);
 
     // Stance Change: Blade Forme when using attack, Shield Forme when using King's Shield
     if (["stance change", "stance-change", "stancechange"].includes(ability) && triggerType === "move-used") {
@@ -22355,4 +22437,4 @@ export async function processCombatDelayedEffects(combat, phase) {
   return currentEntries.length - nextEntries.length;
 }
 
-export { setupAlternateFormData, isFormChangeAbility };
+export { setupAlternateFormData, ensureAlternateFormData, isFormChangeAbility };

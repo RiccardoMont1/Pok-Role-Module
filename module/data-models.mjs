@@ -278,13 +278,19 @@ export class PokemonDataModel extends BaseCharacterDataModel {
     let bestHpMax = baseHp + vitality;
     let bestWillMax = insight + 3;
 
-    // HP & Will = max across all forms (both forms share HP & Will, pick highest)
+    // HP & Will = max across ALL forms (both forms share HP & Will, pick highest)
     try {
       const actor = this.parent;
+      // Collect all form data sources: alt forms + base form stats
+      const allFormSources = [];
       const altForms = actor?.getFlag?.("pok-role-system", "alternateForms") ?? {};
-      for (const formData of Object.values(altForms)) {
+      for (const formData of Object.values(altForms)) allFormSources.push(formData);
+      const baseFormStats = actor?.getFlag?.("pok-role-system", "baseFormStats");
+      if (baseFormStats) allFormSources.push(baseFormStats);
+
+      for (const formData of allFormSources) {
         // Compute that form's vitality and insight from base + distributions
-        const fBase = formData.manualCoreBase ?? {};
+        const fBase = formData.manualCoreBase ?? formData.attributes ?? {};
         const fDist = formData.rankDistributions ?? {};
         let fVit = Math.max(Math.floor(Number(fBase.vitality) || 0), 0);
         let fIns = Math.max(Math.floor(Number(fBase.insight) || 0), 0);
