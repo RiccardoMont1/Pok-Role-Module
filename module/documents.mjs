@@ -148,11 +148,15 @@ function buildFormDataFromSeed(seed) {
   if (!seed?.system) return null;
   const sys = seed.system;
   const manualCoreBase = {};
+  const attributes = {};
   const trackMax = {};
   for (const key of CORE_ATTRIBUTE_KEYS) {
     const val = Number(sys.manualCoreBase?.[key] ?? sys.attributes?.[key] ?? 1);
     manualCoreBase[key] = Math.max(Number.isFinite(val) ? Math.floor(val) : 1, 1);
-    // trackMax from sheetSettings or default double of base (capped at 12)
+    // Full attribute value from seed (base stats before any point distribution)
+    const attrVal = Number(sys.attributes?.[key] ?? sys.manualCoreBase?.[key] ?? 1);
+    attributes[key] = Math.max(Number.isFinite(attrVal) ? Math.floor(attrVal) : 1, 1);
+    // trackMax from sheetSettings or default (capped at 12)
     const tmVal = Number(sys.sheetSettings?.trackMax?.attributes?.[key]);
     trackMax[key] = Number.isFinite(tmVal) ? Math.min(Math.max(Math.floor(tmVal), 1), 12) : 12;
   }
@@ -160,6 +164,7 @@ function buildFormDataFromSeed(seed) {
     label: seed.name ?? "",
     img: seed.img ?? "",
     manualCoreBase,
+    attributes,
     combatProfile: {
       accuracy: toNumber(sys.combatProfile?.accuracy, 0),
       damage: toNumber(sys.combatProfile?.damage, 0),
@@ -238,8 +243,10 @@ async function setupAlternateFormData(actor) {
     }
     if (Object.keys(altForms).length > 0) {
       await actor.setFlag(POKROLE.ID, "alternateForms", altForms);
-      // Also store the base form's data for HP/Will max calculation
-      const baseData = buildFormDataFromActor(actor);
+      // Store the base form's data from SEED (not actor) for reliable HP/Will max
+      const speciesName = actor.system?.species || actor.name;
+      const baseSeed = findPokemonSeedByName(speciesName);
+      const baseData = baseSeed ? buildFormDataFromSeed(baseSeed) : buildFormDataFromActor(actor);
       await actor.setFlag(POKROLE.ID, "baseFormStats", baseData);
       console.log(`PokRole | Setup alternate forms for ${actor.name}:`, Object.keys(altForms));
     }
@@ -257,8 +264,9 @@ async function setupAlternateFormData(actor) {
     const formData = buildFormDataFromSeed(primarySeed);
     if (formData) {
       await actor.setFlag(POKROLE.ID, "alternateForms", { [formData.label]: formData });
-      // Also store the base form's data for HP/Will max calculation
-      const baseData = buildFormDataFromActor(actor);
+      // Store base form from seed data for reliable HP/Will max
+      const baseSeed = findPokemonSeedByName(actorNameLower);
+      const baseData = baseSeed ? buildFormDataFromSeed(baseSeed) : buildFormDataFromActor(actor);
       await actor.setFlag(POKROLE.ID, "baseFormStats", baseData);
       console.log(`PokRole | Setup alternate forms for ${actor.name} (reverse):`, [formData.label]);
     }
@@ -14244,9 +14252,14 @@ export class PokRoleActor extends Actor {
     let targetData = null;
 
     if (revertToOriginal && originalStats) {
-      // Reverting to original form
+      // Reverting to original form using combat snapshot
       targetData = originalStats;
-    } else {
+    } else if (revertToOriginal) {
+      // No combat snapshot — try baseFormStats (permanent base form data)
+      const baseFormStats = actor.getFlag(POKROLE.ID, "baseFormStats");
+      if (baseFormStats) targetData = baseFormStats;
+    }
+    if (!targetData && !revertToOriginal) {
       // Switching to an alternate form — find it in altForms
       // First try exact key match, then fuzzy keyword match
       if (altForms[targetFormLabel]) {
@@ -17430,16 +17443,29 @@ export class PokRoleActor extends Actor {
         content: `<strong>${this.name}</strong> reverted to its original form.`
       });
     } else {
-      // Legacy fallback: only form string
-      const originalForm = this.getFlag(POKROLE.ID, "originalForm");
-      if (originalForm) {
-        console.log(`PokRole | [Form cleanup] Restoring ${this.name}'s form to ${originalForm}`);
-        await this.update({ "system.form": originalForm });
-        await this.unsetFlag(POKROLE.ID, "originalForm");
+      // Fallback: check if the actor has a baseFormStats flag and is currently in a different form
+      const baseFormStats = this.getFlag(POKROLE.ID, "baseFormStats");
+      const currentForm = `${this.system?.form ?? ""}`.trim();
+      if (baseFormStats && currentForm) {
+        // Actor is in an alternate form, revert using baseFormStats
+        console.log(`PokRole | [Form cleanup] Restoring ${this.name}'s form using baseFormStats`);
+        await this._applyFormChange(this, "", true);
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor: this }),
           content: `<strong>${this.name}</strong> reverted to its original form.`
         });
+      } else {
+        // Legacy fallback: only form string
+        const originalForm = this.getFlag(POKROLE.ID, "originalForm");
+        if (originalForm) {
+          console.log(`PokRole | [Form cleanup] Restoring ${this.name}'s form to ${originalForm}`);
+          await this.update({ "system.form": originalForm });
+          await this.unsetFlag(POKROLE.ID, "originalForm");
+          await ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: this }),
+            content: `<strong>${this.name}</strong> reverted to its original form.`
+          });
+        }
       }
     }
 
@@ -21952,7 +21978,7 @@ export class PokRoleActor extends Actor {
     }
 
     const evolutions = (Array.isArray(this.system?.evolutions) ? this.system.evolutions : [])
-      .filter(e => e.to && e.to.trim() !== "" && e.kind !== "mega");
+      .filter(e => e.to && e.to.trim() !== "" && e.kind !== "mega" && e.kind !== "form");
     if (evolutions.length === 0) {
       ui.notifications.warn(game.i18n.localize("POKROLE.Pokemon.EvolveNoEvolutions"));
       return;

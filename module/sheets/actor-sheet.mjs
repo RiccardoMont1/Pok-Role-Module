@@ -469,7 +469,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         medium: "POKROLE.Pokemon.EvolutionMedium",
         slow: "POKROLE.Pokemon.EvolutionSlow"
       };
-      const isValidEvolution = e => e.to && e.to.trim() !== "" && e.kind !== "mega";
+      const isValidEvolution = e => e.to && e.to.trim() !== "" && e.kind !== "mega" && e.kind !== "form";
       let evolutions = Array.isArray(this.actor.system.evolutions)
         ? this.actor.system.evolutions.filter(isValidEvolution)
         : [];
