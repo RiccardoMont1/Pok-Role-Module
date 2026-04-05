@@ -275,8 +275,33 @@ export class PokemonDataModel extends BaseCharacterDataModel {
     const baseHp = Math.max(Math.floor(Number(this.baseHp) || 0), 1);
     const vitality = Math.max(Math.floor(Number(this.attributes?.vitality) || 0), 0);
     const insight = Math.max(Math.floor(Number(this.attributes?.insight) || 0), 0);
-    this.resources.hp.max = baseHp + vitality;
-    this.resources.will.max = insight + 3;
+    let bestHpMax = baseHp + vitality;
+    let bestWillMax = insight + 3;
+
+    // HP & Will = max across all forms (both forms share HP & Will, pick highest)
+    try {
+      const actor = this.parent;
+      const altForms = actor?.getFlag?.("pok-role-system", "alternateForms") ?? {};
+      for (const formData of Object.values(altForms)) {
+        // Compute that form's vitality and insight from base + distributions
+        const fBase = formData.manualCoreBase ?? {};
+        const fDist = formData.rankDistributions ?? {};
+        let fVit = Math.max(Math.floor(Number(fBase.vitality) || 0), 0);
+        let fIns = Math.max(Math.floor(Number(fBase.insight) || 0), 0);
+        for (const rankDist of Object.values(fDist)) {
+          fVit += Math.max(Math.floor(Number(rankDist?.attr?.vitality) || 0), 0);
+          fIns += Math.max(Math.floor(Number(rankDist?.attr?.insight) || 0), 0);
+        }
+        const fBaseHp = Math.max(Math.floor(Number(formData.baseHp) || 0), 1);
+        bestHpMax = Math.max(bestHpMax, fBaseHp + fVit);
+        bestWillMax = Math.max(bestWillMax, fIns + 3);
+      }
+    } catch (e) {
+      // Flags may not be accessible during initial data preparation
+    }
+
+    this.resources.hp.max = bestHpMax;
+    this.resources.will.max = bestWillMax;
     if (this.resources.hp.value > this.resources.hp.max) {
       this.resources.hp.value = this.resources.hp.max;
     }

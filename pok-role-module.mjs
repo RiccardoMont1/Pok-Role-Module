@@ -26,7 +26,8 @@ import {
   PokRoleActor,
   PokRoleItem,
   clearCombatDelayedEffects,
-  processCombatDelayedEffects
+  processCombatDelayedEffects,
+  setupAlternateFormData
 } from "./module/documents.mjs";
 import {
   clearCombatMoveQueue,
@@ -1335,6 +1336,13 @@ function renderActiveEffectAutomationConfig(app, html) {
 // Force actorLink=true by default on all new actors so token data stays in sync
 Hooks.on("preCreateActor", (actor) => {
   actor.updateSource({ "prototypeToken.actorLink": true });
+});
+
+// Auto-setup alternate form data when a Pokemon actor is created
+Hooks.on("createActor", async (actor) => {
+  if (actor.type === "pokemon" && game.user?.isGM) {
+    await setupAlternateFormData(actor);
+  }
 });
 
 Hooks.once("init", () => {

@@ -3097,7 +3097,9 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
       pendingFormData = null,
       attrMax = 5,
       attrMaxByKey = null,
-      replaceTrackedDistributions = false
+      replaceTrackedDistributions = false,
+      dialogTitle = null,
+      returnDistributionsOnly = false
     } = options;
     const loc = (key) => game.i18n.localize(key);
 
@@ -3207,7 +3209,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
     return new Promise((resolve) => {
       const dlg = new Dialog({
-        title: loc("POKROLE.Dialog.DistributePoints"),
+        title: dialogTitle ?? loc("POKROLE.Dialog.DistributePoints"),
         content,
         buttons: {
           confirm: {
@@ -3313,6 +3315,15 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
           // Apply the update data that was prepared in the confirm callback
           if (state.updateData) {
             try {
+              // If returnDistributionsOnly, don't write to actor — just return the data
+              if (returnDistributionsOnly) {
+                resolve({
+                  updateData: state.updateData,
+                  distributed: state.distributed,
+                  values: { ...state.values }
+                });
+                return;
+              }
               await this.actor.update(state.updateData);
               if (trackRank && state.distributed) {
                 const allDist = replaceTrackedDistributions
@@ -3435,6 +3446,11 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     const skillLimit = newBonuses.skillLimit;
 
     if (diffAttr > 0 || diffSocial > 0 || diffSkill > 0) {
+      // Check for alternate forms
+      const altForms = this.actor.getFlag("pok-role-system", "alternateForms") ?? {};
+      const altFormKeys = Object.keys(altForms);
+      const hasAltForms = altFormKeys.length > 0;
+
       const {
         attrBase: currentAttrBase,
         socialBase: currentSocialBase,
@@ -3447,18 +3463,109 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
         attrMaxByKey: this._getPokemonTrackMaxConfig().attributes
       });
       if (effectivePools.attr <= 0 && effectivePools.social <= 0 && effectivePools.skill <= 0) {
-        await this.actor.update({ "system.tier": newTier, "system.trainingPoints": currentTP - tpCost });
-        return true;
+        if (!hasAltForms) {
+          await this.actor.update({ "system.tier": newTier, "system.trainingPoints": currentTP - tpCost });
+          return true;
+        }
       }
-      const confirmed = await this._showPointDistributionDialog(effectivePools.attr, effectivePools.social, effectivePools.skill, skillLimit, {
-        attrBase: currentAttrBase,
-        socialBase: currentSocialBase,
-        skillBase: currentSkillBase,
-        trackRank: newTier,
-        pendingFormData: { "system.tier": newTier, "system.trainingPoints": currentTP - tpCost },
-        attrMaxByKey: this._getPokemonTrackMaxConfig().attributes
-      });
-      return confirmed;
+
+      const loc = (key) => game.i18n.localize(key);
+      const baseFormLabel = this.actor.system.species || this.actor.name;
+      const primaryTitle = hasAltForms
+        ? `${loc("POKROLE.Dialog.DistributePoints")} — ${baseFormLabel}`
+        : null;
+
+      // Dialog 1: Primary form
+      if (effectivePools.attr > 0 || effectivePools.social > 0 || effectivePools.skill > 0) {
+        const confirmed = await this._showPointDistributionDialog(effectivePools.attr, effectivePools.social, effectivePools.skill, skillLimit, {
+          attrBase: currentAttrBase,
+          socialBase: currentSocialBase,
+          skillBase: currentSkillBase,
+          trackRank: newTier,
+          pendingFormData: { "system.tier": newTier, "system.trainingPoints": currentTP - tpCost },
+          attrMaxByKey: this._getPokemonTrackMaxConfig().attributes,
+          dialogTitle: primaryTitle
+        });
+        if (!confirmed) return false;
+      } else if (hasAltForms) {
+        // Primary form has no room, just update tier
+        await this.actor.update({ "system.tier": newTier, "system.trainingPoints": currentTP - tpCost });
+      }
+
+      // Dialog 2+: Each alternate form (if any)
+      if (hasAltForms) {
+        for (const formKey of altFormKeys) {
+          const formData = altForms[formKey];
+          const formLabel = formData.label || formKey;
+
+          // Build base state from alt form's manualCoreBase + existing distributions
+          const altAttrBase = {};
+          const existingDist = formData.rankDistributions ?? {};
+          for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
+            let baseVal = Math.max(Math.floor(Number(formData.manualCoreBase?.[key]) || 1), 1);
+            // Add previously distributed points for earlier tiers
+            for (const [rank, rankDist] of Object.entries(existingDist)) {
+              if (rank !== newTier) {
+                baseVal += Math.max(Math.floor(Number(rankDist?.attr?.[key]) || 0), 0);
+              }
+            }
+            altAttrBase[key] = baseVal;
+          }
+          const altSocialBase = {};
+          for (const { key } of SOCIAL_ATTRIBUTE_DEFINITIONS) {
+            let val = 1;
+            for (const rankDist of Object.values(existingDist)) {
+              val += Math.max(Math.floor(Number(rankDist?.social?.[key]) || 0), 0);
+            }
+            altSocialBase[key] = val;
+          }
+          const altSkillBase = {};
+          for (const { key } of SKILL_DEFINITIONS) {
+            let val = 0;
+            for (const rankDist of Object.values(existingDist)) {
+              val += Math.max(Math.floor(Number(rankDist?.skill?.[key]) || 0), 0);
+            }
+            altSkillBase[key] = val;
+          }
+
+          const altAttrMaxByKey = {};
+          for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
+            altAttrMaxByKey[key] = formData.trackMax?.[key] ?? 12;
+          }
+
+          const altPools = this._getEffectivePokemonPointPools(diffAttr, diffSocial, diffSkill, skillLimit, {
+            attrBase: altAttrBase,
+            socialBase: altSocialBase,
+            skillBase: altSkillBase,
+            attrMaxByKey: altAttrMaxByKey
+          });
+
+          if (altPools.attr <= 0 && altPools.social <= 0 && altPools.skill <= 0) continue;
+
+          const altResult = await this._showPointDistributionDialog(
+            altPools.attr, altPools.social, altPools.skill, skillLimit, {
+              attrBase: altAttrBase,
+              socialBase: altSocialBase,
+              skillBase: altSkillBase,
+              trackRank: newTier,
+              attrMaxByKey: altAttrMaxByKey,
+              returnDistributionsOnly: true,
+              dialogTitle: `${loc("POKROLE.Dialog.DistributePoints")} — ${formLabel}`
+            }
+          );
+
+          if (!altResult) return false;
+
+          // Store alternate form's distributions for this rank
+          const updatedAltForms = foundry.utils.deepClone(this.actor.getFlag("pok-role-system", "alternateForms") ?? {});
+          if (updatedAltForms[formKey]) {
+            if (!updatedAltForms[formKey].rankDistributions) updatedAltForms[formKey].rankDistributions = {};
+            updatedAltForms[formKey].rankDistributions[newTier] = altResult.distributed;
+          }
+          await this.actor.setFlag("pok-role-system", "alternateForms", updatedAltForms);
+        }
+      }
+      return true;
     } else {
       // No points to distribute, just update directly
       await this.actor.update({ "system.tier": newTier, "system.trainingPoints": currentTP - tpCost });
@@ -3522,6 +3629,7 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
   /**
    * Retrain a pokemon: reset all distributed points to base, deduct TP, then
    * open a full point distribution dialog with ALL cumulative points for the current tier.
+   * If the pokemon has alternate forms, show one dialog per form.
    */
   async performPokemonRetrain(tpCost) {
     const currentTier = this.actor.system.tier;
@@ -3565,33 +3673,129 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     });
     if (!confirmed) return false;
 
-    const {
-      attrBase,
-      socialBase,
-      skillBase
-    } = this._getPokemonRetrainBaseState();
-    const effectivePools = this._getEffectivePokemonPointPools(totalAttr, totalSocial, totalSkill, skillLimit, {
-      attrBase,
-      socialBase,
-      skillBase,
-      attrMaxByKey: this._getPokemonTrackMaxConfig().attributes
-    });
-    if (effectivePools.attr <= 0 && effectivePools.social <= 0 && effectivePools.skill <= 0) {
-      ui.notifications.warn(game.i18n.localize("POKROLE.Training.RetrainNoPoints"));
-      return false;
-    }
+    // Check for alternate forms
+    const altForms = this.actor.getFlag("pok-role-system", "alternateForms") ?? {};
+    const altFormKeys = Object.keys(altForms);
+    const hasAltForms = altFormKeys.length > 0;
 
-    // Open full distribution dialog using the species base values as floor.
-    const success = await this._showPointDistributionDialog(effectivePools.attr, effectivePools.social, effectivePools.skill, skillLimit, {
-      trackRank: currentTier,
-      attrBase,
-      socialBase,
-      skillBase,
-      pendingFormData: { "system.trainingPoints": currentTP - tpCost },
-      attrMaxByKey: this._getPokemonTrackMaxConfig().attributes,
-      replaceTrackedDistributions: true
-    });
-    return Boolean(success);
+    if (hasAltForms) {
+      // --- MULTI-FORM RETRAIN: one dialog per form ---
+      const loc = (key) => game.i18n.localize(key);
+      const baseFormLabel = this.actor.system.species || this.actor.name || loc("POKROLE.Dialog.DistributePoints");
+
+      // Dialog 1: Primary/current form
+      const {
+        attrBase: primaryAttrBase,
+        socialBase: primarySocialBase,
+        skillBase: primarySkillBase
+      } = this._getPokemonRetrainBaseState();
+      const primaryPools = this._getEffectivePokemonPointPools(totalAttr, totalSocial, totalSkill, skillLimit, {
+        attrBase: primaryAttrBase,
+        socialBase: primarySocialBase,
+        skillBase: primarySkillBase,
+        attrMaxByKey: this._getPokemonTrackMaxConfig().attributes
+      });
+
+      const primaryResult = await this._showPointDistributionDialog(
+        primaryPools.attr, primaryPools.social, primaryPools.skill, skillLimit, {
+          attrBase: primaryAttrBase,
+          socialBase: primarySocialBase,
+          skillBase: primarySkillBase,
+          trackRank: currentTier,
+          pendingFormData: { "system.trainingPoints": currentTP - tpCost },
+          attrMaxByKey: this._getPokemonTrackMaxConfig().attributes,
+          replaceTrackedDistributions: true,
+          dialogTitle: `${loc("POKROLE.Dialog.DistributePoints")} — ${baseFormLabel}`
+        }
+      );
+      if (!primaryResult) return false;
+
+      // Dialog 2+: Each alternate form
+      for (const formKey of altFormKeys) {
+        const formData = altForms[formKey];
+        const formLabel = formData.label || formKey;
+
+        // Build base state from the alternate form's manualCoreBase
+        const altAttrBase = {};
+        for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
+          altAttrBase[key] = Math.max(Math.floor(Number(formData.manualCoreBase?.[key]) || 1), 1);
+        }
+        const altSocialBase = Object.fromEntries(
+          SOCIAL_ATTRIBUTE_DEFINITIONS.map(({ key }) => [key, 1])
+        );
+        const altSkillBase = Object.fromEntries(
+          SKILL_DEFINITIONS.map(({ key }) => [key, 0])
+        );
+
+        // Use the alternate form's trackMax
+        const altAttrMaxByKey = {};
+        for (const { key } of CORE_ATTRIBUTE_DEFINITIONS) {
+          altAttrMaxByKey[key] = formData.trackMax?.[key] ?? 12;
+        }
+
+        const altPools = this._getEffectivePokemonPointPools(totalAttr, totalSocial, totalSkill, skillLimit, {
+          attrBase: altAttrBase,
+          socialBase: altSocialBase,
+          skillBase: altSkillBase,
+          attrMaxByKey: altAttrMaxByKey
+        });
+
+        const altResult = await this._showPointDistributionDialog(
+          altPools.attr, altPools.social, altPools.skill, skillLimit, {
+            attrBase: altAttrBase,
+            socialBase: altSocialBase,
+            skillBase: altSkillBase,
+            trackRank: currentTier,
+            attrMaxByKey: altAttrMaxByKey,
+            replaceTrackedDistributions: true,
+            returnDistributionsOnly: true,
+            dialogTitle: `${loc("POKROLE.Dialog.DistributePoints")} — ${formLabel}`
+          }
+        );
+
+        if (!altResult) return false;
+
+        // Store alternate form's distributions
+        const updatedAltForms = foundry.utils.deepClone(this.actor.getFlag("pok-role-system", "alternateForms") ?? {});
+        if (updatedAltForms[formKey]) {
+          updatedAltForms[formKey].rankDistributions = { [currentTier]: altResult.distributed };
+        }
+        await this.actor.setFlag("pok-role-system", "alternateForms", updatedAltForms);
+      }
+
+      ui.notifications.info(game.i18n.localize("POKROLE.Dialog.PointsDistributed"));
+      return true;
+
+    } else {
+      // --- SINGLE FORM RETRAIN (original behavior) ---
+      const {
+        attrBase,
+        socialBase,
+        skillBase
+      } = this._getPokemonRetrainBaseState();
+      const effectivePools = this._getEffectivePokemonPointPools(totalAttr, totalSocial, totalSkill, skillLimit, {
+        attrBase,
+        socialBase,
+        skillBase,
+        attrMaxByKey: this._getPokemonTrackMaxConfig().attributes
+      });
+      if (effectivePools.attr <= 0 && effectivePools.social <= 0 && effectivePools.skill <= 0) {
+        ui.notifications.warn(game.i18n.localize("POKROLE.Training.RetrainNoPoints"));
+        return false;
+      }
+
+      // Open full distribution dialog using the species base values as floor.
+      const success = await this._showPointDistributionDialog(effectivePools.attr, effectivePools.social, effectivePools.skill, skillLimit, {
+        trackRank: currentTier,
+        attrBase,
+        socialBase,
+        skillBase,
+        pendingFormData: { "system.trainingPoints": currentTP - tpCost },
+        attrMaxByKey: this._getPokemonTrackMaxConfig().attributes,
+        replaceTrackedDistributions: true
+      });
+      return Boolean(success);
+    }
   }
 
   /**

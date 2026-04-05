@@ -31,6 +31,7 @@ import {
 } from "./constants.mjs";
 import { evaluateNumericFormula } from "./formula-engine.mjs";
 import { EVIOLITE_ELIGIBLE_SPECIES } from "./seeds/generated/eviolite-species.mjs";
+import { POKEMON_ACTOR_COMPENDIUM_ENTRIES } from "./seeds/generated/pokemon-actor-seeds.mjs";
 
 function toNumber(value, fallback = 0) {
   const numericValue = Number(value);
@@ -103,6 +104,125 @@ const TYPE_KEY_ALIASES = Object.freeze({
   none: "none",
   nessuno: "none"
 });
+
+// ---------------------------------------------------------------------------
+// Alternate-form utilities
+// ---------------------------------------------------------------------------
+
+/** Known form-change ability names (all lowercase). */
+const FORM_CHANGE_ABILITIES = Object.freeze([
+  "stance change", "stance-change", "stancechange",
+  "zen mode", "zen-mode", "zenmode",
+  "schooling",
+  "shields down", "shields-down", "shieldsdown"
+]);
+
+/**
+ * Look up a pokemon seed entry by name (case-insensitive).
+ * Returns the full seed object { name, img, system: { ... } } or null.
+ */
+function findPokemonSeedByName(targetName) {
+  if (!targetName) return null;
+  const lower = targetName.trim().toLowerCase();
+  return POKEMON_ACTOR_COMPENDIUM_ENTRIES.find(
+    (entry) => (entry.name ?? "").toLowerCase() === lower
+  ) ?? null;
+}
+
+/**
+ * Extract the form-change evolution targets from a pokemon's evolutions array.
+ * Returns array of target species names for kind === "form" evolutions.
+ */
+function getFormEvolutionTargets(evolutions) {
+  if (!Array.isArray(evolutions)) return [];
+  return evolutions
+    .filter((evo) => evo.kind === "form" && evo.to && `${evo.to}`.trim().length > 0)
+    .map((evo) => `${evo.to}`.trim());
+}
+
+/**
+ * Build the alternate form data object from a seed entry.
+ * Extracts attributes base, combat profile, types, baseHp, trackMax, and image.
+ */
+function buildFormDataFromSeed(seed) {
+  if (!seed?.system) return null;
+  const sys = seed.system;
+  const manualCoreBase = {};
+  const trackMax = {};
+  for (const key of CORE_ATTRIBUTE_KEYS) {
+    const val = Number(sys.manualCoreBase?.[key] ?? sys.attributes?.[key] ?? 1);
+    manualCoreBase[key] = Math.max(Number.isFinite(val) ? Math.floor(val) : 1, 1);
+    // trackMax from sheetSettings or default double of base (capped at 12)
+    const tmVal = Number(sys.sheetSettings?.trackMax?.attributes?.[key]);
+    trackMax[key] = Number.isFinite(tmVal) ? Math.min(Math.max(Math.floor(tmVal), 1), 12) : 12;
+  }
+  return {
+    label: seed.name ?? "",
+    img: seed.img ?? "",
+    manualCoreBase,
+    combatProfile: {
+      accuracy: toNumber(sys.combatProfile?.accuracy, 0),
+      damage: toNumber(sys.combatProfile?.damage, 0),
+      evasion: toNumber(sys.combatProfile?.evasion, 0),
+      clash: toNumber(sys.combatProfile?.clash, 0)
+    },
+    types: {
+      primary: sys.types?.primary ?? "normal",
+      secondary: sys.types?.secondary ?? "none"
+    },
+    baseHp: toNumber(sys.baseHp, 4),
+    trackMax,
+    rankDistributions: {}
+  };
+}
+
+/**
+ * Check whether a given ability name is a form-change ability.
+ */
+function isFormChangeAbility(abilityName) {
+  return FORM_CHANGE_ABILITIES.includes(`${abilityName ?? ""}`.trim().toLowerCase());
+}
+
+/**
+ * Auto-setup alternate form data on a pokemon actor.
+ * Looks up the alternate form(s) in the seed data and stores them as flags.
+ */
+async function setupAlternateFormData(actor) {
+  if (!actor || actor.type !== "pokemon") return;
+  const evolutions = actor.system?.evolutions ?? [];
+  const formTargets = getFormEvolutionTargets(evolutions);
+
+  if (formTargets.length > 0) {
+    // This actor is the "primary" form — look up each alternate form
+    const altForms = {};
+    for (const targetName of formTargets) {
+      const seed = findPokemonSeedByName(targetName);
+      if (!seed) continue;
+      const formData = buildFormDataFromSeed(seed);
+      if (formData) altForms[formData.label] = formData;
+    }
+    if (Object.keys(altForms).length > 0) {
+      await actor.setFlag(POKROLE.ID, "alternateForms", altForms);
+      console.log(`PokRole | Setup alternate forms for ${actor.name}:`, Object.keys(altForms));
+    }
+  } else {
+    // Check if THIS actor IS an alternate form (terminal: kind=form, to="")
+    const hasTerminalForm = evolutions.some((evo) => evo.kind === "form" && (!evo.to || `${evo.to}`.trim() === ""));
+    if (!hasTerminalForm) return;
+    // Reverse lookup: find the primary form that points to this actor
+    const actorNameLower = (actor.name ?? "").toLowerCase();
+    const primarySeed = POKEMON_ACTOR_COMPENDIUM_ENTRIES.find((entry) => {
+      const evoTargets = getFormEvolutionTargets(entry.system?.evolutions ?? []);
+      return evoTargets.some((t) => t.toLowerCase() === actorNameLower);
+    });
+    if (!primarySeed) return;
+    const formData = buildFormDataFromSeed(primarySeed);
+    if (formData) {
+      await actor.setFlag(POKROLE.ID, "alternateForms", { [formData.label]: formData });
+      console.log(`PokRole | Setup alternate forms for ${actor.name} (reverse):`, [formData.label]);
+    }
+  }
+}
 
 function hasPainPenaltyException(primaryTraitKey, secondaryTraitKey) {
   return primaryTraitKey === "vitality" || secondaryTraitKey === "vitality";
@@ -13995,20 +14115,155 @@ export class PokRoleActor extends Actor {
   }
 
   /**
+   * Save the current form's full stats snapshot so it can be restored later.
+   * Only saves once (the first form change during combat).
+   */
+  async _saveOriginalFormStats(actor) {
+    const existing = actor.getFlag(POKROLE.ID, "originalFormStats");
+    if (existing) return; // already saved
+
+    const snapshot = {
+      formLabel: actor.system?.form ?? "",
+      img: actor.img ?? "",
+      manualCoreBase: {},
+      attributes: {},
+      combatProfile: {
+        accuracy: toNumber(actor.system?.combatProfile?.accuracy, 0),
+        damage: toNumber(actor.system?.combatProfile?.damage, 0),
+        evasion: toNumber(actor.system?.combatProfile?.evasion, 0),
+        clash: toNumber(actor.system?.combatProfile?.clash, 0)
+      },
+      types: {
+        primary: actor.system?.types?.primary ?? "normal",
+        secondary: actor.system?.types?.secondary ?? "none"
+      },
+      baseHp: toNumber(actor.system?.baseHp, 4)
+    };
+    for (const key of CORE_ATTRIBUTE_KEYS) {
+      snapshot.attributes[key] = toNumber(actor.system?.attributes?.[key], 1);
+      snapshot.manualCoreBase[key] = toNumber(actor.system?.manualCoreBase?.[key], 1);
+    }
+    await actor.setFlag(POKROLE.ID, "originalFormStats", snapshot);
+    // Also keep the legacy originalForm flag for backward compat
+    const existingLegacy = actor.getFlag(POKROLE.ID, "originalForm");
+    if (!existingLegacy && existingLegacy !== "") {
+      await actor.setFlag(POKROLE.ID, "originalForm", actor.system?.form ?? "");
+    }
+  }
+
+  /**
+   * Apply a form change: swap attributes, combat profile, types, baseHp, image.
+   * Uses the alternate form data stored in the alternateForms flag.
+   * For reverting to original form, uses the originalFormStats flag.
+   */
+  async _applyFormChange(actor, targetFormLabel, revertToOriginal = false) {
+    const altForms = actor.getFlag(POKROLE.ID, "alternateForms") ?? {};
+    const originalStats = actor.getFlag(POKROLE.ID, "originalFormStats");
+
+    let targetData = null;
+
+    if (revertToOriginal && originalStats) {
+      // Reverting to original form
+      targetData = originalStats;
+    } else {
+      // Switching to an alternate form — find it in altForms
+      // First try exact key match, then fuzzy keyword match
+      if (altForms[targetFormLabel]) {
+        targetData = altForms[targetFormLabel];
+      } else {
+        // Normalize: "Blade Forme" → "blade", "Zen Mode" → "zen", "Core Form" → "core", etc.
+        const targetLower = (targetFormLabel ?? "").toLowerCase()
+          .replace(/\s*(forme?|mode)\s*/gi, " ").trim();
+        const targetWords = targetLower.split(/\s+/).filter(Boolean);
+        // For Schooling: "School Form" should match "Swarm Form" (they're the same transformation)
+        if (targetWords.includes("school")) targetWords.push("swarm");
+        if (targetWords.includes("solo")) targetWords.push("wishiwashi");
+
+        for (const [key, formData] of Object.entries(altForms)) {
+          const keyLower = key.toLowerCase();
+          const labelLower = (formData.label ?? "").toLowerCase();
+          // Check if any target keyword appears in the key or label
+          const matches = targetWords.some((w) => keyLower.includes(w) || labelLower.includes(w));
+          if (matches) {
+            targetData = formData;
+            break;
+          }
+        }
+      }
+    }
+
+    if (!targetData) {
+      // Fallback: just update the form string as before
+      console.warn(`PokRole | [Form Change] No form data found for "${targetFormLabel}", updating form string only.`);
+      await actor.update({ "system.form": targetFormLabel });
+      return;
+    }
+
+    // Build the attribute values: manualCoreBase + any distributed points for this form
+    const distributions = targetData.rankDistributions ?? {};
+    const updateData = {
+      "system.form": targetFormLabel,
+      "system.baseHp": targetData.baseHp ?? 4,
+      "system.combatProfile.accuracy": targetData.combatProfile?.accuracy ?? 0,
+      "system.combatProfile.damage": targetData.combatProfile?.damage ?? 0,
+      "system.combatProfile.evasion": targetData.combatProfile?.evasion ?? 0,
+      "system.combatProfile.clash": targetData.combatProfile?.clash ?? 0,
+      "system.types.primary": targetData.types?.primary ?? "normal",
+      "system.types.secondary": targetData.types?.secondary ?? "none"
+    };
+
+    // Set image if available
+    if (targetData.img) {
+      updateData.img = targetData.img;
+    }
+
+    // Set attributes: base + sum of all rank distributions for this form
+    const base = revertToOriginal
+      ? (targetData.manualCoreBase ?? targetData.attributes ?? {})
+      : (targetData.manualCoreBase ?? {});
+
+    for (const key of CORE_ATTRIBUTE_KEYS) {
+      const baseVal = toNumber(base[key], 1);
+      let distributed = 0;
+      for (const rankDist of Object.values(distributions)) {
+        distributed += toNumber(rankDist?.attr?.[key], 0);
+      }
+      updateData[`system.attributes.${key}`] = baseVal + distributed;
+      if (!revertToOriginal) {
+        updateData[`system.manualCoreBase.${key}`] = baseVal;
+      }
+    }
+
+    // For reverting, restore manualCoreBase and full attributes from snapshot
+    if (revertToOriginal && targetData.attributes) {
+      for (const key of CORE_ATTRIBUTE_KEYS) {
+        updateData[`system.attributes.${key}`] = toNumber(targetData.attributes[key], 1);
+        updateData[`system.manualCoreBase.${key}`] = toNumber(targetData.manualCoreBase?.[key], 1);
+      }
+    }
+
+    await actor.update(updateData);
+
+    // Update token image if linked
+    const linkedTokens = actor.getActiveTokens(true);
+    for (const token of linkedTokens) {
+      try {
+        if (targetData.img) {
+          await token.document.update({ "texture.src": targetData.img }, { animate: false });
+        }
+      } catch (e) {
+        console.warn(`PokRole | [Form Change] Token update failed:`, e);
+      }
+    }
+  }
+
+  /**
    * Stance Change / Zen Mode / Schooling / Shields Down: conditional form changes.
    * These are checked at various points (move use, HP change, etc.)
    */
   async _checkConditionalFormChange(actor, triggerType = "move-used", context = {}) {
     if (!actor || !(actor instanceof PokRoleActor) || actor.type !== "pokemon") return;
     const ability = `${actor.system?.ability ?? ""}`.trim().toLowerCase();
-
-    // Helper: save original form if not already saved
-    const _saveOriginalForm = async () => {
-      const existing = actor.getFlag(POKROLE.ID, "originalForm");
-      if (!existing && existing !== "") {
-        await actor.setFlag(POKROLE.ID, "originalForm", actor.system?.form ?? "");
-      }
-    };
 
     // Stance Change: Blade Forme when using attack, Shield Forme when using King's Shield
     if (["stance change", "stance-change", "stancechange"].includes(ability) && triggerType === "move-used") {
@@ -14020,15 +14275,15 @@ export class PokRoleActor extends Actor {
       const currentForm = `${actor.system?.form ?? ""}`.trim().toLowerCase();
 
       if (isKingsShield && !currentForm.includes("shield")) {
-        await _saveOriginalForm();
-        await actor.update({ "system.form": "Shield Forme" });
+        await this._saveOriginalFormStats(actor);
+        await this._applyFormChange(actor, "Shield Forme", true);
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor }),
           content: `<strong>${actor.name}</strong> changed to <strong>Shield Forme</strong>!`
         });
       } else if (isAttack && !currentForm.includes("blade")) {
-        await _saveOriginalForm();
-        await actor.update({ "system.form": "Blade Forme" });
+        await this._saveOriginalFormStats(actor);
+        await this._applyFormChange(actor, "Blade Forme");
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor }),
           content: `<strong>${actor.name}</strong> changed to <strong>Blade Forme</strong>!`
@@ -14042,18 +14297,20 @@ export class PokRoleActor extends Actor {
       const maxHp = Math.max(toNumber(actor.system?.resources?.hp?.max, 1), 1);
       const currentForm = `${actor.system?.form ?? ""}`.trim().toLowerCase();
       if (hp <= Math.floor(maxHp / 2) && hp > 0 && !currentForm.includes("zen")) {
-        await _saveOriginalForm();
-        await actor.update({ "system.form": "Zen Mode" });
+        await this._saveOriginalFormStats(actor);
+        await this._applyFormChange(actor, "Zen Mode");
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor }),
           content: `<strong>${actor.name}</strong> entered <strong>Zen Mode</strong>!`
         });
       } else if (hp > Math.floor(maxHp / 2) && currentForm.includes("zen")) {
-        await actor.update({ "system.form": "" });
+        await this._applyFormChange(actor, "", true);
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor }),
           content: `<strong>${actor.name}</strong> reverted from Zen Mode!`
         });
+        await actor.unsetFlag(POKROLE.ID, "originalFormStats");
+        await actor.unsetFlag(POKROLE.ID, "originalForm");
       }
     }
 
@@ -14062,20 +14319,21 @@ export class PokRoleActor extends Actor {
       const hp = toNumber(actor.system?.resources?.hp?.value, 0);
       const maxHp = Math.max(toNumber(actor.system?.resources?.hp?.max, 1), 1);
       const currentForm = `${actor.system?.form ?? ""}`.trim().toLowerCase();
-      if (hp > Math.floor(maxHp / 4) && !currentForm.includes("school")) {
-        await _saveOriginalForm();
-        await actor.update({ "system.form": "School Form" });
+      if (hp > Math.floor(maxHp / 4) && !currentForm.includes("school") && !currentForm.includes("swarm")) {
+        await this._saveOriginalFormStats(actor);
+        await this._applyFormChange(actor, "School Form");
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor }),
           content: `<strong>${actor.name}</strong> formed a <strong>School</strong>!`
         });
-      } else if (hp <= Math.floor(maxHp / 4) && hp > 0 && currentForm.includes("school")) {
-        await _saveOriginalForm();
-        await actor.update({ "system.form": "Solo Form" });
+      } else if (hp <= Math.floor(maxHp / 4) && hp > 0 && (currentForm.includes("school") || currentForm.includes("swarm"))) {
+        await this._applyFormChange(actor, "Solo Form", true);
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor }),
           content: `<strong>${actor.name}'s</strong> school broke apart!`
         });
+        await actor.unsetFlag(POKROLE.ID, "originalFormStats");
+        await actor.unsetFlag(POKROLE.ID, "originalForm");
       }
     }
 
@@ -14085,15 +14343,16 @@ export class PokRoleActor extends Actor {
       const maxHp = Math.max(toNumber(actor.system?.resources?.hp?.max, 1), 1);
       const currentForm = `${actor.system?.form ?? ""}`.trim().toLowerCase();
       if (hp > Math.floor(maxHp / 2) && !currentForm.includes("meteor")) {
-        await _saveOriginalForm();
-        await actor.update({ "system.form": "Meteor Form" });
+        await this._applyFormChange(actor, "Meteor Form", true);
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor }),
           content: `<strong>${actor.name}'s</strong> shields are up! (<strong>Meteor Form</strong>)`
         });
+        await actor.unsetFlag(POKROLE.ID, "originalFormStats");
+        await actor.unsetFlag(POKROLE.ID, "originalForm");
       } else if (hp <= Math.floor(maxHp / 2) && hp > 0 && !currentForm.includes("core")) {
-        await _saveOriginalForm();
-        await actor.update({ "system.form": "Core Form" });
+        await this._saveOriginalFormStats(actor);
+        await this._applyFormChange(actor, "Core Form");
         await ChatMessage.create({
           speaker: ChatMessage.getSpeaker({ actor }),
           content: `<strong>${actor.name}'s</strong> shields went down! (<strong>Core Form</strong>)`
@@ -17066,16 +17325,29 @@ export class PokRoleActor extends Actor {
     }
 
     // Imposter / Transform: clear transform state (handled by existing transform cleanup if any)
-    // Form changes (Stance Change, Zen Mode, Schooling, Shields Down): reset form at combat end
-    const originalForm = this.getFlag(POKROLE.ID, "originalForm");
-    if (originalForm) {
-      console.log(`PokRole | [Form cleanup] Restoring ${this.name}'s form to ${originalForm}`);
-      await this.update({ "system.form": originalForm });
+    // Form changes (Stance Change, Zen Mode, Schooling, Shields Down): full stat restoration at combat end
+    const originalFormStats = this.getFlag(POKROLE.ID, "originalFormStats");
+    if (originalFormStats) {
+      console.log(`PokRole | [Form cleanup] Restoring ${this.name}'s full form stats`);
+      await this._applyFormChange(this, originalFormStats.formLabel ?? "", true);
+      await this.unsetFlag(POKROLE.ID, "originalFormStats");
       await this.unsetFlag(POKROLE.ID, "originalForm");
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: this }),
         content: `<strong>${this.name}</strong> reverted to its original form.`
       });
+    } else {
+      // Legacy fallback: only form string
+      const originalForm = this.getFlag(POKROLE.ID, "originalForm");
+      if (originalForm) {
+        console.log(`PokRole | [Form cleanup] Restoring ${this.name}'s form to ${originalForm}`);
+        await this.update({ "system.form": originalForm });
+        await this.unsetFlag(POKROLE.ID, "originalForm");
+        await ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: this }),
+          content: `<strong>${this.name}</strong> reverted to its original form.`
+        });
+      }
     }
 
     return clearedCount + managedEffectsToDelete.length;
@@ -22062,3 +22334,5 @@ export async function processCombatDelayedEffects(combat, phase) {
   }
   return currentEntries.length - nextEntries.length;
 }
+
+export { setupAlternateFormData, isFormChangeAbility };
