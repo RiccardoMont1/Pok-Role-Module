@@ -1878,6 +1878,61 @@ Hooks.on("deleteCombat", async (combat) => {
 
   console.log(`PokRole | Combat ended (${combatId}), cleaning up ${actorsToClean.size} actors (${cachedActors.length} cached)`);
 
+  // Form-change revert: restore original forms FIRST, before any other cleanup
+  for (const actor of actorsToClean.values()) {
+    if (actor.type !== "pokemon") continue;
+    try {
+      const originalFormStats = actor.getFlag?.("pok-role-system", "originalFormStats");
+      if (!originalFormStats) continue;
+      console.log(`PokRole | [deleteCombat] Reverting ${actor.name} form from snapshot (formLabel="${originalFormStats.formLabel}")`);
+
+      // Build update data directly from snapshot — no dependency on _applyFormChange
+      const updateData = {
+        "system.form": originalFormStats.formLabel ?? "",
+        "system.baseHp": originalFormStats.baseHp ?? 4,
+        "system.combatProfile.accuracy": originalFormStats.combatProfile?.accuracy ?? 0,
+        "system.combatProfile.damage": originalFormStats.combatProfile?.damage ?? 0,
+        "system.combatProfile.evasion": originalFormStats.combatProfile?.evasion ?? 0,
+        "system.combatProfile.clash": originalFormStats.combatProfile?.clash ?? 0,
+        "system.types.primary": originalFormStats.types?.primary ?? "normal",
+        "system.types.secondary": originalFormStats.types?.secondary ?? "none"
+      };
+      if (originalFormStats.img) updateData.img = originalFormStats.img;
+      const CORE_KEYS = ["strength", "dexterity", "vitality", "special", "insight"];
+      for (const key of CORE_KEYS) {
+        if (originalFormStats.attributes?.[key] !== undefined) {
+          updateData[`system.attributes.${key}`] = originalFormStats.attributes[key];
+        }
+        if (originalFormStats.manualCoreBase?.[key] !== undefined) {
+          updateData[`system.manualCoreBase.${key}`] = originalFormStats.manualCoreBase[key];
+        }
+        if (originalFormStats.trackMax?.[key] !== undefined) {
+          updateData[`system.sheetSettings.trackMax.attributes.${key}`] = originalFormStats.trackMax[key];
+        }
+      }
+      await actor.update(updateData);
+
+      // Update tokens
+      if (originalFormStats.img) {
+        for (const token of actor.getActiveTokens(true)) {
+          try { await token.document.update({ "texture.src": originalFormStats.img }, { animate: false }); } catch (_e) { /* */ }
+        }
+      }
+
+      // Clean up flags
+      try { await actor.unsetFlag("pok-role-system", "originalFormStats"); } catch (_e) { /* */ }
+      try { await actor.unsetFlag("pok-role-system", "originalForm"); } catch (_e) { /* */ }
+
+      await ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor }),
+        content: `<strong>${actor.name}</strong> reverted to its original form.`
+      });
+      console.log(`PokRole | [deleteCombat] ${actor.name} form reverted successfully`);
+    } catch (e) {
+      console.error(`PokRole | [deleteCombat] Form revert failed for ${actor.name}:`, e);
+    }
+  }
+
   for (const actor of actorsToClean.values()) {
     const allEffects = actor.effects?.contents ?? [];
 
@@ -2187,6 +2242,10 @@ Hooks.on("deleteCombat", async (combat) => {
 });
 
 Hooks.on("renderPause", (_app, html) => {
+  // Ensure body class is applied early (before "ready" hook) so pause CSS works on startup
+  if (!document.body.classList.contains("pok-role-arcade-ui")) {
+    applyArcadeUiTheme();
+  }
   const pauseRoot = html instanceof jQuery ? html : $(html);
   pauseRoot.addClass("pok-role-arcade-pause");
 });

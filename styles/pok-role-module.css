@@ -461,6 +461,7 @@ body.pok-role-arcade-ui #chat-log.plain.themed.theme-light .chat-message .messag
 
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) button,
 body.pok-role-arcade-ui #sidebar button,
+body.pok-role-arcade-ui #sidebar #settings a,
 body.pok-role-arcade-ui #sidebar .header-actions > button,
 body.pok-role-arcade-ui #sidebar .directory-footer > button,
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) .header-actions > button,
@@ -472,10 +473,12 @@ body.pok-role-arcade-ui .app.window-app:not(.pok-role) .directory-footer > butto
   font-weight: 800;
   letter-spacing: 0.03em;
   box-shadow: var(--arcade-ui-button-shadow);
+  text-decoration: none;
 }
 
 body.pok-role-arcade-ui .app.window-app:not(.pok-role) button:hover,
-body.pok-role-arcade-ui #sidebar button:hover {
+body.pok-role-arcade-ui #sidebar button:hover,
+body.pok-role-arcade-ui #sidebar #settings a:hover {
   filter: brightness(1.04);
   transform: translateY(-1px);
 }
