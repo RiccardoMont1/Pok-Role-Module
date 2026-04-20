@@ -22047,7 +22047,6 @@ export class PokRoleActor extends Actor {
     const targetSeedData = {
       species: targetDoc.system.species ?? targetDoc.name,
       _img: targetDoc.img,
-      biography: targetDoc.system.biography ?? "",
       manualCoreBase: foundry.utils.deepClone(targetDoc.system.manualCoreBase ?? {}),
       sheetSettings: foundry.utils.deepClone(targetDoc.system.sheetSettings ?? {}),
       learnsetByRank: foundry.utils.deepClone(targetDoc.system.learnsetByRank ?? {}),
