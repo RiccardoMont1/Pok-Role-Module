@@ -44,6 +44,7 @@ import {
 } from "./module/move-queue.mjs";
 import { PokRoleActorSheet } from "./module/sheets/actor-sheet.mjs";
 import { PokRoleMoveSheet } from "./module/sheets/item-sheet.mjs";
+import { registerItalianLocalization } from "./module/localization/index.mjs";
 
 const COMBAT_MUTATION_SOCKET_EVENT = `system.${POKROLE.ID}`;
 const ARCADE_UI_THEME_SETTING_KEY = "arcadeUiTheme";
@@ -1440,6 +1441,11 @@ Hooks.once("init", () => {
 
 Hooks.once("ready", async () => {
   applyArcadeUiTheme();
+  try {
+    registerItalianLocalization();
+  } catch (e) {
+    console.warn("Pok-Role | Failed to register Italian localization:", e);
+  }
 
   game.pokrole ??= {};
   // Pending mutation responses keyed by requestId
