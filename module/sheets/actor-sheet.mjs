@@ -1245,10 +1245,15 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
     }
 
     // --- Build update data ---
+    const newImg = targetSeedData._img ?? actor.img;
+    const newName = targetSeedData.species ?? actor.name;
     const updateData = {
-      name: targetSeedData.species ?? actor.name,
-      img: targetSeedData._img ?? actor.img,
+      name: newName,
+      img: newImg,
+      "prototypeToken.texture.src": newImg,
+      "prototypeToken.name": newName,
       "system.species": targetSeedData.species ?? "",
+      "system.biography": targetSeedData.biography ?? "",
       "system.manualCoreBase": targetSeedData.manualCoreBase ?? {},
       "system.sheetSettings.trackMax.attributes": targetSeedData.sheetSettings?.trackMax?.attributes ?? {},
       "system.learnsetByRank": newLearnset,
@@ -1262,13 +1267,18 @@ export class PokRoleActorSheet extends foundry.appv1.sheets.ActorSheet {
 
     await actor.update(updateData);
 
-    // --- Update token image in scenes ---
+    // --- Update token image in scenes (ALL tokens for this actor, not just linked) ---
     for (const scene of game.scenes) {
-      const tokens = scene.tokens.filter(t => t.actorId === actor.id && t.actorLink);
+      const tokens = scene.tokens.filter(t => t.actorId === actor.id);
       for (const token of tokens) {
-        await token.update({
-          "texture.src": updateData.img
-        });
+        try {
+          await token.update({
+            "texture.src": newImg,
+            "name": newName
+          });
+        } catch (e) {
+          console.warn(`Pok-Role | Failed to update token ${token.id} on scene ${scene.id}:`, e);
+        }
       }
     }
 
